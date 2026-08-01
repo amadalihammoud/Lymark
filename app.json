@@ -2,7 +2,11 @@
   "expo": {
     "name": "Lymark",
     "slug": "lymark",
+    "owner": "lycos-team",
     "version": "1.0.0",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "lymark",
