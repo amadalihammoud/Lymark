@@ -35,14 +35,26 @@ export type WatermarkScale = (typeof WATERMARK_SCALES)[number];
 export type CaptureMetadata = Record<WatermarkFieldKey, string>;
 
 /**
+ * A foto escolhida, com as dimensões originais.
+ *
+ * As dimensões não são decoração: definem a proporção do preview e a
+ * resolução da imagem exportada.
+ */
+export type SelectedPhoto = {
+  uri: string;
+  width: number;
+  height: number;
+};
+
+/**
  * O trabalho em andamento na aba Capturar.
  *
  * Vive no `CaptureProvider`, acima das abas, para sobreviver à navegação —
  * é o que garante o critério de aceite "sem perder estado da captura".
  */
 export type CaptureDraft = {
-  /** URI local da foto escolhida, ou `null` enquanto nada foi selecionado. */
-  photoUri: string | null;
+  /** A foto escolhida, ou `null` enquanto nada foi selecionado. */
+  photo: SelectedPhoto | null;
   metadata: CaptureMetadata;
 };
 

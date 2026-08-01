@@ -1,5 +1,7 @@
 import * as ImagePicker from 'expo-image-picker';
 
+import type { SelectedPhoto } from '@/types';
+
 /**
  * As duas portas de entrada de uma foto: a câmera e a galeria.
  *
@@ -9,7 +11,7 @@ import * as ImagePicker from 'expo-image-picker';
  */
 
 export type PhotoPickResult =
-  | { status: 'selected'; uri: string }
+  | { status: 'selected'; photo: SelectedPhoto }
   | { status: 'cancelled' }
   | { status: 'denied' }
   | { status: 'failed'; error: unknown };
@@ -28,7 +30,12 @@ function toResult(response: ImagePicker.ImagePickerResult): PhotoPickResult {
   const asset = response.assets?.[0];
   if (!asset) return { status: 'cancelled' };
 
-  return { status: 'selected', uri: asset.uri };
+  // As dimensões seguem junto porque são elas que definem a resolução da
+  // imagem exportada — sem isso, a exportação sai no tamanho da tela.
+  return {
+    status: 'selected',
+    photo: { uri: asset.uri, width: asset.width, height: asset.height },
+  };
 }
 
 export async function takePhotoWithCamera(): Promise<PhotoPickResult> {

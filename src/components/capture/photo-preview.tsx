@@ -1,10 +1,10 @@
-import { Image, type ImageLoadEventData } from 'expo-image';
-import { useState, type Ref } from 'react';
+import { Image } from 'expo-image';
+import type { Ref } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { WatermarkOverlay } from '@/features/watermark/watermark-overlay';
 import { colors, radius, typography } from '@/theme';
-import type { CaptureMetadata, WatermarkPreferences } from '@/types';
+import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/types';
 
 /**
  * A foto com a marca d'água por cima — e o alvo da exportação.
@@ -18,40 +18,38 @@ import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 const PLACEHOLDER_ASPECT_RATIO = 3 / 4;
 
 export function PhotoPreview({
-  uri,
+  photo,
   metadata,
   preferences,
   ref,
 }: {
-  uri: string | null;
+  photo: SelectedPhoto | null;
   metadata: CaptureMetadata;
   preferences: WatermarkPreferences;
   ref?: Ref<View>;
 }) {
-  // A proporção acompanha a foto real para não recortar nem gerar tarjas
-  // pretas na imagem exportada.
-  const [aspectRatio, setAspectRatio] = useState(PLACEHOLDER_ASPECT_RATIO);
-
-  const handleLoad = ({ source }: ImageLoadEventData) => {
-    if (!source?.width || !source?.height) return;
-    setAspectRatio(source.width / source.height);
-  };
-
-  if (!uri) {
+  if (!photo) {
     return (
-      <View style={[styles.frame, styles.placeholder, { aspectRatio }]}>
+      <View
+        style={[styles.frame, styles.placeholder, { aspectRatio: PLACEHOLDER_ASPECT_RATIO }]}>
         <Text style={typography.body}>Nenhuma foto selecionada</Text>
       </View>
     );
   }
 
+  // A proporção vem das dimensões reais da foto, para não recortar nem gerar
+  // tarjas pretas na imagem exportada.
+  const aspectRatio =
+    photo.width > 0 && photo.height > 0
+      ? photo.width / photo.height
+      : PLACEHOLDER_ASPECT_RATIO;
+
   return (
     <View ref={ref} collapsable={false} style={[styles.frame, { aspectRatio }]}>
       <Image
-        source={{ uri }}
+        source={{ uri: photo.uri }}
         style={StyleSheet.absoluteFill}
         contentFit="cover"
-        onLoad={handleLoad}
         accessibilityLabel="Pré-visualização da foto com marca d’água"
       />
       <WatermarkOverlay metadata={metadata} preferences={preferences} />

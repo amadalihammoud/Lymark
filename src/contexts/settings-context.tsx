@@ -10,7 +10,9 @@ import {
 
 import {
   DEFAULT_WATERMARK_PREFERENCES,
+  PREFERENCES_SCHEMA_VERSION,
   mergeWithDefaults,
+  type StoredPreferences,
 } from '@/features/watermark/preferences';
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
 import {
@@ -55,23 +57,26 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     let active = true;
 
-    readJson<Partial<WatermarkPreferences>>(StorageKeys.watermarkPreferences, {}).then(
-      (stored) => {
-        if (!active) return;
-        setPreferences(mergeWithDefaults(stored));
-        setHydrated(true);
-      },
-    );
+    readJson<StoredPreferences>(StorageKeys.watermarkPreferences, {}).then((stored) => {
+      if (!active) return;
+      setPreferences(mergeWithDefaults(stored));
+      setHydrated(true);
+    });
 
     return () => {
       active = false;
     };
   }, []);
 
-  // Só grava depois de hidratar, senão o padrão sobrescreveria o que estava salvo.
+  // Só grava depois de hidratar, senão o padrão sobrescreveria o que estava
+  // salvo. A versão vai junto: é o que permite migrar padrões numa
+  // atualização sem descartar o que o usuário escolheu de fato.
   useEffect(() => {
     if (!hydrated) return;
-    void writeJson(StorageKeys.watermarkPreferences, preferences);
+    void writeJson(StorageKeys.watermarkPreferences, {
+      ...preferences,
+      schemaVersion: PREFERENCES_SCHEMA_VERSION,
+    });
   }, [hydrated, preferences]);
 
   const toggleField = useCallback((key: WatermarkFieldKey) => {

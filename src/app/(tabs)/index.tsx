@@ -27,7 +27,7 @@ import { typography } from '@/theme';
  * uma exportação está em andamento e a referência da view a ser capturada.
  */
 export default function CaptureScreen() {
-  const { draft, hasPhoto, setPhotoUri, setField, regenerateCode, syncDateTime, resetDraft } =
+  const { draft, hasPhoto, setPhoto, setField, regenerateCode, syncDateTime, resetDraft } =
     useCapture();
   const { preferences } = useSettings();
   const { addEntry } = useGallery();
@@ -39,7 +39,7 @@ export default function CaptureScreen() {
   const applyPickResult = (result: PhotoPickResult) => {
     switch (result.status) {
       case 'selected':
-        setPhotoUri(result.uri);
+        setPhoto(result.photo);
         // Foto nova recebe o horário do momento da captura, não o de quando
         // o app foi aberto.
         syncDateTime();
@@ -75,7 +75,7 @@ export default function CaptureScreen() {
 
     setExporting(true);
     try {
-      const outcome = await exportWatermarkedPhoto(previewRef);
+      const outcome = await exportWatermarkedPhoto(previewRef, draft.photo);
       addEntry({ uri: outcome.uri, metadata: draft.metadata });
 
       Alert.alert(
@@ -100,7 +100,7 @@ export default function CaptureScreen() {
 
       <PhotoPreview
         ref={previewRef}
-        uri={draft.photoUri}
+        photo={draft.photo}
         metadata={draft.metadata}
         preferences={preferences}
       />

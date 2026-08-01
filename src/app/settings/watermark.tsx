@@ -43,14 +43,14 @@ export default function WatermarkSettingsScreen() {
       <Section
         title="Pré-visualização"
         description={
-          draft.photoUri
+          draft.photo
             ? 'Sobre a foto atual da aba Capturar.'
             : 'Escolha uma foto em Capturar para ver sobre a imagem real.'
         }>
         <View style={styles.preview}>
-          {draft.photoUri ? (
+          {draft.photo ? (
             <Image
-              source={{ uri: draft.photoUri }}
+              source={{ uri: draft.photo.uri }}
               style={StyleSheet.absoluteFill}
               contentFit="cover"
             />

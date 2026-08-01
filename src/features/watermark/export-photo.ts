@@ -3,6 +3,7 @@ import type { RefObject } from 'react';
 import type { View } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
 
+import { resolveCaptureSize, type PixelSize } from './capture-size';
 import { persistExportedPhoto } from './photo-file';
 
 /**
@@ -29,11 +30,22 @@ export class PhotoExportError extends Error {
 
 export async function exportWatermarkedPhoto(
   target: RefObject<View | null>,
+  /** Dimensões da foto original — definem a resolução do arquivo exportado. */
+  source?: PixelSize | null,
 ): Promise<ExportOutcome> {
   let uri: string;
 
   try {
-    const temporaryUri = await captureRef(target, { format: 'jpg', quality: 0.95 });
+    const size = resolveCaptureSize(source);
+
+    const temporaryUri = await captureRef(target, {
+      format: 'jpg',
+      quality: 0.95,
+      // Sem tamanho explícito, a captura sairia na resolução da tela e a
+      // foto perderia a maior parte do detalhe original.
+      ...size,
+    });
+
     // A captura nasce em cache; o histórico precisa de um arquivo que
     // sobreviva à limpeza automática do sistema.
     uri = await persistExportedPhoto(temporaryUri);

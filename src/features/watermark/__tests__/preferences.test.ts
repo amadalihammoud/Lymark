@@ -1,38 +1,47 @@
-import { DEFAULT_WATERMARK_PREFERENCES, mergeWithDefaults } from '../preferences';
+import {
+  DEFAULT_WATERMARK_PREFERENCES,
+  PREFERENCES_SCHEMA_VERSION,
+  mergeWithDefaults,
+} from '../preferences';
 
 /**
  * Esta mescla é a compatibilidade entre versões do app: o que está gravado no
  * aparelho de um usuário foi escrito por uma versão anterior, que pode não ter
- * conhecido todos os campos.
+ * conhecido todos os campos — ou ter gravado um padrão que mudou desde então.
  */
 describe('mergeWithDefaults', () => {
+  const current = { schemaVersion: PREFERENCES_SCHEMA_VERSION };
+
   it('devolve o padrão quando não há nada gravado', () => {
     expect(mergeWithDefaults({})).toEqual(DEFAULT_WATERMARK_PREFERENCES);
   });
 
-  it('preserva o que foi gravado', () => {
-    const merged = mergeWithDefaults({ position: 'top-right', scale: 'large' });
+  it('preserva o que foi gravado na versão atual', () => {
+    const merged = mergeWithDefaults({ ...current, position: 'top-right', scale: 'large' });
 
     expect(merged.position).toBe('top-right');
     expect(merged.scale).toBe('large');
   });
 
   it('completa campos que a versão antiga não conhecia', () => {
-    const merged = mergeWithDefaults({ visibleFields: { time: false } as never });
+    const merged = mergeWithDefaults({
+      ...current,
+      visibleFields: { time: false } as never,
+    });
 
     expect(merged.visibleFields.time).toBe(false);
     expect(merged.visibleFields.address).toBe(true);
-    expect(merged.visibleFields.code).toBe(true);
   });
 
   it('preserva `false`, que é valor legítimo e não ausência', () => {
-    const merged = mergeWithDefaults({ showBackdrop: false });
+    const merged = mergeWithDefaults({ ...current, showBackdrop: false });
 
     expect(merged.showBackdrop).toBe(false);
   });
 
   it('ignora valores de tipo errado vindos de dado corrompido', () => {
     const merged = mergeWithDefaults({
+      ...current,
       visibleFields: { weekday: 'sim' } as never,
     });
 
@@ -44,5 +53,50 @@ describe('mergeWithDefaults', () => {
 
     expect(merged).not.toBe(DEFAULT_WATERMARK_PREFERENCES);
     expect(merged.visibleFields).not.toBe(DEFAULT_WATERMARK_PREFERENCES.visibleFields);
+  });
+});
+
+/**
+ * A versão 1 gravava faixa escura ligada e código impresso — padrões antigos,
+ * nunca uma escolha consciente do usuário. Quem atualiza precisa receber o
+ * layout novo, e não herdar o anterior para sempre.
+ */
+describe('migração da versão 1 para a 2', () => {
+  const legacy = {
+    visibleFields: { time: true, date: true, weekday: true, address: true, code: true },
+    position: 'top-right',
+    scale: 'large',
+    showBackdrop: true,
+  } as const;
+
+  it('desliga a faixa escura herdada do formato antigo', () => {
+    expect(mergeWithDefaults(legacy).showBackdrop).toBe(false);
+  });
+
+  it('desliga o código herdado do formato antigo', () => {
+    expect(mergeWithDefaults(legacy).visibleFields.code).toBe(false);
+  });
+
+  it('preserva o que era escolha real do usuário', () => {
+    const merged = mergeWithDefaults(legacy);
+
+    expect(merged.position).toBe('top-right');
+    expect(merged.scale).toBe('large');
+    expect(merged.visibleFields.weekday).toBe(true);
+  });
+
+  it('não migra de novo depois que a versão foi gravada', () => {
+    const migrated = mergeWithDefaults({
+      ...legacy,
+      schemaVersion: PREFERENCES_SCHEMA_VERSION,
+    });
+
+    // Agora `true` significa escolha deliberada, e precisa ser respeitada.
+    expect(migrated.showBackdrop).toBe(true);
+    expect(migrated.visibleFields.code).toBe(true);
+  });
+
+  it('trata ausência de versão como formato antigo', () => {
+    expect(mergeWithDefaults({ showBackdrop: true }).showBackdrop).toBe(false);
   });
 });

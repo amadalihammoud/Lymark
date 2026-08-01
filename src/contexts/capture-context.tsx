@@ -9,7 +9,12 @@ import {
 
 import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
 import { generatePhotoCode } from '@/lib/photo-code';
-import type { CaptureDraft, CaptureMetadata, WatermarkFieldKey } from '@/types';
+import type {
+  CaptureDraft,
+  CaptureMetadata,
+  SelectedPhoto,
+  WatermarkFieldKey,
+} from '@/types';
 
 /**
  * O rascunho de captura — a foto escolhida e os metadados que vão ser
@@ -34,7 +39,7 @@ function buildInitialMetadata(now: Date = new Date()): CaptureMetadata {
 type CaptureContextValue = {
   draft: CaptureDraft;
   hasPhoto: boolean;
-  setPhotoUri: (uri: string | null) => void;
+  setPhoto: (photo: SelectedPhoto | null) => void;
   setField: (key: WatermarkFieldKey, value: string) => void;
   /** Sorteia um novo Código de Foto (botão "Gerar"). */
   regenerateCode: () => void;
@@ -48,12 +53,12 @@ const CaptureContext = createContext<CaptureContextValue | null>(null);
 
 export function CaptureProvider({ children }: { children: ReactNode }) {
   const [draft, setDraft] = useState<CaptureDraft>(() => ({
-    photoUri: null,
+    photo: null,
     metadata: buildInitialMetadata(),
   }));
 
-  const setPhotoUri = useCallback((photoUri: string | null) => {
-    setDraft((current) => ({ ...current, photoUri }));
+  const setPhoto = useCallback((photo: SelectedPhoto | null) => {
+    setDraft((current) => ({ ...current, photo }));
   }, []);
 
   const setField = useCallback((key: WatermarkFieldKey, value: string) => {
@@ -84,20 +89,20 @@ export function CaptureProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const resetDraft = useCallback(() => {
-    setDraft({ photoUri: null, metadata: buildInitialMetadata() });
+    setDraft({ photo: null, metadata: buildInitialMetadata() });
   }, []);
 
   const value = useMemo<CaptureContextValue>(
     () => ({
       draft,
-      hasPhoto: draft.photoUri !== null,
-      setPhotoUri,
+      hasPhoto: draft.photo !== null,
+      setPhoto,
       setField,
       regenerateCode,
       syncDateTime,
       resetDraft,
     }),
-    [draft, setPhotoUri, setField, regenerateCode, syncDateTime, resetDraft],
+    [draft, setPhoto, setField, regenerateCode, syncDateTime, resetDraft],
   );
 
   return <CaptureContext.Provider value={value}>{children}</CaptureContext.Provider>;

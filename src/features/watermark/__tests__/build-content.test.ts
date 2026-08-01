@@ -27,7 +27,7 @@ function withFields(
 
 describe('buildWatermarkContent', () => {
   it('devolve cada campo no seu papel', () => {
-    const content = buildWatermarkContent(metadata, DEFAULT_WATERMARK_PREFERENCES);
+    const content = buildWatermarkContent(metadata, withFields({ code: true }));
 
     expect(content.time).toBe('14:38');
     expect(content.date).toBe('30 jul. 2026');
@@ -35,6 +35,12 @@ describe('buildWatermarkContent', () => {
     expect(content.address).toContain('Azuíl Loureiro');
     expect(content.code).toBe('98926A73655DC1');
     expect(content.isEmpty).toBe(false);
+  });
+
+  it('não carimba o código por padrão — o layout de referência não o tem', () => {
+    const content = buildWatermarkContent(metadata, DEFAULT_WATERMARK_PREFERENCES);
+
+    expect(content.code).toBeNull();
   });
 
   it('anula os campos desligados nas preferências', () => {
@@ -128,7 +134,7 @@ describe('carimbo vazio', () => {
   it('não marca isEmpty se sobrou um único campo', () => {
     const content = buildWatermarkContent(
       { ...metadata, time: '', date: '', weekday: '', address: '' },
-      DEFAULT_WATERMARK_PREFERENCES,
+      withFields({ code: true }),
     );
 
     expect(content.isEmpty).toBe(false);
