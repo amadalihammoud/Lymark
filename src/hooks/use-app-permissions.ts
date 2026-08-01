@@ -85,20 +85,25 @@ async function askPermission(id: PermissionId): Promise<PermissionSnapshot> {
   }
 }
 
+/** Consulta as três permissões de uma vez, sem tocar em estado. */
+async function readAllPermissions(): Promise<PermissionMap> {
+  const snapshots = await Promise.all(PERMISSION_IDS.map(readPermission));
+
+  return PERMISSION_IDS.reduce<PermissionMap>(
+    (accumulator, id, index) => ({ ...accumulator, [id]: snapshots[index] }),
+    { ...EMPTY_MAP },
+  );
+}
+
 export function useAppPermissions() {
   const [permissions, setPermissions] = useState<PermissionMap>(EMPTY_MAP);
+  // Já começa em `true`: a primeira leitura dispara junto com a montagem.
   const [refreshing, setRefreshing] = useState(true);
 
   const refresh = useCallback(async () => {
     setRefreshing(true);
     try {
-      const snapshots = await Promise.all(PERMISSION_IDS.map(readPermission));
-      setPermissions(
-        PERMISSION_IDS.reduce<PermissionMap>(
-          (accumulator, id, index) => ({ ...accumulator, [id]: snapshots[index] }),
-          { ...EMPTY_MAP },
-        ),
-      );
+      setPermissions(await readAllPermissions());
     } catch (error) {
       console.warn('[permissions] falha ao consultar o estado das permissões.', error);
     } finally {
@@ -107,8 +112,27 @@ export function useAppPermissions() {
   }, []);
 
   useEffect(() => {
-    void refresh();
-  }, [refresh]);
+    let active = true;
+
+    // A leitura inicial não reaproveita `refresh` de propósito: ele altera
+    // estado de forma síncrona, e fazer isso no corpo de um efeito dispara
+    // uma renderização em cascata. Aqui o primeiro setState só acontece
+    // depois do await.
+    readAllPermissions()
+      .then((snapshot) => {
+        if (active) setPermissions(snapshot);
+      })
+      .catch((error: unknown) => {
+        console.warn('[permissions] falha ao consultar o estado das permissões.', error);
+      })
+      .finally(() => {
+        if (active) setRefreshing(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const request = useCallback(async (id: PermissionId) => {
     const snapshot = await askPermission(id);

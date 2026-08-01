@@ -8,6 +8,10 @@ import {
   type ReactNode,
 } from 'react';
 
+import {
+  DEFAULT_WATERMARK_PREFERENCES,
+  mergeWithDefaults,
+} from '@/features/watermark/preferences';
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
 import {
   WATERMARK_FIELD_KEYS,
@@ -22,42 +26,10 @@ import {
  *
  * Ficam acima das abas e são persistidas: a configuração escolhida uma vez
  * vale para todas as fotos seguintes, inclusive depois de fechar o app.
- */
-
-export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
-  visibleFields: {
-    time: true,
-    date: true,
-    weekday: true,
-    address: true,
-    code: true,
-  },
-  position: 'bottom-left',
-  scale: 'medium',
-  showBackdrop: true,
-};
-
-/**
- * Reconstrói as preferências a partir do que estava salvo.
  *
- * Um app atualizado pode ler dados gravados por uma versão anterior, que não
- * conhecia todos os campos. Mesclar contra o padrão evita `undefined`
- * chegando na renderização da marca d'água.
+ * O padrão e a mescla vivem em `features/watermark/preferences`: são regra,
+ * não estado, e este arquivo só cuida do ciclo de vida.
  */
-function mergeWithDefaults(stored: Partial<WatermarkPreferences>): WatermarkPreferences {
-  const visibleFields = { ...DEFAULT_WATERMARK_PREFERENCES.visibleFields };
-  for (const key of WATERMARK_FIELD_KEYS) {
-    const value = stored.visibleFields?.[key];
-    if (typeof value === 'boolean') visibleFields[key] = value;
-  }
-
-  return {
-    visibleFields,
-    position: stored.position ?? DEFAULT_WATERMARK_PREFERENCES.position,
-    scale: stored.scale ?? DEFAULT_WATERMARK_PREFERENCES.scale,
-    showBackdrop: stored.showBackdrop ?? DEFAULT_WATERMARK_PREFERENCES.showBackdrop,
-  };
-}
 
 type SettingsContextValue = {
   preferences: WatermarkPreferences;
