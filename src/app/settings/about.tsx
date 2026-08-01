@@ -1,0 +1,85 @@
+import Constants from 'expo-constants';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+
+import { Wordmark } from '@/components/brand/wordmark';
+import { Screen } from '@/components/ui/screen';
+import { Section } from '@/components/ui/section';
+import { colors, spacing, typography } from '@/theme';
+
+/** Sobre o Lymark — identidade, versão e o compromisso de privacidade. */
+export default function AboutScreen() {
+  const config = Constants.expoConfig;
+
+  return (
+    <Screen>
+      <View style={styles.brand}>
+        <Wordmark />
+        <Text style={[typography.body, styles.pitch]}>
+          Carimba hora, data, dia da semana, endereço e um código de rastreio nas suas
+          fotos — para registro de campo, vistoria e comprovação de serviço.
+        </Text>
+      </View>
+
+      <Section title="Aplicativo">
+        <InfoRow label="Versão" value={config?.version ?? '1.0.0'} />
+        <InfoRow label="Plataforma" value={Platform.OS === 'ios' ? 'iOS' : 'Android'} />
+        <InfoRow label="Expo SDK" value={String(Constants.expoVersion ?? '—')} showDivider={false} />
+      </Section>
+
+      <Section title="Privacidade">
+        <View style={styles.paragraph}>
+          <Text style={typography.body}>
+            As fotos, os endereços e o histórico ficam apenas neste aparelho. O Lymark não
+            possui servidor, não cria conta e não envia nada para a internet.
+          </Text>
+          <Text style={typography.caption}>
+            A localização é usada uma vez por captura, apenas para preencher o campo de
+            endereço, e não é armazenada separadamente das fotos.
+          </Text>
+        </View>
+      </Section>
+    </Screen>
+  );
+}
+
+function InfoRow({
+  label,
+  value,
+  showDivider = true,
+}: {
+  label: string;
+  value: string;
+  showDivider?: boolean;
+}) {
+  return (
+    <View style={[styles.infoRow, showDivider && styles.divider]}>
+      <Text style={typography.value}>{label}</Text>
+      <Text style={typography.caption}>{value}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  brand: {
+    paddingTop: spacing.lg,
+    gap: spacing.lg,
+  },
+  pitch: {
+    lineHeight: 22,
+  },
+  infoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.lg,
+  },
+  divider: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.border,
+  },
+  paragraph: {
+    padding: spacing.lg,
+    gap: spacing.md,
+  },
+});

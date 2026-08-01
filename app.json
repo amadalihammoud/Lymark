@@ -1,0 +1,67 @@
+{
+  "expo": {
+    "name": "Lymark",
+    "slug": "lymark",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "lymark",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0D2137",
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.lycosteam.lymark"
+    },
+    "android": {
+      "package": "com.lycosteam.lymark",
+      "adaptiveIcon": {
+        "backgroundColor": "#0D2137",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0D2137",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 120
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem que receberá a marca d'água.",
+          "cameraPermission": "O Lymark usa a câmera para tirar a foto que receberá a marca d'água."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "O Lymark usa sua localização para preencher automaticamente o endereço carimbado na foto."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem que receberá a marca d'água.",
+          "savePhotosPermission": "O Lymark salva na sua galeria as fotos exportadas com marca d'água.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
