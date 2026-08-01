@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from 'react';
 
+import { deleteExportedPhoto } from '@/features/watermark/photo-file';
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
 import type { CaptureMetadata, GalleryEntry } from '@/types';
 
@@ -68,11 +69,25 @@ export function GalleryProvider({ children }: { children: ReactNode }) {
     return entry;
   }, []);
 
-  const removeEntry = useCallback((id: string) => {
-    setEntries((current) => current.filter((entry) => entry.id !== id));
-  }, []);
+  // Apagar o registro sem apagar o arquivo deixaria lixo ocupando espaço no
+  // aparelho para sempre — o índice é a única referência a ele.
+  //
+  // O arquivo sai antes do `setEntries`, e não dentro do atualizador: o React
+  // pode reexecutar um atualizador, e efeito colateral ali dentro roda duas
+  // vezes.
+  const removeEntry = useCallback(
+    (id: string) => {
+      const target = entries.find((entry) => entry.id === id);
+      if (target) deleteExportedPhoto(target.uri);
+      setEntries((current) => current.filter((entry) => entry.id !== id));
+    },
+    [entries],
+  );
 
-  const clearGallery = useCallback(() => setEntries([]), []);
+  const clearGallery = useCallback(() => {
+    entries.forEach((entry) => deleteExportedPhoto(entry.uri));
+    setEntries([]);
+  }, [entries]);
 
   const findEntry = useCallback(
     (id: string) => entries.find((entry) => entry.id === id),

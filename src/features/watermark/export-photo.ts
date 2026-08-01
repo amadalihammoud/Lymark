@@ -3,6 +3,8 @@ import type { RefObject } from 'react';
 import type { View } from 'react-native';
 import { captureRef } from 'react-native-view-shot';
 
+import { persistExportedPhoto } from './photo-file';
+
 /**
  * Achata foto + carimbo numa única imagem e salva no aparelho.
  *
@@ -31,7 +33,10 @@ export async function exportWatermarkedPhoto(
   let uri: string;
 
   try {
-    uri = await captureRef(target, { format: 'jpg', quality: 0.95 });
+    const temporaryUri = await captureRef(target, { format: 'jpg', quality: 0.95 });
+    // A captura nasce em cache; o histórico precisa de um arquivo que
+    // sobreviva à limpeza automática do sistema.
+    uri = await persistExportedPhoto(temporaryUri);
   } catch (error) {
     throw new PhotoExportError('Não foi possível gerar a imagem com a marca d’água.', {
       cause: error,
