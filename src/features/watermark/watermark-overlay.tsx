@@ -3,14 +3,24 @@ import { StyleSheet, Text, View } from 'react-native';
 import { colors, radius } from '@/theme';
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
-import { buildWatermarkLines } from './build-lines';
+import { buildWatermarkContent } from './build-content';
 import { SCALE_METRICS, resolveAnchorStyle, resolveTextAlign } from './layout';
 
 /**
  * O carimbo desenhado sobre a foto.
  *
+ * Reproduz o layout de referência do Lymark:
+ *
+ *     14:38 │ 30 jul. 2026
+ *           │ Qui
+ *     R. Azuíl Loureiro, 1395 - Vila Santa
+ *     Rosa, Guarujá - SP, 11430-111
+ *
+ * A hora domina, uma barra âmbar — o mesmo traço da marca — separa o bloco
+ * de data e dia da semana, e o endereço ocupa a largura embaixo.
+ *
  * O mesmo componente serve para o preview na tela e para a imagem final
- * capturada pelo `view-shot` — o que o usuário vê é literalmente o que é
+ * capturada pelo `view-shot`: o que o usuário vê é literalmente o que é
  * exportado.
  */
 export function WatermarkOverlay({
@@ -20,56 +30,130 @@ export function WatermarkOverlay({
   metadata: CaptureMetadata;
   preferences: WatermarkPreferences;
 }) {
-  const lines = buildWatermarkLines(metadata, preferences);
-  if (lines.length === 0) return null;
+  const content = buildWatermarkContent(metadata, preferences);
+  if (content.isEmpty) return null;
 
   const metrics = SCALE_METRICS[preferences.scale];
   const textAlign = resolveTextAlign(preferences.position);
+  const alignItems = textAlign === 'left' ? 'flex-start' : 'flex-end';
+
+  const hasHeader = content.time !== null || content.date !== null || content.weekday !== null;
 
   return (
     <View style={resolveAnchorStyle(preferences.position)} pointerEvents="none">
       <View
         style={[
-          styles.block,
           {
+            alignItems,
             paddingVertical: metrics.paddingVertical,
             paddingHorizontal: metrics.paddingHorizontal,
           },
           preferences.showBackdrop && styles.backdrop,
         ]}>
-        {lines.map((line) => (
+        {hasHeader ? (
+          <View style={styles.header}>
+            {content.time ? (
+              <Text style={[styles.text, styles.time, { fontSize: metrics.time }]}>
+                {content.time}
+              </Text>
+            ) : null}
+
+            {content.showRule ? (
+              <View
+                style={[
+                  styles.rule,
+                  { height: metrics.time * 0.86, marginHorizontal: metrics.secondary },
+                ]}
+              />
+            ) : null}
+
+            {content.date || content.weekday ? (
+              <View style={{ alignItems: 'flex-start' }}>
+                {content.date ? (
+                  <Text
+                    style={[styles.text, styles.secondary, { fontSize: metrics.secondary }]}>
+                    {content.date}
+                  </Text>
+                ) : null}
+                {content.weekday ? (
+                  <Text
+                    style={[styles.text, styles.secondary, { fontSize: metrics.secondary }]}>
+                    {content.weekday}
+                  </Text>
+                ) : null}
+              </View>
+            ) : null}
+          </View>
+        ) : null}
+
+        {content.address ? (
           <Text
-            key={line}
             style={[
-              styles.line,
+              styles.text,
+              styles.address,
+              { fontSize: metrics.address, textAlign, marginTop: hasHeader ? metrics.gap : 0 },
+            ]}>
+            {content.address}
+          </Text>
+        ) : null}
+
+        {content.code ? (
+          <Text
+            style={[
+              styles.text,
+              styles.code,
               {
-                fontSize: metrics.fontSize,
-                lineHeight: metrics.lineHeight,
+                fontSize: metrics.code,
                 textAlign,
+                marginTop: metrics.gap / 2,
               },
             ]}>
-            {line}
+            {content.code}
           </Text>
-        ))}
+        ) : null}
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  block: {
-    borderRadius: radius.sm,
-  },
   backdrop: {
     backgroundColor: colors.watermarkBackdrop,
+    borderRadius: radius.sm,
   },
-  line: {
+  header: {
+    flexDirection: 'row',
+    // As bases da hora e do bloco secundário se alinham, como na referência.
+    alignItems: 'flex-end',
+  },
+  text: {
     color: colors.text,
-    fontWeight: '600',
-    // Sem a faixa de fundo, a sombra é o que mantém o texto legível
-    // sobre áreas claras da foto.
+    // Sem a faixa de fundo, a sombra é o que mantém o texto legível sobre
+    // áreas claras da foto.
     textShadowColor: 'rgba(0, 0, 0, 0.85)',
     textShadowOffset: { width: 0, height: 1 },
     textShadowRadius: 3,
+  },
+  time: {
+    fontWeight: '700',
+    letterSpacing: -0.5,
+    // Encosta o texto na base da caixa, para casar com a barra.
+    includeFontPadding: false,
+  },
+  secondary: {
+    fontWeight: '600',
+    letterSpacing: 0.2,
+  },
+  address: {
+    fontWeight: '600',
+  },
+  code: {
+    fontWeight: '600',
+    letterSpacing: 0.6,
+    opacity: 0.85,
+  },
+  rule: {
+    width: 2,
+    backgroundColor: colors.accent,
   },
 });

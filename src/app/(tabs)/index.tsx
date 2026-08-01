@@ -114,6 +114,7 @@ export default function CaptureScreen() {
       <MetadataForm
         metadata={draft.metadata}
         onChangeField={setField}
+        onSyncDateTime={syncDateTime}
         onRegenerateCode={regenerateCode}
         onLocate={handleLocate}
         locating={locating}

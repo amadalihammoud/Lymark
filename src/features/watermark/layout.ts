@@ -4,30 +4,64 @@ import { spacing } from '@/theme';
 import type { WatermarkPosition, WatermarkScale } from '@/types';
 
 /**
- * Geometria da marca d'água.
+ * Geometria e escala tipográfica da marca d'água.
  *
  * Isolado do componente porque estes números são regra de produto, não
  * estilo de tela: são eles que definem como o carimbo sai na foto exportada.
+ *
+ * A proporção entre os tamanhos vem do layout de referência — a hora pesa
+ * cerca de 2,8 vezes o endereço, e é isso que faz o horário ser lido de
+ * relance numa foto de vistoria.
  */
 
 export type ScaleMetrics = {
-  fontSize: number;
-  lineHeight: number;
+  /** Hora, o elemento dominante. */
+  time: number;
+  /** Data e dia da semana, no bloco ao lado da barra. */
+  secondary: number;
+  address: number;
+  code: number;
+  /** Espaço entre o bloco superior e o endereço. */
+  gap: number;
   paddingVertical: number;
   paddingHorizontal: number;
 };
 
 export const SCALE_METRICS: Record<WatermarkScale, ScaleMetrics> = {
-  small: { fontSize: 10, lineHeight: 14, paddingVertical: 6, paddingHorizontal: 8 },
-  medium: { fontSize: 13, lineHeight: 18, paddingVertical: 8, paddingHorizontal: 10 },
-  large: { fontSize: 16, lineHeight: 22, paddingVertical: 10, paddingHorizontal: 12 },
+  small: {
+    time: 26,
+    secondary: 9,
+    address: 10,
+    code: 9,
+    gap: 4,
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+  },
+  medium: {
+    time: 36,
+    secondary: 11,
+    address: 13,
+    code: 11,
+    gap: 6,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
+  },
+  large: {
+    time: 46,
+    secondary: 14,
+    address: 16,
+    code: 13,
+    gap: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+  },
 };
 
 /**
  * Converte o canto escolhido em posicionamento absoluto.
  *
  * `maxWidth` impede que um endereço longo atravesse a foto inteira, e o
- * alinhamento de texto acompanha o lado em que o bloco está ancorado.
+ * alinhamento acompanha o lado em que o bloco está ancorado.
  */
 export function resolveAnchorStyle(position: WatermarkPosition): ViewStyle {
   const vertical: ViewStyle =

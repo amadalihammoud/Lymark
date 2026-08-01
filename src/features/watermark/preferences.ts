@@ -21,7 +21,10 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   },
   position: 'bottom-left',
   scale: 'medium',
-  showBackdrop: true,
+  // Desligada por padrão para reproduzir a referência, onde o texto fica
+  // direto sobre a foto e a sombra basta. Continua disponível para fotos
+  // muito claras, em que a sombra sozinha não segura o contraste.
+  showBackdrop: false,
 };
 
 /**

@@ -41,13 +41,22 @@ describe('resolveTextAlign', () => {
 
 describe('SCALE_METRICS', () => {
   it('cresce de forma monotônica do pequeno ao grande', () => {
-    expect(SCALE_METRICS.small.fontSize).toBeLessThan(SCALE_METRICS.medium.fontSize);
-    expect(SCALE_METRICS.medium.fontSize).toBeLessThan(SCALE_METRICS.large.fontSize);
+    expect(SCALE_METRICS.small.time).toBeLessThan(SCALE_METRICS.medium.time);
+    expect(SCALE_METRICS.medium.time).toBeLessThan(SCALE_METRICS.large.time);
+    expect(SCALE_METRICS.small.address).toBeLessThan(SCALE_METRICS.large.address);
   });
 
-  it('mantém a altura de linha maior que a fonte, para o texto respirar', () => {
+  it('mantém a hora dominante em todas as escalas', () => {
+    // É o que faz o horário ser lido de relance numa foto de vistoria.
     for (const metrics of Object.values(SCALE_METRICS)) {
-      expect(metrics.lineHeight).toBeGreaterThan(metrics.fontSize);
+      expect(metrics.time / metrics.address).toBeGreaterThan(2.5);
+      expect(metrics.time).toBeGreaterThan(metrics.secondary);
+    }
+  });
+
+  it('mantém a data menor que o endereço, como no layout de referência', () => {
+    for (const metrics of Object.values(SCALE_METRICS)) {
+      expect(metrics.secondary).toBeLessThanOrEqual(metrics.address);
     }
   });
 });
