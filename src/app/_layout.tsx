@@ -1,11 +1,19 @@
+import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { CaptureProvider } from '@/contexts/capture-context';
 import { GalleryProvider } from '@/contexts/gallery-context';
 import { SettingsProvider } from '@/contexts/settings-context';
-import { colors, typography } from '@/theme';
+import { colors, typography, watermarkFontAssets } from '@/theme';
+
+// A splash fica na tela até a fonte do carimbo estar pronta. Sem isso, a
+// primeira renderização usaria a fonte do sistema e o carimbo "pularia" de
+// desenho no meio do uso.
+void SplashScreen.preventAutoHideAsync();
 
 /**
  * Raiz da navegação.
@@ -21,6 +29,16 @@ import { colors, typography } from '@/theme';
  * `Capture` fica por dentro.
  */
 export default function RootLayout() {
+  const [fontsLoaded, fontError] = useFonts(watermarkFontAssets);
+
+  useEffect(() => {
+    // Falha ao carregar a fonte não pode prender o usuário na splash: o app
+    // segue com a fonte do sistema, que é pior mas funciona.
+    if (fontsLoaded || fontError) void SplashScreen.hideAsync();
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) return null;
+
   return (
     <SafeAreaProvider>
       <SettingsProvider>

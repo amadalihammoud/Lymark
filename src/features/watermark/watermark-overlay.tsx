@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { colors, radius } from '@/theme';
+import { colors, fontFamily, radius } from '@/theme';
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
 import { buildWatermarkContent } from './build-content';
 import {
+  ADDRESS_LINE_HEIGHT_RATIO,
+  RULE_SPACE_AFTER_RATIO,
+  RULE_SPACE_BEFORE_RATIO,
   SCALE_METRICS,
   resolveAnchorStyle,
   resolveTextAlign,
@@ -14,26 +17,32 @@ import {
 /**
  * O carimbo desenhado sobre a foto.
  *
- * Reproduz o layout de referência do Lymark:
+ * Reproduz o layout de referência:
  *
- *     14:38 │ 30 jul. 2026
- *           │ Qui
- *     R. Azuíl Loureiro, 1395 - Vila Santa
- *     Rosa, Guarujá - SP, 11430-111
+ *     21:25 ┃ 01 ago. 2026
+ *           ┃ Sáb
+ *     Avenida Senador Pinheiro Machado,
+ *     1024, José Menino, Santos - SP,
+ *     11065-605
  *
- * A hora domina, uma barra âmbar — o mesmo traço da marca — separa o bloco
- * de data e dia da semana, e o endereço ocupa a largura embaixo.
+ * Três detalhes que só aparecem medindo a referência lado a lado:
  *
- * O mesmo componente serve para o preview na tela e para a imagem final
- * capturada pelo `view-shot`: o que o usuário vê é literalmente o que é
- * exportado.
+ * - **O bloco da direita alinha pelo topo**, não pela base. O topo da data
+ *   encosta no topo da hora, e a base da hora fica *acima* da base do dia da
+ *   semana.
+ * - **A barra âmbar percorre a altura inteira do bloco**, do topo da hora até
+ *   abaixo do dia da semana — por isso `alignSelf: 'stretch'` em vez de altura
+ *   calculada.
+ * - **Só a hora é pesada.** Data, dia e endereço são regulares; o contraste
+ *   vem do tamanho e do desenho condensado, não do peso.
  *
- * Todo texto tem `allowFontScaling={false}`. Isso é deliberado e vale a
- * explicação: a marca d'água é conteúdo da **imagem**, não interface. Sem
- * essa trava, o ajuste de fonte do aparelho vazaria para dentro do arquivo
- * JPEG, e dois técnicos da mesma equipe exportariam carimbos de tamanhos
- * diferentes para a mesma vistoria. Na interface do app, o oposto: a escala
- * do sistema é respeitada.
+ * O mesmo componente serve para o preview e para a imagem capturada pelo
+ * `view-shot`: o que o usuário vê é literalmente o que é exportado.
+ *
+ * Todo texto tem `allowFontScaling={false}`. A marca d'água é conteúdo da
+ * **imagem**, não interface: sem essa trava, o ajuste de fonte do aparelho
+ * vazaria para dentro do arquivo JPEG e dois técnicos exportariam carimbos de
+ * tamanhos diferentes para a mesma vistoria.
  */
 export function WatermarkOverlay({
   metadata,
@@ -79,7 +88,10 @@ export function WatermarkOverlay({
               <View
                 style={[
                   styles.rule,
-                  { height: metrics.time * 0.86, marginHorizontal: metrics.secondary },
+                  {
+                    marginLeft: Math.round(metrics.time * RULE_SPACE_BEFORE_RATIO),
+                    marginRight: Math.round(metrics.time * RULE_SPACE_AFTER_RATIO),
+                  },
                 ]}
               />
             ) : null}
@@ -111,7 +123,12 @@ export function WatermarkOverlay({
             style={[
               styles.text,
               styles.address,
-              { fontSize: metrics.address, textAlign, marginTop: hasHeader ? metrics.gap : 0 },
+              {
+                fontSize: metrics.address,
+                lineHeight: Math.round(metrics.address * ADDRESS_LINE_HEIGHT_RATIO),
+                textAlign,
+                marginTop: hasHeader ? metrics.gap : 0,
+              },
             ]}>
             {content.address}
           </Text>
@@ -140,11 +157,16 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
-    // As bases da hora e do bloco secundário se alinham, como na referência.
-    alignItems: 'flex-end',
+    // Topo, não base: é assim que a data encosta no alto da hora.
+    alignItems: 'flex-start',
   },
   secondaryStack: {
     alignItems: 'flex-start',
+    // Estica até a altura da hora e distribui: data encostada no topo, dia da
+    // semana lá embaixo. É essa distribuição que reproduz a referência — sem
+    // ela, as duas linhas ficariam grudadas no alto.
+    alignSelf: 'stretch',
+    justifyContent: 'space-between',
   },
   text: {
     color: colors.text,
@@ -155,27 +177,28 @@ const styles = StyleSheet.create({
     textShadowRadius: 3,
   },
   time: {
-    fontWeight: '700',
-    letterSpacing: -0.5,
-    // Encosta o texto na base da caixa, para casar com a barra.
+    fontFamily: fontFamily.stamp,
+    // Encosta o texto na borda da caixa, para o topo casar com a data.
     includeFontPadding: false,
   },
   secondary: {
-    fontWeight: '600',
-    letterSpacing: 0.2,
+    fontFamily: fontFamily.stampBody,
+    includeFontPadding: false,
   },
   address: {
-    fontWeight: '600',
+    fontFamily: fontFamily.stampBody,
   },
   code: {
-    fontWeight: '600',
+    fontFamily: fontFamily.stampCode,
     letterSpacing: 0.6,
     // Sem `opacity`: ela esmaeceria texto e sombra juntos, e sobre uma foto
-    // clara o código — justamente o campo de rastreio — ficaria invisível. A
-    // hierarquia já vem do tamanho menor.
+    // clara o código — justamente o campo de rastreio — ficaria invisível.
   },
   rule: {
     width: 2,
     backgroundColor: colors.accent,
+    // Percorre a altura inteira do bloco: do topo da hora até abaixo do dia
+    // da semana, como na referência.
+    alignSelf: 'stretch',
   },
 });

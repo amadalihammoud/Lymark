@@ -27,10 +27,16 @@ export type ScaleMetrics = {
   paddingHorizontal: number;
 };
 
+/**
+ * Proporções medidas na referência, em resolução cheia (1920×2560):
+ * hora ÷ endereço = 3,0 · endereço ÷ data = 1,3 · entrelinha do endereço =
+ * 1,42 × o corpo. É o que faz o horário ser lido de relance numa foto de
+ * vistoria sem que o endereço vire miudinho.
+ */
 export const SCALE_METRICS: Record<WatermarkScale, ScaleMetrics> = {
   small: {
-    time: 26,
-    secondary: 9,
+    time: 30,
+    secondary: 8,
     address: 10,
     code: 9,
     gap: 4,
@@ -38,8 +44,8 @@ export const SCALE_METRICS: Record<WatermarkScale, ScaleMetrics> = {
     paddingHorizontal: 8,
   },
   medium: {
-    time: 36,
-    secondary: 11,
+    time: 39,
+    secondary: 10,
     address: 13,
     code: 11,
     gap: 6,
@@ -47,8 +53,8 @@ export const SCALE_METRICS: Record<WatermarkScale, ScaleMetrics> = {
     paddingHorizontal: 10,
   },
   large: {
-    time: 46,
-    secondary: 14,
+    time: 48,
+    secondary: 13,
     address: 16,
     code: 13,
     gap: 8,
@@ -56,6 +62,18 @@ export const SCALE_METRICS: Record<WatermarkScale, ScaleMetrics> = {
     paddingHorizontal: 12,
   },
 };
+
+/** Entrelinha do endereço, medida na referência. */
+export const ADDRESS_LINE_HEIGHT_RATIO = 1.42;
+
+/**
+ * Respiros do bloco superior, proporcionais ao tamanho da hora.
+ *
+ * Na referência o vão entre a hora e a barra é quase o dobro do vão entre a
+ * barra e a data — é o que faz a barra parecer pertencer ao bloco da direita.
+ */
+export const RULE_SPACE_BEFORE_RATIO = 0.3;
+export const RULE_SPACE_AFTER_RATIO = 0.18;
 
 /**
  * Altura de preview para a qual `SCALE_METRICS` foi calibrado: uma foto
@@ -112,7 +130,9 @@ export function resolveAnchorStyle(position: WatermarkPosition): ViewStyle {
 
   return {
     position: 'absolute',
-    maxWidth: '85%',
+    // 65% e não 85%: na referência o endereço quebra bem antes da metade da
+    // foto. Ocupar a largura toda faria o carimbo competir com a imagem.
+    maxWidth: '65%',
     maxHeight: '70%',
     ...vertical,
     ...horizontal,

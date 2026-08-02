@@ -1,4 +1,6 @@
-import { Ionicons } from '@expo/vector-icons';
+// Importado pela família, e não pelo barril `@expo/vector-icons`: o barril
+// carrega TODAS as famílias de ícones e some com megabytes no bundle.
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
