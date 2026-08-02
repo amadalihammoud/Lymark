@@ -1,6 +1,5 @@
 import type { ViewStyle } from 'react-native';
 
-import { spacing } from '@/theme';
 import type { WatermarkPosition, WatermarkScale } from '@/types';
 
 /**
@@ -9,9 +8,9 @@ import type { WatermarkPosition, WatermarkScale } from '@/types';
  * Isolado do componente porque estes números são regra de produto, não
  * estilo de tela: são eles que definem como o carimbo sai na foto exportada.
  *
- * A proporção entre os tamanhos vem do layout de referência — a hora pesa
- * cerca de 2,8 vezes o endereço, e é isso que faz o horário ser lido de
- * relance numa foto de vistoria.
+ * Os tamanhos foram calibrados medindo a referência em resolução cheia e
+ * comparando com o resultado renderizado deste componente, e não estimados
+ * no olho.
  */
 
 export type ScaleMetrics = {
@@ -28,40 +27,61 @@ export type ScaleMetrics = {
 };
 
 /**
- * Proporções medidas na referência, em resolução cheia (1920×2560):
- * hora ÷ endereço = 3,0 · endereço ÷ data = 1,3 · entrelinha do endereço =
- * 1,42 × o corpo. É o que faz o horário ser lido de relance numa foto de
- * vistoria sem que o endereço vire miudinho.
+ * Calibrado contra a referência, e não estimado.
+ *
+ * O método: medir a largura que cada trecho ocupa na foto de referência
+ * (normalizada para 1128 px) e descobrir em que corpo a nossa fonte
+ * reproduz a mesma largura. Comparar tamanho de fonte diretamente não
+ * funcionaria — famílias diferentes desenham o mesmo corpo com larguras
+ * diferentes.
+ *
+ * Alvos medidos e resultado com estes valores:
+ *   "21:55"                              219 px → 219 px
+ *   "01 ago. 2026"                       207 px → 207 px
+ *   "R. Casper Líbero, 24 - José Menino," 607 px → 590 px
+ *
+ * Achado que contraria a intuição: na referência **data e endereço têm o
+ * mesmo corpo**. A data parece menor por conter dígitos, que são estreitos.
  */
 export const SCALE_METRICS: Record<WatermarkScale, ScaleMetrics> = {
   small: {
-    time: 30,
-    secondary: 8,
+    time: 36,
+    secondary: 10,
     address: 10,
-    code: 9,
+    code: 8,
     gap: 4,
-    paddingVertical: 6,
-    paddingHorizontal: 8,
+    paddingVertical: 3,
+    paddingHorizontal: 3,
   },
   medium: {
-    time: 39,
-    secondary: 10,
+    time: 47,
+    secondary: 13,
     address: 13,
     code: 11,
-    gap: 6,
-    paddingVertical: 8,
-    paddingHorizontal: 10,
+    gap: 5,
+    paddingVertical: 4,
+    paddingHorizontal: 4,
   },
   large: {
-    time: 48,
-    secondary: 13,
+    time: 59,
+    secondary: 16,
     address: 16,
-    code: 13,
-    gap: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
+    code: 14,
+    gap: 6,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
   },
 };
+
+/**
+ * Recuo do bloco até a borda da foto.
+ *
+ * Não usa o espaçamento genérico da interface: este número foi medido na
+ * referência (2,9% da largura da imagem, somando recuo e respiro interno) e
+ * responde a uma pergunta diferente — quanto o carimbo respeita a moldura da
+ * foto, não como os elementos da tela se separam.
+ */
+export const WATERMARK_INSET = 6;
 
 /** Entrelinha do endereço, medida na referência. */
 export const ADDRESS_LINE_HEIGHT_RATIO = 1.42;
@@ -122,17 +142,17 @@ export function scaleMetricsToFrame(metrics: ScaleMetrics, frameHeight: number):
  */
 export function resolveAnchorStyle(position: WatermarkPosition): ViewStyle {
   const vertical: ViewStyle =
-    position.startsWith('top') ? { top: spacing.md } : { bottom: spacing.md };
+    position.startsWith('top') ? { top: WATERMARK_INSET } : { bottom: WATERMARK_INSET };
 
   const horizontal: ViewStyle = position.endsWith('left')
-    ? { left: spacing.md, alignItems: 'flex-start' }
-    : { right: spacing.md, alignItems: 'flex-end' };
+    ? { left: WATERMARK_INSET, alignItems: 'flex-start' }
+    : { right: WATERMARK_INSET, alignItems: 'flex-end' };
 
   return {
     position: 'absolute',
-    // 65% e não 85%: na referência o endereço quebra bem antes da metade da
-    // foto. Ocupar a largura toda faria o carimbo competir com a imagem.
-    maxWidth: '65%',
+    // 58%: calibrado para o endereço quebrar a linha no mesmo ponto que a
+    // referência. Ocupar a largura toda faria o carimbo competir com a imagem.
+    maxWidth: '58%',
     maxHeight: '70%',
     ...vertical,
     ...horizontal,

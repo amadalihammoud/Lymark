@@ -24,10 +24,9 @@ describe('resolveAnchorStyle', () => {
   });
 
   it('limita a largura para um endereço longo não atravessar a foto', () => {
-    // 65%: é onde o endereço quebra na referência. Ocupar a largura toda
-    // faria o carimbo competir com a imagem em vez de anotá-la.
+    // 58%: calibrado para o endereço quebrar onde quebra na referência.
     for (const position of WATERMARK_POSITIONS) {
-      expect(resolveAnchorStyle(position).maxWidth).toBe('65%');
+      expect(resolveAnchorStyle(position).maxWidth).toBe('58%');
     }
   });
 
