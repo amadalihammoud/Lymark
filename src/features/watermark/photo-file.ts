@@ -101,3 +101,20 @@ export function deleteExportedPhoto(path: string): void {
     console.warn('[export] não foi possível apagar o arquivo exportado.', error);
   }
 }
+
+/**
+ * Grava bytes já codificados como uma exportação permanente.
+ *
+ * O caminho antigo movia um arquivo temporário produzido pela captura de tela.
+ * A composição em resolução cheia devolve os bytes do JPEG direto da memória,
+ * sem passar por arquivo intermediário.
+ */
+export function writeExportedPhoto(bytes: Uint8Array): string {
+  const fileName = `${Crypto.randomUUID()}.jpg`;
+  const file = new File(exportsDirectory(), fileName);
+
+  file.create({ overwrite: true });
+  file.write(bytes);
+
+  return `${EXPORTS_DIRECTORY_NAME}/${fileName}`;
+}

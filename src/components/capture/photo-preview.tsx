@@ -1,18 +1,18 @@
 import { Image } from 'expo-image';
-import { type Ref, useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { WatermarkOverlay } from '@/features/watermark/watermark-overlay';
+import { StampCanvas } from '@/features/watermark/stamp-canvas';
 import { colors, radius, typography } from '@/theme';
 import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/types';
 
 /**
- * A foto com a marca d'água por cima — e o alvo da exportação.
+ * A foto com a marca d'água por cima.
  *
- * A moldura arredondada é a **externa**; o `ref` aponta para a view interna,
- * de cantos retos. A distinção não é estética: JPEG não tem canal alfa, e
- * capturar uma view com `borderRadius` deixaria quatro cunhas pretas nos
- * cantos de toda foto exportada.
+ * Já não é o alvo da exportação: o arquivo é composto sobre o bitmap original,
+ * na resolução dele, e não mais fotografando esta tela. O que sobrou aqui é a
+ * pré-visualização — desenhada pelo mesmo motor e pela mesma geometria, com
+ * uma largura menor.
  */
 
 /** Proporção usada enquanto nenhuma foto foi escolhida. */
@@ -22,21 +22,18 @@ export function PhotoPreview({
   photo,
   metadata,
   preferences,
-  ref,
 }: {
   photo: SelectedPhoto | null;
   metadata: CaptureMetadata;
   preferences: WatermarkPreferences;
-  ref?: Ref<View>;
 }) {
   /**
-   * Altura real da foto na tela, usada para escalar o carimbo.
+   * Tamanho real da foto na tela.
    *
-   * Sem isso, o bloco tem altura fixa em pontos: numa panorâmica o frame fica
-   * com 70 px de altura, o carimbo com 160, e a hora é cortada para fora da
-   * imagem — no preview e no arquivo exportado.
+   * O carimbo é proporcional ao quadro: sem medir, o bloco teria tamanho fixo
+   * em pontos e numa panorâmica a hora seria cortada para fora da imagem.
    */
-  const [frameHeight, setFrameHeight] = useState(0);
+  const [frame, setFrame] = useState({ width: 0, height: 0 });
 
   if (!photo) {
     return (
@@ -57,20 +54,24 @@ export function PhotoPreview({
   return (
     <View
       style={[styles.frame, { aspectRatio }]}
-      onLayout={(event) => setFrameHeight(event.nativeEvent.layout.height)}>
-      <View ref={ref} collapsable={false} style={styles.captured}>
-        <Image
-          source={{ uri: photo.uri }}
-          style={StyleSheet.absoluteFill}
-          contentFit="cover"
-          accessibilityLabel="Pré-visualização da foto com marca d’água"
-        />
-        <WatermarkOverlay
-          metadata={metadata}
-          preferences={preferences}
-          frameHeight={frameHeight}
-        />
-      </View>
+      onLayout={(event) => {
+        const { width, height } = event.nativeEvent.layout;
+        setFrame((current) =>
+          current.width === width && current.height === height ? current : { width, height },
+        );
+      }}>
+      <Image
+        source={{ uri: photo.uri }}
+        style={StyleSheet.absoluteFill}
+        contentFit="cover"
+        accessibilityLabel="Pré-visualização da foto com marca d’água"
+      />
+      <StampCanvas
+        metadata={metadata}
+        preferences={preferences}
+        width={frame.width}
+        height={frame.height}
+      />
     </View>
   );
 }
@@ -81,10 +82,6 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     overflow: 'hidden',
     backgroundColor: colors.surface,
-  },
-  /** Cantos retos: é esta view que vira o JPEG. */
-  captured: {
-    flex: 1,
   },
   placeholder: {
     alignItems: 'center',

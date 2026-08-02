@@ -1,4 +1,5 @@
 import { Image } from 'expo-image';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
@@ -8,7 +9,7 @@ import { Section } from '@/components/ui/section';
 import { ToggleRow } from '@/components/ui/toggle-row';
 import { useCapture } from '@/contexts/capture-context';
 import { useSettings } from '@/contexts/settings-context';
-import { WatermarkOverlay } from '@/features/watermark/watermark-overlay';
+import { StampCanvas } from '@/features/watermark/stamp-canvas';
 import { colors, radius, spacing, typography } from '@/theme';
 import {
   CODE_PLACEMENTS,
@@ -42,6 +43,7 @@ export default function WatermarkSettingsScreen() {
     resetPreferences,
   } = useSettings();
   const { draft } = useCapture();
+  const [previewFrame, setPreviewFrame] = useState({ width: 0, height: 0 });
 
   return (
     <Screen>
@@ -52,7 +54,14 @@ export default function WatermarkSettingsScreen() {
             ? 'Sobre a foto atual da aba Capturar.'
             : 'Escolha uma foto em Capturar para ver sobre a imagem real.'
         }>
-        <View style={styles.preview}>
+        <View
+          style={styles.preview}
+          onLayout={(event) => {
+            const { width, height } = event.nativeEvent.layout;
+            setPreviewFrame((current) =>
+              current.width === width && current.height === height ? current : { width, height },
+            );
+          }}>
           {draft.photo ? (
             <Image
               source={{ uri: draft.photo.uri }}
@@ -60,7 +69,12 @@ export default function WatermarkSettingsScreen() {
               contentFit="cover"
             />
           ) : null}
-          <WatermarkOverlay metadata={draft.metadata} preferences={preferences} />
+          <StampCanvas
+            metadata={draft.metadata}
+            preferences={preferences}
+            width={previewFrame.width}
+            height={previewFrame.height}
+          />
           {visibleFieldCount === 0 ? (
             <Text style={[typography.caption, styles.previewHint]}>
               Nenhum campo selecionado — a foto sai sem marca d’água.

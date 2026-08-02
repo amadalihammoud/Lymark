@@ -16,11 +16,10 @@ import {
   type PhotoPickResult,
 } from '@/features/capture/photo-source';
 import { buildWatermarkContent } from '@/features/watermark/build-content';
-import {
-  generateWatermarkedPhoto,
-  saveToDeviceGallery,
-  shareWatermarkedPhoto,
-} from '@/features/watermark/export-photo';
+import { saveToDeviceGallery, shareWatermarkedPhoto } from '@/features/watermark/export-photo';
+import { renderStampedPhoto } from '@/features/watermark/render-photo';
+import { STAMP_COLORS } from '@/features/watermark/stamp-canvas';
+import { createStampRenderer, useStampFontProvider } from '@/features/watermark/skia-stamp';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
 import { colors, spacing, typography } from '@/theme';
 import { WATERMARK_FIELD_KEYS, type WatermarkFieldKey } from '@/types';
@@ -56,7 +55,6 @@ export default function CaptureScreen() {
   // vem do retorno do `lookup`, que é o desfecho daquela chamada.
   const { lookup, isLoading: locating } = useAddressLookup();
 
-  const previewRef = useRef<View>(null);
   const [pending, setPending] = useState<PendingAction | null>(null);
   /**
    * Câmera ou seletor abertos.
@@ -67,6 +65,7 @@ export default function CaptureScreen() {
    * está justamente abrindo.
    */
   const [picking, setPicking] = useState(false);
+  const fontProvider = useStampFontProvider();
   const busy = pending !== null;
 
   /**
@@ -201,6 +200,15 @@ export default function CaptureScreen() {
   }, [resetDraft]);
 
   const runAction = async (action: PendingAction) => {
+    const photo = draft.photo;
+    // As fontes do carimbo são as mesmas do desenho na tela; sem elas o
+    // arquivo sairia com a tipografia errada, e a geometria foi medida para
+    // estas. Melhor não exportar do que exportar torto.
+    if (!photo || !fontProvider) {
+      Alert.alert('Aguarde um instante', 'O carimbo ainda está sendo preparado.');
+      return;
+    }
+
     // Invalida qualquer busca de endereço em curso. A imagem é rasterizada a
     // partir da árvore de views viva: se o GPS respondesse durante a geração,
     // a foto sairia com o endereço novo e o histórico registraria o antigo —
@@ -208,7 +216,13 @@ export default function CaptureScreen() {
     lookupToken.current += 1;
     setPending(action);
     try {
-      const path = await generateWatermarkedPhoto(previewRef);
+      const path = await renderStampedPhoto({
+        photoUri: photo.uri,
+        metadata: draft.metadata,
+        preferences,
+        colors: STAMP_COLORS,
+        renderer: createStampRenderer(fontProvider),
+      });
       // O histórico registra sempre, em qualquer das duas ações: é a rede de
       // segurança contra perder uma captura por causa de uma permissão negada
       // ou de um compartilhamento cancelado.
@@ -282,7 +296,6 @@ export default function CaptureScreen() {
       <AppHeader tagline="Marca d’água com hora, data e local" />
 
       <PhotoPreview
-        ref={previewRef}
         photo={draft.photo}
         metadata={draft.metadata}
         preferences={preferences}
