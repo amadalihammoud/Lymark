@@ -1,4 +1,5 @@
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { PixelRatio, Platform, StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
 import { FieldRow } from '@/components/ui/field-row';
@@ -57,10 +58,34 @@ export function MetadataForm({
     (key) => WATERMARK_FIELD_LABELS[key],
   );
 
+  /**
+   * Hora, data e dia da semana lado a lado.
+   *
+   * São valores curtos — `22:50`, `02 ago. 2026`, `Dom` — e ocupavam uma linha
+   * inteira cada, empurrando os botões de exportar para fora da tela. Juntos
+   * numa linha só, o formulário cabe sem rolagem na maioria dos aparelhos.
+   *
+   * Mas lado a lado só funciona se houver largura. Num aparelho estreito, ou
+   * com a fonte do sistema ampliada por acessibilidade, três colunas viram
+   * três campos ilegíveis — então a linha volta a ser empilhada. A decisão usa
+   * a largura medida, e não a da janela: é ela que sobra depois do respiro da
+   * tela.
+   */
+  const [groupWidth, setGroupWidth] = useState(0);
+  const dateTimeCount =
+    Number(visibleFields.time) + Number(visibleFields.date) + Number(visibleFields.weekday);
+  const usableWidth = groupWidth / PixelRatio.getFontScale();
+  const inline = dateTimeCount > 1 && usableWidth >= MIN_INLINE_WIDTH[dateTimeCount];
+
   return (
     <View style={styles.container}>
       {showDateTimeGroup ? (
-        <View style={styles.group}>
+        <View
+          style={styles.group}
+          onLayout={(event) => {
+            const { width } = event.nativeEvent.layout;
+            setGroupWidth((current) => (current === width ? current : width));
+          }}>
           <View style={styles.groupHeader}>
             <Text style={typography.sectionTitle}>Data e hora</Text>
             <Button
@@ -73,8 +98,10 @@ export function MetadataForm({
             />
           </View>
 
+          <View style={inline ? styles.inlineRow : styles.stack}>
           {visibleFields.time ? (
             <FieldRow
+              containerStyle={inline ? styles.timeCell : undefined}
               editable={!disabled}
               label={WATERMARK_FIELD_LABELS.time}
               value={metadata.time}
@@ -91,6 +118,7 @@ export function MetadataForm({
 
           {visibleFields.date ? (
             <FieldRow
+              containerStyle={inline ? styles.dateCell : undefined}
               editable={!disabled}
               label={WATERMARK_FIELD_LABELS.date}
               value={metadata.date}
@@ -101,6 +129,7 @@ export function MetadataForm({
 
           {visibleFields.weekday ? (
             <FieldRow
+              containerStyle={inline ? styles.weekdayCell : undefined}
               editable={!disabled}
               label={WATERMARK_FIELD_LABELS.weekday}
               value={metadata.weekday}
@@ -108,6 +137,7 @@ export function MetadataForm({
               placeholder="Seg"
             />
           ) : null}
+          </View>
         </View>
       ) : null}
 
@@ -165,10 +195,28 @@ export function MetadataForm({
   );
 }
 
+/** Largura mínima, em pontos, para caber cada quantidade de campos na linha. */
+const MIN_INLINE_WIDTH: Record<number, number> = { 2: 240, 3: 330 };
+
 const styles = StyleSheet.create({
   container: {
     gap: spacing.lg,
   },
+  stack: {
+    gap: spacing.lg,
+  },
+  inlineRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: spacing.md,
+  },
+  // As proporções acompanham o conteúdo: "02 ago. 2026" é o mais largo dos
+  // três, "Dom" o mais curto.
+  // "02 ago. 2026" é quase o dobro de "22:50" e o triplo de "Dom" — dividir a
+  // linha em três partes iguais deixaria só a data cortada.
+  timeCell: { flex: 6 },
+  dateCell: { flex: 9 },
+  weekdayCell: { flex: 5 },
   group: {
     gap: spacing.lg,
   },

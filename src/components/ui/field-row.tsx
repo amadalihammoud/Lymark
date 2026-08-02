@@ -1,5 +1,13 @@
 import type { ReactNode } from 'react';
-import { StyleSheet, Text, TextInput, View, type TextInputProps } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  type StyleProp,
+  type TextInputProps,
+  type ViewStyle,
+} from 'react-native';
 
 import { HIT_TARGET, colors, radius, spacing, typography } from '@/theme';
 
@@ -14,13 +22,16 @@ export function FieldRow({
   label,
   trailing,
   style,
+  containerStyle,
   ...inputProps
 }: {
   label: string;
   trailing?: ReactNode;
+  /** Permite a quem usa distribuir o campo numa linha compartilhada. */
+  containerStyle?: StyleProp<ViewStyle>;
 } & TextInputProps) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       <Text style={typography.label}>{label}</Text>
       <View style={styles.row}>
         <TextInput
