@@ -130,6 +130,7 @@ export function MetadataForm({
           {visibleFields.weekday ? (
             <FieldRow
               containerStyle={inline ? styles.weekdayCell : undefined}
+              shortLabel={inline ? 'Dia' : undefined}
               editable={!disabled}
               label={WATERMARK_FIELD_LABELS.weekday}
               value={metadata.weekday}

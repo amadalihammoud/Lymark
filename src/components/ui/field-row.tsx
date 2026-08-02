@@ -20,19 +20,31 @@ import { HIT_TARGET, colors, radius, spacing, typography } from '@/theme';
  */
 export function FieldRow({
   label,
+  shortLabel,
   trailing,
   style,
   containerStyle,
   ...inputProps
 }: {
   label: string;
+  /**
+   * Rótulo curto para quando a coluna é estreita.
+   *
+   * O nome acessível continua sendo o completo: encurtar o texto na tela não
+   * pode encurtar o que o leitor de tela anuncia.
+   */
+  shortLabel?: string;
   trailing?: ReactNode;
   /** Permite a quem usa distribuir o campo numa linha compartilhada. */
   containerStyle?: StyleProp<ViewStyle>;
 } & TextInputProps) {
   return (
     <View style={[styles.container, containerStyle]}>
-      <Text style={typography.label}>{label}</Text>
+      {/* Uma linha só: um rótulo que quebra empurra a caixa para baixo e
+          desalinha os campos que dividem a linha com ele. */}
+      <Text style={typography.label} numberOfLines={1}>
+        {shortLabel ?? label}
+      </Text>
       <View style={styles.row}>
         <TextInput
           accessibilityLabel={label}
