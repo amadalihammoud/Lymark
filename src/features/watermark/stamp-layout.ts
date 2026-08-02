@@ -1,4 +1,9 @@
-import type { WatermarkPosition, WatermarkPreferences } from '@/types';
+import type {
+  BrandPart,
+  StampColorKey,
+  WatermarkPosition,
+  WatermarkPreferences,
+} from '@/types';
 
 import type { WatermarkContent } from './build-content';
 import {
@@ -86,6 +91,8 @@ export type StampColors = {
   text: string;
   accent: string;
   backdrop: string;
+  /** Cores nomeadas que a marca própria pode usar. */
+  palette: Record<StampColorKey, string>;
 };
 
 export type StampFrame = { width: number; height: number };
@@ -106,6 +113,15 @@ const BODY_BASELINE_RATIO = 1.093;
 
 /** Entre a base da caixa da hora e a base da tinta dos algarismos. */
 const TIME_INK_BOTTOM_GAP = 1 - TIME_INK_TOP_RATIO - TIME_INK_HEIGHT_RATIO;
+
+/**
+ * Fração da largura da foto reservada à marca.
+ *
+ * Era `maxWidth: '45%'` na âncora antiga. Um nome que não couber aqui é
+ * reduzido de corpo, e não cortado: cortar o nome de uma empresa na foto que
+ * ela entrega ao cliente é pior do que uma letra menor.
+ */
+const BRAND_MAX_WIDTH_RATIO = 0.45;
 
 /** `letterSpacing` de cada papel, em frações do corpo. Medido no antigo. */
 const CODE_LETTER_SPACING_RATIO = 0.055;
@@ -505,15 +521,46 @@ function layoutBrand({
   inset: number;
   texts: StampText[];
 }) {
-  const size = Math.round(metrics.address * BRAND_SIZE_RATIO);
-  const spacing = size * BRAND_LETTER_SPACING_RATIO;
   const { brandPosition } = preferences;
+
+  const parts: BrandPart[] = (
+    preferences.brandMode === 'custom'
+      ? preferences.brandParts
+      : ([
+          { text: 'Ly', color: 'white' },
+          { text: 'mark', color: 'amber' },
+        ] as const)
+  ).filter((part) => part.text.trim().length > 0);
+
+  // Marca ligada mas sem texto nenhum: não desenha nada, em vez de carimbar
+  // um espaço em branco.
+  if (parts.length === 0) return;
+
+  const base = Math.round(metrics.address * BRAND_SIZE_RATIO);
+  const spacingFor = (size: number) => size * BRAND_LETTER_SPACING_RATIO;
+
+  const widthAt = (size: number) =>
+    parts.reduce(
+      (total, part) => total + widthOf(part.text, size, 'medium', measure, spacingFor(size)),
+      0,
+    ) +
+    spacingFor(size) * (parts.length - 1);
+
+  // Nome comprido encolhe até caber. O piso evita que uma razão social
+  // inteira vire um fio ilegível — a partir dele, a marca invade um pouco a
+  // largura reservada, o que ainda é melhor que sumir.
+  const maxWidth = frame.width * BRAND_MAX_WIDTH_RATIO;
+  const rawWidth = widthAt(base);
+  const size =
+    rawWidth > maxWidth
+      ? Math.max(Math.round(metrics.code * 0.8), Math.floor((base * maxWidth) / rawWidth))
+      : base;
+
+  const spacing = spacingFor(size);
+  const total = widthAt(size);
 
   // A âncora da marca usa só o recuo, sem respiro interno — é assim no layout
   // antigo, e somar o padding a deslocaria para dentro.
-  const headWidth = widthOf('Ly', size, 'medium', measure, spacing) + spacing;
-  const total = headWidth + widthOf('mark', size, 'medium', measure, spacing);
-
   const x = clamp(
     isLeft(brandPosition) ? inset : frame.width - inset - total,
     0,
@@ -523,18 +570,20 @@ function layoutBrand({
     ? inset + Math.round(size * BODY_BASELINE_RATIO * 0.73)
     : frame.height - inset;
 
-  // Bicolor: "Ly" no branco do carimbo, "mark" no âmbar. Numa cor só, a
-  // assinatura se descaracteriza.
-  texts.push({ text: 'Ly', x, baseline, size, font: 'medium', color: colors.text, letterSpacing: spacing });
-  texts.push({
-    text: 'mark',
-    x: x + headWidth,
-    baseline,
-    size,
-    font: 'medium',
-    color: colors.accent,
-    letterSpacing: spacing,
-  });
+  let cursor = x;
+
+  for (const part of parts) {
+    texts.push({
+      text: part.text,
+      x: cursor,
+      baseline,
+      size,
+      font: 'medium',
+      color: colors.palette[part.color] ?? colors.text,
+      letterSpacing: spacing,
+    });
+    cursor += widthOf(part.text, size, 'medium', measure, spacing) + spacing;
+  }
 }
 
 function layoutSideCode({

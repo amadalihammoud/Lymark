@@ -4,14 +4,18 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
 import { ChoiceGrid } from '@/components/ui/choice-grid';
+import { FieldRow } from '@/components/ui/field-row';
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
 import { ToggleRow } from '@/components/ui/toggle-row';
 import { useCapture } from '@/contexts/capture-context';
 import { useSettings } from '@/contexts/settings-context';
 import { StampCanvas } from '@/features/watermark/stamp-canvas';
+import { BRAND_PART_MAX_LENGTH } from '@/features/watermark/preferences';
 import { colors, radius, spacing, typography } from '@/theme';
 import {
+  BRAND_MODES,
+  BRAND_MODE_LABELS,
   CODE_PLACEMENTS,
   CODE_PLACEMENT_LABELS,
   WATERMARK_FIELD_KEYS,
@@ -20,6 +24,8 @@ import {
   WATERMARK_POSITION_LABELS,
   WATERMARK_SCALES,
   WATERMARK_SCALE_LABELS,
+  STAMP_COLOR_KEYS,
+  STAMP_COLOR_LABELS,
 } from '@/types';
 
 /**
@@ -39,6 +45,8 @@ export default function WatermarkSettingsScreen() {
     setShowBackdrop,
     setShowBrand,
     setBrandPosition,
+    setBrandMode,
+    setBrandPart,
     setCodePlacement,
     resetPreferences,
   } = useSettings();
@@ -136,24 +144,72 @@ export default function WatermarkSettingsScreen() {
       </Section>
 
       <Section
-        title="Marca do app"
-        description="O nome do Lymark carimbado na foto, em canto próprio.">
+        title="Marca carimbada"
+        description="A marca que vai na foto, em canto próprio. Pode ser a da sua empresa.">
         <ToggleRow
-          title="Carimbar a marca"
-          description="Desligue para entregar a foto ao cliente sem marca de app."
+          title="Carimbar uma marca"
+          description="Desligue para entregar a foto ao cliente sem marca nenhuma."
           value={preferences.showBrand}
           onValueChange={setShowBrand}
         />
+
         {preferences.showBrand ? (
-          <ChoiceGrid
-            columns={2}
-            selected={preferences.brandPosition}
-            onSelect={setBrandPosition}
-            options={WATERMARK_POSITIONS.map((position) => ({
-              value: position,
-              label: WATERMARK_POSITION_LABELS[position],
-            }))}
-          />
+          <View style={styles.brandBody}>
+            <ChoiceGrid
+              columns={2}
+              selected={preferences.brandMode}
+              onSelect={setBrandMode}
+              options={BRAND_MODES.map((mode) => ({
+                value: mode,
+                label: BRAND_MODE_LABELS[mode],
+              }))}
+            />
+
+            {preferences.brandMode === 'custom' ? (
+              <View style={styles.brandBody}>
+                {/* Duas partes, e não duas palavras: "Lymark" é uma palavra só
+                    em duas cores, e o mesmo vale para "AutoGlass". Coladas —
+                    quem quiser espaço entre elas, digita o espaço. */}
+                {([0, 1] as const).map((index) => (
+                  <View key={index} style={styles.brandBody}>
+                    <FieldRow
+                      label={index === 0 ? 'Primeira parte' : 'Segunda parte'}
+                      value={preferences.brandParts[index].text}
+                      onChangeText={(text) => setBrandPart(index, { text })}
+                      placeholder={index === 0 ? 'Construtora' : ' Silva'}
+                      maxLength={BRAND_PART_MAX_LENGTH}
+                      autoCapitalize="characters"
+                      autoCorrect={false}
+                    />
+                    <ChoiceGrid
+                      columns={3}
+                      selected={preferences.brandParts[index].color}
+                      onSelect={(color) => setBrandPart(index, { color })}
+                      options={STAMP_COLOR_KEYS.map((color) => ({
+                        value: color,
+                        label: STAMP_COLOR_LABELS[color],
+                      }))}
+                    />
+                  </View>
+                ))}
+
+                <Text style={typography.caption}>
+                  Deixe a segunda parte vazia para uma marca de cor única. Nome comprido tem o
+                  corpo reduzido até caber, em vez de ser cortado.
+                </Text>
+              </View>
+            ) : null}
+
+            <ChoiceGrid
+              columns={2}
+              selected={preferences.brandPosition}
+              onSelect={setBrandPosition}
+              options={WATERMARK_POSITIONS.map((position) => ({
+                value: position,
+                label: WATERMARK_POSITION_LABELS[position],
+              }))}
+            />
+          </View>
         ) : null}
       </Section>
 
@@ -196,6 +252,9 @@ const styles = StyleSheet.create({
   previewHint: {
     paddingHorizontal: spacing.lg,
     textAlign: 'center',
+  },
+  brandBody: {
+    gap: spacing.lg,
   },
   conflict: {
     ...typography.caption,

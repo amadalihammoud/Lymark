@@ -17,6 +17,8 @@ import {
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
 import {
   WATERMARK_FIELD_KEYS,
+  type BrandMode,
+  type BrandPart,
   type CodePlacement,
   type WatermarkFieldKey,
   type WatermarkPosition,
@@ -46,6 +48,9 @@ type SettingsContextValue = {
   setShowBackdrop: (showBackdrop: boolean) => void;
   setShowBrand: (showBrand: boolean) => void;
   setBrandPosition: (brandPosition: WatermarkPosition) => void;
+  setBrandMode: (brandMode: BrandMode) => void;
+  /** Altera texto ou cor de uma das duas partes da marca própria. */
+  setBrandPart: (index: 0 | 1, part: Partial<BrandPart>) => void;
   setCodePlacement: (codePlacement: CodePlacement) => void;
   resetPreferences: () => void;
 };
@@ -128,6 +133,21 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setPreferences((current) => ({ ...current, brandPosition }));
   }, []);
 
+  const setBrandMode = useCallback((brandMode: BrandMode) => {
+    setPreferences((current) => ({ ...current, brandMode }));
+  }, []);
+
+  const setBrandPart = useCallback((index: 0 | 1, part: Partial<BrandPart>) => {
+    setPreferences((current) => {
+      const brandParts: [BrandPart, BrandPart] = [
+        { ...current.brandParts[0] },
+        { ...current.brandParts[1] },
+      ];
+      brandParts[index] = { ...brandParts[index], ...part };
+      return { ...current, brandParts };
+    });
+  }, []);
+
   const setCodePlacement = useCallback((codePlacement: CodePlacement) => {
     setPreferences((current) => ({ ...current, codePlacement }));
   }, []);
@@ -148,6 +168,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       setShowBackdrop,
       setShowBrand,
       setBrandPosition,
+      setBrandMode,
+      setBrandPart,
       setCodePlacement,
       resetPreferences,
     }),
@@ -160,6 +182,8 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       setShowBackdrop,
       setShowBrand,
       setBrandPosition,
+      setBrandMode,
+      setBrandPart,
       setCodePlacement,
       resetPreferences,
     ],

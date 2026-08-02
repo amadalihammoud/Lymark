@@ -179,3 +179,74 @@ describe('dado corrompido na raiz', () => {
     expect(mergeWithDefaults([] as never).showBackdrop).toBe(false);
   });
 });
+
+/**
+ * A versão 4 acrescenta a marca própria. Quem atualiza precisa continuar com o
+ * carimbo Lymark e com as próprias escolhas intactas — a novidade não pode
+ * chegar mexendo no que já estava configurado.
+ */
+describe('migração para a marca própria', () => {
+  const v3 = {
+    schemaVersion: 3,
+    visibleFields: { time: true, date: true, weekday: false, address: true, code: true },
+    position: 'top-right',
+    scale: 'large',
+    showBackdrop: true,
+    showBrand: true,
+    brandPosition: 'bottom-left',
+    codePlacement: 'block',
+  } as const;
+
+  it('preserva tudo que o usuário já tinha escolhido', () => {
+    const merged = mergeWithDefaults(v3);
+
+    expect(merged.position).toBe('top-right');
+    expect(merged.scale).toBe('large');
+    expect(merged.showBackdrop).toBe(true);
+    expect(merged.brandPosition).toBe('bottom-left');
+    expect(merged.codePlacement).toBe('block');
+    expect(merged.visibleFields.weekday).toBe(false);
+  });
+
+  it('chega com a marca Lymark, sem mudar o que aparece na foto', () => {
+    const merged = mergeWithDefaults(v3);
+
+    expect(merged.brandMode).toBe('lymark');
+    expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: 'white' });
+    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: 'amber' });
+  });
+
+  it('recusa cor fora da paleta', () => {
+    const merged = mergeWithDefaults({
+      ...v3,
+      brandParts: [{ text: 'ACME', color: 'roxo' }, { text: '', color: 'white' }],
+    } as never);
+
+    expect(merged.brandParts[0].text).toBe('ACME');
+    expect(merged.brandParts[0].color).toBe('white');
+  });
+
+  it('sobrevive a partes corrompidas caindo no padrão, e não no vazio', () => {
+    // Entre carimbar a marca padrão e não carimbar marca nenhuma, a primeira
+    // é menos surpreendente: o usuário vê algo e entende que precisa
+    // reconfigurar.
+    const merged = mergeWithDefaults({
+      ...v3,
+      brandMode: 'inexistente',
+      brandParts: [42, null],
+    } as never);
+
+    expect(merged.brandMode).toBe('lymark');
+    expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: 'white' });
+    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: 'amber' });
+  });
+
+  it('limita o tamanho de cada parte', () => {
+    const merged = mergeWithDefaults({
+      ...v3,
+      brandParts: [{ text: 'A'.repeat(200), color: 'white' }, { text: '', color: 'amber' }],
+    } as never);
+
+    expect(merged.brandParts[0].text.length).toBeLessThanOrEqual(24);
+  });
+});

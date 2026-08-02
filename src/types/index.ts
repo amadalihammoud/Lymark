@@ -64,6 +64,55 @@ export type CaptureDraft = {
 };
 
 /** Preferências de como a marca d'água é desenhada. */
+/**
+ * Cores disponíveis para as partes da marca.
+ *
+ * Paleta fechada, e não seletor livre, por uma razão de campo: sobre asfalto
+ * ou parede clara, metade do espectro simplesmente some. Estas seis foram
+ * escolhidas para funcionar com a sombra que o carimbo já aplica, em foto
+ * clara e em foto escura.
+ */
+export const STAMP_COLOR_KEYS = ['white', 'amber', 'red', 'green', 'blue', 'black'] as const;
+
+export type StampColorKey = (typeof STAMP_COLOR_KEYS)[number];
+
+export const STAMP_COLOR_LABELS: Record<StampColorKey, string> = {
+  white: 'Branco',
+  amber: 'Âmbar',
+  red: 'Vermelho',
+  green: 'Verde',
+  blue: 'Azul',
+  black: 'Preto',
+};
+
+/**
+ * De onde vem a marca carimbada na foto.
+ *
+ * `logo` ainda não existe; a estrutura já prevê o lugar dele para que a
+ * migração das preferências não precise acontecer duas vezes.
+ */
+export const BRAND_MODES = ['lymark', 'custom'] as const;
+
+export type BrandMode = (typeof BRAND_MODES)[number];
+
+export const BRAND_MODE_LABELS: Record<BrandMode, string> = {
+  lymark: 'Lymark',
+  custom: 'Minha marca',
+};
+
+/**
+ * Um trecho da marca, com cor própria.
+ *
+ * São **partes**, e não palavras: "Lymark" é uma palavra só em duas cores, e
+ * o mesmo vale para "AutoGlass" ou "TecnoSul". Dividir por espaço não daria
+ * conta nem da nossa própria marca. As duas partes são desenhadas coladas —
+ * quem quiser espaço entre elas, digita o espaço.
+ */
+export type BrandPart = {
+  text: string;
+  color: StampColorKey;
+};
+
 export type WatermarkPreferences = {
   /** Quais campos aparecem no carimbo. */
   visibleFields: Record<WatermarkFieldKey, boolean>;
@@ -75,6 +124,10 @@ export type WatermarkPreferences = {
   showBrand: boolean;
   /** Canto onde a marca fica — independente do canto do bloco de dados. */
   brandPosition: WatermarkPosition;
+  /** Marca do Lymark ou a da empresa de quem usa. */
+  brandMode: BrandMode;
+  /** As duas partes da marca própria, cada uma com sua cor. */
+  brandParts: [BrandPart, BrandPart];
   /**
    * O código na lateral fica girado, colado na borda direita: não compete
    * com o conteúdo da foto. No bloco, acompanha hora, data e endereço.

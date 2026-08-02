@@ -82,3 +82,20 @@ export const colors = {
 } as const;
 
 export type ColorToken = keyof typeof colors;
+
+/**
+ * Cores que a marca própria pode usar no carimbo.
+ *
+ * Paleta fechada e curta de propósito: sobre asfalto, areia ou parede clara,
+ * boa parte do espectro simplesmente desaparece. Estas seis foram escolhidas
+ * para funcionar com a sombra que o carimbo já aplica — o preto inclusive,
+ * que só é legível por causa dela.
+ */
+export const stampPalette = {
+  white: '#FFFFFF',
+  amber: colors.accent,
+  red: '#FF6B57',
+  green: '#5BD98A',
+  blue: '#63B3ED',
+  black: '#111820',
+} as const;

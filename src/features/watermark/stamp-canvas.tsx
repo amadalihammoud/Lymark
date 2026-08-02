@@ -2,7 +2,7 @@ import { Canvas, Picture, createPicture } from '@shopify/react-native-skia';
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { colors } from '@/theme';
+import { colors, stampPalette } from '@/theme';
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
 import { buildWatermarkContent } from './build-content';
@@ -23,6 +23,7 @@ export const STAMP_COLORS: StampColors = {
   text: colors.text,
   accent: colors.accent,
   backdrop: colors.watermarkBackdrop,
+  palette: stampPalette,
 };
 
 export function StampCanvas({

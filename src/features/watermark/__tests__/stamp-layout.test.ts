@@ -34,7 +34,11 @@ const content: WatermarkContent = {
   isEmpty: false,
 };
 
-const colors = { text: '#fff', accent: '#F5B60D', backdrop: 'rgba(0,0,0,0.75)' };
+const palette = {
+  white: '#fff', amber: '#F5B60D', red: '#FF6B57',
+  green: '#5BD98A', blue: '#63B3ED', black: '#111820',
+};
+const colors = { text: '#fff', accent: '#F5B60D', backdrop: 'rgba(0,0,0,0.75)', palette };
 const frame = { width: 355.4, height: 440 };
 
 function build(overrides: Partial<WatermarkPreferences> = {}, extra = {}): StampGeometry {
@@ -466,5 +470,95 @@ describe('defeitos encontrados na revisão', () => {
       SCALE_METRICS.large.paddingHorizontal - SCALE_METRICS.small.paddingHorizontal;
 
     expect(large.x - small.x).toBe(paddingDelta);
+  });
+});
+
+/**
+ * A marca própria: o técnico não quer entregar ao cliente uma foto com a marca
+ * do fornecedor de software dele. São **partes**, e não palavras — "Lymark" é
+ * uma palavra só em duas cores, e o mesmo vale para "AutoGlass".
+ */
+describe('marca própria', () => {
+  const custom = (parts: WatermarkPreferences['brandParts']) =>
+    build({ brandMode: 'custom', brandParts: parts });
+
+  it('carimba as partes configuradas, cada uma na sua cor', () => {
+    const g = custom([
+      { text: 'CONSTRUTORA', color: 'white' },
+      { text: ' SILVA', color: 'red' },
+    ]);
+
+    expect(find(g, 'CONSTRUTORA')!.color).toBe(palette.white);
+    expect(find(g, ' SILVA')!.color).toBe(palette.red);
+    expect(find(g, 'Ly')).toBeUndefined();
+  });
+
+  it('desenha as partes coladas, para nomes emendados', () => {
+    const g = custom([
+      { text: 'Auto', color: 'white' },
+      { text: 'Glass', color: 'blue' },
+    ]);
+
+    const head = find(g, 'Auto')!;
+    const tail = find(g, 'Glass')!;
+    const spacing = head.letterSpacing ?? 0;
+
+    expect(tail.x).toBeCloseTo(
+      head.x + measure('Auto', head.size, 'medium') + spacing * 4,
+      4,
+    );
+    expect(tail.baseline).toBe(head.baseline);
+  });
+
+  it('aceita marca de cor única, com a segunda parte vazia', () => {
+    const g = custom([
+      { text: 'TECNOSUL', color: 'green' },
+      { text: '', color: 'amber' },
+    ]);
+
+    expect(find(g, 'TECNOSUL')!.color).toBe(palette.green);
+    expect(g.texts.filter((t) => t.font === 'medium' && !t.rotate)).toHaveLength(1);
+  });
+
+  it('não carimba nada quando as duas partes estão vazias', () => {
+    // Marca ligada mas sem texto não pode virar um espaço em branco na foto.
+    const g = custom([
+      { text: '', color: 'white' },
+      { text: '   ', color: 'amber' },
+    ]);
+
+    expect(g.texts.filter((t) => t.font === 'medium' && !t.rotate)).toHaveLength(0);
+  });
+
+  it('reduz o corpo de um nome comprido em vez de cortá-lo', () => {
+    const curto = custom([{ text: 'ABC', color: 'white' }, { text: '', color: 'amber' }]);
+    const longo = custom([
+      { text: 'TRANSPORTADORA RODOVI', color: 'white' },
+      { text: 'ÁRIA DO LITORAL', color: 'amber' },
+    ]);
+
+    const head = find(longo, 'TRANSPORTADORA RODOVI')!;
+
+    expect(head.size).toBeLessThan(find(curto, 'ABC')!.size);
+    // Cortar o nome de uma empresa na foto que ela entrega ao cliente é pior
+    // que uma letra menor — o texto tem de sair inteiro.
+    expect(head.text).toBe('TRANSPORTADORA RODOVI');
+    expect(find(longo, 'ÁRIA DO LITORAL')).toBeDefined();
+  });
+
+  it('mantém a marca dentro da foto mesmo com nome comprido', () => {
+    const g = build({
+      brandMode: 'custom',
+      brandPosition: 'top-right',
+      brandParts: [
+        { text: 'TRANSPORTADORA', color: 'white' },
+        { text: ' RODOVIÁRIA', color: 'amber' },
+      ],
+    });
+
+    for (const t of g.texts.filter((x) => x.font === 'medium' && !x.rotate)) {
+      expect(t.x).toBeGreaterThanOrEqual(0);
+      expect(t.x + measure(t.text, t.size, 'medium')).toBeLessThanOrEqual(frame.width + 1);
+    }
   });
 });

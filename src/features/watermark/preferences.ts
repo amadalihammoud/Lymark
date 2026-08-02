@@ -1,8 +1,11 @@
 import {
+  BRAND_MODES,
   CODE_PLACEMENTS,
+  STAMP_COLOR_KEYS,
   WATERMARK_FIELD_KEYS,
   WATERMARK_POSITIONS,
   WATERMARK_SCALES,
+  type BrandPart,
   type WatermarkPreferences,
 } from '@/types';
 
@@ -22,7 +25,7 @@ import {
  *     referência não o carimbava. Ela carimba: girado, na lateral direita.
  * 3 — código de volta, com posição configurável, e marca do app na foto.
  */
-export const PREFERENCES_SCHEMA_VERSION = 3;
+export const PREFERENCES_SCHEMA_VERSION = 4;
 
 /**
  * Campos cujo padrão mudou e que por isso são remigrados.
@@ -31,6 +34,16 @@ export const PREFERENCES_SCHEMA_VERSION = 3;
  * meu, não por escolha de ninguém — quem atualizou não deve herdar isso.
  */
 const RESET_ON_UPGRADE = ['showBackdrop', 'code'] as const;
+
+/**
+ * Até qual versão a remigração acima vale.
+ *
+ * Sem este limite, a lista seria reaplicada a **cada** nova versão do esquema:
+ * subir para a 4 para acrescentar a marca própria desligaria a faixa escura de
+ * quem a tinha ligado de propósito, e o mesmo aconteceria na 5, na 6, sempre.
+ * A correção pertence à transição em que foi feita, e não ao futuro inteiro.
+ */
+const RESET_BEFORE_VERSION = 3;
 
 export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   visibleFields: {
@@ -47,8 +60,35 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   showBackdrop: false,
   showBrand: true,
   brandPosition: 'top-right',
+  brandMode: 'lymark',
+  // O padrão reproduz a marca do app: uma palavra, duas cores. Serve também
+  // de exemplo do que a marca própria pode fazer.
+  brandParts: [
+    { text: 'Ly', color: 'white' },
+    { text: 'mark', color: 'amber' },
+  ],
   codePlacement: 'side',
 };
+
+/** Limite de caracteres por parte. Nome maior que isso não cabe na foto. */
+export const BRAND_PART_MAX_LENGTH = 24;
+
+/**
+ * Lê uma parte da marca do que estava gravado.
+ *
+ * Texto de tipo errado vira string vazia em vez de derrubar a tela, e a cor
+ * cai no padrão quando não é uma das da paleta.
+ */
+function readBrandPart(value: unknown, fallback: BrandPart): BrandPart {
+  if (typeof value !== 'object' || value === null) return { ...fallback };
+
+  const part = value as Partial<BrandPart>;
+
+  return {
+    text: typeof part.text === 'string' ? part.text.slice(0, BRAND_PART_MAX_LENGTH) : '',
+    color: pickAllowed(part.color, STAMP_COLOR_KEYS, fallback.color),
+  };
+}
 
 export type StoredPreferences = Partial<WatermarkPreferences> & {
   schemaVersion?: number;
@@ -70,7 +110,7 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
     return mergeWithDefaults({});
   }
 
-  const isLegacy = (stored.schemaVersion ?? 1) < PREFERENCES_SCHEMA_VERSION;
+  const isLegacy = (stored.schemaVersion ?? 1) < RESET_BEFORE_VERSION;
 
   const visibleFields = { ...DEFAULT_WATERMARK_PREFERENCES.visibleFields };
   for (const key of WATERMARK_FIELD_KEYS) {
@@ -103,6 +143,15 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
       WATERMARK_POSITIONS,
       DEFAULT_WATERMARK_PREFERENCES.brandPosition,
     ),
+    brandMode: pickAllowed(
+      stored.brandMode,
+      BRAND_MODES,
+      DEFAULT_WATERMARK_PREFERENCES.brandMode,
+    ),
+    brandParts: [
+      readBrandPart(stored.brandParts?.[0], DEFAULT_WATERMARK_PREFERENCES.brandParts[0]),
+      readBrandPart(stored.brandParts?.[1], DEFAULT_WATERMARK_PREFERENCES.brandParts[1]),
+    ],
     codePlacement: pickAllowed(
       stored.codePlacement,
       CODE_PLACEMENTS,
