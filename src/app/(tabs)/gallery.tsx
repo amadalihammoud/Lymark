@@ -1,10 +1,11 @@
 import { useRouter } from 'expo-router';
-import { Alert, FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { PhotoCard } from '@/components/gallery/photo-card';
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { Screen } from '@/components/ui/screen';
+import { useFeedback } from '@/contexts/feedback-context';
 import { useGallery } from '@/contexts/gallery-context';
 import { colors, spacing, typography } from '@/theme';
 
@@ -17,17 +18,19 @@ import { colors, spacing, typography } from '@/theme';
  */
 export default function GalleryScreen() {
   const { entries, hydrated, clearGallery } = useGallery();
+  const { ask } = useFeedback();
   const router = useRouter();
 
   const confirmClear = () => {
-    Alert.alert(
-      'Limpar histórico',
-      'Os registros do Lymark serão apagados. As imagens já salvas na galeria do aparelho não são afetadas.',
-      [
-        { text: 'Cancelar', style: 'cancel' },
-        { text: 'Limpar', style: 'destructive', onPress: clearGallery },
+    ask({
+      title: 'Limpar histórico',
+      message:
+        'Os registros do Lymark serão apagados. As imagens já salvas na galeria do aparelho não são afetadas.',
+      actions: [
+        { label: 'Limpar', destructive: true, onPress: clearGallery },
+        { label: 'Cancelar', variant: 'ghost' },
       ],
-    );
+    });
   };
 
   if (hydrated && entries.length === 0) {

@@ -2,7 +2,9 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import * as MediaLibrary from 'expo-media-library';
 import { useCallback, useEffect, useState } from 'react';
-import { Alert, AppState, Linking } from 'react-native';
+import { AppState, Linking } from 'react-native';
+
+import { useFeedback } from '@/contexts/feedback-context';
 
 /**
  * Estado das três permissões que o Lymark usa, num formato só.
@@ -114,6 +116,7 @@ async function readAllPermissions(): Promise<PermissionMap> {
 }
 
 export function useAppPermissions() {
+  const { ask } = useFeedback();
   const [permissions, setPermissions] = useState<PermissionMap>(EMPTY_MAP);
   // Já começa em `true`: a primeira leitura dispara junto com a montagem.
   const [refreshing, setRefreshing] = useState(true);
@@ -175,15 +178,15 @@ export function useAppPermissions() {
     // Negado em definitivo: pedir de novo não abre mais o diálogo do sistema.
     // No iOS isso acontece já na primeira recusa, então empurrar o usuário
     // direto para os Ajustes seria um salto sem explicação.
-    Alert.alert(
-      'Permissão bloqueada',
-      'O sistema não vai perguntar de novo. Para liberar, abra os ajustes do aparelho.',
-      [
-        { text: 'Agora não', style: 'cancel' },
-        { text: 'Abrir ajustes', onPress: () => void Linking.openSettings() },
+    ask({
+      title: 'Permissão bloqueada',
+      message: 'O sistema não vai perguntar de novo. Para liberar, abra os ajustes do aparelho.',
+      actions: [
+        { label: 'Abrir ajustes', onPress: () => void Linking.openSettings() },
+        { label: 'Agora não', variant: 'ghost' },
       ],
-    );
-  }, []);
+    });
+  }, [ask]);
 
   return { permissions, refreshing, refresh, request };
 }

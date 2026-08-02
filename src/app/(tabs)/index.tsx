@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { AppHeader } from '@/components/brand/app-header';
 import { CaptureActions } from '@/components/capture/capture-actions';
@@ -8,6 +8,7 @@ import { PhotoPreview } from '@/components/capture/photo-preview';
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
 import { useCapture } from '@/contexts/capture-context';
+import { useFeedback } from '@/contexts/feedback-context';
 import { useGallery } from '@/contexts/gallery-context';
 import { useSettings } from '@/contexts/settings-context';
 import {
@@ -51,6 +52,7 @@ export default function CaptureScreen() {
     useCapture();
   const { preferences } = useSettings();
   const { addEntry } = useGallery();
+  const { notify, ask } = useFeedback();
   // O `status` do hook serve ao indicador de carregamento; a causa da falha
   // vem do retorno do `lookup`, que é o desfecho daquela chamada.
   const { lookup, isLoading: locating } = useAddressLookup();
@@ -117,13 +119,15 @@ export default function CaptureScreen() {
         break;
       }
       case 'denied':
-        Alert.alert(
-          'Permissão necessária',
-          'Libere o acesso em Configurações › Permissões para continuar.',
-        );
+        // Traz instrução: exige leitura, então trava a tela.
+        ask({
+          title: 'Permissão necessária',
+          message: 'Libere o acesso em Configurações › Permissões para continuar.',
+          actions: [{ label: 'Entendi' }],
+        });
         break;
       case 'failed':
-        Alert.alert('Não deu certo', 'Não foi possível abrir a foto. Tente novamente.');
+        notify('Não foi possível abrir a foto. Tente novamente.', 'warning');
         break;
       case 'cancelled':
         break;
@@ -159,17 +163,25 @@ export default function CaptureScreen() {
       // O desfecho vem da própria chamada. Ler o `status` do estado daria a
       // causa da tentativa anterior — o mapa de mensagens existe justamente
       // para dar a saída certa a cada motivo.
-      Alert.alert('Endereço não obtido', LOOKUP_MESSAGES[status] || LOOKUP_MESSAGES.unavailable);
+      ask({
+        title: 'Endereço não obtido',
+        message: LOOKUP_MESSAGES[status] || LOOKUP_MESSAGES.unavailable,
+        actions: [{ label: 'Entendi' }],
+      });
       return;
     }
 
     // O usuário digitou enquanto o GPS respondia. O que ele escreveu vale
     // mais que uma aproximação — mas ele decide.
     if (addressRef.current !== addressWhenRequested && addressRef.current.trim()) {
-      Alert.alert('Substituir o endereço digitado?', `O GPS encontrou:\n\n${address}`, [
-        { text: 'Manter o meu', style: 'cancel' },
-        { text: 'Usar o do GPS', onPress: () => setField('address', address) },
-      ]);
+      ask({
+        title: 'Substituir o endereço digitado?',
+        message: `O GPS encontrou:\n\n${address}`,
+        actions: [
+          { label: 'Usar o do GPS', onPress: () => setField('address', address) },
+          { label: 'Manter o meu', variant: 'ghost' },
+        ],
+      });
       return;
     }
 
@@ -179,14 +191,13 @@ export default function CaptureScreen() {
   const handleReset = useCallback(() => {
     // Único caminho do app que descarta trabalho ainda não exportado, e logo
     // abaixo dos botões de ação. Confirmar não é excesso de zelo.
-    Alert.alert(
-      'Começar nova captura?',
-      'A foto escolhida e os campos preenchidos serão descartados.',
-      [
-        { text: 'Cancelar', style: 'cancel' },
+    ask({
+      title: 'Começar nova captura?',
+      message: 'A foto escolhida e os campos preenchidos serão descartados.',
+      actions: [
         {
-          text: 'Descartar',
-          style: 'destructive',
+          label: 'Descartar',
+          destructive: true,
           onPress: () => {
             // Invalida qualquer busca pendente: a resposta não pode cair na
             // captura nova.
@@ -195,9 +206,10 @@ export default function CaptureScreen() {
             resetDraft();
           },
         },
+        { label: 'Cancelar', variant: 'ghost' },
       ],
-    );
-  }, [resetDraft]);
+    });
+  }, [ask, resetDraft]);
 
   const runAction = async (action: PendingAction) => {
     const photo = draft.photo;
@@ -205,7 +217,7 @@ export default function CaptureScreen() {
     // arquivo sairia com a tipografia errada, e a geometria foi medida para
     // estas. Melhor não exportar do que exportar torto.
     if (!photo || !fontProvider) {
-      Alert.alert('Aguarde um instante', 'O carimbo ainda está sendo preparado.');
+      notify('O carimbo ainda está sendo preparado.', 'warning');
       return;
     }
 
@@ -234,40 +246,51 @@ export default function CaptureScreen() {
         // "permissão negada" para todos mandava o usuário a um ajuste que já
         // estava correto.
         if (outcome.status === 'saved') {
-          Alert.alert('Foto salva', 'A imagem está na galeria do aparelho e no histórico.');
+          // Sucesso não interrompe: quem está em campo exporta uma foto atrás
+          // da outra, e um OK a cada uma seriam dezenas de toques por dia.
+          notify('Foto salva na galeria do aparelho e no histórico.');
         } else if (outcome.status === 'denied') {
-          Alert.alert(
-            'Salva apenas no Lymark',
-            'O acesso às fotos foi negado, então a imagem existe só dentro do app. Libere em Configurações › Permissões para salvar na galeria.',
-          );
+          ask({
+            title: 'Salva apenas no Lymark',
+            message:
+              'O acesso às fotos foi negado, então a imagem existe só dentro do app. Libere em Configurações › Permissões para salvar na galeria.',
+            actions: [{ label: 'Entendi' }],
+          });
         } else {
-          Alert.alert(
-            'Salva apenas no Lymark',
-            'A imagem entrou no histórico, mas o aparelho recusou gravá-la na galeria. Verifique o espaço livre e tente de novo.',
-          );
+          ask({
+            title: 'Salva apenas no Lymark',
+            message:
+              'A imagem entrou no histórico, mas o aparelho recusou gravá-la na galeria. Verifique o espaço livre e tente de novo.',
+            actions: [{ label: 'Entendi' }],
+          });
         }
         return;
       }
 
       const outcome = await shareWatermarkedPhoto(path);
       if (outcome.status === 'unavailable') {
-        Alert.alert(
-          'Compartilhamento indisponível',
-          'Este aparelho não oferece a folha de compartilhamento. A imagem ficou no histórico do Lymark.',
-        );
+        ask({
+          title: 'Compartilhamento indisponível',
+          message:
+            'Este aparelho não oferece a folha de compartilhamento. A imagem ficou no histórico do Lymark.',
+          actions: [{ label: 'Entendi' }],
+        });
       } else if (outcome.status === 'failed') {
         // A imagem existe e já está no histórico. Chamar isto de "falha ao
         // gerar" faria o usuário exportar de novo e duplicar o registro.
-        Alert.alert(
-          'Não foi possível compartilhar',
-          'A imagem foi gerada e está no histórico do Lymark. Você pode compartilhá-la pela aba Galeria.',
-        );
+        ask({
+          title: 'Não foi possível compartilhar',
+          message:
+            'A imagem foi gerada e está no histórico do Lymark. Você pode compartilhá-la pela aba Galeria.',
+          actions: [{ label: 'Entendi' }],
+        });
       }
     } catch (error) {
-      Alert.alert(
-        'Falha ao gerar a imagem',
-        error instanceof Error ? error.message : 'Tente novamente.',
-      );
+      ask({
+        title: 'Falha ao gerar a imagem',
+        message: error instanceof Error ? error.message : 'Tente novamente.',
+        actions: [{ label: 'Entendi' }],
+      });
     } finally {
       setPending(null);
     }
@@ -277,14 +300,15 @@ export default function CaptureScreen() {
     if (!hasPhoto || busy) return;
 
     if (content.isEmpty) {
-      Alert.alert(
-        'A foto sairá sem marca d’água',
-        'Nenhum campo tem conteúdo para carimbar. Preencha os campos ou reveja Configurações › Campos e posição.',
-        [
-          { text: 'Voltar', style: 'cancel' },
-          { text: 'Continuar assim', onPress: () => void runAction(action) },
+      ask({
+        title: 'A foto sairá sem marca d’água',
+        message:
+          'Nenhum campo tem conteúdo para carimbar. Preencha os campos ou reveja Configurações › Campos e posição.',
+        actions: [
+          { label: 'Continuar assim', onPress: () => void runAction(action) },
+          { label: 'Voltar', variant: 'ghost' },
         ],
-      );
+      });
       return;
     }
 

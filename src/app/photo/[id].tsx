@@ -1,11 +1,12 @@
 import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
+import { useFeedback } from '@/contexts/feedback-context';
 import { useGallery } from '@/contexts/gallery-context';
 import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
 import { formatTimestamp } from '@/lib/datetime';
@@ -21,6 +22,7 @@ import { WATERMARK_FIELD_LABELS } from '@/types';
 export default function PhotoDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { findEntry, removeEntry } = useGallery();
+  const { ask } = useFeedback();
   const router = useRouter();
 
   const entry = findEntry(id);
@@ -40,21 +42,21 @@ export default function PhotoDetailScreen() {
   }
 
   const confirmDelete = () => {
-    Alert.alert(
-      'Remover do histórico',
-      'O registro sai do Lymark. A imagem salva na galeria do aparelho não é afetada.',
-      [
-        { text: 'Cancelar', style: 'cancel' },
+    ask({
+      title: 'Remover do histórico',
+      message: 'O registro sai do Lymark. A imagem salva na galeria do aparelho não é afetada.',
+      actions: [
         {
-          text: 'Remover',
-          style: 'destructive',
+          label: 'Remover',
+          destructive: true,
           onPress: () => {
             removeEntry(entry.id);
             router.back();
           },
         },
+        { label: 'Cancelar', variant: 'ghost' },
       ],
-    );
+    });
   };
 
   return (

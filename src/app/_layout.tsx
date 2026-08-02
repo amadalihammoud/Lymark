@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { CaptureProvider } from '@/contexts/capture-context';
+import { FeedbackProvider } from '@/contexts/feedback-context';
 import { GalleryProvider } from '@/contexts/gallery-context';
 import { SettingsProvider } from '@/contexts/settings-context';
 import { colors, typography, watermarkFontAssets } from '@/theme';
@@ -44,6 +45,9 @@ export default function RootLayout() {
       <SettingsProvider>
         <GalleryProvider>
           <CaptureProvider>
+            {/* Acima da navegação: o diálogo e o aviso precisam cobrir
+                qualquer tela, inclusive as que abrem por cima. */}
+            <FeedbackProvider>
             <StatusBar style="light" />
             <Stack
               screenOptions={{
@@ -73,6 +77,7 @@ export default function RootLayout() {
                 options={{ title: 'Detalhe da foto', headerBackTitle: 'Galeria' }}
               />
             </Stack>
+            </FeedbackProvider>
           </CaptureProvider>
         </GalleryProvider>
       </SettingsProvider>
