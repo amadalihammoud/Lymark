@@ -71,8 +71,14 @@ export type WatermarkPreferences = {
 /** Uma foto já exportada, guardada no histórico. */
 export type GalleryEntry = {
   id: string;
-  /** URI da imagem exportada, já com a marca d'água aplicada. */
-  uri: string;
+  /**
+   * Caminho **relativo** ao diretório de documentos (`exports/<arquivo>.jpg`).
+   *
+   * Relativo e não absoluto de propósito: no iOS o identificador do contêiner
+   * do app muda a cada atualização, e uma URI absoluta gravada hoje apontaria
+   * para o nada depois dela.
+   */
+  path: string;
   /** ISO 8601 — momento da exportação. */
   exportedAt: string;
   /** Cópia dos metadados usados no carimbo, para exibir no detalhe. */

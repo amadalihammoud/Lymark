@@ -1,4 +1,9 @@
-import { WATERMARK_FIELD_KEYS, type WatermarkPreferences } from '@/types';
+import {
+  WATERMARK_FIELD_KEYS,
+  WATERMARK_POSITIONS,
+  WATERMARK_SCALES,
+  type WatermarkPreferences,
+} from '@/types';
 
 /**
  * O padrão da marca d'água e a reconstrução do que veio do disco.
@@ -67,8 +72,28 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
 
   return {
     visibleFields,
-    position: stored.position ?? DEFAULT_WATERMARK_PREFERENCES.position,
-    scale: stored.scale ?? DEFAULT_WATERMARK_PREFERENCES.scale,
+    position: pickAllowed(stored.position, WATERMARK_POSITIONS, DEFAULT_WATERMARK_PREFERENCES.position),
+    scale: pickAllowed(stored.scale, WATERMARK_SCALES, DEFAULT_WATERMARK_PREFERENCES.scale),
     showBackdrop,
   };
+}
+
+/**
+ * Aceita um valor gravado apenas se ele pertence ao conjunto conhecido.
+ *
+ * `StoredPreferences` é uma asserção sobre um `JSON.parse`, não uma garantia
+ * de runtime: um build de teste pode ter gravado `scale: 'xlarge'`, e o
+ * registro pode simplesmente estar corrompido. Sem esta checagem,
+ * `SCALE_METRICS[scale]` devolveria `undefined` e a tela quebraria — e como
+ * o valor ruim seria regravado, quebraria em toda abertura seguinte, sem
+ * conserto possível a não ser reinstalar o app.
+ */
+function pickAllowed<T extends string>(
+  value: unknown,
+  allowed: readonly T[],
+  fallback: T,
+): T {
+  return typeof value === 'string' && (allowed as readonly string[]).includes(value)
+    ? (value as T)
+    : fallback;
 }

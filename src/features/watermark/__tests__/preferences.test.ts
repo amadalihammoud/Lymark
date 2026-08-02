@@ -48,6 +48,31 @@ describe('mergeWithDefaults', () => {
     expect(merged.visibleFields.weekday).toBe(true);
   });
 
+  it('recusa `scale` fora do conjunto conhecido', () => {
+    // Sem esta validação, SCALE_METRICS[scale] devolveria undefined e a tela
+    // quebraria a cada abertura, sem conserto possível dentro do app.
+    const merged = mergeWithDefaults({ ...current, scale: 'xlarge' as never });
+
+    expect(merged.scale).toBe(DEFAULT_WATERMARK_PREFERENCES.scale);
+  });
+
+  it('recusa `position` fora do conjunto conhecido', () => {
+    expect(mergeWithDefaults({ ...current, position: 'middle' as never }).position).toBe(
+      DEFAULT_WATERMARK_PREFERENCES.position,
+    );
+  });
+
+  it('recusa valores que nem string são', () => {
+    const merged = mergeWithDefaults({
+      ...current,
+      scale: 42 as never,
+      position: null as never,
+    });
+
+    expect(merged.scale).toBe(DEFAULT_WATERMARK_PREFERENCES.scale);
+    expect(merged.position).toBe(DEFAULT_WATERMARK_PREFERENCES.position);
+  });
+
   it('não devolve a mesma referência do padrão — mutação não pode vazar', () => {
     const merged = mergeWithDefaults({});
 

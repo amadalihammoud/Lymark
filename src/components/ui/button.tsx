@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   bordered: {
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: colors.borderInteractive,
   },
   inactive: {
     opacity: 0.45,

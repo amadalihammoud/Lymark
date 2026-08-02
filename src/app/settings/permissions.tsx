@@ -127,6 +127,6 @@ const styles = StyleSheet.create({
   },
   action: {
     paddingHorizontal: spacing.lg,
-    minHeight: 40,
+    minHeight: 44,
   },
 });

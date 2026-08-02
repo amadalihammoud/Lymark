@@ -53,13 +53,24 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     DEFAULT_WATERMARK_PREFERENCES,
   );
   const [hydrated, setHydrated] = useState(false);
+  /**
+   * Trava de gravação: uma leitura que falhou não é disco vazio. Gravar
+   * depois dela substituiria a configuração do usuário pelo padrão, por
+   * causa de uma falha momentânea.
+   */
+  const [writable, setWritable] = useState(false);
 
   useEffect(() => {
     let active = true;
 
-    readJson<StoredPreferences>(StorageKeys.watermarkPreferences, {}).then((stored) => {
+    void readJson<StoredPreferences>(StorageKeys.watermarkPreferences).then((result) => {
       if (!active) return;
-      setPreferences(mergeWithDefaults(stored));
+
+      if (result.status === 'found') {
+        setPreferences(mergeWithDefaults(result.value));
+      }
+
+      setWritable(result.status !== 'failed');
       setHydrated(true);
     });
 
@@ -68,16 +79,16 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  // Só grava depois de hidratar, senão o padrão sobrescreveria o que estava
-  // salvo. A versão vai junto: é o que permite migrar padrões numa
-  // atualização sem descartar o que o usuário escolheu de fato.
+  // Só grava depois de hidratar com sucesso. A versão vai junto: é o que
+  // permite migrar padrões numa atualização sem descartar o que o usuário
+  // escolheu de fato.
   useEffect(() => {
-    if (!hydrated) return;
+    if (!hydrated || !writable) return;
     void writeJson(StorageKeys.watermarkPreferences, {
       ...preferences,
       schemaVersion: PREFERENCES_SCHEMA_VERSION,
     });
-  }, [hydrated, preferences]);
+  }, [hydrated, writable, preferences]);
 
   const toggleField = useCallback((key: WatermarkFieldKey) => {
     setPreferences((current) => ({

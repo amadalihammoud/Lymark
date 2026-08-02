@@ -4,7 +4,12 @@ import { colors, radius } from '@/theme';
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
 import { buildWatermarkContent } from './build-content';
-import { SCALE_METRICS, resolveAnchorStyle, resolveTextAlign } from './layout';
+import {
+  SCALE_METRICS,
+  resolveAnchorStyle,
+  resolveTextAlign,
+  scaleMetricsToFrame,
+} from './layout';
 
 /**
  * O carimbo desenhado sobre a foto.
@@ -22,18 +27,28 @@ import { SCALE_METRICS, resolveAnchorStyle, resolveTextAlign } from './layout';
  * O mesmo componente serve para o preview na tela e para a imagem final
  * capturada pelo `view-shot`: o que o usuário vê é literalmente o que é
  * exportado.
+ *
+ * Todo texto tem `allowFontScaling={false}`. Isso é deliberado e vale a
+ * explicação: a marca d'água é conteúdo da **imagem**, não interface. Sem
+ * essa trava, o ajuste de fonte do aparelho vazaria para dentro do arquivo
+ * JPEG, e dois técnicos da mesma equipe exportariam carimbos de tamanhos
+ * diferentes para a mesma vistoria. Na interface do app, o oposto: a escala
+ * do sistema é respeitada.
  */
 export function WatermarkOverlay({
   metadata,
   preferences,
+  frameHeight = 0,
 }: {
   metadata: CaptureMetadata;
   preferences: WatermarkPreferences;
+  /** Altura da foto na tela; encolhe o carimbo em fotos baixas e largas. */
+  frameHeight?: number;
 }) {
   const content = buildWatermarkContent(metadata, preferences);
   if (content.isEmpty) return null;
 
-  const metrics = SCALE_METRICS[preferences.scale];
+  const metrics = scaleMetricsToFrame(SCALE_METRICS[preferences.scale], frameHeight);
   const textAlign = resolveTextAlign(preferences.position);
   const alignItems = textAlign === 'left' ? 'flex-start' : 'flex-end';
 
@@ -53,7 +68,9 @@ export function WatermarkOverlay({
         {hasHeader ? (
           <View style={styles.header}>
             {content.time ? (
-              <Text style={[styles.text, styles.time, { fontSize: metrics.time }]}>
+              <Text
+                allowFontScaling={false}
+                style={[styles.text, styles.time, { fontSize: metrics.time }]}>
                 {content.time}
               </Text>
             ) : null}
@@ -68,15 +85,17 @@ export function WatermarkOverlay({
             ) : null}
 
             {content.date || content.weekday ? (
-              <View style={{ alignItems: 'flex-start' }}>
+              <View style={styles.secondaryStack}>
                 {content.date ? (
                   <Text
+                    allowFontScaling={false}
                     style={[styles.text, styles.secondary, { fontSize: metrics.secondary }]}>
                     {content.date}
                   </Text>
                 ) : null}
                 {content.weekday ? (
                   <Text
+                    allowFontScaling={false}
                     style={[styles.text, styles.secondary, { fontSize: metrics.secondary }]}>
                     {content.weekday}
                   </Text>
@@ -88,6 +107,7 @@ export function WatermarkOverlay({
 
         {content.address ? (
           <Text
+            allowFontScaling={false}
             style={[
               styles.text,
               styles.address,
@@ -99,14 +119,11 @@ export function WatermarkOverlay({
 
         {content.code ? (
           <Text
+            allowFontScaling={false}
             style={[
               styles.text,
               styles.code,
-              {
-                fontSize: metrics.code,
-                textAlign,
-                marginTop: metrics.gap / 2,
-              },
+              { fontSize: metrics.code, textAlign, marginTop: Math.round(metrics.gap / 2) },
             ]}>
             {content.code}
           </Text>
@@ -125,6 +142,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     // As bases da hora e do bloco secundário se alinham, como na referência.
     alignItems: 'flex-end',
+  },
+  secondaryStack: {
+    alignItems: 'flex-start',
   },
   text: {
     color: colors.text,
@@ -150,7 +170,9 @@ const styles = StyleSheet.create({
   code: {
     fontWeight: '600',
     letterSpacing: 0.6,
-    opacity: 0.85,
+    // Sem `opacity`: ela esmaeceria texto e sombra juntos, e sobre uma foto
+    // clara o código — justamente o campo de rastreio — ficaria invisível. A
+    // hierarquia já vem do tamanho menor.
   },
   rule: {
     width: 2,

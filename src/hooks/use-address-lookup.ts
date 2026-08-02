@@ -11,7 +11,34 @@ import { formatGeocodedAddress } from '@/lib/address';
  * acoplamento ao contexto de captura.
  */
 
-export type AddressLookupStatus = 'idle' | 'loading' | 'success' | 'denied' | 'unavailable';
+export type AddressLookupStatus =
+  | 'idle'
+  | 'loading'
+  | 'success'
+  | 'denied'
+  /** Serviço de localização desligado no aparelho. */
+  | 'disabled'
+  /** Demorou demais — sinal fraco, dentro de um prédio. */
+  | 'timeout'
+  | 'unavailable';
+
+/**
+ * Teto de espera pelo GPS.
+ *
+ * `getCurrentPositionAsync` não tem timeout próprio: sem sinal, a promessa
+ * simplesmente nunca resolve e o botão giraria para sempre, sem como
+ * cancelar a não ser reiniciando o app.
+ */
+const LOCATION_TIMEOUT_MS = 12_000;
+
+class LocationTimeout extends Error {}
+
+function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<never>((_, reject) => setTimeout(() => reject(new LocationTimeout()), ms)),
+  ]);
+}
 
 export function useAddressLookup() {
   const [status, setStatus] = useState<AddressLookupStatus>('idle');
@@ -26,9 +53,27 @@ export function useAddressLookup() {
         return null;
       }
 
-      const position = await Location.getCurrentPositionAsync({
-        accuracy: Location.Accuracy.Balanced,
+      // Distingue "GPS desligado" de "não consegui" — a mensagem ao usuário
+      // muda completamente, e só uma das duas ele consegue resolver.
+      if (!(await Location.hasServicesEnabledAsync())) {
+        setStatus('disabled');
+        return null;
+      }
+
+      const position = await withTimeout(
+        Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced }),
+        LOCATION_TIMEOUT_MS,
+      ).catch(async (error: unknown) => {
+        if (!(error instanceof LocationTimeout)) throw error;
+        // Última posição conhecida costuma bastar para o endereço da rua, e
+        // é melhor que nada para quem está dentro de um galpão.
+        return Location.getLastKnownPositionAsync();
       });
+
+      if (!position) {
+        setStatus('timeout');
+        return null;
+      }
 
       const [address] = await Location.reverseGeocodeAsync(position.coords);
       if (!address) {

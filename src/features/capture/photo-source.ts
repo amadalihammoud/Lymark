@@ -1,4 +1,5 @@
 import * as ImagePicker from 'expo-image-picker';
+import { Platform } from 'react-native';
 
 import type { SelectedPhoto } from '@/types';
 
@@ -51,8 +52,15 @@ export async function takePhotoWithCamera(): Promise<PhotoPickResult> {
 
 export async function pickPhotoFromLibrary(): Promise<PhotoPickResult> {
   try {
-    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (!permission.granted) return { status: 'denied' };
+    // No iOS o seletor é o `PHPickerViewController`, que por desenho **não**
+    // exige autorização da fototeca — ele roda fora do processo do app e
+    // devolve só o que o usuário escolheu. Pedir permissão ali abriria um
+    // diálogo desnecessário que, se recusado, bloquearia para sempre um
+    // caminho que funcionaria sem permissão alguma (o iOS só pergunta uma vez).
+    if (Platform.OS === 'android') {
+      const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (!permission.granted) return { status: 'denied' };
+    }
 
     return toResult(await ImagePicker.launchImageLibraryAsync(PICKER_OPTIONS));
   } catch (error) {

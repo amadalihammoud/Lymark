@@ -24,7 +24,9 @@ const palette = {
   white: '#FFFFFF',
   slate200: '#C7D6E4',
   slate400: '#93A9C0',
-  slate500: '#6D8299',
+  slate300: '#8DA4BA',
+  slate350: '#7C90A6',
+  blue300: '#4A76A1',
 
   red400: '#E5645B',
   green400: '#4FB477',
@@ -37,7 +39,15 @@ export const colors = {
   surface: palette.navy600,
   /** Superfície um passo acima — usada em linhas selecionadas. */
   surfaceRaised: palette.navy500,
+  /** Divisores de lista — decorativos, isentos de razão de contraste. */
   border: palette.navy400,
+  /**
+   * Contorno de botão. Separado de `border` porque aqui a linha é a única
+   * coisa que identifica o elemento como botão — os variantes `ghost` e
+   * `danger` têm fundo transparente. A 1,74:1 do navy sumia ao sol; este tom
+   * dá 3,41:1, acima do mínimo de 3:1 para elemento de interface.
+   */
+  borderInteractive: palette.blue300,
 
   /** Ações de captura ("Tirar foto", "Escolher da galeria", "Gerar"). */
   primary: palette.blue500,
@@ -51,7 +61,8 @@ export const colors = {
 
   text: palette.white,
   textMuted: palette.slate400,
-  textSubtle: palette.slate500,
+  /** 5,08:1 sobre `surface` — antes 3,31:1, reprovado. */
+  textSubtle: palette.slate300,
   textOnSurface: palette.slate200,
 
   danger: palette.red400,
@@ -60,10 +71,14 @@ export const colors = {
   tabBar: palette.navy900,
   tabBarBorder: palette.navy600,
   tabActive: palette.amber500,
-  tabInactive: palette.slate500,
+  tabInactive: palette.slate350,
 
-  /** Fundo semitransparente atrás da marca d'água, para garantir leitura. */
-  watermarkBackdrop: 'rgba(9, 26, 43, 0.55)',
+  /**
+   * Alfa 0,75 e não 0,55: sobre uma parede branca ao sol, a faixa a 55%
+   * deixava o endereço em 3,96:1 — abaixo do mínimo legível. A 75% sobe
+   * para 7,85:1.
+   */
+  watermarkBackdrop: 'rgba(9, 26, 43, 0.75)',
 } as const;
 
 export type ColorToken = keyof typeof colors;

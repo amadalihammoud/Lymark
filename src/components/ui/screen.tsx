@@ -26,12 +26,15 @@ export function Screen({
   contentStyle?: StyleProp<ViewStyle>;
 }) {
   return (
-    <SafeAreaView style={styles.safeArea} edges={['top']}>
+    <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
       {scrollable ? (
         <ScrollView
           style={styles.flex}
           contentContainerStyle={[styles.content, contentStyle]}
           keyboardShouldPersistTaps="handled"
+          // Sem isto, o último campo do formulário fica atrás do teclado e o
+          // usuário digita às cegas.
+          automaticallyAdjustKeyboardInsets
           showsVerticalScrollIndicator={false}>
           {children}
         </ScrollView>

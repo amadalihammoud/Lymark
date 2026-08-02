@@ -2,7 +2,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Location from 'expo-location';
 import * as MediaLibrary from 'expo-media-library';
 import { useCallback, useEffect, useState } from 'react';
-import { Linking } from 'react-native';
+import { Alert, AppState, Linking } from 'react-native';
 
 /**
  * Estado das três permissões que o Lymark usa, num formato só.
@@ -37,8 +37,8 @@ export const PERMISSION_DESCRIPTORS: PermissionDescriptor[] = [
   },
   {
     id: 'mediaLibrary',
-    title: 'Fotos do aparelho',
-    rationale: 'Para escolher fotos existentes e salvar as versões exportadas.',
+    title: 'Salvar na galeria',
+    rationale: 'Para gravar as fotos exportadas na galeria do aparelho.',
   },
   {
     id: 'location',
@@ -51,6 +51,13 @@ type PermissionMap = Record<PermissionId, PermissionSnapshot | null>;
 
 const EMPTY_MAP: PermissionMap = { camera: null, mediaLibrary: null, location: null };
 
+/**
+ * O app grava na galeria e nunca a lê — quem lê é o seletor de imagens, que
+ * tem o próprio fluxo. Pedir leitura total seria privilégio sem uso, e no
+ * Android 13+ um pedido genérico arrastaria vídeo e áudio junto.
+ */
+const MEDIA_LIBRARY_ARGS = [true, ['photo'] as MediaLibrary.GranularPermission[]] as const;
+
 async function readPermission(id: PermissionId): Promise<PermissionSnapshot> {
   switch (id) {
     case 'camera': {
@@ -58,7 +65,7 @@ async function readPermission(id: PermissionId): Promise<PermissionSnapshot> {
       return { granted: result.granted, canAskAgain: result.canAskAgain };
     }
     case 'mediaLibrary': {
-      const result = await MediaLibrary.getPermissionsAsync();
+      const result = await MediaLibrary.getPermissionsAsync(...MEDIA_LIBRARY_ARGS);
       return { granted: result.granted, canAskAgain: result.canAskAgain };
     }
     case 'location': {
@@ -75,7 +82,7 @@ async function askPermission(id: PermissionId): Promise<PermissionSnapshot> {
       return { granted: result.granted, canAskAgain: result.canAskAgain };
     }
     case 'mediaLibrary': {
-      const result = await MediaLibrary.requestPermissionsAsync();
+      const result = await MediaLibrary.requestPermissionsAsync(...MEDIA_LIBRARY_ARGS);
       return { granted: result.granted, canAskAgain: result.canAskAgain };
     }
     case 'location': {
@@ -87,7 +94,18 @@ async function askPermission(id: PermissionId): Promise<PermissionSnapshot> {
 
 /** Consulta as três permissões de uma vez, sem tocar em estado. */
 async function readAllPermissions(): Promise<PermissionMap> {
-  const snapshots = await Promise.all(PERMISSION_IDS.map(readPermission));
+  const snapshots = await Promise.all(
+    PERMISSION_IDS.map(async (id) => {
+      try {
+        return await readPermission(id);
+      } catch (error) {
+        // No Expo Go o módulo de mídia lança em vez de responder. Isso não
+        // pode derrubar a leitura das outras duas permissões.
+        console.warn(`[permissions] não foi possível consultar "${id}".`, error);
+        return null;
+      }
+    }),
+  );
 
   return PERMISSION_IDS.reduce<PermissionMap>(
     (accumulator, id, index) => ({ ...accumulator, [id]: snapshots[index] }),
@@ -104,8 +122,6 @@ export function useAppPermissions() {
     setRefreshing(true);
     try {
       setPermissions(await readAllPermissions());
-    } catch (error) {
-      console.warn('[permissions] falha ao consultar o estado das permissões.', error);
     } finally {
       setRefreshing(false);
     }
@@ -122,9 +138,6 @@ export function useAppPermissions() {
       .then((snapshot) => {
         if (active) setPermissions(snapshot);
       })
-      .catch((error: unknown) => {
-        console.warn('[permissions] falha ao consultar o estado das permissões.', error);
-      })
       .finally(() => {
         if (active) setRefreshing(false);
       });
@@ -134,15 +147,42 @@ export function useAppPermissions() {
     };
   }, []);
 
+  // O usuário sai para os Ajustes do sistema, concede a permissão e volta.
+  // Sem isto, a tela continuaria mostrando "não liberado" até ele achar o
+  // botão de verificar novamente.
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (state) => {
+      if (state === 'active') void refresh();
+    });
+
+    return () => subscription.remove();
+  }, [refresh]);
+
   const request = useCallback(async (id: PermissionId) => {
-    const snapshot = await askPermission(id);
+    let snapshot: PermissionSnapshot;
+
+    try {
+      snapshot = await askPermission(id);
+    } catch (error) {
+      console.warn(`[permissions] falha ao solicitar "${id}".`, error);
+      return;
+    }
+
     setPermissions((current) => ({ ...current, [id]: snapshot }));
 
-    // Negado em definitivo: pedir de novo não abre mais o diálogo do sistema,
-    // então o único caminho é a tela de ajustes do aparelho.
-    if (!snapshot.granted && !snapshot.canAskAgain) {
-      void Linking.openSettings();
-    }
+    if (snapshot.granted || snapshot.canAskAgain) return;
+
+    // Negado em definitivo: pedir de novo não abre mais o diálogo do sistema.
+    // No iOS isso acontece já na primeira recusa, então empurrar o usuário
+    // direto para os Ajustes seria um salto sem explicação.
+    Alert.alert(
+      'Permissão bloqueada',
+      'O sistema não vai perguntar de novo. Para liberar, abra os ajustes do aparelho.',
+      [
+        { text: 'Agora não', style: 'cancel' },
+        { text: 'Abrir ajustes', onPress: () => void Linking.openSettings() },
+      ],
+    );
   }, []);
 
   return { permissions, refreshing, refresh, request };

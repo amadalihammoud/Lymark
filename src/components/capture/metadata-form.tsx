@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
 import { FieldRow } from '@/components/ui/field-row';
@@ -28,6 +28,7 @@ export function MetadataForm({
   onRegenerateCode,
   onLocate,
   locating = false,
+  disabled = false,
 }: {
   metadata: CaptureMetadata;
   onChangeField: (key: WatermarkFieldKey, value: string) => void;
@@ -36,6 +37,8 @@ export function MetadataForm({
   onRegenerateCode: () => void;
   onLocate: () => void;
   locating?: boolean;
+  /** Trava o formulário enquanto a imagem está sendo gerada. */
+  disabled?: boolean;
 }) {
   return (
     <View style={styles.container}>
@@ -47,19 +50,27 @@ export function MetadataForm({
             icon="time-outline"
             variant="ghost"
             onPress={onSyncDateTime}
+            disabled={disabled}
             style={styles.headerAction}
           />
         </View>
 
         <FieldRow
+          editable={!disabled}
           label={WATERMARK_FIELD_LABELS.time}
           value={metadata.time}
           onChangeText={(value) => onChangeField('time', value)}
           placeholder="00:00"
-          keyboardType="numbers-and-punctuation"
+          // `numbers-and-punctuation` existe só no iOS; no Android o RN cairia
+          // no teclado alfabético completo para digitar "14:38".
+          keyboardType={Platform.select({
+            ios: 'numbers-and-punctuation',
+            default: 'numeric',
+          })}
         />
 
         <FieldRow
+          editable={!disabled}
           label={WATERMARK_FIELD_LABELS.date}
           value={metadata.date}
           onChangeText={(value) => onChangeField('date', value)}
@@ -67,6 +78,7 @@ export function MetadataForm({
         />
 
         <FieldRow
+          editable={!disabled}
           label={WATERMARK_FIELD_LABELS.weekday}
           value={metadata.weekday}
           onChangeText={(value) => onChangeField('weekday', value)}
@@ -75,6 +87,7 @@ export function MetadataForm({
       </View>
 
       <FieldRow
+        editable={!disabled}
         label={WATERMARK_FIELD_LABELS.address}
         value={metadata.address}
         onChangeText={(value) => onChangeField('address', value)}
@@ -87,12 +100,14 @@ export function MetadataForm({
             variant="primary"
             onPress={onLocate}
             loading={locating}
+            disabled={disabled}
             style={styles.trailingAction}
           />
         }
       />
 
       <FieldRow
+        editable={!disabled}
         label={WATERMARK_FIELD_LABELS.code}
         value={metadata.code}
         onChangeText={(value) => onChangeField('code', normalizePhotoCode(value))}
@@ -105,6 +120,7 @@ export function MetadataForm({
             label="Gerar"
             variant="primary"
             onPress={onRegenerateCode}
+            disabled={disabled}
             style={styles.trailingAction}
           />
         }
@@ -127,7 +143,7 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   headerAction: {
-    minHeight: 36,
+    minHeight: 44,
     paddingVertical: spacing.sm,
     paddingHorizontal: spacing.lg,
   },

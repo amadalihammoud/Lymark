@@ -9,25 +9,57 @@ import {
   type ReactNode,
 } from 'react';
 
-import { deleteExportedPhoto } from '@/features/watermark/photo-file';
+import {
+  deleteExportedPhoto,
+  normalizeStoredPath,
+} from '@/features/watermark/photo-file';
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
 import type { CaptureMetadata, GalleryEntry } from '@/types';
 
 /**
  * Histórico das fotos exportadas.
  *
- * Guarda apenas a URI e os metadados — a imagem em si mora no sistema de
- * arquivos do app / na galeria do aparelho. O registro é o índice que a aba
- * Galeria percorre, do mais recente para o mais antigo.
+ * Guarda o caminho do arquivo e os metadados — a imagem em si mora no
+ * sistema de arquivos do app. O registro é o índice que a aba Galeria
+ * percorre, do mais recente para o mais antigo, e é a **única** referência
+ * ao arquivo: sempre que uma entrada sai daqui, o arquivo tem de sair junto,
+ * ou vira lixo permanente no aparelho.
  */
 
 /** Teto de registros mantidos, para o índice não crescer sem limite. */
 const MAX_ENTRIES = 200;
 
+/** Descarta registros irrecuperáveis e migra os que gravavam URI absoluta. */
+function reviveEntries(stored: unknown): GalleryEntry[] {
+  if (!Array.isArray(stored)) return [];
+
+  return stored.flatMap((entry: unknown) => {
+    if (typeof entry !== 'object' || entry === null) return [];
+
+    const candidate = entry as Partial<GalleryEntry> & { uri?: unknown };
+    // `uri` é o nome que o formato antigo usava para o mesmo dado.
+    const path = normalizeStoredPath(candidate.path ?? candidate.uri);
+
+    if (!path || typeof candidate.id !== 'string' || !candidate.metadata) return [];
+
+    return [
+      {
+        id: candidate.id,
+        path,
+        exportedAt:
+          typeof candidate.exportedAt === 'string'
+            ? candidate.exportedAt
+            : new Date().toISOString(),
+        metadata: candidate.metadata,
+      },
+    ];
+  });
+}
+
 type GalleryContextValue = {
   entries: GalleryEntry[];
   hydrated: boolean;
-  addEntry: (input: { uri: string; metadata: CaptureMetadata }) => GalleryEntry;
+  addEntry: (input: { path: string; metadata: CaptureMetadata }) => GalleryEntry;
   removeEntry: (id: string) => void;
   clearGallery: () => void;
   findEntry: (id: string) => GalleryEntry | undefined;
@@ -38,13 +70,33 @@ const GalleryContext = createContext<GalleryContextValue | null>(null);
 export function GalleryProvider({ children }: { children: ReactNode }) {
   const [entries, setEntries] = useState<GalleryEntry[]>([]);
   const [hydrated, setHydrated] = useState(false);
+  /**
+   * Trava de gravação.
+   *
+   * Uma leitura que falha não significa disco vazio. Gravar depois dela
+   * sobrescreveria o histórico íntegro com uma lista vazia — o usuário
+   * perderia centenas de registros por causa de uma falha momentânea.
+   */
+  const [writable, setWritable] = useState(false);
 
   useEffect(() => {
     let active = true;
 
-    readJson<GalleryEntry[]>(StorageKeys.gallery, []).then((stored) => {
+    void readJson<unknown>(StorageKeys.gallery).then((result) => {
       if (!active) return;
-      setEntries(Array.isArray(stored) ? stored : []);
+
+      if (result.status === 'found') {
+        const revived = reviveEntries(result.value);
+        // Mescla em vez de substituir: uma exportação concluída antes da
+        // leitura terminar seria descartada, e seu arquivo viraria órfão.
+        setEntries((current) => {
+          if (current.length === 0) return revived;
+          const known = new Set(current.map((entry) => entry.id));
+          return [...current, ...revived.filter((entry) => !known.has(entry.id))];
+        });
+      }
+
+      setWritable(result.status !== 'failed');
       setHydrated(true);
     });
 
@@ -54,38 +106,43 @@ export function GalleryProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (!hydrated) return;
+    if (!hydrated || !writable) return;
     void writeJson(StorageKeys.gallery, entries);
-  }, [hydrated, entries]);
+  }, [hydrated, writable, entries]);
 
-  const addEntry = useCallback<GalleryContextValue['addEntry']>(({ uri, metadata }) => {
-    const entry: GalleryEntry = {
-      id: Crypto.randomUUID(),
-      uri,
-      exportedAt: new Date().toISOString(),
-      metadata,
-    };
-    setEntries((current) => [entry, ...current].slice(0, MAX_ENTRIES));
-    return entry;
-  }, []);
+  const addEntry = useCallback<GalleryContextValue['addEntry']>(
+    ({ path, metadata }) => {
+      const entry: GalleryEntry = {
+        id: Crypto.randomUUID(),
+        path,
+        exportedAt: new Date().toISOString(),
+        metadata,
+      };
 
-  // Apagar o registro sem apagar o arquivo deixaria lixo ocupando espaço no
-  // aparelho para sempre — o índice é a única referência a ele.
-  //
+      // O corte pelo teto tem de apagar o arquivo, como faz `removeEntry`:
+      // sair do índice sem sair do disco deixa lixo inalcançável para sempre.
+      entries.slice(MAX_ENTRIES - 1).forEach((old) => deleteExportedPhoto(old.path));
+
+      setEntries((current) => [entry, ...current].slice(0, MAX_ENTRIES));
+      return entry;
+    },
+    [entries],
+  );
+
   // O arquivo sai antes do `setEntries`, e não dentro do atualizador: o React
   // pode reexecutar um atualizador, e efeito colateral ali dentro roda duas
   // vezes.
   const removeEntry = useCallback(
     (id: string) => {
       const target = entries.find((entry) => entry.id === id);
-      if (target) deleteExportedPhoto(target.uri);
+      if (target) deleteExportedPhoto(target.path);
       setEntries((current) => current.filter((entry) => entry.id !== id));
     },
     [entries],
   );
 
   const clearGallery = useCallback(() => {
-    entries.forEach((entry) => deleteExportedPhoto(entry.uri));
+    entries.forEach((entry) => deleteExportedPhoto(entry.path));
     setEntries([]);
   }, [entries]);
 

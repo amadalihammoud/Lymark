@@ -7,6 +7,7 @@ import { EmptyState } from '@/components/ui/empty-state';
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
 import { useGallery } from '@/contexts/gallery-context';
+import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
 import { formatTimestamp } from '@/lib/datetime';
 import { colors, radius, spacing, typography } from '@/theme';
 import { WATERMARK_FIELD_KEYS, WATERMARK_FIELD_LABELS } from '@/types';
@@ -58,7 +59,11 @@ export default function PhotoDetailScreen() {
 
   return (
     <Screen>
-      <Image source={{ uri: entry.uri }} style={styles.photo} contentFit="contain" />
+      <Image
+        source={{ uri: resolveExportedPhotoUri(entry.path) }}
+        style={styles.photo}
+        contentFit="contain"
+      />
 
       <Text style={typography.caption}>Exportada em {formatTimestamp(entry.exportedAt)}</Text>
 

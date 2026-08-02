@@ -18,6 +18,7 @@
     },
     "android": {
       "package": "com.lycosteam.lymark",
+      "allowBackup": false,
       "adaptiveIcon": {
         "backgroundColor": "#0D2137",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -44,7 +45,8 @@
         "expo-image-picker",
         {
           "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem que receberá a marca d'água.",
-          "cameraPermission": "O Lymark usa a câmera para tirar a foto que receberá a marca d'água."
+          "cameraPermission": "O Lymark usa a câmera para tirar a foto que receberá a marca d'água.",
+          "microphonePermission": false
         }
       ],
       [
@@ -58,7 +60,7 @@
         {
           "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem que receberá a marca d'água.",
           "savePhotosPermission": "O Lymark salva na sua galeria as fotos exportadas com marca d'água.",
-          "isAccessMediaLocationEnabled": true
+          "granularPermissions": ["photo"]
         }
       ]
     ],

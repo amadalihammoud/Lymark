@@ -41,7 +41,10 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    alignItems: 'stretch',
+    // `flex-start` e não `stretch`: com o endereço em modo multiline, esticar
+    // faria o botão "Localizar" crescer até virar um retângulo do tamanho do
+    // campo.
+    alignItems: 'flex-start',
     gap: spacing.sm,
   },
   input: {
@@ -51,6 +54,9 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md,
+    // Teto para o campo multiline: um endereço longo não pode empurrar o
+    // resto do formulário para fora da tela.
+    maxHeight: 132,
     ...typography.value,
   },
 });

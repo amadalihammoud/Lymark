@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import type { Ref } from 'react';
+import { type Ref, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { WatermarkOverlay } from '@/features/watermark/watermark-overlay';
@@ -9,9 +9,10 @@ import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/typ
 /**
  * A foto com a marca d'água por cima — e o alvo da exportação.
  *
- * O `ref` aponta para o `View` que envolve imagem + carimbo: é exatamente
- * essa árvore que o `view-shot` achata em JPEG, o que garante que o
- * exportado seja idêntico ao preview.
+ * A moldura arredondada é a **externa**; o `ref` aponta para a view interna,
+ * de cantos retos. A distinção não é estética: JPEG não tem canal alfa, e
+ * capturar uma view com `borderRadius` deixaria quatro cunhas pretas nos
+ * cantos de toda foto exportada.
  */
 
 /** Proporção usada enquanto nenhuma foto foi escolhida. */
@@ -28,6 +29,15 @@ export function PhotoPreview({
   preferences: WatermarkPreferences;
   ref?: Ref<View>;
 }) {
+  /**
+   * Altura real da foto na tela, usada para escalar o carimbo.
+   *
+   * Sem isso, o bloco tem altura fixa em pontos: numa panorâmica o frame fica
+   * com 70 px de altura, o carimbo com 160, e a hora é cortada para fora da
+   * imagem — no preview e no arquivo exportado.
+   */
+  const [frameHeight, setFrameHeight] = useState(0);
+
   if (!photo) {
     return (
       <View
@@ -45,14 +55,22 @@ export function PhotoPreview({
       : PLACEHOLDER_ASPECT_RATIO;
 
   return (
-    <View ref={ref} collapsable={false} style={[styles.frame, { aspectRatio }]}>
-      <Image
-        source={{ uri: photo.uri }}
-        style={StyleSheet.absoluteFill}
-        contentFit="cover"
-        accessibilityLabel="Pré-visualização da foto com marca d’água"
-      />
-      <WatermarkOverlay metadata={metadata} preferences={preferences} />
+    <View
+      style={[styles.frame, { aspectRatio }]}
+      onLayout={(event) => setFrameHeight(event.nativeEvent.layout.height)}>
+      <View ref={ref} collapsable={false} style={styles.captured}>
+        <Image
+          source={{ uri: photo.uri }}
+          style={StyleSheet.absoluteFill}
+          contentFit="cover"
+          accessibilityLabel="Pré-visualização da foto com marca d’água"
+        />
+        <WatermarkOverlay
+          metadata={metadata}
+          preferences={preferences}
+          frameHeight={frameHeight}
+        />
+      </View>
     </View>
   );
 }
@@ -63,6 +81,10 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     overflow: 'hidden',
     backgroundColor: colors.surface,
+  },
+  /** Cantos retos: é esta view que vira o JPEG. */
+  captured: {
+    flex: 1,
   },
   placeholder: {
     alignItems: 'center',
