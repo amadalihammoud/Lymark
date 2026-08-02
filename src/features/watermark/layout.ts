@@ -116,8 +116,62 @@ export const TIME_INK_HEIGHT_RATIO = 0.7267;
  */
 const REFERENCE_FRAME_HEIGHT = 440;
 
+/** A largura correspondente. Retrato 3:4: 440 × 3/4. */
+const REFERENCE_FRAME_WIDTH = 330;
+
 /** Piso do fator de escala — abaixo disso o carimbo fica ilegível. */
 const MIN_SCALE_FACTOR = 0.45;
+
+export type FrameSize = { width: number; height: number };
+
+/**
+ * O carimbo em função do tamanho do destino, e não de pontos de tela.
+ *
+ * `SCALE_METRICS` está em pontos porque foi calibrado contra um preview de
+ * telefone. Isso amarra o carimbo ao tamanho da tela — é a razão de a foto
+ * exportada sair com a resolução da tela e não com a da fotografia.
+ * Expressar tudo como fração do quadro desamarra os dois: o mesmo carimbo
+ * serve para um preview de 330 px e para um arquivo de 4000 px.
+ *
+ * O fator é o **menor** entre as duas proporções. Escalar só pela altura
+ * deixa o bloco transbordar na horizontal num quadro alto e estreito;
+ * escalar só pela largura o faz transbordar na vertical numa panorâmica.
+ *
+ * @param allowGrowth `false` no preview — o carimbo nunca passa do tamanho
+ *   calibrado. `true` na exportação, onde acompanhar a resolução real do
+ *   arquivo é justamente o objetivo.
+ */
+export function metricsForFrame(
+  metrics: ScaleMetrics,
+  frame: FrameSize,
+  { allowGrowth = false }: { allowGrowth?: boolean } = {},
+): ScaleMetrics {
+  if (frame.width <= 0 || frame.height <= 0) return metrics;
+
+  const raw = Math.min(
+    frame.width / REFERENCE_FRAME_WIDTH,
+    frame.height / REFERENCE_FRAME_HEIGHT,
+  );
+
+  // O piso de legibilidade protege a tela. Numa exportação, encolher além da
+  // conta é o defeito — não a proteção.
+  const factor = allowGrowth ? raw : Math.min(1, Math.max(MIN_SCALE_FACTOR, raw));
+  if (factor === 1) return metrics;
+
+  // Os pisos em pontos também são de tela: ao crescer nunca são alcançados.
+  const apply = (value: number, floor: number) =>
+    Math.max(allowGrowth ? 1 : floor, Math.round(value * factor));
+
+  return {
+    time: apply(metrics.time, 12),
+    secondary: apply(metrics.secondary, 7),
+    address: apply(metrics.address, 8),
+    code: apply(metrics.code, 7),
+    gap: apply(metrics.gap, 2),
+    paddingVertical: apply(metrics.paddingVertical, 3),
+    paddingHorizontal: apply(metrics.paddingHorizontal, 4),
+  };
+}
 
 /**
  * Ajusta o carimbo à altura real da foto.
