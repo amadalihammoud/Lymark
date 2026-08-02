@@ -76,6 +76,13 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 
       setWritable(result.status !== 'failed');
       setHydrated(true);
+    }).catch((error: unknown) => {
+      if (!active) return;
+      // Sem isto, uma exceção deixaria `writable` em `false` para sempre e
+      // nenhuma preferência voltaria a ser gravada — silenciosamente.
+      console.warn('[settings] falha ao hidratar as preferências.', error);
+      setWritable(false);
+      setHydrated(true);
     });
 
     return () => {

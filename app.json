@@ -56,7 +56,9 @@
       "predictiveBackGestureEnabled": false,
       "blockedPermissions": [
         "android.permission.SYSTEM_ALERT_WINDOW",
-        "android.permission.VIBRATE"
+        "android.permission.VIBRATE",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VISUAL_USER_SELECTED"
       ]
     },
     "web": {
@@ -84,7 +86,11 @@
       [
         "expo-location",
         {
-          "locationWhenInUsePermission": "O Lymark usa sua localização para preencher automaticamente o endereço carimbado na foto."
+          "locationWhenInUsePermission": "O Lymark usa sua localização para preencher automaticamente o endereço carimbado na foto.",
+          "locationAlwaysAndWhenInUsePermission": false,
+          "locationAlwaysPermission": false,
+          "isAndroidBackgroundLocationEnabled": false,
+          "motionUsagePermission": false
         }
       ],
       [

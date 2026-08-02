@@ -44,11 +44,20 @@ export default function AboutScreen() {
         <View style={styles.paragraph}>
           <Text style={typography.body}>
             As fotos, os endereços e o histórico ficam apenas neste aparelho. O Lymark não
-            possui servidor, não cria conta e não envia nada para a internet.
+            possui servidor, não cria conta e não envia as suas fotos para lugar nenhum.
           </Text>
           <Text style={typography.caption}>
             A localização é usada uma vez por captura, apenas para preencher o campo de
             endereço, e não é armazenada separadamente das fotos.
+          </Text>
+          {/* Precisão vale mais que uma frase redonda: para virar endereço, a
+              coordenada é consultada pelo sistema operacional na rede. Afirmar
+              que nada sai do aparelho seria falso — e contradiria a política de
+              privacidade publicada do aplicativo. */}
+          <Text style={typography.caption}>
+            Ao usar o GPS, o sistema operacional envia a coordenada ao serviço de mapas do
+            Google ou da Apple para obter o endereço. É a única informação que sai daqui, e
+            quem a envia é o sistema, não o Lymark.
           </Text>
         </View>
       </Section>

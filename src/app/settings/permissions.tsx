@@ -26,8 +26,9 @@ export default function PermissionsScreen() {
   return (
     <Screen>
       <Text style={typography.body}>
-        O Lymark só pede o que precisa para carimbar uma foto. Nada é enviado para
-        servidores — tudo acontece no aparelho.
+        O Lymark só pede o que precisa para carimbar uma foto. As suas imagens não saem do
+        aparelho: quando você usa o GPS, apenas a coordenada é enviada pelo sistema
+        operacional ao serviço de mapas, para virar endereço.
       </Text>
 
       <Section title="Acessos">

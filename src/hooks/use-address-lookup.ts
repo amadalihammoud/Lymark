@@ -40,24 +40,37 @@ function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
   ]);
 }
 
+export type AddressLookupResult = {
+  status: AddressLookupStatus;
+  address: string | null;
+};
+
 export function useAddressLookup() {
   const [status, setStatus] = useState<AddressLookupStatus>('idle');
 
-  const lookup = useCallback(async (): Promise<string | null> => {
+  /**
+   * Devolve o desfecho junto com o endereço.
+   *
+   * Só o `status` do estado não serve a quem chama: ele é lido do render em
+   * que o toque aconteceu, e não do render posterior à resposta. Quem
+   * aguardava o `lookup` acabava mostrando a mensagem da tentativa **anterior**
+   * — texto de timeout para uma permissão negada, por exemplo.
+   */
+  const lookup = useCallback(async (): Promise<AddressLookupResult> => {
     setStatus('loading');
 
     try {
       const { granted } = await Location.requestForegroundPermissionsAsync();
       if (!granted) {
         setStatus('denied');
-        return null;
+        return { status: 'denied', address: null };
       }
 
       // Distingue "GPS desligado" de "não consegui" — a mensagem ao usuário
       // muda completamente, e só uma das duas ele consegue resolver.
       if (!(await Location.hasServicesEnabledAsync())) {
         setStatus('disabled');
-        return null;
+        return { status: 'disabled', address: null };
       }
 
       const position = await withTimeout(
@@ -72,27 +85,27 @@ export function useAddressLookup() {
 
       if (!position) {
         setStatus('timeout');
-        return null;
+        return { status: 'timeout', address: null };
       }
 
       const [address] = await Location.reverseGeocodeAsync(position.coords);
       if (!address) {
         setStatus('unavailable');
-        return null;
+        return { status: 'unavailable', address: null };
       }
 
       const formatted = formatGeocodedAddress(address);
       if (!formatted) {
         setStatus('unavailable');
-        return null;
+        return { status: 'unavailable', address: null };
       }
 
       setStatus('success');
-      return formatted;
+      return { status: 'success', address: formatted };
     } catch (error) {
       console.warn('[location] não foi possível obter o endereço.', error);
       setStatus('unavailable');
-      return null;
+      return { status: 'unavailable', address: null };
     }
   }, []);
 

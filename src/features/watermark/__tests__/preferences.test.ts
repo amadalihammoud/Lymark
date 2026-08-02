@@ -157,3 +157,25 @@ describe('migração de formatos antigos', () => {
     expect(mergeWithDefaults({ showBackdrop: true }).showBackdrop).toBe(false);
   });
 });
+
+/**
+ * O que está no disco pode não ser um objeto. Uma gravação interrompida deixa
+ * `"null"` na chave, e `JSON.parse` devolve `null` — que o leitor classifica
+ * como dado encontrado. Ler `.schemaVersion` daí lançava dentro da hidratação
+ * e travava a persistência das preferências para sempre.
+ */
+describe('dado corrompido na raiz', () => {
+  it('devolve o padrão em vez de lançar quando o gravado é `null`', () => {
+    expect(mergeWithDefaults(null as never)).toEqual(DEFAULT_WATERMARK_PREFERENCES);
+  });
+
+  it('devolve o padrão para valores que nem objeto são', () => {
+    for (const value of [0, '', 'texto', 42, true, undefined]) {
+      expect(mergeWithDefaults(value as never)).toEqual(DEFAULT_WATERMARK_PREFERENCES);
+    }
+  });
+
+  it('trata array como formato antigo, sem quebrar', () => {
+    expect(mergeWithDefaults([] as never).showBackdrop).toBe(false);
+  });
+});

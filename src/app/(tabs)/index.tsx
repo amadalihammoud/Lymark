@@ -52,10 +52,21 @@ export default function CaptureScreen() {
     useCapture();
   const { preferences } = useSettings();
   const { addEntry } = useGallery();
-  const { lookup, status: lookupStatus, isLoading: locating } = useAddressLookup();
+  // O `status` do hook serve ao indicador de carregamento; a causa da falha
+  // vem do retorno do `lookup`, que é o desfecho daquela chamada.
+  const { lookup, isLoading: locating } = useAddressLookup();
 
   const previewRef = useRef<View>(null);
   const [pending, setPending] = useState<PendingAction | null>(null);
+  /**
+   * Câmera ou seletor abertos.
+   *
+   * Entre o toque e a tela nativa aparecer não há retorno nenhum, e num
+   * aparelho lento o usuário toca de novo. A segunda chamada concorre com a
+   * primeira e o app avisa "não foi possível abrir a foto" enquanto a câmera
+   * está justamente abrindo.
+   */
+  const [picking, setPicking] = useState(false);
   const busy = pending !== null;
 
   /**
@@ -85,7 +96,15 @@ export default function CaptureScreen() {
         // corrigiu à mão — para isso existe o botão "Agora".
         const isFirstPhoto = !hasPhoto;
         setPhoto(result.photo);
-        if (isFirstPhoto) syncDateTime();
+        if (isFirstPhoto) {
+          syncDateTime();
+        } else {
+          // Foto nova, código novo. Sem isto, quem fotografa o segundo item
+          // sem passar por "Começar nova captura" exporta duas imagens com o
+          // mesmo identificador — e o campo existe justamente para distinguir
+          // uma foto da outra fora do app.
+          regenerateCode();
+        }
         break;
       }
       case 'denied':
@@ -102,21 +121,31 @@ export default function CaptureScreen() {
     }
   };
 
+  const runPick = async (open: () => Promise<PhotoPickResult>) => {
+    if (picking || busy) return;
+    setPicking(true);
+    try {
+      applyPickResult(await open());
+    } finally {
+      setPicking(false);
+    }
+  };
+
   const handleLocate = async () => {
     const token = lookupToken.current + 1;
     lookupToken.current = token;
 
     const addressWhenRequested = addressRef.current;
-    const address = await lookup();
+    const { status, address } = await lookup();
 
     // Outra busca começou, ou a captura foi reiniciada: a resposta caducou.
     if (token !== lookupToken.current) return;
 
     if (!address) {
-      Alert.alert(
-        'Endereço não obtido',
-        LOOKUP_MESSAGES[lookupStatus] || LOOKUP_MESSAGES.unavailable,
-      );
+      // O desfecho vem da própria chamada. Ler o `status` do estado daria a
+      // causa da tentativa anterior — o mapa de mensagens existe justamente
+      // para dar a saída certa a cada motivo.
+      Alert.alert('Endereço não obtido', LOOKUP_MESSAGES[status] || LOOKUP_MESSAGES.unavailable);
       return;
     }
 
@@ -156,6 +185,11 @@ export default function CaptureScreen() {
   }, [resetDraft]);
 
   const runAction = async (action: PendingAction) => {
+    // Invalida qualquer busca de endereço em curso. A imagem é rasterizada a
+    // partir da árvore de views viva: se o GPS respondesse durante a geração,
+    // a foto sairia com o endereço novo e o histórico registraria o antigo —
+    // divergência inaceitável num registro documental.
+    lookupToken.current += 1;
     setPending(action);
     try {
       const path = await generateWatermarkedPhoto(previewRef);
@@ -165,21 +199,38 @@ export default function CaptureScreen() {
       addEntry({ path, metadata: draft.metadata, stampedFields });
 
       if (action === 'save') {
-        const saved = await saveToDeviceGallery(path);
-        Alert.alert(
-          saved ? 'Foto salva' : 'Salva apenas no Lymark',
-          saved
-            ? 'A imagem está na galeria do aparelho e no histórico do Lymark.'
-            : 'A imagem entrou no histórico do Lymark, mas o acesso às fotos foi negado — ela existe apenas dentro do app.',
-        );
+        const outcome = await saveToDeviceGallery(path);
+        // Cada desfecho tem uma causa diferente e um remédio diferente. Dizer
+        // "permissão negada" para todos mandava o usuário a um ajuste que já
+        // estava correto.
+        if (outcome.status === 'saved') {
+          Alert.alert('Foto salva', 'A imagem está na galeria do aparelho e no histórico.');
+        } else if (outcome.status === 'denied') {
+          Alert.alert(
+            'Salva apenas no Lymark',
+            'O acesso às fotos foi negado, então a imagem existe só dentro do app. Libere em Configurações › Permissões para salvar na galeria.',
+          );
+        } else {
+          Alert.alert(
+            'Salva apenas no Lymark',
+            'A imagem entrou no histórico, mas o aparelho recusou gravá-la na galeria. Verifique o espaço livre e tente de novo.',
+          );
+        }
         return;
       }
 
-      const shared = await shareWatermarkedPhoto(path);
-      if (!shared) {
+      const outcome = await shareWatermarkedPhoto(path);
+      if (outcome.status === 'unavailable') {
         Alert.alert(
           'Compartilhamento indisponível',
           'Este aparelho não oferece a folha de compartilhamento. A imagem ficou no histórico do Lymark.',
+        );
+      } else if (outcome.status === 'failed') {
+        // A imagem existe e já está no histórico. Chamar isto de "falha ao
+        // gerar" faria o usuário exportar de novo e duplicar o registro.
+        Alert.alert(
+          'Não foi possível compartilhar',
+          'A imagem foi gerada e está no histórico do Lymark. Você pode compartilhá-la pela aba Galeria.',
         );
       }
     } catch (error) {
@@ -222,9 +273,9 @@ export default function CaptureScreen() {
       />
 
       <CaptureActions
-        busy={busy}
-        onTakePhoto={async () => applyPickResult(await takePhotoWithCamera())}
-        onPickFromLibrary={async () => applyPickResult(await pickPhotoFromLibrary())}
+        busy={busy || picking}
+        onTakePhoto={() => void runPick(takePhotoWithCamera)}
+        onPickFromLibrary={() => void runPick(pickPhotoFromLibrary)}
       />
 
       <MetadataForm

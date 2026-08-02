@@ -45,7 +45,14 @@ function reviveEntries(stored: unknown): GalleryEntry[] {
     // `uri` é o nome que o formato antigo usava para o mesmo dado.
     const path = normalizeStoredPath(candidate.path ?? candidate.uri);
 
-    if (!path || typeof candidate.id !== 'string' || !candidate.metadata) return [];
+    if (!path || typeof candidate.id !== 'string') return [];
+
+    // `truthy` não basta: um campo gravado como número por uma versão antiga
+    // faz `.trim()` lançar, e o throw acontece dentro do `.then` da
+    // hidratação — o app fica sem histórico e sem gravar, para sempre, sem
+    // conserto possível dentro do aplicativo.
+    const metadata = normalizeMetadata(candidate.metadata);
+    if (!metadata) return [];
 
     // Registros gravados antes de `stampedFields` existir: assumimos que
     // todos os campos com conteúdo foram carimbados, que era o comportamento
@@ -54,7 +61,7 @@ function reviveEntries(stored: unknown): GalleryEntry[] {
       ? candidate.stampedFields.filter((key): key is WatermarkFieldKey =>
           (WATERMARK_FIELD_KEYS as readonly string[]).includes(key as string),
         )
-      : WATERMARK_FIELD_KEYS.filter((key) => candidate.metadata?.[key]?.trim());
+      : WATERMARK_FIELD_KEYS.filter((key) => metadata[key].trim());
 
     return [
       {
@@ -64,11 +71,31 @@ function reviveEntries(stored: unknown): GalleryEntry[] {
           typeof candidate.exportedAt === 'string'
             ? candidate.exportedAt
             : new Date().toISOString(),
-        metadata: candidate.metadata,
+        metadata,
         stampedFields,
       },
     ];
   });
+}
+
+/**
+ * Converte o que está gravado num `CaptureMetadata` de verdade.
+ *
+ * Devolve `null` quando o registro não é aproveitável, para que ele seja
+ * descartado em vez de derrubar a hidratação de todos os outros.
+ */
+function normalizeMetadata(value: unknown): CaptureMetadata | null {
+  if (typeof value !== 'object' || value === null) return null;
+
+  const source = value as Record<string, unknown>;
+  const metadata = {} as CaptureMetadata;
+
+  for (const key of WATERMARK_FIELD_KEYS) {
+    const field = source[key];
+    metadata[key] = typeof field === 'string' ? field : '';
+  }
+
+  return metadata;
 }
 
 type GalleryContextValue = {
@@ -116,6 +143,14 @@ export function GalleryProvider({ children }: { children: ReactNode }) {
       }
 
       setWritable(result.status !== 'failed');
+      setHydrated(true);
+    }).catch((error: unknown) => {
+      if (!active) return;
+      // Sem este catch, uma exceção aqui deixaria `hydrated` e `writable` em
+      // `false` para sempre: a galeria não mostraria nem os itens nem o estado
+      // vazio, e nenhuma exportação seria persistida — em silêncio.
+      console.warn('[gallery] falha ao hidratar o histórico.', error);
+      setWritable(false);
       setHydrated(true);
     });
 

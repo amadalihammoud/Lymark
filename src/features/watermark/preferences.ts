@@ -62,6 +62,14 @@ export type StoredPreferences = Partial<WatermarkPreferences> & {
  * aplicar a migração de padrões quando o formato salvo é antigo.
  */
 export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferences {
+  // `JSON.parse('null')` é `null`, e uma gravação interrompida deixa
+  // exatamente isso na chave. Ler `.schemaVersion` daí lança dentro da
+  // hidratação e trava a persistência das preferências de forma permanente:
+  // o usuário muda um ajuste, ele volta sozinho no próximo boot, sem erro.
+  if (typeof stored !== 'object' || stored === null) {
+    return mergeWithDefaults({});
+  }
+
   const isLegacy = (stored.schemaVersion ?? 1) < PREFERENCES_SCHEMA_VERSION;
 
   const visibleFields = { ...DEFAULT_WATERMARK_PREFERENCES.visibleFields };

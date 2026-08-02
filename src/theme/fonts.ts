@@ -1,5 +1,9 @@
-import { Barlow_400Regular, Barlow_500Medium } from '@expo-google-fonts/barlow';
-import { PathwayGothicOne_400Regular } from '@expo-google-fonts/pathway-gothic-one';
+// Importados pelo caminho de cada peso, e não pelo índice do pacote. O índice
+// faz `require` dos 20 pesos do Barlow, e o Metro não descarta asset não usado:
+// pelo barril iam 1,9 MB para dentro do APK, contra 196 KB assim.
+import { Barlow_400Regular } from '@expo-google-fonts/barlow/400Regular';
+import { Barlow_500Medium } from '@expo-google-fonts/barlow/500Medium';
+import { PathwayGothicOne_400Regular } from '@expo-google-fonts/pathway-gothic-one/400Regular';
 
 /**
  * Tipografia da marca d'água.
