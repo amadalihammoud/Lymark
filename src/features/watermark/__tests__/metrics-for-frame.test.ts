@@ -1,30 +1,22 @@
 import { SCALE_METRICS, metricsForFrame, scaleMetricsToFrame } from '../layout';
+import { REFERENCE_FRAME_WIDTH, TIME_SIZE_RATIO_MEDIUM } from '../skia-typography';
 
 /**
- * A escala do carimbo é o que hoje amarra a foto exportada ao tamanho da
- * tela: os valores estão em pontos calibrados contra um preview de telefone,
- * então o arquivo sai com a resolução da tela e não com a da fotografia.
+ * A escala do carimbo é o que amarra a foto exportada ao tamanho da tela: os
+ * valores de `SCALE_METRICS` estão em pontos calibrados contra um preview de
+ * telefone, então o arquivo sai com a resolução da tela e não com a da
+ * fotografia.
  *
- * `metricsForFrame` é a peça que desfaz esse laço, e precisa provar duas
- * coisas antes de o renderizador passar a usá-la: que não muda nada no
- * preview de hoje, e que cresce corretamente quando o destino é o arquivo.
+ * `metricsForFrame` desfaz esse laço expressando tudo como fração do quadro.
  */
 const medium = SCALE_METRICS.medium;
 
-/** O quadro para o qual `SCALE_METRICS` foi calibrado: retrato 3:4. */
-const REFERENCE = { width: 330, height: 440 };
+/** O quadro para o qual `SCALE_METRICS` foi calibrado. */
+const REFERENCE = { width: REFERENCE_FRAME_WIDTH, height: 440 };
 
-describe('metricsForFrame — equivalência com o comportamento atual', () => {
+describe('metricsForFrame — âncora na referência', () => {
   it('devolve os valores calibrados no quadro de referência', () => {
     expect(metricsForFrame(medium, REFERENCE)).toEqual(medium);
-  });
-
-  it('reproduz `scaleMetricsToFrame` em qualquer quadro 3:4', () => {
-    for (const height of [120, 240, 300, 380, 440, 600]) {
-      expect(metricsForFrame(medium, { width: height * 0.75, height })).toEqual(
-        scaleMetricsToFrame(medium, height),
-      );
-    }
   });
 
   it('não cresce acima do calibrado quando o preview é maior', () => {
@@ -36,18 +28,21 @@ describe('metricsForFrame — equivalência com o comportamento atual', () => {
   });
 });
 
-describe('metricsForFrame — o menor dos dois lados', () => {
-  it('encolhe pela altura numa panorâmica', () => {
+/**
+ * `scaleMetricsToFrame` — o que o renderizador ainda usa — olha só a altura, e
+ * por isso deixa o tamanho do carimbo depender da largura da tela do aparelho.
+ * Os testes abaixo fixam onde as duas concordam e onde a nova diverge de
+ * propósito.
+ */
+describe('metricsForFrame — divergências deliberadas do comportamento antigo', () => {
+  it('encolhe pela altura numa panorâmica, como a função antiga', () => {
     // 4,4:1 — o caso que cortava a hora para fora da imagem.
     const wide = metricsForFrame(medium, { width: 1320, height: 300 });
 
-    expect(wide.time).toBeLessThan(medium.time);
     expect(wide.time).toBe(scaleMetricsToFrame(medium, 300).time);
   });
 
-  it('encolhe pela largura num quadro alto e estreito', () => {
-    // Escalar só pela altura, como hoje, não encolheria nada aqui — e o
-    // bloco atravessaria a foto na horizontal.
+  it('encolhe pela largura num quadro alto e estreito, onde a antiga não encolhia', () => {
     const narrow = metricsForFrame(medium, { width: 150, height: 900 });
 
     expect(narrow.time).toBeLessThan(medium.time);
@@ -65,20 +60,20 @@ describe('metricsForFrame — exportação em resolução cheia', () => {
   it('acompanha a resolução do arquivo em vez de parar no tamanho da tela', () => {
     const full = metricsForFrame(medium, { width: 3000, height: 4000 }, { allowGrowth: true });
 
-    expect(full.time).toBe(Math.round(medium.time * (3000 / 330)));
+    expect(full.time).toBe(Math.round(medium.time * (3000 / REFERENCE_FRAME_WIDTH)));
   });
 
-  it('mantém o carimbo na mesma proporção da imagem, seja qual for o tamanho', () => {
-    const preview = medium.time / 330;
-
-    for (const width of [660, 1500, 3000, 4000]) {
+  it('reproduz a proporção medida na referência', () => {
+    // O alvo: a hora ocupa 219 px numa imagem de 1128 px, o que dá um corpo
+    // de 0,13225 da largura. É o que torna o carimbo fiel em qualquer tamanho.
+    for (const width of [660, 1128, 3000, 4000]) {
       const full = metricsForFrame(
         medium,
         { width, height: (width * 4) / 3 },
         { allowGrowth: true },
       );
 
-      expect(full.time / width).toBeCloseTo(preview, 3);
+      expect(full.time / width).toBeCloseTo(TIME_SIZE_RATIO_MEDIUM, 3);
     }
   });
 
@@ -94,5 +89,18 @@ describe('metricsForFrame — exportação em resolução cheia', () => {
 
     expect(full.time / full.address).toBeCloseTo(medium.time / medium.address, 1);
     expect(full.time).toBeGreaterThan(full.secondary);
+  });
+});
+
+describe('constantes medidas no Skia', () => {
+  it('a extensão dos algarismos confere com a medição feita no React Native', () => {
+    // 0,730 medido no Skia contra 0,7267 medido no renderizador antigo: menos
+    // de 0,5% de diferença, em duas medições independentes.
+    const { DIGIT_INK_HEIGHT } = jest.requireActual<
+      typeof import('../skia-typography')
+    >('../skia-typography');
+    const { TIME_INK_HEIGHT_RATIO } = jest.requireActual<typeof import('../layout')>('../layout');
+
+    expect(Math.abs(DIGIT_INK_HEIGHT - TIME_INK_HEIGHT_RATIO)).toBeLessThan(0.005);
   });
 });

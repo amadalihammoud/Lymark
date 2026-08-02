@@ -2,6 +2,8 @@ import type { ViewStyle } from 'react-native';
 
 import type { WatermarkPosition, WatermarkScale } from '@/types';
 
+import { REFERENCE_FRAME_WIDTH as SKIA_REFERENCE_FRAME_WIDTH } from './skia-typography';
+
 /**
  * Geometria e escala tipográfica da marca d'água.
  *
@@ -116,8 +118,14 @@ export const TIME_INK_HEIGHT_RATIO = 0.7267;
  */
 const REFERENCE_FRAME_HEIGHT = 440;
 
-/** A largura correspondente. Retrato 3:4: 440 × 3/4. */
-const REFERENCE_FRAME_WIDTH = 330;
+/**
+ * A largura correspondente — medida, não deduzida do formato da foto.
+ *
+ * A dedução ingênua seria 440 × 3/4 = 330, tratando o quadro como um retrato
+ * 3:4 exato. Medir a fonte dentro do Skia mostrou que os pontos de
+ * `SCALE_METRICS` implicam 355,4: ver `skia-typography.ts`.
+ */
+const REFERENCE_FRAME_WIDTH = SKIA_REFERENCE_FRAME_WIDTH;
 
 /** Piso do fator de escala — abaixo disso o carimbo fica ilegível. */
 const MIN_SCALE_FACTOR = 0.45;

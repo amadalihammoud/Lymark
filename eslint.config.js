@@ -16,6 +16,21 @@ module.exports = [
     ignores: ['dist/*', 'node_modules/*', '.expo/*', 'site/*'],
   },
   {
+    // `scripts/` roda no Node, fora do aplicativo: são ferramentas de
+    // calibragem, e não código que vai para o aparelho.
+    files: ['scripts/**/*.js'],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: {
+        require: 'readonly',
+        module: 'writable',
+        __dirname: 'readonly',
+        console: 'readonly',
+        process: 'readonly',
+      },
+    },
+  },
+  {
     rules: {
       'no-restricted-imports': [
         'error',
