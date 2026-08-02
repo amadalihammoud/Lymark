@@ -149,12 +149,35 @@ export type FrameSize = { width: number; height: number };
  *   calibrado. `true` na exportação, onde acompanhar a resolução real do
  *   arquivo é justamente o objetivo.
  */
+/**
+ * Quanto o quadro atual difere daquele para o qual tudo foi calibrado.
+ *
+ * Exposto porque o recuo do carimbo precisa do mesmo fator, e **não** pode ser
+ * derivado do corpo da hora: isso faria a escolha de "texto pequeno" nas
+ * preferências aproximar o bloco da borda da foto, que é outra coisa.
+ */
+export function frameScaleFactor(
+  frame: FrameSize,
+  { allowGrowth = false }: { allowGrowth?: boolean } = {},
+): number {
+  if (frame.width <= 0 || frame.height <= 0) return 1;
+  if (!Number.isFinite(frame.width) || !Number.isFinite(frame.height)) return 1;
+
+  const raw = Math.min(frame.width / REFERENCE_FRAME_WIDTH, frame.height / REFERENCE_FRAME_HEIGHT);
+
+  return allowGrowth ? raw : Math.min(1, Math.max(MIN_SCALE_FACTOR, raw));
+}
+
 export function metricsForFrame(
   metrics: ScaleMetrics,
   frame: FrameSize,
   { allowGrowth = false }: { allowGrowth?: boolean } = {},
 ): ScaleMetrics {
   if (frame.width <= 0 || frame.height <= 0) return metrics;
+  // `NaN` passaria pelo teste acima e contaminaria toda a geometria em
+  // silêncio: cada posição viraria `NaN` e o carimbo simplesmente não seria
+  // desenhado, sem erro.
+  if (!Number.isFinite(frame.width) || !Number.isFinite(frame.height)) return metrics;
 
   const raw = Math.min(
     frame.width / REFERENCE_FRAME_WIDTH,

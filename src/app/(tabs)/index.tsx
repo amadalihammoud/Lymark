@@ -23,7 +23,7 @@ import {
 } from '@/features/watermark/export-photo';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
 import { colors, spacing, typography } from '@/theme';
-import { WATERMARK_FIELD_KEYS } from '@/types';
+import { WATERMARK_FIELD_KEYS, type WatermarkFieldKey } from '@/types';
 
 /** Mensagem específica para cada motivo de falha do GPS. */
 const LOOKUP_MESSAGES: Record<AddressLookupStatus, string> = {
@@ -78,6 +78,16 @@ export default function CaptureScreen() {
    * documental — ou reapareceria dentro de uma captura já reiniciada.
    */
   const lookupToken = useRef(0);
+
+  /**
+   * O usuário digitou o próprio código.
+   *
+   * O campo é editável, e quem o preenche à mão costuma estar amarrando a foto
+   * a uma ordem de serviço. Ressortear em cima disso destruiria o vínculo sem
+   * avisar — então a renovação automática só vale para o código que o próprio
+   * app gerou.
+   */
+  const codeEdited = useRef(false);
   const addressRef = useRef(draft.metadata.address);
   useEffect(() => {
     addressRef.current = draft.metadata.address;
@@ -98,7 +108,7 @@ export default function CaptureScreen() {
         setPhoto(result.photo);
         if (isFirstPhoto) {
           syncDateTime();
-        } else {
+        } else if (!codeEdited.current) {
           // Foto nova, código novo. Sem isto, quem fotografa o segundo item
           // sem passar por "Começar nova captura" exporta duas imagens com o
           // mesmo identificador — e o campo existe justamente para distinguir
@@ -119,6 +129,11 @@ export default function CaptureScreen() {
       case 'cancelled':
         break;
     }
+  };
+
+  const handleChangeField = (key: WatermarkFieldKey, value: string) => {
+    if (key === 'code') codeEdited.current = true;
+    setField(key, value);
   };
 
   const runPick = async (open: () => Promise<PhotoPickResult>) => {
@@ -177,6 +192,7 @@ export default function CaptureScreen() {
             // Invalida qualquer busca pendente: a resposta não pode cair na
             // captura nova.
             lookupToken.current += 1;
+            codeEdited.current = false;
             resetDraft();
           },
         },
@@ -281,9 +297,12 @@ export default function CaptureScreen() {
       <MetadataForm
         metadata={draft.metadata}
         visibleFields={preferences.visibleFields}
-        onChangeField={setField}
+        onChangeField={handleChangeField}
         onSyncDateTime={syncDateTime}
-        onRegenerateCode={regenerateCode}
+        onRegenerateCode={() => {
+          codeEdited.current = false;
+          regenerateCode();
+        }}
         onLocate={handleLocate}
         locating={locating}
         // Mexer nos campos durante a captura nativa faria o carimbo da

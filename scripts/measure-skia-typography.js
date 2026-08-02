@@ -108,7 +108,7 @@ CanvasKitInit({ locateFile: (f) => path.join(NM, 'canvaskit-wasm/bin', f) }).the
 
   // Verificação contra a referência: normalizada a 1128 px de largura, a hora
   // media 219 px. O corpo equivalente vem da razão calibrada 47/330.
-  const sizeAt1128 = (47 / 330) * 1128;
+  const sizeAt1128 = (47 / 355.4) * 1128;
   const check = inkBox(CanvasKit, tf.clock, sizeAt1128, '21:55');
   console.log('\n=== verificação contra a referência (imagem de 1128 px) ===');
   console.log('corpo equivalente        :', sizeAt1128.toFixed(1));

@@ -3,7 +3,11 @@ import type { WatermarkPreferences } from '@/types';
 import type { WatermarkContent } from '../build-content';
 import { SCALE_METRICS } from '../layout';
 import { DEFAULT_WATERMARK_PREFERENCES } from '../preferences';
-import { DIGIT_INK_HEIGHT, DIGIT_INK_TOP_FROM_BASELINE } from '../skia-typography';
+import {
+  DIGIT_INK_HEIGHT,
+  DIGIT_INK_TOP_FROM_BASELINE,
+  TIME_SIZE_RATIO_MEDIUM,
+} from '../skia-typography';
 import { buildStampGeometry, type MeasureText, type StampGeometry } from '../stamp-layout';
 
 /**
@@ -11,12 +15,14 @@ import { buildStampGeometry, type MeasureText, type StampGeometry } from '../sta
  * só existe no tamanho em que foi desenhado na tela, e é por isso que a foto
  * exportada sai com a resolução do telefone.
  *
- * A medição de texto entra como função para que estes testes rodem sem motor
- * gráfico. As proporções do dublê são as reais, medidas no Skia: a hora ocupa
- * 1,468 corpos de largura, e os textos corridos cerca de 0,5 por caractere.
+ * A medição entra como função para que estes testes rodem sem motor gráfico.
+ * O dublê usa o **avanço** medido no Skia — 1,554 corpos para "21:55", contra
+ * os 1,468 da tinta. Medir a grandeza errada aqui tornava a suíte incapaz de
+ * detectar largura de bloco e ponto de quebra errados, que é justamente o que
+ * ela precisa vigiar.
  */
 const measure: MeasureText = (text, size, font) =>
-  font === 'clock' ? (text.length * size * 1.468) / 5 : text.length * size * 0.5;
+  font === 'clock' ? (text.length * size * 1.554) / 5 : text.length * size * 0.53;
 
 const content: WatermarkContent = {
   time: '07:42',
@@ -69,7 +75,27 @@ describe('buildStampGeometry — o essencial', () => {
   });
 
   it('não desenha antes de o quadro ser medido', () => {
-    expect(build({}, { frame: { width: 0, height: 0 } })).toEqual({ texts: [], rects: [] });
+    const g = build({}, { frame: { width: 0, height: 0 } });
+
+    expect(g.texts).toHaveLength(0);
+    expect(g.rects).toHaveLength(0);
+  });
+
+  it('não desenha com dimensão inválida, em vez de espalhar NaN', () => {
+    // `NaN` passa por qualquer comparação e contaminaria toda a geometria em
+    // silêncio: o carimbo sumiria sem erro nenhum.
+    for (const frame of [{ width: NaN, height: 440 }, { width: 355, height: NaN }]) {
+      const g = build({}, { frame });
+
+      expect(g.texts).toHaveLength(0);
+    }
+  });
+
+  it('acompanha todo texto com sombra — sem ela o branco some sobre foto clara', () => {
+    const g = build();
+
+    expect(g.shadow.color).toContain('rgba');
+    expect(g.shadow.blur).toBeGreaterThan(0);
   });
 });
 
@@ -207,8 +233,10 @@ describe('marca do app', () => {
 
     expect(head.color).toBe(colors.text);
     expect(tail.color).toBe(colors.accent);
-    // Emendados, sem espaço: é uma palavra só, em duas cores.
-    expect(tail.x).toBeCloseTo(head.x + measure('Ly', head.size, 'medium'), 5);
+    // Emendados, sem espaço: é uma palavra só, em duas cores. O avanço de
+    // "Ly" inclui o espaçamento entre caracteres, que o desenho aplica.
+    const spacing = head.letterSpacing ?? 0;
+    expect(tail.x).toBeCloseTo(head.x + measure('Ly', head.size, 'medium') + spacing * 2, 5);
     expect(tail.baseline).toBe(head.baseline);
   });
 
@@ -265,10 +293,12 @@ describe('independência de resolução', () => {
         allowGrowth: true,
       });
 
-      // 219 px de largura numa imagem de 1128 px é o alvo medido na
-      // referência; a proporção precisa valer em qualquer tamanho.
+      // O invariante é o corpo da hora como fração da largura da imagem —
+      // 0,13225, derivado do alvo de 219 px de tinta numa imagem de 1128.
+      // Comparar a largura medida contra 219/1128 seria tautológico: o dublê
+      // mede avanço, e o alvo é tinta.
       const time = find(g, '07:42')!;
-      expect(measure(time.text, time.size, 'clock') / width).toBeCloseTo(219 / 1128, 2);
+      expect(time.size / width).toBeCloseTo(TIME_SIZE_RATIO_MEDIUM, 3);
     }
   });
 
@@ -282,5 +312,159 @@ describe('independência de resolução', () => {
     });
 
     expect(find(g, '07:42')!.size).toBe(SCALE_METRICS.medium.time);
+  });
+});
+
+/**
+ * Cada teste abaixo tranca um defeito que a revisão encontrou executando
+ * cenários — nenhum deles seria pego pelas asserções anteriores, que só
+ * verificavam presença e ordem.
+ */
+describe('defeitos encontrados na revisão', () => {
+  const withoutTime: WatermarkContent = { ...content, time: null, showRule: false };
+
+  it('sem hora, data e endereço não se sobrepõem', () => {
+    const g = buildStampGeometry({
+      content: withoutTime,
+      preferences: DEFAULT_WATERMARK_PREFERENCES,
+      frame,
+      colors,
+      measure,
+    });
+
+    const date = find(g, '12 ago. 2026')!;
+    const address = g.texts.find((t) => t.text.includes('Puglisi'))!;
+
+    // Antes as duas caíam exatamente na mesma linha de base.
+    expect(address.baseline).toBeGreaterThan(date.baseline);
+  });
+
+  it('sem hora, nada é desenhado acima do topo do quadro', () => {
+    const g = buildStampGeometry({
+      content: withoutTime,
+      preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-left' },
+      frame,
+      colors,
+      measure,
+    });
+
+    for (const t of g.texts) {
+      expect(t.baseline).toBeGreaterThan(0);
+    }
+  });
+
+  it('sem hora e ancorado à direita, data e dia continuam dentro da foto', () => {
+    const g = buildStampGeometry({
+      content: { ...withoutTime, address: 'Rua A, 5' },
+      preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-right' },
+      frame,
+      colors,
+      measure,
+    });
+
+    for (const t of g.texts.filter((x) => !x.rotate)) {
+      const width = measure(t.text, t.size, t.font);
+      expect(t.x + width).toBeLessThanOrEqual(frame.width + 0.5);
+    }
+  });
+
+  it('ancorado à direita, o cabeçalho acompanha a borda direita do bloco', () => {
+    const g = buildStampGeometry({
+      content: { ...content, address: 'Avenida Senador Pinheiro Machado, 1024' },
+      preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-right' },
+      frame,
+      colors,
+      measure,
+    });
+
+    const date = find(g, '12 ago. 2026')!;
+    const lines = g.texts.filter((t) => t.font === 'body' && t.text.includes(','));
+    const blockRight = Math.max(
+      ...lines.map((t) => t.x + measure(t.text, t.size, t.font)),
+    );
+
+    // O fim da data é a borda direita do cabeçalho.
+    expect(date.x + measure(date.text, date.size, 'body')).toBeCloseTo(blockRight, 0);
+  });
+
+  it('palavra longa demais é quebrada, e o bloco não sai da foto', () => {
+    const g = buildStampGeometry({
+      content: { ...content, address: 'A'.repeat(60) },
+      preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-right' },
+      frame,
+      colors,
+      measure,
+    });
+
+    const lines = g.texts.filter((t) => t.text.startsWith('AAA'));
+
+    expect(lines.length).toBeGreaterThan(1);
+    for (const t of g.texts.filter((x) => !x.rotate)) {
+      expect(t.x).toBeGreaterThanOrEqual(0);
+    }
+  });
+
+  it('a largura da barra usada na conta é a mesma do desenho', () => {
+    // Divergiam: 2 fixo na conta, `time/23` no desenho. Numa exportação
+    // grande, o bloco estourava dezenas de pixels para fora.
+    const g = buildStampGeometry({
+      content,
+      preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-right' },
+      frame: { width: 3000, height: 4000 },
+      colors,
+      measure,
+      allowGrowth: true,
+    });
+
+    const rule = g.rects.find((r) => r.color === colors.accent)!;
+    const date = find(g, '12 ago. 2026')!;
+
+    expect(rule.width).toBeGreaterThan(2);
+    expect(date.x).toBeGreaterThanOrEqual(rule.x + rule.width);
+    expect(date.x + measure(date.text, date.size, 'body')).toBeLessThanOrEqual(3000);
+  });
+
+  it('dia da semana sem data fica no topo da tinta, não na base', () => {
+    const soloWeekday = buildStampGeometry({
+      content: { ...content, date: null },
+      preferences: DEFAULT_WATERMARK_PREFERENCES,
+      frame,
+      colors,
+      measure,
+    });
+    const withDate = buildStampGeometry({
+      content,
+      preferences: DEFAULT_WATERMARK_PREFERENCES,
+      frame,
+      colors,
+      measure,
+    });
+
+    // Com data, o dia vai para a base; sozinho, sobe — é o que o
+    // `space-between` do layout antigo faz com um único filho.
+    expect(find(soloWeekday, 'Qua')!.baseline).toBeLessThan(find(withDate, 'Qua')!.baseline);
+  });
+
+  it('o endereço quebra descontando o respiro interno, como o container antigo', () => {
+    const g = build();
+    const metrics = SCALE_METRICS.medium;
+    const util = frame.width * 0.58 - metrics.paddingHorizontal * 2;
+
+    for (const t of g.texts.filter((x) => x.font === 'body' && x.text.includes(','))) {
+      expect(measure(t.text, t.size, t.font)).toBeLessThanOrEqual(util);
+    }
+  });
+
+  it('o recuo até a borda não muda com a preferência de tamanho do texto', () => {
+    // O recuo da âncora é fixo; só o respiro interno acompanha a escala, como
+    // no layout antigo. Derivar o recuo do corpo da hora fazia "pequeno"
+    // também aproximar o bloco da borda da foto, que é outra decisão.
+    const small = find(build({ scale: 'small' }), '07:42')!;
+    const large = find(build({ scale: 'large' }), '07:42')!;
+
+    const paddingDelta =
+      SCALE_METRICS.large.paddingHorizontal - SCALE_METRICS.small.paddingHorizontal;
+
+    expect(large.x - small.x).toBe(paddingDelta);
   });
 });

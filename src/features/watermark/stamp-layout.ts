@@ -10,16 +10,19 @@ import {
   SIDE_CODE_CENTER_RATIO,
   SIDE_CODE_INSET,
   SIDE_CODE_SIZE_RATIO,
+  TIME_INK_HEIGHT_RATIO,
+  TIME_INK_TOP_RATIO,
   WATERMARK_INSET,
+  frameScaleFactor,
   metricsForFrame,
   type ScaleMetrics,
 } from './layout';
-import { DIGIT_INK_HEIGHT, DIGIT_INK_TOP_FROM_BASELINE } from './skia-typography';
+import { DIGIT_INK_TOP_FROM_BASELINE } from './skia-typography';
 
 /**
  * A geometria do carimbo, separada de quem a desenha.
  *
- * O carimbo hoje existe como componentes do React Native, o que o prende à
+ * O carimbo existe hoje como componentes do React Native, o que o prende à
  * tela: para exportar, o app fotografa a própria interface, e o arquivo sai
  * com a resolução do telefone em vez da resolução da fotografia.
  *
@@ -34,18 +37,23 @@ import { DIGIT_INK_HEIGHT, DIGIT_INK_TOP_FROM_BASELINE } from './skia-typography
 
 export type StampFont = 'clock' | 'body' | 'medium';
 
-/** Mede a largura de um texto. O motor gráfico fornece a implementação. */
+/**
+ * Mede o **avanço** de um texto — a distância até onde o próximo glifo
+ * começaria, e não a largura da tinta. É o avanço que determina posição.
+ */
 export type MeasureText = (text: string, size: number, font: StampFont) => number;
 
 export type StampText = {
   text: string;
-  /** Origem horizontal do texto — sempre a borda esquerda do traçado. */
+  /** Origem horizontal do texto. */
   x: number;
   /** Linha de base, e não o topo: é como todo motor gráfico posiciona texto. */
   baseline: number;
   size: number;
   font: StampFont;
   color: string;
+  /** Espaçamento entre caracteres, em pontos do destino. */
+  letterSpacing?: number;
   /** Giro em graus, em torno de (`x`, `baseline`). */
   rotate?: number;
 };
@@ -56,11 +64,22 @@ export type StampRect = {
   width: number;
   height: number;
   color: string;
+  /** Raio dos cantos. A faixa de fundo é arredondada. */
+  radius?: number;
 };
 
 export type StampGeometry = {
   texts: StampText[];
   rects: StampRect[];
+  /**
+   * Sombra aplicada a **todo** texto do carimbo.
+   *
+   * Sem a faixa de fundo — que vem desligada por padrão — é a sombra que
+   * mantém o texto branco legível sobre céu, areia ou parede clara. Sai da
+   * geometria, e não do renderizador, porque é parte do desenho e não estilo
+   * de tela.
+   */
+  shadow: { color: string; offsetY: number; blur: number };
 };
 
 export type StampColors = {
@@ -71,17 +90,47 @@ export type StampColors = {
 
 export type StampFrame = { width: number; height: number };
 
-/**
- * Onde fica a linha de base da primeira linha de um texto, contando do topo
- * da caixa que ele ocupa.
- *
- * Para os algarismos da hora a resposta é medida: a tinta começa 0,715 do
- * corpo acima da linha de base. Para os textos corridos, aproximar por 0,8 do
- * corpo é o suficiente — eles não têm nada alinhado à tinta.
- */
-const BODY_BASELINE_RATIO = 0.8;
+/** Proporções da sombra, relativas ao corpo do endereço. */
+const SHADOW_OFFSET_RATIO = 0.077;
+const SHADOW_BLUR_RATIO = 0.23;
 
-/** Quebra o endereço em linhas que caibam na largura disponível. */
+/**
+ * Onde fica a linha de base de um texto corrido, contando do topo da caixa.
+ *
+ * O React Native centraliza a caixa: `(lineHeight − (ascent + descent))/2 +
+ * ascent`. Com Barlow (ascent 1,0 em, descent 0,2 em) e a entrelinha do
+ * endereço, isso dá 1,093 do corpo. Reproduzir esse número é o que mantém o
+ * espaçamento igual ao do renderizador antigo.
+ */
+const BODY_BASELINE_RATIO = 1.093;
+
+/** Entre a base da caixa da hora e a base da tinta dos algarismos. */
+const TIME_INK_BOTTOM_GAP = 1 - TIME_INK_TOP_RATIO - TIME_INK_HEIGHT_RATIO;
+
+/** `letterSpacing` de cada papel, em frações do corpo. Medido no antigo. */
+const CODE_LETTER_SPACING_RATIO = 0.055;
+const SIDE_CODE_LETTER_SPACING_RATIO = 0.107;
+const BRAND_LETTER_SPACING_RATIO = 0.023;
+
+/** Largura de um texto já contando o espaçamento entre caracteres. */
+function widthOf(
+  text: string,
+  size: number,
+  font: StampFont,
+  measure: MeasureText,
+  letterSpacing = 0,
+): number {
+  return measure(text, size, font) + letterSpacing * Math.max(0, text.length - 1);
+}
+
+/**
+ * Quebra o texto em linhas que caibam na largura disponível.
+ *
+ * Quebra **dentro** da palavra quando ela sozinha não cabe. Sem isso, um
+ * endereço sem espaços — ou uma palavra muito longa — viraria uma linha maior
+ * que a foto, e com o bloco ancorado à direita a posição de início ficaria
+ * negativa: o carimbo desenhado fora da imagem.
+ */
 function wrapText(
   text: string,
   size: number,
@@ -93,19 +142,44 @@ function wrapText(
   if (words.length === 0) return [];
 
   const lines: string[] = [];
-  let current = words[0];
+  let current = '';
 
-  for (const word of words.slice(1)) {
-    const candidate = `${current} ${word}`;
+  const flush = () => {
+    if (current) lines.push(current);
+    current = '';
+  };
+
+  const breakLongWord = (word: string) => {
+    let chunk = '';
+    for (const char of word) {
+      if (chunk && measure(chunk + char, size, font) > maxWidth) {
+        lines.push(chunk);
+        chunk = char;
+      } else {
+        chunk += char;
+      }
+    }
+    current = chunk;
+  };
+
+  for (const word of words) {
+    const candidate = current ? `${current} ${word}` : word;
+
     if (measure(candidate, size, font) <= maxWidth) {
       current = candidate;
+      continue;
+    }
+
+    flush();
+
+    if (measure(word, size, font) > maxWidth) {
+      breakLongWord(word);
     } else {
-      lines.push(current);
       current = word;
     }
   }
 
-  lines.push(current);
+  flush();
   return lines;
 }
 
@@ -115,6 +189,11 @@ function isTop(position: WatermarkPosition) {
 
 function isLeft(position: WatermarkPosition) {
   return position.endsWith('left');
+}
+
+/** Mantém um valor dentro do quadro, para nada ser desenhado fora da foto. */
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), Math.max(min, max));
 }
 
 /**
@@ -141,13 +220,25 @@ export function buildStampGeometry({
   const texts: StampText[] = [];
   const rects: StampRect[] = [];
 
-  if (content.isEmpty && !preferences.showBrand) return { texts, rects };
-  if (frame.width <= 0 || frame.height <= 0) return { texts, rects };
-
   const metrics = metricsForFrame(SCALE_METRICS[preferences.scale], frame, { allowGrowth });
-  const inset = scaleInset(WATERMARK_INSET, frame, metrics);
+  const empty: StampGeometry = {
+    texts,
+    rects,
+    shadow: {
+      color: 'rgba(0, 0, 0, 0.85)',
+      offsetY: Math.max(1, Math.round(metrics.address * SHADOW_OFFSET_RATIO)),
+      blur: Math.max(1, Math.round(metrics.address * SHADOW_BLUR_RATIO)),
+    },
+  };
 
-  const codeOnSide = content.code !== null && preferences.codePlacement === 'side';
+  if (content.isEmpty && !preferences.showBrand) return empty;
+  if (!(frame.width > 0) || !(frame.height > 0)) return empty;
+  if (!Number.isFinite(frame.width) || !Number.isFinite(frame.height)) return empty;
+
+  // O recuo acompanha o quadro, e não o corpo da hora: derivá-lo das métricas
+  // faria "texto pequeno" também aproximar o bloco da borda da foto.
+  const factor = frameScaleFactor(frame, { allowGrowth });
+  const inset = Math.max(1, Math.round(WATERMARK_INSET * factor));
 
   if (!content.isEmpty) {
     layoutDataBlock({ content, preferences, frame, colors, measure, metrics, inset, texts, rects });
@@ -157,21 +248,37 @@ export function buildStampGeometry({
     layoutBrand({ preferences, frame, colors, measure, metrics, inset, texts });
   }
 
-  if (codeOnSide && content.code) {
+  if (content.code !== null && preferences.codePlacement === 'side') {
     layoutSideCode({ code: content.code, frame, colors, measure, metrics, inset, texts });
   }
 
-  return { texts, rects };
+  return { ...empty, texts, rects };
 }
 
-/**
- * O recuo é uma medida de tela, como as métricas. Cresce junto com elas para
- * que a margem do carimbo seja proporcional à foto, e não a um número de
- * pontos que sumiria numa imagem de 4000 px.
- */
-function scaleInset(base: number, frame: StampFrame, metrics: ScaleMetrics) {
-  const reference = SCALE_METRICS.medium.time;
-  return Math.round((base * metrics.time) / reference);
+/** Altura da caixa do bloco superior, e onde a tinta dos algarismos cai nela. */
+function headerBox(content: WatermarkContent, metrics: ScaleMetrics) {
+  if (content.time) {
+    // A caixa é a **linha** da hora, não a tinta. Reservar só a tinta apertava
+    // o endereço contra os algarismos: o vão caía de 15 px para 6 px.
+    return {
+      height: metrics.time,
+      inkTop: Math.round(metrics.time * TIME_INK_TOP_RATIO),
+      inkHeight: Math.round(metrics.time * TIME_INK_HEIGHT_RATIO),
+    };
+  }
+
+  // Sem hora, o bloco superior ainda existe se houver data ou dia da semana —
+  // e precisa de altura própria. Sem isso, data e endereço eram desenhados na
+  // mesma linha de base, um sobre o outro.
+  const lines = (content.date ? 1 : 0) + (content.weekday ? 1 : 0);
+  const lineHeight = Math.round(metrics.secondary * ADDRESS_LINE_HEIGHT_RATIO);
+
+  return { height: lines * lineHeight, inkTop: 0, inkHeight: lines * lineHeight };
+}
+
+/** Largura da barra âmbar. Uma só definição, usada na conta e no desenho. */
+function ruleWidth(metrics: ScaleMetrics) {
+  return Math.max(2, Math.round(metrics.time / 23));
 }
 
 function layoutDataBlock({
@@ -197,9 +304,16 @@ function layoutDataBlock({
 }) {
   const { position } = preferences;
   const left = isLeft(position);
-  const maxWidth = frame.width * 0.58;
+  const codeSpacing = metrics.code * CODE_LETTER_SPACING_RATIO;
 
-  const headerHeight = content.time ? Math.round(metrics.time * DIGIT_INK_HEIGHT) : 0;
+  // A largura útil desconta o respiro interno, como no container antigo: os
+  // 58% eram da âncora, que continha o padding.
+  const maxWidth = Math.max(
+    metrics.address,
+    frame.width * 0.58 - metrics.paddingHorizontal * 2,
+  );
+
+  const header = headerBox(content, metrics);
 
   const addressLines = content.address
     ? wrapText(content.address, metrics.address, 'body', maxWidth, measure)
@@ -210,27 +324,29 @@ function layoutDataBlock({
   const codeInBlock = content.code !== null && preferences.codePlacement === 'block';
   const codeHeight = codeInBlock ? Math.round(metrics.code * ADDRESS_LINE_HEIGHT_RATIO) : 0;
 
-  const gapAfterHeader = headerHeight > 0 && addressHeight > 0 ? metrics.gap : 0;
+  const gapAfterHeader = header.height > 0 && addressHeight > 0 ? metrics.gap : 0;
   const gapBeforeCode = codeInBlock ? Math.round(metrics.gap / 2) : 0;
-  const blockHeight = headerHeight + gapAfterHeader + addressHeight + gapBeforeCode + codeHeight;
+  const blockHeight = header.height + gapAfterHeader + addressHeight + gapBeforeCode + codeHeight;
 
-  const top = isTop(position)
+  // A largura do cabeçalho entra sempre, e não só quando há hora: data e dia
+  // da semana continuam sendo desenhados sem ela, e ficavam de fora da conta
+  // — com a âncora à direita, saíam da foto.
+  const widths: number[] = [headerWidth(content, metrics, measure)];
+  for (const line of addressLines) widths.push(widthOf(line, metrics.address, 'body', measure));
+  if (codeInBlock && content.code) {
+    widths.push(widthOf(content.code, metrics.code, 'medium', measure, codeSpacing));
+  }
+  const blockWidth = Math.max(0, ...widths);
+
+  const edge = inset + metrics.paddingHorizontal;
+  const rawLeft = left ? edge : frame.width - edge - blockWidth;
+  const rawTop = isTop(position)
     ? inset + metrics.paddingVertical
     : frame.height - inset - metrics.paddingVertical - blockHeight;
 
-  // A faixa de fundo cobre o bloco inteiro, e por isso é calculada antes de
-  // qualquer texto: ela precisa da largura final, que só se conhece aqui.
-  const widths: number[] = [];
-  if (content.time) widths.push(headerWidth(content, metrics, measure));
-  for (const line of addressLines) widths.push(measure(line, metrics.address, 'body'));
-  if (codeInBlock && content.code) widths.push(measure(content.code, metrics.code, 'medium'));
-  const blockWidth = widths.length ? Math.max(...widths) : 0;
-
-  // O recuo medido na referência é de 2,9% da largura, e no layout antigo
-  // vinha da soma do recuo da âncora com o respiro interno do bloco. Aqui não
-  // existe container: o texto precisa carregar os dois, ou encosta na borda.
-  const edge = inset + metrics.paddingHorizontal;
-  const blockLeft = left ? edge : frame.width - edge - blockWidth;
+  // Nada é desenhado fora da foto, mesmo num quadro menor que o bloco.
+  const blockLeft = clamp(rawLeft, 0, frame.width - blockWidth);
+  const top = clamp(rawTop, 0, frame.height - blockHeight);
 
   if (preferences.showBackdrop && blockWidth > 0) {
     rects.push({
@@ -239,21 +355,26 @@ function layoutDataBlock({
       width: blockWidth + metrics.paddingHorizontal * 2,
       height: blockHeight + metrics.paddingVertical * 2,
       color: colors.backdrop,
+      radius: Math.round(metrics.paddingHorizontal),
     });
   }
 
   let cursor = top;
 
-  if (content.time || content.showRule || content.date || content.weekday) {
+  if (header.height > 0) {
     layoutHeader({
-      content, metrics, colors, measure, texts, rects,
-      x: blockLeft, top: cursor, headerHeight,
+      content, metrics, colors, measure, texts, rects, header, top: cursor,
+      // Ancorado à direita, o cabeçalho acompanha a borda direita do bloco —
+      // antes ele ficava alinhado à esquerda enquanto o resto ia para a direita.
+      x: left
+        ? blockLeft
+        : blockLeft + blockWidth - headerWidth(content, metrics, measure),
     });
-    cursor += headerHeight + gapAfterHeader;
+    cursor += header.height + gapAfterHeader;
   }
 
   for (const line of addressLines) {
-    const width = measure(line, metrics.address, 'body');
+    const width = widthOf(line, metrics.address, 'body', measure);
     texts.push({
       text: line,
       x: left ? blockLeft : blockLeft + blockWidth - width,
@@ -266,7 +387,7 @@ function layoutDataBlock({
   }
 
   if (codeInBlock && content.code) {
-    const width = measure(content.code, metrics.code, 'medium');
+    const width = widthOf(content.code, metrics.code, 'medium', measure, codeSpacing);
     texts.push({
       text: content.code,
       x: left ? blockLeft : blockLeft + blockWidth - width,
@@ -274,6 +395,7 @@ function layoutDataBlock({
       size: metrics.code,
       font: 'medium',
       color: colors.text,
+      letterSpacing: codeSpacing,
     });
   }
 }
@@ -284,24 +406,24 @@ function headerWidth(
   metrics: ScaleMetrics,
   measure: MeasureText,
 ): number {
-  let width = content.time ? measure(content.time, metrics.time, 'clock') : 0;
+  let width = content.time ? widthOf(content.time, metrics.time, 'clock', measure) : 0;
 
   if (content.showRule) {
     width += Math.round(metrics.time * RULE_SPACE_BEFORE_RATIO);
-    width += 2;
+    width += ruleWidth(metrics);
     width += Math.round(metrics.time * RULE_SPACE_AFTER_RATIO);
   }
 
   const secondary = Math.max(
-    content.date ? measure(content.date, metrics.secondary, 'body') : 0,
-    content.weekday ? measure(content.weekday, metrics.secondary, 'body') : 0,
+    content.date ? widthOf(content.date, metrics.secondary, 'body', measure) : 0,
+    content.weekday ? widthOf(content.weekday, metrics.secondary, 'body', measure) : 0,
   );
 
   return width + secondary;
 }
 
 function layoutHeader({
-  content, metrics, colors, measure, texts, rects, x, top, headerHeight,
+  content, metrics, colors, measure, texts, rects, x, top, header,
 }: {
   content: WatermarkContent;
   metrics: ScaleMetrics;
@@ -311,23 +433,23 @@ function layoutHeader({
   rects: StampRect[];
   x: number;
   top: number;
-  headerHeight: number;
+  header: { height: number; inkTop: number; inkHeight: number };
 }) {
   let cursor = x;
+  const inkTopY = top + header.inkTop;
 
   if (content.time) {
-    // A linha de base sai da medição: a tinta dos algarismos começa 0,715 do
-    // corpo acima dela. É isso que faz o topo dos dígitos cair exatamente em
-    // `top`, e é o que a barra âmbar usa para casar com eles.
+    // A tinta dos algarismos começa 0,715 do corpo acima da linha de base —
+    // medido no próprio Skia. É daí que sai a posição da linha de base.
     texts.push({
       text: content.time,
       x: cursor,
-      baseline: top - Math.round(metrics.time * DIGIT_INK_TOP_FROM_BASELINE),
+      baseline: inkTopY - Math.round(metrics.time * DIGIT_INK_TOP_FROM_BASELINE),
       size: metrics.time,
       font: 'clock',
       color: colors.text,
     });
-    cursor += measure(content.time, metrics.time, 'clock');
+    cursor += widthOf(content.time, metrics.time, 'clock', measure);
   }
 
   if (content.showRule) {
@@ -336,22 +458,22 @@ function layoutHeader({
     // texto, que é maior. É a diferença que se enxerga a olho nu.
     rects.push({
       x: cursor,
-      y: top,
-      width: Math.max(2, Math.round(metrics.time / 23)),
-      height: headerHeight,
+      y: inkTopY,
+      width: ruleWidth(metrics),
+      height: header.inkHeight,
       color: colors.accent,
     });
-    cursor += Math.max(2, Math.round(metrics.time / 23));
-    cursor += Math.round(metrics.time * RULE_SPACE_AFTER_RATIO);
+    cursor += ruleWidth(metrics) + Math.round(metrics.time * RULE_SPACE_AFTER_RATIO);
   }
 
-  // Data encostada no topo da tinta, dia da semana encostado na base: é essa
-  // distribuição que reproduz a referência.
+  // Data encostada no topo da tinta, dia da semana na base: é essa
+  // distribuição que reproduz a referência. Com um só dos dois, ele fica no
+  // topo — que é o que o `space-between` do layout antigo faz com um filho.
   if (content.date) {
     texts.push({
       text: content.date,
       x: cursor,
-      baseline: top + Math.round(metrics.secondary * BODY_BASELINE_RATIO),
+      baseline: inkTopY + Math.round(metrics.secondary * BODY_BASELINE_RATIO * 0.73),
       size: metrics.secondary,
       font: 'body',
       color: colors.text,
@@ -362,7 +484,9 @@ function layoutHeader({
     texts.push({
       text: content.weekday,
       x: cursor,
-      baseline: top + headerHeight,
+      baseline: content.date
+        ? inkTopY + header.inkHeight
+        : inkTopY + Math.round(metrics.secondary * BODY_BASELINE_RATIO * 0.73),
       size: metrics.secondary,
       font: 'body',
       color: colors.text,
@@ -382,20 +506,26 @@ function layoutBrand({
   texts: StampText[];
 }) {
   const size = Math.round(metrics.address * BRAND_SIZE_RATIO);
+  const spacing = size * BRAND_LETTER_SPACING_RATIO;
   const { brandPosition } = preferences;
-  const edge = inset + metrics.paddingHorizontal;
 
-  // A marca é bicolor: "Ly" no branco do carimbo e "mark" no âmbar. São dois
-  // traçados, não um — desenhar tudo numa cor só descaracteriza a assinatura.
-  const headWidth = measure('Ly', size, 'medium');
-  const total = headWidth + measure('mark', size, 'medium');
+  // A âncora da marca usa só o recuo, sem respiro interno — é assim no layout
+  // antigo, e somar o padding a deslocaria para dentro.
+  const headWidth = widthOf('Ly', size, 'medium', measure, spacing) + spacing;
+  const total = headWidth + widthOf('mark', size, 'medium', measure, spacing);
 
-  const x = isLeft(brandPosition) ? edge : frame.width - edge - total;
+  const x = clamp(
+    isLeft(brandPosition) ? inset : frame.width - inset - total,
+    0,
+    Math.max(0, frame.width - total),
+  );
   const baseline = isTop(brandPosition)
-    ? inset + metrics.paddingVertical + Math.round(size * BODY_BASELINE_RATIO)
-    : frame.height - inset - metrics.paddingVertical;
+    ? inset + Math.round(size * BODY_BASELINE_RATIO * 0.73)
+    : frame.height - inset;
 
-  texts.push({ text: 'Ly', x, baseline, size, font: 'medium', color: colors.text });
+  // Bicolor: "Ly" no branco do carimbo, "mark" no âmbar. Numa cor só, a
+  // assinatura se descaracteriza.
+  texts.push({ text: 'Ly', x, baseline, size, font: 'medium', color: colors.text, letterSpacing: spacing });
   texts.push({
     text: 'mark',
     x: x + headWidth,
@@ -403,6 +533,7 @@ function layoutBrand({
     size,
     font: 'medium',
     color: colors.accent,
+    letterSpacing: spacing,
   });
 }
 
@@ -418,23 +549,25 @@ function layoutSideCode({
   texts: StampText[];
 }) {
   const size = Math.round(metrics.code * SIDE_CODE_SIZE_RATIO);
-  const width = measure(code, size, 'medium');
+  const spacing = size * SIDE_CODE_LETTER_SPACING_RATIO;
+  const width = widthOf(code, size, 'medium', measure, spacing);
 
   // Girado −90°, o comprimento do texto corre ao longo da altura da foto. O
   // centro cai a 38% da altura, medido na referência — não na metade.
   const center = frame.height * SIDE_CODE_CENTER_RATIO;
 
-  // A margem até a borda direita foi medida em 11,8 px numa imagem de 1128:
-  // proporcional, como todo o resto, e não um número fixo de pontos.
-  const margin = Math.round((SIDE_CODE_INSET * inset) / WATERMARK_INSET);
+  // Margem proporcional, como todo o resto: em pontos fixos ela sumiria numa
+  // imagem de 4000 px.
+  const margin = Math.max(1, Math.round((SIDE_CODE_INSET * inset) / WATERMARK_INSET));
 
   texts.push({
     text: code,
-    x: frame.width - margin - Math.round(size * 0.28),
-    baseline: center + width / 2,
+    x: frame.width - margin - Math.round(size * TIME_INK_BOTTOM_GAP * 2),
+    baseline: clamp(center + width / 2, width, frame.height),
     size,
     font: 'medium',
     color: colors.text,
+    letterSpacing: spacing,
     rotate: -90,
   });
 }
