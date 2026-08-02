@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 
 import { AppHeader } from '@/components/brand/app-header';
 import { CaptureActions } from '@/components/capture/capture-actions';
@@ -16,9 +16,14 @@ import {
   type PhotoPickResult,
 } from '@/features/capture/photo-source';
 import { buildWatermarkContent } from '@/features/watermark/build-content';
-import { exportWatermarkedPhoto } from '@/features/watermark/export-photo';
+import {
+  generateWatermarkedPhoto,
+  saveToDeviceGallery,
+  shareWatermarkedPhoto,
+} from '@/features/watermark/export-photo';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
 import { colors, spacing, typography } from '@/theme';
+import { WATERMARK_FIELD_KEYS } from '@/types';
 
 /** Mensagem específica para cada motivo de falha do GPS. */
 const LOOKUP_MESSAGES: Record<AddressLookupStatus, string> = {
@@ -31,13 +36,16 @@ const LOOKUP_MESSAGES: Record<AddressLookupStatus, string> = {
   unavailable: 'Não foi possível resolver o endereço nesta posição. Digite manualmente.',
 };
 
+/** Qual ação está em curso — as duas geram imagem e não podem se sobrepor. */
+type PendingAction = 'save' | 'share';
+
 /**
  * Capturar — a tela inicial.
  *
  * Todo o estado mostrado aqui vem do `CaptureProvider`, na raiz. A tela em si
- * guarda apenas o que é efêmero e não faz sentido sobreviver à navegação: se
- * uma exportação está em andamento, a referência da view a ser capturada e o
- * controle de qual busca de endereço ainda é válida.
+ * guarda apenas o que é efêmero e não faz sentido sobreviver à navegação: a
+ * ação em andamento, a referência da view a ser capturada e o controle de qual
+ * busca de endereço ainda é válida.
  */
 export default function CaptureScreen() {
   const { draft, hasPhoto, setPhoto, setField, regenerateCode, syncDateTime, resetDraft } =
@@ -47,7 +55,8 @@ export default function CaptureScreen() {
   const { lookup, status: lookupStatus, isLoading: locating } = useAddressLookup();
 
   const previewRef = useRef<View>(null);
-  const [exporting, setExporting] = useState(false);
+  const [pending, setPending] = useState<PendingAction | null>(null);
+  const busy = pending !== null;
 
   /**
    * Identifica a busca de endereço em curso.
@@ -58,19 +67,15 @@ export default function CaptureScreen() {
    * documental — ou reapareceria dentro de uma captura já reiniciada.
    */
   const lookupToken = useRef(0);
-  /**
-   * Espelha o endereço atual para comparar quando a resposta chegar.
-   *
-   * A sincronização vai num efeito, e não no corpo da renderização: escrever
-   * em ref durante o render é justamente o que o React desaconselha.
-   */
   const addressRef = useRef(draft.metadata.address);
   useEffect(() => {
     addressRef.current = draft.metadata.address;
   }, [draft.metadata.address]);
 
-  /** Nada será carimbado: nem a tela nem o botão podem sugerir o contrário. */
-  const watermarkIsEmpty = buildWatermarkContent(draft.metadata, preferences).isEmpty;
+  // O que efetivamente vai para a foto: campo ligado nas preferências **e**
+  // com conteúdo. É a mesma função que o carimbo usa, então não diverge.
+  const content = buildWatermarkContent(draft.metadata, preferences);
+  const stampedFields = WATERMARK_FIELD_KEYS.filter((key) => content[key] !== null);
 
   const applyPickResult = (result: PhotoPickResult) => {
     switch (result.status) {
@@ -108,7 +113,10 @@ export default function CaptureScreen() {
     if (token !== lookupToken.current) return;
 
     if (!address) {
-      Alert.alert('Endereço não obtido', LOOKUP_MESSAGES[lookupStatus] || LOOKUP_MESSAGES.unavailable);
+      Alert.alert(
+        'Endereço não obtido',
+        LOOKUP_MESSAGES[lookupStatus] || LOOKUP_MESSAGES.unavailable,
+      );
       return;
     }
 
@@ -126,8 +134,8 @@ export default function CaptureScreen() {
   };
 
   const handleReset = useCallback(() => {
-    // Único caminho do app que descarta trabalho ainda não exportado, e a
-    // 16 px do botão de exportar. Confirmar não é excesso de zelo.
+    // Único caminho do app que descarta trabalho ainda não exportado, e logo
+    // abaixo dos botões de ação. Confirmar não é excesso de zelo.
     Alert.alert(
       'Começar nova captura?',
       'A foto escolhida e os campos preenchidos serão descartados.',
@@ -147,44 +155,59 @@ export default function CaptureScreen() {
     );
   }, [resetDraft]);
 
-  const runExport = async () => {
-    setExporting(true);
+  const runAction = async (action: PendingAction) => {
+    setPending(action);
     try {
-      const outcome = await exportWatermarkedPhoto(previewRef);
-      addEntry({ path: outcome.path, metadata: draft.metadata });
+      const path = await generateWatermarkedPhoto(previewRef);
+      // O histórico registra sempre, em qualquer das duas ações: é a rede de
+      // segurança contra perder uma captura por causa de uma permissão negada
+      // ou de um compartilhamento cancelado.
+      addEntry({ path, metadata: draft.metadata, stampedFields });
 
-      Alert.alert(
-        'Foto exportada',
-        outcome.savedToLibrary
-          ? 'A imagem foi salva na galeria do aparelho e no histórico do Lymark.'
-          : 'A imagem entrou no histórico do Lymark, mas não foi salva na galeria do aparelho. Ela existe apenas dentro do app.',
-      );
+      if (action === 'save') {
+        const saved = await saveToDeviceGallery(path);
+        Alert.alert(
+          saved ? 'Foto salva' : 'Salva apenas no Lymark',
+          saved
+            ? 'A imagem está na galeria do aparelho e no histórico do Lymark.'
+            : 'A imagem entrou no histórico do Lymark, mas o acesso às fotos foi negado — ela existe apenas dentro do app.',
+        );
+        return;
+      }
+
+      const shared = await shareWatermarkedPhoto(path);
+      if (!shared) {
+        Alert.alert(
+          'Compartilhamento indisponível',
+          'Este aparelho não oferece a folha de compartilhamento. A imagem ficou no histórico do Lymark.',
+        );
+      }
     } catch (error) {
       Alert.alert(
-        'Falha ao exportar',
+        'Falha ao gerar a imagem',
         error instanceof Error ? error.message : 'Tente novamente.',
       );
     } finally {
-      setExporting(false);
+      setPending(null);
     }
   };
 
-  const handleExport = () => {
-    if (!hasPhoto || exporting) return;
+  const requestAction = (action: PendingAction) => {
+    if (!hasPhoto || busy) return;
 
-    if (watermarkIsEmpty) {
+    if (content.isEmpty) {
       Alert.alert(
         'A foto sairá sem marca d’água',
         'Nenhum campo tem conteúdo para carimbar. Preencha os campos ou reveja Configurações › Campos e posição.',
         [
           { text: 'Voltar', style: 'cancel' },
-          { text: 'Exportar assim mesmo', onPress: () => void runExport() },
+          { text: 'Continuar assim', onPress: () => void runAction(action) },
         ],
       );
       return;
     }
 
-    void runExport();
+    void runAction(action);
   };
 
   return (
@@ -199,13 +222,14 @@ export default function CaptureScreen() {
       />
 
       <CaptureActions
-        busy={exporting}
+        busy={busy}
         onTakePhoto={async () => applyPickResult(await takePhotoWithCamera())}
         onPickFromLibrary={async () => applyPickResult(await pickPhotoFromLibrary())}
       />
 
       <MetadataForm
         metadata={draft.metadata}
+        visibleFields={preferences.visibleFields}
         onChangeField={setField}
         onSyncDateTime={syncDateTime}
         onRegenerateCode={regenerateCode}
@@ -213,22 +237,36 @@ export default function CaptureScreen() {
         locating={locating}
         // Mexer nos campos durante a captura nativa faria o carimbo da
         // imagem divergir do que está na tela.
-        disabled={exporting}
+        disabled={busy}
       />
 
-      {watermarkIsEmpty ? (
-        <Text style={[typography.caption, styles.warning]}>
+      {content.isEmpty ? (
+        <Text style={styles.warning}>
           Nenhum dado será carimbado — a foto sairá sem marca d’água.
         </Text>
       ) : null}
 
-      <Button
-        label="Exportar foto com marca d’água"
-        variant="accent"
-        onPress={handleExport}
-        disabled={!hasPhoto}
-        loading={exporting}
-      />
+      {/* Duas ações, dois destinos. "Exportar" não dizia para onde a foto ia. */}
+      <View style={styles.actions}>
+        <Button
+          label="Salvar"
+          icon="download"
+          variant="accent"
+          onPress={() => requestAction('save')}
+          disabled={!hasPhoto || pending === 'share'}
+          loading={pending === 'save'}
+          style={styles.action}
+        />
+        <Button
+          label="Compartilhar"
+          icon="share-social"
+          variant="primaryAlt"
+          onPress={() => requestAction('share')}
+          disabled={!hasPhoto || pending === 'save'}
+          loading={pending === 'share'}
+          style={styles.action}
+        />
+      </View>
 
       {hasPhoto ? (
         <Button
@@ -236,26 +274,33 @@ export default function CaptureScreen() {
           icon="refresh"
           variant="ghost"
           onPress={handleReset}
-          // Desmontar o preview no meio da exportação derrubaria a captura
-          // e o usuário perderia a foto e o rascunho de uma vez.
-          disabled={exporting}
+          // Desmontar o preview no meio da captura derrubaria a geração e o
+          // usuário perderia a foto e o rascunho de uma vez.
+          disabled={busy}
         />
       ) : (
-        <Text style={[typography.caption, styles.hint]}>
-          Escolha uma foto para habilitar a exportação.
-        </Text>
+        <Text style={styles.hint}>Escolha uma foto para habilitar as ações.</Text>
       )}
     </Screen>
   );
 }
 
-const styles = {
+const styles = StyleSheet.create({
+  actions: {
+    flexDirection: 'row',
+    gap: spacing.md,
+  },
+  action: {
+    flex: 1,
+  },
   warning: {
+    ...typography.caption,
     color: colors.accent,
-    textAlign: 'center' as const,
+    textAlign: 'center',
     paddingHorizontal: spacing.lg,
   },
   hint: {
-    textAlign: 'center' as const,
+    ...typography.caption,
+    textAlign: 'center',
   },
-};
+});

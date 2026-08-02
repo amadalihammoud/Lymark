@@ -62,6 +62,28 @@ describe('mergeWithDefaults', () => {
     );
   });
 
+  it('recusa posição de marca e local de código fora do conjunto', () => {
+    const merged = mergeWithDefaults({
+      ...current,
+      brandPosition: 'meio' as never,
+      codePlacement: 'flutuante' as never,
+    });
+
+    expect(merged.brandPosition).toBe(DEFAULT_WATERMARK_PREFERENCES.brandPosition);
+    expect(merged.codePlacement).toBe(DEFAULT_WATERMARK_PREFERENCES.codePlacement);
+  });
+
+  it('preserva posição de marca e local de código válidos', () => {
+    const merged = mergeWithDefaults({
+      ...current,
+      brandPosition: 'bottom-right',
+      codePlacement: 'block',
+    });
+
+    expect(merged.brandPosition).toBe('bottom-right');
+    expect(merged.codePlacement).toBe('block');
+  });
+
   it('recusa valores que nem string são', () => {
     const merged = mergeWithDefaults({
       ...current,
@@ -82,11 +104,12 @@ describe('mergeWithDefaults', () => {
 });
 
 /**
- * A versão 1 gravava faixa escura ligada e código impresso — padrões antigos,
- * nunca uma escolha consciente do usuário. Quem atualiza precisa receber o
- * layout novo, e não herdar o anterior para sempre.
+ * Padrões antigos não são escolha de ninguém: quem atualiza precisa receber o
+ * layout novo em vez de herdar o anterior para sempre. Vale tanto para a
+ * faixa escura, que a versão 1 ligava, quanto para o código, que a versão 2
+ * desligou por um erro de leitura da referência.
  */
-describe('migração da versão 1 para a 2', () => {
+describe('migração de formatos antigos', () => {
   const legacy = {
     visibleFields: { time: true, date: true, weekday: true, address: true, code: true },
     position: 'top-right',
@@ -98,8 +121,9 @@ describe('migração da versão 1 para a 2', () => {
     expect(mergeWithDefaults(legacy).showBackdrop).toBe(false);
   });
 
-  it('desliga o código herdado do formato antigo', () => {
-    expect(mergeWithDefaults(legacy).visibleFields.code).toBe(false);
+  it('religa o código, que uma versão anterior desligou por engano', () => {
+    expect(mergeWithDefaults({ ...legacy, visibleFields: { ...legacy.visibleFields, code: false } })
+      .visibleFields.code).toBe(true);
   });
 
   it('preserva o que era escolha real do usuário', () => {
@@ -119,6 +143,14 @@ describe('migração da versão 1 para a 2', () => {
     // Agora `true` significa escolha deliberada, e precisa ser respeitada.
     expect(migrated.showBackdrop).toBe(true);
     expect(migrated.visibleFields.code).toBe(true);
+  });
+
+  it('completa as preferências que o formato antigo nem conhecia', () => {
+    const merged = mergeWithDefaults(legacy);
+
+    expect(merged.showBrand).toBe(DEFAULT_WATERMARK_PREFERENCES.showBrand);
+    expect(merged.brandPosition).toBe(DEFAULT_WATERMARK_PREFERENCES.brandPosition);
+    expect(merged.codePlacement).toBe(DEFAULT_WATERMARK_PREFERENCES.codePlacement);
   });
 
   it('trata ausência de versão como formato antigo', () => {

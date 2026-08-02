@@ -11,6 +11,8 @@ import { useSettings } from '@/contexts/settings-context';
 import { WatermarkOverlay } from '@/features/watermark/watermark-overlay';
 import { colors, radius, spacing, typography } from '@/theme';
 import {
+  CODE_PLACEMENTS,
+  CODE_PLACEMENT_LABELS,
   WATERMARK_FIELD_KEYS,
   WATERMARK_FIELD_LABELS,
   WATERMARK_POSITIONS,
@@ -34,6 +36,9 @@ export default function WatermarkSettingsScreen() {
     setPosition,
     setScale,
     setShowBackdrop,
+    setShowBrand,
+    setBrandPosition,
+    setCodePlacement,
     resetPreferences,
   } = useSettings();
   const { draft } = useCapture();
@@ -102,6 +107,48 @@ export default function WatermarkSettingsScreen() {
         />
       </Section>
 
+      <Section
+        title="Código de Foto"
+        description="Na lateral ele não disputa espaço com o conteúdo da imagem.">
+        <ChoiceGrid
+          columns={2}
+          selected={preferences.codePlacement}
+          onSelect={setCodePlacement}
+          options={CODE_PLACEMENTS.map((placement) => ({
+            value: placement,
+            label: CODE_PLACEMENT_LABELS[placement],
+          }))}
+        />
+      </Section>
+
+      <Section
+        title="Marca do app"
+        description="O nome do Lymark carimbado na foto, em canto próprio.">
+        <ToggleRow
+          title="Carimbar a marca"
+          description="Desligue para entregar a foto ao cliente sem marca de app."
+          value={preferences.showBrand}
+          onValueChange={setShowBrand}
+        />
+        {preferences.showBrand ? (
+          <ChoiceGrid
+            columns={2}
+            selected={preferences.brandPosition}
+            onSelect={setBrandPosition}
+            options={WATERMARK_POSITIONS.map((position) => ({
+              value: position,
+              label: WATERMARK_POSITION_LABELS[position],
+            }))}
+          />
+        ) : null}
+      </Section>
+
+      {preferences.showBrand && preferences.brandPosition === preferences.position ? (
+        <Text style={styles.conflict}>
+          A marca e os dados estão no mesmo canto — vão se sobrepor na foto.
+        </Text>
+      ) : null}
+
       <Section title="Legibilidade">
         <ToggleRow
           title="Faixa escura de fundo"
@@ -135,5 +182,10 @@ const styles = StyleSheet.create({
   previewHint: {
     paddingHorizontal: spacing.lg,
     textAlign: 'center',
+  },
+  conflict: {
+    ...typography.caption,
+    color: colors.accent,
+    paddingHorizontal: spacing.xs,
   },
 });

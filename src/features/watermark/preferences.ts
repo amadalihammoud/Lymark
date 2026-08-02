@@ -1,4 +1,5 @@
 import {
+  CODE_PLACEMENTS,
   WATERMARK_FIELD_KEYS,
   WATERMARK_POSITIONS,
   WATERMARK_SCALES,
@@ -16,14 +17,19 @@ import {
 /**
  * Versão do formato salvo.
  *
- * A 1 nasceu com o carimbo em cinco linhas iguais, faixa escura ligada e
- * código impresso. A 2 acompanha o layout de referência: sem faixa, sem
- * código. Trocar o padrão sozinho não bastaria — quem já tinha o app
- * instalado carrega o valor antigo gravado, que nunca foi escolha dele.
+ * 1 — carimbo em cinco linhas iguais, faixa escura ligada, código no bloco.
+ * 2 — layout de referência; desliguei o código por engano, achando que a
+ *     referência não o carimbava. Ela carimba: girado, na lateral direita.
+ * 3 — código de volta, com posição configurável, e marca do app na foto.
  */
-export const PREFERENCES_SCHEMA_VERSION = 2;
+export const PREFERENCES_SCHEMA_VERSION = 3;
 
-/** Campos cujo padrão mudou na versão 2 e por isso são remigrados. */
+/**
+ * Campos cujo padrão mudou e que por isso são remigrados.
+ *
+ * `code` aparece aqui porque a versão 2 o desligou por um erro de leitura
+ * meu, não por escolha de ninguém — quem atualizou não deve herdar isso.
+ */
 const RESET_ON_UPGRADE = ['showBackdrop', 'code'] as const;
 
 export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
@@ -32,15 +38,16 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
     date: true,
     weekday: true,
     address: true,
-    // O layout de referência não carimba o código. Continua a um toque de
-    // distância em Configurações, para quem precisa de rastreio na imagem.
-    code: false,
+    code: true,
   },
   position: 'bottom-left',
   scale: 'medium',
   // Desligada por padrão: na referência o texto fica direto sobre a foto e a
   // sombra basta. Continua disponível para fotos muito claras.
   showBackdrop: false,
+  showBrand: true,
+  brandPosition: 'top-right',
+  codePlacement: 'side',
 };
 
 export type StoredPreferences = Partial<WatermarkPreferences> & {
@@ -72,9 +79,27 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
 
   return {
     visibleFields,
-    position: pickAllowed(stored.position, WATERMARK_POSITIONS, DEFAULT_WATERMARK_PREFERENCES.position),
+    position: pickAllowed(
+      stored.position,
+      WATERMARK_POSITIONS,
+      DEFAULT_WATERMARK_PREFERENCES.position,
+    ),
     scale: pickAllowed(stored.scale, WATERMARK_SCALES, DEFAULT_WATERMARK_PREFERENCES.scale),
     showBackdrop,
+    showBrand:
+      typeof stored.showBrand === 'boolean'
+        ? stored.showBrand
+        : DEFAULT_WATERMARK_PREFERENCES.showBrand,
+    brandPosition: pickAllowed(
+      stored.brandPosition,
+      WATERMARK_POSITIONS,
+      DEFAULT_WATERMARK_PREFERENCES.brandPosition,
+    ),
+    codePlacement: pickAllowed(
+      stored.codePlacement,
+      CODE_PLACEMENTS,
+      DEFAULT_WATERMARK_PREFERENCES.codePlacement,
+    ),
   };
 }
 

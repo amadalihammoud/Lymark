@@ -37,10 +37,13 @@ describe('buildWatermarkContent', () => {
     expect(content.isEmpty).toBe(false);
   });
 
-  it('não carimba o código por padrão — o layout de referência não o tem', () => {
+  it('carimba o código por padrão', () => {
+    // A referência carimba o código sim — girado, na lateral direita. Uma
+    // leitura minha do canto inferior esquerdo concluiu o contrário e
+    // desligou o campo por engano; este teste tranca a correção.
     const content = buildWatermarkContent(metadata, DEFAULT_WATERMARK_PREFERENCES);
 
-    expect(content.code).toBeNull();
+    expect(content.code).toBe('98926A73655DC1');
   });
 
   it('anula os campos desligados nas preferências', () => {

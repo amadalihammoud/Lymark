@@ -1,3 +1,4 @@
+import * as Application from 'expo-application';
 import Constants from 'expo-constants';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
@@ -10,6 +11,13 @@ import { colors, spacing, typography } from '@/theme';
 export default function AboutScreen() {
   const config = Constants.expoConfig;
 
+  // `nativeApplicationVersion` é o que está gravado no APK/IPA; o app.json é
+  // apenas a origem dele. Em desenvolvimento pelo Expo Go o nativo é do
+  // próprio Expo Go, então a config é o valor correto ali.
+  const version = Application.nativeApplicationVersion ?? config?.version ?? '—';
+  const build = Application.nativeBuildVersion;
+  const appVersion = build ? `${version} (build ${build})` : version;
+
   return (
     <Screen>
       <View style={styles.brand}>
@@ -21,9 +29,15 @@ export default function AboutScreen() {
       </View>
 
       <Section title="Aplicativo">
-        <InfoRow label="Versão" value={config?.version ?? '1.0.0'} />
+        {/* Vem do binário, não do app.json: dois builds da mesma versão
+            precisam ser distinguíveis quando alguém relata um problema. */}
+        <InfoRow label="Versão" value={appVersion} />
         <InfoRow label="Plataforma" value={Platform.OS === 'ios' ? 'iOS' : 'Android'} />
-        <InfoRow label="Expo SDK" value={String(Constants.expoVersion ?? '—')} showDivider={false} />
+        <InfoRow
+          label="Expo SDK"
+          value={config?.sdkVersion ?? '—'}
+          showDivider={false}
+        />
       </Section>
 
       <Section title="Privacidade">

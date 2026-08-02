@@ -17,6 +17,7 @@ import {
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
 import {
   WATERMARK_FIELD_KEYS,
+  type CodePlacement,
   type WatermarkFieldKey,
   type WatermarkPosition,
   type WatermarkPreferences,
@@ -43,6 +44,9 @@ type SettingsContextValue = {
   setPosition: (position: WatermarkPosition) => void;
   setScale: (scale: WatermarkScale) => void;
   setShowBackdrop: (showBackdrop: boolean) => void;
+  setShowBrand: (showBrand: boolean) => void;
+  setBrandPosition: (brandPosition: WatermarkPosition) => void;
+  setCodePlacement: (codePlacement: CodePlacement) => void;
   resetPreferences: () => void;
 };
 
@@ -109,6 +113,18 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setPreferences((current) => ({ ...current, showBackdrop }));
   }, []);
 
+  const setShowBrand = useCallback((showBrand: boolean) => {
+    setPreferences((current) => ({ ...current, showBrand }));
+  }, []);
+
+  const setBrandPosition = useCallback((brandPosition: WatermarkPosition) => {
+    setPreferences((current) => ({ ...current, brandPosition }));
+  }, []);
+
+  const setCodePlacement = useCallback((codePlacement: CodePlacement) => {
+    setPreferences((current) => ({ ...current, codePlacement }));
+  }, []);
+
   const resetPreferences = useCallback(() => {
     setPreferences(DEFAULT_WATERMARK_PREFERENCES);
   }, []);
@@ -123,6 +139,9 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       setPosition,
       setScale,
       setShowBackdrop,
+      setShowBrand,
+      setBrandPosition,
+      setCodePlacement,
       resetPreferences,
     }),
     [
@@ -132,6 +151,9 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       setPosition,
       setScale,
       setShowBackdrop,
+      setShowBrand,
+      setBrandPosition,
+      setCodePlacement,
       resetPreferences,
     ],
   );

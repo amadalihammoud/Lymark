@@ -177,3 +177,49 @@ export function resolveAnchorStyle(position: WatermarkPosition): ViewStyle {
 export function resolveTextAlign(position: WatermarkPosition): 'left' | 'right' {
   return position.endsWith('left') ? 'left' : 'right';
 }
+
+/**
+ * Âncora da marca do app.
+ *
+ * Separada da âncora do bloco de dados porque as duas são escolhas
+ * independentes: a marca pode ficar num canto e os dados em outro.
+ */
+export function resolveBrandAnchorStyle(position: WatermarkPosition): ViewStyle {
+  const vertical: ViewStyle =
+    position.startsWith('top') ? { top: WATERMARK_INSET } : { bottom: WATERMARK_INSET };
+
+  const horizontal: ViewStyle = position.endsWith('left')
+    ? { left: WATERMARK_INSET, alignItems: 'flex-start' }
+    : { right: WATERMARK_INSET, alignItems: 'flex-end' };
+
+  return { position: 'absolute', maxWidth: '45%', ...vertical, ...horizontal };
+}
+
+/**
+ * Corpo da marca, proporcional ao endereço.
+ *
+ * Medido: na referência a marca tem 25,9 px de altura de caixa alta contra
+ * 30 px que a estimativa anterior produzia — os dois textos acabam no mesmo
+ * corpo, e a marca só *parece* maior por ser uma palavra curta e isolada.
+ */
+export const BRAND_SIZE_RATIO = 1;
+
+/**
+ * O código girado na lateral.
+ *
+ * Todos os três números vêm de medição na referência, normalizada à mesma
+ * largura: corpo 19,4 px (0,85 do corpo do código no bloco), margem direita
+ * 11,8 px, e centro do texto a 38% da altura da foto — não no meio.
+ */
+export const SIDE_CODE_INSET = 2;
+export const SIDE_CODE_SIZE_RATIO = 0.85;
+/**
+ * Largura da âncora, em múltiplos do corpo.
+ *
+ * A âncora precisa ser estreita: o texto é largo antes de girar, e é o centro
+ * dela que define onde a linha vertical cai. Larga demais, o código se afasta
+ * da borda.
+ */
+export const SIDE_CODE_ANCHOR_RATIO = 1.2;
+/** Onde o centro do texto girado fica, em fração da altura da foto. */
+export const SIDE_CODE_CENTER_RATIO = 0.38;

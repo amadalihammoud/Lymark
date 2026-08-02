@@ -26,6 +26,11 @@ export const WATERMARK_POSITIONS = [
 
 export type WatermarkPosition = (typeof WATERMARK_POSITIONS)[number];
 
+/** Onde o Código de Foto é carimbado. */
+export const CODE_PLACEMENTS = ['side', 'block'] as const;
+
+export type CodePlacement = (typeof CODE_PLACEMENTS)[number];
+
 /** Tamanho relativo do texto carimbado. */
 export const WATERMARK_SCALES = ['small', 'medium', 'large'] as const;
 
@@ -66,6 +71,15 @@ export type WatermarkPreferences = {
   scale: WatermarkScale;
   /** Faixa escura atrás do texto, para legibilidade sobre fotos claras. */
   showBackdrop: boolean;
+  /** Carimba a marca do Lymark na foto. */
+  showBrand: boolean;
+  /** Canto onde a marca fica — independente do canto do bloco de dados. */
+  brandPosition: WatermarkPosition;
+  /**
+   * O código na lateral fica girado, colado na borda direita: não compete
+   * com o conteúdo da foto. No bloco, acompanha hora, data e endereço.
+   */
+  codePlacement: CodePlacement;
 };
 
 /** Uma foto já exportada, guardada no histórico. */
@@ -83,6 +97,14 @@ export type GalleryEntry = {
   exportedAt: string;
   /** Cópia dos metadados usados no carimbo, para exibir no detalhe. */
   metadata: CaptureMetadata;
+  /**
+   * Quais campos foram de fato carimbados nesta foto.
+   *
+   * Guardado junto porque as preferências mudam com o tempo: sem isto, o
+   * detalhe de uma foto antiga listaria campos que nunca chegaram à imagem,
+   * afirmando algo falso sobre um registro fotográfico.
+   */
+  stampedFields: WatermarkFieldKey[];
 };
 
 /** Rótulos em português para cada campo, usados em formulários e listas. */
@@ -99,6 +121,11 @@ export const WATERMARK_POSITION_LABELS: Record<WatermarkPosition, string> = {
   'top-right': 'Superior direito',
   'bottom-left': 'Inferior esquerdo',
   'bottom-right': 'Inferior direito',
+};
+
+export const CODE_PLACEMENT_LABELS: Record<CodePlacement, string> = {
+  side: 'Lateral direita',
+  block: 'Junto aos dados',
 };
 
 export const WATERMARK_SCALE_LABELS: Record<WatermarkScale, string> = {

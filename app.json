@@ -3,7 +3,7 @@
     "name": "Lymark",
     "slug": "lymark",
     "owner": "lycos-team",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -65,7 +65,8 @@
           ]
         }
       ],
-      "expo-font"
+      "expo-font",
+      "expo-sharing"
     ],
     "experiments": {
       "typedRoutes": true,

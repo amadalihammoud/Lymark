@@ -14,7 +14,12 @@ import {
   normalizeStoredPath,
 } from '@/features/watermark/photo-file';
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
-import type { CaptureMetadata, GalleryEntry } from '@/types';
+import {
+  WATERMARK_FIELD_KEYS,
+  type CaptureMetadata,
+  type GalleryEntry,
+  type WatermarkFieldKey,
+} from '@/types';
 
 /**
  * Histórico das fotos exportadas.
@@ -42,6 +47,15 @@ function reviveEntries(stored: unknown): GalleryEntry[] {
 
     if (!path || typeof candidate.id !== 'string' || !candidate.metadata) return [];
 
+    // Registros gravados antes de `stampedFields` existir: assumimos que
+    // todos os campos com conteúdo foram carimbados, que era o comportamento
+    // daquela versão.
+    const stampedFields = Array.isArray(candidate.stampedFields)
+      ? candidate.stampedFields.filter((key): key is WatermarkFieldKey =>
+          (WATERMARK_FIELD_KEYS as readonly string[]).includes(key as string),
+        )
+      : WATERMARK_FIELD_KEYS.filter((key) => candidate.metadata?.[key]?.trim());
+
     return [
       {
         id: candidate.id,
@@ -51,6 +65,7 @@ function reviveEntries(stored: unknown): GalleryEntry[] {
             ? candidate.exportedAt
             : new Date().toISOString(),
         metadata: candidate.metadata,
+        stampedFields,
       },
     ];
   });
@@ -59,7 +74,11 @@ function reviveEntries(stored: unknown): GalleryEntry[] {
 type GalleryContextValue = {
   entries: GalleryEntry[];
   hydrated: boolean;
-  addEntry: (input: { path: string; metadata: CaptureMetadata }) => GalleryEntry;
+  addEntry: (input: {
+    path: string;
+    metadata: CaptureMetadata;
+    stampedFields: WatermarkFieldKey[];
+  }) => GalleryEntry;
   removeEntry: (id: string) => void;
   clearGallery: () => void;
   findEntry: (id: string) => GalleryEntry | undefined;
@@ -111,12 +130,13 @@ export function GalleryProvider({ children }: { children: ReactNode }) {
   }, [hydrated, writable, entries]);
 
   const addEntry = useCallback<GalleryContextValue['addEntry']>(
-    ({ path, metadata }) => {
+    ({ path, metadata, stampedFields }) => {
       const entry: GalleryEntry = {
         id: Crypto.randomUUID(),
         path,
         exportedAt: new Date().toISOString(),
         metadata,
+        stampedFields,
       };
 
       // O corte pelo teto tem de apagar o arquivo, como faz `removeEntry`:

@@ -10,7 +10,7 @@ import { useGallery } from '@/contexts/gallery-context';
 import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
 import { formatTimestamp } from '@/lib/datetime';
 import { colors, radius, spacing, typography } from '@/theme';
-import { WATERMARK_FIELD_KEYS, WATERMARK_FIELD_LABELS } from '@/types';
+import { WATERMARK_FIELD_LABELS } from '@/types';
 
 /**
  * Detalhe de uma foto do histórico.
@@ -68,17 +68,26 @@ export default function PhotoDetailScreen() {
       <Text style={typography.caption}>Exportada em {formatTimestamp(entry.exportedAt)}</Text>
 
       <Section title="Dados carimbados">
-        {WATERMARK_FIELD_KEYS.map((key, index) => (
+        {/* Só o que realmente foi para a imagem. Listar um campo que ficou de
+            fora afirmaria algo falso sobre um registro fotográfico. */}
+        {entry.stampedFields.map((key, index) => (
           <View
             key={key}
             style={[
               styles.row,
-              index < WATERMARK_FIELD_KEYS.length - 1 && styles.divider,
+              index < entry.stampedFields.length - 1 && styles.divider,
             ]}>
             <Text style={typography.label}>{WATERMARK_FIELD_LABELS[key]}</Text>
-            <Text style={typography.value}>{entry.metadata[key] || '—'}</Text>
+            <Text style={typography.value}>{entry.metadata[key]}</Text>
           </View>
         ))}
+        {entry.stampedFields.length === 0 ? (
+          <View style={styles.row}>
+            <Text style={typography.caption}>
+              Esta foto foi exportada sem marca d’água.
+            </Text>
+          </View>
+        ) : null}
       </Section>
 
       <Button
