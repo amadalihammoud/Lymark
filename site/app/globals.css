@@ -1,0 +1,575 @@
+/*
+ * A paleta é a mesma do aplicativo (src/theme/colors.ts), tom por tom.
+ * O site e o app precisam parecer a mesma coisa — não duas peças de
+ * fornecedores diferentes.
+ */
+:root {
+  --navy-900: #091a2b;
+  --navy-800: #0d2137;
+  --navy-700: #122b44;
+  --navy-600: #16324f;
+  --navy-500: #1b3d60;
+  --navy-400: #23496e;
+
+  --amber: #f5b60d;
+  --blue-300: #4a76a1;
+
+  --text: #ffffff;
+  --text-on-surface: #c7d6e4;
+  --text-muted: #93a9c0;
+  --text-subtle: #8da4ba;
+
+  --measure: 34rem;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--navy-800);
+  color: var(--text-on-surface);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--blue-300);
+  padding-bottom: 1px;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+
+a:hover {
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+
+a:focus-visible,
+.skip:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text);
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* ---------------------------------------------------------------- estrutura */
+
+.shell {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+
+.skip:focus {
+  left: var(--gutter);
+  top: 0.75rem;
+  z-index: 10;
+  background: var(--navy-900);
+  color: var(--text);
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--amber);
+}
+
+header.site {
+  border-bottom: 1px solid var(--navy-700);
+  background: var(--navy-900);
+}
+
+header.site .shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 4.25rem;
+  flex-wrap: wrap;
+}
+
+nav.site {
+  display: flex;
+  gap: clamp(1rem, 4vw, 2rem);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+}
+
+nav.site a {
+  color: var(--text-muted);
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+nav.site a:hover {
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------- assinatura */
+
+.wordmark {
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  font-size: 1.0625rem;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.wordmark em {
+  font-style: normal;
+  color: var(--amber);
+}
+
+.wordmark:hover {
+  color: var(--text);
+}
+
+/* -------------------------------------------------------------------- hero */
+
+.hero {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  padding-block: clamp(3.5rem, 9vw, 6.5rem);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+@media (min-width: 56rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5.2vw, 3.15rem);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.lede {
+  max-width: var(--measure);
+  font-size: 1.0625rem;
+  color: var(--text-on-surface);
+}
+
+.eyebrow {
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--navy-400);
+  max-width: 6rem;
+}
+
+.meta {
+  margin-top: 2.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.8125rem;
+  color: var(--text-subtle);
+}
+
+.meta span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+}
+
+.meta span::before {
+  content: '';
+  width: 3px;
+  height: 3px;
+  background: var(--blue-300);
+  transform: translateY(-3px);
+}
+
+/* ---------------------------------------------------- amostra do carimbo */
+
+/*
+ * Uma amostra do carimbo, não uma captura de tela falsificada: as
+ * proporções são as mesmas medidas em src/features/watermark/layout.ts.
+ */
+.specimen {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--navy-400);
+  background:
+    radial-gradient(120% 90% at 78% 12%, rgba(74, 118, 161, 0.28), transparent 58%),
+    linear-gradient(168deg, var(--navy-600), var(--navy-900));
+  overflow: hidden;
+}
+
+.specimen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--navy-400) 1px, transparent 1px),
+    linear-gradient(90deg, var(--navy-400) 1px, transparent 1px);
+  background-size: 2.25rem 2.25rem;
+  opacity: 0.14;
+}
+
+.stamp {
+  position: absolute;
+  left: 1.15rem;
+  bottom: 1.05rem;
+  z-index: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+}
+
+.stamp .row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.stamp .clock {
+  font-family: var(--font-clock), system-ui, sans-serif;
+  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  line-height: 1;
+  color: #fff;
+}
+
+/*
+ * A barra âmbar acompanha a *tinta* dos dígitos, não a caixa de texto —
+ * 16,33% do topo, 72,67% de altura. É a mesma constante do aplicativo, e é
+ * o detalhe que denuncia uma reprodução feita no olho.
+ */
+.stamp .rule {
+  width: 2px;
+  background: var(--amber);
+  margin-top: 0.1633em;
+  height: 0.7267em;
+  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  margin-inline: 0.3em 0.18em;
+  flex: none;
+}
+
+.stamp .stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 0.1633em;
+  height: 0.7267em;
+  font-size: clamp(2.6rem, 8vw, 3.6rem);
+}
+
+.stamp .stack span {
+  font-size: 0.8125rem;
+  line-height: 1;
+  color: #fff;
+}
+
+.stamp .address {
+  margin-top: 0.45rem;
+  font-size: 0.8125rem;
+  line-height: 1.42;
+  max-width: 20ch;
+  color: #fff;
+}
+
+.specimen .brand {
+  position: absolute;
+  top: 1rem;
+  right: 1.15rem;
+  z-index: 1;
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+}
+
+.specimen .brand em {
+  font-style: normal;
+  color: var(--amber);
+}
+
+.specimen .code {
+  position: absolute;
+  right: 0.35rem;
+  top: 38%;
+  z-index: 1;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.09em;
+  color: #fff;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+}
+
+.caption {
+  margin-top: 0.9rem;
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+}
+
+/* ---------------------------------------------------------------- seções */
+
+section.band {
+  border-top: 1px solid var(--navy-700);
+  padding-block: clamp(3rem, 7vw, 4.75rem);
+}
+
+.band-head {
+  display: flex;
+  gap: 1.25rem;
+  align-items: baseline;
+  margin-bottom: 2.5rem;
+}
+
+.band-head .num {
+  font-family: var(--font-clock), system-ui, sans-serif;
+  font-size: 1.5rem;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.band-head h2 {
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  letter-spacing: -0.01em;
+}
+
+.grid {
+  display: grid;
+  gap: 1px;
+  background: var(--navy-700);
+  border: 1px solid var(--navy-700);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 62rem) {
+  .grid.three {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cell {
+  background: var(--navy-800);
+  padding: 1.65rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.cell h3 {
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.cell p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.field {
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+}
+
+/* ------------------------------------------------------------------ notas */
+
+.note {
+  border-left: 2px solid var(--amber);
+  padding: 0.15rem 0 0.15rem 1.15rem;
+  margin-top: 2.25rem;
+  max-width: var(--measure);
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+/* ----------------------------------------------------------- documentos */
+
+article.doc {
+  padding-block: clamp(2.75rem, 7vw, 4.5rem);
+  max-width: var(--measure);
+}
+
+article.doc h1 {
+  font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+  letter-spacing: -0.02em;
+}
+
+article.doc .stamp-date {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--text-subtle);
+}
+
+article.doc h2 {
+  font-size: 1.0625rem;
+  margin-top: 2.75rem;
+  margin-bottom: 0.85rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+article.doc h2 .num {
+  font-family: var(--font-clock), system-ui, sans-serif;
+  color: var(--amber);
+  font-size: 1.125rem;
+}
+
+article.doc p + p {
+  margin-top: 0.9rem;
+}
+
+article.doc ul {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted);
+}
+
+article.doc li {
+  margin-bottom: 0.6rem;
+  padding-left: 0.25rem;
+}
+
+article.doc li::marker {
+  color: var(--blue-300);
+}
+
+article.doc strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.intro {
+  margin-top: 2rem;
+  color: var(--text-on-surface);
+}
+
+/*
+ * Campo que depende de dado que só o titular tem. Fica visualmente
+ * evidente de propósito: um documento jurídico publicado com espaço
+ * reservado esquecido é pior do que nenhum documento.
+ */
+.todo {
+  display: inline-block;
+  background: rgba(245, 182, 13, 0.12);
+  border-bottom: 1px dashed var(--amber);
+  color: var(--amber);
+  padding: 0 0.35rem;
+  font-size: 0.9375rem;
+}
+
+.deftable {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--navy-700);
+}
+
+.deftable div {
+  display: grid;
+  gap: 0.15rem 1.5rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--navy-700);
+}
+
+@media (min-width: 34rem) {
+  .deftable div {
+    grid-template-columns: 10.5rem 1fr;
+  }
+}
+
+.deftable dt {
+  color: var(--text);
+  font-size: 0.9375rem;
+  margin: 0;
+}
+
+.deftable dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+/* ----------------------------------------------------------------- rodapé */
+
+footer.site {
+  border-top: 1px solid var(--navy-700);
+  background: var(--navy-900);
+  padding-block: 2.5rem 3rem;
+  font-size: 0.8125rem;
+  color: var(--text-subtle);
+}
+
+footer.site .shell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+footer.site nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+footer.site a {
+  color: var(--text-muted);
+  border-bottom: 0;
+}
+
+footer.site a:hover {
+  color: var(--amber);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

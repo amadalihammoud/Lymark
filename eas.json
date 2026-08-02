@@ -25,6 +25,16 @@
       "channel": "production",
       "android": {
         "buildType": "app-bundle"
+      },
+      "ios": {
+        "distribution": "store"
+      }
+    },
+    "preview-device": {
+      "extends": "preview",
+      "distribution": "internal",
+      "ios": {
+        "simulator": false
       }
     }
   },
