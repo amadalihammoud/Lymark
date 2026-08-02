@@ -9,6 +9,8 @@ import {
   RULE_SPACE_AFTER_RATIO,
   RULE_SPACE_BEFORE_RATIO,
   SCALE_METRICS,
+  TIME_INK_HEIGHT_RATIO,
+  TIME_INK_TOP_RATIO,
   resolveAnchorStyle,
   resolveTextAlign,
   scaleMetricsToFrame,
@@ -63,6 +65,20 @@ export function WatermarkOverlay({
 
   const hasHeader = content.time !== null || content.date !== null || content.weekday !== null;
 
+  /**
+   * Faixa ocupada pelos dígitos dentro da caixa de texto da hora.
+   *
+   * A barra âmbar e o bloco de data se alinham à **tinta**, não à caixa: na
+   * referência os dois começam no topo dos dígitos e terminam na base deles.
+   * Sem foto de hora não há tinta de referência, e os elementos fluem normal.
+   */
+  const inkAlignment = content.time
+    ? {
+        marginTop: Math.round(metrics.time * TIME_INK_TOP_RATIO),
+        height: Math.round(metrics.time * TIME_INK_HEIGHT_RATIO),
+      }
+    : null;
+
   return (
     <View style={resolveAnchorStyle(preferences.position)} pointerEvents="none">
       <View
@@ -79,7 +95,13 @@ export function WatermarkOverlay({
             {content.time ? (
               <Text
                 allowFontScaling={false}
-                style={[styles.text, styles.time, { fontSize: metrics.time }]}>
+                style={[
+                  styles.text,
+                  styles.time,
+                  // `lineHeight` explícito é o que torna as proporções de
+                  // tinta previsíveis: elas foram medidas nesta condição.
+                  { fontSize: metrics.time, lineHeight: metrics.time },
+                ]}>
                 {content.time}
               </Text>
             ) : null}
@@ -88,6 +110,7 @@ export function WatermarkOverlay({
               <View
                 style={[
                   styles.rule,
+                  inkAlignment,
                   {
                     marginLeft: Math.round(metrics.time * RULE_SPACE_BEFORE_RATIO),
                     marginRight: Math.round(metrics.time * RULE_SPACE_AFTER_RATIO),
@@ -97,7 +120,7 @@ export function WatermarkOverlay({
             ) : null}
 
             {content.date || content.weekday ? (
-              <View style={styles.secondaryStack}>
+              <View style={[styles.secondaryStack, inkAlignment]}>
                 {content.date ? (
                   <Text
                     allowFontScaling={false}
@@ -162,10 +185,8 @@ const styles = StyleSheet.create({
   },
   secondaryStack: {
     alignItems: 'flex-start',
-    // Estica até a altura da hora e distribui: data encostada no topo, dia da
-    // semana lá embaixo. É essa distribuição que reproduz a referência — sem
-    // ela, as duas linhas ficariam grudadas no alto.
-    alignSelf: 'stretch',
+    // Distribui as duas linhas na altura dos dígitos: data encostada no topo,
+    // dia da semana na base. É essa distribuição que reproduz a referência.
     justifyContent: 'space-between',
   },
   text: {
@@ -197,8 +218,5 @@ const styles = StyleSheet.create({
   rule: {
     width: 2,
     backgroundColor: colors.accent,
-    // Percorre a altura inteira do bloco: do topo da hora até abaixo do dia
-    // da semana, como na referência.
-    alignSelf: 'stretch',
   },
 });

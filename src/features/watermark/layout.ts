@@ -96,6 +96,21 @@ export const RULE_SPACE_BEFORE_RATIO = 0.3;
 export const RULE_SPACE_AFTER_RATIO = 0.18;
 
 /**
+ * Onde a tinta dos dígitos fica dentro da caixa de texto da hora.
+ *
+ * Na referência, a barra âmbar começa e termina exatamente nos limites dos
+ * **glifos** — não da caixa de linha, que é maior. Alinhar pela caixa faz a
+ * barra sobrar acima e abaixo dos dígitos.
+ *
+ * Medido renderizando "21:55" em Pathway Gothic One com `lineHeight` igual ao
+ * corpo: a tinta começa a 16,33% do topo da caixa e ocupa 72,67% da altura
+ * dela. São propriedades desta fonte — trocar a fonte da hora obriga a medir
+ * de novo.
+ */
+export const TIME_INK_TOP_RATIO = 0.1633;
+export const TIME_INK_HEIGHT_RATIO = 0.7267;
+
+/**
  * Altura de preview para a qual `SCALE_METRICS` foi calibrado: uma foto
  * retrato 3:4 ocupando a largura de um telefone comum.
  */
