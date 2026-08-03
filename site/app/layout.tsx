@@ -60,7 +60,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="wordmark" aria-label="Lymark, página inicial">
               Ly<em>mark</em>
             </Link>
+            {/* O manual vem primeiro: é a única página sobre usar a coisa.
+                Os outros dois existem por obrigação legal. */}
             <nav className="site" aria-label="Principal">
+              <Link href="/manual">Manual</Link>
               <Link href="/privacidade">Privacidade</Link>
               <Link href="/termos">Termos</Link>
             </nav>
@@ -82,6 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </p>
             </div>
             <nav aria-label="Documentos">
+              <Link href="/manual">Manual de uso</Link>
               <Link href="/privacidade">Política de Privacidade</Link>
               <Link href="/termos">Termos de Uso</Link>
             </nav>

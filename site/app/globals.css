@@ -568,6 +568,406 @@ footer.site a:hover {
   color: var(--amber);
 }
 
+/* ------------------------------------------------------- ritmo das seções */
+
+/*
+ * A página inicial era uma pilha de seções idênticas: mesma borda, mesmo
+ * fundo, mesmo espaçamento. Lida de cima a baixo, tudo tinha o mesmo peso, e
+ * a única seção que pede ação — a de disponibilidade — chegava com a mesma
+ * voz das outras. `.band.alt` troca a superfície e sangra até a borda da
+ * janela, dando um compasso diferente sem inventar outra linguagem.
+ */
+section.band.alt {
+  background: var(--navy-900);
+  clip-path: inset(0 -100vmax);
+  box-shadow: 0 0 0 100vmax var(--navy-900);
+  border-top-color: var(--navy-600);
+}
+
+section.band.alt .cell {
+  background: var(--navy-900);
+}
+
+/* O mesmo fio do `.eyebrow`, agora ligando o número ao fim da linha. */
+.band-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--navy-600);
+  align-self: center;
+  margin-left: 0.5rem;
+}
+
+/* ---------------------------------------------------------- para quem é */
+
+.cell .who {
+  font-size: 0.9375rem;
+  color: var(--text-on-surface);
+}
+
+.cell ul {
+  margin: 0.15rem 0 0;
+  padding-left: 1.05rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.cell li {
+  margin-bottom: 0.3rem;
+}
+
+.cell li::marker {
+  color: var(--blue-300);
+}
+
+/* -------------------------------------------------------- disponibilidade */
+
+/*
+ * Três plataformas, e hoje nenhuma com link. Um botão de loja que não leva a
+ * lugar nenhum faz o visitante concluir que o site está quebrado — então o
+ * lugar reservado se declara como tal, com o estado real escrito. Quando a
+ * URL existir, `href` deixa de ser nulo e o cartão vira link sem mudar de
+ * forma.
+ */
+.platforms {
+  display: grid;
+  gap: 1px;
+  background: var(--navy-700);
+  border: 1px solid var(--navy-700);
+  grid-template-columns: 1fr;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 46rem) {
+  .platforms {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.platform {
+  background: var(--navy-800);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-height: 100%;
+}
+
+.platform .os {
+  font-size: 1.0625rem;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.platform p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.platform .cta {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.status::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-subtle);
+  flex: none;
+}
+
+.status.testing {
+  color: var(--amber);
+}
+
+.status.testing::before {
+  background: var(--amber);
+}
+
+/* Só existe quando há para onde ir; até lá, o texto de estado ocupa o lugar. */
+.store {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--navy-400);
+  border-bottom: 1px solid var(--navy-400);
+  padding: 0.55rem 1rem;
+  color: var(--text);
+  font-size: 0.875rem;
+}
+
+.store:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.pending {
+  color: var(--text-subtle);
+  font-size: 0.875rem;
+}
+
+/* --------------------------------------------------------------- manual */
+
+/*
+ * O manual precisa de mais largura que os documentos jurídicos: ele tem
+ * tabelas de medida e um diagrama. A prosa continua na mesma medida de
+ * leitura — o que estoura a coluna são as figuras, e só elas.
+ */
+article.doc.wide {
+  max-width: none;
+}
+
+article.doc.wide p,
+article.doc.wide ul,
+article.doc.wide .deftable,
+article.doc.wide .callout,
+article.doc.wide .colophon {
+  max-width: var(--measure);
+}
+
+article.doc h3 {
+  font-size: 0.9375rem;
+  margin-top: 1.85rem;
+  margin-bottom: 0.65rem;
+  color: var(--text);
+}
+
+article.doc .section {
+  scroll-margin-top: 1.5rem;
+}
+
+/*
+ * `p + p` resolve a prosa corrida, mas não o que vem depois de uma figura: a
+ * regra não alcança o parágrafo que sucede tabela, chamada ou lista, e ele
+ * encosta na borda de cima. Aqui os blocos devolvem o respiro.
+ */
+article.doc :is(.table-wrap, .callout, .deftable, .diagram) + p,
+article.doc :is(.table-wrap, .callout, .deftable, .diagram) + ul {
+  margin-top: 1.6rem;
+}
+
+article.doc ul + p {
+  margin-top: 1.25rem;
+}
+
+.toc {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--navy-700);
+  border-bottom: 1px solid var(--navy-700);
+  padding-block: 1.25rem;
+}
+
+.toc h2 {
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+  margin-bottom: 0.9rem;
+}
+
+.toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem 2rem;
+  grid-template-columns: 1fr;
+  counter-reset: toc;
+}
+
+@media (min-width: 40rem) {
+  .toc ol {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.toc li {
+  counter-increment: toc;
+  font-size: 0.9375rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.toc li::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--font-clock), system-ui, sans-serif;
+  color: var(--amber);
+  font-size: 0.9375rem;
+  flex: none;
+}
+
+.toc a {
+  color: var(--text-muted);
+  border-bottom: 0;
+}
+
+.toc a:hover {
+  color: var(--text);
+}
+
+/* ------------------------------------------------------------- tabelas */
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  max-width: 44rem;
+  border-top: 1px solid var(--navy-700);
+  border-bottom: 1px solid var(--navy-700);
+}
+
+.table-wrap table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 30rem;
+  font-size: 0.9375rem;
+}
+
+.table-wrap caption {
+  text-align: left;
+  padding: 0.9rem 0;
+  font-size: 0.8125rem;
+  color: var(--text-subtle);
+}
+
+.table-wrap th,
+.table-wrap td {
+  padding: 0.6rem 1rem 0.6rem 0;
+  text-align: left;
+  border-bottom: 1px solid var(--navy-700);
+  font-weight: 400;
+  color: var(--text-muted);
+  vertical-align: baseline;
+}
+
+.table-wrap thead th {
+  color: var(--blue-300);
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.table-wrap tbody th {
+  color: var(--text-on-surface);
+}
+
+.table-wrap tbody tr:last-child th,
+.table-wrap tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Medida se lê alinhada à direita e em algarismos de largura fixa. */
+.table-wrap .n {
+  text-align: right;
+  font-family: var(--font-clock), system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.0625em;
+  color: var(--text);
+  letter-spacing: 0.03em;
+}
+
+.table-wrap thead .n {
+  color: var(--blue-300);
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+}
+
+/* ------------------------------------------------------------- chamadas */
+
+.callout {
+  border-left: 2px solid var(--amber);
+  padding: 0.15rem 0 0.15rem 1.15rem;
+  margin-top: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.callout .label {
+  display: block;
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.4rem;
+}
+
+.callout p + p {
+  margin-top: 0.75rem;
+}
+
+code {
+  font-family: var(--font-clock), ui-monospace, monospace;
+  font-size: 1.08em;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+/* -------------------------------------------------------------- diagrama */
+
+.diagram {
+  margin: 1.75rem 0 0;
+  padding: clamp(1rem, 0.5rem + 2vw, 2rem);
+  border: 1px solid var(--navy-700);
+  background: var(--navy-900);
+  overflow-x: auto;
+}
+
+.diagram svg {
+  display: block;
+  width: 100%;
+  min-width: 26rem;
+  height: auto;
+  color: var(--text-on-surface);
+}
+
+.diagram figcaption {
+  margin-top: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--text-subtle);
+  max-width: 44rem;
+}
+
+.dg-face {
+  font-family: var(--font-clock), sans-serif;
+}
+
+.dg-brand {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 500;
+}
+
+.dg-label {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.colophon {
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--navy-700);
+  padding-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-subtle);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
