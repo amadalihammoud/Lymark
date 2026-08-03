@@ -19,8 +19,11 @@ import {
 import { buildWatermarkContent } from '@/features/watermark/build-content';
 import { saveToDeviceGallery, shareWatermarkedPhoto } from '@/features/watermark/export-photo';
 import { renderStampedPhoto } from '@/features/watermark/render-photo';
-import { STAMP_COLORS } from '@/features/watermark/stamp-canvas';
-import { createStampRenderer, useStampFontProvider } from '@/features/watermark/skia-stamp';
+import {
+  createStampRenderer,
+  loadStampImages,
+  useStampFontProvider,
+} from '@/features/watermark/skia-stamp';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
 import { colors, spacing, typography } from '@/theme';
 import { WATERMARK_FIELD_KEYS, type WatermarkFieldKey } from '@/types';
@@ -35,6 +38,14 @@ const LOOKUP_MESSAGES: Record<AddressLookupStatus, string> = {
   timeout: 'O GPS não respondeu a tempo. Dentro de prédios costuma falhar — digite o endereço.',
   unavailable: 'Não foi possível resolver o endereço nesta posição. Digite manualmente.',
 };
+
+/**
+ * Acima deste raio, o número da fachada deixa de ser confiável.
+ *
+ * Vinte metros é cerca de duas casas de frente: dentro disso o geocodificador
+ * costuma acertar a porta; acima, ele chuta o vizinho.
+ */
+const IMPRECISE_ACCURACY_M = 20;
 
 /** Qual ação está em curso — as duas geram imagem e não podem se sobrepor. */
 type PendingAction = 'save' | 'share';
@@ -89,6 +100,14 @@ export default function CaptureScreen() {
    * app gerou.
    */
   const codeEdited = useRef(false);
+
+  /**
+   * Precisão da última leitura de GPS, em metros.
+   *
+   * Some assim que o usuário digita: a partir daí o endereço é o que ele
+   * afirma, e um raio de incerteza ao lado dele passaria a mentir.
+   */
+  const [accuracy, setAccuracy] = useState<number | null>(null);
   const addressRef = useRef(draft.metadata.address);
   useEffect(() => {
     addressRef.current = draft.metadata.address;
@@ -136,8 +155,28 @@ export default function CaptureScreen() {
 
   const handleChangeField = (key: WatermarkFieldKey, value: string) => {
     if (key === 'code') codeEdited.current = true;
+    if (key === 'address') setAccuracy(null);
     setField(key, value);
   };
+
+  /**
+   * O GPS resolve a rua, não a porta. Dizer o raio é o que permite decidir se
+   * o número da fachada merece conferência — sem precisar de mapa, e sem
+   * mandar coordenada nenhuma para lugar nenhum.
+   */
+  const addressHint = (() => {
+    if (accuracy === null) return null;
+
+    const meters = Math.round(accuracy);
+    const imprecise = meters > IMPRECISE_ACCURACY_M;
+
+    return {
+      text: imprecise
+        ? `Posição com ±${meters} m de incerteza — confira o número antes de exportar.`
+        : `Posição com ±${meters} m de incerteza.`,
+      imprecise,
+    };
+  })();
 
   const runPick = async (open: () => Promise<PhotoPickResult>) => {
     if (picking || busy) return;
@@ -154,7 +193,7 @@ export default function CaptureScreen() {
     lookupToken.current = token;
 
     const addressWhenRequested = addressRef.current;
-    const { status, address } = await lookup();
+    const { status, address, accuracy: reading } = await lookup();
 
     // Outra busca começou, ou a captura foi reiniciada: a resposta caducou.
     if (token !== lookupToken.current) return;
@@ -178,7 +217,13 @@ export default function CaptureScreen() {
         title: 'Substituir o endereço digitado?',
         message: `O GPS encontrou:\n\n${address}`,
         actions: [
-          { label: 'Usar o do GPS', onPress: () => setField('address', address) },
+          {
+            label: 'Usar o do GPS',
+            onPress: () => {
+              setField('address', address);
+              setAccuracy(reading);
+            },
+          },
           { label: 'Manter o meu', variant: 'ghost' },
         ],
       });
@@ -186,6 +231,7 @@ export default function CaptureScreen() {
     }
 
     setField('address', address);
+    setAccuracy(reading);
   };
 
   const handleReset = useCallback(() => {
@@ -203,6 +249,7 @@ export default function CaptureScreen() {
             // captura nova.
             lookupToken.current += 1;
             codeEdited.current = false;
+            setAccuracy(null);
             resetDraft();
           },
         },
@@ -228,12 +275,16 @@ export default function CaptureScreen() {
     lookupToken.current += 1;
     setPending(action);
     try {
+      // O logotipo é decodificado aqui, e não dentro do desenho: compor sobre
+      // um bitmap de 4000 px já é a parte cara, e o desenho em si precisa ser
+      // síncrono.
+      const images = await loadStampImages(preferences.brandLogoPath);
+
       const path = await renderStampedPhoto({
         photoUri: photo.uri,
         metadata: draft.metadata,
         preferences,
-        colors: STAMP_COLORS,
-        renderer: createStampRenderer(fontProvider),
+        renderer: createStampRenderer(fontProvider, images),
       });
       // O histórico registra sempre, em qualquer das duas ações: é a rede de
       // segurança contra perder uma captura por causa de uma permissão negada
@@ -342,6 +393,7 @@ export default function CaptureScreen() {
         }}
         onLocate={handleLocate}
         locating={locating}
+        addressHint={addressHint}
         // Mexer nos campos durante a captura nativa faria o carimbo da
         // imagem divergir do que está na tela.
         disabled={busy}

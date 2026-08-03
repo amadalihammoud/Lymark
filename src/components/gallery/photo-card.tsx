@@ -11,9 +11,16 @@ import type { GalleryEntry } from '@/types';
 export function PhotoCard({
   entry,
   onPress,
+  onLongPress,
+  selectable = false,
+  selected = false,
 }: {
   entry: GalleryEntry;
   onPress: () => void;
+  onLongPress?: () => void;
+  /** Em modo de seleção o cartão mostra a marca, mesmo desmarcado. */
+  selectable?: boolean;
+  selected?: boolean;
 }) {
   // O arquivo pode ter sumido: limpeza de dados do app, restauração de
   // backup, ou corte pelo teto do histórico.
@@ -21,10 +28,22 @@ export function PhotoCard({
 
   return (
     <Pressable
-      accessibilityRole="button"
+      accessibilityRole={selectable ? 'checkbox' : 'button'}
       accessibilityLabel={`Foto de ${formatTimestamp(entry.exportedAt)}`}
+      accessibilityState={selectable ? { checked: selected } : undefined}
       onPress={onPress}
-      style={({ pressed }) => [styles.card, pressed && styles.pressed]}>
+      onLongPress={onLongPress}
+      style={({ pressed }) => [
+        styles.card,
+        pressed && styles.pressed,
+        selected && styles.selected,
+      ]}>
+      {selectable ? (
+        <View style={[styles.check, selected && styles.checkOn]}>
+          {selected ? <Text style={styles.checkMark}>✓</Text> : null}
+        </View>
+      ) : null}
+
       {missing ? (
         <View style={[styles.thumbnail, styles.missing]}>
           <Text style={styles.missingMark}>!</Text>
@@ -55,6 +74,28 @@ export function PhotoCard({
 }
 
 const styles = StyleSheet.create({
+  selected: {
+    backgroundColor: colors.surfaceRaised,
+  },
+  check: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: colors.borderInteractive,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  checkOn: {
+    backgroundColor: colors.accent,
+    borderColor: colors.accent,
+  },
+  checkMark: {
+    color: colors.onAccent,
+    fontWeight: '700',
+    lineHeight: 20,
+  },
   card: {
     flexDirection: 'row',
     gap: spacing.md,

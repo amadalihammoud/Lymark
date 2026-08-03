@@ -1,4 +1,4 @@
-import { SCALE_METRICS, metricsForFrame, scaleMetricsToFrame } from '../layout';
+import { SCALE_METRICS, metricsForFrame } from '../layout';
 import { REFERENCE_FRAME_WIDTH, TIME_SIZE_RATIO_MEDIUM } from '../skia-typography';
 
 /**
@@ -29,24 +29,22 @@ describe('metricsForFrame — âncora na referência', () => {
 });
 
 /**
- * `scaleMetricsToFrame` — o que o renderizador ainda usa — olha só a altura, e
- * por isso deixa o tamanho do carimbo depender da largura da tela do aparelho.
- * Os testes abaixo fixam onde as duas concordam e onde a nova diverge de
- * propósito.
+ * O fator é o **menor** entre as duas proporções, e é essa a diferença para o
+ * renderizador em componentes que existia antes: ele olhava só a altura, o que
+ * deixava o tamanho do carimbo depender da largura da tela do aparelho.
  */
-describe('metricsForFrame — divergências deliberadas do comportamento antigo', () => {
-  it('encolhe pela altura numa panorâmica, como a função antiga', () => {
+describe('metricsForFrame — encolhe pela dimensão que aperta', () => {
+  it('encolhe pela altura numa panorâmica', () => {
     // 4,4:1 — o caso que cortava a hora para fora da imagem.
     const wide = metricsForFrame(medium, { width: 1320, height: 300 });
 
-    expect(wide.time).toBe(scaleMetricsToFrame(medium, 300).time);
+    expect(wide.time).toBe(Math.round(medium.time * (300 / 440)));
   });
 
-  it('encolhe pela largura num quadro alto e estreito, onde a antiga não encolhia', () => {
+  it('encolhe pela largura num quadro alto e estreito', () => {
     const narrow = metricsForFrame(medium, { width: 150, height: 900 });
 
     expect(narrow.time).toBeLessThan(medium.time);
-    expect(scaleMetricsToFrame(medium, 900)).toEqual(medium);
   });
 
   it('respeita o piso de legibilidade na tela', () => {

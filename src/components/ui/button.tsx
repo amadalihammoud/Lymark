@@ -27,6 +27,13 @@ type ButtonProps = {
   onPress: () => void;
   variant?: ButtonVariant;
   icon?: keyof typeof Ionicons.glyphMap;
+  /**
+   * Esconde o texto e deixa só o ícone, num alvo quadrado.
+   *
+   * O `label` continua sendo o nome acessível: quem usa leitor de tela ouve
+   * "Localizar endereço", e não "botão".
+   */
+  iconOnly?: boolean;
   disabled?: boolean;
   loading?: boolean;
   style?: StyleProp<ViewStyle>;
@@ -61,6 +68,7 @@ export function Button({
   onPress,
   variant = 'primary',
   icon,
+  iconOnly = false,
   disabled = false,
   loading = false,
   style,
@@ -77,6 +85,7 @@ export function Button({
       onPress={onPress}
       style={({ pressed }) => [
         styles.base,
+        iconOnly && styles.square,
         variant === 'ghost' || variant === 'danger' ? styles.bordered : null,
         { backgroundColor: pressed ? PRESSED_BACKGROUNDS[variant] : BACKGROUNDS[variant] },
         inactive && styles.inactive,
@@ -86,10 +95,12 @@ export function Button({
         <ActivityIndicator color={foreground} />
       ) : (
         <>
-          {icon ? <Ionicons name={icon} size={18} color={foreground} /> : null}
-          <Text style={[typography.button, { color: foreground }]} numberOfLines={1}>
-            {label}
-          </Text>
+          {icon ? <Ionicons name={icon} size={iconOnly ? 22 : 18} color={foreground} /> : null}
+          {iconOnly ? null : (
+            <Text style={[typography.button, { color: foreground }]} numberOfLines={1}>
+              {label}
+            </Text>
+          )}
         </>
       )}
     </Pressable>
@@ -106,6 +117,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.md,
     borderRadius: radius.md,
+  },
+  /**
+   * Alvo quadrado, do tamanho mínimo de toque.
+   *
+   * Ao lado de uma caixa que cresce até três linhas, um botão em pílula larga
+   * deixa um vão à direita que desequilibra a composição.
+   */
+  square: {
+    width: HIT_TARGET + 8,
+    height: HIT_TARGET + 8,
+    paddingHorizontal: 0,
+    paddingVertical: 0,
   },
   bordered: {
     borderWidth: 1,

@@ -85,6 +85,16 @@ export const STAMP_COLOR_LABELS: Record<StampColorKey, string> = {
   black: 'Preto',
 };
 
+/** Atalhos do seletor: o que se escolhe em um toque, antes de abrir a roda. */
+export const STAMP_COLOR_SWATCHES: Record<StampColorKey, string> = {
+  white: '#FFFFFF',
+  amber: '#F5B60D',
+  red: '#FF6B57',
+  green: '#5BD98A',
+  blue: '#63B3ED',
+  black: '#111820',
+};
+
 /**
  * De onde vem a marca carimbada na foto.
  *
@@ -101,6 +111,47 @@ export const BRAND_MODE_LABELS: Record<BrandMode, string> = {
 };
 
 /**
+ * Onde a marca aparece na foto.
+ *
+ * `header` é o cabeçalho acima do relógio — logo à esquerda, nome e
+ * complemento à direita. `corner` é a linha compacta num canto, que não tem
+ * espaço para logo nem para duas alturas de texto. São o mesmo dado em dois
+ * formatos, e nunca os dois ao mesmo tempo: duas marcas na mesma foto
+ * competem entre si.
+ */
+export const BRAND_PLACEMENTS = ['header', 'corner', 'none'] as const;
+
+export type BrandPlacement = (typeof BRAND_PLACEMENTS)[number];
+
+export const BRAND_PLACEMENT_LABELS: Record<BrandPlacement, string> = {
+  header: 'Acima do relógio',
+  corner: 'Num canto',
+  none: 'Nenhuma',
+};
+
+/**
+ * Como a faixa de fundo é desenhada — ou se é.
+ *
+ * `block` abraça o texto: um cartão com folga em volta, que é o que serve na
+ * maioria das fotos. `band` atravessa a foto de borda a borda, encostada no
+ * lado em que o carimbo está ancorado.
+ *
+ * A diferença não é decorativa. Sobre uma cena visualmente carregada — um
+ * canteiro de obra, um pátio cheio, uma fachada com muita informação —, o
+ * cartão flutuando parece adesivo colado por cima; a faixa contínua parece
+ * parte do documento, porque tem a mesma largura da imagem que ela legenda.
+ */
+export const BACKDROP_STYLES = ['none', 'block', 'band'] as const;
+
+export type BackdropStyle = (typeof BACKDROP_STYLES)[number];
+
+export const BACKDROP_STYLE_LABELS: Record<BackdropStyle, string> = {
+  none: 'Nenhuma',
+  block: 'Atrás do texto',
+  band: 'Faixa contínua',
+};
+
+/**
  * Um trecho da marca, com cor própria.
  *
  * São **partes**, e não palavras: "Lymark" é uma palavra só em duas cores, e
@@ -110,7 +161,8 @@ export const BRAND_MODE_LABELS: Record<BrandMode, string> = {
  */
 export type BrandPart = {
   text: string;
-  color: StampColorKey;
+  /** Cor livre, em hexadecimal. As chaves acima viram apenas atalhos na tela. */
+  color: string;
 };
 
 export type WatermarkPreferences = {
@@ -118,16 +170,62 @@ export type WatermarkPreferences = {
   visibleFields: Record<WatermarkFieldKey, boolean>;
   position: WatermarkPosition;
   scale: WatermarkScale;
-  /** Faixa escura atrás do texto, para legibilidade sobre fotos claras. */
-  showBackdrop: boolean;
-  /** Carimba a marca do Lymark na foto. */
-  showBrand: boolean;
+  /** Fundo escuro atrás do texto, para legibilidade sobre fotos claras. */
+  backdropStyle: BackdropStyle;
   /** Canto onde a marca fica — independente do canto do bloco de dados. */
   brandPosition: WatermarkPosition;
   /** Marca do Lymark ou a da empresa de quem usa. */
   brandMode: BrandMode;
   /** As duas partes da marca própria, cada uma com sua cor. */
   brandParts: [BrandPart, BrandPart];
+  /** Onde a marca é desenhada — substitui o antigo liga/desliga. */
+  brandPlacement: BrandPlacement;
+  /**
+   * Complemento do nome, na segunda linha do cabeçalho.
+   *
+   * Pode ser a continuação da razão social ou um slogan curto. Só aparece no
+   * formato de cabeçalho; no canto não há altura para duas linhas.
+   */
+  brandComplement: string;
+  /** Cor do complemento, livre. */
+  brandComplementColor: string;
+  /**
+   * Arquivo do logotipo, copiado para dentro do app. `null` sem logotipo.
+   *
+   * Caminho **relativo** ao diretório de documentos, pela mesma razão que os
+   * registros da galeria: no iOS o identificador do contêiner muda a cada
+   * atualização e uma URI absoluta gravada hoje apontaria para o nada depois.
+   */
+  brandLogoPath: string | null;
+  /**
+   * Proporção largura/altura do logotipo, lida na hora de escolher o arquivo.
+   *
+   * Guardada junto porque a geometria é síncrona: descobrir a proporção no
+   * momento do desenho exigiria decodificar a imagem dentro do cálculo de
+   * layout, que roda a cada quadro do preview.
+   */
+  brandLogoAspect: number;
+
+  /**
+   * Cores do carimbo, independentes das cores da interface.
+   *
+   * Eram a mesma constante: mudar a barra do carimbo repintava os botões do
+   * aplicativo. São perguntas diferentes — uma é identidade da foto, a outra
+   * é identidade da tela.
+   */
+  stampAccent: string;
+  stampTextColor: string;
+  /** Cor da faixa, opacidade de 0 a 1, e arredondamento dos cantos. */
+  backdropColor: string;
+  backdropOpacity: number;
+  /**
+   * Raio dos cantos, em pontos.
+   *
+   * No cartão vale para os quatro. Na faixa contínua, só para os dois cantos
+   * virados para dentro da foto: arredondar os que encostam na borda deixaria
+   * aparecer um triângulo da imagem no canto, que lê como defeito.
+   */
+  backdropRadius: number;
   /**
    * O código na lateral fica girado, colado na borda direita: não compete
    * com o conteúdo da foto. No bloco, acompanha hora, data e endereço.

@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from 'react';
 
+import { deleteLogo } from '@/features/watermark/logo-file';
 import {
   DEFAULT_WATERMARK_PREFERENCES,
   PREFERENCES_SCHEMA_VERSION,
@@ -17,13 +18,9 @@ import {
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
 import {
   WATERMARK_FIELD_KEYS,
-  type BrandMode,
   type BrandPart,
-  type CodePlacement,
   type WatermarkFieldKey,
-  type WatermarkPosition,
   type WatermarkPreferences,
-  type WatermarkScale,
 } from '@/types';
 
 /**
@@ -43,15 +40,24 @@ type SettingsContextValue = {
   /** Quantos campos estão marcados para aparecer na foto. */
   visibleFieldCount: number;
   toggleField: (key: WatermarkFieldKey) => void;
-  setPosition: (position: WatermarkPosition) => void;
-  setScale: (scale: WatermarkScale) => void;
-  setShowBackdrop: (showBackdrop: boolean) => void;
-  setShowBrand: (showBrand: boolean) => void;
-  setBrandPosition: (brandPosition: WatermarkPosition) => void;
-  setBrandMode: (brandMode: BrandMode) => void;
+  /**
+   * Altera um ou mais ajustes de uma vez.
+   *
+   * Havia um setter dedicado por preferência. Com o carimbo ganhando cores
+   * livres, logotipo e faixa configurável, isso virou uma lista de treze
+   * funções idênticas a menos do nome do campo — e cada ajuste novo exigia
+   * escrever a mesma linha em três lugares.
+   */
+  updatePreferences: (patch: Partial<WatermarkPreferences>) => void;
   /** Altera texto ou cor de uma das duas partes da marca própria. */
   setBrandPart: (index: 0 | 1, part: Partial<BrandPart>) => void;
-  setCodePlacement: (codePlacement: CodePlacement) => void;
+  /**
+   * Troca o logotipo, apagando o arquivo anterior.
+   *
+   * Sem isso cada troca deixaria um arquivo órfão no aparelho para sempre —
+   * o app pediria espaço e nunca o devolveria.
+   */
+  setBrandLogo: (logo: { path: string; aspect: number } | null) => void;
   resetPreferences: () => void;
 };
 
@@ -113,28 +119,22 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     }));
   }, []);
 
-  const setPosition = useCallback((position: WatermarkPosition) => {
-    setPreferences((current) => ({ ...current, position }));
+  const updatePreferences = useCallback((patch: Partial<WatermarkPreferences>) => {
+    setPreferences((current) => ({ ...current, ...patch }));
   }, []);
 
-  const setScale = useCallback((scale: WatermarkScale) => {
-    setPreferences((current) => ({ ...current, scale }));
-  }, []);
+  const setBrandLogo = useCallback((logo: { path: string; aspect: number } | null) => {
+    setPreferences((current) => {
+      if (current.brandLogoPath && current.brandLogoPath !== logo?.path) {
+        deleteLogo(current.brandLogoPath);
+      }
 
-  const setShowBackdrop = useCallback((showBackdrop: boolean) => {
-    setPreferences((current) => ({ ...current, showBackdrop }));
-  }, []);
-
-  const setShowBrand = useCallback((showBrand: boolean) => {
-    setPreferences((current) => ({ ...current, showBrand }));
-  }, []);
-
-  const setBrandPosition = useCallback((brandPosition: WatermarkPosition) => {
-    setPreferences((current) => ({ ...current, brandPosition }));
-  }, []);
-
-  const setBrandMode = useCallback((brandMode: BrandMode) => {
-    setPreferences((current) => ({ ...current, brandMode }));
+      return {
+        ...current,
+        brandLogoPath: logo?.path ?? null,
+        brandLogoAspect: logo?.aspect ?? DEFAULT_WATERMARK_PREFERENCES.brandLogoAspect,
+      };
+    });
   }, []);
 
   const setBrandPart = useCallback((index: 0 | 1, part: Partial<BrandPart>) => {
@@ -148,12 +148,13 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const setCodePlacement = useCallback((codePlacement: CodePlacement) => {
-    setPreferences((current) => ({ ...current, codePlacement }));
-  }, []);
-
   const resetPreferences = useCallback(() => {
-    setPreferences(DEFAULT_WATERMARK_PREFERENCES);
+    setPreferences((current) => {
+      // O logotipo é arquivo, e não ajuste: restaurar o padrão o descarta das
+      // preferências, então ele precisa sair do disco junto.
+      if (current.brandLogoPath) deleteLogo(current.brandLogoPath);
+      return DEFAULT_WATERMARK_PREFERENCES;
+    });
   }, []);
 
   const value = useMemo<SettingsContextValue>(
@@ -163,28 +164,18 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       visibleFieldCount: WATERMARK_FIELD_KEYS.filter((key) => preferences.visibleFields[key])
         .length,
       toggleField,
-      setPosition,
-      setScale,
-      setShowBackdrop,
-      setShowBrand,
-      setBrandPosition,
-      setBrandMode,
+      updatePreferences,
       setBrandPart,
-      setCodePlacement,
+      setBrandLogo,
       resetPreferences,
     }),
     [
       preferences,
       hydrated,
       toggleField,
-      setPosition,
-      setScale,
-      setShowBackdrop,
-      setShowBrand,
-      setBrandPosition,
-      setBrandMode,
+      updatePreferences,
       setBrandPart,
-      setCodePlacement,
+      setBrandLogo,
       resetPreferences,
     ],
   );

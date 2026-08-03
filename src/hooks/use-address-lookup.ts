@@ -43,6 +43,15 @@ function withTimeout<T>(promise: Promise<T>, ms: number): Promise<T> {
 export type AddressLookupResult = {
   status: AddressLookupStatus;
   address: string | null;
+  /**
+   * Raio de incerteza da leitura, em metros.
+   *
+   * O GPS resolve a rua, não a porta. Este número é o que permite ao usuário
+   * decidir quanto desconfiar do endereço: com ±8 m o número da fachada
+   * provavelmente está certo; com ±60 m, quase certamente não. Descartá-lo
+   * era jogar fora a única informação que qualifica o palpite.
+   */
+  accuracy: number | null;
 };
 
 export function useAddressLookup() {
@@ -63,14 +72,14 @@ export function useAddressLookup() {
       const { granted } = await Location.requestForegroundPermissionsAsync();
       if (!granted) {
         setStatus('denied');
-        return { status: 'denied', address: null };
+        return { status: 'denied', address: null, accuracy: null };
       }
 
       // Distingue "GPS desligado" de "não consegui" — a mensagem ao usuário
       // muda completamente, e só uma das duas ele consegue resolver.
       if (!(await Location.hasServicesEnabledAsync())) {
         setStatus('disabled');
-        return { status: 'disabled', address: null };
+        return { status: 'disabled', address: null, accuracy: null };
       }
 
       const position = await withTimeout(
@@ -85,27 +94,27 @@ export function useAddressLookup() {
 
       if (!position) {
         setStatus('timeout');
-        return { status: 'timeout', address: null };
+        return { status: 'timeout', address: null, accuracy: null };
       }
 
       const [address] = await Location.reverseGeocodeAsync(position.coords);
       if (!address) {
         setStatus('unavailable');
-        return { status: 'unavailable', address: null };
+        return { status: 'unavailable', address: null, accuracy: null };
       }
 
       const formatted = formatGeocodedAddress(address);
       if (!formatted) {
         setStatus('unavailable');
-        return { status: 'unavailable', address: null };
+        return { status: 'unavailable', address: null, accuracy: null };
       }
 
       setStatus('success');
-      return { status: 'success', address: formatted };
+      return { status: 'success', address: formatted, accuracy: position.coords.accuracy };
     } catch (error) {
       console.warn('[location] não foi possível obter o endereço.', error);
       setStatus('unavailable');
-      return { status: 'unavailable', address: null };
+      return { status: 'unavailable', address: null, accuracy: null };
     }
   }, []);
 

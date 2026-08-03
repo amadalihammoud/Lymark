@@ -2,12 +2,11 @@ import { Canvas, Picture, createPicture } from '@shopify/react-native-skia';
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { colors, stampPalette } from '@/theme';
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
 import { buildWatermarkContent } from './build-content';
-import { createStampRenderer, useStampFontProvider } from './skia-stamp';
-import { buildStampGeometry, type StampColors } from './stamp-layout';
+import { createStampRenderer, useStampFontProvider, useStampImages } from './skia-stamp';
+import { buildStampGeometry } from './stamp-layout';
 
 /**
  * O carimbo desenhado sobre a foto, na tela.
@@ -18,13 +17,6 @@ import { buildStampGeometry, type StampColors } from './stamp-layout';
  * no arquivo — antes o preview era uma reprodução em componentes, e o arquivo,
  * uma fotografia dela.
  */
-
-export const STAMP_COLORS: StampColors = {
-  text: colors.text,
-  accent: colors.accent,
-  backdrop: colors.watermarkBackdrop,
-  palette: stampPalette,
-};
 
 export function StampCanvas({
   metadata,
@@ -38,20 +30,26 @@ export function StampCanvas({
   height: number;
 }) {
   const provider = useStampFontProvider();
+  const images = useStampImages(preferences.brandLogoPath);
 
   const picture = useMemo(() => {
     if (!provider || width <= 0 || height <= 0) return null;
 
-    const renderer = createStampRenderer(provider);
+    const renderer = createStampRenderer(provider, images);
     const geometry = buildStampGeometry({
       content: buildWatermarkContent(metadata, preferences),
       preferences,
       frame: { width, height },
-      colors: STAMP_COLORS,
       measure: renderer.measure,
     });
 
-    if (geometry.texts.length === 0 && geometry.rects.length === 0) return null;
+    if (
+      geometry.texts.length === 0 &&
+      geometry.rects.length === 0 &&
+      geometry.images.length === 0
+    ) {
+      return null;
+    }
 
     return createPicture((canvas) => renderer.draw(canvas, geometry), {
       x: 0,
@@ -59,7 +57,7 @@ export function StampCanvas({
       width,
       height,
     });
-  }, [provider, metadata, preferences, width, height]);
+  }, [provider, images, metadata, preferences, width, height]);
 
   if (!picture) return null;
 
