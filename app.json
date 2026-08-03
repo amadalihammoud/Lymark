@@ -78,7 +78,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem que receberá a marca d'água.",
+          "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem que receberá a marca d'água e o arquivo do logotipo da sua empresa.",
           "cameraPermission": "O Lymark usa a câmera para tirar a foto que receberá a marca d'água.",
           "microphonePermission": false
         }
