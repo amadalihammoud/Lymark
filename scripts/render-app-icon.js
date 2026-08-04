@@ -42,54 +42,56 @@ const G = {
   lFoot: 101 / 431,
   lWidth: 267 / 431,
   stroke: 74 / 431,
-  descender: 121 / 431,
+  gap: 87 / 431,
 
   /*
-   * Estas três são as que o "y" trouxe, e foram achadas desenhando.
+   * As duas medidas que o "y" trouxe.
    *
-   * A primeira tentativa manteve a altura de x em 0,73 da caixa alta e o
-   * braço com uma corrida curta, o que fecha a contra-forma: a 32 px o y
-   * virava uma mancha âmbar sólida, sem o vazio triangular que é justamente
-   * o que distingue a letra. Um y precisa de largura — foi por isso que a
-   * barra sozinha cabia num espaço que a letra não cabe.
+   * Uma tentativa anterior desceu o traço âmbar para a altura de x e o
+   * prolongou numa descendente abaixo da linha de base. Era o y
+   * tipograficamente correto, e mudava demais: o topo e a base do conjunto
+   * saíam do lugar, e o ícone deixava de ser o mesmo desenho.
+   *
+   * Aqui o traço âmbar não se move — mesmo x, mesmo topo, mesma base, mesma
+   * espessura. O braço é acrescentado no vazio que já existia entre o L e
+   * ele, e a caixa do conjunto continua sendo exatamente a de antes. O que
+   * muda é só o que o traço significa.
    */
-  xHeight: 0.6,
-  /** Quanto o braço anda na horizontal enquanto desce da altura de x. */
-  armRun: 0.36,
-  /** Espaço entre o L e o y. Menor que o do arquivo antigo: lá havia uma
-      barra solta, aqui há duas letras da mesma palavra. */
-  gap: 60 / 431,
+  junction: 0.58,
+  /** Quanto o braço anda na horizontal enquanto desce até encontrar a haste. */
+  armRun: 96 / 431,
 };
 
-const TOTAL_WIDTH = G.lWidth + G.gap + G.armRun + 2 * G.stroke;
-const TOTAL_HEIGHT = 1 + G.descender;
+const TOTAL_WIDTH = G.lWidth + G.gap + G.stroke;
+const TOTAL_HEIGHT = 1;
 
 /**
  * As duas letras em coordenadas absolutas, dada a altura de caixa alta.
  *
- * O conjunto é centrado incluindo a descendente: ela é tinta como qualquer
- * outra, e ignorá-la deixaria o desenho visivelmente baixo no quadrado.
+ * O braço cabe inteiro no vazio entre o L e a haste, então a caixa do
+ * conjunto — topo, base e as duas laterais — é a mesma de antes do "y"
+ * existir.
  */
 function geometry(size, cap) {
   const x0 = (size - TOTAL_WIDTH * cap) / 2;
   const top = (size - TOTAL_HEIGHT * cap) / 2;
   const baseline = top + cap;
 
-  const armLeft = x0 + (G.lWidth + G.gap) * cap;
-  const stemLeft = armLeft + (G.armRun + G.stroke) * cap;
-  const xTop = baseline - G.xHeight * cap;
+  const stemLeft = x0 + (G.lWidth + G.gap) * cap;
+  const junction = top + G.junction * cap;
+  const armLeft = stemLeft - (G.stroke + G.armRun) * cap;
 
   return {
     lStem: [x0, top, G.lStem * cap, cap],
     lFoot: [x0, baseline - G.lFoot * cap, G.lWidth * cap, G.lFoot * cap],
-    yStem: [stemLeft, xTop, G.stroke * cap, G.xHeight * cap + G.descender * cap],
+    yStem: [stemLeft, top, G.stroke * cap, cap],
     /* Paralelogramo: espessura medida na horizontal, como num traço cortado a
        prumo — é o corte que o L também tem. */
     yArm: [
-      [armLeft, xTop],
-      [armLeft + G.stroke * cap, xTop],
-      [stemLeft, baseline],
-      [stemLeft - G.stroke * cap, baseline],
+      [armLeft, top],
+      [armLeft + G.stroke * cap, top],
+      [stemLeft, junction],
+      [stemLeft - G.stroke * cap, junction],
     ],
   };
 }
@@ -137,12 +139,12 @@ function draw(CK, { size, cap, background, mono }) {
  * enquadramento de cada destino.
  */
 const TARGETS = [
-  { file: 'icon.png', size: 1024, cap: 371, background: NAVY },
-  { file: 'android-icon-foreground.png', size: 1024, cap: 300 },
-  { file: 'android-icon-monochrome.png', size: 1024, cap: 300, mono: true },
+  { file: 'icon.png', size: 1024, cap: 431, background: NAVY },
+  { file: 'android-icon-foreground.png', size: 1024, cap: 349 },
+  { file: 'android-icon-monochrome.png', size: 1024, cap: 349, mono: true },
   { file: 'android-icon-background.png', size: 1024, cap: 0, background: NAVY },
-  { file: 'splash-icon.png', size: 512, cap: 274 },
-  { file: 'favicon.png', size: 64, cap: 23, background: NAVY },
+  { file: 'splash-icon.png', size: 512, cap: 317 },
+  { file: 'favicon.png', size: 64, cap: 27, background: NAVY },
 ];
 
 CanvasKitInit().then((CK) => {
