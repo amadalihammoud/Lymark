@@ -257,6 +257,20 @@ section.band .scene {
   aspect-ratio: 4 / 3;
 }
 
+/*
+ * No celular todas as molduras ficam mais altas, e não só a do hero.
+ *
+ * A 320 px a 16:9 dá 158 px de altura para 150 px de carimbo — oito de folga.
+ * Quem estiver com a fonte do navegador acima do padrão perde essa margem, e
+ * o que sai da moldura primeiro é o logotipo, que fica no topo. A 4:3 a mesma
+ * largura dá 240 px.
+ */
+@media (max-width: 36rem) {
+  .frame {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 .frame img {
   position: absolute;
   inset: 0;
