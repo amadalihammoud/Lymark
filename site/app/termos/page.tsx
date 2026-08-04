@@ -12,7 +12,7 @@ export default function Termos() {
     <article className="doc">
       <h1>Termos de Uso</h1>
       <p className="stamp-date">
-        Última atualização: 2 de agosto de 2026 · Aplicativo Lymark, versão 1.1.0 (Android)
+        Última atualização: 2 de agosto de 2026 · Aplicativo Lymark, versão 1.3.0 (Android)
       </p>
 
       <p className="intro">

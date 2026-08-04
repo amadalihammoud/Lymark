@@ -225,50 +225,88 @@ nav.site a:hover {
   transform: translateY(-3px);
 }
 
-/* ---------------------------------------------------- amostra do carimbo */
+/* ------------------------------------------------------------- cenas */
 
 /*
- * Uma amostra do carimbo, não uma captura de tela falsificada: as
- * proporções são as mesmas medidas em src/features/watermark/layout.ts.
+ * As três cenas animadas: o carimbo sendo desenhado, a correção do endereço
+ * e a troca de marca. Cada uma é uma foto com o carimbo composto por cima —
+ * na mesma ordem e com as mesmas proporções que o aplicativo usa.
  */
-.specimen {
+.scene {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+section.band .scene {
+  margin-top: 2.25rem;
+}
+
+.frame {
   position: relative;
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  aspect-ratio: 16 / 9;
   border: 1px solid var(--navy-400);
-  background:
-    radial-gradient(120% 90% at 78% 12%, rgba(74, 118, 161, 0.28), transparent 58%),
-    linear-gradient(168deg, var(--navy-600), var(--navy-900));
+  background: var(--navy-900);
   overflow: hidden;
 }
 
-.specimen::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--navy-400) 1px, transparent 1px),
-    linear-gradient(90deg, var(--navy-400) 1px, transparent 1px);
-  background-size: 2.25rem 2.25rem;
-  opacity: 0.14;
+/* No hero a moldura é mais alta: o carimbo divide o quadro com a foto, e a
+   16:9 sobra pouca altura para as quatro linhas dele. */
+.hero .frame {
+  aspect-ratio: 4 / 3;
 }
 
-.stamp {
+.frame img {
   position: absolute;
-  left: 1.15rem;
-  bottom: 1.05rem;
-  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 420ms ease;
+}
+
+/* O texto do carimbo é claro; sem isto ele some numa foto de céu aberto. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(6, 18, 30, 0.72) 0%,
+    rgba(6, 18, 30, 0.18) 46%,
+    rgba(6, 18, 30, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: clamp(0.9rem, 2.4vw, 1.9rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  pointer-events: none;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
 }
 
-.stamp .row {
-  display: flex;
-  align-items: flex-start;
+.overlay.brand {
+  justify-content: space-between;
 }
 
-.stamp .clock {
+.stamp-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.stamp-clock {
   font-family: var(--font-clock), system-ui, sans-serif;
-  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  font-size: clamp(2.1rem, 5.2vw, 3.4rem);
   line-height: 1;
   color: #fff;
+  font-variant-numeric: tabular-nums;
 }
 
 /*
@@ -276,75 +314,264 @@ nav.site a:hover {
  * 16,33% do topo, 72,67% de altura. É a mesma constante do aplicativo, e é
  * o detalhe que denuncia uma reprodução feita no olho.
  */
-.stamp .rule {
+.stamp-bar {
   width: 2px;
   background: var(--amber);
   margin-top: 0.1633em;
   height: 0.7267em;
-  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  font-size: clamp(2.1rem, 5.2vw, 3.4rem);
   margin-inline: 0.3em 0.18em;
   flex: none;
+  transform-origin: top center;
 }
 
-.stamp .stack {
+.stamp-meta {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-top: 0.1633em;
   height: 0.7267em;
-  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  font-size: clamp(2.1rem, 5.2vw, 3.4rem);
 }
 
-.stamp .stack span {
+.stamp-meta span {
   font-size: 0.8125rem;
   line-height: 1;
   color: #fff;
 }
 
-.stamp .address {
-  margin-top: 0.45rem;
+.stamp-address {
   font-size: 0.8125rem;
   line-height: 1.42;
-  max-width: 20ch;
   color: #fff;
+  white-space: pre-wrap;
 }
 
-.specimen .brand {
-  position: absolute;
-  top: 1rem;
-  right: 1.15rem;
-  z-index: 1;
-  font-family: var(--font-mark), system-ui, sans-serif;
-  font-size: 0.8125rem;
-  letter-spacing: 0.03em;
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
-}
-
-.specimen .brand em {
-  font-style: normal;
-  color: var(--amber);
-}
-
-.specimen .code {
+.stamp-code {
   position: absolute;
   right: 0.35rem;
   top: 38%;
-  z-index: 1;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: center;
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-clock), system-ui, sans-serif;
   font-size: 0.6875rem;
   letter-spacing: 0.09em;
   color: #fff;
-  white-space: nowrap;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  white-space: pre;
 }
 
-.caption {
-  margin-top: 0.9rem;
-  font-size: 0.75rem;
+/* O número em disputa: sorteado pelo GPS, selecionado, e trocado à mão. */
+.num {
+  border-radius: 1px;
+  padding: 0 1px;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.num.selected {
+  background: var(--amber);
+  color: var(--navy-900);
+}
+
+.num.amber {
+  color: var(--amber);
+}
+
+.caret {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 1px;
+  background: var(--amber);
+  vertical-align: -0.15em;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  pointer-events: none;
+}
+
+.scene-tag {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.85rem;
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-on-surface);
+  background: rgba(9, 26, 43, 0.82);
+  border: 1px solid var(--navy-400);
+  padding: 0.3rem 0.55rem;
+}
+
+/* ------------------------------------------------- tela de captura */
+
+.capture {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.capture-label {
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+}
+
+/*
+ * `addr-field`, e não `field`: já existe uma `.field` — o rótulo em versalete
+ * das células — e o nome curto herdava dela `text-transform: uppercase`, o
+ * que fazia o endereço da cena aparecer todo em maiúsculas.
+ */
+.addr-field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--navy-400);
+  background: var(--navy-900);
+  padding: 0.7rem 0.75rem;
+  transition: border-color 160ms ease;
+  min-height: 3rem;
+}
+
+.addr-field.editing {
+  border-color: var(--amber);
+}
+
+.field-text {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: var(--text-on-surface);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: var(--navy-400);
+}
+
+.placeholder.searching {
+  color: var(--text-muted);
+}
+
+.locate {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border: 1px solid var(--navy-400);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  transition: background 120ms ease;
+}
+
+.locate .ring,
+.locate .ripple {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--amber);
+}
+
+.locate .ripple {
+  border-color: transparent;
+  background: rgba(245, 182, 13, 0.35);
+}
+
+.scene-caption {
+  font-size: 0.8125rem;
   color: var(--text-subtle);
+  min-height: 1.4em;
+}
+
+/* ------------------------------------------------------- assinatura */
+
+.signature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.signature .logo {
+  width: clamp(2.2rem, 5vw, 3.2rem);
+  height: clamp(2.2rem, 5vw, 3.2rem);
+  flex: none;
+  background: var(--amber);
+  transition: border-radius 300ms ease;
+}
+
+.signature-name {
+  font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+  line-height: 1.1;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.signature-name .amber {
+  color: var(--amber);
+}
+
+.signature-sub {
+  font-size: 0.75rem;
+  color: #fff;
+  margin-top: 0.15rem;
+}
+
+/* ------------------------------------------------------------ pontos */
+
+.points {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  counter-reset: point;
+  display: grid;
+  gap: 0.75rem;
+  max-width: var(--measure);
+}
+
+.points li {
+  counter-increment: point;
+  display: flex;
+  gap: 0.85rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.points li::before {
+  content: counter(point, decimal-leading-zero);
+  font-family: var(--font-clock), system-ui, sans-serif;
+  color: var(--amber);
+  flex: none;
+}
+
+/* A única troca de dados que sai do aparelho, dita como troca. */
+.exchange {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin: 0.35rem 0;
+}
+
+.exchange .arrow {
+  color: var(--amber);
 }
 
 /* ---------------------------------------------------------------- seções */

@@ -138,7 +138,7 @@ export default function Manual() {
   return (
     <article className="doc wide">
       <h1>Manual de uso</h1>
-      <p className="stamp-date">Aplicativo Lymark, versão 1.1.0 (Android)</p>
+      <p className="stamp-date">Aplicativo Lymark, versão 1.3.0 (Android)</p>
 
       <p className="intro">
         O Lymark carimba hora, data, dia da semana, endereço e um código de rastreio sobre a
