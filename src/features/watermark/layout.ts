@@ -1,6 +1,4 @@
-import type { ViewStyle } from 'react-native';
-
-import type { WatermarkPosition, WatermarkScale } from '@/types';
+import type { WatermarkScale } from '@/types';
 
 import { REFERENCE_FRAME_WIDTH as SKIA_REFERENCE_FRAME_WIDTH } from './skia-typography';
 
@@ -205,82 +203,6 @@ export function metricsForFrame(
 }
 
 /**
- * Ajusta o carimbo à altura real da foto.
- *
- * Tamanhos fixos em pontos assumem uma foto retrato. Numa panorâmica 4,4:1 o
- * frame tem cerca de 70 px de altura enquanto o bloco ocupa 160: com
- * `overflow: hidden`, a hora é cortada para fora da imagem — no preview e no
- * arquivo exportado. O bloco encolhe junto com a foto.
- *
- * @param frameHeight altura medida do preview; `0` antes da medição.
- */
-export function scaleMetricsToFrame(metrics: ScaleMetrics, frameHeight: number): ScaleMetrics {
-  if (frameHeight <= 0) return metrics;
-
-  const factor = Math.min(1, Math.max(MIN_SCALE_FACTOR, frameHeight / REFERENCE_FRAME_HEIGHT));
-  if (factor === 1) return metrics;
-
-  const apply = (value: number, floor: number) => Math.max(floor, Math.round(value * factor));
-
-  return {
-    time: apply(metrics.time, 12),
-    secondary: apply(metrics.secondary, 7),
-    address: apply(metrics.address, 8),
-    code: apply(metrics.code, 7),
-    gap: apply(metrics.gap, 2),
-    paddingVertical: apply(metrics.paddingVertical, 3),
-    paddingHorizontal: apply(metrics.paddingHorizontal, 4),
-  };
-}
-
-/**
- * Converte o canto escolhido em posicionamento absoluto.
- *
- * `maxWidth` impede que um endereço longo atravesse a foto inteira, `maxHeight`
- * impede que o bloco engula a imagem, e o alinhamento acompanha o lado em que
- * ele está ancorado.
- */
-export function resolveAnchorStyle(position: WatermarkPosition): ViewStyle {
-  const vertical: ViewStyle =
-    position.startsWith('top') ? { top: WATERMARK_INSET } : { bottom: WATERMARK_INSET };
-
-  const horizontal: ViewStyle = position.endsWith('left')
-    ? { left: WATERMARK_INSET, alignItems: 'flex-start' }
-    : { right: WATERMARK_INSET, alignItems: 'flex-end' };
-
-  return {
-    position: 'absolute',
-    // 58%: calibrado para o endereço quebrar a linha no mesmo ponto que a
-    // referência. Ocupar a largura toda faria o carimbo competir com a imagem.
-    maxWidth: '58%',
-    maxHeight: '70%',
-    ...vertical,
-    ...horizontal,
-  };
-}
-
-export function resolveTextAlign(position: WatermarkPosition): 'left' | 'right' {
-  return position.endsWith('left') ? 'left' : 'right';
-}
-
-/**
- * Âncora da marca do app.
- *
- * Separada da âncora do bloco de dados porque as duas são escolhas
- * independentes: a marca pode ficar num canto e os dados em outro.
- */
-export function resolveBrandAnchorStyle(position: WatermarkPosition): ViewStyle {
-  const vertical: ViewStyle =
-    position.startsWith('top') ? { top: WATERMARK_INSET } : { bottom: WATERMARK_INSET };
-
-  const horizontal: ViewStyle = position.endsWith('left')
-    ? { left: WATERMARK_INSET, alignItems: 'flex-start' }
-    : { right: WATERMARK_INSET, alignItems: 'flex-end' };
-
-  return { position: 'absolute', maxWidth: '45%', ...vertical, ...horizontal };
-}
-
-/**
  * Corpo da marca, proporcional ao endereço.
  *
  * Medido: na referência a marca tem 25,9 px de altura de caixa alta contra
@@ -298,13 +220,5 @@ export const BRAND_SIZE_RATIO = 1;
  */
 export const SIDE_CODE_INSET = 2;
 export const SIDE_CODE_SIZE_RATIO = 0.85;
-/**
- * Largura da âncora, em múltiplos do corpo.
- *
- * A âncora precisa ser estreita: o texto é largo antes de girar, e é o centro
- * dela que define onde a linha vertical cai. Larga demais, o código se afasta
- * da borda.
- */
-export const SIDE_CODE_ANCHOR_RATIO = 1.2;
 /** Onde o centro do texto girado fica, em fração da altura da foto. */
 export const SIDE_CODE_CENTER_RATIO = 0.38;

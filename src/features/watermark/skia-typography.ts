@@ -48,3 +48,24 @@ export const TIME_SIZE_RATIO_MEDIUM = 0.13225;
  * para a mesma foto. Ancorar na largura da imagem elimina isso.
  */
 export const REFERENCE_FRAME_WIDTH = 355.4;
+
+/**
+ * Topo da tinta da caixa alta do Barlow 500, a partir da linha de base.
+ *
+ * Medido sobre `HEITOSGQ`, e não sobre o nome digitado, pela mesma razão que a
+ * hora é medida sobre `0123456789`: as redondas ultrapassam a linha da caixa
+ * alta por desenho (0,710 contra 0,700 das retas). Ancorar no texto de fato
+ * faria a altura do logotipo mudar conforme a empresa se chamasse "LIMA" ou
+ * "LOGOS".
+ */
+export const BRAND_CAP_TOP_FROM_BASELINE = -0.71;
+
+/**
+ * Base da tinta das descendentes do Barlow 500, a partir da linha de base.
+ *
+ * Medido sobre `gyp`. É este par — caixa alta e descendente — que define a
+ * altura do logotipo no cabeçalho da marca: o topo dele acompanha o topo da
+ * tinta do nome e a base, a base da tinta do complemento, exatamente como a
+ * barra âmbar acompanha os limites dos algarismos.
+ */
+export const BRAND_DESCENDER_FROM_BASELINE = 0.2;

@@ -35,10 +35,18 @@ const palette = {
 export const colors = {
   /** Fundo das telas. */
   background: palette.navy800,
-  /** Caixas de campo, cartões e o placeholder da foto. */
-  surface: palette.navy600,
-  /** Superfície um passo acima — usada em linhas selecionadas. */
-  surfaceRaised: palette.navy500,
+  /**
+   * Caixas de campo, cartões e o placeholder da foto.
+   *
+   * Um passo mais claro do que o fundo já era suficiente numa sala; ao sol
+   * forte de uma vistoria, com o brilho no máximo, os dois tons vizinhos
+   * viravam uma superfície só e o usuário não achava os campos. Este tom dá
+   * separação visível sem clarear a tela a ponto de cansar em ambiente
+   * fechado.
+   */
+  surface: palette.navy500,
+  /** Superfície um passo acima — usada em linhas e opções selecionadas. */
+  surfaceRaised: palette.navy400,
   /** Divisores de lista — decorativos, isentos de razão de contraste. */
   border: palette.navy400,
   /**
@@ -72,30 +80,16 @@ export const colors = {
   tabBarBorder: palette.navy600,
   tabActive: palette.amber500,
   tabInactive: palette.slate350,
-
-  /**
-   * Alfa 0,75 e não 0,55: sobre uma parede branca ao sol, a faixa a 55%
-   * deixava o endereço em 3,96:1 — abaixo do mínimo legível. A 75% sobe
-   * para 7,85:1.
-   */
-  watermarkBackdrop: 'rgba(9, 26, 43, 0.75)',
 } as const;
 
 export type ColorToken = keyof typeof colors;
 
-/**
- * Cores que a marca própria pode usar no carimbo.
+/*
+ * As cores do carimbo não moram mais aqui.
  *
- * Paleta fechada e curta de propósito: sobre asfalto, areia ou parede clara,
- * boa parte do espectro simplesmente desaparece. Estas seis foram escolhidas
- * para funcionar com a sombra que o carimbo já aplica — o preto inclusive,
- * que só é legível por causa dela.
+ * Eram as mesmas da interface, e mudar a barra do carimbo repintava os botões
+ * do aplicativo. São perguntas diferentes: uma é a identidade que a empresa
+ * imprime na foto, a outra é a identidade da tela. As do carimbo passaram a
+ * viver nas preferências, em hexadecimal livre — `STAMP_COLOR_SWATCHES`, em
+ * `types`, é hoje só a lista de atalhos do seletor.
  */
-export const stampPalette = {
-  white: '#FFFFFF',
-  amber: colors.accent,
-  red: '#FF6B57',
-  green: '#5BD98A',
-  blue: '#63B3ED',
-  black: '#111820',
-} as const;

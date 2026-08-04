@@ -36,7 +36,7 @@ describe('mergeWithDefaults', () => {
   it('preserva `false`, que é valor legítimo e não ausência', () => {
     const merged = mergeWithDefaults({ ...current, showBackdrop: false });
 
-    expect(merged.showBackdrop).toBe(false);
+    expect(merged.backdropStyle).toBe('none');
   });
 
   it('ignora valores de tipo errado vindos de dado corrompido', () => {
@@ -118,7 +118,7 @@ describe('migração de formatos antigos', () => {
   } as const;
 
   it('desliga a faixa escura herdada do formato antigo', () => {
-    expect(mergeWithDefaults(legacy).showBackdrop).toBe(false);
+    expect(mergeWithDefaults(legacy).backdropStyle).toBe('none');
   });
 
   it('religa o código, que uma versão anterior desligou por engano', () => {
@@ -141,20 +141,20 @@ describe('migração de formatos antigos', () => {
     });
 
     // Agora `true` significa escolha deliberada, e precisa ser respeitada.
-    expect(migrated.showBackdrop).toBe(true);
+    expect(migrated.backdropStyle).toBe('block');
     expect(migrated.visibleFields.code).toBe(true);
   });
 
   it('completa as preferências que o formato antigo nem conhecia', () => {
     const merged = mergeWithDefaults(legacy);
 
-    expect(merged.showBrand).toBe(DEFAULT_WATERMARK_PREFERENCES.showBrand);
+    expect(merged.brandPlacement).toBe(DEFAULT_WATERMARK_PREFERENCES.brandPlacement);
     expect(merged.brandPosition).toBe(DEFAULT_WATERMARK_PREFERENCES.brandPosition);
     expect(merged.codePlacement).toBe(DEFAULT_WATERMARK_PREFERENCES.codePlacement);
   });
 
   it('trata ausência de versão como formato antigo', () => {
-    expect(mergeWithDefaults({ showBackdrop: true }).showBackdrop).toBe(false);
+    expect(mergeWithDefaults({ showBackdrop: true }).backdropStyle).toBe('none');
   });
 });
 
@@ -176,7 +176,7 @@ describe('dado corrompido na raiz', () => {
   });
 
   it('trata array como formato antigo, sem quebrar', () => {
-    expect(mergeWithDefaults([] as never).showBackdrop).toBe(false);
+    expect(mergeWithDefaults([] as never).backdropStyle).toBe('none');
   });
 });
 
@@ -202,7 +202,7 @@ describe('migração para a marca própria', () => {
 
     expect(merged.position).toBe('top-right');
     expect(merged.scale).toBe('large');
-    expect(merged.showBackdrop).toBe(true);
+    expect(merged.backdropStyle).toBe('block');
     expect(merged.brandPosition).toBe('bottom-left');
     expect(merged.codePlacement).toBe('block');
     expect(merged.visibleFields.weekday).toBe(false);
@@ -211,19 +211,79 @@ describe('migração para a marca própria', () => {
   it('chega com a marca Lymark, sem mudar o que aparece na foto', () => {
     const merged = mergeWithDefaults(v3);
 
-    expect(merged.brandMode).toBe('lymark');
-    expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: 'white' });
-    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: 'amber' });
+    expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: '#FFFFFF' });
+    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F5B60D' });
   });
 
-  it('recusa cor fora da paleta', () => {
+  it('esquece a marca digitada por quem estava no modo Lymark', () => {
+    // O par "Lymark / Minha marca" guardava o texto digitado sem carimbá-lo.
+    // Agora o que está gravado é o que aparece — e sem esta migração a marca
+    // esquecida no armazenamento estrearia sozinha na foto de quem via Ly+mark.
     const merged = mergeWithDefaults({
       ...v3,
-      brandParts: [{ text: 'ACME', color: 'roxo' }, { text: '', color: 'white' }],
+      brandMode: 'lymark',
+      brandParts: [
+        { text: 'ACME', color: '#FFFFFF' },
+        { text: ' Ltda', color: '#F5B60D' },
+      ],
+    } as never);
+
+    expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: '#FFFFFF' });
+    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F5B60D' });
+  });
+
+  it('preserva a marca de quem tinha escolhido a própria', () => {
+    const merged = mergeWithDefaults({
+      ...v3,
+      brandMode: 'custom',
+      brandParts: [
+        { text: 'ACME', color: '#FFFFFF' },
+        { text: ' Ltda', color: '#F5B60D' },
+      ],
     } as never);
 
     expect(merged.brandParts[0].text).toBe('ACME');
-    expect(merged.brandParts[0].color).toBe('white');
+    expect(merged.brandParts[1].text).toBe(' Ltda');
+  });
+
+  it('não reapaga a marca depois que o campo antigo some do disco', () => {
+    // Depois desta migração `brandMode` deixa de ser gravado. Se a condição
+    // fosse "diferente de custom", esta leitura — que é a de toda abertura
+    // seguinte — devolveria Ly+mark e apagaria o que o usuário digitou.
+    const merged = mergeWithDefaults({
+      ...v3,
+      brandParts: [
+        { text: 'ACME', color: '#FFFFFF' },
+        { text: '', color: '#F5B60D' },
+      ],
+    } as never);
+
+    expect(merged.brandParts[0].text).toBe('ACME');
+  });
+
+  it('traduz as cores nomeadas da versão 4 para hexadecimal', () => {
+    // A versão 4 gravava `'amber'`; a 5 guarda o valor. Sem esta tradução a
+    // marca da empresa chegaria com a cor padrão depois da atualização — uma
+    // escolha deliberada desfeita por uma mudança interna de formato.
+    const merged = mergeWithDefaults({
+      ...v3,
+      schemaVersion: 4,
+      brandParts: [{ text: 'ACME', color: 'green' }, { text: '', color: 'amber' }],
+    } as never);
+
+    expect(merged.brandParts[0].color).toBe('#5BD98A');
+    expect(merged.brandParts[1].color).toBe('#F5B60D');
+  });
+
+  it('recusa o que não é cor', () => {
+    const merged = mergeWithDefaults({
+      ...v3,
+      brandParts: [{ text: 'ACME', color: 'roxo' }, { text: '', color: '#12' }],
+    } as never);
+
+    expect(merged.brandParts[0].text).toBe('ACME');
+    expect(merged.brandParts[0].color).toBe('#FFFFFF');
+    expect(merged.brandParts[1].color).toBe('#F5B60D');
   });
 
   it('sobrevive a partes corrompidas caindo no padrão, e não no vazio', () => {
@@ -236,15 +296,14 @@ describe('migração para a marca própria', () => {
       brandParts: [42, null],
     } as never);
 
-    expect(merged.brandMode).toBe('lymark');
-    expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: 'white' });
-    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: 'amber' });
+    expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: '#FFFFFF' });
+    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F5B60D' });
   });
 
   it('limita o tamanho de cada parte', () => {
     const merged = mergeWithDefaults({
       ...v3,
-      brandParts: [{ text: 'A'.repeat(200), color: 'white' }, { text: '', color: 'amber' }],
+      brandParts: [{ text: 'A'.repeat(200), color: '#FFFFFF' }, { text: '', color: '#F5B60D' }],
     } as never);
 
     expect(merged.brandParts[0].text.length).toBeLessThanOrEqual(24);

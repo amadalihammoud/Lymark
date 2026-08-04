@@ -8,12 +8,18 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "baseUrl": ".",
-    "paths": { "@/*": ["src/*"] },
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
     "ignoreDeprecations": "6.0"
   },
   "files": [
     "src/features/watermark/stamp-layout.ts",
     "src/features/watermark/preferences.ts",
-    "src/features/watermark/build-content.ts"
+    "src/features/watermark/build-content.ts",
+    "src/features/watermark/logo-path.ts",
+    "src/features/watermark/logo-trim.ts"
   ]
 }

@@ -12,7 +12,7 @@ export default function Privacidade() {
     <article className="doc">
       <h1>Política de Privacidade</h1>
       <p className="stamp-date">
-        Última atualização: 2 de agosto de 2026 · Aplicativo Lymark, versão 1.1.0
+        Última atualização: 2 de agosto de 2026 · Aplicativo Lymark, versão 1.3.0
       </p>
 
       <p className="intro">

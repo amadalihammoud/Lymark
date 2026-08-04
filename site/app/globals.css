@@ -225,50 +225,129 @@ nav.site a:hover {
   transform: translateY(-3px);
 }
 
-/* ---------------------------------------------------- amostra do carimbo */
+/* ------------------------------------------------------------- cenas */
 
 /*
- * Uma amostra do carimbo, não uma captura de tela falsificada: as
- * proporções são as mesmas medidas em src/features/watermark/layout.ts.
+ * As três cenas animadas: o carimbo sendo desenhado, a correção do endereço
+ * e a troca de marca. Cada uma é uma foto com o carimbo composto por cima —
+ * na mesma ordem e com as mesmas proporções que o aplicativo usa.
  */
-.specimen {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border: 1px solid var(--navy-400);
-  background:
-    radial-gradient(120% 90% at 78% 12%, rgba(74, 118, 161, 0.28), transparent 58%),
-    linear-gradient(168deg, var(--navy-600), var(--navy-900));
-  overflow: hidden;
+.scene {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
 }
 
-.specimen::after {
-  content: '';
+section.band .scene {
+  margin-top: 2.25rem;
+}
+
+/*
+ * `container-type: size` é o que permite dimensionar o carimbo em `cqh` —
+ * porcentagem da altura da própria moldura. Sem isso o carimbo do site seria
+ * medido contra a janela, e mudaria de proporção conforme a largura da tela,
+ * enquanto o do aplicativo é sempre a mesma fração da foto.
+ */
+.frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--navy-400);
+  background: var(--navy-900);
+  overflow: hidden;
+  container-type: size;
+}
+
+/* No hero a moldura é mais alta: o carimbo divide o quadro com a foto, e a
+   16:9 sobra pouca altura para as quatro linhas dele. */
+.hero .frame {
+  aspect-ratio: 4 / 3;
+}
+
+/*
+ * No celular todas as molduras ficam mais altas, e não só a do hero.
+ *
+ * A 320 px a 16:9 dá 158 px de altura para 150 px de carimbo — oito de folga.
+ * Quem estiver com a fonte do navegador acima do padrão perde essa margem, e
+ * o que sai da moldura primeiro é o logotipo, que fica no topo. A 4:3 a mesma
+ * largura dá 240 px.
+ */
+@media (max-width: 36rem) {
+  .frame {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.frame img {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(var(--navy-400) 1px, transparent 1px),
-    linear-gradient(90deg, var(--navy-400) 1px, transparent 1px);
-  background-size: 2.25rem 2.25rem;
-  opacity: 0.14;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 420ms ease;
 }
 
-.stamp {
+/* O texto do carimbo é claro; sem isto ele some numa foto de céu aberto. */
+.scrim {
   position: absolute;
-  left: 1.15rem;
-  bottom: 1.05rem;
-  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(6, 18, 30, 0.72) 0%,
+    rgba(6, 18, 30, 0.18) 46%,
+    rgba(6, 18, 30, 0) 70%
+  );
+  pointer-events: none;
+}
+
+/*
+ * Daqui para baixo, as medidas do carimbo são as do aplicativo, em fração da
+ * altura da moldura. Elas saem de `SCALE_METRICS.medium` em
+ * `src/features/watermark/layout.ts`, calibrado contra uma moldura de
+ * referência de 440 px:
+ *
+ *   hora 47/440 = 10,68%   data e endereço 13/440 = 2,95%
+ *   código 11/440 = 2,50%  recuo 6/440 = 1,36%   respiro 5/440 = 1,14%
+ *
+ * Antes eram `clamp()` em unidades de viewport, ou seja, medidas contra a
+ * janela: o carimbo do site mudava de proporção conforme a largura da tela,
+ * enquanto o do aplicativo é sempre a mesma fração da foto.
+ */
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: 1.36cqh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.14cqh;
+  pointer-events: none;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
 }
 
-.stamp .row {
+.stamp-block {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
-.stamp .clock {
+/* A assinatura respira um pouco mais do relógio que as linhas entre si. */
+.stamp-block .signature {
+  margin-bottom: 0.35rem;
+}
+
+.stamp-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.stamp-clock {
   font-family: var(--font-clock), system-ui, sans-serif;
-  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  font-size: 10.68cqh;
   line-height: 1;
   color: #fff;
+  font-variant-numeric: tabular-nums;
 }
 
 /*
@@ -276,75 +355,318 @@ nav.site a:hover {
  * 16,33% do topo, 72,67% de altura. É a mesma constante do aplicativo, e é
  * o detalhe que denuncia uma reprodução feita no olho.
  */
-.stamp .rule {
-  width: 2px;
+.stamp-bar {
   background: var(--amber);
   margin-top: 0.1633em;
   height: 0.7267em;
-  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  font-size: 10.68cqh;
+  /* `ruleWidth` no aplicativo é o corpo da hora dividido por 23. */
+  width: 0.0435em;
   margin-inline: 0.3em 0.18em;
   flex: none;
+  transform-origin: top center;
 }
 
-.stamp .stack {
+.stamp-meta {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-top: 0.1633em;
   height: 0.7267em;
-  font-size: clamp(2.6rem, 8vw, 3.6rem);
+  font-size: 10.68cqh;
 }
 
-.stamp .stack span {
-  font-size: 0.8125rem;
+.stamp-meta span {
+  font-size: 2.95cqh;
   line-height: 1;
   color: #fff;
 }
 
-.stamp .address {
-  margin-top: 0.45rem;
-  font-size: 0.8125rem;
+.stamp-address {
+  font-size: 2.95cqh;
+  /* `ADDRESS_LINE_HEIGHT_RATIO`, medida na referência. */
   line-height: 1.42;
-  max-width: 20ch;
   color: #fff;
+  white-space: pre-wrap;
 }
 
-.specimen .brand {
+.stamp-code {
   position: absolute;
-  top: 1rem;
-  right: 1.15rem;
-  z-index: 1;
-  font-family: var(--font-mark), system-ui, sans-serif;
-  font-size: 0.8125rem;
-  letter-spacing: 0.03em;
+  /* `SIDE_CODE_INSET` 2/440 e `SIDE_CODE_CENTER_RATIO` 0,38. */
+  right: 0.45cqh;
+  top: 38%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
+  font-family: var(--font-clock), system-ui, sans-serif;
+  /* `SIDE_CODE_SIZE_RATIO` 0,85 sobre o corpo do código. */
+  font-size: 2.125cqh;
+  letter-spacing: 0.09em;
   color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  white-space: pre;
 }
 
-.specimen .brand em {
-  font-style: normal;
+/* O número em disputa: sorteado pelo GPS, selecionado, e trocado à mão. */
+.num {
+  border-radius: 1px;
+  padding: 0 1px;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.num.selected {
+  background: var(--amber);
+  color: var(--navy-900);
+}
+
+.num.amber {
   color: var(--amber);
 }
 
-.specimen .code {
-  position: absolute;
-  right: 0.35rem;
-  top: 38%;
-  z-index: 1;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: center;
-  font-family: var(--font-mark), system-ui, sans-serif;
-  font-size: 0.6875rem;
-  letter-spacing: 0.09em;
-  color: #fff;
-  white-space: nowrap;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+.caret {
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-left: 1px;
+  background: var(--amber);
+  vertical-align: -0.15em;
+  animation: blink 1s steps(2, start) infinite;
 }
 
-.caption {
-  margin-top: 0.9rem;
-  font-size: 0.75rem;
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+.flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------- tela de captura */
+
+.capture {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.capture-label {
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.625rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+}
+
+/*
+ * `addr-field`, e não `field`: já existe uma `.field` — o rótulo em versalete
+ * das células — e o nome curto herdava dela `text-transform: uppercase`, o
+ * que fazia o endereço da cena aparecer todo em maiúsculas.
+ */
+.addr-field {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--navy-400);
+  background: var(--navy-900);
+  padding: 0.7rem 0.75rem;
+  transition: border-color 160ms ease;
+  min-height: 3rem;
+}
+
+.addr-field.editing {
+  border-color: var(--amber);
+}
+
+.field-text {
+  flex: 1;
+  font-size: 0.9375rem;
+  color: var(--text-on-surface);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.placeholder {
+  color: var(--navy-400);
+}
+
+.placeholder.searching {
+  color: var(--text-muted);
+}
+
+.locate {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border: 1px solid var(--navy-400);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  transition: background 120ms ease;
+}
+
+.locate .ring,
+.locate .ripple {
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--amber);
+}
+
+.locate .ripple {
+  border-color: transparent;
+  background: rgba(245, 182, 13, 0.35);
+}
+
+.scene-caption {
+  font-size: 0.8125rem;
   color: var(--text-subtle);
+  min-height: 1.4em;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+}
+
+.scene-caption::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--amber);
+  flex: none;
+  transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------- assinatura */
+
+.signature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.signature .logo {
+  width: clamp(2.2rem, 5vw, 3.2rem);
+  height: clamp(2.2rem, 5vw, 3.2rem);
+  flex: none;
+  background: var(--amber);
+  transition: border-radius 300ms ease;
+}
+
+.signature-name {
+  font-size: clamp(1rem, 2.6vw, 1.6rem);
+  overflow-wrap: anywhere;
+  line-height: 1.1;
+  color: #fff;
+  letter-spacing: 0.01em;
+}
+
+.signature-name .amber {
+  color: var(--amber);
+}
+
+.signature-sub {
+  font-size: 0.75rem;
+  color: #fff;
+  margin-top: 0.15rem;
+}
+
+/* --------------------------------------------------------- duas colunas */
+
+/*
+ * Texto à esquerda, cena à direita. A cena ganha a coluna maior: é ela que
+ * carrega o argumento — o texto ao lado apenas nomeia o que ela mostra.
+ */
+.split {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3.25rem);
+  grid-template-columns: 1fr;
+  align-items: start;
+  margin-top: 2.25rem;
+}
+
+@media (min-width: 56rem) {
+  .split {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+}
+
+/*
+ * No celular a cena vem antes do texto.
+ *
+ * Empilhada na ordem do código, ela ficava depois de dois parágrafos e três
+ * pontos — quem rola encontrava o argumento escrito antes de ver a coisa
+ * acontecer, que é o contrário do que a seção se propõe. Lado a lado, no
+ * desktop, as duas chegam ao olho juntas e a ordem não importa.
+ */
+@media (max-width: 55.99rem) {
+  .split .scene {
+    order: -1;
+  }
+
+  .split .points {
+    margin-top: 1.25rem;
+  }
+}
+
+.split .scene,
+section.band .split .scene {
+  margin-top: 0;
+}
+
+.split .points {
+  margin-top: 1.75rem;
+}
+
+/* ------------------------------------------------------------ pontos */
+
+.points {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  counter-reset: point;
+  display: grid;
+  gap: 0.75rem;
+  max-width: var(--measure);
+}
+
+.points li {
+  counter-increment: point;
+  display: flex;
+  gap: 0.85rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  border-left: 2px solid var(--amber);
+  padding: 0.15rem 0 0.15rem 0.9rem;
+}
+
+.points li::before {
+  content: counter(point, decimal-leading-zero);
+  font-family: var(--font-clock), system-ui, sans-serif;
+  color: var(--amber);
+  flex: none;
+}
+
+/* A única troca de dados que sai do aparelho, dita como troca. */
+.exchange {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+  margin: 0.35rem 0;
+}
+
+.exchange .arrow {
+  color: var(--amber);
 }
 
 /* ---------------------------------------------------------------- seções */
@@ -566,6 +888,406 @@ footer.site a {
 
 footer.site a:hover {
   color: var(--amber);
+}
+
+/* ------------------------------------------------------- ritmo das seções */
+
+/*
+ * A página inicial era uma pilha de seções idênticas: mesma borda, mesmo
+ * fundo, mesmo espaçamento. Lida de cima a baixo, tudo tinha o mesmo peso, e
+ * a única seção que pede ação — a de disponibilidade — chegava com a mesma
+ * voz das outras. `.band.alt` troca a superfície e sangra até a borda da
+ * janela, dando um compasso diferente sem inventar outra linguagem.
+ */
+section.band.alt {
+  background: var(--navy-900);
+  clip-path: inset(0 -100vmax);
+  box-shadow: 0 0 0 100vmax var(--navy-900);
+  border-top-color: var(--navy-600);
+}
+
+section.band.alt .cell {
+  background: var(--navy-900);
+}
+
+/* O mesmo fio do `.eyebrow`, agora ligando o número ao fim da linha. */
+.band-head::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--navy-600);
+  align-self: center;
+  margin-left: 0.5rem;
+}
+
+/* ---------------------------------------------------------- para quem é */
+
+.cell .who {
+  font-size: 0.9375rem;
+  color: var(--text-on-surface);
+}
+
+.cell ul {
+  margin: 0.15rem 0 0;
+  padding-left: 1.05rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.cell li {
+  margin-bottom: 0.3rem;
+}
+
+.cell li::marker {
+  color: var(--blue-300);
+}
+
+/* -------------------------------------------------------- disponibilidade */
+
+/*
+ * Três plataformas, e hoje nenhuma com link. Um botão de loja que não leva a
+ * lugar nenhum faz o visitante concluir que o site está quebrado — então o
+ * lugar reservado se declara como tal, com o estado real escrito. Quando a
+ * URL existir, `href` deixa de ser nulo e o cartão vira link sem mudar de
+ * forma.
+ */
+.platforms {
+  display: grid;
+  gap: 1px;
+  background: var(--navy-700);
+  border: 1px solid var(--navy-700);
+  grid-template-columns: 1fr;
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 46rem) {
+  .platforms {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.platform {
+  background: var(--navy-800);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  min-height: 100%;
+}
+
+.platform .os {
+  font-size: 1.0625rem;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+.platform p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.platform .cta {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.status::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-subtle);
+  flex: none;
+}
+
+.status.testing {
+  color: var(--amber);
+}
+
+.status.testing::before {
+  background: var(--amber);
+}
+
+/* Só existe quando há para onde ir; até lá, o texto de estado ocupa o lugar. */
+.store {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--navy-400);
+  border-bottom: 1px solid var(--navy-400);
+  padding: 0.55rem 1rem;
+  color: var(--text);
+  font-size: 0.875rem;
+}
+
+.store:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.pending {
+  color: var(--text-subtle);
+  font-size: 0.875rem;
+}
+
+/* --------------------------------------------------------------- manual */
+
+/*
+ * O manual precisa de mais largura que os documentos jurídicos: ele tem
+ * tabelas de medida e um diagrama. A prosa continua na mesma medida de
+ * leitura — o que estoura a coluna são as figuras, e só elas.
+ */
+article.doc.wide {
+  max-width: none;
+}
+
+article.doc.wide p,
+article.doc.wide ul,
+article.doc.wide .deftable,
+article.doc.wide .callout,
+article.doc.wide .colophon {
+  max-width: var(--measure);
+}
+
+article.doc h3 {
+  font-size: 0.9375rem;
+  margin-top: 1.85rem;
+  margin-bottom: 0.65rem;
+  color: var(--text);
+}
+
+article.doc .section {
+  scroll-margin-top: 1.5rem;
+}
+
+/*
+ * `p + p` resolve a prosa corrida, mas não o que vem depois de uma figura: a
+ * regra não alcança o parágrafo que sucede tabela, chamada ou lista, e ele
+ * encosta na borda de cima. Aqui os blocos devolvem o respiro.
+ */
+article.doc :is(.table-wrap, .callout, .deftable, .diagram) + p,
+article.doc :is(.table-wrap, .callout, .deftable, .diagram) + ul {
+  margin-top: 1.6rem;
+}
+
+article.doc ul + p {
+  margin-top: 1.25rem;
+}
+
+.toc {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--navy-700);
+  border-bottom: 1px solid var(--navy-700);
+  padding-block: 1.25rem;
+}
+
+.toc h2 {
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+  margin-bottom: 0.9rem;
+}
+
+.toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.4rem 2rem;
+  grid-template-columns: 1fr;
+  counter-reset: toc;
+}
+
+@media (min-width: 40rem) {
+  .toc ol {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.toc li {
+  counter-increment: toc;
+  font-size: 0.9375rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.toc li::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--font-clock), system-ui, sans-serif;
+  color: var(--amber);
+  font-size: 0.9375rem;
+  flex: none;
+}
+
+.toc a {
+  color: var(--text-muted);
+  border-bottom: 0;
+}
+
+.toc a:hover {
+  color: var(--text);
+}
+
+/* ------------------------------------------------------------- tabelas */
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+  max-width: 44rem;
+  border-top: 1px solid var(--navy-700);
+  border-bottom: 1px solid var(--navy-700);
+}
+
+.table-wrap table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 30rem;
+  font-size: 0.9375rem;
+}
+
+.table-wrap caption {
+  text-align: left;
+  padding: 0.9rem 0;
+  font-size: 0.8125rem;
+  color: var(--text-subtle);
+}
+
+.table-wrap th,
+.table-wrap td {
+  padding: 0.6rem 1rem 0.6rem 0;
+  text-align: left;
+  border-bottom: 1px solid var(--navy-700);
+  font-weight: 400;
+  color: var(--text-muted);
+  vertical-align: baseline;
+}
+
+.table-wrap thead th {
+  color: var(--blue-300);
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.table-wrap tbody th {
+  color: var(--text-on-surface);
+}
+
+.table-wrap tbody tr:last-child th,
+.table-wrap tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Medida se lê alinhada à direita e em algarismos de largura fixa. */
+.table-wrap .n {
+  text-align: right;
+  font-family: var(--font-clock), system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.0625em;
+  color: var(--text);
+  letter-spacing: 0.03em;
+}
+
+.table-wrap thead .n {
+  color: var(--blue-300);
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+}
+
+/* ------------------------------------------------------------- chamadas */
+
+.callout {
+  border-left: 2px solid var(--amber);
+  padding: 0.15rem 0 0.15rem 1.15rem;
+  margin-top: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.callout .label {
+  display: block;
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.4rem;
+}
+
+.callout p + p {
+  margin-top: 0.75rem;
+}
+
+code {
+  font-family: var(--font-clock), ui-monospace, monospace;
+  font-size: 1.08em;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+/* -------------------------------------------------------------- diagrama */
+
+.diagram {
+  margin: 1.75rem 0 0;
+  padding: clamp(1rem, 0.5rem + 2vw, 2rem);
+  border: 1px solid var(--navy-700);
+  background: var(--navy-900);
+  overflow-x: auto;
+}
+
+.diagram svg {
+  display: block;
+  width: 100%;
+  min-width: 26rem;
+  height: auto;
+  color: var(--text-on-surface);
+}
+
+.diagram figcaption {
+  margin-top: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--text-subtle);
+  max-width: 44rem;
+}
+
+.dg-face {
+  font-family: var(--font-clock), sans-serif;
+}
+
+.dg-brand {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 500;
+}
+
+.dg-label {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.colophon {
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--navy-700);
+  padding-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--text-subtle);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,9 +1,4 @@
-import type {
-  BrandPart,
-  StampColorKey,
-  WatermarkPosition,
-  WatermarkPreferences,
-} from '@/types';
+import type { BrandPart, WatermarkPosition, WatermarkPreferences } from '@/types';
 
 import type { WatermarkContent } from './build-content';
 import {
@@ -22,7 +17,11 @@ import {
   metricsForFrame,
   type ScaleMetrics,
 } from './layout';
-import { DIGIT_INK_TOP_FROM_BASELINE } from './skia-typography';
+import {
+  BRAND_CAP_TOP_FROM_BASELINE,
+  BRAND_DESCENDER_FROM_BASELINE,
+  DIGIT_INK_TOP_FROM_BASELINE,
+} from './skia-typography';
 
 /**
  * A geometria do carimbo, separada de quem a desenha.
@@ -69,13 +68,33 @@ export type StampRect = {
   width: number;
   height: number;
   color: string;
-  /** Raio dos cantos. A faixa de fundo é arredondada. */
+  /** Raio dos cantos. Só o cartão de fundo arredonda. */
   radius?: number;
+  /** De 0 a 1. Só a faixa de fundo usa; o resto é opaco. */
+  opacity?: number;
+};
+
+/**
+ * O logotipo da empresa, num retângulo de destino já resolvido.
+ *
+ * A geometria não decodifica imagem nenhuma: entrega o caminho e o retângulo,
+ * e quem desenha é que resolve os bytes. É o que mantém este módulo testável
+ * sem motor gráfico — e o que permite ao preview e à exportação partilharem a
+ * mesma conta com um logotipo de resolução diferente em cada um.
+ */
+export type StampImage = {
+  /** Caminho relativo gerido pelo app — ver `logo-file.ts`. */
+  path: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
 };
 
 export type StampGeometry = {
   texts: StampText[];
   rects: StampRect[];
+  images: StampImage[];
   /**
    * Sombra aplicada a **todo** texto do carimbo.
    *
@@ -85,14 +104,6 @@ export type StampGeometry = {
    * de tela.
    */
   shadow: { color: string; offsetY: number; blur: number };
-};
-
-export type StampColors = {
-  text: string;
-  accent: string;
-  backdrop: string;
-  /** Cores nomeadas que a marca própria pode usar. */
-  palette: Record<StampColorKey, string>;
 };
 
 export type StampFrame = { width: number; height: number };
@@ -122,6 +133,39 @@ const TIME_INK_BOTTOM_GAP = 1 - TIME_INK_TOP_RATIO - TIME_INK_HEIGHT_RATIO;
  * ela entrega ao cliente é pior do que uma letra menor.
  */
 const BRAND_MAX_WIDTH_RATIO = 0.45;
+
+/**
+ * O cabeçalho da marca — logotipo à esquerda, nome e complemento à direita.
+ *
+ * A regra de alinhamento é a mesma da barra âmbar, e foi ela que definiu este
+ * bloco: a barra vai do **topo da tinta** dos algarismos até a **base da tinta**
+ * deles, e não da caixa de linha. Aqui o logotipo vai do topo da tinta do nome
+ * até a base da tinta do complemento. É o que faz o conjunto parecer desenhado
+ * junto em vez de empilhado.
+ *
+ * Os limites saem da fonte, e não do texto digitado — `HEITOSGQ` e `gyp`, medidos
+ * em `skia-typography.ts`. Ancorar no texto de fato faria o logotipo mudar de
+ * tamanho conforme a empresa se chamasse "LIMA" ou "LOGOS", que é o mesmo defeito
+ * que a hora teria se fosse medida em `11:11`.
+ */
+const HEADER_NAME_SIZE_RATIO = 1.6;
+const HEADER_COMPLEMENT_SIZE_RATIO = 0.44;
+/** Ar entre a base da tinta do nome e o topo da tinta do complemento. */
+const HEADER_LEADING_RATIO = 0.24;
+/** Vão entre o logotipo e o texto, em frações da altura do conjunto. */
+const HEADER_LOGO_GAP_RATIO = 0.2;
+/**
+ * Quanto o logotipo pode ser mais largo que alto.
+ *
+ * Com a altura amarrada ao texto, uma assinatura horizontal muito comprida
+ * atravessaria a foto. Passando daqui ela é reduzida — perde altura em vez de
+ * invadir a imagem.
+ */
+const HEADER_LOGO_MAX_ASPECT = 2.4;
+/** Largura máxima do conjunto, em frações do quadro. */
+const HEADER_MAX_WIDTH_RATIO = 0.7;
+/** Vão entre o cabeçalho da marca e a linha da hora. */
+const HEADER_BOTTOM_GAP_RATIO = 0.42;
 
 /** `letterSpacing` de cada papel, em frações do corpo. Medido no antigo. */
 const CODE_LETTER_SPACING_RATIO = 0.055;
@@ -213,6 +257,230 @@ function clamp(value: number, min: number, max: number) {
 }
 
 /**
+ * As partes do nome, já sem as vazias.
+ *
+ * O que está gravado é o que é carimbado — não há mais um modo em que o texto
+ * digitado fica guardado sem aparecer. O padrão de fábrica reproduz a marca do
+ * próprio app, uma palavra em duas cores, e serve de exemplo do que a marca da
+ * empresa pode fazer.
+ */
+function brandParts(preferences: WatermarkPreferences): BrandPart[] {
+  return preferences.brandParts.filter((part) => part.text.trim().length > 0);
+}
+
+/**
+ * O cabeçalho da marca resolvido, com as posições internas relativas ao canto
+ * superior esquerdo do conjunto.
+ *
+ * Medir e emitir são passos separados porque a largura entra na conta do bloco
+ * inteiro — é ela que decide onde o bloco começa quando ancorado à direita —,
+ * e nessa hora ainda não se sabe o `x` final.
+ */
+type BrandLockup = {
+  width: number;
+  /**
+   * O espaço que o conjunto ocupa, descendentes incluídas.
+   *
+   * Maior que `anchorHeight`: um complemento com "g" ou "p" desce abaixo da
+   * linha de base, e sem contar isso a perna da letra encostaria no relógio.
+   */
+  height: number;
+  /**
+   * Do topo da tinta do nome à **linha de base** do complemento.
+   *
+   * É a altura do logotipo. A linha de base, e não a base das descendentes:
+   * é nela que o texto se apoia, e um complemento sem nenhuma perna descendo —
+   * "Vidros e vistorias" — deixaria o logotipo terminando abaixo de tudo que
+   * se vê, como se estivesse afundado no conjunto.
+   */
+  anchorHeight: number;
+  nameSize: number;
+  nameBaseline: number;
+  complementSize: number;
+  complementBaseline: number | null;
+  letterSpacing: number;
+  /** Onde o texto começa: depois do logotipo, quando existe. */
+  textX: number;
+  logoWidth: number;
+  /**
+   * Altura do logotipo, e o quanto ele desce dentro do conjunto.
+   *
+   * Iguais a `anchorHeight` e a zero no caso comum. Uma assinatura muito
+   * horizontal perde altura para não atravessar a foto, e aí é centrada na
+   * faixa que o texto ocupa — encostada no topo, ela pareceria solta.
+   */
+  logoHeight: number;
+  logoOffsetY: number;
+  parts: BrandPart[];
+  complement: string;
+};
+
+/**
+ * Resolve o conjunto logotipo + nome + complemento.
+ *
+ * @returns `null` quando não há nada a desenhar — sem nome, sem complemento e
+ *   sem logotipo o cabeçalho não existe, em vez de reservar um vão vazio acima
+ *   do relógio.
+ */
+function measureBrandLockup({
+  preferences,
+  metrics,
+  measure,
+  maxWidth,
+}: {
+  preferences: WatermarkPreferences;
+  metrics: ScaleMetrics;
+  measure: MeasureText;
+  maxWidth: number;
+}): BrandLockup | null {
+  const parts = brandParts(preferences);
+  const complement = preferences.brandComplement.trim();
+  const hasLogo = preferences.brandLogoPath !== null;
+
+  if (parts.length === 0 && complement.length === 0 && !hasLogo) return null;
+
+  const at = (nameSize: number): BrandLockup => {
+    const complementSize =
+      complement.length > 0
+        ? Math.max(1, Math.round(nameSize * HEADER_COMPLEMENT_SIZE_RATIO))
+        : 0;
+
+    const letterSpacing = nameSize * BRAND_LETTER_SPACING_RATIO;
+
+    // A tinta do nome começa no topo do conjunto: é este ponto que o logotipo
+    // acompanha.
+    const nameBaseline = Math.round(nameSize * -BRAND_CAP_TOP_FROM_BASELINE);
+
+    const complementBaseline =
+      complementSize > 0
+        ? nameBaseline +
+          Math.round(nameSize * BRAND_DESCENDER_FROM_BASELINE) +
+          Math.round(complementSize * HEADER_LEADING_RATIO) +
+          Math.round(complementSize * -BRAND_CAP_TOP_FROM_BASELINE)
+        : null;
+
+    // O logotipo termina na linha de base da última linha de texto — onde o
+    // texto se apoia —, e não onde as descendentes chegam.
+    const anchorHeight = complementBaseline ?? nameBaseline;
+
+    // O espaço reservado, esse sim, conta as descendentes: sem isso a perna de
+    // um "g" no complemento encostaria no relógio logo abaixo.
+    const lastSize = complementBaseline === null ? nameSize : complementSize;
+    const height = anchorHeight + Math.round(lastSize * BRAND_DESCENDER_FROM_BASELINE);
+
+    // Uma assinatura muito horizontal **perde altura**, e não largura: limitar
+    // só a largura a espremeria, entregando ao cliente uma foto com o logotipo
+    // da empresa deformado. A proporção do arquivo é preservada sempre.
+    const aspect = Math.max(0.01, preferences.brandLogoAspect);
+    const logoHeight = hasLogo
+      ? Math.max(1, Math.round(anchorHeight * Math.min(1, HEADER_LOGO_MAX_ASPECT / aspect)))
+      : 0;
+    const logoWidth = hasLogo ? Math.max(1, Math.round(logoHeight * aspect)) : 0;
+    // Encolhido, o logotipo é centrado na faixa do texto; encostado no topo
+    // ele pareceria solto acima do nome.
+    const logoOffsetY = Math.round((anchorHeight - logoHeight) / 2);
+
+    const textX = hasLogo
+      ? logoWidth + Math.max(1, Math.round(anchorHeight * HEADER_LOGO_GAP_RATIO))
+      : 0;
+
+    const nameWidth = parts.reduce(
+      (total, part) => total + widthOf(part.text, nameSize, 'medium', measure, letterSpacing),
+      0,
+    );
+    const complementWidth =
+      complementSize > 0
+        ? widthOf(complement, complementSize, 'medium', measure, complementSize * BRAND_LETTER_SPACING_RATIO)
+        : 0;
+
+    return {
+      width: textX + Math.max(nameWidth, complementWidth),
+      height,
+      anchorHeight,
+      nameSize,
+      nameBaseline,
+      complementSize,
+      complementBaseline,
+      letterSpacing,
+      textX,
+      logoWidth,
+      logoHeight,
+      logoOffsetY,
+      parts,
+      complement,
+    };
+  };
+
+  const base = Math.max(1, Math.round(metrics.address * HEADER_NAME_SIZE_RATIO));
+  const first = at(base);
+  if (first.width <= maxWidth || first.width === 0) return first;
+
+  // Não cabendo, o conjunto **inteiro** encolhe — logotipo junto —, e nunca é
+  // cortado: cortar o nome de uma empresa na foto que ela entrega ao cliente é
+  // pior do que uma letra menor. O piso evita que uma razão social comprida
+  // vire um fio ilegível; a partir dele o cabeçalho passa da largura reservada,
+  // que ainda é melhor do que sumir.
+  const floor = Math.max(1, Math.round(metrics.code * 0.9));
+  return at(Math.max(floor, Math.floor((base * maxWidth) / first.width)));
+}
+
+/** Escreve o conjunto já resolvido na posição final. */
+function emitBrandLockup({
+  lockup,
+  preferences,
+  measure,
+  x,
+  top,
+  texts,
+  images,
+}: {
+  lockup: BrandLockup;
+  preferences: WatermarkPreferences;
+  measure: MeasureText;
+  x: number;
+  top: number;
+  texts: StampText[];
+  images: StampImage[];
+}) {
+  if (preferences.brandLogoPath !== null && lockup.logoWidth > 0) {
+    images.push({
+      path: preferences.brandLogoPath,
+      x,
+      y: top + lockup.logoOffsetY,
+      width: lockup.logoWidth,
+      height: lockup.logoHeight,
+    });
+  }
+
+  let cursor = x + lockup.textX;
+
+  for (const part of lockup.parts) {
+    texts.push({
+      text: part.text,
+      x: cursor,
+      baseline: top + lockup.nameBaseline,
+      size: lockup.nameSize,
+      font: 'medium',
+      color: part.color,
+      letterSpacing: lockup.letterSpacing,
+    });
+    cursor += widthOf(part.text, lockup.nameSize, 'medium', measure, lockup.letterSpacing);
+  }
+
+  if (lockup.complementBaseline !== null) {
+    texts.push({
+      text: lockup.complement,
+      x: x + lockup.textX,
+      baseline: top + lockup.complementBaseline,
+      size: lockup.complementSize,
+      font: 'medium',
+      color: preferences.brandComplementColor,
+      letterSpacing: lockup.complementSize * BRAND_LETTER_SPACING_RATIO,
+    });
+  }
+}
+
+/**
  * Resolve o carimbo inteiro em posições absolutas dentro do quadro.
  *
  * @param allowGrowth `true` na exportação, onde o carimbo acompanha a
@@ -222,24 +490,24 @@ export function buildStampGeometry({
   content,
   preferences,
   frame,
-  colors,
   measure,
   allowGrowth = false,
 }: {
   content: WatermarkContent;
   preferences: WatermarkPreferences;
   frame: StampFrame;
-  colors: StampColors;
-  measure: MeasureText;
+    measure: MeasureText;
   allowGrowth?: boolean;
 }): StampGeometry {
   const texts: StampText[] = [];
   const rects: StampRect[] = [];
+  const images: StampImage[] = [];
 
   const metrics = metricsForFrame(SCALE_METRICS[preferences.scale], frame, { allowGrowth });
   const empty: StampGeometry = {
     texts,
     rects,
+    images,
     shadow: {
       color: 'rgba(0, 0, 0, 0.85)',
       offsetY: Math.max(1, Math.round(metrics.address * SHADOW_OFFSET_RATIO)),
@@ -247,7 +515,9 @@ export function buildStampGeometry({
     },
   };
 
-  if (content.isEmpty && !preferences.showBrand) return empty;
+  const { brandPlacement } = preferences;
+
+  if (content.isEmpty && brandPlacement === 'none') return empty;
   if (!(frame.width > 0) || !(frame.height > 0)) return empty;
   if (!Number.isFinite(frame.width) || !Number.isFinite(frame.height)) return empty;
 
@@ -256,19 +526,34 @@ export function buildStampGeometry({
   const factor = frameScaleFactor(frame, { allowGrowth });
   const inset = Math.max(1, Math.round(WATERMARK_INSET * factor));
 
-  if (!content.isEmpty) {
-    layoutDataBlock({ content, preferences, frame, colors, measure, metrics, inset, texts, rects });
+  // O cabeçalho vive **dentro** do bloco de dados: é o que faz o conjunto ficar
+  // alinhado com o relógio, com a mesma âncora e a mesma faixa de fundo. No
+  // canto, a marca é um elemento solto, com âncora própria.
+  const lockup =
+    brandPlacement === 'header'
+      ? measureBrandLockup({
+          preferences,
+          metrics,
+          measure,
+          maxWidth: frame.width * HEADER_MAX_WIDTH_RATIO,
+        })
+      : null;
+
+  if (!content.isEmpty || lockup) {
+    layoutDataBlock({
+      content, preferences, frame, measure, metrics, inset, lockup, texts, rects, images,
+    });
   }
 
-  if (preferences.showBrand) {
-    layoutBrand({ preferences, frame, colors, measure, metrics, inset, texts });
+  if (brandPlacement === 'corner') {
+    layoutBrand({ preferences, frame, measure, metrics, inset, texts });
   }
 
   if (content.code !== null && preferences.codePlacement === 'side') {
-    layoutSideCode({ code: content.code, frame, colors, measure, metrics, inset, texts });
+    layoutSideCode({ code: content.code, preferences, frame, measure, metrics, inset, texts });
   }
 
-  return { ...empty, texts, rects };
+  return { ...empty, texts, rects, images };
 }
 
 /** Altura da caixa do bloco superior, e onde a tinta dos algarismos cai nela. */
@@ -301,22 +586,25 @@ function layoutDataBlock({
   content,
   preferences,
   frame,
-  colors,
   measure,
   metrics,
   inset,
+  lockup,
   texts,
   rects,
+  images,
 }: {
   content: WatermarkContent;
   preferences: WatermarkPreferences;
   frame: StampFrame;
-  colors: StampColors;
   measure: MeasureText;
   metrics: ScaleMetrics;
   inset: number;
+  /** O cabeçalho da marca, quando ele é o formato escolhido. */
+  lockup: BrandLockup | null;
   texts: StampText[];
   rects: StampRect[];
+  images: StampImage[];
 }) {
   const { position } = preferences;
   const left = isLeft(position);
@@ -342,44 +630,113 @@ function layoutDataBlock({
 
   const gapAfterHeader = header.height > 0 && addressHeight > 0 ? metrics.gap : 0;
   const gapBeforeCode = codeInBlock ? Math.round(metrics.gap / 2) : 0;
-  const blockHeight = header.height + gapAfterHeader + addressHeight + gapBeforeCode + codeHeight;
+
+  // O vão sai da altura do próprio conjunto, e não das métricas do carimbo: é
+  // ele que define o quanto a marca e o relógio parecem separados, e um nome
+  // grande precisa de mais ar do que um pequeno.
+  const gapAfterLockup =
+    lockup && header.height + addressHeight + codeHeight > 0
+      ? Math.max(1, Math.round(lockup.height * HEADER_BOTTOM_GAP_RATIO))
+      : 0;
+  const lockupHeight = lockup ? lockup.height + gapAfterLockup : 0;
+
+  const blockHeight =
+    lockupHeight + header.height + gapAfterHeader + addressHeight + gapBeforeCode + codeHeight;
 
   // A largura do cabeçalho entra sempre, e não só quando há hora: data e dia
   // da semana continuam sendo desenhados sem ela, e ficavam de fora da conta
   // — com a âncora à direita, saíam da foto.
   const widths: number[] = [headerWidth(content, metrics, measure)];
+  if (lockup) widths.push(lockup.width);
   for (const line of addressLines) widths.push(widthOf(line, metrics.address, 'body', measure));
   if (codeInBlock && content.code) {
     widths.push(widthOf(content.code, metrics.code, 'medium', measure, codeSpacing));
   }
   const blockWidth = Math.max(0, ...widths);
 
-  const edge = inset + metrics.paddingHorizontal;
+  const { backdropStyle } = preferences;
+
+  // O arredondamento é do cartão, e não da faixa contínua. Uma tarja que
+  // atravessa a foto e encosta nas bordas é reta em cima e embaixo: arredondada
+  // ela vira um painel, que é meio-termo entre as duas opções e embaralha a
+  // escolha entre elas.
+  //
+  // O valor escolhido é em pontos de tela; num arquivo de 4000 px ele precisa
+  // crescer junto, senão o canto fica reto.
+  const radius =
+    backdropStyle === 'block'
+      ? Math.max(0, Math.round(preferences.backdropRadius * (metrics.paddingHorizontal / 4)))
+      : 0;
+
+  // Um canto arredondado come o espaço da própria curva: com o cartão ligado e
+  // o raio no máximo, o texto encostava na volta do canto. A folga cresce com
+  // o raio, e o raio zero devolve exatamente a geometria de antes — que é o que
+  // mantém o carimbo sem fundo idêntico à referência.
+  const padX = metrics.paddingHorizontal + Math.round(radius / 2);
+  const padY = metrics.paddingVertical + Math.round(radius / 2);
+
+  const edge = inset + padX;
   const rawLeft = left ? edge : frame.width - edge - blockWidth;
   const rawTop = isTop(position)
-    ? inset + metrics.paddingVertical
-    : frame.height - inset - metrics.paddingVertical - blockHeight;
+    ? inset + padY
+    : frame.height - inset - padY - blockHeight;
 
   // Nada é desenhado fora da foto, mesmo num quadro menor que o bloco.
   const blockLeft = clamp(rawLeft, 0, frame.width - blockWidth);
   const top = clamp(rawTop, 0, frame.height - blockHeight);
 
-  if (preferences.showBackdrop && blockWidth > 0) {
-    rects.push({
-      x: blockLeft - metrics.paddingHorizontal,
-      y: top - metrics.paddingVertical,
-      width: blockWidth + metrics.paddingHorizontal * 2,
-      height: blockHeight + metrics.paddingVertical * 2,
-      color: colors.backdrop,
-      radius: Math.round(metrics.paddingHorizontal),
-    });
+  if (backdropStyle !== 'none' && blockWidth > 0) {
+    const fill = {
+      color: preferences.backdropColor,
+      opacity: preferences.backdropOpacity,
+      radius,
+    };
+
+    if (backdropStyle === 'block') {
+      rects.push({
+        x: blockLeft - padX,
+        y: top - padY,
+        width: blockWidth + padX * 2,
+        height: blockHeight + padY * 2,
+        ...fill,
+      });
+    } else {
+      // A faixa vai de borda a borda e **encosta** na borda em que o carimbo
+      // está ancorado. Parar antes dela deixaria um fio da foto embaixo, que lê
+      // como erro de alinhamento, não como escolha.
+      const innerEdge = isTop(position) ? top + blockHeight + padY : top - padY;
+
+      rects.push({
+        x: 0,
+        y: isTop(position) ? 0 : innerEdge,
+        width: frame.width,
+        height: isTop(position) ? innerEdge : frame.height - innerEdge,
+        ...fill,
+      });
+    }
   }
 
   let cursor = top;
 
+  if (lockup) {
+    emitBrandLockup({
+      lockup,
+      preferences,
+      measure,
+      // Ancorado à direita, o conjunto acompanha a borda direita do bloco. O
+      // logotipo continua à esquerda do nome: isso é a assinatura, não o
+      // alinhamento.
+      x: left ? blockLeft : blockLeft + blockWidth - lockup.width,
+      top: cursor,
+      texts,
+      images,
+    });
+    cursor += lockupHeight;
+  }
+
   if (header.height > 0) {
     layoutHeader({
-      content, metrics, colors, measure, texts, rects, header, top: cursor,
+      content, preferences, metrics, measure, texts, rects, header, top: cursor,
       // Ancorado à direita, o cabeçalho acompanha a borda direita do bloco —
       // antes ele ficava alinhado à esquerda enquanto o resto ia para a direita.
       x: left
@@ -397,7 +754,7 @@ function layoutDataBlock({
       baseline: cursor + Math.round(metrics.address * BODY_BASELINE_RATIO),
       size: metrics.address,
       font: 'body',
-      color: colors.text,
+      color: preferences.stampTextColor,
     });
     cursor += addressLineHeight;
   }
@@ -410,7 +767,7 @@ function layoutDataBlock({
       baseline: cursor + gapBeforeCode + Math.round(metrics.code * BODY_BASELINE_RATIO),
       size: metrics.code,
       font: 'medium',
-      color: colors.text,
+      color: preferences.stampTextColor,
       letterSpacing: codeSpacing,
     });
   }
@@ -439,11 +796,11 @@ function headerWidth(
 }
 
 function layoutHeader({
-  content, metrics, colors, measure, texts, rects, x, top, header,
+  content, preferences, metrics, measure, texts, rects, x, top, header,
 }: {
   content: WatermarkContent;
+  preferences: WatermarkPreferences;
   metrics: ScaleMetrics;
-  colors: StampColors;
   measure: MeasureText;
   texts: StampText[];
   rects: StampRect[];
@@ -463,7 +820,7 @@ function layoutHeader({
       baseline: inkTopY - Math.round(metrics.time * DIGIT_INK_TOP_FROM_BASELINE),
       size: metrics.time,
       font: 'clock',
-      color: colors.text,
+      color: preferences.stampTextColor,
     });
     cursor += widthOf(content.time, metrics.time, 'clock', measure);
   }
@@ -477,7 +834,7 @@ function layoutHeader({
       y: inkTopY,
       width: ruleWidth(metrics),
       height: header.inkHeight,
-      color: colors.accent,
+      color: preferences.stampAccent,
     });
     cursor += ruleWidth(metrics) + Math.round(metrics.time * RULE_SPACE_AFTER_RATIO);
   }
@@ -492,7 +849,7 @@ function layoutHeader({
       baseline: inkTopY + Math.round(metrics.secondary * BODY_BASELINE_RATIO * 0.73),
       size: metrics.secondary,
       font: 'body',
-      color: colors.text,
+      color: preferences.stampTextColor,
     });
   }
 
@@ -505,35 +862,29 @@ function layoutHeader({
         : inkTopY + Math.round(metrics.secondary * BODY_BASELINE_RATIO * 0.73),
       size: metrics.secondary,
       font: 'body',
-      color: colors.text,
+      color: preferences.stampTextColor,
     });
   }
 }
 
 function layoutBrand({
-  preferences, frame, colors, measure, metrics, inset, texts,
+  preferences, frame, measure, metrics, inset, texts,
 }: {
   preferences: WatermarkPreferences;
   frame: StampFrame;
-  colors: StampColors;
-  measure: MeasureText;
+    measure: MeasureText;
   metrics: ScaleMetrics;
   inset: number;
   texts: StampText[];
 }) {
   const { brandPosition } = preferences;
 
-  const parts: BrandPart[] = (
-    preferences.brandMode === 'custom'
-      ? preferences.brandParts
-      : ([
-          { text: 'Ly', color: 'white' },
-          { text: 'mark', color: 'amber' },
-        ] as const)
-  ).filter((part) => part.text.trim().length > 0);
+  const parts = brandParts(preferences);
 
   // Marca ligada mas sem texto nenhum: não desenha nada, em vez de carimbar
-  // um espaço em branco.
+  // um espaço em branco. O logotipo e o complemento não aparecem aqui — no
+  // canto não há altura para eles, e é justamente essa a diferença entre os
+  // dois formatos.
   if (parts.length === 0) return;
 
   const base = Math.round(metrics.address * BRAND_SIZE_RATIO);
@@ -579,7 +930,7 @@ function layoutBrand({
       baseline,
       size,
       font: 'medium',
-      color: colors.palette[part.color] ?? colors.text,
+      color: part.color,
       letterSpacing: spacing,
     });
     cursor += widthOf(part.text, size, 'medium', measure, spacing) + spacing;
@@ -587,12 +938,12 @@ function layoutBrand({
 }
 
 function layoutSideCode({
-  code, frame, colors, measure, metrics, inset, texts,
+  code, preferences, frame, measure, metrics, inset, texts,
 }: {
   code: string;
+  preferences: WatermarkPreferences;
   frame: StampFrame;
-  colors: StampColors;
-  measure: MeasureText;
+    measure: MeasureText;
   metrics: ScaleMetrics;
   inset: number;
   texts: StampText[];
@@ -615,7 +966,7 @@ function layoutSideCode({
     baseline: clamp(center + width / 2, width, frame.height),
     size,
     font: 'medium',
-    color: colors.text,
+    color: preferences.stampTextColor,
     letterSpacing: spacing,
     rotate: -90,
   });

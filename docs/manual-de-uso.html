@@ -1,0 +1,972 @@
+<style>
+/* ---------------------------------------------------------------------------
+   Lymark — manual de uso.
+
+   A paleta é a do próprio aplicativo, e a tipografia é a do próprio carimbo:
+   os números deste manual saem na mesma Pathway Gothic One que desenha "21:55"
+   em cada foto exportada. A barra âmbar vertical, que no carimbo vai do topo à
+   base da tinta dos algarismos, é aqui o único elemento estrutural.
+--------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light dark;
+
+  --ink:        #0E1720;
+  --ink-soft:   #3C4B5A;
+  --muted:      #64778A;
+  --paper:      #F6F8FA;
+  --surface:    #FFFFFF;
+  --rule:       #D6DEE6;
+  --rule-soft:  #E7EDF2;
+  --amber:      #C98A00;
+  --amber-mark: #F5B60D;
+  --code-bg:    #EDF2F6;
+
+  --measure: 68ch;
+  --step: clamp(0.95rem, 0.9rem + 0.25vw, 1.0625rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink:        #E8EEF4;
+    --ink-soft:   #B6C4D1;
+    --muted:      #7D8FA1;
+    --paper:      #0B1119;
+    --surface:    #131E2A;
+    --rule:       #24344500;
+    --rule:       #223243;
+    --rule-soft:  #1A2634;
+    --amber:      #F5B60D;
+    --amber-mark: #F5B60D;
+    --code-bg:    #16222F;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink:        #E8EEF4;
+  --ink-soft:   #B6C4D1;
+  --muted:      #7D8FA1;
+  --paper:      #0B1119;
+  --surface:    #131E2A;
+  --rule:       #223243;
+  --rule-soft:  #1A2634;
+  --amber:      #F5B60D;
+  --amber-mark: #F5B60D;
+  --code-bg:    #16222F;
+}
+
+:root[data-theme="light"] {
+  --ink:        #0E1720;
+  --ink-soft:   #3C4B5A;
+  --muted:      #64778A;
+  --paper:      #F6F8FA;
+  --surface:    #FFFFFF;
+  --rule:       #D6DEE6;
+  --rule-soft:  #E7EDF2;
+  --amber:      #C98A00;
+  --amber-mark: #F5B60D;
+  --code-bg:    #EDF2F6;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "LymarkBody", system-ui, sans-serif;
+  font-size: var(--step);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 1rem + 4vw, 5rem) clamp(1.25rem, 0.5rem + 3vw, 3.5rem) 6rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 1rem + 4vw, 4rem);
+}
+
+@media (min-width: 62rem) {
+  .page { grid-template-columns: 14rem minmax(0, 1fr); }
+}
+
+/* --- capa ---------------------------------------------------------------- */
+
+.masthead { grid-column: 1 / -1; }
+
+.wordmark {
+  font-family: "LymarkBody", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: clamp(2.25rem, 1.4rem + 3.6vw, 3.75rem);
+  letter-spacing: 0.012em;
+  line-height: 1;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.wordmark .mark { color: var(--amber-mark); }
+
+.masthead .kicker {
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.9rem 0 0;
+}
+
+.masthead .lede {
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+  line-height: 1.55;
+  margin: 1.5rem 0 0;
+}
+
+.masthead-rule {
+  height: 1px;
+  background: var(--rule);
+  border: 0;
+  margin: clamp(2rem, 1rem + 2vw, 3rem) 0 0;
+}
+
+/* --- sumário ------------------------------------------------------------- */
+
+.contents { align-self: start; }
+
+@media (min-width: 62rem) {
+  .contents { position: sticky; top: 2.5rem; }
+}
+
+.contents h2 {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.contents ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  counter-reset: toc;
+}
+
+.contents a {
+  display: grid;
+  grid-template-columns: 1.9rem 1fr;
+  gap: 0.35rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  line-height: 1.35;
+  padding: 0.15rem 0;
+  border-radius: 3px;
+}
+
+.contents a::before {
+  counter-increment: toc;
+  content: counter(toc);
+  font-family: "LymarkClock", system-ui, sans-serif;
+  font-size: 1.05rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.contents a:hover,
+.contents a:focus-visible { color: var(--amber); }
+.contents a:hover::before,
+.contents a:focus-visible::before { color: var(--amber); }
+
+/* --- corpo --------------------------------------------------------------- */
+
+.body { counter-reset: sec; min-width: 0; }
+
+.section { padding-block: clamp(2.25rem, 1rem + 3vw, 3.25rem); }
+.section + .section { border-top: 1px solid var(--rule-soft); }
+
+/* A barra âmbar: no carimbo ela vai do topo à base da tinta dos algarismos.
+   Aqui marca o número da seção, na mesma proporção. */
+.section > h2 {
+  display: grid;
+  grid-template-columns: auto 3px auto;
+  align-items: center;
+  gap: 0 0.85rem;
+  font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+  text-wrap: balance;
+}
+
+.section > h2::before {
+  counter-increment: sec;
+  content: counter(sec);
+  font-family: "LymarkClock", system-ui, sans-serif;
+  font-size: 1.9em;
+  line-height: 0.78;
+  font-weight: 400;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.section > h2::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  align-self: stretch;
+  background: var(--amber-mark);
+  margin-block: 0.16em;
+}
+
+.section h3 {
+  font-size: 1.0625rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  margin: 2.25rem 0 0.75rem;
+  color: var(--ink);
+}
+
+.section p,
+.section ul,
+.section ol { max-width: var(--measure); }
+
+.section p { margin: 0 0 1rem; color: var(--ink-soft); }
+.section p.tight { margin-bottom: 0.4rem; }
+
+.section ul { margin: 0 0 1.25rem; padding-left: 1.15rem; color: var(--ink-soft); }
+.section li { margin-bottom: 0.4rem; }
+.section li::marker { color: var(--muted); }
+
+strong { font-weight: 500; color: var(--ink); }
+
+a { color: var(--amber); }
+
+code, .mono {
+  font-family: "LymarkClock", ui-monospace, monospace;
+  font-size: 1.05em;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 0.05em 0.4em;
+  border-radius: 3px;
+}
+
+/* --- tabelas de medida --------------------------------------------------- */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1.5rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 30rem;
+  font-size: 0.9375rem;
+}
+
+caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.7rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.6rem 1.25rem 0.6rem 0;
+  vertical-align: baseline;
+}
+
+th {
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+
+tbody tr + tr td { border-top: 1px solid var(--rule-soft); }
+
+td.num, th.num {
+  font-family: "LymarkClock", ui-monospace, monospace;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+
+th.num { font-family: "LymarkBody", system-ui, sans-serif; font-size: 0.75rem; color: var(--muted); }
+
+td:last-child, th:last-child { padding-right: 0; }
+
+/* --- nota ---------------------------------------------------------------- */
+
+.note {
+  max-width: var(--measure);
+  border-left: 3px solid var(--amber-mark);
+  padding: 0.15rem 0 0.15rem 1.15rem;
+  margin: 0 0 1.5rem;
+  color: var(--ink-soft);
+}
+
+.note p { margin: 0; }
+.note p + p { margin-top: 0.7rem; }
+
+.note .label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 0.35rem;
+}
+
+/* --- diagrama ------------------------------------------------------------ */
+
+.diagram {
+  margin: 0 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: clamp(1rem, 0.5rem + 2vw, 2rem);
+  overflow-x: auto;
+}
+
+.diagram svg { display: block; width: 100%; min-width: 26rem; height: auto; }
+.diagram figcaption {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  margin-top: 1rem;
+  max-width: 44rem;
+}
+
+.dg-face  { font-family: "LymarkClock", sans-serif; }
+.dg-brand { font-family: "LymarkBody", sans-serif; font-weight: 500; }
+.dg-label { font-family: "LymarkBody", sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* --- pares rótulo/valor -------------------------------------------------- */
+
+.specs {
+  display: grid;
+  grid-template-columns: minmax(9rem, auto) 1fr;
+  gap: 0.55rem 1.5rem;
+  margin: 0 0 1.5rem;
+  max-width: var(--measure);
+  align-items: baseline;
+}
+
+.specs dt {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 0.2em;
+}
+
+.specs dd { margin: 0; color: var(--ink-soft); }
+
+/* --- rodapé -------------------------------------------------------------- */
+
+.colophon {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  max-width: var(--measure);
+}
+
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+</style>
+
+<div class="page">
+
+  <header class="masthead">
+    <p class="kicker">Manual de uso</p>
+    <h1 class="wordmark">Ly<span class="mark">mark</span></h1>
+    <p class="lede">
+      O Lymark carimba hora, data, dia da semana, endereço e um código de rastreio sobre a
+      fotografia — na resolução da própria câmera, e não na da tela. Este manual diz o que
+      cada ajuste faz e, onde a pergunta é “qual tamanho”, responde com o número medido.
+    </p>
+    <hr class="masthead-rule">
+  </header>
+
+  <nav class="contents" aria-label="Sumário">
+    <h2>Seções</h2>
+    <ol>
+      <li><a href="#anatomia">Anatomia do carimbo</a></li>
+      <li><a href="#campos">Campos carimbados</a></li>
+      <li><a href="#posicao">Posição e tamanho</a></li>
+      <li><a href="#cores">Cores</a></li>
+      <li><a href="#marca">Marca da empresa</a></li>
+      <li><a href="#logotipo">Logotipo: o arquivo certo</a></li>
+      <li><a href="#faixa">Faixa de fundo</a></li>
+      <li><a href="#endereco">Endereço e GPS</a></li>
+      <li><a href="#codigo">Código de Foto</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#arquivo">O que sai no arquivo</a></li>
+      <li><a href="#privacidade">Privacidade</a></li>
+    </ol>
+  </nav>
+
+  <main class="body">
+
+    <!-- 1 -->
+    <section class="section" id="anatomia">
+      <h2>Anatomia do carimbo</h2>
+
+      <p>
+        Tudo que o Lymark desenha vive num bloco só, ancorado num canto da foto. De cima para
+        baixo: a marca da empresa, a linha do relógio, o endereço e o código. O que muda de
+        empresa para empresa é a marca, as cores e o fundo — a estrutura é a mesma.
+      </p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 520 260" role="img"
+             aria-label="Diagrama do carimbo: logotipo, nome e complemento acima da linha do relógio, com barra âmbar, data e dia da semana ao lado, endereço abaixo e código girado na lateral direita.">
+          <!-- moldura da foto -->
+          <rect x="0.5" y="0.5" width="519" height="259" rx="3"
+                fill="none" stroke="currentColor" stroke-opacity="0.18"/>
+
+          <!-- linhas-guia do logotipo -->
+          <line x1="40" y1="44" x2="470" y2="44" stroke="currentColor" stroke-opacity="0.25" stroke-dasharray="3 4"/>
+          <line x1="40" y1="86" x2="470" y2="86" stroke="currentColor" stroke-opacity="0.25" stroke-dasharray="3 4"/>
+          <text class="dg-label" x="474" y="47" fill="currentColor" fill-opacity="0.55">topo do nome</text>
+          <text class="dg-label" x="474" y="89" fill="currentColor" fill-opacity="0.55">base do complemento</text>
+
+          <!-- logotipo -->
+          <circle cx="61" cy="65" r="19" fill="#F5B60D"/>
+          <circle cx="61" cy="65" r="12" fill="#0B1119"/>
+          <rect x="59" y="47" width="4" height="36" fill="#F5B60D"/>
+
+          <!-- nome e complemento -->
+          <text class="dg-brand" x="96" y="66" font-size="30" fill="currentColor">AUTO</text>
+          <text class="dg-brand" x="169" y="66" font-size="30" fill="#F5B60D">GLASS</text>
+          <text class="dg-brand" x="96" y="85" font-size="13" fill="currentColor" fill-opacity="0.7">Vidros e vistorias</text>
+
+          <!-- relógio -->
+          <text class="dg-face" x="40" y="158" font-size="62" fill="currentColor">21:55</text>
+          <rect x="152" y="115" width="4" height="45" fill="#F5B60D"/>
+          <text class="dg-brand" x="170" y="130" font-size="14" fill="currentColor" font-weight="400">01 ago. 2026</text>
+          <text class="dg-brand" x="170" y="158" font-size="14" fill="currentColor" font-weight="400">Sáb</text>
+
+          <!-- endereço -->
+          <text class="dg-brand" x="40" y="188" font-size="14" fill="currentColor" font-weight="400">Av. Puglisi, 490 - Centro,</text>
+          <text class="dg-brand" x="40" y="209" font-size="14" fill="currentColor" font-weight="400">Guarujá - SP, 11410-002</text>
+
+          <!-- código lateral -->
+          <text class="dg-brand" x="-215" y="500" font-size="12" fill="currentColor"
+                transform="rotate(-90)" letter-spacing="2">98926A73655DC1</text>
+
+          <!-- chamadas -->
+          <line x1="152" y1="112" x2="152" y2="100" stroke="#F5B60D" stroke-width="1.2"/>
+          <text class="dg-label" x="158" y="103" fill="#F5B60D">barra âmbar</text>
+        </svg>
+        <figcaption>
+          As linhas tracejadas são a regra de alinhamento do logotipo: o topo dele acompanha o
+          topo da primeira linha do nome, e a base, a linha de base do complemento. A barra
+          âmbar segue a mesma lógica com os algarismos da hora.
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- 2 -->
+    <section class="section" id="campos">
+      <h2>Campos carimbados</h2>
+
+      <p>
+        São cinco, e cada um pode ser ligado ou desligado em <strong>Preferências ›
+        Campos exibidos</strong>. Só entra na foto o campo que estiver ligado <em>e</em> tiver
+        conteúdo — um endereço em branco não deixa linha vazia na imagem.
+      </p>
+
+      <dl class="specs">
+        <dt>Hora</dt>
+        <dd>O elemento dominante do carimbo. Formato 24 horas.</dd>
+        <dt>Data</dt>
+        <dd>Ao lado da hora, acima do dia da semana.</dd>
+        <dt>Dia da semana</dt>
+        <dd>Abreviado. Abaixo da data, na mesma coluna.</dd>
+        <dt>Endereço</dt>
+        <dd>Quebra em várias linhas quando precisa. Editável sempre.</dd>
+        <dt>Código de Foto</dt>
+        <dd>14 caracteres hexadecimais. Ver a seção 9.</dd>
+      </dl>
+
+      <p>
+        Desligar todos os campos é permitido: a tela avisa que a foto vai sair sem marca
+        d’água nenhuma, e ela sai.
+      </p>
+    </section>
+
+    <!-- 3 -->
+    <section class="section" id="posicao">
+      <h2>Posição e tamanho</h2>
+
+      <p>
+        O bloco é ancorado num dos quatro cantos. O padrão é o <strong>inferior
+        esquerdo</strong>, que é onde ele menos compete com o assunto da foto — quem
+        fotografa um imóvel ou um veículo costuma centralizá-lo no quadro.
+      </p>
+
+      <p>
+        O tamanho do texto tem três níveis. Eles são proporcionais à foto, e não fixos em
+        pixels: o mesmo ajuste dá um carimbo com a mesma presença numa foto de 8 MP e numa de
+        48 MP.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Altura da hora, em pixels, por resolução da foto</caption>
+          <thead>
+            <tr>
+              <th scope="col">Foto</th>
+              <th scope="col" class="num">Pequeno</th>
+              <th scope="col" class="num">Médio</th>
+              <th scope="col" class="num">Grande</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">8 MP (2448 × 3264)</th><td class="num">146</td><td class="num">191</td><td class="num">233</td></tr>
+            <tr><th scope="row">12 MP (3024 × 4032)</th><td class="num">181</td><td class="num">236</td><td class="num">290</td></tr>
+            <tr><th scope="row">48 MP (6000 × 8000)</th><td class="num">359</td><td class="num">465</td><td class="num">574</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Os números acima são a altura do <strong>conjunto da marca</strong> — que é a mesma do
+        logotipo. Servem de referência de escala para o carimbo inteiro.
+      </p>
+    </section>
+
+    <!-- 4 -->
+    <section class="section" id="cores">
+      <h2>Cores</h2>
+
+      <p>
+        Duas escolhas independentes: a <strong>barra vertical</strong> (âmbar por padrão) e o
+        <strong>texto</strong> (branco por padrão). Cada uma tem seis atalhos de um toque e,
+        atrás deles, o espectro inteiro — matiz numa faixa, saturação e brilho num quadrado.
+      </p>
+
+      <div class="note">
+        <span class="label">Vale saber</span>
+        <p>
+          Mexer nas cores do carimbo <strong>não</strong> muda as cores do aplicativo. São
+          perguntas diferentes: uma é a identidade que a empresa imprime na foto, a outra é a
+          identidade da tela.
+        </p>
+      </div>
+
+      <p>
+        Todo texto do carimbo leva sombra, sempre. É ela que mantém o branco legível sobre
+        céu, areia ou parede clara mesmo sem faixa de fundo. Ainda assim, cores de luminância
+        média — cinzas, ocres — desaparecem sobre asfalto e sobre concreto: nesses casos, ou
+        se escolhe um tom mais claro, ou se liga a faixa.
+      </p>
+    </section>
+
+    <!-- 5 -->
+    <section class="section" id="marca">
+      <h2>Marca da empresa</h2>
+
+      <p>
+        O técnico não quer entregar ao cliente uma foto com a marca do fornecedor de software
+        dele. A marca do carimbo é configurável, e tem três formatos.
+      </p>
+
+      <dl class="specs">
+        <dt>Acima do relógio</dt>
+        <dd>
+          A assinatura completa: logotipo à esquerda, nome grande à direita e complemento
+          menor embaixo. É o formato para quem entrega laudo ao cliente final.
+        </dd>
+        <dt>Num canto</dt>
+        <dd>
+          Uma linha discreta, com âncora própria — pode ficar num canto e os dados em outro.
+          Não leva logotipo nem complemento: não há altura para eles.
+        </dd>
+        <dt>Nenhuma</dt>
+        <dd>Foto limpa, sem marca de espécie alguma.</dd>
+      </dl>
+
+      <h3>Nome em duas partes</h3>
+
+      <p>
+        O nome é dividido em <strong>duas partes</strong>, e não em duas palavras — cada uma
+        com a sua cor. É o que permite “AutoGlass” e “TecnoSul”, que são uma palavra só em
+        duas cores. As partes são desenhadas coladas: quem quiser espaço entre elas, digita o
+        espaço.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Limites de texto</caption>
+          <thead>
+            <tr>
+              <th scope="col">Campo</th>
+              <th scope="col" class="num">Máximo</th>
+              <th scope="col">Observação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Primeira parte</th>
+              <td class="num">24</td>
+              <td>Caracteres.</td>
+            </tr>
+            <tr>
+              <th scope="row">Segunda parte</th>
+              <td class="num">24</td>
+              <td>Deixe vazia para uma marca de cor única.</td>
+            </tr>
+            <tr>
+              <th scope="row">Complemento</th>
+              <td class="num">40</td>
+              <td>Maior, porque costuma ser uma frase curta.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Nome comprido tem o corpo reduzido até caber, junto com o logotipo e o complemento — o
+        conjunto encolhe inteiro, mantendo a proporção. Nunca é cortado: cortar o nome de uma
+        empresa na foto que ela entrega ao cliente é pior do que uma letra menor.
+      </p>
+    </section>
+
+    <!-- 6 -->
+    <section class="section" id="logotipo">
+      <h2>Logotipo: o arquivo certo</h2>
+
+      <p>
+        Esta é a pergunta que mais aparece, então vem primeiro a resposta curta:
+        <strong>PNG com fundo transparente, a partir de 600&nbsp;px no lado maior.</strong>
+        O resto desta seção explica de onde sai esse número e o que acontece com cada tipo de
+        arquivo.
+      </p>
+
+      <h3>Em que tamanho ele é desenhado</h3>
+
+      <p>
+        A altura do logotipo não é escolhida: ela sai do texto ao lado. O topo acompanha o
+        topo da primeira linha do nome, e a base, a linha de base do complemento — a mesma
+        regra que a barra âmbar usa com os algarismos da hora. Na prática, isso dá cerca de
+        <strong>7% da altura da foto</strong>.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Altura do logotipo desenhado, em pixels</caption>
+          <thead>
+            <tr>
+              <th scope="col">Resolução da foto</th>
+              <th scope="col" class="num">Pequeno</th>
+              <th scope="col" class="num">Médio</th>
+              <th scope="col" class="num">Grande</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">HD (1920 × 1080)</th><td class="num">53</td><td class="num">67</td><td class="num">81</td></tr>
+            <tr><th scope="row">8 MP (2448 × 3264)</th><td class="num">146</td><td class="num">191</td><td class="num">233</td></tr>
+            <tr><th scope="row">12 MP paisagem (4032 × 3024)</th><td class="num">146</td><td class="num">188</td><td class="num">233</td></tr>
+            <tr><th scope="row">12 MP retrato (3024 × 4032)</th><td class="num">181</td><td class="num">236</td><td class="num">290</td></tr>
+            <tr><th scope="row">48 MP (6000 × 8000)</th><td class="num">359</td><td class="num">465</td><td class="num">574</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        O maior valor da tabela é <strong>574&nbsp;px</strong>. Um arquivo a partir de
+        600&nbsp;px no lado maior nunca é ampliado, em nenhuma combinação de câmera e ajuste —
+        daí a recomendação. Enviar mais que isso não faz mal: o Lymark guarda o arquivo com no
+        máximo 1024&nbsp;px no lado maior, e descarta o excedente na hora de importar.
+      </p>
+
+      <h3>A margem transparente é aparada sozinha</h3>
+
+      <p>
+        Quase todo logotipo exportado por um estúdio vem com folga em volta da marca. Se essa
+        folga entrasse no carimbo, o alinhamento com o texto se perderia — em um caso medido,
+        eram 4&nbsp;px acima e 5&nbsp;px abaixo num conjunto de 88&nbsp;px, o bastante para o
+        logotipo parecer afundado.
+      </p>
+
+      <p>
+        Na importação, o Lymark varre a transparência do arquivo, acha a caixa da marca e
+        recorta. Você não precisa preparar nada: envie o arquivo como ele está.
+      </p>
+
+      <h3>Proporção</h3>
+
+      <p>
+        Qualquer proporção é aceita e <strong>nenhuma é deformada</strong>. Até 2,4:1 o
+        logotipo ocupa a altura inteira do conjunto. Mais largo que isso, ele perde altura em
+        vez de invadir a foto, e é centrado na faixa do texto.
+      </p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Tamanho desenhado numa foto de 12 MP retrato, texto grande</caption>
+          <thead>
+            <tr>
+              <th scope="col">Proporção do arquivo</th>
+              <th scope="col" class="num">Largura</th>
+              <th scope="col" class="num">Altura</th>
+              <th scope="col">&nbsp;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">1:2 (vertical)</th><td class="num">145</td><td class="num">290</td><td></td></tr>
+            <tr><th scope="row">1:1 (quadrado)</th><td class="num">290</td><td class="num">290</td><td></td></tr>
+            <tr><th scope="row">1,5:1</th><td class="num">435</td><td class="num">290</td><td></td></tr>
+            <tr><th scope="row">2:1</th><td class="num">580</td><td class="num">290</td><td></td></tr>
+            <tr><th scope="row">2,4:1</th><td class="num">696</td><td class="num">290</td><td>limite da altura cheia</td></tr>
+            <tr><th scope="row">3:1</th><td class="num">696</td><td class="num">232</td><td>perde altura</td></tr>
+            <tr><th scope="row">4:1</th><td class="num">696</td><td class="num">174</td><td>perde altura</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <span class="label">JPG não serve</span>
+        <p>
+          Um JPG com fundo branco vira um <strong>retângulo branco</strong> sobre a foto. Não é
+          defeito do aplicativo: o formato JPG não guarda transparência, então não há como
+          distinguir o que é marca do que é fundo. O mesmo vale para PNG exportado com fundo
+          chapado.
+        </p>
+        <p>
+          Se você só tem o logotipo em JPG, peça ao seu designer o mesmo arquivo em
+          <strong>PNG com fundo transparente</strong> — é uma exportação, não um trabalho novo.
+        </p>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="section" id="faixa">
+      <h2>Faixa de fundo</h2>
+
+      <p>
+        Sobre uma parede branca ao sol, texto claro com sombra chega ao limite. A faixa de
+        fundo resolve isso, e tem duas formas.
+      </p>
+
+      <dl class="specs">
+        <dt>Atrás do texto</dt>
+        <dd>
+          Um cartão que acompanha o tamanho do carimbo, com folga em volta e cantos
+          arredondáveis de 0 a 24.
+        </dd>
+        <dt>Faixa contínua</dt>
+        <dd>
+          Uma tarja reta que atravessa a foto de borda a borda e encosta na margem onde o
+          carimbo está ancorado. Sobre cena carregada — obra, pátio, fachada cheia — ela lê
+          como legenda do documento; o cartão flutuando, nesses casos, lê como adesivo colado
+          por cima.
+        </dd>
+        <dt>Nenhuma</dt>
+        <dd>Texto direto sobre a imagem, com sombra. É o padrão.</dd>
+      </dl>
+
+      <p>
+        As duas levam <strong>cor livre</strong> e <strong>transparência de 0 a 100%</strong>,
+        em passos de 5. Zero por cento não é a faixa quebrada: é a faixa desligada sem perder
+        os ajustes, para voltar a ligar quando a foto pedir.
+      </p>
+
+      <p class="tight"><strong>Onde a transparência costuma cair:</strong></p>
+      <ul>
+        <li><strong>50%</strong> — foto de tom médio; o carimbo lê e a imagem continua visível.</li>
+        <li><strong>75%</strong> — parede branca, areia, neve, céu estourado.</li>
+        <li><strong>100%</strong> — quando o documento importa mais que o pedaço de imagem coberto.</li>
+      </ul>
+
+      <p>
+        O arredondamento vale só para o cartão. A faixa contínua é reta em cima e embaixo:
+        arredondada, ela viraria um painel — meio-termo entre as duas opções, que embaralha a
+        escolha entre elas.
+      </p>
+    </section>
+
+    <!-- 8 -->
+    <section class="section" id="endereco">
+      <h2>Endereço e GPS</h2>
+
+      <p>
+        O endereço é preenchido pelo GPS num toque, e é <strong>sempre editável</strong>. Essa
+        combinação é deliberada, e vale explicar por quê.
+      </p>
+
+      <p>
+        Geocodificação reversa erra. Dentro de galpões e entre prédios altos, o sinal degrada;
+        em rua com numeração irregular, o serviço chuta o vizinho. Um carimbo que só aceitasse
+        o que o GPS devolveu produziria documentos com endereço errado — e sem forma de
+        corrigir.
+      </p>
+
+      <div class="note">
+        <span class="label">Corrigir não é fraudar</span>
+        <p>
+          A correção manual é um instrumento de <strong>precisão</strong>, não de burla. O
+          técnico que está de pé na porta do imóvel sabe o número melhor que o satélite. O que
+          o carimbo afirma é o que o profissional atesta — e é ele que assina o laudo.
+        </p>
+      </div>
+
+      <p>
+        Quando a precisão do sinal passa de <strong>20 metros</strong> — cerca de duas casas de
+        frente —, o aplicativo avisa que o número da fachada pode não ser confiável. Abaixo
+        disso o geocodificador costuma acertar a porta.
+      </p>
+
+      <p>
+        Se o GPS falhar por qualquer motivo — permissão negada, localização desligada, sem
+        resposta a tempo, posição sem endereço conhecido —, a mensagem diz qual dos quatro
+        aconteceu e o que fazer. Digitar à mão é sempre o caminho de saída.
+      </p>
+    </section>
+
+    <!-- 9 -->
+    <section class="section" id="codigo">
+      <h2>Código de Foto</h2>
+
+      <p>
+        Um identificador de <strong>14 caracteres hexadecimais</strong> — <code>0-9</code> e
+        <code>A-F</code> — sorteado por gerador criptográfico, e não por
+        <code>Math.random</code>: duas fotos do mesmo dia não podem receber o mesmo código.
+        Serve para referenciar uma foto específica fora do aplicativo, numa ordem de serviço,
+        num laudo ou numa conversa.
+      </p>
+
+      <p>
+        Ele pode ser digitado à mão, e o que você digitar é preservado: escolher outra foto
+        não sorteia um código novo por cima do seu. Fora do campo, letras minúsculas viram
+        maiúsculas e caracteres inválidos são descartados.
+      </p>
+
+      <p class="tight"><strong>Duas posições:</strong></p>
+      <ul>
+        <li>
+          <strong>Lateral direita</strong> — girado 90°, colado na borda. Não disputa espaço
+          com o conteúdo da imagem. É o padrão.
+        </li>
+        <li>
+          <strong>Junto aos dados</strong> — na última linha do bloco, abaixo do endereço.
+        </li>
+      </ul>
+    </section>
+
+    <!-- 10 -->
+    <section class="section" id="galeria">
+      <h2>Galeria</h2>
+
+      <p>
+        A aba Galeria guarda o histórico do que foi exportado, com data, endereço, código e a
+        lista de campos que de fato foram carimbados naquela foto — e não os que estão
+        ligados hoje.
+      </p>
+
+      <p class="tight"><strong>Uma vistoria produz dezenas de fotos, então:</strong></p>
+      <ul>
+        <li>
+          <strong>Busca</strong> por endereço, data ou código, sem diferenciar acento nem
+          maiúscula. “sao paulo” encontra “São Paulo”.
+        </li>
+        <li>
+          <strong>Seleção múltipla</strong> com toque longo, para salvar ou remover várias de
+          uma vez.
+        </li>
+      </ul>
+
+      <p>
+        Remover do histórico não apaga o que já foi salvo na galeria do aparelho — são dois
+        lugares diferentes, e o aviso na tela diz isso antes de confirmar.
+      </p>
+    </section>
+
+    <!-- 11 -->
+    <section class="section" id="arquivo">
+      <h2>O que sai no arquivo</h2>
+
+      <p>
+        O carimbo é composto sobre o bitmap original da fotografia, na resolução da câmera. Um
+        arquivo de 4096 × 3072 entra e sai com 4096 × 3072, carimbado. A tela não participa da
+        exportação.
+      </p>
+
+      <dl class="specs">
+        <dt>Formato</dt>
+        <dd>JPEG, qualidade 92 — alto o bastante para não marcar o texto do carimbo.</dd>
+        <dt>Resolução</dt>
+        <dd>A mesma da fotografia de origem, sem redução.</dd>
+        <dt>Onde fica</dt>
+        <dd>
+          Em armazenamento permanente do aplicativo, não no cache — o histórico não fica
+          apontando para arquivos que o sistema apagou.
+        </dd>
+      </dl>
+    </section>
+
+    <!-- 12 -->
+    <section class="section" id="privacidade">
+      <h2>Privacidade</h2>
+
+      <p>
+        <strong>Nada sai do aparelho.</strong> Não há conta, não há servidor, não há envio de
+        fotos para lugar nenhum. O carimbo é desenhado localmente e o arquivo fica com você.
+      </p>
+
+      <p>
+        A localização é usada para uma coisa só: traduzir a posição atual em texto de endereço,
+        no momento em que você toca no botão. As <strong>coordenadas não são gravadas</strong> —
+        nem no histórico, nem no arquivo. O que fica registrado é o endereço em texto, que é o
+        que o documento precisa afirmar.
+      </p>
+
+      <p>
+        Para revogar o acesso à localização ou às fotos, use as permissões do próprio sistema
+        operacional. O aplicativo continua funcionando sem nenhuma das duas — com o endereço
+        digitado à mão e a foto vinda da câmera.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="colophon">
+    <p>
+      Manual do Lymark. Os números de tamanho foram medidos na própria geometria do carimbo,
+      nas resoluções que as câmeras de telefone produzem — não são estimativas.
+    </p>
+  </footer>
+
+</div>

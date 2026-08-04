@@ -1,9 +1,10 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { StampCanvas } from '@/features/watermark/stamp-canvas';
-import { colors, radius, typography } from '@/theme';
+import { colors, radius, spacing, typography } from '@/theme';
 import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/types';
 
 /**
@@ -39,7 +40,13 @@ export function PhotoPreview({
     return (
       <View
         style={[styles.frame, styles.placeholder, { aspectRatio: PLACEHOLDER_ASPECT_RATIO }]}>
+        {/* O ícone leva o olho para as duas ações logo abaixo; só o texto
+            deixava a maior área da tela sem direção nenhuma. */}
+        <Ionicons name="image-outline" size={44} color={colors.textSubtle} />
         <Text style={typography.body}>Nenhuma foto selecionada</Text>
+        <Text style={[typography.caption, styles.placeholderHint]}>
+          Tire uma foto ou escolha da galeria para começar.
+        </Text>
       </View>
     );
   }
@@ -86,5 +93,10 @@ const styles = StyleSheet.create({
   placeholder: {
     alignItems: 'center',
     justifyContent: 'center',
+    gap: spacing.sm,
+    padding: spacing.xl,
+  },
+  placeholderHint: {
+    textAlign: 'center',
   },
 });
