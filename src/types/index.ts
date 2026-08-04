@@ -96,21 +96,6 @@ export const STAMP_COLOR_SWATCHES: Record<StampColorKey, string> = {
 };
 
 /**
- * De onde vem a marca carimbada na foto.
- *
- * `logo` ainda não existe; a estrutura já prevê o lugar dele para que a
- * migração das preferências não precise acontecer duas vezes.
- */
-export const BRAND_MODES = ['lymark', 'custom'] as const;
-
-export type BrandMode = (typeof BRAND_MODES)[number];
-
-export const BRAND_MODE_LABELS: Record<BrandMode, string> = {
-  lymark: 'Lymark',
-  custom: 'Minha marca',
-};
-
-/**
  * Onde a marca aparece na foto.
  *
  * `header` é o cabeçalho acima do relógio — logo à esquerda, nome e
@@ -175,7 +160,6 @@ export type WatermarkPreferences = {
   /** Canto onde a marca fica — independente do canto do bloco de dados. */
   brandPosition: WatermarkPosition;
   /** Marca do Lymark ou a da empresa de quem usa. */
-  brandMode: BrandMode;
   /** As duas partes da marca própria, cada uma com sua cor. */
   brandParts: [BrandPart, BrandPart];
   /** Onde a marca é desenhada — substitui o antigo liga/desliga. */

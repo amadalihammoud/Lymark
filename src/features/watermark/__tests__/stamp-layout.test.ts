@@ -468,7 +468,7 @@ describe('defeitos encontrados na revisão', () => {
  */
 describe('marca própria', () => {
   const custom = (parts: WatermarkPreferences['brandParts']) =>
-    build({ brandMode: 'custom', brandParts: parts });
+    build({ brandParts: parts });
 
   it('carimba as partes configuradas, cada uma na sua cor', () => {
     const g = custom([
@@ -536,7 +536,6 @@ describe('marca própria', () => {
 
   it('mantém a marca dentro da foto mesmo com nome comprido', () => {
     const g = build({
-      brandMode: 'custom',
       brandPosition: 'top-right',
       brandParts: [
         { text: 'TRANSPORTADORA', color: 'white' },
@@ -564,7 +563,6 @@ describe('cabeçalho da marca', () => {
   const header = (overrides: Partial<WatermarkPreferences> = {}) =>
     build({
       brandPlacement: 'header',
-      brandMode: 'custom',
       brandParts: [
         { text: 'AUTO', color: palette.white },
         { text: 'GLASS', color: palette.amber },

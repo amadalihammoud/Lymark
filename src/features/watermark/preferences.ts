@@ -1,6 +1,5 @@
 import {
   BACKDROP_STYLES,
-  BRAND_MODES,
   BRAND_PLACEMENTS,
   CODE_PLACEMENTS,
   STAMP_COLOR_SWATCHES,
@@ -34,8 +33,10 @@ import { isManagedLogoPath } from './logo-path';
  *     complemento, e a faixa de fundo com cor, opacidade e arredondamento
  *     próprios. Os dois liga/desliga viram listas: `brandPlacement` e
  *     `backdropStyle`, este último com a faixa contínua como terceira opção.
+ * 6 — o par "Lymark / Minha marca" sai: o texto da marca é sempre editável, e
+ *     o padrão dele é a marca do próprio app.
  */
-export const PREFERENCES_SCHEMA_VERSION = 5;
+export const PREFERENCES_SCHEMA_VERSION = 6;
 
 /**
  * Campos cujo padrão mudou e que por isso são remigrados.
@@ -72,9 +73,8 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   // sombra basta. Continua disponível para fotos muito claras.
   backdropStyle: 'none',
   brandPosition: 'top-right',
-  brandMode: 'lymark',
-  // O padrão reproduz a marca do app: uma palavra, duas cores. Serve também
-  // de exemplo do que a marca própria pode fazer.
+  // O padrão é a marca do próprio app: uma palavra, duas cores. Serve de
+  // ponto de partida — e de exemplo do que a marca da empresa pode fazer.
   brandParts: [
     { text: 'Ly', color: '#FFFFFF' },
     { text: 'mark', color: '#F5B60D' },
@@ -155,6 +155,15 @@ export type StoredPreferences = Partial<WatermarkPreferences> & {
   showBrand?: boolean;
   /** Liga/desliga da faixa, das versões até a 4. Ver `backdropStyle`. */
   showBackdrop?: boolean;
+  /**
+   * Escolha entre a marca do app e a da empresa, das versões até a 5.
+   *
+   * Não faz mais parte das preferências: o texto da marca é sempre editável, e
+   * o padrão dele já é Ly + mark. Continua declarado aqui porque é o que
+   * distingue, na migração, quem escolheu uma marca própria de quem só tinha
+   * uma marca digitada e esquecida.
+   */
+  brandMode?: 'lymark' | 'custom';
 };
 
 /**
@@ -174,6 +183,20 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
   }
 
   const isLegacy = (stored.schemaVersion ?? 1) < RESET_BEFORE_VERSION;
+
+  /*
+   * Até a versão 5 havia um par "Lymark / Minha marca", e em "Lymark" o texto
+   * digitado ficava guardado sem aparecer na foto. Agora o texto é sempre o
+   * que está gravado — então quem estava em "Lymark" tem as partes
+   * redefinidas para Ly + mark, senão uma marca esquecida no armazenamento
+   * apareceria de repente na foto de quem nunca a viu.
+   *
+   * A comparação é com `'lymark'`, e não com "diferente de `'custom'`": o
+   * campo deixa de ser gravado depois desta migração, e a segunda forma
+   * redefiniria as partes **a cada abertura do aplicativo** — apagando a marca
+   * que o usuário tivesse acabado de digitar.
+   */
+  const keptLymarkBrand = stored.brandMode === 'lymark';
 
   const visibleFields = { ...DEFAULT_WATERMARK_PREFERENCES.visibleFields };
   for (const key of WATERMARK_FIELD_KEYS) {
@@ -210,15 +233,12 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
       WATERMARK_POSITIONS,
       DEFAULT_WATERMARK_PREFERENCES.brandPosition,
     ),
-    brandMode: pickAllowed(
-      stored.brandMode,
-      BRAND_MODES,
-      DEFAULT_WATERMARK_PREFERENCES.brandMode,
-    ),
-    brandParts: [
-      readBrandPart(stored.brandParts?.[0], DEFAULT_WATERMARK_PREFERENCES.brandParts[0]),
-      readBrandPart(stored.brandParts?.[1], DEFAULT_WATERMARK_PREFERENCES.brandParts[1]),
-    ],
+    brandParts: keptLymarkBrand
+      ? [...DEFAULT_WATERMARK_PREFERENCES.brandParts]
+      : [
+          readBrandPart(stored.brandParts?.[0], DEFAULT_WATERMARK_PREFERENCES.brandParts[0]),
+          readBrandPart(stored.brandParts?.[1], DEFAULT_WATERMARK_PREFERENCES.brandParts[1]),
+        ],
     // Quem vinha das versões anteriores tinha um liga/desliga. Desligado vira
     // "nenhuma"; ligado vira "num canto", que é onde a marca já estava — a
     // atualização não pode mudar a aparência da foto de ninguém.

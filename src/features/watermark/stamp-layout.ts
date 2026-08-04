@@ -259,22 +259,14 @@ function clamp(value: number, min: number, max: number) {
 /**
  * As partes do nome, já sem as vazias.
  *
- * O padrão reproduz a marca do app — uma palavra em duas cores —, que serve
- * também de exemplo do que a marca própria pode fazer.
+ * O que está gravado é o que é carimbado — não há mais um modo em que o texto
+ * digitado fica guardado sem aparecer. O padrão de fábrica reproduz a marca do
+ * próprio app, uma palavra em duas cores, e serve de exemplo do que a marca da
+ * empresa pode fazer.
  */
 function brandParts(preferences: WatermarkPreferences): BrandPart[] {
-  const parts =
-    preferences.brandMode === 'custom'
-      ? preferences.brandParts
-      : LYMARK_BRAND_PARTS;
-
-  return parts.filter((part) => part.text.trim().length > 0);
+  return preferences.brandParts.filter((part) => part.text.trim().length > 0);
 }
-
-const LYMARK_BRAND_PARTS: readonly BrandPart[] = [
-  { text: 'Ly', color: '#FFFFFF' },
-  { text: 'mark', color: '#F5B60D' },
-];
 
 /**
  * O cabeçalho da marca resolvido, com as posições internas relativas ao canto

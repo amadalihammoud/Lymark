@@ -211,9 +211,54 @@ describe('migração para a marca própria', () => {
   it('chega com a marca Lymark, sem mudar o que aparece na foto', () => {
     const merged = mergeWithDefaults(v3);
 
-    expect(merged.brandMode).toBe('lymark');
     expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: '#FFFFFF' });
     expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F5B60D' });
+  });
+
+  it('esquece a marca digitada por quem estava no modo Lymark', () => {
+    // O par "Lymark / Minha marca" guardava o texto digitado sem carimbá-lo.
+    // Agora o que está gravado é o que aparece — e sem esta migração a marca
+    // esquecida no armazenamento estrearia sozinha na foto de quem via Ly+mark.
+    const merged = mergeWithDefaults({
+      ...v3,
+      brandMode: 'lymark',
+      brandParts: [
+        { text: 'ACME', color: '#FFFFFF' },
+        { text: ' Ltda', color: '#F5B60D' },
+      ],
+    } as never);
+
+    expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: '#FFFFFF' });
+    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F5B60D' });
+  });
+
+  it('preserva a marca de quem tinha escolhido a própria', () => {
+    const merged = mergeWithDefaults({
+      ...v3,
+      brandMode: 'custom',
+      brandParts: [
+        { text: 'ACME', color: '#FFFFFF' },
+        { text: ' Ltda', color: '#F5B60D' },
+      ],
+    } as never);
+
+    expect(merged.brandParts[0].text).toBe('ACME');
+    expect(merged.brandParts[1].text).toBe(' Ltda');
+  });
+
+  it('não reapaga a marca depois que o campo antigo some do disco', () => {
+    // Depois desta migração `brandMode` deixa de ser gravado. Se a condição
+    // fosse "diferente de custom", esta leitura — que é a de toda abertura
+    // seguinte — devolveria Ly+mark e apagaria o que o usuário digitou.
+    const merged = mergeWithDefaults({
+      ...v3,
+      brandParts: [
+        { text: 'ACME', color: '#FFFFFF' },
+        { text: '', color: '#F5B60D' },
+      ],
+    } as never);
+
+    expect(merged.brandParts[0].text).toBe('ACME');
   });
 
   it('traduz as cores nomeadas da versão 4 para hexadecimal', () => {
@@ -251,7 +296,6 @@ describe('migração para a marca própria', () => {
       brandParts: [42, null],
     } as never);
 
-    expect(merged.brandMode).toBe('lymark');
     expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: '#FFFFFF' });
     expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F5B60D' });
   });

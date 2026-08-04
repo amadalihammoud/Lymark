@@ -25,8 +25,6 @@ import { colors, radius, spacing, typography } from '@/theme';
 import {
   BACKDROP_STYLES,
   BACKDROP_STYLE_LABELS,
-  BRAND_MODES,
-  BRAND_MODE_LABELS,
   BRAND_PLACEMENTS,
   BRAND_PLACEMENT_LABELS,
   CODE_PLACEMENTS,
@@ -229,49 +227,40 @@ export default function WatermarkSettingsScreen() {
 
         {brandPlacement !== 'none' ? (
           <View style={styles.brandBody}>
-            <ChoiceGrid
-              columns={2}
-              selected={preferences.brandMode}
-              onSelect={(brandMode) => updatePreferences({ brandMode })}
-              options={BRAND_MODES.map((mode) => ({
-                value: mode,
-                label: BRAND_MODE_LABELS[mode],
-              }))}
-            />
+            {/* Duas partes, e não duas palavras: "Lymark" é uma palavra só em
+                duas cores, e o mesmo vale para "AutoGlass". Coladas — quem
+                quiser espaço entre elas, digita o espaço.
 
-            {preferences.brandMode === 'custom' ? (
-              <View style={styles.brandBody}>
-                {/* Duas partes, e não duas palavras: "Lymark" é uma palavra só
-                    em duas cores, e o mesmo vale para "AutoGlass". Coladas —
-                    quem quiser espaço entre elas, digita o espaço. */}
-                {([0, 1] as const).map((index) => (
-                  <View key={index} style={styles.brandBody}>
-                    <FieldRow
-                      label={index === 0 ? 'Primeira parte' : 'Segunda parte'}
-                      value={preferences.brandParts[index].text}
-                      onChangeText={(text) => setBrandPart(index, { text })}
-                      placeholder={index === 0 ? 'Construtora' : ' Silva'}
-                      maxLength={BRAND_PART_MAX_LENGTH}
-                      // Sem forçar maiúsculas: com elas, "AutoGlass" e
-                      // "TecnoSul" seriam impossíveis de digitar — e são
-                      // exatamente o caso que a marca em duas partes atende.
-                      autoCapitalize="words"
-                      autoCorrect={false}
-                    />
-                    <ColorField
-                      label={index === 0 ? 'Cor da primeira parte' : 'Cor da segunda parte'}
-                      value={preferences.brandParts[index].color}
-                      onChange={(color) => setBrandPart(index, { color })}
-                    />
-                  </View>
-                ))}
-
-                <Text style={styles.hint}>
-                  Deixe a segunda parte vazia para uma marca de cor única. Nome comprido tem o
-                  corpo reduzido até caber, em vez de ser cortado.
-                </Text>
+                Não há mais escolha entre a marca do app e a da empresa: os
+                campos vêm preenchidos com Ly + mark e são sempre editáveis.
+                O par de botões só adiava a edição, e escondia o que já estava
+                digitado. */}
+            {([0, 1] as const).map((index) => (
+              <View key={index} style={styles.brandBody}>
+                <FieldRow
+                  label={index === 0 ? 'Primeira parte' : 'Segunda parte'}
+                  value={preferences.brandParts[index].text}
+                  onChangeText={(text) => setBrandPart(index, { text })}
+                  placeholder={index === 0 ? 'Construtora' : ' Silva'}
+                  maxLength={BRAND_PART_MAX_LENGTH}
+                  // Sem forçar maiúsculas: com elas, "AutoGlass" e
+                  // "TecnoSul" seriam impossíveis de digitar — e são
+                  // exatamente o caso que a marca em duas partes atende.
+                  autoCapitalize="words"
+                  autoCorrect={false}
+                />
+                <ColorField
+                  label={index === 0 ? 'Cor da primeira parte' : 'Cor da segunda parte'}
+                  value={preferences.brandParts[index].color}
+                  onChange={(color) => setBrandPart(index, { color })}
+                />
               </View>
-            ) : null}
+            ))}
+
+            <Text style={styles.hint}>
+              Deixe a segunda parte vazia para uma marca de cor única. Nome comprido tem o corpo
+              reduzido até caber, em vez de ser cortado.
+            </Text>
 
             {brandPlacement === 'header' ? (
               <View style={styles.brandBody}>
