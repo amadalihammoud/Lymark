@@ -115,7 +115,6 @@ export function AddressScene() {
           </p>
         </div>
 
-        <p className="scene-tag">Tela de captura em laço</p>
       </div>
 
       <div className="capture">

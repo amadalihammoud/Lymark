@@ -34,7 +34,6 @@ function values(t: number) {
     : Math.max(0, Math.floor(full.length * cl(1.35, 2.4, t)) - Math.floor(full.length * cl(4.4, 4.8, t)));
 
   const logoIn = eo(cl(0.55, 1.15, t));
-  const ripple = t < 1.5 ? cl(0.6, 1.4, t) : 0;
   const subOp = second ? cl(6.15, 6.6, t) : cl(2.5, 2.95, t) * (1 - cl(4.3, 4.55, t));
 
   let caption = 'O logotipo entra na imagem, junto do registro.';
@@ -54,8 +53,6 @@ function values(t: number) {
     /* Quadrado para o órgão público, redondo para a empresa: são duas
        tradições visuais distintas, e a troca deixa isso à mostra. */
     logoRadius: second ? '5px' : '50%',
-    rippleScale: 1 + ripple * 1.8,
-    rippleOp: ripple > 0 ? (1 - ripple) * 0.75 : 0,
     wrapOp: 1 - cl(7.95, 8.45, t),
     caption,
   };
@@ -101,26 +98,25 @@ export function BrandScene() {
             </div>
           </div>
 
-          <div className="stamp-row">
-            <p className="stamp-clock">07:42</p>
-            <span className="stamp-bar" style={{ transform: 'scaleY(1)' }} />
-            <div className="stamp-meta">
-              <span>12 ago. 2026</span>
-              <span>Qua</span>
+          {/* O bloco de dados é um filho só da sobreposição: com as quatro
+              linhas soltas, o `space-between` que separa a assinatura deles
+              separaria também uma linha da outra, e a última saía da moldura. */}
+          <div className="stamp-block">
+            <div className="stamp-row">
+              <p className="stamp-clock">07:42</p>
+              <span className="stamp-bar" style={{ transform: 'scaleY(1)' }} />
+              <div className="stamp-meta">
+                <span>12 ago. 2026</span>
+                <span>Qua</span>
+              </div>
             </div>
+            <p className="stamp-address">Av. Puglisi, 490 - Centro,</p>
+            <p className="stamp-address">Guarujá - SP, 11410-002</p>
           </div>
-          <p className="stamp-address">Av. Puglisi, 490 - Centro,</p>
-          <p className="stamp-address">Guarujá - SP, 11410-002</p>
           <p className="stamp-code" aria-hidden="true">
             98926A73655DC1
           </p>
         </div>
-
-        <span
-          className="tap-ripple"
-          style={{ transform: `scale(${v.rippleScale})`, opacity: v.rippleOp }}
-        />
-        <p className="scene-tag">Marca em laço</p>
       </div>
 
       <p className="scene-caption">{v.caption}</p>

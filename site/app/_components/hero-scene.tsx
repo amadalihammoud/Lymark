@@ -137,7 +137,6 @@ export function HeroScene() {
         </div>
 
         <div className="flash" style={{ opacity: v.flash }} />
-        <p className="scene-tag">Carimbando em laço</p>
       </div>
 
       <div className="capture">
