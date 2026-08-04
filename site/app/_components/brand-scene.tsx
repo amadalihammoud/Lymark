@@ -77,31 +77,35 @@ export function BrandScene() {
         <div className="scrim" />
 
         <div className="overlay brand" style={{ opacity: v.wrapOp }}>
-          <div className="signature">
-            <span
-              className="logo"
-              style={{
-                transform: `scale(${v.logoScale})`,
-                opacity: v.logoOp,
-                borderRadius: v.logoRadius,
-              }}
-            />
-            <div>
-              <p className="signature-name">
-                {v.first}
-                <span className="amber">{v.second}</span>
-                {v.caret ? <span className="caret" /> : null}
-              </p>
-              <p className="signature-sub" style={{ opacity: v.subOp }}>
-                {v.sub}
-              </p>
-            </div>
-          </div>
-
-          {/* O bloco de dados é um filho só da sobreposição: com as quatro
-              linhas soltas, o `space-between` que separa a assinatura deles
-              separaria também uma linha da outra, e a última saía da moldura. */}
+          {/*
+            A assinatura fica logo acima do relógio, dentro do mesmo bloco
+            ancorado no canto — e não solta no topo da moldura. É assim que o
+            aplicativo desenha o cabeçalho da marca, e uma marca flutuando
+            longe dos dados leria como etiqueta colada por cima da foto, que é
+            justamente o que o carimbo não é.
+          */}
           <div className="stamp-block">
+            <div className="signature">
+              <span
+                className="logo"
+                style={{
+                  transform: `scale(${v.logoScale})`,
+                  opacity: v.logoOp,
+                  borderRadius: v.logoRadius,
+                }}
+              />
+              <div>
+                <p className="signature-name">
+                  {v.first}
+                  <span className="amber">{v.second}</span>
+                  {v.caret ? <span className="caret" /> : null}
+                </p>
+                <p className="signature-sub" style={{ opacity: v.subOp }}>
+                  {v.sub}
+                </p>
+              </div>
+            </div>
+
             <div className="stamp-row">
               <p className="stamp-clock">07:42</p>
               <span className="stamp-bar" style={{ transform: 'scaleY(1)' }} />

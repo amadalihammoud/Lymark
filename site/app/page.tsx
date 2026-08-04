@@ -106,15 +106,24 @@ export default function Home() {
           errado.
         </p>
 
-        <AddressScene />
+        <div className="split">
+          <div>
+            <p className="lede">
+              No Lymark o endereço é um campo editável. Você ajusta o número, o logradouro ou o
+              bairro à mão, na própria tela de captura, e o carimbo sai com o endereço certo.
+            </p>
+            <ol className="points">
+              <li>O campo aceita edição a qualquer momento, antes de exportar.</li>
+              <li>O que você digita prevalece sobre o que o GPS devolve.</li>
+              <li>
+                Sem localização ligada, o aplicativo continua inteiro: o endereço passa a ser
+                digitado.
+              </li>
+            </ol>
+          </div>
 
-        <ol className="points">
-          <li>O campo aceita edição a qualquer momento, antes de exportar.</li>
-          <li>O que você digita prevalece sobre o que o GPS devolve.</li>
-          <li>
-            Sem localização ligada, o aplicativo continua inteiro: o endereço passa a ser digitado.
-          </li>
-        </ol>
+          <AddressScene />
+        </div>
       </section>
 
       <section className="band">
@@ -128,17 +137,24 @@ export default function Home() {
         <p className="lede">
           A marca d’água identifica a organização responsável pelo registro — empresa, órgão público
           ou prestadora contratada. A pré-visualização usa a sua foto atual: o que aparece na tela é
-          o que é exportado. O logotipo entra dentro da imagem, junto do horário e do endereço — não
-          é etiqueta colada por cima nem dado anexo, que se perde no primeiro encaminhamento.
+          o que é exportado.
         </p>
 
-        <BrandScene />
+        <div className="split">
+          <div>
+            <p className="lede">
+              O logotipo entra dentro da imagem, junto do horário e do endereço — não é etiqueta
+              colada por cima nem dado anexo, que se perde no primeiro encaminhamento.
+            </p>
+            <ol className="points">
+              <li>Logotipo em PNG transparente, carimbado junto ao registro.</li>
+              <li>Nome em duas partes, com cores independentes.</li>
+              <li>Complemento livre: coordenadoria, unidade ou contrato.</li>
+            </ol>
+          </div>
 
-        <ol className="points">
-          <li>Logotipo em PNG transparente, carimbado junto ao registro.</li>
-          <li>Nome em duas partes, com cores independentes.</li>
-          <li>Complemento livre: coordenadoria, unidade ou contrato.</li>
-        </ol>
+          <BrandScene />
+        </div>
 
         <p className="note">
           A mesma foto pode sair com a marca de uma empresa privada ou com a identificação de um
