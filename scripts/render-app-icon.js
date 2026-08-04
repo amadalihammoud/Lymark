@@ -60,6 +60,18 @@ const G = {
   junction: 0.58,
   /** Quanto o braço anda na horizontal enquanto desce até encontrar a haste. */
   armRun: 96 / 431,
+
+  /*
+   * O braço não encosta na haste: para antes dela, e uma barra horizontal faz
+   * a junção.
+   *
+   * O comprimento dessa barra é a medida mais delicada do desenho. Fechando o
+   * triângulo entre braço, barra e haste, o âmbar passa a ser lido como o
+   * algarismo **4** — que é como o 4 é construído. Encurtar a barra reabre a
+   * contra-forma e devolve a letra; a 148 px o 4 é imediato, a 89 px ele já
+   * não se impõe.
+   */
+  armBack: 15 / 431,
 };
 
 const TOTAL_WIDTH = G.lWidth + G.gap + G.stroke;
@@ -79,7 +91,9 @@ function geometry(size, cap) {
 
   const stemLeft = x0 + (G.lWidth + G.gap) * cap;
   const junction = top + G.junction * cap;
-  const armLeft = stemLeft - (G.stroke + G.armRun) * cap;
+  const back = G.armBack * cap;
+  const armRight = stemLeft - back;
+  const armLeft = armRight - (G.stroke + G.armRun) * cap;
 
   return {
     lStem: [x0, top, G.lStem * cap, cap],
@@ -90,9 +104,11 @@ function geometry(size, cap) {
     yArm: [
       [armLeft, top],
       [armLeft + G.stroke * cap, top],
-      [stemLeft, junction],
-      [stemLeft - G.stroke * cap, junction],
+      [armRight, junction],
+      [armRight - G.stroke * cap, junction],
     ],
+    /* A barra de junção, apoiada na junção e encostando na haste. */
+    yLink: [armRight - G.stroke * cap, junction - G.stroke * cap, back + G.stroke * cap, G.stroke * cap],
   };
 }
 
@@ -118,6 +134,7 @@ function draw(CK, { size, cap, background, mono }) {
 
     paint.setColor(CK.parseColorString(mono ? WHITE : AMBER));
     canvas.drawRect(CK.XYWHRect(...g.yStem), paint);
+    canvas.drawRect(CK.XYWHRect(...g.yLink), paint);
 
     const arm = CK.Path.MakeFromSVGString(
       `M ${g.yArm.map(([x, y]) => `${x} ${y}`).join(' L ')} Z`,
