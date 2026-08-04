@@ -62,16 +62,21 @@ const G = {
   armRun: 96 / 431,
 
   /*
-   * O braço não encosta na haste: para antes dela, e uma barra horizontal faz
-   * a junção.
+   * Quanto o braço para antes da haste. A barra horizontal que faz a junção
+   * mede `armBack + stroke`, então este número é o que controla o
+   * comprimento dela.
    *
-   * O comprimento dessa barra é a medida mais delicada do desenho. Fechando o
-   * triângulo entre braço, barra e haste, o âmbar passa a ser lido como o
-   * algarismo **4** — que é como o 4 é construído. Encurtar a barra reabre a
-   * contra-forma e devolve a letra; a 148 px o 4 é imediato, a 89 px ele já
-   * não se impõe.
+   * É a medida mais delicada do desenho. Braço, barra e haste fecham um
+   * triângulo — que é exatamente como o algarismo **4** é construído. Com a
+   * barra em 148 px o âmbar é lido como 4 antes de ser lido como letra, e o
+   * ícone volta a dizer uma coisa que não é o nome, como dizia LI. Encurtar
+   * reabre a contra-forma e devolve a letra.
+   *
+   * Em zero a barra fica na espessura do próprio traço: o braço volta a
+   * encostar na haste e o que sobra é uma sombra horizontal sob a junção —
+   * presente, sem fechar figura nenhuma.
    */
-  armBack: 15 / 431,
+  armBack: 0,
 };
 
 const TOTAL_WIDTH = G.lWidth + G.gap + G.stroke;
