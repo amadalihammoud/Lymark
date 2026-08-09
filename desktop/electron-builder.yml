@@ -1,0 +1,81 @@
+# Configuração do electron-builder para Lymark Desktop
+# https://www.electron.build/configuration/configuration
+
+appId: app.lymark.desktop
+productName: Lymark
+
+# Versão do app (sincronizar com package.json)
+version: 1.3.0
+
+# Diretório de build
+directories:
+  output: dist-electron
+  buildResources: build-resources
+
+# Arquivos a incluir
+files:
+  - from: ../dist/**/*
+    to: dist/
+    filter:
+      - **/*
+  - from: ../assets/**/*
+    to: assets/
+    filter:
+      - **/*
+
+# Configurações específicas por plataforma
+win:
+  target:
+    - nsis
+    - portable
+  icon: build-resources/icon.ico
+  requestedExecutionLevel: asInvoker
+  
+linux:
+  target:
+    - AppImage
+    - deb
+  icon: build-resources/icon.png
+  category: Graphics
+  
+# Configurações do NSIS (Windows)
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  installerIcon: build-resources/icon.ico
+  uninstallerIcon: build-resources/icon.ico
+  installerHeaderIcon: build-resources/icon.ico
+  createStartMenuShortcut: true
+  shortcutName: Lymark
+  
+# Configurações do AppImage
+appImage:
+  artifactName: Lymark-${version}-linux-x64.${ext}
+  
+# Configurações do DEB
+deb:
+  packageCategory: graphics
+  
+# Assinatura de código (a ser configurada quando tivermos o certificado)
+# win:
+#   signingHashAlgorithms:
+#     - sha256
+#   certificateFile: certs/cert.pfx
+#   
+# linux:
+#   maintainer: Lymark Team
+#   vendor: Lymark
+
+# Compressão
+compression: maximum
+
+# Não incluir node_modules no build
+npmRebuild: false
+
+# Extrair arquivos para verificação
+extraResources:
+  - from: ../node_modules/canvaskit-wasm/bin/full/
+    to: canvaskit-wasm/
+    filter:
+      - canvaskit.wasm
+      - canvaskit.js
