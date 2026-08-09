@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { SkiaWebInitializer } from "@/components/skia";
 import { CaptureProvider } from '@/contexts/capture-context';
 import { FeedbackProvider } from '@/contexts/feedback-context';
 import { GalleryProvider } from '@/contexts/gallery-context';
@@ -42,6 +43,7 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
+        <SkiaWebInitializer />
       <SettingsProvider>
         <GalleryProvider>
           <CaptureProvider>
