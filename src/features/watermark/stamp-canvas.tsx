@@ -2,12 +2,12 @@ import { Canvas, Picture, createPicture } from '@shopify/react-native-skia';
 import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
-import { colors, stampPalette } from '@/theme';
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
 import { buildWatermarkContent } from './build-content';
 import { createStampRenderer, useStampFontProvider } from './skia-stamp';
-import { buildStampGeometry, type StampColors } from './stamp-layout';
+import { STAMP_COLORS } from './stamp-colors';
+import { buildStampGeometry } from './stamp-layout';
 
 /**
  * O carimbo desenhado sobre a foto, na tela.
@@ -19,7 +19,10 @@ import { buildStampGeometry, type StampColors } from './stamp-layout';
  * uma fotografia dela.
  */
 
-export { STAMP_COLORS } from './stamp-colors';
+// Re-exportado para não quebrar quem já importava daqui. A definição mora em
+// `stamp-colors.ts`, que não arrasta componentes e por isso carrega no Node —
+// é o que permite ao harness usar a mesma constante em vez de uma cópia.
+export { STAMP_COLORS };
 
 export function StampCanvas({
   metadata,
