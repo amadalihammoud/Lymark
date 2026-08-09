@@ -1,0 +1,21 @@
+{
+  "//": "Compila a geometria E o desenhista do carimbo para CommonJS, para que o harness use o MESMO codigo de desenho do app em vez de uma copia. Nao faz parte do build do aplicativo.",
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "outDir": "./.harness-build",
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
+    "ignoreDeprecations": "6.0"
+  },
+  "files": [
+    "src/features/watermark/stamp-layout.ts",
+    "src/features/watermark/preferences.ts",
+    "src/features/watermark/build-content.ts",
+    "src/features/watermark/skia-stamp.ts",
+    "src/features/watermark/stamp-colors.ts"
+  ]
+}

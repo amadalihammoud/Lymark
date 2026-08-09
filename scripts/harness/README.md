@@ -1,95 +1,50 @@
-# Lymark Render Harness
+# Harness de fidelidade do carimbo
 
-Harness de comparação de renderizações do carimbo entre plataformas (Android, Web, Desktop).
+Verifica que o carimbo desenhado fora do aparelho é o mesmo que o aparelho desenha. Existe porque a fidelidade da marca d'água é a exigência inegociável do projeto, e "parece igual" não é verificação.
 
-## Estrutura
+## Os dois portões
+
+**Geometria — exato, sem tolerância.** Compara números: posição, baseline, corpo, cor, espaçamento, rotação e o avanço medido de cada texto, mais a largura de tinta do relógio e os retângulos. Mesmas fontes e mesmo código de layout têm de produzir exatamente os mesmos números em qualquer plataforma.
+
+É este portão que pega a falha mais perigosa do porte para a web: **uma fonte que não carrega não lança erro**. O Skia cai numa fonte de fallback e o carimbo sai errado em silêncio. Como os avanços de glifo mudam, todo `x` muda junto — e o portão acusa na hora.
+
+**Raster — com tolerância, restrito ao que o carimbo desenha.** Compara pixels apenas dentro das regiões efetivamente desenhadas (tipicamente 6% a 11% da imagem), não a foto inteira. A tolerância existe porque antialiasing e desfoque divergem entre rasterizadores; perseguir zero pixel entre o Skia nativo e o CanvasKit seria perseguir o impossível.
+
+| Par | Limiar | Por quê |
+| --- | --- | --- |
+| Node ↔ navegador ↔ Electron | 0,1% | Mesmo CanvasKit; divergência real deveria ser nula |
+| qualquer um ↔ aparelho | 0,5% | Rasterizadores diferentes |
+
+## Como rodar
 
 ```
-scripts/harness/
-├── baseline/          # Imagens de referência (Android)
-│   ├── android-portrait-3000x4000.png
-│   ├── android-landscape-4000x3000.png
-│   ├── android-square-2000x2000.png
-│   └── android-highres-6000x4000.png
-├── output/           # Renderizações a testar
-│   ├── web-portrait-3000x4000.png
-│   └── ...
-├── diff/             # Imagens de diferença (geradas automaticamente)
-│   ├── web-vs-android-portrait-3000x4000-full-diff.png
-│   └── web-vs-android-portrait-3000x4000-stamp-diff.png
-├── generate-reference.js  # Gera referências Android
-├── render-web.js         # Renderiza para web
-└── compare-renders.js    # Compara renderizações
-```
-
-## Pré-requisitos
-
-```bash
-npm install pixelmatch pngjs
-```
-
-## Uso
-
-### 1. Compilar o código TypeScript para CommonJS
-
-```bash
-npx tsc -p tsconfig.calib.json --outDir /tmp/lymark-build
-```
-
-### 2. Gerar referências Android (baseline)
-
-```bash
-LYMARK_CALIB_BUILD=/tmp/lymark-build node scripts/harness/generate-reference.js
-```
-
-Isso cria 4 imagens de referência em `scripts/harness/baseline/`.
-
-### 3. Gerar renderizações web
-
-```bash
-LYMARK_CALIB_BUILD=/tmp/lymark-build node scripts/harness/render-web.js
-```
-
-Isso cria 4 imagens em `scripts/harness/output/`.
-
-### 4. Comparar renderizações
-
-```bash
+npx tsc -p tsconfig.harness.json
+node scripts/harness/render-node.js
 node scripts/harness/compare-renders.js
 ```
 
-## Limiares de Aceitação
+No CI, use `--require-device` para que a ausência da referência de aparelho **reprove** em vez de apenas avisar.
 
-- **Divergência no carimbo:** ≤ 0.5% de pixels diferentes
-- **Divergência geral:** ≤ 1.0% de pixels diferentes (recompressão JPEG)
-- **Largura da tinta do relógio:** 0% de divergência (exato)
-- **Posição/altura da barra âmbar:** 0% de divergência (exato)
-- **Baselines:** 0% de divergência (exato)
+As fotos de teste são geradas uma única vez por `make-test-photos.js` e versionadas. São PNG, não JPEG, de propósito: decodificadores JPEG diferem entre Android e CanvasKit, e essa diferença apareceria na conta como se fosse erro do carimbo.
 
-## Fotos de Teste
+## O que este harness NÃO faz
 
-| Nome | Dimensões | Proporção | Propósito |
-|------|-----------|-----------|-----------|
-| portrait | 3000×4000 | 3:4 | Foto em retrato |
-| landscape | 4000×3000 | 4:3 | Foto em paisagem |
-| square | 2000×2000 | 1:1 | Foto quadrada |
-| highres | 6000×4000 | 3:2 | Alta resolução (24MP) - teste G3 |
+Sem os arquivos em `reference/android/`, ele compara apenas motores CanvasKit entre si. **Isso não é paridade com o mobile** — é consistência interna. O comparador diz isso em toda execução, e é intencional: um harness que finge ter verificado o que não verificou é pior que nenhum.
 
-## Integração com CI
+Rotação por EXIF fica de fora da fixture automática. Asset embutido não passa pelo seletor de imagens, então orientação é verificação manual à parte, para não contaminar o determinismo.
 
-Adicione ao seu workflow:
+## Autoteste
 
-```yaml
-- name: Run render harness
-  run: |
-    npx tsc -p tsconfig.calib.json --outDir /tmp/lymark-build
-    LYMARK_CALIB_BUILD=/tmp/lymark-build node scripts/harness/generate-reference.js
-    LYMARK_CALIB_BUILD=/tmp/lymark-build node scripts/harness/render-web.js
-    node scripts/harness/compare-renders.js
+O harness precisa ser capaz de falhar. Para comprovar:
+
+```
+LYMARK_HARNESS_BREAK_FONT=1 node scripts/harness/render-node.js
 ```
 
-## Notas
+Isso simula a fonte do relógio não ter carregado. A comparação seguinte tem de reprovar, apontando a largura de tinta do relógio e o deslocamento da barra âmbar. Se passar, o harness está quebrado.
 
-- As imagens de referência (baseline) devem ser geradas a partir do **build Android real** quando disponível.
-- O harness atual usa CanvasKit no Node.js para simular o Android, o que produz resultados idênticos.
-- Para o desktop (Electron), será necessário adicionar `render-desktop.js` no futuro.
+## Por que o desenho não é reimplementado aqui
+
+`lib/skia-node.js` monta a API real do Skia sobre o CanvasKit (`JsiSkApi`) e carrega o `skia-stamp` compilado do próprio aplicativo. O harness chama o `createStampRenderer` de verdade.
+
+A alternativa — reescrever o desenho no script — foi tentada antes e falhou de um jeito instrutivo: a cópia não desenhava a sombra nem aplicava `letterSpacing`. Como a faixa de fundo vem desligada por padrão, a sombra é o que sustenta a legibilidade do carimbo; e a marca e o código de foto usam espaçamento e rotação. Um harness que reimplementa o renderizador só compara a cópia consigo mesma.

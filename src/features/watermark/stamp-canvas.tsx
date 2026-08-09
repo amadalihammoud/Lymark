@@ -19,12 +19,7 @@ import { buildStampGeometry, type StampColors } from './stamp-layout';
  * uma fotografia dela.
  */
 
-export const STAMP_COLORS: StampColors = {
-  text: colors.text,
-  accent: colors.accent,
-  backdrop: colors.watermarkBackdrop,
-  palette: stampPalette,
-};
+export { STAMP_COLORS } from './stamp-colors';
 
 export function StampCanvas({
   metadata,
