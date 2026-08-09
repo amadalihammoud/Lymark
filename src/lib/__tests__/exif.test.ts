@@ -2,35 +2,10 @@
  * Testes para o módulo de leitura de EXIF.
  */
 
-import { extractDateTimeFromExif, extractDateFromExif, extractTimeFromExif } from '../exif';
+import { extractDateFromExif, extractTimeFromExif } from '../exif';
 
 describe('exif', () => {
-  describe('parseExifDateTime', () => {
-    // Testes indiretos via extractDateTimeFromExif
-    
-    it('deve parsear DateTimeOriginal corretamente', async () => {
-      // Criar um buffer de imagem minimal com EXIF
-      // Usamos um mock pois criar uma imagem real com EXIF é complexo
-      const mockTags = {
-        DateTimeOriginal: {
-          value: '2026:08:01 21:55:00',
-          description: 'Date/Time Original',
-        },
-      };
-      
-      // Mock do exifreader.load
-      jest.mock('exifreader', () => ({
-        load: jest.fn(() => mockTags),
-      }));
-      
-      // Para testar sem mock, precisaríamos de uma imagem real com EXIF
-      // Por enquanto, testamos apenas a lógica de parse
-    });
-  });
-
   describe('parseExifDateTime (lógica interna)', () => {
-    // Testamos a função parseExifDateTime indiretamente
-    
     it('deve parsear formato EXIF válido', () => {
       const value = '2026:08:01 21:55:00';
       const [datePart, timePart] = value.split(' ');
@@ -64,8 +39,6 @@ describe('exif', () => {
 
   describe('extractTimeFromExif', () => {
     it('deve extrair hora no formato HH:MM', async () => {
-      // Mock de arquivo - na prática precisaríamos de uma imagem real
-      // Este teste verifica apenas que a função existe e tem a assinatura correta
       const result = await extractTimeFromExif(Buffer.from(''));
       expect(result).toBeUndefined();
     });
