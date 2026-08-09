@@ -33,7 +33,9 @@ export type ExecutionPlatform = 'mobile' | 'web' | 'desktop';
 export interface WindowLymark {
   platform: 'desktop';
   saveFile?: (bytes: Uint8Array, filename: string, mimeType: string) => Promise<SaveResult>;
+  deleteFile?: (path: string) => Promise<{ ok: boolean; error?: string }>;
   pickImage?: () => Promise<PickResult>;
+  pickImages?: () => Promise<{ status: 'selected' | 'cancelled' | 'failed'; photos?: Array<{ uri: string; width: number; height: number }>; error?: string }>;
 }
 
 declare global {

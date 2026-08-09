@@ -5,10 +5,23 @@
 import { app, BrowserWindow, protocol, ipcMain, dialog } from 'electron';
 import path from 'path';
 import fs from 'fs';
+import os from 'os';
 import sizeOf from 'image-size';
 
 // Variáveis globais
 let mainWindow: BrowserWindow | null = null;
+
+// Pasta da galeria do desktop (decisão 2.2: pasta real no disco)
+const GALLERY_DIR_NAME = 'Lymark';
+const DEFAULT_GALLERY_PATH = path.join(os.homedir(), 'Pictures', GALLERY_DIR_NAME);
+
+// Garantir que a pasta da galeria existe
+function ensureGalleryDir(): string {
+  if (!fs.existsSync(DEFAULT_GALLERY_PATH)) {
+    fs.mkdirSync(DEFAULT_GALLERY_PATH, { recursive: true });
+  }
+  return DEFAULT_GALLERY_PATH;
+}
 
 // Configurar o protocolo app:// antes do app estar pronto
 protocol.registerSchemesAsPrivileged([
@@ -58,7 +71,7 @@ function createWindow() {
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     mainWindow.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
   } else {
-    // Modo produção - carregar do build estático
+    createProtocol();
     mainWindow.loadURL('app://./index.html');
   }
 
@@ -73,7 +86,7 @@ function createWindow() {
 
 // Registrar handlers de IPC
 function registerIpcHandlers() {
-  // Handler para salvar arquivo
+  // Handler para salvar arquivo (diálogo de salvamento)
   ipcMain.handle('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
     const { filePath } = await dialog.showSaveDialog({
       title: 'Salvar Foto',
@@ -94,6 +107,38 @@ function registerIpcHandlers() {
       return { status: 'saved', path: filePath };
     } catch (error) {
       return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
+    }
+  });
+
+  // Handler para apagar arquivo da galeria
+  // SÓ apaga arquivos dentro da pasta da galeria (segurança)
+  ipcMain.handle('delete-file', async (event, { path: relativePath }: { path: string }) => {
+    try {
+      // Resolver o caminho absoluto
+      const galleryDir = ensureGalleryDir();
+      const fullPath = path.resolve(galleryDir, relativePath);
+      
+      // Verificar que o arquivo está dentro da pasta da galeria
+      const normalizedFullPath = path.normalize(fullPath);
+      const normalizedGalleryDir = path.normalize(galleryDir);
+      
+      if (!normalizedFullPath.startsWith(normalizedGalleryDir)) {
+        throw new Error('Caminho fora da pasta da galeria');
+      }
+      
+      // Verificar que o arquivo existe
+      if (!fs.existsSync(fullPath)) {
+        return { ok: false, error: 'Arquivo não encontrado' };
+      }
+      
+      // Apagar o arquivo
+      fs.unlinkSync(fullPath);
+      return { ok: true };
+    } catch (error) {
+      return { 
+        ok: false, 
+        error: error instanceof Error ? error.message : String(error) 
+      };
     }
   });
 
@@ -170,16 +215,14 @@ function registerIpcHandlers() {
 }
 
 // Configurar o protocolo app:// para servir o build estático
-function setupProtocol() {
+function createProtocol() {
   protocol.handle('app', (request) => {
     let pathname = request.url.replace('app:///', '');
     
-    // Normalizar o path
     if (pathname.startsWith('/')) {
       pathname = pathname.slice(1);
     }
     
-    // Tentar servir do diretório dist
     const distPath = path.join(__dirname, '../dist', pathname);
     
     try {
@@ -187,7 +230,6 @@ function setupProtocol() {
         const stat = fs.statSync(distPath);
         
         if (stat.isDirectory()) {
-          // Servir index.html para diretórios
           const indexPath = path.join(distPath, 'index.html');
           if (fs.existsSync(indexPath)) {
             return new Response(fs.readFileSync(indexPath), {
@@ -195,10 +237,8 @@ function setupProtocol() {
             });
           }
         } else {
-          // Servir o arquivo
           const content = fs.readFileSync(distPath);
           
-          // Determinar o Content-Type
           let contentType = 'application/octet-stream';
           if (pathname.endsWith('.html')) {
             contentType = 'text/html';
@@ -227,15 +267,17 @@ function setupProtocol() {
       // Ignorar
     }
     
-    // Arquivo não encontrado
     return new Response('Not Found', { status: 404 });
   });
 }
 
 // App pronto
 app.whenReady().then(() => {
+  // Garantir que a pasta da galeria existe
+  ensureGalleryDir();
+  
   // Configurar o protocolo
-  setupProtocol();
+  createProtocol();
   
   // Registrar handlers de IPC
   registerIpcHandlers();

@@ -18,6 +18,7 @@ export interface LymarkApi {
     path?: string;
     error?: string;
   }>;
+  deleteFile: (path: string) => Promise<{ ok: boolean; error?: string }>;
   pickImage: () => Promise<{
     status: 'selected' | 'cancelled' | 'failed';
     uri?: string;
@@ -38,6 +39,10 @@ export const lymarkApi: LymarkApi = {
   
   saveFile: async (bytes, filename, mimeType) => {
     return ipcRenderer.invoke('save-file', { bytes: Array.from(bytes), filename, mimeType });
+  },
+  
+  deleteFile: async (path) => {
+    return ipcRenderer.invoke('delete-file', { path });
   },
   
   pickImage: async () => {
