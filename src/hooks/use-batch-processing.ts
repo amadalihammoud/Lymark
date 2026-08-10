@@ -16,7 +16,10 @@ import { useCallback, useState } from 'react';
 
 import { extractDateFromExif, extractTimeFromExif } from '@/lib/exif';
 import { saveFileToOutput, getOutputFolder } from '@/lib/file-storage';
-import { renderStampedPhoto } from '@/features/watermark/render-photo';
+import { composeStampedPhoto } from '@/features/watermark/render-photo';
+import { createStampRenderer, useStampFontProvider } from '@/features/watermark/skia-stamp';
+import { STAMP_COLORS } from '@/features/watermark/stamp-colors';
+import { useSettings } from '@/contexts/settings-context';
 import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
 
 export interface BatchPhoto {
@@ -50,14 +53,22 @@ const INITIAL_STATE: BatchProcessingState = {
 
 export function useBatchProcessing() {
   const [state, setState] = useState<BatchProcessingState>(INITIAL_STATE);
+  // `weekday` faz parte do carimbo tanto quanto os outros; ausente daqui, o
+  // objeto não satisfazia CaptureMetadata. `company` não existe como campo de
+  // metadado — a marca da empresa vem das preferências.
   const [metadata, setMetadata] = useState<CaptureMetadata>({
     code: '',
     address: '',
     date: '',
     time: '',
-    company: '',
+    weekday: '',
   });
   const [outputFolder, setOutputFolder] = useState<string>('');
+
+  // O desenho do carimbo precisa das fontes e das preferências, e ambas só
+  // chegam por hook — daí virem do topo, e não de dentro do laço.
+  const fontProvider = useStampFontProvider();
+  const { preferences } = useSettings();
 
   /**
    * Carrega a pasta de saída atual ao montar o componente.
@@ -74,6 +85,10 @@ export function useBatchProcessing() {
   const processSinglePhoto = useCallback(
     async (photo: BatchPhoto, sharedMetadata: CaptureMetadata): Promise<{ success: boolean; file?: string; error?: string }> => {
       try {
+        if (!fontProvider) {
+          throw new Error('As fontes do carimbo ainda estão carregando.');
+        }
+
         // LER EXIF DA FOTO INDIVIDUAL (requisito 2.4)
         const exifDate = await extractDateFromExif(photo.uri);
         const exifTime = await extractTimeFromExif(photo.uri);
@@ -85,17 +100,28 @@ export function useBatchProcessing() {
           time: exifTime || sharedMetadata.time,
         };
 
-        // Gerar a foto com carimbo
-        const stampedBytes = await renderStampedPhoto(photo.uri, photoMetadata);
+        // `composeStampedPhoto` devolve os bytes sem gravar. O caminho de
+        // gravação do app abriria um diálogo por foto no desktop, o que
+        // inviabilizaria o lote.
+        const stampedBytes = await composeStampedPhoto({
+          photoUri: photo.uri,
+          metadata: photoMetadata,
+          preferences,
+          colors: STAMP_COLORS,
+          renderer: createStampRenderer(fontProvider),
+        });
 
-        // Salvar na pasta de saída usando a abstração do file-storage
-        const timestamp = Date.now();
-        const fileName = `lymark_${timestamp}_${photo.width}x${photo.height}.jpg`;
-        
+        // Nome estável e sem colisão: o carimbo do relógio não basta quando
+        // duas fotos são processadas no mesmo milissegundo.
+        const origem = photo.uri.split('/').pop()?.replace(/\.[^.]+$/, '') ?? 'foto';
+        const fileName = `lymark_${origem}_${photo.width}x${photo.height}.jpg`;
+
         const result = await saveFileToOutput(stampedBytes, fileName, 'image/jpeg');
-        
+
         if (result.status !== 'saved') {
-          throw new Error(result.error ? String(result.error) : 'Falha ao salvar arquivo');
+          throw new Error(result.status === 'failed' && result.error
+            ? String(result.error)
+            : 'Falha ao salvar arquivo');
         }
 
         return { success: true, file: fileName };
@@ -104,7 +130,7 @@ export function useBatchProcessing() {
         return { success: false, error: errorMessage };
       }
     },
-    [],
+    [fontProvider, preferences],
   );
 
   /**

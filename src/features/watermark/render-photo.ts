@@ -48,19 +48,28 @@ function release(resource: { dispose: () => void } | null) {
   }
 }
 
-export async function renderStampedPhoto({
-  photoUri,
-  metadata,
-  preferences,
-  colors,
-  renderer,
-}: {
+export type StampedPhotoInput = {
   photoUri: string;
   metadata: CaptureMetadata;
   preferences: WatermarkPreferences;
   colors: StampColors;
   renderer: StampRenderer;
-}): Promise<string> {
+};
+
+/**
+ * Compõe o carimbo sobre a foto e devolve os bytes do JPEG.
+ *
+ * Separado de `renderStampedPhoto` porque nem todo destino é o histórico do
+ * app. O processamento em lote grava direto na pasta de saída escolhida, e
+ * passar pelo caminho de gravação padrão abriria um diálogo por foto.
+ */
+export async function composeStampedPhoto({
+  photoUri,
+  metadata,
+  preferences,
+  colors,
+  renderer,
+}: StampedPhotoInput): Promise<Uint8Array> {
   const data = await Skia.Data.fromURI(photoUri);
   const image = Skia.Image.MakeImageFromEncoded(data);
 
@@ -111,7 +120,7 @@ export async function renderStampedPhoto({
       throw new PhotoRenderError('Não foi possível codificar a imagem final.');
     }
 
-    return writeExportedPhoto(bytes);
+    return bytes;
   } catch (error) {
     if (error instanceof PhotoRenderError) throw error;
     throw new PhotoRenderError('Não foi possível gerar a imagem com a marca d’água.', {
@@ -122,4 +131,13 @@ export async function renderStampedPhoto({
     release(surface);
     release(image);
   }
+}
+
+/**
+ * Compõe o carimbo e grava no armazenamento do app, devolvendo o caminho.
+ *
+ * É o caminho da captura avulsa: a foto entra no histórico assim que existe.
+ */
+export async function renderStampedPhoto(input: StampedPhotoInput): Promise<string> {
+  return writeExportedPhoto(await composeStampedPhoto(input));
 }

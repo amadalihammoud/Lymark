@@ -332,7 +332,7 @@ export default function CaptureScreen() {
             <Button
               label="Processamento em Lote"
               icon="images"
-              variant="secondary"
+              variant="primaryAlt"
               onPress={handleBatchProcessing}
               style={styles.batchButton}
             />

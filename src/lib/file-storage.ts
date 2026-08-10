@@ -16,6 +16,11 @@ export type SaveResult =
 /**
  * Resultado de uma operação de seleção de arquivo.
  */
+/** Reduz um erro de origem desconhecida a texto exibível. */
+function describeError(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
+
 export type PickResult =
   | { status: 'selected'; uri: string; width: number; height: number }
   | { status: 'cancelled' }
@@ -47,7 +52,12 @@ export interface WindowLymark {
   pickImages?: () => Promise<{ status: 'selected' | 'cancelled' | 'failed'; photos?: Array<{ uri: string; width: number; height: number }>; error?: string }>;
   selectOutputFolder?: () => Promise<FolderResult>;
   getOutputFolder?: () => Promise<{ path: string }>;
-  onDragDrop?: (callback: (filePath: string) => void) => void;
+  // O preload já resolve o caminho em dimensões antes de chamar de volta, e
+  // devolve `null` quando o arquivo não é uma imagem aceita. Esta declaração
+  // dizia `filePath: string`, contradizendo o contrato real.
+  onDragDrop?: (
+    callback: (photo: { uri: string; width: number; height: number } | null) => void,
+  ) => void;
 }
 
 declare global {
@@ -233,17 +243,25 @@ export async function pickImages(): Promise<{ status: 'selected' | 'cancelled' |
   switch (platform) {
     case 'web':
       return pickImagesWeb();
-    case 'mobile':
+    case 'mobile': {
       // No mobile, não há suporte para múltipla seleção ainda
       const result = await pickImage();
       if (result.status === 'selected') {
         return { status: 'selected', photos: [{ uri: result.uri, width: result.width, height: result.height }] };
       }
-      return result;
+      // `PickResult` tem um estado a mais ('denied') e carrega `error` como
+      // `unknown`; aqui a superfície é mais estreita, então o desfecho é
+      // reduzido e o erro vira texto.
+      if (result.status === 'cancelled') return { status: 'cancelled' };
+      return {
+        status: 'failed',
+        error: result.status === 'denied' ? 'Acesso às fotos negado.' : describeError(result.error),
+      };
+    }
     case 'desktop':
       return pickImagesDesktop();
     default:
-      return { status: 'failed', error: new Error(`Plataforma desconhecida: ${platform}`) };
+      return { status: 'failed', error: `Plataforma desconhecida: ${platform}` };
   }
 }
 
@@ -380,11 +398,11 @@ async function pickImagesDesktop(): Promise<{ status: 'selected' | 'cancelled' |
       const result = await window.lymark.pickImages();
       return result;
     } catch (error) {
-      return { status: 'failed', error };
+      return { status: 'failed', error: describeError(error) };
     }
   }
-  
-  return { status: 'failed', error: new Error('IPC não disponível') };
+
+  return { status: 'failed', error: 'IPC não disponível' };
 }
 
 async function pickImageDesktop(): Promise<PickResult> {

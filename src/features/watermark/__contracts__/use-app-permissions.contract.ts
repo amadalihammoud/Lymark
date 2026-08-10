@@ -5,8 +5,8 @@
  * de use-app-permissions.ts (nativo) e use-app-permissions.web.ts (web/desktop) divergirem.
  */
 
-import type * as Native from '../../../hooks/use-app-permissions';
-import type * as Web from '../../../hooks/use-app-permissions.web';
+import type * as Native from '@/hooks/use-app-permissions';
+import type * as Web from '@/hooks/use-app-permissions.web';
 
 // Atribuições cruzadas: cada lado precisa satisfazer o outro.
 const _webSatisfazNative: typeof Native = undefined as unknown as typeof Web;

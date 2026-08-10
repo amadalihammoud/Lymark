@@ -11,32 +11,43 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
-import { TextInput } from '@/components/ui/field-row';
+import { FieldRow } from '@/components/ui/field-row';
+import { useFeedback } from '@/contexts/feedback-context';
 import { colors, radius, spacing, typography } from '@/theme';
 import { useBatchProcessing } from '@/hooks/use-batch-processing';
 import { isDesktop } from '@/lib/file-storage';
 import type { WatermarkFieldKey } from '@/types';
 
-const WATERMARK_FIELDS: WatermarkFieldKey[] = ['code', 'address', 'company'];
+/**
+ * Os campos que o lote compartilha entre todas as fotos.
+ *
+ * A marca da empresa NÃO entra aqui: ela vive nas preferências
+ * (`brandParts`), é configurada uma vez em Ajustes e já se aplica a toda
+ * exportação. Data e hora também ficam de fora — cada foto usa a sua, lida
+ * do EXIF, que é justamente o que dá sentido ao lote.
+ */
+const WATERMARK_FIELDS: WatermarkFieldKey[] = ['code', 'address'];
+
+const FIELD_LABELS: Record<string, { label: string; placeholder: string }> = {
+  code: { label: 'Código', placeholder: 'Ex: LYM-001' },
+  address: { label: 'Endereço', placeholder: 'Rua, número - Cidade' },
+};
 
 export default function BatchProcessingScreen() {
   const { state, metadata, outputFolder, updateMetadata, setOutputFolderPath, startBatch, cancelBatch, loadOutputFolder } = useBatchProcessing();
   const [photos, setPhotos] = useState<{ uri: string; width: number; height: number }[]>([]);
+  const { notify } = useFeedback();
 
-  // Somente disponível no desktop
-  if (!isDesktop()) {
-    return (
-      <Screen>
-        <Text style={typography.heading}>Processamento em lote não disponível</Text>
-        <Text style={typography.body}>Esta funcionalidade é apenas para desktop.</Text>
-      </Screen>
-    );
-  }
+  // A recusa por plataforma fica DEPOIS de todos os hooks. Antes, o `return`
+  // vinha acima dos dois `useEffect` abaixo: chamada condicional de hook, que
+  // viola as regras do React e quebraria a ordem se a condição mudasse.
+  const disponivel = isDesktop();
 
   // Carregar pasta de saída ao montar o componente
   useEffect(() => {
+    if (!disponivel) return;
     loadOutputFolder();
-  }, [loadOutputFolder]);
+  }, [disponivel, loadOutputFolder]);
 
   // Configurar drag and drop ao montar o componente
   useEffect(() => {
@@ -72,11 +83,13 @@ export default function BatchProcessingScreen() {
   // Handler para iniciar processamento
   const handleStartProcessing = useCallback(() => {
     if (photos.length === 0) {
-      alert('Selecione pelo menos uma foto');
+      // `alert` é global do navegador e não existe no React Native; o app tem
+      // aviso próprio, que é o mesmo em toda plataforma.
+      notify('Selecione pelo menos uma foto.', 'warning');
       return;
     }
     startBatch(photos);
-  }, [photos, startBatch]);
+  }, [notify, photos, startBatch]);
 
   // Handler para cancelar processamento
   const handleCancelProcessing = useCallback(() => {
@@ -93,9 +106,18 @@ export default function BatchProcessingScreen() {
     setPhotos([]);
   }, []);
 
+  if (!disponivel) {
+    return (
+      <Screen>
+        <Text style={typography.screenTitle}>Processamento em lote não disponível</Text>
+        <Text style={typography.body}>Esta funcionalidade é apenas para desktop.</Text>
+      </Screen>
+    );
+  }
+
   return (
     <Screen scrollable={false}>
-      <Text style={[typography.heading, styles.title]}>Processamento em Lote</Text>
+      <Text style={[typography.screenTitle, styles.title]}>Processamento em Lote</Text>
 
       <Section title="Fotos para processar">
         <Text style={typography.caption}>
@@ -120,7 +142,7 @@ export default function BatchProcessingScreen() {
         {/* Área de drag and drop */}
         <View style={styles.dropZone}>
           <Text style={[typography.caption, styles.dropZoneText]}>
-            Arraste e solte fotos aqui ou use o botão "Selecionar Fotos"
+            Arraste e solte fotos aqui ou use o botão “Selecionar Fotos”
           </Text>
         </View>
 
@@ -140,7 +162,6 @@ export default function BatchProcessingScreen() {
                   label="Remover"
                   icon="close"
                   variant="ghost"
-                  size="small"
                   onPress={() => handleRemovePhoto(index)}
                 />
               </View>
@@ -156,12 +177,12 @@ export default function BatchProcessingScreen() {
         </Text>
 
         {WATERMARK_FIELDS.map((field) => (
-          <TextInput
+          <FieldRow
             key={field}
-            label={field === 'code' ? 'Código' : field === 'address' ? 'Endereço' : 'Empresa'}
+            label={FIELD_LABELS[field].label}
             value={metadata[field]}
-            onChangeText={(value) => updateMetadata({ [field]: value })}
-            placeholder={field === 'code' ? 'Ex: LYM-001' : field === 'address' ? 'Rua, número - Cidade' : 'Nome da empresa'}
+            onChangeText={(value: string) => updateMetadata({ [field]: value })}
+            placeholder={FIELD_LABELS[field].placeholder}
             style={styles.input}
           />
         ))}
@@ -172,7 +193,7 @@ export default function BatchProcessingScreen() {
           <Button
             label={outputFolder ? `Pasta: ${outputFolder.split('/').pop()}` : 'Selecionar Pasta de Saída'}
             icon="folder-open-outline"
-            variant="secondary"
+            variant="primaryAlt"
             onPress={handleSelectOutputFolder}
           />
           {outputFolder && (
@@ -251,7 +272,7 @@ const styles = StyleSheet.create({
   dropZone: {
     borderWidth: 2,
     borderStyle: 'dashed',
-    borderColor: colors.caption,
+    borderColor: colors.textMuted,
     borderRadius: radius.md,
     padding: spacing.lg,
     alignItems: 'center',
@@ -260,7 +281,7 @@ const styles = StyleSheet.create({
     minHeight: 80,
   },
   dropZoneText: {
-    color: colors.caption,
+    color: colors.textMuted,
     textAlign: 'center',
   },
   photosList: {
@@ -279,10 +300,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   photoSize: {
-    color: colors.caption,
+    color: colors.textMuted,
   },
   caption: {
-    color: colors.caption,
+    color: colors.textMuted,
     marginBottom: spacing.md,
   },
   input: {
@@ -292,9 +313,10 @@ const styles = StyleSheet.create({
     gap: spacing.sm,
   },
   folderPath: {
-    color: colors.caption,
+    color: colors.textMuted,
     fontSize: 11,
-    wordBreak: 'break-all',
+    // `wordBreak` é propriedade de CSS e não existe no React Native. Caminho
+    // longo já quebra sozinho dentro da largura disponível.
   },
   progressContainer: {
     gap: spacing.sm,
@@ -307,11 +329,11 @@ const styles = StyleSheet.create({
   },
   progressText: {
     textAlign: 'center',
-    color: colors.caption,
+    color: colors.textMuted,
   },
   errorItem: {
     padding: spacing.sm,
-    backgroundColor: colors.dangerSurface,
+    backgroundColor: colors.surface,
     borderRadius: radius.md,
     marginBottom: spacing.sm,
   },
@@ -320,7 +342,7 @@ const styles = StyleSheet.create({
     color: colors.danger,
   },
   errorMessage: {
-    color: colors.caption,
+    color: colors.textMuted,
   },
   successMessage: {
     color: colors.success,
