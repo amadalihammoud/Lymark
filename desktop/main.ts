@@ -111,18 +111,16 @@ function registerIpcHandlers() {
   });
 
   // Handler para apagar arquivo da galeria
-  // SÓ apaga arquivos dentro da pasta da galeria (segurança)
+  // CORRIGIDO: Usar path.relative em vez de startsWith para evitar furo de segurança
   ipcMain.handle('delete-file', async (event, { path: relativePath }: { path: string }) => {
     try {
       // Resolver o caminho absoluto
       const galleryDir = ensureGalleryDir();
       const fullPath = path.resolve(galleryDir, relativePath);
       
-      // Verificar que o arquivo está dentro da pasta da galeria
-      const normalizedFullPath = path.normalize(fullPath);
-      const normalizedGalleryDir = path.normalize(galleryDir);
-      
-      if (!normalizedFullPath.startsWith(normalizedGalleryDir)) {
+      // Verificar que o arquivo está dentro da pasta da galeria usando path.relative
+      const rel = path.relative(galleryDir, fullPath);
+      if (rel.startsWith('..') || path.isAbsolute(rel)) {
         throw new Error('Caminho fora da pasta da galeria');
       }
       
