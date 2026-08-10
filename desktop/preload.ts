@@ -8,13 +8,18 @@
  * Apenas exponha o que é estritamente necessário.
  */
 
-import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import { contextBridge, ipcRenderer } from 'electron';
 
 // Tipos para as APIs expostas
 export interface LymarkApi {
   platform: 'desktop';
   saveFile: (bytes: Uint8Array, filename: string, mimeType: string) => Promise<{
     status: 'saved' | 'cancelled' | 'failed';
+    path?: string;
+    error?: string;
+  }>;
+  saveFileToOutput: (bytes: Uint8Array, filename: string, mimeType: string) => Promise<{
+    status: 'saved' | 'failed';
     path?: string;
     error?: string;
   }>;
@@ -31,6 +36,13 @@ export interface LymarkApi {
     photos?: Array<{ uri: string; width: number; height: number }>;
     error?: string;
   }>;
+  selectOutputFolder: () => Promise<{
+    status: 'selected' | 'cancelled';
+    path?: string;
+    error?: string;
+  }>;
+  getOutputFolder: () => Promise<{ path: string }>;
+  onDragDrop: (callback: (filePath: string) => void) => void;
 }
 
 // Expor APIs seguras para o renderer
@@ -39,6 +51,10 @@ export const lymarkApi: LymarkApi = {
   
   saveFile: async (bytes, filename, mimeType) => {
     return ipcRenderer.invoke('save-file', { bytes: Array.from(bytes), filename, mimeType });
+  },
+  
+  saveFileToOutput: async (bytes, filename, mimeType) => {
+    return ipcRenderer.invoke('save-file-to-output', { bytes: Array.from(bytes), filename, mimeType });
   },
   
   deleteFile: async (path) => {
@@ -51,6 +67,20 @@ export const lymarkApi: LymarkApi = {
   
   pickImages: async () => {
     return ipcRenderer.invoke('pick-images');
+  },
+  
+  selectOutputFolder: async () => {
+    return ipcRenderer.invoke('select-output-folder');
+  },
+  
+  getOutputFolder: async () => {
+    return ipcRenderer.invoke('get-output-folder');
+  },
+  
+  onDragDrop: (callback) => {
+    ipcRenderer.on('ondragdrop', (_, { filePath }) => {
+      callback(filePath);
+    });
   },
 };
 
