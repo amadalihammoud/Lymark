@@ -15,6 +15,9 @@ let mainWindow: BrowserWindow | null = null;
 const GALLERY_DIR_NAME = 'Lymark';
 const DEFAULT_GALLERY_PATH = path.join(os.homedir(), 'Pictures', GALLERY_DIR_NAME);
 
+// Pasta de saída padrão para processamento em lote
+let outputFolderPath: string = DEFAULT_GALLERY_PATH;
+
 // Garantir que a pasta da galeria existe
 function ensureGalleryDir(): string {
   if (!fs.existsSync(DEFAULT_GALLERY_PATH)) {
@@ -79,6 +82,17 @@ function createWindow() {
     mainWindow.webContents.openDevTools();
   }
 
+  // Configurar drag and drop para a janela
+  mainWindow.on('will-navigate', (e) => e.preventDefault());
+
+  mainWindow.on('drop-file', (e, filePath) => {
+    e.preventDefault();
+    // Enviar para o renderer via IPC
+    if (mainWindow && mainWindow.webContents) {
+      mainWindow.webContents.send('ondragdrop', { filePath });
+    }
+  });
+
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
@@ -87,7 +101,7 @@ function createWindow() {
 // Registrar handlers de IPC
 function registerIpcHandlers() {
   // Handler para salvar arquivo (diálogo de salvamento)
-  ipcMain.handle('save-file', async (event: Electron.IpcMainInvokeEvent, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
+  ipcMain.handle('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
     const { filePath } = await dialog.showSaveDialog({
       title: 'Salvar Foto',
       defaultPath: filename,
@@ -110,17 +124,36 @@ function registerIpcHandlers() {
     }
   });
 
+  // Handler para salvar arquivo na pasta de saída (sem diálogo)
+  ipcMain.handle('save-file-to-output', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
+    try {
+      // Garantir que a pasta de saída existe
+      if (!fs.existsSync(outputFolderPath)) {
+        fs.mkdirSync(outputFolderPath, { recursive: true });
+      }
+      
+      const filePath = path.join(outputFolderPath, filename);
+      const buffer = Buffer.from(bytes);
+      fs.writeFileSync(filePath, buffer);
+      return { status: 'saved', path: filePath };
+    } catch (error) {
+      return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
+    }
+  });
+
   // Handler para apagar arquivo da galeria
-  // CORRIGIDO: Usar path.relative em vez de startsWith para evitar furo de segurança
-  ipcMain.handle('delete-file', async (event: Electron.IpcMainInvokeEvent, { path: relativePath }: { path: string }) => {
+  // SÓ apaga arquivos dentro da pasta da galeria (segurança)
+  ipcMain.handle('delete-file', async (event, { path: relativePath }: { path: string }) => {
     try {
       // Resolver o caminho absoluto
       const galleryDir = ensureGalleryDir();
       const fullPath = path.resolve(galleryDir, relativePath);
       
-      // Verificar que o arquivo está dentro da pasta da galeria usando path.relative
-      const rel = path.relative(galleryDir, fullPath);
-      if (rel.startsWith('..') || path.isAbsolute(rel)) {
+      // Verificar que o arquivo está dentro da pasta da galeria
+      const normalizedFullPath = path.normalize(fullPath);
+      const normalizedGalleryDir = path.normalize(galleryDir);
+      
+      if (!normalizedFullPath.startsWith(normalizedGalleryDir)) {
         throw new Error('Caminho fora da pasta da galeria');
       }
       
@@ -177,10 +210,10 @@ function registerIpcHandlers() {
     }
   });
 
-  // Handler para arrastar e soltar (para processamento em lote)
+  // Handler para selecionar múltiplas imagens (processamento em lote)
   ipcMain.handle('pick-images', async () => {
     const { filePaths } = await dialog.showOpenDialog({
-      title: 'Selecionar Fotos',
+      title: 'Selecionar Fotos para Lote',
       properties: ['openFile', 'multiSelections'],
       filters: [
         { name: 'Imagens', extensions: ['jpg', 'jpeg', 'png', 'webp'] },
@@ -210,11 +243,31 @@ function registerIpcHandlers() {
 
     return { status: 'selected', photos: results };
   });
+
+  // Handler para selecionar pasta de saída
+  ipcMain.handle('select-output-folder', async () => {
+    const { filePaths } = await dialog.showOpenDialog({
+      title: 'Selecionar Pasta de Saída',
+      properties: ['openDirectory'],
+    });
+
+    if (!filePaths || filePaths.length === 0) {
+      return { status: 'cancelled' };
+    }
+
+    outputFolderPath = filePaths[0];
+    return { status: 'selected', path: outputFolderPath };
+  });
+
+  // Handler para obter pasta de saída atual
+  ipcMain.handle('get-output-folder', async () => {
+    return { path: outputFolderPath };
+  });
 }
 
 // Configurar o protocolo app:// para servir o build estático
 function createProtocol() {
-  protocol.handle('app', (request: Electron.ProtocolRequest) => {
+  protocol.handle('app', (request) => {
     let pathname = request.url.replace('app:///', '');
     
     if (pathname.startsWith('/')) {
@@ -273,6 +326,7 @@ function createProtocol() {
 app.whenReady().then(() => {
   // Garantir que a pasta da galeria existe
   ensureGalleryDir();
+  outputFolderPath = DEFAULT_GALLERY_PATH;
   
   // Configurar o protocolo
   createProtocol();
