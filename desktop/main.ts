@@ -6,7 +6,79 @@ import { app, BrowserWindow, protocol, ipcMain, dialog } from 'electron';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
+import { pathToFileURL } from 'url';
 import sizeOf from 'image-size';
+
+/** Raiz do build web servido pelo protocolo `app://`. */
+const DIST_DIR = path.join(__dirname, '../dist');
+
+/**
+ * Confirma que um caminho resolvido permanece dentro de um diretório base.
+ *
+ * `startsWith` sobre a string não serve: com base `.../Lymark`, o caminho
+ * `.../Lymark-malicioso/x.jpg` começa com a base e passaria. `path.relative`
+ * responde a pergunta certa — se for preciso subir (`..`) ou se o resultado
+ * for absoluto, o alvo está fora.
+ */
+function isInside(baseDir: string, target: string): boolean {
+  const rel = path.relative(baseDir, target);
+  return rel !== '' && !rel.startsWith('..') && !path.isAbsolute(rel);
+}
+
+/** As únicas extensões que o app processa, e que os diálogos oferecem. */
+const ACCEPTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
+
+/**
+ * Teto de leitura para descobrir dimensões.
+ *
+ * O cabeçalho dos três formatos aceitos vive nos primeiros quilobytes; ler a
+ * foto inteira só para medir carregava dezenas de megabytes por arquivo, e no
+ * lote isso se multiplica.
+ */
+const HEADER_BYTES = 4 * 1024 * 1024;
+
+/**
+ * Confere a assinatura do arquivo antes de entregá-lo ao `image-size`.
+ *
+ * O `image-size` detecta o formato pelo conteúdo, não pela extensão, e tem
+ * uma falha conhecida sem correção publicada: o parser de ICNS entra em laço
+ * infinito com cabeçalho forjado (advisory alcança <=2.0.2, que é a última
+ * versão que existe). Como ele roda de forma síncrona no processo principal,
+ * um laço ali congela a janela inteira, sem recuperação.
+ *
+ * Aceitando apenas JPEG, PNG e WebP pela assinatura, o caminho do ICNS deixa
+ * de ser alcançável — um `.jpg` com cabeçalho de ICNS é recusado aqui, antes
+ * de o parser ser chamado.
+ */
+function hasSupportedSignature(bytes: Buffer): boolean {
+  if (bytes.length < 12) return false;
+
+  const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+  const png = bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]));
+  const webp =
+    bytes.subarray(0, 4).toString('latin1') === 'RIFF' &&
+    bytes.subarray(8, 12).toString('latin1') === 'WEBP';
+
+  return jpeg || png || webp;
+}
+
+/** Dimensões de uma imagem, lendo só o cabeçalho e só de formato conhecido. */
+function readImageSize(filePath: string): { width: number; height: number } {
+  const handle = fs.openSync(filePath, 'r');
+  try {
+    const buffer = Buffer.alloc(Math.min(HEADER_BYTES, fs.fstatSync(handle).size));
+    fs.readSync(handle, buffer, 0, buffer.length, 0);
+
+    if (!hasSupportedSignature(buffer)) {
+      throw new Error('Formato de imagem não suportado.');
+    }
+
+    const { width, height } = sizeOf(buffer);
+    return { width: width ?? 0, height: height ?? 0 };
+  } finally {
+    fs.closeSync(handle);
+  }
+}
 
 // Variáveis globais
 let mainWindow: BrowserWindow | null = null;
@@ -60,34 +132,39 @@ function createWindow() {
     icon: path.join(__dirname, '../assets/icon.png'),
   });
 
-  // Definir o sinalizador de plataforma no window
-  if (mainWindow.webContents) {
-    mainWindow.webContents.on('did-finish-load', () => {
-      mainWindow?.webContents.executeJavaScript(`
-        window.lymark = window.lymark || {};
-        window.lymark.platform = 'desktop';
-      `);
-    });
-  }
+  // O sinalizador de plataforma NÃO é injetado aqui. O preload já expõe
+  // `window.lymark.platform` pelo contextBridge, que cria a propriedade como
+  // somente-leitura — reatribuir por executeJavaScript não teria efeito, ou
+  // sobrescreveria a ponte. Havia ainda uma corrida: `did-finish-load` chega
+  // depois de o módulo do app já ter lido o sinalizador.
 
-  // Carregar o app
+  // Nenhuma navegação para fora do app. Sem isto, uma URL externa carregaria
+  // NESTA janela, com o preload anexado — dando à página remota acesso a
+  // saveFile, deleteFile e aos seletores de arquivo.
+  //
+  // O evento é de `webContents`, não de `BrowserWindow`: a versão anterior
+  // registrava em `mainWindow`, que não emite `will-navigate`, então a
+  // proteção existia no código e nunca era executada.
+  mainWindow.webContents.on('will-navigate', (event, url) => {
+    if (!url.startsWith('app://')) event.preventDefault();
+  });
+
+  // Janela nova (window.open, target=_blank) é sempre negada. Se um dia for
+  // preciso abrir um link, o certo é entregar ao navegador do sistema com
+  // shell.openExternal, nunca abrir uma BrowserWindow com preload.
+  mainWindow.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+
+  // Carregar o app. O protocolo já foi registrado em `whenReady`; registrar
+  // de novo aqui lançava "Attempted to register a second handler for 'app'".
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     mainWindow.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
   } else {
-    createProtocol();
-    mainWindow.loadURL('app://./index.html');
+    mainWindow.loadURL('app://lymark/index.html');
   }
 
   if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools();
   }
-
-  // Configurar drag and drop para a janela
-  mainWindow.on('will-navigate', (e) => e.preventDefault());
-
-  mainWindow.webContents.on('did-navigate-in-page', (e) => {
-    // Permitir navegação interna
-  });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -128,7 +205,17 @@ function registerIpcHandlers() {
         fs.mkdirSync(outputFolderPath, { recursive: true });
       }
       
-      const filePath = path.join(outputFolderPath, filename);
+      // O nome vem do renderer. Sem reduzi-lo ao último segmento, um
+      // "../../.bashrc" ou "..\\Startup\\x.exe" sairia da pasta de saída e
+      // gravaria em qualquer lugar do disco — este handler grava SEM diálogo,
+      // então não há confirmação do usuário no caminho.
+      const safeName = path.basename(filename);
+      const filePath = path.join(outputFolderPath, safeName);
+
+      if (!isInside(outputFolderPath, filePath)) {
+        return { status: 'failed', error: 'Nome de arquivo inválido.' };
+      }
+
       const buffer = Buffer.from(bytes);
       fs.writeFileSync(filePath, buffer);
       return { status: 'saved', path: filePath };
@@ -145,11 +232,10 @@ function registerIpcHandlers() {
       const galleryDir = ensureGalleryDir();
       const fullPath = path.resolve(galleryDir, relativePath);
       
-      // Verificar que o arquivo está dentro da pasta da galeria
-      const normalizedFullPath = path.normalize(fullPath);
-      const normalizedGalleryDir = path.normalize(galleryDir);
-      
-      if (!normalizedFullPath.startsWith(normalizedGalleryDir)) {
+      // Esta checagem já foi corrigida uma vez (commit 29adb69) e voltou ao
+      // estado vulnerável quando o arquivo foi reescrito por inteiro. Se
+      // reaparecer um `startsWith` aqui, é regressão — não simplificação.
+      if (!isInside(galleryDir, fullPath)) {
         throw new Error('Caminho fora da pasta da galeria');
       }
       
@@ -185,24 +271,16 @@ function registerIpcHandlers() {
     }
 
     const filePath = filePaths[0];
-    
+    // `file://` + caminho cru produz URI inválida no Windows: barras
+    // invertidas, sem a terceira barra, e espaço ou `#` no nome quebram tudo.
+    // `pathToFileURL` codifica corretamente nas três plataformas.
+    const uri = pathToFileURL(filePath).href;
+
     try {
-      const buffer = fs.readFileSync(filePath);
-      const dimensions = sizeOf(buffer);
-      
-      return {
-        status: 'selected',
-        uri: `file://${filePath}`,
-        width: dimensions.width,
-        height: dimensions.height,
-      };
+      const { width, height } = readImageSize(filePath);
+      return { status: 'selected', uri, width, height };
     } catch {
-      return {
-        status: 'selected',
-        uri: `file://${filePath}`,
-        width: 0,
-        height: 0,
-      };
+      return { status: 'selected', uri, width: 0, height: 0 };
     }
   });
 
@@ -222,17 +300,13 @@ function registerIpcHandlers() {
     }
 
     const results = [];
-    
+
     for (const filePath of filePaths) {
       try {
-        const buffer = fs.readFileSync(filePath);
-        const dimensions = sizeOf(buffer);
-        results.push({
-          uri: `file://${filePath}`,
-          width: dimensions.width,
-          height: dimensions.height,
-        });
+        const { width, height } = readImageSize(filePath);
+        results.push({ uri: pathToFileURL(filePath).href, width, height });
       } catch {
+        // Um arquivo ilegível não pode derrubar o lote inteiro.
         continue;
       }
     }
@@ -262,15 +336,18 @@ function registerIpcHandlers() {
 
   // Handler para adicionar arquivo via drag and drop
   ipcMain.handle('add-drag-drop-file', async (event, { filePath }: { filePath: string }) => {
+    // O caminho vem do renderer, não de um diálogo do sistema. Aceitar
+    // qualquer um daria ao renderer um primitivo de leitura de arquivo
+    // arbitrário. Restringimos ao que o app sabe processar e exigimos
+    // arquivo comum — o mesmo conjunto de extensões dos diálogos.
+    if (!ACCEPTED_IMAGE_EXTENSIONS.includes(path.extname(filePath).toLowerCase())) {
+      return null;
+    }
+
     try {
-      const buffer = fs.readFileSync(filePath);
-      const dimensions = sizeOf(buffer);
-      
-      return {
-        uri: `file://${filePath}`,
-        width: dimensions.width,
-        height: dimensions.height,
-      };
+      if (!fs.statSync(filePath).isFile()) return null;
+      const { width, height } = readImageSize(filePath);
+      return { uri: pathToFileURL(filePath).href, width, height };
     } catch {
       return null;
     }
@@ -278,59 +355,91 @@ function registerIpcHandlers() {
 }
 
 // Configurar o protocolo app:// para servir o build estático
+const CONTENT_TYPES: Record<string, string> = {
+  '.html': 'text/html',
+  '.js': 'application/javascript',
+  '.css': 'text/css',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.svg': 'image/svg+xml',
+  // Sem este, `WebAssembly.instantiateStreaming` recusa o CanvasKit e o
+  // carimbo nunca é desenhado no desktop.
+  '.wasm': 'application/wasm',
+  '.json': 'application/json',
+  '.ico': 'image/x-icon',
+  '.ttf': 'font/ttf',
+  '.otf': 'font/otf',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+};
+
+/**
+ * Política de conteúdo do aplicativo empacotado.
+ *
+ * Tudo vem do próprio pacote; nada é buscado na rede. `wasm-unsafe-eval` é
+ * exigido pelo CanvasKit, `unsafe-inline` em estilos pelo react-native-web,
+ * que injeta as folhas em tempo de execução, e `blob:`/`data:` pelas imagens
+ * que o app gera em memória.
+ */
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "script-src 'self' 'wasm-unsafe-eval'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self' data:",
+  "connect-src 'self' data: blob:",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'none'",
+].join('; ');
+
 function createProtocol() {
   protocol.handle('app', (request) => {
-    let pathname = request.url.replace('app:///', '');
-    
-    if (pathname.startsWith('/')) {
-      pathname = pathname.slice(1);
-    }
-    
-    const distPath = path.join(__dirname, '../dist', pathname);
-    
+    // `new URL` em vez de manipular a string: a versão anterior fazia
+    // `replace('app:///', '')` enquanto a janela carregava `app://./…` — com
+    // duas barras, não três. O replace não casava, o caminho resultante era
+    // literalmente "app:/…" e nada era encontrado.
+    let pathname: string;
     try {
-      if (fs.existsSync(distPath)) {
-        const stat = fs.statSync(distPath);
-        
-        if (stat.isDirectory()) {
-          const indexPath = path.join(distPath, 'index.html');
-          if (fs.existsSync(indexPath)) {
-            return new Response(fs.readFileSync(indexPath), {
-              headers: { 'Content-Type': 'text/html' },
-            });
-          }
-        } else {
-          const content = fs.readFileSync(distPath);
-          
-          let contentType = 'application/octet-stream';
-          if (pathname.endsWith('.html')) {
-            contentType = 'text/html';
-          } else if (pathname.endsWith('.js')) {
-            contentType = 'application/javascript';
-          } else if (pathname.endsWith('.css')) {
-            contentType = 'text/css';
-          } else if (pathname.endsWith('.png')) {
-            contentType = 'image/png';
-          } else if (pathname.endsWith('.jpg') || pathname.endsWith('.jpeg')) {
-            contentType = 'image/jpeg';
-          } else if (pathname.endsWith('.wasm')) {
-            contentType = 'application/wasm';
-          } else if (pathname.endsWith('.json')) {
-            contentType = 'application/json';
-          } else if (pathname.endsWith('.ico')) {
-            contentType = 'image/x-icon';
-          }
-          
-          return new Response(content, {
-            headers: { 'Content-Type': contentType },
-          });
-        }
-      }
+      pathname = decodeURIComponent(new URL(request.url).pathname);
     } catch {
-      // Ignorar
+      return new Response('Bad Request', { status: 400 });
     }
-    
-    return new Response('Not Found', { status: 404 });
+
+    const requested = path.join(DIST_DIR, pathname);
+
+    // O handler nunca deve servir nada fora do build. A normalização de
+    // segmentos que o Chromium faz em esquemas `standard` já barra o caso
+    // óbvio, mas depender disso é apoiar a segurança num detalhe implícito
+    // do navegador em vez de numa verificação nossa.
+    if (requested !== DIST_DIR && !isInside(DIST_DIR, requested)) {
+      return new Response('Forbidden', { status: 403 });
+    }
+
+    try {
+      const target = fs.existsSync(requested) && fs.statSync(requested).isDirectory()
+        ? path.join(requested, 'index.html')
+        : requested;
+
+      if (!fs.existsSync(target)) {
+        return new Response('Not Found', { status: 404 });
+      }
+
+      const contentType = CONTENT_TYPES[path.extname(target).toLowerCase()]
+        ?? 'application/octet-stream';
+
+      const headers: Record<string, string> = { 'Content-Type': contentType };
+      if (contentType === 'text/html') {
+        headers['Content-Security-Policy'] = CONTENT_SECURITY_POLICY;
+      }
+
+      return new Response(fs.readFileSync(target), { headers });
+    } catch {
+      return new Response('Not Found', { status: 404 });
+    }
   });
 }
 
