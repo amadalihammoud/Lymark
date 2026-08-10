@@ -47,7 +47,8 @@ export default function RootLayout() {
       <SettingsProvider>
         <GalleryProvider>
           <CaptureProvider>
-            {/* Acima da navegação: o diálogo e o aviso precisam cobrir
+    
+        {/* Acima da navegação: o diálogo e o aviso precisam cobrir
                 qualquer tela, inclusive as que abrem por cima. */}
             <FeedbackProvider>
             <StatusBar style="light" />
@@ -77,6 +78,12 @@ export default function RootLayout() {
               <Stack.Screen
                 name="photo/[id]"
                 options={{ title: 'Detalhe da foto', headerBackTitle: 'Galeria' }}
+              />
+
+              {/* Tela de processamento em lote - apenas desktop */}
+              <Stack.Screen
+                name="batch"
+                options={{ title: 'Processamento em Lote', headerBackTitle: 'Voltar' }}
               />
             </Stack>
             </FeedbackProvider>
