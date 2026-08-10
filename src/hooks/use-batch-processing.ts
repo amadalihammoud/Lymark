@@ -15,6 +15,7 @@
 import { useCallback, useState } from 'react';
 
 import { extractDateFromExif, extractTimeFromExif } from '@/lib/exif';
+import { saveFileToOutput, getOutputFolder } from '@/lib/file-storage';
 import { renderStampedPhoto } from '@/features/watermark/render-photo';
 import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
 
@@ -59,6 +60,14 @@ export function useBatchProcessing() {
   const [outputFolder, setOutputFolder] = useState<string>('');
 
   /**
+   * Carrega a pasta de saída atual ao montar o componente.
+   */
+  const loadOutputFolder = useCallback(async () => {
+    const folder = await getOutputFolder();
+    setOutputFolder(folder);
+  }, []);
+
+  /**
    * Processa uma única foto do lote.
    * Lê EXIF para data individual, mas usa metadata compartilhado para endereço e código.
    */
@@ -79,13 +88,14 @@ export function useBatchProcessing() {
         // Gerar a foto com carimbo
         const stampedBytes = await renderStampedPhoto(photo.uri, photoMetadata);
 
-        // Salvar na pasta de saída (usando saveFileToOutput do desktop)
+        // Salvar na pasta de saída usando a abstração do file-storage
         const timestamp = Date.now();
         const fileName = `lymark_${timestamp}_${photo.width}x${photo.height}.jpg`;
         
-        // Verificar se estamos no desktop e se a API está disponível
-        if (typeof window !== 'undefined' && window.lymark?.saveFileToOutput) {
-          await window.lymark.saveFileToOutput(stampedBytes, fileName, 'image/jpeg');
+        const result = await saveFileToOutput(stampedBytes, fileName, 'image/jpeg');
+        
+        if (result.status !== 'saved') {
+          throw new Error(result.error ? String(result.error) : 'Falha ao salvar arquivo');
         }
 
         return { success: true, file: fileName };
@@ -166,8 +176,6 @@ export function useBatchProcessing() {
   );
 
   const cancelBatch = useCallback(() => {
-    // Por enquanto, não há como cancelar um processamento serial
-    // Futuramente: adicionar flag de cancelamento
     setState(INITIAL_STATE);
   }, []);
 
@@ -187,5 +195,6 @@ export function useBatchProcessing() {
     setOutputFolderPath,
     startBatch,
     cancelBatch,
+    loadOutputFolder,
   };
 }
