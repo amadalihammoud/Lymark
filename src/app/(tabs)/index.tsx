@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Link, useRouter } from 'expo-router';
 
 import { AppHeader } from '@/components/brand/app-header';
 import { CaptureActions } from '@/components/capture/capture-actions';
@@ -22,6 +23,7 @@ import { renderStampedPhoto } from '@/features/watermark/render-photo';
 import { STAMP_COLORS } from '@/features/watermark/stamp-canvas';
 import { createStampRenderer, useStampFontProvider } from '@/features/watermark/skia-stamp';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
+import { isDesktop } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
 import { WATERMARK_FIELD_KEYS, type WatermarkFieldKey } from '@/types';
 
@@ -36,6 +38,7 @@ const LOOKUP_MESSAGES: Record<AddressLookupStatus, string> = {
   unavailable: 'Não foi possível resolver o endereço nesta posição. Digite manualmente.',
 };
 
+
 /** Qual ação está em curso — as duas geram imagem e não podem se sobrepor. */
 type PendingAction = 'save' | 'share';
 
@@ -48,6 +51,7 @@ type PendingAction = 'save' | 'share';
  * busca de endereço ainda é válida.
  */
 export default function CaptureScreen() {
+  const router = useRouter();
   const { draft, hasPhoto, setPhoto, setField, regenerateCode, syncDateTime, resetDraft } =
     useCapture();
   const { preferences } = useSettings();
@@ -176,7 +180,7 @@ export default function CaptureScreen() {
     if (addressRef.current !== addressWhenRequested && addressRef.current.trim()) {
       ask({
         title: 'Substituir o endereço digitado?',
-        message: `O GPS encontrou:\n\n${address}`,
+        message: `O GPS encontrou:\n\n${address}\,`
         actions: [
           { label: 'Usar o do GPS', onPress: () => setField('address', address) },
           { label: 'Manter o meu', variant: 'ghost' },
@@ -246,8 +250,8 @@ export default function CaptureScreen() {
         // "permissão negada" para todos mandava o usuário a um ajuste que já
         // estava correto.
         if (outcome.status === 'saved') {
-          // Sucesso não interrompe: quem está em campo exporta uma foto atrás
-          // da outra, e um OK a cada uma seriam dezenas de toques por dia.
+          // Sucesso não interrompe: quem está em campo exporta uma foto a
+          // trás da outra, e um OK a cada uma seriam dezenas de toques por dia.
           notify('Foto salva na galeria do aparelho e no histórico.');
         } else if (outcome.status === 'denied') {
           ask({
@@ -318,6 +322,18 @@ export default function CaptureScreen() {
   return (
     <Screen>
       <AppHeader tagline="Marca d’água com hora, data e local" />
+
+      {/* Botão para processamento em lote - apenas desktop */}
+      {isDesktop() && (
+        <Link href="/batch" asChild>
+          <Button
+            label="Processamento em Lote"
+            icon="grid-outline"
+            variant="secondary"
+            style={styles.batchButton}
+          />
+        </Link>
+      )}
 
       <PhotoPreview
         photo={draft.photo}
@@ -399,6 +415,9 @@ const styles = StyleSheet.create({
   },
   action: {
     flex: 1,
+  },
+  batchButton: {
+    marginBottom: spacing.md,
   },
   warning: {
     ...typography.caption,
