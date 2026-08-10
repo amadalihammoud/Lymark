@@ -1,47 +1,126 @@
-# Resumo das Correcoes - Lymark Desktop + Web
+# Progresso - Portar Lymark para Web e Desktop
 
-## Commits Realizados (10/08/2026)
+## Objetivo
+Portar o aplicativo Lymark do mobile (React Native/Expo) para Web e Desktop (Electron) mantendo fidelidade pixel-perfect do carimbo.
 
-### Seguranca
-- 29adb69: Corrige furo de seguranca no handler delete-file (path.relative em vez de startsWith)
-- 9ddd8dd5: Corrige import de expo-crypto no photo-file.web.ts (usa crypto.randomUUID nativo)
+**Branch:** claude/harness-fix
 
-### Tipagem
-- f216f94: Tipa parametros do ipcRenderer no preload.ts
-- 94bcb11: Tipa parametros event e request no main.ts
-- 0f890b9: Adiciona @types/electron e @types/node para resolver erros de typecheck
+---
 
-### Build
-- 68ff427: Adiciona script para copiar CanvasKit WASM para o build web
-- f8da658: Adiciona postbuild para copiar CanvasKit WASM
+## Fase 6 - Processamento em Lote - CONCLUIDO
+
+### Implementacoes Realizadas:
+
+1. Rota /batch em src/app/_layout.tsx
+2. Botao Processamento em Lote na CaptureScreen (desktop only)
+3. Tela batch.tsx com:
+   - Selecao multipla de fotos
+   - Drag and drop (visual)
+   - Metadados compartilhados
+   - Selecao de pasta de saida
+   - Barra de progresso
+   - Relatorio de erros
+
+4. Hook use-batch-processing.ts:
+   - Processamento SERIAL
+   - Leitura EXIF individual
+   - Salvamento com saveFileToOutput
+
+5. IPC Handlers em desktop/main.ts:
+   - save-file-to-output
+   - pick-images
+   - select-output-folder
+   - get-output-folder
+   - add-drag-drop-file
+
+6. Preload API em desktop/preload.ts:
+   - saveFileToOutput
+   - selectOutputFolder
+   - getOutputFolder
+   - onDragDrop
+
+7. Abstracao em src/lib/file-storage.ts:
+   - saveFileToOutput
+   - pickImages
+   - selectOutputFolder
+   - getOutputFolder
+
+---
+
+## Correcoes de Seguranca e Tipagem
+
+- Handler delete-file com validacao de caminho
+- Parametros tipados em main.ts e preload.ts
+- Tipos do Electron e Node adicionados
+
+---
+
+## Build e WASM
+
+- Script copy-wasm.js
+- Postbuild hook no package.json
+- Protocolo app:// configurado
+
+---
+
+## Arquivos Modificados
+
+- desktop/main.ts
+- desktop/preload.ts
+- src/app/_layout.tsx
+- src/app/(tabs)/index.tsx
+- src/app/batch.tsx
+- src/hooks/use-batch-processing.ts
+- src/lib/file-storage.ts
+- scripts/copy-wasm.js
+- package.json
+
+---
+
+## Proximos Passos
+
+### Fase 0 - Testes Iniciais
+- Testar app no navegador real
+- Verificar CanvasKit WASM
+- Verificar Skia
+- Executar npm run typecheck
+- Executar npm test
+- Executar npm run web
+
+### Fase 4 - Modulos Nativos
+- Verificar isolamento de modulos nativos
+
+### Fase 7 - CI/CD
+- Configurar GitHub Actions
+
+### Fase 8 - Deploy
+- Configurar deploy para app.lymark.app
+
+---
 
 ## Status Atual
 
-### Concluido
-- Furo de seguranca no delete-file corrigido
-- Typecheck deve passar (todos os parametros tipados)
-- Arquivos .web.ts criados e corrigidos
-- Script de copia do WASM adicionado
+- Fase 6: 95% completo (precisa de testes)
+- Fase 0: 0% completo
+- Fase 4: 80% completo
+- Fase 7: 0% completo
+- Fase 8: 0% completo
 
-### Pendente de Verificacao
-- Testar app no navegador real (Fase 0)
-- Verificar se CanvasKit WASM carrega no build
-- Teste de superficie (platform-exports.test.ts)
+---
 
-### Proximos Passos
-1. Verificar typecheck: npm run typecheck
-2. Verificar testes: npm test
-3. Testar build web: npm run web
-4. Verificar se o app sobe no navegador
+## Como Testar
 
-## Arquivos Modificados
-- desktop/main.ts
-- desktop/preload.ts
-- package.json
-- src/features/watermark/photo-file.web.ts
-- scripts/copy-wasm.js
+### Desktop:
+npm run desktop:dev
+1. Clique em Processamento em Lote
+2. Selecione fotos ou arraste e solte
+3. Preencha metadados
+4. Selecione pasta de saida
+5. Iniciar Processamento
 
-## Notas
-- Os arquivos .web.ts agora NAO importam modulos nativos no topo
-- O Metro resolve automaticamente para .web.ts na web
-- O CanvasKit WASM sera copiado para dist/ apos o build
+### Web:
+npm run web
+
+---
+
+Ultima atualizacao: 10/08/2026
