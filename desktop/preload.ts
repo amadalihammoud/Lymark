@@ -8,7 +8,7 @@
  * Apenas exponha o que é estritamente necessário.
  */
 
-import { contextBridge, ipcRenderer } from 'electron';
+import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
 
 // Tipos para as APIs expostas
 export interface LymarkApi {
