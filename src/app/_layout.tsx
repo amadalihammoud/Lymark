@@ -64,7 +64,7 @@ export default function RootLayout() {
 
               <Stack.Screen
                 name="settings/watermark"
-                options={{ title: 'Marca d’água', headerBackTitle: 'Voltar' }}
+                options={{ title: 'Marca d'água', headerBackTitle: 'Voltar' }}
               />
               <Stack.Screen
                 name="settings/permissions"
@@ -80,7 +80,7 @@ export default function RootLayout() {
                 options={{ title: 'Detalhe da foto', headerBackTitle: 'Galeria' }}
               />
 
-              {/* Tela de processamento em lote - apenas desktop */}
+              {/* Processamento em lote - apenas desktop */}
               <Stack.Screen
                 name="batch"
                 options={{ title: 'Processamento em Lote', headerBackTitle: 'Voltar' }}
