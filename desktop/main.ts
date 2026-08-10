@@ -87,7 +87,7 @@ function createWindow() {
 // Registrar handlers de IPC
 function registerIpcHandlers() {
   // Handler para salvar arquivo (diálogo de salvamento)
-  ipcMain.handle('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
+  ipcMain.handle('save-file', async (event: Electron.IpcMainInvokeEvent, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
     const { filePath } = await dialog.showSaveDialog({
       title: 'Salvar Foto',
       defaultPath: filename,
@@ -112,7 +112,7 @@ function registerIpcHandlers() {
 
   // Handler para apagar arquivo da galeria
   // CORRIGIDO: Usar path.relative em vez de startsWith para evitar furo de segurança
-  ipcMain.handle('delete-file', async (event, { path: relativePath }: { path: string }) => {
+  ipcMain.handle('delete-file', async (event: Electron.IpcMainInvokeEvent, { path: relativePath }: { path: string }) => {
     try {
       // Resolver o caminho absoluto
       const galleryDir = ensureGalleryDir();
@@ -214,7 +214,7 @@ function registerIpcHandlers() {
 
 // Configurar o protocolo app:// para servir o build estático
 function createProtocol() {
-  protocol.handle('app', (request) => {
+  protocol.handle('app', (request: Electron.ProtocolRequest) => {
     let pathname = request.url.replace('app:///', '');
     
     if (pathname.startsWith('/')) {
