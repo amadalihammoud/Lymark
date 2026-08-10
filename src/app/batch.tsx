@@ -38,6 +38,17 @@ export default function BatchProcessingScreen() {
     loadOutputFolder();
   }, [loadOutputFolder]);
 
+  // Configurar drag and drop ao montar o componente
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.lymark?.onDragDrop) {
+      window.lymark.onDragDrop((photo) => {
+        if (photo) {
+          setPhotos((prev) => [...prev, photo]);
+        }
+      });
+    }
+  }, []);
+
   // Handler para selecionar fotos
   const handleSelectPhotos = useCallback(async () => {
     if (typeof window !== 'undefined' && window.lymark?.pickImages) {
@@ -109,7 +120,7 @@ export default function BatchProcessingScreen() {
         {/* Área de drag and drop */}
         <View style={styles.dropZone}>
           <Text style={[typography.caption, styles.dropZoneText]}>
-            Arraste e solte fotos aqui
+            Arraste e solte fotos aqui ou use o botão "Selecionar Fotos"
           </Text>
         </View>
 
@@ -250,6 +261,7 @@ const styles = StyleSheet.create({
   },
   dropZoneText: {
     color: colors.caption,
+    textAlign: 'center',
   },
   photosList: {
     gap: spacing.sm,
