@@ -4,6 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
+import { isWeb } from '@/lib/file-storage';
 import { colors } from '@/theme';
 
 /**
@@ -37,10 +38,25 @@ export default function TabsLayout() {
           ),
         }}
       />
+      {/*
+        Na web não existe histórico: a foto é carimbada e baixada, e nada é
+        guardado (decisão 2.2 — o navegador pode descartar o armazenamento
+        sem aviso, e perder um comprovante é inaceitável).
+
+        A aba continua registrada para não quebrar link direto ou navegação
+        programática; o que some é a entrada na barra. Sem isto, a web
+        mostrava uma galeria sempre vazia — ou, pior, cheia de miniaturas
+        quebradas.
+
+        `isWeb()` distingue navegador de Electron: no desktop o histórico
+        existe, em pasta real no disco. `Platform.OS` não serve, porque
+        também é 'web' dentro do Electron.
+      */}
       <Tabs.Screen
         name="gallery"
         options={{
           title: 'Galeria',
+          href: isWeb() ? null : undefined,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="images" size={size} color={color} />
           ),

@@ -23,6 +23,26 @@ import { buildStampGeometry, type StampColors } from './stamp-layout';
 /** Qualidade do JPEG. Alto o bastante para não marcar o texto do carimbo. */
 const JPEG_QUALITY = 92;
 
+/**
+ * Teto de resolução aceito para compor o carimbo.
+ *
+ * A composição precisa de DOIS bitmaps vivos ao mesmo tempo — a surface e o
+ * instantâneo — a 4 bytes por pixel. Em 120 MP isso dá cerca de 960 MB, que
+ * cabe com folga no limite de ~2 GB do heap do WebAssembly.
+ *
+ * O número foi escolhido por medição, não por estimativa. Acima dele o
+ * comportamento é ruim de três maneiras diferentes, e nenhuma é um erro
+ * limpo: por volta de 324 MP a surface é criada e o estouro só acontece no
+ * instantâneo; acima de ~538 MP o Skia devolve um objeto "verdadeiro" com
+ * referência nula, o que fazia a guarda existente passar direto; e um JPEG
+ * de 10 MB que decodifica para 900 MP chega a travar a thread por quase um
+ * minuto antes de falhar — no desktop, isso é a janela inteira congelada.
+ *
+ * 120 MP cobre com margem qualquer câmera de celular atual, inclusive os
+ * sensores de 108 MP.
+ */
+const MAX_PIXELS = 120_000_000;
+
 export class PhotoRenderError extends Error {
   constructor(message: string, options?: { cause?: unknown }) {
     super(message, options);
@@ -80,9 +100,25 @@ export async function composeStampedPhoto({
   const width = image.width();
   const height = image.height();
 
+  // A recusa acontece ANTES de alocar. A guarda seguinte, sozinha, era
+  // inalcançável: quando o Skia recusa a alocação ele devolve um objeto
+  // "verdadeiro" com referência nula por dentro, então `!surface` era falso e
+  // a falha só aparecia mais adiante, como TypeError do motor gráfico.
+  if (width * height > MAX_PIXELS) {
+    const megapixels = Math.round((width * height) / 1_000_000);
+    release(image);
+    throw new PhotoRenderError(
+      `A fotografia tem ${megapixels} MP e ultrapassa o limite de ` +
+        `${MAX_PIXELS / 1_000_000} MP para o carimbo. Reduza a resolução da ` +
+        'câmera ou escolha uma foto menor.',
+    );
+  }
+
   const surface = Skia.Surface.MakeOffscreen(width, height);
   if (!surface) {
-    // Acontece quando a imagem é grande demais para a memória disponível.
+    // Rede de segurança: com o teto acima, chegar aqui significa que a
+    // memória disponível é menor do que o esperado neste aparelho.
+    release(image);
     throw new PhotoRenderError(
       'A fotografia é grande demais para ser processada neste aparelho.',
     );
