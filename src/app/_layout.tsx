@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { SkiaWebInitializer } from "@/components/skia";
+import { useWaitForSkia } from '@/components/skia';
 import { CaptureProvider } from '@/contexts/capture-context';
 import { FeedbackProvider } from '@/contexts/feedback-context';
 import { GalleryProvider } from '@/contexts/gallery-context';
@@ -32,6 +32,7 @@ void SplashScreen.preventAutoHideAsync();
  */
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts(watermarkFontAssets);
+  const skiaReady = useWaitForSkia();
 
   useEffect(() => {
     // Falha ao carregar a fonte não pode prender o usuário na splash: o app
@@ -41,9 +42,16 @@ export default function RootLayout() {
 
   if (!fontsLoaded && !fontError) return null;
 
+  // Na web o Skia chega como WebAssembly e o carregamento é assíncrono; no
+  // nativo esta espera resolve de imediato. Segurar a árvore aqui é o que
+  // evita a corrida: `useStampFontProvider` roda no efeito de montagem e
+  // pedia os typefaces antes de o CanvasKit existir, com
+  // "Cannot read properties of undefined (reading 'Typeface')" — as fontes
+  // do carimbo nunca chegavam a ser registradas.
+  if (!skiaReady) return null;
+
   return (
     <SafeAreaProvider>
-        <SkiaWebInitializer />
       <SettingsProvider>
         <GalleryProvider>
           <CaptureProvider>

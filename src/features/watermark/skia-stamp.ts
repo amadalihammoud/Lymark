@@ -4,6 +4,7 @@ import {
   type SkCanvas,
   type SkFont,
   type SkTypeface,
+  type DataModule,
   type SkTypefaceFontProvider,
 } from '@shopify/react-native-skia';
 
@@ -27,14 +28,30 @@ const FAMILIES: Record<StampFont, string> = {
 
 const NORMAL_STYLE = { weight: 400, width: 5, slant: 0 } as const;
 
+/**
+ * Normaliza o que o `require` de um `.ttf` devolve, que difere por plataforma.
+ *
+ * No nativo vem um número — o identificador do asset no registro do Metro. Na
+ * web vem a URL como string. O `resolveAsset` do Skia aceita o número e aceita
+ * `{ uri }`, mas NÃO aceita string pura: ele faz `"uri" in source`, o que
+ * lança `Cannot use 'in' operator` e deixava o app em tela branca na web.
+ *
+ * A checagem por tipo resolve os dois casos sem separar o arquivo por
+ * plataforma — o que duplicaria o desenhista do carimbo, justamente o que não
+ * pode ser duplicado.
+ */
+function fontAsset(mod: unknown): DataModule {
+  return (typeof mod === 'string' ? { uri: mod } : mod) as DataModule;
+}
+
 /** Carrega as fontes embutidas. `null` enquanto não terminam de carregar. */
 export function useStampFontProvider(): SkTypefaceFontProvider | null {
   return useFonts({
     [FAMILIES.clock]: [
-      require('@expo-google-fonts/pathway-gothic-one/400Regular/PathwayGothicOne_400Regular.ttf'),
+      fontAsset(require('@expo-google-fonts/pathway-gothic-one/400Regular/PathwayGothicOne_400Regular.ttf')),
     ],
-    [FAMILIES.body]: [require('@expo-google-fonts/barlow/400Regular/Barlow_400Regular.ttf')],
-    [FAMILIES.medium]: [require('@expo-google-fonts/barlow/500Medium/Barlow_500Medium.ttf')],
+    [FAMILIES.body]: [fontAsset(require('@expo-google-fonts/barlow/400Regular/Barlow_400Regular.ttf'))],
+    [FAMILIES.medium]: [fontAsset(require('@expo-google-fonts/barlow/500Medium/Barlow_500Medium.ttf'))],
   });
 }
 

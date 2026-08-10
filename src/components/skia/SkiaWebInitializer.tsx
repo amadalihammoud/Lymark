@@ -33,8 +33,20 @@ export function useSkiaStatus(): [SkiaLoadStatus, () => Promise<void>] {
     setStatus('loading');
 
     try {
-      // O LoadSkiaWeb carrega o CanvasKit WASM e define global.CanvasKit
-      await LoadSkiaWeb();
+      // Sem `locateFile`, o CanvasKit busca o `.wasm` ao lado do bundle —
+      // `/_expo/static/js/web/canvaskit.wasm` — onde ele não está. O
+      // `scripts/copy-wasm.js` deposita o arquivo na RAIZ do build, e é de
+      // lá que ele precisa ser pedido. As duas pontas andam juntas.
+      //
+      // `document.baseURI` em vez de um caminho absoluto: assim funciona
+      // tanto em `app.lymark.app/` quanto sob subcaminho, e no Electron, onde
+      // a origem é `app://lymark/`.
+      await LoadSkiaWeb({
+        locateFile: (file: string) =>
+          file.endsWith('.wasm') && typeof document !== 'undefined'
+            ? new URL('canvaskit.wasm', document.baseURI).href
+            : file,
+      });
       setStatus('ready');
     } catch (error) {
       console.error('[SkiaWebInitializer] Falha ao carregar CanvasKit:', error);

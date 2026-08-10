@@ -55,12 +55,11 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "web:build": "expo export --platform web",
+    "web:build": "expo export --platform web && node scripts/copy-wasm.js",
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
     "typecheck:desktop": "cd desktop && npx tsc --noEmit",
     "test": "jest",
-    "postbuild": "node scripts/copy-wasm.js",
     "desktop:dev": "cd desktop && npm run start",
     "desktop:build": "cd desktop && npm run build"
   },
