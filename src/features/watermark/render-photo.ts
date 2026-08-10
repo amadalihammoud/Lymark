@@ -1,4 +1,4 @@
-import { ImageFormat, Skia } from '@shopify/react-native-skia';
+import { ImageFormat, Skia, type SkImage } from '@shopify/react-native-skia';
 
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
@@ -23,6 +23,26 @@ import { buildStampGeometry, type StampColors } from './stamp-layout';
 /** Qualidade do JPEG. Alto o bastante para não marcar o texto do carimbo. */
 const JPEG_QUALITY = 92;
 
+/**
+ * Teto de resolução aceito para compor o carimbo.
+ *
+ * A composição precisa de DOIS bitmaps vivos ao mesmo tempo — a surface e o
+ * instantâneo — a 4 bytes por pixel. Em 120 MP isso dá cerca de 960 MB, que
+ * cabe com folga no limite de ~2 GB do heap do WebAssembly.
+ *
+ * O número foi escolhido por medição, não por estimativa. Acima dele o
+ * comportamento é ruim de três maneiras diferentes, e nenhuma é um erro
+ * limpo: por volta de 324 MP a surface é criada e o estouro só acontece no
+ * instantâneo; acima de ~538 MP o Skia devolve um objeto "verdadeiro" com
+ * referência nula, o que fazia a guarda existente passar direto; e um JPEG
+ * de 10 MB que decodifica para 900 MP chega a travar a thread por quase um
+ * minuto antes de falhar — no desktop, isso é a janela inteira congelada.
+ *
+ * 120 MP cobre com margem qualquer câmera de celular atual, inclusive os
+ * sensores de 108 MP.
+ */
+const MAX_PIXELS = 120_000_000;
+
 export class PhotoRenderError extends Error {
   constructor(message: string, options?: { cause?: unknown }) {
     super(message, options);
@@ -30,19 +50,46 @@ export class PhotoRenderError extends Error {
   }
 }
 
-export async function renderStampedPhoto({
-  photoUri,
-  metadata,
-  preferences,
-  colors,
-  renderer,
-}: {
+/**
+ * Libera um recurso do Skia sem deixar a limpeza derrubar o erro original.
+ *
+ * Quando o Skia recusa uma alocação, o objeto devolvido é "verdadeiro" mas
+ * carrega referência nula por dentro. Chamar `dispose()` nele lança — e um
+ * lançamento dentro do `finally` SUBSTITUI a exceção que estava subindo,
+ * trocando uma mensagem em português por um `TypeError` do motor gráfico.
+ * Era também o que impedia os recursos seguintes de serem liberados.
+ */
+function release(resource: { dispose: () => void } | null) {
+  try {
+    resource?.dispose();
+  } catch {
+    // Falha ao liberar não muda o resultado da exportação, e não pode
+    // mascarar o motivo real de uma falha nem interromper a limpeza.
+  }
+}
+
+export type StampedPhotoInput = {
   photoUri: string;
   metadata: CaptureMetadata;
   preferences: WatermarkPreferences;
   colors: StampColors;
   renderer: StampRenderer;
-}): Promise<string> {
+};
+
+/**
+ * Compõe o carimbo sobre a foto e devolve os bytes do JPEG.
+ *
+ * Separado de `renderStampedPhoto` porque nem todo destino é o histórico do
+ * app. O processamento em lote grava direto na pasta de saída escolhida, e
+ * passar pelo caminho de gravação padrão abriria um diálogo por foto.
+ */
+export async function composeStampedPhoto({
+  photoUri,
+  metadata,
+  preferences,
+  colors,
+  renderer,
+}: StampedPhotoInput): Promise<Uint8Array> {
   const data = await Skia.Data.fromURI(photoUri);
   const image = Skia.Image.MakeImageFromEncoded(data);
 
@@ -53,13 +100,33 @@ export async function renderStampedPhoto({
   const width = image.width();
   const height = image.height();
 
+  // A recusa acontece ANTES de alocar. A guarda seguinte, sozinha, era
+  // inalcançável: quando o Skia recusa a alocação ele devolve um objeto
+  // "verdadeiro" com referência nula por dentro, então `!surface` era falso e
+  // a falha só aparecia mais adiante, como TypeError do motor gráfico.
+  if (width * height > MAX_PIXELS) {
+    const megapixels = Math.round((width * height) / 1_000_000);
+    release(image);
+    throw new PhotoRenderError(
+      `A fotografia tem ${megapixels} MP e ultrapassa o limite de ` +
+        `${MAX_PIXELS / 1_000_000} MP para o carimbo. Reduza a resolução da ` +
+        'câmera ou escolha uma foto menor.',
+    );
+  }
+
   const surface = Skia.Surface.MakeOffscreen(width, height);
   if (!surface) {
-    // Acontece quando a imagem é grande demais para a memória disponível.
+    // Rede de segurança: com o teto acima, chegar aqui significa que a
+    // memória disponível é menor do que o esperado neste aparelho.
+    release(image);
     throw new PhotoRenderError(
       'A fotografia é grande demais para ser processada neste aparelho.',
     );
   }
+
+  // Declarado fora do `try` para que o `finally` alcance o instantâneo mesmo
+  // quando a falha acontece antes de ele existir.
+  let snapshot: SkImage | null = null;
 
   try {
     const canvas = surface.getCanvas();
@@ -78,19 +145,35 @@ export async function renderStampedPhoto({
 
     renderer.draw(canvas, geometry);
 
-    const bytes = surface.makeImageSnapshot().encodeToBytes(ImageFormat.JPEG, JPEG_QUALITY);
+    // O instantâneo é guardado numa variável porque precisa ser liberado: em
+    // WebAssembly o coletor do JavaScript não alcança o heap do Skia, e um
+    // instantâneo anônimo vazava o bitmap inteiro a cada exportação — 46 MB
+    // por foto de 4000x3000. Num lote de fotos de celular moderno, a terceira
+    // já estourava o limite de memória.
+    snapshot = surface.makeImageSnapshot();
+    const bytes = snapshot.encodeToBytes(ImageFormat.JPEG, JPEG_QUALITY);
     if (!bytes) {
       throw new PhotoRenderError('Não foi possível codificar a imagem final.');
     }
 
-    return writeExportedPhoto(bytes);
+    return bytes;
   } catch (error) {
     if (error instanceof PhotoRenderError) throw error;
     throw new PhotoRenderError('Não foi possível gerar a imagem com a marca d’água.', {
       cause: error,
     });
   } finally {
-    surface.dispose();
-    image.dispose();
+    release(snapshot);
+    release(surface);
+    release(image);
   }
+}
+
+/**
+ * Compõe o carimbo e grava no armazenamento do app, devolvendo o caminho.
+ *
+ * É o caminho da captura avulsa: a foto entra no histórico assim que existe.
+ */
+export async function renderStampedPhoto(input: StampedPhotoInput): Promise<string> {
+  return writeExportedPhoto(await composeStampedPhoto(input));
 }

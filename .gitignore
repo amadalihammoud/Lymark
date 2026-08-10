@@ -41,3 +41,9 @@ example
 # generated native folders
 /ios
 /android
+
+# Harness de fidelidade: saidas geradas. So a referencia de aparelho e versionada.
+scripts/harness/renders/
+scripts/harness/diff/
+scripts/harness/lib/.rn-skia-shim.js
+.harness-build/

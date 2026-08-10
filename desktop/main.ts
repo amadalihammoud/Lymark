@@ -1,0 +1,541 @@
+/**
+ * Ponto de entrada do Electron para o Lymark Desktop.
+ */
+
+import { app, BrowserWindow, protocol, ipcMain, dialog } from 'electron';
+import path from 'path';
+import fs from 'fs';
+import os from 'os';
+import { pathToFileURL } from 'url';
+import sizeOf from 'image-size';
+
+/** Raiz do build web servido pelo protocolo `app://`. */
+const DIST_DIR = path.join(__dirname, '../dist');
+
+/**
+ * Confirma que um caminho resolvido permanece dentro de um diretório base.
+ *
+ * `startsWith` sobre a string não serve: com base `.../Lymark`, o caminho
+ * `.../Lymark-malicioso/x.jpg` começa com a base e passaria. `path.relative`
+ * responde a pergunta certa — se for preciso subir (`..`) ou se o resultado
+ * for absoluto, o alvo está fora.
+ */
+function isInside(baseDir: string, target: string): boolean {
+  const rel = path.relative(baseDir, target);
+  return rel !== '' && !rel.startsWith('..') && !path.isAbsolute(rel);
+}
+
+/** As únicas extensões que o app processa, e que os diálogos oferecem. */
+const ACCEPTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
+
+/**
+ * Teto de leitura para descobrir dimensões.
+ *
+ * O cabeçalho dos três formatos aceitos vive nos primeiros quilobytes; ler a
+ * foto inteira só para medir carregava dezenas de megabytes por arquivo, e no
+ * lote isso se multiplica.
+ */
+const HEADER_BYTES = 4 * 1024 * 1024;
+
+/**
+ * Confere a assinatura do arquivo antes de entregá-lo ao `image-size`.
+ *
+ * O `image-size` detecta o formato pelo conteúdo, não pela extensão, e tem
+ * uma falha conhecida sem correção publicada: o parser de ICNS entra em laço
+ * infinito com cabeçalho forjado (advisory alcança <=2.0.2, que é a última
+ * versão que existe). Como ele roda de forma síncrona no processo principal,
+ * um laço ali congela a janela inteira, sem recuperação.
+ *
+ * Aceitando apenas JPEG, PNG e WebP pela assinatura, o caminho do ICNS deixa
+ * de ser alcançável — um `.jpg` com cabeçalho de ICNS é recusado aqui, antes
+ * de o parser ser chamado.
+ */
+function hasSupportedSignature(bytes: Buffer): boolean {
+  if (bytes.length < 12) return false;
+
+  const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+  const png = bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]));
+  const webp =
+    bytes.subarray(0, 4).toString('latin1') === 'RIFF' &&
+    bytes.subarray(8, 12).toString('latin1') === 'WEBP';
+
+  return jpeg || png || webp;
+}
+
+/** Dimensões de uma imagem, lendo só o cabeçalho e só de formato conhecido. */
+function readImageSize(filePath: string): { width: number; height: number } {
+  const handle = fs.openSync(filePath, 'r');
+  try {
+    const buffer = Buffer.alloc(Math.min(HEADER_BYTES, fs.fstatSync(handle).size));
+    fs.readSync(handle, buffer, 0, buffer.length, 0);
+
+    if (!hasSupportedSignature(buffer)) {
+      throw new Error('Formato de imagem não suportado.');
+    }
+
+    const { width, height } = sizeOf(buffer);
+    return { width: width ?? 0, height: height ?? 0 };
+  } finally {
+    fs.closeSync(handle);
+  }
+}
+
+// Variáveis globais
+let mainWindow: BrowserWindow | null = null;
+
+// Pasta da galeria do desktop (decisão 2.2: pasta real no disco)
+const GALLERY_DIR_NAME = 'Lymark';
+const DEFAULT_GALLERY_PATH = path.join(os.homedir(), 'Pictures', GALLERY_DIR_NAME);
+
+// Pasta de saída padrão para processamento em lote
+let outputFolderPath: string = DEFAULT_GALLERY_PATH;
+
+// Garantir que a pasta da galeria existe
+function ensureGalleryDir(): string {
+  if (!fs.existsSync(DEFAULT_GALLERY_PATH)) {
+    fs.mkdirSync(DEFAULT_GALLERY_PATH, { recursive: true });
+  }
+  return DEFAULT_GALLERY_PATH;
+}
+
+// Configurar o protocolo app:// antes do app estar pronto
+protocol.registerSchemesAsPrivileged([
+  {
+    scheme: 'app',
+    privileges: {
+      standard: true,
+      secure: true,
+      supportFetchAPI: true,
+      stream: true,
+    },
+  },
+  // Esquema separado só para as fotos da galeria. A janela roda sobre
+  // `app://`, e com `webSecurity` ligado uma origem dessas não carrega
+  // `file://` — sem isto, a galeria do desktop exibiria imagens quebradas.
+  {
+    scheme: 'media',
+    privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true },
+  },
+]);
+
+/**
+ * Criar a janela principal.
+ */
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    minWidth: 800,
+    minHeight: 600,
+    webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: false,
+      sandbox: true,
+      preload: path.join(__dirname, 'preload.js'),
+      webgl: true,
+      allowRunningInsecureContent: false,
+    },
+    title: 'Lymark',
+    icon: path.join(__dirname, '../assets/icon.png'),
+  });
+
+  // O sinalizador de plataforma NÃO é injetado aqui. O preload já expõe
+  // `window.lymark.platform` pelo contextBridge, que cria a propriedade como
+  // somente-leitura — reatribuir por executeJavaScript não teria efeito, ou
+  // sobrescreveria a ponte. Havia ainda uma corrida: `did-finish-load` chega
+  // depois de o módulo do app já ter lido o sinalizador.
+
+  // Nenhuma navegação para fora do app. Sem isto, uma URL externa carregaria
+  // NESTA janela, com o preload anexado — dando à página remota acesso a
+  // saveFile, deleteFile e aos seletores de arquivo.
+  //
+  // O evento é de `webContents`, não de `BrowserWindow`: a versão anterior
+  // registrava em `mainWindow`, que não emite `will-navigate`, então a
+  // proteção existia no código e nunca era executada.
+  mainWindow.webContents.on('will-navigate', (event, url) => {
+    if (!url.startsWith('app://')) event.preventDefault();
+  });
+
+  // Janela nova (window.open, target=_blank) é sempre negada. Se um dia for
+  // preciso abrir um link, o certo é entregar ao navegador do sistema com
+  // shell.openExternal, nunca abrir uma BrowserWindow com preload.
+  mainWindow.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+
+  // Carregar o app. O protocolo já foi registrado em `whenReady`; registrar
+  // de novo aqui lançava "Attempted to register a second handler for 'app'".
+  if (process.env.WEBPACK_DEV_SERVER_URL) {
+    mainWindow.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
+  } else {
+    mainWindow.loadURL('app://lymark/index.html');
+  }
+
+  if (process.env.NODE_ENV === 'development') {
+    mainWindow.webContents.openDevTools();
+  }
+
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
+}
+
+// Registrar handlers de IPC
+function registerIpcHandlers() {
+  // Handler para salvar arquivo (diálogo de salvamento)
+  ipcMain.handle('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
+    const { filePath } = await dialog.showSaveDialog({
+      title: 'Salvar Foto',
+      defaultPath: filename,
+      filters: [
+        { name: 'JPEG', extensions: ['jpg', 'jpeg'] },
+        { name: 'Todos os arquivos', extensions: ['*'] },
+      ],
+    });
+
+    if (!filePath) {
+      return { status: 'cancelled' };
+    }
+
+    try {
+      const buffer = Buffer.from(bytes);
+      fs.writeFileSync(filePath, buffer);
+      return { status: 'saved', path: filePath };
+    } catch (error) {
+      return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
+    }
+  });
+
+  // Handler para salvar arquivo na pasta de saída (sem diálogo)
+  ipcMain.handle('save-file-to-output', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
+    try {
+      // Garantir que a pasta de saída existe
+      if (!fs.existsSync(outputFolderPath)) {
+        fs.mkdirSync(outputFolderPath, { recursive: true });
+      }
+      
+      // O nome vem do renderer. Sem reduzi-lo ao último segmento, um
+      // "../../.bashrc" ou "..\\Startup\\x.exe" sairia da pasta de saída e
+      // gravaria em qualquer lugar do disco — este handler grava SEM diálogo,
+      // então não há confirmação do usuário no caminho.
+      const safeName = path.basename(filename);
+      const filePath = path.join(outputFolderPath, safeName);
+
+      if (!isInside(outputFolderPath, filePath)) {
+        return { status: 'failed', error: 'Nome de arquivo inválido.' };
+      }
+
+      const buffer = Buffer.from(bytes);
+      fs.writeFileSync(filePath, buffer);
+      return { status: 'saved', path: filePath };
+    } catch (error) {
+      return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
+    }
+  });
+
+  // Handler para gravar na galeria do desktop, SEM diálogo.
+  //
+  // O `save-file` abre um seletor a cada chamada, o que serve para "exportar
+  // para outro lugar" mas não para "guardar no histórico": a captura avulsa
+  // grava sozinha, como no celular.
+  ipcMain.handle('save-to-gallery', async (event, { bytes, filename }: { bytes: number[]; filename: string }) => {
+    try {
+      const galleryDir = ensureGalleryDir();
+      const safeName = path.basename(filename);
+      const filePath = path.join(galleryDir, safeName);
+
+      if (!isInside(galleryDir, filePath)) {
+        return { status: 'failed', error: 'Nome de arquivo inválido.' };
+      }
+
+      fs.writeFileSync(filePath, Buffer.from(bytes));
+      return { status: 'saved', path: safeName };
+    } catch (error) {
+      return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
+    }
+  });
+
+  // Handler para apagar arquivo da galeria
+  // SÓ apaga arquivos dentro da pasta da galeria (segurança)
+  ipcMain.handle('delete-file', async (event, { path: relativePath }: { path: string }) => {
+    try {
+      // Resolver o caminho absoluto
+      const galleryDir = ensureGalleryDir();
+      const fullPath = path.resolve(galleryDir, relativePath);
+      
+      // Esta checagem já foi corrigida uma vez (commit 29adb69) e voltou ao
+      // estado vulnerável quando o arquivo foi reescrito por inteiro. Se
+      // reaparecer um `startsWith` aqui, é regressão — não simplificação.
+      if (!isInside(galleryDir, fullPath)) {
+        throw new Error('Caminho fora da pasta da galeria');
+      }
+      
+      // Verificar que o arquivo existe
+      if (!fs.existsSync(fullPath)) {
+        return { ok: false, error: 'Arquivo não encontrado' };
+      }
+      
+      // Apagar o arquivo
+      fs.unlinkSync(fullPath);
+      return { ok: true };
+    } catch (error) {
+      return { 
+        ok: false, 
+        error: error instanceof Error ? error.message : String(error) 
+      };
+    }
+  });
+
+  // Handler para selecionar imagem
+  ipcMain.handle('pick-image', async () => {
+    const { filePaths } = await dialog.showOpenDialog({
+      title: 'Selecionar Foto',
+      properties: ['openFile'],
+      filters: [
+        { name: 'Imagens', extensions: ['jpg', 'jpeg', 'png', 'webp'] },
+        { name: 'Todos os arquivos', extensions: ['*'] },
+      ],
+    });
+
+    if (!filePaths || filePaths.length === 0) {
+      return { status: 'cancelled' };
+    }
+
+    const filePath = filePaths[0];
+    // `file://` + caminho cru produz URI inválida no Windows: barras
+    // invertidas, sem a terceira barra, e espaço ou `#` no nome quebram tudo.
+    // `pathToFileURL` codifica corretamente nas três plataformas.
+    const uri = pathToFileURL(filePath).href;
+
+    try {
+      const { width, height } = readImageSize(filePath);
+      return { status: 'selected', uri, width, height };
+    } catch {
+      return { status: 'selected', uri, width: 0, height: 0 };
+    }
+  });
+
+  // Handler para selecionar múltiplas imagens (processamento em lote)
+  ipcMain.handle('pick-images', async () => {
+    const { filePaths } = await dialog.showOpenDialog({
+      title: 'Selecionar Fotos para Lote',
+      properties: ['openFile', 'multiSelections'],
+      filters: [
+        { name: 'Imagens', extensions: ['jpg', 'jpeg', 'png', 'webp'] },
+        { name: 'Todos os arquivos', extensions: ['*'] },
+      ],
+    });
+
+    if (!filePaths || filePaths.length === 0) {
+      return { status: 'cancelled' };
+    }
+
+    const results = [];
+
+    for (const filePath of filePaths) {
+      try {
+        const { width, height } = readImageSize(filePath);
+        results.push({ uri: pathToFileURL(filePath).href, width, height });
+      } catch {
+        // Um arquivo ilegível não pode derrubar o lote inteiro.
+        continue;
+      }
+    }
+
+    return { status: 'selected', photos: results };
+  });
+
+  // Handler para selecionar pasta de saída
+  ipcMain.handle('select-output-folder', async () => {
+    const { filePaths } = await dialog.showOpenDialog({
+      title: 'Selecionar Pasta de Saída',
+      properties: ['openDirectory'],
+    });
+
+    if (!filePaths || filePaths.length === 0) {
+      return { status: 'cancelled' };
+    }
+
+    outputFolderPath = filePaths[0];
+    return { status: 'selected', path: outputFolderPath };
+  });
+
+  // Handler para obter pasta de saída atual
+  ipcMain.handle('get-output-folder', async () => {
+    return { path: outputFolderPath };
+  });
+
+  // Handler para adicionar arquivo via drag and drop
+  ipcMain.handle('add-drag-drop-file', async (event, { filePath }: { filePath: string }) => {
+    // O caminho vem do renderer, não de um diálogo do sistema. Aceitar
+    // qualquer um daria ao renderer um primitivo de leitura de arquivo
+    // arbitrário. Restringimos ao que o app sabe processar e exigimos
+    // arquivo comum — o mesmo conjunto de extensões dos diálogos.
+    if (!ACCEPTED_IMAGE_EXTENSIONS.includes(path.extname(filePath).toLowerCase())) {
+      return null;
+    }
+
+    try {
+      if (!fs.statSync(filePath).isFile()) return null;
+      const { width, height } = readImageSize(filePath);
+      return { uri: pathToFileURL(filePath).href, width, height };
+    } catch {
+      return null;
+    }
+  });
+}
+
+// Configurar o protocolo app:// para servir o build estático
+const CONTENT_TYPES: Record<string, string> = {
+  '.html': 'text/html',
+  '.js': 'application/javascript',
+  '.css': 'text/css',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp',
+  '.svg': 'image/svg+xml',
+  // Sem este, `WebAssembly.instantiateStreaming` recusa o CanvasKit e o
+  // carimbo nunca é desenhado no desktop.
+  '.wasm': 'application/wasm',
+  '.json': 'application/json',
+  '.ico': 'image/x-icon',
+  '.ttf': 'font/ttf',
+  '.otf': 'font/otf',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+};
+
+/**
+ * Política de conteúdo do aplicativo empacotado.
+ *
+ * Tudo vem do próprio pacote; nada é buscado na rede. `wasm-unsafe-eval` é
+ * exigido pelo CanvasKit, `unsafe-inline` em estilos pelo react-native-web,
+ * que injeta as folhas em tempo de execução, e `blob:`/`data:` pelas imagens
+ * que o app gera em memória.
+ */
+const CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "script-src 'self' 'wasm-unsafe-eval'",
+  "style-src 'self' 'unsafe-inline'",
+  // `media:` é o esquema das fotos da galeria, servido por createMediaProtocol.
+  "img-src 'self' data: blob: media:",
+  "font-src 'self' data:",
+  "connect-src 'self' data: blob:",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "base-uri 'self'",
+  "form-action 'none'",
+].join('; ');
+
+function createProtocol() {
+  protocol.handle('app', (request) => {
+    // `new URL` em vez de manipular a string: a versão anterior fazia
+    // `replace('app:///', '')` enquanto a janela carregava `app://./…` — com
+    // duas barras, não três. O replace não casava, o caminho resultante era
+    // literalmente "app:/…" e nada era encontrado.
+    let pathname: string;
+    try {
+      pathname = decodeURIComponent(new URL(request.url).pathname);
+    } catch {
+      return new Response('Bad Request', { status: 400 });
+    }
+
+    const requested = path.join(DIST_DIR, pathname);
+
+    // O handler nunca deve servir nada fora do build. A normalização de
+    // segmentos que o Chromium faz em esquemas `standard` já barra o caso
+    // óbvio, mas depender disso é apoiar a segurança num detalhe implícito
+    // do navegador em vez de numa verificação nossa.
+    if (requested !== DIST_DIR && !isInside(DIST_DIR, requested)) {
+      return new Response('Forbidden', { status: 403 });
+    }
+
+    try {
+      const target = fs.existsSync(requested) && fs.statSync(requested).isDirectory()
+        ? path.join(requested, 'index.html')
+        : requested;
+
+      if (!fs.existsSync(target)) {
+        return new Response('Not Found', { status: 404 });
+      }
+
+      const contentType = CONTENT_TYPES[path.extname(target).toLowerCase()]
+        ?? 'application/octet-stream';
+
+      const headers: Record<string, string> = { 'Content-Type': contentType };
+      if (contentType === 'text/html') {
+        headers['Content-Security-Policy'] = CONTENT_SECURITY_POLICY;
+      }
+
+      return new Response(fs.readFileSync(target), { headers });
+    } catch {
+      return new Response('Not Found', { status: 404 });
+    }
+  });
+}
+
+/**
+ * Serve as fotos da galeria para a janela.
+ *
+ * Aceita apenas o nome do arquivo, nunca um caminho: o renderer não escolhe
+ * diretório. A contenção é conferida de novo aqui, e não só na origem do
+ * nome, porque este handler responde a qualquer URL que a página pedir.
+ */
+function createMediaProtocol() {
+  protocol.handle('media', (request) => {
+    let requestedName: string;
+    try {
+      requestedName = path.basename(decodeURIComponent(new URL(request.url).pathname));
+    } catch {
+      return new Response('Bad Request', { status: 400 });
+    }
+
+    const galleryDir = ensureGalleryDir();
+    const filePath = path.join(galleryDir, requestedName);
+
+    if (!isInside(galleryDir, filePath) || !fs.existsSync(filePath)) {
+      return new Response('Not Found', { status: 404 });
+    }
+
+    const contentType = CONTENT_TYPES[path.extname(filePath).toLowerCase()];
+    if (!contentType?.startsWith('image/')) {
+      return new Response('Forbidden', { status: 403 });
+    }
+
+    return new Response(fs.readFileSync(filePath), {
+      headers: { 'Content-Type': contentType },
+    });
+  });
+}
+
+// App pronto
+app.whenReady().then(() => {
+  // Garantir que a pasta da galeria existe
+  ensureGalleryDir();
+  outputFolderPath = DEFAULT_GALLERY_PATH;
+
+  // Configurar o protocolo
+  createProtocol();
+  createMediaProtocol();
+  
+  // Registrar handlers de IPC
+  registerIpcHandlers();
+  
+  // Criar janela
+  createWindow();
+  
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
+  });
+});
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('will-quit', () => {
+  mainWindow = null;
+});

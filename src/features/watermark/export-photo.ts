@@ -28,6 +28,15 @@ export type SaveOutcome =
 
 export type ShareOutcome =
   | { status: 'shared' }
+  /**
+   * O usuário fechou a folha de compartilhamento.
+   *
+   * O `Sharing.shareAsync` do nativo resolve igual em compartilhamento e em
+   * desistência, então este estado não nasce aqui — nasce na web, onde a
+   * Web Share API rejeita com `AbortError`. Faz parte do tipo porque quem
+   * consome é o mesmo código nas duas plataformas, e desistir não é falha.
+   */
+  | { status: 'cancelled' }
   | { status: 'unavailable' }
   | { status: 'failed'; error: unknown };
 

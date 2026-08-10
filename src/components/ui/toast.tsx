@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Animated, Easing, StyleSheet, Text, View, useAnimatedValue } from 'react-native';
+import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors, radius, spacing, typography } from '@/theme';
@@ -33,7 +33,11 @@ export function Toast({
   message: ToastMessage | null;
   onHide: () => void;
 }) {
-  const opacity = useAnimatedValue(0);
+  // `useAnimatedValue` existe no React Native mas NÃO no react-native-web:
+  // o app quebrava na inicialização com "useAnimatedValue is not a function",
+  // e a tela ficava em branco. Esta forma é equivalente e funciona nas três
+  // plataformas — o valor é criado uma vez e sobrevive aos renders.
+  const opacity = useRef(new Animated.Value(0)).current;
   const onHideRef = useRef(onHide);
 
   useEffect(() => {

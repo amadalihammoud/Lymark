@@ -8,6 +8,7 @@
     "@expo/vector-icons": "^15.0.2",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@shopify/react-native-skia": "2.6.2",
+    "exifreader": "^4.42.0",
     "expo": "~57.0.9",
     "expo-application": "~57.0.2",
     "expo-constants": "~57.0.8",
@@ -24,6 +25,8 @@
     "expo-splash-screen": "~57.0.5",
     "expo-status-bar": "~57.0.1",
     "expo-system-ui": "~57.0.2",
+    "pixelmatch": "^7.2.0",
+    "pngjs": "^7.0.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-native": "0.86.2",
@@ -36,9 +39,13 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
+    "@types/node": "^22.9.0",
     "@types/react": "~19.2.2",
+    "electron": "^32.0.0",
+    "electron-builder": "^25.0.0",
     "eslint": "^9.39.5",
     "eslint-config-expo": "^57.0.1",
+    "image-size": "^1.1.0",
     "jest": "^29.7.0",
     "jest-expo": "~57.0.3",
     "typescript": "~6.0.3"
@@ -48,9 +55,13 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "web:build": "expo export --platform web && node scripts/copy-wasm.js",
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "typecheck:desktop": "cd desktop && npx tsc --noEmit",
+    "test": "jest",
+    "desktop:dev": "cd desktop && npm run start",
+    "desktop:build": "cd desktop && npm run build"
   },
   "private": true,
   "overrides": {

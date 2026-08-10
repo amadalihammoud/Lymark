@@ -1,0 +1,25 @@
+{
+  "name": "lymark-desktop",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --win --linux",
+    "build:windows": "electron-builder build --win",
+    "build:linux": "electron-builder build --linux",
+    "build:dir": "electron-builder build --dir",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "electron": "^32.0.0",
+    "image-size": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/electron": "^29.0.0",
+    "electron-builder": "^25.0.0",
+    "typescript": "~6.0.3",
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.0.1"
+  }
+}
