@@ -23,6 +23,14 @@ export type PickResult =
   | { status: 'failed'; error: unknown };
 
 /**
+ * Resultado de seleção de pasta.
+ */
+export type FolderResult =
+  | { status: 'selected'; path: string }
+  | { status: 'cancelled' }
+  | { status: 'failed'; error: unknown };
+
+/**
  * Plataforma de execução.
  */
 export type ExecutionPlatform = 'mobile' | 'web' | 'desktop';
@@ -33,9 +41,13 @@ export type ExecutionPlatform = 'mobile' | 'web' | 'desktop';
 export interface WindowLymark {
   platform: 'desktop';
   saveFile?: (bytes: Uint8Array, filename: string, mimeType: string) => Promise<SaveResult>;
+  saveFileToOutput?: (bytes: Uint8Array, filename: string, mimeType: string) => Promise<SaveResult>;
   deleteFile?: (path: string) => Promise<{ ok: boolean; error?: string }>;
   pickImage?: () => Promise<PickResult>;
   pickImages?: () => Promise<{ status: 'selected' | 'cancelled' | 'failed'; photos?: Array<{ uri: string; width: number; height: number }>; error?: string }>;
+  selectOutputFolder?: () => Promise<FolderResult>;
+  getOutputFolder?: () => Promise<{ path: string }>;
+  onDragDrop?: (callback: (filePath: string) => void) => void;
 }
 
 declare global {
@@ -89,6 +101,35 @@ export async function saveFile(
     default:
       return { status: 'failed', error: new Error(`Plataforma desconhecida: ${platform}`) };
   }
+}
+
+/**
+ * Salva um arquivo na pasta de saída (para processamento em lote).
+ * No desktop, usa a API saveFileToOutput do IPC.
+ */
+export async function saveFileToOutput(
+  bytes: Uint8Array,
+  filename: string,
+  mimeType: string = 'image/jpeg',
+): Promise<SaveResult> {
+  const platform = getExecutionPlatform();
+
+  // Para desktop, usar a API específica do IPC
+  if (platform === 'desktop') {
+    if (typeof window !== 'undefined' && window.lymark?.saveFileToOutput) {
+      try {
+        const result = await window.lymark.saveFileToOutput(bytes, filename, mimeType);
+        return result;
+      } catch (error) {
+        return { status: 'failed', error };
+      }
+    }
+    // Fallback para saveFile se saveFileToOutput não estiver disponível
+    return saveFile(bytes, filename, mimeType);
+  }
+
+  // Para web e mobile, usar saveFile normal
+  return saveFile(bytes, filename, mimeType);
 }
 
 function saveFileWeb(
@@ -147,6 +188,7 @@ async function saveFileMobile(
   }
 }
 
+
 async function saveFileDesktop(
   bytes: Uint8Array,
   filename: string,
@@ -177,6 +219,29 @@ export async function pickImage(): Promise<PickResult> {
       return pickImageMobile();
     case 'desktop':
       return pickImageDesktop();
+    default:
+      return { status: 'failed', error: new Error(`Plataforma desconhecida: ${platform}`) };
+  }
+}
+
+/**
+ * Seleciona múltiplas imagens (para processamento em lote).
+ */
+export async function pickImages(): Promise<{ status: 'selected' | 'cancelled' | 'failed'; photos?: Array<{ uri: string; width: number; height: number }>; error?: string }> {
+  const platform = getExecutionPlatform();
+
+  switch (platform) {
+    case 'web':
+      return pickImagesWeb();
+    case 'mobile':
+      // No mobile, não há suporte para múltipla seleção ainda
+      const result = await pickImage();
+      if (result.status === 'selected') {
+        return { status: 'selected', photos: [{ uri: result.uri, width: result.width, height: result.height }] };
+      }
+      return result;
+    case 'desktop':
+      return pickImagesDesktop();
     default:
       return { status: 'failed', error: new Error(`Plataforma desconhecida: ${platform}`) };
   }
@@ -221,6 +286,56 @@ async function pickImageWeb(): Promise<PickResult> {
   });
 }
 
+async function pickImagesWeb(): Promise<{ status: 'selected' | 'cancelled' | 'failed'; photos?: Array<{ uri: string; width: number; height: number }>; error?: string }> {
+  return new Promise((resolve) => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.multiple = true;
+    input.capture = 'environment';
+    
+    input.onchange = async (event) => {
+      const files = (event.target as HTMLInputElement).files;
+      
+      if (!files || files.length === 0) {
+        resolve({ status: 'cancelled' });
+        return;
+      }
+      
+      const photos: Array<{ uri: string; width: number; height: number }> = [];
+      
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        
+        await new Promise<void>((imgResolve) => {
+          img.onload = () => {
+            photos.push({
+              uri: url,
+              width: img.width,
+              height: img.height,
+            });
+            URL.revokeObjectURL(url);
+            imgResolve();
+          };
+          
+          img.onerror = () => {
+            URL.revokeObjectURL(url);
+            imgResolve();
+          };
+          
+          img.src = url;
+        });
+      }
+      
+      resolve({ status: 'selected', photos });
+    };
+    
+    input.click();
+  });
+}
+
 async function pickImageMobile(): Promise<PickResult> {
   try {
     const ImagePicker = await import('expo-image-picker');
@@ -259,6 +374,19 @@ async function pickImageMobile(): Promise<PickResult> {
   }
 }
 
+async function pickImagesDesktop(): Promise<{ status: 'selected' | 'cancelled' | 'failed'; photos?: Array<{ uri: string; width: number; height: number }>; error?: string }> {
+  if (typeof window !== 'undefined' && window.lymark?.pickImages) {
+    try {
+      const result = await window.lymark.pickImages();
+      return result;
+    } catch (error) {
+      return { status: 'failed', error };
+    }
+  }
+  
+  return { status: 'failed', error: new Error('IPC não disponível') };
+}
+
 async function pickImageDesktop(): Promise<PickResult> {
   if (typeof window !== 'undefined' && window.lymark?.pickImage) {
     try {
@@ -270,4 +398,48 @@ async function pickImageDesktop(): Promise<PickResult> {
   }
   
   return { status: 'failed', error: new Error('IPC não disponível') };
+}
+
+/**
+ * Seleciona pasta de saída (apenas desktop).
+ */
+export async function selectOutputFolder(): Promise<FolderResult> {
+  const platform = getExecutionPlatform();
+
+  if (platform !== 'desktop') {
+    return { status: 'failed', error: new Error('Seleção de pasta só disponível no desktop') };
+  }
+
+  if (typeof window !== 'undefined' && window.lymark?.selectOutputFolder) {
+    try {
+      const result = await window.lymark.selectOutputFolder();
+      return result;
+    } catch (error) {
+      return { status: 'failed', error };
+    }
+  }
+  
+  return { status: 'failed', error: new Error('IPC não disponível') };
+}
+
+/**
+ * Obtém a pasta de saída atual (apenas desktop).
+ */
+export async function getOutputFolder(): Promise<string> {
+  const platform = getExecutionPlatform();
+
+  if (platform !== 'desktop') {
+    return '';
+  }
+
+  if (typeof window !== 'undefined' && window.lymark?.getOutputFolder) {
+    try {
+      const result = await window.lymark.getOutputFolder();
+      return result.path || '';
+    } catch {
+      return '';
+    }
+  }
+  
+  return '';
 }
