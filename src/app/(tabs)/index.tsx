@@ -38,7 +38,6 @@ const LOOKUP_MESSAGES: Record<AddressLookupStatus, string> = {
   unavailable: 'Não foi possível resolver o endereço nesta posição. Digite manualmente.',
 };
 
-
 /** Qual ação está em curso — as duas geram imagem e não podem se sobrepor. */
 type PendingAction = 'save' | 'share';
 
@@ -57,73 +56,39 @@ export default function CaptureScreen() {
   const { preferences } = useSettings();
   const { addEntry } = useGallery();
   const { notify, ask } = useFeedback();
-  // O `status` do hook serve ao indicador de carregamento; a causa da falha
-  // vem do retorno do `lookup`, que é o desfecho daquela chamada.
   const { lookup, isLoading: locating } = useAddressLookup();
 
   const [pending, setPending] = useState<PendingAction | null>(null);
-  /**
-   * Câmera ou seletor abertos.
-   *
-   * Entre o toque e a tela nativa aparecer não há retorno nenhum, e num
-   * aparelho lento o usuário toca de novo. A segunda chamada concorre com a
-   * primeira e o app avisa "não foi possível abrir a foto" enquanto a câmera
-   * está justamente abrindo.
-   */
   const [picking, setPicking] = useState(false);
   const fontProvider = useStampFontProvider();
   const busy = pending !== null;
 
-  /**
-   * Identifica a busca de endereço em curso.
-   *
-   * O GPS pode demorar segundos dentro de um galpão. Sem este controle, a
-   * resposta atrasada sobrescreveria em silêncio um endereço que o usuário
-   * digitou à mão enquanto esperava — dado errado carimbado em prova
-   * documental — ou reapareceria dentro de uma captura já reiniciada.
-   */
+  /** Identifica a busca de endereço em curso. */
   const lookupToken = useRef(0);
 
-  /**
-   * O usuário digitou o próprio código.
-   *
-   * O campo é editável, e quem o preenche à mão costuma estar amarrando a foto
-   * a uma ordem de serviço. Ressortear em cima disso destruiria o vínculo sem
-   * avisar — então a renovação automática só vale para o código que o próprio
-   * app gerou.
-   */
+  /** O usuário digitou o próprio código. */
   const codeEdited = useRef(false);
   const addressRef = useRef(draft.metadata.address);
   useEffect(() => {
     addressRef.current = draft.metadata.address;
   }, [draft.metadata.address]);
 
-  // O que efetivamente vai para a foto: campo ligado nas preferências **e**
-  // com conteúdo. É a mesma função que o carimbo usa, então não diverge.
   const content = buildWatermarkContent(draft.metadata, preferences);
   const stampedFields = WATERMARK_FIELD_KEYS.filter((key) => content[key] !== null);
 
   const applyPickResult = (result: PhotoPickResult) => {
     switch (result.status) {
       case 'selected': {
-        // Só realinha o relógio na primeira foto. Trocar a foto de uma
-        // captura em andamento não pode apagar uma hora que o usuário
-        // corrigiu à mão — para isso existe o botão "Agora".
         const isFirstPhoto = !hasPhoto;
         setPhoto(result.photo);
         if (isFirstPhoto) {
           syncDateTime();
         } else if (!codeEdited.current) {
-          // Foto nova, código novo. Sem isto, quem fotografa o segundo item
-          // sem passar por "Começar nova captura" exporta duas imagens com o
-          // mesmo identificador — e o campo existe justamente para distinguir
-          // uma foto da outra fora do app.
           regenerateCode();
         }
         break;
       }
       case 'denied':
-        // Traz instrução: exige leitura, então trava a tela.
         ask({
           title: 'Permissão necessária',
           message: 'Libere o acesso em Configurações › Permissões para continuar.',
@@ -160,13 +125,9 @@ export default function CaptureScreen() {
     const addressWhenRequested = addressRef.current;
     const { status, address } = await lookup();
 
-    // Outra busca começou, ou a captura foi reiniciada: a resposta caducou.
     if (token !== lookupToken.current) return;
 
     if (!address) {
-      // O desfecho vem da própria chamada. Ler o `status` do estado daria a
-      // causa da tentativa anterior — o mapa de mensagens existe justamente
-      // para dar a saída certa a cada motivo.
       ask({
         title: 'Endereço não obtido',
         message: LOOKUP_MESSAGES[status] || LOOKUP_MESSAGES.unavailable,
@@ -175,12 +136,10 @@ export default function CaptureScreen() {
       return;
     }
 
-    // O usuário digitou enquanto o GPS respondia. O que ele escreveu vale
-    // mais que uma aproximação — mas ele decide.
     if (addressRef.current !== addressWhenRequested && addressRef.current.trim()) {
       ask({
         title: 'Substituir o endereço digitado?',
-        message: `O GPS encontrou:\n\n${address}\,`
+        message: `O GPS encontrou:\n\n${address}`,
         actions: [
           { label: 'Usar o do GPS', onPress: () => setField('address', address) },
           { label: 'Manter o meu', variant: 'ghost' },
@@ -193,8 +152,6 @@ export default function CaptureScreen() {
   };
 
   const handleReset = useCallback(() => {
-    // Único caminho do app que descarta trabalho ainda não exportado, e logo
-    // abaixo dos botões de ação. Confirmar não é excesso de zelo.
     ask({
       title: 'Começar nova captura?',
       message: 'A foto escolhida e os campos preenchidos serão descartados.',
@@ -203,8 +160,6 @@ export default function CaptureScreen() {
           label: 'Descartar',
           destructive: true,
           onPress: () => {
-            // Invalida qualquer busca pendente: a resposta não pode cair na
-            // captura nova.
             lookupToken.current += 1;
             codeEdited.current = false;
             resetDraft();
@@ -215,20 +170,17 @@ export default function CaptureScreen() {
     });
   }, [ask, resetDraft]);
 
+  const handleBatchProcessing = useCallback(() => {
+    router.push('/batch');
+  }, [router]);
+
   const runAction = async (action: PendingAction) => {
     const photo = draft.photo;
-    // As fontes do carimbo são as mesmas do desenho na tela; sem elas o
-    // arquivo sairia com a tipografia errada, e a geometria foi medida para
-    // estas. Melhor não exportar do que exportar torto.
     if (!photo || !fontProvider) {
       notify('O carimbo ainda está sendo preparado.', 'warning');
       return;
     }
 
-    // Invalida qualquer busca de endereço em curso. A imagem é rasterizada a
-    // partir da árvore de views viva: se o GPS respondesse durante a geração,
-    // a foto sairia com o endereço novo e o histórico registraria o antigo —
-    // divergência inaceitável num registro documental.
     lookupToken.current += 1;
     setPending(action);
     try {
@@ -239,19 +191,11 @@ export default function CaptureScreen() {
         colors: STAMP_COLORS,
         renderer: createStampRenderer(fontProvider),
       });
-      // O histórico registra sempre, em qualquer das duas ações: é a rede de
-      // segurança contra perder uma captura por causa de uma permissão negada
-      // ou de um compartilhamento cancelado.
       addEntry({ path, metadata: draft.metadata, stampedFields });
 
       if (action === 'save') {
         const outcome = await saveToDeviceGallery(path);
-        // Cada desfecho tem uma causa diferente e um remédio diferente. Dizer
-        // "permissão negada" para todos mandava o usuário a um ajuste que já
-        // estava correto.
         if (outcome.status === 'saved') {
-          // Sucesso não interrompe: quem está em campo exporta uma foto a
-          // trás da outra, e um OK a cada uma seriam dezenas de toques por dia.
           notify('Foto salva na galeria do aparelho e no histórico.');
         } else if (outcome.status === 'denied') {
           ask({
@@ -280,8 +224,6 @@ export default function CaptureScreen() {
           actions: [{ label: 'Entendi' }],
         });
       } else if (outcome.status === 'failed') {
-        // A imagem existe e já está no histórico. Chamar isto de "falha ao
-        // gerar" faria o usuário exportar de novo e duplicar o registro.
         ask({
           title: 'Não foi possível compartilhar',
           message:
@@ -323,18 +265,6 @@ export default function CaptureScreen() {
     <Screen>
       <AppHeader tagline="Marca d’água com hora, data e local" />
 
-      {/* Botão para processamento em lote - apenas desktop */}
-      {isDesktop() && (
-        <Link href="/batch" asChild>
-          <Button
-            label="Processamento em Lote"
-            icon="grid-outline"
-            variant="secondary"
-            style={styles.batchButton}
-          />
-        </Link>
-      )}
-
       <PhotoPreview
         photo={draft.photo}
         metadata={draft.metadata}
@@ -358,8 +288,6 @@ export default function CaptureScreen() {
         }}
         onLocate={handleLocate}
         locating={locating}
-        // Mexer nos campos durante a captura nativa faria o carimbo da
-        // imagem divergir do que está na tela.
         disabled={busy}
       />
 
@@ -369,7 +297,7 @@ export default function CaptureScreen() {
         </Text>
       ) : null}
 
-      {/* Duas ações, dois destinos. "Exportar" não dizia para onde a foto ia. */}
+      {/* Duas ações, dois destinos. */}
       <View style={styles.actions}>
         <Button
           label="Salvar"
@@ -383,7 +311,7 @@ export default function CaptureScreen() {
         <Button
           label="Compartilhar"
           icon="share-social"
-          variant="primaryAlt"
+          variant="primary"
           onPress={() => requestAction('share')}
           disabled={!hasPhoto || pending === 'save'}
           loading={pending === 'share'}
@@ -392,15 +320,24 @@ export default function CaptureScreen() {
       </View>
 
       {hasPhoto ? (
-        <Button
-          label="Começar nova captura"
-          icon="refresh"
-          variant="ghost"
-          onPress={handleReset}
-          // Desmontar o preview no meio da captura derrubaria a geração e o
-          // usuário perderia a foto e o rascunho de uma vez.
-          disabled={busy}
-        />
+        <>
+          <Button
+            label="Começar nova captura"
+            icon="refresh"
+            variant="ghost"
+            onPress={handleReset}
+            disabled={busy}
+          />
+          {isDesktop() && (
+            <Button
+              label="Processamento em Lote"
+              icon="images"
+              variant="secondary"
+              onPress={handleBatchProcessing}
+              style={styles.batchButton}
+            />
+          )}
+        </>
       ) : (
         <Text style={styles.hint}>Escolha uma foto para habilitar as ações.</Text>
       )}
@@ -417,7 +354,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   batchButton: {
-    marginBottom: spacing.md,
+    marginTop: spacing.sm,
   },
   warning: {
     ...typography.caption,
