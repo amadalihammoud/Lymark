@@ -48,6 +48,11 @@ export interface WindowLymark {
   saveFile?: (bytes: Uint8Array, filename: string, mimeType: string) => Promise<SaveResult>;
   saveFileToOutput?: (bytes: Uint8Array, filename: string, mimeType: string) => Promise<SaveResult>;
   deleteFile?: (path: string) => Promise<{ ok: boolean; error?: string }>;
+  /** Grava no histórico do desktop, sem diálogo. */
+  saveToGallery?: (
+    bytes: Uint8Array,
+    filename: string,
+  ) => Promise<{ status: 'saved' | 'failed'; path?: string; error?: string }>;
   pickImage?: () => Promise<PickResult>;
   pickImages?: () => Promise<{ status: 'selected' | 'cancelled' | 'failed'; photos?: Array<{ uri: string; width: number; height: number }>; error?: string }>;
   selectOutputFolder?: () => Promise<FolderResult>;

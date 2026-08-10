@@ -109,6 +109,13 @@ protocol.registerSchemesAsPrivileged([
       stream: true,
     },
   },
+  // Esquema separado só para as fotos da galeria. A janela roda sobre
+  // `app://`, e com `webSecurity` ligado uma origem dessas não carrega
+  // `file://` — sem isto, a galeria do desktop exibiria imagens quebradas.
+  {
+    scheme: 'media',
+    privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true },
+  },
 ]);
 
 /**
@@ -219,6 +226,28 @@ function registerIpcHandlers() {
       const buffer = Buffer.from(bytes);
       fs.writeFileSync(filePath, buffer);
       return { status: 'saved', path: filePath };
+    } catch (error) {
+      return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
+    }
+  });
+
+  // Handler para gravar na galeria do desktop, SEM diálogo.
+  //
+  // O `save-file` abre um seletor a cada chamada, o que serve para "exportar
+  // para outro lugar" mas não para "guardar no histórico": a captura avulsa
+  // grava sozinha, como no celular.
+  ipcMain.handle('save-to-gallery', async (event, { bytes, filename }: { bytes: number[]; filename: string }) => {
+    try {
+      const galleryDir = ensureGalleryDir();
+      const safeName = path.basename(filename);
+      const filePath = path.join(galleryDir, safeName);
+
+      if (!isInside(galleryDir, filePath)) {
+        return { status: 'failed', error: 'Nome de arquivo inválido.' };
+      }
+
+      fs.writeFileSync(filePath, Buffer.from(bytes));
+      return { status: 'saved', path: safeName };
     } catch (error) {
       return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
     }
@@ -387,7 +416,8 @@ const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
   "script-src 'self' 'wasm-unsafe-eval'",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  // `media:` é o esquema das fotos da galeria, servido por createMediaProtocol.
+  "img-src 'self' data: blob: media:",
   "font-src 'self' data:",
   "connect-src 'self' data: blob:",
   "object-src 'none'",
@@ -443,14 +473,49 @@ function createProtocol() {
   });
 }
 
+/**
+ * Serve as fotos da galeria para a janela.
+ *
+ * Aceita apenas o nome do arquivo, nunca um caminho: o renderer não escolhe
+ * diretório. A contenção é conferida de novo aqui, e não só na origem do
+ * nome, porque este handler responde a qualquer URL que a página pedir.
+ */
+function createMediaProtocol() {
+  protocol.handle('media', (request) => {
+    let requestedName: string;
+    try {
+      requestedName = path.basename(decodeURIComponent(new URL(request.url).pathname));
+    } catch {
+      return new Response('Bad Request', { status: 400 });
+    }
+
+    const galleryDir = ensureGalleryDir();
+    const filePath = path.join(galleryDir, requestedName);
+
+    if (!isInside(galleryDir, filePath) || !fs.existsSync(filePath)) {
+      return new Response('Not Found', { status: 404 });
+    }
+
+    const contentType = CONTENT_TYPES[path.extname(filePath).toLowerCase()];
+    if (!contentType?.startsWith('image/')) {
+      return new Response('Forbidden', { status: 403 });
+    }
+
+    return new Response(fs.readFileSync(filePath), {
+      headers: { 'Content-Type': contentType },
+    });
+  });
+}
+
 // App pronto
 app.whenReady().then(() => {
   // Garantir que a pasta da galeria existe
   ensureGalleryDir();
   outputFolderPath = DEFAULT_GALLERY_PATH;
-  
+
   // Configurar o protocolo
   createProtocol();
+  createMediaProtocol();
   
   // Registrar handlers de IPC
   registerIpcHandlers();

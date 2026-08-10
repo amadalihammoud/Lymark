@@ -18,6 +18,12 @@ export interface LymarkApi {
     path?: string;
     error?: string;
   }>;
+  /** Grava no histórico do desktop, sem diálogo. Devolve o nome do arquivo. */
+  saveToGallery: (bytes: Uint8Array, filename: string) => Promise<{
+    status: 'saved' | 'failed';
+    path?: string;
+    error?: string;
+  }>;
   saveFileToOutput: (bytes: Uint8Array, filename: string, mimeType: string) => Promise<{
     status: 'saved' | 'failed';
     path?: string;
@@ -53,6 +59,10 @@ export const lymarkApi: LymarkApi = {
     return ipcRenderer.invoke('save-file', { bytes: Array.from(bytes), filename, mimeType });
   },
   
+  saveToGallery: async (bytes, filename) => {
+    return ipcRenderer.invoke('save-to-gallery', { bytes: Array.from(bytes), filename });
+  },
+
   saveFileToOutput: async (bytes, filename, mimeType) => {
     return ipcRenderer.invoke('save-file-to-output', { bytes: Array.from(bytes), filename, mimeType });
   },

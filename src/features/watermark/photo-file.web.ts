@@ -8,6 +8,8 @@
  * os consumidores não precisem saber a diferença.
  */
 
+import { blobUrlFor, forgetBlob, rememberBlob } from './exported-blobs.web';
+
 const EXPORTS_DIRECTORY_NAME = 'exports';
 
 /** Nome de arquivo aceito: o que este módulo gera, e nada além disso. */
@@ -42,13 +44,27 @@ export function normalizeStoredPath(stored: unknown): string | null {
   return isManagedPath(relative) ? relative : null;
 }
 
+// O registro das URLs de blob vive em `exported-blobs.web.ts`. Mantê-lo aqui
+// obrigaria a exportar funções que o lado nativo não tem, e a paridade de
+// superfície entre `.ts` e `.web.ts` é verificada por teste.
+
 /**
- * Na web e desktop, não há URI de arquivo no sentido mobile.
- * Retornamos a URI blob ou file:// diretamente.
+ * Converte o caminho lógico em algo exibível.
+ *
+ * Este é o contrato que o nativo cumpre com `new File(Paths.document, path).uri`
+ * e que a versão web não cumpria: ela devolvia `exports/<uuid>.jpg` como se
+ * fosse URI. Todo consumidor — o cartão da galeria, a tela da foto — recebia
+ * um caminho relativo e não conseguia carregar nada.
  */
 export function resolveExportedPhotoUri(path: string): string {
-  // Na web/desktop, o path já é uma URI válida (blob: ou file://)
-  return path;
+  if (!isManagedPath(path)) return path;
+
+  // No desktop o arquivo existe no disco, e a janela roda sobre `app://`.
+  // O esquema `media://` é servido pelo processo principal a partir da pasta
+  // da galeria — `file://` seria bloqueado pela política de origem.
+  if (isDesktop()) return `media://gallery/${path.split('/')[1]}`;
+
+  return blobUrlFor(path) ?? '';
 }
 
 /**
@@ -84,19 +100,12 @@ function randomUUID(): string {
  * @returns o caminho relativo (para compatibilidade com mobile)
  */
 export async function persistExportedPhoto(temporaryUri: string): Promise<string> {
-  // Gerar nome de arquivo
-  const fileName = `${randomUUID()}.jpg`;
-  const relativePath = `${EXPORTS_DIRECTORY_NAME}/${fileName}`;
+  // Já é uma foto do app: nada a mover, e refazer o arquivo criaria um órfão.
+  if (isManagedPath(temporaryUri)) return temporaryUri;
 
-  // Na web: não faz nada (decisão 2.2 - não há galeria)
-  // No desktop: salvar na pasta da galeria (sem diálogo)
-  if (isDesktop() && typeof window !== 'undefined' && window.lymark?.saveFile) {
-    const response = await fetch(temporaryUri);
-    const bytes = new Uint8Array(await response.arrayBuffer());
-    await window.lymark.saveFile(bytes, fileName, 'image/jpeg');
-  }
-
-  return relativePath;
+  const response = await fetch(temporaryUri);
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  return writeExportedPhoto(bytes);
 }
 
 /**
@@ -108,47 +117,45 @@ export async function persistExportedPhoto(temporaryUri: string): Promise<string
  */
 export function deleteExportedPhoto(path: string): void {
   if (!isManagedPath(path)) return;
+  if (typeof window === 'undefined') return;
 
-  // Na web: no-op - não há galeria, nada foi persistido, não há o que apagar
-  if (typeof window === 'undefined') {
+  if (isDesktop() && window.lymark?.deleteFile) {
+    void window.lymark.deleteFile(path.split('/')[1]);
     return;
   }
 
-  // No desktop: apagar via IPC
-  if (isDesktop() && window.lymark?.deleteFile) {
-    window.lymark.deleteFile(path);
-  }
+  // Na web não há arquivo em disco, mas há o blob desta sessão: liberar é o
+  // equivalente honesto de apagar, e sem isso a memória cresce a cada foto.
+  forgetBlob(path);
 }
 
 /**
- * Na web: salva e baixa o arquivo.
- * No desktop: salva na pasta da galeria (sem diálogo) e retorna o caminho.
+ * Guarda a foto e devolve o caminho lógico — nunca uma URI.
  *
- * O caminho antigo movia um arquivo temporário produzido pela captura de tela.
- * A composição em resolução cheia devolve os bytes do JPEG direto da memória.
+ * Quem quiser exibir chama `resolveExportedPhotoUri`. Manter as duas coisas
+ * separadas é o que faz esta implementação cumprir o mesmo contrato do
+ * nativo; misturá-las foi a origem da galeria com imagens quebradas.
+ *
+ * A gravação NÃO acontece aqui: escrever é decisão do usuário, tomada em
+ * "Salvar". Antes, gerar a foto já disparava um download na web e um diálogo
+ * no desktop, e depois o app ainda perguntava se queria salvar.
  */
 export function writeExportedPhoto(bytes: Uint8Array): string {
   const fileName = `${randomUUID()}.jpg`;
   const relativePath = `${EXPORTS_DIRECTORY_NAME}/${fileName}`;
 
-  // Na web: trigger download
-  if (typeof document !== 'undefined' && !isDesktop()) {
-    const blob = new Blob([bytes as unknown as BlobPart], { type: 'image/jpeg' });
-    const url = URL.createObjectURL(blob);
-    
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  if (isDesktop() && typeof window !== 'undefined' && window.lymark?.saveToGallery) {
+    // No desktop existe histórico em pasta real, então a foto é gravada assim
+    // que nasce — o mesmo comportamento do celular.
+    void window.lymark.saveToGallery(bytes, fileName);
+    return relativePath;
   }
 
-  // No desktop: salvar na pasta da galeria (sem diálogo)
-  if (isDesktop() && typeof window !== 'undefined' && window.lymark?.saveFile) {
-    window.lymark.saveFile(bytes, fileName, 'image/jpeg');
+  if (typeof URL !== 'undefined' && typeof Blob !== 'undefined') {
+    // Sem revogação por temporizador: a URL vive enquanto a entrada existir, e
+    // `deleteExportedPhoto` é quem a libera. O `setTimeout(1000)` anterior
+    // matava a imagem depois de um segundo, ou vazava se ninguém a usasse.
+    rememberBlob(relativePath, new Blob([bytes as unknown as BlobPart], { type: 'image/jpeg' }));
   }
 
   return relativePath;

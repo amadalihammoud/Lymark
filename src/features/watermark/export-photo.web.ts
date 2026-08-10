@@ -8,6 +8,8 @@
  * os consumidores não precisem saber a diferença.
  */
 
+import { blobUrlFor, downloadBlob } from './exported-blobs.web';
+
 // Re-exportar os tipos para manter compatibilidade
 export type SaveOutcome =
   | { status: 'saved' }
@@ -16,6 +18,8 @@ export type SaveOutcome =
 
 export type ShareOutcome =
   | { status: 'shared' }
+  /** O usuário fechou a folha de compartilhamento. Não é falha. */
+  | { status: 'cancelled' }
   | { status: 'unavailable' }
   | { status: 'failed'; error: unknown };
 
@@ -35,45 +39,24 @@ function isDesktop(): boolean {
  * No mobile: usa expo-media-library (implementação no .ts)
  */
 export async function saveToDeviceGallery(path: string): Promise<SaveOutcome> {
-  // Na web: download
-  if (typeof document !== 'undefined' && !isDesktop()) {
-    try {
-      const response = await fetch(path);
-      const bytes = new Uint8Array(await response.arrayBuffer());
-      
-      const blob = new Blob([bytes as unknown as BlobPart], { type: 'image/jpeg' });
-      const url = URL.createObjectURL(blob);
-      
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = path.split('/').pop() || 'photo.jpg';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-      
-      return { status: 'saved' };
-    } catch (error) {
-      return { status: 'failed', error };
-    }
+  // `path` é um identificador lógico (`exports/<uuid>.jpg`), NÃO uma URI.
+  // A versão anterior fazia `fetch(path)` nele: resolvia contra a origem da
+  // página, dava 404, e o app informava "o aparelho recusou gravá-la,
+  // verifique o espaço livre" logo depois de um download bem-sucedido.
+  const fileName = path.split('/').pop() ?? 'lymark.jpg';
+
+  if (isDesktop()) {
+    // No desktop a foto já foi gravada na pasta da galeria quando nasceu,
+    // sem diálogo. Não há segunda gravação a fazer.
+    return { status: 'saved' };
   }
 
-  // No desktop: salvar na pasta da galeria (sem diálogo)
-  if (isDesktop() && typeof window !== 'undefined' && window.lymark?.saveFile) {
-    try {
-      const response = await fetch(path);
-      const bytes = new Uint8Array(await response.arrayBuffer());
-      const fileName = path.split('/').pop() || 'photo.jpg';
-      await window.lymark.saveFile(bytes, fileName, 'image/jpeg');
-      return { status: 'saved' };
-    } catch (error) {
-      return { status: 'failed', error };
-    }
-  }
-
-  // Fallback: não implementado para esta plataforma
-  return { status: 'failed', error: new Error('Salvamento não implementado para esta plataforma') };
+  return downloadBlob(path, fileName)
+    ? { status: 'saved' }
+    : {
+        status: 'failed',
+        error: new Error('A foto não está mais disponível nesta sessão.'),
+      };
 }
 
 /**
@@ -84,23 +67,31 @@ export async function saveToDeviceGallery(path: string): Promise<SaveOutcome> {
  * No mobile: usa Sharing.shareAsync (implementação no .ts)
  */
 export async function shareWatermarkedPhoto(path: string): Promise<ShareOutcome> {
-  // Na web: Web Share API
-  if (typeof navigator !== 'undefined' && !isDesktop() && navigator.share) {
+  const fileName = path.split('/').pop() ?? 'lymark.jpg';
+  const blobUrl = blobUrlFor(path);
+
+  if (typeof navigator !== 'undefined' && !isDesktop() && navigator.share && blobUrl) {
     try {
-      const response = await fetch(path);
-      const blob = await response.blob();
-      const file = new File([blob], path.split('/').pop() || 'photo.jpg', { type: 'image/jpeg' });
-      
-      await navigator.share({
-        title: 'Foto com marca d’água',
-        files: [file],
-      });
-      
+      // O blob desta sessão, e não `fetch(path)`: `path` é identificador
+      // lógico e a busca dava 404.
+      const blob = await (await fetch(blobUrl)).blob();
+      const file = new File([blob], fileName, { type: 'image/jpeg' });
+
+      // `share` existir não significa que ARQUIVO possa ser compartilhado —
+      // é justamente o caso comum em navegador de desktop. Sem esta pergunta,
+      // o caminho entrava e falhava.
+      if (typeof navigator.canShare === 'function' && !navigator.canShare({ files: [file] })) {
+        return { status: 'unavailable' };
+      }
+
+      await navigator.share({ title: 'Foto com marca d’água', files: [file] });
       return { status: 'shared' };
     } catch (error) {
-      // Web Share API pode falhar se não há app para compartilhar
+      // `AbortError` é o usuário fechando a folha de compartilhamento. Tratar
+      // isso como "indisponível" fazia o app anunciar uma falha do sistema
+      // para uma escolha deliberada de quem usa.
       if (error instanceof Error && error.name === 'AbortError') {
-        return { status: 'unavailable' };
+        return { status: 'cancelled' };
       }
       return { status: 'failed', error };
     }
