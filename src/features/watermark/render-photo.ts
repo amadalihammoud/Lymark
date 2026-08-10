@@ -1,4 +1,4 @@
-import { ImageFormat, Skia } from '@shopify/react-native-skia';
+import { ImageFormat, Skia, type SkImage } from '@shopify/react-native-skia';
 
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
@@ -27,6 +27,24 @@ export class PhotoRenderError extends Error {
   constructor(message: string, options?: { cause?: unknown }) {
     super(message, options);
     this.name = 'PhotoRenderError';
+  }
+}
+
+/**
+ * Libera um recurso do Skia sem deixar a limpeza derrubar o erro original.
+ *
+ * Quando o Skia recusa uma alocação, o objeto devolvido é "verdadeiro" mas
+ * carrega referência nula por dentro. Chamar `dispose()` nele lança — e um
+ * lançamento dentro do `finally` SUBSTITUI a exceção que estava subindo,
+ * trocando uma mensagem em português por um `TypeError` do motor gráfico.
+ * Era também o que impedia os recursos seguintes de serem liberados.
+ */
+function release(resource: { dispose: () => void } | null) {
+  try {
+    resource?.dispose();
+  } catch {
+    // Falha ao liberar não muda o resultado da exportação, e não pode
+    // mascarar o motivo real de uma falha nem interromper a limpeza.
   }
 }
 
@@ -61,6 +79,10 @@ export async function renderStampedPhoto({
     );
   }
 
+  // Declarado fora do `try` para que o `finally` alcance o instantâneo mesmo
+  // quando a falha acontece antes de ele existir.
+  let snapshot: SkImage | null = null;
+
   try {
     const canvas = surface.getCanvas();
     canvas.drawImage(image, 0, 0);
@@ -78,7 +100,13 @@ export async function renderStampedPhoto({
 
     renderer.draw(canvas, geometry);
 
-    const bytes = surface.makeImageSnapshot().encodeToBytes(ImageFormat.JPEG, JPEG_QUALITY);
+    // O instantâneo é guardado numa variável porque precisa ser liberado: em
+    // WebAssembly o coletor do JavaScript não alcança o heap do Skia, e um
+    // instantâneo anônimo vazava o bitmap inteiro a cada exportação — 46 MB
+    // por foto de 4000x3000. Num lote de fotos de celular moderno, a terceira
+    // já estourava o limite de memória.
+    snapshot = surface.makeImageSnapshot();
+    const bytes = snapshot.encodeToBytes(ImageFormat.JPEG, JPEG_QUALITY);
     if (!bytes) {
       throw new PhotoRenderError('Não foi possível codificar a imagem final.');
     }
@@ -90,7 +118,8 @@ export async function renderStampedPhoto({
       cause: error,
     });
   } finally {
-    surface.dispose();
-    image.dispose();
+    release(snapshot);
+    release(surface);
+    release(image);
   }
 }

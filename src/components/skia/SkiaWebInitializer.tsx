@@ -11,7 +11,7 @@
  */
 
 import { LoadSkiaWeb } from '@shopify/react-native-skia/lib/commonjs/web';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
  * Estado de carregamento do Skia.
@@ -42,11 +42,25 @@ export function useSkiaStatus(): [SkiaLoadStatus, () => Promise<void>] {
     }
   }, [status]);
 
-  // Carregar automaticamente no mount
+  // Dispara uma única vez, e é a marca no `ref` que garante isso.
+  //
+  // Sem ela havia laço infinito: `load` depende de `status`, o efeito depende
+  // de `load`, e o estado `failed` não era barrado pelos guardas. Uma falha
+  // recriava `load`, o efeito reexecutava, e a carga recomeçava — sem fim.
+  // Como o `LoadSkiaWeb` memoiza a promessa, da segunda volta em diante a
+  // rejeição é imediata e o laço gira na velocidade do `setTimeout(0)`,
+  // ocupando a thread e drenando a bateria.
+  //
+  // A função `load` continua exposta pelo hook para uma nova tentativa
+  // deliberada, que é o único caso em que repetir faz sentido.
+  const autoLoadStarted = useRef(false);
+
   useEffect(() => {
-    // Usamos setTimeout para evitar chamar setState sincronamente no effect
+    if (autoLoadStarted.current) return;
+    autoLoadStarted.current = true;
+
     const timer = setTimeout(() => {
-      load();
+      void load();
     }, 0);
     return () => clearTimeout(timer);
   }, [load]);

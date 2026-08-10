@@ -64,7 +64,7 @@ export default function RootLayout() {
 
               <Stack.Screen
                 name="settings/watermark"
-                options={{ title: 'Marca d'água', headerBackTitle: 'Voltar' }}
+                options={{ title: 'Marca d’água', headerBackTitle: 'Voltar' }}
               />
               <Stack.Screen
                 name="settings/permissions"
