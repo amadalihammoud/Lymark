@@ -85,12 +85,8 @@ function createWindow() {
   // Configurar drag and drop para a janela
   mainWindow.on('will-navigate', (e) => e.preventDefault());
 
-  mainWindow.on('drop-file', (e, filePath) => {
-    e.preventDefault();
-    // Enviar para o renderer via IPC
-    if (mainWindow && mainWindow.webContents) {
-      mainWindow.webContents.send('ondragdrop', { filePath });
-    }
+  mainWindow.webContents.on('did-navigate-in-page', (e) => {
+    // Permitir navegação interna
   });
 
   mainWindow.on('closed', () => {
@@ -262,6 +258,22 @@ function registerIpcHandlers() {
   // Handler para obter pasta de saída atual
   ipcMain.handle('get-output-folder', async () => {
     return { path: outputFolderPath };
+  });
+
+  // Handler para adicionar arquivo via drag and drop
+  ipcMain.handle('add-drag-drop-file', async (event, { filePath }: { filePath: string }) => {
+    try {
+      const buffer = fs.readFileSync(filePath);
+      const dimensions = sizeOf(buffer);
+      
+      return {
+        uri: `file://${filePath}`,
+        width: dimensions.width,
+        height: dimensions.height,
+      };
+    } catch {
+      return null;
+    }
   });
 }
 
