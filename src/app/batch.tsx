@@ -5,7 +5,7 @@
  * Esta tela só está disponível no desktop (window.lymark.platform === 'desktop').
  */
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/ui/button';
@@ -20,8 +20,9 @@ import type { WatermarkFieldKey } from '@/types';
 const WATERMARK_FIELDS: WatermarkFieldKey[] = ['code', 'address', 'company'];
 
 export default function BatchProcessingScreen() {
-  const { state, metadata, updateMetadata, startBatch } = useBatchProcessing();
+  const { state, metadata, outputFolder, updateMetadata, setOutputFolderPath, startBatch, cancelBatch } = useBatchProcessing();
   const [photos, setPhotos] = useState<{ uri: string; width: number; height: number }[]>([]);
+  const [isDragOver, setIsDragOver] = useState(false);
 
   // Somente disponível no desktop
   if (!isDesktop()) {
@@ -33,26 +34,15 @@ export default function BatchProcessingScreen() {
     );
   }
 
-  // Handler para arrastar e soltar (será conectado ao Electron IPC)
-  const handleDrop = useCallback((files: { uri: string; width: number; height: number }[]) => {
-    setPhotos(files);
-  }, []);
-
-  // Handler para selecionar pasta de saída
-  const handleSelectOutputFolder = useCallback(async () => {
-    // Será implementado via IPC
-    // Por enquanto, apenas log
-    console.log('Selecionar pasta de saída');
-  }, []);
-
-  // Handler para iniciar processamento
-  const handleStartProcessing = useCallback(() => {
-    if (photos.length === 0) {
-      alert('Selecione pelo menos uma foto');
-      return;
+  // Configurar drag and drop ao montar o componente
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.lymark?.onDragDrop) {
+      window.lymark.onDragDrop((filePath: string) => {
+        // Adicionar a foto arrastada à lista
+        setPhotos((prev) => [...prev, { uri: filePath, width: 0, height: 0 }]);
+      });
     }
-    startBatch(photos);
-  }, [photos, startBatch]);
+  }, []);
 
   // Handler para selecionar fotos
   const handleSelectPhotos = useCallback(async () => {
@@ -64,13 +54,47 @@ export default function BatchProcessingScreen() {
     }
   }, []);
 
+  // Handler para selecionar pasta de saída
+  const handleSelectOutputFolder = useCallback(async () => {
+    if (typeof window !== 'undefined' && window.lymark?.selectOutputFolder) {
+      const result = await window.lymark.selectOutputFolder();
+      if (result.status === 'selected' && result.path) {
+        setOutputFolderPath(result.path);
+      }
+    }
+  }, [setOutputFolderPath]);
+
+  // Handler para iniciar processamento
+  const handleStartProcessing = useCallback(() => {
+    if (photos.length === 0) {
+      alert('Selecione pelo menos uma foto');
+      return;
+    }
+    startBatch(photos);
+  }, [photos, startBatch]);
+
+  // Handler para cancelar processamento
+  const handleCancelProcessing = useCallback(() => {
+    cancelBatch();
+  }, [cancelBatch]);
+
+  // Remover uma foto da lista
+  const handleRemovePhoto = useCallback((index: number) => {
+    setPhotos((prev) => prev.filter((_, i) => i !== index));
+  }, []);
+
+  // Limpar todas as fotos
+  const handleClearPhotos = useCallback(() => {
+    setPhotos([]);
+  }, []);
+
   return (
     <Screen scrollable={false}>
       <Text style={[typography.heading, styles.title]}>Processamento em Lote</Text>
 
       <Section title="Fotos para processar">
         <Text style={typography.caption}>
-          {photos.length} fotos selecionadas
+          {photos.length} foto(s) selecionada(s)
         </Text>
         
         <View style={styles.actions}>
@@ -80,30 +104,47 @@ export default function BatchProcessingScreen() {
             onPress={handleSelectPhotos}
           />
           <Button
-            label="Arrastar e Soltar"
-            icon="folder-outline"
-            variant="secondary"
-            onPress={() => console.log('Arrastar e soltar ativo')}
+            label="Limpar Lista"
+            icon="trash-outline"
+            variant="danger"
+            onPress={handleClearPhotos}
+            disabled={photos.length === 0}
           />
+        </View>
+
+        {/* Área de drag and drop */}
+        <View 
+          style={[styles.dropZone, isDragOver && styles.dropZoneActive]}
+          onDragEnter={() => setIsDragOver(true)}
+          onDragLeave={() => setIsDragOver(false)}
+          onDrop={() => setIsDragOver(false)}
+        >
+          <Text style={[typography.caption, styles.dropZoneText]}>
+            Arraste e solte fotos aqui
+          </Text>
         </View>
 
         {photos.length > 0 && (
           <View style={styles.photosList}>
-            {photos.slice(0, 5).map((photo, index) => (
+            {photos.map((photo, index) => (
               <View key={`${photo.uri}-${index}`} style={styles.photoItem}>
-                <Text style={typography.caption}>
-                  {photo.uri.split('/').pop()}
-                </Text>
-                <Text style={[typography.caption, styles.photoSize]}>
-                  {photo.width}x{photo.height}
-                </Text>
+                <View style={styles.photoInfo}>
+                  <Text style={typography.caption} numberOfLines={1}>
+                    {photo.uri.split('/').pop()}
+                  </Text>
+                  <Text style={[typography.caption, styles.photoSize]}>
+                    {photo.width}x{photo.height}
+                  </Text>
+                </View>
+                <Button
+                  label="Remover"
+                  icon="close"
+                  variant="ghost"
+                  size="small"
+                  onPress={() => handleRemovePhoto(index)}
+                />
               </View>
             ))}
-            {photos.length > 5 && (
-              <Text style={[typography.caption, styles.morePhotos]}>
-                +{photos.length - 5} fotos a mais
-              </Text>
-            )}
           </View>
         )}
       </Section>
@@ -127,12 +168,19 @@ export default function BatchProcessingScreen() {
       </Section>
 
       <Section title="Saída">
-        <Button
-          label="Selecionar Pasta de Saída"
-          icon="folder-open-outline"
-          variant="secondary"
-          onPress={handleSelectOutputFolder}
-        />
+        <View style={styles.folderSelection}>
+          <Button
+            label={outputFolder ? `Pasta: ${outputFolder.split('/').pop()}` : 'Selecionar Pasta de Saída'}
+            icon="folder-open-outline"
+            variant="secondary"
+            onPress={handleSelectOutputFolder}
+          />
+          {outputFolder && (
+            <Text style={[typography.caption, styles.folderPath]}>
+              {outputFolder}
+            </Text>
+          )}
+        </View>
         <Text style={[typography.caption, styles.caption]}>
           As fotos processadas serão salvas na pasta selecionada.
         </Text>
@@ -143,13 +191,13 @@ export default function BatchProcessingScreen() {
           <View style={styles.progressContainer}>
             <View style={[styles.progressBar, { width: `${state.progress}%` }]} />
             <Text style={styles.progressText}>
-              {state.current} de {state.total} ({Math.round(state.progress)}%)
+              {state.current} de {state.total} ({`${Math.round(state.progress)}%`})
             </Text>
           </View>
           <Button
             label="Cancelar"
             variant="danger"
-            onPress={() => {}}
+            onPress={handleCancelProcessing}
             disabled={!state.isProcessing}
           />
         </Section>
@@ -179,6 +227,14 @@ export default function BatchProcessingScreen() {
           ))}
         </Section>
       )}
+
+      {state.isProcessing === false && state.results.total > 0 && state.results.failures.length === 0 && state.results.success > 0 && (
+        <Section title="Concluído">
+          <Text style={[typography.body, styles.successMessage]}>
+            Processamento concluído com sucesso! {state.results.success} foto(s) processada(s).
+          </Text>
+        </Section>
+      )}
     </Screen>
   );
 }
@@ -192,6 +248,24 @@ const styles = StyleSheet.create({
     gap: spacing.md,
     marginVertical: spacing.md,
   },
+  dropZone: {
+    borderWidth: 2,
+    borderStyle: 'dashed',
+    borderColor: colors.caption,
+    borderRadius: radius.md,
+    padding: spacing.lg,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: spacing.md,
+    minHeight: 80,
+  },
+  dropZoneActive: {
+    borderColor: colors.accent,
+    backgroundColor: colors.surfaceRaised,
+  },
+  dropZoneText: {
+    color: colors.caption,
+  },
   photosList: {
     gap: spacing.sm,
     marginTop: spacing.md,
@@ -199,17 +273,16 @@ const styles = StyleSheet.create({
   photoItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     padding: spacing.sm,
     backgroundColor: colors.surfaceRaised,
     borderRadius: radius.md,
   },
+  photoInfo: {
+    flex: 1,
+  },
   photoSize: {
     color: colors.caption,
-  },
-  morePhotos: {
-    color: colors.caption,
-    textAlign: 'center',
-    marginTop: spacing.sm,
   },
   caption: {
     color: colors.caption,
@@ -217,6 +290,14 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: spacing.md,
+  },
+  folderSelection: {
+    gap: spacing.sm,
+  },
+  folderPath: {
+    color: colors.caption,
+    fontSize: 11,
+    wordBreak: 'break-all',
   },
   progressContainer: {
     gap: spacing.sm,
@@ -243,5 +324,10 @@ const styles = StyleSheet.create({
   },
   errorMessage: {
     color: colors.caption,
+  },
+  successMessage: {
+    color: colors.success,
+    textAlign: 'center',
+    marginVertical: spacing.md,
   },
 });
