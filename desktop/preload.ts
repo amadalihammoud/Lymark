@@ -42,7 +42,7 @@ export interface LymarkApi {
     error?: string;
   }>;
   getOutputFolder: () => Promise<{ path: string }>;
-  onDragDrop: (callback: (filePath: string) => void) => void;
+  onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
 }
 
 // Expor APIs seguras para o renderer
@@ -78,8 +78,18 @@ export const lymarkApi: LymarkApi = {
   },
   
   onDragDrop: (callback) => {
-    ipcRenderer.on('ondragdrop', (_, { filePath }) => {
-      callback(filePath);
+    // Escutar o evento do main process
+    ipcRenderer.on('ondragdrop', (_, filePath: string) => {
+      // Processar o arquivo arrastado e chamar o callback
+      ipcRenderer.invoke('add-drag-drop-file', { filePath })
+        .then((photo) => {
+          if (photo) {
+            callback(photo);
+          }
+        })
+        .catch(() => {
+          callback(null);
+        });
     });
   },
 };
