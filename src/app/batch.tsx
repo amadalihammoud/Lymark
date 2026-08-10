@@ -20,9 +20,8 @@ import type { WatermarkFieldKey } from '@/types';
 const WATERMARK_FIELDS: WatermarkFieldKey[] = ['code', 'address', 'company'];
 
 export default function BatchProcessingScreen() {
-  const { state, metadata, outputFolder, updateMetadata, setOutputFolderPath, startBatch, cancelBatch } = useBatchProcessing();
+  const { state, metadata, outputFolder, updateMetadata, setOutputFolderPath, startBatch, cancelBatch, loadOutputFolder } = useBatchProcessing();
   const [photos, setPhotos] = useState<{ uri: string; width: number; height: number }[]>([]);
-  const [isDragOver, setIsDragOver] = useState(false);
 
   // Somente disponível no desktop
   if (!isDesktop()) {
@@ -34,15 +33,10 @@ export default function BatchProcessingScreen() {
     );
   }
 
-  // Configurar drag and drop ao montar o componente
+  // Carregar pasta de saída ao montar o componente
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.lymark?.onDragDrop) {
-      window.lymark.onDragDrop((filePath: string) => {
-        // Adicionar a foto arrastada à lista
-        setPhotos((prev) => [...prev, { uri: filePath, width: 0, height: 0 }]);
-      });
-    }
-  }, []);
+    loadOutputFolder();
+  }, [loadOutputFolder]);
 
   // Handler para selecionar fotos
   const handleSelectPhotos = useCallback(async () => {
@@ -113,12 +107,7 @@ export default function BatchProcessingScreen() {
         </View>
 
         {/* Área de drag and drop */}
-        <View 
-          style={[styles.dropZone, isDragOver && styles.dropZoneActive]}
-          onDragEnter={() => setIsDragOver(true)}
-          onDragLeave={() => setIsDragOver(false)}
-          onDrop={() => setIsDragOver(false)}
-        >
+        <View style={styles.dropZone}>
           <Text style={[typography.caption, styles.dropZoneText]}>
             Arraste e solte fotos aqui
           </Text>
@@ -258,10 +247,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: spacing.md,
     minHeight: 80,
-  },
-  dropZoneActive: {
-    borderColor: colors.accent,
-    backgroundColor: colors.surfaceRaised,
   },
   dropZoneText: {
     color: colors.caption,
