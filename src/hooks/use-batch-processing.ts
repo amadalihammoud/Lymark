@@ -15,7 +15,6 @@
 import { useCallback, useState } from 'react';
 
 import { extractDateFromExif, extractTimeFromExif } from '@/lib/exif';
-import { saveFile } from '@/lib/file-storage';
 import { renderStampedPhoto } from '@/features/watermark/render-photo';
 import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
 
@@ -57,6 +56,7 @@ export function useBatchProcessing() {
     time: '',
     company: '',
   });
+  const [outputFolder, setOutputFolder] = useState<string>('');
 
   /**
    * Processa uma única foto do lote.
@@ -79,11 +79,14 @@ export function useBatchProcessing() {
         // Gerar a foto com carimbo
         const stampedBytes = await renderStampedPhoto(photo.uri, photoMetadata);
 
-        // Salvar no desktop (IPC)
-        const fileName = `lymark_${Date.now()}_${photo.width}x${photo.height}.jpg`;
+        // Salvar na pasta de saída (usando saveFileToOutput do desktop)
+        const timestamp = Date.now();
+        const fileName = `lymark_${timestamp}_${photo.width}x${photo.height}.jpg`;
         
-        // No desktop, saveFile usa IPC
-        await saveFile(stampedBytes, fileName, 'image/jpeg');
+        // Verificar se estamos no desktop e se a API está disponível
+        if (typeof window !== 'undefined' && window.lymark?.saveFileToOutput) {
+          await window.lymark.saveFileToOutput(stampedBytes, fileName, 'image/jpeg');
+        }
 
         return { success: true, file: fileName };
       } catch (error) {
@@ -99,7 +102,7 @@ export function useBatchProcessing() {
    * Processamento paralelo estouraria a memória do WASM.
    */
   const processBatch = useCallback(
-    async (photos: BatchPhoto[], outputFolder: string) => {
+    async (photos: BatchPhoto[]) => {
       setState({
         ...INITIAL_STATE,
         isProcessing: true,
@@ -157,8 +160,7 @@ export function useBatchProcessing() {
       });
 
       // Iniciar processamento
-      // O outputFolder será tratado pelo saveFile do desktop
-      return processBatch(photos, '');
+      return processBatch(photos);
     },
     [processBatch],
   );
@@ -173,10 +175,16 @@ export function useBatchProcessing() {
     setMetadata((prev) => ({ ...prev, ...newMetadata }));
   }, []);
 
+  const setOutputFolderPath = useCallback((folderPath: string) => {
+    setOutputFolder(folderPath);
+  }, []);
+
   return {
     state,
     metadata,
+    outputFolder,
     updateMetadata,
+    setOutputFolderPath,
     startBatch,
     cancelBatch,
   };
