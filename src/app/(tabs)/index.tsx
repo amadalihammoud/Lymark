@@ -21,7 +21,7 @@ import { buildWatermarkContent } from '@/features/watermark/build-content';
 import { saveToDeviceGallery, shareWatermarkedPhoto } from '@/features/watermark/export-photo';
 import { renderStampedPhoto } from '@/features/watermark/render-photo';
 import { STAMP_COLORS } from '@/features/watermark/stamp-canvas';
-import { createStampRenderer, useStampFontProvider } from '@/features/watermark/skia-stamp';
+import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
 import { isDesktop } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
@@ -60,7 +60,7 @@ export default function CaptureScreen() {
 
   const [pending, setPending] = useState<PendingAction | null>(null);
   const [picking, setPicking] = useState(false);
-  const fontProvider = useStampFontProvider();
+  const stampTypefaces = useStampTypefaces();
   const busy = pending !== null;
 
   /** Identifica a busca de endereço em curso. */
@@ -176,7 +176,7 @@ export default function CaptureScreen() {
 
   const runAction = async (action: PendingAction) => {
     const photo = draft.photo;
-    if (!photo || !fontProvider) {
+    if (!photo || !stampTypefaces) {
       notify('O carimbo ainda está sendo preparado.', 'warning');
       return;
     }
@@ -189,7 +189,7 @@ export default function CaptureScreen() {
         metadata: draft.metadata,
         preferences,
         colors: STAMP_COLORS,
-        renderer: createStampRenderer(fontProvider),
+        renderer: createStampRenderer(stampTypefaces),
       });
       addEntry({ path, metadata: draft.metadata, stampedFields });
 

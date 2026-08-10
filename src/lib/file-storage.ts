@@ -16,6 +16,31 @@ export type SaveResult =
 /**
  * Resultado de uma operação de seleção de arquivo.
  */
+/**
+ * URLs de blob das fotos escolhidas nesta sessão.
+ *
+ * Object URL vive até ser revogado ou a aba fechar. A foto precisa continuar
+ * legível enquanto estiver em uso — o preview a exibe, a exportação busca os
+ * bytes dela, e o EXIF é lido dela. Revogar cedo demais entrega uma URI que
+ * já não resolve.
+ *
+ * Guardamos apenas a última: ao escolher outra foto, a anterior deixou de ser
+ * necessária e é liberada. Sem isso, cada escolha reteria o arquivo inteiro
+ * em memória até a aba ser fechada.
+ */
+let pickedUrls: string[] = [];
+
+function rememberPickedUrl(url: string) {
+  for (const anterior of pickedUrls) URL.revokeObjectURL(anterior);
+  pickedUrls = [url];
+}
+
+/** Guarda um conjunto de URLs (lote), liberando o conjunto anterior. */
+function rememberPickedUrls(urls: string[]) {
+  for (const anterior of pickedUrls) URL.revokeObjectURL(anterior);
+  pickedUrls = urls;
+}
+
 /** Reduz um erro de origem desconhecida a texto exibível. */
 function describeError(error: unknown): string {
   return error instanceof Error ? error.message : String(error);
@@ -289,13 +314,15 @@ async function pickImageWeb(): Promise<PickResult> {
       const img = new Image();
       
       img.onload = () => {
-        resolve({
-          status: 'selected',
-          uri: url,
-          width: img.width,
-          height: img.height,
-        });
-        URL.revokeObjectURL(url);
+        // A URL NÃO é revogada aqui. Ela é justamente o que está sendo
+        // devolvido: revogar na linha seguinte entregava uma URI já morta.
+        // A imagem do preview funcionava porque o <img> já havia carregado,
+        // mas a exportação, que busca os bytes depois, falhava com
+        // "Failed to fetch" — e o app mostrava esse texto em inglês.
+        //
+        // Quem cria é quem libera, quando a foto é trocada.
+        rememberPickedUrl(url);
+        resolve({ status: 'selected', uri: url, width: img.width, height: img.height });
       };
       
       img.onerror = () => {
@@ -334,24 +361,24 @@ async function pickImagesWeb(): Promise<{ status: 'selected' | 'cancelled' | 'fa
         
         await new Promise<void>((imgResolve) => {
           img.onload = () => {
-            photos.push({
-              uri: url,
-              width: img.width,
-              height: img.height,
-            });
-            URL.revokeObjectURL(url);
+            // Mesma razão do seletor de foto única: a URL devolvida precisa
+            // continuar viva, senão o lote falha ao buscar os bytes de cada
+            // arquivo. A liberação acontece na próxima escolha.
+            photos.push({ uri: url, width: img.width, height: img.height });
             imgResolve();
           };
-          
+
           img.onerror = () => {
+            // Este arquivo não entra na lista, então a URL dele pode ir agora.
             URL.revokeObjectURL(url);
             imgResolve();
           };
-          
+
           img.src = url;
         });
       }
-      
+
+      rememberPickedUrls(photos.map((p) => p.uri));
       resolve({ status: 'selected', photos });
     };
     

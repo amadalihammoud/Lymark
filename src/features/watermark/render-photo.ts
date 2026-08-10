@@ -90,7 +90,20 @@ export async function composeStampedPhoto({
   colors,
   renderer,
 }: StampedPhotoInput): Promise<Uint8Array> {
-  const data = await Skia.Data.fromURI(photoUri);
+  // A leitura fica dentro de um `try` proprio porque acontece ANTES do bloco
+  // principal, e uma rejeicao aqui escapava crua: o usuario via "Failed to
+  // fetch" num aplicativo inteiramente em portugues. Acontece quando a foto
+  // sai do alcance entre a escolha e a exportacao — arquivo removido, ou
+  // URL de blob revogada.
+  let data;
+  try {
+    data = await Skia.Data.fromURI(photoUri);
+  } catch (error) {
+    throw new PhotoRenderError('Não foi possível ler a fotografia escolhida.', {
+      cause: error,
+    });
+  }
+
   const image = Skia.Image.MakeImageFromEncoded(data);
 
   if (!image) {

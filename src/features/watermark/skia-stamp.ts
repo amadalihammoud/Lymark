@@ -1,11 +1,9 @@
 import {
   Skia,
-  useFonts,
+  useTypeface,
   type SkCanvas,
   type SkFont,
   type SkTypeface,
-  type DataModule,
-  type SkTypefaceFontProvider,
 } from '@shopify/react-native-skia';
 
 import type { MeasureText, StampFont, StampGeometry } from './stamp-layout';
@@ -20,39 +18,34 @@ import type { MeasureText, StampFont, StampGeometry } from './stamp-layout';
  * literalmente o que se exporta.
  */
 
-const FAMILIES: Record<StampFont, string> = {
-  clock: 'PathwayGothicOne',
-  body: 'Barlow',
-  medium: 'BarlowMedium',
-};
-
-const NORMAL_STYLE = { weight: 400, width: 5, slant: 0 } as const;
+/** As três fontes do carimbo, prontas para desenhar. */
+export type StampTypefaces = Record<StampFont, SkTypeface>;
 
 /**
- * Normaliza o que o `require` de um `.ttf` devolve, que difere por plataforma.
+ * Carrega as fontes embutidas. `null` enquanto não terminam de carregar.
  *
- * No nativo vem um número — o identificador do asset no registro do Metro. Na
- * web vem a URL como string. O `resolveAsset` do Skia aceita o número e aceita
- * `{ uri }`, mas NÃO aceita string pura: ele faz `"uri" in source`, o que
- * lança `Cannot use 'in' operator` e deixava o app em tela branca na web.
+ * Usa `useTypeface`, que devolve o typeface direto, em vez do `useFonts`, que
+ * devolve um `SkTypefaceFontProvider`. A diferença não é de estilo: o
+ * `matchFamilyStyle` do provider **não é implementado no react-native-web** —
+ * lança "Not implemented on React Native Web". Como é por ele que se obtinha
+ * cada typeface, o carimbo não podia ser desenhado na web, nem no preview nem
+ * na exportação. As fontes carregavam; consultá-las é que falhava.
  *
- * A checagem por tipo resolve os dois casos sem separar o arquivo por
- * plataforma — o que duplicaria o desenhista do carimbo, justamente o que não
- * pode ser duplicado.
+ * O `useTypeface` passa pelo `loadData`, que aceita tanto o número do asset
+ * (nativo) quanto a URL em string (web) — o mesmo código serve às duas
+ * plataformas, que é o requisito para o desenho não divergir.
  */
-function fontAsset(mod: unknown): DataModule {
-  return (typeof mod === 'string' ? { uri: mod } : mod) as DataModule;
-}
+export function useStampTypefaces(): StampTypefaces | null {
+  const clock = useTypeface(
+    require('@expo-google-fonts/pathway-gothic-one/400Regular/PathwayGothicOne_400Regular.ttf'),
+  );
+  const body = useTypeface(require('@expo-google-fonts/barlow/400Regular/Barlow_400Regular.ttf'));
+  const medium = useTypeface(require('@expo-google-fonts/barlow/500Medium/Barlow_500Medium.ttf'));
 
-/** Carrega as fontes embutidas. `null` enquanto não terminam de carregar. */
-export function useStampFontProvider(): SkTypefaceFontProvider | null {
-  return useFonts({
-    [FAMILIES.clock]: [
-      fontAsset(require('@expo-google-fonts/pathway-gothic-one/400Regular/PathwayGothicOne_400Regular.ttf')),
-    ],
-    [FAMILIES.body]: [fontAsset(require('@expo-google-fonts/barlow/400Regular/Barlow_400Regular.ttf'))],
-    [FAMILIES.medium]: [fontAsset(require('@expo-google-fonts/barlow/500Medium/Barlow_500Medium.ttf'))],
-  });
+  // Tudo ou nada: desenhar com uma fonte faltando sairia com a substituta do
+  // Skia, e o carimbo mudaria de desenho sem ninguém perceber.
+  if (!clock || !body || !medium) return null;
+  return { clock, body, medium };
 }
 
 export type StampRenderer = {
@@ -66,24 +59,14 @@ export type StampRenderer = {
  * Os objetos `SkFont` são caros de criar e a geometria pede a medida de cada
  * texto várias vezes — daí o cache por família e corpo.
  */
-export function createStampRenderer(provider: SkTypefaceFontProvider): StampRenderer {
-  const typefaces = new Map<StampFont, SkTypeface>();
+export function createStampRenderer(typefaces: StampTypefaces): StampRenderer {
   const fonts = new Map<string, SkFont>();
-
-  const typefaceFor = (family: StampFont) => {
-    let typeface = typefaces.get(family);
-    if (!typeface) {
-      typeface = provider.matchFamilyStyle(FAMILIES[family], NORMAL_STYLE);
-      typefaces.set(family, typeface);
-    }
-    return typeface;
-  };
 
   const fontFor = (family: StampFont, size: number) => {
     const key = `${family}@${size}`;
     let font = fonts.get(key);
     if (!font) {
-      font = Skia.Font(typefaceFor(family), size);
+      font = Skia.Font(typefaces[family], size);
       fonts.set(key, font);
     }
     return font;

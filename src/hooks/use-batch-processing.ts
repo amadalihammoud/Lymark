@@ -17,7 +17,7 @@ import { useCallback, useState } from 'react';
 import { extractDateFromExif, extractTimeFromExif } from '@/lib/exif';
 import { saveFileToOutput, getOutputFolder } from '@/lib/file-storage';
 import { composeStampedPhoto } from '@/features/watermark/render-photo';
-import { createStampRenderer, useStampFontProvider } from '@/features/watermark/skia-stamp';
+import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
 import { STAMP_COLORS } from '@/features/watermark/stamp-colors';
 import { useSettings } from '@/contexts/settings-context';
 import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
@@ -67,7 +67,7 @@ export function useBatchProcessing() {
 
   // O desenho do carimbo precisa das fontes e das preferências, e ambas só
   // chegam por hook — daí virem do topo, e não de dentro do laço.
-  const fontProvider = useStampFontProvider();
+  const stampTypefaces = useStampTypefaces();
   const { preferences } = useSettings();
 
   /**
@@ -85,7 +85,7 @@ export function useBatchProcessing() {
   const processSinglePhoto = useCallback(
     async (photo: BatchPhoto, sharedMetadata: CaptureMetadata): Promise<{ success: boolean; file?: string; error?: string }> => {
       try {
-        if (!fontProvider) {
+        if (!stampTypefaces) {
           throw new Error('As fontes do carimbo ainda estão carregando.');
         }
 
@@ -108,7 +108,7 @@ export function useBatchProcessing() {
           metadata: photoMetadata,
           preferences,
           colors: STAMP_COLORS,
-          renderer: createStampRenderer(fontProvider),
+          renderer: createStampRenderer(stampTypefaces),
         });
 
         // Nome estável e sem colisão: o carimbo do relógio não basta quando
@@ -130,7 +130,7 @@ export function useBatchProcessing() {
         return { success: false, error: errorMessage };
       }
     },
-    [fontProvider, preferences],
+    [stampTypefaces, preferences],
   );
 
   /**

@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
 import { buildWatermarkContent } from './build-content';
-import { createStampRenderer, useStampFontProvider } from './skia-stamp';
+import { createStampRenderer, useStampTypefaces } from './skia-stamp';
 import { STAMP_COLORS } from './stamp-colors';
 import { buildStampGeometry } from './stamp-layout';
 
@@ -35,12 +35,12 @@ export function StampCanvas({
   width: number;
   height: number;
 }) {
-  const provider = useStampFontProvider();
+  const typefaces = useStampTypefaces();
 
   const picture = useMemo(() => {
-    if (!provider || width <= 0 || height <= 0) return null;
+    if (!typefaces || width <= 0 || height <= 0) return null;
 
-    const renderer = createStampRenderer(provider);
+    const renderer = createStampRenderer(typefaces);
     const geometry = buildStampGeometry({
       content: buildWatermarkContent(metadata, preferences),
       preferences,
@@ -57,7 +57,7 @@ export function StampCanvas({
       width,
       height,
     });
-  }, [provider, metadata, preferences, width, height]);
+  }, [typefaces, metadata, preferences, width, height]);
 
   if (!picture) return null;
 
