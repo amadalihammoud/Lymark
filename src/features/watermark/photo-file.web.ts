@@ -8,8 +8,6 @@
  * os consumidores não precisem saber a diferença.
  */
 
-import * as Crypto from 'expo-crypto';
-
 const EXPORTS_DIRECTORY_NAME = 'exports';
 
 /** Nome de arquivo aceito: o que este módulo gera, e nada além disso. */
@@ -62,6 +60,24 @@ function isDesktop(): boolean {
 }
 
 /**
+ * Gera UUID usando crypto do navegador ou fallback.
+ * expo-crypto NÃO funciona na web - usar crypto.randomUUID nativo.
+ */
+function randomUUID(): string {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  // Fallback para Node (harness)
+  // @ts-ignore - crypto existe no Node
+  if (typeof require !== 'undefined') {
+    const { randomUUID } = require('crypto');
+    return randomUUID();
+  }
+  // Fallback final (não deve acontecer)
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
+
+/**
  * Na web: não há persistência (decisão 2.2) - apenas retorna o path.
  * No desktop: salva em pasta real via IPC.
  *
@@ -69,7 +85,7 @@ function isDesktop(): boolean {
  */
 export async function persistExportedPhoto(temporaryUri: string): Promise<string> {
   // Gerar nome de arquivo
-  const fileName = `${Crypto.randomUUID()}.jpg`;
+  const fileName = `${randomUUID()}.jpg`;
   const relativePath = `${EXPORTS_DIRECTORY_NAME}/${fileName}`;
 
   // Na web: não faz nada (decisão 2.2 - não há galeria)
@@ -112,7 +128,7 @@ export function deleteExportedPhoto(path: string): void {
  * A composição em resolução cheia devolve os bytes do JPEG direto da memória.
  */
 export function writeExportedPhoto(bytes: Uint8Array): string {
-  const fileName = `${Crypto.randomUUID()}.jpg`;
+  const fileName = `${randomUUID()}.jpg`;
   const relativePath = `${EXPORTS_DIRECTORY_NAME}/${fileName}`;
 
   // Na web: trigger download
