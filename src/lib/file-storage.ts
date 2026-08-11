@@ -300,11 +300,25 @@ async function pickImageWeb(): Promise<PickResult> {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
-    input.capture = 'environment';
-    
+
+    // `capture` NÃO entra aqui.
+    //
+    // Esta função atende só o botão "Escolher da galeria" — na web,
+    // `takePhotoWithCamera` devolve erro, porque câmera não é implementada
+    // nesta plataforma. Então `capture` não habilitava caminho nenhum.
+    //
+    // O que ele fazia era estragar: navegador de desktop ignora o atributo,
+    // mas navegador de celular o obedece e abre a CÂMERA no lugar do seletor
+    // de arquivos. No celular, "Escolher da galeria" não escolhia da galeria —
+    // e escolher uma foto já tirada era impossível. O defeito é invisível no
+    // desktop, que é onde se testa.
+    //
+    // Sem o atributo, o seletor do sistema aparece e no celular ele oferece
+    // tanto a galeria quanto a câmera.
+
     input.onchange = async (event) => {
       const file = (event.target as HTMLInputElement).files?.[0];
-      
+
       if (!file) {
         resolve({ status: 'cancelled' });
         return;
@@ -342,8 +356,11 @@ async function pickImagesWeb(): Promise<{ status: 'selected' | 'cancelled' | 'fa
     input.type = 'file';
     input.accept = 'image/*';
     input.multiple = true;
-    input.capture = 'environment';
-    
+
+    // Sem `capture`, pelo mesmo motivo explicado em `pickImageWeb` — e aqui
+    // ele era ainda mais contraditório, porque pedir a câmera num seletor
+    // `multiple` é pedir várias fotos de uma vez a quem só tira uma.
+
     input.onchange = async (event) => {
       const files = (event.target as HTMLInputElement).files;
       
