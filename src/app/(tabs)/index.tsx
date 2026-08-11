@@ -23,7 +23,7 @@ import { renderStampedPhoto } from '@/features/watermark/render-photo';
 import { STAMP_COLORS } from '@/features/watermark/stamp-canvas';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
-import { isDesktop } from '@/lib/file-storage';
+import { canUseDeviceCamera, isDesktop } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
 import { WATERMARK_FIELD_KEYS, type WatermarkFieldKey } from '@/types';
 
@@ -290,6 +290,7 @@ export default function CaptureScreen() {
     <>
       <CaptureActions
         busy={busy || picking}
+        showCamera={canUseDeviceCamera()}
         onTakePhoto={() => void runPick(takePhotoWithCamera)}
         onPickFromLibrary={() => void runPick(pickPhotoFromLibrary)}
       />

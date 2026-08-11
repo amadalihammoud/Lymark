@@ -246,15 +246,48 @@ async function saveFileDesktop(
   return { status: 'failed', error: new Error('IPC não disponível') };
 }
 
+/** De onde a foto vem. */
+export type PhotoSource = 'library' | 'camera';
+
+/**
+ * Há câmera alcançável nesta plataforma?
+ *
+ * `isMobile()` responde "app nativo", não "celular" — num telefone acessando
+ * pelo navegador a plataforma é `web`. Era essa confusão que deixava o botão
+ * "Tirar foto" cair direto no erro em qualquer navegador, inclusive o do
+ * celular, onde a câmera está a um atributo de distância.
+ *
+ * No navegador, quem abre a câmera é o atributo `capture` do input de arquivo,
+ * e ele só é honrado onde existe câmera embutida. `pointer: coarse` é o sinal
+ * disponível para isso: telefone e tablet casam, desktop não. Num desktop com
+ * tela sensível ao toque o palpite erra, e o resultado é o seletor de arquivos
+ * comum — degrada, não quebra.
+ *
+ * No Electron devolve `false` porque não há implementação de câmera lá; mais
+ * honesto esconder o botão do que oferecer um que sempre falha.
+ */
+export function canUseDeviceCamera(): boolean {
+  const platform = getExecutionPlatform();
+
+  if (platform === 'mobile') return true;
+  if (platform === 'desktop') return false;
+
+  return (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(pointer: coarse)').matches
+  );
+}
+
 /**
  * Seleciona um arquivo de imagem da plataforma atual.
  */
-export async function pickImage(): Promise<PickResult> {
+export async function pickImage(source: PhotoSource = 'library'): Promise<PickResult> {
   const platform = getExecutionPlatform();
 
   switch (platform) {
     case 'web':
-      return pickImageWeb();
+      return pickImageWeb(source);
     case 'mobile':
       return pickImageMobile();
     case 'desktop':
@@ -337,26 +370,23 @@ function watchDialogDismissal(input: HTMLInputElement, dismissed: () => void): (
   return stop;
 }
 
-async function pickImageWeb(): Promise<PickResult> {
+async function pickImageWeb(source: PhotoSource = 'library'): Promise<PickResult> {
   return new Promise((resolve) => {
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
 
-    // `capture` NÃO entra aqui.
+    // `capture` é o que decide entre câmera e galeria no navegador do celular,
+    // e por isso depende de qual botão chamou.
     //
-    // Esta função atende só o botão "Escolher da galeria" — na web,
-    // `takePhotoWithCamera` devolve erro, porque câmera não é implementada
-    // nesta plataforma. Então `capture` não habilitava caminho nenhum.
-    //
-    // O que ele fazia era estragar: navegador de desktop ignora o atributo,
-    // mas navegador de celular o obedece e abre a CÂMERA no lugar do seletor
-    // de arquivos. No celular, "Escolher da galeria" não escolhia da galeria —
-    // e escolher uma foto já tirada era impossível. O defeito é invisível no
-    // desktop, que é onde se testa.
-    //
-    // Sem o atributo, o seletor do sistema aparece e no celular ele oferece
-    // tanto a galeria quanto a câmera.
+    // Ele já esteve aqui de forma incondicional, e o efeito era o inverso do
+    // pretendido: o desktop ignora o atributo, mas o celular o obedece e abre
+    // a CÂMERA. "Escolher da galeria" não escolhia da galeria, e usar uma foto
+    // já tirada era impossível — defeito invisível no desktop, que é onde se
+    // testa.
+    if (source === 'camera') {
+      input.capture = 'environment';
+    }
 
     let settled = false;
     let stopWatching = () => {};

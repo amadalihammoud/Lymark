@@ -1,16 +1,16 @@
 /**
- * Renderiza o carimbo no Skia, fora do aparelho, e confere contra a referncia.
+ * Renderiza o carimbo no Skia, fora do aparelho, e confere contra a referência.
  *
- * A geometria de `stamp-layout.ts` no depende de motor grfico: recebe uma
- * funo de medio e devolve posies absolutas. Isso permite desenh-la aqui,
+ * A geometria de `stamp-layout.ts` não depende de motor gráfico: recebe uma
+ * função de medição e devolve posições absolutas. Isso permite desenhá-la aqui,
  * no mesmo Skia que roda no telefone, e verificar antes de qualquer build que
- * a hora ocupa a largura medida na referncia e que a barra mbar casa com a
+ * a hora ocupa a largura medida na referência e que a barra âmbar casa com a
  * tinta dos algarismos.
  *
  *   npx tsc -p tsconfig.calib.json && node scripts/render-stamp-reference.js
  *
  * O arquivo `tsconfig.calib.json` compila apenas o layout para CommonJS; ver
- * o cabealho de `measure-skia-typography.js` para o restante do mtodo.
+ * o cabeçalho de `measure-skia-typography.js` para o restante do método.
  */
 const fs = require('fs');
 const path = require('path');
@@ -20,7 +20,7 @@ const ROOT = path.join(__dirname, '..');
 const NM = path.join(ROOT, 'node_modules');
 const BUILD = process.env.LYMARK_CALIB_BUILD || '/tmp/lymark-build';
 
-// O cdigo compilado preserva o alias `@/`, que o Node no conhece.
+// O código compilado preserva o alias `@/`, que o Node não conhece.
 const resolve = Module._resolveFilename;
 Module._resolveFilename = function (request, ...rest) {
   if (request.startsWith('@/')) {
@@ -51,15 +51,15 @@ const FONT_FILES = {
   medium: `${NM}/@expo-google-fonts/barlow/500Medium/Barlow_500Medium.ttf`,
 };
 
-/** Largura da imagem usada na medio da referncia. */
+/** Largura da imagem usada na medição da referência. */
 const WIDTH = 1128;
 const HEIGHT = Math.round((WIDTH * 4) / 3);
 
 const CONTENT = {
   time: '21:55',
   date: '01 ago. 2026',
-  weekday: 'Sb',
-  address: 'Av. Puglisi, 490 - Centro, Guaruj - SP, 11410-002',
+  weekday: 'Sáb',
+  address: 'Av. Puglisi, 490 - Centro, Guarujá - SP, 11410-002',
   code: '98926A73655DC1',
   showRule: true,
   isEmpty: false,
@@ -79,8 +79,8 @@ CanvasKitInit({ locateFile: (f) => path.join(NM, 'canvaskit-wasm/bin', f) }).the
     return fontCache.get(key);
   };
 
-  // Avano, e no caixa de tinta:  o avano que determina onde o prximo
-  // elemento comea, e portanto  ele que o layout precisa conhecer.
+  // Avanço, e não caixa de tinta: é o avanço que determina onde o próximo
+  // elemento começa, e portanto é ele que o layout precisa conhecer.
   const measure = (text, size, name) => {
     const font = fontFor(name, size);
     return font.getGlyphWidths(font.getGlyphIDs(text)).reduce((a, b) => a + b, 0);
@@ -97,14 +97,14 @@ CanvasKitInit({ locateFile: (f) => path.join(NM, 'canvaskit-wasm/bin', f) }).the
 
   const surface = CK.MakeSurface(WIDTH, HEIGHT);
   const canvas = surface.getCanvas();
-  // Cinza mdio no lugar da fotografia: o carimbo  branco com sombra, e
-  // sobre preto no se enxergaria a borda da tinta.
+  // Cinza médio no lugar da fotografia: o carimbo é branco com sombra, e
+  // sobre preto não se enxergaria a borda da tinta.
   canvas.clear(CK.Color(60, 72, 86, 1));
 
   const paint = new CK.Paint();
   paint.setAntiAlias(true);
 
-  /** A geometria carrega a cor de cada traado; o desenho precisa respeit-la. */
+  /** A geometria carrega a cor de cada traçado; o desenho precisa respeitá-la. */
   const toColor = (value) => {
     const hex = /^#([0-9a-f]{6})$/i.exec(value);
     if (hex) {
@@ -147,9 +147,9 @@ CanvasKitInit({ locateFile: (f) => path.join(NM, 'canvaskit-wasm/bin', f) }).the
   const rule = geometry.rects.find((r) => r.color === '#F5B60D');
 
   /**
-   * A referncia foi medida em **tinta**, no em avano: o alvo de 219 px  a
-   * largura do traado visvel. Avano inclui as folgas laterais dos glifos e
-   * daria 5,9% a mais nesta fonte  comparar os dois seria erro de aferio.
+   * A referência foi medida em **tinta**, não em avanço: o alvo de 219 px é a
+   * largura do traçado visível. Avanço inclui as folgas laterais dos glifos e
+   * daria 5,9% a mais nesta fonte — comparar os dois seria erro de aferição.
    */
   const inkWidth = (() => {
     const pad = Math.ceil(time.size);
@@ -184,13 +184,13 @@ CanvasKitInit({ locateFile: (f) => path.join(NM, 'canvaskit-wasm/bin', f) }).the
 
   console.log('=== carimbo desenhado em', WIDTH, 'x', HEIGHT, '===');
   console.log('corpo da hora            :', time.size);
-  console.log('tinta de "21:55"         :', inkWidth, '| alvo da referncia: 219');
+  console.log('tinta de "21:55"         :', inkWidth, '| alvo da referência: 219');
   console.log('desvio                   :', (((inkWidth - 219) / 219) * 100).toFixed(1), '%');
-  console.log('avano (para o layout)   :', measure(time.text, time.size, 'clock').toFixed(1));
+  console.log('avanço (para o layout)   :', measure(time.text, time.size, 'clock').toFixed(1));
   console.log('barra: topo', rule.y.toFixed(1), 'altura', rule.height.toFixed(1));
   console.log('tinta: topo', (time.baseline - time.size * 0.715).toFixed(1),
     'altura', (time.size * 0.73).toFixed(1));
   console.log('elementos                :', geometry.texts.length, 'textos',
-    geometry.rects.length, 'retngulos');
+    geometry.rects.length, 'retângulos');
   console.log('arquivo                  :', out);
 });
