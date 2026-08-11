@@ -1,25 +1,38 @@
 /*
- * A paleta é a mesma do aplicativo (src/theme/colors.ts), tom por tom.
- * O site e o app precisam parecer a mesma coisa — não duas peças de
- * fornecedores diferentes.
+ * A paleta e a tipografia são as do Manual de Marca Lymark, versão 1.0.
+ *
+ * O marinho #15243C e o amarelo #F3C218 são as duas cores da marca; o amarelo
+ * é o único acento e nunca ocupa área maior que o azul. Os demais tons de
+ * marinho são derivados do oficial por clareamento, mantendo os degraus da
+ * escala anterior — o manual define a cor institucional, não a escala de
+ * superfícies que um site escuro precisa.
+ *
+ * O amarelo é cor de **acento, não de texto**: sobre o marinho tem 9,3:1 e
+ * está liberado; sobre branco tem 1,5:1 e é proibido. Como o site inteiro é
+ * escuro, ele aparece como texto apenas sobre marinho.
  */
 :root {
-  --navy-900: #091a2b;
-  --navy-800: #0d2137;
-  --navy-700: #122b44;
-  --navy-600: #16324f;
-  --navy-500: #1b3d60;
-  --navy-400: #23496e;
+  --navy-900: #101c2f;
+  --navy-800: #15243c;
+  --navy-700: #1f2d44;
+  --navy-600: #25334a;
+  --navy-500: #303d53;
+  --navy-400: #3c485c;
 
-  --amber: #f5b60d;
-  --blue-300: #4a76a1;
+  --amber: #f3c218;
+  /* Substitui o amarelo sempre que a marca é aplicada sobre branco ou papel. */
+  --amber-on-light: #d9a700;
+  --blue-300: #8a93a3;
 
   --text: #ffffff;
-  --text-on-surface: #c7d6e4;
-  --text-muted: #93a9c0;
-  --text-subtle: #8da4ba;
+  --text-on-surface: #c7d0dc;
+  --text-muted: #97a1b1;
+  --text-subtle: #8a93a3;
 
-  --measure: 34rem;
+  /* Medido: a Space Grotesk ocupa 18% mais largura que a Barlow no mesmo
+     corpo, então a medida de 34rem cairia de ~73 para ~62 caracteres por
+     linha. As 37rem devolvem a linha de leitura que havia antes. */
+  --measure: 37rem;
   --gutter: clamp(1.25rem, 5vw, 3rem);
 }
 
@@ -135,10 +148,13 @@ nav.site a:hover {
 
 /* --------------------------------------------------------------- assinatura */
 
+/* A assinatura da marca é título, não rótulo técnico: o manual reserva a
+   monoespaçada a caixa alta, números e códigos, e a Space Grotesk fica com
+   títulos e interface. */
 .wordmark {
-  font-family: var(--font-mark), system-ui, sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text);
   font-size: 1.0625rem;
   border-bottom: 0;
@@ -176,14 +192,15 @@ nav.site a:hover {
   margin-bottom: 1.5rem;
 }
 
+/* Corpo de 1rem, não 1,0625: a Space Grotesk tem altura de x maior que a
+   Barlow e já lê um ponto acima no mesmo tamanho nominal. */
 .lede {
   max-width: var(--measure);
-  font-size: 1.0625rem;
   color: var(--text-on-surface);
 }
 
 .eyebrow {
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -453,7 +470,7 @@ section.band .scene {
 }
 
 .capture-label {
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.625rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -657,7 +674,7 @@ section.band .split .scene {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -684,7 +701,7 @@ section.band {
 }
 
 .band-head .num {
-  font-family: var(--font-clock), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 1.5rem;
   color: var(--amber);
   line-height: 1;
@@ -734,7 +751,7 @@ section.band {
 }
 
 .field {
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -780,7 +797,7 @@ article.doc h2 {
 }
 
 article.doc h2 .num {
-  font-family: var(--font-clock), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   color: var(--amber);
   font-size: 1.125rem;
 }
@@ -996,7 +1013,7 @@ section.band.alt .cell {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1094,7 +1111,7 @@ article.doc ul + p {
 }
 
 .toc h2 {
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1178,7 +1195,7 @@ article.doc ul + p {
 
 .table-wrap thead th {
   color: var(--blue-300);
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1196,7 +1213,7 @@ article.doc ul + p {
 /* Medida se lê alinhada à direita e em algarismos de largura fixa. */
 .table-wrap .n {
   text-align: right;
-  font-family: var(--font-clock), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
   font-size: 1.0625em;
   color: var(--text);
@@ -1205,7 +1222,7 @@ article.doc ul + p {
 
 .table-wrap thead .n {
   color: var(--blue-300);
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
 }
 
@@ -1221,7 +1238,7 @@ article.doc ul + p {
 
 .callout .label {
   display: block;
-  font-family: var(--font-mark), system-ui, sans-serif;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1234,7 +1251,7 @@ article.doc ul + p {
 }
 
 code {
-  font-family: var(--font-clock), ui-monospace, monospace;
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 1.08em;
   letter-spacing: 0.04em;
   color: var(--text);

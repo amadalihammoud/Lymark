@@ -1,22 +1,33 @@
 import type { Metadata, Viewport } from 'next';
-import { Barlow, Pathway_Gothic_One } from 'next/font/google';
+import { IBM_Plex_Mono, Pathway_Gothic_One, Space_Grotesk } from 'next/font/google';
 import Link from 'next/link';
 
 import './globals.css';
 
 /*
- * As mesmas duas famílias que o aplicativo embarca: Barlow no texto e na
- * assinatura, Pathway Gothic One nos numerais. A segunda foi escolhida por
- * medição — proporção de 0,498 de largura e 0,318 de densidade de tinta —
- * e é ela que dá ao site a mesma voz tipográfica do carimbo.
+ * As duas famílias do Manual de Marca: Space Grotesk em títulos e interface,
+ * IBM Plex Mono reservada a rótulos curtos em caixa alta, números, códigos e
+ * legendas técnicas — nunca em texto corrido.
  */
-const barlow = Barlow({
+const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '500', '700'],
   display: 'swap',
   variable: '--font-body',
 });
 
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-mono',
+});
+
+/*
+ * A terceira fica só dentro das molduras. Pathway Gothic One é a fonte que o
+ * aplicativo embarca e desenha no carimbo de cada foto exportada; trocá-la
+ * aqui faria o site mostrar um carimbo que o aplicativo não produz.
+ */
 const pathway = Pathway_Gothic_One({
   subsets: ['latin'],
   weight: '400',
@@ -43,14 +54,17 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0D2137',
+  themeColor: '#15243C',
   colorScheme: 'dark',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${barlow.variable} ${pathway.variable}`}>
-      <body style={{ ['--font-mark' as string]: 'var(--font-body)' }}>
+    <html
+      lang="pt-BR"
+      className={`${spaceGrotesk.variable} ${plexMono.variable} ${pathway.variable}`}
+    >
+      <body>
         <a className="skip" href="#conteudo">
           Pular para o conteúdo
         </a>
