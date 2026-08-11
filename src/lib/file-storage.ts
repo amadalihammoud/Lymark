@@ -295,6 +295,48 @@ export async function pickImages(): Promise<{ status: 'selected' | 'cancelled' |
   }
 }
 
+/**
+ * Avisa quando o usuário fecha o seletor de arquivos sem escolher nada.
+ *
+ * O `change` **não** dispara ao cancelar. Sem isto, a promessa do seletor
+ * ficava pendente para sempre — e a consequência não era só um `await` órfão:
+ * a tela liga `picking` antes de esperar e só desliga no `finally`, que nunca
+ * chegava. Cancelar o diálogo uma única vez deixava os dois botões de foto
+ * mortos até recarregar a página.
+ *
+ * `cancel` resolve nos navegadores atuais. O retorno do foco cobre os que não
+ * o implementam (Safari anterior ao 16.4): se a janela recupera o foco e o
+ * input continua sem arquivo, o diálogo foi fechado sem escolha. A espera
+ * existe porque o foco volta **antes** de o `change` ser entregue — sem ela,
+ * uma escolha legítima seria declarada cancelamento.
+ *
+ * Devolve a função que encerra a vigilância, para quem resolveu primeiro.
+ */
+function watchDialogDismissal(input: HTMLInputElement, dismissed: () => void): () => void {
+  let watching = true;
+
+  const stop = () => {
+    watching = false;
+    input.removeEventListener('cancel', onCancel);
+    window.removeEventListener('focus', onFocus);
+  };
+
+  const onCancel = () => {
+    if (watching) dismissed();
+  };
+
+  const onFocus = () => {
+    window.setTimeout(() => {
+      if (watching && (input.files?.length ?? 0) === 0) dismissed();
+    }, 500);
+  };
+
+  input.addEventListener('cancel', onCancel);
+  window.addEventListener('focus', onFocus);
+
+  return stop;
+}
+
 async function pickImageWeb(): Promise<PickResult> {
   return new Promise((resolve) => {
     const input = document.createElement('input');
@@ -316,11 +358,25 @@ async function pickImageWeb(): Promise<PickResult> {
     // Sem o atributo, o seletor do sistema aparece e no celular ele oferece
     // tanto a galeria quanto a câmera.
 
+    let settled = false;
+    let stopWatching = () => {};
+
+    // Um único ponto de saída: cancelar e escolher são caminhos concorrentes,
+    // e o primeiro a chegar precisa desarmar o outro.
+    const settle = (result: PickResult) => {
+      if (settled) return;
+      settled = true;
+      stopWatching();
+      resolve(result);
+    };
+
+    stopWatching = watchDialogDismissal(input, () => settle({ status: 'cancelled' }));
+
     input.onchange = async (event) => {
       const file = (event.target as HTMLInputElement).files?.[0];
 
       if (!file) {
-        resolve({ status: 'cancelled' });
+        settle({ status: 'cancelled' });
         return;
       }
       
@@ -336,11 +392,11 @@ async function pickImageWeb(): Promise<PickResult> {
         //
         // Quem cria é quem libera, quando a foto é trocada.
         rememberPickedUrl(url);
-        resolve({ status: 'selected', uri: url, width: img.width, height: img.height });
+        settle({ status: 'selected', uri: url, width: img.width, height: img.height });
       };
-      
+
       img.onerror = () => {
-        resolve({ status: 'failed', error: new Error('Falha ao carregar imagem') });
+        settle({ status: 'failed', error: new Error('Falha ao carregar imagem') });
       };
       
       img.src = url;
@@ -361,11 +417,27 @@ async function pickImagesWeb(): Promise<{ status: 'selected' | 'cancelled' | 'fa
     // ele era ainda mais contraditório, porque pedir a câmera num seletor
     // `multiple` é pedir várias fotos de uma vez a quem só tira uma.
 
+    // Mesma vigilância de cancelamento do seletor de foto única, e pelo mesmo
+    // motivo: sem ela, fechar o diálogo travava o lote para sempre.
+    type BatchResult = Awaited<ReturnType<typeof pickImagesWeb>>;
+
+    let settled = false;
+    let stopWatching = () => {};
+
+    const settle = (result: BatchResult) => {
+      if (settled) return;
+      settled = true;
+      stopWatching();
+      resolve(result);
+    };
+
+    stopWatching = watchDialogDismissal(input, () => settle({ status: 'cancelled' }));
+
     input.onchange = async (event) => {
       const files = (event.target as HTMLInputElement).files;
-      
+
       if (!files || files.length === 0) {
-        resolve({ status: 'cancelled' });
+        settle({ status: 'cancelled' });
         return;
       }
       
@@ -396,7 +468,7 @@ async function pickImagesWeb(): Promise<{ status: 'selected' | 'cancelled' | 'fa
       }
 
       rememberPickedUrls(photos.map((p) => p.uri));
-      resolve({ status: 'selected', photos });
+      settle({ status: 'selected', photos });
     };
     
     input.click();
