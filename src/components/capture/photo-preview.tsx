@@ -6,6 +6,8 @@ import { StampCanvas } from '@/features/watermark/stamp-canvas';
 import { colors, radius, typography } from '@/theme';
 import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/types';
 
+import { fitInside } from './fit-inside';
+
 /**
  * A foto com a marca d'água por cima.
  *
@@ -17,24 +19,6 @@ import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/typ
 
 /** Proporção usada enquanto nenhuma foto foi escolhida. */
 const PLACEHOLDER_ASPECT_RATIO = 3 / 4;
-
-/**
- * O maior retângulo com a proporção pedida que cabe na caixa.
- *
- * O cálculo é feito aqui, e não por CSS, porque `aspectRatio` sozinho resolve
- * a altura a partir da largura e ignora o teto vertical: numa janela larga o
- * quadro passava de mil e seiscentos pixels de altura. Medir e dimensionar é
- * também o que este componente já fazia para o carimbo, que precisa do tamanho
- * em pixels — não é uma engrenagem nova.
- */
-function fitInside(box: { width: number; height: number }, aspectRatio: number) {
-  if (box.width <= 0 || box.height <= 0) return { width: 0, height: 0 };
-
-  const heightIfFullWidth = box.width / aspectRatio;
-  return heightIfFullWidth <= box.height
-    ? { width: box.width, height: heightIfFullWidth }
-    : { width: box.height * aspectRatio, height: box.height };
-}
 
 export function PhotoPreview({
   photo,
@@ -54,21 +38,23 @@ export function PhotoPreview({
   bounded?: boolean;
 }) {
   /**
-   * Tamanho real da foto na tela.
+   * O espaço disponível para o quadro. É a ÚNICA medição do componente.
    *
-   * O carimbo é proporcional ao quadro: sem medir, o bloco teria tamanho fixo
-   * em pontos e numa panorâmica a hora seria cortada para fora da imagem.
+   * Antes havia duas, em cadeia: media-se a caixa, o quadro recebia tamanho e
+   * só então um segundo `onLayout` informava as dimensões ao `StampCanvas`.
+   * Quando essa segunda medição não chegava, largura e altura ficavam em zero,
+   * o `StampCanvas` devolvia `null` — ele exige as duas maiores que zero — e o
+   * resultado era a foto aparecer sem carimbo, sem erro e sem aviso.
+   *
+   * Agora o tamanho do quadro é calculado, não medido de volta: o mesmo valor
+   * que vai para o estilo vai para o carimbo. Some o intervalo em que os dois
+   * podiam discordar.
    */
-  const [frame, setFrame] = useState({ width: 0, height: 0 });
-
-  /** Espaço que sobrou para o quadro. Só é medido no modo limitado. */
   const [box, setBox] = useState({ width: 0, height: 0 });
 
-  const measure = (
-    setter: typeof setFrame,
-  ) => (event: { nativeEvent: { layout: { width: number; height: number } } }) => {
+  const measure = (event: { nativeEvent: { layout: { width: number; height: number } } }) => {
     const { width, height } = event.nativeEvent.layout;
-    setter((current) =>
+    setBox((current) =>
       current.width === width && current.height === height ? current : { width, height },
     );
   };
@@ -80,34 +66,34 @@ export function PhotoPreview({
       ? photo.width / photo.height
       : PLACEHOLDER_ASPECT_RATIO;
 
-  const frameSize = bounded ? fitInside(box, aspectRatio) : { width: '100%' as const, aspectRatio };
-
-  const content = !photo ? (
-    <View style={[styles.frame, styles.placeholder, frameSize]}>
-      <Text style={typography.body}>Nenhuma foto selecionada</Text>
-    </View>
-  ) : (
-    <View style={[styles.frame, frameSize]} onLayout={measure(setFrame)}>
-      <Image
-        source={{ uri: photo.uri }}
-        style={StyleSheet.absoluteFill}
-        contentFit="cover"
-        accessibilityLabel="Pré-visualização da foto com marca d’água"
-      />
-      <StampCanvas
-        metadata={metadata}
-        preferences={preferences}
-        width={frame.width}
-        height={frame.height}
-      />
-    </View>
-  );
-
-  if (!bounded) return content;
+  // Limitado: o maior retângulo que cabe na caixa. Livre: a largura toda, com a
+  // altura saindo da proporção. Nos dois casos o tamanho é conhecido aqui.
+  const frame = bounded
+    ? fitInside(box, aspectRatio)
+    : { width: box.width, height: box.width > 0 ? box.width / aspectRatio : 0 };
 
   return (
-    <View style={styles.fitArea} onLayout={measure(setBox)}>
-      {content}
+    <View style={bounded ? styles.fitArea : styles.fullWidth} onLayout={measure}>
+      {!photo ? (
+        <View style={[styles.frame, styles.placeholder, frame]}>
+          <Text style={typography.body}>Nenhuma foto selecionada</Text>
+        </View>
+      ) : (
+        <View style={[styles.frame, frame]}>
+          <Image
+            source={{ uri: photo.uri }}
+            style={StyleSheet.absoluteFill}
+            contentFit="cover"
+            accessibilityLabel="Pré-visualização da foto com marca d’água"
+          />
+          <StampCanvas
+            metadata={metadata}
+            preferences={preferences}
+            width={frame.width}
+            height={frame.height}
+          />
+        </View>
+      )}
     </View>
   );
 }
@@ -121,6 +107,16 @@ const styles = StyleSheet.create({
     minHeight: 0,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  /**
+   * No modo livre a área só serve para medir a largura.
+   *
+   * `alignSelf: 'stretch'` garante que ela receba a largura do pai mesmo
+   * quando o pai centraliza os filhos — sem isso a medição sairia zero e o
+   * quadro nunca ganharia tamanho.
+   */
+  fullWidth: {
+    alignSelf: 'stretch',
   },
   frame: {
     borderRadius: radius.lg,
