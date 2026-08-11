@@ -72,26 +72,47 @@ export function PhotoPreview({
     ? fitInside(box, aspectRatio)
     : { width: box.width, height: box.width > 0 ? box.width / aspectRatio : 0 };
 
+  const stampedPhoto = photo ? (
+    <View style={[styles.frame, frame]}>
+      <Image
+        source={{ uri: photo.uri }}
+        style={StyleSheet.absoluteFill}
+        contentFit="cover"
+        accessibilityLabel="Pré-visualização da foto com marca d’água"
+      />
+      <StampCanvas
+        metadata={metadata}
+        preferences={preferences}
+        width={frame.width}
+        height={frame.height}
+      />
+    </View>
+  ) : null;
+
+  /*
+   * No modo limitado a área reservada é que é fixa, e a foto se encaixa dentro
+   * dela. Antes era o contrário: o quadro ERA o espaço, então trocar de estado
+   * mudava o tamanho do bloco — o marcador usa proporção retrato e ocupava a
+   * coluna quase toda, enquanto uma foto deitada encolhia e abria um vão. Os
+   * botões abaixo pareciam se mexer sozinhos.
+   *
+   * Com a área fixa, o retângulo é o mesmo com ou sem foto, e o que sobra vira
+   * moldura em volta da imagem em vez de espaço morto entre ela e os botões.
+   * Acrescentar qualquer coisa abaixo passa a apenas reduzir a área da foto.
+   */
+  if (bounded) {
+    return (
+      <View style={[styles.fitArea, styles.reservedArea]} onLayout={measure}>
+        {stampedPhoto ?? <Text style={typography.body}>Nenhuma foto selecionada</Text>}
+      </View>
+    );
+  }
+
   return (
-    <View style={bounded ? styles.fitArea : styles.fullWidth} onLayout={measure}>
-      {!photo ? (
+    <View style={styles.fullWidth} onLayout={measure}>
+      {stampedPhoto ?? (
         <View style={[styles.frame, styles.placeholder, frame]}>
           <Text style={typography.body}>Nenhuma foto selecionada</Text>
-        </View>
-      ) : (
-        <View style={[styles.frame, frame]}>
-          <Image
-            source={{ uri: photo.uri }}
-            style={StyleSheet.absoluteFill}
-            contentFit="cover"
-            accessibilityLabel="Pré-visualização da foto com marca d’água"
-          />
-          <StampCanvas
-            metadata={metadata}
-            preferences={preferences}
-            width={frame.width}
-            height={frame.height}
-          />
         </View>
       )}
     </View>
@@ -107,6 +128,18 @@ const styles = StyleSheet.create({
     minHeight: 0,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  /**
+   * O retângulo reservado à foto, visível mesmo vazio.
+   *
+   * É ele que dá estabilidade: sendo desenhado, o bloco tem o mesmo tamanho
+   * com e sem foto, e a sobra de uma imagem deitada se lê como moldura, não
+   * como buraco.
+   */
+  reservedArea: {
+    backgroundColor: colors.surface,
+    borderRadius: radius.lg,
+    overflow: 'hidden',
   },
   /**
    * No modo livre a área só serve para medir a largura.
