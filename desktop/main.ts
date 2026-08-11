@@ -74,14 +74,25 @@ const HEADER_BYTES = 4 * 1024 * 1024;
  * Confere a assinatura do arquivo antes de entregá-lo ao `image-size`.
  *
  * O `image-size` detecta o formato pelo conteúdo, não pela extensão, e tem
- * uma falha conhecida sem correção publicada: o parser de ICNS entra em laço
- * infinito com cabeçalho forjado (advisory alcança <=2.0.2, que é a última
- * versão que existe). Como ele roda de forma síncrona no processo principal,
- * um laço ali congela a janela inteira, sem recuperação.
+ * falhas de laço infinito sem correção publicada — o aviso alcança <=2.0.2,
+ * que é a última versão que existe. São duas, ambas com prova de conceito
+ * pública:
  *
- * Aceitando apenas JPEG, PNG e WebP pela assinatura, o caminho do ICNS deixa
- * de ser alcançável — um `.jpg` com cabeçalho de ICNS é recusado aqui, antes
- * de o parser ser chamado.
+ *   - CVE-2025-71330: `icns.js`, entrada de ícone com comprimento zero;
+ *   - CVE-2025-71329: HEIF, JP2 e JXL, box declarando tamanho zero.
+ *
+ * Como o `sizeOf` roda de forma síncrona no processo principal, um laço ali
+ * congela a janela inteira, sem recuperação.
+ *
+ * A defesa é a **lista de permissão**, e não a lista de proibição: só passam
+ * JPEG, PNG e WebP, conferidos pela assinatura. Todo o resto — inclusive os
+ * parsers das duas falhas acima, e os das que ainda não foram descobertas —
+ * é inalcançável. Um `.jpg` com cabeçalho de ICNS é recusado aqui, antes de
+ * o parser ser chamado.
+ *
+ * ATENÇÃO: acrescentar um formato a esta lista é assumir o risco do parser
+ * correspondente. HEIC é o caso a pensar duas vezes — é o formato padrão do
+ * iPhone, e é exatamente um dos atingidos pelo CVE-2025-71329.
  */
 function hasSupportedSignature(bytes: Buffer): boolean {
   if (bytes.length < 12) return false;
