@@ -49,8 +49,13 @@ export default function Home() {
             embutida — não é um dado que acompanha a foto e se perde no primeiro
             encaminhamento por WhatsApp.
           </p>
+          <div className="cta">
+            <a href="https://app.lymark.app">Abrir o app no navegador</a>
+            <span className="note">Nada para instalar.</span>
+          </div>
+
           <div className="meta">
-            <span>Android</span>
+            <span>Android e navegador</span>
             <span>Sem conta</span>
             <span>Sem servidor</span>
             <span>Português do Brasil</span>
