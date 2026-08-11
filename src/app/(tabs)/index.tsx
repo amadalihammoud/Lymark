@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 
 import { AppHeader } from '@/components/brand/app-header';
@@ -42,6 +42,14 @@ const LOOKUP_MESSAGES: Record<AddressLookupStatus, string> = {
 type PendingAction = 'save' | 'share';
 
 /**
+ * A partir desta largura a tela vira duas colunas.
+ *
+ * Abaixo dela não há espaço para dividir sem espremer o formulário, e a coluna
+ * única rolável — o desenho pensado para o celular — continua sendo o certo.
+ */
+const WIDE_LAYOUT_MIN_WIDTH = 900;
+
+/**
  * Capturar — a tela inicial.
  *
  * Todo o estado mostrado aqui vem do `CaptureProvider`, na raiz. A tela em si
@@ -57,6 +65,9 @@ export default function CaptureScreen() {
   const { addEntry } = useGallery();
   const { notify, ask } = useFeedback();
   const { lookup, isLoading: locating } = useAddressLookup();
+
+  const { width: windowWidth } = useWindowDimensions();
+  const wide = windowWidth >= WIDE_LAYOUT_MIN_WIDTH;
 
   const [pending, setPending] = useState<PendingAction | null>(null);
   const [picking, setPicking] = useState(false);
@@ -264,16 +275,19 @@ export default function CaptureScreen() {
     void runAction(action);
   };
 
-  return (
-    <Screen>
-      <AppHeader tagline="Marca d’água com hora, data e local" />
+  const header = <AppHeader tagline="Marca d’água com hora, data e local" />;
 
-      <PhotoPreview
-        photo={draft.photo}
-        metadata={draft.metadata}
-        preferences={preferences}
-      />
+  const preview = (
+    <PhotoPreview
+      photo={draft.photo}
+      metadata={draft.metadata}
+      preferences={preferences}
+      bounded={wide}
+    />
+  );
 
+  const controls = (
+    <>
       <CaptureActions
         busy={busy || picking}
         onTakePhoto={() => void runPick(takePhotoWithCamera)}
@@ -344,11 +358,71 @@ export default function CaptureScreen() {
       ) : (
         <Text style={styles.hint}>Escolha uma foto para habilitar as ações.</Text>
       )}
+    </>
+  );
+
+  // Em tela larga, foto e controles dividem a janela lado a lado e nada rola.
+  // Era a foto esticando junto com a largura que empurrava todo o resto para
+  // fora: num quadro de largura cheia, a altura vem da proporção da imagem, e
+  // numa janela de 1280 isso dava mais de mil e seiscentos pixels.
+  if (wide) {
+    return (
+      <Screen scrollable={false} contentStyle={styles.wide}>
+        <View style={styles.previewColumn}>
+          {header}
+          {preview}
+        </View>
+
+        {/* O formulário rola por si só quando a janela é baixa demais. Assim a
+            barra aparece só nele, e só quando não há alternativa. */}
+        <ScrollView
+          style={styles.formColumn}
+          contentContainerStyle={styles.formContent}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}>
+          {controls}
+        </ScrollView>
+      </Screen>
+    );
+  }
+
+  return (
+    <Screen>
+      {header}
+      {preview}
+      {controls}
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
+  wide: {
+    flexDirection: 'row',
+    gap: spacing.xl,
+    paddingHorizontal: spacing.lg,
+    paddingVertical: spacing.lg,
+    // Numa janela muito larga as duas colunas iam para os extremos e abriam um
+    // vazio no meio. O teto centralizado mantém foto e formulário próximos,
+    // que é o que o uso pede: olha-se de um para o outro o tempo todo.
+    width: '100%',
+    maxWidth: 1180,
+    alignSelf: 'center',
+  },
+  previewColumn: {
+    flex: 1,
+    // Permite encolher abaixo do tamanho natural do conteúdo; sem isto a foto
+    // volta a ditar a altura da linha.
+    minHeight: 0,
+    gap: spacing.lg,
+  },
+  formColumn: {
+    flex: 1,
+    // Largura de leitura: o formulário não ganha nada em esticar mais.
+    maxWidth: 460,
+  },
+  formContent: {
+    gap: spacing.lg,
+  },
   actions: {
     flexDirection: 'row',
     gap: spacing.md,
