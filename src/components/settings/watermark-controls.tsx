@@ -35,10 +35,45 @@ import {
  * tela; no layout de três colunas ela seria uma segunda cópia da foto que já
  * está do lado.
  */
-export function WatermarkControls() {
+/**
+ * Quais campos entram no carimbo.
+ *
+ * Vive separado porque no layout de três colunas ele não fica com o resto das
+ * preferências: vai para a coluna dos DADOS, logo abaixo dos campos. O
+ * interruptor de "Hora" ao lado do valor da hora se explica sozinho; a duas
+ * colunas de distância, não.
+ */
+export function WatermarkFieldToggles() {
+  const { preferences, toggleField } = useSettings();
+
+  return (
+    <Section
+      title="Campos exibidos"
+      description="Só entram na foto os campos ligados que tiverem conteúdo.">
+      {WATERMARK_FIELD_KEYS.map((key, index) => (
+        <ToggleRow
+          key={key}
+          title={WATERMARK_FIELD_LABELS[key]}
+          value={preferences.visibleFields[key]}
+          onValueChange={() => toggleField(key)}
+          showDivider={index < WATERMARK_FIELD_KEYS.length - 1}
+        />
+      ))}
+    </Section>
+  );
+}
+
+export function WatermarkControls({
+  includeFields = true,
+}: {
+  /**
+   * Desligado onde os interruptores de campo já aparecem em outro lugar — a
+   * coluna dos dados, no layout de três colunas.
+   */
+  includeFields?: boolean;
+} = {}) {
   const {
     preferences,
-    toggleField,
     setPosition,
     setScale,
     setShowBackdrop,
@@ -52,19 +87,7 @@ export function WatermarkControls() {
 
   return (
     <>
-      <Section
-        title="Campos exibidos"
-        description="Só entram na foto os campos ligados que tiverem conteúdo.">
-        {WATERMARK_FIELD_KEYS.map((key, index) => (
-          <ToggleRow
-            key={key}
-            title={WATERMARK_FIELD_LABELS[key]}
-            value={preferences.visibleFields[key]}
-            onValueChange={() => toggleField(key)}
-            showDivider={index < WATERMARK_FIELD_KEYS.length - 1}
-          />
-        ))}
-      </Section>
+      {includeFields ? <WatermarkFieldToggles /> : null}
 
       <Section title="Posição" description="Canto da foto onde o bloco é ancorado.">
         <ChoiceGrid

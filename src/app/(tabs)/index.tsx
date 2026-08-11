@@ -23,7 +23,10 @@ import { renderStampedPhoto } from '@/features/watermark/render-photo';
 import { STAMP_COLORS } from '@/features/watermark/stamp-canvas';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
-import { WatermarkControls } from '@/components/settings/watermark-controls';
+import {
+  WatermarkControls,
+  WatermarkFieldToggles,
+} from '@/components/settings/watermark-controls';
 import { useLayoutMode } from '@/lib/breakpoints';
 import { canUseDeviceCamera, isDesktop } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
@@ -398,6 +401,12 @@ export default function CaptureScreen() {
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}>
           {metadataForm}
+
+          {/* Os interruptores de campo ficam aqui, e não com as demais
+              preferências: cada um liga um campo que está logo acima. O de
+              "Hora" ao lado do valor da hora se explica sozinho; a duas
+              colunas de distância, não. */}
+          {mode === 'ultra' ? <WatermarkFieldToggles /> : null}
         </ScrollView>
 
         {mode === 'ultra' ? (
@@ -406,7 +415,7 @@ export default function CaptureScreen() {
             contentContainerStyle={styles.formContent}
             keyboardShouldPersistTaps="handled"
             showsVerticalScrollIndicator={false}>
-            <WatermarkControls />
+            <WatermarkControls includeFields={false} />
           </ScrollView>
         ) : null}
       </Screen>
