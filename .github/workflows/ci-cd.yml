@@ -120,10 +120,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Electron builder dependencies
+      # O `desktop/` tem package.json próprio: é dele que vêm o electron e o
+      # electron-builder. Sem esta instalação o passo de build não encontra o
+      # comando.
+      - name: Install desktop dependencies
+        run: npm ci
+        working-directory: desktop
+
+      - name: Install packaging tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y wine64 libgtk-3-0 libnss3 libasound2 libgbm1
+          sudo apt-get install -y fakeroot
 
       - name: Build desktop web app
         run: npm run web:build
@@ -131,17 +138,25 @@ jobs:
           NODE_OPTIONS: --max_old_space_size=4096
 
       - name: Build Electron app for Linux
-        run: |
-          cd desktop
-          npm run build:linux
+        run: npm run build:linux
+        working-directory: desktop
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
+      # Uma fonte ausente não gera erro: o app abre e não carimba. Só uma
+      # verificação explícita pega isso.
+      - name: Verify package contents
+        run: node scripts/verify-package.js dist-electron/linux-unpacked ../dist
+        working-directory: desktop
+
+      # `dist/` é a saída do tsc; os instaladores vão para `dist-electron/`.
       - name: Upload Linux build artifact
         uses: actions/upload-artifact@v4
         with:
           name: lymark-desktop-linux
-          path: desktop/dist/
+          path: |
+            desktop/dist-electron/*.AppImage
+            desktop/dist-electron/*.deb
           retention-days: 7
 
   build-desktop-windows:
@@ -163,21 +178,31 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install desktop dependencies
+        run: npm ci
+        working-directory: desktop
+
       - name: Build desktop web app
         run: npm run web:build
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
       - name: Build Electron app for Windows
-        run: |
-          cd desktop
-          npm run build:windows
+        run: npm run build:windows
+        working-directory: desktop
         env:
           NODE_OPTIONS: --max_old_space_size=4096
 
+      - name: Verify package contents
+        run: node scripts/verify-package.js dist-electron/win-unpacked ../dist
+        working-directory: desktop
+
+      # O executável não é assinado: o Windows mostrará aviso do SmartScreen ao
+      # instalar. Distribuir sem aviso exige certificado de assinatura de código.
       - name: Upload Windows build artifact
         uses: actions/upload-artifact@v4
         with:
           name: lymark-desktop-windows
-          path: desktop/dist/
+          path: |
+            desktop/dist-electron/*.exe
           retention-days: 7

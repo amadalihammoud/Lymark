@@ -6,11 +6,44 @@ import { app, BrowserWindow, protocol, ipcMain, dialog } from 'electron';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
+import crypto from 'crypto';
 import { pathToFileURL } from 'url';
 import sizeOf from 'image-size';
 
-/** Raiz do build web servido pelo protocolo `app://`. */
-const DIST_DIR = path.join(__dirname, '../dist');
+/**
+ * Raiz do build web servido pelo protocolo `app://`.
+ *
+ * No pacote o build web fica em `resources/dist`, e não dentro do `app.asar`.
+ * O motivo é o Expo nomear a saída dos assets espelhando a origem do módulo,
+ * produzindo `dist/assets/node_modules/…`. O electron-builder dá tratamento
+ * especial a toda pasta chamada `node_modules` e a remove dos filesets do app
+ * — nem `files` explícito para essa subpasta a traz de volta. O pacote saía
+ * sem os 22 arquivos de asset, entre eles as três fontes do carimbo. Como
+ * `useStampTypefaces` devolve `null` quando falta qualquer fonte, o app abria
+ * normalmente e simplesmente não carimbava.
+ *
+ * `extraResources` usa outro copiador, sem esse tratamento especial.
+ *
+ * Fora do pacote, `__dirname` é `desktop/dist` (a saída do tsc), então o build
+ * web está dois níveis acima. O caminho antigo subia só um nível e apontava
+ * para a própria saída do tsc — `npm start` nunca serviu o build web.
+ */
+const DIST_DIR = app.isPackaged
+  ? path.join(process.resourcesPath, 'dist')
+  : path.join(__dirname, '../../dist');
+
+/**
+ * Ícone da janela.
+ *
+ * Mesma diferença de nível do `DIST_DIR`: empacotado, os ícones ficam em
+ * `assets/` na raiz do asar, ao lado de `desktop/`; fora do pacote, estão em
+ * `assets/images/` na raiz do projeto. O caminho único que havia aqui acertava
+ * só no pacote e a janela abria com o ícone padrão do Electron em
+ * desenvolvimento.
+ */
+const ICON_PATH = app.isPackaged
+  ? path.join(__dirname, '../assets/icon.png')
+  : path.join(__dirname, '../../assets/images/icon.png');
 
 /**
  * Confirma que um caminho resolvido permanece dentro de um diretório base.
@@ -136,7 +169,7 @@ function createWindow() {
       allowRunningInsecureContent: false,
     },
     title: 'Lymark',
-    icon: path.join(__dirname, '../assets/icon.png'),
+    icon: ICON_PATH,
   });
 
   // O sinalizador de plataforma NÃO é injetado aqui. O preload já expõe
@@ -411,20 +444,64 @@ const CONTENT_TYPES: Record<string, string> = {
  * exigido pelo CanvasKit, `unsafe-inline` em estilos pelo react-native-web,
  * que injeta as folhas em tempo de execução, e `blob:`/`data:` pelas imagens
  * que o app gera em memória.
+ *
+ * `scriptHashes` cobre os scripts embutidos no HTML que o Expo gera — veja
+ * `inlineScriptHashes`.
  */
-const CONTENT_SECURITY_POLICY = [
-  "default-src 'self'",
-  "script-src 'self' 'wasm-unsafe-eval'",
-  "style-src 'self' 'unsafe-inline'",
-  // `media:` é o esquema das fotos da galeria, servido por createMediaProtocol.
-  "img-src 'self' data: blob: media:",
-  "font-src 'self' data:",
-  "connect-src 'self' data: blob:",
-  "object-src 'none'",
-  "frame-ancestors 'none'",
-  "base-uri 'self'",
-  "form-action 'none'",
-].join('; ');
+function contentSecurityPolicy(scriptHashes: readonly string[]): string {
+  const scriptSrc = ["'self'", "'wasm-unsafe-eval'", ...scriptHashes.map((h) => `'${h}'`)];
+
+  return [
+    "default-src 'self'",
+    `script-src ${scriptSrc.join(' ')}`,
+    "style-src 'self' 'unsafe-inline'",
+    // `media:` é o esquema das fotos da galeria, servido por createMediaProtocol.
+    "img-src 'self' data: blob: media:",
+    "font-src 'self' data:",
+    "connect-src 'self' data: blob:",
+    "object-src 'none'",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'none'",
+  ].join('; ');
+}
+
+const INLINE_SCRIPT = /<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi;
+const EXECUTABLE_TYPE = /^(module|text\/javascript|application\/javascript)$/i;
+
+/**
+ * Autoriza, por hash, os scripts embutidos no HTML exportado pelo Expo.
+ *
+ * O `index.html` do Expo traz um script inline que inicializa o roteador. Sem
+ * autorização ele é bloqueado e o aplicativo abre em tela branca — foi o que
+ * acontecia no pacote antes desta função.
+ *
+ * O hash é calculado ao servir, e não fixado no código, porque o conteúdo do
+ * script muda a cada build do bundle. Um valor fixo passaria a bloquear o
+ * script na primeira recompilação, e o sintoma — tela branca — não aponta para
+ * a causa. Calcular aqui mantém `script-src` restrito sem exigir manutenção.
+ *
+ * Isto não afrouxa a política: o hash cobre exatamente os bytes que acabaram
+ * de ser lidos de dentro do pacote, que é somente leitura. Um script injetado
+ * depois, em tempo de execução, continua sem hash e continua bloqueado.
+ */
+function inlineScriptHashes(html: string): string[] {
+  const hashes: string[] = [];
+
+  for (const [, attrs, body] of html.matchAll(INLINE_SCRIPT)) {
+    // Script externo já é coberto por 'self'; hash nem se aplicaria.
+    if (/\bsrc\s*=/i.test(attrs)) continue;
+
+    // `type="application/json"` e afins carregam dados, não executam. Emitir
+    // hash para eles só aumentaria o cabeçalho.
+    const type = /\btype\s*=\s*["']?([^"'\s>]+)/i.exec(attrs)?.[1];
+    if (type && !EXECUTABLE_TYPE.test(type)) continue;
+
+    hashes.push(`sha256-${crypto.createHash('sha256').update(body, 'utf8').digest('base64')}`);
+  }
+
+  return hashes;
+}
 
 function createProtocol() {
   protocol.handle('app', (request) => {
@@ -461,12 +538,15 @@ function createProtocol() {
       const contentType = CONTENT_TYPES[path.extname(target).toLowerCase()]
         ?? 'application/octet-stream';
 
+      const body = fs.readFileSync(target);
+
       const headers: Record<string, string> = { 'Content-Type': contentType };
       if (contentType === 'text/html') {
-        headers['Content-Security-Policy'] = CONTENT_SECURITY_POLICY;
+        headers['Content-Security-Policy'] =
+          contentSecurityPolicy(inlineScriptHashes(body.toString('utf8')));
       }
 
-      return new Response(fs.readFileSync(target), { headers });
+      return new Response(body, { headers });
     } catch {
       return new Response('Not Found', { status: 404 });
     }

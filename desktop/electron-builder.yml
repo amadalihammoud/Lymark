@@ -1,81 +1,86 @@
-# Configuração do electron-builder para Lymark Desktop
+# Empacotamento do Lymark Desktop.
 # https://www.electron.build/configuration/configuration
 
 appId: app.lymark.desktop
 productName: Lymark
 
-# Versão do app (sincronizar com package.json)
-version: 1.3.0
-
-# Diretório de build
 directories:
   output: dist-electron
-  buildResources: build-resources
 
-# Arquivos a incluir
+# ATENÇÃO ao editar esta seção.
+#
+# 1. Os padrões PRECISAM de aspas. Em YAML, um escalar iniciado por `*` é
+#    indicador de alias — `- **/*` sem aspas torna o arquivo inválido e o
+#    build aborta antes de começar, com "unidentified alias".
+#
+# 2. Ao declarar `files`, o padrão `**/*` deixa de ser aplicado sozinho. Tudo
+#    o que precisa entrar tem de estar listado — inclusive o processo
+#    principal. Sem a primeira entrada abaixo, o pacote sai sem `main.js` e o
+#    Electron falha com "Unable to find application entry file".
+#
+# 3. Só o código do desktop entra no asar. O build web vai por
+#    `extraResources`, mais abaixo, e o motivo está explicado lá.
 files:
-  - from: ../dist/**/*
-    to: dist/
+  # O `package.json` precisa ficar na RAIZ do asar: é dele que o Electron lê
+  # o campo `main`. Com todas as entradas usando `from`/`to`, nada cobria a
+  # raiz, e o empacotamento falhava na verificação final com
+  # "Application package.json does not exist".
+  - "package.json"
+  - from: dist
+    to: desktop
     filter:
-      - **/*
-  - from: ../assets/**/*
-    to: assets/
+      - "**/*"
+  - from: ../assets/images
+    to: assets
     filter:
-      - **/*
+      - "**/*"
 
-# Configurações específicas por plataforma
 win:
   target:
     - nsis
     - portable
-  icon: build-resources/icon.ico
+  icon: ../assets/images/icon.png
   requestedExecutionLevel: asInvoker
-  
+
 linux:
   target:
     - AppImage
     - deb
-  icon: build-resources/icon.png
+  icon: ../assets/images/icon.png
   category: Graphics
-  
-# Configurações do NSIS (Windows)
+  maintainer: Lymark
+
 nsis:
   oneClick: false
   allowToChangeInstallationDirectory: true
-  installerIcon: build-resources/icon.ico
-  uninstallerIcon: build-resources/icon.ico
-  installerHeaderIcon: build-resources/icon.ico
   createStartMenuShortcut: true
   shortcutName: Lymark
-  
-# Configurações do AppImage
+
 appImage:
   artifactName: Lymark-${version}-linux-x64.${ext}
-  
-# Configurações do DEB
+
 deb:
   packageCategory: graphics
-  
-# Assinatura de código (a ser configurada quando tivermos o certificado)
-# win:
-#   signingHashAlgorithms:
-#     - sha256
-#   certificateFile: certs/cert.pfx
-#   
-# linux:
-#   maintainer: Lymark Team
-#   vendor: Lymark
 
-# Compressão
 compression: maximum
 
-# Não incluir node_modules no build
+# Recompilação de dependências nativas contra o ABI do Electron. Desligada
+# porque não há nenhuma: `image-size` é JavaScript puro.
 npmRebuild: false
 
-# Extrair arquivos para verificação
+# O build web inteiro — incluindo o `canvaskit.wasm`, que `scripts/copy-wasm.js`
+# copia para a raiz do `dist/` — vai para `resources/dist`, e não para o asar.
+#
+# O Expo nomeia a saída dos assets espelhando a origem do módulo, gerando
+# `dist/assets/node_modules/@expo-google-fonts/…`. O electron-builder trata
+# toda pasta chamada `node_modules` de forma especial e a remove dos filesets
+# de `files` — inclusive com uma entrada explícita apontando só para ela.
+# O pacote saía sem os 22 arquivos de asset, entre eles as três fontes do
+# carimbo; o app abria e não carimbava. `extraResources` usa outro copiador,
+# sem esse tratamento, e `main.ts` aponta o `DIST_DIR` para cá quando
+# empacotado.
 extraResources:
-  - from: ../node_modules/canvaskit-wasm/bin/full/
-    to: canvaskit-wasm/
+  - from: ../dist
+    to: dist
     filter:
-      - canvaskit.wasm
-      - canvaskit.js
+      - "**/*"
