@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { colors, spacing, typography } from '@/theme';
@@ -30,11 +31,12 @@ export function AppHeader({ tagline }: { tagline?: string }) {
  * Aqui a marca e a linha de apoio ficam lado a lado, e não empilhadas: numa
  * barra baixa e larga, empilhar desperdiça altura que é justamente o que falta.
  */
-export function AppBar({ tagline }: { tagline?: string }) {
+export function AppBar({ tagline, actions }: { tagline?: string; actions?: ReactNode }) {
   return (
     <View style={styles.bar}>
       <Wordmark />
       {tagline ? <Text style={[typography.tagline, styles.barTagline]}>{tagline}</Text> : null}
+      {actions ? <View style={styles.barActions}>{actions}</View> : null}
     </View>
   );
 }
@@ -61,5 +63,17 @@ const styles = StyleSheet.create({
   barTagline: {
     // Some antes de a marca começar a ser espremida.
     flexShrink: 1,
+  },
+  /**
+   * Os destinos que sobraram quando a barra de abas some.
+   *
+   * `marginLeft: 'auto'` empurra para a direita sem precisar de um espaçador
+   * vazio no meio — a marca fica na esquerda, a navegação na ponta oposta.
+   */
+  barActions: {
+    marginLeft: 'auto',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.lg,
   },
 });

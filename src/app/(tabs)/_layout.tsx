@@ -1,13 +1,13 @@
 // Importado pela família, e não pelo barril `@expo/vector-icons`: o barril
 // carrega TODAS as famílias de ícones e some com megabytes no bundle.
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Tabs } from 'expo-router';
+import { Link, Tabs } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
 
 import { AppBar } from '@/components/brand/app-header';
 import { useLayoutMode } from '@/lib/breakpoints';
 import { isWeb } from '@/lib/file-storage';
-import { colors } from '@/theme';
+import { colors, typography } from '@/theme';
 
 /**
  * As três áreas do app.
@@ -24,14 +24,46 @@ export default function TabsLayout() {
   const mode = useLayoutMode();
   const phone = mode === 'phone';
 
+  /*
+   * Com três colunas, a aba "Configurações" leva a uma tela cujo conteúdo
+   * principal — campos e posição da marca d'água — já está visível na terceira
+   * coluna. E "Capturar" passa a ser a única outra aba, porque Histórico não
+   * existe no navegador. Uma barra de navegação com um destino só, que aponta
+   * para onde já se está, é mobília morta.
+   *
+   * Então ela some, e os destinos que restam viram links no cabeçalho.
+   */
+  const semAbas = mode === 'ultra';
+
   return (
     <View style={styles.root}>
       {/*
-        Na tela larga a marca vira uma barra que atravessa a janela, com as
-        abas logo abaixo. A barra inferior é idioma de celular: mantida num
-        monitor, é o que mais faz a tela parecer um telefone ampliado.
+        Na tela larga a marca vira uma barra que atravessa a janela. A barra
+        inferior é idioma de celular: mantida num monitor, é o que mais faz a
+        tela parecer um telefone ampliado.
       */}
-      {phone ? null : <AppBar tagline="Marca d’água com hora, data e local" />}
+      {phone ? null : (
+        <AppBar
+          tagline="Marca d’água com hora, data e local"
+          actions={
+            semAbas ? (
+              <>
+                {isWeb() ? null : (
+                  <Link href="/(tabs)/gallery" style={styles.barLink}>
+                    Histórico
+                  </Link>
+                )}
+                <Link href="/settings/permissions" style={styles.barLink}>
+                  Permissões
+                </Link>
+                <Link href="/settings/about" style={styles.barLink}>
+                  Sobre
+                </Link>
+              </>
+            ) : null
+          }
+        />
+      )}
 
       <Tabs
         screenOptions={{
@@ -40,7 +72,7 @@ export default function TabsLayout() {
           tabBarActiveTintColor: colors.tabActive,
           tabBarInactiveTintColor: colors.tabInactive,
           tabBarPosition: phone ? 'bottom' : 'top',
-          tabBarStyle: phone ? styles.tabBar : styles.tabBarTop,
+          tabBarStyle: semAbas ? styles.tabBarHidden : phone ? styles.tabBar : styles.tabBarTop,
           tabBarLabelStyle: styles.tabLabel,
         }}>
         <Tabs.Screen
@@ -106,8 +138,17 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: colors.tabBarBorder,
   },
+  // A barra continua montada — some da vista, mas as rotas seguem existindo,
+  // e os links do cabeçalho navegam para elas.
+  tabBarHidden: {
+    display: 'none',
+  },
   tabLabel: {
     fontSize: 11,
     fontWeight: '600',
+  },
+  barLink: {
+    ...typography.caption,
+    color: colors.tabInactive,
   },
 });

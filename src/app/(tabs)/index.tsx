@@ -281,15 +281,17 @@ export default function CaptureScreen() {
     />
   );
 
-  const controls = (
-    <>
-      <CaptureActions
-        busy={busy || picking}
-        showCamera={canUseDeviceCamera()}
-        onTakePhoto={() => void runPick(takePhotoWithCamera)}
-        onPickFromLibrary={() => void runPick(pickPhotoFromLibrary)}
-      />
+  const captureActions = (
+    <CaptureActions
+      busy={busy || picking}
+      showCamera={canUseDeviceCamera()}
+      onTakePhoto={() => void runPick(takePhotoWithCamera)}
+      onPickFromLibrary={() => void runPick(pickPhotoFromLibrary)}
+    />
+  );
 
+  const metadataForm = (
+    <>
       <MetadataForm
         metadata={draft.metadata}
         visibleFields={preferences.visibleFields}
@@ -309,7 +311,11 @@ export default function CaptureScreen() {
           Nenhum dado será carimbado — a foto sairá sem marca d’água.
         </Text>
       ) : null}
+    </>
+  );
 
+  const exportActions = (
+    <>
       {/* Duas ações, dois destinos. */}
       <View style={styles.actions}>
         <Button
@@ -357,21 +363,31 @@ export default function CaptureScreen() {
     </>
   );
 
-  // Em tela larga, foto e controles dividem a janela lado a lado e nada rola.
-  // Era a foto esticando junto com a largura que empurrava todo o resto para
-  // fora: num quadro de largura cheia, a altura vem da proporção da imagem, e
-  // numa janela de 1280 isso dava mais de mil e seiscentos pixels.
+  // Em tela larga cada coluna responde a uma pergunta diferente, e é essa
+  // divisão que decide o que vai onde: o OBJETO e o que age sobre ele, os
+  // DADOS que entram no carimbo, e a APARÊNCIA dele.
+  //
+  // Por isso escolher, salvar e compartilhar ficam sob a foto, e não no meio
+  // junto do formulário: agem sobre a imagem, não sobre os campos. De quebra
+  // ocupam o vazio que sobrava embaixo do quadro, que numa foto deitada é
+  // grande.
   //
   // A partir de 1280 entra a terceira coluna, com as preferências da marca
   // d'água. O ganho não é ocupar espaço: é ver o efeito de cada interruptor na
   // pré-visualização real no mesmo instante, em vez de ir a outra aba e voltar.
   //
-  // O cabeçalho não aparece aqui em nenhum dos dois: na tela larga ele é a
-  // barra que atravessa a janela, montada em `(tabs)/_layout`.
+  // O cabeçalho não aparece aqui: na tela larga ele é a barra que atravessa a
+  // janela, montada em `(tabs)/_layout`.
   if (wide) {
     return (
       <Screen scrollable={false} contentStyle={styles.wide}>
-        <View style={styles.previewColumn}>{preview}</View>
+        <View style={styles.previewColumn}>
+          {preview}
+          <View style={styles.photoActions}>
+            {captureActions}
+            {exportActions}
+          </View>
+        </View>
 
         {/* Cada coluna de controles rola por si só quando a janela é baixa
             demais. Assim a barra aparece só onde falta espaço, nunca na
@@ -381,7 +397,7 @@ export default function CaptureScreen() {
           contentContainerStyle={styles.formContent}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}>
-          {controls}
+          {metadataForm}
         </ScrollView>
 
         {mode === 'ultra' ? (
@@ -397,11 +413,15 @@ export default function CaptureScreen() {
     );
   }
 
+  // No celular a ordem é a original: escolher, preencher, exportar. A divisão
+  // em colunas não se aplica, e reordenar aqui mudaria o fluxo de quem já usa.
   return (
     <Screen>
       {header}
       {preview}
-      {controls}
+      {captureActions}
+      {metadataForm}
+      {exportActions}
     </Screen>
   );
 }
@@ -425,6 +445,19 @@ const styles = StyleSheet.create({
     // volta a ditar a altura da linha.
     minHeight: 0,
     gap: spacing.lg,
+  },
+  /**
+   * As ações da foto, logo abaixo dela.
+   *
+   * Largura limitada porque a coluna acompanha a foto, que pode ser larga:
+   * botões de mil pixels de comprimento não ficam mais fáceis de acertar, só
+   * mais difíceis de ler.
+   */
+  photoActions: {
+    width: '100%',
+    maxWidth: 520,
+    alignSelf: 'center',
+    gap: spacing.md,
   },
   formColumn: {
     flex: 1,
