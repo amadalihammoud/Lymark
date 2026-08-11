@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import {
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -10,6 +11,22 @@ import {
 } from 'react-native';
 
 import { HIT_TARGET, colors, radius, spacing, typography } from '@/theme';
+
+/**
+ * Traz o anel de foco do navegador para dentro da caixa.
+ *
+ * O anel é `outline`, não borda: o navegador o desenha FORA da caixa e ele não
+ * ocupa espaço no layout. Com os campos de hora, data e dia lado a lado, o
+ * anel de um avançava sobre o vizinho — o que se via como caixas sobrepostas
+ * ao selecionar uma delas.
+ *
+ * Deslocado para dentro, continua igualmente visível, que é o que importa para
+ * quem navega por teclado. Some do nativo, onde `outline` não existe.
+ */
+const FOCUS_RING_INSIDE = Platform.select({
+  web: { outlineOffset: -3 } as object,
+  default: null,
+});
 
 /**
  * Campo rotulado da tela de captura: rótulo discreto em cima, caixa de
@@ -49,7 +66,7 @@ export function FieldRow({
         <TextInput
           accessibilityLabel={label}
           placeholderTextColor={colors.textSubtle}
-          style={[styles.input, style]}
+          style={[styles.input, FOCUS_RING_INSIDE, style]}
           {...inputProps}
         />
         {trailing}
