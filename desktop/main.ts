@@ -70,6 +70,11 @@ const ACCEPTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
  * lote isso se multiplica.
  */
 const HEADER_BYTES = 4 * 1024 * 1024;
+/**
+ * Tamanho máximo de arquivo em bytes (50MB).
+ * Evita DoS por esgotamento de memória ao receber buffers grandes.
+ */
+const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
 /**
  * Dimensões de uma imagem, lendo só o cabeçalho.
@@ -80,6 +85,11 @@ const HEADER_BYTES = 4 * 1024 * 1024;
  * um parser de formato exótico a ser alcançado por arquivo forjado.
  */
 function readImageSize(filePath: string): { width: number; height: number } {
+  // Validar tamanho do arquivo para evitar DoS
+  const stats = fs.statSync(filePath);
+  if (stats.size > MAX_FILE_SIZE) {
+    throw new Error('Arquivo muito grande.');
+  }
   const handle = fs.openSync(filePath, 'r');
   try {
     const buffer = Buffer.alloc(Math.min(HEADER_BYTES, fs.fstatSync(handle).size));
@@ -105,6 +115,44 @@ const DEFAULT_GALLERY_PATH = path.join(os.homedir(), 'Pictures', GALLERY_DIR_NAM
 
 // Pasta de saída padrão para processamento em lote
 let outputFolderPath: string = DEFAULT_GALLERY_PATH;
+// Configuração persistida do usuário
+const CONFIG_DIR = path.join(os.homedir(), '.lymark');
+const CONFIG_FILE = path.join(CONFIG_DIR, 'config.json');
+
+/**
+ * Carrega a configuração persistida do usuário.
+ */
+function loadConfig(): { outputFolderPath: string } {
+  try {
+    if (!fs.existsSync(CONFIG_FILE)) {
+      return { outputFolderPath: DEFAULT_GALLERY_PATH };
+    }
+    const config = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
+    return {
+      outputFolderPath: config.outputFolderPath || DEFAULT_GALLERY_PATH,
+    };
+  } catch {
+    return { outputFolderPath: DEFAULT_GALLERY_PATH };
+  }
+}
+
+/**
+ * Salva a configuração do usuário.
+ */
+function saveConfig() {
+  try {
+    if (!fs.existsSync(CONFIG_DIR)) {
+      fs.mkdirSync(CONFIG_DIR, { recursive: true });
+    }
+    fs.writeFileSync(
+      CONFIG_FILE,
+      JSON.stringify({ outputFolderPath }),
+      'utf8'
+    );
+  } catch (error) {
+    console.warn('[config] Falha ao salvar configuração:', error);
+  }
+}
 
 // Garantir que a pasta da galeria existe
 function ensureGalleryDir(): string {
@@ -198,6 +246,10 @@ function createWindow() {
 function registerIpcHandlers() {
   // Handler para salvar arquivo (diálogo de salvamento)
   ipcMain.handle('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
+    // Validar tamanho do buffer para evitar DoS
+    if (bytes.length > MAX_FILE_SIZE) {
+      return { status: 'failed', error: 'Arquivo muito grande (máx. 50MB).' };
+    }
     const { filePath } = await dialog.showSaveDialog({
       title: 'Salvar Foto',
       defaultPath: filename,
@@ -216,13 +268,17 @@ function registerIpcHandlers() {
       fs.writeFileSync(filePath, buffer);
       return { status: 'saved', path: filePath };
     } catch (error) {
-      return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
+      return { status: 'failed', error: 'Operação falhou.' };
     }
   });
 
   // Handler para salvar arquivo na pasta de saída (sem diálogo)
   ipcMain.handle('save-file-to-output', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
     try {
+      // Validar tamanho do buffer para evitar DoS
+      if (bytes.length > MAX_FILE_SIZE) {
+        return { status: 'failed', error: 'Arquivo muito grande (máx. 50MB).' };
+      }
       // Garantir que a pasta de saída existe
       if (!fs.existsSync(outputFolderPath)) {
         fs.mkdirSync(outputFolderPath, { recursive: true });
@@ -243,7 +299,7 @@ function registerIpcHandlers() {
       fs.writeFileSync(filePath, buffer);
       return { status: 'saved', path: filePath };
     } catch (error) {
-      return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
+      return { status: 'failed', error: 'Operação falhou.' };
     }
   });
 
@@ -254,6 +310,10 @@ function registerIpcHandlers() {
   // grava sozinha, como no celular.
   ipcMain.handle('save-to-gallery', async (event, { bytes, filename }: { bytes: number[]; filename: string }) => {
     try {
+      // Validar tamanho do buffer para evitar DoS
+      if (bytes.length > MAX_FILE_SIZE) {
+        return { status: 'failed', error: 'Arquivo muito grande (máx. 50MB).' };
+      }
       const galleryDir = ensureGalleryDir();
       const safeName = path.basename(filename);
       const filePath = path.join(galleryDir, safeName);
@@ -265,7 +325,7 @@ function registerIpcHandlers() {
       fs.writeFileSync(filePath, Buffer.from(bytes));
       return { status: 'saved', path: safeName };
     } catch (error) {
-      return { status: 'failed', error: error instanceof Error ? error.message : String(error) };
+      return { status: 'failed', error: 'Operação falhou.' };
     }
   });
 
@@ -371,6 +431,7 @@ function registerIpcHandlers() {
     }
 
     outputFolderPath = filePaths[0];
+    saveConfig();
     return { status: 'selected', path: outputFolderPath };
   });
 
@@ -390,7 +451,23 @@ function registerIpcHandlers() {
     }
 
     try {
+      // Validar que o arquivo está em um diretório seguro (evita path traversal)
+      const safeDirs = [
+        os.homedir(),
+        path.join(os.homedir(), 'Downloads'),
+        path.join(os.homedir(), 'Pictures'),
+        path.join(os.homedir(), 'Desktop'),
+      ];
+      const isSafe = safeDirs.some(dir => isInside(dir, filePath));
+      if (!isSafe) {
+        console.warn('[security] Tentativa de acesso a arquivo fora de diretórios seguros:', filePath);
+        return null;
+      }
+      try {
       if (!fs.statSync(filePath).isFile()) return null;
+    } catch {
+      return null; // Arquivo não existe ou não é acessível
+    }
       const { width, height } = readImageSize(filePath);
       return { uri: pathToFileURL(filePath).href, width, height };
     } catch {
@@ -574,7 +651,9 @@ function createMediaProtocol() {
 app.whenReady().then(() => {
   // Garantir que a pasta da galeria existe
   ensureGalleryDir();
-  outputFolderPath = DEFAULT_GALLERY_PATH;
+  // Carregar configuração persistida
+  const config = loadConfig();
+  outputFolderPath = config.outputFolderPath;
 
   // Configurar o protocolo
   createProtocol();

@@ -12,7 +12,7 @@
  * - Processamento SERIAL, nunca paralelo (G3)
  */
 
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useRef } from 'react';
 
 import { extractDateFromExif, extractTimeFromExif } from '@/lib/exif';
 import { saveFileToOutput, getOutputFolder } from '@/lib/file-storage';
@@ -53,6 +53,7 @@ const INITIAL_STATE: BatchProcessingState = {
 
 export function useBatchProcessing() {
   const [state, setState] = useState<BatchProcessingState>(INITIAL_STATE);
+  const abortControllerRef = useRef<AbortController | null>(null);
   // `weekday` faz parte do carimbo tanto quanto os outros; ausente daqui, o
   // objeto não satisfazia CaptureMetadata. `company` não existe como campo de
   // metadado — a marca da empresa vem das preferências.
@@ -139,6 +140,10 @@ export function useBatchProcessing() {
    */
   const processBatch = useCallback(
     async (photos: BatchPhoto[]) => {
+      // Criar novo AbortController para esta execução
+      const abortController = new AbortController();
+      abortControllerRef.current = abortController;
+
       setState({
         ...INITIAL_STATE,
         isProcessing: true,
@@ -154,23 +159,40 @@ export function useBatchProcessing() {
 
       // PROCESSAMENTO SERIAL (nunca paralelo - G3)
       for (let i = 0; i < photos.length; i++) {
+        // Verificar se foi solicitado cancelamento
+        if (abortController.signal.aborted) {
+          break;
+        }
+
         const photo = photos[i];
-        
-        setState((prev) => ({
-          ...prev,
-          current: i + 1,
-          progress: Math.round(((i + 1) / photos.length) * 100),
-        }));
 
-        const result = await processSinglePhoto(photo, metadata);
+        // Otimizar re-renders: atualizar progresso a cada 10 fotos ou 1%
+        if (i % 10 === 0 || i === photos.length - 1) {
+          setState((prev) => ({
+            ...prev,
+            current: i + 1,
+            progress: Math.round(((i + 1) / photos.length) * 100),
+          }));
+        }
 
-        if (result.success) {
-          results.success++;
-        } else {
+        try {
+          const result = await processSinglePhoto(photo, metadata);
+
+          if (result.success) {
+            results.success++;
+          } else {
+            results.failed++;
+            results.failures.push({
+              file: photo.uri.split('/').pop() || photo.uri,
+              error: result.error || 'Erro desconhecido',
+            });
+          }
+        } catch (error) {
+          // Tratar erros não capturados por processSinglePhoto
           results.failed++;
           results.failures.push({
             file: photo.uri.split('/').pop() || photo.uri,
-            error: result.error || 'Erro desconhecido',
+            error: error instanceof Error ? error.message : 'Erro desconhecido',
           });
         }
       }
@@ -202,6 +224,10 @@ export function useBatchProcessing() {
   );
 
   const cancelBatch = useCallback(() => {
+    // Abortar o processamento em andamento
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
     setState(INITIAL_STATE);
   }, []);
 

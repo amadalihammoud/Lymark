@@ -62,7 +62,10 @@ export function resolveExportedPhotoUri(path: string): string {
   // No desktop o arquivo existe no disco, e a janela roda sobre `app://`.
   // O esquema `media://` é servido pelo processo principal a partir da pasta
   // da galeria — `file://` seria bloqueado pela política de origem.
-  if (isDesktop()) return `media://gallery/${path.split('/')[1]}`;
+  // Usar split('/').pop() para evitar path traversal (ex: "gallery/../../etc/passwd")
+  const safeName = path.split('/').pop();
+  if (!safeName) return path;
+  if (isDesktop()) return `media://gallery/${safeName}`;
 
   return blobUrlFor(path) ?? '';
 }
@@ -120,7 +123,10 @@ export function deleteExportedPhoto(path: string): void {
   if (typeof window === 'undefined') return;
 
   if (isDesktop() && window.lymark?.deleteFile) {
-    void window.lymark.deleteFile(path.split('/')[1]);
+    // Usar split('/').pop() para evitar path traversal (ex: "gallery/../../etc/passwd")
+    const safeName = path.split('/').pop();
+    if (!safeName) return;
+    void window.lymark.deleteFile(safeName);
     return;
   }
 

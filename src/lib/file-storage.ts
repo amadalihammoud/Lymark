@@ -29,6 +29,17 @@ export type SaveResult =
  * em memória até a aba ser fechada.
  */
 let pickedUrls: string[] = [];
+/**
+ * Limpa todas as URLs de blob e revoga as referências.
+ * Deve ser chamado em casos de erro ou cancelamento para evitar memory leaks.
+ */
+export function clearPickedUrls(): void {
+  for (const url of pickedUrls) {
+    URL.revokeObjectURL(url);
+  }
+  pickedUrls = [];
+}
+
 
 function rememberPickedUrl(url: string) {
   for (const anterior of pickedUrls) URL.revokeObjectURL(anterior);
