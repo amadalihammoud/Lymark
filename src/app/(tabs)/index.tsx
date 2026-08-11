@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 
 import { AppHeader } from '@/components/brand/app-header';
@@ -23,6 +23,8 @@ import { renderStampedPhoto } from '@/features/watermark/render-photo';
 import { STAMP_COLORS } from '@/features/watermark/stamp-canvas';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
+import { WatermarkControls } from '@/components/settings/watermark-controls';
+import { useLayoutMode } from '@/lib/breakpoints';
 import { canUseDeviceCamera, isDesktop } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
 import { WATERMARK_FIELD_KEYS, type WatermarkFieldKey } from '@/types';
@@ -41,13 +43,6 @@ const LOOKUP_MESSAGES: Record<AddressLookupStatus, string> = {
 /** Qual ação está em curso — as duas geram imagem e não podem se sobrepor. */
 type PendingAction = 'save' | 'share';
 
-/**
- * A partir desta largura a tela vira duas colunas.
- *
- * Abaixo dela não há espaço para dividir sem espremer o formulário, e a coluna
- * única rolável — o desenho pensado para o celular — continua sendo o certo.
- */
-const WIDE_LAYOUT_MIN_WIDTH = 900;
 
 /**
  * Capturar — a tela inicial.
@@ -66,8 +61,8 @@ export default function CaptureScreen() {
   const { notify, ask } = useFeedback();
   const { lookup, isLoading: locating } = useAddressLookup();
 
-  const { width: windowWidth } = useWindowDimensions();
-  const wide = windowWidth >= WIDE_LAYOUT_MIN_WIDTH;
+  const mode = useLayoutMode();
+  const wide = mode !== 'phone';
 
   const [pending, setPending] = useState<PendingAction | null>(null);
   const [picking, setPicking] = useState(false);
@@ -366,16 +361,21 @@ export default function CaptureScreen() {
   // Era a foto esticando junto com a largura que empurrava todo o resto para
   // fora: num quadro de largura cheia, a altura vem da proporção da imagem, e
   // numa janela de 1280 isso dava mais de mil e seiscentos pixels.
+  //
+  // A partir de 1280 entra a terceira coluna, com as preferências da marca
+  // d'água. O ganho não é ocupar espaço: é ver o efeito de cada interruptor na
+  // pré-visualização real no mesmo instante, em vez de ir a outra aba e voltar.
+  //
+  // O cabeçalho não aparece aqui em nenhum dos dois: na tela larga ele é a
+  // barra que atravessa a janela, montada em `(tabs)/_layout`.
   if (wide) {
     return (
       <Screen scrollable={false} contentStyle={styles.wide}>
-        <View style={styles.previewColumn}>
-          {header}
-          {preview}
-        </View>
+        <View style={styles.previewColumn}>{preview}</View>
 
-        {/* O formulário rola por si só quando a janela é baixa demais. Assim a
-            barra aparece só nele, e só quando não há alternativa. */}
+        {/* Cada coluna de controles rola por si só quando a janela é baixa
+            demais. Assim a barra aparece só onde falta espaço, nunca na
+            página inteira. */}
         <ScrollView
           style={styles.formColumn}
           contentContainerStyle={styles.formContent}
@@ -383,6 +383,16 @@ export default function CaptureScreen() {
           showsVerticalScrollIndicator={false}>
           {controls}
         </ScrollView>
+
+        {mode === 'ultra' ? (
+          <ScrollView
+            style={styles.settingsColumn}
+            contentContainerStyle={styles.formContent}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}>
+            <WatermarkControls />
+          </ScrollView>
+        ) : null}
       </Screen>
     );
   }
@@ -402,11 +412,11 @@ const styles = StyleSheet.create({
     gap: spacing.xl,
     paddingHorizontal: spacing.lg,
     paddingVertical: spacing.lg,
-    // Numa janela muito larga as duas colunas iam para os extremos e abriam um
-    // vazio no meio. O teto centralizado mantém foto e formulário próximos,
-    // que é o que o uso pede: olha-se de um para o outro o tempo todo.
+    // Numa janela muito larga as colunas iam para os extremos e abriam um
+    // vazio no meio. O teto centralizado as mantém próximas, que é o que o uso
+    // pede: olha-se de uma para a outra o tempo todo.
     width: '100%',
-    maxWidth: 1180,
+    maxWidth: 1560,
     alignSelf: 'center',
   },
   previewColumn: {
@@ -419,10 +429,16 @@ const styles = StyleSheet.create({
   formColumn: {
     flex: 1,
     // Largura de leitura: o formulário não ganha nada em esticar mais.
-    maxWidth: 460,
+    maxWidth: 440,
+  },
+  settingsColumn: {
+    flex: 1,
+    maxWidth: 380,
   },
   formContent: {
     gap: spacing.lg,
+    // Espaço para o último controle não encostar na borda ao rolar.
+    paddingBottom: spacing.lg,
   },
   actions: {
     flexDirection: 'row',
