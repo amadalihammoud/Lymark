@@ -26,6 +26,7 @@ import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-
 import {
   WatermarkControls,
   WatermarkFieldToggles,
+  CodePlacementControl,
 } from '@/components/settings/watermark-controls';
 import { useLayoutMode } from '@/lib/breakpoints';
 import { canUseDeviceCamera, isDesktop } from '@/lib/file-storage';
@@ -406,7 +407,12 @@ export default function CaptureScreen() {
               preferências: cada um liga um campo que está logo acima. O de
               "Hora" ao lado do valor da hora se explica sozinho; a duas
               colunas de distância, não. */}
-          {mode === 'ultra' ? <WatermarkFieldToggles /> : null}
+          {mode === 'ultra' ? (
+            <>
+              <WatermarkFieldToggles />
+              <CodePlacementControl />
+            </>
+          ) : null}
         </ScrollView>
 
         {mode === 'ultra' ? (
@@ -415,7 +421,7 @@ export default function CaptureScreen() {
             contentContainerStyle={styles.formContent}
             keyboardShouldPersistTaps="handled"
             showsVerticalScrollIndicator={false}>
-            <WatermarkControls includeFields={false} />
+            <WatermarkControls includeFields={false} includeReset={false} />
           </ScrollView>
         ) : null}
       </Screen>

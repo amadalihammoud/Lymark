@@ -63,14 +63,49 @@ export function WatermarkFieldToggles() {
   );
 }
 
+/**
+ * Onde o código de foto é desenhado.
+ *
+ * Acompanha `WatermarkFieldToggles` para a coluna dos dados: é a única
+ * preferência que fala de um campo específico, e o campo está logo acima.
+ */
+export function CodePlacementControl() {
+  const { preferences, setCodePlacement } = useSettings();
+
+  return (
+    <Section
+      title="Código de Foto"
+      description="Na lateral ele não disputa espaço com o conteúdo da imagem.">
+      <ChoiceGrid
+        columns={2}
+        selected={preferences.codePlacement}
+        onSelect={setCodePlacement}
+        options={CODE_PLACEMENTS.map((placement) => ({
+          value: placement,
+          label: CODE_PLACEMENT_LABELS[placement],
+        }))}
+      />
+    </Section>
+  );
+}
+
 export function WatermarkControls({
   includeFields = true,
+  includeReset = true,
 }: {
   /**
-   * Desligado onde os interruptores de campo já aparecem em outro lugar — a
-   * coluna dos dados, no layout de três colunas.
+   * Desligado onde os interruptores de campo e o lugar do código já aparecem
+   * em outro lugar — a coluna dos dados, no layout de três colunas.
    */
   includeFields?: boolean;
+  /**
+   * Desligado no painel de captura.
+   *
+   * Restaurar o padrão é saída de emergência, usada uma vez na vida. Numa tela
+   * que disputa cada pixel, não merece espaço permanente — continua na rota de
+   * Configurações, que é onde se procura por ela.
+   */
+  includeReset?: boolean;
 } = {}) {
   const {
     preferences,
@@ -113,19 +148,7 @@ export function WatermarkControls({
         />
       </Section>
 
-      <Section
-        title="Código de Foto"
-        description="Na lateral ele não disputa espaço com o conteúdo da imagem.">
-        <ChoiceGrid
-          columns={2}
-          selected={preferences.codePlacement}
-          onSelect={setCodePlacement}
-          options={CODE_PLACEMENTS.map((placement) => ({
-            value: placement,
-            label: CODE_PLACEMENT_LABELS[placement],
-          }))}
-        />
-      </Section>
+      {includeFields ? <CodePlacementControl /> : null}
 
       <Section
         title="Marca carimbada"
@@ -213,7 +236,9 @@ export function WatermarkControls({
         />
       </Section>
 
-      <Button label="Restaurar padrão" icon="refresh" variant="ghost" onPress={resetPreferences} />
+      {includeReset ? (
+        <Button label="Restaurar padrão" icon="refresh" variant="ghost" onPress={resetPreferences} />
+      ) : null}
     </>
   );
 }
