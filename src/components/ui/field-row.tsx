@@ -61,6 +61,9 @@ export function FieldRow({
 const styles = StyleSheet.create({
   container: {
     gap: spacing.sm,
+    // Ver a nota em `input`: o mesmo piso de largura se aplica à célula, que
+    // também é item flex quando os campos ficam lado a lado.
+    minWidth: 0,
   },
   row: {
     flexDirection: 'row',
@@ -72,6 +75,19 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
+    /*
+     * Sem este piso, o campo transborda a própria célula.
+     *
+     * Na web o `TextInput` vira um `<input>`, que tem largura intrínseca de
+     * cerca de 170px. Item flex não encolhe abaixo do conteúdo enquanto
+     * `min-width` for `auto`, que é o padrão do CSS — então numa linha de três
+     * campos, onde a célula da hora recebe menos que isso, o campo invadia o
+     * vizinho. A borda de foco só tornava visível o que já acontecia.
+     *
+     * No nativo o Yoga já trata `minWidth` como zero, então isto não muda nada
+     * lá.
+     */
+    minWidth: 0,
     minHeight: HIT_TARGET + 8,
     backgroundColor: colors.surface,
     borderRadius: radius.md,

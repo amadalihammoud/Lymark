@@ -240,9 +240,12 @@ const styles = StyleSheet.create({
   // três, "Dom" o mais curto.
   // "02 ago. 2026" é quase o dobro de "22:50" e o triplo de "Dom" — dividir a
   // linha em três partes iguais deixaria só a data cortada.
-  timeCell: { flex: 6 },
-  dateCell: { flex: 9 },
-  weekdayCell: { flex: 5 },
+  // `minWidth: 0` acompanha cada proporção: sem ele o campo dentro da célula
+  // não encolhe abaixo da própria largura intrínseca e transborda para a
+  // célula vizinha. A explicação inteira está em `field-row.tsx`.
+  timeCell: { flex: 6, minWidth: 0 },
+  dateCell: { flex: 9, minWidth: 0 },
+  weekdayCell: { flex: 5, minWidth: 0 },
   group: {
     gap: spacing.lg,
   },
