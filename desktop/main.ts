@@ -8,7 +8,8 @@ import fs from 'fs';
 import os from 'os';
 import crypto from 'crypto';
 import { pathToFileURL } from 'url';
-import sizeOf from 'image-size';
+
+import { readImageDimensions } from './image-dimensions';
 
 /**
  * Raiz do build web servido pelo protocolo `app://`.
@@ -71,54 +72,25 @@ const ACCEPTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
 const HEADER_BYTES = 4 * 1024 * 1024;
 
 /**
- * Confere a assinatura do arquivo antes de entregá-lo ao `image-size`.
+ * Dimensões de uma imagem, lendo só o cabeçalho.
  *
- * O `image-size` detecta o formato pelo conteúdo, não pela extensão, e tem
- * falhas de laço infinito sem correção publicada — o aviso alcança <=2.0.2,
- * que é a última versão que existe. São duas, ambas com prova de conceito
- * pública:
- *
- *   - CVE-2025-71330: `icns.js`, entrada de ícone com comprimento zero;
- *   - CVE-2025-71329: HEIF, JP2 e JXL, box declarando tamanho zero.
- *
- * Como o `sizeOf` roda de forma síncrona no processo principal, um laço ali
- * congela a janela inteira, sem recuperação.
- *
- * A defesa é a **lista de permissão**, e não a lista de proibição: só passam
- * JPEG, PNG e WebP, conferidos pela assinatura. Todo o resto — inclusive os
- * parsers das duas falhas acima, e os das que ainda não foram descobertas —
- * é inalcançável. Um `.jpg` com cabeçalho de ICNS é recusado aqui, antes de
- * o parser ser chamado.
- *
- * ATENÇÃO: acrescentar um formato a esta lista é assumir o risco do parser
- * correspondente. HEIC é o caso a pensar duas vezes — é o formato padrão do
- * iPhone, e é exatamente um dos atingidos pelo CVE-2025-71329.
+ * A leitura é nossa, e não do pacote `image-size` — veja `image-dimensions.ts`
+ * para o porquê. O que importa aqui: só JPEG, PNG e WebP são reconhecidos, e
+ * qualquer outra coisa devolve `null`, virando o erro abaixo. Não existe mais
+ * um parser de formato exótico a ser alcançado por arquivo forjado.
  */
-function hasSupportedSignature(bytes: Buffer): boolean {
-  if (bytes.length < 12) return false;
-
-  const jpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
-  const png = bytes.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]));
-  const webp =
-    bytes.subarray(0, 4).toString('latin1') === 'RIFF' &&
-    bytes.subarray(8, 12).toString('latin1') === 'WEBP';
-
-  return jpeg || png || webp;
-}
-
-/** Dimensões de uma imagem, lendo só o cabeçalho e só de formato conhecido. */
 function readImageSize(filePath: string): { width: number; height: number } {
   const handle = fs.openSync(filePath, 'r');
   try {
     const buffer = Buffer.alloc(Math.min(HEADER_BYTES, fs.fstatSync(handle).size));
     fs.readSync(handle, buffer, 0, buffer.length, 0);
 
-    if (!hasSupportedSignature(buffer)) {
+    const size = readImageDimensions(buffer);
+    if (!size) {
       throw new Error('Formato de imagem não suportado.');
     }
 
-    const { width, height } = sizeOf(buffer);
-    return { width: width ?? 0, height: height ?? 0 };
+    return size;
   } finally {
     fs.closeSync(handle);
   }

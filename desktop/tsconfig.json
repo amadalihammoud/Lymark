@@ -12,6 +12,6 @@
     "resolveJsonModule": true,
     "noEmitOnError": true
   },
-  "include": ["main.ts", "preload.ts"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["main.ts", "preload.ts", "image-dimensions.ts"],
+  "exclude": ["node_modules", "dist", "__tests__"]
 }
