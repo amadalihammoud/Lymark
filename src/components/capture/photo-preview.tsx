@@ -17,8 +17,30 @@ import { fitInside } from './fit-inside';
  * uma largura menor.
  */
 
-/** Proporção usada enquanto nenhuma foto foi escolhida. */
+/** Proporção usada enquanto nenhuma foto foi escolhida, fora do modo limitado. */
 const PLACEHOLDER_ASPECT_RATIO = 3 / 4;
+
+/**
+ * A forma da área reservada à foto, no layout de colunas.
+ *
+ * Quadrada por medida, não por gosto. Com área fixa e foto nunca cortada, toda
+ * imagem cuja forma difere da área precisa sobrar margem — não há terceira
+ * via. Resta escolher a forma que desperdiça menos, e o quadrado é a única que
+ * trata as duas orientações igual:
+ *
+ *   área      deitada 4:3   em pé 3:4   16:9   9:16   pior caso
+ *   4:3            100%          56%     75%    42%         42%
+ *   16:10           83%          47%     90%    35%         35%
+ *   1:1             75%          75%     56%    56%         56%
+ *
+ * Uma área deitada parece melhor até chegar a primeira foto de celular em pé,
+ * que é metade do uso de um aplicativo de campo. O quadrado nunca é o melhor
+ * caso e nunca é o pior.
+ *
+ * Sendo mais baixo que a coluna, também garante altura livre embaixo para os
+ * botões — e para o que vier depois deles.
+ */
+const RESERVED_ASPECT_RATIO = 1;
 
 export function PhotoPreview({
   photo,
@@ -66,10 +88,13 @@ export function PhotoPreview({
       ? photo.width / photo.height
       : PLACEHOLDER_ASPECT_RATIO;
 
-  // Limitado: o maior retângulo que cabe na caixa. Livre: a largura toda, com a
-  // altura saindo da proporção. Nos dois casos o tamanho é conhecido aqui.
+  // Duas contas puras a partir de uma medição só: primeiro o retângulo
+  // reservado, que não depende da foto e por isso não muda quando ela troca;
+  // depois a foto encaixada dentro dele, inteira.
+  const reserved = fitInside(box, RESERVED_ASPECT_RATIO);
+
   const frame = bounded
-    ? fitInside(box, aspectRatio)
+    ? fitInside(reserved, aspectRatio)
     : { width: box.width, height: box.width > 0 ? box.width / aspectRatio : 0 };
 
   const stampedPhoto = photo ? (
@@ -102,8 +127,10 @@ export function PhotoPreview({
    */
   if (bounded) {
     return (
-      <View style={[styles.fitArea, styles.reservedArea]} onLayout={measure}>
-        {stampedPhoto ?? <Text style={typography.body}>Nenhuma foto selecionada</Text>}
+      <View style={styles.fitArea} onLayout={measure}>
+        <View style={[styles.reservedArea, reserved]}>
+          {stampedPhoto ?? <Text style={typography.body}>Nenhuma foto selecionada</Text>}
+        </View>
       </View>
     );
   }
@@ -140,6 +167,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surface,
     borderRadius: radius.lg,
     overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   /**
    * No modo livre a área só serve para medir a largura.
