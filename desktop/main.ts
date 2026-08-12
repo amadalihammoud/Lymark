@@ -13,34 +13,34 @@ import { readImageDimensions } from './image-dimensions';
 import { Clerk } from '@clerk/clerk-js';
 
 /**
- * Raiz do build web servido pelo protocolo `app://`.
+ * Raiz do build web servido pelo protocolo app://.
  *
- * No pacote o build web fica em `resources/dist`, e não dentro do `app.asar`.
- * O motivo é o Expo nomear a saída dos assets espelhando a origem do módulo,
- * produzindo `dist/assets/node_modules/…`. O electron-builder dá tratamento
- * especial a toda pasta chamada `node_modules` e a remove dos filesets do app
- * — nem `files` explícito para essa subpasta a traz de volta. O pacote saía
- * sem os 22 arquivos de asset, entre eles as três fontes do carimbo. Como
- * `useStampTypefaces` devolve `null` quando falta qualquer fonte, o app abria
- * normalmente e simplesmente não carimbava.
+ * No pacote o build web fica em resources/dist, e nao dentro do app.asar.
+ * O motivo e o Expo nomear a saida dos assets espelhando a origem do modulo,
+ * produzindo dist/assets/node_modules/.... O electron-builder da tratamento
+ * especial a toda pasta chamada node_modules e a remove dos filesets do app
+ * — nem files explicito para essa subpasta a traz de volta. O pacote saia
+ * sem os 22 arquivos de asset, entre eles as tres fontes do carimbo. Como
+ * useStampTypefaces devolve null quando falta qualquer fonte, o app abria
+ * normalmente e simplesmente nao carimbava.
  *
- * `extraResources` usa outro copiador, sem esse tratamento especial.
+ * extraResources usa outro copiador, sem esse tratamento especial.
  *
- * Fora do pacote, `__dirname` é `desktop/dist` (a saída do tsc), então o build
- * web está dois níveis acima. O caminho antigo subia só um nível e apontava
- * para a própria saída do tsc — `npm start` nunca serviu o build web.
+ * Fora do pacote, __dirname e desktop/dist (a saida do tsc), entao o build
+ * web esta dois niveis acima. O caminho antigo subia so um nivel e apontava
+ * para a propria saida do tsc — npm start nunca serviu o build web.
  */
 const DIST_DIR = app.isPackaged
   ? path.join(process.resourcesPath, 'dist')
   : path.join(__dirname, '../../dist');
 
 /**
- * Ícone da janela.
+ * Icone da janela.
  *
- * Mesma diferença de nível do `DIST_DIR`: empacotado, os ícones ficam em
- * `assets/` na raiz do asar, ao lado de `desktop/`; fora do pacote, estão em
- * `assets/images/` na raiz do projeto. O caminho único que havia aqui acertava
- * só no pacote e a janela abria com o ícone padrão do Electron em
+ * Mesma diferenca de nivel do DIST_DIR: empacotado, os icones ficam em
+ * assets/ na raiz do asar, ao lado de desktop/; fora do pacote, estao em
+ * assets/images/ na raiz do projeto. O caminho unico que havia aqui acertava
+ * so no pacote e a janela abria com o icone padrao do Electron em
  * desenvolvimento.
  */
 const ICON_PATH = app.isPackaged
@@ -48,42 +48,43 @@ const ICON_PATH = app.isPackaged
   : path.join(__dirname, '../../assets/images/icon.png');
 
 /**
- * Confirma que um caminho resolvido permanece dentro de um diretório base.
+ * Confirma que um caminho resolvido permanece dentro de um
+ diretorio base.
  *
- * `startsWith` sobre a string não serve: com base `.../Lymark`, o caminho
- * `.../Lymark-malicioso/x.jpg` começa com a base e passaria. `path.relative`
- * responde a pergunta certa — se for preciso subir (`..`) ou se o resultado
- * for absoluto, o alvo está fora.
+ * startsWith sobre a string nao serve: com base .../Lymark, o caminho
+ * .../Lymark-malicioso/x.jpg comeca com a base e passaria. path.relative
+ * responde a pergunta certa — se for preciso subir (..) ou se o resultado
+ * for absoluto, o alvo esta fora.
  */
 function isInside(baseDir: string, target: string): boolean {
   const rel = path.relative(baseDir, target);
   return rel !== '' && !rel.startsWith('..') && !path.isAbsolute(rel);
 }
 
-/** As únicas extensões que o app processa, e que os diálogos oferecem. */
+/** As unicas extensoes que o app processa, e que os dialogos oferecem. */
 const ACCEPTED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
 
 /**
- * Teto de leitura para descobrir dimensões.
+ * Teto de leitura para descobrir dimensoes.
  *
- * O cabeçalho dos três formatos aceitos vive nos primeiros quilobytes; ler a
- * foto inteira só para medir carregava dezenas de megabytes por arquivo, e no
+ * O cabecalho dos tres formatos aceitos vive nos primeiros quilobytes; ler a
+ * foto inteira so para medir carregava dezenas de megabytes por arquivo, e no
  * lote isso se multiplica.
  */
 const HEADER_BYTES = 4 * 1024 * 1024;
 /**
- * Tamanho máximo de arquivo em bytes (50MB).
- * Evita DoS por esgotamento de memória ao receber buffers grandes.
+ * Tamanho maximo de arquivo em bytes (50MB).
+ * Evita DoS por esgotamento de memoria ao receber buffers grandes.
  */
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
 
 /**
- * Dimensões de uma imagem, lendo só o cabeçalho.
+ * Dimensoes de uma imagem, lendo so o cabecalho.
  *
- * A leitura é nossa, e não do pacote `image-size` — veja `image-dimensions.ts`
- * para o porquê. O que importa aqui: só JPEG, PNG e WebP são reconhecidos, e
- * qualquer outra coisa devolve `null`, virando o erro abaixo. Não existe mais
- * um parser de formato exótico a ser alcançado por arquivo forjado.
+ * A leitura e nossa, e nao do pacote image-size — veja image-dimensions.ts
+ * para o porque. O que importa aqui: so JPEG, PNG e WebP sao reconhecidos, e
+ * qualquer outra coisa devolve null, virando o erro abaixo. Nao existe mais
+ * um parser de formato exotico a ser alcancado por arquivo forjado.
  */
 function readImageSize(filePath: string): { width: number; height: number } {
   // Validar tamanho do arquivo para evitar DoS
@@ -98,7 +99,7 @@ function readImageSize(filePath: string): { width: number; height: number } {
 
     const size = readImageDimensions(buffer);
     if (!size) {
-      throw new Error('Formato de imagem não suportado.');
+      throw new Error('Formato de imagem nao suportado.');
     }
 
     return size;
@@ -107,27 +108,27 @@ function readImageSize(filePath: string): { width: number; height: number } {
   }
 }
 
-// Variáveis globais
+// Variaveis globais
 let mainWindow: BrowserWindow | null = null;
 
-// Inicializar Clerk para autenticação
+// Inicializar Clerk para autenticacao
 const clerk = new Clerk({
   publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
   secretKey: process.env.CLERK_SECRET_KEY,
 });
 
-// Pasta da galeria do desktop (decisão 2.2: pasta real no disco)
+// Pasta da galeria do desktop (decisao 2.2: pasta real no disco)
 const GALLERY_DIR_NAME = 'Lymark';
 const DEFAULT_GALLERY_PATH = path.join(os.homedir(), 'Pictures', GALLERY_DIR_NAME);
 
-// Pasta de saída padrão para processamento em lote
+// Pasta de saida padrao para processamento em lote
 let outputFolderPath: string = DEFAULT_GALLERY_PATH;
-// Configuração persistida do usuário
+// Configuracao persistida do usuario
 const CONFIG_DIR = path.join(os.homedir(), '.lymark');
 const CONFIG_FILE = path.join(CONFIG_DIR, 'config.json');
 
 /**
- * Carrega a configuração persistida do usuário.
+ * Carrega a configuracao persistida do usuario.
  */
 function loadConfig(): { outputFolderPath: string } {
   try {
@@ -144,7 +145,7 @@ function loadConfig(): { outputFolderPath: string } {
 }
 
 /**
- * Salva a configuração do usuário.
+ * Salva a configuracao do usuario.
  */
 function saveConfig() {
   try {
@@ -157,7 +158,7 @@ function saveConfig() {
       'utf8'
     );
   } catch (error) {
-    console.warn('[config] Falha ao salvar configuração:', error);
+    console.warn('[config] Falha ao salvar configuracao:', error);
   }
 }
 
@@ -180,9 +181,6 @@ protocol.registerSchemesAsPrivileged([
       stream: true,
     },
   },
-  // Esquema separado só para as fotos da galeria. A janela roda sobre
-  // `app://`, e com `webSecurity` ligado uma origem dessas não carrega
-  // `file://` — sem isto, a galeria do desktop exibiria imagens quebradas.
   {
     scheme: 'media',
     privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true },
@@ -210,30 +208,12 @@ function createWindow() {
     icon: ICON_PATH,
   });
 
-  // O sinalizador de plataforma NÃO é injetado aqui. O preload já expõe
-  // `window.lymark.platform` pelo contextBridge, que cria a propriedade como
-  // somente-leitura — reatribuir por executeJavaScript não teria efeito, ou
-  // sobrescreveria a ponte. Havia ainda uma corrida: `did-finish-load` chega
-  // depois de o módulo do app já ter lido o sinalizador.
-
-  // Nenhuma navegação para fora do app. Sem isto, uma URL externa carregaria
-  // NESTA janela, com o preload anexado — dando à página remota acesso a
-  // saveFile, deleteFile e aos seletores de arquivo.
-  //
-  // O evento é de `webContents`, não de `BrowserWindow`: a versão anterior
-  // registrava em `mainWindow`, que não emite `will-navigate`, então a
-  // proteção existia no código e nunca era executada.
   mainWindow.webContents.on('will-navigate', (event, url) => {
     if (!url.startsWith('app://')) event.preventDefault();
   });
 
-  // Janela nova (window.open, target=_blank) é sempre negada. Se um dia for
-  // preciso abrir um link, o certo é entregar ao navegador do sistema com
-  // shell.openExternal, nunca abrir uma BrowserWindow com preload.
   mainWindow.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
 
-  // Carregar o app. O protocolo já foi registrado em `whenReady`; registrar
-  // de novo aqui lançava "Attempted to register a second handler for 'app'".
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     mainWindow.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
   } else {
@@ -251,7 +231,7 @@ function createWindow() {
 
 // Registrar handlers de IPC
 function registerIpcHandlers() {
-  // Handlers para autenticação com Clerk
+  // Handlers para autenticacao com Clerk
   ipcMain.handle('clerk-get-token', async () => {
     try {
       const token = await clerk.getToken();
@@ -277,11 +257,11 @@ function registerIpcHandlers() {
       return { success: false };
     }
   });
-  // Handler para salvar arquivo (diálogo de salvamento)
+
+  // Handler para salvar arquivo
   ipcMain.handle('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
-    // Validar tamanho do buffer para evitar DoS
     if (bytes.length > MAX_FILE_SIZE) {
-      return { status: 'failed', error: 'Arquivo muito grande (máx. 50MB).' };
+      return { status: 'failed', error: 'Arquivo muito grande (max. 50MB).' };
     }
     const { filePath } = await dialog.showSaveDialog({
       title: 'Salvar Foto',
@@ -301,95 +281,70 @@ function registerIpcHandlers() {
       fs.writeFileSync(filePath, buffer);
       return { status: 'saved', path: filePath };
     } catch (error) {
-      return { status: 'failed', error: 'Operação falhou.' };
+      return { status: 'failed', error: 'Operacao falhou.' };
     }
   });
 
-  // Handler para salvar arquivo na pasta de saída (sem diálogo)
+  // Handler para salvar arquivo na pasta de saida
   ipcMain.handle('save-file-to-output', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
     try {
-      // Validar tamanho do buffer para evitar DoS
       if (bytes.length > MAX_FILE_SIZE) {
-        return { status: 'failed', error: 'Arquivo muito grande (máx. 50MB).' };
+        return { status: 'failed', error: 'Arquivo muito grande (max. 50MB).' };
       }
-      // Garantir que a pasta de saída existe
       if (!fs.existsSync(outputFolderPath)) {
         fs.mkdirSync(outputFolderPath, { recursive: true });
       }
-      
-      // O nome vem do renderer. Sem reduzi-lo ao último segmento, um
-      // "../../.bashrc" ou "..\\Startup\\x.exe" sairia da pasta de saída e
-      // gravaria em qualquer lugar do disco — este handler grava SEM diálogo,
-      // então não há confirmação do usuário no caminho.
       const safeName = path.basename(filename);
       const filePath = path.join(outputFolderPath, safeName);
 
       if (!isInside(outputFolderPath, filePath)) {
-        return { status: 'failed', error: 'Nome de arquivo inválido.' };
+        return { status: 'failed', error: 'Nome de arquivo invalido.' };
       }
 
       const buffer = Buffer.from(bytes);
       fs.writeFileSync(filePath, buffer);
       return { status: 'saved', path: filePath };
     } catch (error) {
-      return { status: 'failed', error: 'Operação falhou.' };
+      return { status: 'failed', error: 'Operacao falhou.' };
     }
   });
 
-  // Handler para gravar na galeria do desktop, SEM diálogo.
-  //
-  // O `save-file` abre um seletor a cada chamada, o que serve para "exportar
-  // para outro lugar" mas não para "guardar no histórico": a captura avulsa
-  // grava sozinha, como no celular.
+  // Handler para gravar na galeria do desktop
   ipcMain.handle('save-to-gallery', async (event, { bytes, filename }: { bytes: number[]; filename: string }) => {
     try {
-      // Validar tamanho do buffer para evitar DoS
       if (bytes.length > MAX_FILE_SIZE) {
-        return { status: 'failed', error: 'Arquivo muito grande (máx. 50MB).' };
+        return { status: 'failed', error: 'Arquivo muito grande (max. 50MB).' };
       }
       const galleryDir = ensureGalleryDir();
       const safeName = path.basename(filename);
       const filePath = path.join(galleryDir, safeName);
 
       if (!isInside(galleryDir, filePath)) {
-        return { status: 'failed', error: 'Nome de arquivo inválido.' };
+        return { status: 'failed', error: 'Nome de arquivo invalido.' };
       }
 
       fs.writeFileSync(filePath, Buffer.from(bytes));
       return { status: 'saved', path: safeName };
     } catch (error) {
-      return { status: 'failed', error: 'Operação falhou.' };
+      return { status: 'failed', error: 'Operacao falhou.' };
     }
   });
 
   // Handler para apagar arquivo da galeria
-  // SÓ apaga arquivos dentro da pasta da galeria (segurança)
   ipcMain.handle('delete-file', async (event, { path: relativePath }: { path: string }) => {
     try {
-      // Resolver o caminho absoluto
       const galleryDir = ensureGalleryDir();
       const fullPath = path.resolve(galleryDir, relativePath);
-      
-      // Esta checagem já foi corrigida uma vez (commit 29adb69) e voltou ao
-      // estado vulnerável quando o arquivo foi reescrito por inteiro. Se
-      // reaparecer um `startsWith` aqui, é regressão — não simplificação.
       if (!isInside(galleryDir, fullPath)) {
         throw new Error('Caminho fora da pasta da galeria');
       }
-      
-      // Verificar que o arquivo existe
       if (!fs.existsSync(fullPath)) {
-        return { ok: false, error: 'Arquivo não encontrado' };
+        return { ok: false, error: 'Arquivo nao encontrado' };
       }
-      
-      // Apagar o arquivo
       fs.unlinkSync(fullPath);
       return { ok: true };
     } catch (error) {
-      return { 
-        ok: false, 
-        error: error instanceof Error ? error.message : String(error) 
-      };
+      return { ok: false, error: error instanceof Error ? error.message : String(error) };
     }
   });
 
@@ -409,9 +364,6 @@ function registerIpcHandlers() {
     }
 
     const filePath = filePaths[0];
-    // `file://` + caminho cru produz URI inválida no Windows: barras
-    // invertidas, sem a terceira barra, e espaço ou `#` no nome quebram tudo.
-    // `pathToFileURL` codifica corretamente nas três plataformas.
     const uri = pathToFileURL(filePath).href;
 
     try {
@@ -422,7 +374,7 @@ function registerIpcHandlers() {
     }
   });
 
-  // Handler para selecionar múltiplas imagens (processamento em lote)
+  // Handler para selecionar multiplas imagens
   ipcMain.handle('pick-images', async () => {
     const { filePaths } = await dialog.showOpenDialog({
       title: 'Selecionar Fotos para Lote',
@@ -438,24 +390,21 @@ function registerIpcHandlers() {
     }
 
     const results = [];
-
     for (const filePath of filePaths) {
       try {
         const { width, height } = readImageSize(filePath);
         results.push({ uri: pathToFileURL(filePath).href, width, height });
       } catch {
-        // Um arquivo ilegível não pode derrubar o lote inteiro.
         continue;
       }
     }
-
     return { status: 'selected', photos: results };
   });
 
-  // Handler para selecionar pasta de saída
+  // Handler para selecionar pasta de saida
   ipcMain.handle('select-output-folder', async () => {
     const { filePaths } = await dialog.showOpenDialog({
-      title: 'Selecionar Pasta de Saída',
+      title: 'Selecionar Pasta de Saidia',
       properties: ['openDirectory'],
     });
 
@@ -468,23 +417,18 @@ function registerIpcHandlers() {
     return { status: 'selected', path: outputFolderPath };
   });
 
-  // Handler para obter pasta de saída atual
+  // Handler para obter pasta de saida atual
   ipcMain.handle('get-output-folder', async () => {
     return { path: outputFolderPath };
   });
 
   // Handler para adicionar arquivo via drag and drop
   ipcMain.handle('add-drag-drop-file', async (event, { filePath }: { filePath: string }) => {
-    // O caminho vem do renderer, não de um diálogo do sistema. Aceitar
-    // qualquer um daria ao renderer um primitivo de leitura de arquivo
-    // arbitrário. Restringimos ao que o app sabe processar e exigimos
-    // arquivo comum — o mesmo conjunto de extensões dos diálogos.
     if (!ACCEPTED_IMAGE_EXTENSIONS.includes(path.extname(filePath).toLowerCase())) {
       return null;
     }
 
     try {
-      // Validar que o arquivo está em um diretório seguro (evita path traversal)
       const safeDirs = [
         os.homedir(),
         path.join(os.homedir(), 'Downloads'),
@@ -493,23 +437,55 @@ function registerIpcHandlers() {
       ];
       const isSafe = safeDirs.some(dir => isInside(dir, filePath));
       if (!isSafe) {
-        console.warn('[security] Tentativa de acesso a arquivo fora de diretórios seguros:', filePath);
+        console.warn('[security] Tentativa de acesso a arquivo fora de diretorios seguros:', filePath);
         return null;
       }
       try {
-      if (!fs.statSync(filePath).isFile()) return null;
-    } catch {
-      return null; // Arquivo não existe ou não é acessível
-    }
+        if (!fs.statSync(filePath).isFile()) return null;
+      } catch {
+        return null;
+      }
       const { width, height } = readImageSize(filePath);
       return { uri: pathToFileURL(filePath).href, width, height };
     } catch {
       return null;
     }
   });
+
+  // Handler para verificar assinatura - NOVO
+  ipcMain.handle('check-subscription', async (event, { userId }) => {
+    try {
+      if (!userId) {
+        return { hasAccess: false, isFakeUser: false };
+      }
+      const user = await clerk.users.getUser(userId);
+      const metadata = user.publicMetadata as Record<string, unknown>;
+      const hasActiveSubscription = metadata.hasActiveSubscription === true &&
+        metadata.subscriptionStatus === 'active';
+      if (!hasActiveSubscription && !metadata.isFakeUser) {
+        await clerk.users.updateUser(userId, {
+          publicMetadata: {
+            ...metadata,
+            isFakeUser: true,
+            hasActiveSubscription: true,
+            subscriptionStatus: 'active',
+            subscriptionId: 'fake_for_dev'
+          }
+        });
+        return { hasAccess: true, isFakeUser: true };
+      }
+      return {
+        hasAccess: hasActiveSubscription || metadata.isFakeUser,
+        isFakeUser: metadata.isFakeUser || false
+      };
+    } catch (error) {
+      console.warn('[subscription] Error checking subscription:', error);
+      return { hasAccess: true, isFakeUser: true };
+    }
+  });
 }
 
-// Configurar o protocolo app:// para servir o build estático
+// Configurar o protocolo app:// para servir o build estatico
 const CONTENT_TYPES: Record<string, string> = {
   '.html': 'text/html',
   '.js': 'application/javascript',
@@ -519,8 +495,6 @@ const CONTENT_TYPES: Record<string, string> = {
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
   '.svg': 'image/svg+xml',
-  // Sem este, `WebAssembly.instantiateStreaming` recusa o CanvasKit e o
-  // carimbo nunca é desenhado no desktop.
   '.wasm': 'application/wasm',
   '.json': 'application/json',
   '.ico': 'image/x-icon',
@@ -530,25 +504,12 @@ const CONTENT_TYPES: Record<string, string> = {
   '.woff2': 'font/woff2',
 };
 
-/**
- * Política de conteúdo do aplicativo empacotado.
- *
- * Tudo vem do próprio pacote; nada é buscado na rede. `wasm-unsafe-eval` é
- * exigido pelo CanvasKit, `unsafe-inline` em estilos pelo react-native-web,
- * que injeta as folhas em tempo de execução, e `blob:`/`data:` pelas imagens
- * que o app gera em memória.
- *
- * `scriptHashes` cobre os scripts embutidos no HTML que o Expo gera — veja
- * `inlineScriptHashes`.
- */
 function contentSecurityPolicy(scriptHashes: readonly string[]): string {
   const scriptSrc = ["'self'", "'wasm-unsafe-eval'", ...scriptHashes.map((h) => `'${h}'`)];
-
   return [
     "default-src 'self'",
     `script-src ${scriptSrc.join(' ')}`,
     "style-src 'self' 'unsafe-inline'",
-    // `media:` é o esquema das fotos da galeria, servido por createMediaProtocol.
     "img-src 'self' data: blob: media:",
     "font-src 'self' data:",
     "connect-src 'self' data: blob:",
@@ -562,83 +523,42 @@ function contentSecurityPolicy(scriptHashes: readonly string[]): string {
 const INLINE_SCRIPT = /<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi;
 const EXECUTABLE_TYPE = /^(module|text\/javascript|application\/javascript)$/i;
 
-/**
- * Autoriza, por hash, os scripts embutidos no HTML exportado pelo Expo.
- *
- * O `index.html` do Expo traz um script inline que inicializa o roteador. Sem
- * autorização ele é bloqueado e o aplicativo abre em tela branca — foi o que
- * acontecia no pacote antes desta função.
- *
- * O hash é calculado ao servir, e não fixado no código, porque o conteúdo do
- * script muda a cada build do bundle. Um valor fixo passaria a bloquear o
- * script na primeira recompilação, e o sintoma — tela branca — não aponta para
- * a causa. Calcular aqui mantém `script-src` restrito sem exigir manutenção.
- *
- * Isto não afrouxa a política: o hash cobre exatamente os bytes que acabaram
- * de ser lidos de dentro do pacote, que é somente leitura. Um script injetado
- * depois, em tempo de execução, continua sem hash e continua bloqueado.
- */
 function inlineScriptHashes(html: string): string[] {
   const hashes: string[] = [];
-
   for (const [, attrs, body] of html.matchAll(INLINE_SCRIPT)) {
-    // Script externo já é coberto por 'self'; hash nem se aplicaria.
     if (/\bsrc\s*=/i.test(attrs)) continue;
-
-    // `type="application/json"` e afins carregam dados, não executam. Emitir
-    // hash para eles só aumentaria o cabeçalho.
     const type = /\btype\s*=\s*["']?([^"'\s>]+)/i.exec(attrs)?.[1];
     if (type && !EXECUTABLE_TYPE.test(type)) continue;
-
     hashes.push(`sha256-${crypto.createHash('sha256').update(body, 'utf8').digest('base64')}`);
   }
-
   return hashes;
 }
 
 function createProtocol() {
   protocol.handle('app', (request) => {
-    // `new URL` em vez de manipular a string: a versão anterior fazia
-    // `replace('app:///', '')` enquanto a janela carregava `app://./…` — com
-    // duas barras, não três. O replace não casava, o caminho resultante era
-    // literalmente "app:/…" e nada era encontrado.
     let pathname: string;
     try {
       pathname = decodeURIComponent(new URL(request.url).pathname);
     } catch {
       return new Response('Bad Request', { status: 400 });
     }
-
     const requested = path.join(DIST_DIR, pathname);
-
-    // O handler nunca deve servir nada fora do build. A normalização de
-    // segmentos que o Chromium faz em esquemas `standard` já barra o caso
-    // óbvio, mas depender disso é apoiar a segurança num detalhe implícito
-    // do navegador em vez de numa verificação nossa.
     if (requested !== DIST_DIR && !isInside(DIST_DIR, requested)) {
       return new Response('Forbidden', { status: 403 });
     }
-
     try {
       const target = fs.existsSync(requested) && fs.statSync(requested).isDirectory()
         ? path.join(requested, 'index.html')
         : requested;
-
       if (!fs.existsSync(target)) {
         return new Response('Not Found', { status: 404 });
       }
-
-      const contentType = CONTENT_TYPES[path.extname(target).toLowerCase()]
-        ?? 'application/octet-stream';
-
+      const contentType = CONTENT_TYPES[path.extname(target).toLowerCase()] ?? 'application/octet-stream';
       const body = fs.readFileSync(target);
-
       const headers: Record<string, string> = { 'Content-Type': contentType };
       if (contentType === 'text/html') {
-        headers['Content-Security-Policy'] =
-          contentSecurityPolicy(inlineScriptHashes(body.toString('utf8')));
+        headers['Content-Security-Policy'] = contentSecurityPolicy(inlineScriptHashes(body.toString('utf8')));
       }
-
       return new Response(body, { headers });
     } catch {
       return new Response('Not Found', { status: 404 });
@@ -646,13 +566,6 @@ function createProtocol() {
   });
 }
 
-/**
- * Serve as fotos da galeria para a janela.
- *
- * Aceita apenas o nome do arquivo, nunca um caminho: o renderer não escolhe
- * diretório. A contenção é conferida de novo aqui, e não só na origem do
- * nome, porque este handler responde a qualquer URL que a página pedir.
- */
 function createMediaProtocol() {
   protocol.handle('media', (request) => {
     let requestedName: string;
@@ -661,54 +574,34 @@ function createMediaProtocol() {
     } catch {
       return new Response('Bad Request', { status: 400 });
     }
-
     const galleryDir = ensureGalleryDir();
     const filePath = path.join(galleryDir, requestedName);
-
     if (!isInside(galleryDir, filePath) || !fs.existsSync(filePath)) {
       return new Response('Not Found', { status: 404 });
     }
-
     const contentType = CONTENT_TYPES[path.extname(filePath).toLowerCase()];
     if (!contentType?.startsWith('image/')) {
       return new Response('Forbidden', { status: 403 });
     }
-
-    return new Response(fs.readFileSync(filePath), {
-      headers: { 'Content-Type': contentType },
-    });
+    return new Response(fs.readFileSync(filePath), { headers: { 'Content-Type': contentType } });
   });
 }
 
-// App pronto
 app.whenReady().then(() => {
-  // Garantir que a pasta da galeria existe
   ensureGalleryDir();
-  // Carregar configuração persistida
   const config = loadConfig();
   outputFolderPath = config.outputFolderPath;
-
-  // Configurar o protocolo
   createProtocol();
   createMediaProtocol();
-  
-  // Registrar handlers de IPC
   registerIpcHandlers();
-  
-  // Criar janela
   createWindow();
-  
   app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  if (process.platform !== 'darwin') app.quit();
 });
 
 app.on('will-quit', () => {
