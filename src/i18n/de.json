@@ -1,0 +1,65 @@
+{
+  "common": {
+    "yes": "Ja",
+    "no": "Nein",
+    "ok": "OK",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Loschen",
+    "share": "Teilen",
+    "back": "Zuruck",
+    "loading": "Wird geladen...",
+    "error": "Fehler",
+    "success": "Erfolg"
+  },
+  "app": {
+    "title": "Lymark"
+  },
+  "capture": {
+    "title": "Aufnehmen",
+    "camera": "Foto machen",
+    "gallery": "Aus Galerie auswahlen",
+    "timestamp": "Datum/Uhrzeit",
+    "address": "Adresse",
+    "code": "Code"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "empty": "Noch keine Fotos",
+    "delete": "Loschen",
+    "share": "Teilen"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "watermark": "Wasserzeichen",
+    "permissions": "Berechtigungen",
+    "about": "Uber",
+    "language": "Sprache",
+    "save": "Speichern"
+  },
+  "about": {
+    "title": "Uber Lymark",
+    "version": "Version",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen"
+  },
+  "permissions": {
+    "title": "Berechtigungen",
+    "camera": "Kamera",
+    "photos": "Fotos",
+    "location": "Standort",
+    "granted": "Erteilt",
+    "denied": "Verweigert",
+    "request": "Berechtigung anfordern"
+  },
+  "login": {
+    "title": "Melden Sie sich an, um auf Lymark zuzugreifen",
+    "subtitle": "Melden Sie sich an, um fortzufahren",
+    "google": "Mit Google anmelden",
+    "apple": "Mit Apple anmelden"
+  },
+  "language": {
+    "label": "Sprache",
+    "selector": "Sprache auswahlen"
+  }
+}
