@@ -1,0 +1,65 @@
+{
+  "common": {
+    "yes": "예",
+    "no": "아니오",
+    "ok": "확인",
+    "cancel": "취소",
+    "save": "저장",
+    "delete": "삭제",
+    "share": "공유",
+    "back": "뒤로",
+    "loading": "로딩 중...",
+    "error": "오류",
+    "success": "성공"
+  },
+  "app": {
+    "title": "Lymark"
+  },
+  "capture": {
+    "title": "캡처",
+    "camera": "사진 찍기",
+    "gallery": "갤러리에서 선택",
+    "timestamp": "날짜/시간",
+    "address": "주소",
+    "code": "코드"
+  },
+  "gallery": {
+    "title": "갤러리",
+    "empty": "아직 사진이 없습니다",
+    "delete": "삭제",
+    "share": "공유"
+  },
+  "settings": {
+    "title": "설정",
+    "watermark": "워터마크",
+    "permissions": "권한",
+    "about": "정보",
+    "language": "언어",
+    "save": "저장"
+  },
+  "about": {
+    "title": "Lymark에 대해",
+    "version": "버전",
+    "privacy": "개인정보 보호 정책",
+    "terms": "이용 약관"
+  },
+  "permissions": {
+    "title": "권한",
+    "camera": "카메라",
+    "photos": "사진",
+    "location": "위치",
+    "granted": "허용됨",
+    "denied": "거부됨",
+    "request": "권한 요청"
+  },
+  "login": {
+    "title": "Lymark에 접근하려면 로그인",
+    "subtitle": "계속하려면 로그인",
+    "google": "Google로 로그인",
+    "apple": "Apple로 로그인"
+  },
+  "language": {
+    "label": "언어",
+    "selector": "언어 선택"
+  }
+}
