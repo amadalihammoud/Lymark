@@ -1,0 +1,12 @@
+{
+  "common": {"yes": "Si", "no": "No", "ok": "OK", "cancel": "Annulla", "save": "Salva", "delete": "Elimina", "share": "Condividi", "back": "Indietro", "loading": "Caricamento...", "error": "Errore", "success": "Successo"},
+  "app": {"title": "Lymark"},
+  "capture": {"title": "Cattura", "camera": "Scatta foto", "gallery": "Scegli dalla galleria", "timestamp": "Data/Ora", "address": "Indirizzo", "code": "Codice"},
+  "gallery": {"title": "Galleria", "empty": "Nessuna foto ancora", "delete": "Elimina", "share": "Condividi"},
+  "settings": {"title": "Impostazioni", "watermark": "Filigrana", "permissions": "Permessi", "about": "Info", "language": "Lingua", "save": "Salva"},
+  "about": {"title": "Info su Lymark", "version": "Versione", "privacy": "Informativa sulla privacy", "terms": "Condizioni d\'uso"},
+  "permissions": {"title": "Permessi", "camera": "Fotocamera", "photos": "Foto", "location": "Posizione", "granted": "Concesso", "denied": "Negato", "request": "Richiedi permesso"},
+  "login": {"title": "Accedi per usare Lymark", "subtitle": "Accedi per continuare", "google": "Accedi con Google", "apple": "Accedi con Apple"},
+  "language": {"label": "Lingua", "selector": "Seleziona la lingua"},
+  "menu": {"file": "File", "edit": "Modifica", "view": "Visualizza", "settings": "Impostazioni", "help": "Aiuto", "quit": "Esci"}
+}
