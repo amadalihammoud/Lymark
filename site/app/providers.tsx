@@ -2,7 +2,7 @@
 
 import { ClerkProvider } from '@clerk/nextjs';
 import { ptBR } from '@clerk/localizations';
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlProvider } from 'next-intl';
 
 export function Providers({ children, locale, messages }: { 
   children: React.ReactNode;
@@ -14,9 +14,9 @@ export function Providers({ children, locale, messages }: {
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
       localization={ptBR}
     >
-      <NextIntlClientProvider locale={locale} messages={messages}>
+      <NextIntlProvider locale={locale} messages={messages}>
         {children}
-      </NextIntlClientProvider>
+      </NextIntlProvider>
     </ClerkProvider>
   );
 }
