@@ -9,7 +9,11 @@
   "dependencies": {
     "next": "^16.2.12",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "@clerk/nextjs": "^5.0.0",
+    "@clerk/themes": "^2.0.0",
+    "@clerk/localizations": "^2.0.0",
+    "svix": "^1.0.0"
   },
   "overrides": {
     "next": {
