@@ -1,7 +1,7 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
+import { useRouter, usePathname } from 'next-intl/client';
 
 const languages = [
   { code: 'pt', name: 'Portugues' },
@@ -19,14 +19,13 @@ const languages = [
 ];
 
 export default function LanguageSelector() {
-  const pathname = usePathname();
-  const router = useRouter();
   const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleChange = (newLocale: string) => {
     if (locale === newLocale) return;
-    const pathWithoutLocale = pathname.replace(/^/([a-z]{2})/, '');
-    router.push('/' + newLocale + pathWithoutLocale);
+    router.replace(pathname, { locale: newLocale });
   };
 
   const selectStyle = {
