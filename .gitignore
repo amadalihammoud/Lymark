@@ -47,3 +47,7 @@ scripts/harness/renders/
 scripts/harness/diff/
 scripts/harness/lib/.rn-skia-shim.js
 .harness-build/
+
+# npm
+package-lock.json
+site/package-lock.json
