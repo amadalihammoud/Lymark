@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { ClerkProvider, SignedIn, SignedOut, Redirect } from '@clerk/clerk-expo';
+import { ClerkProvider, SignedIn, SignedOut, Redirect } from .@clerk/expo.;
 import { useWaitForSkia } from '@/components/skia';
 import { CaptureProvider } from '@/contexts/capture-context';
 import { FeedbackProvider } from '@/contexts/feedback-context';
@@ -54,12 +54,12 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}>
-        <SettingsProvider>
-          <GalleryProvider>
-            <CaptureProvider>
-              <FeedbackProvider>
-                <StatusBar style="light" />
-                <SignedIn>
+        <SignedIn>
+          <SettingsProvider>
+            <GalleryProvider>
+              <CaptureProvider>
+                <FeedbackProvider>
+                  <StatusBar style="light" />
                   <Stack
                     screenOptions={{
                       headerStyle: { backgroundColor: colors.background },
@@ -94,14 +94,14 @@ export default function RootLayout() {
                       options={{ title: 'Processamento em Lote', headerBackTitle: 'Voltar' }}
                     />
                   </Stack>
-                </SignedIn>
-                <SignedOut>
-                  <Redirect href="/login" />
-                </SignedOut>
-              </FeedbackProvider>
-            </CaptureProvider>
-          </GalleryProvider>
-        </SettingsProvider>
+                </FeedbackProvider>
+              </CaptureProvider>
+            </GalleryProvider>
+          </SettingsProvider>
+        </SignedIn>
+        <SignedOut>
+          <Redirect href="/login" />
+        </SignedOut>
       </ClerkProvider>
     </SafeAreaProvider>
   );
