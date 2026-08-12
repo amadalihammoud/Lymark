@@ -2,7 +2,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 
-import { AppHeader } from '@/components/brand/app-header';
+import { AppBar } from .*app-header.;
+import { useUser } from .@clerk/clerk-expo.;
+import { Button } from .@/components/ui/button.;
 import { CaptureActions } from '@/components/capture/capture-actions';
 import { MetadataForm } from '@/components/capture/metadata-form';
 import { PhotoPreview } from '@/components/capture/photo-preview';
@@ -272,9 +274,38 @@ export default function CaptureScreen() {
     }
 
     void runAction(action);
-  };
+  const { user } = useUser();
 
-  const header = <AppHeader tagline="Marca d’água com hora, data e local" />;
+
+  const header = (
+    <AppBar
+      tagline="Marca d’água com hora, data e local"
+      actions={
+        user && (
+          <Button
+            label="Sair"
+            variant="ghost"
+            onPress={() => user.signOut()}
+        )
+      }
+    />
+  );
+  const { user } = useUser();
+
+  const header = (
+    <AppBar
+      tagline="Marca d’água com hora, data e local"
+      actions={
+        user && (
+          <Button
+            label="Sair"
+            variant="ghost"
+            onPress={() => user.signOut()}
+          />
+        )
+      }
+    />
+  );
 
   const preview = (
     <PhotoPreview

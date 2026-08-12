@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { ClerkProvider, SignedIn, SignedOut, Redirect } from '@clerk/clerk-expo';
 import { useWaitForSkia } from '@/components/skia';
 import { CaptureProvider } from '@/contexts/capture-context';
 import { FeedbackProvider } from '@/contexts/feedback-context';
@@ -52,52 +53,56 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <SettingsProvider>
-        <GalleryProvider>
-          <CaptureProvider>
-    
-        {/* Acima da navegação: o diálogo e o aviso precisam cobrir
-                qualquer tela, inclusive as que abrem por cima. */}
-            <FeedbackProvider>
-            <StatusBar style="light" />
-            <Stack
-              screenOptions={{
-                headerStyle: { backgroundColor: colors.background },
-                headerTintColor: colors.accent,
-                headerTitleStyle: typography.value,
-                headerShadowVisible: false,
-                contentStyle: { backgroundColor: colors.background },
-              }}>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <ClerkProvider publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}>
+        <SettingsProvider>
+          <GalleryProvider>
+            <CaptureProvider>
+              <FeedbackProvider>
+                <StatusBar style="light" />
+                <SignedIn>
+                  <Stack
+                    screenOptions={{
+                      headerStyle: { backgroundColor: colors.background },
+                      headerTintColor: colors.accent,
+                      headerTitleStyle: typography.value,
+                      headerShadowVisible: false,
+                      contentStyle: { backgroundColor: colors.background },
+                    }}>
+                    <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-              <Stack.Screen
-                name="settings/watermark"
-                options={{ title: 'Marca d’água', headerBackTitle: 'Voltar' }}
-              />
-              <Stack.Screen
-                name="settings/permissions"
-                options={{ title: 'Permissões', headerBackTitle: 'Voltar' }}
-              />
-              <Stack.Screen
-                name="settings/about"
-                options={{ title: 'Sobre o Lymark', headerBackTitle: 'Voltar' }}
-              />
+                    <Stack.Screen
+                      name="settings/watermark"
+                      options={{ title: 'Marca d’água', headerBackTitle: 'Voltar' }}
+                    />
+                    <Stack.Screen
+                      name="settings/permissions"
+                      options={{ title: 'Permissões', headerBackTitle: 'Voltar' }}
+                    />
+                    <Stack.Screen
+                      name="settings/about"
+                      options={{ title: 'Sobre o Lymark', headerBackTitle: 'Voltar' }}
+                    />
 
-              <Stack.Screen
-                name="photo/[id]"
-                options={{ title: 'Detalhe da foto', headerBackTitle: 'Galeria' }}
-              />
+                    <Stack.Screen
+                      name="photo/[id]"
+                      options={{ title: 'Detalhe da foto', headerBackTitle: 'Galeria' }}
+                    />
 
-              {/* Processamento em lote - apenas desktop */}
-              <Stack.Screen
-                name="batch"
-                options={{ title: 'Processamento em Lote', headerBackTitle: 'Voltar' }}
-              />
-            </Stack>
-            </FeedbackProvider>
-          </CaptureProvider>
-        </GalleryProvider>
-      </SettingsProvider>
+                    {/* Processamento em lote - apenas desktop */}
+                    <Stack.Screen
+                      name="batch"
+                      options={{ title: 'Processamento em Lote', headerBackTitle: 'Voltar' }}
+                    />
+                  </Stack>
+                </SignedIn>
+                <SignedOut>
+                  <Redirect href="/login" />
+                </SignedOut>
+              </FeedbackProvider>
+            </CaptureProvider>
+          </GalleryProvider>
+        </SettingsProvider>
+      </ClerkProvider>
     </SafeAreaProvider>
   );
 }

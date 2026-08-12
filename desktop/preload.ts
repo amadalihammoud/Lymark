@@ -49,16 +49,20 @@ export interface LymarkApi {
   }>;
   getOutputFolder: () => Promise<{ path: string }>;
   onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
+  // Clerk Authentication
+  getClerkToken: () => Promise<{ token: string | null; error: string | null }>;
+  verifyClerkToken: (token: string) => Promise<{ valid: boolean }>;
+  signOut: () => Promise<{ success: boolean }>;
 }
 
 // Expor APIs seguras para o renderer
 export const lymarkApi: LymarkApi = {
   platform: 'desktop',
-  
+
   saveFile: async (bytes, filename, mimeType) => {
     return ipcRenderer.invoke('save-file', { bytes: Array.from(bytes), filename, mimeType });
   },
-  
+
   saveToGallery: async (bytes, filename) => {
     return ipcRenderer.invoke('save-to-gallery', { bytes: Array.from(bytes), filename });
   },
@@ -66,31 +70,29 @@ export const lymarkApi: LymarkApi = {
   saveFileToOutput: async (bytes, filename, mimeType) => {
     return ipcRenderer.invoke('save-file-to-output', { bytes: Array.from(bytes), filename, mimeType });
   },
-  
+
   deleteFile: async (path) => {
     return ipcRenderer.invoke('delete-file', { path });
   },
-  
+
   pickImage: async () => {
     return ipcRenderer.invoke('pick-image');
   },
-  
+
   pickImages: async () => {
     return ipcRenderer.invoke('pick-images');
   },
-  
+
   selectOutputFolder: async () => {
     return ipcRenderer.invoke('select-output-folder');
   },
-  
+
   getOutputFolder: async () => {
     return ipcRenderer.invoke('get-output-folder');
   },
-  
+
   onDragDrop: (callback) => {
-    // Escutar o evento do main process
     ipcRenderer.on('ondragdrop', (_, filePath: string) => {
-      // Processar o arquivo arrastado e chamar o callback
       ipcRenderer.invoke('add-drag-drop-file', { filePath })
         .then((photo) => {
           if (photo) {
@@ -102,7 +104,27 @@ export const lymarkApi: LymarkApi = {
         });
     });
   },
+
+  // Clerk Authentication
+  getClerkToken: async () => {
+    return ipcRenderer.invoke('clerk-get-token');
+  },
+
+  verifyClerkToken: async (token) => {
+    return ipcRenderer.invoke('clerk-verify-token', { token });
+  },
+
+  signOut: async () => {
+    return ipcRenderer.invoke('clerk-sign-out');
+  },
 };
 
 // Expor para o window via contextBridge
 contextBridge.exposeInMainWorld('lymark', lymarkApi);
+
+// Expor Clerk para o window (opcional)
+contextBridge.exposeInMainWorld('clerk', {
+  getToken: lymarkApi.getClerkToken,
+  verifyToken: lymarkApi.verifyClerkToken,
+  signOut: lymarkApi.signOut,
+});

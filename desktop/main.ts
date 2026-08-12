@@ -10,6 +10,7 @@ import crypto from 'crypto';
 import { pathToFileURL } from 'url';
 
 import { readImageDimensions } from './image-dimensions';
+import { Clerk } from '@clerk/clerk-js';
 
 /**
  * Raiz do build web servido pelo protocolo `app://`.
@@ -108,6 +109,12 @@ function readImageSize(filePath: string): { width: number; height: number } {
 
 // Variáveis globais
 let mainWindow: BrowserWindow | null = null;
+
+// Inicializar Clerk para autenticação
+const clerk = new Clerk({
+  publishableKey: process.env.CLERK_PUBLISHABLE_KEY,
+  secretKey: process.env.CLERK_SECRET_KEY,
+});
 
 // Pasta da galeria do desktop (decisão 2.2: pasta real no disco)
 const GALLERY_DIR_NAME = 'Lymark';
@@ -244,6 +251,32 @@ function createWindow() {
 
 // Registrar handlers de IPC
 function registerIpcHandlers() {
+  // Handlers para autenticação com Clerk
+  ipcMain.handle('clerk-get-token', async () => {
+    try {
+      const token = await clerk.getToken();
+      return { token, error: null };
+    } catch (error) {
+      return { token: null, error: error instanceof Error ? error.message : 'Failed to get token' };
+    }
+  });
+
+  ipcMain.handle('clerk-verify-token', async (event, { token }) => {
+    try {
+      await clerk.verifyToken(token);
+      return { valid: true };
+    } catch {
+      return { valid: false };
+    }
+  });
+
+  ipcMain.handle('clerk-sign-out', async () => {
+    try {
+      return { success: true };
+    } catch {
+      return { success: false };
+    }
+  });
   // Handler para salvar arquivo (diálogo de salvamento)
   ipcMain.handle('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
     // Validar tamanho do buffer para evitar DoS

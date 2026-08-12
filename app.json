@@ -66,6 +66,9 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
+      ["@clerk/clerk-expo", {
+        "clerkPublishableKey": "$EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY"
+      }],
       "expo-router",
       [
         "expo-splash-screen",
