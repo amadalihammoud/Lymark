@@ -1,0 +1,12 @@
+{
+  "common": {"yes": "是", "no": "否", "ok": "确定", "cancel": "取消", "save": "保存", "delete": "删除", "share": "分享", "back": "返回", "loading": "加载中...", "error": "错误", "success": "成功"},
+  "app": {"title": "Lymark"},
+  "capture": {"title": "捕获", "camera": "拍照", "gallery": "从相册选择", "timestamp": "日期/时间", "address": "地址", "code": "代码"},
+  "gallery": {"title": "相册", "empty": "还没有照片", "delete": "删除", "share": "分享"},
+  "settings": {"title": "设置", "watermark": "水印", "permissions": "权限", "about": "关于", "language": "语言", "save": "保存"},
+  "about": {"title": "关于Lymark", "version": "版本", "privacy": "隐私政策", "terms": "使用条款"},
+  "permissions": {"title": "权限", "camera": "相机", "photos": "照片", "location": "位置", "granted": "已授予", "denied": "已拒绝", "request": "请求权限"},
+  "login": {"title": "登录以访问Lymark", "subtitle": "登录以继续", "google": "使用Google登录", "apple": "使用Apple登录"},
+  "language": {"label": "语言", "selector": "选择语言"},
+  "menu": {"file": "文件", "edit": "编辑", "view": "查看", "settings": "设置", "help": "帮助", "quit": "退出"}
+}
