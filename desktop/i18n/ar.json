@@ -1,0 +1,12 @@
+{
+  "common": {"yes": "نعم", "no": "لا", "ok": "موافق", "cancel": "إلغاء", "save": "حفظ", "delete": "حذف", "share": "مشاركة", "back": "رجوع", "loading": "جاري التحميل...", "error": "خطأ", "success": "نجح"},
+  "app": {"title": "Lymark"},
+  "capture": {"title": "التقاط", "camera": "التقاط صورة", "gallery": "اختيار من المعرض", "timestamp": "التاريخ/الوقت", "address": "العنوان", "code": "الرمز"},
+  "gallery": {"title": "المعرض", "empty": "لا صور بعد", "delete": "حذف", "share": "مشاركة"},
+  "settings": {"title": "الإعدادات", "watermark": "الختم", "permissions": "الأذونات", "about": "عن", "language": "اللغة", "save": "حفظ"},
+  "about": {"title": "عن Lymark", "version": "الإصدار", "privacy": "سياسة الخصوصية", "terms": "شروط الاستخدام"},
+  "permissions": {"title": "الأذونات", "camera": "الكاميرا", "photos": "الصور", "location": "الموقع", "granted": "ممنوح", "denied": "مرفوض", "request": "طلب إذن"},
+  "login": {"title": "سجل الدخول للوصول إلى Lymark", "subtitle": "سجل الدخول للمتابعة", "google": "تسجيل الدخول باستخدام Google", "apple": "تسجيل الدخول باستخدام Apple"},
+  "language": {"label": "اللغة", "selector": "اختر اللغة"},
+  "menu": {"file": "ملف", "edit": "تعديل", "view": "عرض", "settings": "الإعدادات", "help": "مساعدة", "quit": "خروج"}
+}
