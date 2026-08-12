@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { ClerkProvider, SignedIn, SignedOut, Redirect } from .@clerk/expo.;
+import { ClerkProvider, SignedIn, SignedOut, Redirect } from .@clerk/clerk-expo.;
 import { useWaitForSkia } from '@/components/skia';
 import { CaptureProvider } from '@/contexts/capture-context';
 import { FeedbackProvider } from '@/contexts/feedback-context';

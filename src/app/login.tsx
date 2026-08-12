@@ -3,7 +3,7 @@
  */
 
 import { useRouter } from 'expo-router';
-import { useSignIn } from .@clerk/expo.;
+import { useSignIn } from .@clerk/clerk-expo.;
 import { Button, View, Text, StyleSheet } from 'react-native';
 import { colors, typography } from '@/theme';
 
