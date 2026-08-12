@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SignedIn, SignedOut } from '@clerk/nextjs';
 
 /*
  * Uma amostra do carimbo, desenhada com as mesmas proporções do aplicativo.
@@ -50,8 +51,25 @@ export default function Home() {
             encaminhamento por WhatsApp.
           </p>
           <div className="cta">
-            <a href="https://app.lymark.app">Abrir o app no navegador</a>
-            <span className="note">Nada para instalar.</span>
+            <SignedIn>
+              <a href="https://app.lymark.app">
+                Abrir o app no navegador
+              </a>
+              <span className="note">Nada para instalar.</span>
+            </SignedIn>
+            <SignedOut>
+              <Link href="/login" style={{
+                display: 'inline-block',
+                padding: '0.75rem 1.5rem',
+                background: 'var(--accent)',
+                color: '#000',
+                textDecoration: 'none',
+                borderRadius: '0.5rem',
+                fontWeight: '500'
+              }}>
+                Entrar para acessar
+              </Link>
+            </SignedOut>
           </div>
 
           <div className="meta">
@@ -195,7 +213,7 @@ export default function Home() {
           <h2>Disponibilidade</h2>
         </div>
         <p className="lede">
-          O Lymark está na versão 1.1.0, em testes no Android antes da publicação na Google
+          O Lymark está na versão 1.3.0, em testes no Android antes da publicação na Google
           Play. Não há versão para iOS nem versão web, e o aplicativo não coleta pagamento.
         </p>
         <p className="note">
