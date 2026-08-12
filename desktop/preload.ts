@@ -1,11 +1,11 @@
 /**
  * Preload script do Electron.
  *
- * Este script é executado antes do renderer e expõe APIs seguras
- * para o contexto da página via contextBridge.
+ * Este script e executado antes do renderer e expoe APIs seguras
+ * para o contexto da pagina via contextBridge.
  *
  * NUNCA exponha: fs, child_process, ipcRenderer completo, etc.
- * Apenas exponha o que é estritamente necessário.
+ * Apenas exponha o que e estritamente necessario.
  */
 
 import { contextBridge, ipcRenderer } from 'electron';
@@ -18,7 +18,6 @@ export interface LymarkApi {
     path?: string;
     error?: string;
   }>;
-  /** Grava no histórico do desktop, sem diálogo. Devolve o nome do arquivo. */
   saveToGallery: (bytes: Uint8Array, filename: string) => Promise<{
     status: 'saved' | 'failed';
     path?: string;
@@ -53,6 +52,10 @@ export interface LymarkApi {
   getClerkToken: () => Promise<{ token: string | null; error: string | null }>;
   verifyClerkToken: (token: string) => Promise<{ valid: boolean }>;
   signOut: () => Promise<{ success: boolean }>;
+  // i18n
+  getLocale: () => Promise<{ locale: string }>;
+  setLocale: (locale: string) => Promise<{ success: boolean }>;
+  translate: (key: string) => Promise<{ translation: string }>;
 }
 
 // Expor APIs seguras para o renderer
@@ -116,6 +119,19 @@ export const lymarkApi: LymarkApi = {
 
   signOut: async () => {
     return ipcRenderer.invoke('clerk-sign-out');
+  },
+
+  // i18n
+  getLocale: async () => {
+    return ipcRenderer.invoke('get-locale');
+  },
+
+  setLocale: async (locale) => {
+    return ipcRenderer.invoke('set-locale', { locale });
+  },
+
+  translate: async (key) => {
+    return ipcRenderer.invoke('translate', { key });
   },
 };
 
