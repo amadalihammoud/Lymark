@@ -2,15 +2,10 @@ import type { Metadata, Viewport } from 'next';
 import { Barlow, Pathway_Gothic_One } from 'next/font/google';
 import Link from 'next/link';
 import { Providers } from './providers';
+import LanguageSelector from '@/components/LanguageSelector';
 
 import './globals.css';
 
-/*
- * As mesmas duas famílias que o aplicativo embarca: Barlow no texto e na
- * assinatura, Pathway Gothic One nos numerais. A segunda foi escolhida por
- * medição — proporção de 0,498 de largura e 0,318 de densidade de tinta —
- * e é ela que dá ao site a mesma voz tipográfica do carimbo.
- */
 const barlow = Barlow({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -65,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <nav className="site" aria-label="Principal">
                 <Link href="/privacidade">Privacidade</Link>
                 <Link href="/termos">Termos</Link>
+                <LanguageSelector />
               </nav>
             </div>
           </header>
