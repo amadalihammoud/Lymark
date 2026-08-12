@@ -1,0 +1,65 @@
+{
+  "common": {
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "delete": "Supprimer",
+    "share": "Partager",
+    "back": "Retour",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succes"
+  },
+  "app": {
+    "title": "Lymark"
+  },
+  "capture": {
+    "title": "Capturer",
+    "camera": "Prendre une photo",
+    "gallery": "Choisir dans la galerie",
+    "timestamp": "Date/Heure",
+    "address": "Adresse",
+    "code": "Code"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "empty": "Aucune photo pour l'instant",
+    "delete": "Supprimer",
+    "share": "Partager"
+  },
+  "settings": {
+    "title": "Parametres",
+    "watermark": "Filigrane",
+    "permissions": "Permissions",
+    "about": "A propos",
+    "language": "Langue",
+    "save": "Enregistrer"
+  },
+  "about": {
+    "title": "A propos de Lymark",
+    "version": "Version",
+    "privacy": "Politique de confidentialite",
+    "terms": "Conditions d'utilisation"
+  },
+  "permissions": {
+    "title": "Permissions",
+    "camera": "Camera",
+    "photos": "Photos",
+    "location": "Localisation",
+    "granted": "Accorde",
+    "denied": "Refuse",
+    "request": "Demander la permission"
+  },
+  "login": {
+    "title": "Connectez-vous pour acceder a Lymark",
+    "subtitle": "Connectez-vous pour continuer",
+    "google": "Se connecter avec Google",
+    "apple": "Se connecter avec Apple"
+  },
+  "language": {
+    "label": "Langue",
+    "selector": "Selectionnez la langue"
+  }
+}
