@@ -1,3 +1,1 @@
-{
-  "rootDirectory": "site"
-}
+// REMOVED: vercel.json must NOT exist in root. Configure in Vercel dashboard: Root Directory = site/
