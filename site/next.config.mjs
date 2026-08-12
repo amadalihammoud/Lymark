@@ -16,9 +16,4 @@ export default {
       },
     ];
   },
-  i18n: {
-    locales: ['pt', 'en', 'es', 'fr', 'it', 'de', 'nl', 'ru', 'zh', 'ja', 'ko', 'ar'],
-    defaultLocale: 'pt',
-    localeDetection: false,
-  },
 };
