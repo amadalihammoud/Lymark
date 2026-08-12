@@ -23,16 +23,16 @@ const pathway = Pathway_Gothic_One({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Lymark — marca d'água de data, hora e endereço em fotos de campo',
+    default: 'Lymark — marca de agua de data, hora e endereco em fotos de campo',
     template: '%s · Lymark',
   },
   description:
-    'Aplicativo Android que carimba hora, data, dia da semana, endereço e um código de rastreio nas fotos de vistoria e comprovação de serviço.',
+    'Aplicativo Android que carimba hora, data, dia da semana, endereco e um codigo de rastreio nas fotos de vistoria e comprovacao de servico.',
   applicationName: 'Lymark',
   openGraph: {
     title: 'Lymark',
     description:
-      'Carimba hora, data, dia da semana, endereço e código de rastreio nas fotos de campo. Sem conta, sem servidor.',
+      'Carimba hora, data, dia da semana, endereco e codigo de rastreio nas fotos de campo. Sem conta, sem servidor.',
     locale: 'pt_BR',
     type: 'website',
   },
@@ -62,12 +62,12 @@ export default async function RootLayout({
       <body style={{ ['--font-mark' as string]: 'var(--font-body)' }}>
         <Providers locale={locale} messages={messages}>
           <a className="skip" href="#conteudo">
-            Pular para o conteúdo
+            Pular para o conteudo
           </a>
 
           <header className="site">
             <div className="shell">
-              <Link href="/" className="wordmark" aria-label="Lymark, página inicial">
+              <Link href="/" className="wordmark" aria-label="Lymark, pagina inicial">
                 Ly<em>mark</em>
               </Link>
               <nav className="site" aria-label="Principal">
@@ -84,14 +84,14 @@ export default async function RootLayout({
             <div className="shell">
               <div>
                 <p style={{ color: 'var(--text-muted)' }}>
-                  Lymark — registro fotográfico com data, hora e endereço.
+                  Lymark — registro fotografico com data, hora e endereco.
                 </p>
                 <p style={{ marginTop: '0.35rem' }}>
                   Suporte: <a href="mailto:contato@lymark.app">contato@lymark.app</a>
                 </p>
               </div>
               <nav aria-label="Documentos">
-                <Link href="/privacidade">Política de Privacidade</Link>
+                <Link href="/privacidade">Politica de Privacidade</Link>
                 <Link href="/termos">Termos de Uso</Link>
               </nav>
             </div>
