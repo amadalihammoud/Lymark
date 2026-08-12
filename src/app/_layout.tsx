@@ -12,10 +12,14 @@ import { FeedbackProvider } from '@/contexts/feedback-context';
 import { GalleryProvider } from '@/contexts/gallery-context';
 import { SettingsProvider } from '@/contexts/settings-context';
 import { SubscriptionGate } from '@/lib/subscription';
+import { initI18n } from '@/i18n';
 import { colors, typography, watermarkFontAssets } from '@/theme';
 
+// Inicializar i18n
+initI18n().catch(console.error);
+
 // A splash fica na tela ate a fonte do carimbo estar pronta. Sem isso, a
-// primeira renderizacao usaria a fonte do sistema e o carimbo "pularia" de
+// primeira renderizacao usaria a fonte do sistema e o carimbo pularia de
 // desenho no meio do uso.
 void SplashScreen.preventAutoHideAsync();
 
@@ -48,7 +52,7 @@ export default function RootLayout() {
   // nativo esta espera resolve de imediato. Segurar a arvore aqui e o que
   // evita a corrida: useStampFontProvider roda no efeito de montagem e
   // pedia os typefaces antes de o CanvasKit existir, com
-  // "Cannot read properties of undefined (reading Typeface)" — as fontes
+  // Cannot read properties of undefined (reading Typeface) — as fontes
   // do carimbo nunca chegavam a ser registradas.
   if (!skiaReady) return null;
 
@@ -74,7 +78,7 @@ export default function RootLayout() {
 
                       <Stack.Screen
                         name="settings/watermark"
-                        options={{ title: 'Marca d\'água', headerBackTitle: 'Voltar' }}
+                        options={{ title: 'Marca d agua', headerBackTitle: 'Voltar' }}
                       />
                       <Stack.Screen
                         name="settings/permissions"
