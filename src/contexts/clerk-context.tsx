@@ -1,46 +1,24 @@
-import React, { createContext, useContext, ReactNode } from 'react';
-import * as Clerk from '@clerk/expo';
+import { ClerkProvider as ExpoClerkProvider, useAuth, useUser } from '@clerk/expo';
+import { ReactNode, createContext, useContext } from 'react';
 
-interface ClerkContextType {
-  isLoaded: boolean;
-  isSignedIn: boolean;
-  user: any | null;
-  signIn: (options?: any) => Promise<void>;
-  signOut: () => Promise<void>;
-  signUp: (options?: any) => Promise<void>;
-}
+const ClerkContext = createContext({});
 
-const ClerkContext = createContext<ClerkContextType | undefined>(undefined);
-
-interface ClerkProviderProps {
-  children: ReactNode;
-}
-
-export const ClerkProvider: React.FC<ClerkProviderProps> = ({ children }) => {
-  const clerk = Clerk.useClerk();
-
-  const value: ClerkContextType = {
-    isLoaded: clerk.isLoaded,
-    isSignedIn: clerk.isSignedIn,
-    user: clerk.user,
-    signIn: clerk.signIn,
-    signOut: clerk.signOut,
-    signUp: clerk.signUp,
-  };
-
-  return (
-    <ClerkContext.Provider value={value}>
-      {children}
-    </ClerkContext.Provider>
-  );
-};
-
-export const useClerk = (): ClerkContextType => {
-  const context = useContext(ClerkContext);
-  if (!context) {
-    throw new Error('useClerk must be used within a ClerkProvider');
+export function ClerkProvider({ children }: { children: ReactNode }) {
+  const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  
+  if (!publishableKey) {
+    console.warn('Clerk: EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY nao definida');
   }
-  return context;
-};
+  
+  return (
+    <ExpoClerkProvider publishableKey={publishableKey}>
+      {children}
+    </ExpoClerkProvider>
+  );
+}
 
-export default ClerkContext;
+export const useClerkAuth = () => {
+  const { isSignedIn, userId } = useAuth();
+  const { user } = useUser();
+  return { isSignedIn, userId, user };
+};
