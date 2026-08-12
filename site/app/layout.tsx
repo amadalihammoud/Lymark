@@ -3,6 +3,7 @@ import { Barlow, Pathway_Gothic_One } from 'next/font/google';
 import Link from 'next/link';
 import { Providers } from './providers';
 import LanguageSelector from '@/components/LanguageSelector';
+import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 
 import './globals.css';
 
@@ -43,11 +44,23 @@ export const viewport: Viewport = {
   colorScheme: 'dark',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ 
+  children, 
+  params: { locale }
+}: { 
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  // Enable static rendering
+  unstable_setRequestLocale(locale);
+  
+  // Get messages for the current locale
+  const messages = await getMessages();
+
   return (
-    <html lang="pt-BR" className={`${barlow.variable} ${pathway.variable}`}>
+    <html lang={locale} className={`${barlow.variable} ${pathway.variable}`}>
       <body style={{ ['--font-mark' as string]: 'var(--font-body)' }}>
-        <Providers>
+        <Providers locale={locale} messages={messages}>
           <a className="skip" href="#conteudo">
             Pular para o conteúdo
           </a>
