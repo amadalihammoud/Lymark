@@ -1,0 +1,153 @@
+{
+  "site": {
+    "title": "Lymark — 在现场照片上添加日期、时间和地址水印",
+    "description": "一款Android应用，可在检查和服务证明照片上盖上时间、日期、星期、地址和跟踪代码的水印。",
+    "nav": {
+      "privacy": "隐私",
+      "terms": "条款",
+      "home": "首页"
+    },
+    "hero": {
+      "eyebrow": "现场摄影记录",
+      "heading": "照片从手机中出来时已显示何时、何地和是什么。",
+      "description": "Lymark直接在图像上盖上时间、日期、星期、地址和跟踪代码。从应用中导出的文件已嵌入信息，这些信息不会像普通数据那样在通过WhatsApp转发时丢失。",
+      "cta": "在浏览器中打开应用",
+      "note": "无需安装。",
+      "meta": {
+        "android": "Android和浏览器",
+        "noAccount": "无需账户",
+        "noServer": "无服务器",
+        "language": "巴西葡萄牙语"
+      }
+    },
+    "features": {
+      "title": "图像中包含的内容",
+      "time": {
+        "field": "时间和日期",
+        "heading": "来自设备时钟，在拍摄时",
+        "description": "当拍摄时间超过预期时，一个按钮会将三个字段返回到当前时间。所有字段都可以编辑。"
+      },
+      "address": {
+        "field": "地址",
+        "heading": "由GPS填写，可手动修正",
+        "description": "街道名称会被缩写，州会变成缩写形式，以便地址能在两行内显示而不覆盖照片。如果您在GPS响应之前输入，您输入的内容将优先。"
+      },
+      "code": {
+        "field": "照片代码",
+        "heading": "十四个字符，由加密生成器随机选择",
+        "description": "用于在服务订单或报告中引用特定照片。可以旋转放在右侧或数据块旁边，由您选择。"
+      },
+      "note": "每个字段可以单独打开或关闭，并且块可以锚定在四个角落中的任意一个，有三种尺寸。预览使用您当前的照片，而不是通用示例：屏幕上显示的内容就是实际导出的内容。"
+    },
+    "process": {
+      "title": "一张照片的路径",
+      "capture": {
+        "field": "捕获",
+        "heading": "相机或相册",
+        "description": "地址一进入就开始搜索。字段在搜索期间保持开放以供调整。"
+      },
+      "save": {
+        "field": "保存",
+        "heading": "保存到设备相册",
+        "description": "它与手机上的其他照片一起保存，可供任何应用使用，即使在卸载Lymark后也是如此。"
+      },
+      "share": {
+        "field": "分享",
+        "heading": "打开系统面板",
+        "description": "WhatsApp、电子邮件、Drive：目标由操作系统选择，应用不参与发送。"
+      },
+      "note": "这两个操作是分开的。保存和分享解决的是不同的问题，将它们合并为一个按钮会迫使只想归档的人必须经过发送屏幕。"
+    },
+    "data": {
+      "title": "您的数据在哪里",
+      "device": {
+        "field": "在设备上",
+        "heading": "照片、地址和历史记录",
+        "description": "Lymark没有服务器，不创建账户，也不将您的照片发送到任何地方。历史记录以应用自身的文件形式保存最后200次导出。"
+      },
+      "external": {
+        "field": "设备外部",
+        "heading": "仅坐标到地址的转换",
+        "description": "为了将纬度和经度转换为可读的地址，操作系统会咨询Google或Apple的地理编码服务。这是唯一一个发出的信息，并且它是通过系统发出的，而不是通过应用。"
+      },
+      "note": "它在中详细描述了，包括在LGPD下的含义，在"
+    },
+    "availability": {
+      "title": "可用性",
+      "description": "Lymark是1.3.0版本，在发布到Google Play之前正在Android上测试。没有iOS版本或网页版本，且应用不收集付款。",
+      "contact": "要关注发布或报告问题，请写信至"
+    },
+    "footer": {
+      "description": "Lymark — 使用日期、时间和地址进行摄影记录。",
+      "support": "支持："
+    },
+    "login": {
+      "title": "登录以访问Lymark",
+      "subtitle": "登录以继续",
+      "google": "使用Google登录",
+      "apple": "使用Apple登录",
+      "access": "登录访问"
+    },
+    "signup": {
+      "title": "创建您的Lymark账户",
+      "subtitle": "注册以开始"
+    },
+    "language": {
+      "label": "语言",
+      "selector": "选择语言"
+    }
+  },
+  "app": {
+    "title": "Lymark",
+    "capture": {
+      "title": "捕获",
+      "camera": "拍照",
+      "gallery": "从相册选择",
+      "timestamp": "日期/时间",
+      "address": "地址",
+      "code": "代码"
+    },
+    "gallery": {
+      "title": "相册",
+      "empty": "还没有照片",
+      "delete": "删除",
+      "share": "分享"
+    },
+    "settings": {
+      "title": "设置",
+      "watermark": "水印",
+      "permissions": "权限",
+      "about": "关于",
+      "language": "语言",
+      "save": "保存"
+    },
+    "about": {
+      "title": "关于Lymark",
+      "version": "版本",
+      "privacy": "隐私政策",
+      "terms": "使用条款"
+    },
+    "permissions": {
+      "title": "权限",
+      "camera": "相机",
+      "photos": "照片",
+      "location": "位置",
+      "granted": "已授予",
+      "denied": "已拒绝",
+      "request": "请求权限"
+    },
+    "common": {
+      "yes": "是",
+      "no": "否",
+      "ok": "确定",
+      "cancel": "取消",
+      "save": "保存",
+      "delete": "删除",
+      "share": "分享",
+      "back": "返回",
+      "loading": "加载中...",
+      "error": "错误",
+      "success": "成功"
+    }
+  }
+}
