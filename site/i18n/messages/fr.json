@@ -1,0 +1,153 @@
+{
+  "site": {
+    "title": "Lymark — filigrane avec date, heure et adresse sur les photos de terrain",
+    "description": "Application Android qui appose l'heure, la date, le jour de la semaine, l'adresse et un code de suivi sur les photos d'inspection et de preuve de service.",
+    "nav": {
+      "privacy": "Confidentialité",
+      "terms": "Conditions",
+      "home": "Accueil"
+    },
+    "hero": {
+      "eyebrow": "Enregistrement photographique de terrain",
+      "heading": "La photo sort du téléphone en indiquant déjà quand, où et quoi.",
+      "description": "Lymark appose l'heure, la date, le jour de la semaine, l'adresse et un code de suivi directement sur l'image. Le fichier qui sort de l'application inclut déjà les informations intégrées, ce ne sont pas des données qui accompagnent la photo et se perdent au premier transfert via WhatsApp.",
+      "cta": "Ouvrir l'app dans le navigateur",
+      "note": "Rien à installer.",
+      "meta": {
+        "android": "Android et navigateur",
+        "noAccount": "Sans compte",
+        "noServer": "Sans serveur",
+        "language": "Portugais brésilien"
+      }
+    },
+    "features": {
+      "title": "Ce qui entre dans l'image",
+      "time": {
+        "field": "Heure et date",
+        "heading": "De l'horloge de l'appareil, au moment de la capture",
+        "description": "Un bouton renvoie les trois champs à l'instant actuel lorsque la capture a pris plus de temps que prévu. Tous restent modifiables."
+      },
+      "address": {
+        "field": "Adresse",
+        "heading": "Rempli par GPS, corrigible manuellement",
+        "description": "La rue est abrégée et l'état devient un acronyme, pour que l'adresse tienne en deux lignes sans couvrir la photo. Si vous avez tapé avant que le GPS ne réponde, ce que vous avez écrit prévaut."
+      },
+      "code": {
+        "field": "Code photo",
+        "heading": "Quatorze caractères, tirés par générateur cryptographique",
+        "description": "Sert à citer une photo spécifique dans un bon de travail ou un rapport. Il va tourné sur le côté droit ou à côté du bloc de données, à votre choix."
+      },
+      "note": "Chaque champ est activé ou désactivé individuellement, et le bloc peut être ancré dans l'un des quatre coins, en trois tailles. L'aperçu utilise votre photo actuelle, pas un exemple générique : ce qui apparaît à l'écran est littéralement ce qui est exporté."
+    },
+    "process": {
+      "title": "Le parcours d'une photo",
+      "capture": {
+        "field": "Capturer",
+        "heading": "Appareil photo ou galerie",
+        "description": "L'adresse commence à être recherchée dès que la photo entre. Les champs restent ouverts pour ajustement pendant ce temps."
+      },
+      "save": {
+        "field": "Enregistrer",
+        "heading": "Va dans la galerie de l'appareil",
+        "description": "Elle reste avec les autres photos du téléphone, disponible pour toute application, même après avoir désinstallé Lymark."
+      },
+      "share": {
+        "field": "Partager",
+        "heading": "Ouvre la feuille du système",
+        "description": "WhatsApp, e-mail, Drive : la destination est choisie par le système d'exploitation, et l'application ne participe pas à l'envoi."
+      },
+      "note": "Les deux actions sont séparées exprès. Enregistrer et partager résolvent des problèmes différents, et les combiner en un seul bouton forcerait ceux qui veulent simplement archiver à passer par un écran d'envoi."
+    },
+    "data": {
+      "title": "Où sont vos données",
+      "device": {
+        "field": "Sur l'appareil",
+        "heading": "Photos, adresses et historique",
+        "description": "Lymark n'a pas de serveur, ne crée pas de compte et n'envoie pas vos photos quelque part. L'historique sauvegarde les 200 dernières exportations dans des fichiers de l'application elle-même."
+      },
+      "external": {
+        "field": "En dehors de l'appareil",
+        "heading": "Seulement la conversion des coordonnées en adresse",
+        "description": "Pour transformer la latitude et la longitude en une adresse lisible, le système d'exploitation consulte le service de géocodage de Google ou d'Apple. C'est la seule information qui sort, et elle sort par le système, pas par l'application."
+      },
+      "note": "C'est détaillé, y compris ce que cela signifie sous la LGPD, dans la"
+    },
+    "availability": {
+      "title": "Disponibilité",
+      "description": "Lymark est à la version 1.3.0, en test sur Android avant sa publication sur le Google Play. Il n'y a pas de version iOS ni de version web, et l'application ne collecte pas de paiement.",
+      "contact": "Pour suivre le lancement ou signaler un problème, écrivez à"
+    },
+    "footer": {
+      "description": "Lymark — enregistrement photographique avec date, heure et adresse.",
+      "support": "Support :"
+    },
+    "login": {
+      "title": "Connectez-vous pour accéder à Lymark",
+      "subtitle": "Connectez-vous pour continuer",
+      "google": "Se connecter avec Google",
+      "apple": "Se connecter avec Apple",
+      "access": "Se connecter pour accéder"
+    },
+    "signup": {
+      "title": "Créez votre compte Lymark",
+      "subtitle": "Inscrivez-vous pour commencer"
+    },
+    "language": {
+      "label": "Langue",
+      "selector": "Sélectionnez la langue"
+    }
+  },
+  "app": {
+    "title": "Lymark",
+    "capture": {
+      "title": "Capturer",
+      "camera": "Prendre une photo",
+      "gallery": "Choisir dans la galerie",
+      "timestamp": "Date/Heure",
+      "address": "Adresse",
+      "code": "Code"
+    },
+    "gallery": {
+      "title": "Galerie",
+      "empty": "Aucune photo pour l'instant",
+      "delete": "Supprimer",
+      "share": "Partager"
+    },
+    "settings": {
+      "title": "Paramètres",
+      "watermark": "Filigrane",
+      "permissions": "Permissions",
+      "about": "À propos",
+      "language": "Langue",
+      "save": "Enregistrer"
+    },
+    "about": {
+      "title": "À propos de Lymark",
+      "version": "Version",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation"
+    },
+    "permissions": {
+      "title": "Permissions",
+      "camera": "Caméra",
+      "photos": "Photos",
+      "location": "Localisation",
+      "granted": "Accordé",
+      "denied": "Refusé",
+      "request": "Demander la permission"
+    },
+    "common": {
+      "yes": "Oui",
+      "no": "Non",
+      "ok": "OK",
+      "cancel": "Annuler",
+      "save": "Enregistrer",
+      "delete": "Supprimer",
+      "share": "Partager",
+      "back": "Retour",
+      "loading": "Chargement...",
+      "error": "Erreur",
+      "success": "Succès"
+    }
+  }
+}
