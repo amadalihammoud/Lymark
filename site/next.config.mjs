@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
-export default {
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl({
   async headers() {
     return [
       {
@@ -16,4 +20,4 @@ export default {
       },
     ];
   },
-};
+});

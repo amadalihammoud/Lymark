@@ -1,15 +1,11 @@
 import type { Metadata, Viewport } from 'next';
 import { Barlow, Pathway_Gothic_One } from 'next/font/google';
 import Link from 'next/link';
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages} from 'next-intl/server';
 
 import './globals.css';
 
-/*
- * As mesmas duas famílias que o aplicativo embarca: Barlow no texto e na
- * assinatura, Pathway Gothic One nos numerais. A segunda foi escolhida por
- * medição — proporção de 0,498 de largura e 0,318 de densidade de tinta —
- * e é ela que dá ao site a mesma voz tipográfica do carimbo.
- */
 const barlow = Barlow({
   subsets: ['latin'],
   weight: ['400', '500'],
@@ -26,16 +22,16 @@ const pathway = Pathway_Gothic_One({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Lymark — marca d’água de data, hora e endereço em fotos de campo',
+    default: 'Lymark - marca dagua de data, hora e endereco em fotos de campo',
     template: '%s · Lymark',
   },
   description:
-    'Aplicativo Android que carimba hora, data, dia da semana, endereço e um código de rastreio nas fotos de vistoria e comprovação de serviço. Funciona sem conta e sem servidor.',
+    'Aplicativo Android que carimba hora, data, dia da semana, endereco e um codigo de rastreio nas fotos de vistoria e comprovacao de servico. Funciona sem conta e sem servidor.',
   applicationName: 'Lymark',
   openGraph: {
     title: 'Lymark',
     description:
-      'Carimba hora, data, dia da semana, endereço e código de rastreio nas fotos de campo. Sem conta, sem servidor.',
+      'Carimba hora, data, dia da semana, endereco e codigo de rastreio nas fotos de campo. Sem conta, sem servidor.',
     locale: 'pt_BR',
     type: 'website',
   },
@@ -47,46 +43,50 @@ export const viewport: Viewport = {
   colorScheme: 'dark',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children, params: {locale} }: { children: React.ReactNode; params: {locale: string} }) {
+  const messages = await getMessages();
+  
   return (
-    <html lang="pt-BR" className={`${barlow.variable} ${pathway.variable}`}>
+    <html lang={locale} className={`${barlow.variable} ${pathway.variable}`}>
       <body style={{ ['--font-mark' as string]: 'var(--font-body)' }}>
-        <a className="skip" href="#conteudo">
-          Pular para o conteúdo
-        </a>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <a className="skip" href="#conteudo">
+            Pular para o conteudo
+          </a>
 
-        <header className="site">
-          <div className="shell">
-            <Link href="/" className="wordmark" aria-label="Lymark, página inicial">
-              Ly<em>mark</em>
-            </Link>
-            <nav className="site" aria-label="Principal">
-              <Link href="/privacidade">Privacidade</Link>
-              <Link href="/termos">Termos</Link>
-            </nav>
-          </div>
-        </header>
-
-        <main id="conteudo" className="shell">
-          {children}
-        </main>
-
-        <footer className="site">
-          <div className="shell">
-            <div>
-              <p style={{ color: 'var(--text-muted)' }}>
-                Lymark — registro fotográfico com data, hora e endereço.
-              </p>
-              <p style={{ marginTop: '0.35rem' }}>
-                Suporte: <a href="mailto:contato@lymark.app">contato@lymark.app</a>
-              </p>
+          <header className="site">
+            <div className="shell">
+              <Link href="/" className="wordmark" aria-label="Lymark, pagina inicial">
+                Ly<em>mark</em>
+              </Link>
+              <nav className="site" aria-label="Principal">
+                <Link href="/privacidade">Privacidade</Link>
+                <Link href="/termos">Termos</Link>
+              </nav>
             </div>
-            <nav aria-label="Documentos">
-              <Link href="/privacidade">Política de Privacidade</Link>
-              <Link href="/termos">Termos de Uso</Link>
-            </nav>
-          </div>
-        </footer>
+          </header>
+
+          <main id="conteudo" className="shell">
+            {children}
+          </main>
+
+          <footer className="site">
+            <div className="shell">
+              <div>
+                <p style={{ color: 'var(--text-muted)' }}>
+                  Lymark - registro fotografico com data, hora e endereco.
+                </p>
+                <p style={{ marginTop: '0.35rem' }}>
+                  Suporte: <a href="mailto:contato@lymark.app">contato@lymark.app</a>
+                </p>
+              </div>
+              <nav aria-label="Documentos">
+                <Link href="/privacidade">Politica de Privacidade</Link>
+                <Link href="/termos">Termos de Uso</Link>
+              </nav>
+            </div>
+          </footer>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
