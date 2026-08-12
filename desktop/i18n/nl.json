@@ -1,0 +1,12 @@
+{
+  "common": {"yes": "Ja", "no": "Nee", "ok": "OK", "cancel": "Annuleren", "save": "Opslaan", "delete": "Verwijderen", "share": "Delen", "back": "Terug", "loading": "Laden...", "error": "Fout", "success": "Succesvol"},
+  "app": {"title": "Lymark"},
+  "capture": {"title": "Vastleggen", "camera": "Foto maken", "gallery": "Kiezen uit galerij", "timestamp": "Datum/Tijd", "address": "Adres", "code": "Code"},
+  "gallery": {"title": "Galerij", "empty": "Nog geen foto\'s", "delete": "Verwijderen", "share": "Delen"},
+  "settings": {"title": "Instellingen", "watermark": "Watermerk", "permissions": "Machtigingen", "about": "Over", "language": "Taal", "save": "Opslaan"},
+  "about": {"title": "Over Lymark", "version": "Versie", "privacy": "Privacybeleid", "terms": "Gebruiksvoorwaarden"},
+  "permissions": {"title": "Machtigingen", "camera": "Camera", "photos": "Foto\'s", "location": "Locatie", "granted": "Toegekend", "denied": "Geweigerd", "request": "Machtiging aanvragen"},
+  "login": {"title": "Meld u aan om toegang te krijgen tot Lymark", "subtitle": "Meld u aan om door te gaan", "google": "Aanmelden met Google", "apple": "Aanmelden met Apple"},
+  "language": {"label": "Taal", "selector": "Selecteer taal"},
+  "menu": {"file": "Bestand", "edit": "Bewerken", "view": "Beeld", "settings": "Instellingen", "help": "Help", "quit": "Afsluiten"}
+}
