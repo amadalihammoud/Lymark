@@ -1,0 +1,153 @@
+{
+  "site": {
+    "title": "Lymark — Wasserzeichen mit Datum, Uhrzeit und Adresse auf Feldfotos",
+    "description": "Android-App, die Zeit, Datum, Wochentag, Adresse und einen Tracking-Code auf Inspektions- und Dienstleistungsnachweisfotos stempelt.",
+    "nav": {
+      "privacy": "Datenschutz",
+      "terms": "Bedingungen",
+      "home": "Startseite"
+    },
+    "hero": {
+      "eyebrow": "Feldfotoaufzeichnung",
+      "heading": "Das Foto verlässt das Handy bereits mit Angabe von wann, wo und was.",
+      "description": "Lymark stempelt Uhrzeit, Datum, Wochentag, Adresse und einen Tracking-Code direkt auf das Bild. Die Datei, die aus der App kommt, hat die Informationen bereits eingebettet - es sind keine Daten, die das Foto begleiten und beim ersten Weiterleiten über WhatsApp verloren gehen.",
+      "cta": "App im Browser öffnen",
+      "note": "Nichts zu installieren.",
+      "meta": {
+        "android": "Android und Browser",
+        "noAccount": "Kein Konto",
+        "noServer": "Kein Server",
+        "language": "Brasilianisches Portugiesisch"
+      }
+    },
+    "features": {
+      "title": "Was in das Bild kommt",
+      "time": {
+        "field": "Uhrzeit und Datum",
+        "heading": "Von der Geräteuhr, zum Zeitpunkt der Aufnahme",
+        "description": "Eine Schaltfläche gibt die drei Felder zum aktuellen Zeitpunkt zurück, wenn die Aufnahme länger als erwartet gedauert hat. Alle bleiben bearbeitbar."
+      },
+      "address": {
+        "field": "Adresse",
+        "heading": "Durch GPS ausgefüllt, manuell korrigierbar",
+        "description": "Die Straße wird abgekürzt und der Bundesstaat zu einer Abkürzung, damit die Adresse in zwei Zeilen passt, ohne das Foto zu überdecken. Wenn Sie vor der GPS-Antwort getippt haben, gilt das, was Sie geschrieben haben."
+      },
+      "code": {
+        "field": "Fotocode",
+        "heading": "Vierzehn Zeichen, per kryptografischem Generator zufällig ausgewählt",
+        "description": "Dient zum Zitieren eines bestimmten Fotos in einem Arbeitsauftrag oder Bericht. Wird gedreht auf der rechten Seite oder neben dem Datenblock, nach Ihrer Wahl."
+      },
+      "note": "Jedes Feld wird einzeln ein- oder ausgeschaltet, und der Block kann in einer der vier Ecken in drei Größen verankert werden. Die Vorschau verwendet Ihr aktuelles Foto, nicht ein generisches Beispiel: Was auf dem Bildschirm erscheint, ist wörtlich das, was exportiert wird."
+    },
+    "process": {
+      "title": "Der Weg eines Fotos",
+      "capture": {
+        "field": "Aufnehmen",
+        "heading": "Kamera oder Galerie",
+        "description": "Die Adresse beginnt gesucht zu werden, sobald das Foto eingeht. Die Felder bleiben zur Anpassung offen, während dies geschieht."
+      },
+      "save": {
+        "field": "Speichern",
+        "heading": "Geht in die Gerätegalerie",
+        "description": "Es bleibt bei den anderen Fotos auf dem Handy, verfügbar für jede Anwendung - auch nach dem Deinstallieren von Lymark."
+      },
+      "share": {
+        "field": "Teilen",
+        "heading": "Öffnet das Systemblatt",
+        "description": "WhatsApp, E-Mail, Drive: Das Ziel wird vom Betriebssystem gewählt, und die Anwendung nimmt nicht am Senden teil."
+      },
+      "note": "Die beiden Aktionen sind absichtlich getrennt. Speichern und Teilen lösen unterschiedliche Probleme, und das Kombinieren beider in einer Schaltfläche würde diejenigen, die nur archivieren möchten, zwingen, einen Sende-Bildschirm zu durchlaufen."
+    },
+    "data": {
+      "title": "Wo Ihre Daten sind",
+      "device": {
+        "field": "Auf dem Gerät",
+        "heading": "Fotos, Adressen und Verlauf",
+        "description": "Lymark hat keinen Server, erstellt kein Konto und sendet Ihre Fotos nirgendwo hin. Der Verlauf speichert die letzten 200 Exporte in Dateien der Anwendung selbst."
+      },
+      "external": {
+        "field": "Außerhalb des Geräts",
+        "heading": "Nur Koordinaten-zu-Adresse-Konvertierung",
+        "description": "Um Breiten- und Längengrad in eine lesbare Adresse umzuwandeln, konsultiert das Betriebssystem den Geocodierungsdienst von Google oder Apple. Dies ist die einzige Information, die ausgeht, und sie geht über das System, nicht über die Anwendung."
+      },
+      "note": "Es ist detailliert beschrieben - einschließlich was dies unter der LGPD bedeutet - in der"
+    },
+    "availability": {
+      "title": "Verfügbarkeit",
+      "description": "Lymark ist in Version 1.3.0, wird auf Android vor der Veröffentlichung im Google Play getestet. Es gibt keine iOS-Version oder Web-Version, und die App sammelt keine Zahlungen.",
+      "contact": "Um den Start zu verfolgen oder ein Problem zu melden, schreiben Sie an"
+    },
+    "footer": {
+      "description": "Lymark — fotografische Aufzeichnung mit Datum, Uhrzeit und Adresse.",
+      "support": "Support:"
+    },
+    "login": {
+      "title": "Melden Sie sich an, um auf Lymark zuzugreifen",
+      "subtitle": "Melden Sie sich an, um fortzufahren",
+      "google": "Mit Google anmelden",
+      "apple": "Mit Apple anmelden",
+      "access": "Anmelden zum Zugriff"
+    },
+    "signup": {
+      "title": "Erstellen Sie Ihr Lymark-Konto",
+      "subtitle": "Melden Sie sich an, um zu beginnen"
+    },
+    "language": {
+      "label": "Sprache",
+      "selector": "Sprache auswählen"
+    }
+  },
+  "app": {
+    "title": "Lymark",
+    "capture": {
+      "title": "Aufnehmen",
+      "camera": "Foto machen",
+      "gallery": "Aus Galerie auswählen",
+      "timestamp": "Datum/Uhrzeit",
+      "address": "Adresse",
+      "code": "Code"
+    },
+    "gallery": {
+      "title": "Galerie",
+      "empty": "Noch keine Fotos",
+      "delete": "Löschen",
+      "share": "Teilen"
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "watermark": "Wasserzeichen",
+      "permissions": "Berechtigungen",
+      "about": "Über",
+      "language": "Sprache",
+      "save": "Speichern"
+    },
+    "about": {
+      "title": "Über Lymark",
+      "version": "Version",
+      "privacy": "Datenschutzrichtlinie",
+      "terms": "Nutzungsbedingungen"
+    },
+    "permissions": {
+      "title": "Berechtigungen",
+      "camera": "Kamera",
+      "photos": "Fotos",
+      "location": "Standort",
+      "granted": "Erteilt",
+      "denied": "Verweigert",
+      "request": "Berechtigung anfordern"
+    },
+    "common": {
+      "yes": "Ja",
+      "no": "Nein",
+      "ok": "OK",
+      "cancel": "Abbrechen",
+      "save": "Speichern",
+      "delete": "Löschen",
+      "share": "Teilen",
+      "back": "Zurück",
+      "loading": "Wird geladen...",
+      "error": "Fehler",
+      "success": "Erfolg"
+    }
+  }
+}
