@@ -1,0 +1,12 @@
+{
+  "common": {"yes": "Да", "no": "Нет", "ok": "ОК", "cancel": "Отмена", "save": "Сохранить", "delete": "Удалить", "share": "Поделиться", "back": "Назад", "loading": "Загрузка...", "error": "Ошибка", "success": "Успех"},
+  "app": {"title": "Lymark"},
+  "capture": {"title": "Съемка", "camera": "Сделать фото", "gallery": "Выбрать из галереи", "timestamp": "Дата/Время", "address": "Адрес", "code": "Код"},
+  "gallery": {"title": "Галерея", "empty": "Пока нет фото", "delete": "Удалить", "share": "Поделиться"},
+  "settings": {"title": "Настройки", "watermark": "Водяной знак", "permissions": "Разрешения", "about": "О программе", "language": "Язык", "save": "Сохранить"},
+  "about": {"title": "О программе Lymark", "version": "Версия", "privacy": "Политика конфиденциальности", "terms": "Условия использования"},
+  "permissions": {"title": "Разрешения", "camera": "Камера", "photos": "Фото", "location": "Местоположение", "granted": "Разрешено", "denied": "Отклонено", "request": "Запросить разрешение"},
+  "login": {"title": "Войдите, чтобы получить доступ к Lymark", "subtitle": "Войдите, чтобы продолжить", "google": "Войти через Google", "apple": "Войти через Apple"},
+  "language": {"label": "Язык", "selector": "Выберите язык"},
+  "menu": {"file": "Файл", "edit": "Редактировать", "view": "Вид", "settings": "Настройки", "help": "Справка", "quit": "Выход"}
+}
