@@ -1,0 +1,6 @@
+{
+  "rootDirectory": "site",
+  "framework": {
+    "preset": "nextjs"
+  }
+}
