@@ -3,7 +3,7 @@ import { Barlow, Pathway_Gothic_One } from 'next/font/google';
 import Link from 'next/link';
 import { Providers } from './providers';
 import LanguageSelector from '@/components/LanguageSelector';
-import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
 
 import './globals.css';
 
@@ -23,8 +23,8 @@ const pathway = Pathway_Gothic_One({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Lymark — marca de agua de data, hora e endereco em fotos de campo',
-    template: '%s · Lymark',
+    default: 'Lymark - marca de agua de data, hora e endereco em fotos de campo',
+    template: '%s - Lymark',
   },
   description:
     'Aplicativo Android que carimba hora, data, dia da semana, endereco e um codigo de rastreio nas fotos de vistoria e comprovacao de servico.',
@@ -51,10 +51,6 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Enable static rendering
-  unstable_setRequestLocale(locale);
-  
-  // Get messages for the current locale
   const messages = await getMessages();
 
   return (
@@ -84,7 +80,7 @@ export default async function RootLayout({
             <div className="shell">
               <div>
                 <p style={{ color: 'var(--text-muted)' }}>
-                  Lymark — registro fotografico com data, hora e endereco.
+                  Lymark - registro fotografico com data, hora e endereco.
                 </p>
                 <p style={{ marginTop: '0.35rem' }}>
                   Suporte: <a href="mailto:contato@lymark.app">contato@lymark.app</a>
