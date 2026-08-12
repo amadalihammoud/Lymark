@@ -96,7 +96,8 @@ jobs:
 
       - name: Upload web build artifact
         uses: actions/upload-artifact@v4
-        with:
+      
+  with:
           name: lymark-web-build
           path: dist/
           retention-days: 7
@@ -165,7 +166,8 @@ jobs:
     needs: [typecheck, lint, test]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+     
+   uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -206,3 +208,27 @@ jobs:
           path: |
             desktop/dist-electron/*.exe
           retention-days: 7
+
+
+  build-site:
+    name: Build Site (Next.js)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: site
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: site/package-lock.json
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || 'pk_test_placeholder' }}
+          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY || 'sk_test_placeholder' }}
