@@ -1,6 +1,7 @@
 'use client';
 
-import { usePathname, useRouter } from '@/i18n/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useLocale } from 'next-intl';
 
 const languages = [
   { code: 'pt', name: 'Portugues' },
@@ -20,30 +21,31 @@ const languages = [
 export default function LanguageSelector() {
   const pathname = usePathname();
   const router = useRouter();
+  const locale = useLocale();
 
-  const currentLocale = pathname.split('/')[1] || 'pt';
+  const handleChange = (newLocale: string) => {
+    if (locale === newLocale) return;
+    const pathWithoutLocale = pathname.replace(/^/([a-z]{2})/, '');
+    router.push('/' + newLocale + pathWithoutLocale);
+  };
 
-  const handleChange = (locale: string) => {
-    if (currentLocale === locale) return;
-    const pathWithoutLocale = pathname.split('/').slice(2).join('/');
-    router.push('/' + locale + '/' + (pathWithoutLocale || ''));
+  const selectStyle = {
+    backgroundColor: 'transparent',
+    border: '1px solid #555',
+    color: '#fff',
+    padding: '0.25rem 0.5rem',
+    borderRadius: '0.25rem',
+    cursor: 'pointer',
+    fontSize: '0.875rem',
   };
 
   return (
     <div style={{ display: 'inline-block' }}>
       <select
         onChange={(e) => handleChange(e.target.value)}
-        value={currentLocale}
+        value={locale}
         aria-label="Select language"
-        style={{
-          backgroundColor: 'transparent',
-          border: '1px solid #555',
-          color: '#fff',
-          padding: '0.25rem 0.5rem',
-          borderRadius: '0.25rem',
-          cursor: 'pointer',
-          fontSize: '0.875rem',
-        }}
+        style={selectStyle}
       >
         {languages.map((lang) => (
           <option key={lang.code} value={lang.code}>
