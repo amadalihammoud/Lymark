@@ -1,10 +1,8 @@
 import { ClerkProvider as ExpoClerkProvider, useAuth, useUser } from '@clerk/expo';
-import { ReactNode, createContext, useContext } from 'react';
-
-const ClerkContext = createContext({});
+import { ReactNode } from 'react';
 
 export function ClerkProvider({ children }: { children: ReactNode }) {
-  const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+  const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY ?? '';
   
   if (!publishableKey) {
     console.warn('Clerk: EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY nao definida');
