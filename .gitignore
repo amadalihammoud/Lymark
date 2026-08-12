@@ -2,6 +2,7 @@
 
 # dependencies
 node_modules/
+package-lock.json
 
 # Expo
 .expo/
@@ -13,7 +14,6 @@ expo-env.d.ts
 .kotlin/
 *.orig.*
 *.jks
-*.p8
 *.p12
 *.key
 *.mobileprovision
