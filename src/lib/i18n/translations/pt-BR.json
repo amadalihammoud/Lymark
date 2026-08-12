@@ -1,0 +1,29 @@
+{
+  "common": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "ok": "OK",
+    "loading": "Carregando...",
+    "error": "Erro"
+  },
+  "capture": {
+    "title": "Capturar",
+    "takePhoto": "Tirar foto",
+    "selectFromGallery": "Selecionar da galeria",
+    "timestamp": "Carimbo de data/hora",
+    "address": "Endereco",
+    "code": "Codigo da foto"
+  },
+  "gallery": {
+    "title": "Galeria",
+    "empty": "Nenhuma foto ainda"
+  },
+  "settings": {
+    "title": "Configuracoes",
+    "language": "Idioma",
+    "theme": "Tema",
+    "watermark": "Carimbo",
+    "quality": "Qualidade",
+    "resolution": "Resolucao"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "ok": "OK",
+    "loading": "Loading...",
+    "error": "Error"
+  },
+  "capture": {
+    "title": "Capture",
+    "takePhoto": "Take photo",
+    "selectFromGallery": "Select from gallery",
+    "timestamp": "Timestamp",
+    "address": "Address",
+    "code": "Photo code"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "empty": "No photos yet"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "watermark": "Watermark",
+    "quality": "Quality",
+    "resolution": "Resolution"
+  }
+}
