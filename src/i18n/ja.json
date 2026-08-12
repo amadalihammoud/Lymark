@@ -1,0 +1,65 @@
+{
+  "common": {
+    "yes": "はい",
+    "no": "いいえ",
+    "ok": "OK",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "delete": "削除",
+    "share": "共有",
+    "back": "戻る",
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功"
+  },
+  "app": {
+    "title": "Lymark"
+  },
+  "capture": {
+    "title": "撮影",
+    "camera": "写真を撮る",
+    "gallery": "ギャラリーから選択",
+    "timestamp": "日付/時間",
+    "address": "住所",
+    "code": "コード"
+  },
+  "gallery": {
+    "title": "ギャラリー",
+    "empty": "まだ写真はありません",
+    "delete": "削除",
+    "share": "共有"
+  },
+  "settings": {
+    "title": "設定",
+    "watermark": "透かし",
+    "permissions": "権限",
+    "about": "について",
+    "language": "言語",
+    "save": "保存"
+  },
+  "about": {
+    "title": "Lymarkについて",
+    "version": "バージョン",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約"
+  },
+  "permissions": {
+    "title": "権限",
+    "camera": "カメラ",
+    "photos": "写真",
+    "location": "位置情報",
+    "granted": "許可済み",
+    "denied": "拒否",
+    "request": "権限をリクエスト"
+  },
+  "login": {
+    "title": "Lymarkにアクセスするにはログイン",
+    "subtitle": "続けるにはログイン",
+    "google": "Googleでログイン",
+    "apple": "Appleでログイン"
+  },
+  "language": {
+    "label": "言語",
+    "selector": "言語を選択"
+  }
+}
