@@ -13,7 +13,9 @@
     "verify:package": "node scripts/verify-package.js dist-electron/win-unpacked ../dist",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "i18n-js": "^4.4.3"
+  },
   "devDependencies": {
     "electron": "^32.0.0",
     "electron-builder": "^25.0.0",
