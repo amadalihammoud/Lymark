@@ -1,7 +1,7 @@
 import * as Location from 'expo-location';
 import { useCallback, useState } from 'react';
 
-import { formatGeocodedAddress } from '@/lib/address';
+import { formatGeocodedAddress, trimToFit } from '@/lib/address';
 
 /**
  * Preenche o campo "Endereço / Local" a partir do GPS.
@@ -94,7 +94,10 @@ export function useAddressLookup() {
         return { status: 'unavailable', address: null };
       }
 
-      const formatted = formatGeocodedAddress(address);
+      // Encurtar acontece aqui, e não na montagem: quem monta decide a
+      // ordem, quem exibe decide o que cabe. Fora do Brasil não há
+      // abreviação para apertar o texto, então componentes saem inteiros.
+      const formatted = trimToFit(formatGeocodedAddress(address));
       if (!formatted) {
         setStatus('unavailable');
         return { status: 'unavailable', address: null };
