@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "Só entram na foto os campos ligados que tiverem conteúdo.",
       "fieldsTitle": "Campos exibidos",
+      "includeCountry": "Incluir o país",
+      "includeCountryDescription": "Ligue se você presta serviço em mais de um país. Fora isso, só ocupa espaço na foto.",
       "legibilityTitle": "Legibilidade",
       "positionDescription": "Canto da foto onde o bloco é ancorado.",
       "positionTitle": "Posição",

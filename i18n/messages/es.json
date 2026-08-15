@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "Solo entran en la foto los campos activados que tengan contenido.",
       "fieldsTitle": "Campos mostrados",
+      "includeCountry": "Incluir el país",
+      "includeCountryDescription": "Actívalo si trabajas en más de un país. Si no, solo ocupa espacio en la foto.",
       "legibilityTitle": "Legibilidad",
       "positionDescription": "Esquina de la foto donde se ancla el bloque.",
       "positionTitle": "Posición",

@@ -116,6 +116,15 @@ export type WatermarkPreferences = {
   scale: WatermarkScale;
   /** Faixa escura atrás do texto, para legibilidade sobre fotos claras. */
   showBackdrop: boolean;
+  /**
+   * Se o país entra no endereço carimbado.
+   *
+   * Desligado por padrão: na esmagadora maioria dos casos quem registra e
+   * quem recebe estão no mesmo país, e o país só rouba espaço da foto. Fica
+   * disponível para quem presta serviço além da fronteira, onde a omissão
+   * tornaria o endereço ambíguo.
+   */
+  includeCountry: boolean;
   /** Carimba a marca do Lymark na foto. */
   showBrand: boolean;
   /** Canto onde a marca fica — independente do canto do bloco de dados. */

@@ -105,3 +105,43 @@ export const WEEKDAYS_LONG: Record<Locale, readonly string[]> = {
  * parte.
  */
 export const USES_24_HOUR = true;
+
+/**
+ * O idioma que o **carimbo** consegue desenhar, para cada idioma da interface.
+ *
+ * As duas fontes embarcadas — Barlow e Pathway Gothic One — cobrem latim e
+ * latim estendido, e mais nada. Verifiquei o `cmap` das duas: não há um único
+ * glifo cirílico, árabe, grego ou CJK. E o carimbo desenha com
+ * `canvas.drawText` sobre um typeface único, sem cadeia de reserva — um
+ * caractere ausente vira `.notdef`, o quadradinho vazio.
+ *
+ * Numa foto de comprovação, quadradinho vazio é pior que idioma trocado: o
+ * documento fica ilegível e parece defeito. Então, enquanto não houver fonte
+ * para o alfabeto, o carimbo cai para o inglês — que usa o mesmo alfabeto do
+ * português e é o que mais gente lê.
+ *
+ * **Isto é uma limitação de fonte, não de tradução.** A interface continua no
+ * idioma escolhido; só a data impressa na imagem muda. E o endereço, que vem
+ * do geocodificador no alfabeto local, continua sem solução por aqui — ver a
+ * pendência registrada em `docs/`.
+ */
+export const STAMP_LOCALE: Record<Locale, Locale> = {
+  pt: 'pt',
+  en: 'en',
+  es: 'es',
+  fr: 'fr',
+  it: 'it',
+  de: 'de',
+  nl: 'nl',
+  // Cirílico, árabe e CJK: sem glifos nas fontes do carimbo.
+  ru: 'en',
+  zh: 'en',
+  ja: 'en',
+  ko: 'en',
+  ar: 'en',
+};
+
+/** `true` quando o carimbo consegue desenhar o idioma da interface. */
+export function stampCanDraw(locale: Locale): boolean {
+  return STAMP_LOCALE[locale] === locale;
+}

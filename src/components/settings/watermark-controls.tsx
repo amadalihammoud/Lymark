@@ -110,6 +110,7 @@ export function WatermarkControls({
     setPosition,
     setScale,
     setShowBackdrop,
+    setIncludeCountry,
     setShowBrand,
     setBrandPosition,
     setBrandMode,
@@ -225,6 +226,12 @@ export function WatermarkControls({
           description={t('backdropDescription')}
           value={preferences.showBackdrop}
           onValueChange={setShowBackdrop}
+        />
+        <ToggleRow
+          title={t('includeCountry')}
+          description={t('includeCountryDescription')}
+          value={preferences.includeCountry}
+          onValueChange={setIncludeCountry}
           showDivider={false}
         />
       </Section>

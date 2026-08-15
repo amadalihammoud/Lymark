@@ -46,6 +46,8 @@ type SettingsContextValue = {
   setPosition: (position: WatermarkPosition) => void;
   setScale: (scale: WatermarkScale) => void;
   setShowBackdrop: (showBackdrop: boolean) => void;
+  /** Se o país entra no endereço carimbado. */
+  setIncludeCountry: (includeCountry: boolean) => void;
   setShowBrand: (showBrand: boolean) => void;
   setBrandPosition: (brandPosition: WatermarkPosition) => void;
   setBrandMode: (brandMode: BrandMode) => void;
@@ -121,6 +123,10 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setPreferences((current) => ({ ...current, scale }));
   }, []);
 
+  const setIncludeCountry = useCallback((includeCountry: boolean) => {
+    setPreferences((current) => ({ ...current, includeCountry }));
+  }, []);
+
   const setShowBackdrop = useCallback((showBackdrop: boolean) => {
     setPreferences((current) => ({ ...current, showBackdrop }));
   }, []);
@@ -166,6 +172,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       setPosition,
       setScale,
       setShowBackdrop,
+      setIncludeCountry,
       setShowBrand,
       setBrandPosition,
       setBrandMode,
@@ -180,6 +187,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       setPosition,
       setScale,
       setShowBackdrop,
+      setIncludeCountry,
       setShowBrand,
       setBrandPosition,
       setBrandMode,

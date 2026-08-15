@@ -241,3 +241,52 @@ describe('país desconhecido', () => {
     expect(formatGeocodedAddress(semPais)).toBe('Av. Puglisi, 490, Guarujá - SP');
   });
 });
+
+describe('o país no endereço', () => {
+  const franca = endereco({
+    isoCountryCode: 'FR',
+    street: 'rue de Rivoli',
+    streetNumber: '12',
+    city: 'Paris',
+    postalCode: '75001',
+    country: 'France',
+  });
+
+  it('fica de fora por padrão', () => {
+    // Quem registra e quem recebe quase sempre estão no mesmo país, e aí o
+    // país só rouba espaço da foto.
+    expect(formatGeocodedAddress(franca)).not.toContain('France');
+  });
+
+  it('entra quando pedido, no fim da linha', () => {
+    expect(formatGeocodedAddress(franca, { includeCountry: true })).toBe(
+      '12 rue de Rivoli, 75001 Paris, France',
+    );
+  });
+
+  it('não repete o país que o sistema já tinha posto', () => {
+    const jaComPais = endereco({
+      isoCountryCode: 'VN',
+      country: 'Việt Nam',
+      formattedAddress: '1 Đường Lê Duẩn, Quận 1, Việt Nam',
+    });
+
+    const saida = formatGeocodedAddress(jaComPais, { includeCountry: true });
+
+    expect(saida).toBe('1 Đường Lê Duẩn, Quận 1, Việt Nam');
+  });
+
+  it('não deixa vírgula solta quando o país não veio', () => {
+    const semPais = endereco({
+      isoCountryCode: 'DE',
+      street: 'Hauptstraße',
+      streetNumber: '12',
+      city: 'Berlin',
+      postalCode: '10115',
+    });
+
+    expect(formatGeocodedAddress(semPais, { includeCountry: true })).toBe(
+      'Hauptstraße 12, 10115 Berlin',
+    );
+  });
+});

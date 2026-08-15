@@ -58,6 +58,7 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   // Desligada por padrão: na referência o texto fica direto sobre a foto e a
   // sombra basta. Continua disponível para fotos muito claras.
   showBackdrop: false,
+  includeCountry: false,
   showBrand: true,
   brandPosition: 'top-right',
   brandMode: 'lymark',
@@ -127,6 +128,10 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
 
   return {
     visibleFields,
+    includeCountry:
+      typeof stored.includeCountry === 'boolean'
+        ? stored.includeCountry
+        : DEFAULT_WATERMARK_PREFERENCES.includeCountry,
     position: pickAllowed(
       stored.position,
       WATERMARK_POSITIONS,

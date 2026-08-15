@@ -10,6 +10,7 @@ import {
 import { useLocalePreference } from '@/contexts/locale-context';
 import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
 import { generatePhotoCode } from '@/lib/photo-code';
+import { STAMP_LOCALE } from '@i18n/calendar';
 import { LOCALES, type Locale } from '@i18n/locales';
 import type {
   CaptureDraft,
@@ -54,7 +55,15 @@ type CaptureContextValue = {
 const CaptureContext = createContext<CaptureContextValue | null>(null);
 
 export function CaptureProvider({ children }: { children: ReactNode }) {
-  const { locale } = useLocalePreference();
+  const { locale: uiLocale } = useLocalePreference();
+
+  /*
+   * O carimbo desenha com as fontes embarcadas, que só têm latim. Um idioma
+   * sem glifo viraria quadradinho vazio sobre a foto — pior que idioma
+   * trocado, porque parece defeito. `STAMP_LOCALE` faz a queda para o inglês
+   * onde falta alfabeto; a interface continua no idioma escolhido.
+   */
+  const locale = STAMP_LOCALE[uiLocale];
 
   const [draft, setDraft] = useState<CaptureDraft>(() => ({
     photo: null,

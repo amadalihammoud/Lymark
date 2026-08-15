@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "لا تدخل الصورة إلا الحقول المفعّلة التي تحمل محتوى.",
       "fieldsTitle": "الحقول الظاهرة",
+      "includeCountry": "تضمين البلد",
+      "includeCountryDescription": "فعّله إن كنت تعمل في أكثر من بلد. وإلا فهو يشغل مساحة من الصورة فقط.",
       "legibilityTitle": "الوضوح",
       "positionDescription": "زاوية الصورة التي تُثبَّت عندها الكتلة.",
       "positionTitle": "الموضع",

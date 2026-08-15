@@ -1,6 +1,7 @@
 import * as Location from 'expo-location';
 import { useCallback, useState } from 'react';
 
+import { useSettings } from '@/contexts/settings-context';
 import { formatGeocodedAddress, trimToFit } from '@/lib/address';
 
 /**
@@ -46,6 +47,12 @@ export type AddressLookupResult = {
 };
 
 export function useAddressLookup() {
+  // A preferência é lida aqui, e não passada por parâmetro, porque a busca de
+  // endereço é disparada de dois lugares — o botão e a chegada da foto — e
+  // ambos teriam de repassá-la.
+  const { preferences } = useSettings();
+  const includeCountry = preferences.includeCountry;
+
   const [status, setStatus] = useState<AddressLookupStatus>('idle');
 
   /**
@@ -97,7 +104,7 @@ export function useAddressLookup() {
       // Encurtar acontece aqui, e não na montagem: quem monta decide a
       // ordem, quem exibe decide o que cabe. Fora do Brasil não há
       // abreviação para apertar o texto, então componentes saem inteiros.
-      const formatted = trimToFit(formatGeocodedAddress(address));
+      const formatted = trimToFit(formatGeocodedAddress(address, { includeCountry }));
       if (!formatted) {
         setStatus('unavailable');
         return { status: 'unavailable', address: null };

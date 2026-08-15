@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "オンで、かつ内容のある項目だけが写真に入ります。",
       "fieldsTitle": "表示する項目",
+      "includeCountry": "国を含める",
+      "includeCountryDescription": "国をまたいで作業する場合はオンにします。そうでなければ写真の場所を取るだけです。",
       "legibilityTitle": "読みやすさ",
       "positionDescription": "刻印のかたまりを固定する、写真の隅。",
       "positionTitle": "位置",

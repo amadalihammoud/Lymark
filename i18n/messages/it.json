@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "Sulla foto finiscono solo i campi attivi che hanno contenuto.",
       "fieldsTitle": "Campi mostrati",
+      "includeCountry": "Includere il paese",
+      "includeCountryDescription": "Attivalo se lavori in più di un paese. Altrimenti occupa solo spazio sulla foto.",
       "legibilityTitle": "Leggibilità",
       "positionDescription": "Angolo della foto a cui il blocco è ancorato.",
       "positionTitle": "Posizione",

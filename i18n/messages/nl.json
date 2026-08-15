@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "Alleen ingeschakelde velden met inhoud komen op de foto.",
       "fieldsTitle": "Getoonde velden",
+      "includeCountry": "Land opnemen",
+      "includeCountryDescription": "Zet aan als je over de grens werkt. Anders neemt het alleen ruimte op de foto in.",
       "legibilityTitle": "Leesbaarheid",
       "positionDescription": "De hoek van de foto waaraan het blok is verankerd.",
       "positionTitle": "Positie",

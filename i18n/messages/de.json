@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "Auf das Foto kommen nur die eingeschalteten Felder, die Inhalt haben.",
       "fieldsTitle": "Angezeigte Felder",
+      "includeCountry": "Land einbeziehen",
+      "includeCountryDescription": "Einschalten, wer über Grenzen hinweg arbeitet. Sonst nimmt es nur Platz auf dem Foto weg.",
       "legibilityTitle": "Lesbarkeit",
       "positionDescription": "Die Ecke des Fotos, an der der Block verankert wird.",
       "positionTitle": "Position",

@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "켜져 있고 내용이 있는 항목만 사진에 들어갑니다.",
       "fieldsTitle": "표시할 항목",
+      "includeCountry": "국가 포함",
+      "includeCountryDescription": "여러 나라에서 작업한다면 켜세요. 그렇지 않으면 사진의 자리만 차지합니다.",
       "legibilityTitle": "가독성",
       "positionDescription": "각인 묶음을 고정할 사진의 모서리.",
       "positionTitle": "위치",

@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "Seuls les champs activés qui ont du contenu apparaissent sur la photo.",
       "fieldsTitle": "Champs affichés",
+      "includeCountry": "Inclure le pays",
+      "includeCountryDescription": "Activez-le si vous intervenez dans plusieurs pays. Sinon, cela ne fait que prendre de la place sur la photo.",
       "legibilityTitle": "Lisibilité",
       "positionDescription": "Coin de la photo où le bloc est ancré.",
       "positionTitle": "Position",

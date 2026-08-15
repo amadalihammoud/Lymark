@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "只有开启且有内容的字段才会出现在照片上。",
       "fieldsTitle": "显示的字段",
+      "includeCountry": "包含国家",
+      "includeCountryDescription": "如果您跨国作业，请开启。否则只会占用照片空间。",
       "legibilityTitle": "可读性",
       "positionDescription": "水印块所锚定的照片角落。",
       "positionTitle": "位置",

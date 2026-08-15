@@ -100,7 +100,21 @@ const clean = (value: string | null | undefined) => value?.trim() || '';
 const join = (parts: (string | undefined)[], separator: string) =>
   parts.filter((part) => part && part.length > 0).join(separator);
 
-export function formatGeocodedAddress(address: LocationGeocodedAddress): string {
+export type AddressOptions = {
+  /**
+   * Acrescenta o país ao fim do endereço.
+   *
+   * Desligado por padrão porque, na esmagadora maioria dos casos, quem
+   * registra e quem recebe a foto estão no mesmo país — e aí o país só rouba
+   * espaço da imagem. Existe para quem presta serviço além da fronteira.
+   */
+  includeCountry?: boolean;
+};
+
+export function formatGeocodedAddress(
+  address: LocationGeocodedAddress,
+  options: AddressOptions = {},
+): string {
   const country = clean(address.isoCountryCode).toUpperCase();
 
   /*
@@ -115,9 +129,17 @@ export function formatGeocodedAddress(address: LocationGeocodedAddress): string 
    * num endereço estrangeiro, que continua legível. A alternativa seria
    * perder a abreviação no mercado onde o aplicativo de fato roda hoje.
    */
-  return country === '' || country === 'BR'
-    ? formatBrazilian(address)
-    : formatInternational(address);
+  const line =
+    country === '' || country === 'BR'
+      ? formatBrazilian(address)
+      : formatInternational(address);
+
+  if (!options.includeCountry) return line;
+
+  const name = clean(address.country);
+
+  // Não repete o país quando ele já veio no endereço que o sistema formatou.
+  return name && !line.endsWith(name) ? join([line, name], ', ') : line;
 }
 
 /** O formato brasileiro, com as abreviações que só valem aqui. */

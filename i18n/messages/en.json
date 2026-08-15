@@ -254,6 +254,8 @@
       },
       "fieldsDescription": "Only the fields that are on and have content reach the photo.",
       "fieldsTitle": "Fields shown",
+      "includeCountry": "Include the country",
+      "includeCountryDescription": "Turn it on if you work across borders. Otherwise it only takes room on the photo.",
       "legibilityTitle": "Legibility",
       "positionDescription": "The corner of the photo the block is anchored to.",
       "positionTitle": "Position",
