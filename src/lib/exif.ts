@@ -9,6 +9,9 @@
 
 import * as exifreader from 'exifreader';
 
+import { formatDate, formatTime } from '@/lib/datetime';
+import { DEFAULT_LOCALE, type Locale } from '@i18n/locales';
+
 /**
  * Dados de data/hora extraídos do EXIF.
  */
@@ -128,28 +131,31 @@ function parseExifDateTime(value: string): ExifDateTime {
 }
 
 /**
- * Extrai apenas a data no formato que o app espera.
+ * Extrai apenas a data, já no formato que o carimbo imprime.
  *
- * O app usa o formato "DD MMM. YYYY" (ex: "01 ago. 2026")
+ * A formatação é a mesma de `formatDate` — as tabelas de `i18n/calendar.ts`,
+ * sem `Intl`. Esta função já montou a data por conta própria, com
+ * `toLocaleString('pt-BR')`, e isso produzia dois defeitos: a foto vinda do
+ * EXIF saía em português mesmo com a interface em outro idioma, e o mês vinha
+ * do ICU do aparelho — que devolve "ago." em uma versão e "ago" em outra,
+ * fazendo o ponto do molde virar "ago..". Numa foto de comprovação, a data do
+ * lote precisa sair idêntica à data digitada à mão.
  *
  * @param file - O arquivo a ser lido
+ * @param locale - Idioma do carimbo (não o da interface — ver `STAMP_LOCALE`)
  * @returns Promessa com a data formatada, ou undefined
  */
 export async function extractDateFromExif(
   file: File | Buffer | string,
+  locale: Locale = DEFAULT_LOCALE,
 ): Promise<string | undefined> {
   const dateTime = await extractDateTimeFromExif(file);
-  
+
   if (!dateTime?.dateTime) {
     return undefined;
   }
 
-  // Formatar como "DD MMM. YYYY"
-  const day = dateTime.dateTime.getDate();
-  const month = dateTime.dateTime.toLocaleString('pt-BR', { month: 'short' });
-  const year = dateTime.dateTime.getFullYear();
-
-  return `${day} ${month}. ${year}`;
+  return formatDate(dateTime.dateTime, locale);
 }
 
 /**
@@ -164,11 +170,11 @@ export async function extractTimeFromExif(
   file: File | Buffer | string,
 ): Promise<string | undefined> {
   const dateTime = await extractDateTimeFromExif(file);
-  
-  if (!dateTime?.time) {
+
+  if (!dateTime?.dateTime) {
     return undefined;
   }
 
-  // Formatar como "HH:MM" (remover segundos)
-  return dateTime.time.split(':').slice(0, 2).join(':');
+  // Pelo mesmo `formatTime` do resto do app: 24 horas, sem segundos.
+  return formatTime(dateTime.dateTime);
 }

@@ -15,12 +15,16 @@
 import { useCallback, useState, useRef } from 'react';
 import { useTranslations } from 'use-intl';
 
-import { extractDateFromExif, extractTimeFromExif } from '@/lib/exif';
+import { useLocalePreference } from '@/contexts/locale-context';
+import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
+import { extractDateTimeFromExif } from '@/lib/exif';
 import { saveFileToOutput, getOutputFolder } from '@/lib/file-storage';
 import { composeStampedPhoto } from '@/features/watermark/render-photo';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
+import { scriptForStamp } from '@/features/watermark/stamp-script';
 import { STAMP_COLORS } from '@/features/watermark/stamp-colors';
 import { useSettings } from '@/contexts/settings-context';
+import { STAMP_LOCALE } from '@i18n/calendar';
 import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
 
 export interface BatchPhoto {
@@ -68,10 +72,19 @@ export function useBatchProcessing() {
   });
   const [outputFolder, setOutputFolder] = useState<string>('');
 
+  // A data de cada foto é reescrita a partir do EXIF, então precisa do mesmo
+  // idioma de carimbo que a aba Capturar usa — o da interface, com a queda de
+  // `STAMP_LOCALE` onde falta alfabeto.
+  const { locale: uiLocale } = useLocalePreference();
+  const stampLocale = STAMP_LOCALE[uiLocale];
+
+  const { preferences } = useSettings();
+
   // O desenho do carimbo precisa das fontes e das preferências, e ambas só
   // chegam por hook — daí virem do topo, e não de dentro do laço.
-  const stampTypefaces = useStampTypefaces();
-  const { preferences } = useSettings();
+  // O endereço e a marca são os mesmos para todas as fotos, e a data só muda
+  // de dia, não de alfabeto: o alfabeto é decidido uma vez, não por foto.
+  const stampTypefaces = useStampTypefaces(scriptForStamp(metadata, preferences));
 
   /**
    * Carrega a pasta de saída atual ao montar o componente.
@@ -93,14 +106,20 @@ export function useBatchProcessing() {
         }
 
         // LER EXIF DA FOTO INDIVIDUAL (requisito 2.4)
-        const exifDate = await extractDateFromExif(photo.uri);
-        const exifTime = await extractTimeFromExif(photo.uri);
+        //
+        // Data, hora e dia da semana saem do MESMO `Date`. Antes, a data vinha
+        // do EXIF e o dia da semana continuava o do lote: uma foto tirada na
+        // terça saía carimbada "12 ago. 2026 · Sáb". Numa foto de comprovação,
+        // essa contradição fica impressa no próprio documento.
+        const exif = await extractDateTimeFromExif(photo.uri);
+        const tirada = exif?.dateTime;
 
         // Mesclar: data/hora do EXIF + endereço/código compartilhado
         const photoMetadata: CaptureMetadata = {
           ...sharedMetadata,
-          date: exifDate || sharedMetadata.date,
-          time: exifTime || sharedMetadata.time,
+          date: tirada ? formatDate(tirada, stampLocale) : sharedMetadata.date,
+          time: tirada ? formatTime(tirada) : sharedMetadata.time,
+          weekday: tirada ? formatWeekday(tirada, stampLocale) : sharedMetadata.weekday,
         };
 
         // `composeStampedPhoto` devolve os bytes sem gravar. O caminho de
@@ -133,7 +152,7 @@ export function useBatchProcessing() {
         return { success: false, error: errorMessage };
       }
     },
-    [stampTypefaces, preferences],
+    [stampTypefaces, preferences, stampLocale],
   );
 
   /**
