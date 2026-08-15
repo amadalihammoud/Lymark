@@ -21,7 +21,7 @@ import { buildApplicationMenu } from './menu';
  * produzindo `dist/assets/node_modules/…`. O electron-builder dá tratamento
  * especial a toda pasta chamada `node_modules` e a remove dos filesets do app
  * — nem `files` explícito para essa subpasta a traz de volta. O pacote saía
- * sem os 22 arquivos de asset, entre eles as três fontes do carimbo. Como
+ * sem os 22 arquivos de asset, entre eles as fontes do carimbo. Como
  * `useStampTypefaces` devolve `null` quando falta qualquer fonte, o app abria
  * normalmente e simplesmente não carimbava.
  *

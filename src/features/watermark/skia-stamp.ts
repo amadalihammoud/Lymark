@@ -6,6 +6,8 @@ import {
   type SkTypeface,
 } from '@shopify/react-native-skia';
 
+import type { StampScript } from './stamp-script';
+
 import type { MeasureText, StampFont, StampGeometry } from './stamp-layout';
 
 /**
@@ -35,17 +37,57 @@ export type StampTypefaces = Record<StampFont, SkTypeface>;
  * (nativo) quanto a URL em string (web) — o mesmo código serve às duas
  * plataformas, que é o requisito para o desenho não divergir.
  */
-export function useStampTypefaces(): StampTypefaces | null {
+export function useStampTypefaces(script: StampScript = 'latin'): StampTypefaces | null {
   const clock = useTypeface(
     require('@expo-google-fonts/pathway-gothic-one/400Regular/PathwayGothicOne_400Regular.ttf'),
   );
-  const body = useTypeface(require('@expo-google-fonts/barlow/400Regular/Barlow_400Regular.ttf'));
-  const medium = useTypeface(require('@expo-google-fonts/barlow/500Medium/Barlow_500Medium.ttf'));
+
+  const latinBody = useTypeface(
+    require('@expo-google-fonts/barlow/400Regular/Barlow_400Regular.ttf'),
+  );
+  const latinMedium = useTypeface(
+    require('@expo-google-fonts/barlow/500Medium/Barlow_500Medium.ttf'),
+  );
+
+  /*
+   * A Barlow não tem um glifo cirílico sequer, e o carimbo desenha com
+   * `drawText` sobre um typeface único, sem cadeia de reserva — texto russo
+   * sairia em quadradinhos sobre a foto.
+   *
+   * A Roboto Condensed entrou por medição contra a Barlow, e não por gosto:
+   * 2,8% de diferença na largura de "12 ago. 2026", 4,4% na altura de x e
+   * 1,6% na de caixa alta. Noto Sans e Inter ficaram em 13% e 15% de largura,
+   * o que empurraria o endereço para uma terceira linha. Ela também cobre
+   * grego, que sai de graça.
+   *
+   * Os dois pesos são sempre carregados. Trocar de fonte no meio da sessão —
+   * quando um endereço em cirílico chega — não pode esperar um download nem um
+   * novo ciclo de carregamento com a foto já na tela.
+   */
+  const cyrillicBody = useTypeface(
+    require('@expo-google-fonts/roboto-condensed/400Regular/RobotoCondensed_400Regular.ttf'),
+  );
+  const cyrillicMedium = useTypeface(
+    require('@expo-google-fonts/roboto-condensed/500Medium/RobotoCondensed_500Medium.ttf'),
+  );
 
   // Tudo ou nada: desenhar com uma fonte faltando sairia com a substituta do
   // Skia, e o carimbo mudaria de desenho sem ninguém perceber.
-  if (!clock || !body || !medium) return null;
-  return { clock, body, medium };
+  if (!clock || !latinBody || !latinMedium || !cyrillicBody || !cyrillicMedium) return null;
+
+  /*
+   * `unsupported` também recebe as fontes latinas. Não é descuido: sem fonte
+   * para o alfabeto, qualquer escolha produz o mesmo resultado, e devolver
+   * `null` deixaria o carimbo sem ser desenhado — o que é pior, porque a
+   * pessoa perderia a foto inteira em vez de uma linha.
+   */
+  const cyrillic = script === 'cyrillic';
+
+  return {
+    clock,
+    body: cyrillic ? cyrillicBody : latinBody,
+    medium: cyrillic ? cyrillicMedium : latinMedium,
+  };
 }
 
 export type StampRenderer = {

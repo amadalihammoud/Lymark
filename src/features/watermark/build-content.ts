@@ -1,5 +1,7 @@
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
+import { stampText } from './stamp-script';
+
 /**
  * Decide o conteúdo do carimbo.
  *
@@ -35,7 +37,9 @@ function resolve(
   visible: boolean,
 ): string | null {
   if (!visible) return null;
-  const trimmed = value.trim();
+  // `stampText` deixa o acento na forma composta. O porquê está lá: sem isso,
+  // um endereço decomposto sairia com o acento ao lado da letra, e não sobre.
+  const trimmed = stampText(value).trim();
   return trimmed ? trimmed : null;
 }
 

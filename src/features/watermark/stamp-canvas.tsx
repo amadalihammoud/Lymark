@@ -6,6 +6,7 @@ import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
 import { buildWatermarkContent } from './build-content';
 import { createStampRenderer, useStampTypefaces } from './skia-stamp';
+import { scriptForStamp } from './stamp-script';
 import { STAMP_COLORS } from './stamp-colors';
 import { buildStampGeometry } from './stamp-layout';
 
@@ -35,7 +36,10 @@ export function StampCanvas({
   width: number;
   height: number;
 }) {
-  const typefaces = useStampTypefaces();
+  // O preview precisa desenhar com a mesma fonte da exportação, senão o que
+  // a pessoa vê na tela deixa de ser o que sai no arquivo — que é a promessa
+  // literal da landing page.
+  const typefaces = useStampTypefaces(scriptForStamp(metadata, preferences));
 
   const picture = useMemo(() => {
     if (!typefaces || width <= 0 || height <= 0) return null;

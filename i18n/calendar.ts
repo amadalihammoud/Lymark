@@ -47,6 +47,20 @@ export const MONTHS: Record<Locale, readonly string[]> = {
  * extenso é o que evita a ambiguidade entre 01/02 e 02/01, que num documento de
  * vistoria não é detalhe.
  */
+/*
+ * Pendência do dia com dois dígitos em chinês, japonês e coreano.
+ *
+ * `formatDate` preenche `{d}` com dois dígitos em todo idioma, porque o bloco
+ * do carimbo tem largura fixa. Nestes três, isso produz "2026年8月01日" — que
+ * nenhum japonês escreve; a forma é "8月1日". O mês, aliás, já sai sem o zero,
+ * então o molde hoje é internamente inconsistente.
+ *
+ * Não corrigi agora de propósito: `STAMP_LOCALE` manda estes três para o
+ * inglês por falta de fonte, então nenhuma foto sai com esta data. Quando a
+ * fonte CJK entrar, isto precisa entrar junto — provavelmente como uma
+ * marcação de "não preencher com zero" por idioma, e não como exceção
+ * espalhada pelo formatador.
+ */
 export const DATE_PATTERN: Record<Locale, string> = {
   pt: '{d} {mon} {y}',
   en: '{d} {mon} {y}',
@@ -109,21 +123,30 @@ export const USES_24_HOUR = true;
 /**
  * O idioma que o **carimbo** consegue desenhar, para cada idioma da interface.
  *
- * As duas fontes embarcadas — Barlow e Pathway Gothic One — cobrem latim e
- * latim estendido, e mais nada. Verifiquei o `cmap` das duas: não há um único
- * glifo cirílico, árabe, grego ou CJK. E o carimbo desenha com
- * `canvas.drawText` sobre um typeface único, sem cadeia de reserva — um
- * caractere ausente vira `.notdef`, o quadradinho vazio.
+ * O carimbo desenha com `canvas.drawText` sobre um typeface único, sem cadeia
+ * de fontes de reserva: um caractere que a fonte não tem vira `.notdef`, o
+ * quadradinho vazio. Numa foto de comprovação isso é pior que idioma trocado,
+ * porque o documento fica ilegível e parece defeito. Então, onde falta
+ * alfabeto, o carimbo cai para o inglês — mesmo alfabeto do português, e o
+ * que mais gente lê.
  *
- * Numa foto de comprovação, quadradinho vazio é pior que idioma trocado: o
- * documento fica ilegível e parece defeito. Então, enquanto não houver fonte
- * para o alfabeto, o carimbo cai para o inglês — que usa o mesmo alfabeto do
- * português e é o que mais gente lê.
+ * O que está embarcado hoje:
+ *
+ * - **Barlow** e **Pathway Gothic One** — latim e latim estendido.
+ * - **Roboto Condensed** — cirílico e grego, escolhida por medição contra a
+ *   Barlow (2,9% de diferença média) para que a troca não mude o desenho do
+ *   bloco.
+ *
+ * Falta árabe, hebraico, CJK, tailandês e índico. O árabe é o caso mais
+ * distante: não basta ter os glifos, porque `drawText` mapeia caractere a
+ * caractere e a escrita árabe exige *shaping* — as letras mudam de forma
+ * conforme a posição na palavra. Resolver aquilo significa trocar para a API
+ * `Paragraph` e refazer a linha de base do harness de fidelidade.
  *
  * **Isto é uma limitação de fonte, não de tradução.** A interface continua no
- * idioma escolhido; só a data impressa na imagem muda. E o endereço, que vem
- * do geocodificador no alfabeto local, continua sem solução por aqui — ver a
- * pendência registrada em `docs/`.
+ * idioma escolhido; só a data impressa na imagem muda. O endereço é caso à
+ * parte: vem do geocodificador no alfabeto do país onde a foto foi tirada, e
+ * por isso a escolha da fonte olha o conteúdo (`scriptFor`), não este mapa.
  */
 export const STAMP_LOCALE: Record<Locale, Locale> = {
   pt: 'pt',
@@ -133,8 +156,9 @@ export const STAMP_LOCALE: Record<Locale, Locale> = {
   it: 'it',
   de: 'de',
   nl: 'nl',
-  // Cirílico, árabe e CJK: sem glifos nas fontes do carimbo.
-  ru: 'en',
+  // Cirílico: coberto pela Roboto Condensed.
+  ru: 'ru',
+  // Árabe e CJK: sem glifos nas fontes do carimbo.
   zh: 'en',
   ja: 'en',
   ko: 'en',

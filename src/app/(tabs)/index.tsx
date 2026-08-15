@@ -24,6 +24,7 @@ import { saveToDeviceGallery, shareWatermarkedPhoto } from '@/features/watermark
 import { renderStampedPhoto } from '@/features/watermark/render-photo';
 import { STAMP_COLORS } from '@/features/watermark/stamp-canvas';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
+import { scriptForStamp } from '@/features/watermark/stamp-script';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
 import {
   WatermarkControls,
@@ -84,7 +85,12 @@ export default function CaptureScreen() {
 
   const [pending, setPending] = useState<PendingAction | null>(null);
   const [picking, setPicking] = useState(false);
-  const stampTypefaces = useStampTypefaces();
+  /*
+   * O alfabeto vem do conteúdo, e não do idioma escolhido: o endereço chega
+   * do geocodificador no alfabeto do país onde a foto foi tirada. Interface
+   * em português com endereço em cirílico é caso real.
+   */
+  const stampTypefaces = useStampTypefaces(scriptForStamp(draft.metadata, preferences));
   const busy = pending !== null;
 
   /** Identifica a busca de endereço em curso. */

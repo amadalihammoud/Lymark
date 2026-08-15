@@ -51,10 +51,18 @@ if (faltando.length > 0) {
   for (const f of faltando.slice(0, 10)) falhas.push(`    - ${f}`);
 }
 
-// As três fontes do carimbo, sem as quais nada é desenhado. O nome de arquivo
-// carrega um hash de conteúdo que muda a cada build, então a checagem é pela
-// família.
-const FONTES = ['PathwayGothicOne_400Regular', 'Barlow_400Regular', 'Barlow_500Medium'];
+// As fontes do carimbo, sem as quais nada é desenhado: `useStampTypefaces`
+// é tudo-ou-nada e devolve `null` se faltar UMA — inclusive as cirílicas, que
+// carregam sempre, mesmo numa sessão inteiramente em português. O nome de
+// arquivo carrega um hash de conteúdo que muda a cada build, então a checagem
+// é pela família.
+const FONTES = [
+  'PathwayGothicOne_400Regular',
+  'Barlow_400Regular',
+  'Barlow_500Medium',
+  'RobotoCondensed_400Regular',
+  'RobotoCondensed_500Medium',
+];
 const empacotadas = [...noPacote].filter((f) => f.endsWith('.ttf'));
 
 for (const fonte of FONTES) {

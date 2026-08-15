@@ -23,6 +23,7 @@ import {
   type ScaleMetrics,
 } from './layout';
 import { DIGIT_INK_TOP_FROM_BASELINE } from './skia-typography';
+import { stampText } from './stamp-script';
 
 /**
  * A geometria do carimbo, separada de quem a desenha.
@@ -530,7 +531,12 @@ function layoutBrand({
           { text: 'Ly', color: 'white' },
           { text: 'mark', color: 'amber' },
         ] as const)
-  ).filter((part) => part.text.trim().length > 0);
+  )
+    // A marca não passa por `buildWatermarkContent`, então normaliza aqui —
+    // uma razão social digitada com acento decomposto sairia com o sinal ao
+    // lado da letra, e não sobre ela.
+    .map((part) => ({ ...part, text: stampText(part.text) }))
+    .filter((part) => part.text.trim().length > 0);
 
   // Marca ligada mas sem texto nenhum: não desenha nada, em vez de carimbar
   // um espaço em branco.

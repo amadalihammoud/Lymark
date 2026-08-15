@@ -22,14 +22,30 @@ const ROOT = path.join(__dirname, '..', '..', '..');
 const NM = path.join(ROOT, 'node_modules');
 const BUILD = process.env.LYMARK_HARNESS_BUILD || path.join(ROOT, '.harness-build');
 
-/** As três fontes embutidas no aplicativo, nos mesmos pesos. */
+const font = (...parts) => path.join(NM, '@expo-google-fonts', ...parts);
+
+const CLOCK = font('pathway-gothic-one', '400Regular', 'PathwayGothicOne_400Regular.ttf');
+
+/**
+ * As fontes embutidas no aplicativo, nos mesmos pesos — por alfabeto.
+ *
+ * As chaves são as do `StampFont` (`clock`, `body`, `medium`), e não nomes de
+ * família, porque é assim que `createStampRenderer` indexa. Nomear por família
+ * aqui produziria `typefaces['clock'] === undefined`, e o Skia desenharia com
+ * a fonte padrão sem reclamar — exatamente a falha silenciosa que este harness
+ * existe para pegar.
+ */
 const FONT_FILES = {
-  PathwayGothicOne: path.join(
-    NM,
-    '@expo-google-fonts/pathway-gothic-one/400Regular/PathwayGothicOne_400Regular.ttf',
-  ),
-  Barlow: path.join(NM, '@expo-google-fonts/barlow/400Regular/Barlow_400Regular.ttf'),
-  BarlowMedium: path.join(NM, '@expo-google-fonts/barlow/500Medium/Barlow_500Medium.ttf'),
+  latin: {
+    clock: CLOCK,
+    body: font('barlow', '400Regular', 'Barlow_400Regular.ttf'),
+    medium: font('barlow', '500Medium', 'Barlow_500Medium.ttf'),
+  },
+  cyrillic: {
+    clock: CLOCK,
+    body: font('roboto-condensed', '400Regular', 'RobotoCondensed_400Regular.ttf'),
+    medium: font('roboto-condensed', '500Medium', 'RobotoCondensed_500Medium.ttf'),
+  },
 };
 
 /**
@@ -54,12 +70,12 @@ function installModuleShim(skiaExports) {
 /**
  * Prepara o Skia e devolve o renderizador real do aplicativo.
  *
- * `provider` é tipado no app como `SkTypefaceFontProvider`, mas
- * `createStampRenderer` usa dele um único método — `matchFamilyStyle`. Um
- * objeto com esse método serve, e evita depender de um registrador de fontes
- * que só existe no aparelho.
+ * `script` escolhe o par de fontes, como `useStampTypefaces` faz no aplicativo
+ * a partir do que `scriptForStamp` decidiu. Carregar aqui as mesmas fontes que
+ * o aparelho carrega é o que dá sentido à comparação — com outro arquivo, o
+ * harness compararia duas coisas que nunca deveriam bater.
  */
-async function createNodeStampRenderer() {
+async function createNodeStampRenderer(script = 'latin') {
   const CanvasKitInit = require(path.join(NM, 'canvaskit-wasm/bin/canvaskit.js'));
   const CanvasKit = await CanvasKitInit({
     locateFile: (file) => path.join(NM, 'canvaskit-wasm/bin', file),
@@ -81,36 +97,29 @@ async function createNodeStampRenderer() {
     },
   });
 
-  const typefaces = {};
+  const escolhidas = FONT_FILES[script];
+  if (!escolhidas) throw new Error(`Alfabeto sem fontes no harness: ${script}`);
+
   // Autoteste: simula a fonte do relógio não ter carregado e o desenho cair
   // numa fonte de corpo. É o modo de falha mais perigoso do porte para a web,
   // porque não lança erro — e é o que o portão de geometria tem de pegar.
   const sabotage = process.env.LYMARK_HARNESS_BREAK_FONT === '1';
-  const files = sabotage
-    ? { ...FONT_FILES, PathwayGothicOne: FONT_FILES.Barlow }
-    : FONT_FILES;
+  const files = sabotage ? { ...escolhidas, clock: escolhidas.body } : escolhidas;
 
-  for (const [family, file] of Object.entries(files)) {
+  const typefaces = {};
+  for (const [slot, file] of Object.entries(files)) {
     const data = Skia.Data.fromBytes(new Uint8Array(fs.readFileSync(file)));
     const typeface = Skia.Typeface.MakeFreeTypeFaceFromData(data);
-    if (!typeface) throw new Error(`O Skia recusou a fonte ${family}.`);
-    typefaces[family] = typeface;
+    if (!typeface) throw new Error(`O Skia recusou a fonte ${path.basename(file)}.`);
+    typefaces[slot] = typeface;
   }
-
-  const provider = {
-    matchFamilyStyle: (family) => {
-      const typeface = typefaces[family];
-      if (!typeface) throw new Error(`Fonte não registrada no harness: ${family}`);
-      return typeface;
-    },
-  };
 
   // Só agora, com o atalho instalado, o módulo compilado do app pode entrar.
   const { createStampRenderer } = require(
     path.join(BUILD, 'src/features/watermark/skia-stamp.js'),
   );
 
-  return { Skia, CanvasKit, renderer: createStampRenderer(provider) };
+  return { Skia, CanvasKit, renderer: createStampRenderer(typefaces) };
 }
 
 module.exports = { createNodeStampRenderer, FONT_FILES, BUILD };
