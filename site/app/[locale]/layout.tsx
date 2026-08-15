@@ -1,92 +1,143 @@
 import type { Metadata, Viewport } from 'next';
-import { Barlow, Pathway_Gothic_One } from 'next/font/google';
-import Link from 'next/link';
+import localFont from 'next/font/local';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
-import './globals.css';
+import { isRtl, type Locale } from '../../../i18n/locales';
+import LanguageSelector from '../../components/LanguageSelector';
+import { Link } from '../../i18n/navigation';
+import { routing } from '../../i18n/routing';
+
+import '../globals.css';
 
 /*
  * As mesmas duas famílias que o aplicativo embarca: Barlow no texto e na
  * assinatura, Pathway Gothic One nos numerais. A segunda foi escolhida por
  * medição — proporção de 0,498 de largura e 0,318 de densidade de tinta —
  * e é ela que dá ao site a mesma voz tipográfica do carimbo.
+ *
+ * Os arquivos são servidos pelo próprio site, e não buscados no Google, por
+ * três motivos: o build deixa de depender de rede — antes ele quebrava em
+ * qualquer ambiente sem acesso a `fonts.googleapis.com`; o navegador de quem
+ * visita para de fazer uma requisição ao Google, que sob a LGPD e o RGPD é
+ * transferência de endereço IP a terceiro; e são exatamente os mesmos
+ * arquivos que o aplicativo embarca, então o carimbo do site e o da foto não
+ * podem divergir.
  */
-const barlow = Barlow({
-  subsets: ['latin'],
-  weight: ['400', '500'],
+const barlow = localFont({
+  src: [
+    { path: '../../fonts/Barlow_400Regular.ttf', weight: '400', style: 'normal' },
+    { path: '../../fonts/Barlow_500Medium.ttf', weight: '500', style: 'normal' },
+  ],
   display: 'swap',
   variable: '--font-body',
 });
 
-const pathway = Pathway_Gothic_One({
-  subsets: ['latin'],
+const pathway = localFont({
+  src: '../../fonts/PathwayGothicOne_400Regular.ttf',
   weight: '400',
+  style: 'normal',
   display: 'swap',
   variable: '--font-clock',
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Lymark — marca d’água de data, hora e endereço em fotos de campo',
-    template: '%s · Lymark',
-  },
-  description:
-    'Aplicativo Android que carimba hora, data, dia da semana, endereço e um código de rastreio nas fotos de vistoria e comprovação de serviço. Funciona sem conta e sem servidor.',
-  applicationName: 'Lymark',
-  openGraph: {
-    title: 'Lymark',
-    description:
-      'Carimba hora, data, dia da semana, endereço e código de rastreio nas fotos de campo. Sem conta, sem servidor.',
-    locale: 'pt_BR',
-    type: 'website',
-  },
-  robots: { index: true, follow: true },
-};
+/** Gera as doze versões estáticas no build, em vez de sob demanda. */
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'site' });
+
+  return {
+    title: {
+      default: t('title'),
+      template: `%s · Lymark`,
+    },
+    description: t('description'),
+    applicationName: 'Lymark',
+    openGraph: {
+      title: 'Lymark',
+      description: t('description'),
+      locale,
+      type: 'website',
+    },
+    robots: { index: true, follow: true },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: '#0D2137',
   colorScheme: 'dark',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+
+  // Sem isto, cada página do idioma vira renderização dinâmica e o build
+  // estático das doze versões não acontece.
+  setRequestLocale(locale);
+
+  const t = await getTranslations('site');
+
   return (
-    <html lang="pt-BR" className={`${barlow.variable} ${pathway.variable}`}>
+    <html
+      lang={locale}
+      dir={isRtl(locale as Locale) ? 'rtl' : 'ltr'}
+      className={`${barlow.variable} ${pathway.variable}`}
+    >
       <body style={{ ['--font-mark' as string]: 'var(--font-body)' }}>
-        <a className="skip" href="#conteudo">
-          Pular para o conteúdo
-        </a>
+        <NextIntlClientProvider>
+          <a className="skip" href="#conteudo">
+            {t('skipToContent')}
+          </a>
 
-        <header className="site">
-          <div className="shell">
-            <Link href="/" className="wordmark" aria-label="Lymark, página inicial">
-              Ly<em>mark</em>
-            </Link>
-            <nav className="site" aria-label="Principal">
-              <Link href="/privacidade">Privacidade</Link>
-              <Link href="/termos">Termos</Link>
-            </nav>
-          </div>
-        </header>
-
-        <main id="conteudo" className="shell">
-          {children}
-        </main>
-
-        <footer className="site">
-          <div className="shell">
-            <div>
-              <p style={{ color: 'var(--text-muted)' }}>
-                Lymark — registro fotográfico com data, hora e endereço.
-              </p>
-              <p style={{ marginTop: '0.35rem' }}>
-                Suporte: <a href="mailto:contato@lymark.app">contato@lymark.app</a>
-              </p>
+          <header className="site">
+            <div className="shell">
+              <Link href="/" className="wordmark" aria-label={t('nav.homeLabel')}>
+                Ly<em>mark</em>
+              </Link>
+              <nav className="site" aria-label={t('nav.label')}>
+                <Link href="/privacidade">{t('nav.privacy')}</Link>
+                <Link href="/termos">{t('nav.terms')}</Link>
+                <LanguageSelector />
+              </nav>
             </div>
-            <nav aria-label="Documentos">
-              <Link href="/privacidade">Política de Privacidade</Link>
-              <Link href="/termos">Termos de Uso</Link>
-            </nav>
-          </div>
-        </footer>
+          </header>
+
+          <main id="conteudo" className="shell">
+            {children}
+          </main>
+
+          <footer className="site">
+            <div className="shell">
+              <div>
+                <p style={{ color: 'var(--text-muted)' }}>{t('footer.description')}</p>
+                <p style={{ marginTop: '0.35rem' }}>
+                  {t('footer.support')}{' '}
+                  <a href="mailto:contato@lymark.app">contato@lymark.app</a>
+                </p>
+              </div>
+              <nav aria-label={t('footer.documentsLabel')}>
+                <Link href="/privacidade">{t('footer.privacy')}</Link>
+                <Link href="/termos">{t('footer.terms')}</Link>
+              </nav>
+            </div>
+          </footer>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
