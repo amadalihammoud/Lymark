@@ -71,6 +71,7 @@
       "permissionTitle": "Toestemming nodig",
       "pickPhoto": "Foto kiezen",
       "pickPhotoHint": "Kies een foto om de acties in te schakelen.",
+      "previewLabel": "Voorbeeld van de foto met watermerk",
       "renderFailedTitle": "Kon de afbeelding niet maken",
       "replaceAddressMessage": "De gps vond:\n\n{address}",
       "replaceAddressTitle": "Het getypte adres vervangen?",

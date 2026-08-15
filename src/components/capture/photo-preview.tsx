@@ -105,7 +105,7 @@ export function PhotoPreview({
         source={{ uri: photo.uri }}
         style={StyleSheet.absoluteFill}
         contentFit="cover"
-        accessibilityLabel="Pré-visualização da foto com marca d’água"
+        accessibilityLabel={t('capture.previewLabel')}
       />
       <StampCanvas
         metadata={metadata}

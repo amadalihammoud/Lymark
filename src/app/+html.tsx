@@ -2,6 +2,7 @@ import { ScrollViewStyleReset } from 'expo-router/html';
 import type { PropsWithChildren } from 'react';
 
 import { colors } from '@/theme';
+import { DEFAULT_LOCALE } from '@i18n/locales';
 
 /**
  * O documento HTML que envolve o aplicativo na web.
@@ -11,10 +12,19 @@ import { colors } from '@/theme';
  *
  * Este arquivo roda **apenas na exportação estática**, no servidor. Não é
  * hidratado, então nada aqui pode depender do navegador nem de estado.
+ *
+ * Por isso o `lang` daqui é só o ponto de partida. O Expo publica uma
+ * aplicação de página única: um único documento serve as doze línguas, e qual
+ * delas será usada só se sabe quando o aparelho responde ou o disco devolve a
+ * escolha da pessoa. Quem corrige é `applyDocumentLanguage`, chamado pelo
+ * `LocaleProvider` — e é ele quem também põe o `dir="rtl"` do árabe.
+ *
+ * O valor fixo aqui é o idioma de origem, e não `pt-BR`, para bater com o
+ * `lang={locale}` do site: as duas pontas passam a falar o mesmo código.
  */
 export default function Root({ children }: PropsWithChildren) {
   return (
-    <html lang="pt-BR">
+    <html lang={DEFAULT_LOCALE}>
       <head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

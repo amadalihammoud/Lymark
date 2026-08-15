@@ -71,6 +71,7 @@
       "permissionTitle": "権限が必要です",
       "pickPhoto": "写真を選ぶ",
       "pickPhotoHint": "写真を選ぶと操作が使えるようになります。",
+      "previewLabel": "透かし入りの写真のプレビュー",
       "renderFailedTitle": "画像を生成できませんでした",
       "replaceAddressMessage": "GPSが見つけた住所：\n\n{address}",
       "replaceAddressTitle": "入力した住所を置き換えますか？",

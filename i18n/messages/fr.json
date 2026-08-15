@@ -71,6 +71,7 @@
       "permissionTitle": "Autorisation nécessaire",
       "pickPhoto": "Choisir une photo",
       "pickPhotoHint": "Choisissez une photo pour activer les actions.",
+      "previewLabel": "Aperçu de la photo avec filigrane",
       "renderFailedTitle": "Échec de la génération de l'image",
       "replaceAddressMessage": "Le GPS a trouvé :\n\n{address}",
       "replaceAddressTitle": "Remplacer l’adresse saisie ?",

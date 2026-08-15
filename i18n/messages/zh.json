@@ -71,6 +71,7 @@
       "permissionTitle": "需要权限",
       "pickPhoto": "选择照片",
       "pickPhotoHint": "请先选择一张照片，才能使用这些操作。",
+      "previewLabel": "带水印的照片预览",
       "renderFailedTitle": "无法生成图片",
       "replaceAddressMessage": "GPS 找到：\n\n{address}",
       "replaceAddressTitle": "替换你输入的地址？",

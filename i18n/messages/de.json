@@ -71,6 +71,7 @@
       "permissionTitle": "Berechtigung erforderlich",
       "pickPhoto": "Foto auswählen",
       "pickPhotoHint": "Wählen Sie ein Foto, um die Aktionen freizuschalten.",
+      "previewLabel": "Vorschau des Fotos mit Wasserzeichen",
       "renderFailedTitle": "Bild konnte nicht erzeugt werden",
       "replaceAddressMessage": "Das GPS hat gefunden:\n\n{address}",
       "replaceAddressTitle": "Eingegebene Adresse ersetzen?",

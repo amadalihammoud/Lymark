@@ -11,6 +11,7 @@ import { IntlProvider, type IntlError } from 'use-intl';
 
 import { DEFAULT_LOCALE, isLocale, type Locale } from '@i18n/locales';
 import { resolveDeviceLocale } from '@/i18n/device-locale';
+import { applyDocumentLanguage } from '@/i18n/document-language';
 import { MESSAGES } from '@/i18n/messages';
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
 
@@ -105,6 +106,14 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
    */
   useEffect(() => {
     void globalThis.window?.lymark?.setLocale?.(locale);
+  }, [locale]);
+
+  /**
+   * Na web e no desktop, o documento também precisa saber o idioma — é dele
+   * que o leitor de tela tira a voz. O porquê está em `document-language.ts`.
+   */
+  useEffect(() => {
+    applyDocumentLanguage(globalThis.document, locale);
   }, [locale]);
 
   const value = useMemo<LocaleContextValue>(

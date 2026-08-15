@@ -71,6 +71,7 @@
       "permissionTitle": "Permission needed",
       "pickPhoto": "Choose a photo",
       "pickPhotoHint": "Choose a photo to enable the actions.",
+      "previewLabel": "Preview of the watermarked photo",
       "renderFailedTitle": "Could not generate the image",
       "replaceAddressMessage": "GPS found:\n\n{address}",
       "replaceAddressTitle": "Replace the address you typed?",

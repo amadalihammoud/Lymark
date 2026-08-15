@@ -71,6 +71,7 @@
       "permissionTitle": "Permissão necessária",
       "pickPhoto": "Escolher foto",
       "pickPhotoHint": "Escolha uma foto para habilitar as ações.",
+      "previewLabel": "Pré-visualização da foto com marca d’água",
       "renderFailedTitle": "Falha ao gerar a imagem",
       "replaceAddressMessage": "O GPS encontrou:\n\n{address}",
       "replaceAddressTitle": "Substituir o endereço digitado?",

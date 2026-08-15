@@ -71,6 +71,7 @@
       "permissionTitle": "الإذن مطلوب",
       "pickPhoto": "اختيار صورة",
       "pickPhotoHint": "اختر صورة لتفعيل الإجراءات.",
+      "previewLabel": "معاينة الصورة بعلامة مائية",
       "renderFailedTitle": "تعذّر إنشاء الصورة",
       "replaceAddressMessage": "وجد GPS:\n\n{address}",
       "replaceAddressTitle": "استبدال العنوان الذي كتبته؟",

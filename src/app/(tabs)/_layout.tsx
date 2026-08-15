@@ -52,14 +52,14 @@ export default function TabsLayout() {
               <>
                 {isWeb() ? null : (
                   <Link href="/(tabs)/gallery" style={styles.barLink}>
-                    Histórico
+                    {t('settings.history')}
                   </Link>
                 )}
                 <Link href="/settings/permissions" style={styles.barLink}>
-                  Permissões
+                  {t('settings.permissions')}
                 </Link>
                 <Link href="/settings/about" style={styles.barLink}>
-                  Sobre
+                  {t('settings.about')}
                 </Link>
               </>
             ) : null

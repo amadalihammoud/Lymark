@@ -71,6 +71,7 @@
       "permissionTitle": "Нужно разрешение",
       "pickPhoto": "Выбрать фотографию",
       "pickPhotoHint": "Выберите фотографию, чтобы действия стали доступны.",
+      "previewLabel": "Предварительный просмотр фотографии с водяным знаком",
       "renderFailedTitle": "Не удалось создать изображение",
       "replaceAddressMessage": "GPS нашёл:\n\n{address}",
       "replaceAddressTitle": "Заменить введённый адрес?",
