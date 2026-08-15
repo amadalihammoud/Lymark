@@ -178,6 +178,15 @@
       "removeTitle": "Remover do histórico",
       "stampedData": "Dados carimbados"
     },
+    "plan": {
+      "exhausted": "Cota do mês esgotada",
+      "free": "Grátis",
+      "pro": "Pro",
+      "reconnect": "Reconecte para confirmar sua assinatura",
+      "remaining": "{remaining, plural, one {# foto restante neste mês} other {# fotos restantes neste mês}}",
+      "title": "Plano",
+      "unlimited": "Sem limite"
+    },
     "settings": {
       "about": "Sobre",
       "aboutDescription": "Versão, privacidade e créditos",

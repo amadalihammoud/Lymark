@@ -178,6 +178,15 @@
       "removeTitle": "从历史记录中移除",
       "stampedData": "已添加的数据"
     },
+    "plan": {
+      "exhausted": "本月额度已用完",
+      "free": "免费",
+      "pro": "Pro",
+      "reconnect": "请联网以确认订阅",
+      "remaining": "{remaining, plural, other {本月还剩 # 张照片}}",
+      "title": "方案",
+      "unlimited": "不限量"
+    },
     "settings": {
       "about": "关于",
       "aboutDescription": "版本、隐私与致谢",

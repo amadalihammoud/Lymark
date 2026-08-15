@@ -178,6 +178,15 @@
       "removeTitle": "إزالة من السجل",
       "stampedData": "البيانات المختومة"
     },
+    "plan": {
+      "exhausted": "انتهت حصة الشهر",
+      "free": "مجاني",
+      "pro": "Pro",
+      "reconnect": "اتصل لتأكيد اشتراكك",
+      "remaining": "{remaining, plural, zero {لم تتبقَّ صور هذا الشهر} one {بقيت صورة واحدة هذا الشهر} two {بقيت صورتان هذا الشهر} few {بقيت # صور هذا الشهر} many {بقيت # صورة هذا الشهر} other {بقيت # صورة هذا الشهر}}",
+      "title": "الخطة",
+      "unlimited": "بلا حد"
+    },
     "settings": {
       "about": "عن",
       "aboutDescription": "الإصدار والخصوصية والشكر",

@@ -178,6 +178,15 @@
       "removeTitle": "Aus dem Verlauf entfernen",
       "stampedData": "Gestempelte Daten"
     },
+    "plan": {
+      "exhausted": "Monatskontingent aufgebraucht",
+      "free": "Kostenlos",
+      "pro": "Pro",
+      "reconnect": "Verbinden Sie sich, um Ihr Abo zu bestätigen",
+      "remaining": "{remaining, plural, one {# Foto übrig diesen Monat} other {# Fotos übrig diesen Monat}}",
+      "title": "Tarif",
+      "unlimited": "Ohne Limit"
+    },
     "settings": {
       "about": "Über",
       "aboutDescription": "Version, Datenschutz und Danksagungen",

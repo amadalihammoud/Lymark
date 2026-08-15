@@ -178,6 +178,15 @@
       "removeTitle": "履歴から削除",
       "stampedData": "刻印したデータ"
     },
+    "plan": {
+      "exhausted": "今月の上限に達しました",
+      "free": "無料",
+      "pro": "Pro",
+      "reconnect": "接続してサブスクリプションを確認してください",
+      "remaining": "{remaining, plural, other {今月あと# 枚}}",
+      "title": "プラン",
+      "unlimited": "上限なし"
+    },
     "settings": {
       "about": "について",
       "aboutDescription": "バージョン・プライバシー・クレジット",

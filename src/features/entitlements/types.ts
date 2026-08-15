@@ -73,6 +73,14 @@ export type AccessReason =
 export type AccessState = {
   plan: Plan;
   reason: AccessReason;
+  /**
+   * O teto do período. `null` quando não há.
+   *
+   * Vai junto com `remaining` porque a interface mostra a fração — "11/15" —
+   * e deduzi-la somando o que foi gasto daria número errado assim que um
+   * documento pago fosse rebaixado.
+   */
+  quota: number | null;
   /** `null` quando não há teto. */
   remaining: number | null;
   /** `true` quando a captura pode acontecer. Ver `evaluateAccess`. */

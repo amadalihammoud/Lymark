@@ -207,7 +207,33 @@ describe('cota do plano grátis', () => {
   });
 
   it('o plano pago não tem teto', () => {
-    expect(evaluateAccess(lease(), AGORA).remaining).toBeNull();
+    const estado = evaluateAccess(lease(), AGORA);
+
+    expect(estado.remaining).toBeNull();
+    expect(estado.quota).toBeNull();
+  });
+
+  it('expõe a cota junto do restante, para a interface mostrar a fração', () => {
+    // Deduzir o teto somando o que foi gasto daria número errado assim que um
+    // documento pago fosse rebaixado — daí a cota vir pronta.
+    const usado = lease({ entitlement: { plan: 'free', quota: 15, used: 4 }, spentOffline: 2 });
+    const estado = evaluateAccess(usado, AGORA);
+
+    expect(`${estado.remaining}/${estado.quota}`).toBe('9/15');
+  });
+
+  it('o rebaixado mostra a cota grátis, e não a do documento pago', () => {
+    const rebaixado = lease({
+      entitlement: {
+        plan: 'pro',
+        quota: null,
+        used: 900,
+        validUntil: new Date(AGORA - 90 * DAY).toISOString(),
+      },
+    });
+    const estado = evaluateAccess(rebaixado, AGORA);
+
+    expect(`${estado.remaining}/${estado.quota}`).toBe(`${FREE_MONTHLY_QUOTA}/${FREE_MONTHLY_QUOTA}`);
   });
 });
 

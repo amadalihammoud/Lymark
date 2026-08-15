@@ -8,6 +8,7 @@ import { NavRow } from '@/components/ui/nav-row';
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
 import { useGallery } from '@/contexts/gallery-context';
+import { useEntitlement } from '@/contexts/entitlement-context';
 import { useLocalePreference } from '@/contexts/locale-context';
 import { useSettings } from '@/contexts/settings-context';
 import { colors, spacing, typography } from '@/theme';
@@ -25,6 +26,7 @@ export default function SettingsScreen() {
   const { preferences, visibleFieldCount } = useSettings();
   const { entries } = useGallery();
   const { locale, isAutomatic } = useLocalePreference();
+  const { access } = useEntitlement();
   const t = useTranslations('app');
 
   const appVersion = Constants.expoConfig?.version ?? '1.0.0';
@@ -71,6 +73,21 @@ export default function SettingsScreen() {
       </Section>
 
       <Section title={t('settings.appSection')}>
+        <NavRow
+          icon="card-outline"
+          title={t('plan.title')}
+          description={
+            access.remaining === null
+              ? t('plan.unlimited')
+              : t('plan.remaining', { remaining: access.remaining })
+          }
+          // Fração, no mesmo formato da linha de campos logo acima: "11/15"
+          // se lê sem tradução em idioma nenhum.
+          value={
+            access.quota === null ? t('plan.pro') : `${access.remaining}/${access.quota}`
+          }
+          onPress={() => router.push('/settings/about')}
+        />
         <NavRow
           icon="images-outline"
           title={t('settings.history')}

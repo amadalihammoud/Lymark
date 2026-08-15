@@ -178,6 +178,15 @@
       "removeTitle": "Remove from history",
       "stampedData": "Stamped data"
     },
+    "plan": {
+      "exhausted": "Monthly quota used up",
+      "free": "Free",
+      "pro": "Pro",
+      "reconnect": "Reconnect to confirm your subscription",
+      "remaining": "{remaining, plural, one {# photo left this month} other {# photos left this month}}",
+      "title": "Plan",
+      "unlimited": "No limit"
+    },
     "settings": {
       "about": "About",
       "aboutDescription": "Version, privacy and credits",

@@ -8,6 +8,7 @@ import { useTranslations } from 'use-intl';
 
 import { useWaitForSkia } from '@/components/skia';
 import { CaptureProvider } from '@/contexts/capture-context';
+import { EntitlementProvider } from '@/contexts/entitlement-context';
 import { FeedbackProvider } from '@/contexts/feedback-context';
 import { GalleryProvider } from '@/contexts/gallery-context';
 import { LocaleProvider } from '@/contexts/locale-context';
@@ -57,18 +58,22 @@ export default function RootLayout() {
       {/* Acima de tudo: os títulos das telas já saem traduzidos, e o idioma
           escolhido vale para qualquer parte da árvore. */}
       <LocaleProvider>
-        <SettingsProvider>
-          <GalleryProvider>
-            <CaptureProvider>
-              {/* Acima da navegação: o diálogo e o aviso precisam cobrir
-                  qualquer tela, inclusive as que abrem por cima. */}
-              <FeedbackProvider>
-                <StatusBar style="light" />
-                <Navigation />
-              </FeedbackProvider>
-            </CaptureProvider>
-          </GalleryProvider>
-        </SettingsProvider>
+        {/* Acima das telas e fora da árvore de captura: o direito de acesso
+            não pode ser remontado ao navegar entre abas. */}
+        <EntitlementProvider>
+          <SettingsProvider>
+            <GalleryProvider>
+              <CaptureProvider>
+                {/* Acima da navegação: o diálogo e o aviso precisam cobrir
+                    qualquer tela, inclusive as que abrem por cima. */}
+                <FeedbackProvider>
+                  <StatusBar style="light" />
+                  <Navigation />
+                </FeedbackProvider>
+              </CaptureProvider>
+            </GalleryProvider>
+          </SettingsProvider>
+        </EntitlementProvider>
       </LocaleProvider>
     </SafeAreaProvider>
   );

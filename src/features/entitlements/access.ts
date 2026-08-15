@@ -50,6 +50,7 @@ export function evaluateAccess(lease: LocalLease | null, now: number): AccessSta
     return {
       plan: 'free',
       reason: 'expired',
+      quota: FREE_MONTHLY_QUOTA,
       remaining: FREE_MONTHLY_QUOTA,
       canExport: true,
       shouldWarn: false,
@@ -60,14 +61,23 @@ export function evaluateAccess(lease: LocalLease | null, now: number): AccessSta
   const effectivePlan = reason === 'valid' || reason === 'tolerated' ? lease.entitlement.plan : 'free';
 
   if (effectivePlan === 'pro') {
-    return { plan: 'pro', reason, remaining: null, canExport: true, shouldWarn: reason !== 'valid' };
+    return {
+      plan: 'pro',
+      reason,
+      quota: null,
+      remaining: null,
+      canExport: true,
+      shouldWarn: reason !== 'valid',
+    };
   }
 
+  const quota = effectiveQuota(lease, effectivePlan);
   const remaining = remainingQuota(lease, effectivePlan);
 
   return {
     plan: 'free',
     reason,
+    quota,
     remaining,
     canExport: remaining > 0,
     shouldWarn: reason === 'tolerated',
@@ -108,8 +118,7 @@ function classify(lease: LocalLease, now: number): AccessReason {
  * esta conta não os some duas vezes depois de uma reconciliação.
  */
 function remainingQuota(lease: LocalLease, plan: 'free'): number {
-  const quota = lease.entitlement.plan === plan ? lease.entitlement.quota : FREE_MONTHLY_QUOTA;
-  const ceiling = quota ?? FREE_MONTHLY_QUOTA;
+  const ceiling = effectiveQuota(lease, plan);
 
   // `used` só vale quando o documento é do plano que está valendo. Um
   // documento `pro` rebaixado por vencimento não traz contagem de plano
@@ -117,6 +126,17 @@ function remainingQuota(lease: LocalLease, plan: 'free'): number {
   const alreadyUsed = lease.entitlement.plan === plan ? lease.entitlement.used : 0;
 
   return Math.max(0, ceiling - alreadyUsed - lease.spentOffline);
+}
+
+/**
+ * O teto que vale agora.
+ *
+ * Um documento de outro plano não traz teto de plano grátis nenhum — nesse
+ * caso vale o padrão, e não o que estava escrito lá.
+ */
+function effectiveQuota(lease: LocalLease, plan: 'free'): number {
+  if (lease.entitlement.plan !== plan) return FREE_MONTHLY_QUOTA;
+  return lease.entitlement.quota ?? FREE_MONTHLY_QUOTA;
 }
 
 /**

@@ -178,6 +178,15 @@
       "removeTitle": "Retirer de l’historique",
       "stampedData": "Données apposées"
     },
+    "plan": {
+      "exhausted": "Quota du mois épuisé",
+      "free": "Gratuit",
+      "pro": "Pro",
+      "reconnect": "Reconnectez-vous pour confirmer votre abonnement",
+      "remaining": "{remaining, plural, one {# photo restante ce mois-ci} other {# photos restantes ce mois-ci}}",
+      "title": "Formule",
+      "unlimited": "Sans limite"
+    },
     "settings": {
       "about": "À propos",
       "aboutDescription": "Version, confidentialité et crédits",

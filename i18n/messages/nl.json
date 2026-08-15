@@ -178,6 +178,15 @@
       "removeTitle": "Uit geschiedenis verwijderen",
       "stampedData": "Gestempelde gegevens"
     },
+    "plan": {
+      "exhausted": "Maandquotum op",
+      "free": "Gratis",
+      "pro": "Pro",
+      "reconnect": "Maak verbinding om je abonnement te bevestigen",
+      "remaining": "{remaining, plural, one {# foto over deze maand} other {# foto's over deze maand}}",
+      "title": "Abonnement",
+      "unlimited": "Zonder limiet"
+    },
     "settings": {
       "about": "Over",
       "aboutDescription": "Versie, privacy en credits",

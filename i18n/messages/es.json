@@ -178,6 +178,15 @@
       "removeTitle": "Quitar del historial",
       "stampedData": "Datos sellados"
     },
+    "plan": {
+      "exhausted": "Cuota del mes agotada",
+      "free": "Gratis",
+      "pro": "Pro",
+      "reconnect": "Reconéctate para confirmar tu suscripción",
+      "remaining": "{remaining, plural, one {# foto restante este mes} other {# fotos restantes este mes}}",
+      "title": "Plan",
+      "unlimited": "Sin límite"
+    },
     "settings": {
       "about": "Acerca de",
       "aboutDescription": "Versión, privacidad y créditos",

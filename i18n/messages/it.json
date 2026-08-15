@@ -178,6 +178,15 @@
       "removeTitle": "Rimuovi dalla cronologia",
       "stampedData": "Dati timbrati"
     },
+    "plan": {
+      "exhausted": "Quota del mese esaurita",
+      "free": "Gratis",
+      "pro": "Pro",
+      "reconnect": "Riconnettiti per confermare l’abbonamento",
+      "remaining": "{remaining, plural, one {# foto rimasta questo mese} other {# foto rimaste questo mese}}",
+      "title": "Piano",
+      "unlimited": "Senza limite"
+    },
     "settings": {
       "about": "Info",
       "aboutDescription": "Versione, privacy e crediti",

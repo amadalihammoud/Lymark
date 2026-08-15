@@ -17,6 +17,7 @@ export const StorageKeys = {
   watermarkPreferences: `${NAMESPACE}:watermark-preferences`,
   gallery: `${NAMESPACE}:gallery`,
   locale: `${NAMESPACE}:locale`,
+  entitlement: `${NAMESPACE}:entitlement`,
 } as const;
 
 export type StorageKey = (typeof StorageKeys)[keyof typeof StorageKeys];

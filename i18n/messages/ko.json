@@ -178,6 +178,15 @@
       "removeTitle": "기록에서 삭제",
       "stampedData": "각인한 데이터"
     },
+    "plan": {
+      "exhausted": "이번 달 사용량 소진",
+      "free": "무료",
+      "pro": "Pro",
+      "reconnect": "연결하여 구독을 확인하세요",
+      "remaining": "{remaining, plural, other {이번 달 # 장 남음}}",
+      "title": "요금제",
+      "unlimited": "무제한"
+    },
     "settings": {
       "about": "정보",
       "aboutDescription": "버전, 개인정보, 크레딧",
