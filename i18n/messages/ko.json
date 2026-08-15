@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "앱",
+      "pitch": "사진에 시각, 날짜, 요일, 주소와 추적 코드를 각인합니다. 현장 사진 기록, 현장 점검, 작업 완료 증빙에 씁니다.",
       "platform": "플랫폼",
       "privacy": "개인정보 보호 정책",
+      "privacyGeocoding": "GPS를 쓸 때는 주소를 얻기 위해 운영체제가 Google 또는 Apple 지도 서비스로 좌표를 보냅니다. 여기서 밖으로 나가는 정보는 이것뿐이며, 보내는 주체는 운영체제이지 Lymark가 아닙니다.",
+      "privacyLocation": "위치는 촬영마다 한 번, 주소 항목을 채우는 데만 쓰이며 사진과 따로 저장하지 않습니다.",
+      "privacyOnDevice": "사진과 주소와 기록은 이 기기 안에만 남습니다. Lymark는 서버가 없고, 계정을 만들지 않으며, 사진을 어디로도 보내지 않습니다.",
       "privacySection": "개인정보",
+      "sdk": "Expo SDK",
       "terms": "이용 약관",
       "title": "Lymark에 대해",
       "version": "버전"
@@ -46,6 +51,7 @@
       "galleryDenied": "사진 접근이 거부되어 이미지가 앱 안에만 있습니다. 갤러리에 저장하려면 ‘설정 › 권한’에서 허용하세요.",
       "galleryFailed": "이미지는 기록에 들어갔지만 기기가 갤러리 저장을 거부했습니다. 남은 공간을 확인한 뒤 다시 시도하세요.",
       "generateCode": "생성",
+      "hiddenFields": "{count, plural, other {숨긴 항목}}: {fields} — ‘설정 › 항목과 위치’에서 켤 수 있습니다.",
       "keepMyAddress": "입력한 주소 유지",
       "locate": "위치 찾기",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "그대로 계속",
       "noFieldsMessage": "각인할 내용이 있는 항목이 없습니다. 항목을 채우거나 ‘설정 › 항목과 위치’를 확인하세요.",
       "noFieldsTitle": "이 사진에는 워터마크가 들어가지 않습니다",
+      "noPhotoSelected": "선택된 사진 없음",
       "openFailed": "사진을 열지 못했습니다. 다시 시도하세요.",
       "permissionMessage": "계속하려면 ‘설정 › 권한’에서 접근을 허용하세요.",
       "permissionTitle": "권한이 필요합니다",
+      "pickPhoto": "사진 고르기",
       "pickPhotoHint": "사진을 고르면 작업을 사용할 수 있습니다.",
       "renderFailedTitle": "이미지를 만들지 못했습니다",
       "replaceAddressMessage": "GPS가 찾은 주소:\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "새로 촬영할까요?",
       "saved": "기기 갤러리와 기록에 저장했습니다.",
       "savedAppOnlyTitle": "Lymark 안에만 저장됨",
+      "shareDialogTitle": "워터마크가 들어간 사진 공유",
       "shareFailedMessage": "이미지는 만들어져 Lymark 기록에 있습니다. ‘갤러리’ 탭에서 공유할 수 있습니다.",
       "shareFailedTitle": "공유하지 못했습니다",
       "shareUnavailableMessage": "이 기기에는 공유 시트가 없습니다. 이미지는 Lymark 기록에 남아 있습니다.",
       "shareUnavailableTitle": "공유할 수 없음",
+      "sharedFileTitle": "워터마크가 들어간 사진",
       "stampNotReady": "각인을 아직 준비하고 있습니다.",
       "syncNow": "지금",
       "timestamp": "날짜/시간",
@@ -96,6 +106,7 @@
       "share": "공유",
       "success": "성공",
       "tryAgain": "다시 시도하세요.",
+      "unknownError": "알 수 없는 오류",
       "yes": "예"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "왼쪽 위",
         "top-right": "오른쪽 위"
       },
+      "previewCurrent": "‘촬영’ 탭의 현재 사진 위에 표시합니다.",
+      "previewEmpty": "실제 사진에서 확인하려면 ‘촬영’에서 사진을 고르세요.",
+      "previewTitle": "미리보기",
       "reset": "기본값 복원",
       "sizeTitle": "글자 크기",
       "sizes": {

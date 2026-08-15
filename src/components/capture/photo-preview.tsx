@@ -1,6 +1,7 @@
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { StampCanvas } from '@/features/watermark/stamp-canvas';
 import { colors, radius, typography } from '@/theme';
@@ -59,6 +60,7 @@ export function PhotoPreview({
    */
   bounded?: boolean;
 }) {
+  const t = useTranslations('app');
   /**
    * O espaço disponível para o quadro. É a ÚNICA medição do componente.
    *
@@ -129,7 +131,7 @@ export function PhotoPreview({
     return (
       <View style={styles.fitArea} onLayout={measure}>
         <View style={[styles.reservedArea, reserved]}>
-          {stampedPhoto ?? <Text style={typography.body}>Nenhuma foto selecionada</Text>}
+          {stampedPhoto ?? <Text style={typography.body}>{t('capture.noPhotoSelected')}</Text>}
         </View>
       </View>
     );
@@ -139,7 +141,7 @@ export function PhotoPreview({
     <View style={styles.fullWidth} onLayout={measure}>
       {stampedPhoto ?? (
         <View style={[styles.frame, styles.placeholder, frame]}>
-          <Text style={typography.body}>Nenhuma foto selecionada</Text>
+          <Text style={typography.body}>{t('capture.noPhotoSelected')}</Text>
         </View>
       )}
     </View>

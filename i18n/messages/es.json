@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "Aplicación",
+      "pitch": "Sella la hora, la fecha, el día de la semana, la dirección y un código de seguimiento en tus fotos — para registro de campo, peritaje y comprobante de servicio.",
       "platform": "Plataforma",
       "privacy": "Política de Privacidad",
+      "privacyGeocoding": "Al usar el GPS, el sistema operativo envía la coordenada al servicio de mapas de Google o de Apple para obtener la dirección. Es la única información que sale de aquí, y quien la envía es el sistema, no Lymark.",
+      "privacyLocation": "La ubicación se usa una vez por captura, solo para rellenar el campo de dirección, y no se guarda por separado de las fotos.",
+      "privacyOnDevice": "Las fotos, las direcciones y el historial se quedan solo en este dispositivo. Lymark no tiene servidor, no crea cuenta y no envía tus fotos a ningún sitio.",
       "privacySection": "Privacidad",
+      "sdk": "Expo SDK",
       "terms": "Términos de Uso",
       "title": "Acerca de Lymark",
       "version": "Versión"
@@ -46,6 +51,7 @@
       "galleryDenied": "Se denegó el acceso a las fotos, así que la imagen solo existe dentro de la app. Permítelo en Configuración › Permisos para guardarla en la galería.",
       "galleryFailed": "La imagen entró en el historial, pero el dispositivo se negó a grabarla en la galería. Comprueba el espacio libre e inténtalo de nuevo.",
       "generateCode": "Generar",
+      "hiddenFields": "{count, plural, one {Campo oculto} other {Campos ocultos}}: {fields} — actívalos en Configuración › Campos y posición.",
       "keepMyAddress": "Mantener la mía",
       "locate": "Localizar",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "Continuar así",
       "noFieldsMessage": "Ningún campo tiene contenido para sellar. Rellena los campos o revisa Configuración › Campos y posición.",
       "noFieldsTitle": "La foto saldrá sin marca de agua",
+      "noPhotoSelected": "Ninguna foto seleccionada",
       "openFailed": "No se pudo abrir la foto. Inténtalo de nuevo.",
       "permissionMessage": "Permite el acceso en Configuración › Permisos para continuar.",
       "permissionTitle": "Permiso necesario",
+      "pickPhoto": "Elegir foto",
       "pickPhotoHint": "Elige una foto para habilitar las acciones.",
       "renderFailedTitle": "No se pudo generar la imagen",
       "replaceAddressMessage": "El GPS encontró:\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "¿Empezar una nueva captura?",
       "saved": "Foto guardada en la galería del dispositivo y en el historial.",
       "savedAppOnlyTitle": "Guardada solo en Lymark",
+      "shareDialogTitle": "Compartir foto con marca de agua",
       "shareFailedMessage": "La imagen se generó y está en el historial de Lymark. Puedes compartirla desde la pestaña Galería.",
       "shareFailedTitle": "No se pudo compartir",
       "shareUnavailableMessage": "Este dispositivo no ofrece el panel de compartir. La imagen quedó en el historial de Lymark.",
       "shareUnavailableTitle": "Compartir no disponible",
+      "sharedFileTitle": "Foto con marca de agua",
       "stampNotReady": "El sello aún se está preparando.",
       "syncNow": "Ahora",
       "timestamp": "Fecha/Hora",
@@ -96,6 +106,7 @@
       "share": "Compartir",
       "success": "Éxito",
       "tryAgain": "Inténtalo de nuevo.",
+      "unknownError": "Error desconocido",
       "yes": "Sí"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "Superior izquierda",
         "top-right": "Superior derecha"
       },
+      "previewCurrent": "Sobre la foto actual de la pestaña Capturar.",
+      "previewEmpty": "Elige una foto en Capturar para verla sobre la imagen real.",
+      "previewTitle": "Vista previa",
       "reset": "Restaurar valores",
       "sizeTitle": "Tamaño del texto",
       "sizes": {

@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "App",
+      "pitch": "Stempelt tijd, datum, dag van de week, adres en een traceercode op je foto’s — voor fotodocumentatie in het veld, inspectie en bewijs van uitvoering.",
       "platform": "Platform",
       "privacy": "Privacybeleid",
+      "privacyGeocoding": "Bij gebruik van gps stuurt het besturingssysteem de coördinaat naar de kaartendienst van Google of Apple om het adres op te halen. Dat is de enige informatie die hier weggaat, en het is het systeem dat hem stuurt, niet Lymark.",
+      "privacyLocation": "De locatie wordt één keer per opname gebruikt, alleen om het adresveld in te vullen, en wordt niet los van de foto’s bewaard.",
+      "privacyOnDevice": "De foto’s, de adressen en de geschiedenis blijven alleen op dit apparaat. Lymark heeft geen server, maakt geen account aan en stuurt je foto’s nergens heen.",
       "privacySection": "Privacy",
+      "sdk": "Expo SDK",
       "terms": "Gebruiksvoorwaarden",
       "title": "Over Lymark",
       "version": "Versie"
@@ -46,6 +51,7 @@
       "galleryDenied": "Toegang tot foto’s is geweigerd, dus de afbeelding bestaat alleen in de app. Sta het toe bij Instellingen › Toestemmingen om hem in de galerij op te slaan.",
       "galleryFailed": "De afbeelding kwam in de geschiedenis, maar het apparaat weigerde hem naar de galerij te schrijven. Controleer de vrije ruimte en probeer opnieuw.",
       "generateCode": "Genereren",
+      "hiddenFields": "{count, plural, one {Verborgen veld} other {Verborgen velden}}: {fields} — schakel ze in bij Instellingen › Velden en positie.",
       "keepMyAddress": "De mijne houden",
       "locate": "Lokaliseren",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "Toch doorgaan",
       "noFieldsMessage": "Geen enkel veld heeft inhoud om te stempelen. Vul de velden in, of bekijk Instellingen › Velden en positie.",
       "noFieldsTitle": "De foto komt zonder watermerk",
+      "noPhotoSelected": "Geen foto geselecteerd",
       "openFailed": "De foto kon niet worden geopend. Probeer opnieuw.",
       "permissionMessage": "Sta toegang toe bij Instellingen › Toestemmingen om verder te gaan.",
       "permissionTitle": "Toestemming nodig",
+      "pickPhoto": "Foto kiezen",
       "pickPhotoHint": "Kies een foto om de acties in te schakelen.",
       "renderFailedTitle": "Kon de afbeelding niet maken",
       "replaceAddressMessage": "De gps vond:\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "Nieuwe opname beginnen?",
       "saved": "Foto opgeslagen in de apparaatgalerij en in de geschiedenis.",
       "savedAppOnlyTitle": "Alleen in Lymark opgeslagen",
+      "shareDialogTitle": "Foto met watermerk delen",
       "shareFailedMessage": "De afbeelding is gemaakt en staat in de geschiedenis van Lymark. Je kunt hem delen via het tabblad Galerij.",
       "shareFailedTitle": "Delen mislukt",
       "shareUnavailableMessage": "Dit apparaat heeft geen deelmenu. De afbeelding is in de geschiedenis van Lymark gebleven.",
       "shareUnavailableTitle": "Delen niet beschikbaar",
+      "sharedFileTitle": "Foto met watermerk",
       "stampNotReady": "Het stempel wordt nog voorbereid.",
       "syncNow": "Nu",
       "timestamp": "Datum/Tijd",
@@ -96,6 +106,7 @@
       "share": "Delen",
       "success": "Succesvol",
       "tryAgain": "Probeer opnieuw.",
+      "unknownError": "Onbekende fout",
       "yes": "Ja"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "Linksboven",
         "top-right": "Rechtsboven"
       },
+      "previewCurrent": "Over de huidige foto uit het tabblad Vastleggen.",
+      "previewEmpty": "Kies een foto bij Vastleggen om hem over de echte afbeelding te zien.",
+      "previewTitle": "Voorbeeld",
       "reset": "Standaard herstellen",
       "sizeTitle": "Tekstgrootte",
       "sizes": {

@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "Application",
+      "pitch": "Appose l’heure, la date, le jour de la semaine, l’adresse et un code de suivi sur vos photos — pour la documentation de terrain, l’état des lieux et la preuve d’intervention.",
       "platform": "Plateforme",
       "privacy": "Politique de confidentialité",
+      "privacyGeocoding": "Lorsque le GPS est utilisé, le système d’exploitation envoie la coordonnée au service de cartographie de Google ou d’Apple pour obtenir l’adresse. C’est la seule information qui sort d’ici, et c’est le système qui l’envoie, pas Lymark.",
+      "privacyLocation": "La localisation sert une fois par capture, seulement à remplir le champ d’adresse, et n’est pas conservée séparément des photos.",
+      "privacyOnDevice": "Les photos, les adresses et l’historique restent uniquement sur cet appareil. Lymark n’a pas de serveur, ne crée pas de compte et n’envoie vos photos nulle part.",
       "privacySection": "Confidentialité",
+      "sdk": "Expo SDK",
       "terms": "Conditions d'utilisation",
       "title": "À propos de Lymark",
       "version": "Version"
@@ -46,6 +51,7 @@
       "galleryDenied": "L’accès aux photos a été refusé : l’image n’existe que dans l’application. Autorisez-le dans Paramètres › Autorisations pour l’enregistrer dans la galerie.",
       "galleryFailed": "L’image est entrée dans l’historique, mais l’appareil a refusé de l’écrire dans la galerie. Vérifiez l’espace libre et réessayez.",
       "generateCode": "Générer",
+      "hiddenFields": "{count, plural, one {Champ masqué} other {Champs masqués}} : {fields} — activez-les dans Paramètres › Champs et position.",
       "keepMyAddress": "Garder la mienne",
       "locate": "Localiser",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "Continuer ainsi",
       "noFieldsMessage": "Aucun champ n’a de contenu à apposer. Remplissez les champs, ou revoyez Paramètres › Champs et position.",
       "noFieldsTitle": "La photo sortira sans filigrane",
+      "noPhotoSelected": "Aucune photo sélectionnée",
       "openFailed": "La photo n’a pas pu être ouverte. Réessayez.",
       "permissionMessage": "Autorisez l’accès dans Paramètres › Autorisations pour continuer.",
       "permissionTitle": "Autorisation nécessaire",
+      "pickPhoto": "Choisir une photo",
       "pickPhotoHint": "Choisissez une photo pour activer les actions.",
       "renderFailedTitle": "Échec de la génération de l'image",
       "replaceAddressMessage": "Le GPS a trouvé :\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "Commencer une nouvelle capture ?",
       "saved": "Photo enregistrée dans la galerie de l’appareil et dans l’historique.",
       "savedAppOnlyTitle": "Enregistrée uniquement dans Lymark",
+      "shareDialogTitle": "Partager la photo avec filigrane",
       "shareFailedMessage": "L’image a été générée et se trouve dans l’historique de Lymark. Vous pouvez la partager depuis l’onglet Galerie.",
       "shareFailedTitle": "Impossible de partager",
       "shareUnavailableMessage": "Cet appareil ne propose pas de menu de partage. L’image est restée dans l’historique de Lymark.",
       "shareUnavailableTitle": "Partage indisponible",
+      "sharedFileTitle": "Photo avec filigrane",
       "stampNotReady": "Le marquage est encore en préparation.",
       "syncNow": "Maintenant",
       "timestamp": "Date/Heure",
@@ -96,6 +106,7 @@
       "share": "Partager",
       "success": "Succès",
       "tryAgain": "Réessayez.",
+      "unknownError": "Erreur inconnue",
       "yes": "Oui"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "En haut à gauche",
         "top-right": "En haut à droite"
       },
+      "previewCurrent": "Sur la photo actuelle de l’onglet Capture.",
+      "previewEmpty": "Choisissez une photo dans Capture pour la voir sur l’image réelle.",
+      "previewTitle": "Aperçu",
       "reset": "Rétablir les valeurs par défaut",
       "sizeTitle": "Taille du texte",
       "sizes": {

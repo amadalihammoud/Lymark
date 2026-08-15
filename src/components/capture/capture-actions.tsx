@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui/button';
 import { spacing } from '@/theme';
@@ -23,11 +24,12 @@ export function CaptureActions({
    */
   showCamera?: boolean;
 }) {
+  const t = useTranslations('app');
   return (
     <View style={styles.row}>
       {showCamera ? (
         <Button
-          label="Tirar foto"
+          label={t('capture.camera')}
           icon="camera"
           variant="primary"
           onPress={onTakePhoto}
@@ -36,7 +38,7 @@ export function CaptureActions({
         />
       ) : null}
       <Button
-        label={showCamera ? 'Escolher da galeria' : 'Escolher foto'}
+        label={showCamera ? t('capture.gallery') : t('capture.pickPhoto')}
         icon="images"
         variant="primaryAlt"
         onPress={onPickFromLibrary}

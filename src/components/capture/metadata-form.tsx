@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { PixelRatio, Platform, StyleSheet, Text, View } from 'react-native';
-import { useTranslations } from 'use-intl';
+import { useFormatter, useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui/button';
 import { FieldRow } from '@/components/ui/field-row';
@@ -71,6 +71,7 @@ export function MetadataForm({
   disabled?: boolean;
 }) {
   const t = useTranslations('app');
+  const format = useFormatter();
 
   // Hora, data e dia da semana formam um conjunto: o botão "Agora" atualiza os
   // três de uma vez, e o cabeçalho só faz sentido se algum deles estiver ativo.
@@ -215,8 +216,16 @@ export function MetadataForm({
 
       {hiddenLabels.length > 0 ? (
         <Text style={styles.hiddenHint}>
-          {hiddenLabels.length === 1 ? 'Campo oculto' : 'Campos ocultos'}:{' '}
-          {hiddenLabels.join(', ')} — ative em Configurações › Campos e posição.
+          {/*
+            A lista é montada pelo formatador do idioma, e não por
+            `join(', ')`: em inglês a última vírgula vira "and", em alemão
+            "und", e em árabe o separador é a própria conjunção colada à
+            palavra seguinte.
+          */}
+          {t('capture.hiddenFields', {
+            count: hiddenLabels.length,
+            fields: format.list(hiddenLabels),
+          })}
         </Text>
       ) : null}
     </View>

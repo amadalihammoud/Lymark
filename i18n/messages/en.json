@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "App",
+      "pitch": "Stamps the time, date, weekday, address and a tracking code onto your photos — for field records, site inspections and proof of service.",
       "platform": "Platform",
       "privacy": "Privacy Policy",
+      "privacyGeocoding": "When GPS is used, the operating system sends the coordinate to Google’s or Apple’s map service to obtain the address. That is the only information that leaves here, and it is the system that sends it, not Lymark.",
+      "privacyLocation": "Location is used once per capture, only to fill in the address field, and is not stored separately from the photos.",
+      "privacyOnDevice": "The photos, the addresses and the history stay on this device alone. Lymark has no server, creates no account and sends your photos nowhere.",
       "privacySection": "Privacy",
+      "sdk": "Expo SDK",
       "terms": "Terms of Use",
       "title": "About Lymark",
       "version": "Version"
@@ -46,6 +51,7 @@
       "galleryDenied": "Photo access was denied, so the image only exists inside the app. Allow it in Settings › Permissions to save it to the gallery.",
       "galleryFailed": "The image went into the history, but the device refused to write it to the gallery. Check the free space and try again.",
       "generateCode": "Generate",
+      "hiddenFields": "{count, plural, one {Hidden field} other {Hidden fields}}: {fields} — turn them on in Settings › Fields and position.",
       "keepMyAddress": "Keep mine",
       "locate": "Locate",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "Continue anyway",
       "noFieldsMessage": "No field has anything to stamp. Fill the fields in, or review Settings › Fields and position.",
       "noFieldsTitle": "The photo will come out without a watermark",
+      "noPhotoSelected": "No photo selected",
       "openFailed": "The photo could not be opened. Try again.",
       "permissionMessage": "Allow access in Settings › Permissions to continue.",
       "permissionTitle": "Permission needed",
+      "pickPhoto": "Choose a photo",
       "pickPhotoHint": "Choose a photo to enable the actions.",
       "renderFailedTitle": "Could not generate the image",
       "replaceAddressMessage": "GPS found:\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "Start a new capture?",
       "saved": "Photo saved to the device gallery and to the history.",
       "savedAppOnlyTitle": "Saved only inside Lymark",
+      "shareDialogTitle": "Share watermarked photo",
       "shareFailedMessage": "The image was generated and is in the Lymark history. You can share it from the Gallery tab.",
       "shareFailedTitle": "Could not share",
       "shareUnavailableMessage": "This device has no share sheet. The image stayed in the Lymark history.",
       "shareUnavailableTitle": "Sharing unavailable",
+      "sharedFileTitle": "Watermarked photo",
       "stampNotReady": "The stamp is still being prepared.",
       "syncNow": "Now",
       "timestamp": "Date/Time",
@@ -96,6 +106,7 @@
       "share": "Share",
       "success": "Success",
       "tryAgain": "Try again.",
+      "unknownError": "Unknown error",
       "yes": "Yes"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "Top left",
         "top-right": "Top right"
       },
+      "previewCurrent": "Over the current photo from the Capture tab.",
+      "previewEmpty": "Choose a photo in Capture to see it over the real image.",
+      "previewTitle": "Preview",
       "reset": "Restore defaults",
       "sizeTitle": "Text size",
       "sizes": {

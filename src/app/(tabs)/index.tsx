@@ -236,7 +236,10 @@ export default function CaptureScreen() {
         return;
       }
 
-      const outcome = await shareWatermarkedPhoto(path);
+      const outcome = await shareWatermarkedPhoto(path, {
+          title: t('sharedFileTitle'),
+          dialogTitle: t('shareDialogTitle'),
+        });
       // 'shared' e 'cancelled' não avisam nada, de propósito: num caso deu
       // certo, no outro quem desistiu foi o usuário. Anunciar qualquer coisa
       // aqui seria comentar a própria escolha dele.

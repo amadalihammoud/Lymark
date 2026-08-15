@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "Applicazione",
+      "pitch": "Timbra ora, data, giorno della settimana, indirizzo e un codice di tracciamento sulle tue foto — per documentazione sul campo, sopralluogo e prova di intervento.",
       "platform": "Piattaforma",
       "privacy": "Informativa sulla privacy",
+      "privacyGeocoding": "Quando si usa il GPS, il sistema operativo invia la coordinata al servizio di mappe di Google o di Apple per ottenere l’indirizzo. È l’unica informazione che esce da qui, e a inviarla è il sistema, non Lymark.",
+      "privacyLocation": "La posizione viene usata una volta per acquisizione, soltanto per compilare il campo dell’indirizzo, e non viene conservata separatamente dalle foto.",
+      "privacyOnDevice": "Le foto, gli indirizzi e la cronologia restano solo su questo dispositivo. Lymark non ha server, non crea account e non invia le tue foto da nessuna parte.",
       "privacySection": "Privacy",
+      "sdk": "Expo SDK",
       "terms": "Condizioni d'uso",
       "title": "Info su Lymark",
       "version": "Versione"
@@ -46,6 +51,7 @@
       "galleryDenied": "L’accesso alle foto è stato negato, quindi l’immagine esiste solo dentro l’app. Consentilo in Impostazioni › Autorizzazioni per salvarla nella galleria.",
       "galleryFailed": "L’immagine è entrata nella cronologia, ma il dispositivo ha rifiutato di scriverla nella galleria. Controlla lo spazio libero e riprova.",
       "generateCode": "Genera",
+      "hiddenFields": "{count, plural, one {Campo nascosto} other {Campi nascosti}}: {fields} — attivali in Impostazioni › Campi e posizione.",
       "keepMyAddress": "Tieni il mio",
       "locate": "Localizza",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "Continua così",
       "noFieldsMessage": "Nessun campo ha contenuto da timbrare. Compila i campi, oppure rivedi Impostazioni › Campi e posizione.",
       "noFieldsTitle": "La foto uscirà senza filigrana",
+      "noPhotoSelected": "Nessuna foto selezionata",
       "openFailed": "Non è stato possibile aprire la foto. Riprova.",
       "permissionMessage": "Consenti l’accesso in Impostazioni › Autorizzazioni per continuare.",
       "permissionTitle": "Autorizzazione necessaria",
+      "pickPhoto": "Scegli foto",
       "pickPhotoHint": "Scegli una foto per abilitare le azioni.",
       "renderFailedTitle": "Impossibile generare l'immagine",
       "replaceAddressMessage": "Il GPS ha trovato:\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "Iniziare una nuova acquisizione?",
       "saved": "Foto salvata nella galleria del dispositivo e nella cronologia.",
       "savedAppOnlyTitle": "Salvata solo in Lymark",
+      "shareDialogTitle": "Condividi la foto con filigrana",
       "shareFailedMessage": "L’immagine è stata generata ed è nella cronologia di Lymark. Puoi condividerla dalla scheda Galleria.",
       "shareFailedTitle": "Impossibile condividere",
       "shareUnavailableMessage": "Questo dispositivo non offre il pannello di condivisione. L’immagine è rimasta nella cronologia di Lymark.",
       "shareUnavailableTitle": "Condivisione non disponibile",
+      "sharedFileTitle": "Foto con filigrana",
       "stampNotReady": "Il timbro è ancora in preparazione.",
       "syncNow": "Adesso",
       "timestamp": "Data/Ora",
@@ -96,6 +106,7 @@
       "share": "Condividi",
       "success": "Successo",
       "tryAgain": "Riprova.",
+      "unknownError": "Errore sconosciuto",
       "yes": "Sì"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "In alto a sinistra",
         "top-right": "In alto a destra"
       },
+      "previewCurrent": "Sulla foto attuale della scheda Acquisizione.",
+      "previewEmpty": "Scegli una foto in Acquisizione per vederla sull’immagine reale.",
+      "previewTitle": "Anteprima",
       "reset": "Ripristina i valori predefiniti",
       "sizeTitle": "Dimensione del testo",
       "sizes": {

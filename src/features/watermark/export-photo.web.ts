@@ -66,7 +66,22 @@ export async function saveToDeviceGallery(path: string): Promise<SaveOutcome> {
  * No desktop: não implementado (pode usar clipboard no futuro).
  * No mobile: usa Sharing.shareAsync (implementação no .ts)
  */
-export async function shareWatermarkedPhoto(path: string): Promise<ShareOutcome> {
+/**
+ * Os rótulos chegam por parâmetro, e não do catálogo aqui dentro: esta função
+ * não é um componente React, então não pode chamar `useTranslations`. Quem a
+ * chama é uma tela, e telas têm acesso ao idioma corrente.
+ */
+export type ShareLabels = {
+  /** O que está sendo compartilhado. */
+  title: string;
+  /** O cabeçalho da folha de compartilhamento do sistema. */
+  dialogTitle: string;
+};
+
+export async function shareWatermarkedPhoto(
+  path: string,
+  labels: ShareLabels,
+): Promise<ShareOutcome> {
   const fileName = path.split('/').pop() ?? 'lymark.jpg';
   const blobUrl = blobUrlFor(path);
 
@@ -84,7 +99,7 @@ export async function shareWatermarkedPhoto(path: string): Promise<ShareOutcome>
         return { status: 'unavailable' };
       }
 
-      await navigator.share({ title: 'Foto com marca d’água', files: [file] });
+      await navigator.share({ title: labels.title, files: [file] });
       return { status: 'shared' };
     } catch (error) {
       // `AbortError` é o usuário fechando a folha de compartilhamento. Tratar

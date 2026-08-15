@@ -1,6 +1,7 @@
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
@@ -23,6 +24,7 @@ import { colors, radius, spacing, typography } from '@/theme';
  * a foto de verdade já está do lado.
  */
 export default function WatermarkSettingsScreen() {
+  const t = useTranslations('app');
   const { preferences, visibleFieldCount } = useSettings();
   const { draft } = useCapture();
   const [previewFrame, setPreviewFrame] = useState({ width: 0, height: 0 });
@@ -30,11 +32,9 @@ export default function WatermarkSettingsScreen() {
   return (
     <Screen>
       <Section
-        title="Pré-visualização"
+        title={t('watermark.previewTitle')}
         description={
-          draft.photo
-            ? 'Sobre a foto atual da aba Capturar.'
-            : 'Escolha uma foto em Capturar para ver sobre a imagem real.'
+          draft.photo ? t('watermark.previewCurrent') : t('watermark.previewEmpty')
         }>
         <View
           style={styles.preview}

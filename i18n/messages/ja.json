@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "アプリ",
+      "pitch": "写真に時刻・日付・曜日・住所と追跡コードを刻印します。現場写真の記録、現場検査、作業実施の証明のために。",
       "platform": "プラットフォーム",
       "privacy": "プライバシーポリシー",
+      "privacyGeocoding": "GPSを使うとき、住所を得るために、OSがGoogleまたはAppleの地図サービスへ座標を送ります。ここから外に出る情報はこれだけで、送るのはOSであってLymarkではありません。",
+      "privacyLocation": "位置情報は撮影ごとに一度だけ、住所欄を埋めるためにのみ使い、写真とは別に保存することはありません。",
+      "privacyOnDevice": "写真も住所も履歴も、この端末の中だけに残ります。Lymarkはサーバーを持たず、アカウントも作らず、写真をどこにも送りません。",
       "privacySection": "プライバシー",
+      "sdk": "Expo SDK",
       "terms": "利用規約",
       "title": "Lymarkについて",
       "version": "バージョン"
@@ -46,6 +51,7 @@
       "galleryDenied": "写真へのアクセスが拒否されたため、画像はアプリ内にのみあります。ギャラリーに保存するには「設定 › 権限」で許可してください。",
       "galleryFailed": "画像は履歴に入りましたが、端末がギャラリーへの書き込みを拒否しました。空き容量を確認してお試しください。",
       "generateCode": "生成",
+      "hiddenFields": "{count, plural, other {非表示の項目}}：{fields} — 「設定 › 項目と位置」でオンにできます。",
       "keepMyAddress": "入力した住所のまま",
       "locate": "現在地",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "このまま続ける",
       "noFieldsMessage": "刻印する内容のある項目がありません。項目を入力するか、「設定 › 項目と位置」をご確認ください。",
       "noFieldsTitle": "この写真には透かしが入りません",
+      "noPhotoSelected": "写真が選ばれていません",
       "openFailed": "写真を開けませんでした。もう一度お試しください。",
       "permissionMessage": "続けるには「設定 › 権限」でアクセスを許可してください。",
       "permissionTitle": "権限が必要です",
+      "pickPhoto": "写真を選ぶ",
       "pickPhotoHint": "写真を選ぶと操作が使えるようになります。",
       "renderFailedTitle": "画像を生成できませんでした",
       "replaceAddressMessage": "GPSが見つけた住所：\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "新しく撮影を始めますか？",
       "saved": "端末のギャラリーと履歴に保存しました。",
       "savedAppOnlyTitle": "Lymark内にのみ保存",
+      "shareDialogTitle": "透かし入りの写真を共有",
       "shareFailedMessage": "画像は作成され、Lymarkの履歴にあります。「ギャラリー」タブから共有できます。",
       "shareFailedTitle": "共有に失敗しました",
       "shareUnavailableMessage": "この端末には共有シートがありません。画像はLymarkの履歴に残っています。",
       "shareUnavailableTitle": "共有できません",
+      "sharedFileTitle": "透かし入りの写真",
       "stampNotReady": "刻印をまだ準備しています。",
       "syncNow": "現在",
       "timestamp": "日付/時間",
@@ -96,6 +106,7 @@
       "share": "共有",
       "success": "成功",
       "tryAgain": "もう一度お試しください。",
+      "unknownError": "不明なエラー",
       "yes": "はい"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "左上",
         "top-right": "右上"
       },
+      "previewCurrent": "「撮影」タブの現在の写真の上に表示します。",
+      "previewEmpty": "実際の写真で確認するには、「撮影」で写真を選んでください。",
+      "previewTitle": "プレビュー",
       "reset": "初期値に戻す",
       "sizeTitle": "文字の大きさ",
       "sizes": {

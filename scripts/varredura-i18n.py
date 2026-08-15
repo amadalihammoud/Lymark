@@ -10,8 +10,12 @@ import re, glob, sys
 
 # Onde texto de interface aparece.
 CAMPOS = re.compile(
-    r"""(?:title|message|label|description|rationale|tagline|placeholder|actionLabel)\s*[:=]\s*(['"])(.+?)\1"""
+    r"""(?:title|dialogTitle|message|label|shortLabel|actionLabel|description|rationale|tagline|placeholder)\s*[:=]\s*(['"])(.+?)\1"""
 )
+
+# Texto escondido num ternário dentro de uma propriedade:
+#   label={cond ? 'Escolher da galeria' : 'Escolher foto'}
+TERNARIO = re.compile(r"""\?\s*(['"])(.+?)\1\s*:\s*(['"])(.+?)\3""")
 JSX = re.compile(r""">\s*([A-ZÀ-Ú][^<>{}\n]{3,})\s*<""")
 
 # `Promise<...>`, `Record<...>` e afins casam com a regra de JSX porque um
@@ -36,6 +40,10 @@ for f in sorted(glob.glob('src/**/*.ts', recursive=True) + glob.glob('src/**/*.t
                 achados.append((f, n, texto))
         for m in NOTIFY.finditer(line):
             achados.append((f, n, m.group(2)))
+        for m in TERNARIO.finditer(line):
+            for texto in (m.group(2), m.group(4)):
+                if not IGNORAR.match(texto) and ' ' in texto:
+                    achados.append((f, n, texto))
         for m in JSX.finditer(line):
             texto = m.group(1).strip()
             if not IGNORAR.match(texto) and not TIPOS.match(texto):

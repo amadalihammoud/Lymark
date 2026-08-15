@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "App",
+      "pitch": "Stempelt Uhrzeit, Datum, Wochentag, Adresse und einen Nachverfolgungscode auf Ihre Fotos — für Fotodokumentation vor Ort, Begehungen und Leistungsnachweise.",
       "platform": "Plattform",
       "privacy": "Datenschutzrichtlinie",
+      "privacyGeocoding": "Bei Nutzung des GPS sendet das Betriebssystem die Koordinate an den Kartendienst von Google oder Apple, um die Adresse zu erhalten. Das ist die einzige Information, die von hier weggeht, und gesendet wird sie vom System, nicht von Lymark.",
+      "privacyLocation": "Der Standort wird einmal pro Aufnahme verwendet, nur um das Adressfeld auszufüllen, und nicht getrennt von den Fotos gespeichert.",
+      "privacyOnDevice": "Die Fotos, die Adressen und der Verlauf bleiben allein auf diesem Gerät. Lymark hat keinen Server, legt kein Konto an und sendet Ihre Fotos nirgendwohin.",
       "privacySection": "Datenschutz",
+      "sdk": "Expo SDK",
       "terms": "Nutzungsbedingungen",
       "title": "Über Lymark",
       "version": "Version"
@@ -46,6 +51,7 @@
       "galleryDenied": "Der Fotozugriff wurde verweigert, das Bild existiert daher nur innerhalb der App. Erlauben Sie ihn unter Einstellungen › Berechtigungen, um es in der Galerie zu speichern.",
       "galleryFailed": "Das Bild kam in den Verlauf, aber das Gerät hat das Schreiben in die Galerie abgelehnt. Prüfen Sie den freien Speicher und versuchen Sie es erneut.",
       "generateCode": "Erzeugen",
+      "hiddenFields": "{count, plural, one {Ausgeblendetes Feld} other {Ausgeblendete Felder}}: {fields} — unter Einstellungen › Felder und Position einschalten.",
       "keepMyAddress": "Meine behalten",
       "locate": "Orten",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "Trotzdem fortfahren",
       "noFieldsMessage": "Kein Feld hat Inhalt zum Stempeln. Füllen Sie die Felder aus, oder prüfen Sie Einstellungen › Felder und Position.",
       "noFieldsTitle": "Das Foto erhält kein Wasserzeichen",
+      "noPhotoSelected": "Kein Foto ausgewählt",
       "openFailed": "Das Foto konnte nicht geöffnet werden. Versuchen Sie es erneut.",
       "permissionMessage": "Erlauben Sie den Zugriff unter Einstellungen › Berechtigungen, um fortzufahren.",
       "permissionTitle": "Berechtigung erforderlich",
+      "pickPhoto": "Foto auswählen",
       "pickPhotoHint": "Wählen Sie ein Foto, um die Aktionen freizuschalten.",
       "renderFailedTitle": "Bild konnte nicht erzeugt werden",
       "replaceAddressMessage": "Das GPS hat gefunden:\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "Neue Aufnahme beginnen?",
       "saved": "Foto in der Gerätegalerie und im Verlauf gespeichert.",
       "savedAppOnlyTitle": "Nur in Lymark gespeichert",
+      "shareDialogTitle": "Foto mit Wasserzeichen teilen",
       "shareFailedMessage": "Das Bild wurde erzeugt und liegt im Lymark-Verlauf. Sie können es über den Tab Galerie teilen.",
       "shareFailedTitle": "Teilen fehlgeschlagen",
       "shareUnavailableMessage": "Dieses Gerät bietet keinen Teilen-Dialog. Das Bild ist im Lymark-Verlauf geblieben.",
       "shareUnavailableTitle": "Teilen nicht verfügbar",
+      "sharedFileTitle": "Foto mit Wasserzeichen",
       "stampNotReady": "Der Stempel wird noch vorbereitet.",
       "syncNow": "Jetzt",
       "timestamp": "Datum/Uhrzeit",
@@ -96,6 +106,7 @@
       "share": "Teilen",
       "success": "Erfolg",
       "tryAgain": "Versuchen Sie es erneut.",
+      "unknownError": "Unbekannter Fehler",
       "yes": "Ja"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "Oben links",
         "top-right": "Oben rechts"
       },
+      "previewCurrent": "Über dem aktuellen Foto aus dem Tab Aufnahme.",
+      "previewEmpty": "Wählen Sie im Tab Aufnahme ein Foto, um es über dem echten Bild zu sehen.",
+      "previewTitle": "Vorschau",
       "reset": "Standard wiederherstellen",
       "sizeTitle": "Textgröße",
       "sizes": {

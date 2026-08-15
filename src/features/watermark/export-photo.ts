@@ -78,14 +78,29 @@ export async function saveToDeviceGallery(path: string): Promise<SaveOutcome> {
  * falha aqui não é falha de geração, e não pode ser relatada como tal — sob
  * pena de o usuário tentar de novo e criar uma duplicata.
  */
-export async function shareWatermarkedPhoto(path: string): Promise<ShareOutcome> {
+/**
+ * Os rótulos chegam por parâmetro, e não do catálogo aqui dentro: esta função
+ * não é um componente React, então não pode chamar `useTranslations`. Quem a
+ * chama é uma tela, e telas têm acesso ao idioma corrente.
+ */
+export type ShareLabels = {
+  /** O que está sendo compartilhado. */
+  title: string;
+  /** O cabeçalho da folha de compartilhamento do sistema. */
+  dialogTitle: string;
+};
+
+export async function shareWatermarkedPhoto(
+  path: string,
+  labels: ShareLabels,
+): Promise<ShareOutcome> {
   try {
     if (!(await Sharing.isAvailableAsync())) return { status: 'unavailable' };
 
     await Sharing.shareAsync(resolveExportedPhotoUri(path), {
       mimeType: 'image/jpeg',
       UTI: 'public.jpeg',
-      dialogTitle: 'Compartilhar foto com marca d’água',
+      dialogTitle: labels.dialogTitle,
     });
 
     return { status: 'shared' };

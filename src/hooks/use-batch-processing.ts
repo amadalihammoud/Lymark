@@ -13,6 +13,7 @@
  */
 
 import { useCallback, useState, useRef } from 'react';
+import { useTranslations } from 'use-intl';
 
 import { extractDateFromExif, extractTimeFromExif } from '@/lib/exif';
 import { saveFileToOutput, getOutputFolder } from '@/lib/file-storage';
@@ -52,6 +53,7 @@ const INITIAL_STATE: BatchProcessingState = {
 };
 
 export function useBatchProcessing() {
+  const t = useTranslations('app.common');
   const [state, setState] = useState<BatchProcessingState>(INITIAL_STATE);
   const abortControllerRef = useRef<AbortController | null>(null);
   // `weekday` faz parte do carimbo tanto quanto os outros; ausente daqui, o
@@ -192,7 +194,7 @@ export function useBatchProcessing() {
           results.failed++;
           results.failures.push({
             file: photo.uri.split('/').pop() || photo.uri,
-            error: error instanceof Error ? error.message : 'Erro desconhecido',
+            error: error instanceof Error ? error.message : t('unknownError'),
           });
         }
       }

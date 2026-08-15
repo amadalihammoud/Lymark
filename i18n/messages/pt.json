@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "Aplicativo",
+      "pitch": "Carimba hora, data, dia da semana, endereço e um código de rastreio nas suas fotos — para registro de campo, vistoria e comprovação de serviço.",
       "platform": "Plataforma",
       "privacy": "Política de Privacidade",
+      "privacyGeocoding": "Ao usar o GPS, o sistema operacional envia a coordenada ao serviço de mapas do Google ou da Apple para obter o endereço. É a única informação que sai daqui, e quem a envia é o sistema, não o Lymark.",
+      "privacyLocation": "A localização é usada uma vez por captura, apenas para preencher o campo de endereço, e não é armazenada separadamente das fotos.",
+      "privacyOnDevice": "As fotos, os endereços e o histórico ficam apenas neste aparelho. O Lymark não possui servidor, não cria conta e não envia as suas fotos para lugar nenhum.",
       "privacySection": "Privacidade",
+      "sdk": "Expo SDK",
       "terms": "Termos de Uso",
       "title": "Sobre o Lymark",
       "version": "Versão"
@@ -46,6 +51,7 @@
       "galleryDenied": "O acesso às fotos foi negado, então a imagem existe só dentro do app. Libere em Configurações › Permissões para salvar na galeria.",
       "galleryFailed": "A imagem entrou no histórico, mas o aparelho recusou gravá-la na galeria. Verifique o espaço livre e tente de novo.",
       "generateCode": "Gerar",
+      "hiddenFields": "{count, plural, one {Campo oculto} other {Campos ocultos}}: {fields} — ative em Configurações › Campos e posição.",
       "keepMyAddress": "Manter o meu",
       "locate": "Localizar",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "Continuar assim",
       "noFieldsMessage": "Nenhum campo tem conteúdo para carimbar. Preencha os campos ou reveja Configurações › Campos e posição.",
       "noFieldsTitle": "A foto sairá sem marca d’água",
+      "noPhotoSelected": "Nenhuma foto selecionada",
       "openFailed": "Não foi possível abrir a foto. Tente novamente.",
       "permissionMessage": "Libere o acesso em Configurações › Permissões para continuar.",
       "permissionTitle": "Permissão necessária",
+      "pickPhoto": "Escolher foto",
       "pickPhotoHint": "Escolha uma foto para habilitar as ações.",
       "renderFailedTitle": "Falha ao gerar a imagem",
       "replaceAddressMessage": "O GPS encontrou:\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "Começar nova captura?",
       "saved": "Foto salva na galeria do aparelho e no histórico.",
       "savedAppOnlyTitle": "Salva apenas no Lymark",
+      "shareDialogTitle": "Compartilhar foto com marca d’água",
       "shareFailedMessage": "A imagem foi gerada e está no histórico do Lymark. Você pode compartilhá-la pela aba Galeria.",
       "shareFailedTitle": "Não foi possível compartilhar",
       "shareUnavailableMessage": "Este aparelho não oferece a folha de compartilhamento. A imagem ficou no histórico do Lymark.",
       "shareUnavailableTitle": "Compartilhamento indisponível",
+      "sharedFileTitle": "Foto com marca d’água",
       "stampNotReady": "O carimbo ainda está sendo preparado.",
       "syncNow": "Agora",
       "timestamp": "Data/Hora",
@@ -96,6 +106,7 @@
       "share": "Compartilhar",
       "success": "Sucesso",
       "tryAgain": "Tente novamente.",
+      "unknownError": "Erro desconhecido",
       "yes": "Sim"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "Superior esquerdo",
         "top-right": "Superior direito"
       },
+      "previewCurrent": "Sobre a foto atual da aba Capturar.",
+      "previewEmpty": "Escolha uma foto em Capturar para ver sobre a imagem real.",
+      "previewTitle": "Pré-visualização",
       "reset": "Restaurar padrão",
       "sizeTitle": "Tamanho do texto",
       "sizes": {

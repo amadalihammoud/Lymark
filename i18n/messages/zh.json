@@ -2,9 +2,14 @@
   "app": {
     "about": {
       "appSection": "应用",
+      "pitch": "在照片上加盖时间、日期、星期、地址和一个追踪编号——用于现场照片记录、现场查验和服务凭证。",
       "platform": "平台",
       "privacy": "隐私政策",
+      "privacyGeocoding": "使用 GPS 时，操作系统会把坐标发送给 Google 或 Apple 的地图服务以换取地址。这是唯一离开本机的信息，而且是由系统发送的，不是 Lymark。",
+      "privacyLocation": "定位每次拍摄只使用一次，仅用于填写地址字段，不会独立于照片另行保存。",
+      "privacyOnDevice": "照片、地址和历史记录都只留在这台设备上。Lymark 没有服务器，不创建账号，也不会把您的照片发送到任何地方。",
       "privacySection": "隐私",
+      "sdk": "Expo SDK",
       "terms": "使用条款",
       "title": "关于Lymark",
       "version": "版本"
@@ -46,6 +51,7 @@
       "galleryDenied": "照片访问被拒绝，因此图片只存在于应用内。请在“设置 › 权限”中允许，以便保存到相册。",
       "galleryFailed": "图片已进入历史记录，但设备拒绝写入相册。请检查可用空间后重试。",
       "generateCode": "生成",
+      "hiddenFields": "{count, plural, other {隐藏的字段}}：{fields} — 可在“设置 › 字段与位置”中开启。",
       "keepMyAddress": "保留我输入的",
       "locate": "定位",
       "lookup": {
@@ -59,9 +65,11 @@
       "noFieldsContinue": "仍然继续",
       "noFieldsMessage": "没有任何字段有可添加的内容。请填写字段，或查看“设置 › 字段与位置”。",
       "noFieldsTitle": "这张照片将不带水印",
+      "noPhotoSelected": "未选择照片",
       "openFailed": "无法打开这张照片，请重试。",
       "permissionMessage": "请在“设置 › 权限”中允许访问后继续。",
       "permissionTitle": "需要权限",
+      "pickPhoto": "选择照片",
       "pickPhotoHint": "请先选择一张照片，才能使用这些操作。",
       "renderFailedTitle": "无法生成图片",
       "replaceAddressMessage": "GPS 找到：\n\n{address}",
@@ -71,10 +79,12 @@
       "resetTitle": "开始新的拍摄？",
       "saved": "照片已保存到设备相册和历史记录。",
       "savedAppOnlyTitle": "仅保存在 Lymark 中",
+      "shareDialogTitle": "分享带水印的照片",
       "shareFailedMessage": "图片已生成并保存在 Lymark 的历史记录中。你可以在“相册”标签页分享它。",
       "shareFailedTitle": "分享失败",
       "shareUnavailableMessage": "本设备没有分享面板。图片保留在 Lymark 的历史记录中。",
       "shareUnavailableTitle": "无法分享",
+      "sharedFileTitle": "带水印的照片",
       "stampNotReady": "水印仍在准备中。",
       "syncNow": "现在",
       "timestamp": "日期/时间",
@@ -96,6 +106,7 @@
       "share": "分享",
       "success": "成功",
       "tryAgain": "请重试。",
+      "unknownError": "未知错误",
       "yes": "是"
     },
     "gallery": {
@@ -241,6 +252,9 @@
         "top-left": "左上",
         "top-right": "右上"
       },
+      "previewCurrent": "叠加在“拍摄”标签页的当前照片上。",
+      "previewEmpty": "请在“拍摄”中选择一张照片，以便在真实图片上查看效果。",
+      "previewTitle": "预览",
       "reset": "恢复默认",
       "sizeTitle": "文字大小",
       "sizes": {
