@@ -1,7 +1,10 @@
 {
   "app": {
     "about": {
+      "appSection": "アプリ",
+      "platform": "プラットフォーム",
       "privacy": "プライバシーポリシー",
+      "privacySection": "プライバシー",
       "terms": "利用規約",
       "title": "Lymarkについて",
       "version": "バージョン"
@@ -9,12 +12,17 @@
     "capture": {
       "address": "住所",
       "addressFailedTitle": "住所を取得できませんでした",
+      "addressHint": "「現在地」を押すか、住所を入力",
       "camera": "写真を撮る",
       "code": "コード",
+      "dateHint": "2026年1月1日",
+      "dateTimeGroup": "日付と時刻",
       "gallery": "ギャラリーから選択",
       "galleryDenied": "写真へのアクセスが拒否されたため、画像はアプリ内にのみあります。ギャラリーに保存するには「設定 › 権限」で許可してください。",
       "galleryFailed": "画像は履歴に入りましたが、端末がギャラリーへの書き込みを拒否しました。空き容量を確認してお試しください。",
+      "generateCode": "生成",
       "keepMyAddress": "入力した住所のまま",
+      "locate": "現在地",
       "lookup": {
         "denied": "「設定 › 権限」で位置情報を許可するか、住所を入力してください。",
         "disabled": "端末の位置情報がオフです。クイック設定でオンにしてからお試しください。",
@@ -43,9 +51,12 @@
       "shareUnavailableMessage": "この端末には共有シートがありません。画像はLymarkの履歴に残っています。",
       "shareUnavailableTitle": "共有できません",
       "stampNotReady": "刻印をまだ準備しています。",
+      "syncNow": "現在",
       "timestamp": "日付/時間",
       "title": "撮影",
-      "useGpsAddress": "GPSの住所を使う"
+      "useGpsAddress": "GPSの住所を使う",
+      "weekdayHint": "月",
+      "weekdayShort": "曜日"
     },
     "common": {
       "back": "戻る",
@@ -91,6 +102,11 @@
       "batch": "一括処理",
       "photoDetail": "写真の詳細"
     },
+    "notFound": {
+      "body": "この画面はLymarkの一部ではありません。",
+      "screenTitle": "ページが見つかりません",
+      "title": "存在しないパス"
+    },
     "permissions": {
       "allow": "許可",
       "allowed": "許可済み",
@@ -114,6 +130,17 @@
       "request": "権限をリクエスト",
       "section": "アクセス許可",
       "title": "権限"
+    },
+    "photo": {
+      "backToGallery": "ギャラリーに戻る",
+      "exportedAt": "{when} に書き出し",
+      "noWatermark": "この写真は透かしなしで書き出されました。",
+      "notFoundBody": "この記録は履歴から削除された可能性があります。",
+      "notFoundTitle": "写真が見つかりません",
+      "remove": "削除",
+      "removeBody": "記録がLymarkから消えます。端末のギャラリーに保存済みの画像はそのまま残ります。",
+      "removeTitle": "履歴から削除",
+      "stampedData": "刻印したデータ"
     },
     "settings": {
       "about": "について",

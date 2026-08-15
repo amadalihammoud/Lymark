@@ -1,7 +1,10 @@
 {
   "app": {
     "about": {
+      "appSection": "应用",
+      "platform": "平台",
       "privacy": "隐私政策",
+      "privacySection": "隐私",
       "terms": "使用条款",
       "title": "关于Lymark",
       "version": "版本"
@@ -9,12 +12,17 @@
     "capture": {
       "address": "地址",
       "addressFailedTitle": "未获取到地址",
+      "addressHint": "点按定位，或手动输入地址",
       "camera": "拍照",
       "code": "代码",
+      "dateHint": "2026年1月1日",
+      "dateTimeGroup": "日期和时间",
       "gallery": "从相册选择",
       "galleryDenied": "照片访问被拒绝，因此图片只存在于应用内。请在“设置 › 权限”中允许，以便保存到相册。",
       "galleryFailed": "图片已进入历史记录，但设备拒绝写入相册。请检查可用空间后重试。",
+      "generateCode": "生成",
       "keepMyAddress": "保留我输入的",
+      "locate": "定位",
       "lookup": {
         "denied": "请在“设置 › 权限”中允许定位，或手动输入地址。",
         "disabled": "设备的定位已关闭。请在快捷设置中开启后重试。",
@@ -43,9 +51,12 @@
       "shareUnavailableMessage": "本设备没有分享面板。图片保留在 Lymark 的历史记录中。",
       "shareUnavailableTitle": "无法分享",
       "stampNotReady": "水印仍在准备中。",
+      "syncNow": "现在",
       "timestamp": "日期/时间",
       "title": "捕获",
-      "useGpsAddress": "使用 GPS 的"
+      "useGpsAddress": "使用 GPS 的",
+      "weekdayHint": "周一",
+      "weekdayShort": "星期"
     },
     "common": {
       "back": "返回",
@@ -91,6 +102,11 @@
       "batch": "批量处理",
       "photoDetail": "照片详情"
     },
+    "notFound": {
+      "body": "这个页面不属于 Lymark。",
+      "screenTitle": "未找到页面",
+      "title": "路径不存在"
+    },
     "permissions": {
       "allow": "允许",
       "allowed": "已授予",
@@ -114,6 +130,17 @@
       "request": "请求权限",
       "section": "访问权限",
       "title": "权限"
+    },
+    "photo": {
+      "backToGallery": "返回相册",
+      "exportedAt": "导出于 {when}",
+      "noWatermark": "这张照片导出时没有水印。",
+      "notFoundBody": "这条记录可能已从历史记录中移除。",
+      "notFoundTitle": "未找到照片",
+      "remove": "移除",
+      "removeBody": "该记录将离开 Lymark。已保存到设备相册的图片不受影响。",
+      "removeTitle": "从历史记录中移除",
+      "stampedData": "已添加的数据"
     },
     "settings": {
       "about": "关于",

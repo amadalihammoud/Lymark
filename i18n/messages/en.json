@@ -1,7 +1,10 @@
 {
   "app": {
     "about": {
+      "appSection": "App",
+      "platform": "Platform",
       "privacy": "Privacy Policy",
+      "privacySection": "Privacy",
       "terms": "Terms of Use",
       "title": "About Lymark",
       "version": "Version"
@@ -9,12 +12,17 @@
     "capture": {
       "address": "Address",
       "addressFailedTitle": "No address found",
+      "addressHint": "Tap locate, or type the address",
       "camera": "Take photo",
       "code": "Code",
+      "dateHint": "Jan 1, 2026",
+      "dateTimeGroup": "Date and time",
       "gallery": "Choose from gallery",
       "galleryDenied": "Photo access was denied, so the image only exists inside the app. Allow it in Settings › Permissions to save it to the gallery.",
       "galleryFailed": "The image went into the history, but the device refused to write it to the gallery. Check the free space and try again.",
+      "generateCode": "Generate",
       "keepMyAddress": "Keep mine",
+      "locate": "Locate",
       "lookup": {
         "denied": "Allow location in Settings › Permissions, or type the address.",
         "disabled": "Location is turned off on the device. Turn it on in the quick settings and try again.",
@@ -43,9 +51,12 @@
       "shareUnavailableMessage": "This device has no share sheet. The image stayed in the Lymark history.",
       "shareUnavailableTitle": "Sharing unavailable",
       "stampNotReady": "The stamp is still being prepared.",
+      "syncNow": "Now",
       "timestamp": "Date/Time",
       "title": "Capture",
-      "useGpsAddress": "Use the GPS one"
+      "useGpsAddress": "Use the GPS one",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Day"
     },
     "common": {
       "back": "Back",
@@ -91,6 +102,11 @@
       "batch": "Batch processing",
       "photoDetail": "Photo details"
     },
+    "notFound": {
+      "body": "This screen is not part of Lymark.",
+      "screenTitle": "Page not found",
+      "title": "No such path"
+    },
     "permissions": {
       "allow": "Allow",
       "allowed": "Allowed",
@@ -114,6 +130,17 @@
       "request": "Request permission",
       "section": "Access",
       "title": "Permissions"
+    },
+    "photo": {
+      "backToGallery": "Back to the Gallery",
+      "exportedAt": "Exported on {when}",
+      "noWatermark": "This photo was exported without a watermark.",
+      "notFoundBody": "This record may have been removed from the history.",
+      "notFoundTitle": "Photo not found",
+      "remove": "Remove",
+      "removeBody": "The record leaves Lymark. The image saved to the device gallery is not affected.",
+      "removeTitle": "Remove from history",
+      "stampedData": "Stamped data"
     },
     "settings": {
       "about": "About",

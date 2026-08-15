@@ -110,9 +110,9 @@ export function MetadataForm({
             setGroupWidth((current) => (current === width ? current : width));
           }}>
           <View style={styles.groupHeader}>
-            <Text style={typography.sectionTitle}>Data e hora</Text>
+            <Text style={typography.sectionTitle}>{t('capture.dateTimeGroup')}</Text>
             <Button
-              label="Agora"
+              label={t('capture.syncNow')}
               icon="time-outline"
               variant="ghost"
               onPress={onSyncDateTime}
@@ -148,20 +148,20 @@ export function MetadataForm({
               value={metadata.date}
               onChangeText={(value) => onChangeField('date', value)}
               maxLength={FIELD_MAX_LENGTH.date}
-              placeholder="01 jan. 2026"
+              placeholder={t('capture.dateHint')}
             />
           ) : null}
 
           {visibleFields.weekday ? (
             <FieldRow
               containerStyle={inline ? styles.weekdayCell : undefined}
-              shortLabel={inline ? 'Dia' : undefined}
+              shortLabel={inline ? t('capture.weekdayShort') : undefined}
               editable={!disabled}
               label={t('watermark.fields.weekday')}
               value={metadata.weekday}
               onChangeText={(value) => onChangeField('weekday', value)}
               maxLength={FIELD_MAX_LENGTH.weekday}
-              placeholder="Seg"
+              placeholder={t('capture.weekdayHint')}
             />
           ) : null}
           </View>
@@ -175,11 +175,11 @@ export function MetadataForm({
           value={metadata.address}
           onChangeText={(value) => onChangeField('address', value)}
           maxLength={FIELD_MAX_LENGTH.address}
-          placeholder="Toque em localizar ou digite o endereço"
+          placeholder={t('capture.addressHint')}
           multiline
           trailing={
             <Button
-              label="Localizar"
+              label={t('capture.locate')}
               icon="location"
               variant="primary"
               onPress={onLocate}
@@ -203,7 +203,7 @@ export function MetadataForm({
           maxLength={PHOTO_CODE_LENGTH}
           trailing={
             <Button
-              label="Gerar"
+              label={t('capture.generateCode')}
               variant="primary"
               onPress={onRegenerateCode}
               disabled={disabled}

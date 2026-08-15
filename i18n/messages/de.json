@@ -1,7 +1,10 @@
 {
   "app": {
     "about": {
+      "appSection": "App",
+      "platform": "Plattform",
       "privacy": "Datenschutzrichtlinie",
+      "privacySection": "Datenschutz",
       "terms": "Nutzungsbedingungen",
       "title": "Über Lymark",
       "version": "Version"
@@ -9,12 +12,17 @@
     "capture": {
       "address": "Adresse",
       "addressFailedTitle": "Keine Adresse ermittelt",
+      "addressHint": "Auf Orten tippen, oder die Adresse eingeben",
       "camera": "Foto machen",
       "code": "Code",
+      "dateHint": "01. Jan. 2026",
+      "dateTimeGroup": "Datum und Uhrzeit",
       "gallery": "Aus Galerie auswählen",
       "galleryDenied": "Der Fotozugriff wurde verweigert, das Bild existiert daher nur innerhalb der App. Erlauben Sie ihn unter Einstellungen › Berechtigungen, um es in der Galerie zu speichern.",
       "galleryFailed": "Das Bild kam in den Verlauf, aber das Gerät hat das Schreiben in die Galerie abgelehnt. Prüfen Sie den freien Speicher und versuchen Sie es erneut.",
+      "generateCode": "Erzeugen",
       "keepMyAddress": "Meine behalten",
+      "locate": "Orten",
       "lookup": {
         "denied": "Erlauben Sie den Standort unter Einstellungen › Berechtigungen, oder geben Sie die Adresse ein.",
         "disabled": "Die Standortermittlung des Geräts ist ausgeschaltet. Schalten Sie sie in den Schnelleinstellungen ein und versuchen Sie es erneut.",
@@ -43,9 +51,12 @@
       "shareUnavailableMessage": "Dieses Gerät bietet keinen Teilen-Dialog. Das Bild ist im Lymark-Verlauf geblieben.",
       "shareUnavailableTitle": "Teilen nicht verfügbar",
       "stampNotReady": "Der Stempel wird noch vorbereitet.",
+      "syncNow": "Jetzt",
       "timestamp": "Datum/Uhrzeit",
       "title": "Aufnehmen",
-      "useGpsAddress": "Die vom GPS nehmen"
+      "useGpsAddress": "Die vom GPS nehmen",
+      "weekdayHint": "Mo",
+      "weekdayShort": "Tag"
     },
     "common": {
       "back": "Zurück",
@@ -91,6 +102,11 @@
       "batch": "Stapelverarbeitung",
       "photoDetail": "Fotodetails"
     },
+    "notFound": {
+      "body": "Dieser Bildschirm gehört nicht zu Lymark.",
+      "screenTitle": "Seite nicht gefunden",
+      "title": "Pfad existiert nicht"
+    },
     "permissions": {
       "allow": "Zulassen",
       "allowed": "Erteilt",
@@ -114,6 +130,17 @@
       "request": "Berechtigung anfordern",
       "section": "Zugriffe",
       "title": "Berechtigungen"
+    },
+    "photo": {
+      "backToGallery": "Zurück zur Galerie",
+      "exportedAt": "Exportiert am {when}",
+      "noWatermark": "Dieses Foto wurde ohne Wasserzeichen exportiert.",
+      "notFoundBody": "Dieser Eintrag wurde möglicherweise aus dem Verlauf entfernt.",
+      "notFoundTitle": "Foto nicht gefunden",
+      "remove": "Entfernen",
+      "removeBody": "Der Eintrag verlässt Lymark. Das in der Gerätegalerie gespeicherte Bild bleibt unberührt.",
+      "removeTitle": "Aus dem Verlauf entfernen",
+      "stampedData": "Gestempelte Daten"
     },
     "settings": {
       "about": "Über",

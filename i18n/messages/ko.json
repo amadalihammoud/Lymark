@@ -1,7 +1,10 @@
 {
   "app": {
     "about": {
+      "appSection": "앱",
+      "platform": "플랫폼",
       "privacy": "개인정보 보호 정책",
+      "privacySection": "개인정보",
       "terms": "이용 약관",
       "title": "Lymark에 대해",
       "version": "버전"
@@ -9,12 +12,17 @@
     "capture": {
       "address": "주소",
       "addressFailedTitle": "주소를 가져오지 못함",
+      "addressHint": "‘위치 찾기’를 누르거나 주소를 입력하세요",
       "camera": "사진 찍기",
       "code": "코드",
+      "dateHint": "2026년 1월 1일",
+      "dateTimeGroup": "날짜와 시각",
       "gallery": "갤러리에서 선택",
       "galleryDenied": "사진 접근이 거부되어 이미지가 앱 안에만 있습니다. 갤러리에 저장하려면 ‘설정 › 권한’에서 허용하세요.",
       "galleryFailed": "이미지는 기록에 들어갔지만 기기가 갤러리 저장을 거부했습니다. 남은 공간을 확인한 뒤 다시 시도하세요.",
+      "generateCode": "생성",
       "keepMyAddress": "입력한 주소 유지",
+      "locate": "위치 찾기",
       "lookup": {
         "denied": "‘설정 › 권한’에서 위치를 허용하거나 주소를 입력하세요.",
         "disabled": "기기의 위치 기능이 꺼져 있습니다. 빠른 설정에서 켠 뒤 다시 시도하세요.",
@@ -43,9 +51,12 @@
       "shareUnavailableMessage": "이 기기에는 공유 시트가 없습니다. 이미지는 Lymark 기록에 남아 있습니다.",
       "shareUnavailableTitle": "공유할 수 없음",
       "stampNotReady": "각인을 아직 준비하고 있습니다.",
+      "syncNow": "지금",
       "timestamp": "날짜/시간",
       "title": "캡처",
-      "useGpsAddress": "GPS 주소 사용"
+      "useGpsAddress": "GPS 주소 사용",
+      "weekdayHint": "월",
+      "weekdayShort": "요일"
     },
     "common": {
       "back": "뒤로",
@@ -91,6 +102,11 @@
       "batch": "일괄 처리",
       "photoDetail": "사진 상세"
     },
+    "notFound": {
+      "body": "이 화면은 Lymark에 속하지 않습니다.",
+      "screenTitle": "페이지를 찾을 수 없음",
+      "title": "존재하지 않는 경로"
+    },
     "permissions": {
       "allow": "허용",
       "allowed": "허용됨",
@@ -114,6 +130,17 @@
       "request": "권한 요청",
       "section": "접근 권한",
       "title": "권한"
+    },
+    "photo": {
+      "backToGallery": "갤러리로 돌아가기",
+      "exportedAt": "{when}에 내보냄",
+      "noWatermark": "이 사진은 워터마크 없이 내보냈습니다.",
+      "notFoundBody": "이 기록이 목록에서 삭제되었을 수 있습니다.",
+      "notFoundTitle": "사진을 찾을 수 없음",
+      "remove": "삭제",
+      "removeBody": "기록이 Lymark에서 사라집니다. 기기 갤러리에 저장된 이미지는 영향을 받지 않습니다.",
+      "removeTitle": "기록에서 삭제",
+      "stampedData": "각인한 데이터"
     },
     "settings": {
       "about": "정보",

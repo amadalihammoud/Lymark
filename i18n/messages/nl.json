@@ -1,7 +1,10 @@
 {
   "app": {
     "about": {
+      "appSection": "App",
+      "platform": "Platform",
       "privacy": "Privacybeleid",
+      "privacySection": "Privacy",
       "terms": "Gebruiksvoorwaarden",
       "title": "Over Lymark",
       "version": "Versie"
@@ -9,12 +12,17 @@
     "capture": {
       "address": "Adres",
       "addressFailedTitle": "Geen adres gevonden",
+      "addressHint": "Tik op lokaliseren, of typ het adres",
       "camera": "Foto maken",
       "code": "Code",
+      "dateHint": "1 jan. 2026",
+      "dateTimeGroup": "Datum en tijd",
       "gallery": "Kiezen uit galerij",
       "galleryDenied": "Toegang tot foto’s is geweigerd, dus de afbeelding bestaat alleen in de app. Sta het toe bij Instellingen › Toestemmingen om hem in de galerij op te slaan.",
       "galleryFailed": "De afbeelding kwam in de geschiedenis, maar het apparaat weigerde hem naar de galerij te schrijven. Controleer de vrije ruimte en probeer opnieuw.",
+      "generateCode": "Genereren",
       "keepMyAddress": "De mijne houden",
+      "locate": "Lokaliseren",
       "lookup": {
         "denied": "Sta locatie toe bij Instellingen › Toestemmingen, of typ het adres.",
         "disabled": "De locatie van het apparaat staat uit. Zet hem aan bij de snelle instellingen en probeer opnieuw.",
@@ -43,9 +51,12 @@
       "shareUnavailableMessage": "Dit apparaat heeft geen deelmenu. De afbeelding is in de geschiedenis van Lymark gebleven.",
       "shareUnavailableTitle": "Delen niet beschikbaar",
       "stampNotReady": "Het stempel wordt nog voorbereid.",
+      "syncNow": "Nu",
       "timestamp": "Datum/Tijd",
       "title": "Vastleggen",
-      "useGpsAddress": "Die van de gps gebruiken"
+      "useGpsAddress": "Die van de gps gebruiken",
+      "weekdayHint": "ma",
+      "weekdayShort": "Dag"
     },
     "common": {
       "back": "Terug",
@@ -91,6 +102,11 @@
       "batch": "Batchverwerking",
       "photoDetail": "Fotodetails"
     },
+    "notFound": {
+      "body": "Dit scherm hoort niet bij Lymark.",
+      "screenTitle": "Pagina niet gevonden",
+      "title": "Pad bestaat niet"
+    },
     "permissions": {
       "allow": "Toestaan",
       "allowed": "Verleend",
@@ -114,6 +130,17 @@
       "request": "Machtiging aanvragen",
       "section": "Toegang",
       "title": "Machtigingen"
+    },
+    "photo": {
+      "backToGallery": "Terug naar de Galerij",
+      "exportedAt": "Geëxporteerd op {when}",
+      "noWatermark": "Deze foto is zonder watermerk geëxporteerd.",
+      "notFoundBody": "Deze registratie is mogelijk uit de geschiedenis verwijderd.",
+      "notFoundTitle": "Foto niet gevonden",
+      "remove": "Verwijderen",
+      "removeBody": "De registratie verlaat Lymark. De afbeelding in de apparaatgalerij blijft ongemoeid.",
+      "removeTitle": "Uit geschiedenis verwijderen",
+      "stampedData": "Gestempelde gegevens"
     },
     "settings": {
       "about": "Over",

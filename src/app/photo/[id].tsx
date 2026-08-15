@@ -33,9 +33,9 @@ export default function PhotoDetailScreen() {
       <Screen scrollable={false}>
         <EmptyState
           icon="help-circle-outline"
-          title="Foto não encontrada"
-          description="Este registro pode ter sido removido do histórico."
-          actionLabel="Voltar para a Galeria"
+          title={t('photo.notFoundTitle')}
+          description={t('photo.notFoundBody')}
+          actionLabel={t('photo.backToGallery')}
           onAction={() => router.back()}
         />
       </Screen>
@@ -44,18 +44,18 @@ export default function PhotoDetailScreen() {
 
   const confirmDelete = () => {
     ask({
-      title: 'Remover do histórico',
-      message: 'O registro sai do Lymark. A imagem salva na galeria do aparelho não é afetada.',
+      title: t('photo.removeTitle'),
+      message: t('photo.removeBody'),
       actions: [
         {
-          label: 'Remover',
+          label: t('photo.remove'),
           destructive: true,
           onPress: () => {
             removeEntry(entry.id);
             router.back();
           },
         },
-        { label: 'Cancelar', variant: 'ghost' },
+        { label: t('common.cancel'), variant: 'ghost' },
       ],
     });
   };
@@ -68,9 +68,11 @@ export default function PhotoDetailScreen() {
         contentFit="contain"
       />
 
-      <Text style={typography.caption}>Exportada em {formatTimestamp(entry.exportedAt)}</Text>
+      <Text style={typography.caption}>
+        {t('photo.exportedAt', { when: formatTimestamp(entry.exportedAt) })}
+      </Text>
 
-      <Section title="Dados carimbados">
+      <Section title={t('photo.stampedData')}>
         {/* Só o que realmente foi para a imagem. Listar um campo que ficou de
             fora afirmaria algo falso sobre um registro fotográfico. */}
         {entry.stampedFields.map((key, index) => (
@@ -86,15 +88,13 @@ export default function PhotoDetailScreen() {
         ))}
         {entry.stampedFields.length === 0 ? (
           <View style={styles.row}>
-            <Text style={typography.caption}>
-              Esta foto foi exportada sem marca d’água.
-            </Text>
+            <Text style={typography.caption}>{t('photo.noWatermark')}</Text>
           </View>
         ) : null}
       </Section>
 
       <Button
-        label="Remover do histórico"
+        label={t('photo.removeTitle')}
         icon="trash-outline"
         variant="danger"
         onPress={confirmDelete}

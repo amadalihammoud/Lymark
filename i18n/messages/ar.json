@@ -1,7 +1,10 @@
 {
   "app": {
     "about": {
+      "appSection": "التطبيق",
+      "platform": "المنصة",
       "privacy": "سياسة الخصوصية",
+      "privacySection": "الخصوصية",
       "terms": "شروط الاستخدام",
       "title": "عن Lymark",
       "version": "الإصدار"
@@ -9,12 +12,17 @@
     "capture": {
       "address": "العنوان",
       "addressFailedTitle": "لم يتم الحصول على العنوان",
+      "addressHint": "اضغط «تحديد الموقع» أو اكتب العنوان",
       "camera": "التقاط صورة",
       "code": "الرمز",
+      "dateHint": "١ يناير ٢٠٢٦",
+      "dateTimeGroup": "التاريخ والوقت",
       "gallery": "اختيار من المعرض",
       "galleryDenied": "رُفض الوصول إلى الصور، لذلك توجد الصورة داخل التطبيق فقط. اسمح به من الإعدادات › الأذونات لحفظها في المعرض.",
       "galleryFailed": "دخلت الصورة إلى السجل، لكن الجهاز رفض كتابتها في المعرض. تحقّق من المساحة المتاحة وأعد المحاولة.",
+      "generateCode": "توليد",
       "keepMyAddress": "الإبقاء على عنواني",
+      "locate": "تحديد الموقع",
       "lookup": {
         "denied": "اسمح بالموقع من الإعدادات › الأذونات، أو اكتب العنوان.",
         "disabled": "خدمة الموقع في الجهاز مُطفأة. شغّلها من الإعدادات السريعة وأعد المحاولة.",
@@ -43,9 +51,12 @@
       "shareUnavailableMessage": "لا يوفّر هذا الجهاز قائمة مشاركة. بقيت الصورة في سجل Lymark.",
       "shareUnavailableTitle": "المشاركة غير متاحة",
       "stampNotReady": "ما زال الختم قيد التحضير.",
+      "syncNow": "الآن",
       "timestamp": "التاريخ/الوقت",
       "title": "التقاط",
-      "useGpsAddress": "استخدام عنوان GPS"
+      "useGpsAddress": "استخدام عنوان GPS",
+      "weekdayHint": "إث",
+      "weekdayShort": "اليوم"
     },
     "common": {
       "back": "رجوع",
@@ -91,6 +102,11 @@
       "batch": "المعالجة الدفعية",
       "photoDetail": "تفاصيل الصورة"
     },
+    "notFound": {
+      "body": "هذه الشاشة ليست جزءًا من Lymark.",
+      "screenTitle": "الصفحة غير موجودة",
+      "title": "مسار غير موجود"
+    },
     "permissions": {
       "allow": "السماح",
       "allowed": "ممنوح",
@@ -114,6 +130,17 @@
       "request": "طلب إذن",
       "section": "الأذونات",
       "title": "الأذونات"
+    },
+    "photo": {
+      "backToGallery": "العودة إلى المعرض",
+      "exportedAt": "صُدِّرت في {when}",
+      "noWatermark": "صُدِّرت هذه الصورة بلا علامة مائية.",
+      "notFoundBody": "ربما أُزيل هذا السجل من السجل السابق.",
+      "notFoundTitle": "لم يتم العثور على الصورة",
+      "remove": "إزالة",
+      "removeBody": "يخرج السجل من Lymark. أما الصورة المحفوظة في معرض الجهاز فلن تتأثر.",
+      "removeTitle": "إزالة من السجل",
+      "stampedData": "البيانات المختومة"
     },
     "settings": {
       "about": "عن",
