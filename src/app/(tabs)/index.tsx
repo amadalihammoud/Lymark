@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Link, useRouter } from 'expo-router';
+import { useTranslations } from 'use-intl';
 
 import { AppHeader } from '@/components/brand/app-header';
 import { CaptureActions } from '@/components/capture/capture-actions';
@@ -33,15 +34,22 @@ import { canUseDeviceCamera, isDesktop } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
 import { WATERMARK_FIELD_KEYS, type WatermarkFieldKey } from '@/types';
 
-/** Mensagem específica para cada motivo de falha do GPS. */
-const LOOKUP_MESSAGES: Record<AddressLookupStatus, string> = {
-  idle: '',
-  loading: '',
-  success: '',
-  denied: 'Libere a localização em Configurações › Permissões, ou digite o endereço.',
-  disabled: 'A localização do aparelho está desligada. Ligue nos ajustes rápidos e tente de novo.',
-  timeout: 'O GPS não respondeu a tempo. Dentro de prédios costuma falhar — digite o endereço.',
-  unavailable: 'Não foi possível resolver o endereço nesta posição. Digite manualmente.',
+/**
+ * A chave de catálogo para cada motivo de falha do GPS.
+ *
+ * Chave, e não texto: uma constante de módulo é avaliada uma vez, na carga, e
+ * congelaria as mensagens no idioma daquele instante. Trocar de idioma sem
+ * reiniciar o app deixaria estes avisos — justamente os que a pessoa lê em
+ * campo — na língua anterior.
+ */
+const LOOKUP_KEYS: Record<AddressLookupStatus, string | null> = {
+  idle: null,
+  loading: null,
+  success: null,
+  denied: 'lookup.denied',
+  disabled: 'lookup.disabled',
+  timeout: 'lookup.timeout',
+  unavailable: 'lookup.unavailable',
 };
 
 /** Qual ação está em curso — as duas geram imagem e não podem se sobrepor. */
@@ -57,6 +65,9 @@ type PendingAction = 'save' | 'share';
  * busca de endereço ainda é válida.
  */
 export default function CaptureScreen() {
+  const t = useTranslations('app.capture');
+  const tCommon = useTranslations('app.common');
+  const tApp = useTranslations('app');
   const router = useRouter();
   const { draft, hasPhoto, setPhoto, setField, regenerateCode, syncDateTime, resetDraft } =
     useCapture();
@@ -100,13 +111,13 @@ export default function CaptureScreen() {
       }
       case 'denied':
         ask({
-          title: 'Permissão necessária',
-          message: 'Libere o acesso em Configurações › Permissões para continuar.',
-          actions: [{ label: 'Entendi' }],
+          title: t('permissionTitle'),
+          message: t('permissionMessage'),
+          actions: [{ label: tCommon('gotIt') }],
         });
         break;
       case 'failed':
-        notify('Não foi possível abrir a foto. Tente novamente.', 'warning');
+        notify(t('openFailed'), 'warning');
         break;
       case 'cancelled':
         break;
@@ -139,20 +150,20 @@ export default function CaptureScreen() {
 
     if (!address) {
       ask({
-        title: 'Endereço não obtido',
-        message: LOOKUP_MESSAGES[status] || LOOKUP_MESSAGES.unavailable,
-        actions: [{ label: 'Entendi' }],
+        title: t('addressFailedTitle'),
+        message: t(LOOKUP_KEYS[status] ?? 'lookup.unavailable'),
+        actions: [{ label: tCommon('gotIt') }],
       });
       return;
     }
 
     if (addressRef.current !== addressWhenRequested && addressRef.current.trim()) {
       ask({
-        title: 'Substituir o endereço digitado?',
-        message: `O GPS encontrou:\n\n${address}`,
+        title: t('replaceAddressTitle'),
+        message: t('replaceAddressMessage', { address }),
         actions: [
-          { label: 'Usar o do GPS', onPress: () => setField('address', address) },
-          { label: 'Manter o meu', variant: 'ghost' },
+          { label: t('useGpsAddress'), onPress: () => setField('address', address) },
+          { label: t('keepMyAddress'), variant: 'ghost' },
         ],
       });
       return;
@@ -163,11 +174,11 @@ export default function CaptureScreen() {
 
   const handleReset = useCallback(() => {
     ask({
-      title: 'Começar nova captura?',
-      message: 'A foto escolhida e os campos preenchidos serão descartados.',
+      title: t('resetTitle'),
+      message: t('resetMessage'),
       actions: [
         {
-          label: 'Descartar',
+          label: t('resetConfirm'),
           destructive: true,
           onPress: () => {
             lookupToken.current += 1;
@@ -175,7 +186,7 @@ export default function CaptureScreen() {
             resetDraft();
           },
         },
-        { label: 'Cancelar', variant: 'ghost' },
+        { label: tCommon('cancel'), variant: 'ghost' },
       ],
     });
   }, [ask, resetDraft]);
@@ -187,7 +198,7 @@ export default function CaptureScreen() {
   const runAction = async (action: PendingAction) => {
     const photo = draft.photo;
     if (!photo || !stampTypefaces) {
-      notify('O carimbo ainda está sendo preparado.', 'warning');
+      notify(t('stampNotReady'), 'warning');
       return;
     }
 
@@ -206,20 +217,20 @@ export default function CaptureScreen() {
       if (action === 'save') {
         const outcome = await saveToDeviceGallery(path);
         if (outcome.status === 'saved') {
-          notify('Foto salva na galeria do aparelho e no histórico.');
+          notify(t('saved'));
         } else if (outcome.status === 'denied') {
           ask({
-            title: 'Salva apenas no Lymark',
+            title: t('savedAppOnlyTitle'),
             message:
-              'O acesso às fotos foi negado, então a imagem existe só dentro do app. Libere em Configurações › Permissões para salvar na galeria.',
-            actions: [{ label: 'Entendi' }],
+              t('galleryDenied'),
+            actions: [{ label: tCommon('gotIt') }],
           });
         } else {
           ask({
-            title: 'Salva apenas no Lymark',
+            title: t('savedAppOnlyTitle'),
             message:
-              'A imagem entrou no histórico, mas o aparelho recusou gravá-la na galeria. Verifique o espaço livre e tente de novo.',
-            actions: [{ label: 'Entendi' }],
+              t('galleryFailed'),
+            actions: [{ label: tCommon('gotIt') }],
           });
         }
         return;
@@ -231,24 +242,24 @@ export default function CaptureScreen() {
       // aqui seria comentar a própria escolha dele.
       if (outcome.status === 'unavailable') {
         ask({
-          title: 'Compartilhamento indisponível',
+          title: t('shareUnavailableTitle'),
           message:
-            'Este aparelho não oferece a folha de compartilhamento. A imagem ficou no histórico do Lymark.',
-          actions: [{ label: 'Entendi' }],
+            t('shareUnavailableMessage'),
+          actions: [{ label: tCommon('gotIt') }],
         });
       } else if (outcome.status === 'failed') {
         ask({
-          title: 'Não foi possível compartilhar',
+          title: t('shareFailedTitle'),
           message:
-            'A imagem foi gerada e está no histórico do Lymark. Você pode compartilhá-la pela aba Galeria.',
-          actions: [{ label: 'Entendi' }],
+            t('shareFailedMessage'),
+          actions: [{ label: tCommon('gotIt') }],
         });
       }
     } catch (error) {
       ask({
-        title: 'Falha ao gerar a imagem',
-        message: error instanceof Error ? error.message : 'Tente novamente.',
-        actions: [{ label: 'Entendi' }],
+        title: t('renderFailedTitle'),
+        message: error instanceof Error ? error.message : tCommon('tryAgain'),
+        actions: [{ label: tCommon('gotIt') }],
       });
     } finally {
       setPending(null);
@@ -260,12 +271,12 @@ export default function CaptureScreen() {
 
     if (content.isEmpty) {
       ask({
-        title: 'A foto sairá sem marca d’água',
+        title: t('noFieldsTitle'),
         message:
-          'Nenhum campo tem conteúdo para carimbar. Preencha os campos ou reveja Configurações › Campos e posição.',
+          t('noFieldsMessage'),
         actions: [
-          { label: 'Continuar assim', onPress: () => void runAction(action) },
-          { label: 'Voltar', variant: 'ghost' },
+          { label: t('noFieldsContinue'), onPress: () => void runAction(action) },
+          { label: t('noFieldsBack'), variant: 'ghost' },
         ],
       });
       return;
@@ -274,7 +285,7 @@ export default function CaptureScreen() {
     void runAction(action);
   };
 
-  const header = <AppHeader tagline="Marca d’água com hora, data e local" />;
+  const header = <AppHeader tagline={tApp('tagline')} />;
 
   const preview = (
     <PhotoPreview
@@ -323,7 +334,7 @@ export default function CaptureScreen() {
       {/* Duas ações, dois destinos. */}
       <View style={styles.actions}>
         <Button
-          label="Salvar"
+          label={tCommon('save')}
           icon="download"
           variant="accent"
           onPress={() => requestAction('save')}
@@ -332,7 +343,7 @@ export default function CaptureScreen() {
           style={styles.action}
         />
         <Button
-          label="Compartilhar"
+          label={tCommon('share')}
           icon="share-social"
           variant="primary"
           onPress={() => requestAction('share')}
@@ -345,7 +356,7 @@ export default function CaptureScreen() {
       {hasPhoto ? (
         <>
           <Button
-            label="Começar nova captura"
+            label={t('newCapture')}
             icon="refresh"
             variant="ghost"
             onPress={handleReset}
@@ -353,7 +364,7 @@ export default function CaptureScreen() {
           />
           {isDesktop() && (
             <Button
-              label="Processamento em Lote"
+              label={tApp('nav.batch')}
               icon="images"
               variant="primaryAlt"
               onPress={handleBatchProcessing}
@@ -362,7 +373,7 @@ export default function CaptureScreen() {
           )}
         </>
       ) : (
-        <Text style={styles.hint}>Escolha uma foto para habilitar as ações.</Text>
+        <Text style={styles.hint}>{t('pickPhotoHint')}</Text>
       )}
     </>
   );
