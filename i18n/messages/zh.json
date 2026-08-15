@@ -74,13 +74,32 @@
     "title": "Lymark"
   },
   "desktop": {
+    "dialog": {
+      "allFiles": "所有文件",
+      "images": "图片",
+      "pickFolder": "选择输出文件夹",
+      "pickPhoto": "选择照片",
+      "pickPhotos": "选择要批量处理的照片",
+      "savePhoto": "保存照片"
+    },
     "menu": {
+      "copy": "复制",
+      "cut": "剪切",
       "edit": "编辑",
       "file": "文件",
+      "fullscreen": "全屏",
       "help": "帮助",
+      "paste": "粘贴",
       "quit": "退出",
+      "redo": "重做",
+      "reload": "重新加载",
+      "selectAll": "全选",
       "settings": "设置",
-      "view": "查看"
+      "undo": "撤销",
+      "view": "查看",
+      "zoomIn": "放大",
+      "zoomOut": "缩小",
+      "zoomReset": "实际大小"
     }
   },
   "site": {

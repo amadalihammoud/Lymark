@@ -74,13 +74,32 @@
     "title": "Lymark"
   },
   "desktop": {
+    "dialog": {
+      "allFiles": "Alle Dateien",
+      "images": "Bilder",
+      "pickFolder": "Zielordner auswählen",
+      "pickPhoto": "Foto auswählen",
+      "pickPhotos": "Fotos für die Stapelverarbeitung auswählen",
+      "savePhoto": "Foto speichern"
+    },
     "menu": {
+      "copy": "Kopieren",
+      "cut": "Ausschneiden",
       "edit": "Bearbeiten",
       "file": "Datei",
+      "fullscreen": "Vollbild",
       "help": "Hilfe",
+      "paste": "Einfügen",
       "quit": "Beenden",
+      "redo": "Wiederholen",
+      "reload": "Neu laden",
+      "selectAll": "Alles auswählen",
       "settings": "Einstellungen",
-      "view": "Ansicht"
+      "undo": "Rückgängig",
+      "view": "Ansicht",
+      "zoomIn": "Vergrößern",
+      "zoomOut": "Verkleinern",
+      "zoomReset": "Originalgröße"
     }
   },
   "site": {

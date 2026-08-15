@@ -74,13 +74,32 @@
     "title": "Lymark"
   },
   "desktop": {
+    "dialog": {
+      "allFiles": "كل الملفات",
+      "images": "الصور",
+      "pickFolder": "اختيار مجلد الحفظ",
+      "pickPhoto": "اختيار صورة",
+      "pickPhotos": "اختيار صور للمعالجة الدفعية",
+      "savePhoto": "حفظ الصورة"
+    },
     "menu": {
+      "copy": "نسخ",
+      "cut": "قص",
       "edit": "تحرير",
       "file": "ملف",
+      "fullscreen": "ملء الشاشة",
       "help": "مساعدة",
+      "paste": "لصق",
       "quit": "خروج",
+      "redo": "إعادة",
+      "reload": "إعادة تحميل",
+      "selectAll": "تحديد الكل",
       "settings": "الإعدادات",
-      "view": "عرض"
+      "undo": "تراجع",
+      "view": "عرض",
+      "zoomIn": "تكبير",
+      "zoomOut": "تصغير",
+      "zoomReset": "الحجم الفعلي"
     }
   },
   "site": {

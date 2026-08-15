@@ -84,3 +84,13 @@ extraResources:
     to: dist
     filter:
       - "**/*"
+
+  # O catálogo de traduções, lido em tempo de execução pelo processo principal
+  # para montar o menu do sistema e os diálogos de arquivo. Vem por
+  # `extraResources`, e não pelo asar, porque `desktop/i18n.ts` o lê do disco
+  # com `fs` — importar de fora da pasta mudaria a saída do `tsc` que o
+  # mapeamento de `files` acima depende.
+  - from: ../i18n/messages
+    to: i18n/messages
+    filter:
+      - "*.json"

@@ -1,5 +1,5 @@
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
@@ -80,6 +80,20 @@ export default function RootLayout() {
  */
 function Navigation() {
   const t = useTranslations('app');
+  const router = useRouter();
+
+  /**
+   * O menu do sistema, no desktop, pede rotas por IPC.
+   *
+   * A navegação passa pelo roteador, e não por recarregamento da página:
+   * recarregar descartaria o rascunho de captura — a foto escolhida e os
+   * campos preenchidos — que é o que o app promete não perder ao navegar.
+   */
+  useEffect(() => {
+    globalThis.window?.lymark?.onNavigate?.((route) => {
+      router.navigate(route as Parameters<typeof router.navigate>[0]);
+    });
+  }, [router]);
 
   return (
     <Stack

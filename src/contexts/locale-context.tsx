@@ -98,6 +98,15 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   const locale = chosen ?? deviceLocale;
 
+  /**
+   * No desktop, o menu do sistema e os diálogos de arquivo são desenhados
+   * pelo Electron, fora desta página — então precisam ser avisados. Nas
+   * outras plataformas `window.lymark` não existe e nada acontece.
+   */
+  useEffect(() => {
+    void globalThis.window?.lymark?.setLocale?.(locale);
+  }, [locale]);
+
   const value = useMemo<LocaleContextValue>(
     () => ({ locale, hydrated, isAutomatic: chosen === null, setLocale, clearLocale }),
     [locale, hydrated, chosen, setLocale, clearLocale],

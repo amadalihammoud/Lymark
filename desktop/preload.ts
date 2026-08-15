@@ -48,6 +48,10 @@ export interface LymarkApi {
     error?: string;
   }>;
   getOutputFolder: () => Promise<{ path: string }>;
+  /** Informa ao processo principal o idioma escolhido na interface. */
+  setLocale: (locale: string) => Promise<{ ok: boolean }>;
+  /** Rotas pedidas pelo menu do sistema. */
+  onNavigate: (callback: (route: string) => void) => void;
   onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
 }
 
@@ -85,6 +89,14 @@ export const lymarkApi: LymarkApi = {
   
   getOutputFolder: async () => {
     return ipcRenderer.invoke('get-output-folder');
+  },
+
+  setLocale: async (locale) => {
+    return ipcRenderer.invoke('set-locale', { locale });
+  },
+
+  onNavigate: (callback) => {
+    ipcRenderer.on('navigate', (_, route: string) => callback(route));
   },
   
   onDragDrop: (callback) => {

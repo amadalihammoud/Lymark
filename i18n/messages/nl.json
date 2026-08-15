@@ -74,13 +74,32 @@
     "title": "Lymark"
   },
   "desktop": {
+    "dialog": {
+      "allFiles": "Alle bestanden",
+      "images": "Afbeeldingen",
+      "pickFolder": "Uitvoermap selecteren",
+      "pickPhoto": "Foto selecteren",
+      "pickPhotos": "Foto’s voor de batch selecteren",
+      "savePhoto": "Foto opslaan"
+    },
     "menu": {
+      "copy": "Kopiëren",
+      "cut": "Knippen",
       "edit": "Bewerken",
       "file": "Bestand",
+      "fullscreen": "Volledig scherm",
       "help": "Help",
+      "paste": "Plakken",
       "quit": "Afsluiten",
+      "redo": "Opnieuw",
+      "reload": "Herladen",
+      "selectAll": "Alles selecteren",
       "settings": "Instellingen",
-      "view": "Beeld"
+      "undo": "Ongedaan maken",
+      "view": "Beeld",
+      "zoomIn": "Inzoomen",
+      "zoomOut": "Uitzoomen",
+      "zoomReset": "Werkelijke grootte"
     }
   },
   "site": {

@@ -11,7 +11,11 @@ module.exports = {
     // O catálogo de traduções fica na raiz, fora de `src/`, e é compartilhado
     // com o site e o desktop.
     '^@i18n/(.*)$': '<rootDir>/i18n/$1',
+    // `electron` no npm é o instalador do binário, não o módulo. Sem este
+    // desvio, qualquer teste do processo principal quebra ao importá-lo.
+    '^electron$': '<rootDir>/desktop/__tests__/electron-stub.ts',
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   testMatch: ['**/__tests__/**/*.test.ts?(x)'],
+  testPathIgnorePatterns: ['/node_modules/', '<rootDir>/dist/'],
 };

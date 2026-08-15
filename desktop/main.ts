@@ -10,6 +10,8 @@ import crypto from 'crypto';
 import { pathToFileURL } from 'url';
 
 import { readImageDimensions } from './image-dimensions';
+import { DEFAULT_LOCALE, availableLocales, translate } from './i18n';
+import { buildApplicationMenu } from './menu';
 
 /**
  * Raiz do build web servido pelo protocolo `app://`.
@@ -109,6 +111,16 @@ function readImageSize(filePath: string): { width: number; height: number } {
 // Variáveis globais
 let mainWindow: BrowserWindow | null = null;
 
+/**
+ * O idioma do menu e dos diálogos.
+ *
+ * Guardado aqui porque o processo principal precisa dele **antes** de a
+ * página existir: o menu é montado na inicialização, e esperar o renderer
+ * responder faria o menu piscar em português no primeiro instante para
+ * quem usa o app em outro idioma.
+ */
+let currentLocale: string = DEFAULT_LOCALE;
+
 // Pasta da galeria do desktop (decisão 2.2: pasta real no disco)
 const GALLERY_DIR_NAME = 'Lymark';
 const DEFAULT_GALLERY_PATH = path.join(os.homedir(), 'Pictures', GALLERY_DIR_NAME);
@@ -122,18 +134,35 @@ const CONFIG_FILE = path.join(CONFIG_DIR, 'config.json');
 /**
  * Carrega a configuração persistida do usuário.
  */
-function loadConfig(): { outputFolderPath: string } {
+function loadConfig(): { outputFolderPath: string; locale: string } {
   try {
     if (!fs.existsSync(CONFIG_FILE)) {
-      return { outputFolderPath: DEFAULT_GALLERY_PATH };
+      return { outputFolderPath: DEFAULT_GALLERY_PATH, locale: systemLocale() };
     }
     const config = JSON.parse(fs.readFileSync(CONFIG_FILE, 'utf8'));
     return {
       outputFolderPath: config.outputFolderPath || DEFAULT_GALLERY_PATH,
+      locale: isKnownLocale(config.locale) ? config.locale : systemLocale(),
     };
   } catch {
-    return { outputFolderPath: DEFAULT_GALLERY_PATH };
+    return { outputFolderPath: DEFAULT_GALLERY_PATH, locale: systemLocale() };
   }
+}
+
+/**
+ * O idioma do sistema, reduzido ao que o catálogo tem.
+ *
+ * `app.getLocale()` devolve etiquetas completas — `pt-BR`, `zh-Hans-CN`. A
+ * comparação usa só a parte primária, pela mesma razão do aplicativo: não
+ * existem catálogos por região, e aproximar é melhor do que cair no padrão.
+ */
+function systemLocale(): string {
+  const primary = app.getLocale().split(/[-_]/)[0]?.toLowerCase() ?? '';
+  return isKnownLocale(primary) ? primary : DEFAULT_LOCALE;
+}
+
+function isKnownLocale(value: unknown): value is string {
+  return typeof value === 'string' && availableLocales().includes(value);
 }
 
 /**
@@ -146,7 +175,7 @@ function saveConfig() {
     }
     fs.writeFileSync(
       CONFIG_FILE,
-      JSON.stringify({ outputFolderPath }),
+      JSON.stringify({ outputFolderPath, locale: currentLocale }),
       'utf8'
     );
   } catch (error) {
@@ -244,6 +273,23 @@ function createWindow() {
 
 // Registrar handlers de IPC
 function registerIpcHandlers() {
+  /**
+   * O idioma escolhido na interface, informado pelo renderer.
+   *
+   * A escolha vive na página — é lá que está a tela de idiomas e o
+   * armazenamento do aplicativo. O processo principal só precisa saber para
+   * refazer o menu e traduzir os diálogos de arquivo, e guarda o valor para
+   * já abrir certo na próxima execução.
+   */
+  ipcMain.handle('set-locale', (_event, { locale }: { locale: unknown }) => {
+    if (!isKnownLocale(locale) || locale === currentLocale) return { ok: true };
+
+    currentLocale = locale;
+    saveConfig();
+    buildApplicationMenu(currentLocale, mainWindow);
+    return { ok: true };
+  });
+
   // Handler para salvar arquivo (diálogo de salvamento)
   ipcMain.handle('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
     // Validar tamanho do buffer para evitar DoS
@@ -251,11 +297,11 @@ function registerIpcHandlers() {
       return { status: 'failed', error: 'Arquivo muito grande (máx. 50MB).' };
     }
     const { filePath } = await dialog.showSaveDialog({
-      title: 'Salvar Foto',
+      title: translate(currentLocale, 'desktop.dialog.savePhoto'),
       defaultPath: filename,
       filters: [
         { name: 'JPEG', extensions: ['jpg', 'jpeg'] },
-        { name: 'Todos os arquivos', extensions: ['*'] },
+        { name: translate(currentLocale, 'desktop.dialog.allFiles'), extensions: ['*'] },
       ],
     });
 
@@ -363,11 +409,11 @@ function registerIpcHandlers() {
   // Handler para selecionar imagem
   ipcMain.handle('pick-image', async () => {
     const { filePaths } = await dialog.showOpenDialog({
-      title: 'Selecionar Foto',
+      title: translate(currentLocale, 'desktop.dialog.pickPhoto'),
       properties: ['openFile'],
       filters: [
-        { name: 'Imagens', extensions: ['jpg', 'jpeg', 'png', 'webp'] },
-        { name: 'Todos os arquivos', extensions: ['*'] },
+        { name: translate(currentLocale, 'desktop.dialog.images'), extensions: ['jpg', 'jpeg', 'png', 'webp'] },
+        { name: translate(currentLocale, 'desktop.dialog.allFiles'), extensions: ['*'] },
       ],
     });
 
@@ -392,11 +438,11 @@ function registerIpcHandlers() {
   // Handler para selecionar múltiplas imagens (processamento em lote)
   ipcMain.handle('pick-images', async () => {
     const { filePaths } = await dialog.showOpenDialog({
-      title: 'Selecionar Fotos para Lote',
+      title: translate(currentLocale, 'desktop.dialog.pickPhotos'),
       properties: ['openFile', 'multiSelections'],
       filters: [
-        { name: 'Imagens', extensions: ['jpg', 'jpeg', 'png', 'webp'] },
-        { name: 'Todos os arquivos', extensions: ['*'] },
+        { name: translate(currentLocale, 'desktop.dialog.images'), extensions: ['jpg', 'jpeg', 'png', 'webp'] },
+        { name: translate(currentLocale, 'desktop.dialog.allFiles'), extensions: ['*'] },
       ],
     });
 
@@ -422,7 +468,7 @@ function registerIpcHandlers() {
   // Handler para selecionar pasta de saída
   ipcMain.handle('select-output-folder', async () => {
     const { filePaths } = await dialog.showOpenDialog({
-      title: 'Selecionar Pasta de Saída',
+      title: translate(currentLocale, 'desktop.dialog.pickFolder'),
       properties: ['openDirectory'],
     });
 
@@ -654,6 +700,7 @@ app.whenReady().then(() => {
   // Carregar configuração persistida
   const config = loadConfig();
   outputFolderPath = config.outputFolderPath;
+  currentLocale = config.locale;
 
   // Configurar o protocolo
   createProtocol();
@@ -664,6 +711,9 @@ app.whenReady().then(() => {
   
   // Criar janela
   createWindow();
+
+  // Depois da janela: os itens do menu precisam de alguém para quem navegar.
+  buildApplicationMenu(currentLocale, mainWindow);
   
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {

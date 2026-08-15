@@ -74,13 +74,32 @@
     "title": "Lymark"
   },
   "desktop": {
+    "dialog": {
+      "allFiles": "모든 파일",
+      "images": "이미지",
+      "pickFolder": "저장 폴더 선택",
+      "pickPhoto": "사진 선택",
+      "pickPhotos": "일괄 처리할 사진 선택",
+      "savePhoto": "사진 저장"
+    },
     "menu": {
+      "copy": "복사",
+      "cut": "잘라내기",
       "edit": "편집",
       "file": "파일",
+      "fullscreen": "전체 화면",
       "help": "도움말",
+      "paste": "붙여넣기",
       "quit": "종료",
+      "redo": "다시 실행",
+      "reload": "새로 고침",
+      "selectAll": "모두 선택",
       "settings": "설정",
-      "view": "보기"
+      "undo": "실행 취소",
+      "view": "보기",
+      "zoomIn": "확대",
+      "zoomOut": "축소",
+      "zoomReset": "실제 크기"
     }
   },
   "site": {

@@ -99,6 +99,13 @@ export interface WindowLymark {
   onDragDrop?: (
     callback: (photo: { uri: string; width: number; height: number } | null) => void,
   ) => void;
+  /**
+   * Informa ao Electron o idioma escolhido na interface, para o menu do
+   * sistema e os diálogos de arquivo acompanharem.
+   */
+  setLocale?: (locale: string) => Promise<{ ok: boolean }>;
+  /** Rotas pedidas pelo menu do sistema. */
+  onNavigate?: (callback: (route: string) => void) => void;
 }
 
 declare global {
