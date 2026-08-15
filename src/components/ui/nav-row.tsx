@@ -3,6 +3,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { useIsRtl } from '@/i18n/direction';
 import { HIT_TARGET, colors, spacing, typography } from '@/theme';
 
 /**
@@ -27,6 +28,8 @@ export function NavRow({
   onPress: () => void;
   showDivider?: boolean;
 }) {
+  const rtl = useIsRtl();
+
   return (
     <Pressable
       accessibilityRole="button"
@@ -52,12 +55,22 @@ export function NavRow({
       </View>
 
       {value ? (
-        <Text style={[typography.caption, styles.value]} numberOfLines={1}>
+        <Text
+          style={[typography.caption, styles.value, { textAlign: rtl ? 'left' : 'right' }]}
+          numberOfLines={1}>
           {value}
         </Text>
       ) : null}
 
-      <Ionicons name="chevron-forward" size={18} color={colors.textSubtle} />
+      {/*
+        A seta acompanha a leitura. Em árabe, "avançar" é para a esquerda —
+        uma seta apontando para a direita ali diria "voltar".
+      */}
+      <Ionicons
+        name={rtl ? 'chevron-back' : 'chevron-forward'}
+        size={18}
+        color={colors.textSubtle}
+      />
     </Pressable>
   );
 }
@@ -88,7 +101,6 @@ const styles = StyleSheet.create({
   },
   value: {
     maxWidth: 120,
-    textAlign: 'right',
     color: colors.textMuted,
   },
 });

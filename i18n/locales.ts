@@ -57,9 +57,26 @@ export const LOCALE_NAMES: Record<Locale, string> = {
 };
 
 /**
- * Idiomas escritos da direita para a esquerda. O árabe não precisa apenas de
- * tradução: precisa que o layout inteiro espelhe. Enquanto isso não estiver
- * feito, esta lista é o que marca a dívida.
+ * Idiomas escritos da direita para a esquerda.
+ *
+ * O árabe não precisa apenas de tradução: precisa que o layout inteiro
+ * espelhe. Onde isso está, hoje:
+ *
+ * - **Site, web e desktop: feito.** O documento recebe `dir="rtl"`, e a partir
+ *   dele o navegador espelha sozinho todo `flexDirection: 'row'` e as
+ *   propriedades lógicas (`marginStart`, `paddingStart`). Verificado com o
+ *   navegador em `ar-SA`: ícones à direita, valores à esquerda, seta de
+ *   navegação apontando para a esquerda.
+ * - **Android e iOS: pendente.** O React Native não olha a direção do
+ *   documento — quem decide é o `I18nManager`. Ele já respeita o aparelho
+ *   configurado em árabe, que é o caso comum; o que falta é trocar para árabe
+ *   **dentro** do app num aparelho configurado em outra língua. `forceRTL`
+ *   resolve, mas só passa a valer depois de reiniciar o aplicativo, e isso é
+ *   decisão de produto: pedir "feche e abra de novo" no meio de uma vistoria
+ *   é diferente de pedir na tela de idioma.
+ *
+ * O que NÃO deve espelhar, e por isso não usa propriedade lógica: a marca
+ * desenhada em `wordmark.tsx`. Um logotipo é o mesmo em toda língua.
  */
 export const RTL_LOCALES: readonly Locale[] = ['ar'];
 

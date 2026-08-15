@@ -67,11 +67,14 @@ const styles = StyleSheet.create({
   /**
    * Os destinos que sobraram quando a barra de abas some.
    *
-   * `marginLeft: 'auto'` empurra para a direita sem precisar de um espaçador
-   * vazio no meio — a marca fica na esquerda, a navegação na ponta oposta.
+   * `marginStart: 'auto'` empurra para a ponta oposta sem precisar de um
+   * espaçador vazio no meio — a marca fica no início da linha, a navegação no
+   * fim. É a propriedade lógica, e não `marginLeft`, porque em árabe o início
+   * da linha é a direita: com a versão física, a navegação ficaria empilhada
+   * em cima da marca.
    */
   barActions: {
-    marginLeft: 'auto',
+    marginStart: 'auto',
     flexDirection: 'row',
     alignItems: 'center',
     gap: spacing.lg,
