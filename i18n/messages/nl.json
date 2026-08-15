@@ -1,0 +1,173 @@
+{
+  "app": {
+    "about": {
+      "privacy": "Privacybeleid",
+      "terms": "Gebruiksvoorwaarden",
+      "title": "Over Lymark",
+      "version": "Versie"
+    },
+    "capture": {
+      "address": "Adres",
+      "camera": "Foto maken",
+      "code": "Code",
+      "gallery": "Kiezen uit galerij",
+      "timestamp": "Datum/Tijd",
+      "title": "Vastleggen"
+    },
+    "common": {
+      "back": "Terug",
+      "cancel": "Annuleren",
+      "delete": "Verwijderen",
+      "error": "Fout",
+      "loading": "Laden...",
+      "no": "Nee",
+      "ok": "OK",
+      "save": "Opslaan",
+      "share": "Delen",
+      "success": "Succesvol",
+      "yes": "Ja"
+    },
+    "gallery": {
+      "delete": "Verwijderen",
+      "empty": "Nog geen foto's",
+      "share": "Delen",
+      "title": "Galerij"
+    },
+    "language": {
+      "label": "Taal",
+      "selector": "Selecteer taal"
+    },
+    "login": {
+      "access": "Aanmelden voor toegang",
+      "apple": "Aanmelden met Apple",
+      "google": "Aanmelden met Google",
+      "subtitle": "Meld u aan om door te gaan",
+      "title": "Meld u aan om toegang te krijgen tot Lymark"
+    },
+    "permissions": {
+      "camera": "Camera",
+      "denied": "Geweigerd",
+      "granted": "Toegekend",
+      "location": "Locatie",
+      "photos": "Foto's",
+      "request": "Machtiging aanvragen",
+      "title": "Machtigingen"
+    },
+    "settings": {
+      "about": "Over",
+      "language": "Taal",
+      "permissions": "Machtigingen",
+      "save": "Opslaan",
+      "title": "Instellingen",
+      "watermark": "Watermerk"
+    },
+    "signup": {
+      "subtitle": "Meld u aan om te beginnen",
+      "title": "Maak uw Lymark-account"
+    },
+    "title": "Lymark"
+  },
+  "desktop": {
+    "menu": {
+      "edit": "Bewerken",
+      "file": "Bestand",
+      "help": "Help",
+      "quit": "Afsluiten",
+      "settings": "Instellingen",
+      "view": "Beeld"
+    }
+  },
+  "site": {
+    "availability": {
+      "contact": "Om de lancering te volgen of een probleem te melden, schrijf naar <email>contato@lymark.app</email>.",
+      "description": "Lymark is versie 1.3.0, wordt getest op Android voordat het op Google Play wordt gepubliceerd. Er is geen iOS-versie of webversie, en de app verzamelt geen betalingen.",
+      "title": "Beschikbaarheid"
+    },
+    "data": {
+      "device": {
+        "description": "Lymark heeft geen server, maakt geen account aan en verzendt uw foto's nergens naartoe. De geschiedenis slaat de laatste 200 exportacties op in bestanden van de applicatie zelf.",
+        "field": "Op het apparaat",
+        "heading": "Foto's, adressen en geschiedenis"
+      },
+      "external": {
+        "description": "Om breedte- en lengtegraad om te zetten in een leesbaar adres, raadpleegt het besturingssysteem de geocoderingsdienst van Google of Apple. Dit is de enige informatie die naar buiten gaat, en die gaat via het systeem, niet via de applicatie.",
+        "field": "Buiten het apparaat",
+        "heading": "Alleen conversie van coördinaten naar adres"
+      },
+      "note": "Alles staat uitgewerkt — inclusief wat dat betekent onder de Braziliaanse LGPD — in het <privacy>Privacybeleid</privacy>. Het uitschakelen van de locatietoestemming laat de app volledig werken; alleen het adresveld moet dan met de hand worden ingevuld.",
+      "title": "Waar uw gegevens zijn"
+    },
+    "description": "Android-applicatie die tijd, datum, dag van de week, adres en een trackingcode op inspectie- en servicebewijs foto's stempelt.",
+    "features": {
+      "address": {
+        "description": "De straatnaam wordt afgekort en de staat wordt een afkorting, zodat het adres in twee regels past zonder de foto te bedekken. Als u typt voordat de GPS reageert, prevaleert wat u heeft getypt.",
+        "field": "Adres",
+        "heading": "Ingevuld door GPS, handmatig corrigeerbaar"
+      },
+      "code": {
+        "description": "Dient om een specifieke foto te citeren in een werkorder of rapport. Wordt gedraaid aan de rechterzijde of naast het datablok, naar keuze.",
+        "field": "Fotocode",
+        "heading": "Veertien tekens, willekeurig gekozen door cryptografische generator"
+      },
+      "note": "Elk veld wordt individueel in- of uitgeschakeld, en het blok kan worden verankerd in een van de vier hoeken, in drie maten. De voorvertoning gebruikt uw huidige foto, geen generiek voorbeeld: wat op het scherm verschijnt, is letterlijk wat wordt geëxporteerd.",
+      "time": {
+        "description": "Een knop geeft de drie velden terug op het huidige moment wanneer de opname langer duurde dan verwacht. Alle blijven bewerkbaar.",
+        "field": "Tijd en datum",
+        "heading": "Van de klok van het apparaat, op het moment van opname"
+      },
+      "title": "Wat er in de afbeelding komt"
+    },
+    "footer": {
+      "description": "Lymark — fotografische registratie met datum, tijd en adres.",
+      "documentsLabel": "Documenten",
+      "privacy": "Privacybeleid",
+      "support": "Ondersteuning:",
+      "terms": "Gebruiksvoorwaarden"
+    },
+    "hero": {
+      "cta": "Open de app in de browser",
+      "description": "Lymark stempelt tijd, datum, dag van de week, adres en een trackingcode direct op de afbeelding. Het bestand dat uit de app komt, heeft de informatie al ingesloten - het zijn geen gegevens die de foto vergezellen en verloren gaan bij de eerste doorsturing via WhatsApp.",
+      "eyebrow": "Veldfotografieregistratie",
+      "heading": "De foto verlaat de telefoon al met de melding van wanneer, waar en wat.",
+      "meta": {
+        "android": "Android en browser",
+        "language": "Braziliaans Portugees",
+        "noAccount": "Geen account",
+        "noServer": "Geen server"
+      },
+      "note": "Niets te installeren."
+    },
+    "nav": {
+      "home": "Home",
+      "homeLabel": "Lymark, startpagina",
+      "label": "Hoofdnavigatie",
+      "privacy": "Privacy",
+      "terms": "Voorwaarden"
+    },
+    "process": {
+      "capture": {
+        "description": "Het adres begint te worden gezocht zodra de foto binnenkomt. De velden blijven open voor aanpassing terwijl dit gebeurt.",
+        "field": "Vastleggen",
+        "heading": "Camera of galerij"
+      },
+      "note": "De twee acties zijn opzettelijk gescheiden. Opslaan en delen lossen verschillende problemen op, en het combineren ervan in één knop zou degenen die alleen willen archiveren dwingen om door een verzendscherm te gaan.",
+      "save": {
+        "description": "Het blijft bij de andere foto's op de telefoon, beschikbaar voor elke applicatie - zelfs na Lymark te hebben verwijderd.",
+        "field": "Opslaan",
+        "heading": "Gaat naar de apparaatgalerij"
+      },
+      "share": {
+        "description": "WhatsApp, e-mail, Drive: de bestemming wordt gekozen door het besturingssysteem, en de applicatie neemt niet deel aan het verzenden.",
+        "field": "Delen",
+        "heading": "Opent het systeemblad"
+      },
+      "title": "De weg van een foto"
+    },
+    "skipToContent": "Naar de inhoud",
+    "specimen": {
+      "caption": "De amberkleurige streep begint en eindigt bij de rand van de cijfers, niet van het tekstvak.",
+      "label": "Voorbeeld van het Lymark-stempel: tijd 07:42, datum 12 augustus 2026, woensdag, een adres in Guarujá en een fotocode."
+    },
+    "title": "Lymark — watermerk met datum, tijd en adres op veldfoto's"
+  }
+}

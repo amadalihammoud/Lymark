@@ -1,0 +1,173 @@
+{
+  "app": {
+    "about": {
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Uso",
+      "title": "Sobre o Lymark",
+      "version": "Versão"
+    },
+    "capture": {
+      "address": "Endereço",
+      "camera": "Tirar foto",
+      "code": "Código",
+      "gallery": "Escolher da galeria",
+      "timestamp": "Data/Hora",
+      "title": "Capturar"
+    },
+    "common": {
+      "back": "Voltar",
+      "cancel": "Cancelar",
+      "delete": "Apagar",
+      "error": "Erro",
+      "loading": "Carregando...",
+      "no": "Não",
+      "ok": "OK",
+      "save": "Salvar",
+      "share": "Compartilhar",
+      "success": "Sucesso",
+      "yes": "Sim"
+    },
+    "gallery": {
+      "delete": "Apagar",
+      "empty": "Nenhuma foto ainda",
+      "share": "Compartilhar",
+      "title": "Galeria"
+    },
+    "language": {
+      "label": "Idioma",
+      "selector": "Selecione o idioma"
+    },
+    "login": {
+      "access": "Entrar para acessar",
+      "apple": "Entrar com Apple",
+      "google": "Entrar com Google",
+      "subtitle": "Faça login para continuar",
+      "title": "Entre para acessar o Lymark"
+    },
+    "permissions": {
+      "camera": "Câmera",
+      "denied": "Negado",
+      "granted": "Concedido",
+      "location": "Localização",
+      "photos": "Fotos",
+      "request": "Solicitar permissão",
+      "title": "Permissões"
+    },
+    "settings": {
+      "about": "Sobre",
+      "language": "Idioma",
+      "permissions": "Permissões",
+      "save": "Salvar",
+      "title": "Configurações",
+      "watermark": "Marca d'água"
+    },
+    "signup": {
+      "subtitle": "Cadastre-se para começar a usar",
+      "title": "Crie sua conta no Lymark"
+    },
+    "title": "Lymark"
+  },
+  "desktop": {
+    "menu": {
+      "edit": "Editar",
+      "file": "Arquivo",
+      "help": "Ajuda",
+      "quit": "Sair",
+      "settings": "Configurações",
+      "view": "Exibir"
+    }
+  },
+  "site": {
+    "availability": {
+      "contact": "Para acompanhar o lançamento ou relatar um problema, escreva para <email>contato@lymark.app</email>.",
+      "description": "O Lymark está na versão 1.3.0, em testes no Android antes da publicação na Google Play. Não há versão para iOS nem versão web, e o aplicativo não coleta pagamento.",
+      "title": "Disponibilidade"
+    },
+    "data": {
+      "device": {
+        "description": "O Lymark não tem servidor, não cria conta e não envia as suas fotos para lugar nenhum. O histórico guarda as últimas duzentas exportações em arquivos do próprio aplicativo.",
+        "field": "No aparelho",
+        "heading": "Fotos, endereços e histórico"
+      },
+      "external": {
+        "description": "Para transformar a latitude e a longitude num endereço legível, o sistema operacional consulta o serviço de geocodificação do Google ou da Apple. É a única informação que sai, e ela sai pelo sistema, não pelo aplicativo.",
+        "field": "Fora do aparelho",
+        "heading": "Apenas a conversão de coordenada em endereço"
+      },
+      "note": "Está detalhado — inclusive o que isso significa sob a LGPD — na <privacy>Política de Privacidade</privacy>. Desligar a permissão de localização mantém o aplicativo inteiramente funcional; apenas o campo de endereço passa a ser digitado à mão.",
+      "title": "Onde os seus dados ficam"
+    },
+    "description": "Aplicativo Android que carimba hora, data, dia da semana, endereço e um código de rastreio nas fotos de vistoria e comprovação de serviço.",
+    "features": {
+      "address": {
+        "description": "O logradouro é abreviado e o estado vira sigla, para o endereço caber em duas linhas sem cobrir a foto. Se você digitou antes do GPS responder, o que você escreveu prevalece.",
+        "field": "Endereço",
+        "heading": "Preenchido pelo GPS, corrigível à mão"
+      },
+      "code": {
+        "description": "Serve para citar uma foto específica numa ordem de serviço ou num laudo. Vai girado na lateral direita ou junto ao bloco de dados, à sua escolha.",
+        "field": "Código de foto",
+        "heading": "Catorze caracteres, sorteados por gerador criptográfico"
+      },
+      "note": "Cada campo é ligado ou desligado individualmente, e o bloco pode ser ancorado em qualquer um dos quatro cantos — em três tamanhos. A pré-visualização usa a sua foto atual, e não um exemplo genérico: o que aparece na tela é literalmente o que é exportado.",
+      "time": {
+        "description": "Um botão devolve os três campos ao instante atual quando a captura demorou mais do que o previsto. Todos permanecem editáveis.",
+        "field": "Hora e data",
+        "heading": "Do relógio do aparelho, no momento da captura"
+      },
+      "title": "O que entra na imagem"
+    },
+    "footer": {
+      "description": "Lymark — registro fotográfico com data, hora e endereço.",
+      "documentsLabel": "Documentos",
+      "privacy": "Política de Privacidade",
+      "support": "Suporte:",
+      "terms": "Termos de Uso"
+    },
+    "hero": {
+      "cta": "Abrir o app no navegador",
+      "description": "O Lymark carimba hora, data, dia da semana, endereço e um código de rastreio diretamente na imagem. O arquivo que sai do aplicativo já sai com a informação embutida — não é um dado que acompanha a foto e se perde no primeiro encaminhamento por WhatsApp.",
+      "eyebrow": "Registro fotográfico de campo",
+      "heading": "A foto sai do celular já dizendo quando, onde e o quê.",
+      "meta": {
+        "android": "Android e navegador",
+        "language": "Português do Brasil",
+        "noAccount": "Sem conta",
+        "noServer": "Sem servidor"
+      },
+      "note": "Nada para instalar."
+    },
+    "nav": {
+      "home": "Início",
+      "homeLabel": "Lymark, página inicial",
+      "label": "Principal",
+      "privacy": "Privacidade",
+      "terms": "Termos"
+    },
+    "process": {
+      "capture": {
+        "description": "O endereço começa a ser buscado assim que a foto entra. Os campos ficam abertos para ajuste enquanto isso.",
+        "field": "Capturar",
+        "heading": "Câmera ou galeria"
+      },
+      "note": "As duas ações são separadas de propósito. Salvar e compartilhar resolvem problemas diferentes, e juntar as duas num botão só obrigaria quem quer apenas arquivar a passar por uma tela de envio.",
+      "save": {
+        "description": "Fica junto com as outras fotos do celular, disponível para qualquer aplicativo — inclusive depois de desinstalar o Lymark.",
+        "field": "Salvar",
+        "heading": "Vai para a galeria do aparelho"
+      },
+      "share": {
+        "description": "WhatsApp, e-mail, Drive: o destino é escolhido pelo sistema operacional, e o aplicativo não participa do envio.",
+        "field": "Compartilhar",
+        "heading": "Abre a folha do sistema"
+      },
+      "title": "O percurso de uma foto"
+    },
+    "skipToContent": "Pular para o conteúdo",
+    "specimen": {
+      "caption": "A barra âmbar começa e termina nos limites dos dígitos, não da caixa de texto.",
+      "label": "Amostra do carimbo do Lymark: hora 07:42, data 12 de agosto de 2026, quarta-feira, endereço em Guarujá e código de foto."
+    },
+    "title": "Lymark — marca d'água de data, hora e endereço em fotos de campo"
+  }
+}
