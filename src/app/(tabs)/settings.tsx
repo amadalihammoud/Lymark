@@ -1,15 +1,18 @@
 import Constants from 'expo-constants';
 import { useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { Wordmark } from '@/components/brand/wordmark';
 import { NavRow } from '@/components/ui/nav-row';
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
 import { useGallery } from '@/contexts/gallery-context';
+import { useLocalePreference } from '@/contexts/locale-context';
 import { useSettings } from '@/contexts/settings-context';
 import { colors, spacing, typography } from '@/theme';
 import { WATERMARK_FIELD_KEYS, WATERMARK_POSITION_LABELS } from '@/types';
+import { LOCALE_NAMES } from '@i18n/locales';
 
 /**
  * Configurações — o índice.
@@ -21,6 +24,8 @@ export default function SettingsScreen() {
   const router = useRouter();
   const { preferences, visibleFieldCount } = useSettings();
   const { entries } = useGallery();
+  const { locale, isAutomatic } = useLocalePreference();
+  const t = useTranslations('app');
 
   const appVersion = Constants.expoConfig?.version ?? '1.0.0';
 
@@ -52,6 +57,13 @@ export default function SettingsScreen() {
           title="Permissões"
           description="Câmera, fotos e localização"
           onPress={() => router.push('/settings/permissions')}
+        />
+        <NavRow
+          icon="language-outline"
+          title={t('language.label')}
+          description={t('language.selector')}
+          value={isAutomatic ? t('language.automatic') : LOCALE_NAMES[locale]}
+          onPress={() => router.push('/settings/language')}
           showDivider={false}
         />
       </Section>

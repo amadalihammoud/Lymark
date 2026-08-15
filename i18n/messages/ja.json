@@ -34,6 +34,8 @@
       "title": "ギャラリー"
     },
     "language": {
+      "automatic": "端末に合わせる",
+      "automaticNote": "Lymarkは端末で設定された言語に従います。",
       "label": "言語",
       "selector": "言語を選択"
     },
@@ -43,6 +45,10 @@
       "google": "Googleでログイン",
       "subtitle": "続けるにはログイン",
       "title": "Lymarkにアクセスするにはログイン"
+    },
+    "nav": {
+      "batch": "一括処理",
+      "photoDetail": "写真の詳細"
     },
     "permissions": {
       "camera": "カメラ",

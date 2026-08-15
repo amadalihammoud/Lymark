@@ -34,6 +34,8 @@
       "title": "Galerij"
     },
     "language": {
+      "automatic": "Zoals het apparaat",
+      "automaticNote": "Lymark volgt de taal die op het apparaat is ingesteld.",
       "label": "Taal",
       "selector": "Selecteer taal"
     },
@@ -43,6 +45,10 @@
       "google": "Aanmelden met Google",
       "subtitle": "Meld u aan om door te gaan",
       "title": "Meld u aan om toegang te krijgen tot Lymark"
+    },
+    "nav": {
+      "batch": "Batchverwerking",
+      "photoDetail": "Fotodetails"
     },
     "permissions": {
       "camera": "Camera",

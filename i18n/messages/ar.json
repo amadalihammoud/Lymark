@@ -34,6 +34,8 @@
       "title": "المعرض"
     },
     "language": {
+      "automatic": "حسب الجهاز",
+      "automaticNote": "يتبع Lymark اللغة المضبوطة على الجهاز.",
       "label": "اللغة",
       "selector": "اختر اللغة"
     },
@@ -43,6 +45,10 @@
       "google": "تسجيل الدخول باستخدام Google",
       "subtitle": "سجل الدخول للمتابعة",
       "title": "سجل الدخول للوصول إلى Lymark"
+    },
+    "nav": {
+      "batch": "المعالجة الدفعية",
+      "photoDetail": "تفاصيل الصورة"
     },
     "permissions": {
       "camera": "الكاميرا",

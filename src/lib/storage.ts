@@ -16,6 +16,7 @@ const NAMESPACE = 'lymark';
 export const StorageKeys = {
   watermarkPreferences: `${NAMESPACE}:watermark-preferences`,
   gallery: `${NAMESPACE}:gallery`,
+  locale: `${NAMESPACE}:locale`,
 } as const;
 
 export type StorageKey = (typeof StorageKeys)[keyof typeof StorageKeys];

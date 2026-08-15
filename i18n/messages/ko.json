@@ -34,6 +34,8 @@
       "title": "갤러리"
     },
     "language": {
+      "automatic": "기기 설정 따르기",
+      "automaticNote": "Lymark는 기기에 설정된 언어를 따릅니다.",
       "label": "언어",
       "selector": "언어 선택"
     },
@@ -43,6 +45,10 @@
       "google": "Google로 로그인",
       "subtitle": "계속하려면 로그인",
       "title": "Lymark에 접근하려면 로그인"
+    },
+    "nav": {
+      "batch": "일괄 처리",
+      "photoDetail": "사진 상세"
     },
     "permissions": {
       "camera": "카메라",

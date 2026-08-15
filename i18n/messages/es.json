@@ -34,6 +34,8 @@
       "title": "Galería"
     },
     "language": {
+      "automatic": "Igual que el dispositivo",
+      "automaticNote": "Lymark sigue el idioma configurado en el dispositivo.",
       "label": "Idioma",
       "selector": "Selecciona el idioma"
     },
@@ -43,6 +45,10 @@
       "google": "Iniciar sesión con Google",
       "subtitle": "Inicia sesión para continuar",
       "title": "Inicia sesión para acceder a Lymark"
+    },
+    "nav": {
+      "batch": "Procesamiento por lotes",
+      "photoDetail": "Detalle de la foto"
     },
     "permissions": {
       "camera": "Cámara",

@@ -4,11 +4,13 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useTranslations } from 'use-intl';
 
 import { useWaitForSkia } from '@/components/skia';
 import { CaptureProvider } from '@/contexts/capture-context';
 import { FeedbackProvider } from '@/contexts/feedback-context';
 import { GalleryProvider } from '@/contexts/gallery-context';
+import { LocaleProvider } from '@/contexts/locale-context';
 import { SettingsProvider } from '@/contexts/settings-context';
 import { colors, typography, watermarkFontAssets } from '@/theme';
 
@@ -52,52 +54,71 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <SettingsProvider>
-        <GalleryProvider>
-          <CaptureProvider>
-    
-        {/* Acima da navegação: o diálogo e o aviso precisam cobrir
-                qualquer tela, inclusive as que abrem por cima. */}
-            <FeedbackProvider>
-            <StatusBar style="light" />
-            <Stack
-              screenOptions={{
-                headerStyle: { backgroundColor: colors.background },
-                headerTintColor: colors.accent,
-                headerTitleStyle: typography.value,
-                headerShadowVisible: false,
-                contentStyle: { backgroundColor: colors.background },
-              }}>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-
-              <Stack.Screen
-                name="settings/watermark"
-                options={{ title: 'Marca d’água', headerBackTitle: 'Voltar' }}
-              />
-              <Stack.Screen
-                name="settings/permissions"
-                options={{ title: 'Permissões', headerBackTitle: 'Voltar' }}
-              />
-              <Stack.Screen
-                name="settings/about"
-                options={{ title: 'Sobre o Lymark', headerBackTitle: 'Voltar' }}
-              />
-
-              <Stack.Screen
-                name="photo/[id]"
-                options={{ title: 'Detalhe da foto', headerBackTitle: 'Galeria' }}
-              />
-
-              {/* Processamento em lote - apenas desktop */}
-              <Stack.Screen
-                name="batch"
-                options={{ title: 'Processamento em Lote', headerBackTitle: 'Voltar' }}
-              />
-            </Stack>
-            </FeedbackProvider>
-          </CaptureProvider>
-        </GalleryProvider>
-      </SettingsProvider>
+      {/* Acima de tudo: os títulos das telas já saem traduzidos, e o idioma
+          escolhido vale para qualquer parte da árvore. */}
+      <LocaleProvider>
+        <SettingsProvider>
+          <GalleryProvider>
+            <CaptureProvider>
+              {/* Acima da navegação: o diálogo e o aviso precisam cobrir
+                  qualquer tela, inclusive as que abrem por cima. */}
+              <FeedbackProvider>
+                <StatusBar style="light" />
+                <Navigation />
+              </FeedbackProvider>
+            </CaptureProvider>
+          </GalleryProvider>
+        </SettingsProvider>
+      </LocaleProvider>
     </SafeAreaProvider>
+  );
+}
+
+/**
+ * A pilha de telas, separada da raiz por um motivo só: `useTranslations`
+ * precisa estar **dentro** do `LocaleProvider`, e a raiz é quem o monta.
+ */
+function Navigation() {
+  const t = useTranslations('app');
+
+  return (
+    <Stack
+      screenOptions={{
+        headerStyle: { backgroundColor: colors.background },
+        headerTintColor: colors.accent,
+        headerTitleStyle: typography.value,
+        headerShadowVisible: false,
+        contentStyle: { backgroundColor: colors.background },
+      }}>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+      <Stack.Screen
+        name="settings/watermark"
+        options={{ title: t('settings.watermark'), headerBackTitle: t('common.back') }}
+      />
+      <Stack.Screen
+        name="settings/permissions"
+        options={{ title: t('permissions.title'), headerBackTitle: t('common.back') }}
+      />
+      <Stack.Screen
+        name="settings/about"
+        options={{ title: t('about.title'), headerBackTitle: t('common.back') }}
+      />
+      <Stack.Screen
+        name="settings/language"
+        options={{ title: t('language.label'), headerBackTitle: t('common.back') }}
+      />
+
+      <Stack.Screen
+        name="photo/[id]"
+        options={{ title: t('nav.photoDetail'), headerBackTitle: t('gallery.title') }}
+      />
+
+      {/* Processamento em lote - apenas desktop */}
+      <Stack.Screen
+        name="batch"
+        options={{ title: t('nav.batch'), headerBackTitle: t('common.back') }}
+      />
+    </Stack>
   );
 }

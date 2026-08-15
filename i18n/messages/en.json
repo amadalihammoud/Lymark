@@ -34,6 +34,8 @@
       "title": "Gallery"
     },
     "language": {
+      "automatic": "Match device",
+      "automaticNote": "Lymark follows the language set on your device.",
       "label": "Language",
       "selector": "Select language"
     },
@@ -43,6 +45,10 @@
       "google": "Sign in with Google",
       "subtitle": "Sign in to continue",
       "title": "Sign in to access Lymark"
+    },
+    "nav": {
+      "batch": "Batch processing",
+      "photoDetail": "Photo details"
     },
     "permissions": {
       "camera": "Camera",
