@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -37,7 +37,12 @@ export function Toast({
   // o app quebrava na inicialização com "useAnimatedValue is not a function",
   // e a tela ficava em branco. Esta forma é equivalente e funciona nas três
   // plataformas — o valor é criado uma vez e sobrevive aos renders.
-  const opacity = useRef(new Animated.Value(0)).current;
+  //
+  // A inicialização preguiçosa do `useState` é usada no lugar de
+  // `useRef(...).current`: as duas formas guardam a mesma instância entre
+  // renders, mas ler `.current` durante o render viola a regra
+  // `react-hooks/refs` e derrubava o job de lint no CI.
+  const [opacity] = useState(() => new Animated.Value(0));
   const onHideRef = useRef(onHide);
 
   useEffect(() => {
