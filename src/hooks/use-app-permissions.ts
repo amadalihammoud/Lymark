@@ -3,6 +3,7 @@ import * as Location from 'expo-location';
 import * as MediaLibrary from 'expo-media-library';
 import { useCallback, useEffect, useState } from 'react';
 import { AppState, Linking } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { useFeedback } from '@/contexts/feedback-context';
 
@@ -24,30 +25,19 @@ export type PermissionSnapshot = {
   canAskAgain: boolean;
 };
 
-export type PermissionDescriptor = {
-  id: PermissionId;
-  title: string;
-  /** Por que o app precisa disso — texto exibido ao usuário. */
-  rationale: string;
-};
+/**
+ * O nome e o motivo de cada permissão vêm do catálogo, derivados do próprio
+ * `id` — `permissions.camera` e `permissions.cameraRationale`. Guardar os
+ * textos aqui obrigaria a duplicá-los na versão web deste mesmo hook, e as
+ * duas cópias divergiriam na primeira alteração de texto.
+ */
+export function permissionLabelKey(id: PermissionId): string {
+  return id;
+}
 
-export const PERMISSION_DESCRIPTORS: PermissionDescriptor[] = [
-  {
-    id: 'camera',
-    title: 'Câmera',
-    rationale: 'Necessária para tirar a foto que receberá a marca d’água.',
-  },
-  {
-    id: 'mediaLibrary',
-    title: 'Salvar na galeria',
-    rationale: 'Para gravar as fotos exportadas na galeria do aparelho.',
-  },
-  {
-    id: 'location',
-    title: 'Localização',
-    rationale: 'Preenche o campo de endereço automaticamente ao capturar.',
-  },
-];
+export function permissionRationaleKey(id: PermissionId): string {
+  return `${id}Rationale`;
+}
 
 type PermissionMap = Record<PermissionId, PermissionSnapshot | null>;
 
@@ -117,6 +107,7 @@ async function readAllPermissions(): Promise<PermissionMap> {
 
 export function useAppPermissions() {
   const { ask } = useFeedback();
+  const t = useTranslations('app.permissions');
   const [permissions, setPermissions] = useState<PermissionMap>(EMPTY_MAP);
   // Já começa em `true`: a primeira leitura dispara junto com a montagem.
   const [refreshing, setRefreshing] = useState(true);
@@ -179,14 +170,14 @@ export function useAppPermissions() {
     // No iOS isso acontece já na primeira recusa, então empurrar o usuário
     // direto para os Ajustes seria um salto sem explicação.
     ask({
-      title: 'Permissão bloqueada',
-      message: 'O sistema não vai perguntar de novo. Para liberar, abra os ajustes do aparelho.',
+      title: t('blocked.title'),
+      message: t('blocked.message'),
       actions: [
-        { label: 'Abrir ajustes', onPress: () => void Linking.openSettings() },
-        { label: 'Agora não', variant: 'ghost' },
+        { label: t('blocked.openSettings'), onPress: () => void Linking.openSettings() },
+        { label: t('blocked.later'), variant: 'ghost' },
       ],
     });
-  }, [ask]);
+  }, [ask, t]);
 
   return { permissions, refreshing, refresh, request };
 }

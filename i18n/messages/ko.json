@@ -51,12 +51,27 @@
       "photoDetail": "사진 상세"
     },
     "permissions": {
+      "allow": "허용",
+      "allowed": "허용됨",
+      "blocked": {
+        "later": "나중에",
+        "message": "시스템이 다시 묻지 않습니다. 허용하려면 기기 설정을 여세요.",
+        "openSettings": "설정 열기",
+        "title": "권한이 차단됨"
+      },
       "camera": "카메라",
+      "cameraRationale": "워터마크를 넣을 사진을 촬영하는 데 필요합니다.",
       "denied": "거부됨",
       "granted": "허용됨",
+      "intro": "Lymark는 사진에 각인하는 데 필요한 권한만 요청합니다. 사진은 기기 밖으로 나가지 않습니다. GPS를 사용할 때는 주소로 바꾸기 위한 좌표만 운영체제가 지도 서비스에 전달합니다.",
       "location": "위치",
-      "photos": "사진",
+      "locationRationale": "촬영할 때 주소 항목을 자동으로 채웁니다.",
+      "mediaLibrary": "갤러리에 저장",
+      "mediaLibraryRationale": "내보낸 사진을 기기 갤러리에 저장하는 데 사용합니다.",
+      "openDeviceSettings": "설정",
+      "recheck": "다시 확인",
       "request": "권한 요청",
+      "section": "접근 권한",
       "title": "권한"
     },
     "settings": {

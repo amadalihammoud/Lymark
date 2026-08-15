@@ -51,12 +51,27 @@
       "photoDetail": "Photo details"
     },
     "permissions": {
+      "allow": "Allow",
+      "allowed": "Allowed",
+      "blocked": {
+        "later": "Not now",
+        "message": "The system will not ask again. To allow it, open your device settings.",
+        "openSettings": "Open settings",
+        "title": "Permission blocked"
+      },
       "camera": "Camera",
+      "cameraRationale": "Required to take the photo that will receive the watermark.",
       "denied": "Denied",
       "granted": "Granted",
+      "intro": "Lymark asks only for what it needs to stamp a photo. Your images never leave the device: when you use GPS, the operating system sends the map service the coordinate alone, so it can become an address.",
       "location": "Location",
-      "photos": "Photos",
+      "locationRationale": "Fills in the address field automatically when you capture.",
+      "mediaLibrary": "Save to gallery",
+      "mediaLibraryRationale": "To write exported photos to the device gallery.",
+      "openDeviceSettings": "Settings",
+      "recheck": "Check again",
       "request": "Request permission",
+      "section": "Access",
       "title": "Permissions"
     },
     "settings": {

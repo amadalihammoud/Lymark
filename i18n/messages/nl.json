@@ -51,12 +51,27 @@
       "photoDetail": "Fotodetails"
     },
     "permissions": {
+      "allow": "Toestaan",
+      "allowed": "Verleend",
+      "blocked": {
+        "later": "Niet nu",
+        "message": "Het systeem vraagt het niet opnieuw. Open de apparaatinstellingen om het toe te staan.",
+        "openSettings": "Instellingen openen",
+        "title": "Toestemming geblokkeerd"
+      },
       "camera": "Camera",
+      "cameraRationale": "Nodig om de foto te maken die het watermerk krijgt.",
       "denied": "Geweigerd",
       "granted": "Toegekend",
+      "intro": "Lymark vraagt alleen wat nodig is om een foto te stempelen. Je afbeeldingen verlaten het apparaat niet: bij gebruik van gps stuurt het besturingssysteem alleen de coördinaat naar de kaartendienst, om er een adres van te maken.",
       "location": "Locatie",
-      "photos": "Foto's",
+      "locationRationale": "Vult het adresveld automatisch in bij het vastleggen.",
+      "mediaLibrary": "Opslaan in galerij",
+      "mediaLibraryRationale": "Om geëxporteerde foto's op te slaan in de apparaatgalerij.",
+      "openDeviceSettings": "Instellingen",
+      "recheck": "Opnieuw controleren",
       "request": "Machtiging aanvragen",
+      "section": "Toegang",
       "title": "Machtigingen"
     },
     "settings": {

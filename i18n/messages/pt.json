@@ -51,12 +51,27 @@
       "photoDetail": "Detalhe da foto"
     },
     "permissions": {
+      "allow": "Permitir",
+      "allowed": "Liberado",
+      "blocked": {
+        "later": "Agora não",
+        "message": "O sistema não vai perguntar de novo. Para liberar, abra os ajustes do aparelho.",
+        "openSettings": "Abrir ajustes",
+        "title": "Permissão bloqueada"
+      },
       "camera": "Câmera",
+      "cameraRationale": "Necessária para tirar a foto que receberá a marca d’água.",
       "denied": "Negado",
       "granted": "Concedido",
+      "intro": "O Lymark só pede o que precisa para carimbar uma foto. As suas imagens não saem do aparelho: quando você usa o GPS, apenas a coordenada é enviada pelo sistema operacional ao serviço de mapas, para virar endereço.",
       "location": "Localização",
-      "photos": "Fotos",
+      "locationRationale": "Preenche o campo de endereço automaticamente ao capturar.",
+      "mediaLibrary": "Salvar na galeria",
+      "mediaLibraryRationale": "Para gravar as fotos exportadas na galeria do aparelho.",
+      "openDeviceSettings": "Ajustes",
+      "recheck": "Verificar novamente",
       "request": "Solicitar permissão",
+      "section": "Acessos",
       "title": "Permissões"
     },
     "settings": {

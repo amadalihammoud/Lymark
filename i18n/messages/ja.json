@@ -51,12 +51,27 @@
       "photoDetail": "写真の詳細"
     },
     "permissions": {
+      "allow": "許可",
+      "allowed": "許可済み",
+      "blocked": {
+        "later": "後で",
+        "message": "システムは再度確認しません。許可するには端末の設定を開いてください。",
+        "openSettings": "設定を開く",
+        "title": "権限がブロックされています"
+      },
       "camera": "カメラ",
+      "cameraRationale": "透かしを入れる写真を撮影するために必要です。",
       "denied": "拒否",
       "granted": "許可済み",
+      "intro": "Lymarkは、写真に刻印するために必要なものだけを求めます。画像が端末から出ることはありません。GPSを使うときは、住所に変換するための座標だけをOSが地図サービスに送ります。",
       "location": "位置情報",
-      "photos": "写真",
+      "locationRationale": "撮影時に住所欄を自動で入力します。",
+      "mediaLibrary": "ギャラリーへの保存",
+      "mediaLibraryRationale": "書き出した写真を端末のギャラリーに保存するために使います。",
+      "openDeviceSettings": "設定",
+      "recheck": "再確認",
       "request": "権限をリクエスト",
+      "section": "アクセス許可",
       "title": "権限"
     },
     "settings": {

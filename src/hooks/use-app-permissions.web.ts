@@ -24,30 +24,14 @@ export type PermissionSnapshot = {
   canAskAgain: boolean;
 };
 
-export type PermissionDescriptor = {
-  id: PermissionId;
-  title: string;
-  /** Por que o app precisa disso — texto exibido ao usuário. */
-  rationale: string;
-};
+/** Mesmas chaves da versão nativa — ver `use-app-permissions.ts`. */
+export function permissionLabelKey(id: PermissionId): string {
+  return id;
+}
 
-export const PERMISSION_DESCRIPTORS: PermissionDescriptor[] = [
-  {
-    id: 'camera',
-    title: 'Câmera',
-    rationale: 'Necessária para tirar a foto que receberá a marca d’água.',
-  },
-  {
-    id: 'mediaLibrary',
-    title: 'Salvar na galeria',
-    rationale: 'Para gravar as fotos exportadas na galeria do aparelho.',
-  },
-  {
-    id: 'location',
-    title: 'Localização',
-    rationale: 'Preenche o campo de endereço automaticamente ao capturar.',
-  },
-];
+export function permissionRationaleKey(id: PermissionId): string {
+  return `${id}Rationale`;
+}
 
 type PermissionMap = Record<PermissionId, PermissionSnapshot | null>;
 

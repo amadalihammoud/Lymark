@@ -51,12 +51,27 @@
       "photoDetail": "Détail de la photo"
     },
     "permissions": {
+      "allow": "Autoriser",
+      "allowed": "Accordée",
+      "blocked": {
+        "later": "Pas maintenant",
+        "message": "Le système ne posera plus la question. Pour l'accorder, ouvrez les réglages de l'appareil.",
+        "openSettings": "Ouvrir les réglages",
+        "title": "Autorisation bloquée"
+      },
       "camera": "Caméra",
+      "cameraRationale": "Nécessaire pour prendre la photo qui recevra le filigrane.",
       "denied": "Refusé",
       "granted": "Accordé",
+      "intro": "Lymark ne demande que ce dont il a besoin pour apposer le marquage. Vos images ne quittent pas l'appareil : lorsque vous utilisez le GPS, le système d'exploitation ne transmet au service de cartographie que la coordonnée, pour en faire une adresse.",
       "location": "Localisation",
-      "photos": "Photos",
+      "locationRationale": "Remplit le champ d'adresse automatiquement lors de la capture.",
+      "mediaLibrary": "Enregistrer dans la galerie",
+      "mediaLibraryRationale": "Pour enregistrer les photos exportées dans la galerie de l'appareil.",
+      "openDeviceSettings": "Réglages",
+      "recheck": "Vérifier à nouveau",
       "request": "Demander la permission",
+      "section": "Accès",
       "title": "Permissions"
     },
     "settings": {

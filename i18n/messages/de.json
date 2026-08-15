@@ -51,12 +51,27 @@
       "photoDetail": "Fotodetails"
     },
     "permissions": {
+      "allow": "Zulassen",
+      "allowed": "Erteilt",
+      "blocked": {
+        "later": "Jetzt nicht",
+        "message": "Das System fragt nicht erneut. Zum Erteilen öffnen Sie die Geräteeinstellungen.",
+        "openSettings": "Einstellungen öffnen",
+        "title": "Berechtigung blockiert"
+      },
       "camera": "Kamera",
+      "cameraRationale": "Erforderlich, um das Foto aufzunehmen, das das Wasserzeichen erhält.",
       "denied": "Verweigert",
       "granted": "Erteilt",
+      "intro": "Lymark fragt nur nach dem, was zum Stempeln eines Fotos nötig ist. Ihre Bilder verlassen das Gerät nicht: Bei aktiviertem GPS übermittelt das Betriebssystem dem Kartendienst allein die Koordinate, damit daraus eine Adresse wird.",
       "location": "Standort",
-      "photos": "Fotos",
+      "locationRationale": "Füllt das Adressfeld bei der Aufnahme automatisch aus.",
+      "mediaLibrary": "In Galerie speichern",
+      "mediaLibraryRationale": "Um exportierte Fotos in der Gerätegalerie zu speichern.",
+      "openDeviceSettings": "Einstellungen",
+      "recheck": "Erneut prüfen",
       "request": "Berechtigung anfordern",
+      "section": "Zugriffe",
       "title": "Berechtigungen"
     },
     "settings": {

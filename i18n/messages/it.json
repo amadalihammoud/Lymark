@@ -51,12 +51,27 @@
       "photoDetail": "Dettaglio della foto"
     },
     "permissions": {
+      "allow": "Consenti",
+      "allowed": "Concessa",
+      "blocked": {
+        "later": "Non ora",
+        "message": "Il sistema non lo chiederà più. Per concederla, apri le impostazioni del dispositivo.",
+        "openSettings": "Apri impostazioni",
+        "title": "Autorizzazione bloccata"
+      },
       "camera": "Fotocamera",
+      "cameraRationale": "Necessaria per scattare la foto che riceverà la filigrana.",
       "denied": "Negato",
       "granted": "Concesso",
+      "intro": "Lymark chiede solo ciò che serve per timbrare una foto. Le tue immagini non escono dal dispositivo: quando usi il GPS, il sistema operativo invia al servizio di mappe soltanto la coordinata, per trasformarla in un indirizzo.",
       "location": "Posizione",
-      "photos": "Foto",
+      "locationRationale": "Compila automaticamente il campo dell'indirizzo durante l'acquisizione.",
+      "mediaLibrary": "Salva nella galleria",
+      "mediaLibraryRationale": "Per salvare le foto esportate nella galleria del dispositivo.",
+      "openDeviceSettings": "Impostazioni",
+      "recheck": "Controlla di nuovo",
       "request": "Richiedi permesso",
+      "section": "Accessi",
       "title": "Permessi"
     },
     "settings": {

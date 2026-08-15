@@ -2,12 +2,15 @@
 // carrega TODAS as famílias de ícones e some com megabytes no bundle.
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
 import {
-  PERMISSION_DESCRIPTORS,
+  PERMISSION_IDS,
+  permissionLabelKey,
+  permissionRationaleKey,
   useAppPermissions,
   type PermissionSnapshot,
 } from '@/hooks/use-app-permissions';
@@ -21,32 +24,29 @@ import { colors, spacing, typography } from '@/theme';
  * encaminha o usuário para os Ajustes do aparelho.
  */
 export default function PermissionsScreen() {
+  const t = useTranslations('app.permissions');
   const { permissions, refreshing, refresh, request } = useAppPermissions();
 
   return (
     <Screen>
-      <Text style={typography.body}>
-        O Lymark só pede o que precisa para carimbar uma foto. As suas imagens não saem do
-        aparelho: quando você usa o GPS, apenas a coordenada é enviada pelo sistema
-        operacional ao serviço de mapas, para virar endereço.
-      </Text>
+      <Text style={typography.body}>{t('intro')}</Text>
 
-      <Section title="Acessos">
-        {PERMISSION_DESCRIPTORS.map((descriptor, index) => (
+      <Section title={t('section')}>
+        {PERMISSION_IDS.map((id, index) => (
           <PermissionRow
-            key={descriptor.id}
-            title={descriptor.title}
-            rationale={descriptor.rationale}
-            snapshot={permissions[descriptor.id]}
+            key={id}
+            title={t(permissionLabelKey(id))}
+            rationale={t(permissionRationaleKey(id))}
+            snapshot={permissions[id]}
             loading={refreshing}
-            onRequest={() => request(descriptor.id)}
-            showDivider={index < PERMISSION_DESCRIPTORS.length - 1}
+            onRequest={() => request(id)}
+            showDivider={index < PERMISSION_IDS.length - 1}
           />
         ))}
       </Section>
 
       <Button
-        label="Verificar novamente"
+        label={t('recheck')}
         icon="refresh"
         variant="ghost"
         onPress={() => void refresh()}
@@ -70,6 +70,7 @@ function PermissionRow({
   onRequest: () => void;
   showDivider: boolean;
 }) {
+  const t = useTranslations('app.permissions');
   const granted = snapshot?.granted ?? false;
   const permanentlyDenied = snapshot !== null && !snapshot.granted && !snapshot.canAskAgain;
 
@@ -90,10 +91,10 @@ function PermissionRow({
       {loading && snapshot === null ? (
         <ActivityIndicator color={colors.textMuted} />
       ) : granted ? (
-        <Text style={[typography.caption, styles.grantedLabel]}>Liberado</Text>
+        <Text style={[typography.caption, styles.grantedLabel]}>{t('allowed')}</Text>
       ) : (
         <Button
-          label={permanentlyDenied ? 'Ajustes' : 'Permitir'}
+          label={permanentlyDenied ? t('openDeviceSettings') : t('allow')}
           variant="primary"
           onPress={onRequest}
           style={styles.action}
@@ -129,7 +130,6 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   action: {
-    paddingHorizontal: spacing.lg,
-    minHeight: 44,
+    alignSelf: 'center',
   },
 });
