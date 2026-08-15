@@ -16,7 +16,7 @@ Três coisas que costumam ser confundidas, e que aqui são camadas separadas:
 | **Direito de acesso** | Esta pessoa tem acesso pago agora? | **O nosso backend** |
 
 O erro clássico é perguntar ao Stripe se a pessoa tem assinatura. O Stripe não
-sabe da Play Store. Só a **nossa** tabela sabe de todas as fontes.
+sabe da Play Store. Só a **nossa** fonte da verdade sabe de todas.
 
 O fluxo é o mesmo venha o cliente de onde vier:
 
@@ -31,12 +31,16 @@ O cliente **nunca** consulta Stripe, Apple ou Google para *verificar*. Só para
 
 ## 2. O que isso exige
 
-Um backend. O Lymark hoje não tem — e a landing page promete *"sem conta, sem
-servidor"*. **Essa promessa morre nesta fase**, e o texto precisa mudar junto,
-em doze idiomas, no site e no aplicativo. Ver a seção 7.
+Uma API. Não necessariamente um banco — ver 6.1, onde a decisão é começar sem
+um.
 
-Com contas e fotos com GPS, entramos em território de LGPD e RGPD de verdade:
-política de privacidade real, exclusão de conta, base legal declarada.
+E a landing page promete *"sem conta, sem servidor"*. **Essa promessa morre
+nesta fase**, e o texto precisa mudar junto, em doze idiomas, no site e no
+aplicativo. As quatro chaves estão enumeradas em 7.1.
+
+Com contas, o Lymark entra em território de LGPD e RGPD de verdade: política
+de privacidade com efeito jurídico, exclusão de conta acionável, base legal
+declarada, contratos com operadores. A seção 8 é o mapa inteiro.
 
 ---
 
@@ -54,7 +58,7 @@ Isso funciona porque:
   `portable`, `AppImage` e `deb`, direto do site. Sem loja, sem regra de loja.
 
 Consequência prática: dentro do app iOS/Android a compra passa pela loja; na
-web e no desktop, Stripe. **Todos escrevem na nossa tabela.**
+web e no desktop, Stripe. **Todos escrevem na nossa fonte da verdade.**
 
 > As regras de link externo mudaram nos EUA em 2025–2026 e continuam mudando.
 > Conferir as diretrizes vigentes antes de implementar a compra, não depois.
@@ -149,8 +153,8 @@ totalmente é punir usuário honesto sem sinal, que é o público inteiro.
 ```
 Clerk (quem é)
    ↓ user_id
-Tabela de entitlements  ← webhooks ← RevenueCat ← StoreKit / Play Billing
-   ↓                                ← Stripe (web + desktop, direto)
+Entitlement (Clerk metadata)  ← webhooks ← RevenueCat ← StoreKit / Play
+   ↓                                    ← Stripe (web + desktop, direto)
 GET /api/entitlements → { plano, cota, usadas, valido_ate }
    ↓
 App decrementa local, reconcilia com rede, nunca bloqueia offline
@@ -161,14 +165,41 @@ significa implementar a App Store Server API, a Play Developer API e webhooks
 do Stripe, com renovações, reembolsos, grace period, upgrades e fraude — meses
 de trabalho e a parte mais chata de manter.
 
-Mas **a nossa tabela continua sendo a fonte da verdade**, alimentada por
-webhook. Assim nunca ficamos reféns.
+Mas **a fonte da verdade continua sendo nossa**, alimentada por webhook. Assim
+nunca ficamos reféns.
+
+### 6.1 Onde a fonte da verdade mora — v1 sem banco
+
+"Nossa" não quer dizer "num banco de dados nosso". Para a primeira versão, o
+entitlement cabe em `privateMetadata` do usuário no Clerk.
+
+| | `privateMetadata` do Clerk | Banco próprio |
+|---|---|---|
+| Infraestrutura nova | nenhuma | mais um serviço |
+| Transação | não tem | tem |
+| Consultas agregadas | não dá | dá |
+| Limite de escrita | existe, e a escala esbarra nele | não |
+| Acoplamento | preso ao Clerk | livre |
+| **Lugares guardando dado pessoal** | **um a menos** | mais um |
+
+O ponto fraco real é a falta de transação: dois aparelhos sincronizando ao
+mesmo tempo podem perder uma contagem. Essa perda é **a favor do usuário** —
+ele ganha uma foto, não perde. Numa cota de quinze por mês, é aceitável.
+
+**Decisão: começar sem banco.** O formato da tabela descrito neste documento
+continua valendo; muda só onde ele mora. A migração para banco acontece quando
+a contabilidade ou as consultas exigirem — e o contrato de `GET
+/api/entitlements` não muda, porque o cliente nunca soube onde o dado estava.
+
+O que **não** fazemos é usar o RevenueCat como fonte da verdade. Isso deixaria
+um fornecedor respondendo a pergunta mais importante do negócio.
 
 ---
 
 ## 7. Ordem de implementação
 
-1. **Backend e banco.** Tabela de entitlements, `GET /api/entitlements`.
+1. **A API.** `GET /api/entitlements`, com o entitlement em `privateMetadata`
+   do Clerk — sem banco, conforme 6.1.
 2. **Clerk** no site → no Expo → no Electron (deep link; o mais chato).
 3. **Stripe** para web e desktop. É onde não há regra de loja, então o dinheiro
    roda ponta a ponta mais rápido.
@@ -210,7 +241,179 @@ pelo sistema operacional — isso não muda por existir conta.
 
 ---
 
-## 8. Decisões ainda em aberto
+## 8. Proteção de dados — LGPD e RGPD
+
+Esta seção é o mapa de conformidade da Fase 2. Está escrita para ser levada a
+um advogado, não para substituí-lo: os pontos abaixo são o que precisa ser
+decidido e documentado, com a posição recomendada de cada um.
+
+### 8.1 A mudança de categoria
+
+Hoje o Lymark quase não trata dado pessoal — é um aplicativo local. Ao criar
+contas, **o Lymark passa a ser controlador** (LGPD art. 5º, VI; RGPD art. 4,
+7): determina as finalidades e os meios do tratamento. Isso liga um conjunto
+de obrigações que hoje simplesmente não existe.
+
+Não é motivo para recuar. É motivo para entrar com o desenho certo.
+
+### 8.2 Inventário — o que passa a existir
+
+| Dado | Origem | Onde fica |
+|---|---|---|
+| E-mail | cadastro | Clerk |
+| Identificador de usuário | Clerk | Clerk + tokens no aparelho |
+| Plano, cota, contador | nosso | `privateMetadata` do Clerk |
+| Status de assinatura | lojas / Stripe | RevenueCat + Clerk |
+| Metadados de pagamento (país, 4 últimos dígitos) | Stripe / lojas | Stripe / lojas |
+| Endereço IP | requisições | logs do servidor |
+
+O identificador de usuário é pseudônimo, **mas continua sendo dado pessoal**,
+porque é vinculável a uma pessoa identificada (LGPD art. 5º, I; RGPD
+considerando 26). Pseudonimização reduz risco; não tira do escopo.
+
+Endereço IP em log é dado pessoal no RGPD — isso é pacífico. Consequência
+prática: **definir retenção de log**, e não deixá-lo crescer para sempre.
+
+O contador de exportações é dado de uso ligado a uma identidade. É pouco, mas
+não existia antes, e precisa aparecer na política.
+
+### 8.3 O que continua fora do escopo — e vira regra
+
+**Foto nunca sai do aparelho. Coordenada nunca sai do aparelho.**
+
+Fotos de campo contêm pessoas, placas, documentos, rostos, interiores de
+imóveis. Se trafegassem pelo nosso servidor, o Lymark saltaria de categoria:
+dado possivelmente sensível, impacto de incidente muito maior, e provável
+necessidade de relatório de impacto (LGPD art. 38).
+
+Geolocalização recebe tratamento reforçado em ambos os regimes. Mantê-la fora
+do servidor é o que mantém o custo de conformidade pequeno.
+
+Isto é **restrição de arquitetura, não preferência**. Qualquer proposta futura
+de "sincronizar o histórico na nuvem" reabre esta seção inteira e precisa ser
+avaliada com ela na mão.
+
+### 8.4 Base legal por finalidade
+
+| Finalidade | Base legal | Artigo |
+|---|---|---|
+| Manter conta e prestar o serviço pago | execução de contrato | LGPD 7º, V; RGPD 6(1)(b) |
+| Cobrar e processar pagamento | execução de contrato | idem |
+| Guardar registro fiscal da transação | cumprimento de obrigação legal | LGPD 7º, II; RGPD 6(1)(c) |
+| Segurança e prevenção a fraude | legítimo interesse | LGPD 7º, IX; RGPD 6(1)(f) |
+
+**Não usar consentimento para a assinatura.** Consentimento é revogável a
+qualquer momento (LGPD art. 8º, §5º), e uma revogação deixaria o Lymark sem
+base legal para manter uma assinatura que a pessoa está pagando. Execução de
+contrato é a base correta e não exige caixa de marcar.
+
+Se um dia houver comunicação de marketing, **essa** sim precisa de base
+própria — e aí consentimento é o caminho, separado do cadastro.
+
+### 8.5 Retenção — onde mora a dificuldade
+
+"Apagar minha conta" **não** significa apagar tudo, e prometer isso seria
+promessa que não se cumpre.
+
+| Dado | Ao excluir a conta |
+|---|---|
+| E-mail e identificador | exclusão imediata |
+| Plano, cota, contador | exclusão imediata |
+| Registro de transação | **retido por obrigação fiscal**, desvinculado do cadastro |
+| Logs com IP | expiram pelo prazo próprio de log |
+
+O prazo de retenção fiscal é o ponto que **precisa de confirmação
+profissional** — varia com o regime tributário e com o país de quem comprou.
+No Brasil costuma-se trabalhar com cinco anos; é o número a validar, não a
+assumir.
+
+O que precisa existir antes de publicar: **uma política de retenção escrita**,
+dizendo de cada item o que sai na hora, o que é anonimizado e o que fica por
+obrigação legal — com o prazo de cada um. Sem esse documento, não há como
+responder a um pedido de exclusão de forma defensável.
+
+### 8.6 Direitos do titular
+
+LGPD art. 18; RGPD arts. 15 a 22. Os que exigem construção:
+
+- **Acesso e portabilidade** — exportar o que existe do usuário em formato
+  legível. Com o inventário acima, é uma resposta pequena.
+- **Correção** — o Clerk já cobre e-mail e nome.
+- **Exclusão** — conforme 8.5. Precisa ser acionável **dentro do aplicativo**,
+  não só por e-mail: as lojas exigem caminho de exclusão de conta a partir do
+  app e a partir de uma URL pública.
+- **Revisão de decisão automatizada** (LGPD art. 20) — não se aplica: nada
+  aqui decide sobre a pessoa por perfilamento.
+
+Prazo de resposta: a LGPD trabalha com quinze dias para o pedido de acesso
+simplificado (art. 19, I). O RGPD, um mês (art. 12(3)).
+
+### 8.7 Operadores e transferência internacional
+
+Cada fornecedor abaixo é operador, e cada um precisa de contrato de tratamento
+(DPA) assinado — todos publicam o seu:
+
+Clerk · Stripe · RevenueCat · Vercel
+
+Praticamente todos processam nos Estados Unidos. Isso é **transferência
+internacional**: LGPD art. 33; RGPD capítulo V.
+
+- **RGPD**: o mecanismo usual é a adequação via *EU-US Data Privacy
+  Framework*, verificando se o fornecedor está certificado, mais cláusulas
+  contratuais padrão como camada de reserva. O DPF sobreviveu a questionamento
+  judicial e segue válido, mas está sob pressão — o EDPB pediu revisão. **Não
+  construir assumindo que ele é permanente**: manter SCC como alternativa é o
+  que evita reescrever contrato às pressas.
+- **LGPD**: sem decisão de adequação da ANPD para os EUA, o caminho prático
+  são as cláusulas-padrão contratuais aprovadas pela ANPD.
+
+### 8.8 Encarregado, segurança e incidente
+
+**Encarregado** (LGPD art. 41): precisa ser indicado e o contato publicado.
+Numa operação individual, pode ser você mesmo — o que a lei exige é que exista
+e seja localizável.
+
+**Segurança** (LGPD art. 46; RGPD art. 32): medidas técnicas compatíveis com o
+risco. O desenho já ajuda muito — não há foto nem coordenada para vazar.
+
+**Incidente** (LGPD art. 48; RGPD arts. 33 e 34): comunicação à ANPD e aos
+titulares em prazo razoável quando houver risco relevante. Precisa existir um
+procedimento escrito **antes** de acontecer, porque no dia não dá tempo de
+inventar.
+
+### 8.9 As declarações de loja
+
+Ponto operacional que trava publicação, e por isso vem aqui e não numa nota de
+rodapé.
+
+- **Google Play — Data Safety**
+- **Apple — Privacy Nutrition Labels**
+
+Hoje a declaração correta seria "não coleta dados". Depois da Fase 2 passa a
+ser "e-mail, identificadores, histórico de compras". **Declarar errado é
+violação de política por si só**, independentemente da LGPD, e é motivo comum
+de rejeição e de remoção.
+
+Ambas as lojas também exigem URL de política de privacidade ativa — e a atual
+descreve um produto sem conta.
+
+### 8.10 O que fazer antes de publicar
+
+1. Política de privacidade reescrita — deixa de ser descrição e passa a ser
+   documento com efeito jurídico.
+2. Política de retenção escrita (8.5).
+3. Exclusão de conta acionável no app e por URL pública.
+4. DPAs assinados com os quatro operadores.
+5. Encarregado indicado e contato publicado.
+6. Procedimento de incidente escrito.
+7. Formulários de Data Safety e Privacy Labels preenchidos com o inventário
+   de 8.2 na mão.
+8. **Revisão profissional** de tudo acima — em especial os prazos de retenção
+   e a papelada de transferência internacional.
+
+---
+
+## 9. Decisões ainda em aberto
 
 - **Login obrigatório para tudo, ou só para o que é pago?** A decisão atual é
   obrigatório, com o freemium servindo de trial. Vale reavaliar: o app é usado
