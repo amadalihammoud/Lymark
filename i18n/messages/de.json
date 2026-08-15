@@ -118,6 +118,7 @@
       "empty": "Noch keine Fotos",
       "emptyAction": "Zur Aufnahme",
       "emptyDescription": "Fotos, die Sie mit Wasserzeichen exportieren, erscheinen hier — mit Datum, Ort und Code.",
+      "photoLabel": "Foto vom {when}",
       "share": "Teilen",
       "title": "Galerie"
     },

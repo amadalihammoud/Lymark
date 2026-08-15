@@ -118,6 +118,7 @@
       "empty": "Aucune photo pour l'instant",
       "emptyAction": "Aller à Capture",
       "emptyDescription": "Les photos que vous exportez avec un filigrane apparaissent ici, avec la date, le lieu et le code.",
+      "photoLabel": "Photo du {when}",
       "share": "Partager",
       "title": "Galerie"
     },

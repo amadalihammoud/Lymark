@@ -118,6 +118,7 @@
       "empty": "まだ写真はありません",
       "emptyAction": "撮影へ移動",
       "emptyDescription": "透かしを入れて書き出した写真が、日付・場所・コードとともにここに並びます。",
+      "photoLabel": "{when} の写真",
       "share": "共有",
       "title": "ギャラリー"
     },

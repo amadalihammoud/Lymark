@@ -118,6 +118,7 @@
       "empty": "No photos yet",
       "emptyAction": "Go to Capture",
       "emptyDescription": "Photos you export with a watermark show up here, with date, place and code.",
+      "photoLabel": "Photo from {when}",
       "share": "Share",
       "title": "Gallery"
     },

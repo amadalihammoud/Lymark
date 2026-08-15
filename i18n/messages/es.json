@@ -118,6 +118,7 @@
       "empty": "Todavía no hay fotos",
       "emptyAction": "Ir a Capturar",
       "emptyDescription": "Las fotos que exportes con marca de agua aparecen aquí, con fecha, lugar y código.",
+      "photoLabel": "Foto del {when}",
       "share": "Compartir",
       "title": "Galería"
     },

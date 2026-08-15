@@ -118,6 +118,7 @@
       "empty": "还没有照片",
       "emptyAction": "前往拍摄",
       "emptyDescription": "添加水印后导出的照片会显示在这里，附带日期、地点和编号。",
+      "photoLabel": "{when} 的照片",
       "share": "分享",
       "title": "相册"
     },

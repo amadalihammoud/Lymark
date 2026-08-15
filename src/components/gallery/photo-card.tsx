@@ -1,8 +1,10 @@
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
+import { useLocalePreference } from '@/contexts/locale-context';
 import { formatTimestamp } from '@/lib/datetime';
 import { colors, radius, spacing, typography } from '@/theme';
 import type { GalleryEntry } from '@/types';
@@ -15,6 +17,9 @@ export function PhotoCard({
   entry: GalleryEntry;
   onPress: () => void;
 }) {
+  const t = useTranslations('app.gallery');
+  const { locale } = useLocalePreference();
+
   // O arquivo pode ter sumido: limpeza de dados do app, restauração de
   // backup, ou corte pelo teto do histórico.
   const [missing, setMissing] = useState(false);
@@ -22,7 +27,7 @@ export function PhotoCard({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`Foto de ${formatTimestamp(entry.exportedAt)}`}
+      accessibilityLabel={t('photoLabel', { when: formatTimestamp(entry.exportedAt, locale) })}
       onPress={onPress}
       style={({ pressed }) => [styles.card, pressed && styles.pressed]}>
       {missing ? (
@@ -41,7 +46,7 @@ export function PhotoCard({
 
       <View style={styles.details}>
         <Text style={typography.value} numberOfLines={1}>
-          {formatTimestamp(entry.exportedAt)}
+          {formatTimestamp(entry.exportedAt, locale)}
         </Text>
         <Text style={typography.caption} numberOfLines={2}>
           {entry.metadata.address || 'Sem endereço registrado'}

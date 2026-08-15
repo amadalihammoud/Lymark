@@ -10,6 +10,7 @@ import { Section } from '@/components/ui/section';
 import { useFeedback } from '@/contexts/feedback-context';
 import { useGallery } from '@/contexts/gallery-context';
 import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
+import { useLocalePreference } from '@/contexts/locale-context';
 import { formatTimestamp } from '@/lib/datetime';
 import { colors, radius, spacing, typography } from '@/theme';
 
@@ -21,6 +22,7 @@ import { colors, radius, spacing, typography } from '@/theme';
  */
 export default function PhotoDetailScreen() {
   const t = useTranslations('app');
+  const { locale } = useLocalePreference();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { findEntry, removeEntry } = useGallery();
   const { ask } = useFeedback();
@@ -69,7 +71,7 @@ export default function PhotoDetailScreen() {
       />
 
       <Text style={typography.caption}>
-        {t('photo.exportedAt', { when: formatTimestamp(entry.exportedAt) })}
+        {t('photo.exportedAt', { when: formatTimestamp(entry.exportedAt, locale) })}
       </Text>
 
       <Section title={t('photo.stampedData')}>

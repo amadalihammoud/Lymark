@@ -118,6 +118,7 @@
       "empty": "Nog geen foto's",
       "emptyAction": "Naar Vastleggen",
       "emptyDescription": "Foto's die je met watermerk exporteert, verschijnen hier — met datum, plaats en code.",
+      "photoLabel": "Foto van {when}",
       "share": "Delen",
       "title": "Galerij"
     },

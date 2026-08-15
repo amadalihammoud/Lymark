@@ -118,6 +118,7 @@
       "empty": "Nessuna foto ancora",
       "emptyAction": "Vai ad Acquisizione",
       "emptyDescription": "Le foto che esporti con la filigrana compaiono qui, con data, luogo e codice.",
+      "photoLabel": "Foto del {when}",
       "share": "Condividi",
       "title": "Galleria"
     },

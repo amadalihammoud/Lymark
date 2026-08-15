@@ -7,8 +7,10 @@ import {
   type ReactNode,
 } from 'react';
 
+import { useLocalePreference } from '@/contexts/locale-context';
 import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
 import { generatePhotoCode } from '@/lib/photo-code';
+import { LOCALES, type Locale } from '@i18n/locales';
 import type {
   CaptureDraft,
   CaptureMetadata,
@@ -26,11 +28,11 @@ import type {
  * foto e os campos exatamente como deixou.
  */
 
-function buildInitialMetadata(now: Date = new Date()): CaptureMetadata {
+function buildInitialMetadata(locale: Locale, now: Date = new Date()): CaptureMetadata {
   return {
     time: formatTime(now),
-    date: formatDate(now),
-    weekday: formatWeekday(now),
+    date: formatDate(now, locale),
+    weekday: formatWeekday(now, locale),
     address: '',
     code: generatePhotoCode(),
   };
@@ -52,10 +54,51 @@ type CaptureContextValue = {
 const CaptureContext = createContext<CaptureContextValue | null>(null);
 
 export function CaptureProvider({ children }: { children: ReactNode }) {
+  const { locale } = useLocalePreference();
+
   const [draft, setDraft] = useState<CaptureDraft>(() => ({
     photo: null,
-    metadata: buildInitialMetadata(),
+    metadata: buildInitialMetadata(locale),
   }));
+
+  /**
+   * Trocar o idioma reescreve a data e o dia da semana do rascunho aberto.
+   *
+   * Sem isto, quem escolhesse outro idioma com uma foto já na tela ficaria
+   * com a interface num idioma e o carimbo no anterior — e o carimbo é o que
+   * fica na foto. A hora não entra: número é número em toda língua.
+   *
+   * O ajuste acontece **durante o render**, e não num efeito. É o padrão do
+   * React para reagir a uma mudança de contexto: ele reexecuta este
+   * componente antes de pintar, sem passar pelo commit. Num efeito, seria a
+   * renderização em cascata que `use-app-permissions` também evita.
+   *
+   * O que a pessoa digitou à mão sobrevive: só é reescrito o campo que ainda
+   * contém exatamente o que o próprio aplicativo escreveu, em algum idioma.
+   */
+  const [writtenLocale, setWrittenLocale] = useState(locale);
+
+  if (writtenLocale !== locale) {
+    setWrittenLocale(locale);
+
+    const now = new Date();
+    const untouched = (value: string, format: (date: Date, locale: Locale) => string) =>
+      LOCALES.some((candidate) => format(now, candidate) === value);
+
+    setDraft((current) => {
+      const date = untouched(current.metadata.date, formatDate)
+        ? formatDate(now, locale)
+        : current.metadata.date;
+      const weekday = untouched(current.metadata.weekday, formatWeekday)
+        ? formatWeekday(now, locale)
+        : current.metadata.weekday;
+
+      if (date === current.metadata.date && weekday === current.metadata.weekday) return current;
+
+      return { ...current, metadata: { ...current.metadata, date, weekday } };
+    });
+  }
+
 
   const setPhoto = useCallback((photo: SelectedPhoto | null) => {
     setDraft((current) => ({ ...current, photo }));
@@ -82,15 +125,15 @@ export function CaptureProvider({ children }: { children: ReactNode }) {
       metadata: {
         ...current.metadata,
         time: formatTime(now),
-        date: formatDate(now),
-        weekday: formatWeekday(now),
+        date: formatDate(now, locale),
+        weekday: formatWeekday(now, locale),
       },
     }));
-  }, []);
+  }, [locale]);
 
   const resetDraft = useCallback(() => {
-    setDraft({ photo: null, metadata: buildInitialMetadata() });
-  }, []);
+    setDraft({ photo: null, metadata: buildInitialMetadata(locale) });
+  }, [locale]);
 
   const value = useMemo<CaptureContextValue>(
     () => ({
