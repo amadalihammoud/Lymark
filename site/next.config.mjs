@@ -1,5 +1,21 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+
 /** @type {import('next').NextConfig} */
-export default {
+const nextConfig = {
+  /**
+   * O catálogo de traduções mora em `i18n/messages/`, na raiz do repositório —
+   * um nível acima deste diretório. Sem apontar a raiz de rastreamento para
+   * lá, o build não inclui os arquivos de mensagem no pacote final.
+   */
+  outputFileTracingRoot: path.join(here, '..'),
+
   async headers() {
     return [
       {
@@ -17,3 +33,5 @@ export default {
     ];
   },
 };
+
+export default withNextIntl(nextConfig);
