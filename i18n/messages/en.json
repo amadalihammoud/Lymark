@@ -28,8 +28,14 @@
       "yes": "Yes"
     },
     "gallery": {
+      "clear": "Clear history",
+      "clearConfirm": "Clear",
+      "clearMessage": "Lymark's records will be deleted. Images already saved to the device gallery are not affected.",
+      "count": "{count, plural, one {# photo exported} other {# photos exported}}",
       "delete": "Delete",
       "empty": "No photos yet",
+      "emptyAction": "Go to Capture",
+      "emptyDescription": "Photos you export with a watermark show up here, with date, place and code.",
       "share": "Share",
       "title": "Gallery"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "About",
+      "aboutDescription": "Version, privacy and credits",
+      "appSection": "App",
+      "deviceSection": "Device",
+      "deviceSectionDescription": "Access that Lymark requests.",
+      "fields": "Fields and position",
+      "fieldsDescription": "Choose which fields show, the corner and the size",
+      "history": "History",
+      "historyDescription": "Exported photos kept on the device",
       "language": "Language",
       "permissions": "Permissions",
+      "permissionsDescription": "Camera, photos and location",
       "save": "Save",
       "title": "Settings",
-      "watermark": "Watermark"
+      "watermark": "Watermark",
+      "watermarkSection": "Watermark",
+      "watermarkSectionDescription": "What gets stamped onto the photo, and where."
     },
     "signup": {
       "subtitle": "Sign up to get started",
       "title": "Create your Lymark account"
     },
+    "tagline": "Watermark with time, date and place",
     "title": "Lymark"
   },
   "desktop": {

@@ -28,8 +28,14 @@
       "yes": "はい"
     },
     "gallery": {
+      "clear": "履歴を消去",
+      "clearConfirm": "消去",
+      "clearMessage": "Lymarkの記録を削除します。端末のギャラリーに保存済みの画像はそのまま残ります。",
+      "count": "{count, plural, other {# 枚の写真を書き出しました}}",
       "delete": "削除",
       "empty": "まだ写真はありません",
+      "emptyAction": "撮影へ移動",
+      "emptyDescription": "透かしを入れて書き出した写真が、日付・場所・コードとともにここに並びます。",
       "share": "共有",
       "title": "ギャラリー"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "について",
+      "aboutDescription": "バージョン・プライバシー・クレジット",
+      "appSection": "アプリ",
+      "deviceSection": "端末",
+      "deviceSectionDescription": "Lymarkが求めるアクセス許可。",
+      "fields": "項目と位置",
+      "fieldsDescription": "表示する項目、隅の位置、大きさを選びます",
+      "history": "履歴",
+      "historyDescription": "端末に残る、書き出した写真",
       "language": "言語",
       "permissions": "権限",
+      "permissionsDescription": "カメラ・写真・位置情報",
       "save": "保存",
       "title": "設定",
-      "watermark": "透かし"
+      "watermark": "透かし",
+      "watermarkSection": "透かし",
+      "watermarkSectionDescription": "写真に何を、どこに刻印するか。"
     },
     "signup": {
       "subtitle": "始めるにはサインアップ",
       "title": "Lymarkアカウントを作成"
     },
+    "tagline": "時刻・日付・場所入りの透かし",
     "title": "Lymark"
   },
   "desktop": {

@@ -28,8 +28,14 @@
       "yes": "예"
     },
     "gallery": {
+      "clear": "기록 지우기",
+      "clearConfirm": "지우기",
+      "clearMessage": "Lymark의 기록이 삭제됩니다. 기기 갤러리에 이미 저장된 이미지는 영향을 받지 않습니다.",
+      "count": "{count, plural, other {사진 #장 내보냄}}",
       "delete": "삭제",
       "empty": "아직 사진이 없습니다",
+      "emptyAction": "촬영으로 이동",
+      "emptyDescription": "워터마크를 넣어 내보낸 사진이 날짜, 장소, 코드와 함께 여기에 표시됩니다.",
       "share": "공유",
       "title": "갤러리"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "정보",
+      "aboutDescription": "버전, 개인정보, 크레딧",
+      "appSection": "앱",
+      "deviceSection": "기기",
+      "deviceSectionDescription": "Lymark가 요청하는 접근 권한.",
+      "fields": "항목과 위치",
+      "fieldsDescription": "표시할 항목, 모서리, 크기를 고릅니다",
+      "history": "기록",
+      "historyDescription": "기기에 보관된 내보낸 사진",
       "language": "언어",
       "permissions": "권한",
+      "permissionsDescription": "카메라, 사진, 위치",
       "save": "저장",
       "title": "설정",
-      "watermark": "워터마크"
+      "watermark": "워터마크",
+      "watermarkSection": "워터마크",
+      "watermarkSectionDescription": "사진에 무엇을 어디에 각인할지."
     },
     "signup": {
       "subtitle": "시작하려면 가입",
       "title": "Lymark 계정 만들기"
     },
+    "tagline": "시각, 날짜, 장소가 담긴 워터마크",
     "title": "Lymark"
   },
   "desktop": {

@@ -3,6 +3,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Link, Tabs } from 'expo-router';
 import { StyleSheet, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { AppBar } from '@/components/brand/app-header';
 import { useLayoutMode } from '@/lib/breakpoints';
@@ -21,6 +22,7 @@ import { colors, typography } from '@/theme';
  * `CaptureProvider` na raiz, nem o estado nem a posição de rolagem se perdem.
  */
 export default function TabsLayout() {
+  const t = useTranslations('app');
   const mode = useLayoutMode();
   const phone = mode === 'phone';
 
@@ -44,7 +46,7 @@ export default function TabsLayout() {
       */}
       {phone ? null : (
         <AppBar
-          tagline="Marca d’água com hora, data e local"
+          tagline={t('tagline')}
           actions={
             semAbas ? (
               <>
@@ -78,7 +80,7 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="index"
           options={{
-            title: 'Capturar',
+            title: t('capture.title'),
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="camera" size={size} color={color} />
             ),
@@ -101,7 +103,7 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="gallery"
           options={{
-            title: 'Galeria',
+            title: t('gallery.title'),
             href: isWeb() ? null : undefined,
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="images" size={size} color={color} />
@@ -111,7 +113,7 @@ export default function TabsLayout() {
         <Tabs.Screen
           name="settings"
           options={{
-            title: 'Configurações',
+            title: t('settings.title'),
             tabBarIcon: ({ color, size }) => (
               <Ionicons name="settings-sharp" size={size} color={color} />
             ),

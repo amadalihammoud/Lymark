@@ -28,8 +28,14 @@
       "yes": "Ja"
     },
     "gallery": {
+      "clear": "Verlauf löschen",
+      "clearConfirm": "Löschen",
+      "clearMessage": "Die Einträge von Lymark werden gelöscht. Bereits in der Gerätegalerie gespeicherte Bilder bleiben unberührt.",
+      "count": "{count, plural, one {# Foto exportiert} other {# Fotos exportiert}}",
       "delete": "Löschen",
       "empty": "Noch keine Fotos",
+      "emptyAction": "Zur Aufnahme",
+      "emptyDescription": "Fotos, die Sie mit Wasserzeichen exportieren, erscheinen hier — mit Datum, Ort und Code.",
       "share": "Teilen",
       "title": "Galerie"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "Über",
+      "aboutDescription": "Version, Datenschutz und Danksagungen",
+      "appSection": "App",
+      "deviceSection": "Gerät",
+      "deviceSectionDescription": "Zugriffe, die Lymark anfordert.",
+      "fields": "Felder und Position",
+      "fieldsDescription": "Wählen Sie die sichtbaren Felder, die Ecke und die Größe",
+      "history": "Verlauf",
+      "historyDescription": "Exportierte Fotos, die auf dem Gerät bleiben",
       "language": "Sprache",
       "permissions": "Berechtigungen",
+      "permissionsDescription": "Kamera, Fotos und Standort",
       "save": "Speichern",
       "title": "Einstellungen",
-      "watermark": "Wasserzeichen"
+      "watermark": "Wasserzeichen",
+      "watermarkSection": "Wasserzeichen",
+      "watermarkSectionDescription": "Was auf das Foto gestempelt wird — und wohin."
     },
     "signup": {
       "subtitle": "Melden Sie sich an, um zu beginnen",
       "title": "Erstellen Sie Ihr Lymark-Konto"
     },
+    "tagline": "Wasserzeichen mit Uhrzeit, Datum und Ort",
     "title": "Lymark"
   },
   "desktop": {

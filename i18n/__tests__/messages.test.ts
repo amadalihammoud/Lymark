@@ -40,8 +40,17 @@ function flatten(value: unknown, prefix = ''): Record<string, string> {
  * silenciar o teste.
  */
 const IDENTICAL_ON_PURPOSE: Record<string, readonly string[]> = {
-  // "Registro fotográfico de campo" se escreve igual em português e espanhol.
-  es: ['site.hero.eyebrow'],
+  // Português e espanhol são próximos o bastante para frases inteiras
+  // coincidirem sem que ninguém tenha esquecido de traduzir. É o único par da
+  // lista onde isso acontece — e continua valendo conferir cada entrada nova
+  // antes de acrescentá-la.
+  es: [
+    // "Registro fotográfico de campo" se escreve igual nos dois idiomas.
+    'site.hero.eyebrow',
+    // "# foto exportada" / "# fotos exportadas" — idêntico, inclusive no
+    // plural, porque as duas línguas formam o feminino da mesma maneira.
+    'app.gallery.count',
+  ],
 };
 
 const catalogs = new Map(LOCALES.map((locale) => [locale, flatten(load(locale))]));

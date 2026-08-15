@@ -1,5 +1,6 @@
 import { useRouter } from 'expo-router';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { PhotoCard } from '@/components/gallery/photo-card';
 import { Button } from '@/components/ui/button';
@@ -17,18 +18,18 @@ import { colors, spacing, typography } from '@/theme';
  * mantém a aba Capturar viva por baixo.
  */
 export default function GalleryScreen() {
+  const t = useTranslations('app');
   const { entries, hydrated, clearGallery } = useGallery();
   const { ask } = useFeedback();
   const router = useRouter();
 
   const confirmClear = () => {
     ask({
-      title: 'Limpar histórico',
-      message:
-        'Os registros do Lymark serão apagados. As imagens já salvas na galeria do aparelho não são afetadas.',
+      title: t('gallery.clear'),
+      message: t('gallery.clearMessage'),
       actions: [
-        { label: 'Limpar', destructive: true, onPress: clearGallery },
-        { label: 'Cancelar', variant: 'ghost' },
+        { label: t('gallery.clearConfirm'), destructive: true, onPress: clearGallery },
+        { label: t('common.cancel'), variant: 'ghost' },
       ],
     });
   };
@@ -38,9 +39,9 @@ export default function GalleryScreen() {
       <Screen scrollable={false}>
         <EmptyState
           icon="images-outline"
-          title="Nenhuma foto ainda"
-          description="As fotos que você exportar com marca d’água aparecem aqui, com data, local e código."
-          actionLabel="Ir para Capturar"
+          title={t('gallery.empty')}
+          description={t('gallery.emptyDescription')}
+          actionLabel={t('gallery.emptyAction')}
           onAction={() => router.replace('/')}
         />
       </Screen>
@@ -56,10 +57,13 @@ export default function GalleryScreen() {
         showsVerticalScrollIndicator={false}
         ListHeaderComponent={
           <View style={styles.header}>
-            <Text style={typography.screenTitle}>Galeria</Text>
-            <Text style={typography.caption}>
-              {entries.length === 1 ? '1 foto exportada' : `${entries.length} fotos exportadas`}
-            </Text>
+            <Text style={typography.screenTitle}>{t('gallery.title')}</Text>
+            {/*
+              A contagem sai do catálogo com plural ICU. O ternário anterior
+              -- uma foto contra várias -- acertava em português e erraria em
+              russo, que tem quatro formas, e em árabe, que tem seis.
+            */}
+            <Text style={typography.caption}>{t('gallery.count', { count: entries.length })}</Text>
           </View>
         }
         renderItem={({ item }) => (
@@ -69,7 +73,7 @@ export default function GalleryScreen() {
         ListFooterComponent={
           entries.length > 0 ? (
             <Button
-              label="Limpar histórico"
+              label={t('gallery.clear')}
               icon="trash-outline"
               variant="danger"
               onPress={confirmClear}

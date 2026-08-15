@@ -33,16 +33,16 @@ export default function SettingsScreen() {
     <Screen>
       <View style={styles.header}>
         <Wordmark size="sm" />
-        <Text style={typography.screenTitle}>Configurações</Text>
+        <Text style={typography.screenTitle}>{t('settings.title')}</Text>
       </View>
 
       <Section
-        title="Marca d’água"
-        description="O que é carimbado sobre a foto e onde.">
+        title={t('settings.watermarkSection')}
+        description={t('settings.watermarkSectionDescription')}>
         <NavRow
           icon="pricetags-outline"
-          title="Campos e posição"
-          description="Escolha os campos exibidos, o canto e o tamanho"
+          title={t('settings.fields')}
+          description={t('settings.fieldsDescription')}
           value={`${visibleFieldCount}/${WATERMARK_FIELD_KEYS.length} · ${
             WATERMARK_POSITION_LABELS[preferences.position]
           }`}
@@ -51,11 +51,13 @@ export default function SettingsScreen() {
         />
       </Section>
 
-      <Section title="Aparelho" description="Acessos que o Lymark solicita.">
+      <Section
+        title={t('settings.deviceSection')}
+        description={t('settings.deviceSectionDescription')}>
         <NavRow
           icon="lock-closed-outline"
-          title="Permissões"
-          description="Câmera, fotos e localização"
+          title={t('permissions.title')}
+          description={t('settings.permissionsDescription')}
           onPress={() => router.push('/settings/permissions')}
         />
         <NavRow
@@ -68,18 +70,18 @@ export default function SettingsScreen() {
         />
       </Section>
 
-      <Section title="Aplicativo">
+      <Section title={t('settings.appSection')}>
         <NavRow
           icon="images-outline"
-          title="Histórico"
-          description="Fotos exportadas guardadas no aparelho"
+          title={t('settings.history')}
+          description={t('settings.historyDescription')}
           value={String(entries.length)}
           onPress={() => router.navigate('/gallery')}
         />
         <NavRow
           icon="information-circle-outline"
-          title="Sobre o Lymark"
-          description="Versão, privacidade e créditos"
+          title={t('about.title')}
+          description={t('settings.aboutDescription')}
           value={`v${appVersion}`}
           onPress={() => router.push('/settings/about')}
           showDivider={false}

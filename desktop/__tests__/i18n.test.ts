@@ -26,7 +26,15 @@ describe('translate', () => {
   });
 
   it('cai no português quando o idioma não existe', () => {
-    expect(translate('tlh', 'desktop.menu.file')).toBe('Arquivo');
+    // O aviso no console é o comportamento esperado — silenciado aqui só
+    // para o rastro de erro do Node não poluir a saída da suíte.
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    try {
+      expect(translate('tlh', 'desktop.menu.file')).toBe('Arquivo');
+      expect(warn).toHaveBeenCalled();
+    } finally {
+      warn.mockRestore();
+    }
   });
 
   it('devolve a própria chave quando ela não existe em nenhum catálogo', () => {

@@ -28,8 +28,14 @@
       "yes": "是"
     },
     "gallery": {
+      "clear": "清空历史记录",
+      "clearConfirm": "清空",
+      "clearMessage": "Lymark 的记录将被删除。已保存到设备相册的图片不受影响。",
+      "count": "{count, plural, other {已导出 # 张照片}}",
       "delete": "删除",
       "empty": "还没有照片",
+      "emptyAction": "前往拍摄",
+      "emptyDescription": "添加水印后导出的照片会显示在这里，附带日期、地点和编号。",
       "share": "分享",
       "title": "相册"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "关于",
+      "aboutDescription": "版本、隐私与致谢",
+      "appSection": "应用",
+      "deviceSection": "设备",
+      "deviceSectionDescription": "Lymark 申请的访问权限。",
+      "fields": "字段与位置",
+      "fieldsDescription": "选择显示的字段、所在角落和大小",
+      "history": "历史记录",
+      "historyDescription": "保存在设备上的已导出照片",
       "language": "语言",
       "permissions": "权限",
+      "permissionsDescription": "相机、照片和定位",
       "save": "保存",
       "title": "设置",
-      "watermark": "水印"
+      "watermark": "水印",
+      "watermarkSection": "水印",
+      "watermarkSectionDescription": "照片上添加什么内容，以及添加在哪里。"
     },
     "signup": {
       "subtitle": "注册以开始",
       "title": "创建您的Lymark账户"
     },
+    "tagline": "带时间、日期和地点的水印",
     "title": "Lymark"
   },
   "desktop": {

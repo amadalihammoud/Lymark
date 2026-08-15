@@ -28,8 +28,14 @@
       "yes": "Ja"
     },
     "gallery": {
+      "clear": "Geschiedenis wissen",
+      "clearConfirm": "Wissen",
+      "clearMessage": "De registraties van Lymark worden verwijderd. Afbeeldingen die al in de apparaatgalerij staan, blijven ongemoeid.",
+      "count": "{count, plural, one {# foto geëxporteerd} other {# foto's geëxporteerd}}",
       "delete": "Verwijderen",
       "empty": "Nog geen foto's",
+      "emptyAction": "Naar Vastleggen",
+      "emptyDescription": "Foto's die je met watermerk exporteert, verschijnen hier — met datum, plaats en code.",
       "share": "Delen",
       "title": "Galerij"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "Over",
+      "aboutDescription": "Versie, privacy en credits",
+      "appSection": "App",
+      "deviceSection": "Apparaat",
+      "deviceSectionDescription": "Toegang die Lymark vraagt.",
+      "fields": "Velden en positie",
+      "fieldsDescription": "Kies de zichtbare velden, de hoek en de grootte",
+      "history": "Geschiedenis",
+      "historyDescription": "Geëxporteerde foto’s die op het apparaat blijven",
       "language": "Taal",
       "permissions": "Machtigingen",
+      "permissionsDescription": "Camera, foto’s en locatie",
       "save": "Opslaan",
       "title": "Instellingen",
-      "watermark": "Watermerk"
+      "watermark": "Watermerk",
+      "watermarkSection": "Watermerk",
+      "watermarkSectionDescription": "Wat er op de foto wordt gestempeld, en waar."
     },
     "signup": {
       "subtitle": "Meld u aan om te beginnen",
       "title": "Maak uw Lymark-account"
     },
+    "tagline": "Watermerk met tijd, datum en plaats",
     "title": "Lymark"
   },
   "desktop": {

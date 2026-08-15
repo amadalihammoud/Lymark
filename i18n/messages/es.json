@@ -28,8 +28,14 @@
       "yes": "Sí"
     },
     "gallery": {
+      "clear": "Borrar historial",
+      "clearConfirm": "Borrar",
+      "clearMessage": "Se borrarán los registros de Lymark. Las imágenes ya guardadas en la galería del dispositivo no se ven afectadas.",
+      "count": "{count, plural, one {# foto exportada} other {# fotos exportadas}}",
       "delete": "Eliminar",
       "empty": "Todavía no hay fotos",
+      "emptyAction": "Ir a Capturar",
+      "emptyDescription": "Las fotos que exportes con marca de agua aparecen aquí, con fecha, lugar y código.",
       "share": "Compartir",
       "title": "Galería"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "Acerca de",
+      "aboutDescription": "Versión, privacidad y créditos",
+      "appSection": "Aplicación",
+      "deviceSection": "Dispositivo",
+      "deviceSectionDescription": "Accesos que Lymark solicita.",
+      "fields": "Campos y posición",
+      "fieldsDescription": "Elige los campos visibles, la esquina y el tamaño",
+      "history": "Historial",
+      "historyDescription": "Fotos exportadas guardadas en el dispositivo",
       "language": "Idioma",
       "permissions": "Permisos",
+      "permissionsDescription": "Cámara, fotos y ubicación",
       "save": "Guardar",
       "title": "Configuraciones",
-      "watermark": "Marca de agua"
+      "watermark": "Marca de agua",
+      "watermarkSection": "Marca de agua",
+      "watermarkSectionDescription": "Qué se sella sobre la foto y dónde."
     },
     "signup": {
       "subtitle": "Regístrate para empezar",
       "title": "Crea tu cuenta en Lymark"
     },
+    "tagline": "Marca de agua con hora, fecha y lugar",
     "title": "Lymark"
   },
   "desktop": {

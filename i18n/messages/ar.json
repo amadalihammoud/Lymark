@@ -28,8 +28,14 @@
       "yes": "نعم"
     },
     "gallery": {
+      "clear": "مسح السجل",
+      "clearConfirm": "مسح",
+      "clearMessage": "ستُحذف سجلات Lymark. أما الصور المحفوظة في معرض الجهاز فلن تتأثر.",
+      "count": "{count, plural, zero {لم تُصدَّر أي صورة} one {صورة واحدة مصدَّرة} two {صورتان مصدَّرتان} few {# صور مصدَّرة} many {# صورة مصدَّرة} other {# صورة مصدَّرة}}",
       "delete": "حذف",
       "empty": "لا صور بعد",
+      "emptyAction": "الانتقال إلى الالتقاط",
+      "emptyDescription": "تظهر هنا الصور التي صدَّرتها بعلامة مائية، مع التاريخ والمكان والرمز.",
       "share": "مشاركة",
       "title": "المعرض"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "عن",
+      "aboutDescription": "الإصدار والخصوصية والشكر",
+      "appSection": "التطبيق",
+      "deviceSection": "الجهاز",
+      "deviceSectionDescription": "الأذونات التي يطلبها Lymark.",
+      "fields": "الحقول والموضع",
+      "fieldsDescription": "اختر الحقول الظاهرة والزاوية والحجم",
+      "history": "السجل",
+      "historyDescription": "الصور المصدَّرة المحفوظة على الجهاز",
       "language": "اللغة",
       "permissions": "الأذونات",
+      "permissionsDescription": "الكاميرا والصور والموقع",
       "save": "حفظ",
       "title": "الإعدادات",
-      "watermark": "الختم"
+      "watermark": "الختم",
+      "watermarkSection": "العلامة المائية",
+      "watermarkSectionDescription": "ما يُختم على الصورة، وفي أي موضع."
     },
     "signup": {
       "subtitle": "سجل للبدء",
       "title": "أنشئ حساب Lymark"
     },
+    "tagline": "علامة مائية بالوقت والتاريخ والمكان",
     "title": "Lymark"
   },
   "desktop": {

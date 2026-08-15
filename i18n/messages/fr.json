@@ -28,8 +28,14 @@
       "yes": "Oui"
     },
     "gallery": {
+      "clear": "Effacer l'historique",
+      "clearConfirm": "Effacer",
+      "clearMessage": "Les enregistrements de Lymark seront supprimés. Les images déjà enregistrées dans la galerie de l'appareil ne sont pas concernées.",
+      "count": "{count, plural, one {# photo exportée} other {# photos exportées}}",
       "delete": "Supprimer",
       "empty": "Aucune photo pour l'instant",
+      "emptyAction": "Aller à Capture",
+      "emptyDescription": "Les photos que vous exportez avec un filigrane apparaissent ici, avec la date, le lieu et le code.",
       "share": "Partager",
       "title": "Galerie"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "À propos",
+      "aboutDescription": "Version, confidentialité et crédits",
+      "appSection": "Application",
+      "deviceSection": "Appareil",
+      "deviceSectionDescription": "Accès demandés par Lymark.",
+      "fields": "Champs et position",
+      "fieldsDescription": "Choisissez les champs affichés, le coin et la taille",
+      "history": "Historique",
+      "historyDescription": "Photos exportées conservées sur l'appareil",
       "language": "Langue",
       "permissions": "Permissions",
+      "permissionsDescription": "Caméra, photos et localisation",
       "save": "Enregistrer",
       "title": "Paramètres",
-      "watermark": "Filigrane"
+      "watermark": "Filigrane",
+      "watermarkSection": "Filigrane",
+      "watermarkSectionDescription": "Ce qui est apposé sur la photo, et à quel endroit."
     },
     "signup": {
       "subtitle": "Inscrivez-vous pour commencer",
       "title": "Créez votre compte Lymark"
     },
+    "tagline": "Filigrane avec heure, date et lieu",
     "title": "Lymark"
   },
   "desktop": {

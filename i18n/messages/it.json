@@ -28,8 +28,14 @@
       "yes": "Sì"
     },
     "gallery": {
+      "clear": "Cancella cronologia",
+      "clearConfirm": "Cancella",
+      "clearMessage": "I record di Lymark verranno eliminati. Le immagini già salvate nella galleria del dispositivo non vengono toccate.",
+      "count": "{count, plural, one {# foto esportata} other {# foto esportate}}",
       "delete": "Elimina",
       "empty": "Nessuna foto ancora",
+      "emptyAction": "Vai ad Acquisizione",
+      "emptyDescription": "Le foto che esporti con la filigrana compaiono qui, con data, luogo e codice.",
       "share": "Condividi",
       "title": "Galleria"
     },
@@ -76,16 +82,28 @@
     },
     "settings": {
       "about": "Info",
+      "aboutDescription": "Versione, privacy e crediti",
+      "appSection": "Applicazione",
+      "deviceSection": "Dispositivo",
+      "deviceSectionDescription": "Accessi richiesti da Lymark.",
+      "fields": "Campi e posizione",
+      "fieldsDescription": "Scegli i campi mostrati, l’angolo e la dimensione",
+      "history": "Cronologia",
+      "historyDescription": "Foto esportate conservate sul dispositivo",
       "language": "Lingua",
       "permissions": "Permessi",
+      "permissionsDescription": "Fotocamera, foto e posizione",
       "save": "Salva",
       "title": "Impostazioni",
-      "watermark": "Filigrana"
+      "watermark": "Filigrana",
+      "watermarkSection": "Filigrana",
+      "watermarkSectionDescription": "Che cosa viene timbrato sulla foto, e dove."
     },
     "signup": {
       "subtitle": "Iscriviti per iniziare",
       "title": "Crea il tuo account Lymark"
     },
+    "tagline": "Filigrana con ora, data e luogo",
     "title": "Lymark"
   },
   "desktop": {
