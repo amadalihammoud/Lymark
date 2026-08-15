@@ -7,6 +7,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
@@ -28,12 +29,16 @@ import type { WatermarkFieldKey } from '@/types';
  */
 const WATERMARK_FIELDS: WatermarkFieldKey[] = ['code', 'address'];
 
-const FIELD_LABELS: Record<string, { label: string; placeholder: string }> = {
-  code: { label: 'Código', placeholder: 'Ex: LYM-001' },
-  address: { label: 'Endereço', placeholder: 'Rua, número - Cidade' },
-};
+/*
+ * O rótulo de cada campo vem de `app.watermark.fields`, que é o mesmo do
+ * formulário de captura, e o exemplo de preenchimento de `app.batch`. Um
+ * segundo conjunto de rótulos aqui faria a mesma coisa ter dois nomes dentro
+ * do aplicativo.
+ */
 
 export default function BatchProcessingScreen() {
+  const t = useTranslations('app.batch');
+  const tApp = useTranslations('app');
   const { state, metadata, outputFolder, updateMetadata, setOutputFolderPath, startBatch, cancelBatch, loadOutputFolder } = useBatchProcessing();
   const [photos, setPhotos] = useState<{ uri: string; width: number; height: number }[]>([]);
   const { notify } = useFeedback();
@@ -85,7 +90,7 @@ export default function BatchProcessingScreen() {
     if (photos.length === 0) {
       // `alert` é global do navegador e não existe no React Native; o app tem
       // aviso próprio, que é o mesmo em toda plataforma.
-      notify('Selecione pelo menos uma foto.', 'warning');
+      notify(t('noPhotos'), 'warning');
       return;
     }
     startBatch(photos);
@@ -109,29 +114,27 @@ export default function BatchProcessingScreen() {
   if (!disponivel) {
     return (
       <Screen>
-        <Text style={typography.screenTitle}>Processamento em lote não disponível</Text>
-        <Text style={typography.body}>Esta funcionalidade é apenas para desktop.</Text>
+        <Text style={typography.screenTitle}>{t('unavailableTitle')}</Text>
+        <Text style={typography.body}>{t('unavailableBody')}</Text>
       </Screen>
     );
   }
 
   return (
     <Screen scrollable={false}>
-      <Text style={[typography.screenTitle, styles.title]}>Processamento em Lote</Text>
+      <Text style={[typography.screenTitle, styles.title]}>{tApp('nav.batch')}</Text>
 
-      <Section title="Fotos para processar">
-        <Text style={typography.caption}>
-          {photos.length} foto(s) selecionada(s)
-        </Text>
+      <Section title={t('photosSection')}>
+        <Text style={typography.caption}>{t('selected', { count: photos.length })}</Text>
         
         <View style={styles.actions}>
           <Button
-            label="Selecionar Fotos"
+            label={t('selectPhotos')}
             icon="image-outline"
             onPress={handleSelectPhotos}
           />
           <Button
-            label="Limpar Lista"
+            label={t('clearList')}
             icon="trash-outline"
             variant="danger"
             onPress={handleClearPhotos}
@@ -141,9 +144,7 @@ export default function BatchProcessingScreen() {
 
         {/* Área de drag and drop */}
         <View style={styles.dropZone}>
-          <Text style={[typography.caption, styles.dropZoneText]}>
-            Arraste e solte fotos aqui ou use o botão “Selecionar Fotos”
-          </Text>
+          <Text style={[typography.caption, styles.dropZoneText]}>{t('dropZone')}</Text>
         </View>
 
         {photos.length > 0 && (
@@ -159,7 +160,7 @@ export default function BatchProcessingScreen() {
                   </Text>
                 </View>
                 <Button
-                  label="Remover"
+                  label={tApp('photo.remove')}
                   icon="close"
                   variant="ghost"
                   onPress={() => handleRemovePhoto(index)}
@@ -170,28 +171,29 @@ export default function BatchProcessingScreen() {
         )}
       </Section>
 
-      <Section title="Metadados compartilhados">
-        <Text style={[typography.caption, styles.caption]}>
-          Estes valores serão aplicados a TODAS as fotos. A data/hora de cada foto
-          será lida do EXIF individualmente.
-        </Text>
+      <Section title={t('sharedSection')}>
+        <Text style={[typography.caption, styles.caption]}>{t('sharedNote')}</Text>
 
         {WATERMARK_FIELDS.map((field) => (
           <FieldRow
             key={field}
-            label={FIELD_LABELS[field].label}
+            label={tApp(`watermark.fields.${field}`)}
             value={metadata[field]}
             onChangeText={(value: string) => updateMetadata({ [field]: value })}
-            placeholder={FIELD_LABELS[field].placeholder}
+            placeholder={t(`${field}Hint`)}
             style={styles.input}
           />
         ))}
       </Section>
 
-      <Section title="Saída">
+      <Section title={t('outputSection')}>
         <View style={styles.folderSelection}>
           <Button
-            label={outputFolder ? `Pasta: ${outputFolder.split('/').pop()}` : 'Selecionar Pasta de Saída'}
+            label={
+              outputFolder
+                ? t('folder', { name: outputFolder.split('/').pop() ?? '' })
+                : t('selectFolder')
+            }
             icon="folder-open-outline"
             variant="primaryAlt"
             onPress={handleSelectOutputFolder}
@@ -202,21 +204,23 @@ export default function BatchProcessingScreen() {
             </Text>
           )}
         </View>
-        <Text style={[typography.caption, styles.caption]}>
-          As fotos processadas serão salvas na pasta selecionada.
-        </Text>
+        <Text style={[typography.caption, styles.caption]}>{t('outputNote')}</Text>
       </Section>
 
       {state.isProcessing ? (
-        <Section title="Processando...">
+        <Section title={t('processing')}>
           <View style={styles.progressContainer}>
             <View style={[styles.progressBar, { width: `${state.progress}%` }]} />
             <Text style={styles.progressText}>
-              {state.current} de {state.total} ({`${Math.round(state.progress)}%`})
+              {t('progress', {
+                current: state.current,
+                total: state.total,
+                percent: Math.round(state.progress),
+              })}
             </Text>
           </View>
           <Button
-            label="Cancelar"
+            label={tApp('common.cancel')}
             variant="danger"
             onPress={handleCancelProcessing}
             disabled={!state.isProcessing}
@@ -224,7 +228,7 @@ export default function BatchProcessingScreen() {
         </Section>
       ) : (
         <Button
-          label="Iniciar Processamento"
+          label={t('start')}
           icon="play-circle-outline"
           onPress={handleStartProcessing}
           disabled={photos.length === 0}
@@ -232,9 +236,9 @@ export default function BatchProcessingScreen() {
       )}
 
       {state.results.failures.length > 0 && (
-        <Section title="Erros">
+        <Section title={t('errorsSection')}>
           <Text style={typography.caption}>
-            {state.results.success} sucesso(s), {state.results.failed} falha(s)
+            {t('results', { success: state.results.success, failed: state.results.failed })}
           </Text>
           {state.results.failures.map((failure, index) => (
             <View key={`error-${index}`} style={styles.errorItem}>
@@ -250,9 +254,9 @@ export default function BatchProcessingScreen() {
       )}
 
       {state.isProcessing === false && state.results.total > 0 && state.results.failures.length === 0 && state.results.success > 0 && (
-        <Section title="Concluído">
+        <Section title={t('doneSection')}>
           <Text style={[typography.body, styles.successMessage]}>
-            Processamento concluído com sucesso! {state.results.success} foto(s) processada(s).
+            {t('done', { count: state.results.success })}
           </Text>
         </Section>
       )}
