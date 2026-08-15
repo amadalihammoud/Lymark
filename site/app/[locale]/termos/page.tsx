@@ -1,10 +1,13 @@
 import type { Metadata } from 'next';
 import { Link } from '../../../i18n/navigation';
+import { canonicalFor } from '../../../i18n/urls';
 
+/** Mesma pendência da Política de Privacidade — o porquê está descrito lá. */
 export const metadata: Metadata = {
   title: 'Termos de Uso',
   description:
     'Condições de uso do aplicativo Lymark: o que ele faz, o que ele não faz, e de quem é a responsabilidade sobre o conteúdo das fotos.',
+  alternates: { canonical: canonicalFor('/termos', 'pt') },
 };
 
 export default function Termos() {

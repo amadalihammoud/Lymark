@@ -4,10 +4,12 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
-import { isRtl, type Locale } from '../../../i18n/locales';
+import { LOCALES, isRtl, type Locale } from '../../../i18n/locales';
 import LanguageSelector from '../../components/LanguageSelector';
 import { Link } from '../../i18n/navigation';
 import { routing } from '../../i18n/routing';
+import { OG_LOCALES } from '../../i18n/og-locales';
+import { SITE_ORIGIN, alternatesFor, canonicalFor, urlFor } from '../../i18n/urls';
 
 import '../globals.css';
 
@@ -56,16 +58,37 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'site' });
 
   return {
+    /*
+     * Sem `metadataBase`, o Next resolve endereço relativo contra
+     * `localhost:3000` e o canônico publicado aponta para a máquina de quem
+     * fez o build. De onde sai a origem está em `i18n/urls.ts`.
+     */
+    metadataBase: new URL(SITE_ORIGIN),
     title: {
       default: t('title'),
       template: `%s · Lymark`,
     },
     description: t('description'),
     applicationName: 'Lymark',
+    /*
+     * As doze versões são traduções da MESMA página, e não doze páginas.
+     * Sem `hreflang`, o buscador as trata como concorrentes: escolhe uma,
+     * ignora as outras e mostra a errada para quem procura em outra língua —
+     * o que anula o trabalho de tradução justamente onde ele deveria render.
+     */
+    alternates: {
+      canonical: canonicalFor('/', locale as Locale),
+      languages: alternatesFor('/'),
+    },
     openGraph: {
       title: 'Lymark',
       description: t('description'),
-      locale,
+      // O Open Graph pede idioma_TERRITÓRIO; o `hreflang` acima é que usa o
+      // código puro. São convenções diferentes, e trocá-las invalida as duas.
+      locale: OG_LOCALES[locale as Locale],
+      alternateLocale: LOCALES.filter((code) => code !== locale).map((code) => OG_LOCALES[code]),
+      url: urlFor('/', locale as Locale),
+      siteName: 'Lymark',
       type: 'website',
     },
     robots: { index: true, follow: true },

@@ -1,10 +1,23 @@
 import type { Metadata } from 'next';
 import { Link } from '../../../i18n/navigation';
+import { canonicalFor } from '../../../i18n/urls';
 
+/**
+ * PENDENTE: esta página está escrita em português, direto no JSX, e é servida
+ * também sob os onze prefixos de idioma. Quem abre `/de/privacidade` recebe
+ * texto português.
+ *
+ * Enquanto for assim, o canônico aponta para a versão portuguesa — as doze
+ * URLs servem o mesmo conteúdo, e sem isso seriam doze páginas duplicadas
+ * disputando a mesma posição. É a declaração honesta do que existe, não a
+ * solução: a solução é traduzir, e aí este canônico passa a ser por idioma,
+ * como o da landing page.
+ */
 export const metadata: Metadata = {
   title: 'Política de Privacidade',
   description:
     'Como o aplicativo Lymark trata fotos, localização e histórico. O aplicativo não possui servidor, não cria conta e não transmite as suas fotos.',
+  alternates: { canonical: canonicalFor('/privacidade', 'pt') },
 };
 
 export default function Privacidade() {
