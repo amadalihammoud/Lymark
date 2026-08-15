@@ -76,10 +76,14 @@ export default function SettingsScreen() {
         <NavRow
           icon="card-outline"
           title={t('plan.title')}
+          // O aviso de reconectar vence a contagem: quem está na tolerância
+          // offline precisa saber disso antes de saber quantas fotos restam.
           description={
-            access.remaining === null
-              ? t('plan.unlimited')
-              : t('plan.remaining', { remaining: access.remaining })
+            access.shouldWarn
+              ? t('plan.reconnect')
+              : access.remaining === null
+                ? t('plan.unlimited')
+                : t('plan.remaining', { remaining: access.remaining })
           }
           // Fração, no mesmo formato da linha de campos logo acima: "11/15"
           // se lê sem tradução em idioma nenhum.

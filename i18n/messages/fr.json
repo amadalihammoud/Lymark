@@ -180,6 +180,7 @@
     },
     "plan": {
       "exhausted": "Quota du mois épuisé",
+      "exhaustedMessage": "Les photos de la formule gratuite sont épuisées pour ce mois-ci. Le quota revient au début de la période suivante.",
       "free": "Gratuit",
       "pro": "Pro",
       "reconnect": "Reconnectez-vous pour confirmer votre abonnement",

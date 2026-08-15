@@ -180,6 +180,7 @@
     },
     "plan": {
       "exhausted": "Cuota del mes agotada",
+      "exhaustedMessage": "Se acabaron las fotos del plan gratuito de este mes. La cuota vuelve al inicio del próximo período.",
       "free": "Gratis",
       "pro": "Pro",
       "reconnect": "Reconéctate para confirmar tu suscripción",

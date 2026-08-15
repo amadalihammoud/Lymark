@@ -180,6 +180,7 @@
     },
     "plan": {
       "exhausted": "本月额度已用完",
+      "exhaustedMessage": "本月免费方案的照片额度已用完。下一个周期开始时会恢复。",
       "free": "免费",
       "pro": "Pro",
       "reconnect": "请联网以确认订阅",

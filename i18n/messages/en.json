@@ -180,6 +180,7 @@
     },
     "plan": {
       "exhausted": "Monthly quota used up",
+      "exhaustedMessage": "The free plan’s photos for this month are used up. The quota comes back at the start of the next period.",
       "free": "Free",
       "pro": "Pro",
       "reconnect": "Reconnect to confirm your subscription",

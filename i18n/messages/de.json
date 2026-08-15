@@ -180,6 +180,7 @@
     },
     "plan": {
       "exhausted": "Monatskontingent aufgebraucht",
+      "exhaustedMessage": "Die Fotos des kostenlosen Tarifs sind für diesen Monat aufgebraucht. Das Kontingent kommt zu Beginn des nächsten Zeitraums zurück.",
       "free": "Kostenlos",
       "pro": "Pro",
       "reconnect": "Verbinden Sie sich, um Ihr Abo zu bestätigen",

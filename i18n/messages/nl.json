@@ -180,6 +180,7 @@
     },
     "plan": {
       "exhausted": "Maandquotum op",
+      "exhaustedMessage": "De foto’s van het gratis abonnement zijn deze maand op. Het quotum komt terug aan het begin van de volgende periode.",
       "free": "Gratis",
       "pro": "Pro",
       "reconnect": "Maak verbinding om je abonnement te bevestigen",

@@ -10,6 +10,7 @@ import { PhotoPreview } from '@/components/capture/photo-preview';
 import { Button } from '@/components/ui/button';
 import { Screen } from '@/components/ui/screen';
 import { useCapture } from '@/contexts/capture-context';
+import { useEntitlement } from '@/contexts/entitlement-context';
 import { useFeedback } from '@/contexts/feedback-context';
 import { useGallery } from '@/contexts/gallery-context';
 import { useSettings } from '@/contexts/settings-context';
@@ -67,6 +68,7 @@ type PendingAction = 'save' | 'share';
 export default function CaptureScreen() {
   const t = useTranslations('app.capture');
   const tCommon = useTranslations('app.common');
+  const tPlan = useTranslations('app.plan');
   const tApp = useTranslations('app');
   const router = useRouter();
   const { draft, hasPhoto, setPhoto, setField, regenerateCode, syncDateTime, resetDraft } =
@@ -74,6 +76,7 @@ export default function CaptureScreen() {
   const { preferences } = useSettings();
   const { addEntry } = useGallery();
   const { notify, ask } = useFeedback();
+  const { access, recordExport } = useEntitlement();
   const { lookup, isLoading: locating } = useAddressLookup();
 
   const mode = useLayoutMode();
@@ -195,10 +198,32 @@ export default function CaptureScreen() {
     router.push('/batch');
   }, [router]);
 
+  /**
+   * A foto já contabilizada nesta captura.
+   *
+   * Salvar e depois compartilhar a mesma foto é uma exportação, não duas —
+   * são duas formas de entregar o mesmo registro. Comparar pela URI resolve
+   * também o caso de a pessoa exportar de novo depois de mexer num campo: a
+   * foto de origem é a mesma, e a cota não deve cobrar por isso.
+   */
+  const countedPhoto = useRef<string | null>(null);
+
   const runAction = async (action: PendingAction) => {
     const photo = draft.photo;
     if (!photo || !stampTypefaces) {
       notify(t('stampNotReady'), 'warning');
+      return;
+    }
+
+    // O único caso em que o aplicativo recusa exportar. Documento vencido,
+    // tolerância estourada e relógio adulterado rebaixam para o plano grátis
+    // e passam por aqui com cota — quem barra é a cota, não a falha.
+    if (!access.canExport && countedPhoto.current !== photo.uri) {
+      ask({
+        title: tPlan('exhausted'),
+        message: tPlan('exhaustedMessage'),
+        actions: [{ label: tCommon('gotIt') }],
+      });
       return;
     }
 
@@ -213,6 +238,14 @@ export default function CaptureScreen() {
         renderer: createStampRenderer(stampTypefaces),
       });
       addEntry({ path, metadata: draft.metadata, stampedFields });
+
+      // Conta depois de o carimbo existir, e nunca antes: uma falha de
+      // renderização não pode consumir a cota de quem não recebeu foto
+      // nenhuma.
+      if (countedPhoto.current !== photo.uri) {
+        countedPhoto.current = photo.uri;
+        recordExport();
+      }
 
       if (action === 'save') {
         const outcome = await saveToDeviceGallery(path);
