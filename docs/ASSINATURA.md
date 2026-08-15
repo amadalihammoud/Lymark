@@ -168,21 +168,45 @@ webhook. Assim nunca ficamos reféns.
 
 ## 7. Ordem de implementação
 
-1. **Corrigir as promessas de texto.** `data.device.description` no site e
-   `about.privacyOnDevice` no app afirmam que não há servidor nem conta. São
-   24 lugares (2 chaves × 12 idiomas) que viram mentira no momento em que o
-   backend existir. **Primeira tarefa, não última.**
-2. **Backend e banco.** Tabela de entitlements, `GET /api/entitlements`.
-3. **Clerk** no site → no Expo → no Electron (deep link; o mais chato).
-4. **Stripe** para web e desktop. É onde não há regra de loja, então o dinheiro
+1. **Backend e banco.** Tabela de entitlements, `GET /api/entitlements`.
+2. **Clerk** no site → no Expo → no Electron (deep link; o mais chato).
+3. **Stripe** para web e desktop. É onde não há regra de loja, então o dinheiro
    roda ponta a ponta mais rápido.
-5. **Faixa de teste fechada** na loja. O app segue invisível ao mundo, e
+4. **Faixa de teste fechada** na loja. O app segue invisível ao mundo, e
    descobrimos cedo se a Apple implica com o fluxo de assinatura — a
    informação mais cara do projeto, pelo preço mais baixo.
-6. **RevenueCat + Play**, depois **App Store**.
-7. **Cota e freemium**: token assinado, lote de créditos, tolerância offline,
+5. **RevenueCat + Play**, depois **App Store**.
+6. **Cota e freemium**: token assinado, lote de créditos, tolerância offline,
    contador visível.
-8. **Pré-lançamento**: LGPD, exclusão de conta, listagens das lojas.
+7. **Pré-lançamento**: LGPD, exclusão de conta, listagens das lojas.
+
+---
+
+## 7.1 As promessas que precisam cair junto
+
+Quatro chaves do catálogo afirmam hoje que o Lymark não tem servidor e não
+cria conta. **São verdade agora** — e por isso não podem ser alteradas antes
+da hora: trocá-las hoje criaria a mentira oposta, prometendo conta antes de
+existir conta.
+
+Elas mudam **no mesmo commit que liga a autenticação**, nunca antes e nunca
+depois:
+
+| Chave | O que afirma |
+|---|---|
+| `site.hero.meta.noAccount` | "Sem conta" |
+| `site.hero.meta.noServer` | "Sem servidor" |
+| `site.data.device.description` | "não tem servidor, não cria conta e não envia as suas fotos" |
+| `app.about.privacyOnDevice` | "não possui servidor, não cria conta e não envia as suas fotos" |
+
+São **48 lugares** — quatro chaves em doze idiomas. A Fase 1 multiplicou o
+problema por doze, o que torna a lista acima mais útil do que a memória de
+quem escreveu.
+
+Duas afirmações vizinhas **continuam verdadeiras** depois da Fase 2, e não
+devem ser tocadas por engano: `app.about.privacyGeocoding` e
+`app.about.privacyLocation` falam da coordenada enviada ao serviço de mapas
+pelo sistema operacional — isso não muda por existir conta.
 
 ---
 
