@@ -139,7 +139,64 @@
       "title": "أنشئ حساب Lymark"
     },
     "tagline": "علامة مائية بالوقت والتاريخ والمكان",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "شريط داكن في الخلفية",
+      "backdropDescription": "يحافظ على التباين فوق المناطق الفاتحة من الصورة.",
+      "brandDescription": "العلامة التي تظهر على الصورة، في زاوية خاصة بها. يمكن أن تكون علامة شركتك.",
+      "brandFirstHint": "مقاولات",
+      "brandFirstPart": "الجزء الأول",
+      "brandModes": {
+        "custom": "علامتي",
+        "lymark": "Lymark"
+      },
+      "brandNote": "اترك الجزء الثاني فارغًا للحصول على علامة بلون واحد. الاسم الطويل يصغر حتى يتّسع، بدل أن يُقتطع.",
+      "brandSecondHint": " الأحمد",
+      "brandSecondPart": "الجزء الثاني",
+      "brandTitle": "العلامة المختومة",
+      "brandToggle": "ختم علامة",
+      "brandToggleDescription": "أوقفه لتسليم العميل صورة بلا أي علامة.",
+      "codeDescription": "على الجانب لا يزاحم محتوى الصورة على المساحة.",
+      "codePlacements": {
+        "block": "بجوار البيانات",
+        "side": "الجانب الأيمن"
+      },
+      "codeTitle": "رمز الصورة",
+      "colors": {
+        "amber": "كهرماني",
+        "black": "أسود",
+        "blue": "أزرق",
+        "green": "أخضر",
+        "red": "أحمر",
+        "white": "أبيض"
+      },
+      "cornerConflict": "العلامة والبيانات في الزاوية نفسها — ستتداخلان على الصورة.",
+      "fields": {
+        "address": "العنوان / المكان",
+        "code": "رمز الصورة",
+        "date": "التاريخ",
+        "time": "الوقت",
+        "weekday": "يوم الأسبوع"
+      },
+      "fieldsDescription": "لا تدخل الصورة إلا الحقول المفعّلة التي تحمل محتوى.",
+      "fieldsTitle": "الحقول الظاهرة",
+      "legibilityTitle": "الوضوح",
+      "positionDescription": "زاوية الصورة التي تُثبَّت عندها الكتلة.",
+      "positionTitle": "الموضع",
+      "positions": {
+        "bottom-left": "أسفل اليسار",
+        "bottom-right": "أسفل اليمين",
+        "top-left": "أعلى اليسار",
+        "top-right": "أعلى اليمين"
+      },
+      "reset": "استعادة الإعدادات الافتراضية",
+      "sizeTitle": "حجم النص",
+      "sizes": {
+        "large": "كبير",
+        "medium": "متوسط",
+        "small": "صغير"
+      }
+    }
   },
   "desktop": {
     "dialog": {

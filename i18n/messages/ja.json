@@ -139,7 +139,64 @@
       "title": "Lymarkアカウントを作成"
     },
     "tagline": "時刻・日付・場所入りの透かし",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "暗い下地の帯",
+      "backdropDescription": "写真の明るい部分でもコントラストを保ちます。",
+      "brandDescription": "写真に入るマークで、専用の隅に置かれます。自社のものを使えます。",
+      "brandFirstHint": "建設",
+      "brandFirstPart": "前半",
+      "brandModes": {
+        "custom": "自分のマーク",
+        "lymark": "Lymark"
+      },
+      "brandNote": "後半を空にすると一色のマークになります。長い名前は切り取らず、収まるまで小さくします。",
+      "brandSecondHint": " 山田",
+      "brandSecondPart": "後半",
+      "brandTitle": "刻印するマーク",
+      "brandToggle": "マークを刻印する",
+      "brandToggleDescription": "オフにすると、マークのない写真をお客様にお渡しできます。",
+      "codeDescription": "側面に置けば、写真の中身と場所を取り合いません。",
+      "codePlacements": {
+        "block": "データの横",
+        "side": "右側"
+      },
+      "codeTitle": "写真コード",
+      "colors": {
+        "amber": "琥珀",
+        "black": "黒",
+        "blue": "青",
+        "green": "緑",
+        "red": "赤",
+        "white": "白"
+      },
+      "cornerConflict": "マークとデータが同じ隅にあります。写真の上で重なります。",
+      "fields": {
+        "address": "住所・場所",
+        "code": "写真コード",
+        "date": "日付",
+        "time": "時刻",
+        "weekday": "曜日"
+      },
+      "fieldsDescription": "オンで、かつ内容のある項目だけが写真に入ります。",
+      "fieldsTitle": "表示する項目",
+      "legibilityTitle": "読みやすさ",
+      "positionDescription": "刻印のかたまりを固定する、写真の隅。",
+      "positionTitle": "位置",
+      "positions": {
+        "bottom-left": "左下",
+        "bottom-right": "右下",
+        "top-left": "左上",
+        "top-right": "右上"
+      },
+      "reset": "初期値に戻す",
+      "sizeTitle": "文字の大きさ",
+      "sizes": {
+        "large": "大",
+        "medium": "中",
+        "small": "小"
+      }
+    }
   },
   "desktop": {
     "dialog": {

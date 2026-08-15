@@ -76,29 +76,25 @@ export const STAMP_COLOR_KEYS = ['white', 'amber', 'red', 'green', 'blue', 'blac
 
 export type StampColorKey = (typeof STAMP_COLOR_KEYS)[number];
 
-export const STAMP_COLOR_LABELS: Record<StampColorKey, string> = {
-  white: 'Branco',
-  amber: 'Âmbar',
-  red: 'Vermelho',
-  green: 'Verde',
-  blue: 'Azul',
-  black: 'Preto',
-};
-
 /**
  * De onde vem a marca carimbada na foto.
  *
  * `logo` ainda não existe; a estrutura já prevê o lugar dele para que a
  * migração das preferências não precise acontecer duas vezes.
  */
+/*
+ * Os rótulos destes conjuntos — campos, posições, tamanhos, cores e modos de
+ * marca — ficavam aqui como constantes de módulo, em português. Foram para
+ * `i18n/messages/`, sob `app.watermark.*`, com as MESMAS chaves usadas nestes
+ * arrays: `t(`watermark.positions.${position}`)`.
+ *
+ * O motivo é o mesmo das mensagens de GPS: uma constante de módulo é avaliada
+ * uma vez, na carga do arquivo, e ficaria presa ao idioma daquele instante.
+ */
+
 export const BRAND_MODES = ['lymark', 'custom'] as const;
 
 export type BrandMode = (typeof BRAND_MODES)[number];
-
-export const BRAND_MODE_LABELS: Record<BrandMode, string> = {
-  lymark: 'Lymark',
-  custom: 'Minha marca',
-};
 
 /**
  * Um trecho da marca, com cor própria.
@@ -161,28 +157,3 @@ export type GalleryEntry = {
 };
 
 /** Rótulos em português para cada campo, usados em formulários e listas. */
-export const WATERMARK_FIELD_LABELS: Record<WatermarkFieldKey, string> = {
-  time: 'Hora',
-  date: 'Data',
-  weekday: 'Dia da semana',
-  address: 'Endereço / Local',
-  code: 'Código de Foto',
-};
-
-export const WATERMARK_POSITION_LABELS: Record<WatermarkPosition, string> = {
-  'top-left': 'Superior esquerdo',
-  'top-right': 'Superior direito',
-  'bottom-left': 'Inferior esquerdo',
-  'bottom-right': 'Inferior direito',
-};
-
-export const CODE_PLACEMENT_LABELS: Record<CodePlacement, string> = {
-  side: 'Lateral direita',
-  block: 'Junto aos dados',
-};
-
-export const WATERMARK_SCALE_LABELS: Record<WatermarkScale, string> = {
-  small: 'Pequeno',
-  medium: 'Médio',
-  large: 'Grande',
-};

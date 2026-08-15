@@ -139,7 +139,64 @@
       "title": "Créez votre compte Lymark"
     },
     "tagline": "Filigrane avec heure, date et lieu",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "Bandeau sombre en fond",
+      "backdropDescription": "Assure le contraste sur les zones claires de la photo.",
+      "brandDescription": "La marque qui figure sur la photo, dans son propre coin. Ce peut être celle de votre entreprise.",
+      "brandFirstHint": "Bâtiment",
+      "brandFirstPart": "Première partie",
+      "brandModes": {
+        "custom": "Ma marque",
+        "lymark": "Lymark"
+      },
+      "brandNote": "Laissez la deuxième partie vide pour une marque d’une seule couleur. Un nom long est réduit jusqu’à tenir, plutôt que coupé.",
+      "brandSecondHint": " Martin",
+      "brandSecondPart": "Deuxième partie",
+      "brandTitle": "Marque apposée",
+      "brandToggle": "Apposer une marque",
+      "brandToggleDescription": "Désactivez pour remettre au client une photo sans aucune marque.",
+      "codeDescription": "Sur le côté, il ne dispute pas la place au contenu de l’image.",
+      "codePlacements": {
+        "block": "À côté des données",
+        "side": "Côté droit"
+      },
+      "codeTitle": "Code photo",
+      "colors": {
+        "amber": "Ambre",
+        "black": "Noir",
+        "blue": "Bleu",
+        "green": "Vert",
+        "red": "Rouge",
+        "white": "Blanc"
+      },
+      "cornerConflict": "La marque et les données sont dans le même coin — elles se chevaucheront sur la photo.",
+      "fields": {
+        "address": "Adresse / Lieu",
+        "code": "Code photo",
+        "date": "Date",
+        "time": "Heure",
+        "weekday": "Jour de la semaine"
+      },
+      "fieldsDescription": "Seuls les champs activés qui ont du contenu apparaissent sur la photo.",
+      "fieldsTitle": "Champs affichés",
+      "legibilityTitle": "Lisibilité",
+      "positionDescription": "Coin de la photo où le bloc est ancré.",
+      "positionTitle": "Position",
+      "positions": {
+        "bottom-left": "En bas à gauche",
+        "bottom-right": "En bas à droite",
+        "top-left": "En haut à gauche",
+        "top-right": "En haut à droite"
+      },
+      "reset": "Rétablir les valeurs par défaut",
+      "sizeTitle": "Taille du texte",
+      "sizes": {
+        "large": "Grand",
+        "medium": "Moyen",
+        "small": "Petit"
+      }
+    }
   },
   "desktop": {
     "dialog": {

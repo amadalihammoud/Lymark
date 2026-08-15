@@ -139,7 +139,64 @@
       "title": "创建您的Lymark账户"
     },
     "tagline": "带时间、日期和地点的水印",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "深色底衬",
+      "backdropDescription": "在照片的明亮区域上保持对比度。",
+      "brandDescription": "出现在照片上的标识，占据独立的角落，可以是贵公司的标识。",
+      "brandFirstHint": "建设",
+      "brandFirstPart": "第一部分",
+      "brandModes": {
+        "custom": "我的标识",
+        "lymark": "Lymark"
+      },
+      "brandNote": "第二部分留空即为单色标识。名称过长会自动缩小到放得下，而不是被截断。",
+      "brandSecondHint": " 集团",
+      "brandSecondPart": "第二部分",
+      "brandTitle": "加盖的标识",
+      "brandToggle": "加盖标识",
+      "brandToggleDescription": "关闭后，交给客户的照片将不带任何标识。",
+      "codeDescription": "放在侧边就不会和画面内容争夺空间。",
+      "codePlacements": {
+        "block": "紧靠数据",
+        "side": "右侧"
+      },
+      "codeTitle": "照片编号",
+      "colors": {
+        "amber": "琥珀色",
+        "black": "黑色",
+        "blue": "蓝色",
+        "green": "绿色",
+        "red": "红色",
+        "white": "白色"
+      },
+      "cornerConflict": "标识和数据在同一个角落，照片上会互相重叠。",
+      "fields": {
+        "address": "地址 / 地点",
+        "code": "照片编号",
+        "date": "日期",
+        "time": "时间",
+        "weekday": "星期"
+      },
+      "fieldsDescription": "只有开启且有内容的字段才会出现在照片上。",
+      "fieldsTitle": "显示的字段",
+      "legibilityTitle": "可读性",
+      "positionDescription": "水印块所锚定的照片角落。",
+      "positionTitle": "位置",
+      "positions": {
+        "bottom-left": "左下",
+        "bottom-right": "右下",
+        "top-left": "左上",
+        "top-right": "右上"
+      },
+      "reset": "恢复默认",
+      "sizeTitle": "文字大小",
+      "sizes": {
+        "large": "大",
+        "medium": "中",
+        "small": "小"
+      }
+    }
   },
   "desktop": {
     "dialog": {

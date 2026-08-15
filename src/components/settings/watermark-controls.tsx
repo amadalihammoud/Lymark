@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui/button';
 import { ChoiceGrid } from '@/components/ui/choice-grid';
@@ -10,17 +11,11 @@ import { BRAND_PART_MAX_LENGTH } from '@/features/watermark/preferences';
 import { colors, spacing, typography } from '@/theme';
 import {
   BRAND_MODES,
-  BRAND_MODE_LABELS,
   CODE_PLACEMENTS,
-  CODE_PLACEMENT_LABELS,
   WATERMARK_FIELD_KEYS,
-  WATERMARK_FIELD_LABELS,
   WATERMARK_POSITIONS,
-  WATERMARK_POSITION_LABELS,
   WATERMARK_SCALES,
-  WATERMARK_SCALE_LABELS,
   STAMP_COLOR_KEYS,
-  STAMP_COLOR_LABELS,
 } from '@/types';
 
 /**
@@ -44,16 +39,17 @@ import {
  * colunas de distância, não.
  */
 export function WatermarkFieldToggles() {
+  const t = useTranslations('app.watermark');
   const { preferences, toggleField } = useSettings();
 
   return (
     <Section
-      title="Campos exibidos"
-      description="Só entram na foto os campos ligados que tiverem conteúdo.">
+      title={t('fieldsTitle')}
+      description={t('fieldsDescription')}>
       {WATERMARK_FIELD_KEYS.map((key, index) => (
         <ToggleRow
           key={key}
-          title={WATERMARK_FIELD_LABELS[key]}
+          title={t(`fields.${key}`)}
           value={preferences.visibleFields[key]}
           onValueChange={() => toggleField(key)}
           showDivider={index < WATERMARK_FIELD_KEYS.length - 1}
@@ -70,19 +66,20 @@ export function WatermarkFieldToggles() {
  * preferência que fala de um campo específico, e o campo está logo acima.
  */
 export function CodePlacementControl() {
+  const t = useTranslations('app.watermark');
   const { preferences, setCodePlacement } = useSettings();
 
   return (
     <Section
-      title="Código de Foto"
-      description="Na lateral ele não disputa espaço com o conteúdo da imagem.">
+      title={t('codeTitle')}
+      description={t('codeDescription')}>
       <ChoiceGrid
         columns={2}
         selected={preferences.codePlacement}
         onSelect={setCodePlacement}
         options={CODE_PLACEMENTS.map((placement) => ({
           value: placement,
-          label: CODE_PLACEMENT_LABELS[placement],
+          label: t(`codePlacements.${placement}`),
         }))}
       />
     </Section>
@@ -107,6 +104,7 @@ export function WatermarkControls({
    */
   includeReset?: boolean;
 } = {}) {
+  const t = useTranslations('app.watermark');
   const {
     preferences,
     setPosition,
@@ -124,26 +122,26 @@ export function WatermarkControls({
     <>
       {includeFields ? <WatermarkFieldToggles /> : null}
 
-      <Section title="Posição" description="Canto da foto onde o bloco é ancorado.">
+      <Section title={t('positionTitle')} description={t('positionDescription')}>
         <ChoiceGrid
           columns={2}
           selected={preferences.position}
           onSelect={setPosition}
           options={WATERMARK_POSITIONS.map((position) => ({
             value: position,
-            label: WATERMARK_POSITION_LABELS[position],
+            label: t(`positions.${position}`),
           }))}
         />
       </Section>
 
-      <Section title="Tamanho do texto">
+      <Section title={t('sizeTitle')}>
         <ChoiceGrid
           columns={3}
           selected={preferences.scale}
           onSelect={setScale}
           options={WATERMARK_SCALES.map((scale) => ({
             value: scale,
-            label: WATERMARK_SCALE_LABELS[scale],
+            label: t(`sizes.${scale}`),
           }))}
         />
       </Section>
@@ -151,11 +149,11 @@ export function WatermarkControls({
       {includeFields ? <CodePlacementControl /> : null}
 
       <Section
-        title="Marca carimbada"
-        description="A marca que vai na foto, em canto próprio. Pode ser a da sua empresa.">
+        title={t('brandTitle')}
+        description={t('brandDescription')}>
         <ToggleRow
-          title="Carimbar uma marca"
-          description="Desligue para entregar a foto ao cliente sem marca nenhuma."
+          title={t('brandToggle')}
+          description={t('brandToggleDescription')}
           value={preferences.showBrand}
           onValueChange={setShowBrand}
         />
@@ -168,7 +166,7 @@ export function WatermarkControls({
               onSelect={setBrandMode}
               options={BRAND_MODES.map((mode) => ({
                 value: mode,
-                label: BRAND_MODE_LABELS[mode],
+                label: t(`brandModes.${mode}`),
               }))}
             />
 
@@ -180,10 +178,10 @@ export function WatermarkControls({
                 {([0, 1] as const).map((index) => (
                   <View key={index} style={styles.brandBody}>
                     <FieldRow
-                      label={index === 0 ? 'Primeira parte' : 'Segunda parte'}
+                      label={index === 0 ? t('brandFirstPart') : t('brandSecondPart')}
                       value={preferences.brandParts[index].text}
                       onChangeText={(text) => setBrandPart(index, { text })}
-                      placeholder={index === 0 ? 'Construtora' : ' Silva'}
+                      placeholder={index === 0 ? t('brandFirstHint') : t('brandSecondHint')}
                       maxLength={BRAND_PART_MAX_LENGTH}
                       autoCapitalize="characters"
                       autoCorrect={false}
@@ -194,16 +192,13 @@ export function WatermarkControls({
                       onSelect={(color) => setBrandPart(index, { color })}
                       options={STAMP_COLOR_KEYS.map((color) => ({
                         value: color,
-                        label: STAMP_COLOR_LABELS[color],
+                        label: t(`colors.${color}`),
                       }))}
                     />
                   </View>
                 ))}
 
-                <Text style={typography.caption}>
-                  Deixe a segunda parte vazia para uma marca de cor única. Nome comprido tem o
-                  corpo reduzido até caber, em vez de ser cortado.
-                </Text>
+                <Text style={typography.caption}>{t('brandNote')}</Text>
               </View>
             ) : null}
 
@@ -213,7 +208,7 @@ export function WatermarkControls({
               onSelect={setBrandPosition}
               options={WATERMARK_POSITIONS.map((position) => ({
                 value: position,
-                label: WATERMARK_POSITION_LABELS[position],
+                label: t(`positions.${position}`),
               }))}
             />
           </View>
@@ -221,15 +216,13 @@ export function WatermarkControls({
       </Section>
 
       {preferences.showBrand && preferences.brandPosition === preferences.position ? (
-        <Text style={styles.conflict}>
-          A marca e os dados estão no mesmo canto — vão se sobrepor na foto.
-        </Text>
+        <Text style={styles.conflict}>{t('cornerConflict')}</Text>
       ) : null}
 
-      <Section title="Legibilidade">
+      <Section title={t('legibilityTitle')}>
         <ToggleRow
-          title="Faixa escura de fundo"
-          description="Garante contraste sobre áreas claras da foto."
+          title={t('backdrop')}
+          description={t('backdropDescription')}
           value={preferences.showBackdrop}
           onValueChange={setShowBackdrop}
           showDivider={false}
@@ -237,7 +230,12 @@ export function WatermarkControls({
       </Section>
 
       {includeReset ? (
-        <Button label="Restaurar padrão" icon="refresh" variant="ghost" onPress={resetPreferences} />
+        <Button
+          label={t('reset')}
+          icon="refresh"
+          variant="ghost"
+          onPress={resetPreferences}
+        />
       ) : null}
     </>
   );

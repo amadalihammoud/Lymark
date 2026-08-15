@@ -1,6 +1,7 @@
 import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui/button';
 import { EmptyState } from '@/components/ui/empty-state';
@@ -11,7 +12,6 @@ import { useGallery } from '@/contexts/gallery-context';
 import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
 import { formatTimestamp } from '@/lib/datetime';
 import { colors, radius, spacing, typography } from '@/theme';
-import { WATERMARK_FIELD_LABELS } from '@/types';
 
 /**
  * Detalhe de uma foto do histórico.
@@ -20,6 +20,7 @@ import { WATERMARK_FIELD_LABELS } from '@/types';
  * estava, e a aba Capturar segue intacta por baixo.
  */
 export default function PhotoDetailScreen() {
+  const t = useTranslations('app');
   const { id } = useLocalSearchParams<{ id: string }>();
   const { findEntry, removeEntry } = useGallery();
   const { ask } = useFeedback();
@@ -79,7 +80,7 @@ export default function PhotoDetailScreen() {
               styles.row,
               index < entry.stampedFields.length - 1 && styles.divider,
             ]}>
-            <Text style={typography.label}>{WATERMARK_FIELD_LABELS[key]}</Text>
+            <Text style={typography.label}>{t(`watermark.fields.${key}`)}</Text>
             <Text style={typography.value}>{entry.metadata[key]}</Text>
           </View>
         ))}

@@ -139,7 +139,64 @@
       "title": "Maak uw Lymark-account"
     },
     "tagline": "Watermerk met tijd, datum en plaats",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "Donkere achtergrondband",
+      "backdropDescription": "Zorgt voor contrast boven lichte delen van de foto.",
+      "brandDescription": "Het merk op de foto, in een eigen hoek. Dat mag dat van je bedrijf zijn.",
+      "brandFirstHint": "Bouw",
+      "brandFirstPart": "Eerste deel",
+      "brandModes": {
+        "custom": "Mijn merk",
+        "lymark": "Lymark"
+      },
+      "brandNote": "Laat het tweede deel leeg voor een merk in één kleur. Een lange naam wordt verkleind tot hij past, in plaats van afgekapt.",
+      "brandSecondHint": " Jansen",
+      "brandSecondPart": "Tweede deel",
+      "brandTitle": "Gestempeld merk",
+      "brandToggle": "Een merk stempelen",
+      "brandToggleDescription": "Zet uit om de klant een foto zonder enig merk te geven.",
+      "codeDescription": "Aan de zijkant vecht hij niet om ruimte met de inhoud van de foto.",
+      "codePlacements": {
+        "block": "Naast de gegevens",
+        "side": "Rechterzijde"
+      },
+      "codeTitle": "Fotocode",
+      "colors": {
+        "amber": "Amber",
+        "black": "Zwart",
+        "blue": "Blauw",
+        "green": "Groen",
+        "red": "Rood",
+        "white": "Wit"
+      },
+      "cornerConflict": "Het merk en de gegevens staan in dezelfde hoek — ze overlappen op de foto.",
+      "fields": {
+        "address": "Adres / Plaats",
+        "code": "Fotocode",
+        "date": "Datum",
+        "time": "Tijd",
+        "weekday": "Dag van de week"
+      },
+      "fieldsDescription": "Alleen ingeschakelde velden met inhoud komen op de foto.",
+      "fieldsTitle": "Getoonde velden",
+      "legibilityTitle": "Leesbaarheid",
+      "positionDescription": "De hoek van de foto waaraan het blok is verankerd.",
+      "positionTitle": "Positie",
+      "positions": {
+        "bottom-left": "Linksonder",
+        "bottom-right": "Rechtsonder",
+        "top-left": "Linksboven",
+        "top-right": "Rechtsboven"
+      },
+      "reset": "Standaard herstellen",
+      "sizeTitle": "Tekstgrootte",
+      "sizes": {
+        "large": "Groot",
+        "medium": "Middel",
+        "small": "Klein"
+      }
+    }
   },
   "desktop": {
     "dialog": {

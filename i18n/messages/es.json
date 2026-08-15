@@ -139,7 +139,64 @@
       "title": "Crea tu cuenta en Lymark"
     },
     "tagline": "Marca de agua con hora, fecha y lugar",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "Banda oscura de fondo",
+      "backdropDescription": "Garantiza contraste sobre las zonas claras de la foto.",
+      "brandDescription": "La marca que va en la foto, en su propia esquina. Puede ser la de tu empresa.",
+      "brandFirstHint": "Constructora",
+      "brandFirstPart": "Primera parte",
+      "brandModes": {
+        "custom": "Mi marca",
+        "lymark": "Lymark"
+      },
+      "brandNote": "Deja la segunda parte vacía para una marca de un solo color. Un nombre largo se reduce hasta caber, en lugar de recortarse.",
+      "brandSecondHint": " Silva",
+      "brandSecondPart": "Segunda parte",
+      "brandTitle": "Marca sellada",
+      "brandToggle": "Sellar una marca",
+      "brandToggleDescription": "Desactívalo para entregar la foto al cliente sin marca alguna.",
+      "codeDescription": "En el lateral no compite por espacio con el contenido de la imagen.",
+      "codePlacements": {
+        "block": "Junto a los datos",
+        "side": "Lateral derecho"
+      },
+      "codeTitle": "Código de foto",
+      "colors": {
+        "amber": "Ámbar",
+        "black": "Negro",
+        "blue": "Azul",
+        "green": "Verde",
+        "red": "Rojo",
+        "white": "Blanco"
+      },
+      "cornerConflict": "La marca y los datos están en la misma esquina: se superpondrán en la foto.",
+      "fields": {
+        "address": "Dirección / Lugar",
+        "code": "Código de foto",
+        "date": "Fecha",
+        "time": "Hora",
+        "weekday": "Día de la semana"
+      },
+      "fieldsDescription": "Solo entran en la foto los campos activados que tengan contenido.",
+      "fieldsTitle": "Campos mostrados",
+      "legibilityTitle": "Legibilidad",
+      "positionDescription": "Esquina de la foto donde se ancla el bloque.",
+      "positionTitle": "Posición",
+      "positions": {
+        "bottom-left": "Inferior izquierda",
+        "bottom-right": "Inferior derecha",
+        "top-left": "Superior izquierda",
+        "top-right": "Superior derecha"
+      },
+      "reset": "Restaurar valores",
+      "sizeTitle": "Tamaño del texto",
+      "sizes": {
+        "large": "Grande",
+        "medium": "Mediano",
+        "small": "Pequeño"
+      }
+    }
   },
   "desktop": {
     "dialog": {

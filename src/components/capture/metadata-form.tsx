@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { PixelRatio, Platform, StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui/button';
 import { FieldRow } from '@/components/ui/field-row';
@@ -28,7 +29,6 @@ import { PHOTO_CODE_LENGTH, normalizePhotoCode } from '@/lib/photo-code';
 import { colors, spacing, typography } from '@/theme';
 import {
   WATERMARK_FIELD_KEYS,
-  WATERMARK_FIELD_LABELS,
   type CaptureMetadata,
   type WatermarkFieldKey,
 } from '@/types';
@@ -70,13 +70,15 @@ export function MetadataForm({
   /** Trava o formulário enquanto a imagem está sendo gerada. */
   disabled?: boolean;
 }) {
+  const t = useTranslations('app');
+
   // Hora, data e dia da semana formam um conjunto: o botão "Agora" atualiza os
   // três de uma vez, e o cabeçalho só faz sentido se algum deles estiver ativo.
   const showDateTimeGroup =
     visibleFields.time || visibleFields.date || visibleFields.weekday;
 
   const hiddenLabels = WATERMARK_FIELD_KEYS.filter((key) => !visibleFields[key]).map(
-    (key) => WATERMARK_FIELD_LABELS[key],
+    (key) => t(`watermark.fields.${key}`),
   );
 
   /**
@@ -124,7 +126,7 @@ export function MetadataForm({
             <FieldRow
               containerStyle={inline ? styles.timeCell : undefined}
               editable={!disabled}
-              label={WATERMARK_FIELD_LABELS.time}
+              label={t('watermark.fields.time')}
               value={metadata.time}
               onChangeText={(value) => onChangeField('time', value)}
               maxLength={FIELD_MAX_LENGTH.time}
@@ -142,7 +144,7 @@ export function MetadataForm({
             <FieldRow
               containerStyle={inline ? styles.dateCell : undefined}
               editable={!disabled}
-              label={WATERMARK_FIELD_LABELS.date}
+              label={t('watermark.fields.date')}
               value={metadata.date}
               onChangeText={(value) => onChangeField('date', value)}
               maxLength={FIELD_MAX_LENGTH.date}
@@ -155,7 +157,7 @@ export function MetadataForm({
               containerStyle={inline ? styles.weekdayCell : undefined}
               shortLabel={inline ? 'Dia' : undefined}
               editable={!disabled}
-              label={WATERMARK_FIELD_LABELS.weekday}
+              label={t('watermark.fields.weekday')}
               value={metadata.weekday}
               onChangeText={(value) => onChangeField('weekday', value)}
               maxLength={FIELD_MAX_LENGTH.weekday}
@@ -169,7 +171,7 @@ export function MetadataForm({
       {visibleFields.address ? (
         <FieldRow
           editable={!disabled}
-          label={WATERMARK_FIELD_LABELS.address}
+          label={t('watermark.fields.address')}
           value={metadata.address}
           onChangeText={(value) => onChangeField('address', value)}
           maxLength={FIELD_MAX_LENGTH.address}
@@ -192,7 +194,7 @@ export function MetadataForm({
       {visibleFields.code ? (
         <FieldRow
           editable={!disabled}
-          label={WATERMARK_FIELD_LABELS.code}
+          label={t('watermark.fields.code')}
           value={metadata.code}
           onChangeText={(value) => onChangeField('code', normalizePhotoCode(value))}
           placeholder="—"

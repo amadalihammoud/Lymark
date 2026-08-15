@@ -139,7 +139,64 @@
       "title": "Create your Lymark account"
     },
     "tagline": "Watermark with time, date and place",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "Dark backing band",
+      "backdropDescription": "Keeps contrast over light areas of the photo.",
+      "brandDescription": "The mark that goes on the photo, in a corner of its own. It can be your company’s.",
+      "brandFirstHint": "Builders",
+      "brandFirstPart": "First part",
+      "brandModes": {
+        "custom": "My mark",
+        "lymark": "Lymark"
+      },
+      "brandNote": "Leave the second part empty for a single-colour mark. A long name is shrunk until it fits, rather than cut off.",
+      "brandSecondHint": " Smith",
+      "brandSecondPart": "Second part",
+      "brandTitle": "Stamped mark",
+      "brandToggle": "Stamp a mark",
+      "brandToggleDescription": "Turn it off to hand the client a photo with no mark at all.",
+      "codeDescription": "On the side it does not compete for room with the picture itself.",
+      "codePlacements": {
+        "block": "Next to the data",
+        "side": "Right side"
+      },
+      "codeTitle": "Photo code",
+      "colors": {
+        "amber": "Amber",
+        "black": "Black",
+        "blue": "Blue",
+        "green": "Green",
+        "red": "Red",
+        "white": "White"
+      },
+      "cornerConflict": "The mark and the data are in the same corner — they will overlap on the photo.",
+      "fields": {
+        "address": "Address / Place",
+        "code": "Photo code",
+        "date": "Date",
+        "time": "Time",
+        "weekday": "Weekday"
+      },
+      "fieldsDescription": "Only the fields that are on and have content reach the photo.",
+      "fieldsTitle": "Fields shown",
+      "legibilityTitle": "Legibility",
+      "positionDescription": "The corner of the photo the block is anchored to.",
+      "positionTitle": "Position",
+      "positions": {
+        "bottom-left": "Bottom left",
+        "bottom-right": "Bottom right",
+        "top-left": "Top left",
+        "top-right": "Top right"
+      },
+      "reset": "Restore defaults",
+      "sizeTitle": "Text size",
+      "sizes": {
+        "large": "Large",
+        "medium": "Medium",
+        "small": "Small"
+      }
+    }
   },
   "desktop": {
     "dialog": {

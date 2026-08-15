@@ -139,7 +139,64 @@
       "title": "Crea il tuo account Lymark"
     },
     "tagline": "Filigrana con ora, data e luogo",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "Fascia scura di sfondo",
+      "backdropDescription": "Garantisce contrasto sulle zone chiare della foto.",
+      "brandDescription": "Il marchio che va sulla foto, in un angolo suo. Può essere quello della tua azienda.",
+      "brandFirstHint": "Costruzioni",
+      "brandFirstPart": "Prima parte",
+      "brandModes": {
+        "custom": "Il mio marchio",
+        "lymark": "Lymark"
+      },
+      "brandNote": "Lascia vuota la seconda parte per un marchio a un solo colore. Un nome lungo viene ridotto finché entra, invece di essere tagliato.",
+      "brandSecondHint": " Rossi",
+      "brandSecondPart": "Seconda parte",
+      "brandTitle": "Marchio timbrato",
+      "brandToggle": "Timbrare un marchio",
+      "brandToggleDescription": "Disattiva per consegnare al cliente una foto senza alcun marchio.",
+      "codeDescription": "Di lato non contende lo spazio al contenuto dell’immagine.",
+      "codePlacements": {
+        "block": "Accanto ai dati",
+        "side": "Lato destro"
+      },
+      "codeTitle": "Codice foto",
+      "colors": {
+        "amber": "Ambra",
+        "black": "Nero",
+        "blue": "Blu",
+        "green": "Verde",
+        "red": "Rosso",
+        "white": "Bianco"
+      },
+      "cornerConflict": "Il marchio e i dati sono nello stesso angolo: si sovrapporranno sulla foto.",
+      "fields": {
+        "address": "Indirizzo / Luogo",
+        "code": "Codice foto",
+        "date": "Data",
+        "time": "Ora",
+        "weekday": "Giorno della settimana"
+      },
+      "fieldsDescription": "Sulla foto finiscono solo i campi attivi che hanno contenuto.",
+      "fieldsTitle": "Campi mostrati",
+      "legibilityTitle": "Leggibilità",
+      "positionDescription": "Angolo della foto a cui il blocco è ancorato.",
+      "positionTitle": "Posizione",
+      "positions": {
+        "bottom-left": "In basso a sinistra",
+        "bottom-right": "In basso a destra",
+        "top-left": "In alto a sinistra",
+        "top-right": "In alto a destra"
+      },
+      "reset": "Ripristina i valori predefiniti",
+      "sizeTitle": "Dimensione del testo",
+      "sizes": {
+        "large": "Grande",
+        "medium": "Medio",
+        "small": "Piccolo"
+      }
+    }
   },
   "desktop": {
     "dialog": {

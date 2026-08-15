@@ -11,7 +11,7 @@ import { useGallery } from '@/contexts/gallery-context';
 import { useLocalePreference } from '@/contexts/locale-context';
 import { useSettings } from '@/contexts/settings-context';
 import { colors, spacing, typography } from '@/theme';
-import { WATERMARK_FIELD_KEYS, WATERMARK_POSITION_LABELS } from '@/types';
+import { WATERMARK_FIELD_KEYS } from '@/types';
 import { LOCALE_NAMES } from '@i18n/locales';
 
 /**
@@ -43,9 +43,9 @@ export default function SettingsScreen() {
           icon="pricetags-outline"
           title={t('settings.fields')}
           description={t('settings.fieldsDescription')}
-          value={`${visibleFieldCount}/${WATERMARK_FIELD_KEYS.length} · ${
-            WATERMARK_POSITION_LABELS[preferences.position]
-          }`}
+          value={`${visibleFieldCount}/${WATERMARK_FIELD_KEYS.length} · ${t(
+            `watermark.positions.${preferences.position}`,
+          )}`}
           onPress={() => router.push('/settings/watermark')}
           showDivider={false}
         />

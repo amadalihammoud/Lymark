@@ -139,7 +139,64 @@
       "title": "Lymark 계정 만들기"
     },
     "tagline": "시각, 날짜, 장소가 담긴 워터마크",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "어두운 배경 띠",
+      "backdropDescription": "사진의 밝은 부분에서도 대비를 유지합니다.",
+      "brandDescription": "사진에 들어가는 마크로, 별도의 모서리를 씁니다. 회사 마크를 쓸 수 있습니다.",
+      "brandFirstHint": "건설",
+      "brandFirstPart": "앞부분",
+      "brandModes": {
+        "custom": "내 마크",
+        "lymark": "Lymark"
+      },
+      "brandNote": "뒷부분을 비우면 단색 마크가 됩니다. 긴 이름은 잘리지 않고 들어갈 때까지 작아집니다.",
+      "brandSecondHint": " 김",
+      "brandSecondPart": "뒷부분",
+      "brandTitle": "각인하는 마크",
+      "brandToggle": "마크 각인하기",
+      "brandToggleDescription": "끄면 마크가 전혀 없는 사진을 고객에게 전달합니다.",
+      "codeDescription": "옆쪽에 두면 사진 내용과 자리를 다투지 않습니다.",
+      "codePlacements": {
+        "block": "데이터 옆",
+        "side": "오른쪽 옆"
+      },
+      "codeTitle": "사진 코드",
+      "colors": {
+        "amber": "호박색",
+        "black": "검정",
+        "blue": "파랑",
+        "green": "초록",
+        "red": "빨강",
+        "white": "흰색"
+      },
+      "cornerConflict": "마크와 데이터가 같은 모서리에 있습니다. 사진에서 겹칩니다.",
+      "fields": {
+        "address": "주소 / 장소",
+        "code": "사진 코드",
+        "date": "날짜",
+        "time": "시각",
+        "weekday": "요일"
+      },
+      "fieldsDescription": "켜져 있고 내용이 있는 항목만 사진에 들어갑니다.",
+      "fieldsTitle": "표시할 항목",
+      "legibilityTitle": "가독성",
+      "positionDescription": "각인 묶음을 고정할 사진의 모서리.",
+      "positionTitle": "위치",
+      "positions": {
+        "bottom-left": "왼쪽 아래",
+        "bottom-right": "오른쪽 아래",
+        "top-left": "왼쪽 위",
+        "top-right": "오른쪽 위"
+      },
+      "reset": "기본값 복원",
+      "sizeTitle": "글자 크기",
+      "sizes": {
+        "large": "크게",
+        "medium": "보통",
+        "small": "작게"
+      }
+    }
   },
   "desktop": {
     "dialog": {

@@ -13,6 +13,11 @@ CAMPOS = re.compile(
     r"""(?:title|message|label|description|rationale|tagline|placeholder|actionLabel)\s*[:=]\s*(['"])(.+?)\1"""
 )
 JSX = re.compile(r""">\s*([A-ZÀ-Ú][^<>{}\n]{3,})\s*<""")
+
+# `Promise<...>`, `Record<...>` e afins casam com a regra de JSX porque um
+# genérico também é texto entre sinais de maior e menor. São tipo, não
+# interface.
+TIPOS = re.compile(r'^(Promise|Record|Array|Map|Set|Partial|Pick|Omit|Readonly)$')
 NOTIFY = re.compile(r"""notify\(\s*(['"])(.+?)\1""")
 
 IGNORAR = re.compile(r'^[\s\W\d]*$|^[a-z-]+$')
@@ -33,7 +38,7 @@ for f in sorted(glob.glob('src/**/*.ts', recursive=True) + glob.glob('src/**/*.t
             achados.append((f, n, m.group(2)))
         for m in JSX.finditer(line):
             texto = m.group(1).strip()
-            if not IGNORAR.match(texto):
+            if not IGNORAR.match(texto) and not TIPOS.match(texto):
                 achados.append((f, n, texto))
 
 por_arquivo = {}

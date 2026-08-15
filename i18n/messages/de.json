@@ -139,7 +139,64 @@
       "title": "Erstellen Sie Ihr Lymark-Konto"
     },
     "tagline": "Wasserzeichen mit Uhrzeit, Datum und Ort",
-    "title": "Lymark"
+    "title": "Lymark",
+    "watermark": {
+      "backdrop": "Dunkles Hinterlegungsband",
+      "backdropDescription": "Sichert den Kontrast über hellen Bereichen des Fotos.",
+      "brandDescription": "Die Marke auf dem Foto, in einer eigenen Ecke. Es kann die Ihres Unternehmens sein.",
+      "brandFirstHint": "Bau",
+      "brandFirstPart": "Erster Teil",
+      "brandModes": {
+        "custom": "Meine Marke",
+        "lymark": "Lymark"
+      },
+      "brandNote": "Lassen Sie den zweiten Teil leer für eine einfarbige Marke. Ein langer Name wird verkleinert, bis er passt, statt abgeschnitten zu werden.",
+      "brandSecondHint": " Müller",
+      "brandSecondPart": "Zweiter Teil",
+      "brandTitle": "Aufgestempelte Marke",
+      "brandToggle": "Eine Marke aufstempeln",
+      "brandToggleDescription": "Ausschalten, um dem Kunden ein Foto ganz ohne Marke zu übergeben.",
+      "codeDescription": "An der Seite konkurriert er nicht mit dem Bildinhalt um Platz.",
+      "codePlacements": {
+        "block": "Neben den Daten",
+        "side": "Rechte Seite"
+      },
+      "codeTitle": "Fotocode",
+      "colors": {
+        "amber": "Bernstein",
+        "black": "Schwarz",
+        "blue": "Blau",
+        "green": "Grün",
+        "red": "Rot",
+        "white": "Weiß"
+      },
+      "cornerConflict": "Marke und Daten stehen in derselben Ecke — sie werden sich auf dem Foto überlagern.",
+      "fields": {
+        "address": "Adresse / Ort",
+        "code": "Fotocode",
+        "date": "Datum",
+        "time": "Uhrzeit",
+        "weekday": "Wochentag"
+      },
+      "fieldsDescription": "Auf das Foto kommen nur die eingeschalteten Felder, die Inhalt haben.",
+      "fieldsTitle": "Angezeigte Felder",
+      "legibilityTitle": "Lesbarkeit",
+      "positionDescription": "Die Ecke des Fotos, an der der Block verankert wird.",
+      "positionTitle": "Position",
+      "positions": {
+        "bottom-left": "Unten links",
+        "bottom-right": "Unten rechts",
+        "top-left": "Oben links",
+        "top-right": "Oben rechts"
+      },
+      "reset": "Standard wiederherstellen",
+      "sizeTitle": "Textgröße",
+      "sizes": {
+        "large": "Groß",
+        "medium": "Mittel",
+        "small": "Klein"
+      }
+    }
   },
   "desktop": {
     "dialog": {
