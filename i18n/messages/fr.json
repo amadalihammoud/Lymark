@@ -296,58 +296,58 @@
   "site": {
     "availability": {
       "contact": "Pour suivre le lancement ou signaler un problème, écrivez à <email>contato@lymark.app</email>.",
-      "description": "Lymark est à la version 1.3.0, en test sur Android avant sa publication sur le Google Play. Il n'y a pas de version iOS ni de version web, et l'application ne collecte pas de paiement.",
+      "description": "Lymark en est à la version 1.3.0, en test sur Android avant publication sur Google Play. Il n’existe ni version iOS ni version web, et l’application ne perçoit aucun paiement.",
       "title": "Disponibilité"
     },
     "data": {
       "device": {
-        "description": "Lymark n'a pas de serveur, ne crée pas de compte et n'envoie pas vos photos quelque part. L'historique sauvegarde les 200 dernières exportations dans des fichiers de l'application elle-même.",
-        "field": "Sur l'appareil",
+        "description": "Lymark n’a pas de serveur, ne crée pas de compte et n’envoie vos photos nulle part. L’historique conserve les deux cents derniers exports dans les fichiers de l’application.",
+        "field": "Sur l’appareil",
         "heading": "Photos, adresses et historique"
       },
       "external": {
-        "description": "Pour transformer la latitude et la longitude en une adresse lisible, le système d'exploitation consulte le service de géocodage de Google ou d'Apple. C'est la seule information qui sort, et elle sort par le système, pas par l'application.",
-        "field": "En dehors de l'appareil",
-        "heading": "Seulement la conversion des coordonnées en adresse"
+        "description": "Pour transformer la latitude et la longitude en adresse lisible, le système d’exploitation interroge le service de géocodage de Google ou d’Apple. C’est la seule information qui sort, et c’est le système qui l’envoie, pas l’application.",
+        "field": "Hors de l’appareil",
+        "heading": "Uniquement la conversion d’une coordonnée en adresse"
       },
       "note": "Tout est détaillé — y compris ce que cela implique au regard de la LGPD brésilienne — dans la <privacy>Politique de confidentialité</privacy>. Désactiver l'autorisation de localisation laisse l'application pleinement fonctionnelle ; seul le champ d'adresse doit alors être saisi à la main.",
-      "title": "Où sont vos données"
+      "title": "Où vont vos données"
     },
-    "description": "Application Android qui appose l'heure, la date, le jour de la semaine, l'adresse et un code de suivi sur les photos d'inspection et de preuve de service.",
+    "description": "Application Android qui appose l’heure, la date, le jour de la semaine, l’adresse et un code de suivi sur les photos d’état des lieux et de preuve d’intervention.",
     "features": {
       "address": {
-        "description": "La rue est abrégée et l'état devient un acronyme, pour que l'adresse tienne en deux lignes sans couvrir la photo. Si vous avez tapé avant que le GPS ne réponde, ce que vous avez écrit prévaut.",
+        "description": "Le type de voie est abrégé et le département devient un code, pour que l’adresse tienne sur deux lignes sans couvrir la photo. Si vous avez saisi avant la réponse du GPS, c’est votre saisie qui l’emporte.",
         "field": "Adresse",
-        "heading": "Rempli par GPS, corrigible manuellement"
+        "heading": "Remplie par le GPS, corrigible à la main"
       },
       "code": {
-        "description": "Sert à citer une photo spécifique dans un bon de travail ou un rapport. Il va tourné sur le côté droit ou à côté du bloc de données, à votre choix.",
+        "description": "Il sert à citer une photo précise dans un ordre de mission ou un rapport. Il figure pivoté sur le bord droit, ou près du bloc de données — à votre choix.",
         "field": "Code photo",
-        "heading": "Quatorze caractères, tirés par générateur cryptographique"
+        "heading": "Quatorze caractères, tirés par un générateur cryptographique"
       },
-      "note": "Chaque champ est activé ou désactivé individuellement, et le bloc peut être ancré dans l'un des quatre coins, en trois tailles. L'aperçu utilise votre photo actuelle, pas un exemple générique : ce qui apparaît à l'écran est littéralement ce qui est exporté.",
+      "note": "Chaque champ s’active et se désactive séparément, et le bloc s’ancre dans n’importe lequel des quatre coins, en trois tailles. L’aperçu utilise votre photo du moment, et non un exemple générique : ce que vous voyez à l’écran est littéralement ce qui est exporté.",
       "time": {
-        "description": "Un bouton renvoie les trois champs à l'instant actuel lorsque la capture a pris plus de temps que prévu. Tous restent modifiables.",
+        "description": "Un bouton ramène les trois champs à l’instant présent quand la prise a traîné plus que prévu. Tous restent modifiables.",
         "field": "Heure et date",
-        "heading": "De l'horloge de l'appareil, au moment de la capture"
+        "heading": "De l’horloge de l’appareil, au moment de la prise"
       },
-      "title": "Ce qui entre dans l'image"
+      "title": "Ce qui entre dans l’image"
     },
     "footer": {
-      "description": "Lymark — enregistrement photographique avec date, heure et adresse.",
+      "description": "Lymark — documentation photo avec date, heure et adresse.",
       "documentsLabel": "Documents",
       "privacy": "Politique de confidentialité",
       "support": "Support :",
       "terms": "Conditions d'utilisation"
     },
     "hero": {
-      "cta": "Ouvrir l'app dans le navigateur",
-      "description": "Lymark appose l'heure, la date, le jour de la semaine, l'adresse et un code de suivi directement sur l'image. Le fichier qui sort de l'application inclut déjà les informations intégrées, ce ne sont pas des données qui accompagnent la photo et se perdent au premier transfert via WhatsApp.",
-      "eyebrow": "Enregistrement photographique de terrain",
-      "heading": "La photo sort du téléphone en indiquant déjà quand, où et quoi.",
+      "cta": "Ouvrir l’app dans le navigateur",
+      "description": "Lymark appose l’heure, la date, le jour de la semaine, l’adresse et un code de suivi à même l’image. Le fichier qui sort de l’application porte l’information en lui — et non à côté, là où le premier transfert WhatsApp l’efface.",
+      "eyebrow": "Documentation photo de terrain",
+      "heading": "La photo quitte le téléphone en disant déjà quand, où et quoi.",
       "meta": {
         "android": "Android et navigateur",
-        "language": "Portugais brésilien",
+        "language": "Portugais du Brésil",
         "noAccount": "Sans compte",
         "noServer": "Sans serveur"
       },
@@ -362,28 +362,28 @@
     },
     "process": {
       "capture": {
-        "description": "L'adresse commence à être recherchée dès que la photo entre. Les champs restent ouverts pour ajustement pendant ce temps.",
-        "field": "Capturer",
+        "description": "La recherche d’adresse démarre dès que la photo arrive. Pendant ce temps, les champs restent ouverts au réglage.",
+        "field": "Capture",
         "heading": "Appareil photo ou galerie"
       },
-      "note": "Les deux actions sont séparées exprès. Enregistrer et partager résolvent des problèmes différents, et les combiner en un seul bouton forcerait ceux qui veulent simplement archiver à passer par un écran d'envoi.",
+      "note": "Les deux actions sont séparées à dessein. Enregistrer et partager règlent des problèmes différents, et les réunir sous un seul bouton imposerait un écran d’envoi à qui veut seulement archiver.",
       "save": {
-        "description": "Elle reste avec les autres photos du téléphone, disponible pour toute application, même après avoir désinstallé Lymark.",
+        "description": "Elle rejoint les autres photos du téléphone, accessible à n’importe quelle application — y compris après la désinstallation de Lymark.",
         "field": "Enregistrer",
-        "heading": "Va dans la galerie de l'appareil"
+        "heading": "Va dans la galerie de l’appareil"
       },
       "share": {
-        "description": "WhatsApp, e-mail, Drive : la destination est choisie par le système d'exploitation, et l'application ne participe pas à l'envoi.",
+        "description": "WhatsApp, e-mail, Drive : la destination est choisie par le système d’exploitation, et l’application ne participe pas à l’envoi.",
         "field": "Partager",
-        "heading": "Ouvre la feuille du système"
+        "heading": "Ouvre le menu de partage du système"
       },
-      "title": "Le parcours d'une photo"
+      "title": "Le parcours d’une photo"
     },
     "skipToContent": "Aller au contenu",
     "specimen": {
       "caption": "La barre ambre commence et se termine aux limites des chiffres, pas de la zone de texte.",
       "label": "Exemple du marquage Lymark : heure 07:42, date 12 août 2026, mercredi, une adresse à Guarujá et un code de photo."
     },
-    "title": "Lymark — filigrane avec date, heure et adresse sur les photos de terrain"
+    "title": "Lymark — filigrane de date, heure et adresse sur les photos de terrain"
   }
 }

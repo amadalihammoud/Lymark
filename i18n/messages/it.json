@@ -296,60 +296,60 @@
   "site": {
     "availability": {
       "contact": "Per seguire il lancio o segnalare un problema, scrivi a <email>contato@lymark.app</email>.",
-      "description": "Lymark è alla versione 1.3.0, in fase di test su Android prima della pubblicazione su Google Play. Non esiste una versione per iOS né una versione web, e l'applicazione non raccoglie pagamenti.",
+      "description": "Lymark è alla versione 1.3.0, in test su Android prima della pubblicazione su Google Play. Non esiste una versione iOS né una versione web, e l’app non incassa nulla.",
       "title": "Disponibilità"
     },
     "data": {
       "device": {
-        "description": "Lymark non ha un server, non crea account e non invia le tue foto da nessuna parte. La cronologia salva le ultime 200 esportazioni in file dell'applicazione stessa.",
+        "description": "Lymark non ha server, non crea account e non invia le tue foto da nessuna parte. La cronologia conserva le ultime duecento esportazioni nei file dell’app stessa.",
         "field": "Sul dispositivo",
         "heading": "Foto, indirizzi e cronologia"
       },
       "external": {
-        "description": "Per trasformare latitudine e longitudine in un indirizzo leggibile, il sistema operativo consulta il servizio di geocodifica di Google o Apple. È l'unica informazione che esce, e esce attraverso il sistema, non attraverso l'applicazione.",
-        "field": "All'esterno del dispositivo",
-        "heading": "Solo conversione delle coordinate in indirizzo"
+        "description": "Per trasformare latitudine e longitudine in un indirizzo leggibile, il sistema operativo interroga il servizio di geocodifica di Google o di Apple. È l’unica informazione che esce, e a inviarla è il sistema, non l’app.",
+        "field": "Fuori dal dispositivo",
+        "heading": "Solo la conversione della coordinata in indirizzo"
       },
       "note": "È tutto spiegato — compreso ciò che questo comporta ai sensi della LGPD brasiliana — nell'<privacy>Informativa sulla privacy</privacy>. Disattivare il permesso di posizione lascia l'applicazione pienamente funzionante; soltanto il campo dell'indirizzo va digitato a mano.",
-      "title": "Dove si trovano i tuoi dati"
+      "title": "Dove restano i tuoi dati"
     },
-    "description": "Applicazione Android che applica un timbro con ora, data, giorno della settimana, indirizzo e un codice di tracciamento su foto di ispezione e comprovazione del servizio.",
+    "description": "Applicazione Android che timbra ora, data, giorno della settimana, indirizzo e un codice di tracciamento sulle foto di sopralluogo e di prova di intervento.",
     "features": {
       "address": {
-        "description": "La strada viene abbreviata e lo stato diventa sigla, in modo che l'indirizzo entri in due righe senza coprire la foto. Se hai digitato prima che il GPS rispondesse, ciò che hai scritto prevale.",
+        "description": "Il tipo di via viene abbreviato e la provincia diventa una sigla, così l’indirizzo sta in due righe senza coprire la foto. Se hai scritto prima che il GPS rispondesse, vince quello che hai scritto.",
         "field": "Indirizzo",
-        "heading": "Compilato dal GPS, correggibile manualmente"
+        "heading": "Compilato dal GPS, correggibile a mano"
       },
       "code": {
-        "description": "Serve per citare una foto specifica in un ordine di servizio o in una relazione. Va ruotato sul lato destro o accanto al blocco dati, a tua scelta.",
+        "description": "Serve a citare una foto precisa in un ordine di lavoro o in una perizia. Compare ruotato sul bordo destro, oppure accanto al blocco dei dati — a tua scelta.",
         "field": "Codice foto",
-        "heading": "Quattordici caratteri, sorteggiati da generatore crittografico"
+        "heading": "Quattordici caratteri, estratti da un generatore crittografico"
       },
-      "note": "Ogni campo viene attivato o disattivato individualmente, e il blocco può essere ancorato in uno qualsiasi dei quattro angoli, in tre dimensioni. L'anteprima utilizza la tua foto attuale, non un esempio generico: ciò che appare sullo schermo è letteralmente ciò che viene esportato.",
+      "note": "Ogni campo si accende e si spegne per conto suo, e il blocco si ancora a uno qualsiasi dei quattro angoli, in tre dimensioni. L’anteprima usa la tua foto del momento, non un esempio generico: quello che vedi sullo schermo è letteralmente ciò che viene esportato.",
       "time": {
-        "description": "Un pulsante restituisce i tre campi all'istante corrente quando la cattura ha impiegato più del previsto. Tutti rimangono modificabili.",
+        "description": "Un pulsante riporta i tre campi all’istante attuale quando lo scatto ha richiesto più tempo del previsto. Restano tutti modificabili.",
         "field": "Ora e data",
-        "heading": "Dall'orologio del dispositivo, al momento dello scatto"
+        "heading": "Dall’orologio del dispositivo, al momento dello scatto"
       },
-      "title": "Cosa entra nell'immagine"
+      "title": "Che cosa entra nell’immagine"
     },
     "footer": {
-      "description": "Lymark — registrazione fotografica con data, ora e indirizzo.",
+      "description": "Lymark — documentazione fotografica con data, ora e indirizzo.",
       "documentsLabel": "Documenti",
       "privacy": "Informativa sulla privacy",
       "support": "Supporto:",
       "terms": "Condizioni d'uso"
     },
     "hero": {
-      "cta": "Apri l'app nel browser",
-      "description": "Lymark applica un timbro con l'ora, la data, il giorno della settimana, l'indirizzo e un codice di tracciamento direttamente sull'immagine. Il file che esce dall'app ha già le informazioni incorporate, non sono dati che accompagnano la foto e vanno persi al primo inoltro su WhatsApp.",
-      "eyebrow": "Registrazione fotografica di campo",
-      "heading": "La foto esce dal cellulare dicendo già quando, dove e cosa.",
+      "cta": "Apri l’app nel browser",
+      "description": "Lymark timbra ora, data, giorno della settimana, indirizzo e un codice di tracciamento direttamente sull’immagine. Il file che esce dall’app porta il dato dentro di sé — non accanto, dove il primo inoltro su WhatsApp lo cancella.",
+      "eyebrow": "Documentazione fotografica sul campo",
+      "heading": "La foto esce dal telefono dicendo già quando, dove e cosa.",
       "meta": {
         "android": "Android e browser",
-        "language": "Portoghese brasiliano",
-        "noAccount": "Nessun account",
-        "noServer": "Nessun server"
+        "language": "Portoghese del Brasile",
+        "noAccount": "Senza account",
+        "noServer": "Senza server"
       },
       "note": "Niente da installare."
     },
@@ -362,20 +362,20 @@
     },
     "process": {
       "capture": {
-        "description": "L'indirizzo inizia a essere cercato non appena la foto entra. I campi rimangono aperti per la regolazione nel frattempo.",
-        "field": "Catturare",
+        "description": "La ricerca dell’indirizzo parte non appena la foto entra. Nel frattempo i campi restano aperti per le correzioni.",
+        "field": "Acquisizione",
         "heading": "Fotocamera o galleria"
       },
-      "note": "Le due azioni sono separate di proposito. Salvare e condividere risolvono problemi diversi, e combinarle in un solo pulsante costringerebbe chi vuole solo archiviare a passare attraverso una schermata di invio.",
+      "note": "Le due azioni sono separate di proposito. Salvare e condividere risolvono problemi diversi, e unirle in un solo pulsante costringerebbe chi vuole soltanto archiviare a passare da una schermata di invio.",
       "save": {
-        "description": "Rimane con le altre foto del cellulare, disponibile per qualsiasi applicazione, anche dopo aver disinstallato Lymark.",
-        "field": "Salvare",
+        "description": "Sta insieme alle altre foto del telefono, a disposizione di qualsiasi app — anche dopo aver disinstallato Lymark.",
+        "field": "Salvataggio",
         "heading": "Va nella galleria del dispositivo"
       },
       "share": {
-        "description": "WhatsApp, e-mail, Drive: la destinazione viene scelta dal sistema operativo, e l'applicazione non partecipa all'invio.",
-        "field": "Condividere",
-        "heading": "Apre il foglio di sistema"
+        "description": "WhatsApp, e-mail, Drive: la destinazione la sceglie il sistema operativo, e l’app non partecipa all’invio.",
+        "field": "Condivisione",
+        "heading": "Apre il pannello di sistema"
       },
       "title": "Il percorso di una foto"
     },
@@ -384,6 +384,6 @@
       "caption": "La barra ambra inizia e finisce ai limiti delle cifre, non della casella di testo.",
       "label": "Esempio del timbro Lymark: ora 07:42, data 12 agosto 2026, mercoledì, un indirizzo a Guarujá e un codice foto."
     },
-    "title": "Lymark — filigrana con data, ora e indirizzo su foto di campo"
+    "title": "Lymark — filigrana di data, ora e indirizzo sulle foto sul campo"
   }
 }

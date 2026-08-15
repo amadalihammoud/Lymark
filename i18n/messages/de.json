@@ -296,45 +296,45 @@
   "site": {
     "availability": {
       "contact": "Wer den Start verfolgen oder ein Problem melden möchte, schreibt an <email>contato@lymark.app</email>.",
-      "description": "Lymark ist in Version 1.3.0, wird auf Android vor der Veröffentlichung im Google Play getestet. Es gibt keine iOS-Version oder Web-Version, und die App sammelt keine Zahlungen.",
+      "description": "Lymark steht bei Version 1.3.0 und wird auf Android getestet, bevor es bei Google Play erscheint. Eine iOS-Version und eine Web-Version gibt es nicht, und die App verlangt kein Geld.",
       "title": "Verfügbarkeit"
     },
     "data": {
       "device": {
-        "description": "Lymark hat keinen Server, erstellt kein Konto und sendet Ihre Fotos nirgendwo hin. Der Verlauf speichert die letzten 200 Exporte in Dateien der Anwendung selbst.",
+        "description": "Lymark hat keinen Server, legt kein Konto an und sendet Ihre Fotos nirgendwohin. Der Verlauf hält die letzten zweihundert Exporte in den eigenen Dateien der App.",
         "field": "Auf dem Gerät",
         "heading": "Fotos, Adressen und Verlauf"
       },
       "external": {
-        "description": "Um Breiten- und Längengrad in eine lesbare Adresse umzuwandeln, konsultiert das Betriebssystem den Geocodierungsdienst von Google oder Apple. Dies ist die einzige Information, die ausgeht, und sie geht über das System, nicht über die Anwendung.",
+        "description": "Um Breiten- und Längengrad in eine lesbare Adresse zu verwandeln, fragt das Betriebssystem den Geokodierungsdienst von Google oder Apple. Das ist die einzige Angabe, die hinausgeht, und gesendet wird sie vom System, nicht von der App.",
         "field": "Außerhalb des Geräts",
-        "heading": "Nur Koordinaten-zu-Adresse-Konvertierung"
+        "heading": "Nur die Umwandlung einer Koordinate in eine Adresse"
       },
       "note": "Alles Weitere steht — einschließlich der Bedeutung nach dem brasilianischen LGPD — in der <privacy>Datenschutzrichtlinie</privacy>. Wird die Standortberechtigung deaktiviert, bleibt die App voll funktionsfähig; lediglich das Adressfeld muss dann von Hand ausgefüllt werden.",
-      "title": "Wo Ihre Daten sind"
+      "title": "Wo Ihre Daten bleiben"
     },
-    "description": "Android-App, die Zeit, Datum, Wochentag, Adresse und einen Tracking-Code auf Inspektions- und Dienstleistungsnachweisfotos stempelt.",
+    "description": "Android-App, die Uhrzeit, Datum, Wochentag, Adresse und einen Nachverfolgungscode auf Fotos von Begehungen und Leistungsnachweisen stempelt.",
     "features": {
       "address": {
-        "description": "Die Straße wird abgekürzt und der Bundesstaat zu einer Abkürzung, damit die Adresse in zwei Zeilen passt, ohne das Foto zu überdecken. Wenn Sie vor der GPS-Antwort getippt haben, gilt das, was Sie geschrieben haben.",
+        "description": "Die Straßenbezeichnung wird abgekürzt und das Bundesland zum Kürzel, damit die Adresse in zwei Zeilen passt, ohne das Foto zu verdecken. Wer tippt, bevor das GPS antwortet, behält seine Eingabe.",
         "field": "Adresse",
-        "heading": "Durch GPS ausgefüllt, manuell korrigierbar"
+        "heading": "Vom GPS ausgefüllt, von Hand korrigierbar"
       },
       "code": {
-        "description": "Dient zum Zitieren eines bestimmten Fotos in einem Arbeitsauftrag oder Bericht. Wird gedreht auf der rechten Seite oder neben dem Datenblock, nach Ihrer Wahl.",
+        "description": "Er dient dazu, ein bestimmtes Foto in einem Arbeitsauftrag oder einem Gutachten zu benennen. Er läuft gedreht am rechten Rand oder steht beim Datenblock — ganz wie Sie wollen.",
         "field": "Fotocode",
-        "heading": "Vierzehn Zeichen, per kryptografischem Generator zufällig ausgewählt"
+        "heading": "Vierzehn Zeichen, von einem kryptografischen Generator gezogen"
       },
-      "note": "Jedes Feld wird einzeln ein- oder ausgeschaltet, und der Block kann in einer der vier Ecken in drei Größen verankert werden. Die Vorschau verwendet Ihr aktuelles Foto, nicht ein generisches Beispiel: Was auf dem Bildschirm erscheint, ist wörtlich das, was exportiert wird.",
+      "note": "Jedes Feld lässt sich einzeln ein- und ausschalten, und der Block verankert sich in jeder der vier Ecken, in drei Größen. Die Vorschau nimmt Ihr aktuelles Foto und kein Musterbild: Was auf dem Bildschirm steht, ist buchstäblich das, was exportiert wird.",
       "time": {
-        "description": "Eine Schaltfläche gibt die drei Felder zum aktuellen Zeitpunkt zurück, wenn die Aufnahme länger als erwartet gedauert hat. Alle bleiben bearbeitbar.",
+        "description": "Eine Schaltfläche setzt alle drei Felder auf jetzt zurück, wenn die Aufnahme länger gedauert hat als gedacht. Änderbar bleiben sie alle.",
         "field": "Uhrzeit und Datum",
-        "heading": "Von der Geräteuhr, zum Zeitpunkt der Aufnahme"
+        "heading": "Von der Uhr des Geräts, im Moment der Aufnahme"
       },
-      "title": "Was in das Bild kommt"
+      "title": "Was ins Bild kommt"
     },
     "footer": {
-      "description": "Lymark — fotografische Aufzeichnung mit Datum, Uhrzeit und Adresse.",
+      "description": "Lymark — Fotodokumentation mit Datum, Uhrzeit und Adresse.",
       "documentsLabel": "Dokumente",
       "privacy": "Datenschutzrichtlinie",
       "support": "Support:",
@@ -342,14 +342,14 @@
     },
     "hero": {
       "cta": "App im Browser öffnen",
-      "description": "Lymark stempelt Uhrzeit, Datum, Wochentag, Adresse und einen Tracking-Code direkt auf das Bild. Die Datei, die aus der App kommt, hat die Informationen bereits eingebettet - es sind keine Daten, die das Foto begleiten und beim ersten Weiterleiten über WhatsApp verloren gehen.",
-      "eyebrow": "Feldfotoaufzeichnung",
-      "heading": "Das Foto verlässt das Handy bereits mit Angabe von wann, wo und was.",
+      "description": "Lymark stempelt Uhrzeit, Datum, Wochentag, Adresse und einen Nachverfolgungscode direkt ins Bild. Die Datei, die aus der App kommt, trägt die Angabe in sich — nicht daneben, wo die erste WhatsApp-Weiterleitung sie löscht.",
+      "eyebrow": "Fotodokumentation vor Ort",
+      "heading": "Das Foto verlässt das Handy und sagt schon, wann, wo und was.",
       "meta": {
         "android": "Android und Browser",
         "language": "Brasilianisches Portugiesisch",
-        "noAccount": "Kein Konto",
-        "noServer": "Kein Server"
+        "noAccount": "Ohne Konto",
+        "noServer": "Ohne Server"
       },
       "note": "Nichts zu installieren."
     },
@@ -362,20 +362,20 @@
     },
     "process": {
       "capture": {
-        "description": "Die Adresse beginnt gesucht zu werden, sobald das Foto eingeht. Die Felder bleiben zur Anpassung offen, während dies geschieht.",
+        "description": "Die Adresssuche beginnt, sobald das Foto hereinkommt. Die Felder bleiben währenddessen zum Anpassen offen.",
         "field": "Aufnehmen",
         "heading": "Kamera oder Galerie"
       },
-      "note": "Die beiden Aktionen sind absichtlich getrennt. Speichern und Teilen lösen unterschiedliche Probleme, und das Kombinieren beider in einer Schaltfläche würde diejenigen, die nur archivieren möchten, zwingen, einen Sende-Bildschirm zu durchlaufen.",
+      "note": "Die beiden Aktionen sind mit Absicht getrennt. Speichern und Teilen lösen verschiedene Probleme, und beides in eine Schaltfläche zu packen würde jeden, der nur ablegen will, durch einen Sendedialog zwingen.",
       "save": {
-        "description": "Es bleibt bei den anderen Fotos auf dem Handy, verfügbar für jede Anwendung - auch nach dem Deinstallieren von Lymark.",
+        "description": "Es liegt bei den übrigen Fotos des Handys, für jede App erreichbar — auch nachdem Lymark deinstalliert wurde.",
         "field": "Speichern",
-        "heading": "Geht in die Gerätegalerie"
+        "heading": "Kommt in die Gerätegalerie"
       },
       "share": {
-        "description": "WhatsApp, E-Mail, Drive: Das Ziel wird vom Betriebssystem gewählt, und die Anwendung nimmt nicht am Senden teil.",
+        "description": "WhatsApp, E-Mail, Drive: Das Ziel wählt das Betriebssystem, und die App ist am Versand nicht beteiligt.",
         "field": "Teilen",
-        "heading": "Öffnet das Systemblatt"
+        "heading": "Öffnet den Teilen-Dialog des Systems"
       },
       "title": "Der Weg eines Fotos"
     },
@@ -384,6 +384,6 @@
       "caption": "Der bernsteinfarbene Strich beginnt und endet an den Kanten der Ziffern, nicht des Textfelds.",
       "label": "Beispiel des Lymark-Stempels: Uhrzeit 07:42, Datum 12. August 2026, Mittwoch, eine Adresse in Guarujá und ein Fotocode."
     },
-    "title": "Lymark — Wasserzeichen mit Datum, Uhrzeit und Adresse auf Feldfotos"
+    "title": "Lymark — Wasserzeichen mit Datum, Uhrzeit und Adresse für Fotos vor Ort"
   }
 }
