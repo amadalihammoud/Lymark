@@ -1,3 +1,7 @@
+// A regra da rota vive no site, e este é o único teste que a alcança — o site
+// não tem harness próprio. Sem alias para `site/` no app de propósito: nada do
+// aplicativo deve importar de lá fora deste teste.
+// eslint-disable-next-line no-restricted-imports
 import { handleEntitlements, type EntitlementStore } from '../../../../site/lib/entitlements';
 import { parseEntitlement } from '../api';
 import { FREE_LIFETIME_QUOTA, type StoredEntitlement } from '../server';
