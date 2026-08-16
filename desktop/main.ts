@@ -3,6 +3,7 @@
  */
 
 import { app, BrowserWindow, protocol, ipcMain, dialog, shell } from 'electron';
+import { spawn } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
@@ -301,6 +302,139 @@ function registerIpcHandlers() {
     await shell.openExternal(url);
     return { ok: true };
   });
+
+  // Seletor de vídeo, com sondagem já embutida: o renderer precisa das
+  // dimensões para desenhar o carimbo no tamanho do quadro, e da data de
+  // modificação para preencher data e hora como o lote faz com o EXIF.
+  ipcMain.handle('pick-video', async () => {
+    if (!mainWindow) return { status: 'cancelled' };
+    const picked = await dialog.showOpenDialog(mainWindow, {
+      properties: ['openFile'],
+      filters: [{ name: 'Vídeos', extensions: VIDEO_EXTENSIONS }],
+    });
+    if (picked.canceled || picked.filePaths.length === 0) return { status: 'cancelled' };
+
+    const filePath = picked.filePaths[0];
+    try {
+      const info = await probeVideo(filePath);
+      const stat = fs.statSync(filePath);
+      return {
+        status: 'selected',
+        path: filePath,
+        name: path.basename(filePath),
+        width: info.width,
+        height: info.height,
+        durationMs: info.durationMs,
+        modifiedMs: stat.mtimeMs,
+      };
+    } catch {
+      return { status: 'failed', error: 'O arquivo não pôde ser lido como vídeo.' };
+    }
+  });
+
+  /**
+   * Compõe o carimbo sobre o vídeo, quadro a quadro, com o ffmpeg.
+   *
+   * O overlay chega pronto do renderer — um PNG transparente do tamanho
+   * exato do quadro, desenhado pelo MESMO código do carimbo da foto — e o
+   * ffmpeg só o sobrepõe em (0,0). O áudio é copiado sem reencodar; o vídeo
+   * sai em H.264 com `faststart`, o arranjo que abre em qualquer lugar.
+   *
+   * O progresso vai por evento: o stderr do ffmpeg publica `time=` conforme
+   * avança, e a duração veio da sondagem.
+   */
+  ipcMain.handle(
+    'watermark-video',
+    async (
+      event,
+      {
+        path: inputPath,
+        overlay,
+        durationMs,
+      }: { path: string; overlay: number[]; durationMs: number },
+    ) => {
+      if (typeof inputPath !== 'string' || !Array.isArray(overlay) || overlay.length === 0) {
+        return { status: 'failed', error: 'Pedido inválido.' };
+      }
+
+      // Saída: a pasta configurada do lote, ou um diálogo de salvar.
+      const baseName = path.basename(inputPath).replace(/\.[^.]+$/, '');
+      const fileName = `lymark_${baseName}.mp4`;
+      let outputPath: string;
+      if (outputFolderPath && fs.existsSync(outputFolderPath)) {
+        outputPath = path.join(outputFolderPath, fileName);
+      } else {
+        if (!mainWindow) return { status: 'failed', error: 'Sem janela para o diálogo.' };
+        const saved = await dialog.showSaveDialog(mainWindow, { defaultPath: fileName });
+        if (saved.canceled || !saved.filePath) return { status: 'cancelled' };
+        outputPath = saved.filePath;
+      }
+
+      const overlayPath = path.join(
+        os.tmpdir(),
+        `lymark-stamp-${crypto.randomBytes(6).toString('hex')}.png`,
+      );
+      fs.writeFileSync(overlayPath, Buffer.from(overlay));
+
+      return new Promise((resolve) => {
+        const child = spawn(ffmpegPath(), [
+          '-y',
+          '-i', inputPath,
+          '-i', overlayPath,
+          '-filter_complex', '[0:v][1:v]overlay=0:0:format=auto[v]',
+          '-map', '[v]',
+          '-map', '0:a?',
+          '-c:a', 'copy',
+          '-c:v', 'libx264',
+          '-preset', 'veryfast',
+          '-crf', '18',
+          '-pix_fmt', 'yuv420p',
+          '-movflags', '+faststart',
+          '-map_metadata', '0',
+          outputPath,
+        ]);
+
+        let stderr = '';
+        child.stderr.on('data', (chunk: Buffer) => {
+          const text = chunk.toString();
+          stderr += text;
+          const at = /time=(\d+):(\d\d):(\d\d(?:\.\d+)?)/.exec(text);
+          if (at && durationMs > 0) {
+            const elapsedMs =
+              (Number(at[1]) * 3600 + Number(at[2]) * 60 + Number(at[3])) * 1000;
+            event.sender.send(
+              'video-progress',
+              Math.min(99, Math.round((elapsedMs / durationMs) * 100)),
+            );
+          }
+        });
+
+        const cleanup = () => {
+          try {
+            fs.unlinkSync(overlayPath);
+          } catch {
+            // O temporário órfão não muda o resultado.
+          }
+        };
+
+        child.on('error', (error) => {
+          cleanup();
+          resolve({ status: 'failed', error: String(error) });
+        });
+        child.on('close', (code) => {
+          cleanup();
+          if (code === 0) {
+            event.sender.send('video-progress', 100);
+            resolve({ status: 'saved', path: outputPath });
+          } else {
+            // A última linha do stderr é onde o ffmpeg diz o motivo.
+            const reason = stderr.trim().split('\n').pop() ?? 'ffmpeg falhou';
+            resolve({ status: 'failed', error: reason });
+          }
+        });
+      });
+    },
+  );
 
   ipcMain.handle('set-locale', (_event, { locale }: { locale: unknown }) => {
     if (!isKnownLocale(locale) || locale === currentLocale) return { ok: true };
@@ -710,6 +844,64 @@ function createMediaProtocol() {
 
     return new Response(fs.readFileSync(filePath), {
       headers: { 'Content-Type': contentType },
+    });
+  });
+}
+
+/**
+ * O ffmpeg — o compositor do vídeo carimbado.
+ *
+ * No pacote, o binário vai por `extraResources` (ver electron-builder.yml);
+ * em desenvolvimento, é o que o `ffmpeg-static` baixou para a plataforma no
+ * `npm ci`. O CI compila cada sistema no runner do próprio sistema, então o
+ * binário empacotado é sempre o certo.
+ */
+function ffmpegPath(): string {
+  if (app.isPackaged) {
+    return path.join(
+      process.resourcesPath,
+      'ffmpeg',
+      process.platform === 'win32' ? 'ffmpeg.exe' : 'ffmpeg',
+    );
+  }
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  return require('ffmpeg-static') as string;
+}
+
+/** Extensões aceitas no seletor de vídeo. */
+const VIDEO_EXTENSIONS = ['mp4', 'mov', 'm4v', 'avi', 'mkv', 'webm'];
+
+/**
+ * Sonda o vídeo com o próprio ffmpeg: dimensões e duração saem do stderr de
+ * `ffmpeg -i` (que termina com código 1 por não ter saída — esperado).
+ * O ffprobe não vem no `ffmpeg-static`, e para dois números o ffmpeg basta.
+ */
+function probeVideo(filePath: string): Promise<{
+  width: number;
+  height: number;
+  durationMs: number;
+}> {
+  return new Promise((resolve, reject) => {
+    const child = spawn(ffmpegPath(), ['-hide_banner', '-i', filePath]);
+    let stderr = '';
+    child.stderr.on('data', (chunk: Buffer) => {
+      stderr += chunk.toString();
+    });
+    child.on('error', reject);
+    child.on('close', () => {
+      const dimensions = /Video:.*?\s(\d{2,5})x(\d{2,5})/.exec(stderr);
+      const duration = /Duration:\s*(\d+):(\d\d):(\d\d(?:\.\d+)?)/.exec(stderr);
+      if (!dimensions || !duration) {
+        reject(new Error('O arquivo não pôde ser lido como vídeo.'));
+        return;
+      }
+      const durationMs =
+        (Number(duration[1]) * 3600 + Number(duration[2]) * 60 + Number(duration[3])) * 1000;
+      resolve({
+        width: Number(dimensions[1]),
+        height: Number(dimensions[2]),
+        durationMs,
+      });
     });
   });
 }

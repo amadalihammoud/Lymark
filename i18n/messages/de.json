@@ -177,7 +177,8 @@
     },
     "nav": {
       "batch": "Stapelverarbeitung",
-      "photoDetail": "Fotodetails"
+      "photoDetail": "Fotodetails",
+      "video": "Video"
     },
     "notFound": {
       "body": "Dieser Bildschirm gehört nicht zu Lymark.",
@@ -254,6 +255,21 @@
     },
     "tagline": "Wasserzeichen mit Uhrzeit, Datum und Ort",
     "title": "Lymark",
+    "video": {
+      "done": "Video gestempelt und gespeichert.",
+      "export": "Gestempeltes Video exportieren",
+      "exportSection": "Exportieren",
+      "failed": "Das Video konnte nicht gestempelt werden.",
+      "fieldsSection": "Stempelfelder",
+      "fileSection": "Video",
+      "none": "Kein Video ausgewählt.",
+      "processing": "Verarbeitung… {percent}%",
+      "saved": "Gespeichert unter {path}",
+      "select": "Video auswählen",
+      "unavailableBody": "Der Videostempel ist in der Desktop-App verfügbar.",
+      "unavailableTitle": "Nur am Computer",
+      "unreadable": "Die Datei konnte nicht als Video gelesen werden."
+    },
     "watermark": {
       "accentColor": "Senkrechter Balken",
       "backdropBandNote": "Das Band läuft von Rand zu Rand über das Foto und schließt an der Seite an, an der der Stempel verankert ist. Über einer unruhigen Szene — Baustelle, Hof, volle Fassade — wirkt es wie die Bildunterschrift des Dokuments und nicht wie ein aufgeklebter Zettel.",

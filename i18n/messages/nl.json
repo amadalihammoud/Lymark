@@ -177,7 +177,8 @@
     },
     "nav": {
       "batch": "Batchverwerking",
-      "photoDetail": "Fotodetails"
+      "photoDetail": "Fotodetails",
+      "video": "Video"
     },
     "notFound": {
       "body": "Dit scherm hoort niet bij Lymark.",
@@ -254,6 +255,21 @@
     },
     "tagline": "Watermerk met tijd, datum en plaats",
     "title": "Lymark",
+    "video": {
+      "done": "Video gestempeld en opgeslagen.",
+      "export": "Gestempelde video exporteren",
+      "exportSection": "Exporteren",
+      "failed": "De video kon niet worden gestempeld.",
+      "fieldsSection": "Stempelvelden",
+      "fileSection": "Video",
+      "none": "Geen video geselecteerd.",
+      "processing": "Verwerken… {percent}%",
+      "saved": "Opgeslagen in {path}",
+      "select": "Video kiezen",
+      "unavailableBody": "Videostempels zijn beschikbaar in de desktop-app.",
+      "unavailableTitle": "Alleen op de computer",
+      "unreadable": "Het bestand kon niet als video worden gelezen."
+    },
     "watermark": {
       "accentColor": "Verticale balk",
       "backdropBandNote": "De band loopt van rand tot rand over de foto en sluit aan op de kant waar de stempel is verankerd. Boven een drukke scène — bouwplaats, terrein, volle gevel — leest hij als het onderschrift van het document en niet als een sticker erbovenop.",

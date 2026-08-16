@@ -177,7 +177,8 @@
     },
     "nav": {
       "batch": "Batch processing",
-      "photoDetail": "Photo details"
+      "photoDetail": "Photo details",
+      "video": "Video"
     },
     "notFound": {
       "body": "This screen is not part of Lymark.",
@@ -254,6 +255,21 @@
     },
     "tagline": "Watermark with time, date and place",
     "title": "Lymark",
+    "video": {
+      "done": "Video stamped and saved.",
+      "export": "Export stamped video",
+      "exportSection": "Export",
+      "failed": "The video could not be stamped.",
+      "fieldsSection": "Stamp fields",
+      "fileSection": "Video",
+      "none": "No video selected.",
+      "processing": "Processing… {percent}%",
+      "saved": "Saved to {path}",
+      "select": "Choose video",
+      "unavailableBody": "Video stamping is available in the desktop app.",
+      "unavailableTitle": "Desktop only",
+      "unreadable": "The file could not be read as a video."
+    },
     "watermark": {
       "accentColor": "Vertical bar",
       "backdropBandNote": "The band runs edge to edge across the photo and rests against the margin where the stamp is anchored. Over a busy scene — a building site, a yard, a crowded façade — it reads as the document’s caption rather than a sticker placed on top.",

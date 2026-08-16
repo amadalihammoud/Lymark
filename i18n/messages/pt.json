@@ -177,7 +177,8 @@
     },
     "nav": {
       "batch": "Processamento em lote",
-      "photoDetail": "Detalhe da foto"
+      "photoDetail": "Detalhe da foto",
+      "video": "Vídeo"
     },
     "notFound": {
       "body": "Essa tela não faz parte do Lymark.",
@@ -254,6 +255,21 @@
     },
     "tagline": "Marca d’água com hora, data e local",
     "title": "Lymark",
+    "video": {
+      "done": "Vídeo carimbado e salvo.",
+      "export": "Exportar vídeo carimbado",
+      "exportSection": "Exportar",
+      "failed": "Não foi possível carimbar o vídeo.",
+      "fieldsSection": "Campos do carimbo",
+      "fileSection": "Vídeo",
+      "none": "Nenhum vídeo escolhido.",
+      "processing": "Processando… {percent}%",
+      "saved": "Salvo em {path}",
+      "select": "Escolher vídeo",
+      "unavailableBody": "O carimbo de vídeo está disponível no aplicativo de computador.",
+      "unavailableTitle": "Somente no computador",
+      "unreadable": "O arquivo não pôde ser lido como vídeo."
+    },
     "watermark": {
       "accentColor": "Barra vertical",
       "backdropBandNote": "A faixa atravessa a foto de borda a borda e encosta na margem onde o carimbo está ancorado. Sobre cena carregada — obra, pátio, fachada cheia —, ela lê como legenda do documento em vez de adesivo colado por cima.",

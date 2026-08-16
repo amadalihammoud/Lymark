@@ -94,6 +94,17 @@ extraResources:
     filter:
       - "**/*"
 
+  # O ffmpeg do vídeo carimbado. Binário nativo não pode viver dentro do
+  # asar (não é executável de lá); vai como recurso, e `ffmpegPath()` no
+  # main.ts o encontra em `resources/ffmpeg`. O `ffmpeg-static` baixa o
+  # binário da plataforma no `npm ci` — e o CI compila cada sistema no
+  # runner do próprio sistema, então o binário empacotado é sempre o certo.
+  - from: node_modules/ffmpeg-static
+    to: ffmpeg
+    filter:
+      - "ffmpeg*"
+      - "LICENSE"
+
   # O catálogo de traduções, lido em tempo de execução pelo processo principal
   # para montar o menu do sistema e os diálogos de arquivo. Vem por
   # `extraResources`, e não pelo asar, porque `desktop/i18n.ts` o lê do disco

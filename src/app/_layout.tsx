@@ -221,6 +221,12 @@ function Navigation() {
         name="batch"
         options={{ title: t('nav.batch'), headerBackTitle: t('common.back') }}
       />
+
+      {/* Vídeo carimbado - apenas desktop */}
+      <Stack.Screen
+        name="video"
+        options={{ title: t('nav.video'), headerBackTitle: t('common.back') }}
+      />
     </Stack>
   );
 }
