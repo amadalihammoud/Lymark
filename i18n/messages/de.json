@@ -512,6 +512,31 @@
       "title": "Am Computer anmelden",
       "unavailable": "Die Verbindung zur Desktop-App ist noch nicht verfügbar."
     },
+    "download": {
+      "appStore": {
+        "description": "Dasselbe Erlebnis wie auf Android, auf iOS.",
+        "field": "App Store",
+        "heading": "iPhone und iPad"
+      },
+      "browser": {
+        "action": "Anmelden",
+        "description": "Melden Sie sich mit Ihrem Konto an — die App öffnet sich direkt im Browser, am Handy oder am Computer.",
+        "field": "Browser",
+        "heading": "Sofort nutzen, ohne Installation"
+      },
+      "desktop": {
+        "description": "Fotostapel, lange Videos und PDF-Berichte — die Version für schwere Arbeit.",
+        "field": "Computer",
+        "heading": "Windows und Linux"
+      },
+      "googlePlay": {
+        "description": "Die Handy-App mit Kamera, Galerie und gestempeltem Video.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Demnächst",
+      "title": "Wo Sie Lymark nutzen"
+    },
     "features": {
       "address": {
         "description": "Die Straßenbezeichnung wird abgekürzt und das Bundesland zum Kürzel, damit die Adresse in zwei Zeilen passt, ohne das Foto zu verdecken. Wer tippt, bevor das GPS antwortet, behält seine Eingabe.",
@@ -539,7 +564,9 @@
       "terms": "Nutzungsbedingungen"
     },
     "hero": {
-      "cta": "App im Browser öffnen",
+      "ctaAccount": "Zu meinem Konto",
+      "ctaLogin": "Anmelden",
+      "ctaSignup": "Kostenloses Konto erstellen",
       "description": "Lymark stempelt Uhrzeit, Datum, Wochentag, Adresse und einen Nachverfolgungscode direkt ins Bild. Die Datei, die aus der App kommt, trägt die Angabe in sich — nicht daneben, wo die erste WhatsApp-Weiterleitung sie löscht.",
       "eyebrow": "Fotodokumentation vor Ort",
       "heading": "Das Foto verlässt das Handy und sagt schon, wann, wo und was.",

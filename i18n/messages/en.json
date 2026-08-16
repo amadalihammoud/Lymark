@@ -512,6 +512,31 @@
       "title": "Sign in on desktop",
       "unavailable": "The desktop app connection is not available yet."
     },
+    "download": {
+      "appStore": {
+        "description": "The same experience as Android, on iOS.",
+        "field": "App Store",
+        "heading": "iPhone and iPad"
+      },
+      "browser": {
+        "action": "Sign in",
+        "description": "Sign in with your account and the app opens right in the browser — phone or computer.",
+        "field": "Browser",
+        "heading": "Use it now, nothing to install"
+      },
+      "desktop": {
+        "description": "Photo batches, long videos and PDF reports — the heavy-duty version.",
+        "field": "Computer",
+        "heading": "Windows and Linux"
+      },
+      "googlePlay": {
+        "description": "The phone app, with camera, gallery and stamped video.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Coming soon",
+      "title": "Where to use Lymark"
+    },
     "features": {
       "address": {
         "description": "The street type is abbreviated and the state becomes its code, so the address fits in two lines without covering the photo. If you typed before GPS answered, what you typed wins.",
@@ -539,7 +564,9 @@
       "terms": "Terms of Use"
     },
     "hero": {
-      "cta": "Open the app in your browser",
+      "ctaAccount": "Go to my account",
+      "ctaLogin": "Sign in",
+      "ctaSignup": "Create a free account",
       "description": "Lymark stamps the time, date, weekday, address and a tracking code straight onto the image. The file that comes out of the app carries the information inside it — not as metadata riding alongside, which the first WhatsApp forward strips away.",
       "eyebrow": "Field photo documentation",
       "heading": "The photo leaves your phone already saying when, where and what.",

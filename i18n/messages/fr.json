@@ -512,6 +512,31 @@
       "title": "Connexion sur ordinateur",
       "unavailable": "La connexion à l'application de bureau n'est pas encore disponible."
     },
+    "download": {
+      "appStore": {
+        "description": "La même expérience qu'Android, sur iOS.",
+        "field": "App Store",
+        "heading": "iPhone et iPad"
+      },
+      "browser": {
+        "action": "Se connecter",
+        "description": "Connectez-vous avec votre compte et l'application s'ouvre dans le navigateur — téléphone ou ordinateur.",
+        "field": "Navigateur",
+        "heading": "Utilisez-le maintenant, sans installation"
+      },
+      "desktop": {
+        "description": "Lots de photos, vidéos longues et rapports PDF — la version de travail intensif.",
+        "field": "Ordinateur",
+        "heading": "Windows et Linux"
+      },
+      "googlePlay": {
+        "description": "L'application mobile, avec caméra, galerie et vidéo tamponnée.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Bientôt",
+      "title": "Où utiliser Lymark"
+    },
     "features": {
       "address": {
         "description": "Le type de voie est abrégé et le département devient un code, pour que l’adresse tienne sur deux lignes sans couvrir la photo. Si vous avez saisi avant la réponse du GPS, c’est votre saisie qui l’emporte.",
@@ -539,7 +564,9 @@
       "terms": "Conditions d'utilisation"
     },
     "hero": {
-      "cta": "Ouvrir l’app dans le navigateur",
+      "ctaAccount": "Accéder à mon compte",
+      "ctaLogin": "Se connecter",
+      "ctaSignup": "Créer un compte gratuit",
       "description": "Lymark appose l’heure, la date, le jour de la semaine, l’adresse et un code de suivi à même l’image. Le fichier qui sort de l’application porte l’information en lui — et non à côté, là où le premier transfert WhatsApp l’efface.",
       "eyebrow": "Documentation photo de terrain",
       "heading": "La photo quitte le téléphone en disant déjà quand, où et quoi.",

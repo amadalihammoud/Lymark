@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 
+import AuthCta from '../../components/AuthCta';
 import { Link } from '../../i18n/navigation';
 
 /*
@@ -58,8 +59,18 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
           <p className="eyebrow">{t('hero.eyebrow')}</p>
           <h1>{t('hero.heading')}</h1>
           <p className="lede">{t('hero.description')}</p>
+          {/*
+            O caminho é a CONTA, não "abrir no navegador": o aplicativo exige
+            sessão desde a primeira tela, e o botão precisa dizer isso. Criar
+            conta é a ação principal; quem já tem, entra ao lado — os dois em
+            MODAL, sem sair da página (`AuthCta`).
+          */}
           <div className="cta">
-            <a href="https://app.lymark.app">{t('hero.cta')}</a>
+            <AuthCta
+              signUp={t('hero.ctaSignup')}
+              signIn={t('hero.ctaLogin')}
+              account={t('hero.ctaAccount')}
+            />
             <span className="note">{t('hero.note')}</span>
           </div>
 
@@ -140,10 +151,59 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
         </p>
       </section>
 
-      <section className="band">
+      {/*
+        Onde o aplicativo mora em cada plataforma. As lojas ainda não têm
+        link — cada cartão vira link no dia em que a loja publicar, sem
+        mudar a estrutura. `soon` marca o que está a caminho.
+      */}
+      <section className="band" id="baixar">
         <div className="band-head">
           <span className="num" aria-hidden="true">
             04
+          </span>
+          <h2>{t('download.title')}</h2>
+        </div>
+
+        <div className="grid stores">
+          <div className="cell">
+            <p className="field">{t('download.browser.field')}</p>
+            <h3>{t('download.browser.heading')}</h3>
+            <p>{t('download.browser.description')}</p>
+            <p className="store-cta">
+              <Link href="/entrar">{t('download.browser.action')}</Link>
+            </p>
+          </div>
+          <div className="cell">
+            <p className="field">{t('download.googlePlay.field')}</p>
+            <h3>{t('download.googlePlay.heading')}</h3>
+            <p>{t('download.googlePlay.description')}</p>
+            <p className="store-cta">
+              <span className="soon">{t('download.soon')}</span>
+            </p>
+          </div>
+          <div className="cell">
+            <p className="field">{t('download.appStore.field')}</p>
+            <h3>{t('download.appStore.heading')}</h3>
+            <p>{t('download.appStore.description')}</p>
+            <p className="store-cta">
+              <span className="soon">{t('download.soon')}</span>
+            </p>
+          </div>
+          <div className="cell">
+            <p className="field">{t('download.desktop.field')}</p>
+            <h3>{t('download.desktop.heading')}</h3>
+            <p>{t('download.desktop.description')}</p>
+            <p className="store-cta">
+              <span className="soon">{t('download.soon')}</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="band">
+        <div className="band-head">
+          <span className="num" aria-hidden="true">
+            05
           </span>
           <h2>{t('availability.title')}</h2>
         </div>

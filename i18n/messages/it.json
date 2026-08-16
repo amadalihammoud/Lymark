@@ -512,6 +512,31 @@
       "title": "Accedi sul computer",
       "unavailable": "La connessione con l'app desktop non è ancora disponibile."
     },
+    "download": {
+      "appStore": {
+        "description": "La stessa esperienza di Android, su iOS.",
+        "field": "App Store",
+        "heading": "iPhone e iPad"
+      },
+      "browser": {
+        "action": "Accedi",
+        "description": "Accedi con il tuo account e l'app si apre direttamente nel browser — telefono o computer.",
+        "field": "Browser",
+        "heading": "Usalo ora, senza installare"
+      },
+      "desktop": {
+        "description": "Lotti di foto, video lunghi e report in PDF: la versione da lavoro pesante.",
+        "field": "Computer",
+        "heading": "Windows e Linux"
+      },
+      "googlePlay": {
+        "description": "L'app del telefono, con fotocamera, galleria e video timbrato.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "In arrivo",
+      "title": "Dove usare Lymark"
+    },
     "features": {
       "address": {
         "description": "Il tipo di via viene abbreviato e la provincia diventa una sigla, così l’indirizzo sta in due righe senza coprire la foto. Se hai scritto prima che il GPS rispondesse, vince quello che hai scritto.",
@@ -539,7 +564,9 @@
       "terms": "Condizioni d'uso"
     },
     "hero": {
-      "cta": "Apri l’app nel browser",
+      "ctaAccount": "Vai al mio account",
+      "ctaLogin": "Accedi",
+      "ctaSignup": "Crea un account gratuito",
       "description": "Lymark timbra ora, data, giorno della settimana, indirizzo e un codice di tracciamento direttamente sull’immagine. Il file che esce dall’app porta il dato dentro di sé — non accanto, dove il primo inoltro su WhatsApp lo cancella.",
       "eyebrow": "Documentazione fotografica sul campo",
       "heading": "La foto esce dal telefono dicendo già quando, dove e cosa.",

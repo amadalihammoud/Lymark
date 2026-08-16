@@ -512,6 +512,31 @@
       "title": "Entrar no computador",
       "unavailable": "A conexão com o aplicativo de computador ainda não está disponível."
     },
+    "download": {
+      "appStore": {
+        "description": "A mesma experiência do Android, no iOS.",
+        "field": "App Store",
+        "heading": "iPhone e iPad"
+      },
+      "browser": {
+        "action": "Entrar na conta",
+        "description": "Entre com a sua conta e o aplicativo abre no próprio navegador — celular ou computador.",
+        "field": "Navegador",
+        "heading": "Use agora, sem instalar"
+      },
+      "desktop": {
+        "description": "Lote de fotos, vídeo longo e relatórios em PDF — a versão de trabalho pesado.",
+        "field": "Computador",
+        "heading": "Windows e Linux"
+      },
+      "googlePlay": {
+        "description": "O aplicativo do celular, com câmera, galeria e vídeo carimbado.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Em breve",
+      "title": "Onde usar o Lymark"
+    },
     "features": {
       "address": {
         "description": "O logradouro é abreviado e o estado vira sigla, para o endereço caber em duas linhas sem cobrir a foto. Se você digitou antes do GPS responder, o que você escreveu prevalece.",
@@ -539,7 +564,9 @@
       "terms": "Termos de Uso"
     },
     "hero": {
-      "cta": "Abrir o app no navegador",
+      "ctaAccount": "Ir para a minha conta",
+      "ctaLogin": "Entrar",
+      "ctaSignup": "Criar conta grátis",
       "description": "O Lymark carimba hora, data, dia da semana, endereço e um código de rastreio diretamente na imagem. O arquivo que sai do aplicativo já sai com a informação embutida — não é um dado que acompanha a foto e se perde no primeiro encaminhamento por WhatsApp.",
       "eyebrow": "Registro fotográfico de campo",
       "heading": "A foto sai do celular já dizendo quando, onde e o quê.",
