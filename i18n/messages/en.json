@@ -15,12 +15,15 @@
       "version": "Version"
     },
     "account": {
+      "browserHint": "Sign-in happens in the browser. Sign in there with your account and the app connects by itself.",
       "code": "Code",
       "codeSent": "We sent a code to {email}",
+      "connected": "Connected",
       "continue": "Continue",
       "email": "Email",
       "failed": "That didn't work. Check the email or code and try again.",
       "notConfigured": "Sign-in is not available in this build yet.",
+      "signInBrowser": "Sign in via browser",
       "signOut": "Sign out",
       "signedInAs": "Signed in as {email}",
       "title": "Account",
@@ -392,6 +395,13 @@
       "signUpTitle": "Create account",
       "subscribeSoon": "Subscriptions are not available yet. When they are, you will be able to subscribe here and use any device with the same account.",
       "title": "Your account"
+    },
+    "desktop": {
+      "backAccount": "Back to account",
+      "explanation": "Your account is ready. Click the button below to open Lymark on your computer already signed in — the browser will ask permission to open the app.",
+      "open": "Connect the app",
+      "title": "Sign in on desktop",
+      "unavailable": "The desktop app connection is not available yet."
     },
     "availability": {
       "contact": "To follow the launch or report a problem, write to <email>contato@lymark.app</email>.",

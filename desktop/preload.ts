@@ -52,6 +52,10 @@ export interface LymarkApi {
   setLocale: (locale: string) => Promise<{ ok: boolean }>;
   /** Rotas pedidas pelo menu do sistema. */
   onNavigate: (callback: (route: string) => void) => void;
+  /** Abre a página de login da conta no navegador do sistema. */
+  openAccountPage: () => Promise<{ ok: boolean }>;
+  /** Token do desktop chegando pelo deep link `lymark://login`. */
+  onLoginToken: (callback: (token: string) => void) => void;
   onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
 }
 
@@ -97,6 +101,14 @@ export const lymarkApi: LymarkApi = {
 
   onNavigate: (callback) => {
     ipcRenderer.on('navigate', (_, route: string) => callback(route));
+  },
+
+  openAccountPage: async () => {
+    return ipcRenderer.invoke('open-account-page');
+  },
+
+  onLoginToken: (callback) => {
+    ipcRenderer.on('login-token', (_, token: string) => callback(token));
   },
   
   onDragDrop: (callback) => {

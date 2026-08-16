@@ -106,6 +106,10 @@ export interface WindowLymark {
   setLocale?: (locale: string) => Promise<{ ok: boolean }>;
   /** Rotas pedidas pelo menu do sistema. */
   onNavigate?: (callback: (route: string) => void) => void;
+  /** Abre a página de login da conta no navegador do sistema. */
+  openAccountPage?: () => Promise<{ ok: boolean }>;
+  /** Token do desktop chegando pelo deep link `lymark://login`. */
+  onLoginToken?: (callback: (token: string) => void) => void;
 }
 
 declare global {

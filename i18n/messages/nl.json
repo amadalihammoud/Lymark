@@ -15,12 +15,15 @@
       "version": "Versie"
     },
     "account": {
+      "browserHint": "Inloggen gebeurt in de browser. Log daar in met je account en de app verbindt zichzelf.",
       "code": "Code",
       "codeSent": "We hebben een code naar {email} gestuurd",
+      "connected": "Verbonden",
       "continue": "Doorgaan",
       "email": "E-mail",
       "failed": "Dat is niet gelukt. Controleer het e-mailadres of de code en probeer het opnieuw.",
       "notConfigured": "Inloggen is in deze versie nog niet beschikbaar.",
+      "signInBrowser": "Inloggen via de browser",
       "signOut": "Uitloggen",
       "signedInAs": "Ingelogd als {email}",
       "title": "Account",
@@ -392,6 +395,13 @@
       "signUpTitle": "Account aanmaken",
       "subscribeSoon": "Een betaald abonnement is nog niet beschikbaar. Zodra dat zo is, kun je het hier afsluiten en elk apparaat met hetzelfde account gebruiken.",
       "title": "Je account"
+    },
+    "desktop": {
+      "backAccount": "Terug naar account",
+      "explanation": "Je account is klaar. Klik op de knop hieronder om Lymark op je computer ingelogd te openen — de browser vraagt toestemming om de app te openen.",
+      "open": "App verbinden",
+      "title": "Inloggen op de computer",
+      "unavailable": "De verbinding met de desktop-app is nog niet beschikbaar."
     },
     "availability": {
       "contact": "Om de lancering te volgen of een probleem te melden, schrijf naar <email>contato@lymark.app</email>.",

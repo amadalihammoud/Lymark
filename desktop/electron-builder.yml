@@ -4,6 +4,15 @@
 appId: app.lymark.desktop
 productName: Lymark
 
+# O esquema do deep link de login (`lymark://login#token=…`). O registro em
+# tempo de execução (`setAsDefaultProtocolClient`) cobre Windows e Linux; esta
+# declaração é o que grava o esquema no Info.plist do macOS, onde o registro
+# acontece na instalação e não na primeira execução.
+protocols:
+  - name: Lymark
+    schemes:
+      - lymark
+
 directories:
   output: dist-electron
 

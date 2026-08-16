@@ -15,12 +15,15 @@
       "version": "Versão"
     },
     "account": {
+      "browserHint": "O login acontece no navegador. Entre lá com sua conta e o aplicativo conecta sozinho.",
       "code": "Código",
       "codeSent": "Enviamos um código para {email}",
+      "connected": "Conectado",
       "continue": "Continuar",
       "email": "E-mail",
       "failed": "Não deu certo. Confira o e-mail ou o código e tente de novo.",
       "notConfigured": "O login ainda não está disponível nesta versão do aplicativo.",
+      "signInBrowser": "Entrar pelo navegador",
       "signOut": "Sair da conta",
       "signedInAs": "Conectado como {email}",
       "title": "Conta",
@@ -392,6 +395,13 @@
       "signUpTitle": "Criar conta",
       "subscribeSoon": "A assinatura ainda não está disponível. Quando estiver, você poderá assinar aqui e usar em qualquer aparelho com a mesma conta.",
       "title": "Sua conta"
+    },
+    "desktop": {
+      "backAccount": "Voltar à conta",
+      "explanation": "Sua conta está pronta. Clique no botão abaixo para abrir o Lymark no computador já conectado — o navegador vai pedir permissão para abrir o aplicativo.",
+      "open": "Conectar o aplicativo",
+      "title": "Entrar no computador",
+      "unavailable": "A conexão com o aplicativo de computador ainda não está disponível."
     },
     "availability": {
       "contact": "Para acompanhar o lançamento ou relatar um problema, escreva para <email>contato@lymark.app</email>.",

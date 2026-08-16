@@ -15,12 +15,15 @@
       "version": "Version"
     },
     "account": {
+      "browserHint": "Die Anmeldung erfolgt im Browser. Melde dich dort mit deinem Konto an, und die App verbindet sich von selbst.",
       "code": "Code",
       "codeSent": "Wir haben einen Code an {email} gesendet",
+      "connected": "Verbunden",
       "continue": "Weiter",
       "email": "E-Mail",
       "failed": "Das hat nicht geklappt. Prüfe E-Mail oder Code und versuche es erneut.",
       "notConfigured": "Die Anmeldung ist in dieser Version noch nicht verfügbar.",
+      "signInBrowser": "Über den Browser anmelden",
       "signOut": "Abmelden",
       "signedInAs": "Angemeldet als {email}",
       "title": "Konto",
@@ -392,6 +395,13 @@
       "signUpTitle": "Konto erstellen",
       "subscribeSoon": "Das Abonnement ist noch nicht verfügbar. Sobald es das ist, können Sie es hier abschließen und mit demselben Konto jedes Gerät nutzen.",
       "title": "Ihr Konto"
+    },
+    "desktop": {
+      "backAccount": "Zurück zum Konto",
+      "explanation": "Dein Konto ist bereit. Klicke auf die Schaltfläche unten, um Lymark auf deinem Computer angemeldet zu öffnen — der Browser fragt nach der Erlaubnis, die App zu öffnen.",
+      "open": "App verbinden",
+      "title": "Am Computer anmelden",
+      "unavailable": "Die Verbindung zur Desktop-App ist noch nicht verfügbar."
     },
     "availability": {
       "contact": "Wer den Start verfolgen oder ein Problem melden möchte, schreibt an <email>contato@lymark.app</email>.",

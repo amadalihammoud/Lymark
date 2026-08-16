@@ -1,5 +1,6 @@
 import { createClerkClient, verifyToken } from '@clerk/backend';
 
+import { verifyDesktopToken } from './desktop-token';
 import { METADATA_KEY, type EntitlementStore } from './entitlements';
 
 /**
@@ -20,10 +21,18 @@ export function clerkStore(): EntitlementStore | null {
     verify: async (token) => {
       try {
         const payload = await verifyToken(token, { secretKey });
-        return typeof payload.sub === 'string' && payload.sub ? payload.sub : null;
+        if (typeof payload.sub === 'string' && payload.sub) return payload.sub;
       } catch {
-        return null;
+        // Não é um token do Clerk — pode ser o do desktop, abaixo.
       }
+
+      // O token do desktop (ver `desktop-token.ts`): emitido pelo site na
+      // página `/conta/desktop`, entregue ao Electron por deep link. Só
+      // existe como caminho quando o segredo está configurado.
+      const desktopSecret = process.env.DESKTOP_TOKEN_SECRET;
+      if (desktopSecret) return verifyDesktopToken(token, desktopSecret);
+
+      return null;
     },
     read: async (userId) => {
       const user = await clerk.users.getUser(userId);
