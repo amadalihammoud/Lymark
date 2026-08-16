@@ -1,7 +1,7 @@
 // A tabela de margens também existe no desktop, que não importa de `src/` —
 // este teste é o que impede as duas cópias de divergirem em silêncio.
 // eslint-disable-next-line no-restricted-imports
-import { NORM_MARGINS_CM, REPORT_NORMS as DESKTOP_NORMS } from '../../../../desktop/report-norms';
+import { NORM_PRINT, REPORT_NORMS as DESKTOP_NORMS } from '../../../../desktop/report-norms';
 import type { GalleryEntry } from '@/types';
 import { NORM_SPECS, REPORT_NORMS } from '../norms';
 import { groupByProject } from '../projects';
@@ -30,6 +30,7 @@ const STRINGS: ReportStrings = {
   author: 'Responsável',
   code: 'Código',
   declaration: 'Declaração do emissor.',
+  signature: 'Assinatura do responsável',
 };
 
 function input(overrides: Partial<ReportInput> = {}): ReportInput {
@@ -106,6 +107,16 @@ describe('o HTML do relatório', () => {
     expect(iso).not.toContain('text-transform: uppercase');
   });
 
+  it('o bloco de assinatura existe só nas normas com estrutura de laudo', () => {
+    expect(buildReportHtml(input({ norm: 'ibape' }), 'pt')).toContain('class="signature"');
+    expect(buildReportHtml(input({ norm: 'abnt' }), 'pt')).not.toContain('class="signature"');
+  });
+
+  it('o papel Carta é exclusividade da norma dos EUA', () => {
+    const letterOnly = REPORT_NORMS.filter((norm) => NORM_SPECS[norm].pageSize === 'Letter');
+    expect(letterOnly).toEqual(['letter']);
+  });
+
   it('campo vazio na tabela-resumo vira travessão, não célula em branco', () => {
     const bare = entry();
     bare.metadata.address = '';
@@ -115,10 +126,14 @@ describe('o HTML do relatório', () => {
 });
 
 describe('a paridade com o desktop', () => {
-  it('as normas e as margens são EXATAMENTE as mesmas nos dois lados', () => {
+  it('as normas, papel, margens e numeração são EXATAMENTE os mesmos nos dois lados', () => {
     expect([...DESKTOP_NORMS]).toEqual([...REPORT_NORMS]);
     for (const norm of REPORT_NORMS) {
-      expect(NORM_MARGINS_CM[norm]).toEqual(NORM_SPECS[norm].margins);
+      expect(NORM_PRINT[norm].margins).toEqual(NORM_SPECS[norm].margins);
+      expect(NORM_PRINT[norm].pageSize).toBe(NORM_SPECS[norm].pageSize);
+      expect(NORM_PRINT[norm].pageNumber).toBe(NORM_SPECS[norm].pageNumber);
+      // O cabeçalho nativo acompanha a serifa do corpo.
+      expect(NORM_PRINT[norm].serif).toBe(NORM_SPECS[norm].fontFamily.includes('Times'));
     }
   });
 });

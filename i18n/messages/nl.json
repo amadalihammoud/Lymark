@@ -243,6 +243,7 @@
         "page": "Pagina",
         "photo": "Foto {index}",
         "photosSection": "Fotodocumentatie",
+        "signature": "Handtekening van de verantwoordelijke",
         "summary": "Samenvatting",
         "title": "Fotorapport",
         "totalPhotos": "Totaal aantal foto’s:"
@@ -254,9 +255,12 @@
       "generateSection": "Genereren",
       "norm": {
         "abnt": "ABNT (Brazilië)",
-        "iso": "Internationaal"
+        "din5008": "DIN 5008 (Duitsland)",
+        "ibape": "IBAPE-stijl (Brazilië)",
+        "iso": "Internationaal",
+        "letter": "Letter (VS)"
       },
-      "normNote": "De norm bepaalt de opmaak: marges, lettertype en paginanummering. ABNT volgt NBR 14724; internationaal gebruikt A4 met marges van 2,5 cm.",
+      "normNote": "De norm bepaalt papier en opmaak: marges, lettertype en paginanummering. De inhoud van het rapport is overal gelijk; de IBAPE-stijl voegt een handtekeningblok toe.",
       "normSection": "Documentnorm",
       "projectsSection": "Werk / project",
       "saved": "Opgeslagen in {path}",

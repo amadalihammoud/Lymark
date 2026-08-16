@@ -243,6 +243,7 @@
         "page": "Página",
         "photo": "Foto {index}",
         "photosSection": "Registros fotográficos",
+        "signature": "Assinatura do responsável",
         "summary": "Resumo",
         "title": "Relatório fotográfico",
         "totalPhotos": "Total de fotos:"
@@ -254,9 +255,12 @@
       "generateSection": "Gerar",
       "norm": {
         "abnt": "ABNT (Brasil)",
-        "iso": "Internacional"
+        "din5008": "DIN 5008 (Alemanha)",
+        "ibape": "Estilo IBAPE (Brasil)",
+        "iso": "Internacional",
+        "letter": "Carta (EUA)"
       },
-      "normNote": "O padrão define a formatação — margens, fonte e numeração de páginas. ABNT segue a NBR 14724; o internacional usa A4 com margens de 2,5 cm.",
+      "normNote": "O padrão define o papel e a formatação — margens, fonte e numeração de páginas. O conteúdo do relatório é o mesmo em todos; o estilo IBAPE acrescenta o bloco de assinatura do responsável.",
       "normSection": "Padrão do documento",
       "projectsSection": "Obra / projeto",
       "saved": "Salvo em {path}",

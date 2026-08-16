@@ -29,6 +29,8 @@ export type ReportStrings = {
   code: string;
   /** A separação de camadas do selo, dita também no papel. */
   declaration: string;
+  /** Rótulo do bloco de assinatura (normas com estrutura de laudo). */
+  signature: string;
 };
 
 export type ReportPhoto = {
@@ -186,6 +188,9 @@ export function buildReportHtml(input: ReportInput, locale: string): string {
   table.stamp th { font-weight: bold; width: 4cm; }
 
   .declaration { margin-top: 0.8cm; font-size: 0.85em; font-style: italic; }
+
+  .signature { margin-top: 2cm; page-break-inside: avoid; text-align: center; }
+  .signature .line { width: 9cm; margin: 0 auto 0.2cm; border-bottom: 1px solid #000; height: 1.2cm; }
 </style>
 </head>
 <body>
@@ -219,6 +224,15 @@ export function buildReportHtml(input: ReportInput, locale: string): string {
   </div>
 
   <p class="declaration">${escapeHtml(strings.declaration)}</p>
-</body>
+${
+  spec.signatureBlock
+    ? `  <div class="signature">
+    <div class="line"></div>
+    ${author ? `<p>${author}</p>` : ''}
+    <p>${escapeHtml(strings.signature)}</p>
+  </div>
+`
+    : ''
+}</body>
 </html>`;
 }

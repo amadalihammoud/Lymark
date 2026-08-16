@@ -137,7 +137,7 @@ export interface WindowLymark {
   exportReportPdf?: (
     html: string,
     filename: string,
-    norm: 'abnt' | 'iso',
+    norm: 'abnt' | 'iso' | 'letter' | 'din5008' | 'ibape',
     pageWord: string,
   ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
 }

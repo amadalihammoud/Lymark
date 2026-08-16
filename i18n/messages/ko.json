@@ -243,6 +243,7 @@
         "page": "페이지",
         "photo": "사진 {index}",
         "photosSection": "사진 기록",
+        "signature": "담당자 서명",
         "summary": "요약",
         "title": "사진 보고서",
         "totalPhotos": "사진 합계:"
@@ -254,9 +255,12 @@
       "generateSection": "생성",
       "norm": {
         "abnt": "ABNT(브라질)",
-        "iso": "국제"
+        "din5008": "DIN 5008(독일)",
+        "ibape": "IBAPE 스타일(브라질)",
+        "iso": "국제",
+        "letter": "레터(미국)"
       },
-      "normNote": "규격은 여백, 글꼴, 페이지 번호 등 서식을 정합니다. ABNT는 NBR 14724를 따르고, 국제 규격은 A4에 여백 2.5cm를 사용합니다.",
+      "normNote": "규격은 용지와 서식(여백, 글꼴, 페이지 번호)을 정합니다. 보고서 내용은 모두 같으며, IBAPE 스타일은 서명란이 추가됩니다.",
       "normSection": "문서 규격",
       "projectsSection": "현장 / 프로젝트",
       "saved": "{path}에 저장되었습니다",

@@ -243,6 +243,7 @@
         "page": "Página",
         "photo": "Foto {index}",
         "photosSection": "Registros fotográficos",
+        "signature": "Firma del responsable",
         "summary": "Resumen",
         "title": "Informe fotográfico",
         "totalPhotos": "Total de fotos:"
@@ -254,9 +255,12 @@
       "generateSection": "Generar",
       "norm": {
         "abnt": "ABNT (Brasil)",
-        "iso": "Internacional"
+        "din5008": "DIN 5008 (Alemania)",
+        "ibape": "Estilo IBAPE (Brasil)",
+        "iso": "Internacional",
+        "letter": "Carta (EE. UU.)"
       },
-      "normNote": "La norma define el formato: márgenes, fuente y numeración de páginas. ABNT sigue la NBR 14724; la internacional usa A4 con márgenes de 2,5 cm.",
+      "normNote": "La norma define el papel y el formato: márgenes, fuente y numeración de páginas. El contenido del informe es el mismo en todas; el estilo IBAPE añade un bloque de firma.",
       "normSection": "Norma del documento",
       "projectsSection": "Obra / proyecto",
       "saved": "Guardado en {path}",

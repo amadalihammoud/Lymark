@@ -175,12 +175,16 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   fotos entrando por `media://` (nenhum byte de imagem cruza o IPC),
   `printToPDF` com margens e numeração de página por norma. Paridade das
   normas entre `src` e `desktop` garantida por teste, como no selo.
-- [x] **Padrões de norma** — tabela aberta (`norms.ts`): **ABNT** (NBR
-  14724: margens 3/2 cm, serifa 12, entrelinha 1,5, número no canto
-  superior direito, capa em caixa alta) e **Internacional** (A4, 2,5 cm,
-  sem serifa, número no rodapé central). Normas de outros países entram
-  como novas linhas da tabela, sem tocar o motor. Posicionamento: "no
-  padrão ABNT" é FORMATAÇÃO — não prometemos laudo normatizado.
+- [x] **Padrões de norma** — tabela aberta (`norms.ts`), cinco linhas:
+  **ABNT** (NBR 14724: margens 3/2 cm, serifa 12, entrelinha 1,5, número
+  no canto superior direito, capa em caixa alta), **Internacional** (A4,
+  2,5 cm, sem serifa, rodapé central), **Carta/EUA** (papel Letter,
+  margens de 1 polegada), **DIN 5008** (Alemanha: A4, 2,5/2 cm, sem
+  serifa) e **estilo IBAPE** (a formatação da ABNT + bloco de assinatura
+  do responsável — estrutura de laudo). Novas normas entram como novas
+  linhas, sem tocar o motor. Posicionamento: é FORMATAÇÃO — não
+  prometemos laudo normatizado (IBAPE de verdade exige responsável
+  técnico habilitado, e isso é de quem assina).
 
 ## Próximo passo de código
 

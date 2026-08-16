@@ -243,6 +243,7 @@
         "page": "Page",
         "photo": "Photo {index}",
         "photosSection": "Photographic records",
+        "signature": "Signature of the person in charge",
         "summary": "Summary",
         "title": "Photo report",
         "totalPhotos": "Total photos:"
@@ -254,9 +255,12 @@
       "generateSection": "Generate",
       "norm": {
         "abnt": "ABNT (Brazil)",
-        "iso": "International"
+        "din5008": "DIN 5008 (Germany)",
+        "ibape": "IBAPE style (Brazil)",
+        "iso": "International",
+        "letter": "Letter (US)"
       },
-      "normNote": "The standard sets the formatting — margins, font and page numbering. ABNT follows NBR 14724; International uses A4 with 2.5 cm margins.",
+      "normNote": "The standard sets the paper and formatting — margins, font and page numbering. The report content is the same in all of them; the IBAPE style adds a signature block.",
       "normSection": "Document standard",
       "projectsSection": "Project / job",
       "saved": "Saved to {path}",

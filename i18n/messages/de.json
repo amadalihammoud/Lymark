@@ -243,6 +243,7 @@
         "page": "Seite",
         "photo": "Foto {index}",
         "photosSection": "Fotodokumentation",
+        "signature": "Unterschrift der verantwortlichen Person",
         "summary": "Zusammenfassung",
         "title": "Fotobericht",
         "totalPhotos": "Fotos insgesamt:"
@@ -254,9 +255,12 @@
       "generateSection": "Erstellen",
       "norm": {
         "abnt": "ABNT (Brasilien)",
-        "iso": "International"
+        "din5008": "DIN 5008 (Deutschland)",
+        "ibape": "IBAPE-Stil (Brasilien)",
+        "iso": "International",
+        "letter": "Letter (USA)"
       },
-      "normNote": "Die Norm bestimmt die Formatierung – Ränder, Schrift und Seitennummerierung. ABNT folgt der NBR 14724; International verwendet A4 mit 2,5 cm Rändern.",
+      "normNote": "Die Norm bestimmt Papier und Formatierung – Ränder, Schrift und Seitennummerierung. Der Inhalt des Berichts ist überall gleich; der IBAPE-Stil ergänzt einen Unterschriftenblock.",
       "normSection": "Dokumentnorm",
       "projectsSection": "Baustelle / Projekt",
       "saved": "Gespeichert unter {path}",

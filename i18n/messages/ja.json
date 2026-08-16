@@ -243,6 +243,7 @@
         "page": "ページ",
         "photo": "写真 {index}",
         "photosSection": "写真記録",
+        "signature": "責任者の署名",
         "summary": "概要",
         "title": "写真レポート",
         "totalPhotos": "写真の合計:"
@@ -254,9 +255,12 @@
       "generateSection": "作成",
       "norm": {
         "abnt": "ABNT(ブラジル)",
-        "iso": "国際"
+        "din5008": "DIN 5008(ドイツ)",
+        "ibape": "IBAPEスタイル(ブラジル)",
+        "iso": "国際",
+        "letter": "レター(米国)"
       },
-      "normNote": "規格は余白・フォント・ページ番号などの書式を決めます。ABNTはNBR 14724に従い、国際規格はA4・余白2.5cmを使用します。",
+      "normNote": "規格は用紙と書式(余白・フォント・ページ番号)を決めます。レポートの内容はどれも同じで、IBAPEスタイルは署名欄が加わります。",
       "normSection": "文書の規格",
       "projectsSection": "現場 / プロジェクト",
       "saved": "{path} に保存しました",
