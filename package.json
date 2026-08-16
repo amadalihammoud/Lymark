@@ -1,6 +1,6 @@
 {
   "name": "lymark",
-  "main": "expo-router/entry",
+  "main": "index.js",
   "version": "1.3.0",
   "dependencies": {
     "@clerk/expo": "^4.3.0",
