@@ -18,7 +18,7 @@
     },
     "s03": {
       "title": "Who the controller is",
-      "p1": "The controller of the personal data — <em>controller</em>, in the terminology of the GDPR — is 29.015.357 AMAD ALI HAMMOUD, registered under CNPJ 29.015.357/0001-25, with an address at Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p1": "The controller of the personal data — <em>controlador</em>, in the terminology of the LGPD — is 29.015.357 AMAD ALI HAMMOUD, registered under CNPJ 29.015.357/0001-25, with an address at Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
       "p2": "The person in charge of personal data processing, for the purposes of Article 41 of the LGPD, is Amad Ali Hammoud, who can be contacted at <email>contato@lymark.app</email>. Given the volume and the nature of the processing — which involves neither sensitive data at scale nor systematic monitoring — there is no obligation to appoint a <em>Data Protection Officer</em> under Article 37 of the GDPR."
     },
     "s04": {
@@ -89,7 +89,7 @@
     },
     "s09": {
       "title": "Sharing with third parties",
-      "p1": "The developer does not share, sell, rent or transfer personal data to third parties, for the simple reason that it does not hold any. There is no operator (<em>processor</em>) engaged to process the app’s data."
+      "p1": "The developer does not share, sell, rent or transfer personal data to third parties, for the simple reason that it does not hold any. There is no data <em>processor</em> engaged to process the app’s data."
     },
     "s10": {
       "title": "Storage, retention and security",
@@ -114,7 +114,7 @@
     "s14": {
       "title": "About this website",
       "p1": "This website <strong>uses no cookies</strong>, has no analytics, displays no advertising and embeds no social network buttons. The typefaces are served by the domain itself — your browser makes no request to third-party servers, so the visit generates no transfer of your IP address to external providers.",
-      "p2": "The website is hosted by <strong>Vercel Inc.</strong>, which as an operator logs technical access data — IP address, date, time and the resource requested — for as long as is necessary for the security and the operation of the hosting. The legal basis is the legitimate interest in maintaining the security of the service, Article 7, IX of the LGPD and Article 6(1)(f) of the GDPR."
+      "p2": "The website is hosted by <strong>Vercel Inc.</strong>, which as a processor logs technical access data — IP address, date, time and the resource requested — for as long as is necessary for the security and the operation of the hosting. The legal basis is the legitimate interest in maintaining the security of the service, Article 7, IX of the LGPD and Article 6(1)(f) of the GDPR."
     },
     "s15": {
       "title": "Changes to this policy",
