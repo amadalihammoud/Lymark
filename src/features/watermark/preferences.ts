@@ -35,8 +35,25 @@ import { isManagedLogoPath } from './logo-path';
  *     `backdropStyle`, este último com a faixa contínua como terceira opção.
  * 6 — o par "Lymark / Minha marca" sai: o texto da marca é sempre editável, e
  *     o padrão dele é a marca do próprio app.
+ * 7 — o amarelo da marca passa a ser o do Manual de Marca, #F3C218.
  */
-export const PREFERENCES_SCHEMA_VERSION = 6;
+export const PREFERENCES_SCHEMA_VERSION = 7;
+
+/**
+ * O amarelo de antes do Manual de Marca.
+ *
+ * Ele estava em três lugares: o acento do carimbo, a segunda metade de "Lymark"
+ * e o atalho "Âmbar" do seletor. Os três eram a mesma decisão — a cor da marca
+ * — e o manual a substituiu por #F3C218.
+ *
+ * A retintura acontece **só** na subida da versão 6 para a 7, e **só** neste
+ * hexadecimal exato. Quem escolheu outra cor não é tocado; quem escolheu esta
+ * escolheu "Âmbar" no seletor, e é o âmbar que mudou de valor. Depois da
+ * primeira gravação a versão salva é 7 e a regra não roda mais — inclusive
+ * para quem digitar #F5B60D de propósito daí em diante.
+ */
+const AMBER_BEFORE_MANUAL = '#F5B60D';
+const AMBER_RETINT_BEFORE_VERSION = 7;
 
 /**
  * Campos cujo padrão mudou e que por isso são remigrados.
@@ -77,7 +94,7 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   // ponto de partida — e de exemplo do que a marca da empresa pode fazer.
   brandParts: [
     { text: 'Ly', color: '#FFFFFF' },
-    { text: 'mark', color: '#F5B60D' },
+    { text: 'mark', color: '#F3C218' },
   ],
   // Canto, como sempre foi. Quem quiser o cabeçalho com logo escolhe.
   brandPlacement: 'corner',
@@ -86,7 +103,7 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   brandLogoPath: null,
   brandLogoAspect: 1,
 
-  stampAccent: '#F5B60D',
+  stampAccent: '#F3C218',
   stampTextColor: '#FFFFFF',
   backdropColor: '#000000',
   backdropOpacity: 0.75,
@@ -198,6 +215,11 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
    */
   const keptLymarkBrand = stored.brandMode === 'lymark';
 
+  /* Ver `AMBER_BEFORE_MANUAL`: vale uma vez, na subida para a versão 7. */
+  const retintAmber = (stored.schemaVersion ?? 1) < AMBER_RETINT_BEFORE_VERSION;
+  const manualAmber = (color: string): string =>
+    retintAmber && color === AMBER_BEFORE_MANUAL ? DEFAULT_WATERMARK_PREFERENCES.stampAccent : color;
+
   const visibleFields = { ...DEFAULT_WATERMARK_PREFERENCES.visibleFields };
   for (const key of WATERMARK_FIELD_KEYS) {
     if (isLegacy && RESET_VISIBLE_FIELDS.includes(key)) continue;
@@ -238,7 +260,7 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
       : [
           readBrandPart(stored.brandParts?.[0], DEFAULT_WATERMARK_PREFERENCES.brandParts[0]),
           readBrandPart(stored.brandParts?.[1], DEFAULT_WATERMARK_PREFERENCES.brandParts[1]),
-        ],
+        ].map((part) => ({ ...part, color: manualAmber(part.color) })) as [BrandPart, BrandPart],
     // Quem vinha das versões anteriores tinha um liga/desliga. Desligado vira
     // "nenhuma"; ligado vira "num canto", que é onde a marca já estava — a
     // atualização não pode mudar a aparência da foto de ninguém.
@@ -251,9 +273,8 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
       typeof stored.brandComplement === 'string'
         ? stored.brandComplement.slice(0, BRAND_COMPLEMENT_MAX_LENGTH)
         : DEFAULT_WATERMARK_PREFERENCES.brandComplement,
-    brandComplementColor: readColor(
-      stored.brandComplementColor,
-      DEFAULT_WATERMARK_PREFERENCES.brandComplementColor,
+    brandComplementColor: manualAmber(
+      readColor(stored.brandComplementColor, DEFAULT_WATERMARK_PREFERENCES.brandComplementColor),
     ),
     // Só um caminho relativo dentro do diretório gerido é aceito. Um valor
     // absoluto ou com `..` gravado por um build antigo — ou por corrupção —
@@ -267,10 +288,11 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
       DEFAULT_WATERMARK_PREFERENCES.brandLogoAspect,
     ),
 
-    stampAccent: readColor(stored.stampAccent, DEFAULT_WATERMARK_PREFERENCES.stampAccent),
-    stampTextColor: readColor(
-      stored.stampTextColor,
-      DEFAULT_WATERMARK_PREFERENCES.stampTextColor,
+    stampAccent: manualAmber(
+      readColor(stored.stampAccent, DEFAULT_WATERMARK_PREFERENCES.stampAccent),
+    ),
+    stampTextColor: manualAmber(
+      readColor(stored.stampTextColor, DEFAULT_WATERMARK_PREFERENCES.stampTextColor),
     ),
     backdropColor: readColor(
       stored.backdropColor,

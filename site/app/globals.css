@@ -2,32 +2,36 @@
  * A paleta e a tipografia são as do Manual de Marca Lymark, versão 1.0.
  *
  * O marinho #15243C e o amarelo #F3C218 são as duas cores da marca; o amarelo
- * é o único acento e nunca ocupa área maior que o azul. Os demais tons de
- * marinho são derivados do oficial por clareamento, mantendo os degraus da
- * escala anterior — o manual define a cor institucional, não a escala de
- * superfícies que um site escuro precisa.
+ * é o único acento e nunca ocupa área maior que o azul.
+ *
+ * O manual define a cor institucional, não a escala de superfícies de que um
+ * produto escuro precisa. Os outros degraus são o matiz e a saturação do
+ * oficial — 216,9° e 48,1% — com a luminância de cada degrau da escala
+ * anterior preservada. É de propósito: a escala antiga foi medida contra o
+ * texto, e reescalar as superfícies junto com o fundo derrubaria o contraste
+ * em cada uma delas. Esta é a mesma escala que o aplicativo usa, tom por tom.
  *
  * O amarelo é cor de **acento, não de texto**: sobre o marinho tem 9,3:1 e
  * está liberado; sobre branco tem 1,5:1 e é proibido. Como o site inteiro é
  * escuro, ele aparece como texto apenas sobre marinho.
  */
 :root {
-  --navy-900: #101c2f;
+  --navy-900: #0f192a;
   --navy-800: #15243c;
-  --navy-700: #1f2d44;
-  --navy-600: #25334a;
-  --navy-500: #303d53;
-  --navy-400: #3c485c;
+  --navy-700: #182a45;
+  --navy-600: #1c3151;
+  --navy-500: #233b63;
+  --navy-400: #294675;
 
   --amber: #f3c218;
   /* Substitui o amarelo sempre que a marca é aplicada sobre branco ou papel. */
   --amber-on-light: #d9a700;
-  --blue-300: #8a93a3;
+  --blue-300: #4a76a1;
 
   --text: #ffffff;
-  --text-on-surface: #c7d0dc;
-  --text-muted: #97a1b1;
-  --text-subtle: #8a93a3;
+  --text-on-surface: #c7d6e4;
+  --text-muted: #93a9c0;
+  --text-subtle: #8da4ba;
 
   /* Medido: a Space Grotesk ocupa 18% mais largura que a Barlow no mesmo
      corpo, então a medida de 34rem cairia de ~73 para ~62 caracteres por

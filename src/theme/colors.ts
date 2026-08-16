@@ -1,25 +1,37 @@
 /**
- * Paleta do Lymark.
+ * Paleta do Lymark, conforme o Manual de Marca versão 1.0.
  *
  * `palette` guarda os tons crus e nunca deve ser importada pelas telas.
  * A UI consome apenas `colors`, que dá nome ao *papel* de cada tom — assim
  * um ajuste de identidade visual acontece neste arquivo, e não espalhado
  * por dezenas de `StyleSheet`.
+ *
+ * Do manual vêm duas cores, e só duas: o marinho #15243C (`navy800`, o fundo
+ * das telas) e o amarelo #F3C218 (`amber500`, o único acento). Os demais
+ * degraus de marinho são o matiz e a saturação do oficial — 216,9° e 48,1% —
+ * com a luminância de cada degrau da escala anterior preservada.
+ *
+ * Preservar a luminância, em vez de reescalar os degraus junto com o fundo, é
+ * deliberado: as razões de contraste anotadas abaixo foram medidas contra
+ * essas superfícies, e clarear todas elas junto com o fundo derrubaria cada
+ * uma. O manual define a cor institucional, não a escala de superfícies de
+ * que uma interface escura precisa. É a mesma escala que o site usa.
  */
 const palette = {
-  navy900: '#091A2B',
-  navy800: '#0D2137',
-  navy700: '#122B44',
-  navy600: '#16324F',
-  navy500: '#1B3D60',
-  navy400: '#23496E',
+  navy900: '#0F192A',
+  navy800: '#15243C',
+  navy700: '#182A45',
+  navy600: '#1C3151',
+  navy500: '#233B63',
+  navy400: '#294675',
 
   blue600: '#1B5490',
   blue500: '#215F9E',
   blue400: '#2A6DAE',
 
-  amber500: '#F5B60D',
-  amber600: '#D99E05',
+  amber500: '#F3C218',
+  /** Escurecido do oficial — é também o amarelo do manual para fundo claro. */
+  amber600: '#D9A700',
 
   white: '#FFFFFF',
   slate200: '#C7D6E4',
@@ -52,8 +64,8 @@ export const colors = {
   /**
    * Contorno de botão. Separado de `border` porque aqui a linha é a única
    * coisa que identifica o elemento como botão — os variantes `ghost` e
-   * `danger` têm fundo transparente. A 1,74:1 do navy sumia ao sol; este tom
-   * dá 3,41:1, acima do mínimo de 3:1 para elemento de interface.
+   * `danger` têm fundo transparente. A 1,65:1 do navy sumia ao sol; este tom
+   * dá 3,26:1, acima do mínimo de 3:1 para elemento de interface.
    */
   borderInteractive: palette.blue300,
 
@@ -69,7 +81,14 @@ export const colors = {
 
   text: palette.white,
   textMuted: palette.slate400,
-  /** 5,08:1 sobre `surface` — antes 3,31:1, reprovado. */
+  /**
+   * 5,03:1 sobre `background`, mas 4,34:1 sobre `surface` — abaixo dos 4,5:1
+   * de texto normal. O número anotado aqui antes (5,08:1) media a superfície
+   * de antes de ela ser clareada para o sol, e ficou para trás. A troca de
+   * paleta não mexeu nisso: sobre a superfície anterior eram 4,33:1. Corrigir
+   * é clarear o tom, e isso é decisão de identidade, não de aplicação do
+   * manual — está registrado aqui para não passar batido de novo.
+   */
   textSubtle: palette.slate300,
   textOnSurface: palette.slate200,
 

@@ -212,7 +212,7 @@ describe('migração para a marca própria', () => {
     const merged = mergeWithDefaults(v3);
 
     expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: '#FFFFFF' });
-    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F5B60D' });
+    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F3C218' });
   });
 
   it('esquece a marca digitada por quem estava no modo Lymark', () => {
@@ -229,7 +229,7 @@ describe('migração para a marca própria', () => {
     } as never);
 
     expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: '#FFFFFF' });
-    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F5B60D' });
+    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F3C218' });
   });
 
   it('preserva a marca de quem tinha escolhido a própria', () => {
@@ -272,7 +272,7 @@ describe('migração para a marca própria', () => {
     } as never);
 
     expect(merged.brandParts[0].color).toBe('#5BD98A');
-    expect(merged.brandParts[1].color).toBe('#F5B60D');
+    expect(merged.brandParts[1].color).toBe('#F3C218');
   });
 
   it('recusa o que não é cor', () => {
@@ -283,7 +283,7 @@ describe('migração para a marca própria', () => {
 
     expect(merged.brandParts[0].text).toBe('ACME');
     expect(merged.brandParts[0].color).toBe('#FFFFFF');
-    expect(merged.brandParts[1].color).toBe('#F5B60D');
+    expect(merged.brandParts[1].color).toBe('#F3C218');
   });
 
   it('sobrevive a partes corrompidas caindo no padrão, e não no vazio', () => {
@@ -297,7 +297,7 @@ describe('migração para a marca própria', () => {
     } as never);
 
     expect(merged.brandParts[0]).toEqual({ text: 'Ly', color: '#FFFFFF' });
-    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F5B60D' });
+    expect(merged.brandParts[1]).toEqual({ text: 'mark', color: '#F3C218' });
   });
 
   it('limita o tamanho de cada parte', () => {
@@ -307,5 +307,59 @@ describe('migração para a marca própria', () => {
     } as never);
 
     expect(merged.brandParts[0].text.length).toBeLessThanOrEqual(24);
+  });
+});
+
+describe('retintura do amarelo para o do Manual de Marca', () => {
+  it('troca o amarelo antigo em quem vem de uma versão anterior à 7', () => {
+    const merged = mergeWithDefaults({
+      schemaVersion: 6,
+      stampAccent: '#F5B60D',
+      stampTextColor: '#F5B60D',
+      brandComplementColor: '#F5B60D',
+      brandParts: [
+        { text: 'ACME', color: '#F5B60D' },
+        { text: ' Ltda', color: '#FFFFFF' },
+      ],
+    } as never);
+
+    expect(merged.stampAccent).toBe('#F3C218');
+    expect(merged.stampTextColor).toBe('#F3C218');
+    expect(merged.brandComplementColor).toBe('#F3C218');
+    expect(merged.brandParts[0].color).toBe('#F3C218');
+  });
+
+  it('não mexe em nenhuma outra cor escolhida', () => {
+    const merged = mergeWithDefaults({
+      schemaVersion: 6,
+      stampAccent: '#63B3ED',
+      stampTextColor: '#FF6B57',
+      brandParts: [
+        { text: 'ACME', color: '#5BD98A' },
+        { text: ' Ltda', color: '#111820' },
+      ],
+    } as never);
+
+    expect(merged.stampAccent).toBe('#63B3ED');
+    expect(merged.stampTextColor).toBe('#FF6B57');
+    expect(merged.brandParts[0].color).toBe('#5BD98A');
+    expect(merged.brandParts[1].color).toBe('#111820');
+  });
+
+  it('respeita quem escolhe o amarelo antigo depois de já estar na versão 7', () => {
+    // A mesma armadilha da migração de `brandMode`: uma regra de subida que
+    // não olha a versão salva volta a rodar a cada abertura e desfaz, todo
+    // dia, a escolha que o usuário acabou de fazer.
+    const merged = mergeWithDefaults({
+      schemaVersion: 7,
+      stampAccent: '#F5B60D',
+      brandParts: [
+        { text: 'ACME', color: '#F5B60D' },
+        { text: ' Ltda', color: '#FFFFFF' },
+      ],
+    } as never);
+
+    expect(merged.stampAccent).toBe('#F5B60D');
+    expect(merged.brandParts[0].color).toBe('#F5B60D');
   });
 });

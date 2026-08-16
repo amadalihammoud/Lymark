@@ -32,9 +32,9 @@ const OUT = process.env.LYMARK_ICON_OUT || path.join(ROOT, 'assets', 'images');
 
 const CanvasKitInit = require(path.join(NM, 'canvaskit-wasm/bin/canvaskit.js'));
 
-const NAVY = '#0D2137';
+const NAVY = '#15243C';
 const WHITE = '#FFFFFF';
-const AMBER = '#F5B60D';
+const AMBER = '#F3C218';
 
 /** Tudo em unidades de altura de caixa alta, medido no ícone anterior. */
 const G = {

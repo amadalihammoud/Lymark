@@ -76,14 +76,14 @@ function Diagram() {
           base do complemento
         </text>
 
-        <circle cx="61" cy="65" r="19" fill="#F5B60D" />
-        <circle cx="61" cy="65" r="12" fill="#0D2137" />
-        <rect x="59" y="47" width="4" height="36" fill="#F5B60D" />
+        <circle cx="61" cy="65" r="19" fill="var(--amber)" />
+        <circle cx="61" cy="65" r="12" fill="var(--navy-800)" />
+        <rect x="59" y="47" width="4" height="36" fill="var(--amber)" />
 
         <text className="dg-brand" x="96" y="66" fontSize="30" fill="currentColor">
           AUTO
         </text>
-        <text className="dg-brand" x="169" y="66" fontSize="30" fill="#F5B60D">
+        <text className="dg-brand" x="169" y="66" fontSize="30" fill="var(--amber)">
           GLASS
         </text>
         <text className="dg-brand" x="96" y="85" fontSize="13" fill="currentColor" fillOpacity="0.7">
@@ -93,7 +93,7 @@ function Diagram() {
         <text className="dg-face" x="40" y="158" fontSize="62" fill="currentColor">
           21:55
         </text>
-        <rect x="152" y="115" width="4" height="45" fill="#F5B60D" />
+        <rect x="152" y="115" width="4" height="45" fill="var(--amber)" />
         <text className="dg-brand" x="170" y="130" fontSize="14" fill="currentColor" fontWeight="400">
           01 ago. 2026
         </text>
@@ -120,8 +120,8 @@ function Diagram() {
           98926A73655DC1
         </text>
 
-        <line x1="152" y1="112" x2="152" y2="100" stroke="#F5B60D" strokeWidth="1.2" />
-        <text className="dg-label" x="158" y="103" fill="#F5B60D">
+        <line x1="152" y1="112" x2="152" y2="100" stroke="var(--amber)" strokeWidth="1.2" />
+        <text className="dg-label" x="158" y="103" fill="var(--amber)">
           barra âmbar
         </text>
       </svg>

@@ -11,7 +11,7 @@
     "icon": "./assets/images/icon.png",
     "scheme": "lymark",
     "userInterfaceStyle": "dark",
-    "backgroundColor": "#0D2137",
+    "backgroundColor": "#15243C",
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.lycosteam.lymark",
@@ -48,7 +48,7 @@
       "package": "com.lycosteam.lymark",
       "allowBackup": false,
       "adaptiveIcon": {
-        "backgroundColor": "#0D2137",
+        "backgroundColor": "#15243C",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
@@ -70,7 +70,7 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#0D2137",
+          "backgroundColor": "#15243C",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 120
         }

@@ -88,7 +88,7 @@ export const STAMP_COLOR_LABELS: Record<StampColorKey, string> = {
 /** Atalhos do seletor: o que se escolhe em um toque, antes de abrir a roda. */
 export const STAMP_COLOR_SWATCHES: Record<StampColorKey, string> = {
   white: '#FFFFFF',
-  amber: '#F5B60D',
+  amber: '#F3C218',
   red: '#FF6B57',
   green: '#5BD98A',
   blue: '#63B3ED',
