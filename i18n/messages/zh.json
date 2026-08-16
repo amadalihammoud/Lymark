@@ -219,6 +219,7 @@
       "remove": "移除",
       "removeBody": "该记录将离开 Lymark。已保存到设备相册的图片不受影响。",
       "removeTitle": "从历史记录中移除",
+      "share": "分享",
       "stampedData": "已添加的数据"
     },
     "plan": {
@@ -243,6 +244,7 @@
         "page": "页",
         "photo": "照片 {index}",
         "photosSection": "照片记录",
+        "signature": "负责人签名",
         "summary": "摘要",
         "title": "照片报告",
         "totalPhotos": "照片总数:"
@@ -250,13 +252,25 @@
       "empty": "还没有导出的照片。报告将基于图库生成。",
       "failed": "无法生成报告。",
       "fileStem": "report",
-      "generate": "生成 PDF",
+      "format": {
+        "csv": "表格(CSV)",
+        "pdf": "PDF",
+        "word": "Word(.doc)",
+        "zip": "压缩包(ZIP)"
+      },
+      "formatSection": "格式",
+      "generate": "生成文件",
       "generateSection": "生成",
+      "includeLogo": "封面上的标志",
+      "includeLogoDescription": "您品牌的标志,与水印中相同。关闭后文档将不含标志。",
       "norm": {
         "abnt": "ABNT(巴西)",
-        "iso": "国际"
+        "din5008": "DIN 5008(德国)",
+        "ibape": "IBAPE 风格(巴西)",
+        "iso": "国际",
+        "letter": "信纸(美国)"
       },
-      "normNote": "规范决定排版:页边距、字体和页码。ABNT 遵循 NBR 14724;国际规范使用 A4、2.5 厘米页边距。",
+      "normNote": "规范决定纸张和排版:页边距、字体和页码。报告内容在所有规范中相同;IBAPE 风格会增加签名栏。",
       "normSection": "文档规范",
       "projectsSection": "工地 / 项目",
       "saved": "已保存到 {path}",
@@ -405,7 +419,13 @@
         "medium": "中",
         "small": "小"
       },
-      "textColor": "文字"
+      "textColor": "文字",
+      "timeFormatDescription": "时间填入字段的格式。字段仍可编辑。",
+      "timeFormatTitle": "时间格式",
+      "timeFormats": {
+        "12h": "12 小时(AM/PM)",
+        "24h": "24 小时"
+      }
     }
   },
   "desktop": {

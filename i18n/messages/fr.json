@@ -219,6 +219,7 @@
       "remove": "Retirer",
       "removeBody": "L’enregistrement quitte Lymark. L’image enregistrée dans la galerie de l’appareil n’est pas concernée.",
       "removeTitle": "Retirer de l’historique",
+      "share": "Partager",
       "stampedData": "Données apposées"
     },
     "plan": {
@@ -243,6 +244,7 @@
         "page": "Page",
         "photo": "Photo {index}",
         "photosSection": "Relevés photographiques",
+        "signature": "Signature du responsable",
         "summary": "Résumé",
         "title": "Rapport photographique",
         "totalPhotos": "Nombre total de photos :"
@@ -250,13 +252,25 @@
       "empty": "Aucune photo exportée pour l'instant. Le rapport est créé à partir de la galerie.",
       "failed": "Impossible de générer le rapport.",
       "fileStem": "rapport",
-      "generate": "Générer le PDF",
+      "format": {
+        "csv": "Tableur (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Paquet (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Générer le fichier",
       "generateSection": "Générer",
+      "includeLogo": "Logo sur la couverture",
+      "includeLogoDescription": "Le logo de votre marque, le même que celui du tampon. Désactivez-le pour un document sans logo.",
       "norm": {
         "abnt": "ABNT (Brésil)",
-        "iso": "International"
+        "din5008": "DIN 5008 (Allemagne)",
+        "ibape": "Style IBAPE (Brésil)",
+        "iso": "International",
+        "letter": "Letter (É.-U.)"
       },
-      "normNote": "La norme définit la mise en forme : marges, police et numérotation des pages. ABNT suit la NBR 14724 ; l’international utilise A4 avec des marges de 2,5 cm.",
+      "normNote": "La norme définit le papier et la mise en forme : marges, police et numérotation des pages. Le contenu du rapport est le même partout ; le style IBAPE ajoute un bloc de signature.",
       "normSection": "Norme du document",
       "projectsSection": "Chantier / projet",
       "saved": "Enregistré dans {path}",
@@ -405,7 +419,13 @@
         "medium": "Moyen",
         "small": "Petit"
       },
-      "textColor": "Texte"
+      "textColor": "Texte",
+      "timeFormatDescription": "Comment l'heure est remplie dans les champs. Le champ reste modifiable.",
+      "timeFormatTitle": "Format de l'heure",
+      "timeFormats": {
+        "12h": "12 heures (AM/PM)",
+        "24h": "24 heures"
+      }
     }
   },
   "desktop": {

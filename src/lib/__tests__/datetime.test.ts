@@ -8,6 +8,7 @@ import { LOCALES } from '@i18n/locales';
 
 import {
   formatDate,
+  convertTimeFormat,
   formatTime,
   formatTimestamp,
   formatWeekday,
@@ -27,6 +28,27 @@ describe('formatação de data e hora', () => {
     expect(formatTime(reference)).toBe('11:04');
     expect(formatTime(new Date(2026, 7, 1, 9, 7))).toBe('09:07');
     expect(formatTime(new Date(2026, 7, 1, 0, 0))).toBe('00:00');
+  });
+
+  it('12 horas: sem zero à esquerda, meia-noite 12 AM e meio-dia 12 PM', () => {
+    expect(formatTime(new Date(2026, 7, 1, 14, 30), '12h')).toBe('2:30 PM');
+    expect(formatTime(new Date(2026, 7, 1, 9, 7), '12h')).toBe('9:07 AM');
+    expect(formatTime(new Date(2026, 7, 1, 0, 0), '12h')).toBe('12:00 AM');
+    expect(formatTime(new Date(2026, 7, 1, 12, 0), '12h')).toBe('12:00 PM');
+  });
+
+  it('a conversão preserva o valor — e só toca no que o app escreveu', () => {
+    expect(convertTimeFormat('14:30', '12h')).toBe('2:30 PM');
+    expect(convertTimeFormat('00:05', '12h')).toBe('12:05 AM');
+    expect(convertTimeFormat('12:00', '12h')).toBe('12:00 PM');
+    expect(convertTimeFormat('2:30 PM', '24h')).toBe('14:30');
+    expect(convertTimeFormat('12:05 AM', '24h')).toBe('00:05');
+    expect(convertTimeFormat('12:00 PM', '24h')).toBe('12:00');
+    // Já está no formato pedido: devolve como está.
+    expect(convertTimeFormat('14:30', '24h')).toBe('14:30');
+    // Texto da pessoa: intocável.
+    expect(convertTimeFormat('por volta das 14h', '12h')).toBeNull();
+    expect(convertTimeFormat('25:99', '12h')).toBeNull();
   });
 
   it('formata a data no padrão pt-BR abreviado', () => {

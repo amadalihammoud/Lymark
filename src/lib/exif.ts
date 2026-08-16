@@ -10,6 +10,7 @@
 import * as exifreader from 'exifreader';
 
 import { formatDate, formatTime } from '@/lib/datetime';
+import type { TimeFormat } from '@/types';
 import { DEFAULT_LOCALE, type Locale } from '@i18n/locales';
 
 /**
@@ -168,6 +169,7 @@ export async function extractDateFromExif(
  */
 export async function extractTimeFromExif(
   file: File | Buffer | string,
+  timeFormat: TimeFormat = '24h',
 ): Promise<string | undefined> {
   const dateTime = await extractDateTimeFromExif(file);
 
@@ -175,6 +177,6 @@ export async function extractTimeFromExif(
     return undefined;
   }
 
-  // Pelo mesmo `formatTime` do resto do app: 24 horas, sem segundos.
-  return formatTime(dateTime.dateTime);
+  // Pelo mesmo `formatTime` do resto do app, no formato preferido.
+  return formatTime(dateTime.dateTime, timeFormat);
 }

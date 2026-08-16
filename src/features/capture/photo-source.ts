@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 
 import { pickImage, isWeb, isMobile, isDesktop } from '@/lib/file-storage';
 import { extractDateFromExif, extractTimeFromExif } from '@/lib/exif';
-import type { SelectedPhoto } from '@/types';
+import type { SelectedPhoto, TimeFormat } from '@/types';
 
 /**
  * As duas portas de entrada de uma foto: a câmera e a galeria.
@@ -127,6 +127,7 @@ export async function pickPhotoFromLibrary(): Promise<PhotoPickResult> {
  */
 export async function extractMetadataFromPhoto(
   photo: SelectedPhoto,
+  timeFormat: TimeFormat = '24h',
 ): Promise<{ date?: string; time?: string }> {
   // Na web, a URI é um blob: ou object URL
   if (isWeb() && photo.uri.startsWith('blob:')) {
@@ -136,7 +137,7 @@ export async function extractMetadataFromPhoto(
       const file = new File([blob], 'photo.jpg', { type: 'image/jpeg' });
       
       const date = await extractDateFromExif(file);
-      const time = await extractTimeFromExif(file);
+      const time = await extractTimeFromExif(file, timeFormat);
       
       return { date, time };
     } catch {

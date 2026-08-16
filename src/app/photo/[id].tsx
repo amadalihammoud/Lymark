@@ -1,5 +1,6 @@
 import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslations } from 'use-intl';
 
@@ -12,6 +13,7 @@ import { useGallery } from '@/contexts/gallery-context';
 import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
 import { useLocalePreference } from '@/contexts/locale-context';
 import { formatTimestamp } from '@/lib/datetime';
+import { isMobile } from '@/lib/file-storage';
 import { colors, radius, spacing, typography } from '@/theme';
 
 /**
@@ -25,8 +27,9 @@ export default function PhotoDetailScreen() {
   const { locale } = useLocalePreference();
   const { id } = useLocalSearchParams<{ id: string }>();
   const { findEntry, removeEntry } = useGallery();
-  const { ask } = useFeedback();
+  const { ask, notify } = useFeedback();
   const router = useRouter();
+  const [sharing, setSharing] = useState(false);
 
   const entry = findEntry(id);
 
@@ -43,6 +46,32 @@ export default function PhotoDetailScreen() {
       </Screen>
     );
   }
+
+  /**
+   * Compartilhar pela folha nativa — e-mail, WhatsApp, o que o aparelho
+   * tiver. Só no celular: é onde a foto vive em arquivo local e onde a
+   * folha de compartilhamento existe. `expo-sharing` entra por import
+   * dinâmico para a web não carregar módulo que não usa.
+   */
+  const share = async () => {
+    if (!entry || sharing) return;
+    setSharing(true);
+    try {
+      const Sharing = await import('expo-sharing');
+      if (!(await Sharing.isAvailableAsync())) {
+        notify(t('common.error'), 'warning');
+        return;
+      }
+      await Sharing.shareAsync(resolveExportedPhotoUri(entry.path), {
+        mimeType: 'image/jpeg',
+      });
+    } catch {
+      // Cancelar a folha não é erro; falha real cai aqui e é dita.
+      notify(t('common.error'), 'warning');
+    } finally {
+      setSharing(false);
+    }
+  };
 
   const confirmDelete = () => {
     ask({
@@ -94,6 +123,16 @@ export default function PhotoDetailScreen() {
           </View>
         ) : null}
       </Section>
+
+      {isMobile() ? (
+        <Button
+          label={t('photo.share')}
+          icon="share-outline"
+          variant="accent"
+          loading={sharing}
+          onPress={() => void share()}
+        />
+      ) : null}
 
       <Button
         label={t('photo.removeTitle')}

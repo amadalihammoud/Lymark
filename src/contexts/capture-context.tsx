@@ -8,7 +8,8 @@ import {
 } from 'react';
 
 import { useLocalePreference } from '@/contexts/locale-context';
-import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
+import { useSettings } from '@/contexts/settings-context';
+import { convertTimeFormat, formatDate, formatTime, formatWeekday } from '@/lib/datetime';
 import { generatePhotoCode } from '@/lib/photo-code';
 import { STAMP_LOCALE } from '@i18n/calendar';
 import { LOCALES, type Locale } from '@i18n/locales';
@@ -16,6 +17,7 @@ import type {
   CaptureDraft,
   CaptureMetadata,
   SelectedPhoto,
+  TimeFormat,
   WatermarkFieldKey,
 } from '@/types';
 
@@ -29,9 +31,13 @@ import type {
  * foto e os campos exatamente como deixou.
  */
 
-function buildInitialMetadata(locale: Locale, now: Date = new Date()): CaptureMetadata {
+function buildInitialMetadata(
+  locale: Locale,
+  timeFormat: TimeFormat,
+  now: Date = new Date(),
+): CaptureMetadata {
   return {
-    time: formatTime(now),
+    time: formatTime(now, timeFormat),
     date: formatDate(now, locale),
     weekday: formatWeekday(now, locale),
     address: '',
@@ -64,10 +70,12 @@ export function CaptureProvider({ children }: { children: ReactNode }) {
    * onde falta alfabeto; a interface continua no idioma escolhido.
    */
   const locale = STAMP_LOCALE[uiLocale];
+  const { preferences } = useSettings();
+  const timeFormat = preferences.timeFormat;
 
   const [draft, setDraft] = useState<CaptureDraft>(() => ({
     photo: null,
-    metadata: buildInitialMetadata(locale),
+    metadata: buildInitialMetadata(locale, timeFormat),
   }));
 
   /**
@@ -108,6 +116,25 @@ export function CaptureProvider({ children }: { children: ReactNode }) {
     });
   }
 
+  /**
+   * A preferência de formato da hora chega DEPOIS de o rascunho nascer (a
+   * hidratação das configurações é assíncrona) — e pode mudar com a tela de
+   * ajustes aberta. Mesmo padrão do idioma acima: ajuste durante o render, e
+   * só sobre o que tem exatamente a cara do que o app escreveu. A conversão
+   * PRESERVA o valor (14:30 ↔ 2:30 PM); texto da pessoa fica intocado.
+   */
+  const [writtenTimeFormat, setWrittenTimeFormat] = useState(timeFormat);
+
+  if (writtenTimeFormat !== timeFormat) {
+    setWrittenTimeFormat(timeFormat);
+
+    setDraft((current) => {
+      const converted = convertTimeFormat(current.metadata.time, timeFormat);
+      if (converted === null || converted === current.metadata.time) return current;
+      return { ...current, metadata: { ...current.metadata, time: converted } };
+    });
+  }
+
 
   const setPhoto = useCallback((photo: SelectedPhoto | null) => {
     setDraft((current) => ({ ...current, photo }));
@@ -133,16 +160,16 @@ export function CaptureProvider({ children }: { children: ReactNode }) {
       ...current,
       metadata: {
         ...current.metadata,
-        time: formatTime(now),
+        time: formatTime(now, timeFormat),
         date: formatDate(now, locale),
         weekday: formatWeekday(now, locale),
       },
     }));
-  }, [locale]);
+  }, [locale, timeFormat]);
 
   const resetDraft = useCallback(() => {
-    setDraft({ photo: null, metadata: buildInitialMetadata(locale) });
-  }, [locale]);
+    setDraft({ photo: null, metadata: buildInitialMetadata(locale, timeFormat) });
+  }, [locale, timeFormat]);
 
   const value = useMemo<CaptureContextValue>(
     () => ({

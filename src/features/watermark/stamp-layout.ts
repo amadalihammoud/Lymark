@@ -591,6 +591,43 @@ function ruleWidth(metrics: ScaleMetrics) {
   return Math.max(2, Math.round(metrics.time / 23));
 }
 
+/**
+ * A hora em 12 horas ganha a sigla NA VERTICAL: `2:30` grande e, coladas à
+ * direita, as duas letras empilhadas — `P` em cima, `M` embaixo — dentro da
+ * altura da tinta dos algarismos. É o desenho clássico dos carimbos de hora,
+ * e o que impede o "PM" de roubar a largura de um algarismo inteiro.
+ *
+ * Só reconhece EXATAMENTE o que `formatTime` escreve (`h:mm AM|PM`);
+ * qualquer outra coisa é texto da pessoa e é desenhada como veio.
+ */
+function splitClockSuffix(time: string): { clock: string; letters: [string, string] } | null {
+  const match = /^(\d{1,2}:\d{2}) (AM|PM)$/.exec(time);
+  if (!match) return null;
+  return { clock: match[1], letters: [match[2][0], match[2][1]] as [string, string] };
+}
+
+/** Corpo de cada letra da sigla: metade da tinta, com um respiro entre elas. */
+function suffixLetterSize(metrics: ScaleMetrics): number {
+  return Math.max(6, Math.round(metrics.time * TIME_INK_HEIGHT_RATIO * 0.46));
+}
+
+/** Vão entre os algarismos e a sigla. */
+function suffixGap(metrics: ScaleMetrics): number {
+  return Math.round(metrics.time * 0.07);
+}
+
+function suffixWidth(
+  letters: [string, string],
+  metrics: ScaleMetrics,
+  measure: MeasureText,
+): number {
+  const size = suffixLetterSize(metrics);
+  return (
+    suffixGap(metrics) +
+    Math.max(widthOf(letters[0], size, 'medium', measure), widthOf(letters[1], size, 'medium', measure))
+  );
+}
+
 function layoutDataBlock({
   content,
   preferences,
@@ -788,7 +825,14 @@ function headerWidth(
   metrics: ScaleMetrics,
   measure: MeasureText,
 ): number {
-  let width = content.time ? widthOf(content.time, metrics.time, 'clock', measure) : 0;
+  let width = 0;
+  if (content.time) {
+    const split = splitClockSuffix(content.time);
+    width = split
+      ? widthOf(split.clock, metrics.time, 'clock', measure) +
+        suffixWidth(split.letters, metrics, measure)
+      : widthOf(content.time, metrics.time, 'clock', measure);
+  }
 
   if (content.showRule) {
     width += Math.round(metrics.time * RULE_SPACE_BEFORE_RATIO);
@@ -821,17 +865,44 @@ function layoutHeader({
   const inkTopY = top + header.inkTop;
 
   if (content.time) {
+    const split = splitClockSuffix(content.time);
+    const clock = split ? split.clock : content.time;
+
     // A tinta dos algarismos começa 0,715 do corpo acima da linha de base —
     // medido no próprio Skia. É daí que sai a posição da linha de base.
     texts.push({
-      text: content.time,
+      text: clock,
       x: cursor,
       baseline: inkTopY - Math.round(metrics.time * DIGIT_INK_TOP_FROM_BASELINE),
       size: metrics.time,
       font: 'clock',
       color: preferences.stampTextColor,
     });
-    cursor += widthOf(content.time, metrics.time, 'clock', measure);
+    cursor += widthOf(clock, metrics.time, 'clock', measure);
+
+    if (split) {
+      // A sigla na vertical: a letra de cima ancorada no topo da tinta, o
+      // `M` na base — a mesma distribuição da data e do dia ao lado.
+      const size = suffixLetterSize(metrics);
+      const x = cursor + suffixGap(metrics);
+      texts.push({
+        text: split.letters[0],
+        x,
+        baseline: inkTopY + Math.round(size * 0.98),
+        size,
+        font: 'medium',
+        color: preferences.stampTextColor,
+      });
+      texts.push({
+        text: split.letters[1],
+        x,
+        baseline: inkTopY + header.inkHeight,
+        size,
+        font: 'medium',
+        color: preferences.stampTextColor,
+      });
+      cursor += suffixWidth(split.letters, metrics, measure);
+    }
   }
 
   if (content.showRule) {

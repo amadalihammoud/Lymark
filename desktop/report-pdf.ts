@@ -20,7 +20,7 @@
 
 import { BrowserWindow } from 'electron';
 
-import { NORM_MARGINS_CM, type ReportNorm } from './report-norms';
+import { NORM_PRINT, type ReportNorm } from './report-norms';
 
 export { REPORT_NORMS, type ReportNorm } from './report-norms';
 
@@ -39,9 +39,11 @@ export function pendingReportHtml(): string | null {
 /**
  * Número de página nos cabeçalhos nativos do Chromium.
  *
- * ABNT: canto superior direito, na área da margem. ISO: rodapé central, no
- * formato "n / total". `pageWord` chega traduzido do renderer — o processo
- * principal não conhece o catálogo do aplicativo.
+ * Cada norma diz onde ele fica (`NORM_PRINT[norm].pageNumber`): no canto
+ * superior direito, dentro da margem (a convenção ABNT/DIN), ou no rodapé
+ * central, no formato "n / total". A fonte acompanha a serifa do corpo.
+ * `pageWord` chega traduzido do renderer — o processo principal não conhece
+ * o catálogo do aplicativo.
  */
 function headerFooter(norm: ReportNorm, pageWord: string): {
   headerTemplate: string;
@@ -49,11 +51,14 @@ function headerFooter(norm: ReportNorm, pageWord: string): {
 } {
   const empty = '<span></span>';
   const escaped = pageWord.replace(/[<>&"]/g, '');
+  const font = NORM_PRINT[norm].serif
+    ? "'Times New Roman',serif"
+    : 'Arial,sans-serif';
 
-  if (norm === 'abnt') {
+  if (NORM_PRINT[norm].pageNumber === 'top-right') {
     return {
       headerTemplate:
-        '<div style="width:100%;font-size:10px;font-family:\'Times New Roman\',serif;' +
+        `<div style="width:100%;font-size:10px;font-family:${font};` +
         'text-align:right;padding-right:0.4in;"><span class="pageNumber"></span></div>',
       footerTemplate: empty,
     };
@@ -62,7 +67,7 @@ function headerFooter(norm: ReportNorm, pageWord: string): {
   return {
     headerTemplate: empty,
     footerTemplate:
-      `<div style="width:100%;font-size:9px;font-family:Arial,sans-serif;text-align:center;">${escaped} ` +
+      `<div style="width:100%;font-size:9px;font-family:${font};text-align:center;">${escaped} ` +
       '<span class="pageNumber"></span> / <span class="totalPages"></span></div>',
   };
 }
@@ -95,11 +100,11 @@ export async function renderReportPdf(
   try {
     await window.loadURL('report://document/index.html');
 
-    const margins = NORM_MARGINS_CM[norm];
+    const { margins, pageSize } = NORM_PRINT[norm];
     const { headerTemplate, footerTemplate } = headerFooter(norm, pageWord);
 
     return await window.webContents.printToPDF({
-      pageSize: 'A4',
+      pageSize,
       printBackground: true,
       displayHeaderFooter: true,
       headerTemplate,

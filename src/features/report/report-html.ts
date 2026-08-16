@@ -29,6 +29,8 @@ export type ReportStrings = {
   code: string;
   /** A separação de camadas do selo, dita também no papel. */
   declaration: string;
+  /** Rótulo do bloco de assinatura (normas com estrutura de laudo). */
+  signature: string;
 };
 
 export type ReportPhoto = {
@@ -40,6 +42,11 @@ export type ReportPhoto = {
 export type ReportInput = {
   norm: ReportNorm;
   title: string;
+  /**
+   * Logotipo da capa, como data URL — vazio omite. É OPCIONAL por decisão:
+   * a tela tem o interruptor, e desligado o documento sai sem logo.
+   */
+  logoDataUri?: string;
   /** Responsável/empresa — vazio omite a linha. */
   author: string;
   /** Código do projeto — vazio omite a linha. */
@@ -148,6 +155,7 @@ export function buildReportHtml(input: ReportInput, locale: string): string {
     text-align: center;
     page-break-after: always;
   }
+  .cover .logo { max-height: 2.5cm; max-width: 8cm; object-fit: contain; margin-top: 0.5cm; }
   .cover .author { margin-top: 1cm; font-weight: bold; }
   .cover .title-block { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.5cm; }
   .cover h1 { font-size: 1.5em; ${spec.uppercaseTitle ? 'text-transform: uppercase;' : ''} }
@@ -186,10 +194,14 @@ export function buildReportHtml(input: ReportInput, locale: string): string {
   table.stamp th { font-weight: bold; width: 4cm; }
 
   .declaration { margin-top: 0.8cm; font-size: 0.85em; font-style: italic; }
+
+  .signature { margin-top: 2cm; page-break-inside: avoid; text-align: center; }
+  .signature .line { width: 9cm; margin: 0 auto 0.2cm; border-bottom: 1px solid #000; height: 1.2cm; }
 </style>
 </head>
 <body>
   <header class="cover">
+    ${input.logoDataUri ? `<img class="logo" src="${escapeHtml(input.logoDataUri)}" alt="" />` : ''}
     ${author ? `<p class="author">${author}</p>` : '<p class="author"></p>'}
     <div class="title-block">
       <h1>${title}</h1>
@@ -219,6 +231,15 @@ export function buildReportHtml(input: ReportInput, locale: string): string {
   </div>
 
   <p class="declaration">${escapeHtml(strings.declaration)}</p>
-</body>
+${
+  spec.signatureBlock
+    ? `  <div class="signature">
+    <div class="line"></div>
+    ${author ? `<p>${author}</p>` : ''}
+    <p>${escapeHtml(strings.signature)}</p>
+  </div>
+`
+    : ''
+}</body>
 </html>`;
 }

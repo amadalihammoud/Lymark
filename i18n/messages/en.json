@@ -219,6 +219,7 @@
       "remove": "Remove",
       "removeBody": "The record leaves Lymark. The image saved to the device gallery is not affected.",
       "removeTitle": "Remove from history",
+      "share": "Share",
       "stampedData": "Stamped data"
     },
     "plan": {
@@ -243,6 +244,7 @@
         "page": "Page",
         "photo": "Photo {index}",
         "photosSection": "Photographic records",
+        "signature": "Signature of the person in charge",
         "summary": "Summary",
         "title": "Photo report",
         "totalPhotos": "Total photos:"
@@ -250,13 +252,25 @@
       "empty": "No exported photos yet. The report is built from your gallery.",
       "failed": "Could not generate the report.",
       "fileStem": "report",
-      "generate": "Generate PDF",
+      "format": {
+        "csv": "Spreadsheet (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Package (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Generate file",
       "generateSection": "Generate",
+      "includeLogo": "Logo on the cover",
+      "includeLogoDescription": "Your brand logo, the same one from the stamp. Turn it off to leave it out of the document.",
       "norm": {
         "abnt": "ABNT (Brazil)",
-        "iso": "International"
+        "din5008": "DIN 5008 (Germany)",
+        "ibape": "IBAPE style (Brazil)",
+        "iso": "International",
+        "letter": "Letter (US)"
       },
-      "normNote": "The standard sets the formatting — margins, font and page numbering. ABNT follows NBR 14724; International uses A4 with 2.5 cm margins.",
+      "normNote": "The standard sets the paper and formatting — margins, font and page numbering. The report content is the same in all of them; the IBAPE style adds a signature block.",
       "normSection": "Document standard",
       "projectsSection": "Project / job",
       "saved": "Saved to {path}",
@@ -405,7 +419,13 @@
         "medium": "Medium",
         "small": "Small"
       },
-      "textColor": "Text"
+      "textColor": "Text",
+      "timeFormatDescription": "How the time is filled into the fields. The field stays editable.",
+      "timeFormatTitle": "Time format",
+      "timeFormats": {
+        "12h": "12-hour (AM/PM)",
+        "24h": "24-hour"
+      }
     }
   },
   "desktop": {

@@ -22,6 +22,7 @@ import {
   BACKDROP_STYLES,
   BRAND_PLACEMENTS,
   CODE_PLACEMENTS,
+  TIME_FORMATS,
   WATERMARK_FIELD_KEYS,
   WATERMARK_POSITIONS,
   WATERMARK_SCALES,
@@ -190,6 +191,21 @@ export function WatermarkControls({
           options={WATERMARK_SCALES.map((scale) => ({
             value: scale,
             label: t(`sizes.${scale}`),
+          }))}
+        />
+      </Section>
+
+      {/* O formato em que a hora é PREENCHIDA — o campo segue editável.
+          Preferência, e não deteção do aparelho: o carimbo não pode mudar de
+          cara porque o celular trocou de configuração. */}
+      <Section title={t('timeFormatTitle')} description={t('timeFormatDescription')}>
+        <ChoiceGrid
+          columns={2}
+          selected={preferences.timeFormat}
+          onSelect={(timeFormat) => updatePreferences({ timeFormat })}
+          options={TIME_FORMATS.map((format) => ({
+            value: format,
+            label: t(`timeFormats.${format}`),
           }))}
         />
       </Section>

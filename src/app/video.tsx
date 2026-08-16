@@ -32,7 +32,7 @@ import { bytesToBase64 } from '@/lib/base64';
 import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
 import { isDesktop } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
-import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
+import type { CaptureMetadata, TimeFormat, WatermarkFieldKey } from '@/types';
 import { STAMP_LOCALE } from '@i18n/calendar';
 
 /**
@@ -74,13 +74,14 @@ function metadataFromFileClock(
   current: CaptureMetadata,
   modifiedMs: number | undefined,
   stampLocale: StampLocaleValue,
+  timeFormat: TimeFormat,
 ): CaptureMetadata {
   if (!modifiedMs) return current;
   const modified = new Date(modifiedMs);
   return {
     ...current,
     date: formatDate(modified, stampLocale),
-    time: formatTime(modified),
+    time: formatTime(modified, timeFormat),
     weekday: formatWeekday(modified, stampLocale),
   };
 }
@@ -170,7 +171,7 @@ function DesktopVideoScreen() {
       height: picked.height,
       durationMs: picked.durationMs ?? 0,
     });
-    setMetadata((current) => metadataFromFileClock(current, picked.modifiedMs, stampLocale));
+    setMetadata((current) => metadataFromFileClock(current, picked.modifiedMs, stampLocale, preferences.timeFormat));
   };
 
   const exportVideo = async () => {
@@ -329,7 +330,7 @@ function MobileVideoScreen() {
 
     // A galeria não entrega a data de gravação; o agora entra como ponto de
     // partida — editável, como tudo.
-    setMetadata((current) => metadataFromFileClock(current, Date.now(), stampLocale));
+    setMetadata((current) => metadataFromFileClock(current, Date.now(), stampLocale, preferences.timeFormat));
   };
 
   /**
@@ -366,7 +367,7 @@ function MobileVideoScreen() {
       width: asset.width,
       height: asset.height,
     });
-    setMetadata((current) => metadataFromFileClock(current, Date.now(), stampLocale));
+    setMetadata((current) => metadataFromFileClock(current, Date.now(), stampLocale, preferences.timeFormat));
   };
 
   const exportVideo = async () => {
@@ -507,7 +508,7 @@ function WebVideoScreen() {
       setSavedName(null);
       setProgress(0);
       setSelected({ file, name: file.name, ...info });
-      setMetadata((current) => metadataFromFileClock(current, file.lastModified, stampLocale));
+      setMetadata((current) => metadataFromFileClock(current, file.lastModified, stampLocale, preferences.timeFormat));
     };
     input.click();
   };

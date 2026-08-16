@@ -219,6 +219,7 @@
       "remove": "삭제",
       "removeBody": "기록이 Lymark에서 사라집니다. 기기 갤러리에 저장된 이미지는 영향을 받지 않습니다.",
       "removeTitle": "기록에서 삭제",
+      "share": "공유",
       "stampedData": "각인한 데이터"
     },
     "plan": {
@@ -243,6 +244,7 @@
         "page": "페이지",
         "photo": "사진 {index}",
         "photosSection": "사진 기록",
+        "signature": "담당자 서명",
         "summary": "요약",
         "title": "사진 보고서",
         "totalPhotos": "사진 합계:"
@@ -250,13 +252,25 @@
       "empty": "아직 내보낸 사진이 없습니다. 보고서는 갤러리에서 만들어집니다.",
       "failed": "보고서를 생성할 수 없습니다.",
       "fileStem": "report",
-      "generate": "PDF 생성",
+      "format": {
+        "csv": "스프레드시트(CSV)",
+        "pdf": "PDF",
+        "word": "Word(.doc)",
+        "zip": "패키지(ZIP)"
+      },
+      "formatSection": "형식",
+      "generate": "파일 생성",
       "generateSection": "생성",
+      "includeLogo": "표지에 로고",
+      "includeLogoDescription": "스탬프와 같은 브랜드 로고입니다. 끄면 로고 없이 출력됩니다.",
       "norm": {
         "abnt": "ABNT(브라질)",
-        "iso": "국제"
+        "din5008": "DIN 5008(독일)",
+        "ibape": "IBAPE 스타일(브라질)",
+        "iso": "국제",
+        "letter": "레터(미국)"
       },
-      "normNote": "규격은 여백, 글꼴, 페이지 번호 등 서식을 정합니다. ABNT는 NBR 14724를 따르고, 국제 규격은 A4에 여백 2.5cm를 사용합니다.",
+      "normNote": "규격은 용지와 서식(여백, 글꼴, 페이지 번호)을 정합니다. 보고서 내용은 모두 같으며, IBAPE 스타일은 서명란이 추가됩니다.",
       "normSection": "문서 규격",
       "projectsSection": "현장 / 프로젝트",
       "saved": "{path}에 저장되었습니다",
@@ -405,7 +419,13 @@
         "medium": "보통",
         "small": "작게"
       },
-      "textColor": "글자"
+      "textColor": "글자",
+      "timeFormatDescription": "시간이 필드에 채워지는 방식입니다. 필드는 계속 편집할 수 있습니다.",
+      "timeFormatTitle": "시간 형식",
+      "timeFormats": {
+        "12h": "12시간(AM/PM)",
+        "24h": "24시간"
+      }
     }
   },
   "desktop": {

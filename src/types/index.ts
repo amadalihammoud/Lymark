@@ -36,6 +36,18 @@ export const WATERMARK_SCALES = ['small', 'medium', 'large'] as const;
 
 export type WatermarkScale = (typeof WATERMARK_SCALES)[number];
 
+/**
+ * Como a hora é PREENCHIDA nos campos do carimbo.
+ *
+ * É preferência, e não deteção do aparelho, de propósito: o formato da hora
+ * é parte do documento e não pode mudar sozinho porque o celular trocou de
+ * configuração — a mesma razão de o carimbo não usar `Intl`. O campo segue
+ * texto livre: isto decide só o que o app escreve por conta própria.
+ */
+export const TIME_FORMATS = ['24h', '12h'] as const;
+
+export type TimeFormat = (typeof TIME_FORMATS)[number];
+
 /** Os dados textuais que acompanham uma foto. */
 export type CaptureMetadata = Record<WatermarkFieldKey, string>;
 
@@ -143,6 +155,8 @@ export type WatermarkPreferences = {
   visibleFields: Record<WatermarkFieldKey, boolean>;
   position: WatermarkPosition;
   scale: WatermarkScale;
+  /** Formato em que a hora é preenchida — 24h ou 12h (AM/PM). */
+  timeFormat: TimeFormat;
   /** Fundo escuro atrás do texto, para legibilidade sobre fotos claras. */
   backdropStyle: BackdropStyle;
   /**

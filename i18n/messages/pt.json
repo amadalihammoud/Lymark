@@ -219,6 +219,7 @@
       "remove": "Remover",
       "removeBody": "O registro sai do Lymark. A imagem salva na galeria do aparelho não é afetada.",
       "removeTitle": "Remover do histórico",
+      "share": "Compartilhar",
       "stampedData": "Dados carimbados"
     },
     "plan": {
@@ -243,6 +244,7 @@
         "page": "Página",
         "photo": "Foto {index}",
         "photosSection": "Registros fotográficos",
+        "signature": "Assinatura do responsável",
         "summary": "Resumo",
         "title": "Relatório fotográfico",
         "totalPhotos": "Total de fotos:"
@@ -250,13 +252,25 @@
       "empty": "Nenhuma foto exportada ainda. O relatório é montado a partir da galeria.",
       "failed": "Não foi possível gerar o relatório.",
       "fileStem": "relatorio",
-      "generate": "Gerar PDF",
+      "format": {
+        "csv": "Planilha (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Pacote (ZIP)"
+      },
+      "formatSection": "Formato",
+      "generate": "Gerar arquivo",
       "generateSection": "Gerar",
+      "includeLogo": "Logo na capa",
+      "includeLogoDescription": "O logotipo da sua marca, o mesmo do carimbo. Desligue para o documento sair sem ele.",
       "norm": {
         "abnt": "ABNT (Brasil)",
-        "iso": "Internacional"
+        "din5008": "DIN 5008 (Alemanha)",
+        "ibape": "Estilo IBAPE (Brasil)",
+        "iso": "Internacional",
+        "letter": "Carta (EUA)"
       },
-      "normNote": "O padrão define a formatação — margens, fonte e numeração de páginas. ABNT segue a NBR 14724; o internacional usa A4 com margens de 2,5 cm.",
+      "normNote": "O padrão define o papel e a formatação — margens, fonte e numeração de páginas. O conteúdo do relatório é o mesmo em todos; o estilo IBAPE acrescenta o bloco de assinatura do responsável.",
       "normSection": "Padrão do documento",
       "projectsSection": "Obra / projeto",
       "saved": "Salvo em {path}",
@@ -405,7 +419,13 @@
         "medium": "Médio",
         "small": "Pequeno"
       },
-      "textColor": "Texto"
+      "textColor": "Texto",
+      "timeFormatDescription": "Como a hora é preenchida nos campos. O campo continua editável.",
+      "timeFormatTitle": "Formato da hora",
+      "timeFormats": {
+        "12h": "12 horas (AM/PM)",
+        "24h": "24 horas"
+      }
     }
   },
   "desktop": {

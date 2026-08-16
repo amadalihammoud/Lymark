@@ -123,7 +123,7 @@ export function useBatchProcessing() {
         const photoMetadata: CaptureMetadata = {
           ...sharedMetadata,
           date: tirada ? formatDate(tirada, stampLocale) : sharedMetadata.date,
-          time: tirada ? formatTime(tirada) : sharedMetadata.time,
+          time: tirada ? formatTime(tirada, preferences.timeFormat) : sharedMetadata.time,
           weekday: tirada ? formatWeekday(tirada, stampLocale) : sharedMetadata.weekday,
         };
 

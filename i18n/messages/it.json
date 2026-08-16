@@ -219,6 +219,7 @@
       "remove": "Rimuovi",
       "removeBody": "Il record esce da Lymark. L’immagine salvata nella galleria del dispositivo non viene toccata.",
       "removeTitle": "Rimuovi dalla cronologia",
+      "share": "Condividi",
       "stampedData": "Dati timbrati"
     },
     "plan": {
@@ -243,6 +244,7 @@
         "page": "Pagina",
         "photo": "Foto {index}",
         "photosSection": "Documentazione fotografica",
+        "signature": "Firma del responsabile",
         "summary": "Riepilogo",
         "title": "Report fotografico",
         "totalPhotos": "Totale foto:"
@@ -250,13 +252,25 @@
       "empty": "Nessuna foto esportata finora. Il report viene creato dalla galleria.",
       "failed": "Impossibile generare il report.",
       "fileStem": "report",
-      "generate": "Genera PDF",
+      "format": {
+        "csv": "Foglio di calcolo (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Pacchetto (ZIP)"
+      },
+      "formatSection": "Formato",
+      "generate": "Genera file",
       "generateSection": "Genera",
+      "includeLogo": "Logo in copertina",
+      "includeLogoDescription": "Il logo del tuo marchio, lo stesso del timbro. Disattivalo per un documento senza logo.",
       "norm": {
         "abnt": "ABNT (Brasile)",
-        "iso": "Internazionale"
+        "din5008": "DIN 5008 (Germania)",
+        "ibape": "Stile IBAPE (Brasile)",
+        "iso": "Internazionale",
+        "letter": "Letter (USA)"
       },
-      "normNote": "La norma definisce la formattazione: margini, carattere e numerazione delle pagine. ABNT segue la NBR 14724; quella internazionale usa A4 con margini di 2,5 cm.",
+      "normNote": "La norma definisce carta e formattazione: margini, carattere e numerazione delle pagine. Il contenuto del report è lo stesso in tutte; lo stile IBAPE aggiunge un blocco per la firma.",
       "normSection": "Norma del documento",
       "projectsSection": "Cantiere / progetto",
       "saved": "Salvato in {path}",
@@ -405,7 +419,13 @@
         "medium": "Medio",
         "small": "Piccolo"
       },
-      "textColor": "Testo"
+      "textColor": "Testo",
+      "timeFormatDescription": "Come l'ora viene inserita nei campi. Il campo resta modificabile.",
+      "timeFormatTitle": "Formato dell'ora",
+      "timeFormats": {
+        "12h": "12 ore (AM/PM)",
+        "24h": "24 ore"
+      }
     }
   },
   "desktop": {

@@ -219,6 +219,7 @@
       "remove": "Entfernen",
       "removeBody": "Der Eintrag verlässt Lymark. Das in der Gerätegalerie gespeicherte Bild bleibt unberührt.",
       "removeTitle": "Aus dem Verlauf entfernen",
+      "share": "Teilen",
       "stampedData": "Gestempelte Daten"
     },
     "plan": {
@@ -243,6 +244,7 @@
         "page": "Seite",
         "photo": "Foto {index}",
         "photosSection": "Fotodokumentation",
+        "signature": "Unterschrift der verantwortlichen Person",
         "summary": "Zusammenfassung",
         "title": "Fotobericht",
         "totalPhotos": "Fotos insgesamt:"
@@ -250,13 +252,25 @@
       "empty": "Noch keine exportierten Fotos. Der Bericht wird aus der Galerie erstellt.",
       "failed": "Der Bericht konnte nicht erstellt werden.",
       "fileStem": "bericht",
-      "generate": "PDF erstellen",
+      "format": {
+        "csv": "Tabelle (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Paket (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Datei erstellen",
       "generateSection": "Erstellen",
+      "includeLogo": "Logo auf dem Deckblatt",
+      "includeLogoDescription": "Ihr Markenlogo, dasselbe wie im Stempel. Ausschalten, damit das Dokument ohne Logo erscheint.",
       "norm": {
         "abnt": "ABNT (Brasilien)",
-        "iso": "International"
+        "din5008": "DIN 5008 (Deutschland)",
+        "ibape": "IBAPE-Stil (Brasilien)",
+        "iso": "International",
+        "letter": "Letter (USA)"
       },
-      "normNote": "Die Norm bestimmt die Formatierung – Ränder, Schrift und Seitennummerierung. ABNT folgt der NBR 14724; International verwendet A4 mit 2,5 cm Rändern.",
+      "normNote": "Die Norm bestimmt Papier und Formatierung – Ränder, Schrift und Seitennummerierung. Der Inhalt des Berichts ist überall gleich; der IBAPE-Stil ergänzt einen Unterschriftenblock.",
       "normSection": "Dokumentnorm",
       "projectsSection": "Baustelle / Projekt",
       "saved": "Gespeichert unter {path}",
@@ -405,7 +419,13 @@
         "medium": "Mittel",
         "small": "Klein"
       },
-      "textColor": "Text"
+      "textColor": "Text",
+      "timeFormatDescription": "Wie die Uhrzeit in die Felder eingetragen wird. Das Feld bleibt bearbeitbar.",
+      "timeFormatTitle": "Zeitformat",
+      "timeFormats": {
+        "12h": "12 Stunden (AM/PM)",
+        "24h": "24 Stunden"
+      }
     }
   },
   "desktop": {
