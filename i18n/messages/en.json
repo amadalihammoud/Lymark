@@ -40,6 +40,8 @@
       "unavailableTitle": "Batch processing unavailable"
     },
     "capture": {
+      "accuracy": "Position within ±{meters} m.",
+      "accuracyImprecise": "Position within ±{meters} m — check the street number before exporting.",
       "address": "Address",
       "addressFailedTitle": "No address found",
       "addressHint": "Tap locate, or type the address",
@@ -47,6 +49,7 @@
       "code": "Code",
       "dateHint": "Jan 1, 2026",
       "dateTimeGroup": "Date and time",
+      "emptyWarning": "No data will be stamped — the photo will come out without a watermark.",
       "gallery": "Choose from gallery",
       "galleryDenied": "Photo access was denied, so the image only exists inside the app. Allow it in Settings › Permissions to save it to the gallery.",
       "galleryFailed": "The image went into the history, but the device refused to write it to the gallery. Check the free space and try again.",
@@ -54,6 +57,7 @@
       "hiddenFields": "{count, plural, one {Hidden field} other {Hidden fields}}: {fields} — turn them on in Settings › Fields and position.",
       "keepMyAddress": "Keep mine",
       "locate": "Locate",
+      "locateByGps": "Locate address via GPS",
       "lookup": {
         "denied": "Allow location in Settings › Permissions, or type the address.",
         "disabled": "Location is turned off on the device. Turn it on in the quick settings and try again.",
@@ -65,6 +69,7 @@
       "noFieldsContinue": "Continue anyway",
       "noFieldsMessage": "No field has anything to stamp. Fill the fields in, or review Settings › Fields and position.",
       "noFieldsTitle": "The photo will come out without a watermark",
+      "noPhotoHint": "Take a photo or choose one from the gallery to begin.",
       "noPhotoSelected": "No photo selected",
       "openFailed": "The photo could not be opened. Try again.",
       "permissionMessage": "Allow access in Settings › Permissions to continue.",
@@ -94,6 +99,12 @@
       "weekdayHint": "Mon",
       "weekdayShort": "Day"
     },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "choose another colour",
+      "saturationBrightness": "Saturation and brightness",
+      "use": "Use this colour"
+    },
     "common": {
       "back": "Back",
       "cancel": "Cancel",
@@ -111,6 +122,7 @@
       "yes": "Yes"
     },
     "gallery": {
+      "cancelSelection": "Cancel selection",
       "clear": "Clear history",
       "clearConfirm": "Clear",
       "clearMessage": "Lymark's records will be deleted. Images already saved to the device gallery are not affected.",
@@ -119,7 +131,18 @@
       "empty": "No photos yet",
       "emptyAction": "Go to Capture",
       "emptyDescription": "Photos you export with a watermark show up here, with date, place and code.",
+      "filteredCount": "{shown} of {total, plural, one {# photo} other {# photos}}",
+      "noResults": "No photos found for “{query}”.",
       "photoLabel": "Photo from {when}",
+      "removeMessage": "The entries leave Lymark. Images already saved to the device gallery are not affected.",
+      "removeTitle": "{count, plural, one {Remove from history} other {Remove # entries}}",
+      "removed": "{count, plural, one {Entry removed.} other {Entries removed.}}",
+      "saveDeniedMessage": "Allow it in Settings › Permissions to save the images to the device gallery.",
+      "saveDeniedTitle": "Photo access denied",
+      "savedAll": "{count, plural, one {One photo saved to the device gallery.} other {# photos saved to the device gallery.}}",
+      "savedSome": "{saved} of {total} photos saved.",
+      "searchPlaceholder": "Search by address, date or code",
+      "selectedCount": "{count, plural, one {# photo selected} other {# photos selected}}",
       "share": "Share",
       "title": "Gallery"
     },
@@ -216,21 +239,36 @@
     "tagline": "Watermark with time, date and place",
     "title": "Lymark",
     "watermark": {
-      "backdrop": "Dark backing band",
-      "backdropDescription": "Keeps contrast over light areas of the photo.",
-      "brandDescription": "The mark that goes on the photo, in a corner of its own. It can be your company’s.",
+      "accentColor": "Vertical bar",
+      "backdropBandNote": "The band runs edge to edge across the photo and rests against the margin where the stamp is anchored. Over a busy scene — a building site, a yard, a crowded façade — it reads as the document’s caption rather than a sticker placed on top.",
+      "backdropBlockNote": "The backing follows the size of the text, with padding around it.",
+      "backdropColor": "Band colour",
+      "backdropDescription": "Keeps contrast over light areas of the photo. Without it, the text sits directly on the image, with a shadow.",
+      "backdropInnerRadius": "Inner corners",
+      "backdropOpacity": "Transparency",
+      "backdropOpacityValue": "{percent}% opaque",
+      "backdropRadius": "Rounded corners",
+      "backdropRadiusSquare": "Square",
+      "backdropStyles": {
+        "band": "Full-width band",
+        "block": "Behind the text",
+        "none": "None"
+      },
+      "backdropTitle": "Backing band",
+      "brandDescription": "Above the clock it becomes a signature, with logo and tagline. In a corner, it is a discreet line.",
+      "brandFirstColor": "First part colour",
       "brandFirstHint": "Builders",
       "brandFirstPart": "First part",
-      "brandModes": {
-        "custom": "My mark",
-        "lymark": "Lymark"
-      },
       "brandNote": "Leave the second part empty for a single-colour mark. A long name is shrunk until it fits, rather than cut off.",
+      "brandPlacements": {
+        "corner": "In a corner",
+        "header": "Above the clock",
+        "none": "None"
+      },
+      "brandSecondColor": "Second part colour",
       "brandSecondHint": " Smith",
       "brandSecondPart": "Second part",
       "brandTitle": "Stamped mark",
-      "brandToggle": "Stamp a mark",
-      "brandToggleDescription": "Turn it off to hand the client a photo with no mark at all.",
       "codeDescription": "On the side it does not compete for room with the picture itself.",
       "codePlacements": {
         "block": "Next to the data",
@@ -245,6 +283,11 @@
         "red": "Red",
         "white": "White"
       },
+      "colorsDescription": "The colour on the photo is the company’s choice, not the app’s — changing it here does not change the screen colours.",
+      "colorsTitle": "Stamp colours",
+      "complement": "Tagline",
+      "complementColor": "Tagline colour",
+      "complementHint": "Inspections and technical reports",
       "cornerConflict": "The mark and the data are in the same corner — they will overlap on the photo.",
       "fields": {
         "address": "Address / Place",
@@ -258,6 +301,17 @@
       "includeCountry": "Include the country",
       "includeCountryDescription": "Turn it on if you work across borders. Otherwise it only takes room on the photo.",
       "legibilityTitle": "Legibility",
+      "logoAdded": "Logo added to the brand header.",
+      "logoAlignNote": "The logo height follows the text: its top aligns with the top of the name and its bottom with the baseline of the tagline.",
+      "logoChosen": "Chosen logo",
+      "logoErrorMessage": "Try another image. A PNG with a transparent background is the format that works best.",
+      "logoErrorTitle": "This file could not be used",
+      "logoFormatNote": "Use a PNG with a transparent background. A JPG with a white background becomes a white rectangle on the photo — the format does not store transparency, and the app has no way of guessing what is background.",
+      "logoPermissionMessage": "Allow it in Settings › Permissions to choose the logo file.",
+      "logoPermissionTitle": "Photo access denied",
+      "logoPick": "Choose logo",
+      "logoRemove": "Remove",
+      "logoReplace": "Replace logo",
       "positionDescription": "The corner of the photo the block is anchored to.",
       "positionTitle": "Position",
       "positions": {
@@ -267,7 +321,8 @@
         "top-right": "Top right"
       },
       "previewCurrent": "Over the current photo from the Capture tab.",
-      "previewEmpty": "Choose a photo in Capture to see it over the real image.",
+      "previewEmpty": "From light to dark, to check legibility at both extremes.",
+      "previewNoFields": "No field selected — the photo comes out without a watermark.",
       "previewTitle": "Preview",
       "reset": "Restore defaults",
       "sizeTitle": "Text size",
@@ -275,7 +330,8 @@
         "large": "Large",
         "medium": "Medium",
         "small": "Small"
-      }
+      },
+      "textColor": "Text"
     }
   },
   "desktop": {

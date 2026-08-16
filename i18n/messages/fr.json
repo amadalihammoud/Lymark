@@ -40,6 +40,8 @@
       "unavailableTitle": "Traitement par lots indisponible"
     },
     "capture": {
+      "accuracy": "Position à ±{meters} m près.",
+      "accuracyImprecise": "Position à ±{meters} m près — vérifiez le numéro avant d’exporter.",
       "address": "Adresse",
       "addressFailedTitle": "Adresse non obtenue",
       "addressHint": "Touchez localiser, ou saisissez l’adresse",
@@ -47,6 +49,7 @@
       "code": "Code",
       "dateHint": "1 janv. 2026",
       "dateTimeGroup": "Date et heure",
+      "emptyWarning": "Aucune donnée ne sera apposée — la photo sortira sans filigrane.",
       "gallery": "Choisir dans la galerie",
       "galleryDenied": "L’accès aux photos a été refusé : l’image n’existe que dans l’application. Autorisez-le dans Paramètres › Autorisations pour l’enregistrer dans la galerie.",
       "galleryFailed": "L’image est entrée dans l’historique, mais l’appareil a refusé de l’écrire dans la galerie. Vérifiez l’espace libre et réessayez.",
@@ -54,6 +57,7 @@
       "hiddenFields": "{count, plural, one {Champ masqué} other {Champs masqués}} : {fields} — activez-les dans Paramètres › Champs et position.",
       "keepMyAddress": "Garder la mienne",
       "locate": "Localiser",
+      "locateByGps": "Localiser l’adresse par GPS",
       "lookup": {
         "denied": "Autorisez la localisation dans Paramètres › Autorisations, ou saisissez l’adresse.",
         "disabled": "La localisation de l’appareil est désactivée. Activez-la dans les réglages rapides et réessayez.",
@@ -65,6 +69,7 @@
       "noFieldsContinue": "Continuer ainsi",
       "noFieldsMessage": "Aucun champ n’a de contenu à apposer. Remplissez les champs, ou revoyez Paramètres › Champs et position.",
       "noFieldsTitle": "La photo sortira sans filigrane",
+      "noPhotoHint": "Prenez une photo ou choisissez-en une dans la galerie pour commencer.",
       "noPhotoSelected": "Aucune photo sélectionnée",
       "openFailed": "La photo n’a pas pu être ouverte. Réessayez.",
       "permissionMessage": "Autorisez l’accès dans Paramètres › Autorisations pour continuer.",
@@ -94,6 +99,12 @@
       "weekdayHint": "Lun",
       "weekdayShort": "Jour"
     },
+    "colorPicker": {
+      "hue": "Teinte",
+      "other": "choisir une autre couleur",
+      "saturationBrightness": "Saturation et luminosité",
+      "use": "Utiliser cette couleur"
+    },
     "common": {
       "back": "Retour",
       "cancel": "Annuler",
@@ -111,6 +122,7 @@
       "yes": "Oui"
     },
     "gallery": {
+      "cancelSelection": "Annuler la sélection",
       "clear": "Effacer l'historique",
       "clearConfirm": "Effacer",
       "clearMessage": "Les enregistrements de Lymark seront supprimés. Les images déjà enregistrées dans la galerie de l'appareil ne sont pas concernées.",
@@ -119,7 +131,18 @@
       "empty": "Aucune photo pour l'instant",
       "emptyAction": "Aller à Capture",
       "emptyDescription": "Les photos que vous exportez avec un filigrane apparaissent ici, avec la date, le lieu et le code.",
+      "filteredCount": "{shown} sur {total, plural, one {# photo} other {# photos}}",
+      "noResults": "Aucune photo trouvée pour « {query} ».",
       "photoLabel": "Photo du {when}",
+      "removeMessage": "Les entrées quittent Lymark. Les images déjà enregistrées dans la galerie de l’appareil ne sont pas concernées.",
+      "removeTitle": "{count, plural, one {Retirer de l’historique} other {Retirer # entrées}}",
+      "removed": "{count, plural, one {Entrée retirée.} other {Entrées retirées.}}",
+      "saveDeniedMessage": "Autorisez-le dans Paramètres › Autorisations pour enregistrer les images dans la galerie de l’appareil.",
+      "saveDeniedTitle": "Accès aux photos refusé",
+      "savedAll": "{count, plural, one {Une photo enregistrée dans la galerie de l’appareil.} other {# photos enregistrées dans la galerie de l’appareil.}}",
+      "savedSome": "{saved} photos sur {total} enregistrées.",
+      "searchPlaceholder": "Rechercher par adresse, date ou code",
+      "selectedCount": "{count, plural, one {# photo sélectionnée} other {# photos sélectionnées}}",
       "share": "Partager",
       "title": "Galerie"
     },
@@ -216,21 +239,36 @@
     "tagline": "Filigrane avec heure, date et lieu",
     "title": "Lymark",
     "watermark": {
-      "backdrop": "Bandeau sombre en fond",
-      "backdropDescription": "Assure le contraste sur les zones claires de la photo.",
-      "brandDescription": "La marque qui figure sur la photo, dans son propre coin. Ce peut être celle de votre entreprise.",
+      "accentColor": "Barre verticale",
+      "backdropBandNote": "Le bandeau traverse la photo de bord à bord et s’appuie sur la marge où le marquage est ancré. Sur une scène chargée — chantier, cour, façade dense —, il se lit comme la légende du document plutôt que comme un autocollant posé dessus.",
+      "backdropBlockNote": "Le fond suit la taille du texte, avec une marge autour.",
+      "backdropColor": "Couleur du bandeau",
+      "backdropDescription": "Assure le contraste sur les zones claires de la photo. Sans lui, le texte repose directement sur l’image, avec une ombre.",
+      "backdropInnerRadius": "Coins intérieurs",
+      "backdropOpacity": "Transparence",
+      "backdropOpacityValue": "{percent} % opaque",
+      "backdropRadius": "Coins arrondis",
+      "backdropRadiusSquare": "Droits",
+      "backdropStyles": {
+        "band": "Bandeau continu",
+        "block": "Derrière le texte",
+        "none": "Aucun"
+      },
+      "backdropTitle": "Bandeau de fond",
+      "brandDescription": "Au-dessus de l’horloge, elle devient une signature, avec logo et complément. Dans un coin, c’est une ligne discrète.",
+      "brandFirstColor": "Couleur de la première partie",
       "brandFirstHint": "Bâtiment",
       "brandFirstPart": "Première partie",
-      "brandModes": {
-        "custom": "Ma marque",
-        "lymark": "Lymark"
-      },
       "brandNote": "Laissez la deuxième partie vide pour une marque d’une seule couleur. Un nom long est réduit jusqu’à tenir, plutôt que coupé.",
+      "brandPlacements": {
+        "corner": "Dans un coin",
+        "header": "Au-dessus de l’horloge",
+        "none": "Aucune"
+      },
+      "brandSecondColor": "Couleur de la deuxième partie",
       "brandSecondHint": " Martin",
       "brandSecondPart": "Deuxième partie",
       "brandTitle": "Marque apposée",
-      "brandToggle": "Apposer une marque",
-      "brandToggleDescription": "Désactivez pour remettre au client une photo sans aucune marque.",
       "codeDescription": "Sur le côté, il ne dispute pas la place au contenu de l’image.",
       "codePlacements": {
         "block": "À côté des données",
@@ -245,6 +283,11 @@
         "red": "Rouge",
         "white": "Blanc"
       },
+      "colorsDescription": "La couleur sur la photo est un choix de l’entreprise, pas de l’application — la modifier ici ne change pas les couleurs de l’écran.",
+      "colorsTitle": "Couleurs du marquage",
+      "complement": "Complément",
+      "complementColor": "Couleur du complément",
+      "complementHint": "Constats et rapports techniques",
       "cornerConflict": "La marque et les données sont dans le même coin — elles se chevaucheront sur la photo.",
       "fields": {
         "address": "Adresse / Lieu",
@@ -258,6 +301,17 @@
       "includeCountry": "Inclure le pays",
       "includeCountryDescription": "Activez-le si vous intervenez dans plusieurs pays. Sinon, cela ne fait que prendre de la place sur la photo.",
       "legibilityTitle": "Lisibilité",
+      "logoAdded": "Logo ajouté à l’en-tête de la marque.",
+      "logoAlignNote": "La hauteur du logo suit le texte : son haut s’aligne sur le haut du nom, et sa base sur la ligne de base du complément.",
+      "logoChosen": "Logo choisi",
+      "logoErrorMessage": "Essayez une autre image. Un PNG à fond transparent est le format qui fonctionne le mieux.",
+      "logoErrorTitle": "Impossible d’utiliser ce fichier",
+      "logoFormatNote": "Utilisez un PNG à fond transparent. Un JPG à fond blanc devient un rectangle blanc sur la photo — le format ne conserve pas la transparence, et l’application ne peut pas deviner ce qui est le fond.",
+      "logoPermissionMessage": "Autorisez-le dans Paramètres › Autorisations pour choisir le fichier du logo.",
+      "logoPermissionTitle": "Accès aux photos refusé",
+      "logoPick": "Choisir un logo",
+      "logoRemove": "Retirer",
+      "logoReplace": "Changer de logo",
       "positionDescription": "Coin de la photo où le bloc est ancré.",
       "positionTitle": "Position",
       "positions": {
@@ -267,7 +321,8 @@
         "top-right": "En haut à droite"
       },
       "previewCurrent": "Sur la photo actuelle de l’onglet Capture.",
-      "previewEmpty": "Choisissez une photo dans Capture pour la voir sur l’image réelle.",
+      "previewEmpty": "Du clair au sombre, pour vérifier la lisibilité aux deux extrêmes.",
+      "previewNoFields": "Aucun champ sélectionné — la photo sort sans filigrane.",
       "previewTitle": "Aperçu",
       "reset": "Rétablir les valeurs par défaut",
       "sizeTitle": "Taille du texte",
@@ -275,7 +330,8 @@
         "large": "Grand",
         "medium": "Moyen",
         "small": "Petit"
-      }
+      },
+      "textColor": "Texte"
     }
   },
   "desktop": {

@@ -40,6 +40,8 @@
       "unavailableTitle": "Procesamiento por lotes no disponible"
     },
     "capture": {
+      "accuracy": "Posición con ±{meters} m de incertidumbre.",
+      "accuracyImprecise": "Posición con ±{meters} m de incertidumbre: comprueba el número antes de exportar.",
       "address": "Dirección",
       "addressFailedTitle": "Dirección no obtenida",
       "addressHint": "Toca localizar o escribe la dirección",
@@ -47,6 +49,7 @@
       "code": "Código",
       "dateHint": "1 ene. 2026",
       "dateTimeGroup": "Fecha y hora",
+      "emptyWarning": "No se sellará ningún dato: la foto saldrá sin marca de agua.",
       "gallery": "Elegir de la galería",
       "galleryDenied": "Se denegó el acceso a las fotos, así que la imagen solo existe dentro de la app. Permítelo en Configuración › Permisos para guardarla en la galería.",
       "galleryFailed": "La imagen entró en el historial, pero el dispositivo se negó a grabarla en la galería. Comprueba el espacio libre e inténtalo de nuevo.",
@@ -54,6 +57,7 @@
       "hiddenFields": "{count, plural, one {Campo oculto} other {Campos ocultos}}: {fields} — actívalos en Configuración › Campos y posición.",
       "keepMyAddress": "Mantener la mía",
       "locate": "Localizar",
+      "locateByGps": "Localizar la dirección por GPS",
       "lookup": {
         "denied": "Permite la ubicación en Configuración › Permisos, o escribe la dirección.",
         "disabled": "La ubicación del dispositivo está apagada. Actívala en los ajustes rápidos e inténtalo de nuevo.",
@@ -65,6 +69,7 @@
       "noFieldsContinue": "Continuar así",
       "noFieldsMessage": "Ningún campo tiene contenido para sellar. Rellena los campos o revisa Configuración › Campos y posición.",
       "noFieldsTitle": "La foto saldrá sin marca de agua",
+      "noPhotoHint": "Haz una foto o elige una de la galería para empezar.",
       "noPhotoSelected": "Ninguna foto seleccionada",
       "openFailed": "No se pudo abrir la foto. Inténtalo de nuevo.",
       "permissionMessage": "Permite el acceso en Configuración › Permisos para continuar.",
@@ -94,6 +99,12 @@
       "weekdayHint": "Lun",
       "weekdayShort": "Día"
     },
+    "colorPicker": {
+      "hue": "Matiz",
+      "other": "elegir otro color",
+      "saturationBrightness": "Saturación y brillo",
+      "use": "Usar este color"
+    },
     "common": {
       "back": "Atrás",
       "cancel": "Cancelar",
@@ -111,6 +122,7 @@
       "yes": "Sí"
     },
     "gallery": {
+      "cancelSelection": "Cancelar selección",
       "clear": "Borrar historial",
       "clearConfirm": "Borrar",
       "clearMessage": "Se borrarán los registros de Lymark. Las imágenes ya guardadas en la galería del dispositivo no se ven afectadas.",
@@ -119,7 +131,18 @@
       "empty": "Todavía no hay fotos",
       "emptyAction": "Ir a Capturar",
       "emptyDescription": "Las fotos que exportes con marca de agua aparecen aquí, con fecha, lugar y código.",
+      "filteredCount": "{shown} de {total, plural, one {# foto} other {# fotos}}",
+      "noResults": "No se encontró ninguna foto para “{query}”.",
       "photoLabel": "Foto del {when}",
+      "removeMessage": "Los registros salen de Lymark. Las imágenes ya guardadas en la galería del dispositivo no se ven afectadas.",
+      "removeTitle": "{count, plural, one {Quitar del historial} other {Quitar # registros}}",
+      "removed": "{count, plural, one {Registro quitado.} other {Registros quitados.}}",
+      "saveDeniedMessage": "Permítelo en Configuración › Permisos para guardar las imágenes en la galería del dispositivo.",
+      "saveDeniedTitle": "Acceso a las fotos denegado",
+      "savedAll": "{count, plural, one {Una foto guardada en la galería del dispositivo.} other {# fotos guardadas en la galería del dispositivo.}}",
+      "savedSome": "{saved} de {total} fotos guardadas.",
+      "searchPlaceholder": "Buscar por dirección, fecha o código",
+      "selectedCount": "{count, plural, one {# foto seleccionada} other {# fotos seleccionadas}}",
       "share": "Compartir",
       "title": "Galería"
     },
@@ -216,21 +239,36 @@
     "tagline": "Marca de agua con hora, fecha y lugar",
     "title": "Lymark",
     "watermark": {
-      "backdrop": "Banda oscura de fondo",
-      "backdropDescription": "Garantiza contraste sobre las zonas claras de la foto.",
-      "brandDescription": "La marca que va en la foto, en su propia esquina. Puede ser la de tu empresa.",
+      "accentColor": "Barra vertical",
+      "backdropBandNote": "La banda cruza la foto de borde a borde y se apoya en el margen donde está anclado el sello. Sobre una escena cargada —obra, patio, fachada llena— se lee como pie del documento y no como una pegatina encima.",
+      "backdropBlockNote": "El fondo sigue el tamaño del texto, con margen alrededor.",
+      "backdropColor": "Color de la banda",
+      "backdropDescription": "Garantiza contraste sobre las zonas claras de la foto. Sin ella, el texto queda directamente sobre la imagen, con sombra.",
+      "backdropInnerRadius": "Esquinas interiores",
+      "backdropOpacity": "Transparencia",
+      "backdropOpacityValue": "{percent}% opaca",
+      "backdropRadius": "Esquinas redondeadas",
+      "backdropRadiusSquare": "Rectas",
+      "backdropStyles": {
+        "band": "Banda continua",
+        "block": "Detrás del texto",
+        "none": "Ninguna"
+      },
+      "backdropTitle": "Banda de fondo",
+      "brandDescription": "Sobre el reloj se convierte en firma, con logotipo y complemento. En una esquina, es una línea discreta.",
+      "brandFirstColor": "Color de la primera parte",
       "brandFirstHint": "Constructora",
       "brandFirstPart": "Primera parte",
-      "brandModes": {
-        "custom": "Mi marca",
-        "lymark": "Lymark"
-      },
       "brandNote": "Deja la segunda parte vacía para una marca de un solo color. Un nombre largo se reduce hasta caber, en lugar de recortarse.",
+      "brandPlacements": {
+        "corner": "En una esquina",
+        "header": "Sobre el reloj",
+        "none": "Ninguna"
+      },
+      "brandSecondColor": "Color de la segunda parte",
       "brandSecondHint": " Silva",
       "brandSecondPart": "Segunda parte",
       "brandTitle": "Marca sellada",
-      "brandToggle": "Sellar una marca",
-      "brandToggleDescription": "Desactívalo para entregar la foto al cliente sin marca alguna.",
       "codeDescription": "En el lateral no compite por espacio con el contenido de la imagen.",
       "codePlacements": {
         "block": "Junto a los datos",
@@ -245,6 +283,11 @@
         "red": "Rojo",
         "white": "Blanco"
       },
+      "colorsDescription": "El color de la foto lo elige la empresa, no la aplicación: cambiarlo aquí no cambia los colores de la pantalla.",
+      "colorsTitle": "Colores del sello",
+      "complement": "Complemento",
+      "complementColor": "Color del complemento",
+      "complementHint": "Inspecciones e informes técnicos",
       "cornerConflict": "La marca y los datos están en la misma esquina: se superpondrán en la foto.",
       "fields": {
         "address": "Dirección / Lugar",
@@ -258,6 +301,17 @@
       "includeCountry": "Incluir el país",
       "includeCountryDescription": "Actívalo si trabajas en más de un país. Si no, solo ocupa espacio en la foto.",
       "legibilityTitle": "Legibilidad",
+      "logoAdded": "Logotipo añadido al encabezado de la marca.",
+      "logoAlignNote": "La altura del logotipo sigue al texto: su parte superior se alinea con la del nombre, y su base con la base del complemento.",
+      "logoChosen": "Logotipo elegido",
+      "logoErrorMessage": "Prueba con otra imagen. Un PNG con fondo transparente es el formato que mejor funciona.",
+      "logoErrorTitle": "No se pudo usar este archivo",
+      "logoFormatNote": "Usa un PNG con fondo transparente. Un JPG con fondo blanco se convierte en un rectángulo blanco sobre la foto: el formato no guarda transparencia, y la aplicación no tiene cómo adivinar qué es fondo.",
+      "logoPermissionMessage": "Permítelo en Configuración › Permisos para elegir el archivo del logotipo.",
+      "logoPermissionTitle": "Acceso a las fotos denegado",
+      "logoPick": "Elegir logotipo",
+      "logoRemove": "Quitar",
+      "logoReplace": "Cambiar logotipo",
       "positionDescription": "Esquina de la foto donde se ancla el bloque.",
       "positionTitle": "Posición",
       "positions": {
@@ -267,7 +321,8 @@
         "top-right": "Superior derecha"
       },
       "previewCurrent": "Sobre la foto actual de la pestaña Capturar.",
-      "previewEmpty": "Elige una foto en Capturar para verla sobre la imagen real.",
+      "previewEmpty": "De claro a oscuro, para comprobar la legibilidad en los dos extremos.",
+      "previewNoFields": "Ningún campo seleccionado: la foto sale sin marca de agua.",
       "previewTitle": "Vista previa",
       "reset": "Restaurar valores",
       "sizeTitle": "Tamaño del texto",
@@ -275,7 +330,8 @@
         "large": "Grande",
         "medium": "Mediano",
         "small": "Pequeño"
-      }
+      },
+      "textColor": "Texto"
     }
   },
   "desktop": {

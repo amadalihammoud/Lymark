@@ -40,6 +40,8 @@
       "unavailableTitle": "Stapelverarbeitung nicht verfügbar"
     },
     "capture": {
+      "accuracy": "Position auf ±{meters} m genau.",
+      "accuracyImprecise": "Position auf ±{meters} m genau — prüfen Sie die Hausnummer vor dem Export.",
       "address": "Adresse",
       "addressFailedTitle": "Keine Adresse ermittelt",
       "addressHint": "Auf Orten tippen, oder die Adresse eingeben",
@@ -47,6 +49,7 @@
       "code": "Code",
       "dateHint": "01. Jan. 2026",
       "dateTimeGroup": "Datum und Uhrzeit",
+      "emptyWarning": "Es werden keine Daten aufgestempelt — das Foto kommt ohne Wasserzeichen heraus.",
       "gallery": "Aus Galerie auswählen",
       "galleryDenied": "Der Fotozugriff wurde verweigert, das Bild existiert daher nur innerhalb der App. Erlauben Sie ihn unter Einstellungen › Berechtigungen, um es in der Galerie zu speichern.",
       "galleryFailed": "Das Bild kam in den Verlauf, aber das Gerät hat das Schreiben in die Galerie abgelehnt. Prüfen Sie den freien Speicher und versuchen Sie es erneut.",
@@ -54,6 +57,7 @@
       "hiddenFields": "{count, plural, one {Ausgeblendetes Feld} other {Ausgeblendete Felder}}: {fields} — unter Einstellungen › Felder und Position einschalten.",
       "keepMyAddress": "Meine behalten",
       "locate": "Orten",
+      "locateByGps": "Adresse per GPS ermitteln",
       "lookup": {
         "denied": "Erlauben Sie den Standort unter Einstellungen › Berechtigungen, oder geben Sie die Adresse ein.",
         "disabled": "Die Standortermittlung des Geräts ist ausgeschaltet. Schalten Sie sie in den Schnelleinstellungen ein und versuchen Sie es erneut.",
@@ -65,6 +69,7 @@
       "noFieldsContinue": "Trotzdem fortfahren",
       "noFieldsMessage": "Kein Feld hat Inhalt zum Stempeln. Füllen Sie die Felder aus, oder prüfen Sie Einstellungen › Felder und Position.",
       "noFieldsTitle": "Das Foto erhält kein Wasserzeichen",
+      "noPhotoHint": "Nehmen Sie ein Foto auf oder wählen Sie eines aus der Galerie, um zu beginnen.",
       "noPhotoSelected": "Kein Foto ausgewählt",
       "openFailed": "Das Foto konnte nicht geöffnet werden. Versuchen Sie es erneut.",
       "permissionMessage": "Erlauben Sie den Zugriff unter Einstellungen › Berechtigungen, um fortzufahren.",
@@ -94,6 +99,12 @@
       "weekdayHint": "Mo",
       "weekdayShort": "Tag"
     },
+    "colorPicker": {
+      "hue": "Farbton",
+      "other": "andere Farbe wählen",
+      "saturationBrightness": "Sättigung und Helligkeit",
+      "use": "Diese Farbe verwenden"
+    },
     "common": {
       "back": "Zurück",
       "cancel": "Abbrechen",
@@ -111,6 +122,7 @@
       "yes": "Ja"
     },
     "gallery": {
+      "cancelSelection": "Auswahl abbrechen",
       "clear": "Verlauf löschen",
       "clearConfirm": "Löschen",
       "clearMessage": "Die Einträge von Lymark werden gelöscht. Bereits in der Gerätegalerie gespeicherte Bilder bleiben unberührt.",
@@ -119,7 +131,18 @@
       "empty": "Noch keine Fotos",
       "emptyAction": "Zur Aufnahme",
       "emptyDescription": "Fotos, die Sie mit Wasserzeichen exportieren, erscheinen hier — mit Datum, Ort und Code.",
+      "filteredCount": "{shown} von {total, plural, one {# Foto} other {# Fotos}}",
+      "noResults": "Keine Fotos für „{query}“ gefunden.",
       "photoLabel": "Foto vom {when}",
+      "removeMessage": "Die Einträge verlassen Lymark. Bereits in der Gerätegalerie gespeicherte Bilder sind nicht betroffen.",
+      "removeTitle": "{count, plural, one {Aus dem Verlauf entfernen} other {# Einträge entfernen}}",
+      "removed": "{count, plural, one {Eintrag entfernt.} other {Einträge entfernt.}}",
+      "saveDeniedMessage": "Erlauben Sie ihn unter Einstellungen › Berechtigungen, um die Bilder in der Gerätegalerie zu speichern.",
+      "saveDeniedTitle": "Zugriff auf Fotos verweigert",
+      "savedAll": "{count, plural, one {Ein Foto in der Gerätegalerie gespeichert.} other {# Fotos in der Gerätegalerie gespeichert.}}",
+      "savedSome": "{saved} von {total} Fotos gespeichert.",
+      "searchPlaceholder": "Nach Adresse, Datum oder Code suchen",
+      "selectedCount": "{count, plural, one {# Foto ausgewählt} other {# Fotos ausgewählt}}",
       "share": "Teilen",
       "title": "Galerie"
     },
@@ -216,21 +239,36 @@
     "tagline": "Wasserzeichen mit Uhrzeit, Datum und Ort",
     "title": "Lymark",
     "watermark": {
-      "backdrop": "Dunkles Hinterlegungsband",
-      "backdropDescription": "Sichert den Kontrast über hellen Bereichen des Fotos.",
-      "brandDescription": "Die Marke auf dem Foto, in einer eigenen Ecke. Es kann die Ihres Unternehmens sein.",
+      "accentColor": "Senkrechter Balken",
+      "backdropBandNote": "Das Band läuft von Rand zu Rand über das Foto und schließt an der Seite an, an der der Stempel verankert ist. Über einer unruhigen Szene — Baustelle, Hof, volle Fassade — wirkt es wie die Bildunterschrift des Dokuments und nicht wie ein aufgeklebter Zettel.",
+      "backdropBlockNote": "Die Hinterlegung folgt der Textgröße, mit Abstand rundherum.",
+      "backdropColor": "Farbe des Bandes",
+      "backdropDescription": "Sichert den Kontrast über hellen Bereichen des Fotos. Ohne Band liegt der Text direkt auf dem Bild, mit Schatten.",
+      "backdropInnerRadius": "Innere Ecken",
+      "backdropOpacity": "Transparenz",
+      "backdropOpacityValue": "{percent} % deckend",
+      "backdropRadius": "Abgerundete Ecken",
+      "backdropRadiusSquare": "Eckig",
+      "backdropStyles": {
+        "band": "Durchgehendes Band",
+        "block": "Hinter dem Text",
+        "none": "Keines"
+      },
+      "backdropTitle": "Hinterlegungsband",
+      "brandDescription": "Über der Uhr wird sie zur Signatur, mit Logo und Zusatz. In einer Ecke ist sie eine unauffällige Zeile.",
+      "brandFirstColor": "Farbe des ersten Teils",
       "brandFirstHint": "Bau",
       "brandFirstPart": "Erster Teil",
-      "brandModes": {
-        "custom": "Meine Marke",
-        "lymark": "Lymark"
-      },
       "brandNote": "Lassen Sie den zweiten Teil leer für eine einfarbige Marke. Ein langer Name wird verkleinert, bis er passt, statt abgeschnitten zu werden.",
+      "brandPlacements": {
+        "corner": "In einer Ecke",
+        "header": "Über der Uhr",
+        "none": "Keine"
+      },
+      "brandSecondColor": "Farbe des zweiten Teils",
       "brandSecondHint": " Müller",
       "brandSecondPart": "Zweiter Teil",
       "brandTitle": "Aufgestempelte Marke",
-      "brandToggle": "Eine Marke aufstempeln",
-      "brandToggleDescription": "Ausschalten, um dem Kunden ein Foto ganz ohne Marke zu übergeben.",
       "codeDescription": "An der Seite konkurriert er nicht mit dem Bildinhalt um Platz.",
       "codePlacements": {
         "block": "Neben den Daten",
@@ -245,6 +283,11 @@
         "red": "Rot",
         "white": "Weiß"
       },
+      "colorsDescription": "Die Farbe auf dem Foto wählt das Unternehmen, nicht die App — eine Änderung hier ändert die Farben des Bildschirms nicht.",
+      "colorsTitle": "Farben des Stempels",
+      "complement": "Zusatz",
+      "complementColor": "Farbe des Zusatzes",
+      "complementHint": "Begehungen und technische Gutachten",
       "cornerConflict": "Marke und Daten stehen in derselben Ecke — sie werden sich auf dem Foto überlagern.",
       "fields": {
         "address": "Adresse / Ort",
@@ -258,6 +301,17 @@
       "includeCountry": "Land einbeziehen",
       "includeCountryDescription": "Einschalten, wer über Grenzen hinweg arbeitet. Sonst nimmt es nur Platz auf dem Foto weg.",
       "legibilityTitle": "Lesbarkeit",
+      "logoAdded": "Logo zum Markenkopf hinzugefügt.",
+      "logoAlignNote": "Die Höhe des Logos folgt dem Text: Die Oberkante liegt auf der Oberkante des Namens, die Unterkante auf der Grundlinie des Zusatzes.",
+      "logoChosen": "Gewähltes Logo",
+      "logoErrorMessage": "Versuchen Sie ein anderes Bild. Ein PNG mit transparentem Hintergrund funktioniert am besten.",
+      "logoErrorTitle": "Diese Datei konnte nicht verwendet werden",
+      "logoFormatNote": "Verwenden Sie ein PNG mit transparentem Hintergrund. Ein JPG mit weißem Hintergrund wird zu einem weißen Rechteck auf dem Foto — das Format speichert keine Transparenz, und die App kann nicht erraten, was Hintergrund ist.",
+      "logoPermissionMessage": "Erlauben Sie ihn unter Einstellungen › Berechtigungen, um die Logodatei zu wählen.",
+      "logoPermissionTitle": "Zugriff auf Fotos verweigert",
+      "logoPick": "Logo wählen",
+      "logoRemove": "Entfernen",
+      "logoReplace": "Logo ersetzen",
       "positionDescription": "Die Ecke des Fotos, an der der Block verankert wird.",
       "positionTitle": "Position",
       "positions": {
@@ -267,7 +321,8 @@
         "top-right": "Oben rechts"
       },
       "previewCurrent": "Über dem aktuellen Foto aus dem Tab Aufnahme.",
-      "previewEmpty": "Wählen Sie im Tab Aufnahme ein Foto, um es über dem echten Bild zu sehen.",
+      "previewEmpty": "Von hell bis dunkel, um die Lesbarkeit an beiden Extremen zu prüfen.",
+      "previewNoFields": "Kein Feld ausgewählt — das Foto kommt ohne Wasserzeichen heraus.",
       "previewTitle": "Vorschau",
       "reset": "Standard wiederherstellen",
       "sizeTitle": "Textgröße",
@@ -275,7 +330,8 @@
         "large": "Groß",
         "medium": "Mittel",
         "small": "Klein"
-      }
+      },
+      "textColor": "Text"
     }
   },
   "desktop": {

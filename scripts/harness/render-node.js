@@ -53,6 +53,7 @@ function buildReport(geometry, measure, frame) {
   };
 
   for (const r of geometry.rects) addRegion(r.x, r.y, r.width, r.height);
+  for (const i of geometry.images) addRegion(i.x, i.y, i.width, i.height);
 
   const texts = geometry.texts.map((t) => {
     const advance = measure(t.text, t.size, t.font);
@@ -102,7 +103,6 @@ async function main() {
   const { buildStampGeometry } = require(path.join(BUILD, 'src/features/watermark/stamp-layout.js'));
   const { buildWatermarkContent } = require(path.join(BUILD, 'src/features/watermark/build-content.js'));
   const { DEFAULT_WATERMARK_PREFERENCES } = require(path.join(BUILD, 'src/features/watermark/preferences.js'));
-  const { STAMP_COLORS } = require(path.join(BUILD, 'src/features/watermark/stamp-colors.js'));
 
   fs.mkdirSync(OUT_DIR, { recursive: true });
   console.log('=== Renderizando no Node, com o desenhista real do app ===\n');
@@ -131,7 +131,6 @@ async function main() {
       content: buildWatermarkContent(METADATA, DEFAULT_WATERMARK_PREFERENCES),
       preferences: DEFAULT_WATERMARK_PREFERENCES,
       frame: { width, height },
-      colors: STAMP_COLORS,
       measure: renderer.measure,
       allowGrowth: true,
     });

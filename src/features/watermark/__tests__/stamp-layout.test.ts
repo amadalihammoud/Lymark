@@ -34,11 +34,13 @@ const content: WatermarkContent = {
   isEmpty: false,
 };
 
-const palette = {
-  white: '#fff', amber: '#F5B60D', red: '#FF6B57',
-  green: '#5BD98A', blue: '#63B3ED', black: '#111820',
+/** As cores agora vêm das preferências; estas são as do padrão. */
+const colors = {
+  text: DEFAULT_WATERMARK_PREFERENCES.stampTextColor,
+  accent: DEFAULT_WATERMARK_PREFERENCES.stampAccent,
+  backdrop: DEFAULT_WATERMARK_PREFERENCES.backdropColor,
 };
-const colors = { text: '#fff', accent: '#F5B60D', backdrop: 'rgba(0,0,0,0.75)', palette };
+const palette = { white: '#FFFFFF', amber: '#F5B60D', red: '#FF6B57', green: '#5BD98A', blue: '#63B3ED', black: '#111820' };
 const frame = { width: 355.4, height: 440 };
 
 function build(overrides: Partial<WatermarkPreferences> = {}, extra = {}): StampGeometry {
@@ -46,7 +48,6 @@ function build(overrides: Partial<WatermarkPreferences> = {}, extra = {}): Stamp
     content,
     preferences: { ...DEFAULT_WATERMARK_PREFERENCES, ...overrides },
     frame,
-    colors,
     measure,
     ...extra,
   });
@@ -68,9 +69,8 @@ describe('buildStampGeometry — o essencial', () => {
   it('não desenha nada quando não há conteúdo nem marca', () => {
     const g = buildStampGeometry({
       content: { ...content, isEmpty: true },
-      preferences: { ...DEFAULT_WATERMARK_PREFERENCES, showBrand: false },
+      preferences: { ...DEFAULT_WATERMARK_PREFERENCES, brandPlacement: 'none' },
       frame,
-      colors,
       measure,
     });
 
@@ -134,7 +134,6 @@ describe('a barra âmbar acompanha a tinta dos algarismos', () => {
       content: { ...content, date: null, weekday: null, showRule: false },
       preferences: DEFAULT_WATERMARK_PREFERENCES,
       frame,
-      colors,
       measure,
     });
 
@@ -245,7 +244,7 @@ describe('marca do app', () => {
   });
 
   it('some quando desligada', () => {
-    const g = build({ showBrand: false });
+    const g = build({ brandPlacement: 'none' });
 
     expect(find(g, 'Ly')).toBeUndefined();
     expect(find(g, 'mark')).toBeUndefined();
@@ -254,10 +253,10 @@ describe('marca do app', () => {
 
 describe('faixa de fundo', () => {
   it('só aparece quando ligada, e cobre o bloco', () => {
-    expect(build({ showBackdrop: false }).rects.some((r) => r.color === colors.backdrop))
+    expect(build({ backdropStyle: 'none' }).rects.some((r) => r.color === colors.backdrop))
       .toBe(false);
 
-    const g = build({ showBackdrop: true });
+    const g = build({ backdropStyle: 'block' });
     const backdrop = g.rects.find((r) => r.color === colors.backdrop)!;
     const time = find(g, '07:42')!;
 
@@ -273,7 +272,6 @@ describe('independência de resolução', () => {
       content,
       preferences: DEFAULT_WATERMARK_PREFERENCES,
       frame: { width: frame.width * 10, height: frame.height * 10 },
-      colors,
       measure,
       allowGrowth: true,
     });
@@ -292,7 +290,6 @@ describe('independência de resolução', () => {
         content,
         preferences: DEFAULT_WATERMARK_PREFERENCES,
         frame: { width, height: (width * 4) / 3 },
-        colors,
         measure,
         allowGrowth: true,
       });
@@ -311,7 +308,6 @@ describe('independência de resolução', () => {
       content,
       preferences: DEFAULT_WATERMARK_PREFERENCES,
       frame: { width: 3000, height: 4000 },
-      colors,
       measure,
     });
 
@@ -332,7 +328,6 @@ describe('defeitos encontrados na revisão', () => {
       content: withoutTime,
       preferences: DEFAULT_WATERMARK_PREFERENCES,
       frame,
-      colors,
       measure,
     });
 
@@ -348,7 +343,6 @@ describe('defeitos encontrados na revisão', () => {
       content: withoutTime,
       preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-left' },
       frame,
-      colors,
       measure,
     });
 
@@ -362,7 +356,6 @@ describe('defeitos encontrados na revisão', () => {
       content: { ...withoutTime, address: 'Rua A, 5' },
       preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-right' },
       frame,
-      colors,
       measure,
     });
 
@@ -377,7 +370,6 @@ describe('defeitos encontrados na revisão', () => {
       content: { ...content, address: 'Avenida Senador Pinheiro Machado, 1024' },
       preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-right' },
       frame,
-      colors,
       measure,
     });
 
@@ -396,7 +388,6 @@ describe('defeitos encontrados na revisão', () => {
       content: { ...content, address: 'A'.repeat(60) },
       preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-right' },
       frame,
-      colors,
       measure,
     });
 
@@ -415,7 +406,6 @@ describe('defeitos encontrados na revisão', () => {
       content,
       preferences: { ...DEFAULT_WATERMARK_PREFERENCES, position: 'bottom-right' },
       frame: { width: 3000, height: 4000 },
-      colors,
       measure,
       allowGrowth: true,
     });
@@ -433,14 +423,12 @@ describe('defeitos encontrados na revisão', () => {
       content: { ...content, date: null },
       preferences: DEFAULT_WATERMARK_PREFERENCES,
       frame,
-      colors,
       measure,
     });
     const withDate = buildStampGeometry({
       content,
       preferences: DEFAULT_WATERMARK_PREFERENCES,
       frame,
-      colors,
       measure,
     });
 
@@ -480,12 +468,12 @@ describe('defeitos encontrados na revisão', () => {
  */
 describe('marca própria', () => {
   const custom = (parts: WatermarkPreferences['brandParts']) =>
-    build({ brandMode: 'custom', brandParts: parts });
+    build({ brandParts: parts });
 
   it('carimba as partes configuradas, cada uma na sua cor', () => {
     const g = custom([
-      { text: 'CONSTRUTORA', color: 'white' },
-      { text: ' SILVA', color: 'red' },
+      { text: 'CONSTRUTORA', color: palette.white },
+      { text: ' SILVA', color: palette.red },
     ]);
 
     expect(find(g, 'CONSTRUTORA')!.color).toBe(palette.white);
@@ -495,8 +483,8 @@ describe('marca própria', () => {
 
   it('desenha as partes coladas, para nomes emendados', () => {
     const g = custom([
-      { text: 'Auto', color: 'white' },
-      { text: 'Glass', color: 'blue' },
+      { text: 'Auto', color: palette.white },
+      { text: 'Glass', color: palette.blue },
     ]);
 
     const head = find(g, 'Auto')!;
@@ -512,8 +500,8 @@ describe('marca própria', () => {
 
   it('aceita marca de cor única, com a segunda parte vazia', () => {
     const g = custom([
-      { text: 'TECNOSUL', color: 'green' },
-      { text: '', color: 'amber' },
+      { text: 'TECNOSUL', color: palette.green },
+      { text: '', color: palette.amber },
     ]);
 
     expect(find(g, 'TECNOSUL')!.color).toBe(palette.green);
@@ -548,7 +536,6 @@ describe('marca própria', () => {
 
   it('mantém a marca dentro da foto mesmo com nome comprido', () => {
     const g = build({
-      brandMode: 'custom',
       brandPosition: 'top-right',
       brandParts: [
         { text: 'TRANSPORTADORA', color: 'white' },
@@ -560,5 +547,357 @@ describe('marca própria', () => {
       expect(t.x).toBeGreaterThanOrEqual(0);
       expect(t.x + measure(t.text, t.size, 'medium')).toBeLessThanOrEqual(frame.width + 1);
     }
+  });
+});
+
+/**
+ * O cabeçalho da marca — logotipo à esquerda, nome e complemento à direita.
+ *
+ * A regra que este bloco vigia é uma só, e é a mesma da barra âmbar: o
+ * alinhamento é pela **tinta**, não pela caixa de linha. O topo do logotipo
+ * acompanha o topo da tinta do nome; a base dele, a base da tinta do
+ * complemento. Alinhar pela caixa faria o logotipo sobrar acima e abaixo do
+ * texto — a diferença que se enxerga a olho nu.
+ */
+describe('cabeçalho da marca', () => {
+  const header = (overrides: Partial<WatermarkPreferences> = {}) =>
+    build({
+      brandPlacement: 'header',
+      brandParts: [
+        { text: 'AUTO', color: palette.white },
+        { text: 'GLASS', color: palette.amber },
+      ],
+      brandComplement: 'Vidros automotivos',
+      ...overrides,
+    });
+
+  it('põe nome e complemento acima do relógio, e não num canto', () => {
+    const g = header();
+
+    const nome = find(g, 'AUTO')!;
+    const complemento = find(g, 'Vidros automotivos')!;
+    const hora = find(g, '07:42')!;
+
+    expect(nome.baseline).toBeLessThan(hora.baseline);
+    expect(complemento.baseline).toBeGreaterThan(nome.baseline);
+    expect(complemento.baseline).toBeLessThan(hora.baseline);
+    // O nome domina; o complemento é a linha de apoio.
+    expect(complemento.size).toBeLessThan(nome.size);
+  });
+
+  it('ancora o logotipo do topo da tinta do nome à linha de base do complemento', () => {
+    const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 1 });
+
+    const logo = g.images[0];
+    const nome = find(g, 'AUTO')!;
+    const complemento = find(g, 'Vidros automotivos')!;
+
+    // O topo vem da fonte, medido no próprio Skia: a caixa alta do Barlow 500
+    // começa 0,71 do corpo acima da linha de base.
+    expect(logo.y).toBeCloseTo(nome.baseline - Math.round(nome.size * 0.71), 0);
+    // A base é a **linha de base**, e não onde as descendentes chegam. Um
+    // complemento sem nenhuma perna descendo deixaria o logotipo terminando
+    // abaixo de tudo que se vê, como se estivesse afundado no conjunto.
+    expect(logo.y + logo.height).toBe(complemento.baseline);
+  });
+
+  it('reserva espaço para as descendentes, mesmo o logotipo parando na base', () => {
+    // O logotipo para na linha de base; o **espaço** reservado desce até o fim
+    // das descendentes. Sem isso a perna de um "g" encostaria no relógio.
+    const g = header({
+      brandLogoPath: 'brand/abc.png',
+      brandComplement: 'Vidros e pergolados',
+    });
+
+    const logo = g.images[0];
+    const complemento = find(g, 'Vidros e pergolados')!;
+    const hora = find(g, '07:42')!;
+    const descendente = complemento.baseline + complemento.size * 0.2;
+
+    expect(logo.y + logo.height).toBe(complemento.baseline);
+    expect(hora.baseline - hora.size * 0.715).toBeGreaterThan(descendente);
+  });
+
+  it('não muda de altura conforme as letras digitadas', () => {
+    // "LIMA" não tem redondas nem descendentes; "LOGOS gp" tem as duas. Se a
+    // âncora saísse do texto de fato, o logotipo mudaria de tamanho conforme o
+    // nome da empresa — o mesmo defeito que a barra âmbar teria se fosse
+    // medida em "11:11".
+    const reto = header({
+      brandLogoPath: 'brand/abc.png',
+      brandParts: [{ text: 'LIMA', color: palette.white }, { text: '', color: palette.amber }],
+      brandComplement: 'Vistorias',
+    });
+    const redondo = header({
+      brandLogoPath: 'brand/abc.png',
+      brandParts: [{ text: 'LOGOS', color: palette.white }, { text: '', color: palette.amber }],
+      brandComplement: 'Vistorias gp',
+    });
+
+    expect(redondo.images[0].height).toBe(reto.images[0].height);
+  });
+
+  it('preserva a proporção de uma assinatura muito horizontal', () => {
+    // Limitar só a largura espremeria o arquivo: a empresa entregaria ao
+    // cliente uma foto com o próprio logotipo deformado. Passando do limite,
+    // ele perde **altura**.
+    const largo = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 4 });
+    const logo = largo.images[0];
+
+    expect(logo.width / logo.height).toBeCloseTo(4, 1);
+    expect(logo.height).toBeLessThan(header({
+      brandLogoPath: 'brand/abc.png',
+      brandLogoAspect: 1,
+    }).images[0].height);
+  });
+
+  it('centra na faixa do texto o logotipo que perdeu altura', () => {
+    const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 4 });
+    const logo = g.images[0];
+    const nome = find(g, 'AUTO')!;
+    const complemento = find(g, 'Vidros automotivos')!;
+
+    const topo = nome.baseline - Math.round(nome.size * 0.71);
+    const base = complemento.baseline;
+
+    // Encostado no topo ele pareceria solto acima do nome. O 1 px de tolerância
+    // é a sobra de arredondar a metade de um vão ímpar.
+    expect(Math.abs((logo.y - topo) - (base - (logo.y + logo.height)))).toBeLessThanOrEqual(1);
+  });
+
+  it('não deforma nem com proporção absurda vinda de um registro corrompido', () => {
+    for (const aspect of [0.01, 0.2, 5, 100]) {
+      const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: aspect });
+      const logo = g.images[0];
+
+      expect(logo.width).toBeGreaterThan(0);
+      expect(logo.height).toBeGreaterThan(0);
+      expect(Number.isFinite(logo.width)).toBe(true);
+    }
+  });
+
+  it('mantém o logotipo à esquerda do nome mesmo ancorado à direita', () => {
+    const g = header({
+      position: 'bottom-right',
+      brandLogoPath: 'brand/abc.png',
+      brandLogoAspect: 1,
+    });
+
+    const logo = g.images[0];
+    const nome = find(g, 'AUTO')!;
+
+    // O logotipo à esquerda é a assinatura, não o alinhamento: espelhá-lo
+    // quando o bloco vai para a direita quebraria a leitura da marca.
+    expect(logo.x + logo.width).toBeLessThanOrEqual(nome.x);
+    expect(logo.x).toBeGreaterThanOrEqual(0);
+  });
+
+  it('reserva a largura do cabeçalho na conta do bloco', () => {
+    const g = header({
+      position: 'bottom-right',
+      brandParts: [
+        { text: 'TRANSPORTADORA', color: palette.white },
+        { text: ' LITORAL', color: palette.amber },
+      ],
+      brandComplement: '',
+    });
+
+    for (const t of g.texts.filter((x) => !x.rotate)) {
+      expect(t.x).toBeGreaterThanOrEqual(0);
+      expect(t.x + measure(t.text, t.size, t.font)).toBeLessThanOrEqual(frame.width + 1);
+    }
+  });
+
+  it('encolhe o conjunto inteiro quando o nome não cabe', () => {
+    const curto = header({ brandParts: [
+      { text: 'ACME', color: palette.white },
+      { text: '', color: palette.amber },
+    ] });
+    const longo = header({ brandParts: [
+      { text: 'TRANSPORTADORA RODOVI', color: palette.white },
+      { text: 'ÁRIA UNIDA DO LITORAL', color: palette.amber },
+    ] });
+
+    expect(find(longo, 'TRANSPORTADORA RODOVI')!.size).toBeLessThan(find(curto, 'ACME')!.size);
+    // O complemento acompanha: encolher só o nome desmontaria a proporção do
+    // conjunto.
+    expect(find(longo, 'Vidros automotivos')!.size).toBeLessThan(
+      find(curto, 'Vidros automotivos')!.size,
+    );
+  });
+
+  it('não reserva espaço quando não há nome, complemento nem logotipo', () => {
+    const g = header({
+      brandParts: [{ text: '', color: palette.white }, { text: '  ', color: palette.amber }],
+      brandComplement: '',
+    });
+
+    const semMarca = build({ brandPlacement: 'none' });
+
+    expect(g.images).toHaveLength(0);
+    // Sem nada a assinar, o relógio fica onde ficaria sem cabeçalho nenhum —
+    // e não deslocado por um vão vazio.
+    expect(find(g, '07:42')!.baseline).toBe(find(semMarca, '07:42')!.baseline);
+  });
+
+  it('desenha o cabeçalho sozinho quando não há dado nenhum', () => {
+    const g = buildStampGeometry({
+      content: { ...content, isEmpty: true },
+      preferences: {
+        ...DEFAULT_WATERMARK_PREFERENCES,
+        brandPlacement: 'header',
+        brandLogoPath: 'brand/abc.png',
+      },
+      frame,
+      measure,
+    });
+
+    expect(g.images).toHaveLength(1);
+    expect(find(g, 'Ly')).toBeDefined();
+  });
+
+  it('não repete a marca no canto quando ela está no cabeçalho', () => {
+    const g = header();
+
+    expect(g.texts.filter((t) => t.text === 'AUTO')).toHaveLength(1);
+  });
+});
+
+/** A faixa de fundo virou um elemento configurável, e não um liga/desliga. */
+describe('faixa de fundo configurável', () => {
+  it('leva cor, transparência e arredondamento das preferências', () => {
+    const g = build({
+      backdropStyle: 'block',
+      backdropColor: '#102030',
+      backdropOpacity: 0.4,
+      backdropRadius: 12,
+    });
+
+    const backdrop = g.rects.find((r) => r.color === '#102030')!;
+
+    expect(backdrop.opacity).toBe(0.4);
+    expect(backdrop.radius).toBeGreaterThan(0);
+  });
+
+  it('afasta o texto do canto quando o arredondamento cresce', () => {
+    // Um canto arredondado come o espaço da própria curva. Com o raio no
+    // máximo e a folga de antes, o endereço encostava na volta do canto.
+    const reto = build({ backdropStyle: 'block', backdropRadius: 0 });
+    const curvo = build({ backdropStyle: 'block', backdropRadius: 24 });
+
+    const retoRect = reto.rects.find((r) => r.opacity !== undefined)!;
+    const curvoRect = curvo.rects.find((r) => r.opacity !== undefined)!;
+    const retoTexto = find(reto, '07:42')!;
+    const curvoTexto = find(curvo, '07:42')!;
+
+    expect(curvoTexto.x - curvoRect.x).toBeGreaterThan(retoTexto.x - retoRect.x);
+    // E a faixa continua dentro da foto, e não empurrada para fora dela.
+    expect(curvoRect.x).toBeGreaterThanOrEqual(0);
+    expect(curvoRect.y + curvoRect.height).toBeLessThanOrEqual(frame.height);
+  });
+
+  it('não muda a geometria de quem não usa a faixa', () => {
+    // A folga nova sai do raio, e raio zero é o estado de quem já usava a
+    // faixa antes. Sem esta garantia, uma melhoria de aparência mudaria o
+    // carimbo de todo mundo numa atualização.
+    const semFaixa = build({ backdropStyle: 'none' });
+    const comFaixaReta = build({ backdropStyle: 'block', backdropRadius: 0 });
+
+    expect(find(comFaixaReta, '07:42')!.x).toBe(find(semFaixa, '07:42')!.x);
+    expect(find(comFaixaReta, '07:42')!.baseline).toBe(find(semFaixa, '07:42')!.baseline);
+  });
+
+  it('deixa a faixa totalmente transparente quando a opacidade é zero', () => {
+    // Zero é uma escolha válida — equivale a desligar a faixa sem perder os
+    // ajustes dela. `?? 1` no desenho transformaria isso em faixa opaca.
+    const g = build({ backdropStyle: 'block', backdropOpacity: 0 });
+    const backdrop = g.rects.find((r) => r.opacity !== undefined)!;
+
+    expect(backdrop.opacity).toBe(0);
+  });
+});
+
+/**
+ * A faixa contínua atravessa a foto de borda a borda.
+ *
+ * Não é variação estética do cartão. Sobre uma cena visualmente carregada — um
+ * canteiro de obra, um pátio cheio, uma fachada com muita informação — o cartão
+ * flutuando parece adesivo colado por cima; a faixa contínua parece parte do
+ * documento, porque tem a mesma largura da imagem que ela legenda.
+ */
+describe('faixa contínua', () => {
+  const band = (overrides: Partial<WatermarkPreferences> = {}) =>
+    build({ backdropStyle: 'band', backdropRadius: 12, ...overrides });
+
+  const backdropOf = (g: StampGeometry) => g.rects.find((r) => r.opacity !== undefined)!;
+
+  it('atravessa a foto inteira e encosta na borda de baixo', () => {
+    const g = band({ position: 'bottom-left' });
+    const faixa = backdropOf(g);
+
+    expect(faixa.x).toBe(0);
+    expect(faixa.width).toBe(frame.width);
+    // Parar antes da borda deixaria um fio da foto embaixo, que lê como erro
+    // de alinhamento e não como escolha.
+    expect(faixa.y + faixa.height).toBe(frame.height);
+  });
+
+  it('encosta na borda de cima quando o carimbo está lá', () => {
+    const g = band({ position: 'top-right' });
+    const faixa = backdropOf(g);
+
+    expect(faixa.y).toBe(0);
+    expect(faixa.x).toBe(0);
+    expect(faixa.width).toBe(frame.width);
+  });
+
+  it('é reta em cima e embaixo, seja qual for o arredondamento escolhido', () => {
+    // Arredondada, a tarja vira um painel — meio-termo entre as duas opções,
+    // que embaralha a escolha entre elas. O arredondamento é do cartão.
+    expect(backdropOf(band({ backdropRadius: 24 })).radius).toBe(0);
+    expect(backdropOf(build({ backdropStyle: 'block', backdropRadius: 24 })).radius)
+      .toBeGreaterThan(0);
+  });
+
+  it('cobre o carimbo inteiro, cabeçalho de marca incluído', () => {
+    const g = band({
+      position: 'bottom-left',
+      brandPlacement: 'header',
+      brandComplement: 'Laudos técnicos',
+      brandLogoPath: 'brand/abc.png',
+    });
+    const faixa = backdropOf(g);
+
+    // 0,72 do corpo cobre com folga a maior extensão de tinta acima da linha de
+    // base em qualquer das fontes: 0,715 dos algarismos da hora e 0,71 da caixa
+    // alta do Barlow, mais o acento de um "Á".
+    for (const t of g.texts.filter((x) => !x.rotate)) {
+      expect(t.baseline - t.size * 0.72).toBeGreaterThanOrEqual(faixa.y);
+    }
+    for (const image of g.images) {
+      expect(image.y).toBeGreaterThanOrEqual(faixa.y);
+    }
+  });
+
+  it('não move o texto com o arredondamento, que ela não usa', () => {
+    // No cartão a folga cresce com o raio porque a curva come o espaço junto ao
+    // texto. Aqui não há curva nenhuma, então o controle não deve ter efeito.
+    const reta = band({ backdropRadius: 0 });
+    const curva = band({ backdropRadius: 24 });
+
+    expect(find(curva, '07:42')!.x).toBe(find(reta, '07:42')!.x);
+    expect(find(curva, '07:42')!.baseline).toBe(find(reta, '07:42')!.baseline);
+  });
+
+  it('leva a mesma cor e transparência do cartão', () => {
+    const g = band({ backdropColor: '#102030', backdropOpacity: 0.4 });
+    const faixa = backdropOf(g);
+
+    expect(faixa.color).toBe('#102030');
+    expect(faixa.opacity).toBe(0.4);
+  });
+
+  it('não desenha fundo nenhum quando o estilo é "nenhuma"', () => {
+    expect(build({ backdropStyle: 'none' }).rects.some((r) => r.opacity !== undefined)).toBe(false);
   });
 });

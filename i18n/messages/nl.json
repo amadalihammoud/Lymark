@@ -40,6 +40,8 @@
       "unavailableTitle": "Batchverwerking niet beschikbaar"
     },
     "capture": {
+      "accuracy": "Positie tot op ±{meters} m nauwkeurig.",
+      "accuracyImprecise": "Positie tot op ±{meters} m nauwkeurig — controleer het huisnummer voor het exporteren.",
       "address": "Adres",
       "addressFailedTitle": "Geen adres gevonden",
       "addressHint": "Tik op lokaliseren, of typ het adres",
@@ -47,6 +49,7 @@
       "code": "Code",
       "dateHint": "1 jan. 2026",
       "dateTimeGroup": "Datum en tijd",
+      "emptyWarning": "Er worden geen gegevens gestempeld — de foto komt zonder watermerk uit.",
       "gallery": "Kiezen uit galerij",
       "galleryDenied": "Toegang tot foto’s is geweigerd, dus de afbeelding bestaat alleen in de app. Sta het toe bij Instellingen › Toestemmingen om hem in de galerij op te slaan.",
       "galleryFailed": "De afbeelding kwam in de geschiedenis, maar het apparaat weigerde hem naar de galerij te schrijven. Controleer de vrije ruimte en probeer opnieuw.",
@@ -54,6 +57,7 @@
       "hiddenFields": "{count, plural, one {Verborgen veld} other {Verborgen velden}}: {fields} — schakel ze in bij Instellingen › Velden en positie.",
       "keepMyAddress": "De mijne houden",
       "locate": "Lokaliseren",
+      "locateByGps": "Adres bepalen via gps",
       "lookup": {
         "denied": "Sta locatie toe bij Instellingen › Toestemmingen, of typ het adres.",
         "disabled": "De locatie van het apparaat staat uit. Zet hem aan bij de snelle instellingen en probeer opnieuw.",
@@ -65,6 +69,7 @@
       "noFieldsContinue": "Toch doorgaan",
       "noFieldsMessage": "Geen enkel veld heeft inhoud om te stempelen. Vul de velden in, of bekijk Instellingen › Velden en positie.",
       "noFieldsTitle": "De foto komt zonder watermerk",
+      "noPhotoHint": "Maak een foto of kies er een uit de galerij om te beginnen.",
       "noPhotoSelected": "Geen foto geselecteerd",
       "openFailed": "De foto kon niet worden geopend. Probeer opnieuw.",
       "permissionMessage": "Sta toegang toe bij Instellingen › Toestemmingen om verder te gaan.",
@@ -94,6 +99,12 @@
       "weekdayHint": "ma",
       "weekdayShort": "Dag"
     },
+    "colorPicker": {
+      "hue": "Tint",
+      "other": "andere kleur kiezen",
+      "saturationBrightness": "Verzadiging en helderheid",
+      "use": "Deze kleur gebruiken"
+    },
     "common": {
       "back": "Terug",
       "cancel": "Annuleren",
@@ -111,6 +122,7 @@
       "yes": "Ja"
     },
     "gallery": {
+      "cancelSelection": "Selectie annuleren",
       "clear": "Geschiedenis wissen",
       "clearConfirm": "Wissen",
       "clearMessage": "De registraties van Lymark worden verwijderd. Afbeeldingen die al in de apparaatgalerij staan, blijven ongemoeid.",
@@ -119,7 +131,18 @@
       "empty": "Nog geen foto's",
       "emptyAction": "Naar Vastleggen",
       "emptyDescription": "Foto's die je met watermerk exporteert, verschijnen hier — met datum, plaats en code.",
+      "filteredCount": "{shown} van {total, plural, one {# foto} other {# foto’s}}",
+      "noResults": "Geen foto’s gevonden voor ‘{query}’.",
       "photoLabel": "Foto van {when}",
+      "removeMessage": "De items verdwijnen uit Lymark. Afbeeldingen die al in de apparaatgalerij staan, blijven ongemoeid.",
+      "removeTitle": "{count, plural, one {Uit geschiedenis verwijderen} other {# items verwijderen}}",
+      "removed": "{count, plural, one {Item verwijderd.} other {Items verwijderd.}}",
+      "saveDeniedMessage": "Sta het toe bij Instellingen › Machtigingen om de afbeeldingen in de apparaatgalerij op te slaan.",
+      "saveDeniedTitle": "Toegang tot foto’s geweigerd",
+      "savedAll": "{count, plural, one {Eén foto opgeslagen in de apparaatgalerij.} other {# foto’s opgeslagen in de apparaatgalerij.}}",
+      "savedSome": "{saved} van {total} foto’s opgeslagen.",
+      "searchPlaceholder": "Zoeken op adres, datum of code",
+      "selectedCount": "{count, plural, one {# foto geselecteerd} other {# foto’s geselecteerd}}",
       "share": "Delen",
       "title": "Galerij"
     },
@@ -216,21 +239,36 @@
     "tagline": "Watermerk met tijd, datum en plaats",
     "title": "Lymark",
     "watermark": {
-      "backdrop": "Donkere achtergrondband",
-      "backdropDescription": "Zorgt voor contrast boven lichte delen van de foto.",
-      "brandDescription": "Het merk op de foto, in een eigen hoek. Dat mag dat van je bedrijf zijn.",
+      "accentColor": "Verticale balk",
+      "backdropBandNote": "De band loopt van rand tot rand over de foto en sluit aan op de kant waar de stempel is verankerd. Boven een drukke scène — bouwplaats, terrein, volle gevel — leest hij als het onderschrift van het document en niet als een sticker erbovenop.",
+      "backdropBlockNote": "De achtergrond volgt de grootte van de tekst, met ruimte eromheen.",
+      "backdropColor": "Kleur van de band",
+      "backdropDescription": "Zorgt voor contrast boven lichte delen van de foto. Zonder band staat de tekst direct op de afbeelding, met een schaduw.",
+      "backdropInnerRadius": "Binnenhoeken",
+      "backdropOpacity": "Transparantie",
+      "backdropOpacityValue": "{percent}% dekkend",
+      "backdropRadius": "Afgeronde hoeken",
+      "backdropRadiusSquare": "Recht",
+      "backdropStyles": {
+        "band": "Doorlopende band",
+        "block": "Achter de tekst",
+        "none": "Geen"
+      },
+      "backdropTitle": "Achtergrondband",
+      "brandDescription": "Boven de klok wordt het een handtekening, met logo en toevoeging. In een hoek is het een bescheiden regel.",
+      "brandFirstColor": "Kleur van het eerste deel",
       "brandFirstHint": "Bouw",
       "brandFirstPart": "Eerste deel",
-      "brandModes": {
-        "custom": "Mijn merk",
-        "lymark": "Lymark"
-      },
       "brandNote": "Laat het tweede deel leeg voor een merk in één kleur. Een lange naam wordt verkleind tot hij past, in plaats van afgekapt.",
+      "brandPlacements": {
+        "corner": "In een hoek",
+        "header": "Boven de klok",
+        "none": "Geen"
+      },
+      "brandSecondColor": "Kleur van het tweede deel",
       "brandSecondHint": " Jansen",
       "brandSecondPart": "Tweede deel",
       "brandTitle": "Gestempeld merk",
-      "brandToggle": "Een merk stempelen",
-      "brandToggleDescription": "Zet uit om de klant een foto zonder enig merk te geven.",
       "codeDescription": "Aan de zijkant vecht hij niet om ruimte met de inhoud van de foto.",
       "codePlacements": {
         "block": "Naast de gegevens",
@@ -245,6 +283,11 @@
         "red": "Rood",
         "white": "Wit"
       },
+      "colorsDescription": "De kleur op de foto is een keuze van het bedrijf, niet van de app — hier iets veranderen verandert de kleuren van het scherm niet.",
+      "colorsTitle": "Kleuren van de stempel",
+      "complement": "Toevoeging",
+      "complementColor": "Kleur van de toevoeging",
+      "complementHint": "Inspecties en technische rapporten",
       "cornerConflict": "Het merk en de gegevens staan in dezelfde hoek — ze overlappen op de foto.",
       "fields": {
         "address": "Adres / Plaats",
@@ -258,6 +301,17 @@
       "includeCountry": "Land opnemen",
       "includeCountryDescription": "Zet aan als je over de grens werkt. Anders neemt het alleen ruimte op de foto in.",
       "legibilityTitle": "Leesbaarheid",
+      "logoAdded": "Logo toegevoegd aan de merkkop.",
+      "logoAlignNote": "De hoogte van het logo volgt de tekst: de bovenkant lijnt uit met de bovenkant van de naam, de onderkant met de basislijn van de toevoeging.",
+      "logoChosen": "Gekozen logo",
+      "logoErrorMessage": "Probeer een andere afbeelding. Een PNG met transparante achtergrond werkt het best.",
+      "logoErrorTitle": "Dit bestand kon niet worden gebruikt",
+      "logoFormatNote": "Gebruik een PNG met transparante achtergrond. Een JPG met witte achtergrond wordt een witte rechthoek op de foto — het formaat slaat geen transparantie op, en de app kan niet raden wat achtergrond is.",
+      "logoPermissionMessage": "Sta het toe bij Instellingen › Machtigingen om het logobestand te kiezen.",
+      "logoPermissionTitle": "Toegang tot foto’s geweigerd",
+      "logoPick": "Logo kiezen",
+      "logoRemove": "Verwijderen",
+      "logoReplace": "Logo vervangen",
       "positionDescription": "De hoek van de foto waaraan het blok is verankerd.",
       "positionTitle": "Positie",
       "positions": {
@@ -267,7 +321,8 @@
         "top-right": "Rechtsboven"
       },
       "previewCurrent": "Over de huidige foto uit het tabblad Vastleggen.",
-      "previewEmpty": "Kies een foto bij Vastleggen om hem over de echte afbeelding te zien.",
+      "previewEmpty": "Van licht naar donker, om de leesbaarheid aan beide uitersten te controleren.",
+      "previewNoFields": "Geen veld geselecteerd — de foto komt zonder watermerk uit.",
       "previewTitle": "Voorbeeld",
       "reset": "Standaard herstellen",
       "sizeTitle": "Tekstgrootte",
@@ -275,7 +330,8 @@
         "large": "Groot",
         "medium": "Middel",
         "small": "Klein"
-      }
+      },
+      "textColor": "Tekst"
     }
   },
   "desktop": {

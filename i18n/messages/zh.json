@@ -40,6 +40,8 @@
       "unavailableTitle": "批量处理不可用"
     },
     "capture": {
+      "accuracy": "位置误差 ±{meters} 米。",
+      "accuracyImprecise": "位置误差 ±{meters} 米，导出前请核对门牌号。",
       "address": "地址",
       "addressFailedTitle": "未获取到地址",
       "addressHint": "点按定位，或手动输入地址",
@@ -47,6 +49,7 @@
       "code": "代码",
       "dateHint": "2026年1月1日",
       "dateTimeGroup": "日期和时间",
+      "emptyWarning": "没有可添加的数据，照片将不带水印导出。",
       "gallery": "从相册选择",
       "galleryDenied": "照片访问被拒绝，因此图片只存在于应用内。请在“设置 › 权限”中允许，以便保存到相册。",
       "galleryFailed": "图片已进入历史记录，但设备拒绝写入相册。请检查可用空间后重试。",
@@ -54,6 +57,7 @@
       "hiddenFields": "{count, plural, other {隐藏的字段}}：{fields} — 可在“设置 › 字段与位置”中开启。",
       "keepMyAddress": "保留我输入的",
       "locate": "定位",
+      "locateByGps": "通过 GPS 定位地址",
       "lookup": {
         "denied": "请在“设置 › 权限”中允许定位，或手动输入地址。",
         "disabled": "设备的定位已关闭。请在快捷设置中开启后重试。",
@@ -65,6 +69,7 @@
       "noFieldsContinue": "仍然继续",
       "noFieldsMessage": "没有任何字段有可添加的内容。请填写字段，或查看“设置 › 字段与位置”。",
       "noFieldsTitle": "这张照片将不带水印",
+      "noPhotoHint": "拍一张照片或从相册中选择一张，即可开始。",
       "noPhotoSelected": "未选择照片",
       "openFailed": "无法打开这张照片，请重试。",
       "permissionMessage": "请在“设置 › 权限”中允许访问后继续。",
@@ -94,6 +99,12 @@
       "weekdayHint": "周一",
       "weekdayShort": "星期"
     },
+    "colorPicker": {
+      "hue": "色相",
+      "other": "选择其他颜色",
+      "saturationBrightness": "饱和度与亮度",
+      "use": "使用此颜色"
+    },
     "common": {
       "back": "返回",
       "cancel": "取消",
@@ -111,6 +122,7 @@
       "yes": "是"
     },
     "gallery": {
+      "cancelSelection": "取消选择",
       "clear": "清空历史记录",
       "clearConfirm": "清空",
       "clearMessage": "Lymark 的记录将被删除。已保存到设备相册的图片不受影响。",
@@ -119,7 +131,18 @@
       "empty": "还没有照片",
       "emptyAction": "前往拍摄",
       "emptyDescription": "添加水印后导出的照片会显示在这里，附带日期、地点和编号。",
+      "filteredCount": "{total, plural, other {共 # 张，显示 {shown} 张}}",
+      "noResults": "未找到与“{query}”匹配的照片。",
       "photoLabel": "{when} 的照片",
+      "removeMessage": "记录将从 Lymark 中移除。已保存到设备相册的图片不受影响。",
+      "removeTitle": "{count, plural, other {从历史记录中移除 # 条记录}}",
+      "removed": "{count, plural, other {记录已移除。}}",
+      "saveDeniedMessage": "请在“设置 › 权限”中允许访问，以便将图片保存到设备相册。",
+      "saveDeniedTitle": "照片访问被拒绝",
+      "savedAll": "{count, plural, other {已将 # 张照片保存到设备相册。}}",
+      "savedSome": "已保存 {saved} 张照片，共 {total} 张。",
+      "searchPlaceholder": "按地址、日期或编号搜索",
+      "selectedCount": "{count, plural, other {已选择 # 张照片}}",
       "share": "分享",
       "title": "相册"
     },
@@ -216,21 +239,36 @@
     "tagline": "带时间、日期和地点的水印",
     "title": "Lymark",
     "watermark": {
-      "backdrop": "深色底衬",
-      "backdropDescription": "在照片的明亮区域上保持对比度。",
-      "brandDescription": "出现在照片上的标识，占据独立的角落，可以是贵公司的标识。",
+      "accentColor": "竖条",
+      "backdropBandNote": "色带横贯照片两端，并贴合水印戳所在的边缘。在工地、院落、繁杂立面等画面上，它更像文件的图注，而不是贴上去的标签。",
+      "backdropBlockNote": "底衬随文字大小变化，四周留有边距。",
+      "backdropColor": "底衬颜色",
+      "backdropDescription": "在照片的明亮区域上保持对比度。没有底衬时，文字直接带阴影显示在图片上。",
+      "backdropInnerRadius": "内侧圆角",
+      "backdropOpacity": "透明度",
+      "backdropOpacityValue": "不透明度 {percent}%",
+      "backdropRadius": "圆角",
+      "backdropRadiusSquare": "直角",
+      "backdropStyles": {
+        "band": "通栏色带",
+        "block": "文字底衬",
+        "none": "无"
+      },
+      "backdropTitle": "底衬",
+      "brandDescription": "放在时间上方时，它是带徽标和副标题的签名；放在角落时，它是一行不显眼的文字。",
+      "brandFirstColor": "第一部分颜色",
       "brandFirstHint": "建设",
       "brandFirstPart": "第一部分",
-      "brandModes": {
-        "custom": "我的标识",
-        "lymark": "Lymark"
-      },
       "brandNote": "第二部分留空即为单色标识。名称过长会自动缩小到放得下，而不是被截断。",
+      "brandPlacements": {
+        "corner": "角落",
+        "header": "时间上方",
+        "none": "不显示"
+      },
+      "brandSecondColor": "第二部分颜色",
       "brandSecondHint": " 集团",
       "brandSecondPart": "第二部分",
       "brandTitle": "加盖的标识",
-      "brandToggle": "加盖标识",
-      "brandToggleDescription": "关闭后，交给客户的照片将不带任何标识。",
       "codeDescription": "放在侧边就不会和画面内容争夺空间。",
       "codePlacements": {
         "block": "紧靠数据",
@@ -245,6 +283,11 @@
         "red": "红色",
         "white": "白色"
       },
+      "colorsDescription": "照片上的颜色由公司决定，而非应用决定——在此修改不会改变界面的颜色。",
+      "colorsTitle": "水印戳颜色",
+      "complement": "副标题",
+      "complementColor": "副标题颜色",
+      "complementHint": "查验与技术报告",
       "cornerConflict": "标识和数据在同一个角落，照片上会互相重叠。",
       "fields": {
         "address": "地址 / 地点",
@@ -258,6 +301,17 @@
       "includeCountry": "包含国家",
       "includeCountryDescription": "如果您跨国作业，请开启。否则只会占用照片空间。",
       "legibilityTitle": "可读性",
+      "logoAdded": "徽标已添加到标识标题。",
+      "logoAlignNote": "徽标高度随文字变化：顶部与名称顶部对齐，底部与副标题的基线对齐。",
+      "logoChosen": "已选择的徽标",
+      "logoErrorMessage": "请尝试其他图片。透明背景的 PNG 效果最好。",
+      "logoErrorTitle": "无法使用此文件",
+      "logoFormatNote": "请使用透明背景的 PNG。白底 JPG 会在照片上变成一个白色矩形——该格式不保存透明度，应用也无法猜测哪些部分是背景。",
+      "logoPermissionMessage": "请在“设置 › 权限”中允许访问，以便选择徽标文件。",
+      "logoPermissionTitle": "照片访问被拒绝",
+      "logoPick": "选择徽标",
+      "logoRemove": "移除",
+      "logoReplace": "更换徽标",
       "positionDescription": "水印块所锚定的照片角落。",
       "positionTitle": "位置",
       "positions": {
@@ -267,7 +321,8 @@
         "top-right": "右上"
       },
       "previewCurrent": "叠加在“拍摄”标签页的当前照片上。",
-      "previewEmpty": "请在“拍摄”中选择一张照片，以便在真实图片上查看效果。",
+      "previewEmpty": "由浅到深的渐变，用于检查两端的可读性。",
+      "previewNoFields": "未选择任何字段，照片将不带水印导出。",
       "previewTitle": "预览",
       "reset": "恢复默认",
       "sizeTitle": "文字大小",
@@ -275,7 +330,8 @@
         "large": "大",
         "medium": "中",
         "small": "小"
-      }
+      },
+      "textColor": "文字"
     }
   },
   "desktop": {

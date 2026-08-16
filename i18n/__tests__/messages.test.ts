@@ -50,6 +50,9 @@ const IDENTICAL_ON_PURPOSE: Record<string, readonly string[]> = {
     // "# foto exportada" / "# fotos exportadas" — idêntico, inclusive no
     // plural, porque as duas línguas formam o feminino da mesma maneira.
     'app.gallery.count',
+    // "{shown} de {total, plural, one {# foto} other {# fotos}}" — a mesma
+    // coincidência acima, com a contagem filtrada.
+    'app.gallery.filteredCount',
   ],
 };
 

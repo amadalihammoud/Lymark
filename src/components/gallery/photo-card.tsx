@@ -6,16 +6,23 @@ import { useTranslations } from 'use-intl';
 import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
 import { useLocalePreference } from '@/contexts/locale-context';
 import { formatTimestamp } from '@/lib/datetime';
-import { colors, radius, spacing, typography } from '@/theme';
+import { colors, fontFamily, radius, spacing, typography } from '@/theme';
 import type { GalleryEntry } from '@/types';
 
 /** Item do histórico: miniatura, quando foi exportada e o código carimbado. */
 export function PhotoCard({
   entry,
   onPress,
+  onLongPress,
+  selectable = false,
+  selected = false,
 }: {
   entry: GalleryEntry;
   onPress: () => void;
+  onLongPress?: () => void;
+  /** Em modo de seleção o cartão mostra a marca, mesmo desmarcado. */
+  selectable?: boolean;
+  selected?: boolean;
 }) {
   const t = useTranslations('app.gallery');
   const { locale } = useLocalePreference();
@@ -26,10 +33,22 @@ export function PhotoCard({
 
   return (
     <Pressable
-      accessibilityRole="button"
+      accessibilityRole={selectable ? 'checkbox' : 'button'}
       accessibilityLabel={t('photoLabel', { when: formatTimestamp(entry.exportedAt, locale) })}
+      accessibilityState={selectable ? { checked: selected } : undefined}
       onPress={onPress}
-      style={({ pressed }) => [styles.card, pressed && styles.pressed]}>
+      onLongPress={onLongPress}
+      style={({ pressed }) => [
+        styles.card,
+        pressed && styles.pressed,
+        selected && styles.selected,
+      ]}>
+      {selectable ? (
+        <View style={[styles.check, selected && styles.checkOn]}>
+          {selected ? <Text style={styles.checkMark}>✓</Text> : null}
+        </View>
+      ) : null}
+
       {missing ? (
         <View style={[styles.thumbnail, styles.missing]}>
           <Text style={styles.missingMark}>!</Text>
@@ -60,6 +79,29 @@ export function PhotoCard({
 }
 
 const styles = StyleSheet.create({
+  selected: {
+    backgroundColor: colors.surfaceRaised,
+  },
+  check: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: colors.borderInteractive,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  checkOn: {
+    backgroundColor: colors.accent,
+    borderColor: colors.accent,
+  },
+  checkMark: {
+    color: colors.onAccent,
+    fontFamily: fontFamily.uiBold,
+    fontWeight: '700',
+    lineHeight: 20,
+  },
   card: {
     flexDirection: 'row',
     gap: spacing.md,
@@ -91,6 +133,7 @@ const styles = StyleSheet.create({
   },
   missingMark: {
     color: colors.danger,
+    fontFamily: fontFamily.uiBold,
     fontSize: 24,
     fontWeight: '700',
   },

@@ -8,6 +8,7 @@ import { Section } from '@/components/ui/section';
 import { WatermarkControls } from '@/components/settings/watermark-controls';
 import { useCapture } from '@/contexts/capture-context';
 import { useSettings } from '@/contexts/settings-context';
+import { PreviewBackdrop } from '@/features/watermark/preview-backdrop';
 import { StampCanvas } from '@/features/watermark/stamp-canvas';
 import { colors, radius, spacing, typography } from '@/theme';
 
@@ -50,7 +51,9 @@ export default function WatermarkSettingsScreen() {
               style={StyleSheet.absoluteFill}
               contentFit="cover"
             />
-          ) : null}
+          ) : (
+            <PreviewBackdrop width={previewFrame.width} height={previewFrame.height} />
+          )}
           <StampCanvas
             metadata={draft.metadata}
             preferences={preferences}
@@ -59,7 +62,7 @@ export default function WatermarkSettingsScreen() {
           />
           {visibleFieldCount === 0 ? (
             <Text style={[typography.caption, styles.previewHint]}>
-              Nenhum campo selecionado — a foto sai sem marca d’água.
+              {t('watermark.previewNoFields')}
             </Text>
           ) : null}
         </View>

@@ -133,12 +133,16 @@ export function scriptForStamp(
     (key) => metadata[key],
   );
 
-  // A marca do Lymark é latina por definição; só a própria pode trazer outro
-  // alfabeto.
+  // A marca é sempre digitada — vem preenchida com "Ly" + "mark", mas é
+  // editável — e por isso pode trazer outro alfabeto. O complemento só existe
+  // no cabeçalho; num canto não há altura para ele, e não é desenhado.
   const marca =
-    preferences.showBrand && preferences.brandMode === 'custom'
-      ? preferences.brandParts.map((part) => part.text)
-      : [];
+    preferences.brandPlacement === 'none'
+      ? []
+      : [
+          ...preferences.brandParts.map((part) => part.text),
+          ...(preferences.brandPlacement === 'header' ? [preferences.brandComplement] : []),
+        ];
 
   return scriptFor(...campos, ...marca);
 }

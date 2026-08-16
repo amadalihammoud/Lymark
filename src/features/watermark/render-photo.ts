@@ -5,7 +5,7 @@ import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 import { buildWatermarkContent } from './build-content';
 import { writeExportedPhoto } from './photo-file';
 import type { StampRenderer } from './skia-stamp';
-import { buildStampGeometry, type StampColors } from './stamp-layout';
+import { buildStampGeometry } from './stamp-layout';
 
 /**
  * Compõe o carimbo sobre a fotografia original, na resolução dela.
@@ -72,7 +72,6 @@ export type StampedPhotoInput = {
   photoUri: string;
   metadata: CaptureMetadata;
   preferences: WatermarkPreferences;
-  colors: StampColors;
   renderer: StampRenderer;
 };
 
@@ -87,7 +86,6 @@ export async function composeStampedPhoto({
   photoUri,
   metadata,
   preferences,
-  colors,
   renderer,
 }: StampedPhotoInput): Promise<Uint8Array> {
   // A leitura fica dentro de um `try` proprio porque acontece ANTES do bloco
@@ -149,7 +147,6 @@ export async function composeStampedPhoto({
       content: buildWatermarkContent(metadata, preferences),
       preferences,
       frame: { width, height },
-      colors,
       measure: renderer.measure,
       // O carimbo acompanha a resolução do arquivo em vez de parar no tamanho
       // da tela. É a razão de tudo isto existir.

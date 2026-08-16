@@ -40,6 +40,8 @@
       "unavailableTitle": "일괄 처리를 사용할 수 없음"
     },
     "capture": {
+      "accuracy": "위치 오차 ±{meters} m.",
+      "accuracyImprecise": "위치 오차 ±{meters} m — 내보내기 전에 번지를 확인하세요.",
       "address": "주소",
       "addressFailedTitle": "주소를 가져오지 못함",
       "addressHint": "‘위치 찾기’를 누르거나 주소를 입력하세요",
@@ -47,6 +49,7 @@
       "code": "코드",
       "dateHint": "2026년 1월 1일",
       "dateTimeGroup": "날짜와 시각",
+      "emptyWarning": "각인할 데이터가 없습니다. 사진은 워터마크 없이 나갑니다.",
       "gallery": "갤러리에서 선택",
       "galleryDenied": "사진 접근이 거부되어 이미지가 앱 안에만 있습니다. 갤러리에 저장하려면 ‘설정 › 권한’에서 허용하세요.",
       "galleryFailed": "이미지는 기록에 들어갔지만 기기가 갤러리 저장을 거부했습니다. 남은 공간을 확인한 뒤 다시 시도하세요.",
@@ -54,6 +57,7 @@
       "hiddenFields": "{count, plural, other {숨긴 항목}}: {fields} — ‘설정 › 항목과 위치’에서 켤 수 있습니다.",
       "keepMyAddress": "입력한 주소 유지",
       "locate": "위치 찾기",
+      "locateByGps": "GPS로 주소 찾기",
       "lookup": {
         "denied": "‘설정 › 권한’에서 위치를 허용하거나 주소를 입력하세요.",
         "disabled": "기기의 위치 기능이 꺼져 있습니다. 빠른 설정에서 켠 뒤 다시 시도하세요.",
@@ -65,6 +69,7 @@
       "noFieldsContinue": "그대로 계속",
       "noFieldsMessage": "각인할 내용이 있는 항목이 없습니다. 항목을 채우거나 ‘설정 › 항목과 위치’를 확인하세요.",
       "noFieldsTitle": "이 사진에는 워터마크가 들어가지 않습니다",
+      "noPhotoHint": "사진을 찍거나 갤러리에서 골라 시작하세요.",
       "noPhotoSelected": "선택된 사진 없음",
       "openFailed": "사진을 열지 못했습니다. 다시 시도하세요.",
       "permissionMessage": "계속하려면 ‘설정 › 권한’에서 접근을 허용하세요.",
@@ -94,6 +99,12 @@
       "weekdayHint": "월",
       "weekdayShort": "요일"
     },
+    "colorPicker": {
+      "hue": "색상",
+      "other": "다른 색 고르기",
+      "saturationBrightness": "채도와 명도",
+      "use": "이 색 사용"
+    },
     "common": {
       "back": "뒤로",
       "cancel": "취소",
@@ -111,6 +122,7 @@
       "yes": "예"
     },
     "gallery": {
+      "cancelSelection": "선택 취소",
       "clear": "기록 지우기",
       "clearConfirm": "지우기",
       "clearMessage": "Lymark의 기록이 삭제됩니다. 기기 갤러리에 이미 저장된 이미지는 영향을 받지 않습니다.",
@@ -119,7 +131,18 @@
       "empty": "아직 사진이 없습니다",
       "emptyAction": "촬영으로 이동",
       "emptyDescription": "워터마크를 넣어 내보낸 사진이 날짜, 장소, 코드와 함께 여기에 표시됩니다.",
+      "filteredCount": "{total, plural, other {#장 중 {shown}장}}",
+      "noResults": "‘{query}’에 해당하는 사진이 없습니다.",
       "photoLabel": "{when}의 사진",
+      "removeMessage": "기록이 Lymark에서 삭제됩니다. 기기 갤러리에 이미 저장된 이미지는 영향을 받지 않습니다.",
+      "removeTitle": "{count, plural, other {기록 #건 삭제}}",
+      "removed": "{count, plural, other {기록을 삭제했습니다.}}",
+      "saveDeniedMessage": "이미지를 기기 갤러리에 저장하려면 설정 › 권한에서 허용하세요.",
+      "saveDeniedTitle": "사진 접근이 거부됨",
+      "savedAll": "{count, plural, other {사진 #장을 기기 갤러리에 저장했습니다.}}",
+      "savedSome": "사진 {total}장 중 {saved}장을 저장했습니다.",
+      "searchPlaceholder": "주소, 날짜 또는 코드로 검색",
+      "selectedCount": "{count, plural, other {사진 #장 선택됨}}",
       "share": "공유",
       "title": "갤러리"
     },
@@ -216,21 +239,36 @@
     "tagline": "시각, 날짜, 장소가 담긴 워터마크",
     "title": "Lymark",
     "watermark": {
-      "backdrop": "어두운 배경 띠",
-      "backdropDescription": "사진의 밝은 부분에서도 대비를 유지합니다.",
-      "brandDescription": "사진에 들어가는 마크로, 별도의 모서리를 씁니다. 회사 마크를 쓸 수 있습니다.",
+      "accentColor": "세로 막대",
+      "backdropBandNote": "띠는 사진을 가장자리에서 가장자리까지 가로지르며, 각인이 고정된 쪽 가장자리에 붙습니다. 공사장, 마당, 복잡한 외벽처럼 어수선한 장면에서는 위에 붙인 스티커가 아니라 문서의 설명글처럼 보입니다.",
+      "backdropBlockNote": "배경은 글자 크기를 따르며, 주위에 여백을 둡니다.",
+      "backdropColor": "띠 색",
+      "backdropDescription": "사진의 밝은 부분에서도 대비를 유지합니다. 없으면 글자가 그림자만 달고 이미지 위에 바로 놓입니다.",
+      "backdropInnerRadius": "안쪽 모서리",
+      "backdropOpacity": "투명도",
+      "backdropOpacityValue": "불투명도 {percent}%",
+      "backdropRadius": "둥근 모서리",
+      "backdropRadiusSquare": "직각",
+      "backdropStyles": {
+        "band": "가로 전체 띠",
+        "block": "글자 뒤",
+        "none": "없음"
+      },
+      "backdropTitle": "배경 띠",
+      "brandDescription": "시계 위에 두면 로고와 부제가 있는 서명이 됩니다. 모서리에 두면 눈에 띄지 않는 한 줄이 됩니다.",
+      "brandFirstColor": "앞부분 색",
       "brandFirstHint": "건설",
       "brandFirstPart": "앞부분",
-      "brandModes": {
-        "custom": "내 마크",
-        "lymark": "Lymark"
-      },
       "brandNote": "뒷부분을 비우면 단색 마크가 됩니다. 긴 이름은 잘리지 않고 들어갈 때까지 작아집니다.",
+      "brandPlacements": {
+        "corner": "모서리",
+        "header": "시계 위",
+        "none": "없음"
+      },
+      "brandSecondColor": "뒷부분 색",
       "brandSecondHint": " 김",
       "brandSecondPart": "뒷부분",
       "brandTitle": "각인하는 마크",
-      "brandToggle": "마크 각인하기",
-      "brandToggleDescription": "끄면 마크가 전혀 없는 사진을 고객에게 전달합니다.",
       "codeDescription": "옆쪽에 두면 사진 내용과 자리를 다투지 않습니다.",
       "codePlacements": {
         "block": "데이터 옆",
@@ -245,6 +283,11 @@
         "red": "빨강",
         "white": "흰색"
       },
+      "colorsDescription": "사진에 들어가는 색은 회사가 정하는 것이지 앱이 정하는 것이 아닙니다. 여기서 바꿔도 화면 색은 바뀌지 않습니다.",
+      "colorsTitle": "각인 색상",
+      "complement": "부제",
+      "complementColor": "부제 색",
+      "complementHint": "점검 및 기술 보고서",
       "cornerConflict": "마크와 데이터가 같은 모서리에 있습니다. 사진에서 겹칩니다.",
       "fields": {
         "address": "주소 / 장소",
@@ -258,6 +301,17 @@
       "includeCountry": "국가 포함",
       "includeCountryDescription": "여러 나라에서 작업한다면 켜세요. 그렇지 않으면 사진의 자리만 차지합니다.",
       "legibilityTitle": "가독성",
+      "logoAdded": "로고를 마크 머리글에 추가했습니다.",
+      "logoAlignNote": "로고 높이는 글자를 따릅니다. 위쪽은 이름의 위쪽에, 아래쪽은 부제의 기준선에 맞춰집니다.",
+      "logoChosen": "선택한 로고",
+      "logoErrorMessage": "다른 이미지를 시도하세요. 배경이 투명한 PNG가 가장 잘 맞습니다.",
+      "logoErrorTitle": "이 파일은 사용할 수 없습니다",
+      "logoFormatNote": "배경이 투명한 PNG를 사용하세요. 흰 배경 JPG는 사진 위에 흰 직사각형으로 나타납니다. 이 형식은 투명도를 저장하지 않고, 앱은 어디가 배경인지 알 수 없습니다.",
+      "logoPermissionMessage": "로고 파일을 고르려면 설정 › 권한에서 허용하세요.",
+      "logoPermissionTitle": "사진 접근이 거부됨",
+      "logoPick": "로고 선택",
+      "logoRemove": "삭제",
+      "logoReplace": "로고 바꾸기",
       "positionDescription": "각인 묶음을 고정할 사진의 모서리.",
       "positionTitle": "위치",
       "positions": {
@@ -267,7 +321,8 @@
         "top-right": "오른쪽 위"
       },
       "previewCurrent": "‘촬영’ 탭의 현재 사진 위에 표시합니다.",
-      "previewEmpty": "실제 사진에서 확인하려면 ‘촬영’에서 사진을 고르세요.",
+      "previewEmpty": "밝은 색에서 어두운 색까지, 양 극단에서 가독성을 확인할 수 있습니다.",
+      "previewNoFields": "선택된 항목이 없습니다. 사진은 워터마크 없이 나갑니다.",
       "previewTitle": "미리보기",
       "reset": "기본값 복원",
       "sizeTitle": "글자 크기",
@@ -275,7 +330,8 @@
         "large": "크게",
         "medium": "보통",
         "small": "작게"
-      }
+      },
+      "textColor": "글자"
     }
   },
   "desktop": {

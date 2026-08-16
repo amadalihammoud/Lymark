@@ -32,6 +32,19 @@ jest.mock('expo-media-library', () => ({
   Asset: { create: jest.fn() },
 }));
 
+/**
+ * O `@shopify/react-native-skia` é ESM puro e não carrega sob o Jest sem o
+ * aparelho. `logo-image.ts` o importa para preparar o logotipo, e os dois
+ * lados de `logo-file` importam `logo-image`. O mock é vazio de propósito:
+ * nada dele é chamado aqui — só a superfície dos módulos é comparada.
+ */
+jest.mock('@shopify/react-native-skia', () => ({
+  Skia: {},
+  AlphaType: {},
+  ColorType: {},
+  ImageFormat: {},
+}));
+
 const PARES: { nome: string; nativo: string; web: string }[] = [
   {
     nome: 'photo-file',
@@ -42,6 +55,11 @@ const PARES: { nome: string; nativo: string; web: string }[] = [
     nome: 'export-photo',
     nativo: '@/features/watermark/export-photo',
     web: '@/features/watermark/export-photo.web',
+  },
+  {
+    nome: 'logo-file',
+    nativo: '@/features/watermark/logo-file',
+    web: '@/features/watermark/logo-file.web',
   },
   {
     nome: 'use-app-permissions',

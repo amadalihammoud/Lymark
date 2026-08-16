@@ -15,7 +15,6 @@
     "src/features/watermark/stamp-layout.ts",
     "src/features/watermark/preferences.ts",
     "src/features/watermark/build-content.ts",
-    "src/features/watermark/skia-stamp.ts",
-    "src/features/watermark/stamp-colors.ts"
+    "src/features/watermark/skia-stamp.ts"
   ]
 }

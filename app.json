@@ -11,7 +11,7 @@
     "icon": "./assets/images/icon.png",
     "scheme": "lymark",
     "userInterfaceStyle": "dark",
-    "backgroundColor": "#0D2137",
+    "backgroundColor": "#15243C",
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.lycosteam.lymark",
@@ -48,7 +48,7 @@
       "package": "com.lycosteam.lymark",
       "allowBackup": false,
       "adaptiveIcon": {
-        "backgroundColor": "#0D2137",
+        "backgroundColor": "#15243C",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
@@ -70,7 +70,7 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#0D2137",
+          "backgroundColor": "#15243C",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 120
         }
@@ -78,7 +78,7 @@
       [
         "expo-image-picker",
         {
-          "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem que receberá a marca d'água.",
+          "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem que receberá a marca d'água e o arquivo do logotipo da sua empresa.",
           "cameraPermission": "O Lymark usa a câmera para tirar a foto que receberá a marca d'água.",
           "microphonePermission": false
         }

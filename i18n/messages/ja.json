@@ -40,6 +40,8 @@
       "unavailableTitle": "一括処理は利用できません"
     },
     "capture": {
+      "accuracy": "位置の誤差は ±{meters} m です。",
+      "accuracyImprecise": "位置の誤差は ±{meters} m です。書き出す前に番地を確認してください。",
       "address": "住所",
       "addressFailedTitle": "住所を取得できませんでした",
       "addressHint": "「現在地」を押すか、住所を入力",
@@ -47,6 +49,7 @@
       "code": "コード",
       "dateHint": "2026年1月1日",
       "dateTimeGroup": "日付と時刻",
+      "emptyWarning": "刻印するデータがありません。写真は透かしなしで書き出されます。",
       "gallery": "ギャラリーから選択",
       "galleryDenied": "写真へのアクセスが拒否されたため、画像はアプリ内にのみあります。ギャラリーに保存するには「設定 › 権限」で許可してください。",
       "galleryFailed": "画像は履歴に入りましたが、端末がギャラリーへの書き込みを拒否しました。空き容量を確認してお試しください。",
@@ -54,6 +57,7 @@
       "hiddenFields": "{count, plural, other {非表示の項目}}：{fields} — 「設定 › 項目と位置」でオンにできます。",
       "keepMyAddress": "入力した住所のまま",
       "locate": "現在地",
+      "locateByGps": "GPS で住所を取得",
       "lookup": {
         "denied": "「設定 › 権限」で位置情報を許可するか、住所を入力してください。",
         "disabled": "端末の位置情報がオフです。クイック設定でオンにしてからお試しください。",
@@ -65,6 +69,7 @@
       "noFieldsContinue": "このまま続ける",
       "noFieldsMessage": "刻印する内容のある項目がありません。項目を入力するか、「設定 › 項目と位置」をご確認ください。",
       "noFieldsTitle": "この写真には透かしが入りません",
+      "noPhotoHint": "写真を撮るか、ギャラリーから選んで始めてください。",
       "noPhotoSelected": "写真が選ばれていません",
       "openFailed": "写真を開けませんでした。もう一度お試しください。",
       "permissionMessage": "続けるには「設定 › 権限」でアクセスを許可してください。",
@@ -94,6 +99,12 @@
       "weekdayHint": "月",
       "weekdayShort": "曜日"
     },
+    "colorPicker": {
+      "hue": "色相",
+      "other": "別の色を選ぶ",
+      "saturationBrightness": "彩度と明度",
+      "use": "この色を使う"
+    },
     "common": {
       "back": "戻る",
       "cancel": "キャンセル",
@@ -111,6 +122,7 @@
       "yes": "はい"
     },
     "gallery": {
+      "cancelSelection": "選択を解除",
       "clear": "履歴を消去",
       "clearConfirm": "消去",
       "clearMessage": "Lymarkの記録を削除します。端末のギャラリーに保存済みの画像はそのまま残ります。",
@@ -119,7 +131,18 @@
       "empty": "まだ写真はありません",
       "emptyAction": "撮影へ移動",
       "emptyDescription": "透かしを入れて書き出した写真が、日付・場所・コードとともにここに並びます。",
+      "filteredCount": "{total, plural, other {# 枚中 {shown} 枚を表示}}",
+      "noResults": "「{query}」に一致する写真はありません。",
       "photoLabel": "{when} の写真",
+      "removeMessage": "記録は Lymark から削除されます。端末のギャラリーに保存済みの画像には影響しません。",
+      "removeTitle": "{count, plural, other {# 件を履歴から削除}}",
+      "removed": "{count, plural, other {記録を削除しました。}}",
+      "saveDeniedMessage": "端末のギャラリーに画像を保存するには、「設定 › 権限」で許可してください。",
+      "saveDeniedTitle": "写真へのアクセスが拒否されました",
+      "savedAll": "{count, plural, other {# 枚の写真を端末のギャラリーに保存しました。}}",
+      "savedSome": "{total} 枚中 {saved} 枚を保存しました。",
+      "searchPlaceholder": "住所・日付・コードで検索",
+      "selectedCount": "{count, plural, other {# 枚を選択中}}",
       "share": "共有",
       "title": "ギャラリー"
     },
@@ -216,21 +239,36 @@
     "tagline": "時刻・日付・場所入りの透かし",
     "title": "Lymark",
     "watermark": {
-      "backdrop": "暗い下地の帯",
-      "backdropDescription": "写真の明るい部分でもコントラストを保ちます。",
-      "brandDescription": "写真に入るマークで、専用の隅に置かれます。自社のものを使えます。",
+      "accentColor": "縦線",
+      "backdropBandNote": "帯は写真の端から端まで伸び、刻印が寄せられている縁に接します。工事現場や資材置き場、情報の多い外観のような込み入った場面では、上から貼ったシールではなく、書類のキャプションのように見えます。",
+      "backdropBlockNote": "下地は文字の大きさに合わせて、周囲に余白を取ります。",
+      "backdropColor": "下地の色",
+      "backdropDescription": "写真の明るい部分でもコントラストを保ちます。下地がない場合、文字は影付きで画像に直接重なります。",
+      "backdropInnerRadius": "内側の角の丸み",
+      "backdropOpacity": "透明度",
+      "backdropOpacityValue": "不透明度 {percent}%",
+      "backdropRadius": "角の丸み",
+      "backdropRadiusSquare": "直角",
+      "backdropStyles": {
+        "band": "全幅の帯",
+        "block": "文字の背面",
+        "none": "なし"
+      },
+      "backdropTitle": "下地",
+      "brandDescription": "時刻の上に置くと、ロゴと補足を添えた署名になります。隅に置くと、控えめな一行になります。",
+      "brandFirstColor": "前半の色",
       "brandFirstHint": "建設",
       "brandFirstPart": "前半",
-      "brandModes": {
-        "custom": "自分のマーク",
-        "lymark": "Lymark"
-      },
       "brandNote": "後半を空にすると一色のマークになります。長い名前は切り取らず、収まるまで小さくします。",
+      "brandPlacements": {
+        "corner": "隅",
+        "header": "時刻の上",
+        "none": "なし"
+      },
+      "brandSecondColor": "後半の色",
       "brandSecondHint": " 山田",
       "brandSecondPart": "後半",
       "brandTitle": "刻印するマーク",
-      "brandToggle": "マークを刻印する",
-      "brandToggleDescription": "オフにすると、マークのない写真をお客様にお渡しできます。",
       "codeDescription": "側面に置けば、写真の中身と場所を取り合いません。",
       "codePlacements": {
         "block": "データの横",
@@ -245,6 +283,11 @@
         "red": "赤",
         "white": "白"
       },
+      "colorsDescription": "写真上の色は会社が決めるもので、アプリが決めるものではありません。ここを変えても画面の色は変わりません。",
+      "colorsTitle": "刻印の色",
+      "complement": "補足",
+      "complementColor": "補足の色",
+      "complementHint": "現地調査と技術報告",
       "cornerConflict": "マークとデータが同じ隅にあります。写真の上で重なります。",
       "fields": {
         "address": "住所・場所",
@@ -258,6 +301,17 @@
       "includeCountry": "国を含める",
       "includeCountryDescription": "国をまたいで作業する場合はオンにします。そうでなければ写真の場所を取るだけです。",
       "legibilityTitle": "読みやすさ",
+      "logoAdded": "ロゴをマークのヘッダーに追加しました。",
+      "logoAlignNote": "ロゴの高さは文字に合わせて決まります。上端は名前の上端に、下端は補足のベースラインにそろいます。",
+      "logoChosen": "選択中のロゴ",
+      "logoErrorMessage": "別の画像を試してください。背景が透明な PNG が最も適しています。",
+      "logoErrorTitle": "このファイルは使えません",
+      "logoFormatNote": "背景が透明な PNG を使ってください。白背景の JPG は写真の上で白い長方形になります。この形式は透明度を保存できず、アプリにはどこが背景か判断できません。",
+      "logoPermissionMessage": "ロゴのファイルを選ぶには、「設定 › 権限」で許可してください。",
+      "logoPermissionTitle": "写真へのアクセスが拒否されました",
+      "logoPick": "ロゴを選ぶ",
+      "logoRemove": "削除",
+      "logoReplace": "ロゴを変更",
       "positionDescription": "刻印のかたまりを固定する、写真の隅。",
       "positionTitle": "位置",
       "positions": {
@@ -267,7 +321,8 @@
         "top-right": "右上"
       },
       "previewCurrent": "「撮影」タブの現在の写真の上に表示します。",
-      "previewEmpty": "実際の写真で確認するには、「撮影」で写真を選んでください。",
+      "previewEmpty": "明るい色から暗い色までのグラデーションで、両端での読みやすさを確認できます。",
+      "previewNoFields": "項目が選ばれていません。写真は透かしなしで書き出されます。",
       "previewTitle": "プレビュー",
       "reset": "初期値に戻す",
       "sizeTitle": "文字の大きさ",
@@ -275,7 +330,8 @@
         "large": "大",
         "medium": "中",
         "small": "小"
-      }
+      },
+      "textColor": "文字"
     }
   },
   "desktop": {

@@ -3,9 +3,9 @@ import {
   useTypeface,
   type SkCanvas,
   type SkFont,
+  type SkImage,
   type SkTypeface,
 } from '@shopify/react-native-skia';
-
 import type { StampScript } from './stamp-script';
 
 import type { MeasureText, StampFont, StampGeometry } from './stamp-layout';
@@ -101,7 +101,17 @@ export type StampRenderer = {
  * Os objetos `SkFont` são caros de criar e a geometria pede a medida de cada
  * texto várias vezes — daí o cache por família e corpo.
  */
-export function createStampRenderer(typefaces: StampTypefaces): StampRenderer {
+export function createStampRenderer(
+  typefaces: StampTypefaces,
+  /**
+   * Imagens já decodificadas, indexadas pelo caminho que a geometria devolve.
+   *
+   * Decodificar é assíncrono e o desenho não é: pedir os bytes aqui dentro
+   * obrigaria o layout a esperar, a cada quadro do preview. Quem chama resolve
+   * antes — a tela por um hook, a exportação por um `await`.
+   */
+  images?: Map<string, SkImage>,
+): StampRenderer {
   const fonts = new Map<string, SkFont>();
 
   const fontFor = (family: StampFont, size: number) => {
@@ -127,12 +137,35 @@ export function createStampRenderer(typefaces: StampTypefaces): StampRenderer {
 
     for (const rect of geometry.rects) {
       paint.setColor(Skia.Color(rect.color));
+      // A opacidade é do retângulo, e não da cor: assim o seletor guarda um
+      // hexadecimal limpo e a transparência continua sendo um controle à
+      // parte, que é como ela aparece na tela.
+      paint.setAlphaf(rect.opacity ?? 1);
+
       const area = Skia.XYWHRect(rect.x, rect.y, rect.width, rect.height);
+
       if (rect.radius) {
         canvas.drawRRect(Skia.RRectXY(area, rect.radius, rect.radius), paint);
       } else {
         canvas.drawRect(area, paint);
       }
+    }
+
+    paint.setAlphaf(1);
+
+    for (const item of geometry.images) {
+      const image = images?.get(item.path);
+      // Sem os bytes carregados o logotipo simplesmente não é desenhado. É o
+      // comportamento certo: um retângulo de espera carimbado numa foto
+      // exportada seria pior do que a ausência dele.
+      if (!image) continue;
+
+      canvas.drawImageRect(
+        image,
+        Skia.XYWHRect(0, 0, image.width(), image.height()),
+        Skia.XYWHRect(item.x, item.y, item.width, item.height),
+        paint,
+      );
     }
 
     // Sem a faixa de fundo — que vem desligada por padrão — é esta sombra que

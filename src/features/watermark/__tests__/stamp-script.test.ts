@@ -135,10 +135,10 @@ describe('scriptForStamp', () => {
     // A marca sai no mesmo typeface dos dados. Sem isto, o nome da empresa
     // sairia em quadradinhos com o resto da foto perfeito.
     const preferencias = com({
-      brandMode: 'custom',
+      brandPlacement: 'corner',
       brandParts: [
-        { text: 'Техно', color: 'white' },
-        { text: 'Сервис', color: 'amber' },
+        { text: 'Техно', color: '#FFFFFF' },
+        { text: 'Сервис', color: '#F3C218' },
       ],
     });
 
@@ -147,35 +147,38 @@ describe('scriptForStamp', () => {
 
   it('marca desligada não conta, mesmo preenchida', () => {
     const preferencias = com({
-      showBrand: false,
-      brandMode: 'custom',
+      brandPlacement: 'none',
       brandParts: [
-        { text: 'Техно', color: 'white' },
-        { text: 'Сервис', color: 'amber' },
+        { text: 'Техно', color: '#FFFFFF' },
+        { text: 'Сервис', color: '#F3C218' },
       ],
     });
 
     expect(scriptForStamp(metadata, preferencias)).toBe('latin');
   });
 
-  it('a marca do Lymark não é consultada — é latina por definição', () => {
-    const preferencias = com({
-      brandMode: 'lymark',
-      brandParts: [
-        { text: '東京', color: 'white' },
-        { text: 'サービス', color: 'amber' },
-      ],
+  it('o complemento conta no cabeçalho, e só nele', () => {
+    // Num canto o complemento não é desenhado; consultá-lo trocaria a fonte
+    // de toda a foto por um texto que não chega a ela.
+    const cabecalho = com({
+      brandPlacement: 'header',
+      brandComplement: 'Технический осмотр',
+    });
+    const canto = com({
+      brandPlacement: 'corner',
+      brandComplement: 'Технический осмотр',
     });
 
-    expect(scriptForStamp(metadata, preferencias)).toBe('latin');
+    expect(scriptForStamp(metadata, cabecalho)).toBe('cyrillic');
+    expect(scriptForStamp(metadata, canto)).toBe('latin');
   });
 
   it('razão social em japonês fica sem fonte, como qualquer outro texto', () => {
     const preferencias = com({
-      brandMode: 'custom',
+      brandPlacement: 'corner',
       brandParts: [
-        { text: '東京', color: 'white' },
-        { text: 'サービス', color: 'amber' },
+        { text: '東京', color: '#FFFFFF' },
+        { text: 'サービス', color: '#F3C218' },
       ],
     });
 

@@ -57,6 +57,7 @@ export function MetadataForm({
   onLocate,
   locating = false,
   disabled = false,
+  addressHint,
 }: {
   metadata: CaptureMetadata;
   /** Quais campos serão carimbados — define o que aparece aqui. */
@@ -69,6 +70,8 @@ export function MetadataForm({
   locating?: boolean;
   /** Trava o formulário enquanto a imagem está sendo gerada. */
   disabled?: boolean;
+  /** Precisão da última leitura de GPS, quando houver. */
+  addressHint?: { text: string; imprecise: boolean } | null;
 }) {
   const t = useTranslations('app');
   const format = useFormatter();
@@ -180,16 +183,26 @@ export function MetadataForm({
           multiline
           trailing={
             <Button
-              label={t('capture.locate')}
-              icon="location"
+              // Mira, e não o círculo de duas setas: aquele significa
+              // "recarregar", e o app já o usa em "Começar nova captura" e
+              // "Verificar novamente". Aqui a ação é descobrir onde estou —
+              // que é o ícone que mapa de celular consagrou.
+              label={t('capture.locateByGps')}
+              icon="locate"
+              iconOnly
               variant="primary"
               onPress={onLocate}
               loading={locating}
               disabled={disabled}
-              style={styles.trailingAction}
             />
           }
         />
+      ) : null}
+
+      {visibleFields.address && addressHint ? (
+        <Text style={[styles.addressHint, addressHint.imprecise && styles.addressHintWarning]}>
+          {addressHint.text}
+        </Text>
       ) : null}
 
       {visibleFields.code ? (
@@ -273,6 +286,14 @@ const styles = StyleSheet.create({
   },
   trailingAction: {
     paddingHorizontal: spacing.lg,
+  },
+  addressHint: {
+    ...typography.caption,
+    marginTop: -spacing.sm,
+  },
+  /** Acima do raio em que o número da fachada deixa de ser confiável. */
+  addressHintWarning: {
+    color: colors.accent,
   },
   hiddenHint: {
     ...typography.caption,

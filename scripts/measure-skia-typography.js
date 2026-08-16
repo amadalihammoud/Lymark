@@ -106,6 +106,35 @@ CanvasKitInit({ locateFile: (f) => path.join(NM, 'canvaskit-wasm/bin', f) }).the
     console.log(`--- ${name}: ascent ${b.ascent.toFixed(1)} descent ${b.descent.toFixed(1)}`);
   }
 
+  // O cabeçalho da marca ancora o logotipo entre o **topo da tinta do nome** e a
+  // **base da tinta do complemento** — a mesma regra que a barra âmbar usa com
+  // os algarismos. Para isso é preciso saber onde a tinta cai, e não onde a
+  // caixa de linha cai.
+  //
+  // Três medidas, e não uma: caixa alta reta ('H'), caixa alta redonda ('O',
+  // que ultrapassa a linha por desenho), e caixa baixa com perna ('gyp'). O
+  // nome de uma empresa contém as três, e ancorar só pelo 'H' deixaria o 'O' de
+  // "AUTOGLASS" sobrando acima do logotipo.
+  console.log('\n=== Barlow 500 — âncoras do cabeçalho da marca ===');
+  const flat = inkBox(CanvasKit, tf.medium, S, 'HEIT');
+  const round = inkBox(CanvasKit, tf.medium, S, 'HEITOSGQ');
+  const tail = inkBox(CanvasKit, tf.medium, S, 'gyp');
+  const mixed = inkBox(CanvasKit, tf.medium, S, 'Hxgyp');
+
+  console.log('caixa alta reta   topo:', (flat.inkTopFromBaseline / S).toFixed(4));
+  console.log('caixa alta redonda topo:', (round.inkTopFromBaseline / S).toFixed(4));
+  console.log('BRAND_CAP_TOP_RATIO       =', (round.inkTopFromBaseline / S).toFixed(4));
+  console.log(
+    'BRAND_DESCENDER_RATIO     =',
+    ((tail.inkTopFromBaseline + tail.inkHeight) / S).toFixed(4),
+  );
+  console.log(
+    'misto (Hxgyp) topo/base   :',
+    (mixed.inkTopFromBaseline / S).toFixed(4),
+    '/',
+    ((mixed.inkTopFromBaseline + mixed.inkHeight) / S).toFixed(4),
+  );
+
   // Verificação contra a referência: normalizada a 1128 px de largura, a hora
   // media 219 px. O corpo equivalente vem da razão calibrada 47/330.
   const sizeAt1128 = (47 / 355.4) * 1128;

@@ -8,7 +8,7 @@ import { useTranslations } from 'use-intl';
 import { AppBar } from '@/components/brand/app-header';
 import { useLayoutMode } from '@/lib/breakpoints';
 import { isWeb } from '@/lib/file-storage';
-import { colors, typography } from '@/theme';
+import { colors, fontFamily, typography } from '@/theme';
 
 /**
  * As três áreas do app.
@@ -146,8 +146,9 @@ const styles = StyleSheet.create({
     display: 'none',
   },
   tabLabel: {
+    fontFamily: fontFamily.uiMedium,
     fontSize: 11,
-    fontWeight: '600',
+    fontWeight: '500',
   },
   barLink: {
     ...typography.caption,

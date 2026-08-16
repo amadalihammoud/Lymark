@@ -14,7 +14,7 @@ import {
   useAppPermissions,
   type PermissionSnapshot,
 } from '@/hooks/use-app-permissions';
-import { colors, spacing, typography } from '@/theme';
+import { colors, fontFamily, spacing, typography } from '@/theme';
 
 /**
  * Permissões.
@@ -127,6 +127,7 @@ const styles = StyleSheet.create({
   },
   grantedLabel: {
     color: colors.success,
+    fontFamily: fontFamily.uiBold,
     fontWeight: '700',
   },
   action: {

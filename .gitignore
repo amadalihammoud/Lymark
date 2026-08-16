@@ -47,3 +47,4 @@ scripts/harness/renders/
 scripts/harness/diff/
 scripts/harness/lib/.rn-skia-shim.js
 .harness-build/
+docs/*.build.html

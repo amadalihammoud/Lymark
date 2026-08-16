@@ -40,6 +40,8 @@
       "unavailableTitle": "Elaborazione in blocco non disponibile"
     },
     "capture": {
+      "accuracy": "Posizione con ±{meters} m di incertezza.",
+      "accuracyImprecise": "Posizione con ±{meters} m di incertezza: controlla il numero civico prima di esportare.",
       "address": "Indirizzo",
       "addressFailedTitle": "Indirizzo non ottenuto",
       "addressHint": "Tocca localizza, oppure digita l’indirizzo",
@@ -47,6 +49,7 @@
       "code": "Codice",
       "dateHint": "1 gen 2026",
       "dateTimeGroup": "Data e ora",
+      "emptyWarning": "Nessun dato verrà timbrato: la foto uscirà senza filigrana.",
       "gallery": "Scegli dalla galleria",
       "galleryDenied": "L’accesso alle foto è stato negato, quindi l’immagine esiste solo dentro l’app. Consentilo in Impostazioni › Autorizzazioni per salvarla nella galleria.",
       "galleryFailed": "L’immagine è entrata nella cronologia, ma il dispositivo ha rifiutato di scriverla nella galleria. Controlla lo spazio libero e riprova.",
@@ -54,6 +57,7 @@
       "hiddenFields": "{count, plural, one {Campo nascosto} other {Campi nascosti}}: {fields} — attivali in Impostazioni › Campi e posizione.",
       "keepMyAddress": "Tieni il mio",
       "locate": "Localizza",
+      "locateByGps": "Individuare l’indirizzo con il GPS",
       "lookup": {
         "denied": "Consenti la posizione in Impostazioni › Autorizzazioni, oppure digita l’indirizzo.",
         "disabled": "La posizione del dispositivo è disattivata. Attivala dalle impostazioni rapide e riprova.",
@@ -65,6 +69,7 @@
       "noFieldsContinue": "Continua così",
       "noFieldsMessage": "Nessun campo ha contenuto da timbrare. Compila i campi, oppure rivedi Impostazioni › Campi e posizione.",
       "noFieldsTitle": "La foto uscirà senza filigrana",
+      "noPhotoHint": "Scatta una foto o scegline una dalla galleria per iniziare.",
       "noPhotoSelected": "Nessuna foto selezionata",
       "openFailed": "Non è stato possibile aprire la foto. Riprova.",
       "permissionMessage": "Consenti l’accesso in Impostazioni › Autorizzazioni per continuare.",
@@ -94,6 +99,12 @@
       "weekdayHint": "Lun",
       "weekdayShort": "Giorno"
     },
+    "colorPicker": {
+      "hue": "Tonalità",
+      "other": "scegliere un altro colore",
+      "saturationBrightness": "Saturazione e luminosità",
+      "use": "Usa questo colore"
+    },
     "common": {
       "back": "Indietro",
       "cancel": "Annulla",
@@ -111,6 +122,7 @@
       "yes": "Sì"
     },
     "gallery": {
+      "cancelSelection": "Annulla selezione",
       "clear": "Cancella cronologia",
       "clearConfirm": "Cancella",
       "clearMessage": "I record di Lymark verranno eliminati. Le immagini già salvate nella galleria del dispositivo non vengono toccate.",
@@ -119,7 +131,18 @@
       "empty": "Nessuna foto ancora",
       "emptyAction": "Vai ad Acquisizione",
       "emptyDescription": "Le foto che esporti con la filigrana compaiono qui, con data, luogo e codice.",
+      "filteredCount": "{shown} su {total, plural, one {# foto} other {# foto}}",
+      "noResults": "Nessuna foto trovata per “{query}”.",
       "photoLabel": "Foto del {when}",
+      "removeMessage": "Le voci escono da Lymark. Le immagini già salvate nella galleria del dispositivo non vengono toccate.",
+      "removeTitle": "{count, plural, one {Rimuovi dalla cronologia} other {Rimuovi # voci}}",
+      "removed": "{count, plural, one {Voce rimossa.} other {Voci rimosse.}}",
+      "saveDeniedMessage": "Consentilo in Impostazioni › Permessi per salvare le immagini nella galleria del dispositivo.",
+      "saveDeniedTitle": "Accesso alle foto negato",
+      "savedAll": "{count, plural, one {Una foto salvata nella galleria del dispositivo.} other {# foto salvate nella galleria del dispositivo.}}",
+      "savedSome": "{saved} foto su {total} salvate.",
+      "searchPlaceholder": "Cerca per indirizzo, data o codice",
+      "selectedCount": "{count, plural, one {# foto selezionata} other {# foto selezionate}}",
       "share": "Condividi",
       "title": "Galleria"
     },
@@ -216,21 +239,36 @@
     "tagline": "Filigrana con ora, data e luogo",
     "title": "Lymark",
     "watermark": {
-      "backdrop": "Fascia scura di sfondo",
-      "backdropDescription": "Garantisce contrasto sulle zone chiare della foto.",
-      "brandDescription": "Il marchio che va sulla foto, in un angolo suo. Può essere quello della tua azienda.",
+      "accentColor": "Barra verticale",
+      "backdropBandNote": "La fascia attraversa la foto da bordo a bordo e si appoggia al margine in cui il timbro è ancorato. Su una scena affollata — cantiere, piazzale, facciata piena — si legge come didascalia del documento, non come un adesivo appiccicato sopra.",
+      "backdropBlockNote": "Lo sfondo segue la dimensione del testo, con un margine intorno.",
+      "backdropColor": "Colore della fascia",
+      "backdropDescription": "Garantisce contrasto sulle zone chiare della foto. Senza, il testo poggia direttamente sull’immagine, con un’ombra.",
+      "backdropInnerRadius": "Angoli interni",
+      "backdropOpacity": "Trasparenza",
+      "backdropOpacityValue": "{percent}% opaca",
+      "backdropRadius": "Angoli arrotondati",
+      "backdropRadiusSquare": "Retti",
+      "backdropStyles": {
+        "band": "Fascia continua",
+        "block": "Dietro il testo",
+        "none": "Nessuna"
+      },
+      "backdropTitle": "Fascia di sfondo",
+      "brandDescription": "Sopra l’orologio diventa una firma, con logo e complemento. In un angolo, è una riga discreta.",
+      "brandFirstColor": "Colore della prima parte",
       "brandFirstHint": "Costruzioni",
       "brandFirstPart": "Prima parte",
-      "brandModes": {
-        "custom": "Il mio marchio",
-        "lymark": "Lymark"
-      },
       "brandNote": "Lascia vuota la seconda parte per un marchio a un solo colore. Un nome lungo viene ridotto finché entra, invece di essere tagliato.",
+      "brandPlacements": {
+        "corner": "In un angolo",
+        "header": "Sopra l’orologio",
+        "none": "Nessuno"
+      },
+      "brandSecondColor": "Colore della seconda parte",
       "brandSecondHint": " Rossi",
       "brandSecondPart": "Seconda parte",
       "brandTitle": "Marchio timbrato",
-      "brandToggle": "Timbrare un marchio",
-      "brandToggleDescription": "Disattiva per consegnare al cliente una foto senza alcun marchio.",
       "codeDescription": "Di lato non contende lo spazio al contenuto dell’immagine.",
       "codePlacements": {
         "block": "Accanto ai dati",
@@ -245,6 +283,11 @@
         "red": "Rosso",
         "white": "Bianco"
       },
+      "colorsDescription": "Il colore sulla foto lo sceglie l’azienda, non l’applicazione: cambiarlo qui non cambia i colori dello schermo.",
+      "colorsTitle": "Colori del timbro",
+      "complement": "Complemento",
+      "complementColor": "Colore del complemento",
+      "complementHint": "Sopralluoghi e perizie tecniche",
       "cornerConflict": "Il marchio e i dati sono nello stesso angolo: si sovrapporranno sulla foto.",
       "fields": {
         "address": "Indirizzo / Luogo",
@@ -258,6 +301,17 @@
       "includeCountry": "Includere il paese",
       "includeCountryDescription": "Attivalo se lavori in più di un paese. Altrimenti occupa solo spazio sulla foto.",
       "legibilityTitle": "Leggibilità",
+      "logoAdded": "Logo aggiunto all’intestazione del marchio.",
+      "logoAlignNote": "L’altezza del logo segue il testo: il bordo superiore si allinea a quello del nome, la base alla linea di base del complemento.",
+      "logoChosen": "Logo scelto",
+      "logoErrorMessage": "Prova un’altra immagine. Un PNG con sfondo trasparente è il formato che funziona meglio.",
+      "logoErrorTitle": "Impossibile usare questo file",
+      "logoFormatNote": "Usa un PNG con sfondo trasparente. Un JPG con sfondo bianco diventa un rettangolo bianco sulla foto: il formato non conserva la trasparenza, e l’applicazione non ha modo di indovinare cosa sia sfondo.",
+      "logoPermissionMessage": "Consentilo in Impostazioni › Permessi per scegliere il file del logo.",
+      "logoPermissionTitle": "Accesso alle foto negato",
+      "logoPick": "Scegli logo",
+      "logoRemove": "Rimuovi",
+      "logoReplace": "Cambia logo",
       "positionDescription": "Angolo della foto a cui il blocco è ancorato.",
       "positionTitle": "Posizione",
       "positions": {
@@ -267,7 +321,8 @@
         "top-right": "In alto a destra"
       },
       "previewCurrent": "Sulla foto attuale della scheda Acquisizione.",
-      "previewEmpty": "Scegli una foto in Acquisizione per vederla sull’immagine reale.",
+      "previewEmpty": "Dal chiaro allo scuro, per controllare la leggibilità ai due estremi.",
+      "previewNoFields": "Nessun campo selezionato: la foto esce senza filigrana.",
       "previewTitle": "Anteprima",
       "reset": "Ripristina i valori predefiniti",
       "sizeTitle": "Dimensione del testo",
@@ -275,7 +330,8 @@
         "large": "Grande",
         "medium": "Medio",
         "small": "Piccolo"
-      }
+      },
+      "textColor": "Testo"
     }
   },
   "desktop": {

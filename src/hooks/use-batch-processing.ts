@@ -21,8 +21,8 @@ import { extractDateTimeFromExif } from '@/lib/exif';
 import { saveFileToOutput, getOutputFolder } from '@/lib/file-storage';
 import { composeStampedPhoto } from '@/features/watermark/render-photo';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
+import { loadStampImages } from '@/features/watermark/stamp-images';
 import { scriptForStamp } from '@/features/watermark/stamp-script';
-import { STAMP_COLORS } from '@/features/watermark/stamp-colors';
 import { useSettings } from '@/contexts/settings-context';
 import { STAMP_LOCALE } from '@i18n/calendar';
 import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
@@ -105,6 +105,10 @@ export function useBatchProcessing() {
           throw new Error('As fontes do carimbo ainda estão carregando.');
         }
 
+        // Decodificado por foto, e não uma vez por lote, para não segurar um
+        // bitmap vivo entre iterações — o lote pode ter centenas de imagens.
+        const images = await loadStampImages(preferences.brandLogoPath);
+
         // LER EXIF DA FOTO INDIVIDUAL (requisito 2.4)
         //
         // Data, hora e dia da semana saem do MESMO `Date`. Antes, a data vinha
@@ -129,8 +133,7 @@ export function useBatchProcessing() {
           photoUri: photo.uri,
           metadata: photoMetadata,
           preferences,
-          colors: STAMP_COLORS,
-          renderer: createStampRenderer(stampTypefaces),
+          renderer: createStampRenderer(stampTypefaces, images),
         });
 
         // Nome estável e sem colisão: o carimbo do relógio não basta quando

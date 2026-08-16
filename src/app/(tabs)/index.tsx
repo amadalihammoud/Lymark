@@ -22,8 +22,8 @@ import {
 import { buildWatermarkContent } from '@/features/watermark/build-content';
 import { saveToDeviceGallery, shareWatermarkedPhoto } from '@/features/watermark/export-photo';
 import { renderStampedPhoto } from '@/features/watermark/render-photo';
-import { STAMP_COLORS } from '@/features/watermark/stamp-canvas';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
+import { loadStampImages } from '@/features/watermark/stamp-images';
 import { scriptForStamp } from '@/features/watermark/stamp-script';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
 import {
@@ -66,6 +66,14 @@ type PendingAction = 'save' | 'share';
  * ação em andamento, a referência da view a ser capturada e o controle de qual
  * busca de endereço ainda é válida.
  */
+/**
+ * Acima deste raio, o número da fachada deixa de ser confiável.
+ *
+ * Vinte metros é cerca de duas casas de frente: dentro disso o geocodificador
+ * costuma acertar a porta; acima, ele chuta o vizinho.
+ */
+const IMPRECISE_ACCURACY_M = 20;
+
 export default function CaptureScreen() {
   const t = useTranslations('app.capture');
   const tCommon = useTranslations('app.common');
@@ -85,6 +93,13 @@ export default function CaptureScreen() {
 
   const [pending, setPending] = useState<PendingAction | null>(null);
   const [picking, setPicking] = useState(false);
+  /**
+   * Precisão da última leitura de GPS, em metros.
+   *
+   * Some assim que o usuário digita: a partir daí o endereço é o que ele
+   * afirma, e um raio de incerteza ao lado dele passaria a mentir.
+   */
+  const [accuracy, setAccuracy] = useState<number | null>(null);
   /*
    * O alfabeto vem do conteúdo, e não do idioma escolhido: o endereço chega
    * do geocodificador no alfabeto do país onde a foto foi tirada. Interface
@@ -135,8 +150,28 @@ export default function CaptureScreen() {
 
   const handleChangeField = (key: WatermarkFieldKey, value: string) => {
     if (key === 'code') codeEdited.current = true;
+    if (key === 'address') setAccuracy(null);
     setField(key, value);
   };
+
+  /**
+   * O GPS resolve a rua, não a porta. Dizer o raio é o que permite decidir se
+   * o número da fachada merece conferência — sem precisar de mapa, e sem
+   * mandar coordenada nenhuma para lugar nenhum.
+   */
+  const addressHint = (() => {
+    if (accuracy === null) return null;
+
+    const meters = Math.round(accuracy);
+    const imprecise = meters > IMPRECISE_ACCURACY_M;
+
+    return {
+      text: imprecise
+        ? t('accuracyImprecise', { meters })
+        : t('accuracy', { meters }),
+      imprecise,
+    };
+  })();
 
   const runPick = async (open: () => Promise<PhotoPickResult>) => {
     if (picking || busy) return;
@@ -153,7 +188,7 @@ export default function CaptureScreen() {
     lookupToken.current = token;
 
     const addressWhenRequested = addressRef.current;
-    const { status, address } = await lookup();
+    const { status, address, accuracy: reading } = await lookup();
 
     if (token !== lookupToken.current) return;
 
@@ -171,7 +206,13 @@ export default function CaptureScreen() {
         title: t('replaceAddressTitle'),
         message: t('replaceAddressMessage', { address }),
         actions: [
-          { label: t('useGpsAddress'), onPress: () => setField('address', address) },
+          {
+            label: t('useGpsAddress'),
+            onPress: () => {
+              setField('address', address);
+              setAccuracy(reading);
+            },
+          },
           { label: t('keepMyAddress'), variant: 'ghost' },
         ],
       });
@@ -179,6 +220,7 @@ export default function CaptureScreen() {
     }
 
     setField('address', address);
+    setAccuracy(reading);
   };
 
   const handleReset = useCallback(() => {
@@ -192,6 +234,7 @@ export default function CaptureScreen() {
           onPress: () => {
             lookupToken.current += 1;
             codeEdited.current = false;
+            setAccuracy(null);
             resetDraft();
           },
         },
@@ -236,12 +279,16 @@ export default function CaptureScreen() {
     lookupToken.current += 1;
     setPending(action);
     try {
+      // O logotipo é decodificado aqui, e não dentro do desenho: compor sobre
+      // um bitmap de 4000 px já é a parte cara, e o desenho em si precisa ser
+      // síncrono.
+      const images = await loadStampImages(preferences.brandLogoPath);
+
       const path = await renderStampedPhoto({
         photoUri: photo.uri,
         metadata: draft.metadata,
         preferences,
-        colors: STAMP_COLORS,
-        renderer: createStampRenderer(stampTypefaces),
+        renderer: createStampRenderer(stampTypefaces, images),
       });
       addEntry({ path, metadata: draft.metadata, stampedFields });
 
@@ -360,13 +407,12 @@ export default function CaptureScreen() {
         }}
         onLocate={handleLocate}
         locating={locating}
+        addressHint={addressHint}
         disabled={busy}
       />
 
       {content.isEmpty ? (
-        <Text style={styles.warning}>
-          Nenhum dado será carimbado — a foto sairá sem marca d’água.
-        </Text>
+        <Text style={styles.warning}>{t('emptyWarning')}</Text>
       ) : null}
     </>
   );

@@ -1,10 +1,11 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslations } from 'use-intl';
 
 import { StampCanvas } from '@/features/watermark/stamp-canvas';
-import { colors, radius, typography } from '@/theme';
+import { colors, radius, spacing, typography } from '@/theme';
 import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/types';
 
 import { fitInside } from './fit-inside';
@@ -116,6 +117,16 @@ export function PhotoPreview({
     </View>
   ) : null;
 
+  // O ícone leva o olho para as duas ações logo abaixo; só o texto deixava a
+  // maior área da tela sem direção nenhuma.
+  const emptyState = (
+    <View style={styles.emptyState}>
+      <Ionicons name="image-outline" size={44} color={colors.textSubtle} />
+      <Text style={typography.body}>{t('capture.noPhotoSelected')}</Text>
+      <Text style={[typography.caption, styles.emptyHint]}>{t('capture.noPhotoHint')}</Text>
+    </View>
+  );
+
   /*
    * No modo limitado a área reservada é que é fixa, e a foto se encaixa dentro
    * dela. Antes era o contrário: o quadro ERA o espaço, então trocar de estado
@@ -131,7 +142,7 @@ export function PhotoPreview({
     return (
       <View style={styles.fitArea} onLayout={measure}>
         <View style={[styles.reservedArea, reserved]}>
-          {stampedPhoto ?? <Text style={typography.body}>{t('capture.noPhotoSelected')}</Text>}
+          {stampedPhoto ?? emptyState}
         </View>
       </View>
     );
@@ -140,9 +151,7 @@ export function PhotoPreview({
   return (
     <View style={styles.fullWidth} onLayout={measure}>
       {stampedPhoto ?? (
-        <View style={[styles.frame, styles.placeholder, frame]}>
-          <Text style={typography.body}>{t('capture.noPhotoSelected')}</Text>
-        </View>
+        <View style={[styles.frame, styles.placeholder, frame]}>{emptyState}</View>
       )}
     </View>
   );
@@ -190,5 +199,13 @@ const styles = StyleSheet.create({
   placeholder: {
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  emptyState: {
+    alignItems: 'center',
+    gap: spacing.sm,
+    padding: spacing.xl,
+  },
+  emptyHint: {
+    textAlign: 'center',
   },
 });

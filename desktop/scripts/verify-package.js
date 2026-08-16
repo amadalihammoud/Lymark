@@ -62,6 +62,13 @@ const FONTES = [
   'Barlow_500Medium',
   'RobotoCondensed_400Regular',
   'RobotoCondensed_500Medium',
+  // As da interface entram pelo mesmo `useFonts` da raiz. Faltando uma, o app
+  // abre com a fonte do sistema no lugar do Manual de Marca — sem erro, e sem
+  // ninguém notar até comparar com o celular.
+  'SpaceGrotesk_400Regular',
+  'SpaceGrotesk_500Medium',
+  'SpaceGrotesk_700Bold',
+  'IBMPlexMono_500Medium',
 ];
 const empacotadas = [...noPacote].filter((f) => f.endsWith('.ttf'));
 
