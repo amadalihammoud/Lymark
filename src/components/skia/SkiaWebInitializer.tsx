@@ -10,7 +10,12 @@
  * que o app possa esperar se necessário.
  */
 
-import { LoadSkiaWeb } from '@shopify/react-native-skia/lib/commonjs/web';
+// Da build `module`, e NÃO da `commonjs`: o bundle da web resolve o resto do
+// Skia pela build module, e importar o carregador da outra criava DUAS cópias
+// do pacote — o CanvasKit era inicializado numa, e `useTypeface`/`Canvas`
+// liam `undefined` na outra ("Cannot read properties of undefined (reading
+// 'Typeface')"): o carimbo nunca desenhava na web.
+import { LoadSkiaWeb } from '@shopify/react-native-skia/lib/module/web';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { canvasKitWasmUrl } from './wasm-url';

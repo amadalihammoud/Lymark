@@ -30,8 +30,15 @@ export function ToggleRow({
         value={value}
         onValueChange={onValueChange}
         disabled={disabled}
-        trackColor={{ false: colors.border, true: colors.primary }}
-        thumbColor={value ? colors.accent : colors.textMuted}
+        // Ligado = âmbar, desligado = navy. O verde de componente padrão era
+        // o detalhe que mais denunciava "app de template" (auditoria, Onda A).
+        trackColor={{ false: colors.surfaceRaised, true: colors.accent }}
+        thumbColor={value ? colors.background : colors.textMuted}
+        ios_backgroundColor={colors.surfaceRaised}
+        // Na web o miolo do estado ligado vem de `activeThumbColor`, prop do
+        // react-native-web que não existe no tipo — sem ela, o miolo saía no
+        // verde padrão por cima do trilho âmbar.
+        {...({ activeThumbColor: colors.background } as object)}
       />
     </View>
   );

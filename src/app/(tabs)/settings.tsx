@@ -3,7 +3,6 @@ import { useRouter } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslations } from 'use-intl';
 
-import { Wordmark } from '@/components/brand/wordmark';
 import { NavRow } from '@/components/ui/nav-row';
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
@@ -33,9 +32,18 @@ export default function SettingsScreen() {
 
   return (
     <Screen>
+      {/* Uma marca só por janela (auditoria, Onda B): o topo do app já diz
+          Lymark; repetir aqui era hierarquia duplicada. O lugar dela passa ao
+          contador de cota — a informação que o usuário mais precisa ver. */}
       <View style={styles.header}>
-        <Wordmark size="sm" />
         <Text style={typography.screenTitle}>{t('settings.title')}</Text>
+        <Text style={[typography.caption, styles.quota]}>
+          {access.shouldWarn
+            ? t('plan.reconnect')
+            : access.remaining === null
+              ? t('plan.unlimited')
+              : t('plan.remaining', { remaining: access.remaining })}
+        </Text>
       </View>
 
       <Section
@@ -118,9 +126,12 @@ const styles = StyleSheet.create({
   header: {
     paddingTop: spacing.lg,
     paddingBottom: spacing.md,
-    gap: spacing.md,
+    gap: spacing.xs,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: colors.border,
     marginBottom: spacing.sm,
+  },
+  quota: {
+    color: colors.textMuted,
   },
 });

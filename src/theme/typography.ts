@@ -32,6 +32,8 @@ export const typography = {
     fontSize: 16,
     fontWeight: '500',
     color: colors.text,
+    // Contadores e frações ("11/12", "v1.3.0") alinham dígito a dígito.
+    fontVariant: ['tabular-nums'],
   },
   body: {
     fontFamily: fontFamily.uiRegular,
