@@ -2,7 +2,10 @@
 // espera (caminhos simples), e a mesma que o resto do app usa.
 import * as FileSystem from 'expo-file-system/legacy';
 import * as ImagePicker from 'expo-image-picker';
-import * as MediaLibrary from 'expo-media-library';
+// NÃO importar expo-media-library aqui em cima: na web o módulo lança na
+// carga ("Cannot find native module 'ExpoMediaLibraryNext'") e derrubava a
+// rota /video inteira — tela branca. Ele entra por import dinâmico, apenas
+// no fluxo do celular, que é o único que salva na galeria por ele.
 import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { useTranslations } from 'use-intl';
@@ -357,6 +360,7 @@ function MobileVideoScreen() {
         outputUri.replace('file://', ''),
       );
 
+      const MediaLibrary = await import('expo-media-library');
       await MediaLibrary.saveToLibraryAsync(outputUri);
 
       setSaved(true);
