@@ -11,6 +11,12 @@ import crypto from 'crypto';
 import { pathToFileURL } from 'url';
 
 import { readImageDimensions } from './image-dimensions';
+import {
+  pendingReportHtml,
+  renderReportPdf,
+  REPORT_NORMS,
+  type ReportNorm,
+} from './report-pdf';
 import { appendSealBox, hashFileSha256 } from './video-seal';
 import { DEFAULT_LOCALE, availableLocales, translate } from './i18n';
 import { buildApplicationMenu } from './menu';
@@ -210,6 +216,13 @@ protocol.registerSchemesAsPrivileged([
   {
     scheme: 'media',
     privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true },
+  },
+  // O documento do relatório, servido à janela oculta que o imprime em PDF.
+  // Precisa ser `standard`/`secure` pela mesma razão do `media`: é dele que
+  // as fotos (`media://`) são carregadas com `webSecurity` ligado.
+  {
+    scheme: 'report',
+    privileges: { standard: true, secure: true },
   },
 ]);
 
@@ -462,6 +475,55 @@ function registerIpcHandlers() {
         return { ok: true };
       } catch {
         return { ok: false };
+      }
+    },
+  );
+
+  /**
+   * O relatório em PDF: recebe o HTML já montado (e traduzido) pelo
+   * renderer, imprime numa janela oculta e pergunta onde salvar.
+   *
+   * O HTML não carrega bytes de foto — as imagens entram por `media://` na
+   * hora da impressão — então o teto aqui é folgado e o custo de IPC, baixo.
+   */
+  ipcMain.handle(
+    'export-report-pdf',
+    async (
+      _event,
+      args: { html?: unknown; filename?: unknown; norm?: unknown; pageWord?: unknown },
+    ) => {
+      const { html, filename, norm, pageWord } = args ?? {};
+      if (
+        typeof html !== 'string' ||
+        html.length === 0 ||
+        html.length > MAX_FILE_SIZE ||
+        typeof filename !== 'string' ||
+        !(REPORT_NORMS as readonly unknown[]).includes(norm)
+      ) {
+        return { status: 'failed', error: 'Pedido inválido.' };
+      }
+
+      try {
+        const pdf = await renderReportPdf(
+          html,
+          norm as ReportNorm,
+          typeof pageWord === 'string' ? pageWord : '',
+        );
+
+        const { filePath } = await dialog.showSaveDialog({
+          title: translate(currentLocale, 'desktop.dialog.saveReport'),
+          defaultPath: path.basename(filename),
+          filters: [
+            { name: 'PDF', extensions: ['pdf'] },
+            { name: translate(currentLocale, 'desktop.dialog.allFiles'), extensions: ['*'] },
+          ],
+        });
+        if (!filePath) return { status: 'cancelled' };
+
+        fs.writeFileSync(filePath, pdf);
+        return { status: 'saved', path: filePath };
+      } catch {
+        return { status: 'failed', error: 'Operação falhou.' };
       }
     },
   );
@@ -879,6 +941,24 @@ function createMediaProtocol() {
 }
 
 /**
+ * Serve o HTML do relatório à janela oculta que o imprime.
+ *
+ * Não lê disco nem aceita caminho: responde SEMPRE o documento pendente do
+ * momento (`report-pdf.ts`), e 404 fora de uma impressão. A janela que o
+ * carrega nasce sem preload — mesmo comprometida, a página não alcança nada.
+ */
+function createReportProtocol() {
+  protocol.handle('report', () => {
+    const html = pendingReportHtml();
+    if (html === null) return new Response('Not Found', { status: 404 });
+
+    return new Response(html, {
+      headers: { 'Content-Type': 'text/html; charset=utf-8' },
+    });
+  });
+}
+
+/**
  * O ffmpeg — o compositor do vídeo carimbado.
  *
  * No pacote, o binário vai por `extraResources` (ver electron-builder.yml);
@@ -1025,6 +1105,7 @@ app.whenReady().then(() => {
   // Configurar o protocolo
   createProtocol();
   createMediaProtocol();
+  createReportProtocol();
   
   // Registrar handlers de IPC
   registerIpcHandlers();

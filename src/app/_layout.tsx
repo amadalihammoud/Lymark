@@ -227,6 +227,12 @@ function Navigation() {
         name="video"
         options={{ title: t('nav.video'), headerBackTitle: t('common.back') }}
       />
+
+      {/* Relatório em PDF - apenas desktop */}
+      <Stack.Screen
+        name="report"
+        options={{ title: t('nav.report'), headerBackTitle: t('common.back') }}
+      />
     </Stack>
   );
 }

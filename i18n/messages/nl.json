@@ -178,6 +178,7 @@
     "nav": {
       "batch": "Batchverwerking",
       "photoDetail": "Fotodetails",
+      "report": "PDF-rapport",
       "video": "Video"
     },
     "notFound": {
@@ -229,6 +230,42 @@
       "remaining": "{remaining, plural, one {# gratis foto over} other {# gratis foto’s over}}",
       "title": "Abonnement",
       "unlimited": "Zonder limiet"
+    },
+    "report": {
+      "allPhotos": "Alle foto’s",
+      "authorField": "Verantwoordelijke / bedrijf",
+      "detailsSection": "Details",
+      "doc": {
+        "author": "Verantwoordelijke",
+        "declaration": "De gestempelde gegevens (adres, datum, tijd en code) zijn een verklaring van degene die de foto’s heeft uitgegeven.",
+        "exportedAt": "Geëxporteerd op",
+        "generatedAt": "Gegenereerd op",
+        "page": "Pagina",
+        "photo": "Foto {index}",
+        "photosSection": "Fotodocumentatie",
+        "summary": "Samenvatting",
+        "title": "Fotorapport",
+        "totalPhotos": "Totaal aantal foto’s:"
+      },
+      "empty": "Nog geen geëxporteerde foto’s. Het rapport wordt gemaakt vanuit de galerij.",
+      "failed": "Het rapport kon niet worden gegenereerd.",
+      "fileStem": "rapport",
+      "generate": "PDF genereren",
+      "generateSection": "Genereren",
+      "norm": {
+        "abnt": "ABNT (Brazilië)",
+        "iso": "Internationaal"
+      },
+      "normNote": "De norm bepaalt de opmaak: marges, lettertype en paginanummering. ABNT volgt NBR 14724; internationaal gebruikt A4 met marges van 2,5 cm.",
+      "normSection": "Documentnorm",
+      "projectsSection": "Werk / project",
+      "saved": "Opgeslagen in {path}",
+      "savedShort": "Rapport opgeslagen.",
+      "title": "PDF-rapport",
+      "titleField": "Titel van het rapport",
+      "unavailableBody": "Het PDF-rapport is beschikbaar in de desktop-app.",
+      "unavailableTitle": "Alleen op de computer",
+      "uncoded": "Zonder code"
     },
     "settings": {
       "about": "Over",
@@ -376,7 +413,8 @@
       "pickFolder": "Uitvoermap selecteren",
       "pickPhoto": "Foto selecteren",
       "pickPhotos": "Foto’s voor de batch selecteren",
-      "savePhoto": "Foto opslaan"
+      "savePhoto": "Foto opslaan",
+      "saveReport": "Rapport opslaan"
     },
     "menu": {
       "copy": "Kopiëren",

@@ -178,6 +178,7 @@
     "nav": {
       "batch": "批量处理",
       "photoDetail": "照片详情",
+      "report": "PDF 报告",
       "video": "视频"
     },
     "notFound": {
@@ -229,6 +230,42 @@
       "remaining": "{remaining, plural, other {还剩 # 张免费照片}}",
       "title": "方案",
       "unlimited": "不限量"
+    },
+    "report": {
+      "allPhotos": "全部照片",
+      "authorField": "负责人 / 公司",
+      "detailsSection": "详细信息",
+      "doc": {
+        "author": "负责人",
+        "declaration": "盖章数据(地址、日期、时间和代码)是照片签发者的声明。",
+        "exportedAt": "导出时间",
+        "generatedAt": "生成时间",
+        "page": "页",
+        "photo": "照片 {index}",
+        "photosSection": "照片记录",
+        "summary": "摘要",
+        "title": "照片报告",
+        "totalPhotos": "照片总数:"
+      },
+      "empty": "还没有导出的照片。报告将基于图库生成。",
+      "failed": "无法生成报告。",
+      "fileStem": "report",
+      "generate": "生成 PDF",
+      "generateSection": "生成",
+      "norm": {
+        "abnt": "ABNT(巴西)",
+        "iso": "国际"
+      },
+      "normNote": "规范决定排版:页边距、字体和页码。ABNT 遵循 NBR 14724;国际规范使用 A4、2.5 厘米页边距。",
+      "normSection": "文档规范",
+      "projectsSection": "工地 / 项目",
+      "saved": "已保存到 {path}",
+      "savedShort": "报告已保存。",
+      "title": "PDF 报告",
+      "titleField": "报告标题",
+      "unavailableBody": "PDF 报告可在电脑版应用中使用。",
+      "unavailableTitle": "仅限电脑端",
+      "uncoded": "无代码"
     },
     "settings": {
       "about": "关于",
@@ -376,7 +413,8 @@
       "pickFolder": "选择输出文件夹",
       "pickPhoto": "选择照片",
       "pickPhotos": "选择要批量处理的照片",
-      "savePhoto": "保存照片"
+      "savePhoto": "保存照片",
+      "saveReport": "保存报告"
     },
     "menu": {
       "copy": "复制",

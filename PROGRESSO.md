@@ -148,6 +148,27 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 - [ ] **Gravar já com o carimbo** — aguardando a geração atual da câmera
   (a VisionCamera 5 removeu o desenho sobre a gravação; sem caminho hoje).
 
+## Projetos + relatório em PDF (desktop)
+
+- [x] **Projetos** — sem entidade nova: a galeria agrupada pelo Código de
+  Foto (`src/features/report/projects.ts`). Quem carimbou com código já
+  tem projetos; nada a cadastrar ou migrar.
+- [x] **Relatório em PDF** — tela `/report` (botão na Galeria, desktop):
+  escolhe a obra (ou todas as fotos), o padrão do documento, título e
+  responsável. Sai com capa, tabela-resumo e um registro por foto com os
+  campos DE FATO carimbados (`stampedFields`) + momento da exportação, e a
+  declaração de camadas do selo no fim. Quem imprime é o Chromium do
+  Electron: janela oculta sem preload servida pelo esquema `report://`,
+  fotos entrando por `media://` (nenhum byte de imagem cruza o IPC),
+  `printToPDF` com margens e numeração de página por norma. Paridade das
+  normas entre `src` e `desktop` garantida por teste, como no selo.
+- [x] **Padrões de norma** — tabela aberta (`norms.ts`): **ABNT** (NBR
+  14724: margens 3/2 cm, serifa 12, entrelinha 1,5, número no canto
+  superior direito, capa em caixa alta) e **Internacional** (A4, 2,5 cm,
+  sem serifa, número no rodapé central). Normas de outros países entram
+  como novas linhas da tabela, sem tocar o motor. Posicionamento: "no
+  padrão ABNT" é FORMATAÇÃO — não prometemos laudo normatizado.
+
 ## Próximo passo de código
 
 Passo 4 em diante: faixa de teste fechada nas lojas, RevenueCat + Play e

@@ -178,6 +178,7 @@
     "nav": {
       "batch": "Procesamiento por lotes",
       "photoDetail": "Detalle de la foto",
+      "report": "Informe PDF",
       "video": "Vídeo"
     },
     "notFound": {
@@ -229,6 +230,42 @@
       "remaining": "{remaining, plural, one {# foto gratis restante} other {# fotos gratis restantes}}",
       "title": "Plan",
       "unlimited": "Sin límite"
+    },
+    "report": {
+      "allPhotos": "Todas las fotos",
+      "authorField": "Responsable / empresa",
+      "detailsSection": "Detalles",
+      "doc": {
+        "author": "Responsable",
+        "declaration": "Los datos estampados (dirección, fecha, hora y código) son una declaración de quien emitió las fotos.",
+        "exportedAt": "Exportada el",
+        "generatedAt": "Generado el",
+        "page": "Página",
+        "photo": "Foto {index}",
+        "photosSection": "Registros fotográficos",
+        "summary": "Resumen",
+        "title": "Informe fotográfico",
+        "totalPhotos": "Total de fotos:"
+      },
+      "empty": "Aún no hay fotos exportadas. El informe se crea a partir de la galería.",
+      "failed": "No se pudo generar el informe.",
+      "fileStem": "informe",
+      "generate": "Generar PDF",
+      "generateSection": "Generar",
+      "norm": {
+        "abnt": "ABNT (Brasil)",
+        "iso": "Internacional"
+      },
+      "normNote": "La norma define el formato: márgenes, fuente y numeración de páginas. ABNT sigue la NBR 14724; la internacional usa A4 con márgenes de 2,5 cm.",
+      "normSection": "Norma del documento",
+      "projectsSection": "Obra / proyecto",
+      "saved": "Guardado en {path}",
+      "savedShort": "Informe guardado.",
+      "title": "Informe en PDF",
+      "titleField": "Título del informe",
+      "unavailableBody": "El informe en PDF está disponible en la aplicación de escritorio.",
+      "unavailableTitle": "Solo en la computadora",
+      "uncoded": "Sin código"
     },
     "settings": {
       "about": "Acerca de",
@@ -376,7 +413,8 @@
       "pickFolder": "Seleccionar carpeta de salida",
       "pickPhoto": "Seleccionar foto",
       "pickPhotos": "Seleccionar fotos para el lote",
-      "savePhoto": "Guardar foto"
+      "savePhoto": "Guardar foto",
+      "saveReport": "Guardar informe"
     },
     "menu": {
       "copy": "Copiar",

@@ -10,6 +10,7 @@ import { Screen } from '@/components/ui/screen';
 import { useFeedback } from '@/contexts/feedback-context';
 import { useGallery } from '@/contexts/gallery-context';
 import { saveToDeviceGallery } from '@/features/watermark/export-photo';
+import { isDesktop } from '@/lib/file-storage';
 import { filterGalleryEntries } from '@/lib/gallery-search';
 import { colors, radius, spacing, typography } from '@/theme';
 
@@ -148,17 +149,31 @@ export default function GalleryScreen() {
           <View style={styles.header}>
             <View style={styles.titleRow}>
               <Text style={typography.screenTitle}>{t('gallery.title')}</Text>
-              {/* Ação destrutiva no topo, e não no fim da rolagem: lá ela fica
-                  no caminho natural do dedo de quem está só percorrendo a
-                  lista. */}
-              <Button
-                label={selecting ? t('gallery.cancelSelection') : t('gallery.clear')}
-                icon={selecting ? 'close' : 'trash-outline'}
-                iconOnly
-                variant={selecting ? 'ghost' : 'danger'}
-                onPress={selecting ? () => setSelection(null) : confirmClear}
-                disabled={working}
-              />
+              {/* O relatório mora aqui porque é feito DESTA lista: agrupa as
+                  fotos por Código de Foto e as entrega em PDF. Só no desktop,
+                  onde o Chromium do Electron é quem imprime. */}
+              <View style={styles.titleActions}>
+                {isDesktop() ? (
+                  <Button
+                    label={t('nav.report')}
+                    icon="document-text-outline"
+                    variant="ghost"
+                    onPress={() => router.push('/report')}
+                    disabled={working}
+                  />
+                ) : null}
+                {/* Ação destrutiva no topo, e não no fim da rolagem: lá ela
+                    fica no caminho natural do dedo de quem está só percorrendo
+                    a lista. */}
+                <Button
+                  label={selecting ? t('gallery.cancelSelection') : t('gallery.clear')}
+                  icon={selecting ? 'close' : 'trash-outline'}
+                  iconOnly
+                  variant={selecting ? 'ghost' : 'danger'}
+                  onPress={selecting ? () => setSelection(null) : confirmClear}
+                  disabled={working}
+                />
+              </View>
             </View>
 
             {/*
@@ -247,6 +262,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: spacing.md,
+  },
+  titleActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
   },
   search: {
     backgroundColor: colors.surface,

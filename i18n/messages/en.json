@@ -178,6 +178,7 @@
     "nav": {
       "batch": "Batch processing",
       "photoDetail": "Photo details",
+      "report": "PDF report",
       "video": "Video"
     },
     "notFound": {
@@ -229,6 +230,42 @@
       "remaining": "{remaining, plural, one {# free photo left} other {# free photos left}}",
       "title": "Plan",
       "unlimited": "No limit"
+    },
+    "report": {
+      "allPhotos": "All photos",
+      "authorField": "Author / company",
+      "detailsSection": "Details",
+      "doc": {
+        "author": "Author",
+        "declaration": "The stamped data (address, date, time and code) is a declaration by the issuer of the photos.",
+        "exportedAt": "Exported on",
+        "generatedAt": "Generated on",
+        "page": "Page",
+        "photo": "Photo {index}",
+        "photosSection": "Photographic records",
+        "summary": "Summary",
+        "title": "Photo report",
+        "totalPhotos": "Total photos:"
+      },
+      "empty": "No exported photos yet. The report is built from your gallery.",
+      "failed": "Could not generate the report.",
+      "fileStem": "report",
+      "generate": "Generate PDF",
+      "generateSection": "Generate",
+      "norm": {
+        "abnt": "ABNT (Brazil)",
+        "iso": "International"
+      },
+      "normNote": "The standard sets the formatting — margins, font and page numbering. ABNT follows NBR 14724; International uses A4 with 2.5 cm margins.",
+      "normSection": "Document standard",
+      "projectsSection": "Project / job",
+      "saved": "Saved to {path}",
+      "savedShort": "Report saved.",
+      "title": "PDF report",
+      "titleField": "Report title",
+      "unavailableBody": "PDF reports are available in the desktop app.",
+      "unavailableTitle": "Desktop only",
+      "uncoded": "No code"
     },
     "settings": {
       "about": "About",
@@ -376,7 +413,8 @@
       "pickFolder": "Select output folder",
       "pickPhoto": "Select photo",
       "pickPhotos": "Select photos for the batch",
-      "savePhoto": "Save photo"
+      "savePhoto": "Save photo",
+      "saveReport": "Save report"
     },
     "menu": {
       "copy": "Copy",
