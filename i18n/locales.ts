@@ -57,6 +57,33 @@ export const LOCALE_NAMES: Record<Locale, string> = {
 };
 
 /**
+ * A ordem em que os idiomas se oferecem para escolha — no seletor do site e na
+ * tela de idioma do aplicativo.
+ *
+ * Separada de `LOCALES` porque as duas ordens respondem a perguntas diferentes.
+ * `LOCALES` é a ordem canônica do catálogo, e a de `hreflang` e do mapa do
+ * site, onde ordem nenhuma é lida por gente. Esta é lida por gente, e a única
+ * propriedade que ajuda quem procura o próprio idioma numa lista de doze é
+ * poder parar de procurar: em ordem alfabética, quem busca "Nederlands" sabe
+ * onde olhar sem ler as outras onze. A ordem por alcance decrescente, que era a
+ * usada, obriga a ler a lista inteira.
+ *
+ * Ordenada pelo nome que cada idioma dá a si mesmo, comparando **ponto de
+ * código** e não com `localeCompare`: o `Intl` varia com o ICU embarcado em
+ * cada build, e a lista sairia numa ordem em um aparelho e noutra em outro. A
+ * comparação crua é estável em qualquer motor — e, como os alfabetos ocupam
+ * faixas contíguas do Unicode, ela agrupa por escrita de graça: primeiro o
+ * latim, depois cirílico, árabe e as três do Extremo Oriente.
+ *
+ * Derivada de `LOCALES` em vez de escrita à mão para não poder divergir dela.
+ * Uma lista paralela é uma lista que um dia esquece um idioma — e o idioma
+ * esquecido não apareceria no seletor, sem nada acusar.
+ */
+export const LOCALES_BY_NAME: readonly Locale[] = [...LOCALES].sort((a, b) =>
+  LOCALE_NAMES[a] < LOCALE_NAMES[b] ? -1 : 1,
+);
+
+/**
  * Idiomas escritos da direita para a esquerda.
  *
  * O árabe não precisa apenas de tradução: precisa que o layout inteiro

@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { useTransition } from 'react';
 
-import { LOCALES, LOCALE_NAMES, type Locale } from '../../i18n/locales';
+import { LOCALES_BY_NAME, LOCALE_NAMES, type Locale } from '../../i18n/locales';
 import { usePathname, useRouter } from '../i18n/navigation';
 
 /**
@@ -39,7 +39,7 @@ export default function LanguageSelector() {
       aria-label={t('selector')}
       onChange={(event) => handleChange(event.target.value)}
     >
-      {LOCALES.map((code) => (
+      {LOCALES_BY_NAME.map((code) => (
         <option key={code} value={code}>
           {LOCALE_NAMES[code]}
         </option>

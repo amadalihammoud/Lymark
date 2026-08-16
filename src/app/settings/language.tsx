@@ -8,7 +8,7 @@ import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
 import { useLocalePreference } from '@/contexts/locale-context';
 import { HIT_TARGET, colors, spacing, typography } from '@/theme';
-import { LOCALES, LOCALE_NAMES, type Locale } from '@i18n/locales';
+import { LOCALES_BY_NAME, LOCALE_NAMES, type Locale } from '@i18n/locales';
 
 /**
  * Idioma da interface.
@@ -37,13 +37,13 @@ export default function LanguageScreen() {
           showDivider
         />
 
-        {LOCALES.map((code, index) => (
+        {LOCALES_BY_NAME.map((code, index) => (
           <LanguageRow
             key={code}
             label={LOCALE_NAMES[code]}
             selected={!isAutomatic && locale === code}
             onPress={() => setLocale(code)}
-            showDivider={index < LOCALES.length - 1}
+            showDivider={index < LOCALES_BY_NAME.length - 1}
           />
         ))}
       </Section>

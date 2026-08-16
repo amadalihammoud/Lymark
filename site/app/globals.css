@@ -133,6 +133,80 @@ nav.site a:hover {
   color: var(--text);
 }
 
+/* --------------------------------------------------- seletor de idioma */
+
+/*
+ * O `<select>` continua sendo o nativo — o porquê está no componente —, mas
+ * nativo não quer dizer sem estilo. Não havia regra alguma para esta classe, e
+ * o resultado era o controle cinza do sistema operacional dentro de um
+ * cabeçalho azul-marinho: o único elemento da página que não pertencia à marca.
+ *
+ * `appearance: none` remove a pele e não o comportamento. A lista que abre
+ * continua sendo a do sistema, que já sabe rolar doze itens, responder ao
+ * teclado e ser lida em voz alta — e é isso que se perderia num menu desenhado
+ * à mão. O que se perde com `appearance: none` é só a seta, que volta abaixo
+ * como imagem.
+ */
+select.language {
+  appearance: none;
+  font: inherit;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  background-color: var(--navy-800);
+  border: 1px solid var(--navy-600);
+  border-radius: 3px;
+  /* Lógico, e não `left`/`right`: em árabe a caixa inteira espelha, e o espaço
+     da seta precisa espelhar com ela. */
+  padding-inline: 0.6rem 1.9rem;
+  padding-block: 0.35rem;
+  cursor: pointer;
+  transition:
+    color 120ms ease,
+    border-color 120ms ease;
+
+  /* A seta, desenhada aqui em vez de vir de arquivo: são 200 bytes, e uma
+     requisição a mais para uma seta seria uma requisição a mais na página que
+     se orgulha de não fazer nenhuma a terceiros. */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%2393a9c0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.65rem center;
+  background-size: 0.625rem;
+}
+
+/* `background-position` não tem versão lógica; o resto do bloco tem. */
+[dir='rtl'] select.language {
+  background-position: left 0.65rem center;
+}
+
+select.language:hover {
+  color: var(--text);
+  border-color: var(--navy-400);
+}
+
+/* O mesmo anel âmbar dos links, pelo mesmo motivo: quem navega por teclado
+   precisa ver onde está, e ver sempre da mesma forma. */
+select.language:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+select.language:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+/*
+ * A lista aberta é desenhada pelo sistema, e o que ele aceita de estilo é
+ * pouco: cor de fundo e cor de texto. Sem isto, a lista abria branca sob um
+ * controle escuro — e no Windows os doze nomes saíam em cinza-claro sobre
+ * branco.
+ */
+select.language option {
+  background-color: var(--navy-800);
+  color: var(--text);
+}
+
 /* --------------------------------------------------------------- assinatura */
 
 .wordmark {
