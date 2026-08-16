@@ -378,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "返回首页",
+      "openApp": "打开应用",
       "photos": "照片",
       "photosLeft": "剩余 {remaining} 张，共 {quota} 张",
       "plan": "方案",

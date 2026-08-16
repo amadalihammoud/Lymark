@@ -378,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "처음으로",
+      "openApp": "앱 열기",
       "photos": "사진",
       "photosLeft": "{quota}장 중 {remaining}장 남음",
       "plan": "플랜",

@@ -378,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "На главную",
+      "openApp": "Открыть приложение",
       "photos": "Фотографии",
       "photosLeft": "Осталось {remaining} из {quota}",
       "plan": "План",

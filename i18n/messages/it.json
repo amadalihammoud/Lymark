@@ -378,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "Torna all’inizio",
+      "openApp": "Apri l'app",
       "photos": "Foto",
       "photosLeft": "{remaining} di {quota} rimaste",
       "plan": "Piano",

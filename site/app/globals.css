@@ -729,6 +729,10 @@ footer.site a:hover {
   font-size: 0.9rem;
 }
 
+.account-open-app {
+  margin-top: 1rem;
+}
+
 .account-actions {
   display: flex;
   gap: 1.5rem;

@@ -378,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "Terug naar de startpagina",
+      "openApp": "App openen",
       "photos": "Foto’s",
       "photosLeft": "{remaining} van {quota} over",
       "plan": "Abonnement",

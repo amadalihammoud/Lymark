@@ -378,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "トップへ戻る",
+      "openApp": "アプリを開く",
       "photos": "写真",
       "photosLeft": "残り {remaining} 枚（全 {quota} 枚）",
       "plan": "プラン",
