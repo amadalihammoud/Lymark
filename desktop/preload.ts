@@ -73,6 +73,10 @@ export interface LymarkApi {
   ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
   /** Progresso da composição do vídeo, em porcentagem inteira. */
   onVideoProgress: (callback: (percent: number) => void) => void;
+  /** SHA-256 (base64url) de um arquivo de vídeo, por stream. */
+  hashVideoFile: (path: string) => Promise<{ status: 'ok' | 'failed'; hash?: string }>;
+  /** Anexa a caixa do selo de autenticidade ao fim do vídeo. */
+  sealVideo: (path: string, receipt: string) => Promise<{ ok: boolean }>;
   /** Token do desktop chegando pelo deep link `lymark://login`. */
   onLoginToken: (callback: (token: string) => void) => void;
   onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
@@ -140,6 +144,14 @@ export const lymarkApi: LymarkApi = {
 
   onVideoProgress: (callback) => {
     ipcRenderer.on('video-progress', (_, percent: number) => callback(percent));
+  },
+
+  hashVideoFile: async (path) => {
+    return ipcRenderer.invoke('hash-video-file', { path });
+  },
+
+  sealVideo: async (path, receipt) => {
+    return ipcRenderer.invoke('seal-video', { path, receipt });
   },
 
   onLoginToken: (callback) => {

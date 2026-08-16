@@ -11,6 +11,7 @@ import crypto from 'crypto';
 import { pathToFileURL } from 'url';
 
 import { readImageDimensions } from './image-dimensions';
+import { appendSealBox, hashFileSha256 } from './video-seal';
 import { DEFAULT_LOCALE, availableLocales, translate } from './i18n';
 import { buildApplicationMenu } from './menu';
 
@@ -433,6 +434,35 @@ function registerIpcHandlers() {
           }
         });
       });
+    },
+  );
+
+  /**
+   * As duas metades do selo de vídeo (`docs/AUTENTICIDADE.md`): o hash por
+   * stream antes do recibo, o append da caixa `lymk` depois dele. O recibo
+   * em si é pedido pelo renderer, que é quem tem o token da sessão.
+   */
+  ipcMain.handle('hash-video-file', async (_event, { path: filePath }: { path: string }) => {
+    try {
+      if (typeof filePath !== 'string') return { status: 'failed' };
+      return { status: 'ok', hash: await hashFileSha256(filePath) };
+    } catch {
+      return { status: 'failed' };
+    }
+  });
+
+  ipcMain.handle(
+    'seal-video',
+    (_event, { path: filePath, receipt }: { path: string; receipt: string }) => {
+      try {
+        if (typeof filePath !== 'string' || typeof receipt !== 'string') {
+          return { ok: false };
+        }
+        appendSealBox(filePath, receipt);
+        return { ok: true };
+      } catch {
+        return { ok: false };
+      }
     },
   );
 
