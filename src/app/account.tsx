@@ -9,6 +9,8 @@ import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
 import { useEntitlement } from '@/contexts/entitlement-context';
 import { isAuthConfigured } from '@/features/auth/config';
+import { useDesktopAuth } from '@/features/auth/desktop-auth';
+import { getExecutionPlatform } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
 
 /**
@@ -26,6 +28,9 @@ import { colors, spacing, typography } from '@/theme';
 export default function AccountScreen() {
   const t = useTranslations('app.account');
 
+  // No desktop o login mora no navegador (deep link) — nunca no Clerk local.
+  if (getExecutionPlatform() === 'desktop') return <DesktopAccount />;
+
   if (!isAuthConfigured) {
     return (
       <Screen>
@@ -38,6 +43,47 @@ export default function AccountScreen() {
 
   // Os hooks do Clerk só existem daqui para baixo — ver `auth/provider.tsx`.
   return <AccountBody />;
+}
+
+/**
+ * A conta no desktop: sem sessão, um botão que abre o navegador; com ela, o
+ * plano e o sair. O token chega sozinho pelo deep link — quando chegar, a
+ * tela troca de estado sem que a pessoa precise fazer nada aqui.
+ */
+function DesktopAccount() {
+  const t = useTranslations('app');
+  const { token, signIn, signOut } = useDesktopAuth();
+  const { access } = useEntitlement();
+
+  if (!token) {
+    return (
+      <Screen>
+        <Section title={t('account.title')}>
+          <Text style={[typography.body, styles.note]}>{t('account.browserHint')}</Text>
+          <Button
+            label={t('account.signInBrowser')}
+            variant="accent"
+            onPress={signIn}
+          />
+        </Section>
+      </Screen>
+    );
+  }
+
+  return (
+    <Screen>
+      <Section title={t('account.title')}>
+        <Text style={[typography.body, styles.note]}>{t('account.connected')}</Text>
+        <Text style={[typography.body, styles.note]}>
+          {t('plan.title')}:{' '}
+          {access.quota === null
+            ? t('plan.pro')
+            : `${t('plan.free')} · ${access.remaining}/${access.quota}`}
+        </Text>
+        <Button label={t('account.signOut')} variant="danger" onPress={signOut} />
+      </Section>
+    </Screen>
+  );
 }
 
 function AccountBody() {

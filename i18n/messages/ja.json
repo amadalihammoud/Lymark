@@ -15,12 +15,15 @@
       "version": "バージョン"
     },
     "account": {
+      "browserHint": "ログインはブラウザで行います。そこでアカウントにログインすると、アプリは自動的に接続されます。",
       "code": "コード",
       "codeSent": "{email} にコードを送信しました",
+      "connected": "接続済み",
       "continue": "続行",
       "email": "メールアドレス",
       "failed": "失敗しました。メールアドレスまたはコードを確認して、もう一度お試しください。",
       "notConfigured": "このバージョンではまだログインできません。",
+      "signInBrowser": "ブラウザでログイン",
       "signOut": "ログアウト",
       "signedInAs": "{email} でログイン中",
       "title": "アカウント",
@@ -392,6 +395,13 @@
       "signUpTitle": "アカウント作成",
       "subscribeSoon": "有料プランはまだ提供していません。提供開始後はここで購読でき、同じアカウントでどの端末でも使えます。",
       "title": "アカウント"
+    },
+    "desktop": {
+      "backAccount": "アカウントに戻る",
+      "explanation": "アカウントの準備ができました。下のボタンをクリックすると、ログイン済みの状態でパソコンの Lymark が開きます。ブラウザがアプリを開く許可を求めます。",
+      "open": "アプリを接続",
+      "title": "パソコンでログイン",
+      "unavailable": "デスクトップアプリとの接続はまだ利用できません。"
     },
     "availability": {
       "contact": "リリース情報の受け取りや不具合のご報告は <email>contato@lymark.app</email> までお願いします。",

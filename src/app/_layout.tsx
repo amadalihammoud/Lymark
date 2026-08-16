@@ -9,6 +9,7 @@ import { useTranslations } from 'use-intl';
 
 import { useSkiaStatus } from '@/components/skia';
 import { AuthProvider } from '@/features/auth/provider';
+import { DesktopAuthProvider } from '@/features/auth/desktop-auth';
 import { EntitlementSync } from '@/features/auth/entitlement-sync';
 import { CaptureProvider } from '@/contexts/capture-context';
 import { EntitlementProvider } from '@/contexts/entitlement-context';
@@ -77,6 +78,7 @@ export default function RootLayout() {
           /* Acima das telas e fora da árvore de captura: o direito de acesso
              não pode ser remontado ao navegar entre abas. */
           <AuthProvider>
+          <DesktopAuthProvider>
           <EntitlementProvider>
             {/* A ponte identidade → entitlement: precisa dos dois providers
                 acima, e de mais nenhum. */}
@@ -94,6 +96,7 @@ export default function RootLayout() {
               </GalleryProvider>
             </SettingsProvider>
           </EntitlementProvider>
+          </DesktopAuthProvider>
           </AuthProvider>
         )}
       </LocaleProvider>

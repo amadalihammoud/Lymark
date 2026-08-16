@@ -53,7 +53,11 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   ponte que sincroniza o entitlement com o token da sessão — no login e ao
   voltar ao primeiro plano, subindo o `spentOffline`. Sem
   `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY`, o app segue inteiro sem conta.
-- [ ] **Passo 2 (Electron)** — Clerk no desktop via deep link (o mais chato).
+- [x] **Passo 2 (Electron)** — login via deep link: o desktop abre
+  `/conta/desktop` no navegador (onde o Clerk funciona inteiro), o site
+  emite um token próprio de 90 dias (HMAC, `site/lib/desktop-token.ts`) e o
+  deep link `lymark://login#token=…` o devolve ao Electron. A API aceita os
+  dois tokens pelo mesmo `verify`. Exige `DESKTOP_TOKEN_SECRET` na Vercel.
 - [ ] **Passo 3** — Stripe para web e desktop.
 - [ ] **Passo 4** — faixa de teste fechada na loja (Apple).
 - [ ] **Passo 5** — RevenueCat + Play, depois App Store.
@@ -67,6 +71,8 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 
 - Chaves do Clerk no ambiente do site (Vercel):
   `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` e `CLERK_SECRET_KEY`.
+- `DESKTOP_TOKEN_SECRET` no site (Vercel): uma string longa e aleatória —
+  é o que assina o token de login do desktop.
 - A mesma chave publicável no build do app:
   `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` (e, se o endpoint não for o de
   produção, `EXPO_PUBLIC_ENTITLEMENTS_URL`).
@@ -80,5 +86,5 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 
 ## Próximo passo de código
 
-Clerk no Electron (Passo 2 termina): o login do desktop via deep link — o
-mais chato, por desenho. Depois, o Stripe (Passo 3).
+Stripe para web e desktop (Passo 3): é onde não há regra de loja, então o
+dinheiro roda ponta a ponta mais rápido.

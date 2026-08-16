@@ -15,12 +15,15 @@
       "version": "버전"
     },
     "account": {
+      "browserHint": "로그인은 브라우저에서 진행됩니다. 거기에서 계정으로 로그인하면 앱이 자동으로 연결됩니다.",
       "code": "코드",
       "codeSent": "{email}(으)로 코드를 보냈습니다",
+      "connected": "연결됨",
       "continue": "계속",
       "email": "이메일",
       "failed": "실패했습니다. 이메일 또는 코드를 확인하고 다시 시도하세요.",
       "notConfigured": "이 버전에서는 아직 로그인할 수 없습니다.",
+      "signInBrowser": "브라우저로 로그인",
       "signOut": "로그아웃",
       "signedInAs": "{email}(으)로 로그인됨",
       "title": "계정",
@@ -392,6 +395,13 @@
       "signUpTitle": "계정 만들기",
       "subscribeSoon": "구독은 아직 제공되지 않습니다. 제공되면 여기서 구독하고 같은 계정으로 어떤 기기에서든 쓸 수 있습니다.",
       "title": "내 계정"
+    },
+    "desktop": {
+      "backAccount": "계정으로 돌아가기",
+      "explanation": "계정이 준비되었습니다. 아래 버튼을 클릭하면 로그인된 상태로 컴퓨터의 Lymark가 열립니다. 브라우저가 앱을 열 권한을 요청합니다.",
+      "open": "앱 연결",
+      "title": "컴퓨터에서 로그인",
+      "unavailable": "데스크톱 앱 연결은 아직 사용할 수 없습니다."
     },
     "availability": {
       "contact": "출시 소식을 받아보거나 문제를 알리려면 <email>contato@lymark.app</email>으로 메일을 보내주세요.",

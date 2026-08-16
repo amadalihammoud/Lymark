@@ -18,6 +18,7 @@ export const StorageKeys = {
   gallery: `${NAMESPACE}:gallery`,
   locale: `${NAMESPACE}:locale`,
   entitlement: `${NAMESPACE}:entitlement`,
+  desktopToken: `${NAMESPACE}:desktop-token`,
 } as const;
 
 export type StorageKey = (typeof StorageKeys)[keyof typeof StorageKeys];

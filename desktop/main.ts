@@ -2,7 +2,7 @@
  * Ponto de entrada do Electron para o Lymark Desktop.
  */
 
-import { app, BrowserWindow, protocol, ipcMain, dialog } from 'electron';
+import { app, BrowserWindow, protocol, ipcMain, dialog, shell } from 'electron';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
@@ -254,6 +254,12 @@ function createWindow() {
   // shell.openExternal, nunca abrir uma BrowserWindow com preload.
   mainWindow.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
 
+  // Token de login que chegou antes de a página carregar: entregue agora,
+  // quando o renderer já tem quem escute (`onLoginToken` no preload).
+  mainWindow.webContents.on('did-finish-load', () => {
+    if (mainWindow) flushPendingLoginToken(mainWindow.webContents);
+  });
+
   // Carregar o app. O protocolo já foi registrado em `whenReady`; registrar
   // de novo aqui lançava "Attempted to register a second handler for 'app'".
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -281,6 +287,18 @@ function registerIpcHandlers() {
    * refazer o menu e traduzir os diálogos de arquivo, e guarda o valor para
    * já abrir certo na próxima execução.
    */
+  /**
+   * Abre a página de login no navegador do sistema — e SÓ ela.
+   *
+   * URL fixa de propósito: um handler que abrisse qualquer URL vinda do
+   * renderer daria à página, em caso de comprometimento, um caminho para
+   * lançar links arbitrários no navegador da pessoa.
+   */
+  ipcMain.handle('open-account-page', async () => {
+    await shell.openExternal(ACCOUNT_HANDOFF_URL);
+    return { ok: true };
+  });
+
   ipcMain.handle('set-locale', (_event, { locale }: { locale: unknown }) => {
     if (!isKnownLocale(locale) || locale === currentLocale) return { ok: true };
 
@@ -693,8 +711,85 @@ function createMediaProtocol() {
   });
 }
 
+/**
+ * Deep link `lymark://login#token=…` — a volta do login feito no navegador.
+ *
+ * O Electron não roda o clerk-js (a origem `app://` não é um domínio que o
+ * Clerk aceite), então entrar no desktop é: abrir `/conta/desktop` no
+ * navegador do sistema, fazer login lá, e o site devolve o token do desktop
+ * por este protocolo. Ver `docs/ASSINATURA.md` §7, passo 2.
+ */
+const ACCOUNT_HANDOFF_URL = 'https://lymark.app/conta/desktop';
+
+/** Token que chegou antes de a janela existir — entregue no primeiro load. */
+let pendingLoginToken: string | null = null;
+
+function extractLoginToken(candidate: string): string | null {
+  if (!candidate.startsWith('lymark://')) return null;
+  const match = /#token=([^&\s]+)/.exec(candidate);
+  return match ? match[1] : null;
+}
+
+function deliverLoginToken(candidate: string) {
+  const token = extractLoginToken(candidate);
+  if (!token) return;
+
+  if (mainWindow && !mainWindow.webContents.isLoading()) {
+    mainWindow.webContents.send('login-token', token);
+  } else {
+    // A janela ainda não está de pé (o app acabou de ser aberto pelo próprio
+    // deep link). Guardar e entregar quando o load terminar — ver
+    // `createWindow`, que despacha o pendente em `did-finish-load`.
+    pendingLoginToken = token;
+  }
+
+  if (mainWindow) {
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    mainWindow.focus();
+  }
+}
+
+export function flushPendingLoginToken(contents: Electron.WebContents) {
+  if (!pendingLoginToken) return;
+  contents.send('login-token', pendingLoginToken);
+  pendingLoginToken = null;
+}
+
+// Instância única: no Windows e no Linux o deep link abre uma segunda
+// instância com a URL no argv — sem a trava, o clique no navegador abriria
+// um segundo Lymark em vez de entregar o token ao que já está aberto.
+const hasSingleInstanceLock = app.requestSingleInstanceLock();
+if (!hasSingleInstanceLock) {
+  app.quit();
+}
+
+app.on('second-instance', (_event, argv) => {
+  for (const argument of argv) deliverLoginToken(argument);
+  if (mainWindow) {
+    if (mainWindow.isMinimized()) mainWindow.restore();
+    mainWindow.focus();
+  }
+});
+
+// macOS entrega o deep link por evento, não por argv.
+app.on('open-url', (event, url) => {
+  event.preventDefault();
+  deliverLoginToken(url);
+});
+
 // App pronto
 app.whenReady().then(() => {
+  // Registrar o esquema junto ao sistema. Fora do pacote (desenvolvimento),
+  // o registro precisa apontar o executável do Electron para este projeto —
+  // sem os argumentos, o clique no link abriria um Electron vazio.
+  if (app.isPackaged) {
+    app.setAsDefaultProtocolClient('lymark');
+  } else if (process.argv.length >= 2) {
+    app.setAsDefaultProtocolClient('lymark', process.execPath, [path.resolve(process.argv[1])]);
+  }
+
+  // Deep link que iniciou este processo (Windows/Linux): está no argv.
+  for (const argument of process.argv) deliverLoginToken(argument);
   // Garantir que a pasta da galeria existe
   ensureGalleryDir();
   // Carregar configuração persistida

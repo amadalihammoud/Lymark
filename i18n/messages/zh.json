@@ -15,12 +15,15 @@
       "version": "版本"
     },
     "account": {
+      "browserHint": "登录在浏览器中完成。在那里登录您的账户，应用会自动连接。",
       "code": "验证码",
       "codeSent": "我们已向 {email} 发送验证码",
+      "connected": "已连接",
       "continue": "继续",
       "email": "电子邮箱",
       "failed": "未成功。请检查邮箱或验证码后重试。",
       "notConfigured": "此版本暂不支持登录。",
+      "signInBrowser": "通过浏览器登录",
       "signOut": "退出登录",
       "signedInAs": "已登录：{email}",
       "title": "账户",
@@ -392,6 +395,13 @@
       "signUpTitle": "创建账号",
       "subscribeSoon": "订阅功能尚未开放。开放后，您可以在这里订阅，并用同一账号在任何设备上使用。",
       "title": "您的账号"
+    },
+    "desktop": {
+      "backAccount": "返回账户",
+      "explanation": "您的账户已准备就绪。点击下方按钮，即可在电脑上以已登录状态打开 Lymark——浏览器会请求打开应用的权限。",
+      "open": "连接应用",
+      "title": "在电脑上登录",
+      "unavailable": "桌面应用连接暂不可用。"
     },
     "availability": {
       "contact": "如需关注发布进展或反馈问题，请写信至 <email>contato@lymark.app</email>。",

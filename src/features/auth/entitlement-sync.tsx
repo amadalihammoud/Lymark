@@ -4,8 +4,10 @@ import { AppState } from 'react-native';
 
 import { useEntitlement } from '@/contexts/entitlement-context';
 import { fetchEntitlement } from '@/features/entitlements/api';
+import { getExecutionPlatform } from '@/lib/file-storage';
 
 import { ENTITLEMENTS_ENDPOINT, isAuthConfigured } from './config';
+import { useDesktopAuth } from './desktop-auth';
 
 /**
  * A ponte entre a identidade e o direito de acesso.
@@ -21,10 +23,66 @@ import { ENTITLEMENTS_ENDPOINT, isAuthConfigured } from './config';
  * `spentOffline` acumula até a próxima volta.
  */
 export function EntitlementSync() {
+  // No desktop a identidade não vem do Clerk: vem do token do deep link,
+  // guardado por `DesktopAuthProvider` — ver `desktop-auth.tsx`.
+  if (getExecutionPlatform() === 'desktop') return <DesktopBridge />;
+
   // O condicional fica fora do componente que chama hooks do Clerk: sem
   // provider, `useAuth` lança — ver `provider.tsx`.
   if (!isAuthConfigured) return null;
   return <Bridge />;
+}
+
+/**
+ * A mesma ponte, com o token do desktop no lugar do token de sessão do
+ * Clerk. `unauthorized` aqui significa token vencido (noventa dias) ou
+ * revogado — a sessão cai, e a tela de conta volta a oferecer o navegador.
+ */
+function DesktopBridge() {
+  const { token, hydrated: tokenHydrated, signOut } = useDesktopAuth();
+  const { hydrated, sync, spentOffline } = useEntitlement();
+
+  const spentRef = useRef(spentOffline);
+  useEffect(() => {
+    spentRef.current = spentOffline;
+  }, [spentOffline]);
+
+  const busy = useRef(false);
+
+  const run = useCallback(async () => {
+    if (!token || busy.current) return;
+    busy.current = true;
+    try {
+      const result = await fetchEntitlement({
+        endpoint: ENTITLEMENTS_ENDPOINT,
+        token,
+        spent: spentRef.current,
+      });
+
+      if (result.status === 'ok') sync(result.entitlement);
+      else if (result.status === 'unauthorized') signOut();
+      else if (result.status === 'invalid') {
+        console.warn('[entitlement] resposta fora do contrato:', result.detail);
+      }
+    } finally {
+      busy.current = false;
+    }
+  }, [token, sync, signOut]);
+
+  const ready = Boolean(token) && tokenHydrated && hydrated;
+
+  useEffect(() => {
+    if (ready) void run();
+  }, [ready, run]);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (state) => {
+      if (state === 'active' && ready) void run();
+    });
+    return () => subscription.remove();
+  }, [ready, run]);
+
+  return null;
 }
 
 function Bridge() {
