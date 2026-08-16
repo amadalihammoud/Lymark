@@ -66,6 +66,40 @@ describe('buildStampGeometry — o essencial', () => {
     expect(g.texts.some((t) => t.text.includes('Puglisi'))).toBe(true);
   });
 
+  it('hora em 12h: sigla na VERTICAL — letra de cima e M empilhados ao lado', () => {
+    const g = buildStampGeometry({
+      content: { ...content, time: '2:30 PM' },
+      preferences: DEFAULT_WATERMARK_PREFERENCES,
+      frame,
+      measure,
+    });
+
+    const clock = find(g, '2:30');
+    const top = find(g, 'P');
+    const bottom = find(g, 'M');
+    expect(clock).toBeDefined();
+    expect(top).toBeDefined();
+    expect(bottom).toBeDefined();
+    // "2:30 PM" inteiro NÃO é desenhado como uma linha só.
+    expect(find(g, '2:30 PM')).toBeUndefined();
+    // As letras dividem a mesma coluna, à direita dos algarismos, em corpo
+    // menor — e o M fica abaixo da outra letra.
+    expect(top!.x).toBe(bottom!.x);
+    expect(top!.x).toBeGreaterThan(clock!.x + measure('2:30', clock!.size, 'clock') - 1);
+    expect(top!.size).toBeLessThan(clock!.size / 2);
+    expect(bottom!.baseline).toBeGreaterThan(top!.baseline);
+  });
+
+  it('hora que não tem a cara do app é desenhada como veio', () => {
+    const g = buildStampGeometry({
+      content: { ...content, time: 'por volta das 14h' },
+      preferences: DEFAULT_WATERMARK_PREFERENCES,
+      frame,
+      measure,
+    });
+    expect(find(g, 'por volta das 14h')).toBeDefined();
+  });
+
   it('não desenha nada quando não há conteúdo nem marca', () => {
     const g = buildStampGeometry({
       content: { ...content, isEmpty: true },
