@@ -419,7 +419,13 @@
         "medium": "Médio",
         "small": "Pequeno"
       },
-      "textColor": "Texto"
+      "textColor": "Texto",
+      "timeFormatDescription": "Como a hora é preenchida nos campos. O campo continua editável.",
+      "timeFormatTitle": "Formato da hora",
+      "timeFormats": {
+        "12h": "12 horas (AM/PM)",
+        "24h": "24 horas"
+      }
     }
   },
   "desktop": {

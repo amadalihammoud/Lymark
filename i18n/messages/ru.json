@@ -419,7 +419,13 @@
         "medium": "Средний",
         "small": "Мелкий"
       },
-      "textColor": "Текст"
+      "textColor": "Текст",
+      "timeFormatDescription": "Как время подставляется в поля. Поле остаётся редактируемым.",
+      "timeFormatTitle": "Формат времени",
+      "timeFormats": {
+        "12h": "12 часов (AM/PM)",
+        "24h": "24 часа"
+      }
     }
   },
   "desktop": {

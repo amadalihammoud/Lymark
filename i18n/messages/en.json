@@ -419,7 +419,13 @@
         "medium": "Medium",
         "small": "Small"
       },
-      "textColor": "Text"
+      "textColor": "Text",
+      "timeFormatDescription": "How the time is filled into the fields. The field stays editable.",
+      "timeFormatTitle": "Time format",
+      "timeFormats": {
+        "12h": "12-hour (AM/PM)",
+        "24h": "24-hour"
+      }
     }
   },
   "desktop": {

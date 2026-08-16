@@ -419,7 +419,13 @@
         "medium": "中",
         "small": "小"
       },
-      "textColor": "文字"
+      "textColor": "文字",
+      "timeFormatDescription": "時刻を項目に入力する形式です。項目は引き続き編集できます。",
+      "timeFormatTitle": "時刻の形式",
+      "timeFormats": {
+        "12h": "12時間(AM/PM)",
+        "24h": "24時間"
+      }
     }
   },
   "desktop": {

@@ -419,7 +419,13 @@
         "medium": "中",
         "small": "小"
       },
-      "textColor": "文字"
+      "textColor": "文字",
+      "timeFormatDescription": "时间填入字段的格式。字段仍可编辑。",
+      "timeFormatTitle": "时间格式",
+      "timeFormats": {
+        "12h": "12 小时(AM/PM)",
+        "24h": "24 小时"
+      }
     }
   },
   "desktop": {

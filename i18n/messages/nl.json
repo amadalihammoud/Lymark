@@ -419,7 +419,13 @@
         "medium": "Middel",
         "small": "Klein"
       },
-      "textColor": "Tekst"
+      "textColor": "Tekst",
+      "timeFormatDescription": "Hoe de tijd in de velden wordt ingevuld. Het veld blijft bewerkbaar.",
+      "timeFormatTitle": "Tijdnotatie",
+      "timeFormats": {
+        "12h": "12 uur (AM/PM)",
+        "24h": "24 uur"
+      }
     }
   },
   "desktop": {

@@ -3,6 +3,7 @@ import {
   BRAND_PLACEMENTS,
   CODE_PLACEMENTS,
   STAMP_COLOR_SWATCHES,
+  TIME_FORMATS,
   WATERMARK_FIELD_KEYS,
   WATERMARK_POSITIONS,
   WATERMARK_SCALES,
@@ -86,6 +87,8 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   },
   position: 'bottom-left',
   scale: 'medium',
+  // 24 horas, como sempre foi — 12h (AM/PM) é escolha de quem preferir.
+  timeFormat: '24h',
   // Desligada por padrão: na referência o texto fica direto sobre a foto e a
   // sombra basta. Continua disponível para fotos muito claras.
   backdropStyle: 'none',
@@ -250,6 +253,11 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
       DEFAULT_WATERMARK_PREFERENCES.position,
     ),
     scale: pickAllowed(stored.scale, WATERMARK_SCALES, DEFAULT_WATERMARK_PREFERENCES.scale),
+    timeFormat: pickAllowed(
+      stored.timeFormat,
+      TIME_FORMATS,
+      DEFAULT_WATERMARK_PREFERENCES.timeFormat,
+    ),
     backdropStyle,
     includeCountry:
       typeof stored.includeCountry === 'boolean'
