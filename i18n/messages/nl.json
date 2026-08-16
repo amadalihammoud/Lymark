@@ -512,6 +512,31 @@
       "title": "Inloggen op de computer",
       "unavailable": "De verbinding met de desktop-app is nog niet beschikbaar."
     },
+    "download": {
+      "appStore": {
+        "description": "Dezelfde ervaring als Android, op iOS.",
+        "field": "App Store",
+        "heading": "iPhone en iPad"
+      },
+      "browser": {
+        "action": "Inloggen",
+        "description": "Log in met je account en de app opent direct in de browser — op telefoon of computer.",
+        "field": "Browser",
+        "heading": "Gebruik het nu, zonder installatie"
+      },
+      "desktop": {
+        "description": "Fotobatches, lange video’s en PDF-rapporten — de versie voor zwaar werk.",
+        "field": "Computer",
+        "heading": "Windows en Linux"
+      },
+      "googlePlay": {
+        "description": "De telefoon-app, met camera, galerij en gestempelde video.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Binnenkort",
+      "title": "Waar je Lymark gebruikt"
+    },
     "features": {
       "address": {
         "description": "De straatsoort wordt afgekort en de provincie een code, zodat het adres in twee regels past zonder de foto te bedekken. Wie typt voordat de gps antwoordt, houdt zijn eigen tekst.",
@@ -539,7 +564,8 @@
       "terms": "Gebruiksvoorwaarden"
     },
     "hero": {
-      "cta": "Open de app in de browser",
+      "ctaLogin": "Inloggen",
+      "ctaSignup": "Gratis account aanmaken",
       "description": "Lymark stempelt tijd, datum, dag van de week, adres en een traceercode rechtstreeks in het beeld. Het bestand dat uit de app komt, draagt de gegevens in zich — niet ernaast, waar de eerste doorstuur via WhatsApp ze wist.",
       "eyebrow": "Fotodocumentatie in het veld",
       "heading": "De foto verlaat je telefoon en zegt meteen wanneer, waar en wat.",

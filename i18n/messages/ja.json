@@ -512,6 +512,31 @@
       "title": "パソコンでログイン",
       "unavailable": "デスクトップアプリとの接続はまだ利用できません。"
     },
+    "download": {
+      "appStore": {
+        "description": "Androidと同じ体験をiOSで。",
+        "field": "App Store",
+        "heading": "iPhone・iPad"
+      },
+      "browser": {
+        "action": "ログイン",
+        "description": "アカウントでログインすると、スマホでもパソコンでも、ブラウザ上でアプリが開きます。",
+        "field": "ブラウザ",
+        "heading": "今すぐ使えます、インストール不要"
+      },
+      "desktop": {
+        "description": "写真の一括処理、長い動画、PDFレポート — 本格作業向けのバージョン。",
+        "field": "パソコン",
+        "heading": "Windows・Linux"
+      },
+      "googlePlay": {
+        "description": "カメラ・ギャラリー・スタンプ付き動画に対応したスマホアプリ。",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "近日公開",
+      "title": "Lymarkを使える場所"
+    },
     "features": {
       "address": {
         "description": "通りの種別は略され、州は略号になります。住所が二行に収まり、写真を覆わないためです。GPSの応答より先に入力した場合は、入力した内容が残ります。",
@@ -539,7 +564,8 @@
       "terms": "利用規約"
     },
     "hero": {
-      "cta": "ブラウザでアプリを開く",
+      "ctaLogin": "ログイン",
+      "ctaSignup": "無料アカウントを作成",
       "description": "Lymarkは時刻・日付・曜日・住所と追跡コードを画像そのものに刻みます。アプリから出てくるファイルは、情報を内側に抱えています。写真に添えられただけの情報は、WhatsAppで一度転送されれば消えてしまいます。",
       "eyebrow": "現場写真の記録",
       "heading": "写真は、いつ・どこで・何を撮ったかを語りながら端末を出ます。",

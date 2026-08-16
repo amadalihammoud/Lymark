@@ -512,6 +512,31 @@
       "title": "在电脑上登录",
       "unavailable": "桌面应用连接暂不可用。"
     },
+    "download": {
+      "appStore": {
+        "description": "与 Android 相同的体验,在 iOS 上。",
+        "field": "App Store",
+        "heading": "iPhone 和 iPad"
+      },
+      "browser": {
+        "action": "登录",
+        "description": "用账户登录后,应用直接在浏览器中打开——手机或电脑都可以。",
+        "field": "浏览器",
+        "heading": "立即使用,无需安装"
+      },
+      "desktop": {
+        "description": "批量照片、长视频和 PDF 报告——重度工作版本。",
+        "field": "电脑",
+        "heading": "Windows 和 Linux"
+      },
+      "googlePlay": {
+        "description": "手机应用:相机、图库和盖章视频。",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "即将推出",
+      "title": "在哪里使用 Lymark"
+    },
     "features": {
       "address": {
         "description": "道路类型会缩写，省份改用简称，好让地址在两行内放下，不遮住照片。如果你在 GPS 回应之前就输入了，以你输入的为准。",
@@ -539,7 +564,8 @@
       "terms": "使用条款"
     },
     "hero": {
-      "cta": "在浏览器中打开应用",
+      "ctaLogin": "登录",
+      "ctaSignup": "创建免费账户",
       "description": "Lymark 把时间、日期、星期、地址和追踪编号直接印在画面上。从应用导出的文件，信息就长在图里——而不是附在旁边，一经 WhatsApp 转发就被抹掉。",
       "eyebrow": "现场照片记录",
       "heading": "照片离开手机时，已经写明了何时、何地、何事。",

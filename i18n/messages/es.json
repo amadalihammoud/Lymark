@@ -512,6 +512,31 @@
       "title": "Entrar en la computadora",
       "unavailable": "La conexión con la aplicación de escritorio aún no está disponible."
     },
+    "download": {
+      "appStore": {
+        "description": "La misma experiencia de Android, en iOS.",
+        "field": "App Store",
+        "heading": "iPhone y iPad"
+      },
+      "browser": {
+        "action": "Iniciar sesión",
+        "description": "Inicia sesión con tu cuenta y la aplicación se abre en el propio navegador, en el móvil o en el ordenador.",
+        "field": "Navegador",
+        "heading": "Úsalo ahora, sin instalar"
+      },
+      "desktop": {
+        "description": "Lotes de fotos, videos largos e informes en PDF: la versión de trabajo pesado.",
+        "field": "Ordenador",
+        "heading": "Windows y Linux"
+      },
+      "googlePlay": {
+        "description": "La aplicación del móvil, con cámara, galería y video sellado.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Próximamente",
+      "title": "Dónde usar Lymark"
+    },
     "features": {
       "address": {
         "description": "El tipo de vía se abrevia y el estado pasa a sigla, para que la dirección quepa en dos líneas sin tapar la foto. Si escribiste antes de que respondiera el GPS, prevalece lo tuyo.",
@@ -539,7 +564,8 @@
       "terms": "Términos de Uso"
     },
     "hero": {
-      "cta": "Abrir la app en el navegador",
+      "ctaLogin": "Iniciar sesión",
+      "ctaSignup": "Crear cuenta gratis",
       "description": "Lymark sella la hora, la fecha, el día de la semana, la dirección y un código de seguimiento directamente sobre la imagen. El archivo que sale de la app lleva el dato dentro — no al lado, donde el primer reenvío por WhatsApp lo borra.",
       "eyebrow": "Registro fotográfico de campo",
       "heading": "La foto sale del teléfono diciendo ya cuándo, dónde y qué.",
