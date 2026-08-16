@@ -564,6 +564,7 @@
       "terms": "Nutzungsbedingungen"
     },
     "hero": {
+      "ctaAccount": "Zu meinem Konto",
       "ctaLogin": "Anmelden",
       "ctaSignup": "Kostenloses Konto erstellen",
       "description": "Lymark stempelt Uhrzeit, Datum, Wochentag, Adresse und einen Nachverfolgungscode direkt ins Bild. Die Datei, die aus der App kommt, trägt die Angabe in sich — nicht daneben, wo die erste WhatsApp-Weiterleitung sie löscht.",

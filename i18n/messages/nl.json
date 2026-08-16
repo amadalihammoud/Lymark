@@ -564,6 +564,7 @@
       "terms": "Gebruiksvoorwaarden"
     },
     "hero": {
+      "ctaAccount": "Naar mijn account",
       "ctaLogin": "Inloggen",
       "ctaSignup": "Gratis account aanmaken",
       "description": "Lymark stempelt tijd, datum, dag van de week, adres en een traceercode rechtstreeks in het beeld. Het bestand dat uit de app komt, draagt de gegevens in zich — niet ernaast, waar de eerste doorstuur via WhatsApp ze wist.",

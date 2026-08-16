@@ -564,6 +564,7 @@
       "terms": "Términos de Uso"
     },
     "hero": {
+      "ctaAccount": "Ir a mi cuenta",
       "ctaLogin": "Iniciar sesión",
       "ctaSignup": "Crear cuenta gratis",
       "description": "Lymark sella la hora, la fecha, el día de la semana, la dirección y un código de seguimiento directamente sobre la imagen. El archivo que sale de la app lleva el dato dentro — no al lado, donde el primer reenvío por WhatsApp lo borra.",

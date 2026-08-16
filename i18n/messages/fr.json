@@ -564,6 +564,7 @@
       "terms": "Conditions d'utilisation"
     },
     "hero": {
+      "ctaAccount": "Accéder à mon compte",
       "ctaLogin": "Se connecter",
       "ctaSignup": "Créer un compte gratuit",
       "description": "Lymark appose l’heure, la date, le jour de la semaine, l’adresse et un code de suivi à même l’image. Le fichier qui sort de l’application porte l’information en lui — et non à côté, là où le premier transfert WhatsApp l’efface.",

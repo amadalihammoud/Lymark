@@ -1,8 +1,10 @@
 'use client';
 
-import { UserButton, useAuth } from '@clerk/nextjs';
+import { SignInButton, UserButton, useAuth } from '@clerk/nextjs';
+import { useLocale } from 'next-intl';
 
-import { Link } from '../i18n/navigation';
+import { Link, getPathname } from '../i18n/navigation';
+import type { Locale } from '../../i18n/locales';
 
 /**
  * A conta no cabeçalho: link para entrar sem sessão, botão do Clerk com ela.
@@ -21,9 +23,18 @@ import { Link } from '../i18n/navigation';
  */
 export default function AccountNav({ signIn, account }: { signIn: string; account: string }) {
   const { isLoaded, isSignedIn } = useAuth();
+  const locale = useLocale() as Locale;
 
   if (!isLoaded || !isSignedIn) {
-    return <Link href="/entrar">{signIn}</Link>;
+    // Em MODAL, como no hero: entrar não deveria custar a página. A rota
+    // `/entrar` continua existindo para link direto e para o desktop.
+    return (
+      <SignInButton mode="modal" forceRedirectUrl={getPathname({ href: '/conta', locale })}>
+        <button type="button" className="nav-auth">
+          {signIn}
+        </button>
+      </SignInButton>
+    );
   }
 
   return (

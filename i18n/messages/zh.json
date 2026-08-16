@@ -564,6 +564,7 @@
       "terms": "使用条款"
     },
     "hero": {
+      "ctaAccount": "前往我的账户",
       "ctaLogin": "登录",
       "ctaSignup": "创建免费账户",
       "description": "Lymark 把时间、日期、星期、地址和追踪编号直接印在画面上。从应用导出的文件，信息就长在图里——而不是附在旁边，一经 WhatsApp 转发就被抹掉。",

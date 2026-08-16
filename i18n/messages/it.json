@@ -564,6 +564,7 @@
       "terms": "Condizioni d'uso"
     },
     "hero": {
+      "ctaAccount": "Vai al mio account",
       "ctaLogin": "Accedi",
       "ctaSignup": "Crea un account gratuito",
       "description": "Lymark timbra ora, data, giorno della settimana, indirizzo e un codice di tracciamento direttamente sull’immagine. Il file che esce dall’app porta il dato dentro di sé — non accanto, dove il primo inoltro su WhatsApp lo cancella.",

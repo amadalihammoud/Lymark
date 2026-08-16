@@ -564,6 +564,7 @@
       "terms": "Terms of Use"
     },
     "hero": {
+      "ctaAccount": "Go to my account",
       "ctaLogin": "Sign in",
       "ctaSignup": "Create a free account",
       "description": "Lymark stamps the time, date, weekday, address and a tracking code straight onto the image. The file that comes out of the app carries the information inside it — not as metadata riding alongside, which the first WhatsApp forward strips away.",

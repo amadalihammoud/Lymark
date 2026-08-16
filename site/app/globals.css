@@ -298,7 +298,31 @@ select.language option {
   gap: 0.75rem 1.5rem;
 }
 
-.cta a {
+/* O "Entrar" do cabeçalho é um <button> que abre o modal — mas se veste de
+   link, porque mora entre links. */
+nav.site button.nav-auth {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+nav.site button.nav-auth:hover {
+  color: var(--text);
+}
+
+nav.site button.nav-auth:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+.cta a,
+.cta button {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   background: var(--amber);
@@ -313,19 +337,22 @@ select.language option {
   transition: background 120ms ease, color 120ms ease;
 }
 
-.cta a:hover {
+.cta a:hover,
+.cta button:hover {
   background: transparent;
   color: var(--amber);
 }
 
 /* O segundo caminho — quem já tem conta. Contornado, para não competir. */
-.cta a.ghost {
+.cta a.ghost,
+.cta button.ghost {
   background: transparent;
   color: var(--amber);
   border-color: var(--navy-400);
 }
 
-.cta a.ghost:hover {
+.cta a.ghost:hover,
+.cta button.ghost:hover {
   border-color: var(--amber);
 }
 

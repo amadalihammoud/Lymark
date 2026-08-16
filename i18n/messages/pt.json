@@ -564,6 +564,7 @@
       "terms": "Termos de Uso"
     },
     "hero": {
+      "ctaAccount": "Ir para a minha conta",
       "ctaLogin": "Entrar",
       "ctaSignup": "Criar conta grátis",
       "description": "O Lymark carimba hora, data, dia da semana, endereço e um código de rastreio diretamente na imagem. O arquivo que sai do aplicativo já sai com a informação embutida — não é um dado que acompanha a foto e se perde no primeiro encaminhamento por WhatsApp.",

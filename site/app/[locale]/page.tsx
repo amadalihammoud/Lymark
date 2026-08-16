@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 
+import AuthCta from '../../components/AuthCta';
 import { Link } from '../../i18n/navigation';
 
 /*
@@ -61,13 +62,15 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
           {/*
             O caminho é a CONTA, não "abrir no navegador": o aplicativo exige
             sessão desde a primeira tela, e o botão precisa dizer isso. Criar
-            conta é a ação principal; quem já tem, entra ao lado.
+            conta é a ação principal; quem já tem, entra ao lado — os dois em
+            MODAL, sem sair da página (`AuthCta`).
           */}
           <div className="cta">
-            <Link href="/cadastrar">{t('hero.ctaSignup')}</Link>
-            <Link href="/entrar" className="ghost">
-              {t('hero.ctaLogin')}
-            </Link>
+            <AuthCta
+              signUp={t('hero.ctaSignup')}
+              signIn={t('hero.ctaLogin')}
+              account={t('hero.ctaAccount')}
+            />
             <span className="note">{t('hero.note')}</span>
           </div>
 
