@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Politique de confidentialité",
+      "description": "Comment l’application Lymark traite les photos, la localisation et l’historique. L’application n’a pas de serveur, ne crée pas de compte et ne transmet pas vos photos."
+    },
+    "title": "Politique de confidentialité",
+    "updated": "Dernière mise à jour : 2 août 2026 · Application Lymark, version 1.1.0",
+    "intro": "La présente politique décrit comment l’application Lymark traite les informations personnelles. Elle est conforme à la loi n° 13.709/2018 (loi générale de protection des données personnelles — LGPD) et au règlement (UE) 2016/679 (règlement général sur la protection des données — RGPD), et s’applique à l’application distribuée sous l’identifiant <strong>com.lycosteam.lymark</strong> ainsi qu’à ce site.",
+    "s01": {
+      "title": "En une phrase",
+      "p1": "Lymark <strong>n’a pas de serveur, ne crée pas de compte utilisateur et ne transmet pas vos photos</strong>. Tout ce que l’application produit — images, adresses, historique et préférences — reste stocké sur votre propre appareil, sous votre contrôle.",
+      "p2": "Il existe une seule exception, décrite au point 05 : pour convertir les coordonnées du GPS en une adresse lisible, le système d’exploitation de l’appareil interroge un service de géocodage externe."
+    },
+    "s02": {
+      "title": "À qui s’applique la présente politique",
+      "p1": "Elle s’applique à toute personne qui utilise l’application ou visite ce site. Pour les personnes concernées situées au Brésil, le traitement respecte la LGPD et le contrôle de l’Autorité nationale de protection des données (ANPD). Pour les personnes concernées situées dans l’Espace économique européen et au Royaume-Uni, il respecte le RGPD et le UK GDPR."
+    },
+    "s03": {
+      "title": "Qui est le responsable du traitement",
+      "p1": "Le responsable du traitement des données personnelles — <em>controller</em>, dans la terminologie du RGPD — est 29.015.357 AMAD ALI HAMMOUD, immatriculé sous le CNPJ 29.015.357/0001-25, dont l’adresse est Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "La personne chargée du traitement des données personnelles, aux fins de l’art. 41 de la LGPD, est Amad Ali Hammoud, joignable à l’adresse <email>contato@lymark.app</email>. Compte tenu du volume et de la nature du traitement — qui n’implique ni données sensibles à grande échelle ni suivi systématique — il n’y a pas d’obligation de désigner un <em>Data Protection Officer</em> au sens de l’art. 37 du RGPD."
+    },
+    "s04": {
+      "title": "Quelles informations l’application traite",
+      "p1": "Toutes les informations ci-dessous sont enregistrées exclusivement dans l’espace privé de l’application, à l’intérieur de l’appareil, et aucune n’est envoyée au développeur.",
+      "defs": {
+        "photos": {
+          "term": "Photographies",
+          "def": "L’image que vous choisissez dans la galerie ou que vous capturez avec l’appareil photo, et le fichier exporté avec le filigrane. Une photographie peut contenir des données personnelles de tiers — voir le point 11."
+        },
+        "location": {
+          "term": "Localisation",
+          "def": "Latitude et longitude approximatives, obtenues une fois par capture, dans le seul but de remplir le champ d’adresse. Les coordonnées ne sont pas enregistrées : seul le texte de l’adresse obtenue est conservé, avec la photo."
+        },
+        "datetime": {
+          "term": "Date, heure et jour de la semaine",
+          "def": "Lus sur l’horloge de l’appareil au moment de la capture, et modifiables par vous."
+        },
+        "code": {
+          "term": "Code photo",
+          "def": "Suite de quatorze caractères hexadécimaux tirée au hasard. Elle ne dérive ni d’un identifiant de l’appareil ni du vôtre, et ne permet aucun suivi d’une application à l’autre."
+        },
+        "history": {
+          "term": "Historique",
+          "def": "Relevé des deux cents derniers exports, contenant le chemin du fichier sur l’appareil et les données apposées sur l’image."
+        },
+        "preferences": {
+          "term": "Préférences",
+          "def": "Champs affichés, position, taille et autres options du filigrane."
+        }
+      },
+      "p2": "L’application <strong>ne collecte pas</strong> : nom, adresse e-mail, téléphone, pièces d’identité, identifiant publicitaire, identifiant d’appareil, données de contacts, agenda, historique de navigation, statistiques d’utilisation, rapports d’erreur ni aucune autre information sur vous ou sur votre appareil. Aucun SDK d’analyse, de publicité, d’attribution ou de suivi n’est embarqué."
+    },
+    "s05": {
+      "title": "La seule information qui sort de l’appareil",
+      "p1": "Lorsque vous accordez l’autorisation de localisation, l’application demande au système d’exploitation de traduire les coordonnées du GPS en une adresse postale. Cette traduction — le géocodage inverse — est effectuée par le système d’exploitation lui-même, qui envoie pour cela les coordonnées à son service de cartographie : <strong>Google</strong> sur les appareils Android et <strong>Apple</strong> sur les appareils iOS.",
+      "p2": "Cette communication part du système d’exploitation, et non de Lymark. L’application n’en reçoit pas de copie, n’y sert pas d’intermédiaire et n’a accès à rien d’autre que l’adresse renvoyée. Le traitement effectué par ces fournisseurs est régi par leurs propres politiques de confidentialité.",
+      "p3": "<strong>Aucune photographie ne sort de l’appareil du fait de l’application.</strong> Si vous utilisez le bouton Partager, c’est l’application de destination que vous choisissez dans le menu de partage du système qui transmet l’image — messagerie instantanée, e-mail, stockage en nuage — sous la politique de confidentialité de cette application."
+    },
+    "s06": {
+      "title": "Autorisations demandées et pourquoi",
+      "defs": {
+        "camera": {
+          "term": "Caméra",
+          "def": "Pour prendre la photo qui recevra le filigrane. Demandée uniquement lorsque vous touchez « Prendre une photo ». L’application ne demande pas l’accès au microphone."
+        },
+        "photos": {
+          "term": "Photos et médias",
+          "def": "Pour choisir une image existante et pour enregistrer le fichier exporté dans la galerie. L’accès est limité aux photographies, et l’autorisation d’écriture ne sert qu’à écrire — l’application ne parcourt ni ne lit votre galerie."
+        },
+        "location": {
+          "term": "Localisation pendant l’utilisation",
+          "def": "Pour remplir le champ d’adresse. Demandée au premier plan, uniquement pendant l’utilisation, et <strong>jamais en arrière-plan</strong>."
+        }
+      },
+      "p1": "Toutes les autorisations sont facultatives et révocables à tout moment dans les réglages de l’appareil. Refuser la localisation laisse l’application pleinement fonctionnelle : l’adresse est alors saisie par vous. Refuser l’accès à la galerie empêche seulement l’enregistrement automatique, et la photo peut toujours être partagée."
+    },
+    "s07": {
+      "title": "Bases légales et finalités",
+      "p1": "Le traitement de la localisation repose sur votre <strong>consentement</strong> — art. 7, I de la LGPD et art. 6(1)(a) du RGPD — donné par l’octroi de l’autorisation du système et révocable à tout moment, sans préjudice de la licéité du traitement antérieur à la révocation.",
+      "p2": "Le traitement des autres données a pour base l’<strong>exécution de la fonctionnalité que vous avez demandée</strong> — art. 7, V de la LGPD et art. 6(1)(b) du RGPD —, puisque sans elles le filigrane que l’application se propose de produire n’existe pas.",
+      "p3": "Aucun traitement n’est fondé sur l’intérêt légitime, ni destiné à la publicité, au profilage, à l’analyse du comportement ou à une quelconque finalité secondaire. Le développeur ne traite ni catégories particulières de données ni données sensibles."
+    },
+    "s08": {
+      "title": "Transfert international",
+      "p1": "Le développeur n’effectue aucun transfert international de données, parce qu’il ne reçoit aucune donnée. La requête de géocodage décrite au point 05 est adressée par le système d’exploitation à des fournisseurs qui peuvent la traiter en dehors du pays de l’utilisateur, sous les mécanismes de transfert propres à ces fournisseurs — les clauses contractuelles types, dans le cas européen.",
+      "p2": "Ce site est hébergé par Vercel Inc., dans les conditions prévues au point 14."
+    },
+    "s09": {
+      "title": "Partage avec des tiers",
+      "p1": "Le développeur ne partage, ne vend, ne loue ni ne cède de données personnelles à des tiers, pour la simple raison qu’il ne les détient pas. Aucun sous-traitant (<em>processor</em>) n’est engagé pour traiter les données de l’application."
+    },
+    "s10": {
+      "title": "Stockage, conservation et sécurité",
+      "p1": "Les données restent dans l’espace privé de l’application, protégé par l’isolement entre applications du système d’exploitation et par le verrouillage de l’écran de l’appareil. Dans la version Android, la sauvegarde automatique du système est <strong>désactivée</strong>, de sorte que l’historique et les préférences ne sont pas envoyés au compte Google de l’utilisateur.",
+      "p2": "La conservation est entièrement sous votre contrôle : les enregistrements demeurent jusqu’à ce qu’ils soient supprimés dans l’application elle-même, et l’historique écarte automatiquement les plus anciens au-delà de deux cents éléments, en supprimant aussi les fichiers correspondants. Désinstaller l’application efface tout ce qu’elle stockait. Les photos déjà enregistrées dans la galerie de l’appareil appartiennent à la galerie et y restent — il vous appartient de les retirer si vous le souhaitez.",
+      "p3": "Aucun système n’est infaillible. Comme l’application ne tient pas de base de données distante, il n’existe pas de dépôt central susceptible de fuite, et aucun incident de sécurité à notifier au titre de l’art. 48 de la LGPD ou de l’art. 33 du RGPD ne peut découler d’une infrastructure du développeur. Le risque à considérer est l’accès physique à l’appareil déverrouillé."
+    },
+    "s11": {
+      "title": "Lorsque vous photographiez d’autres personnes",
+      "p1": "En photographiant des personnes identifiables dans l’exercice de votre activité professionnelle, <strong>vous</strong> devenez responsable du traitement de ces données à l’égard des personnes concernées photographiées, et il vous appartient d’assurer la base légale, l’information et le respect de leurs droits. Le développeur ne participe pas à ce traitement et n’a pas accès aux images."
+    },
+    "s12": {
+      "title": "Vos droits",
+      "p1": "L’art. 18 de la LGPD et les art. 15 à 22 du RGPD vous garantissent les droits de confirmation et d’accès, de rectification, d’effacement, d’anonymisation, de blocage, de portabilité, de limitation du traitement, d’opposition, de retrait du consentement et d’information sur les partages.",
+      "p2": "Comme les données ne se trouvent que sur votre appareil, ces droits s’exercent directement dans l’application : consulter et supprimer des enregistrements dans l’onglet Galerie, corriger n’importe quel champ avant l’export, révoquer l’autorisation de localisation dans les réglages du système, et tout effacer en désinstallant l’application. Le développeur ne peut pas accéder à ces données, les exporter ni les supprimer à votre place — non par refus, mais parce qu’il ne les détient pas.",
+      "p3": "Pour toute question ou demande formelle, écrivez à <email>contato@lymark.app</email>. Vous avez également le droit d’introduire une réclamation auprès de l’<strong>ANPD</strong>, au Brésil, ou auprès de l’autorité de contrôle de votre État membre, dans l’Union européenne."
+    },
+    "s13": {
+      "title": "Décisions automatisées",
+      "p1": "Il n’y a ni décision automatisée, ni profilage, ni traitement produisant des effets juridiques à votre égard, au sens de l’art. 20 de la LGPD et de l’art. 22 du RGPD."
+    },
+    "s14": {
+      "title": "À propos de ce site",
+      "p1": "Ce site <strong>n’utilise pas de cookies</strong>, n’a pas de statistiques de fréquentation, n’affiche pas de publicité et n’intègre pas de boutons de réseaux sociaux. Les polices de caractères sont servies par le domaine lui-même — aucune requête de votre navigateur n’est adressée à des serveurs tiers, de sorte que la visite n’entraîne aucun transfert d’adresse IP à des fournisseurs externes.",
+      "p2": "Le site est hébergé par <strong>Vercel Inc.</strong>, qui en qualité de sous-traitant enregistre des données techniques d’accès — adresse IP, date, heure et ressource demandée — pendant la durée nécessaire à la sécurité et au fonctionnement de l’hébergement. La base légale est l’intérêt légitime au maintien de la sécurité du service, art. 7, IX de la LGPD et art. 6(1)(f) du RGPD."
+    },
+    "s15": {
+      "title": "Modifications de la présente politique",
+      "p1": "Les changements seront publiés sur cette page, avec une nouvelle date de mise à jour. Les modifications qui changent de manière significative le traitement des données seront également annoncées dans l’application avant leur entrée en vigueur."
+    },
+    "s16": {
+      "title": "Enfants et adolescents",
+      "p1": "Lymark est un outil de travail, destiné aux personnes de 18 ans et plus. Il ne s’adresse ni aux enfants ni aux adolescents, et ne collecte pas intentionnellement de données de ce public."
+    },
+    "s17": {
+      "title": "Loi applicable",
+      "p1": "La présente politique est régie par la loi brésilienne, sans préjudice de l’application du RGPD aux personnes concernées qui en relèvent. Est compétent le tribunal du domicile de la personne concernée."
+    },
+    "note": "Consultez également les <terms>Conditions d’utilisation</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Conditions d’utilisation",
+      "description": "Conditions d’utilisation de l’application Lymark : ce qu’elle fait, ce qu’elle ne fait pas, et à qui incombe la responsabilité du contenu des photos."
+    },
+    "title": "Conditions d’utilisation",
+    "updated": "Dernière mise à jour : 2 août 2026 · Application Lymark, version 1.1.0 (Android)",
+    "intro": "Les présentes conditions régissent l’utilisation de l’application Lymark, distribuée sous l’identifiant <strong>com.lycosteam.lymark</strong> par 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. En installant ou en utilisant l’application, vous acceptez ce qui est écrit ici.",
+    "s01": {
+      "title": "Ce que fait l’application",
+      "p1": "Lymark superpose à une photographie un ensemble d’informations — heure, date, jour de la semaine, adresse et un code d’identification — et génère un nouveau fichier image où ces informations sont incorporées aux pixels. C’est un outil d’organisation et de documentation du travail de terrain."
+    },
+    "s02": {
+      "title": "Ce que l’application ne fait pas",
+      "p1": "Ce point est le plus important des présentes conditions, et nous vous demandons de le lire attentivement.",
+      "items": {
+        "certify": "<strong>L’application ne certifie ni n’authentifie rien.</strong> Elle n’est pas une expertise technique, n’émet aucun document faisant foi et ne constitue pas une preuve d’expertise. Le marquage enregistre ce qui a été renseigné au moment de la capture — il n’atteste pas de la véracité de ces éléments.",
+        "editable": "<strong>Tous les champs sont modifiables par l’utilisateur.</strong> Heure, date, adresse et code peuvent être modifiés librement avant l’export, par choix de conception : le professionnel doit pouvoir corriger une adresse que le GPS a mal déterminée. La conséquence est que la valeur apposée reflète ce que l’utilisateur a décidé d’apposer.",
+        "clock": "<strong>L’heure provient de l’horloge de l’appareil</strong>, qui peut être inexacte ou avoir été réglée à la main. Il n’y a pas de synchronisation avec un serveur de temps fiable.",
+        "address": "<strong>L’adresse est une estimation.</strong> La précision dépend du signal GPS et de la base de données du service de cartographie du système d’exploitation.",
+        "code": "<strong>Le code photo n’est pas un enregistrement auprès d’un notaire.</strong> C’est un identifiant aléatoire pour référence interne, sans aucune valeur probante."
+      },
+      "p2": "Si votre cas d’usage exige une preuve juridiquement opposable aux tiers, recourez à un acte notarié ou à un service de certification numérique avec horodatage — Lymark ne remplace ni l’un ni l’autre."
+    },
+    "s03": {
+      "title": "Vos responsabilités",
+      "items": {
+        "photos": "Vous êtes seul responsable des photographies que vous capturez, du contenu que vous y apposez et de l’usage que vous faites des fichiers générés.",
+        "thirdParties": "En photographiant des personnes, des biens ou des lieux appartenant à des tiers, il vous appartient d’obtenir les autorisations nécessaires et de respecter le droit à l’image, le secret professionnel et la loi générale de protection des données personnelles (LGPD) à l’égard des personnes concernées photographiées.",
+        "prohibited": "Il est interdit d’utiliser l’application pour fabriquer un faux constat, induire quelqu’un en erreur, simuler l’exécution d’une prestation non réalisée ou commettre tout acte illicite.",
+        "backups": "Il vous appartient de conserver des copies de sauvegarde de ce que vous jugez important. L’application conserve un historique local limité, qui n’est pas une sauvegarde."
+      }
+    },
+    "s04": {
+      "title": "Licence d’utilisation",
+      "p1": "Nous vous accordons une licence personnelle, révocable, non exclusive et incessible pour installer et utiliser l’application, y compris à des fins professionnelles. Il n’est pas permis de décompiler, modifier, redistribuer ou commercialiser l’application, en tout ou en partie.",
+      "p2": "<strong>Vos photos sont à vous.</strong> Nous ne revendiquons aucun droit sur les images que vous capturez ou générez. Le nom, la marque et l’identité visuelle de Lymark restent la propriété du développeur."
+    },
+    "s05": {
+      "title": "Disponibilité et mises à jour",
+      "p1": "L’application est fournie en l’état. Il n’y a aucune garantie de fonctionnement ininterrompu, de compatibilité avec tout appareil quel qu’il soit, ni d’engagement de délai pour les corrections ou les nouvelles versions. Des fonctionnalités peuvent être modifiées ou abandonnées.",
+      "p2": "La qualité de l’image exportée dépend de l’appareil et du système d’exploitation, et peut présenter une résolution inférieure à celle de la photographie d’origine."
+    },
+    "s06": {
+      "title": "Limitation de responsabilité",
+      "p1": "Dans toute la mesure permise par la législation brésilienne, le développeur ne répond pas des pertes indirectes, du manque à gagner, de la perte de données ni des préjudices résultant de décisions prises sur la base des informations apposées — y compris de la contestation, en justice ou en dehors, du contenu d’une photographie générée par l’application.",
+      "p2": "Cette limitation <strong>n’écarte pas</strong> les droits garantis au consommateur par la loi n° 8.078/1990, ni la responsabilité pour faute intentionnelle ou faute lourde."
+    },
+    "s07": {
+      "title": "Fin de l’utilisation",
+      "p1": "Vous pouvez mettre fin à l’utilisation à tout moment en désinstallant l’application, ce qui efface les données qu’elle stockait. Il n’y a pas de compte à supprimer ni d’abonnement à résilier."
+    },
+    "s08": {
+      "title": "Modifications des présentes conditions",
+      "p1": "Les modifications seront publiées sur cette page avec une nouvelle date de mise à jour. La poursuite de l’utilisation après la publication vaut acceptation de la version en vigueur."
+    },
+    "s09": {
+      "title": "Loi applicable et juridiction compétente",
+      "p1": "La loi brésilienne s’applique. Est compétent le tribunal du domicile de l’utilisateur pour trancher les litiges découlant des présentes conditions."
+    },
+    "note": "Sur le traitement des données, voir la <privacy>Politique de confidentialité</privacy>. Questions : <email>contato@lymark.app</email>."
+  }
+}

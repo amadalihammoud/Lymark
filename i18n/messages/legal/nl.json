@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Privacybeleid",
+      "description": "Hoe de Lymark-app omgaat met foto’s, locatie en geschiedenis. De app heeft geen server, maakt geen account aan en verstuurt je foto’s niet."
+    },
+    "title": "Privacybeleid",
+    "updated": "Laatst bijgewerkt: 2 augustus 2026 · Lymark-app, versie 1.1.0",
+    "intro": "Dit beleid beschrijft hoe de Lymark-app met persoonsgegevens omgaat. Het voldoet aan Wet nr. 13.709/2018 (Braziliaanse algemene wet inzake de bescherming van persoonsgegevens — LGPD) en aan Verordening (EU) 2016/679 (Algemene verordening gegevensbescherming — AVG), en geldt voor de app die wordt verspreid onder het identificatiekenmerk <strong>com.lycosteam.lymark</strong> en voor deze website.",
+    "s01": {
+      "title": "In één zin",
+      "p1": "Lymark <strong>heeft geen server, maakt geen gebruikersaccount aan en verstuurt je foto’s niet</strong>. Alles wat de app maakt — afbeeldingen, adressen, geschiedenis en voorkeuren — blijft opgeslagen op je eigen apparaat, onder jouw controle.",
+      "p2": "Er is één uitzondering, beschreven in punt 05: om de gps-coördinaten om te zetten in een leesbaar adres, bevraagt het besturingssysteem van het apparaat een externe geocodeerdienst."
+    },
+    "s02": {
+      "title": "Voor wie dit beleid geldt",
+      "p1": "Het geldt voor iedereen die de app gebruikt of deze website bezoekt. Voor betrokkenen in Brazilië volgt de verwerking de LGPD en het toezicht van de nationale autoriteit voor gegevensbescherming (ANPD). Voor betrokkenen in de Europese Economische Ruimte en het Verenigd Koninkrijk volgt zij de AVG en de UK GDPR."
+    },
+    "s03": {
+      "title": "Wie de verwerkingsverantwoordelijke is",
+      "p1": "De verwerkingsverantwoordelijke voor de persoonsgegevens — <em>controller</em>, in de terminologie van de AVG — is 29.015.357 AMAD ALI HAMMOUD, ingeschreven onder CNPJ 29.015.357/0001-25, met adres Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "De functionaris voor de verwerking van persoonsgegevens, in de zin van art. 41 LGPD, is Amad Ali Hammoud, te bereiken op <email>contato@lymark.app</email>. Gezien de omvang en de aard van de verwerking — waarbij geen gevoelige gegevens op grote schaal en geen stelselmatige monitoring aan de orde zijn — bestaat er geen verplichting om een <em>Data Protection Officer</em> aan te wijzen op grond van art. 37 AVG."
+    },
+    "s04": {
+      "title": "Welke informatie de app verwerkt",
+      "p1": "Alle onderstaande informatie wordt uitsluitend vastgelegd in het privégedeelte van de app op het apparaat, en niets daarvan wordt naar de ontwikkelaar verzonden.",
+      "defs": {
+        "photos": {
+          "term": "Foto’s",
+          "def": "De afbeelding die je uit de galerij kiest of met de camera vastlegt, en het geëxporteerde bestand met het watermerk. Een foto kan persoonsgegevens van derden bevatten — zie punt 11."
+        },
+        "location": {
+          "term": "Locatie",
+          "def": "Benaderde breedte- en lengtegraad, één keer per opname opgehaald, met als enig doel het adresveld in te vullen. De coördinaten worden niet vastgelegd: alleen de tekst van het resulterende adres blijft bewaard, samen met de foto."
+        },
+        "datetime": {
+          "term": "Datum, tijd en dag van de week",
+          "def": "Gelezen van de klok van het apparaat op het moment van de opname, en door jou aan te passen."
+        },
+        "code": {
+          "term": "Fotocode",
+          "def": "Een reeks van veertien hexadecimale tekens, willekeurig getrokken. Hij is niet afgeleid van een identificatiekenmerk van het apparaat of van jou, en maakt geen tracking tussen apps mogelijk."
+        },
+        "history": {
+          "term": "Geschiedenis",
+          "def": "Registratie van de laatste tweehonderd exports, met het pad van het bestand op het apparaat en de gegevens die op de afbeelding zijn gestempeld."
+        },
+        "preferences": {
+          "term": "Voorkeuren",
+          "def": "Zichtbare velden, positie, grootte en overige watermerkopties."
+        }
+      },
+      "p2": "De app <strong>verzamelt niet</strong>: naam, e-mailadres, telefoonnummer, documenten, advertentie-id, apparaat-id, contactgegevens, agenda, browsegeschiedenis, gebruiksstatistieken, crashrapporten of enige andere informatie over jou of over je apparaat. Er is geen SDK voor analyse, advertenties, attributie of tracking ingebouwd."
+    },
+    "s05": {
+      "title": "De enige informatie die het apparaat verlaat",
+      "p1": "Wanneer je locatietoestemming verleent, vraagt de app het besturingssysteem om de gps-coördinaten om te zetten in een postadres. Die omzetting — omgekeerde geocodering — wordt door het besturingssysteem zelf uitgevoerd, dat daarvoor de coördinaten naar zijn kaartendienst stuurt: <strong>Google</strong> op Android-apparaten en <strong>Apple</strong> op iOS-apparaten.",
+      "p2": "Die communicatie gaat uit van het besturingssysteem, niet van Lymark. De app ontvangt er geen kopie van, bemiddelt er niet in en heeft geen toegang tot iets anders dan het teruggegeven adres. De verwerking door die aanbieders valt onder hun eigen privacybeleid.",
+      "p3": "<strong>Geen enkele foto verlaat het apparaat door toedoen van de app.</strong> Gebruik je de knop Delen, dan verstuurt de app die je in het deelmenu van het systeem kiest de afbeelding — berichtenapp, e-mail, cloudopslag — onder het privacybeleid van die app."
+    },
+    "s06": {
+      "title": "Welke toestemmingen worden gevraagd, en waarom",
+      "defs": {
+        "camera": {
+          "term": "Camera",
+          "def": "Om de foto te maken die het watermerk krijgt. Wordt alleen gevraagd wanneer je op “Foto maken” tikt. De app vraagt geen toegang tot de microfoon."
+        },
+        "photos": {
+          "term": "Foto’s en media",
+          "def": "Om een bestaande afbeelding te kiezen en om het geëxporteerde bestand in de galerij op te slaan. De toegang is beperkt tot foto’s, en de schrijftoestemming wordt alleen gebruikt om te schrijven — de app doorloopt en leest je galerij niet."
+        },
+        "location": {
+          "term": "Locatie tijdens gebruik",
+          "def": "Om het adresveld in te vullen. Wordt op de voorgrond gevraagd, alleen tijdens gebruik, en <strong>nooit op de achtergrond</strong>."
+        }
+      },
+      "p1": "Alle toestemmingen zijn optioneel en op elk moment in te trekken in de apparaatinstellingen. De locatie weigeren houdt de app volledig werkend: het adres typ je dan zelf. Toegang tot de galerij weigeren verhindert alleen het automatisch opslaan, en de foto kan nog steeds worden gedeeld."
+    },
+    "s07": {
+      "title": "Rechtsgrondslagen en doeleinden",
+      "p1": "De verwerking van de locatie vindt plaats op basis van jouw <strong>toestemming</strong> — art. 7, I LGPD en art. 6 lid 1 onder a AVG — gegeven bij het verlenen van de systeemtoestemming en op elk moment in te trekken, zonder dat dit de rechtmatigheid van de verwerking vóór de intrekking aantast.",
+      "p2": "De verwerking van de overige gegevens vindt plaats voor de <strong>uitvoering van de functie die je hebt gevraagd</strong> — art. 7, V LGPD en art. 6 lid 1 onder b AVG —, want zonder die gegevens bestaat het watermerk niet dat de app zich voorneemt te maken.",
+      "p3": "Er is geen verwerking op basis van gerechtvaardigd belang, en geen verwerking voor advertenties, profilering, gedragsanalyse of enig secundair doel. De ontwikkelaar verwerkt geen bijzondere categorieën van gegevens en geen gevoelige gegevens."
+    },
+    "s08": {
+      "title": "Internationale doorgifte",
+      "p1": "De ontwikkelaar geeft geen gegevens internationaal door, omdat hij geen gegevens ontvangt. De geocodeeraanvraag beschreven in punt 05 wordt door het besturingssysteem gedaan bij aanbieders die hem buiten het land van de gebruiker kunnen verwerken, onder de doorgiftemechanismen van die aanbieders zelf — standaardcontractbepalingen, in het Europese geval.",
+      "p2": "Deze website wordt gehost door Vercel Inc., zoals beschreven in punt 14."
+    },
+    "s09": {
+      "title": "Delen met derden",
+      "p1": "De ontwikkelaar deelt, verkoopt, verhuurt en draagt geen persoonsgegevens over aan derden, om de eenvoudige reden dat hij ze niet heeft. Er is geen verwerker (<em>processor</em>) ingeschakeld om gegevens van de app te verwerken."
+    },
+    "s10": {
+      "title": "Opslag, bewaring en beveiliging",
+      "p1": "De gegevens staan in het privégedeelte van de app, beschermd door de isolatie tussen apps van het besturingssysteem en door de schermvergrendeling van het apparaat. In de Android-versie staat de automatische back-up van het systeem <strong>uitgeschakeld</strong>, zodat geschiedenis en voorkeuren niet naar het Google-account van de gebruiker worden gestuurd.",
+      "p2": "De bewaring bepaal je volledig zelf: de registraties blijven staan totdat ze in de app zelf worden verwijderd, en de geschiedenis gooit de oudste automatisch weg zodra er meer dan tweehonderd items zijn, waarbij ook de bijbehorende bestanden verdwijnen. De app verwijderen wist alles wat hij bewaarde. Foto’s die al in de apparaatgalerij zijn opgeslagen, horen bij de galerij en blijven daar — het is aan jou om ze weg te halen als je dat wilt.",
+      "p3": "Geen enkel systeem is onfeilbaar. Omdat de app geen database op afstand bijhoudt, bestaat er geen centrale opslag die kan uitlekken, en is er geen beveiligingsincident te melden in de zin van art. 48 LGPD of art. 33 AVG dat uit infrastructuur van de ontwikkelaar zou kunnen voortkomen. Het relevante risico is fysieke toegang tot het ontgrendelde apparaat."
+    },
+    "s11": {
+      "title": "Wanneer je andere mensen fotografeert",
+      "p1": "Fotografeer je identificeerbare personen in de uitoefening van je beroep, dan word <strong>jij</strong> verwerkingsverantwoordelijke voor die gegevens ten opzichte van de gefotografeerde betrokkenen, en is het aan jou om te zorgen voor de rechtsgrondslag, de informatieverstrekking en de nakoming van hun rechten. De ontwikkelaar neemt geen deel aan die verwerking en heeft geen toegang tot de afbeeldingen."
+    },
+    "s12": {
+      "title": "Jouw rechten",
+      "p1": "Art. 18 LGPD en de art. 15 tot en met 22 AVG geven je het recht op bevestiging en inzage, correctie, verwijdering, anonimisering, blokkering, overdraagbaarheid, beperking van de verwerking, bezwaar, intrekking van de toestemming en informatie over het delen van gegevens.",
+      "p2": "Omdat de gegevens alleen op je apparaat staan, oefen je die rechten rechtstreeks in de app uit: registraties bekijken en verwijderen op het tabblad Galerij, elk veld corrigeren voordat je exporteert, de locatietoestemming intrekken in de apparaatinstellingen, en alles wissen door de app te verwijderen. De ontwikkelaar kan die gegevens niet voor je inzien, exporteren of verwijderen — niet uit onwil, maar omdat hij ze niet heeft.",
+      "p3": "Voor vragen of formele verzoeken kun je schrijven naar <email>contato@lymark.app</email>. Je hebt ook het recht een klacht in te dienen bij de <strong>ANPD</strong> in Brazilië, of bij de toezichthoudende autoriteit van je lidstaat in de Europese Unie."
+    },
+    "s13": {
+      "title": "Geautomatiseerde besluiten",
+      "p1": "Er is geen geautomatiseerd besluit, geen profilering en geen verwerking met rechtsgevolgen voor jou, in de zin van art. 20 LGPD en art. 22 AVG."
+    },
+    "s14": {
+      "title": "Over deze website",
+      "p1": "Deze website <strong>gebruikt geen cookies</strong>, heeft geen analytics, toont geen advertenties en bevat geen socialmediaknoppen. De lettertypen worden door het eigen domein geleverd — je browser doet geen enkele aanvraag bij servers van derden, zodat het bezoek geen doorgifte van je IP-adres aan externe aanbieders oplevert.",
+      "p2": "De website wordt gehost door <strong>Vercel Inc.</strong>, dat als verwerker technische toegangsgegevens vastlegt — IP-adres, datum, tijd en opgevraagde resource — zolang dat nodig is voor de beveiliging en de werking van de hosting. De rechtsgrondslag is het gerechtvaardigd belang bij het handhaven van de beveiliging van de dienst, art. 7, IX LGPD en art. 6 lid 1 onder f AVG."
+    },
+    "s15": {
+      "title": "Wijzigingen in dit beleid",
+      "p1": "Wijzigingen worden op deze pagina gepubliceerd, met een nieuwe datum van bijwerking. Wijzigingen die de verwerking van gegevens wezenlijk veranderen, worden ook in de app aangekondigd voordat ze in werking treden."
+    },
+    "s16": {
+      "title": "Kinderen en jongeren",
+      "p1": "Lymark is een werkinstrument, bedoeld voor personen van 18 jaar en ouder. Het is niet gericht op kinderen of jongeren en verzamelt niet bewust gegevens van die groep."
+    },
+    "s17": {
+      "title": "Toepasselijk recht",
+      "p1": "Op dit beleid is Braziliaans recht van toepassing, onverminderd de toepassing van de AVG op de betrokkenen die daaronder vallen. Bevoegd is de rechter van de woonplaats van de betrokkene."
+    },
+    "note": "Bekijk ook de <terms>Gebruiksvoorwaarden</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Gebruiksvoorwaarden",
+      "description": "Gebruiksvoorwaarden van de Lymark-app: wat hij doet, wat hij niet doet, en bij wie de verantwoordelijkheid voor de inhoud van de foto’s ligt."
+    },
+    "title": "Gebruiksvoorwaarden",
+    "updated": "Laatst bijgewerkt: 2 augustus 2026 · Lymark-app, versie 1.1.0 (Android)",
+    "intro": "Deze voorwaarden regelen het gebruik van de Lymark-app, verspreid onder het identificatiekenmerk <strong>com.lycosteam.lymark</strong> door 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. Door de app te installeren of te gebruiken ga je akkoord met wat hier staat.",
+    "s01": {
+      "title": "Wat de app doet",
+      "p1": "Lymark legt over een foto een reeks gegevens — tijd, datum, dag van de week, adres en een identificatiecode — en maakt een nieuw afbeeldingsbestand waarin die gegevens in de pixels zijn opgenomen. Het is een instrument om werk in het veld te ordenen en vast te leggen."
+    },
+    "s02": {
+      "title": "Wat de app niet doet",
+      "p1": "Dit punt is het belangrijkste van deze voorwaarden, en we vragen je het aandachtig te lezen.",
+      "items": {
+        "certify": "<strong>De app certificeert en authenticeert niets.</strong> Hij is geen technisch deskundigenonderzoek, geeft geen document met openbare bewijskracht af en levert geen deskundigenbewijs. Het stempel legt vast wat op het moment van de opname is ingevuld — het bevestigt niet dat dat waar is.",
+        "editable": "<strong>Alle velden zijn door de gebruiker te bewerken.</strong> Tijd, datum, adres en code kunnen vóór het exporteren vrij worden gewijzigd, en dat is een ontwerpkeuze: de vakman moet een adres kunnen corrigeren dat de gps verkeerd had. Het gevolg is dat de gestempelde waarde weergeeft wat de gebruiker besloot te stempelen.",
+        "clock": "<strong>De tijd komt van de klok van het apparaat</strong>, die verkeerd kan staan of met de hand kan zijn aangepast. Er is geen synchronisatie met een betrouwbare tijdserver.",
+        "address": "<strong>Het adres is een schatting.</strong> De nauwkeurigheid hangt af van het gps-signaal en van de database van de kaartendienst van het besturingssysteem.",
+        "code": "<strong>De fotocode is geen notariële inschrijving.</strong> Het is een willekeurig identificatiekenmerk voor interne verwijzing, zonder enige bewijskracht."
+      },
+      "p2": "Vraagt jouw toepassing bewijs met juridische kracht tegenover derden, schakel dan een notariële akte in of een dienst voor digitale certificering met tijdstempel — Lymark vervangt geen van beide."
+    },
+    "s03": {
+      "title": "Jouw verantwoordelijkheden",
+      "items": {
+        "photos": "Jij bent als enige verantwoordelijk voor de foto’s die je vastlegt, voor de inhoud die je erop stempelt en voor het gebruik dat je van de gemaakte bestanden maakt.",
+        "thirdParties": "Fotografeer je personen, eigendommen of ruimten van derden, dan is het aan jou om de nodige toestemmingen te verkrijgen en om het portretrecht, het beroepsgeheim en de Braziliaanse algemene wet inzake de bescherming van persoonsgegevens na te leven ten opzichte van de gefotografeerde betrokkenen.",
+        "prohibited": "Het is verboden de app te gebruiken om een valse registratie te fabriceren, iemand te misleiden, de uitvoering van een niet-verleende dienst te simuleren of enige onrechtmatige handeling te verrichten.",
+        "backups": "Het is aan jou om back-ups te bewaren van wat je belangrijk vindt. De app houdt een beperkte lokale geschiedenis bij, en dat is geen back-up."
+      }
+    },
+    "s04": {
+      "title": "Gebruikslicentie",
+      "p1": "We geven je een persoonlijke, herroepbare, niet-exclusieve en niet-overdraagbare licentie om de app te installeren en te gebruiken, ook voor beroepsmatige doeleinden. Het is niet toegestaan de app te decompileren, te wijzigen, te herdistribueren of te verhandelen, geheel of gedeeltelijk.",
+      "p2": "<strong>Jouw foto’s zijn van jou.</strong> We claimen geen enkel recht op de afbeeldingen die je vastlegt of maakt. De naam, het merk en de visuele identiteit van Lymark blijven eigendom van de ontwikkelaar."
+    },
+    "s05": {
+      "title": "Beschikbaarheid en updates",
+      "p1": "De app wordt geleverd in de staat waarin hij zich bevindt. Er is geen garantie op ononderbroken werking, geen garantie op compatibiliteit met elk willekeurig apparaat en geen toezegging over termijnen voor herstel of nieuwe versies. Functies kunnen worden gewijzigd of beëindigd.",
+      "p2": "De kwaliteit van de geëxporteerde afbeelding hangt af van het apparaat en het besturingssysteem, en kan een lagere resolutie hebben dan de oorspronkelijke foto."
+    },
+    "s06": {
+      "title": "Beperking van aansprakelijkheid",
+      "p1": "Voor zover het Braziliaanse recht dat maximaal toestaat, is de ontwikkelaar niet aansprakelijk voor indirecte schade, gederfde winst, verlies van gegevens of nadeel dat voortvloeit uit beslissingen op basis van de gestempelde informatie — daaronder begrepen het betwisten, in of buiten de rechtszaal, van de inhoud van een foto die met de app is gemaakt.",
+      "p2": "Deze beperking <strong>doet geen afbreuk aan</strong> de rechten die Wet nr. 8.078/1990 aan de consument toekent, noch aan de aansprakelijkheid voor opzet of grove schuld."
+    },
+    "s07": {
+      "title": "Beëindiging",
+      "p1": "Je kunt het gebruik op elk moment beëindigen door de app te verwijderen, waarmee de gegevens die hij bewaarde worden gewist. Er is geen account op te zeggen en geen abonnement te beëindigen."
+    },
+    "s08": {
+      "title": "Wijzigingen in deze voorwaarden",
+      "p1": "Wijzigingen worden op deze pagina gepubliceerd met een nieuwe datum van bijwerking. Voortgezet gebruik na de publicatie betekent dat je met de geldende versie akkoord gaat."
+    },
+    "s09": {
+      "title": "Toepasselijk recht en bevoegde rechter",
+      "p1": "Braziliaans recht is van toepassing. Bevoegd is de rechter van de woonplaats van de gebruiker voor geschillen die uit deze voorwaarden voortvloeien."
+    },
+    "note": "Over de verwerking van gegevens, zie het <privacy>Privacybeleid</privacy>. Vragen: <email>contato@lymark.app</email>."
+  }
+}

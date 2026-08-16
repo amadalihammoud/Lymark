@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Privacy Policy",
+      "description": "How the Lymark app handles photos, location and history. The app has no server, creates no account and does not transmit your photos."
+    },
+    "title": "Privacy Policy",
+    "updated": "Last updated: 2 August 2026 · Lymark app, version 1.1.0",
+    "intro": "This policy describes how the Lymark app handles personal information. It complies with Lei nº 13.709/2018 (General Personal Data Protection Law — LGPD) and with Regulation (EU) 2016/679 (General Data Protection Regulation — GDPR), and it applies to the app distributed under the identifier <strong>com.lycosteam.lymark</strong> and to this website.",
+    "s01": {
+      "title": "In one sentence",
+      "p1": "Lymark <strong>has no server, creates no user account and does not transmit your photos</strong>. Everything the app produces — images, addresses, history and preferences — stays stored on your own device, under your control.",
+      "p2": "There is a single exception, described in item 05: to turn the GPS coordinates into a readable address, the device’s operating system queries an external geocoding service."
+    },
+    "s02": {
+      "title": "Who this policy applies to",
+      "p1": "It applies to anyone who uses the app or visits this website. For data subjects in Brazil, the processing follows the LGPD and the oversight of the National Data Protection Authority (ANPD). For data subjects in the European Economic Area and in the United Kingdom, it follows the GDPR and the UK GDPR."
+    },
+    "s03": {
+      "title": "Who the controller is",
+      "p1": "The controller of the personal data — <em>controller</em>, in the terminology of the GDPR — is 29.015.357 AMAD ALI HAMMOUD, registered under CNPJ 29.015.357/0001-25, with an address at Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "The person in charge of personal data processing, for the purposes of Article 41 of the LGPD, is Amad Ali Hammoud, who can be contacted at <email>contato@lymark.app</email>. Given the volume and the nature of the processing — which involves neither sensitive data at scale nor systematic monitoring — there is no obligation to appoint a <em>Data Protection Officer</em> under Article 37 of the GDPR."
+    },
+    "s04": {
+      "title": "What information the app handles",
+      "p1": "All the information below is recorded exclusively in the app’s private area inside the device, and none of it is sent to the developer.",
+      "defs": {
+        "photos": {
+          "term": "Photographs",
+          "def": "The image you choose from the gallery or capture with the camera, and the file exported with the watermark. A photograph may contain third parties’ personal data — see item 11."
+        },
+        "location": {
+          "term": "Location",
+          "def": "Approximate latitude and longitude, obtained once per capture, for the sole purpose of filling in the address field. The coordinates are not recorded: only the resulting address text is kept, alongside the photo."
+        },
+        "datetime": {
+          "term": "Date, time and weekday",
+          "def": "Read from the device clock at the moment of capture, and editable by you."
+        },
+        "code": {
+          "term": "Photo code",
+          "def": "A sequence of fourteen hexadecimal characters drawn at random. It derives neither from a device identifier nor from one of yours, and it enables no tracking across apps."
+        },
+        "history": {
+          "term": "History",
+          "def": "A record of the last two hundred exports, containing the file path on the device and the data stamped onto the image."
+        },
+        "preferences": {
+          "term": "Preferences",
+          "def": "Visible fields, position, size and the other watermark options."
+        }
+      },
+      "p2": "The app <strong>does not collect</strong>: name, email, telephone, identity documents, advertising identifier, device identifier, contact data, calendar, browsing history, usage metrics, crash reports or any other information about you or about your device. There is no analytics, advertising, attribution or tracking SDK embedded."
+    },
+    "s05": {
+      "title": "The only information that leaves the device",
+      "p1": "When you grant the location permission, the app asks the operating system to turn the GPS coordinates into a postal address. That translation — reverse geocoding — is carried out by the operating system itself, which for that purpose sends the coordinates to its map service: <strong>Google</strong> on Android devices and <strong>Apple</strong> on iOS devices.",
+      "p2": "That communication comes from the operating system, and not from Lymark. The app receives no copy of it, does not mediate it and has no access to anything beyond the address returned. The processing carried out by those providers is governed by their own privacy policies.",
+      "p3": "<strong>No photograph leaves the device through any action of the app.</strong> If you use the Share button, the image is transmitted by the destination app you choose in the system share sheet — messenger, email, cloud storage — under that app’s privacy policy."
+    },
+    "s06": {
+      "title": "Permissions requested, and why",
+      "defs": {
+        "camera": {
+          "term": "Camera",
+          "def": "To take the photo that will receive the watermark. Requested only when you tap “Take photo”. The app does not request microphone access."
+        },
+        "photos": {
+          "term": "Photos and media",
+          "def": "To choose an existing image and to write the exported file to the gallery. Access is restricted to photographs, and the write permission is used only for writing — the app neither browses nor reads your gallery."
+        },
+        "location": {
+          "term": "Location while in use",
+          "def": "To fill in the address field. Requested in the foreground, only while the app is in use, and <strong>never in the background</strong>."
+        }
+      },
+      "p1": "All permissions are optional and revocable at any time in the device settings. Refusing location keeps the app fully functional: the address is then typed by you. Refusing gallery access only prevents automatic saving, and the photo can still be shared."
+    },
+    "s07": {
+      "title": "Legal bases and purposes",
+      "p1": "The processing of location takes place on the basis of your <strong>consent</strong> — Article 7, I of the LGPD and Article 6(1)(a) of the GDPR — expressed when you grant the system permission, and revocable at any time, without prejudice to the lawfulness of the processing carried out before revocation.",
+      "p2": "The processing of the remaining data takes place for the <strong>performance of the feature you requested</strong> — Article 7, V of the LGPD and Article 6(1)(b) of the GDPR — since without it there is no watermark for the app to produce.",
+      "p3": "There is no processing founded on legitimate interest, nor any for advertising, profiling, behaviour analysis or any secondary purpose. There is no processing of special categories of data or of sensitive data by the developer."
+    },
+    "s08": {
+      "title": "International transfer",
+      "p1": "The developer carries out no international transfer of data, because it receives no data. The geocoding query described in item 05 is made by the operating system to providers that may process it outside the user’s country, under those providers’ own transfer mechanisms — standard contractual clauses, in the European case.",
+      "p2": "This website is hosted by Vercel Inc., under the terms of item 14."
+    },
+    "s09": {
+      "title": "Sharing with third parties",
+      "p1": "The developer does not share, sell, rent or transfer personal data to third parties, for the simple reason that it does not hold any. There is no operator (<em>processor</em>) engaged to process the app’s data."
+    },
+    "s10": {
+      "title": "Storage, retention and security",
+      "p1": "The data sits in the app’s private area, protected by the operating system’s isolation between apps and by the device’s screen lock. In the Android version, the system’s automatic backup is <strong>disabled</strong>, so that history and preferences are not sent to the user’s Google account.",
+      "p2": "Retention is entirely controlled by you: records remain until they are deleted in the app itself, and the history automatically discards the oldest ones once it passes two hundred items, removing the corresponding files as well. Uninstalling the app erases everything it stored. Photos already saved to the device gallery belong to the gallery and stay there — it is up to you to remove them if you wish.",
+      "p3": "No system is infallible. Since the app keeps no remote database, there is no central repository open to a leak, and there is no security incident to report under Article 48 of the LGPD or Article 33 of the GDPR that could arise from the developer’s infrastructure. The relevant risk is physical access to the unlocked device."
+    },
+    "s11": {
+      "title": "When you photograph other people",
+      "p1": "When you photograph identifiable people in the course of your professional activity, <strong>you</strong> become the controller of that data in relation to the data subjects portrayed, and it is up to you to provide the legal basis, the information and the response to their rights. The developer takes no part in that processing and has no access to the images."
+    },
+    "s12": {
+      "title": "Your rights",
+      "p1": "Article 18 of the LGPD and Articles 15 to 22 of the GDPR guarantee you the rights of confirmation and access, correction, deletion, anonymisation, blocking, portability, restriction of processing, objection, withdrawal of consent and information about sharing.",
+      "p2": "Since the data resides only on your device, these rights are exercised directly in the app: viewing and deleting records in the Gallery tab, correcting any field before exporting, revoking the location permission in the system settings, and erasing everything by uninstalling the app. The developer cannot access, export or delete this data for you — not out of refusal, but because it does not hold it.",
+      "p3": "For questions or formal requests, write to <email>contato@lymark.app</email>. You also have the right to lodge a complaint with the <strong>ANPD</strong>, in Brazil, or with the supervisory authority of your Member State, in the European Union."
+    },
+    "s13": {
+      "title": "Automated decisions",
+      "p1": "There is no automated decision, profiling or processing that produces legal effects concerning you, under Article 20 of the LGPD and Article 22 of the GDPR."
+    },
+    "s14": {
+      "title": "About this website",
+      "p1": "This website <strong>uses no cookies</strong>, has no analytics, displays no advertising and embeds no social network buttons. The typefaces are served by the domain itself — your browser makes no request to third-party servers, so the visit generates no transfer of your IP address to external providers.",
+      "p2": "The website is hosted by <strong>Vercel Inc.</strong>, which as an operator logs technical access data — IP address, date, time and the resource requested — for as long as is necessary for the security and the operation of the hosting. The legal basis is the legitimate interest in maintaining the security of the service, Article 7, IX of the LGPD and Article 6(1)(f) of the GDPR."
+    },
+    "s15": {
+      "title": "Changes to this policy",
+      "p1": "Changes will be published on this page, with a new update date. Changes that materially alter the processing of data will also be communicated inside the app before they take effect."
+    },
+    "s16": {
+      "title": "Children and adolescents",
+      "p1": "Lymark is a work tool, intended for people aged 18 or over. It is not directed at children or adolescents, and it does not intentionally collect data about that audience."
+    },
+    "s17": {
+      "title": "Applicable law",
+      "p1": "This policy is governed by Brazilian law, without prejudice to the application of the GDPR to the data subjects it covers. The forum elected is that of the data subject’s domicile."
+    },
+    "note": "See also the <terms>Terms of Use</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Terms of Use",
+      "description": "Conditions of use of the Lymark app: what it does, what it does not do, and who is responsible for the content of the photos."
+    },
+    "title": "Terms of Use",
+    "updated": "Last updated: 2 August 2026 · Lymark app, version 1.1.0 (Android)",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "What the app does",
+      "p1": "Lymark overlays a set of information onto a photograph — time, date, weekday, address and an identification code — and generates a new image file with that information built into the pixels. It is a tool for organising and recording field work."
+    },
+    "s02": {
+      "title": "What the app does not do",
+      "p1": "This item is the most important one in these terms, and we ask that it be read with attention.",
+      "items": {
+        "certify": "<strong>The app does not certify or authenticate anything.</strong> It is not a forensic examination, it does not issue a document with public faith and it does not constitute expert evidence. The stamp records what was entered at the moment of capture — it does not attest to the truth of that.",
+        "editable": "<strong>Every field is editable by the user.</strong> Time, date, address and code can be changed freely before exporting, by design: the professional needs to be able to correct an address the GPS got wrong. The consequence is that the stamped value reflects what the user decided to stamp.",
+        "clock": "<strong>The time comes from the device clock</strong>, which may be incorrect or may have been set by hand. There is no synchronisation with a trusted time server.",
+        "address": "<strong>The address is an estimate.</strong> Its accuracy depends on the GPS signal and on the database of the operating system’s map service.",
+        "code": "<strong>The photo code is not a registration at a notary’s office.</strong> It is a random identifier for internal reference, with no evidentiary value whatsoever."
+      },
+      "p2": "If your use case requires evidence with legal force against third parties, seek a notarial deed or a digital certification service with a time stamp — Lymark is a substitute for neither."
+    },
+    "s03": {
+      "title": "Your responsibilities",
+      "items": {
+        "photos": "You are solely responsible for the photographs you capture, for the content you stamp onto them and for the use you make of the files generated.",
+        "thirdParties": "When photographing other people, their property or their premises, it is up to you to obtain the necessary authorisations and to observe image rights, professional secrecy and the General Personal Data Protection Law in relation to the data subjects portrayed.",
+        "prohibited": "Using the app to fabricate a false record, to mislead anyone, to simulate the performance of a service that was not provided or to carry out any unlawful act is forbidden.",
+        "backups": "It is up to you to keep backups of whatever you consider important. The app keeps a limited local history, which is not a backup."
+      }
+    },
+    "s04": {
+      "title": "Licence of use",
+      "p1": "We grant you a personal, revocable, non-exclusive and non-transferable licence to install and use the app, including for professional purposes. Decompiling, modifying, redistributing or commercialising the app, in whole or in part, is not permitted.",
+      "p2": "<strong>Your photos are yours.</strong> We claim no right over the images you capture or generate. The Lymark name, brand and visual identity remain the property of the developer."
+    },
+    "s05": {
+      "title": "Availability and updates",
+      "p1": "The app is provided as it stands. There is no guarantee of uninterrupted operation, of compatibility with each and every device, nor any commitment to a deadline for fixes or new versions. Features may be changed or discontinued.",
+      "p2": "The quality of the exported image depends on the device and on the operating system, and may be of lower resolution than the original photograph."
+    },
+    "s06": {
+      "title": "Limitation of liability",
+      "p1": "To the maximum extent permitted by Brazilian law, the developer is not liable for indirect losses, lost profits, loss of data or damages arising from decisions taken on the basis of the stamped information — including from any challenge, in court or out of it, to the content of a photograph generated by the app.",
+      "p2": "This limitation <strong>does not remove</strong> the rights guaranteed to the consumer by Lei nº 8.078/1990, nor liability for wilful misconduct or gross negligence."
+    },
+    "s07": {
+      "title": "Termination",
+      "p1": "You may end your use at any time by uninstalling the app, which erases the data it stored. There is no account to close and no subscription to cancel."
+    },
+    "s08": {
+      "title": "Changes to these terms",
+      "p1": "Changes will be published on this page with a new update date. Continued use after publication means agreement with the version in force."
+    },
+    "s09": {
+      "title": "Applicable law and forum",
+      "p1": "Brazilian law applies. The forum elected to settle disputes arising from these terms is that of the user’s domicile."
+    },
+    "note": "On the handling of data, see the <privacy>Privacy Policy</privacy>. Questions: <email>contato@lymark.app</email>."
+  }
+}
