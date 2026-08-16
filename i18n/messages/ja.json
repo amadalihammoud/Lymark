@@ -293,6 +293,7 @@
     "tagline": "時刻・日付・場所入りの透かし",
     "title": "Lymark",
     "video": {
+      "cameraDenied": "カメラへのアクセスがありません。端末の設定で許可してください。",
       "done": "動画にスタンプを押して保存しました。",
       "export": "スタンプ付き動画を書き出す",
       "exportSection": "書き出し",
@@ -302,6 +303,7 @@
       "none": "動画が選択されていません。",
       "processing": "処理中… {percent}%",
       "processingMobile": "処理中…",
+      "record": "今すぐ動画を撮影",
       "saved": "{path} に保存しました",
       "savedToGallery": "スタンプ付き動画をギャラリーに保存しました。",
       "select": "動画を選択",

@@ -332,6 +332,43 @@ function MobileVideoScreen() {
     setMetadata((current) => metadataFromFileClock(current, Date.now(), stampLocale));
   };
 
+  /**
+   * Gravar e carimbar: a câmera do sistema grava, e o vídeo cai NA MESMA
+   * esteira do escolhido na galeria — campos preenchidos do relógio de
+   * agora (o momento da gravação, desta vez de verdade) e editáveis antes
+   * de exportar, que é a grande sacada do app. Desenhar o carimbo AO VIVO
+   * sobre a gravação continua sem caminho na geração atual da câmera
+   * (VisionCamera 5); gravar-e-carimbar entrega o mesmo resultado final.
+   */
+  const record = async () => {
+    const permission = await ImagePicker.requestCameraPermissionsAsync();
+    if (!permission.granted) {
+      notify(tApp('permissions.cameraDenied'), 'warning');
+      return;
+    }
+
+    const response = await ImagePicker.launchCameraAsync({
+      mediaTypes: ['videos'],
+      allowsEditing: false,
+    });
+    if (response.canceled) return;
+
+    const asset = response.assets?.[0];
+    if (!asset || !asset.width || !asset.height) {
+      notify(t('unreadable'), 'warning');
+      return;
+    }
+
+    setSaved(false);
+    setSelected({
+      uri: asset.uri,
+      name: asset.fileName ?? asset.uri.split('/').pop() ?? 'video',
+      width: asset.width,
+      height: asset.height,
+    });
+    setMetadata((current) => metadataFromFileClock(current, Date.now(), stampLocale));
+  };
+
   const exportVideo = async () => {
     if (!selected || busy) return;
     if (!stampTypefaces) {
@@ -387,6 +424,7 @@ function MobileVideoScreen() {
   return (
     <Screen>
       <Section title={t('fileSection')} padded>
+        <Button label={t('record')} variant="accent" icon="videocam-outline" onPress={() => void record()} />
         <Button label={t('select')} variant="primary" icon="film-outline" onPress={() => void pick()} />
         {selected ? (
           <Text style={[typography.caption, styles.caption]}>

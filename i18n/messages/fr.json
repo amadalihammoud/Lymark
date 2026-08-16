@@ -293,6 +293,7 @@
     "tagline": "Filigrane avec heure, date et lieu",
     "title": "Lymark",
     "video": {
+      "cameraDenied": "Pas d'accès à la caméra. Autorisez-le dans les réglages de l'appareil.",
       "done": "Vidéo tamponnée et enregistrée.",
       "export": "Exporter la vidéo tamponnée",
       "exportSection": "Exporter",
@@ -302,6 +303,7 @@
       "none": "Aucune vidéo sélectionnée.",
       "processing": "Traitement… {percent}%",
       "processingMobile": "Traitement…",
+      "record": "Filmer maintenant",
       "saved": "Enregistré dans {path}",
       "savedToGallery": "Vidéo tamponnée enregistrée dans la galerie.",
       "select": "Choisir une vidéo",

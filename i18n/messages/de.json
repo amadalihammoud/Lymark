@@ -293,6 +293,7 @@
     "tagline": "Wasserzeichen mit Uhrzeit, Datum und Ort",
     "title": "Lymark",
     "video": {
+      "cameraDenied": "Kein Kamerazugriff. Erlauben Sie ihn in den Geräteeinstellungen.",
       "done": "Video gestempelt und gespeichert.",
       "export": "Gestempeltes Video exportieren",
       "exportSection": "Exportieren",
@@ -302,6 +303,7 @@
       "none": "Kein Video ausgewählt.",
       "processing": "Verarbeitung… {percent}%",
       "processingMobile": "Verarbeitung…",
+      "record": "Video jetzt aufnehmen",
       "saved": "Gespeichert unter {path}",
       "savedToGallery": "Gestempeltes Video in der Galerie gespeichert.",
       "select": "Video auswählen",

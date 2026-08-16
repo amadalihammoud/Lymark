@@ -293,6 +293,7 @@
     "tagline": "Watermerk met tijd, datum en plaats",
     "title": "Lymark",
     "video": {
+      "cameraDenied": "Geen cameratoegang. Sta dit toe in de instellingen van het apparaat.",
       "done": "Video gestempeld en opgeslagen.",
       "export": "Gestempelde video exporteren",
       "exportSection": "Exporteren",
@@ -302,6 +303,7 @@
       "none": "Geen video geselecteerd.",
       "processing": "Verwerken… {percent}%",
       "processingMobile": "Verwerken…",
+      "record": "Video nu opnemen",
       "saved": "Opgeslagen in {path}",
       "savedToGallery": "Gestempelde video opgeslagen in de galerij.",
       "select": "Video kiezen",

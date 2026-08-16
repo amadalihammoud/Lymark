@@ -293,6 +293,7 @@
     "tagline": "带时间、日期和地点的水印",
     "title": "Lymark",
     "video": {
+      "cameraDenied": "无相机权限。请在设备设置中允许。",
       "done": "视频已加盖并保存。",
       "export": "导出加盖视频",
       "exportSection": "导出",
@@ -302,6 +303,7 @@
       "none": "未选择视频。",
       "processing": "处理中… {percent}%",
       "processingMobile": "处理中…",
+      "record": "立即录制视频",
       "saved": "已保存到 {path}",
       "savedToGallery": "加盖视频已保存到相册。",
       "select": "选择视频",
