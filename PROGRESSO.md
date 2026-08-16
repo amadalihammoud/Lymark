@@ -144,7 +144,14 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   desenvolvimento (EAS) para validar em aparelho** — o módulo não existe no
   Expo Go, e a tela explica a ausência. iOS (AVFoundation) fica para a
   etapa seguinte.
-- [ ] **Celular (iOS)** — o mesmo módulo em Swift/AVFoundation.
+- [~] **Celular (iOS)** — o mesmo módulo em Swift/AVFoundation
+  (`modules/video-stamp/ios`): `AVVideoCompositionCoreAnimationTool` põe o
+  MESMO PNG do quadro inteiro numa `CALayer` sobre o vídeo e o
+  `AVAssetExportSession` reencoda por hardware; rotação do
+  `preferredTransform` aplicada na camada do vídeo, com o `renderSize` nas
+  dimensões já giradas (as que o JavaScript mediu). A tela e o JS não
+  mudaram — o mesmo `stampVideo` serve os dois. **Precisa de build EAS de
+  iOS para validar em aparelho**, como o Android.
 - [ ] **Gravar já com o carimbo** — aguardando a geração atual da câmera
   (a VisionCamera 5 removeu o desenho sobre a gravação; sem caminho hoje).
 
