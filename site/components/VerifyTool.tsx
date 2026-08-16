@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
 import { extractSeal, stripSeal } from '../../src/features/attest/jpeg-seal';
+import { extractSealMp4, isMp4, stripSealMp4 } from '../../src/features/attest/mp4-seal';
 import {
   base64UrlToBytes,
   bytesToBase64Url,
@@ -27,7 +28,7 @@ import {
 type Verdict =
   | { kind: 'idle' }
   | { kind: 'checking' }
-  | { kind: 'sealed'; account: string; issuedAt: Date; previewUrl: string }
+  | { kind: 'sealed'; account: string; issuedAt: Date; previewUrl: string; video: boolean }
   | { kind: 'no-seal' }
   | { kind: 'tampered' }
   | { kind: 'unsupported' }
@@ -40,7 +41,10 @@ async function verifyFile(file: File): Promise<Verdict> {
 
   const bytes = new Uint8Array(await file.arrayBuffer());
 
-  const receipt = extractSeal(bytes);
+  // Foto e vídeo têm convenções próprias (segmento COM × caixa `lymk`),
+  // decididas pelo CONTEÚDO, nunca pela extensão do nome.
+  const video = isMp4(bytes);
+  const receipt = video ? extractSealMp4(bytes) : extractSeal(bytes);
   if (!receipt) return { kind: 'no-seal' };
 
   const parsed = parseReceipt(receipt);
@@ -48,7 +52,7 @@ async function verifyFile(file: File): Promise<Verdict> {
 
   // O hash cobre o arquivo SEM o segmento do selo — a mesma regra da
   // emissão, pelo mesmo código.
-  const stripped = stripSeal(bytes);
+  const stripped = video ? stripSealMp4(bytes) : stripSeal(bytes);
   const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', stripped.slice().buffer));
   if (bytesToBase64Url(digest) !== parsed.payload.h) return { kind: 'tampered' };
 
@@ -80,6 +84,7 @@ async function verifyFile(file: File): Promise<Verdict> {
     account: parsed.payload.sub,
     issuedAt: new Date(parsed.payload.iat * 1000),
     previewUrl: URL.createObjectURL(file),
+    video,
   };
 }
 
@@ -101,7 +106,7 @@ export default function VerifyTool() {
       <input
         ref={inputRef}
         type="file"
-        accept="image/jpeg"
+        accept="image/jpeg,video/mp4"
         hidden
         onChange={(event) => void check(event.target.files?.[0])}
       />
@@ -125,9 +130,14 @@ export default function VerifyTool() {
           </p>
           <p className="account-note">{t('declarationNote')}</p>
           {/* A pessoa lê o carimbo com os próprios olhos — a página não
-              interpreta a imagem, só a mostra. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={verdict.previewUrl} alt={t('previewAlt')} className="verify-preview" />
+              interpreta o conteúdo, só o mostra. */}
+          {verdict.video ? (
+            // eslint-disable-next-line jsx-a11y/media-has-caption
+            <video src={verdict.previewUrl} controls className="verify-preview" />
+          ) : (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={verdict.previewUrl} alt={t('previewAlt')} className="verify-preview" />
+          )}
         </div>
       ) : null}
 

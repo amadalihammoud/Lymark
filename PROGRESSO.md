@@ -115,7 +115,11 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   `lymark.app/verificar` (12 idiomas): o arquivo não sobe para servidor.
   Separação dita em toda verificação: integridade ≠ autoria ≠ veracidade —
   o conteúdo declarado é do emissor.
-- [ ] **v2** — selo em vídeo (contêiner MP4/WebM, convenção própria).
+- [x] **v2 (vídeo MP4, desktop)** — caixa `lymk` anexada ao fim do arquivo
+  (`mp4-seal.ts`), hash por stream e append no processo principal; a página
+  `/verificar` aceita foto e vídeo e decide pela assinatura do conteúdo.
+  Validado de ponta a ponta com MP4 real (o arquivo selado segue
+  reproduzindo). WebM (web) e vídeo do celular ficam para a etapa seguinte.
 
 ## Vídeo carimbado (fase própria — desktop concluído)
 

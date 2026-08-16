@@ -129,6 +129,10 @@ export interface WindowLymark {
   ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
   /** Progresso da composição do vídeo, em porcentagem inteira. */
   onVideoProgress?: (callback: (percent: number) => void) => void;
+  /** SHA-256 (base64url) de um arquivo de vídeo, por stream. */
+  hashVideoFile?: (path: string) => Promise<{ status: 'ok' | 'failed'; hash?: string }>;
+  /** Anexa a caixa do selo de autenticidade ao fim do vídeo. */
+  sealVideo?: (path: string, receipt: string) => Promise<{ ok: boolean }>;
 }
 
 declare global {

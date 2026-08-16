@@ -61,8 +61,16 @@ MESMO código (`src/features/attest/jpeg-seal.ts`), importado pelo app e
 pelo site — uma definição só, como o contrato de entitlements.
 
 Comentários JPEG são ignorados por todo visualizador; a foto abre igual em
-qualquer lugar. Vídeo fica para a fase 2 do selo (contêiner diferente,
-convenção diferente).
+qualquer lugar.
+
+**Vídeo (MP4)** tem a segunda convenção, com a mesma regra: uma caixa de
+topo `lymk` ANEXADA AO FIM do arquivo (`src/features/attest/mp4-seal.ts`) —
+reprodutores ignoram caixas desconhecidas, e selar um vídeo de um giga é um
+`append` de ~300 bytes mais um hash por stream, no processo principal do
+desktop, sem tocar a memória. O hash cobre o arquivo sem a caixa. A página
+de verificação decide a convenção pelo CONTEÚDO (SOI × `ftyp`), nunca pela
+extensão. WebM (saída da web) e o vídeo do celular ficam para a etapa
+seguinte.
 
 ## 4. Os fluxos
 

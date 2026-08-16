@@ -12,6 +12,8 @@ import { useTranslations } from 'use-intl';
 
 import { isVideoStampAvailable, stampVideo } from '@modules/video-stamp';
 
+import { sealExportedVideo } from '@/features/attest/seal';
+
 import { Button } from '@/components/ui/button';
 import { FieldRow } from '@/components/ui/field-row';
 import { Note } from '@/components/ui/note';
@@ -198,6 +200,10 @@ function DesktopVideoScreen() {
       );
 
       if (result?.status === 'saved' && result.path) {
+        // O selo de autenticidade, melhor esforço — o mesmo contrato da
+        // foto: sem sessão ou sem rede, o vídeo fica como está.
+        await sealExportedVideo(result.path);
+
         setSavedPath(result.path);
         // Um vídeo consome uma unidade da cota, como uma foto: o que se
         // cobra é o documento carimbado, não o formato dele.
