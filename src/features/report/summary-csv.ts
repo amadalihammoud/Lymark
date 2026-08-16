@@ -32,9 +32,14 @@ export function buildSummaryCsv(entries: GalleryEntry[], strings: SummaryCsvStri
     strings.exportedAt,
   ];
 
+  // Mesma regra da tabela-resumo do PDF: só o que foi de fato carimbado.
+  // Um campo que nunca chegou à imagem fica vazio na planilha, e não afirma
+  // um dado que não está na foto.
   const rows = entries.map((entry, index) => [
     String(index + 1),
-    ...WATERMARK_FIELD_KEYS.map((key) => entry.metadata[key].trim()),
+    ...WATERMARK_FIELD_KEYS.map((key) =>
+      entry.stampedFields.includes(key) ? entry.metadata[key].trim() : '',
+    ),
     entry.exportedAt,
   ]);
 

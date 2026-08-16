@@ -130,6 +130,16 @@ describe('o HTML do relatório', () => {
     const html = buildReportHtml(input({ photos: [{ entry: bare, src: 'media://gallery/c.jpg' }] }), 'pt');
     expect(html).toContain('<td>—</td>');
   });
+
+  it('tabela-resumo não mostra campo que não foi carimbado, mesmo preenchido', () => {
+    const e = entry({ code: 'OBRA-1' });
+    e.stampedFields = ['time', 'date']; // endereço e código NÃO carimbados
+    const html = buildReportHtml(input({ photos: [{ entry: e, src: 'media://gallery/d.jpg' }] }), 'pt');
+    // O endereço guardado ('Rua A, 1') não pode aparecer na tabela-resumo.
+    const summary = html.slice(html.indexOf('table class="summary"'), html.indexOf('class="photos"'));
+    expect(summary).not.toContain('Rua A, 1');
+    expect(summary).toContain('<td>—</td>');
+  });
 });
 
 describe('a paridade com o desktop', () => {
