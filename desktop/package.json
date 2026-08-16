@@ -2,6 +2,8 @@
   "name": "lymark-desktop",
   "version": "1.3.0",
   "description": "Lymark para desktop: carimba hora, data e endereco em fotos de campo.",
+  "homepage": "https://lymark.app",
+  "author": "Amad Ali Hammoud <lyco@tuta.com>",
   "main": "desktop/main.js",
   "scripts": {
     "compile": "tsc",
