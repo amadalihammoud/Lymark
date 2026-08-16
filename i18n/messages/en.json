@@ -204,12 +204,12 @@
       "stampedData": "Stamped data"
     },
     "plan": {
-      "exhausted": "Monthly quota used up",
-      "exhaustedMessage": "The free plan’s photos for this month are used up. The quota comes back at the start of the next period.",
+      "exhausted": "Free photos used up",
+      "exhaustedMessage": "The 12 photos of the free plan are gone. Subscribe to Lymark to keep stamping.",
       "free": "Free",
       "pro": "Pro",
       "reconnect": "Reconnect to confirm your subscription",
-      "remaining": "{remaining, plural, one {# photo left this month} other {# photos left this month}}",
+      "remaining": "{remaining, plural, one {# free photo left} other {# free photos left}}",
       "title": "Plan",
       "unlimited": "No limit"
     },

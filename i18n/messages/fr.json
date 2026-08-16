@@ -204,12 +204,12 @@
       "stampedData": "Données apposées"
     },
     "plan": {
-      "exhausted": "Quota du mois épuisé",
-      "exhaustedMessage": "Les photos de la formule gratuite sont épuisées pour ce mois-ci. Le quota revient au début de la période suivante.",
+      "exhausted": "Photos gratuites épuisées",
+      "exhaustedMessage": "Les 12 photos de l’offre gratuite sont épuisées. Abonnez-vous à Lymark pour continuer à apposer.",
       "free": "Gratuit",
       "pro": "Pro",
       "reconnect": "Reconnectez-vous pour confirmer votre abonnement",
-      "remaining": "{remaining, plural, one {# photo restante ce mois-ci} other {# photos restantes ce mois-ci}}",
+      "remaining": "{remaining, plural, one {# photo gratuite restante} other {# photos gratuites restantes}}",
       "title": "Formule",
       "unlimited": "Sans limite"
     },

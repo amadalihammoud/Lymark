@@ -23,12 +23,19 @@ export type Plan = (typeof PLANS)[number];
  */
 export type Entitlement = {
   plan: Plan;
-  /** Fotos concedidas no período. `null` no plano pago: não há teto. */
+  /** Fotos concedidas. `null` no plano pago: não há teto. */
   quota: number | null;
-  /** Quantas o servidor já contabilizou neste período. */
+  /** Quantas o servidor já contabilizou. */
   used: number;
-  /** Fim do período de cota, em ISO 8601. */
-  periodEnd: string;
+  /**
+   * Fim do período, em ISO 8601 — no plano pago, até quando a assinatura vale.
+   *
+   * `null` quando não há período: a cota grátis é vitalícia por conta, doze
+   * fotos para experimentar e depois assinar. Não é mensal de propósito — uma
+   * cota que renova todo mês é um produto grátis com limite, e o Lymark grátis
+   * é uma amostra.
+   */
+  periodEnd: string | null;
   /**
    * Até quando o aparelho pode confiar neste documento sem falar com o
    * servidor. É o primeiro dos três relógios de `docs/ASSINATURA.md`.

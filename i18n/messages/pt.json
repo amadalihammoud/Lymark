@@ -204,12 +204,12 @@
       "stampedData": "Dados carimbados"
     },
     "plan": {
-      "exhausted": "Cota do mês esgotada",
-      "exhaustedMessage": "As fotos do plano grátis deste mês acabaram. A cota volta no início do próximo período.",
+      "exhausted": "Fotos grátis esgotadas",
+      "exhaustedMessage": "As 12 fotos do plano grátis acabaram. Assine o Lymark para continuar carimbando.",
       "free": "Grátis",
       "pro": "Pro",
       "reconnect": "Reconecte para confirmar sua assinatura",
-      "remaining": "{remaining, plural, one {# foto restante neste mês} other {# fotos restantes neste mês}}",
+      "remaining": "{remaining, plural, one {# foto grátis restante} other {# fotos grátis restantes}}",
       "title": "Plano",
       "unlimited": "Sem limite"
     },

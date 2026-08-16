@@ -204,12 +204,12 @@
       "stampedData": "Gestempelte Daten"
     },
     "plan": {
-      "exhausted": "Monatskontingent aufgebraucht",
-      "exhaustedMessage": "Die Fotos des kostenlosen Tarifs sind für diesen Monat aufgebraucht. Das Kontingent kommt zu Beginn des nächsten Zeitraums zurück.",
+      "exhausted": "Kostenlose Fotos aufgebraucht",
+      "exhaustedMessage": "Die 12 Fotos des kostenlosen Plans sind aufgebraucht. Abonnieren Sie Lymark, um weiter zu stempeln.",
       "free": "Kostenlos",
       "pro": "Pro",
       "reconnect": "Verbinden Sie sich, um Ihr Abo zu bestätigen",
-      "remaining": "{remaining, plural, one {# Foto übrig diesen Monat} other {# Fotos übrig diesen Monat}}",
+      "remaining": "{remaining, plural, one {# kostenloses Foto übrig} other {# kostenlose Fotos übrig}}",
       "title": "Tarif",
       "unlimited": "Ohne Limit"
     },

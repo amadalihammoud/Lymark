@@ -204,12 +204,12 @@
       "stampedData": "已添加的数据"
     },
     "plan": {
-      "exhausted": "本月额度已用完",
-      "exhaustedMessage": "本月免费方案的照片额度已用完。下一个周期开始时会恢复。",
+      "exhausted": "免费照片已用完",
+      "exhaustedMessage": "免费方案的 12 张照片已用完。订阅 Lymark 即可继续添加水印。",
       "free": "免费",
       "pro": "Pro",
       "reconnect": "请联网以确认订阅",
-      "remaining": "{remaining, plural, other {本月还剩 # 张照片}}",
+      "remaining": "{remaining, plural, other {还剩 # 张免费照片}}",
       "title": "方案",
       "unlimited": "不限量"
     },

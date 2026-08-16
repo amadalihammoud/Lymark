@@ -1,5 +1,5 @@
 import {
-  FREE_MONTHLY_QUOTA,
+  FREE_QUOTA,
   OFFLINE_TOLERANCE_DAYS,
   applyServerResponse,
   evaluateAccess,
@@ -58,7 +58,7 @@ describe('evaluateAccess — a promessa de nunca trancar', () => {
 
     expect(estado.canExport).toBe(true);
     expect(estado.plan).toBe('free');
-    expect(estado.remaining).toBe(FREE_MONTHLY_QUOTA);
+    expect(estado.remaining).toBe(FREE_QUOTA);
   });
 
   it('nunca bloqueia um assinante, em nenhum dos estados', () => {
@@ -81,7 +81,7 @@ describe('evaluateAccess — a promessa de nunca trancar', () => {
     expect(estado.reason).toBe('expired');
     expect(estado.plan).toBe('free');
     expect(estado.canExport).toBe(true);
-    expect(estado.remaining).toBe(FREE_MONTHLY_QUOTA);
+    expect(estado.remaining).toBe(FREE_QUOTA);
   });
 });
 
@@ -161,15 +161,15 @@ describe('evaluateAccess — relógio adulterado', () => {
 describe('cota do plano grátis', () => {
   it('desconta o que o servidor contabilizou e o que foi gasto offline', () => {
     const usado = lease({
-      entitlement: { plan: 'free', quota: 15, used: 4 },
+      entitlement: { plan: 'free', quota: 12, used: 4 },
       spentOffline: 2,
     });
 
-    expect(evaluateAccess(usado, AGORA).remaining).toBe(9);
+    expect(evaluateAccess(usado, AGORA).remaining).toBe(6);
   });
 
   it('é o único caminho que impede a exportação', () => {
-    const esgotado = lease({ entitlement: { plan: 'free', quota: 15, used: 15 } });
+    const esgotado = lease({ entitlement: { plan: 'free', quota: 12, used: 12 } });
 
     const estado = evaluateAccess(esgotado, AGORA);
 
@@ -180,7 +180,7 @@ describe('cota do plano grátis', () => {
   it('nunca reporta saldo negativo, mesmo se o offline estourou a cota', () => {
     // Acontece de propósito: offline nós honramos as fotos e ajustamos depois.
     const estourado = lease({
-      entitlement: { plan: 'free', quota: 15, used: 10 },
+      entitlement: { plan: 'free', quota: 12, used: 10 },
       spentOffline: 40,
     });
 
@@ -203,7 +203,7 @@ describe('cota do plano grátis', () => {
     const estado = evaluateAccess(rebaixado, AGORA);
 
     expect(estado.plan).toBe('free');
-    expect(estado.remaining).toBe(FREE_MONTHLY_QUOTA);
+    expect(estado.remaining).toBe(FREE_QUOTA);
   });
 
   it('o plano pago não tem teto', () => {
@@ -216,10 +216,10 @@ describe('cota do plano grátis', () => {
   it('expõe a cota junto do restante, para a interface mostrar a fração', () => {
     // Deduzir o teto somando o que foi gasto daria número errado assim que um
     // documento pago fosse rebaixado — daí a cota vir pronta.
-    const usado = lease({ entitlement: { plan: 'free', quota: 15, used: 4 }, spentOffline: 2 });
+    const usado = lease({ entitlement: { plan: 'free', quota: 12, used: 4 }, spentOffline: 2 });
     const estado = evaluateAccess(usado, AGORA);
 
-    expect(`${estado.remaining}/${estado.quota}`).toBe('9/15');
+    expect(`${estado.remaining}/${estado.quota}`).toBe('6/12');
   });
 
   it('o rebaixado mostra a cota grátis, e não a do documento pago', () => {
@@ -233,13 +233,13 @@ describe('cota do plano grátis', () => {
     });
     const estado = evaluateAccess(rebaixado, AGORA);
 
-    expect(`${estado.remaining}/${estado.quota}`).toBe(`${FREE_MONTHLY_QUOTA}/${FREE_MONTHLY_QUOTA}`);
+    expect(`${estado.remaining}/${estado.quota}`).toBe(`${FREE_QUOTA}/${FREE_QUOTA}`);
   });
 });
 
 describe('recordExport', () => {
   it('soma ao gasto offline sem tocar no que veio do servidor', () => {
-    const antes = lease({ entitlement: { plan: 'free', quota: 15, used: 3 } });
+    const antes = lease({ entitlement: { plan: 'free', quota: 12, used: 3 } });
     const depois = recordExport(antes);
 
     expect(depois.spentOffline).toBe(1);
@@ -250,7 +250,7 @@ describe('recordExport', () => {
   it('não recusa quando a cota já acabou', () => {
     // A recusa é da camada de cima, que consulta `canExport`. Aqui, uma foto
     // que chegou a ser carimbada é sempre contabilizada.
-    const esgotado = lease({ entitlement: { plan: 'free', quota: 15, used: 15 } });
+    const esgotado = lease({ entitlement: { plan: 'free', quota: 12, used: 12 } });
 
     expect(recordExport(esgotado).spentOffline).toBe(1);
   });
@@ -283,19 +283,19 @@ describe('applyServerResponse', () => {
 
 describe('o ciclo completo', () => {
   it('gasta offline, reconcilia e continua com a conta certa', () => {
-    let atual = lease({ entitlement: { plan: 'free', quota: 15, used: 0 } });
+    let atual = lease({ entitlement: { plan: 'free', quota: 12, used: 0 } });
 
     // Um dia de campo, sem sinal.
     for (let i = 0; i < 5; i += 1) atual = recordExport(atual);
-    expect(evaluateAccess(atual, AGORA).remaining).toBe(10);
+    expect(evaluateAccess(atual, AGORA).remaining).toBe(7);
 
     // De volta à cidade: o servidor confirma as cinco.
     atual = applyServerResponse(
       atual,
-      entitlement({ plan: 'free', quota: 15, used: 5, issuedAt: '2026-09-15T18:00:00.000Z' }),
+      entitlement({ plan: 'free', quota: 12, used: 5, issuedAt: '2026-09-15T18:00:00.000Z' }),
     );
 
-    // O saldo não pode ter caído para 5 — seria contar as mesmas fotos duas vezes.
-    expect(evaluateAccess(atual, AGORA).remaining).toBe(10);
+    // O saldo não pode ter caído para 2 — seria contar as mesmas fotos duas vezes.
+    expect(evaluateAccess(atual, AGORA).remaining).toBe(7);
   });
 });

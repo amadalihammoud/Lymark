@@ -67,12 +67,23 @@ web e no desktop, Stripe. **Todos escrevem na nossa fonte da verdade.**
 
 ## 4. Freemium com cota — e o problema que ele cria
 
-O plano grátis é ~15 fotos por mês. Isso muda o entitlement de booleano para
-estado:
+O plano grátis é uma **amostra vitalícia por conta: 12 fotos** e depois
+assinatura. Não é mensal — foi mensal na primeira versão deste texto, e a
+decisão mudou em 16/08/2026: cota que renova todo mês é um produto grátis com
+limite, e o Lymark grátis é uma amostra. Vídeo, quando existir, entra na mesma
+lógica (3 vídeos). Isso muda o entitlement de booleano para estado:
 
 ```json
-{ "plano": "free", "cota": 15, "usadas": 4, "periodo_ate": "2026-09-01" }
+{ "plan": "free", "quota": 12, "used": 4, "periodEnd": null }
 ```
+
+`periodEnd` é `null` porque não há período; no plano pago ele é a data até
+onde a assinatura vale. Consequência direta: **a conta é obrigatória desde a
+primeira abertura** — sem ela, o contador seria do aparelho, e aparelho se
+limpa. O login é de um toque (Google, Apple) ou e-mail com código.
+
+A implementação está em `src/features/entitlements/server.ts` (a regra) e
+`site/lib/entitlements.ts` + `site/app/api/entitlements/route.ts` (a rota).
 
 A parte fácil é essa. A difícil é específica do Lymark:
 

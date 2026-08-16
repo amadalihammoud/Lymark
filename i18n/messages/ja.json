@@ -204,12 +204,12 @@
       "stampedData": "刻印したデータ"
     },
     "plan": {
-      "exhausted": "今月の上限に達しました",
-      "exhaustedMessage": "今月の無料プランの枚数を使い切りました。次の期間の初めに戻ります。",
+      "exhausted": "無料分の写真を使い切りました",
+      "exhaustedMessage": "無料プランの 12 枚を使い切りました。刻印を続けるには Lymark をご購読ください。",
       "free": "無料",
       "pro": "Pro",
       "reconnect": "接続してサブスクリプションを確認してください",
-      "remaining": "{remaining, plural, other {今月あと# 枚}}",
+      "remaining": "{remaining, plural, other {無料分はあと # 枚}}",
       "title": "プラン",
       "unlimited": "上限なし"
     },

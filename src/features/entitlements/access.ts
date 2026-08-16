@@ -23,8 +23,14 @@ import { PLANS, type AccessReason, type AccessState, type LocalLease } from './t
  */
 export const OFFLINE_TOLERANCE_DAYS = 14;
 
-/** A cota do plano grátis, quando o servidor ainda não respondeu uma vez. */
-export const FREE_MONTHLY_QUOTA = 15;
+/**
+ * A cota do plano grátis, quando o servidor ainda não respondeu uma vez.
+ *
+ * O valor de verdade é o do servidor (`FREE_LIFETIME_QUOTA`, em `server.ts`);
+ * este vale até a primeira sincronização, e coincide de propósito. É vitalícia
+ * por conta — doze fotos para experimentar —, não mensal.
+ */
+export const FREE_QUOTA = 12;
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -50,8 +56,8 @@ export function evaluateAccess(lease: LocalLease | null, now: number): AccessSta
     return {
       plan: 'free',
       reason: 'expired',
-      quota: FREE_MONTHLY_QUOTA,
-      remaining: FREE_MONTHLY_QUOTA,
+      quota: FREE_QUOTA,
+      remaining: FREE_QUOTA,
       canExport: true,
       shouldWarn: false,
     };
@@ -135,8 +141,8 @@ function remainingQuota(lease: LocalLease, plan: 'free'): number {
  * caso vale o padrão, e não o que estava escrito lá.
  */
 function effectiveQuota(lease: LocalLease, plan: 'free'): number {
-  if (lease.entitlement.plan !== plan) return FREE_MONTHLY_QUOTA;
-  return lease.entitlement.quota ?? FREE_MONTHLY_QUOTA;
+  if (lease.entitlement.plan !== plan) return FREE_QUOTA;
+  return lease.entitlement.quota ?? FREE_QUOTA;
 }
 
 /**

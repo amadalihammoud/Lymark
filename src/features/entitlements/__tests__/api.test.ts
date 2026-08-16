@@ -56,6 +56,7 @@ describe('parseEntitlement', () => {
     ['data ilegível', { validUntil: 'ontem' }],
     ['data vazia', { issuedAt: '' }],
     ['periodEnd ausente', { periodEnd: undefined }],
+    ['periodEnd ilegível', { periodEnd: 'ontem' }],
   ])('recusa corpo com %s', (_nome, remendo) => {
     expect(parseEntitlement({ ...VALIDO, ...remendo })).toBeNull();
   });
@@ -154,5 +155,34 @@ describe('fetchEntitlement', () => {
     await fetchEntitlement({ endpoint: 'https://exemplo/api', token: 'abc123', fetchImpl: espiao });
 
     expect((visto?.headers as Record<string, string>).Authorization).toBe('Bearer abc123');
+  });
+
+  it('sem nada a subir é leitura pura: GET, sem corpo', async () => {
+    let visto: RequestInit | undefined;
+    const espiao = (async (_url: string, init?: RequestInit) => {
+      visto = init;
+      return { ok: true, status: 200, json: async () => VALIDO } as Response;
+    }) as unknown as typeof fetch;
+
+    await fetchEntitlement({ endpoint: 'https://exemplo/api', token: 't', spent: 0, fetchImpl: espiao });
+
+    expect(visto?.method).toBe('GET');
+    expect(visto?.body).toBeUndefined();
+  });
+
+  it('com gasto offline sobe o número por POST', async () => {
+    // É isto que autoriza `applyServerResponse` a zerar o `spentOffline`: o
+    // servidor recebeu as fotos antes de emitir o documento.
+    let visto: RequestInit | undefined;
+    const espiao = (async (_url: string, init?: RequestInit) => {
+      visto = init;
+      return { ok: true, status: 200, json: async () => VALIDO } as Response;
+    }) as unknown as typeof fetch;
+
+    await fetchEntitlement({ endpoint: 'https://exemplo/api', token: 't', spent: 3, fetchImpl: espiao });
+
+    expect(visto?.method).toBe('POST');
+    expect(JSON.parse(String(visto?.body))).toEqual({ spent: 3 });
+    expect((visto?.headers as Record<string, string>)['Content-Type']).toBe('application/json');
   });
 });

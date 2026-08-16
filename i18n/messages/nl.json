@@ -204,12 +204,12 @@
       "stampedData": "Gestempelde gegevens"
     },
     "plan": {
-      "exhausted": "Maandquotum op",
-      "exhaustedMessage": "De foto’s van het gratis abonnement zijn deze maand op. Het quotum komt terug aan het begin van de volgende periode.",
+      "exhausted": "Gratis foto’s op",
+      "exhaustedMessage": "De 12 foto’s van het gratis abonnement zijn op. Neem een Lymark-abonnement om verder te stempelen.",
       "free": "Gratis",
       "pro": "Pro",
       "reconnect": "Maak verbinding om je abonnement te bevestigen",
-      "remaining": "{remaining, plural, one {# foto over deze maand} other {# foto's over deze maand}}",
+      "remaining": "{remaining, plural, one {# gratis foto over} other {# gratis foto’s over}}",
       "title": "Abonnement",
       "unlimited": "Zonder limiet"
     },

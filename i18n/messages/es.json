@@ -204,12 +204,12 @@
       "stampedData": "Datos sellados"
     },
     "plan": {
-      "exhausted": "Cuota del mes agotada",
-      "exhaustedMessage": "Se acabaron las fotos del plan gratuito de este mes. La cuota vuelve al inicio del próximo período.",
+      "exhausted": "Fotos gratis agotadas",
+      "exhaustedMessage": "Las 12 fotos del plan gratis se acabaron. Suscríbete a Lymark para seguir sellando.",
       "free": "Gratis",
       "pro": "Pro",
       "reconnect": "Reconéctate para confirmar tu suscripción",
-      "remaining": "{remaining, plural, one {# foto restante este mes} other {# fotos restantes este mes}}",
+      "remaining": "{remaining, plural, one {# foto gratis restante} other {# fotos gratis restantes}}",
       "title": "Plan",
       "unlimited": "Sin límite"
     },

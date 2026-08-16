@@ -55,10 +55,16 @@ export function parseEntitlement(body: unknown): Entitlement | null {
 
   if (!isWholeNumber(raw.used)) return null;
 
-  const periodEnd = asIsoDate(raw.periodEnd);
+  // `periodEnd` é `null` de propósito na cota vitalícia — como `quota`,
+  // ausência de período e não ausência de valor. `undefined` não serve.
+  let periodEnd: string | null = null;
+  if (raw.periodEnd !== null) {
+    periodEnd = asIsoDate(raw.periodEnd);
+    if (!periodEnd) return null;
+  }
   const validUntil = asIsoDate(raw.validUntil);
   const issuedAt = asIsoDate(raw.issuedAt);
-  if (!periodEnd || !validUntil || !issuedAt) return null;
+  if (!validUntil || !issuedAt) return null;
 
   return { plan: raw.plan, quota, used: raw.used, periodEnd, validUntil, issuedAt };
 }
@@ -74,7 +80,12 @@ function asIsoDate(value: unknown): string | null {
 }
 
 /**
- * Busca o entitlement do usuário.
+ * Busca o entitlement do usuário — e, se houver, sobe o que foi gasto offline.
+ *
+ * Com `spent` maior que zero a chamada vira `POST` com `{ spent }` no corpo:
+ * o servidor soma antes de emitir, e é por isso que `applyServerResponse`
+ * pode zerar o `spentOffline` ao receber a resposta. Sem nada a subir, é um
+ * `GET` simples — leitura, sem efeito colateral.
  *
  * `fetchImpl` e `timeoutMs` entram por parâmetro para os testes exercitarem
  * rede lenta, corpo truncado e sessão expirada sem servidor nenhum de pé.
@@ -82,10 +93,12 @@ function asIsoDate(value: unknown): string | null {
 export async function fetchEntitlement(options: {
   endpoint: string;
   token: string;
+  /** Exportações feitas offline desde a última sincronização. */
+  spent?: number;
   fetchImpl?: typeof fetch;
   timeoutMs?: number;
 }): Promise<SyncResult> {
-  const { endpoint, token, fetchImpl = fetch, timeoutMs = SYNC_TIMEOUT_MS } = options;
+  const { endpoint, token, spent = 0, fetchImpl = fetch, timeoutMs = SYNC_TIMEOUT_MS } = options;
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
@@ -93,8 +106,13 @@ export async function fetchEntitlement(options: {
   let response: Response;
   try {
     response = await fetchImpl(endpoint, {
-      method: 'GET',
-      headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
+      method: spent > 0 ? 'POST' : 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/json',
+        ...(spent > 0 ? { 'Content-Type': 'application/json' } : {}),
+      },
+      body: spent > 0 ? JSON.stringify({ spent }) : undefined,
       signal: controller.signal,
     });
   } catch (error) {

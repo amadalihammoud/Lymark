@@ -9,7 +9,7 @@ import type { Entitlement } from '../types';
 
 const ENTITLEMENT: Entitlement = {
   plan: 'free',
-  quota: 15,
+  quota: 12,
   used: 4,
   periodEnd: '2026-10-01T00:00:00.000Z',
   validUntil: '2026-09-30T00:00:00.000Z',

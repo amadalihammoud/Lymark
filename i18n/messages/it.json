@@ -204,12 +204,12 @@
       "stampedData": "Dati timbrati"
     },
     "plan": {
-      "exhausted": "Quota del mese esaurita",
-      "exhaustedMessage": "Le foto del piano gratuito di questo mese sono finite. La quota torna all’inizio del periodo successivo.",
+      "exhausted": "Foto gratuite esaurite",
+      "exhaustedMessage": "Le 12 foto del piano gratuito sono finite. Abbonati a Lymark per continuare a timbrare.",
       "free": "Gratis",
       "pro": "Pro",
       "reconnect": "Riconnettiti per confermare l’abbonamento",
-      "remaining": "{remaining, plural, one {# foto rimasta questo mese} other {# foto rimaste questo mese}}",
+      "remaining": "{remaining, plural, one {# foto gratuita rimasta} other {# foto gratuite rimaste}}",
       "title": "Piano",
       "unlimited": "Senza limite"
     },
