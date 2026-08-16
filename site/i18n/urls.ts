@@ -29,16 +29,23 @@ export const SITE_ORIGIN =
  * declarar algo falso — o buscador confere, descarta o grupo inteiro de
  * alternativas e a página perde também o que tinha de verdadeiro.
  *
- * A landing page passa pelo catálogo e existe nas doze. A Política de
- * Privacidade e os Termos de Uso estão escritos direto no JSX, em português:
- * `/de/privacidade` devolve o mesmo texto português que `/privacidade`. Até
- * que sejam traduzidos, o honesto é apontar todos para a versão portuguesa e
- * não prometer as outras onze.
+ * As três existem nas doze. A landing page sempre passou pelo catálogo; a
+ * Política de Privacidade e os Termos de Uso estavam escritos direto no JSX, em
+ * português, e `/de/privacidade` devolvia o mesmo texto que `/privacidade` —
+ * por isso declaravam `false` e apontavam todas para a versão portuguesa. Agora
+ * o texto dos dois documentos vem de `i18n/messages/legal/`, um arquivo por
+ * idioma, e a afirmação "esta é a versão alemã desta página" passou a ser
+ * verdadeira.
+ *
+ * O que sustenta essa afirmação não é a boa vontade de quem traduziu: é
+ * `i18n/__tests__/legal-messages.test.ts`, que reprova no CI se um idioma
+ * perder uma chave ou deixar texto em português. Sem essa guarda, um documento
+ * meio traduzido voltaria a declarar `hreflang` que não cumpre.
  */
 export const ROUTES = [
   { path: '/', translated: true },
-  { path: '/privacidade', translated: false },
-  { path: '/termos', translated: false },
+  { path: '/privacidade', translated: true },
+  { path: '/termos', translated: true },
 ] as const;
 
 export type Route = (typeof ROUTES)[number]['path'];

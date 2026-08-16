@@ -11,11 +11,16 @@ import { ROUTES, alternatesFor, urlFor } from '../i18n/urls';
  * rastreador não o aciona. Sem o mapa, onze idiomas dependeriam de o buscador
  * adivinhar a URL.
  *
- * Só entram os endereços que devem ser indexados. A landing page entra doze
- * vezes, uma por idioma, cada uma declarando as outras onze como tradução. A
- * Política de Privacidade e os Termos entram **uma** vez, em português: é a
- * única versão que existe, e listar `/de/privacidade` seria pedir a indexação
- * de um endereço que devolve texto português.
+ * Só entram os endereços que devem ser indexados, e quantas vezes cada rota
+ * entra vem do `translated` de `i18n/urls.ts` — não de uma lista escrita aqui.
+ * As três rotas existem nas doze línguas, então as três entram doze vezes, cada
+ * uma declarando as outras onze como tradução.
+ *
+ * Foi diferente até a tradução dos documentos jurídicos: enquanto eles só
+ * existiam em português, entravam uma vez, porque listar `/de/privacidade`
+ * seria pedir a indexação de um endereço que devolvia texto português. O mapa
+ * não precisou mudar para acompanhar — é o que se ganha em derivá-lo do
+ * `translated` em vez de repetir a decisão.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return ROUTES.flatMap(({ path, translated }) => {
