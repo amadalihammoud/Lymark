@@ -13,6 +13,8 @@
 import { LoadSkiaWeb } from '@shopify/react-native-skia/lib/commonjs/web';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { canvasKitWasmUrl } from './wasm-url';
+
 /**
  * Estado de carregamento do Skia.
  */
@@ -38,13 +40,13 @@ export function useSkiaStatus(): [SkiaLoadStatus, () => Promise<void>] {
       // `scripts/copy-wasm.js` deposita o arquivo na RAIZ do build, e é de
       // lá que ele precisa ser pedido. As duas pontas andam juntas.
       //
-      // `document.baseURI` em vez de um caminho absoluto: assim funciona
-      // tanto em `app.lymark.app/` quanto sob subcaminho, e no Electron, onde
-      // a origem é `app://lymark/`.
+      // A regra de onde pedir mora em `wasm-url.ts`, com o histórico do defeito
+      // que ela corrige e um teste que cobre as rotas profundas — que é onde
+      // quebrava.
       await LoadSkiaWeb({
         locateFile: (file: string) =>
           file.endsWith('.wasm') && typeof document !== 'undefined'
-            ? new URL('canvaskit.wasm', document.baseURI).href
+            ? canvasKitWasmUrl(document.baseURI)
             : file,
       });
       setStatus('ready');

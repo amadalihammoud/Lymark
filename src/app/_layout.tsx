@@ -3,10 +3,11 @@ import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useTranslations } from 'use-intl';
 
-import { useWaitForSkia } from '@/components/skia';
+import { useSkiaStatus } from '@/components/skia';
 import { CaptureProvider } from '@/contexts/capture-context';
 import { EntitlementProvider } from '@/contexts/entitlement-context';
 import { FeedbackProvider } from '@/contexts/feedback-context';
@@ -35,7 +36,7 @@ void SplashScreen.preventAutoHideAsync();
  */
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts(watermarkFontAssets);
-  const skiaReady = useWaitForSkia();
+  const [skiaStatus, retrySkia] = useSkiaStatus();
 
   useEffect(() => {
     // Falha ao carregar a fonte não pode prender o usuário na splash: o app
@@ -45,39 +46,102 @@ export default function RootLayout() {
 
   if (!fontsLoaded && !fontError) return null;
 
-  // Na web o Skia chega como WebAssembly e o carregamento é assíncrono; no
-  // nativo esta espera resolve de imediato. Segurar a árvore aqui é o que
-  // evita a corrida: `useStampFontProvider` roda no efeito de montagem e
-  // pedia os typefaces antes de o CanvasKit existir, com
-  // "Cannot read properties of undefined (reading 'Typeface')" — as fontes
-  // do carimbo nunca chegavam a ser registradas.
-  if (!skiaReady) return null;
-
   return (
     <SafeAreaProvider>
-      {/* Acima de tudo: os títulos das telas já saem traduzidos, e o idioma
-          escolhido vale para qualquer parte da árvore. */}
+      {/* Acima de tudo, e acima também da espera pelo Skia: os títulos das
+          telas já saem traduzidos, o idioma escolhido vale para qualquer parte
+          da árvore — e o aviso de falha abaixo precisa sair traduzido também.
+          O idioma não depende do Skia. */}
       <LocaleProvider>
-        {/* Acima das telas e fora da árvore de captura: o direito de acesso
-            não pode ser remontado ao navegar entre abas. */}
-        <EntitlementProvider>
-          <SettingsProvider>
-            <GalleryProvider>
-              <CaptureProvider>
-                {/* Acima da navegação: o diálogo e o aviso precisam cobrir
-                    qualquer tela, inclusive as que abrem por cima. */}
-                <FeedbackProvider>
-                  <StatusBar style="light" />
-                  <Navigation />
-                </FeedbackProvider>
-              </CaptureProvider>
-            </GalleryProvider>
-          </SettingsProvider>
-        </EntitlementProvider>
+        {/*
+         * Na web o Skia chega como WebAssembly e o carregamento é assíncrono;
+         * no nativo esta espera resolve de imediato. Segurar a árvore é o que
+         * evita a corrida: `useStampFontProvider` roda no efeito de montagem e
+         * pedia os typefaces antes de o CanvasKit existir, com "Cannot read
+         * properties of undefined (reading 'Typeface')" — as fontes do carimbo
+         * nunca chegavam a ser registradas. Por isso a falha não pode
+         * simplesmente seguir adiante.
+         *
+         * Mas ela também não pode virar tela vazia, que era o caso: um `return
+         * null` no estado `failed` deixava o app sem uma palavra na tela, e
+         * indistinguível de um app que não carregou. Foi exatamente assim que o
+         * 404 do `canvaskit.wasm` chegou ao usuário — sem mensagem, sem pista.
+         * A mesma razão que fez a falha de fonte não prender ninguém na splash
+         * vale aqui: falha visível e recuperável é melhor que falha invisível.
+         */}
+        {skiaStatus === 'failed' ? (
+          <SkiaFailure onRetry={retrySkia} />
+        ) : skiaStatus !== 'ready' ? null : (
+          /* Acima das telas e fora da árvore de captura: o direito de acesso
+             não pode ser remontado ao navegar entre abas. */
+          <EntitlementProvider>
+            <SettingsProvider>
+              <GalleryProvider>
+                <CaptureProvider>
+                  {/* Acima da navegação: o diálogo e o aviso precisam cobrir
+                      qualquer tela, inclusive as que abrem por cima. */}
+                  <FeedbackProvider>
+                    <StatusBar style="light" />
+                    <Navigation />
+                  </FeedbackProvider>
+                </CaptureProvider>
+              </GalleryProvider>
+            </SettingsProvider>
+          </EntitlementProvider>
+        )}
       </LocaleProvider>
     </SafeAreaProvider>
   );
 }
+
+/**
+ * O que aparece quando o Skia não carrega.
+ *
+ * Deliberadamente reaproveita `app.common.error` e `app.common.tryAgain`, que
+ * já existem nos doze idiomas, em vez de acrescentar chave nova: uma mensagem
+ * mais específica seria melhor texto, mas nasceria em português e mentiria nos
+ * outros onze até alguém traduzi-la. Tela de falha traduzida pela metade é o
+ * defeito que ela mesma deveria denunciar.
+ */
+function SkiaFailure({ onRetry }: { onRetry: () => Promise<void> }) {
+  const t = useTranslations('app.common');
+
+  return (
+    <View style={styles.failure}>
+      <StatusBar style="light" />
+      <Text style={typography.screenTitle}>{t('error')}</Text>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={t('tryAgain')}
+        onPress={() => void onRetry()}
+        style={({ pressed }) => [styles.retry, pressed && styles.retryPressed]}>
+        <Text style={typography.value}>{t('tryAgain')}</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  failure: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 16,
+    padding: 24,
+    backgroundColor: colors.background,
+  },
+  retry: {
+    minHeight: 44,
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: colors.border,
+    borderRadius: 6,
+  },
+  retryPressed: {
+    backgroundColor: colors.surfaceRaised,
+  },
+});
 
 /**
  * A pilha de telas, separada da raiz por um motivo só: `useTranslations`
