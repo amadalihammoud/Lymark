@@ -268,7 +268,8 @@
       "select": "Scegli video",
       "unavailableBody": "Il timbro video è disponibile nell'app desktop.",
       "unavailableTitle": "Solo sul computer",
-      "unreadable": "Il file non può essere letto come video."
+      "unreadable": "Il file non può essere letto come video.",
+      "webNote": "Nel browser il video viene elaborato in tempo reale — un video di 2 minuti richiede 2 minuti — ed esce in formato WebM. Per i video lunghi, usa l'app desktop."
     },
     "watermark": {
       "accentColor": "Barra verticale",

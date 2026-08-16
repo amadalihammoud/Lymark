@@ -268,7 +268,8 @@
       "select": "Elegir vídeo",
       "unavailableBody": "El sellado de vídeo está disponible en la aplicación de escritorio.",
       "unavailableTitle": "Solo en la computadora",
-      "unreadable": "El archivo no se pudo leer como vídeo."
+      "unreadable": "El archivo no se pudo leer como vídeo.",
+      "webNote": "En el navegador, el vídeo se procesa en tiempo real — un vídeo de 2 minutos tarda 2 minutos — y sale en formato WebM. Para vídeos largos, usa la aplicación de escritorio."
     },
     "watermark": {
       "accentColor": "Barra vertical",

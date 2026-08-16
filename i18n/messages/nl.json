@@ -268,7 +268,8 @@
       "select": "Video kiezen",
       "unavailableBody": "Videostempels zijn beschikbaar in de desktop-app.",
       "unavailableTitle": "Alleen op de computer",
-      "unreadable": "Het bestand kon niet als video worden gelezen."
+      "unreadable": "Het bestand kon niet als video worden gelezen.",
+      "webNote": "In de browser wordt de video in realtime verwerkt — een video van 2 minuten duurt 2 minuten — en komt uit in WebM-formaat. Gebruik voor lange video's de desktop-app."
     },
     "watermark": {
       "accentColor": "Verticale balk",

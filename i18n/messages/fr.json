@@ -268,7 +268,8 @@
       "select": "Choisir une vidéo",
       "unavailableBody": "Le tampon vidéo est disponible dans l'application de bureau.",
       "unavailableTitle": "Ordinateur uniquement",
-      "unreadable": "Le fichier n'a pas pu être lu comme une vidéo."
+      "unreadable": "Le fichier n'a pas pu être lu comme une vidéo.",
+      "webNote": "Dans le navigateur, la vidéo est traitée en temps réel — une vidéo de 2 minutes prend 2 minutes — et sort au format WebM. Pour les vidéos longues, utilisez l'application de bureau."
     },
     "watermark": {
       "accentColor": "Barre verticale",

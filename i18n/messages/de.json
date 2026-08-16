@@ -268,7 +268,8 @@
       "select": "Video auswählen",
       "unavailableBody": "Der Videostempel ist in der Desktop-App verfügbar.",
       "unavailableTitle": "Nur am Computer",
-      "unreadable": "Die Datei konnte nicht als Video gelesen werden."
+      "unreadable": "Die Datei konnte nicht als Video gelesen werden.",
+      "webNote": "Im Browser wird das Video in Echtzeit verarbeitet — ein 2-Minuten-Video dauert 2 Minuten — und kommt im WebM-Format heraus. Für lange Videos nutze die Desktop-App."
     },
     "watermark": {
       "accentColor": "Senkrechter Balken",

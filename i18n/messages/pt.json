@@ -268,7 +268,8 @@
       "select": "Escolher vídeo",
       "unavailableBody": "O carimbo de vídeo está disponível no aplicativo de computador.",
       "unavailableTitle": "Somente no computador",
-      "unreadable": "O arquivo não pôde ser lido como vídeo."
+      "unreadable": "O arquivo não pôde ser lido como vídeo.",
+      "webNote": "No navegador, o vídeo é processado em tempo real — um vídeo de 2 minutos leva 2 minutos — e sai em formato WebM. Para vídeos longos, use o aplicativo de computador."
     },
     "watermark": {
       "accentColor": "Barra vertical",

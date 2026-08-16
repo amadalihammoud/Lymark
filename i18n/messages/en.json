@@ -268,7 +268,8 @@
       "select": "Choose video",
       "unavailableBody": "Video stamping is available in the desktop app.",
       "unavailableTitle": "Desktop only",
-      "unreadable": "The file could not be read as a video."
+      "unreadable": "The file could not be read as a video.",
+      "webNote": "In the browser, the video is processed in real time — a 2-minute video takes 2 minutes — and comes out in WebM format. For long videos, use the desktop app."
     },
     "watermark": {
       "accentColor": "Vertical bar",

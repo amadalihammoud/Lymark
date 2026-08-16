@@ -110,8 +110,11 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   arquivo (o análogo do EXIF do lote), editáveis. Um vídeo consome uma
   unidade da cota, como uma foto. Carimbo estático por decisão: o registro
   é do momento da captura.
-- [ ] **Web** — clipes curtos (WebCodecs, com aviso para usar o desktop em
-  vídeos longos).
+- [x] **Web** — o navegador reproduz o vídeo para um canvas com o carimbo
+  por cima e grava em tempo real (MediaRecorder, `stamp-video.web.ts`):
+  saída WebM, um vídeo de 2 minutos leva 2 minutos — os dois limites ditos
+  na tela, com o desktop apontado para vídeo longo. Sem dependência nova;
+  WebCodecs fica como evolução quando a cobertura amadurecer.
 - [ ] **Celular** — gravar já com o carimbo (VisionCamera + Skia frame
   processor), fase própria.
 
