@@ -77,6 +77,13 @@ export interface LymarkApi {
   hashVideoFile: (path: string) => Promise<{ status: 'ok' | 'failed'; hash?: string }>;
   /** Anexa a caixa do selo de autenticidade ao fim do vídeo. */
   sealVideo: (path: string, receipt: string) => Promise<{ ok: boolean }>;
+  /** Imprime o HTML do relatório em PDF e pergunta onde salvar. */
+  exportReportPdf: (
+    html: string,
+    filename: string,
+    norm: 'abnt' | 'iso',
+    pageWord: string,
+  ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
   /** Token do desktop chegando pelo deep link `lymark://login`. */
   onLoginToken: (callback: (token: string) => void) => void;
   onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
@@ -152,6 +159,10 @@ export const lymarkApi: LymarkApi = {
 
   sealVideo: async (path, receipt) => {
     return ipcRenderer.invoke('seal-video', { path, receipt });
+  },
+
+  exportReportPdf: async (html, filename, norm, pageWord) => {
+    return ipcRenderer.invoke('export-report-pdf', { html, filename, norm, pageWord });
   },
 
   onLoginToken: (callback) => {

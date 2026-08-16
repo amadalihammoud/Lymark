@@ -178,6 +178,7 @@
     "nav": {
       "batch": "Traitement par lots",
       "photoDetail": "Détail de la photo",
+      "report": "Rapport PDF",
       "video": "Vidéo"
     },
     "notFound": {
@@ -229,6 +230,42 @@
       "remaining": "{remaining, plural, one {# photo gratuite restante} other {# photos gratuites restantes}}",
       "title": "Formule",
       "unlimited": "Sans limite"
+    },
+    "report": {
+      "allPhotos": "Toutes les photos",
+      "authorField": "Responsable / entreprise",
+      "detailsSection": "Détails",
+      "doc": {
+        "author": "Responsable",
+        "declaration": "Les données estampillées (adresse, date, heure et code) sont une déclaration de l'émetteur des photos.",
+        "exportedAt": "Exportée le",
+        "generatedAt": "Généré le",
+        "page": "Page",
+        "photo": "Photo {index}",
+        "photosSection": "Relevés photographiques",
+        "summary": "Résumé",
+        "title": "Rapport photographique",
+        "totalPhotos": "Nombre total de photos :"
+      },
+      "empty": "Aucune photo exportée pour l'instant. Le rapport est créé à partir de la galerie.",
+      "failed": "Impossible de générer le rapport.",
+      "fileStem": "rapport",
+      "generate": "Générer le PDF",
+      "generateSection": "Générer",
+      "norm": {
+        "abnt": "ABNT (Brésil)",
+        "iso": "International"
+      },
+      "normNote": "La norme définit la mise en forme : marges, police et numérotation des pages. ABNT suit la NBR 14724 ; l’international utilise A4 avec des marges de 2,5 cm.",
+      "normSection": "Norme du document",
+      "projectsSection": "Chantier / projet",
+      "saved": "Enregistré dans {path}",
+      "savedShort": "Rapport enregistré.",
+      "title": "Rapport PDF",
+      "titleField": "Titre du rapport",
+      "unavailableBody": "Le rapport PDF est disponible dans l'application de bureau.",
+      "unavailableTitle": "Uniquement sur ordinateur",
+      "uncoded": "Sans code"
     },
     "settings": {
       "about": "À propos",
@@ -376,7 +413,8 @@
       "pickFolder": "Sélectionner le dossier de sortie",
       "pickPhoto": "Sélectionner une photo",
       "pickPhotos": "Sélectionner des photos pour le lot",
-      "savePhoto": "Enregistrer la photo"
+      "savePhoto": "Enregistrer la photo",
+      "saveReport": "Enregistrer le rapport"
     },
     "menu": {
       "copy": "Copier",

@@ -178,6 +178,7 @@
     "nav": {
       "batch": "일괄 처리",
       "photoDetail": "사진 상세",
+      "report": "PDF 보고서",
       "video": "동영상"
     },
     "notFound": {
@@ -229,6 +230,42 @@
       "remaining": "{remaining, plural, other {무료 사진 #장 남음}}",
       "title": "요금제",
       "unlimited": "무제한"
+    },
+    "report": {
+      "allPhotos": "모든 사진",
+      "authorField": "담당자 / 회사",
+      "detailsSection": "세부 정보",
+      "doc": {
+        "author": "담당자",
+        "declaration": "스탬프된 데이터(주소, 날짜, 시간, 코드)는 사진 발행자의 선언입니다.",
+        "exportedAt": "내보낸 날짜",
+        "generatedAt": "생성 날짜",
+        "page": "페이지",
+        "photo": "사진 {index}",
+        "photosSection": "사진 기록",
+        "summary": "요약",
+        "title": "사진 보고서",
+        "totalPhotos": "사진 합계:"
+      },
+      "empty": "아직 내보낸 사진이 없습니다. 보고서는 갤러리에서 만들어집니다.",
+      "failed": "보고서를 생성할 수 없습니다.",
+      "fileStem": "report",
+      "generate": "PDF 생성",
+      "generateSection": "생성",
+      "norm": {
+        "abnt": "ABNT(브라질)",
+        "iso": "국제"
+      },
+      "normNote": "규격은 여백, 글꼴, 페이지 번호 등 서식을 정합니다. ABNT는 NBR 14724를 따르고, 국제 규격은 A4에 여백 2.5cm를 사용합니다.",
+      "normSection": "문서 규격",
+      "projectsSection": "현장 / 프로젝트",
+      "saved": "{path}에 저장되었습니다",
+      "savedShort": "보고서가 저장되었습니다.",
+      "title": "PDF 보고서",
+      "titleField": "보고서 제목",
+      "unavailableBody": "PDF 보고서는 데스크톱 앱에서 사용할 수 있습니다.",
+      "unavailableTitle": "데스크톱 전용",
+      "uncoded": "코드 없음"
     },
     "settings": {
       "about": "정보",
@@ -376,7 +413,8 @@
       "pickFolder": "저장 폴더 선택",
       "pickPhoto": "사진 선택",
       "pickPhotos": "일괄 처리할 사진 선택",
-      "savePhoto": "사진 저장"
+      "savePhoto": "사진 저장",
+      "saveReport": "보고서 저장"
     },
     "menu": {
       "copy": "복사",

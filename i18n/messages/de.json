@@ -178,6 +178,7 @@
     "nav": {
       "batch": "Stapelverarbeitung",
       "photoDetail": "Fotodetails",
+      "report": "PDF-Bericht",
       "video": "Video"
     },
     "notFound": {
@@ -229,6 +230,42 @@
       "remaining": "{remaining, plural, one {# kostenloses Foto übrig} other {# kostenlose Fotos übrig}}",
       "title": "Tarif",
       "unlimited": "Ohne Limit"
+    },
+    "report": {
+      "allPhotos": "Alle Fotos",
+      "authorField": "Verantwortliche Person / Firma",
+      "detailsSection": "Details",
+      "doc": {
+        "author": "Verantwortlich",
+        "declaration": "Die gestempelten Daten (Adresse, Datum, Uhrzeit und Code) sind eine Erklärung der Person, die die Fotos ausgestellt hat.",
+        "exportedAt": "Exportiert am",
+        "generatedAt": "Erstellt am",
+        "page": "Seite",
+        "photo": "Foto {index}",
+        "photosSection": "Fotodokumentation",
+        "summary": "Zusammenfassung",
+        "title": "Fotobericht",
+        "totalPhotos": "Fotos insgesamt:"
+      },
+      "empty": "Noch keine exportierten Fotos. Der Bericht wird aus der Galerie erstellt.",
+      "failed": "Der Bericht konnte nicht erstellt werden.",
+      "fileStem": "bericht",
+      "generate": "PDF erstellen",
+      "generateSection": "Erstellen",
+      "norm": {
+        "abnt": "ABNT (Brasilien)",
+        "iso": "International"
+      },
+      "normNote": "Die Norm bestimmt die Formatierung – Ränder, Schrift und Seitennummerierung. ABNT folgt der NBR 14724; International verwendet A4 mit 2,5 cm Rändern.",
+      "normSection": "Dokumentnorm",
+      "projectsSection": "Baustelle / Projekt",
+      "saved": "Gespeichert unter {path}",
+      "savedShort": "Bericht gespeichert.",
+      "title": "PDF-Bericht",
+      "titleField": "Titel des Berichts",
+      "unavailableBody": "Der PDF-Bericht ist in der Desktop-App verfügbar.",
+      "unavailableTitle": "Nur am Computer",
+      "uncoded": "Ohne Code"
     },
     "settings": {
       "about": "Über",
@@ -376,7 +413,8 @@
       "pickFolder": "Zielordner auswählen",
       "pickPhoto": "Foto auswählen",
       "pickPhotos": "Fotos für die Stapelverarbeitung auswählen",
-      "savePhoto": "Foto speichern"
+      "savePhoto": "Foto speichern",
+      "saveReport": "Bericht speichern"
     },
     "menu": {
       "copy": "Kopieren",

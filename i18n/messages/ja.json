@@ -178,6 +178,7 @@
     "nav": {
       "batch": "一括処理",
       "photoDetail": "写真の詳細",
+      "report": "PDFレポート",
       "video": "動画"
     },
     "notFound": {
@@ -229,6 +230,42 @@
       "remaining": "{remaining, plural, other {無料分はあと # 枚}}",
       "title": "プラン",
       "unlimited": "上限なし"
+    },
+    "report": {
+      "allPhotos": "すべての写真",
+      "authorField": "担当者 / 会社",
+      "detailsSection": "詳細",
+      "doc": {
+        "author": "担当者",
+        "declaration": "スタンプされたデータ(住所・日付・時刻・コード)は、写真の発行者による申告です。",
+        "exportedAt": "書き出し日時",
+        "generatedAt": "作成日時",
+        "page": "ページ",
+        "photo": "写真 {index}",
+        "photosSection": "写真記録",
+        "summary": "概要",
+        "title": "写真レポート",
+        "totalPhotos": "写真の合計:"
+      },
+      "empty": "書き出した写真はまだありません。レポートはギャラリーから作成されます。",
+      "failed": "レポートを作成できませんでした。",
+      "fileStem": "report",
+      "generate": "PDFを作成",
+      "generateSection": "作成",
+      "norm": {
+        "abnt": "ABNT(ブラジル)",
+        "iso": "国際"
+      },
+      "normNote": "規格は余白・フォント・ページ番号などの書式を決めます。ABNTはNBR 14724に従い、国際規格はA4・余白2.5cmを使用します。",
+      "normSection": "文書の規格",
+      "projectsSection": "現場 / プロジェクト",
+      "saved": "{path} に保存しました",
+      "savedShort": "レポートを保存しました。",
+      "title": "PDFレポート",
+      "titleField": "レポートのタイトル",
+      "unavailableBody": "PDFレポートはデスクトップ版アプリで利用できます。",
+      "unavailableTitle": "デスクトップ版のみ",
+      "uncoded": "コードなし"
     },
     "settings": {
       "about": "について",
@@ -376,7 +413,8 @@
       "pickFolder": "保存先フォルダーを選択",
       "pickPhoto": "写真を選択",
       "pickPhotos": "一括処理する写真を選択",
-      "savePhoto": "写真を保存"
+      "savePhoto": "写真を保存",
+      "saveReport": "レポートを保存"
     },
     "menu": {
       "copy": "コピー",

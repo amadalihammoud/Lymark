@@ -133,6 +133,13 @@ export interface WindowLymark {
   hashVideoFile?: (path: string) => Promise<{ status: 'ok' | 'failed'; hash?: string }>;
   /** Anexa a caixa do selo de autenticidade ao fim do vídeo. */
   sealVideo?: (path: string, receipt: string) => Promise<{ ok: boolean }>;
+  /** Imprime o HTML do relatório em PDF e pergunta onde salvar. */
+  exportReportPdf?: (
+    html: string,
+    filename: string,
+    norm: 'abnt' | 'iso',
+    pageWord: string,
+  ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
 }
 
 declare global {

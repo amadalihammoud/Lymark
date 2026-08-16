@@ -178,6 +178,7 @@
     "nav": {
       "batch": "المعالجة الدفعية",
       "photoDetail": "تفاصيل الصورة",
+      "report": "تقرير PDF",
       "video": "فيديو"
     },
     "notFound": {
@@ -229,6 +230,42 @@
       "remaining": "{remaining, plural, zero {لم يتبقَّ أي صورة مجانية} one {تبقّت صورة مجانية واحدة} two {تبقّت صورتان مجانيتان} few {تبقّت # صور مجانية} many {تبقّت # صورة مجانية} other {تبقّت # صورة مجانية}}",
       "title": "الخطة",
       "unlimited": "بلا حد"
+    },
+    "report": {
+      "allPhotos": "كل الصور",
+      "authorField": "المسؤول / الشركة",
+      "detailsSection": "التفاصيل",
+      "doc": {
+        "author": "المسؤول",
+        "declaration": "البيانات المختومة (العنوان والتاريخ والوقت والرمز) هي إقرار من مُصدِر الصور.",
+        "exportedAt": "تاريخ التصدير",
+        "generatedAt": "أُنشئ في",
+        "page": "صفحة",
+        "photo": "صورة {index}",
+        "photosSection": "السجلات المصوَّرة",
+        "summary": "ملخص",
+        "title": "تقرير مصوَّر",
+        "totalPhotos": "إجمالي الصور:"
+      },
+      "empty": "لا توجد صور مُصدَّرة بعد. يُنشأ التقرير من المعرض.",
+      "failed": "تعذر إنشاء التقرير.",
+      "fileStem": "report",
+      "generate": "إنشاء PDF",
+      "generateSection": "إنشاء",
+      "norm": {
+        "abnt": "ABNT (البرازيل)",
+        "iso": "دولي"
+      },
+      "normNote": "يحدد المعيار التنسيق: الهوامش والخط وترقيم الصفحات. يتبع ABNT المواصفة NBR 14724؛ ويستخدم الدولي A4 بهوامش 2.5 سم.",
+      "normSection": "معيار المستند",
+      "projectsSection": "الموقع / المشروع",
+      "saved": "تم الحفظ في {path}",
+      "savedShort": "تم حفظ التقرير.",
+      "title": "تقرير PDF",
+      "titleField": "عنوان التقرير",
+      "unavailableBody": "تقرير PDF متاح في تطبيق سطح المكتب.",
+      "unavailableTitle": "على الكمبيوتر فقط",
+      "uncoded": "بدون رمز"
     },
     "settings": {
       "about": "عن",
@@ -376,7 +413,8 @@
       "pickFolder": "اختيار مجلد الحفظ",
       "pickPhoto": "اختيار صورة",
       "pickPhotos": "اختيار صور للمعالجة الدفعية",
-      "savePhoto": "حفظ الصورة"
+      "savePhoto": "حفظ الصورة",
+      "saveReport": "حفظ التقرير"
     },
     "menu": {
       "copy": "نسخ",
