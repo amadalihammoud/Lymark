@@ -1,0 +1,405 @@
+import { useEffect, useState } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
+
+import { Button } from '@/components/ui/button';
+import { FieldRow } from '@/components/ui/field-row';
+import { Screen } from '@/components/ui/screen';
+import { Section } from '@/components/ui/section';
+import { useEntitlement } from '@/contexts/entitlement-context';
+import { useFeedback } from '@/contexts/feedback-context';
+import { useLocalePreference } from '@/contexts/locale-context';
+import { useSettings } from '@/contexts/settings-context';
+import { probeVideoFile, stampVideoInBrowser } from '@/features/video/stamp-video';
+import { composeStampOverlay } from '@/features/watermark/render-overlay';
+import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
+import { loadStampImages } from '@/features/watermark/stamp-images';
+import { scriptForStamp } from '@/features/watermark/stamp-script';
+import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
+import { isDesktop } from '@/lib/file-storage';
+import { colors, spacing, typography } from '@/theme';
+import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
+import { STAMP_LOCALE } from '@i18n/calendar';
+
+/**
+ * Vídeo carimbado — desktop e web, cada um pelo seu caminho.
+ *
+ * O carimbo é o MESMO da foto nas duas rotas: desenhado pelo mesmo código,
+ * com as mesmas preferências, num PNG transparente do tamanho do quadro
+ * (`render-overlay.ts`). O que muda é quem compõe sobre o vídeo:
+ *
+ * - **Desktop**: o ffmpeg, no processo principal — rápido, MP4, vídeo longo.
+ * - **Web**: o navegador, reproduzindo para um canvas e gravando em tempo
+ *   real (`stamp-video.web.ts`) — WebM, e um vídeo de dois minutos leva dois
+ *   minutos. O limite está dito na tela, com o desktop como saída.
+ *
+ * No celular o plano é outro — gravar já com o carimbo — e tem fase própria.
+ *
+ * Data, hora e dia da semana vêm preenchidos da data do arquivo — o análogo
+ * do EXIF do lote — e continuam editáveis, como tudo.
+ */
+
+/** Os campos de texto livre; data, hora e dia são preenchidos do arquivo. */
+const SHARED_FIELDS: WatermarkFieldKey[] = ['code', 'address'];
+
+const EMPTY_METADATA: CaptureMetadata = { code: '', address: '', date: '', time: '', weekday: '' };
+
+export default function VideoScreen() {
+  const t = useTranslations('app.video');
+
+  if (isDesktop()) return <DesktopVideoScreen />;
+  if (Platform.OS === 'web') return <WebVideoScreen />;
+
+  return (
+    <Screen>
+      <Text style={typography.screenTitle}>{t('unavailableTitle')}</Text>
+      <Text style={typography.body}>{t('unavailableBody')}</Text>
+    </Screen>
+  );
+}
+
+/**
+ * O relógio do arquivo vira os três campos do carimbo — do MESMO `Date`,
+ * para data e dia da semana nunca se contradizerem no documento.
+ */
+type StampLocaleValue = (typeof STAMP_LOCALE)[keyof typeof STAMP_LOCALE];
+
+function metadataFromFileClock(
+  current: CaptureMetadata,
+  modifiedMs: number | undefined,
+  stampLocale: StampLocaleValue,
+): CaptureMetadata {
+  if (!modifiedMs) return current;
+  const modified = new Date(modifiedMs);
+  return {
+    ...current,
+    date: formatDate(modified, stampLocale),
+    time: formatTime(modified),
+    weekday: formatWeekday(modified, stampLocale),
+  };
+}
+
+function FieldsSection({
+  metadata,
+  onChange,
+}: {
+  metadata: CaptureMetadata;
+  onChange: (next: Partial<CaptureMetadata>) => void;
+}) {
+  const t = useTranslations('app.video');
+  const tApp = useTranslations('app');
+
+  return (
+    <Section title={t('fieldsSection')}>
+      {SHARED_FIELDS.map((field) => (
+        <FieldRow
+          key={field}
+          label={tApp(`watermark.fields.${field}`)}
+          value={metadata[field]}
+          onChangeText={(value: string) => onChange({ [field]: value })}
+        />
+      ))}
+      <View style={styles.row}>
+        {(['date', 'time', 'weekday'] as const).map((field) => (
+          <FieldRow
+            key={field}
+            label={tApp(`watermark.fields.${field}`)}
+            value={metadata[field]}
+            onChangeText={(value: string) => onChange({ [field]: value })}
+            containerStyle={styles.rowItem}
+          />
+        ))}
+      </View>
+    </Section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Desktop: composição via ffmpeg no processo principal.
+// ---------------------------------------------------------------------------
+
+type SelectedVideo = {
+  path: string;
+  name: string;
+  width: number;
+  height: number;
+  durationMs: number;
+};
+
+function DesktopVideoScreen() {
+  const t = useTranslations('app.video');
+  const tApp = useTranslations('app');
+  const { notify } = useFeedback();
+  const { preferences } = useSettings();
+  const { access, recordExport } = useEntitlement();
+  const { locale: uiLocale } = useLocalePreference();
+  const stampLocale = STAMP_LOCALE[uiLocale];
+
+  const [video, setVideo] = useState<SelectedVideo | null>(null);
+  const [metadata, setMetadata] = useState<CaptureMetadata>(EMPTY_METADATA);
+  const [busy, setBusy] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [savedPath, setSavedPath] = useState<string | null>(null);
+
+  const stampTypefaces = useStampTypefaces(scriptForStamp(metadata, preferences));
+
+  useEffect(() => {
+    globalThis.window?.lymark?.onVideoProgress?.((percent) => setProgress(percent));
+  }, []);
+
+  const pick = async () => {
+    const picked = await globalThis.window?.lymark?.pickVideo?.();
+    if (!picked || picked.status === 'cancelled') return;
+    if (picked.status === 'failed' || !picked.path || !picked.width || !picked.height) {
+      notify(t('unreadable'), 'warning');
+      return;
+    }
+
+    setSavedPath(null);
+    setProgress(0);
+    setVideo({
+      path: picked.path,
+      name: picked.name ?? picked.path,
+      width: picked.width,
+      height: picked.height,
+      durationMs: picked.durationMs ?? 0,
+    });
+    setMetadata((current) => metadataFromFileClock(current, picked.modifiedMs, stampLocale));
+  };
+
+  const exportVideo = async () => {
+    if (!video || busy) return;
+    if (!stampTypefaces) {
+      notify(tApp('common.error'), 'warning');
+      return;
+    }
+
+    setBusy(true);
+    setProgress(0);
+    setSavedPath(null);
+    try {
+      const images = await loadStampImages(preferences.brandLogoPath);
+      const overlay = await composeStampOverlay({
+        width: video.width,
+        height: video.height,
+        metadata,
+        preferences,
+        renderer: createStampRenderer(stampTypefaces, images),
+      });
+
+      const result = await globalThis.window?.lymark?.watermarkVideo?.(
+        video.path,
+        overlay,
+        video.durationMs,
+      );
+
+      if (result?.status === 'saved' && result.path) {
+        setSavedPath(result.path);
+        // Um vídeo consome uma unidade da cota, como uma foto: o que se
+        // cobra é o documento carimbado, não o formato dele.
+        recordExport();
+        notify(t('done'));
+      } else if (result?.status === 'failed') {
+        notify(t('failed'), 'warning');
+      }
+    } catch {
+      notify(t('failed'), 'warning');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Screen>
+      <Section title={t('fileSection')}>
+        <Button label={t('select')} variant="primary" icon="film-outline" onPress={() => void pick()} />
+        {video ? (
+          <Text style={[typography.caption, styles.caption]}>
+            {video.name} · {video.width}x{video.height}
+          </Text>
+        ) : (
+          <Text style={[typography.caption, styles.caption]}>{t('none')}</Text>
+        )}
+      </Section>
+
+      {video ? (
+        <>
+          <FieldsSection
+            metadata={metadata}
+            onChange={(next) => setMetadata((current) => ({ ...current, ...next }))}
+          />
+
+          <Section title={t('exportSection')}>
+            {!access.canExport ? (
+              <Text style={[typography.body, styles.warning]}>{tApp('plan.exhaustedMessage')}</Text>
+            ) : null}
+            <Button
+              label={busy ? t('processing', { percent: progress }) : t('export')}
+              variant="accent"
+              loading={busy}
+              disabled={!access.canExport || busy}
+              onPress={() => void exportVideo()}
+            />
+            {savedPath ? (
+              <Text style={[typography.caption, styles.caption]}>
+                {t('saved', { path: savedPath })}
+              </Text>
+            ) : null}
+          </Section>
+        </>
+      ) : null}
+    </Screen>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Web: reprodução para canvas + MediaRecorder, em tempo real.
+// ---------------------------------------------------------------------------
+
+type SelectedFile = {
+  file: File;
+  name: string;
+  width: number;
+  height: number;
+  durationMs: number;
+};
+
+function WebVideoScreen() {
+  const t = useTranslations('app.video');
+  const tApp = useTranslations('app');
+  const { notify } = useFeedback();
+  const { preferences } = useSettings();
+  const { access, recordExport } = useEntitlement();
+  const { locale: uiLocale } = useLocalePreference();
+  const stampLocale = STAMP_LOCALE[uiLocale];
+
+  const [selected, setSelected] = useState<SelectedFile | null>(null);
+  const [metadata, setMetadata] = useState<CaptureMetadata>(EMPTY_METADATA);
+  const [busy, setBusy] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [savedName, setSavedName] = useState<string | null>(null);
+
+  const stampTypefaces = useStampTypefaces(scriptForStamp(metadata, preferences));
+
+  const pick = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'video/*';
+    input.onchange = async () => {
+      const file = input.files?.[0];
+      if (!file) return;
+      const info = await probeVideoFile(file);
+      if (!info) {
+        notify(t('unreadable'), 'warning');
+        return;
+      }
+      setSavedName(null);
+      setProgress(0);
+      setSelected({ file, name: file.name, ...info });
+      setMetadata((current) => metadataFromFileClock(current, file.lastModified, stampLocale));
+    };
+    input.click();
+  };
+
+  const exportVideo = async () => {
+    if (!selected || busy) return;
+    if (!stampTypefaces) {
+      notify(tApp('common.error'), 'warning');
+      return;
+    }
+
+    setBusy(true);
+    setProgress(0);
+    setSavedName(null);
+    try {
+      const images = await loadStampImages(preferences.brandLogoPath);
+      const overlay = await composeStampOverlay({
+        width: selected.width,
+        height: selected.height,
+        metadata,
+        preferences,
+        renderer: createStampRenderer(stampTypefaces, images),
+      });
+
+      const result = await stampVideoInBrowser({
+        file: selected.file,
+        overlay,
+        fileName: selected.name,
+        onProgress: setProgress,
+      });
+
+      if (result.status === 'saved') {
+        setSavedName(result.fileName);
+        recordExport();
+        notify(t('done'));
+      } else {
+        notify(t('failed'), 'warning');
+      }
+    } catch {
+      notify(t('failed'), 'warning');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Screen>
+      <Section title={t('fileSection')}>
+        {/* O limite da web, dito antes do trabalho: tempo real, WebM, e o
+            desktop como caminho para vídeo longo. */}
+        <Text style={[typography.caption, styles.caption]}>{t('webNote')}</Text>
+        <Button label={t('select')} variant="primary" icon="film-outline" onPress={pick} />
+        {selected ? (
+          <Text style={[typography.caption, styles.caption]}>
+            {selected.name} · {selected.width}x{selected.height}
+          </Text>
+        ) : (
+          <Text style={[typography.caption, styles.caption]}>{t('none')}</Text>
+        )}
+      </Section>
+
+      {selected ? (
+        <>
+          <FieldsSection
+            metadata={metadata}
+            onChange={(next) => setMetadata((current) => ({ ...current, ...next }))}
+          />
+
+          <Section title={t('exportSection')}>
+            {!access.canExport ? (
+              <Text style={[typography.body, styles.warning]}>{tApp('plan.exhaustedMessage')}</Text>
+            ) : null}
+            <Button
+              label={busy ? t('processing', { percent: progress }) : t('export')}
+              variant="accent"
+              loading={busy}
+              disabled={!access.canExport || busy}
+              onPress={() => void exportVideo()}
+            />
+            {savedName ? (
+              <Text style={[typography.caption, styles.caption]}>
+                {t('saved', { path: savedName })}
+              </Text>
+            ) : null}
+          </Section>
+        </>
+      ) : null}
+    </Screen>
+  );
+}
+
+const styles = StyleSheet.create({
+  caption: {
+    color: colors.textMuted,
+  },
+  warning: {
+    color: colors.danger,
+  },
+  row: {
+    flexDirection: 'row',
+    gap: spacing.sm,
+  },
+  rowItem: {
+    flex: 1,
+  },
+});

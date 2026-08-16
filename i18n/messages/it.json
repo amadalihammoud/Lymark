@@ -177,7 +177,8 @@
     },
     "nav": {
       "batch": "Elaborazione in blocco",
-      "photoDetail": "Dettaglio della foto"
+      "photoDetail": "Dettaglio della foto",
+      "video": "Video"
     },
     "notFound": {
       "body": "Questa schermata non fa parte di Lymark.",
@@ -254,6 +255,22 @@
     },
     "tagline": "Filigrana con ora, data e luogo",
     "title": "Lymark",
+    "video": {
+      "done": "Video timbrato e salvato.",
+      "export": "Esporta video timbrato",
+      "exportSection": "Esporta",
+      "failed": "Non è stato possibile timbrare il video.",
+      "fieldsSection": "Campi del timbro",
+      "fileSection": "Video",
+      "none": "Nessun video selezionato.",
+      "processing": "Elaborazione… {percent}%",
+      "saved": "Salvato in {path}",
+      "select": "Scegli video",
+      "unavailableBody": "Il timbro video è disponibile nell'app desktop.",
+      "unavailableTitle": "Solo sul computer",
+      "unreadable": "Il file non può essere letto come video.",
+      "webNote": "Nel browser il video viene elaborato in tempo reale — un video di 2 minuti richiede 2 minuti — ed esce in formato WebM. Per i video lunghi, usa l'app desktop."
+    },
     "watermark": {
       "accentColor": "Barra verticale",
       "backdropBandNote": "La fascia attraversa la foto da bordo a bordo e si appoggia al margine in cui il timbro è ancorato. Su una scena affollata — cantiere, piazzale, facciata piena — si legge come didascalia del documento, non come un adesivo appiccicato sopra.",

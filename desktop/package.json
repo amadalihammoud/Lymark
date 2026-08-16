@@ -15,7 +15,9 @@
     "verify:package": "node scripts/verify-package.js dist-electron/win-unpacked ../dist",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ffmpeg-static": "^5.3.0"
+  },
   "devDependencies": {
     "electron": "^32.0.0",
     "electron-builder": "^25.0.0",

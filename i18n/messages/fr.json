@@ -177,7 +177,8 @@
     },
     "nav": {
       "batch": "Traitement par lots",
-      "photoDetail": "Détail de la photo"
+      "photoDetail": "Détail de la photo",
+      "video": "Vidéo"
     },
     "notFound": {
       "body": "Cet écran ne fait pas partie de Lymark.",
@@ -254,6 +255,22 @@
     },
     "tagline": "Filigrane avec heure, date et lieu",
     "title": "Lymark",
+    "video": {
+      "done": "Vidéo tamponnée et enregistrée.",
+      "export": "Exporter la vidéo tamponnée",
+      "exportSection": "Exporter",
+      "failed": "La vidéo n'a pas pu être tamponnée.",
+      "fieldsSection": "Champs du tampon",
+      "fileSection": "Vidéo",
+      "none": "Aucune vidéo sélectionnée.",
+      "processing": "Traitement… {percent}%",
+      "saved": "Enregistré dans {path}",
+      "select": "Choisir une vidéo",
+      "unavailableBody": "Le tampon vidéo est disponible dans l'application de bureau.",
+      "unavailableTitle": "Ordinateur uniquement",
+      "unreadable": "Le fichier n'a pas pu être lu comme une vidéo.",
+      "webNote": "Dans le navigateur, la vidéo est traitée en temps réel — une vidéo de 2 minutes prend 2 minutes — et sort au format WebM. Pour les vidéos longues, utilisez l'application de bureau."
+    },
     "watermark": {
       "accentColor": "Barre verticale",
       "backdropBandNote": "Le bandeau traverse la photo de bord à bord et s’appuie sur la marge où le marquage est ancré. Sur une scène chargée — chantier, cour, façade dense —, il se lit comme la légende du document plutôt que comme un autocollant posé dessus.",

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Link, useRouter } from 'expo-router';
 import { useTranslations } from 'use-intl';
 
@@ -451,17 +451,50 @@ export default function CaptureScreen() {
             disabled={busy}
           />
           {isDesktop() && (
+            <>
+              <Button
+                label={tApp('nav.batch')}
+                icon="images"
+                variant="primaryAlt"
+                onPress={handleBatchProcessing}
+                style={styles.batchButton}
+              />
+              <Button
+                label={tApp('nav.video')}
+                icon="film-outline"
+                variant="primaryAlt"
+                onPress={() => router.push('/video')}
+                style={styles.batchButton}
+              />
+            </>
+          )}
+          {/* Na web (fora do desktop) o vídeo também existe — pelo caminho
+              do navegador, com os limites ditos na própria tela. */}
+          {!isDesktop() && Platform.OS === 'web' && (
             <Button
-              label={tApp('nav.batch')}
-              icon="images"
+              label={tApp('nav.video')}
+              icon="film-outline"
               variant="primaryAlt"
-              onPress={handleBatchProcessing}
+              onPress={() => router.push('/video')}
               style={styles.batchButton}
             />
           )}
         </>
       ) : (
-        <Text style={styles.hint}>{t('pickPhotoHint')}</Text>
+        <>
+          <Text style={styles.hint}>{t('pickPhotoHint')}</Text>
+          {/* O vídeo não depende de foto escolhida: a porta fica visível
+              também com a tela vazia, senão o recurso não se descobre. */}
+          {(isDesktop() || Platform.OS === 'web') && (
+            <Button
+              label={tApp('nav.video')}
+              icon="film-outline"
+              variant="primaryAlt"
+              onPress={() => router.push('/video')}
+              style={styles.batchButton}
+            />
+          )}
+        </>
       )}
     </>
   );

@@ -54,6 +54,25 @@ export interface LymarkApi {
   onNavigate: (callback: (route: string) => void) => void;
   /** Abre uma página da conta (login ou exclusão) no navegador do sistema. */
   openAccountPage: (page?: 'login' | 'delete') => Promise<{ ok: boolean }>;
+  /** Seleciona um vídeo e devolve dimensões, duração e data do arquivo. */
+  pickVideo: () => Promise<{
+    status: 'selected' | 'cancelled' | 'failed';
+    path?: string;
+    name?: string;
+    width?: number;
+    height?: number;
+    durationMs?: number;
+    modifiedMs?: number;
+    error?: string;
+  }>;
+  /** Compõe o carimbo (PNG do tamanho do quadro) sobre o vídeo, via ffmpeg. */
+  watermarkVideo: (
+    videoPath: string,
+    overlay: Uint8Array,
+    durationMs: number,
+  ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
+  /** Progresso da composição do vídeo, em porcentagem inteira. */
+  onVideoProgress: (callback: (percent: number) => void) => void;
   /** Token do desktop chegando pelo deep link `lymark://login`. */
   onLoginToken: (callback: (token: string) => void) => void;
   onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
@@ -105,6 +124,22 @@ export const lymarkApi: LymarkApi = {
 
   openAccountPage: async (page) => {
     return ipcRenderer.invoke('open-account-page', { page });
+  },
+
+  pickVideo: async () => {
+    return ipcRenderer.invoke('pick-video');
+  },
+
+  watermarkVideo: async (videoPath, overlay, durationMs) => {
+    return ipcRenderer.invoke('watermark-video', {
+      path: videoPath,
+      overlay: Array.from(overlay),
+      durationMs,
+    });
+  },
+
+  onVideoProgress: (callback) => {
+    ipcRenderer.on('video-progress', (_, percent: number) => callback(percent));
   },
 
   onLoginToken: (callback) => {

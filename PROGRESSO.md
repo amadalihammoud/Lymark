@@ -100,6 +100,24 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 
 ---
 
+## Vídeo carimbado (fase própria — desktop concluído)
+
+- [x] **Desktop** — tela `/video`: escolhe o arquivo, o ffmpeg (empacotado
+  via `ffmpeg-static`, por `extraResources`) sonda dimensões e duração, o
+  carimbo é desenhado pelo MESMO código da foto num PNG transparente do
+  tamanho do quadro (`render-overlay.ts`) e o ffmpeg o sobrepõe quadro a
+  quadro, com progresso na tela. Data/hora/dia preenchidos da data do
+  arquivo (o análogo do EXIF do lote), editáveis. Um vídeo consome uma
+  unidade da cota, como uma foto. Carimbo estático por decisão: o registro
+  é do momento da captura.
+- [x] **Web** — o navegador reproduz o vídeo para um canvas com o carimbo
+  por cima e grava em tempo real (MediaRecorder, `stamp-video.web.ts`):
+  saída WebM, um vídeo de 2 minutos leva 2 minutos — os dois limites ditos
+  na tela, com o desktop apontado para vídeo longo. Sem dependência nova;
+  WebCodecs fica como evolução quando a cobertura amadurecer.
+- [ ] **Celular** — gravar já com o carimbo (VisionCamera + Skia frame
+  processor), fase própria.
+
 ## Próximo passo de código
 
 Passo 4 em diante: faixa de teste fechada nas lojas, RevenueCat + Play e
