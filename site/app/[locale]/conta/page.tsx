@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '../../../../i18n/locales';
 import { readStored, resolveEntitlement } from '../../../../src/features/entitlements/server';
 import { clerkStore } from '../../../lib/clerk-store';
+import { stripeConfig } from '../../../lib/stripe';
 import { Link, redirect } from '../../../i18n/navigation';
 
 /**
@@ -84,11 +85,20 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
       </dl>
 
       {/*
-        Assinar ainda não existe. Dizer isso é melhor que esconder a seção: a
-        pessoa que chegou aqui procurando o botão sabe que ele vem, e não fica
-        procurando por onde ele estaria.
+        O botão de assinar só existe com o Stripe configurado e para quem
+        ainda não é Pro — e enquanto não existe, dizer isso é melhor que
+        esconder a seção: a pessoa que veio procurando o botão sabe que ele
+        vem, e não fica procurando por onde ele estaria.
       */}
-      <p className="account-note">{t('subscribeSoon')}</p>
+      {entitlement.plan === 'free' ? (
+        stripeConfig() ? (
+          <p className="cta account-open-app">
+            <a href="/api/checkout">{t('subscribe')}</a>
+          </p>
+        ) : (
+          <p className="account-note">{t('subscribeSoon')}</p>
+        )
+      ) : null}
 
       {/*
         A porta principal depois do login: quem entrou veio usar o aplicativo,
