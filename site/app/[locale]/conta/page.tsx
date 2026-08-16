@@ -90,6 +90,15 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
       */}
       <p className="account-note">{t('subscribeSoon')}</p>
 
+      {/*
+        A porta principal depois do login: quem entrou veio usar o aplicativo,
+        e sem este botão a pessoa ficava na conta sem saber por onde seguir —
+        a mesma URL do herói da landing, para haver um destino só.
+      */}
+      <p className="cta account-open-app">
+        <a href="https://app.lymark.app">{t('openApp')}</a>
+      </p>
+
       <p className="account-actions">
         <Link href="/">{t('backHome')}</Link>
         <SignOutButton>

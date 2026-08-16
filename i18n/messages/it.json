@@ -14,6 +14,18 @@
       "title": "Info su Lymark",
       "version": "Versione"
     },
+    "account": {
+      "code": "Codice",
+      "codeSent": "Abbiamo inviato un codice a {email}",
+      "continue": "Continua",
+      "email": "E-mail",
+      "failed": "Non ha funzionato. Controlla l'e-mail o il codice e riprova.",
+      "notConfigured": "L'accesso non è ancora disponibile in questa versione.",
+      "signOut": "Esci",
+      "signedInAs": "Connesso come {email}",
+      "title": "Account",
+      "verify": "Verifica"
+    },
     "batch": {
       "addressHint": "Via, numero - Città",
       "clearList": "Svuota elenco",
@@ -366,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "Torna all’inizio",
+      "openApp": "Apri l'app",
       "photos": "Foto",
       "photosLeft": "{remaining} di {quota} rimaste",
       "plan": "Piano",

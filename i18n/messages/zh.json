@@ -14,6 +14,18 @@
       "title": "关于Lymark",
       "version": "版本"
     },
+    "account": {
+      "code": "验证码",
+      "codeSent": "我们已向 {email} 发送验证码",
+      "continue": "继续",
+      "email": "电子邮箱",
+      "failed": "未成功。请检查邮箱或验证码后重试。",
+      "notConfigured": "此版本暂不支持登录。",
+      "signOut": "退出登录",
+      "signedInAs": "已登录：{email}",
+      "title": "账户",
+      "verify": "验证"
+    },
     "batch": {
       "addressHint": "街道、门牌号 - 城市",
       "clearList": "清空列表",
@@ -366,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "返回首页",
+      "openApp": "打开应用",
       "photos": "照片",
       "photosLeft": "剩余 {remaining} 张，共 {quota} 张",
       "plan": "方案",

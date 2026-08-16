@@ -14,6 +14,18 @@
       "title": "Over Lymark",
       "version": "Versie"
     },
+    "account": {
+      "code": "Code",
+      "codeSent": "We hebben een code naar {email} gestuurd",
+      "continue": "Doorgaan",
+      "email": "E-mail",
+      "failed": "Dat is niet gelukt. Controleer het e-mailadres of de code en probeer het opnieuw.",
+      "notConfigured": "Inloggen is in deze versie nog niet beschikbaar.",
+      "signOut": "Uitloggen",
+      "signedInAs": "Ingelogd als {email}",
+      "title": "Account",
+      "verify": "Verifiëren"
+    },
     "batch": {
       "addressHint": "Straat, nummer - Plaats",
       "clearList": "Lijst leegmaken",
@@ -366,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "Terug naar de startpagina",
+      "openApp": "App openen",
       "photos": "Foto’s",
       "photosLeft": "{remaining} van {quota} over",
       "plan": "Abonnement",

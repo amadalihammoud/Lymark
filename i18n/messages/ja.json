@@ -14,6 +14,18 @@
       "title": "Lymarkについて",
       "version": "バージョン"
     },
+    "account": {
+      "code": "コード",
+      "codeSent": "{email} にコードを送信しました",
+      "continue": "続行",
+      "email": "メールアドレス",
+      "failed": "失敗しました。メールアドレスまたはコードを確認して、もう一度お試しください。",
+      "notConfigured": "このバージョンではまだログインできません。",
+      "signOut": "ログアウト",
+      "signedInAs": "{email} でログイン中",
+      "title": "アカウント",
+      "verify": "確認"
+    },
     "batch": {
       "addressHint": "通り・番地 - 市区町村",
       "clearList": "一覧を空にする",
@@ -366,6 +378,7 @@
   "site": {
     "account": {
       "backHome": "トップへ戻る",
+      "openApp": "アプリを開く",
       "photos": "写真",
       "photosLeft": "残り {remaining} 枚（全 {quota} 枚）",
       "plan": "プラン",
