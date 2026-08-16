@@ -20,6 +20,7 @@
       "codeSent": "We sent a code to {email}",
       "connected": "Connected",
       "continue": "Continue",
+      "deleteAccount": "Delete account",
       "email": "Email",
       "failed": "That didn't work. Check the email or code and try again.",
       "notConfigured": "Sign-in is not available in this build yet.",
@@ -396,6 +397,14 @@
       "subscribe": "Subscribe to Lymark Pro",
       "subscribeSoon": "Subscriptions are not available yet. When they are, you will be able to subscribe here and use any device with the same account.",
       "title": "Your account"
+    },
+    "deleteAccount": {
+      "back": "Back to account",
+      "confirm": "Delete my account",
+      "deletesNow": "Deleting your account immediately erases your email, your identifier, and the record of plan, quota and photo count.",
+      "irreversible": "Deletion is permanent and cannot be undone. The photos on your device are not affected — they were never on our servers.",
+      "retained": "Payment transaction records are retained for the legally required fiscal period, unlinked from your profile. Technical logs expire on their own schedule.",
+      "title": "Delete account"
     },
     "desktop": {
       "backAccount": "Back to account",

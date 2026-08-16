@@ -20,6 +20,7 @@
       "codeSent": "Abbiamo inviato un codice a {email}",
       "connected": "Connesso",
       "continue": "Continua",
+      "deleteAccount": "Elimina account",
       "email": "E-mail",
       "failed": "Non ha funzionato. Controlla l'e-mail o il codice e riprova.",
       "notConfigured": "L'accesso non è ancora disponibile in questa versione.",
@@ -396,6 +397,14 @@
       "subscribe": "Abbonati a Lymark Pro",
       "subscribeSoon": "L’abbonamento non è ancora disponibile. Quando lo sarà, potrai abbonarti qui e usare qualsiasi dispositivo con lo stesso account.",
       "title": "Il tuo account"
+    },
+    "deleteAccount": {
+      "back": "Torna all'account",
+      "confirm": "Elimina il mio account",
+      "deletesNow": "Eliminare l'account cancella immediatamente la tua e-mail, il tuo identificativo e il registro di piano, quota e conteggio foto.",
+      "irreversible": "L'eliminazione è definitiva e non può essere annullata. Le foto sul tuo dispositivo non sono toccate — non sono mai state sui nostri server.",
+      "retained": "I registri delle transazioni di pagamento sono conservati per il periodo di obbligo fiscale, scollegati dal profilo. I log tecnici scadono secondo i propri termini.",
+      "title": "Elimina account"
     },
     "desktop": {
       "backAccount": "Torna all'account",

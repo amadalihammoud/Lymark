@@ -288,14 +288,17 @@ function registerIpcHandlers() {
    * já abrir certo na próxima execução.
    */
   /**
-   * Abre a página de login no navegador do sistema — e SÓ ela.
+   * Abre uma página da conta no navegador do sistema — de uma lista fechada.
    *
-   * URL fixa de propósito: um handler que abrisse qualquer URL vinda do
+   * Allowlist de propósito: um handler que abrisse qualquer URL vinda do
    * renderer daria à página, em caso de comprometimento, um caminho para
-   * lançar links arbitrários no navegador da pessoa.
+   * lançar links arbitrários no navegador da pessoa. `delete` existe porque
+   * as lojas exigem exclusão de conta acionável de dentro do aplicativo.
    */
-  ipcMain.handle('open-account-page', async () => {
-    await shell.openExternal(ACCOUNT_HANDOFF_URL);
+  ipcMain.handle('open-account-page', async (_event, args?: { page?: unknown }) => {
+    const url =
+      args?.page === 'delete' ? 'https://lymark.app/conta/excluir' : ACCOUNT_HANDOFF_URL;
+    await shell.openExternal(url);
     return { ok: true };
   });
 

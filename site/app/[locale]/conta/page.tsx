@@ -36,6 +36,7 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
   setRequestLocale(locale);
 
   const t = await getTranslations('site.account');
+  const td = await getTranslations('site.deleteAccount');
   const store = clerkStore();
 
   // Sem chave secreta não há sessão para consultar — o `proxy.ts` nem monta o
@@ -116,6 +117,11 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
             {t('signOut')}
           </button>
         </SignOutButton>
+        {/* A porta da exclusão (§8.6): visível, mas discreta — quem procura
+            encontra, e o aviso do que acontece mora na página seguinte. */}
+        <Link href="/conta/excluir" className="account-delete-link">
+          {td('title')}
+        </Link>
       </p>
     </section>
   );

@@ -20,6 +20,7 @@
       "codeSent": "We hebben een code naar {email} gestuurd",
       "connected": "Verbonden",
       "continue": "Doorgaan",
+      "deleteAccount": "Account verwijderen",
       "email": "E-mail",
       "failed": "Dat is niet gelukt. Controleer het e-mailadres of de code en probeer het opnieuw.",
       "notConfigured": "Inloggen is in deze versie nog niet beschikbaar.",
@@ -396,6 +397,14 @@
       "subscribe": "Abonneer op Lymark Pro",
       "subscribeSoon": "Een betaald abonnement is nog niet beschikbaar. Zodra dat zo is, kun je het hier afsluiten en elk apparaat met hetzelfde account gebruiken.",
       "title": "Je account"
+    },
+    "deleteAccount": {
+      "back": "Terug naar account",
+      "confirm": "Mijn account verwijderen",
+      "deletesNow": "Het verwijderen van je account wist onmiddellijk je e-mail, je identificatie en het record van abonnement, quotum en fototeller.",
+      "irreversible": "Verwijdering is definitief en kan niet ongedaan worden gemaakt. De foto's op je apparaat blijven onaangetast — ze hebben nooit op onze servers gestaan.",
+      "retained": "Betalingstransacties worden bewaard gedurende de wettelijke fiscale termijn, losgekoppeld van het profiel. Technische logs verlopen volgens hun eigen termijn.",
+      "title": "Account verwijderen"
     },
     "desktop": {
       "backAccount": "Terug naar account",

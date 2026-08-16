@@ -20,6 +20,7 @@
       "codeSent": "我们已向 {email} 发送验证码",
       "connected": "已连接",
       "continue": "继续",
+      "deleteAccount": "删除账户",
       "email": "电子邮箱",
       "failed": "未成功。请检查邮箱或验证码后重试。",
       "notConfigured": "此版本暂不支持登录。",
@@ -396,6 +397,14 @@
       "subscribe": "订阅 Lymark Pro",
       "subscribeSoon": "订阅功能尚未开放。开放后，您可以在这里订阅，并用同一账号在任何设备上使用。",
       "title": "您的账号"
+    },
+    "deleteAccount": {
+      "back": "返回账户",
+      "confirm": "删除我的账户",
+      "deletesNow": "删除账户会立即清除您的电子邮箱、标识符以及套餐、配额和照片计数记录。",
+      "irreversible": "删除是永久性的，无法撤销。您设备上的照片不受影响——它们从未存放在我们的服务器上。",
+      "retained": "支付交易记录将按法定财务义务期限保留，并与您的资料脱钩。技术日志按其自身期限过期。",
+      "title": "删除账户"
     },
     "desktop": {
       "backAccount": "返回账户",
