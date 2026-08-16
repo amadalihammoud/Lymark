@@ -20,6 +20,7 @@
       "codeSent": "Enviamos um código para {email}",
       "connected": "Conectado",
       "continue": "Continuar",
+      "deleteAccount": "Excluir conta",
       "email": "E-mail",
       "failed": "Não deu certo. Confira o e-mail ou o código e tente de novo.",
       "notConfigured": "O login ainda não está disponível nesta versão do aplicativo.",
@@ -396,6 +397,14 @@
       "subscribe": "Assinar o Lymark Pro",
       "subscribeSoon": "A assinatura ainda não está disponível. Quando estiver, você poderá assinar aqui e usar em qualquer aparelho com a mesma conta.",
       "title": "Sua conta"
+    },
+    "deleteAccount": {
+      "back": "Voltar à conta",
+      "confirm": "Excluir minha conta",
+      "deletesNow": "Excluir a conta apaga imediatamente seu e-mail, seu identificador e o registro de plano, cota e contagem de fotos.",
+      "irreversible": "A exclusão é definitiva e não pode ser desfeita. As fotos no seu aparelho não são afetadas — elas nunca estiveram em nossos servidores.",
+      "retained": "Registros de transação de pagamento são retidos pelo prazo de obrigação fiscal, desvinculados do cadastro. Logs técnicos expiram pelo prazo próprio.",
+      "title": "Excluir conta"
     },
     "desktop": {
       "backAccount": "Voltar à conta",

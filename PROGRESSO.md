@@ -69,7 +69,13 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 - [ ] **Passo 5** — RevenueCat + Play, depois App Store.
 - [ ] **Passo 6** — cota e freemium completos: token assinado, lote de
   créditos, tolerância offline.
-- [ ] **Passo 7** — pré-lançamento: LGPD (§8), exclusão de conta, listagens.
+- [~] **Passo 7 (parcial)** — portão de login: a conta é obrigatória desde a
+  primeira abertura (o app web abria sem conta; agora, com a chave do Clerk
+  no build, o login vem antes das telas). Exclusão de conta acionável: URL
+  pública `/conta/excluir` (aviso do §8.5, POST sem JavaScript, apaga o
+  usuário no Clerk) e o caminho de dentro do app nas três plataformas.
+  Restam do passo 7: política de retenção escrita, revisão jurídica do §8 e
+  listagens das lojas.
 
 ---
 

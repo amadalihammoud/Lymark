@@ -20,6 +20,7 @@
       "codeSent": "Nous avons envoyé un code à {email}",
       "connected": "Connecté",
       "continue": "Continuer",
+      "deleteAccount": "Supprimer le compte",
       "email": "E-mail",
       "failed": "Échec. Vérifiez l'e-mail ou le code et réessayez.",
       "notConfigured": "La connexion n'est pas encore disponible dans cette version.",
@@ -396,6 +397,14 @@
       "subscribe": "S'abonner à Lymark Pro",
       "subscribeSoon": "L’abonnement n’est pas encore disponible. Quand il le sera, vous pourrez vous abonner ici et utiliser n’importe quel appareil avec le même compte.",
       "title": "Votre compte"
+    },
+    "deleteAccount": {
+      "back": "Retour au compte",
+      "confirm": "Supprimer mon compte",
+      "deletesNow": "La suppression du compte efface immédiatement votre e-mail, votre identifiant et l'enregistrement du forfait, du quota et du compteur de photos.",
+      "irreversible": "La suppression est définitive et irréversible. Les photos sur votre appareil ne sont pas affectées — elles n'ont jamais été sur nos serveurs.",
+      "retained": "Les registres de transactions de paiement sont conservés pendant la durée d'obligation fiscale, dissociés du profil. Les journaux techniques expirent selon leur propre délai.",
+      "title": "Supprimer le compte"
     },
     "desktop": {
       "backAccount": "Retour au compte",

@@ -20,6 +20,7 @@
       "codeSent": "Wir haben einen Code an {email} gesendet",
       "connected": "Verbunden",
       "continue": "Weiter",
+      "deleteAccount": "Konto löschen",
       "email": "E-Mail",
       "failed": "Das hat nicht geklappt. Prüfe E-Mail oder Code und versuche es erneut.",
       "notConfigured": "Die Anmeldung ist in dieser Version noch nicht verfügbar.",
@@ -396,6 +397,14 @@
       "subscribe": "Lymark Pro abonnieren",
       "subscribeSoon": "Das Abonnement ist noch nicht verfügbar. Sobald es das ist, können Sie es hier abschließen und mit demselben Konto jedes Gerät nutzen.",
       "title": "Ihr Konto"
+    },
+    "deleteAccount": {
+      "back": "Zurück zum Konto",
+      "confirm": "Mein Konto löschen",
+      "deletesNow": "Das Löschen des Kontos entfernt sofort deine E-Mail, deine Kennung und den Eintrag zu Plan, Kontingent und Fotozähler.",
+      "irreversible": "Die Löschung ist endgültig und kann nicht rückgängig gemacht werden. Die Fotos auf deinem Gerät sind nicht betroffen — sie waren nie auf unseren Servern.",
+      "retained": "Zahlungsbelege werden für die gesetzliche Aufbewahrungsfrist gespeichert, getrennt vom Profil. Technische Logs laufen nach eigener Frist ab.",
+      "title": "Konto löschen"
     },
     "desktop": {
       "backAccount": "Zurück zum Konto",

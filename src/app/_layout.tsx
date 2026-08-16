@@ -9,6 +9,7 @@ import { useTranslations } from 'use-intl';
 
 import { useSkiaStatus } from '@/components/skia';
 import { AuthProvider } from '@/features/auth/provider';
+import { AuthGate } from '@/features/auth/gate';
 import { DesktopAuthProvider } from '@/features/auth/desktop-auth';
 import { EntitlementSync } from '@/features/auth/entitlement-sync';
 import { CaptureProvider } from '@/contexts/capture-context';
@@ -90,7 +91,11 @@ export default function RootLayout() {
                       qualquer tela, inclusive as que abrem por cima. */}
                   <FeedbackProvider>
                     <StatusBar style="light" />
-                    <Navigation />
+                    {/* O portão de login: sem sessão, nada de app — a conta é
+                        obrigatória desde a primeira abertura (§6). */}
+                    <AuthGate>
+                      <Navigation />
+                    </AuthGate>
                   </FeedbackProvider>
                 </CaptureProvider>
               </GalleryProvider>

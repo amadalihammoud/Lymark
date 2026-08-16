@@ -755,6 +755,23 @@ footer.site a:hover {
   color: var(--amber);
 }
 
+/* A exclusão em vermelho, nos dois lugares: o link discreto da conta e o
+   botão de confirmação da página própria. */
+.account-delete-link,
+.account-delete {
+  color: #e5484d;
+}
+
+.account-delete {
+  border-color: #e5484d;
+}
+
+.account-delete:hover {
+  border-color: #e5484d;
+  color: #fff;
+  background: #e5484d;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
