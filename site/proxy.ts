@@ -1,4 +1,5 @@
 import { clerkMiddleware } from '@clerk/nextjs/server';
+import type { NextRequest } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 
 import { routing } from './i18n/routing';
@@ -18,10 +19,24 @@ const intl = createMiddleware(routing);
  * e os documentos legais são públicos por definição —, e a API confere o token
  * ela mesma, em `lib/entitlements.ts`.
  */
-export default clerkMiddleware((_auth, request) => {
+const withoutClerk = (request: NextRequest) => {
   if (request.nextUrl.pathname.startsWith('/api')) return;
   return intl(request);
-});
+};
+
+/*
+ * Sem a chave secreta, o `clerkMiddleware` lança em TODA requisição — e a
+ * landing inteira cai com 500 por causa de uma variável de ambiente. Já
+ * aconteceu, em produção, na noite em que a conta entrou. Sem chave o site
+ * segue público e sem sessão; a API responde 503 e a conta diz "indisponível",
+ * que é o combinado.
+ */
+const hasClerkKeys =
+  Boolean(process.env.CLERK_SECRET_KEY) && Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+
+export default hasClerkKeys
+  ? clerkMiddleware((_auth, request) => withoutClerk(request))
+  : withoutClerk;
 
 export const config = {
   /**

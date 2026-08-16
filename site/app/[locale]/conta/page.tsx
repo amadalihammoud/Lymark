@@ -34,19 +34,30 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const t = await getTranslations('site.account');
+  const store = clerkStore();
+
+  // Sem chave secreta não há sessão para consultar — o `proxy.ts` nem monta o
+  // Clerk, e chamar `auth()` aqui lançaria. A página diz que a conta está
+  // indisponível, em vez de derrubar a rota.
+  if (!store) {
+    return (
+      <section className="account-shell account-page">
+        <h1>{t('title')}</h1>
+        <p className="account-note">{t('planUnavailable')}</p>
+      </section>
+    );
+  }
+
   const { userId } = await auth();
   if (!userId) redirect({ href: '/entrar', locale: locale as Locale });
 
-  const t = await getTranslations('site.account');
   const user = await currentUser();
-  const store = clerkStore();
-
-  // Sem chave secreta o site publica, mas não sabe ler o plano — diz isso, em
-  // vez de inventar um.
-  const entitlement = store
-    ? resolveEntitlement({ stored: readStored(await store.read(userId!)), spent: 0, now: new Date() })
-        .entitlement
-    : null;
+  const entitlement = resolveEntitlement({
+    stored: readStored(await store.read(userId!)),
+    spent: 0,
+    now: new Date(),
+  }).entitlement;
 
   const email = user?.primaryEmailAddress?.emailAddress ?? '';
 
@@ -57,9 +68,9 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
 
       <dl className="account-plan">
         <dt>{t('plan')}</dt>
-        <dd>{entitlement ? t(`plans.${entitlement.plan}`) : t('planUnavailable')}</dd>
+        <dd>{t(`plans.${entitlement.plan}`)}</dd>
 
-        {entitlement && entitlement.quota !== null ? (
+        {entitlement.quota !== null ? (
           <>
             <dt>{t('photos')}</dt>
             <dd>
