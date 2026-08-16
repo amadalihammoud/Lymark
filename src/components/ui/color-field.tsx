@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 import { hexToHsv, hsvToHex } from '@/lib/color';
-import { HIT_TARGET, colors, radius, spacing, typography } from '@/theme';
+import { HIT_TARGET, colors, fontFamily, radius, spacing, typography } from '@/theme';
 import { STAMP_COLOR_KEYS, STAMP_COLOR_LABELS, STAMP_COLOR_SWATCHES } from '@/types';
 
 /**
@@ -293,6 +293,7 @@ const styles = StyleSheet.create({
   },
   wheelMark: {
     ...typography.value,
+    fontFamily: fontFamily.uiBold,
     fontWeight: '700',
   },
   scrim: {
@@ -363,6 +364,7 @@ const styles = StyleSheet.create({
   },
   actionPrimaryLabel: {
     color: colors.onAccent,
+    fontFamily: fontFamily.uiBold,
     fontWeight: '700',
   },
 });

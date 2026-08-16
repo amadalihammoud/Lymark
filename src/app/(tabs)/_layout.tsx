@@ -4,7 +4,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
-import { colors } from '@/theme';
+import { colors, fontFamily } from '@/theme';
 
 /**
  * As três áreas do app.
@@ -65,7 +65,8 @@ const styles = StyleSheet.create({
     borderTopColor: colors.tabBarBorder,
   },
   tabLabel: {
+    fontFamily: fontFamily.uiMedium,
     fontSize: 11,
-    fontWeight: '600',
+    fontWeight: '500',
   },
 });

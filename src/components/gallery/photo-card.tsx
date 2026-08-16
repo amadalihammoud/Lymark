@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
 import { formatTimestamp } from '@/lib/datetime';
-import { colors, radius, spacing, typography } from '@/theme';
+import { colors, fontFamily, radius, spacing, typography } from '@/theme';
 import type { GalleryEntry } from '@/types';
 
 /** Item do histórico: miniatura, quando foi exportada e o código carimbado. */
@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
   },
   checkMark: {
     color: colors.onAccent,
+    fontFamily: fontFamily.uiBold,
     fontWeight: '700',
     lineHeight: 20,
   },
@@ -127,6 +128,7 @@ const styles = StyleSheet.create({
   },
   missingMark: {
     color: colors.danger,
+    fontFamily: fontFamily.uiBold,
     fontSize: 24,
     fontWeight: '700',
   },

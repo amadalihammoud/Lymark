@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { HIT_TARGET, colors, radius, spacing, typography } from '@/theme';
+import { HIT_TARGET, colors, fontFamily, radius, spacing, typography } from '@/theme';
 
 /**
  * Seletor de opção única em grade.
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
   },
   labelSelected: {
     color: colors.onAccent,
+    fontFamily: fontFamily.uiBold,
     fontWeight: '700',
   },
 });
