@@ -2,6 +2,8 @@ import { ImageFormat, Skia, type SkImage } from '@shopify/react-native-skia';
 
 import type { CaptureMetadata, WatermarkPreferences } from '@/types';
 
+import { sealExportedPhoto } from '@/features/attest/seal';
+
 import { buildWatermarkContent } from './build-content';
 import { writeExportedPhoto } from './photo-file';
 import type { StampRenderer } from './skia-stamp';
@@ -185,5 +187,9 @@ export async function composeStampedPhoto({
  * É o caminho da captura avulsa: a foto entra no histórico assim que existe.
  */
 export async function renderStampedPhoto(input: StampedPhotoInput): Promise<string> {
-  return writeExportedPhoto(await composeStampedPhoto(input));
+  // O selo de autenticidade entra ENTRE compor e gravar: com sessão e rede,
+  // o recibo é embutido; sem qualquer um dos dois, os bytes seguem intactos
+  // e a exportação não espera além do teto curto do selo.
+  const { bytes } = await sealExportedPhoto(await composeStampedPhoto(input));
+  return writeExportedPhoto(bytes);
 }

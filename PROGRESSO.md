@@ -85,6 +85,10 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` e `CLERK_SECRET_KEY`.
 - `DESKTOP_TOKEN_SECRET` no site (Vercel): uma string longa e aleatória —
   é o que assina o token de login do desktop.
+- Selo de autenticidade (Vercel, site): `ATTEST_PRIVATE_KEY` e
+  `NEXT_PUBLIC_ATTEST_PUBLIC_KEY` — o par Ed25519; o comando de geração
+  está em `docs/AUTENTICIDADE.md` §6. Sem elas, exporta sem selo e a
+  página avisa.
 - Stripe (Vercel): `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` (do
   endpoint `https://lymark.app/api/stripe-webhook`, eventos
   `checkout.session.completed` e `invoice.paid`) e `STRIPE_PRICE_ID`
@@ -99,6 +103,19 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   (LGPD/RGPD) antes de publicar contas.
 
 ---
+
+## Autenticidade — o selo (docs/AUTENTICIDADE.md)
+
+- [x] **v1 (fotos)** — recibo Ed25519 stateless dentro do próprio JPEG
+  (segmento COM, prefixo `lymark-selo:`); o hash cobre o arquivo sem o
+  segmento, pelo MESMO código nas duas pontas
+  (`src/features/attest/jpeg-seal.ts`). Emissão best-effort na exportação
+  (todas as plataformas, teto de 4 s, sem rede sai sem selo); autenticação
+  pelo mesmo `verify` da Fase 2. Verificação 100% no navegador em
+  `lymark.app/verificar` (12 idiomas): o arquivo não sobe para servidor.
+  Separação dita em toda verificação: integridade ≠ autoria ≠ veracidade —
+  o conteúdo declarado é do emissor.
+- [ ] **v2** — selo em vídeo (contêiner MP4/WebM, convenção própria).
 
 ## Vídeo carimbado (fase própria — desktop concluído)
 

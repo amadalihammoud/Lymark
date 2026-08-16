@@ -417,21 +417,6 @@
       "subscribeSoon": "Subscriptions are not available yet. When they are, you will be able to subscribe here and use any device with the same account.",
       "title": "Your account"
     },
-    "deleteAccount": {
-      "back": "Back to account",
-      "confirm": "Delete my account",
-      "deletesNow": "Deleting your account immediately erases your email, your identifier, and the record of plan, quota and photo count.",
-      "irreversible": "Deletion is permanent and cannot be undone. The photos on your device are not affected — they were never on our servers.",
-      "retained": "Payment transaction records are retained for the legally required fiscal period, unlinked from your profile. Technical logs expire on their own schedule.",
-      "title": "Delete account"
-    },
-    "desktop": {
-      "backAccount": "Back to account",
-      "explanation": "Your account is ready. Click the button below to open Lymark on your computer already signed in — the browser will ask permission to open the app.",
-      "open": "Connect the app",
-      "title": "Sign in on desktop",
-      "unavailable": "The desktop app connection is not available yet."
-    },
     "availability": {
       "contact": "To follow the launch or report a problem, write to <email>contato@lymark.app</email>.",
       "description": "Lymark is at version 1.3.0, in testing on Android ahead of publication on Google Play. There is no iOS version and no web version, and the app collects no payment.",
@@ -451,7 +436,22 @@
       "note": "It is all set out — including what that means under Brazil's LGPD — in the <privacy>Privacy Policy</privacy>. Turning off the location permission leaves the app fully functional; only the address field then has to be typed by hand.",
       "title": "Where your data sits"
     },
+    "deleteAccount": {
+      "back": "Back to account",
+      "confirm": "Delete my account",
+      "deletesNow": "Deleting your account immediately erases your email, your identifier, and the record of plan, quota and photo count.",
+      "irreversible": "Deletion is permanent and cannot be undone. The photos on your device are not affected — they were never on our servers.",
+      "retained": "Payment transaction records are retained for the legally required fiscal period, unlinked from your profile. Technical logs expire on their own schedule.",
+      "title": "Delete account"
+    },
     "description": "Android app that stamps the time, date, weekday, address and a tracking code onto site-inspection and proof-of-service photos.",
+    "desktop": {
+      "backAccount": "Back to account",
+      "explanation": "Your account is ready. Click the button below to open Lymark on your computer already signed in — the browser will ask permission to open the app.",
+      "open": "Connect the app",
+      "title": "Sign in on desktop",
+      "unavailable": "The desktop app connection is not available yet."
+    },
     "features": {
       "address": {
         "description": "The street type is abbreviated and the state becomes its code, so the address fits in two lines without covering the photo. If you typed before GPS answered, what you typed wins.",
@@ -498,7 +498,8 @@
       "label": "Main",
       "privacy": "Privacy",
       "signIn": "Sign in",
-      "terms": "Terms"
+      "terms": "Terms",
+      "verify": "Verify"
     },
     "process": {
       "capture": {
@@ -524,6 +525,24 @@
       "caption": "The amber rule starts and ends at the edges of the digits, not of the text box.",
       "label": "Sample of the Lymark stamp: time 07:42, date 12 August 2026, Wednesday, an address in Guarujá and a photo code."
     },
-    "title": "Lymark — date, time and address watermark for field photos"
+    "title": "Lymark — date, time and address watermark for field photos",
+    "verify": {
+      "caveat": "The seal attests to the file's integrity and the moment of issuance. What the stamp declares — address, date, time — is the issuer's declaration.",
+      "checking": "Checking…",
+      "declarationNote": "What the stamp shows (address, date, time) is the issuer's declaration — the seal attests to integrity and issuance, not content.",
+      "intro": "Drop or choose a photo exported by Lymark and see instantly whether it is exactly as it left the app — and who issued it, when.",
+      "noSealBody": "This file has no Lymark seal. It may have been exported offline, before the seal existed, or may not come from Lymark. Absence of a seal does not prove tampering.",
+      "noSealTitle": "No seal",
+      "notConfigured": "Verification is not available yet.",
+      "pick": "Choose file",
+      "previewAlt": "The verified photo, stamp visible",
+      "privacyNote": "Verification happens in your browser. The file is not sent to any server.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Intact",
+      "tamperedBody": "The content does not match the seal: the file was modified after issuance, or the seal belongs to another file.",
+      "tamperedTitle": "Mismatch",
+      "title": "Verify authenticity",
+      "unsupported": "This browser does not support signature verification. Try a current browser."
+    }
   }
 }
