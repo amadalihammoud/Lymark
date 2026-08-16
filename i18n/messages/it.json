@@ -293,6 +293,7 @@
     "tagline": "Filigrana con ora, data e luogo",
     "title": "Lymark",
     "video": {
+      "cameraDenied": "Nessun accesso alla fotocamera. Consentilo nelle impostazioni del dispositivo.",
       "done": "Video timbrato e salvato.",
       "export": "Esporta video timbrato",
       "exportSection": "Esporta",
@@ -302,6 +303,7 @@
       "none": "Nessun video selezionato.",
       "processing": "Elaborazione… {percent}%",
       "processingMobile": "Elaborazione…",
+      "record": "Registra video ora",
       "saved": "Salvato in {path}",
       "savedToGallery": "Video timbrato salvato nella galleria.",
       "select": "Scegli video",

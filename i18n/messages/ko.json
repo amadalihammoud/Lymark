@@ -293,6 +293,7 @@
     "tagline": "시각, 날짜, 장소가 담긴 워터마크",
     "title": "Lymark",
     "video": {
+      "cameraDenied": "카메라 접근 권한이 없습니다. 기기 설정에서 허용하세요.",
       "done": "동영상에 스탬프를 찍어 저장했습니다.",
       "export": "스탬프 동영상 내보내기",
       "exportSection": "내보내기",
@@ -302,6 +303,7 @@
       "none": "선택된 동영상이 없습니다.",
       "processing": "처리 중… {percent}%",
       "processingMobile": "처리 중…",
+      "record": "지금 동영상 촬영",
       "saved": "{path}에 저장됨",
       "savedToGallery": "스탬프 동영상을 갤러리에 저장했습니다.",
       "select": "동영상 선택",

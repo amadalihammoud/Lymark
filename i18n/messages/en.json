@@ -293,6 +293,7 @@
     "tagline": "Watermark with time, date and place",
     "title": "Lymark",
     "video": {
+      "cameraDenied": "No camera access. Allow it in the device settings.",
       "done": "Video stamped and saved.",
       "export": "Export stamped video",
       "exportSection": "Export",
@@ -302,6 +303,7 @@
       "none": "No video selected.",
       "processing": "Processing… {percent}%",
       "processingMobile": "Processing…",
+      "record": "Record video now",
       "saved": "Saved to {path}",
       "savedToGallery": "Stamped video saved to your gallery.",
       "select": "Choose video",

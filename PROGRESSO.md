@@ -152,8 +152,14 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   dimensões já giradas (as que o JavaScript mediu). A tela e o JS não
   mudaram — o mesmo `stampVideo` serve os dois. **Precisa de build EAS de
   iOS para validar em aparelho**, como o Android.
-- [ ] **Gravar já com o carimbo** — aguardando a geração atual da câmera
-  (a VisionCamera 5 removeu o desenho sobre a gravação; sem caminho hoje).
+- [x] **Gravar e carimbar** — botão "Gravar vídeo agora" na tela de vídeo
+  do celular: a câmera do sistema grava e o arquivo cai NA MESMA esteira do
+  vídeo da galeria — campos preenchidos do relógio da gravação, editáveis
+  antes de exportar (a grande sacada do app), carimbo pelo módulo nativo.
+- [ ] **Carimbo desenhado AO VIVO na gravação** — segue aguardando a
+  geração atual da câmera (a VisionCamera 5 removeu o desenho sobre a
+  gravação; sem caminho hoje). Gravar-e-carimbar acima entrega o mesmo
+  resultado final.
 
 ## Projetos + relatório em PDF (desktop)
 

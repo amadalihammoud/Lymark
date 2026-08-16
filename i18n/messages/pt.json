@@ -293,6 +293,7 @@
     "tagline": "Marca d’água com hora, data e local",
     "title": "Lymark",
     "video": {
+      "cameraDenied": "Sem acesso à câmera. Libere nos ajustes do aparelho.",
       "done": "Vídeo carimbado e salvo.",
       "export": "Exportar vídeo carimbado",
       "exportSection": "Exportar",
@@ -302,6 +303,7 @@
       "none": "Nenhum vídeo escolhido.",
       "processing": "Processando… {percent}%",
       "processingMobile": "Processando…",
+      "record": "Gravar vídeo agora",
       "saved": "Salvo em {path}",
       "savedToGallery": "Vídeo carimbado salvo na galeria.",
       "select": "Escolher vídeo",
