@@ -219,6 +219,7 @@
       "remove": "削除",
       "removeBody": "記録がLymarkから消えます。端末のギャラリーに保存済みの画像はそのまま残ります。",
       "removeTitle": "履歴から削除",
+      "share": "共有",
       "stampedData": "刻印したデータ"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "表計算(CSV)",
         "pdf": "PDF",
-        "word": "Word(.doc)"
+        "word": "Word(.doc)",
+        "zip": "パッケージ(ZIP)"
       },
       "formatSection": "形式",
       "generate": "ファイルを作成",
       "generateSection": "作成",
+      "includeLogo": "表紙にロゴ",
+      "includeLogoDescription": "スタンプと同じブランドロゴです。オフにするとロゴなしで出力されます。",
       "norm": {
         "abnt": "ABNT(ブラジル)",
         "din5008": "DIN 5008(ドイツ)",

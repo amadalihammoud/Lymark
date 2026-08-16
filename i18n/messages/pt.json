@@ -219,6 +219,7 @@
       "remove": "Remover",
       "removeBody": "O registro sai do Lymark. A imagem salva na galeria do aparelho não é afetada.",
       "removeTitle": "Remover do histórico",
+      "share": "Compartilhar",
       "stampedData": "Dados carimbados"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "Planilha (CSV)",
         "pdf": "PDF",
-        "word": "Word (.doc)"
+        "word": "Word (.doc)",
+        "zip": "Pacote (ZIP)"
       },
       "formatSection": "Formato",
       "generate": "Gerar arquivo",
       "generateSection": "Gerar",
+      "includeLogo": "Logo na capa",
+      "includeLogoDescription": "O logotipo da sua marca, o mesmo do carimbo. Desligue para o documento sair sem ele.",
       "norm": {
         "abnt": "ABNT (Brasil)",
         "din5008": "DIN 5008 (Alemanha)",

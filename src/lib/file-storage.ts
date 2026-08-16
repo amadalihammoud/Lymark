@@ -133,6 +133,15 @@ export interface WindowLymark {
   hashVideoFile?: (path: string) => Promise<{ status: 'ok' | 'failed'; hash?: string }>;
   /** Anexa a caixa do selo de autenticidade ao fim do vídeo. */
   sealVideo?: (path: string, receipt: string) => Promise<{ ok: boolean }>;
+  /** Empacota relatório em PDF + fotos originais num ZIP e pergunta onde salvar. */
+  exportProjectZip?: (
+    html: string,
+    filename: string,
+    norm: 'abnt' | 'iso' | 'letter' | 'din5008' | 'ibape',
+    pageWord: string,
+    photoNames: string[],
+    reportName: string,
+  ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
   /** Imprime o HTML do relatório em PDF e pergunta onde salvar. */
   exportReportPdf?: (
     html: string,

@@ -219,6 +219,7 @@
       "remove": "Quitar",
       "removeBody": "El registro sale de Lymark. La imagen guardada en la galería del dispositivo no se ve afectada.",
       "removeTitle": "Quitar del historial",
+      "share": "Compartir",
       "stampedData": "Datos sellados"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "Hoja de cálculo (CSV)",
         "pdf": "PDF",
-        "word": "Word (.doc)"
+        "word": "Word (.doc)",
+        "zip": "Paquete (ZIP)"
       },
       "formatSection": "Formato",
       "generate": "Generar archivo",
       "generateSection": "Generar",
+      "includeLogo": "Logo en la portada",
+      "includeLogoDescription": "El logotipo de tu marca, el mismo del sello. Desactívalo para que el documento salga sin él.",
       "norm": {
         "abnt": "ABNT (Brasil)",
         "din5008": "DIN 5008 (Alemania)",

@@ -107,6 +107,13 @@ describe('o HTML do relatório', () => {
     expect(iso).not.toContain('text-transform: uppercase');
   });
 
+  it('o logo entra na capa quando pedido, e some quando o interruptor desliga', () => {
+    const uri = 'data:image/png;base64,AAAA';
+    expect(buildReportHtml(input({ logoDataUri: uri }), 'pt')).toContain(`class="logo" src="${uri}"`);
+    expect(buildReportHtml(input({ logoDataUri: '' }), 'pt')).not.toContain('class="logo"');
+    expect(buildReportHtml(input(), 'pt')).not.toContain('class="logo"');
+  });
+
   it('o bloco de assinatura existe só nas normas com estrutura de laudo', () => {
     expect(buildReportHtml(input({ norm: 'ibape' }), 'pt')).toContain('class="signature"');
     expect(buildReportHtml(input({ norm: 'abnt' }), 'pt')).not.toContain('class="signature"');

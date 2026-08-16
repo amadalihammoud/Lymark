@@ -219,6 +219,7 @@
       "remove": "إزالة",
       "removeBody": "يخرج السجل من Lymark. أما الصورة المحفوظة في معرض الجهاز فلن تتأثر.",
       "removeTitle": "إزالة من السجل",
+      "share": "مشاركة",
       "stampedData": "البيانات المختومة"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "جدول بيانات (CSV)",
         "pdf": "PDF",
-        "word": "Word (.doc)"
+        "word": "Word (.doc)",
+        "zip": "حزمة (ZIP)"
       },
       "formatSection": "الصيغة",
       "generate": "إنشاء الملف",
       "generateSection": "إنشاء",
+      "includeLogo": "الشعار على الغلاف",
+      "includeLogoDescription": "شعار علامتك، نفسه الموجود في الختم. أوقفه ليخرج المستند بدونه.",
       "norm": {
         "abnt": "ABNT (البرازيل)",
         "din5008": "DIN 5008 (ألمانيا)",

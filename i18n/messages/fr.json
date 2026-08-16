@@ -219,6 +219,7 @@
       "remove": "Retirer",
       "removeBody": "L’enregistrement quitte Lymark. L’image enregistrée dans la galerie de l’appareil n’est pas concernée.",
       "removeTitle": "Retirer de l’historique",
+      "share": "Partager",
       "stampedData": "Données apposées"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "Tableur (CSV)",
         "pdf": "PDF",
-        "word": "Word (.doc)"
+        "word": "Word (.doc)",
+        "zip": "Paquet (ZIP)"
       },
       "formatSection": "Format",
       "generate": "Générer le fichier",
       "generateSection": "Générer",
+      "includeLogo": "Logo sur la couverture",
+      "includeLogoDescription": "Le logo de votre marque, le même que celui du tampon. Désactivez-le pour un document sans logo.",
       "norm": {
         "abnt": "ABNT (Brésil)",
         "din5008": "DIN 5008 (Allemagne)",

@@ -219,6 +219,7 @@
       "remove": "삭제",
       "removeBody": "기록이 Lymark에서 사라집니다. 기기 갤러리에 저장된 이미지는 영향을 받지 않습니다.",
       "removeTitle": "기록에서 삭제",
+      "share": "공유",
       "stampedData": "각인한 데이터"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "스프레드시트(CSV)",
         "pdf": "PDF",
-        "word": "Word(.doc)"
+        "word": "Word(.doc)",
+        "zip": "패키지(ZIP)"
       },
       "formatSection": "형식",
       "generate": "파일 생성",
       "generateSection": "생성",
+      "includeLogo": "표지에 로고",
+      "includeLogoDescription": "스탬프와 같은 브랜드 로고입니다. 끄면 로고 없이 출력됩니다.",
       "norm": {
         "abnt": "ABNT(브라질)",
         "din5008": "DIN 5008(독일)",

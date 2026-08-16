@@ -18,6 +18,7 @@ import {
   type ReportNorm,
 } from './report-pdf';
 import { appendSealBox, hashFileSha256 } from './video-seal';
+import { buildZip, type ZipEntry } from './zip';
 import { DEFAULT_LOCALE, availableLocales, translate } from './i18n';
 import { buildApplicationMenu } from './menu';
 
@@ -522,6 +523,83 @@ function registerIpcHandlers() {
 
         fs.writeFileSync(filePath, pdf);
         return { status: 'saved', path: filePath };
+      } catch {
+        return { status: 'failed', error: 'Operação falhou.' };
+      }
+    },
+  );
+
+  /**
+   * O pacote do projeto: o relatório em PDF + as fotos originais, num ZIP.
+   *
+   * Tudo acontece no processo principal — o PDF é impresso aqui, as fotos
+   * são lidas da pasta da galeria (só por NOME, nunca por caminho, com a
+   * mesma contenção do protocolo `media://`) e o ZIP é montado em modo
+   * store (`zip.ts`). Nenhum byte de foto atravessa o IPC.
+   */
+  ipcMain.handle(
+    'export-project-zip',
+    async (
+      _event,
+      args: {
+        html?: unknown;
+        filename?: unknown;
+        norm?: unknown;
+        pageWord?: unknown;
+        photoNames?: unknown;
+        reportName?: unknown;
+      },
+    ) => {
+      const { html, filename, norm, pageWord, photoNames, reportName } = args ?? {};
+      if (
+        typeof html !== 'string' ||
+        html.length === 0 ||
+        html.length > MAX_FILE_SIZE ||
+        typeof filename !== 'string' ||
+        typeof reportName !== 'string' ||
+        !Array.isArray(photoNames) ||
+        photoNames.length > 500 ||
+        !(REPORT_NORMS as readonly unknown[]).includes(norm)
+      ) {
+        return { status: 'failed', error: 'Pedido inválido.' };
+      }
+
+      try {
+        const pdf = await renderReportPdf(
+          html,
+          norm as ReportNorm,
+          typeof pageWord === 'string' ? pageWord : '',
+        );
+
+        const galleryDir = ensureGalleryDir();
+        const entries: ZipEntry[] = [
+          { name: path.basename(reportName), data: pdf },
+        ];
+
+        let index = 0;
+        for (const requested of photoNames) {
+          if (typeof requested !== 'string') continue;
+          const safeName = path.basename(requested);
+          const filePath = path.join(galleryDir, safeName);
+          if (!isInside(galleryDir, filePath) || !fs.existsSync(filePath)) continue;
+
+          index += 1;
+          const number = String(index).padStart(3, '0');
+          entries.push({ name: `fotos/${number}-${safeName}`, data: fs.readFileSync(filePath) });
+        }
+
+        const { filePath: destination } = await dialog.showSaveDialog({
+          title: translate(currentLocale, 'desktop.dialog.saveReport'),
+          defaultPath: path.basename(filename),
+          filters: [
+            { name: 'ZIP', extensions: ['zip'] },
+            { name: translate(currentLocale, 'desktop.dialog.allFiles'), extensions: ['*'] },
+          ],
+        });
+        if (!destination) return { status: 'cancelled' };
+
+        fs.writeFileSync(destination, buildZip(entries));
+        return { status: 'saved', path: destination };
       } catch {
         return { status: 'failed', error: 'Operação falhou.' };
       }

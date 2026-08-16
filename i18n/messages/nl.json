@@ -219,6 +219,7 @@
       "remove": "Verwijderen",
       "removeBody": "De registratie verlaat Lymark. De afbeelding in de apparaatgalerij blijft ongemoeid.",
       "removeTitle": "Uit geschiedenis verwijderen",
+      "share": "Delen",
       "stampedData": "Gestempelde gegevens"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "Spreadsheet (CSV)",
         "pdf": "PDF",
-        "word": "Word (.doc)"
+        "word": "Word (.doc)",
+        "zip": "Pakket (ZIP)"
       },
       "formatSection": "Formaat",
       "generate": "Bestand genereren",
       "generateSection": "Genereren",
+      "includeLogo": "Logo op de omslag",
+      "includeLogoDescription": "Het logo van je merk, hetzelfde als op de stempel. Zet uit om het document zonder logo te maken.",
       "norm": {
         "abnt": "ABNT (Brazilië)",
         "din5008": "DIN 5008 (Duitsland)",

@@ -219,6 +219,7 @@
       "remove": "Entfernen",
       "removeBody": "Der Eintrag verlässt Lymark. Das in der Gerätegalerie gespeicherte Bild bleibt unberührt.",
       "removeTitle": "Aus dem Verlauf entfernen",
+      "share": "Teilen",
       "stampedData": "Gestempelte Daten"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "Tabelle (CSV)",
         "pdf": "PDF",
-        "word": "Word (.doc)"
+        "word": "Word (.doc)",
+        "zip": "Paket (ZIP)"
       },
       "formatSection": "Format",
       "generate": "Datei erstellen",
       "generateSection": "Erstellen",
+      "includeLogo": "Logo auf dem Deckblatt",
+      "includeLogoDescription": "Ihr Markenlogo, dasselbe wie im Stempel. Ausschalten, damit das Dokument ohne Logo erscheint.",
       "norm": {
         "abnt": "ABNT (Brasilien)",
         "din5008": "DIN 5008 (Deutschland)",

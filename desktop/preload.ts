@@ -84,6 +84,15 @@ export interface LymarkApi {
     norm: 'abnt' | 'iso' | 'letter' | 'din5008' | 'ibape',
     pageWord: string,
   ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
+  /** Empacota relatório em PDF + fotos originais num ZIP e pergunta onde salvar. */
+  exportProjectZip: (
+    html: string,
+    filename: string,
+    norm: 'abnt' | 'iso' | 'letter' | 'din5008' | 'ibape',
+    pageWord: string,
+    photoNames: string[],
+    reportName: string,
+  ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
   /** Token do desktop chegando pelo deep link `lymark://login`. */
   onLoginToken: (callback: (token: string) => void) => void;
   onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
@@ -163,6 +172,17 @@ export const lymarkApi: LymarkApi = {
 
   exportReportPdf: async (html, filename, norm, pageWord) => {
     return ipcRenderer.invoke('export-report-pdf', { html, filename, norm, pageWord });
+  },
+
+  exportProjectZip: async (html, filename, norm, pageWord, photoNames, reportName) => {
+    return ipcRenderer.invoke('export-project-zip', {
+      html,
+      filename,
+      norm,
+      pageWord,
+      photoNames,
+      reportName,
+    });
   },
 
   onLoginToken: (callback) => {

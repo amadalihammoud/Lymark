@@ -219,6 +219,7 @@
       "remove": "移除",
       "removeBody": "该记录将离开 Lymark。已保存到设备相册的图片不受影响。",
       "removeTitle": "从历史记录中移除",
+      "share": "分享",
       "stampedData": "已添加的数据"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "表格(CSV)",
         "pdf": "PDF",
-        "word": "Word(.doc)"
+        "word": "Word(.doc)",
+        "zip": "压缩包(ZIP)"
       },
       "formatSection": "格式",
       "generate": "生成文件",
       "generateSection": "生成",
+      "includeLogo": "封面上的标志",
+      "includeLogoDescription": "您品牌的标志,与水印中相同。关闭后文档将不含标志。",
       "norm": {
         "abnt": "ABNT(巴西)",
         "din5008": "DIN 5008(德国)",

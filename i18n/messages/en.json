@@ -219,6 +219,7 @@
       "remove": "Remove",
       "removeBody": "The record leaves Lymark. The image saved to the device gallery is not affected.",
       "removeTitle": "Remove from history",
+      "share": "Share",
       "stampedData": "Stamped data"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "Spreadsheet (CSV)",
         "pdf": "PDF",
-        "word": "Word (.doc)"
+        "word": "Word (.doc)",
+        "zip": "Package (ZIP)"
       },
       "formatSection": "Format",
       "generate": "Generate file",
       "generateSection": "Generate",
+      "includeLogo": "Logo on the cover",
+      "includeLogoDescription": "Your brand logo, the same one from the stamp. Turn it off to leave it out of the document.",
       "norm": {
         "abnt": "ABNT (Brazil)",
         "din5008": "DIN 5008 (Germany)",

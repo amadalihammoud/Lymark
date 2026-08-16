@@ -219,6 +219,7 @@
       "remove": "Rimuovi",
       "removeBody": "Il record esce da Lymark. L’immagine salvata nella galleria del dispositivo non viene toccata.",
       "removeTitle": "Rimuovi dalla cronologia",
+      "share": "Condividi",
       "stampedData": "Dati timbrati"
     },
     "plan": {
@@ -254,11 +255,14 @@
       "format": {
         "csv": "Foglio di calcolo (CSV)",
         "pdf": "PDF",
-        "word": "Word (.doc)"
+        "word": "Word (.doc)",
+        "zip": "Pacchetto (ZIP)"
       },
       "formatSection": "Formato",
       "generate": "Genera file",
       "generateSection": "Genera",
+      "includeLogo": "Logo in copertina",
+      "includeLogoDescription": "Il logo del tuo marchio, lo stesso del timbro. Disattivalo per un documento senza logo.",
       "norm": {
         "abnt": "ABNT (Brasile)",
         "din5008": "DIN 5008 (Germania)",

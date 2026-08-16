@@ -186,6 +186,18 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   prometemos laudo normatizado (IBAPE de verdade exige responsável
   técnico habilitado, e isso é de quem assina).
 
+- [x] **Formatos de saída** — PDF (a entrega), Word `.doc` (o mesmo HTML
+  com fotos embutidas reduzidas, para editar antes de entregar), CSV da
+  tabela-resumo (BOM + ponto e vírgula + CRLF, o que o Excel espera) e
+  **ZIP do projeto** (relatório em PDF + fotos originais, empacotado no
+  processo principal por um escritor de ZIP próprio em modo store —
+  validado contra descompactador real).
+- [x] **Logo na capa** — o logotipo da marca do carimbo, OPCIONAL:
+  interruptor na tela (só aparece para quem tem logo), desligado o
+  documento sai sem ele.
+- [x] **Compartilhar no celular** — botão na tela da foto: folha nativa
+  do sistema (e-mail, WhatsApp, o que houver), via expo-sharing.
+
 ## Próximo passo de código
 
 Passo 4 em diante: faixa de teste fechada nas lojas, RevenueCat + Play e
