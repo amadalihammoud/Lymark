@@ -239,6 +239,35 @@ devem ser tocadas por engano: `app.about.privacyGeocoding` e
 `app.about.privacyLocation` falam da coordenada enviada ao serviço de mapas
 pelo sistema operacional — isso não muda por existir conta.
 
+### 7.1.1 E os documentos legais, que dizem o mesmo com mais consequência
+
+A lista acima cobre o catálogo de interface. Os mesmos fatos estão afirmados na
+Política de Privacidade e nos Termos de Uso, que desde a tradução existem em
+doze idiomas em `i18n/messages/legal/` — e ali a afirmação falsa não é um texto
+de tela desatualizado, é um documento operante mentindo sobre o tratamento.
+
+São **oito chaves × doze idiomas = 96 lugares**, que somados aos 48 acima dão
+**144 lugares** no mesmo commit:
+
+| Chave | Por que cai na Fase 2 |
+|---|---|
+| `privacy.meta.description` | afirma que não há servidor nem conta |
+| `privacy.s01.p1` | idem, com mais palavras |
+| `privacy.s07.p3` | "Não há tratamento fundado em legítimo interesse" — passa a haver, por §8.4 |
+| `privacy.s08.p1` | "não realiza transferência internacional" — Clerk e Stripe estão fora do Brasil |
+| `privacy.s09.p1` | "não há operador (*processor*) contratado" — passam a haver dois |
+| `privacy.s10.p3` | "não existe repositório central passível de vazamento" |
+| `privacy.s12.p2` | "O desenvolvedor não consegue acessar nem apagar esses dados" |
+| `terms.s07.p1` | "Não há conta a cancelar nem assinatura a rescindir" |
+
+O que **não** deve ser tocado, pelo mesmo cuidado do parágrafo anterior:
+`privacy.s04.p1` diz que fotos, localização, histórico e preferências não são
+enviados ao desenvolvedor. Continua verdadeiro — é a restrição de arquitetura do
+§8.3, e ela não muda por existir conta.
+
+A análise completa, com o que a tradução implica juridicamente, está em
+`docs/DOCUMENTOS-LEGAIS.md`.
+
 ---
 
 ## 8. Proteção de dados — LGPD e RGPD
