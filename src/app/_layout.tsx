@@ -8,6 +8,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useTranslations } from 'use-intl';
 
 import { useSkiaStatus } from '@/components/skia';
+import { AuthProvider } from '@/features/auth/provider';
+import { EntitlementSync } from '@/features/auth/entitlement-sync';
 import { CaptureProvider } from '@/contexts/capture-context';
 import { EntitlementProvider } from '@/contexts/entitlement-context';
 import { FeedbackProvider } from '@/contexts/feedback-context';
@@ -74,7 +76,11 @@ export default function RootLayout() {
         ) : skiaStatus !== 'ready' ? null : (
           /* Acima das telas e fora da árvore de captura: o direito de acesso
              não pode ser remontado ao navegar entre abas. */
+          <AuthProvider>
           <EntitlementProvider>
+            {/* A ponte identidade → entitlement: precisa dos dois providers
+                acima, e de mais nenhum. */}
+            <EntitlementSync />
             <SettingsProvider>
               <GalleryProvider>
                 <CaptureProvider>
@@ -88,6 +94,7 @@ export default function RootLayout() {
               </GalleryProvider>
             </SettingsProvider>
           </EntitlementProvider>
+          </AuthProvider>
         )}
       </LocaleProvider>
     </SafeAreaProvider>
@@ -186,6 +193,10 @@ function Navigation() {
       <Stack.Screen
         name="settings/about"
         options={{ title: t('about.title'), headerBackTitle: t('common.back') }}
+      />
+      <Stack.Screen
+        name="account"
+        options={{ title: t('account.title'), headerBackTitle: t('common.back') }}
       />
       <Stack.Screen
         name="settings/language"

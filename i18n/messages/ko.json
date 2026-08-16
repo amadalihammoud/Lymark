@@ -14,6 +14,18 @@
       "title": "Lymark에 대해",
       "version": "버전"
     },
+    "account": {
+      "code": "코드",
+      "codeSent": "{email}(으)로 코드를 보냈습니다",
+      "continue": "계속",
+      "email": "이메일",
+      "failed": "실패했습니다. 이메일 또는 코드를 확인하고 다시 시도하세요.",
+      "notConfigured": "이 버전에서는 아직 로그인할 수 없습니다.",
+      "signOut": "로그아웃",
+      "signedInAs": "{email}(으)로 로그인됨",
+      "title": "계정",
+      "verify": "확인"
+    },
     "batch": {
       "addressHint": "도로명, 번호 - 도시",
       "clearList": "목록 비우기",

@@ -48,7 +48,11 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 - [x] **Passo 2 (site)** — Clerk no site; as promessas de "sem conta" caíram
   junto (144 lugares nos catálogos e documentos legais — ver §7.1). Sem chave
   do Clerk configurada, a landing continua no ar.
-- [ ] **Passo 2 (Expo)** — Clerk no aplicativo mobile.
+- [x] **Passo 2 (Expo)** — Clerk no aplicativo: tela de conta com login por
+  código de e-mail (entrar e cadastrar no mesmo fluxo, nos 12 idiomas), e a
+  ponte que sincroniza o entitlement com o token da sessão — no login e ao
+  voltar ao primeiro plano, subindo o `spentOffline`. Sem
+  `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY`, o app segue inteiro sem conta.
 - [ ] **Passo 2 (Electron)** — Clerk no desktop via deep link (o mais chato).
 - [ ] **Passo 3** — Stripe para web e desktop.
 - [ ] **Passo 4** — faixa de teste fechada na loja (Apple).
@@ -63,6 +67,9 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 
 - Chaves do Clerk no ambiente do site (Vercel):
   `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` e `CLERK_SECRET_KEY`.
+- A mesma chave publicável no build do app:
+  `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` (e, se o endpoint não for o de
+  produção, `EXPO_PUBLIC_ENTITLEMENTS_URL`).
 - Secrets de deploy no GitHub: `VERCEL_TOKEN`, `VERCEL_ORG_ID`,
   `VERCEL_PROJECT_ID`.
 - DNS do domínio lymark.app.
@@ -73,6 +80,5 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 
 ## Próximo passo de código
 
-Clerk no aplicativo Expo (Passo 2 continua): login no mobile usando a mesma
-conta do site, alimentando o cliente de entitlements já existente em
-`src/`. Depois, o deep link do Electron.
+Clerk no Electron (Passo 2 termina): o login do desktop via deep link — o
+mais chato, por desenho. Depois, o Stripe (Passo 3).

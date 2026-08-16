@@ -40,6 +40,11 @@ type EntitlementContextValue = {
   recordExport: () => void;
   /** Aplica o que o servidor respondeu. */
   sync: (fresh: Entitlement) => void;
+  /**
+   * O que foi gasto desde a última sincronização. Quem sincroniza sobe este
+   * número junto — e `applyServerResponse` o zera quando o servidor confirma.
+   */
+  spentOffline: number;
 };
 
 const EntitlementContext = createContext<EntitlementContextValue | null>(null);
@@ -128,9 +133,11 @@ export function EntitlementProvider({ children }: { children: ReactNode }) {
 
   const access = useMemo(() => evaluateAccess(lease, now), [lease, now]);
 
+  const spentOffline = lease?.spentOffline ?? 0;
+
   const value = useMemo<EntitlementContextValue>(
-    () => ({ access, hydrated, recordExport, sync }),
-    [access, hydrated, recordExport, sync],
+    () => ({ access, hydrated, recordExport, sync, spentOffline }),
+    [access, hydrated, recordExport, sync, spentOffline],
   );
 
   return <EntitlementContext.Provider value={value}>{children}</EntitlementContext.Provider>;

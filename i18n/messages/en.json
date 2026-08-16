@@ -14,6 +14,18 @@
       "title": "About Lymark",
       "version": "Version"
     },
+    "account": {
+      "code": "Code",
+      "codeSent": "We sent a code to {email}",
+      "continue": "Continue",
+      "email": "Email",
+      "failed": "That didn't work. Check the email or code and try again.",
+      "notConfigured": "Sign-in is not available in this build yet.",
+      "signOut": "Sign out",
+      "signedInAs": "Signed in as {email}",
+      "title": "Account",
+      "verify": "Verify"
+    },
     "batch": {
       "addressHint": "Street, number — City",
       "clearList": "Clear list",

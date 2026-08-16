@@ -90,7 +90,9 @@ export default function SettingsScreen() {
           value={
             access.quota === null ? t('plan.pro') : `${access.remaining}/${access.quota}`
           }
-          onPress={() => router.push('/settings/about')}
+          // A linha do plano leva à conta: é lá que se entra, se assina e se
+          // vê a cota — e não mais ao Sobre, que só explicava.
+          onPress={() => router.push('/account')}
         />
         <NavRow
           icon="images-outline"

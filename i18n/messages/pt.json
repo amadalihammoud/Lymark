@@ -14,6 +14,18 @@
       "title": "Sobre o Lymark",
       "version": "Versão"
     },
+    "account": {
+      "code": "Código",
+      "codeSent": "Enviamos um código para {email}",
+      "continue": "Continuar",
+      "email": "E-mail",
+      "failed": "Não deu certo. Confira o e-mail ou o código e tente de novo.",
+      "notConfigured": "O login ainda não está disponível nesta versão do aplicativo.",
+      "signOut": "Sair da conta",
+      "signedInAs": "Conectado como {email}",
+      "title": "Conta",
+      "verify": "Verificar"
+    },
     "batch": {
       "addressHint": "Rua, número - Cidade",
       "clearList": "Limpar lista",
