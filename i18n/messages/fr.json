@@ -7,7 +7,7 @@
       "privacy": "Politique de confidentialité",
       "privacyGeocoding": "Lorsque le GPS est utilisé, le système d’exploitation envoie la coordonnée au service de cartographie de Google ou d’Apple pour obtenir l’adresse. C’est la seule information qui sort d’ici, et c’est le système qui l’envoie, pas Lymark.",
       "privacyLocation": "La localisation sert une fois par capture, seulement à remplir le champ d’adresse, et n’est pas conservée séparément des photos.",
-      "privacyOnDevice": "Les photos, les adresses et l’historique restent uniquement sur cet appareil. Lymark n’a pas de serveur, ne crée pas de compte et n’envoie vos photos nulle part.",
+      "privacyOnDevice": "Les photos, les adresses et l’historique restent uniquement sur cet appareil. Le compte existe pour votre abonnement : le serveur conserve l’e-mail et l’offre, et ne reçoit jamais vos photos ni votre position.",
       "privacySection": "Confidentialité",
       "sdk": "Expo SDK",
       "terms": "Conditions d'utilisation",
@@ -364,6 +364,22 @@
     }
   },
   "site": {
+    "account": {
+      "backHome": "Retour à l’accueil",
+      "photos": "Photos",
+      "photosLeft": "{remaining} sur {quota} restantes",
+      "plan": "Offre",
+      "planUnavailable": "Indisponible pour le moment",
+      "plans": {
+        "free": "Gratuite",
+        "pro": "Pro"
+      },
+      "signInTitle": "Se connecter",
+      "signOut": "Se déconnecter",
+      "signUpTitle": "Créer un compte",
+      "subscribeSoon": "L’abonnement n’est pas encore disponible. Quand il le sera, vous pourrez vous abonner ici et utiliser n’importe quel appareil avec le même compte.",
+      "title": "Votre compte"
+    },
     "availability": {
       "contact": "Pour suivre le lancement ou signaler un problème, écrivez à <email>contato@lymark.app</email>.",
       "description": "Lymark en est à la version 1.3.0, en test sur Android avant publication sur Google Play. Il n’existe ni version iOS ni version web, et l’application ne perçoit aucun paiement.",
@@ -371,7 +387,7 @@
     },
     "data": {
       "device": {
-        "description": "Lymark n’a pas de serveur, ne crée pas de compte et n’envoie vos photos nulle part. L’historique conserve les deux cents derniers exports dans les fichiers de l’application.",
+        "description": "Le compte existe pour votre abonnement : le serveur conserve l’e-mail et l’offre, et ne reçoit jamais vos photos ni votre position. L’historique conserve les deux cents dernières exportations dans les fichiers de l’application.",
         "field": "Sur l’appareil",
         "heading": "Photos, adresses et historique"
       },
@@ -416,18 +432,20 @@
       "eyebrow": "Documentation photo de terrain",
       "heading": "La photo quitte le téléphone en disant déjà quand, où et quoi.",
       "meta": {
+        "account": "Compte en un geste",
         "android": "Android et navigateur",
         "language": "Portugais du Brésil",
-        "noAccount": "Sans compte",
-        "noServer": "Sans serveur"
+        "onDevice": "Les photos restent sur l’appareil"
       },
       "note": "Rien à installer."
     },
     "nav": {
+      "account": "Compte",
       "home": "Accueil",
       "homeLabel": "Lymark, page d'accueil",
       "label": "Principale",
       "privacy": "Confidentialité",
+      "signIn": "Se connecter",
       "terms": "Conditions"
     },
     "process": {

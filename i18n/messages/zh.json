@@ -7,7 +7,7 @@
       "privacy": "隐私政策",
       "privacyGeocoding": "使用 GPS 时，操作系统会把坐标发送给 Google 或 Apple 的地图服务以换取地址。这是唯一离开本机的信息，而且是由系统发送的，不是 Lymark。",
       "privacyLocation": "定位每次拍摄只使用一次，仅用于填写地址字段，不会独立于照片另行保存。",
-      "privacyOnDevice": "照片、地址和历史记录都只留在这台设备上。Lymark 没有服务器，不创建账号，也不会把您的照片发送到任何地方。",
+      "privacyOnDevice": "照片、地址和历史记录都只留在这台设备上。账号仅用于订阅：服务器只保存邮箱和方案，绝不接收您的照片或位置。",
       "privacySection": "隐私",
       "sdk": "Expo SDK",
       "terms": "使用条款",
@@ -364,6 +364,22 @@
     }
   },
   "site": {
+    "account": {
+      "backHome": "返回首页",
+      "photos": "照片",
+      "photosLeft": "剩余 {remaining} 张，共 {quota} 张",
+      "plan": "方案",
+      "planUnavailable": "暂时无法显示",
+      "plans": {
+        "free": "免费",
+        "pro": "Pro"
+      },
+      "signInTitle": "登录",
+      "signOut": "退出登录",
+      "signUpTitle": "创建账号",
+      "subscribeSoon": "订阅功能尚未开放。开放后，您可以在这里订阅，并用同一账号在任何设备上使用。",
+      "title": "您的账号"
+    },
     "availability": {
       "contact": "如需关注发布进展或反馈问题，请写信至 <email>contato@lymark.app</email>。",
       "description": "Lymark 目前为 1.3.0 版本，正在 Android 上测试，尚未在 Google Play 上架。没有 iOS 版本，也没有网页版本，应用不收取任何费用。",
@@ -371,7 +387,7 @@
     },
     "data": {
       "device": {
-        "description": "Lymark 没有服务器，不创建账号，也不会把照片发往任何地方。历史记录把最近两百次导出保存在应用自己的文件里。",
+        "description": "账号仅用于订阅：服务器只保存邮箱和方案，绝不接收您的照片或位置。历史记录在应用自己的文件中保留最近两百次导出。",
         "field": "在设备上",
         "heading": "照片、地址和历史记录"
       },
@@ -416,18 +432,20 @@
       "eyebrow": "现场照片记录",
       "heading": "照片离开手机时，已经写明了何时、何地、何事。",
       "meta": {
+        "account": "一键登录",
         "android": "Android 与浏览器",
         "language": "巴西葡萄牙语",
-        "noAccount": "无需账号",
-        "noServer": "无服务器"
+        "onDevice": "照片留在设备上"
       },
       "note": "无需安装。"
     },
     "nav": {
+      "account": "账号",
       "home": "首页",
       "homeLabel": "Lymark，首页",
       "label": "主导航",
       "privacy": "隐私",
+      "signIn": "登录",
       "terms": "条款"
     },
     "process": {

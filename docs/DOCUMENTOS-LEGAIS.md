@@ -167,7 +167,17 @@ Duas observações para não errar por excesso:
 - `privacy.s13` (decisões automatizadas) e `privacy.s16` (crianças) não são
   afetados.
 
-**Conclusão firme:** a Fase 2 não pode ser considerada pronta sem reescrever
+**Feito em 16/08/2026**, no mesmo commit que ligou a conta no site — os oito
+trechos, mais um que esta lista não tinha: `privacy.s14.p1` afirmava que o site
+não usa cookies e não faz requisição a terceiros, e a sessão do Clerk faz as
+duas coisas. A data de atualização dos dois documentos passou a 16/08/2026 e a
+versão declarada a 1.3.0 (decisão do 5.1 tomada pelo lado da versão real; é
+reversível). O texto novo nomeia o operador (Clerk, Inc., EUA), a base legal da
+conta (execução de contrato) e a do log de IP (legítimo interesse), e mantém
+`privacy.s04.p1` intacta. Pagamento (Stripe, RevenueCat) **não** entrou porque
+ainda não existe — entra no commit que o ligar, e é o mesmo cuidado.
+
+**Conclusão firme (como estava):** a Fase 2 não pode ser considerada pronta sem reescrever
 estes oito trechos. Publicá-la sem isso deixaria a Política de Privacidade
 afirmando, em doze idiomas e com efeito jurídico, exatamente o contrário do que
 o produto faz — que é o risco que o §7.1 já tinha identificado, só que maior.

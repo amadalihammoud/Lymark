@@ -2,14 +2,14 @@
   "privacy": {
     "meta": {
       "title": "Privacy Policy",
-      "description": "How the Lymark app handles photos, location and history. The app has no server, creates no account and does not transmit your photos."
+      "description": "How the Lymark app handles photos, location, history and your account. Photos and location never leave the device; the server keeps only e-mail, plan and photo count."
     },
     "title": "Privacy Policy",
-    "updated": "Last updated: 2 August 2026 · Lymark app, version 1.1.0",
+    "updated": "Last updated: 16 August 2026 · Lymark app, version 1.3.0",
     "intro": "This policy describes how the Lymark app handles personal information. It complies with Lei nº 13.709/2018 (General Personal Data Protection Law — LGPD) and with Regulation (EU) 2016/679 (General Data Protection Regulation — GDPR), and it applies to the app distributed under the identifier <strong>com.lycosteam.lymark</strong> and to this website.",
     "s01": {
       "title": "In one sentence",
-      "p1": "Lymark <strong>has no server, creates no user account and does not transmit your photos</strong>. Everything the app produces — images, addresses, history and preferences — stays stored on your own device, under your control.",
+      "p1": "Lymark <strong>does not transmit your photos or your location</strong>. Everything the app produces — images, addresses, history and preferences — stays on your own device, under your control. There is an account, required to use the app and for the subscription: the server keeps your e-mail, the account identifier, the plan and the count of exported photos — and nothing else.",
       "p2": "There is a single exception, described in item 05: to turn the GPS coordinates into a readable address, the device’s operating system queries an external geocoding service."
     },
     "s02": {
@@ -80,22 +80,22 @@
       "title": "Legal bases and purposes",
       "p1": "The processing of location takes place on the basis of your <strong>consent</strong> — Article 7, I of the LGPD and Article 6(1)(a) of the GDPR — expressed when you grant the system permission, and revocable at any time, without prejudice to the lawfulness of the processing carried out before revocation.",
       "p2": "The processing of the remaining data takes place for the <strong>performance of the feature you requested</strong> — Article 7, V of the LGPD and Article 6(1)(b) of the GDPR — since without it there is no watermark for the app to produce.",
-      "p3": "There is no processing founded on legitimate interest, nor any for advertising, profiling, behaviour analysis or any secondary purpose. There is no processing of special categories of data or of sensitive data by the developer."
+      "p3": "The processing of account data rests on the performance of a contract (LGPD art. 7, V; GDPR art. 6(1)(b)). Processing based on legitimate interest (LGPD art. 7, IX; GDPR art. 6(1)(f)) exists only for security and fraud prevention — for example, logging the IP address of requests to the server. There is no processing for advertising, profiling, behavioural analysis or any secondary purpose, and no processing of special categories of data or sensitive data by the developer."
     },
     "s08": {
       "title": "International transfer",
-      "p1": "The developer carries out no international transfer of data, because it receives no data. The geocoding query described in item 05 is made by the operating system to providers that may process it outside the user’s country, under those providers’ own transfer mechanisms — standard contractual clauses, in the European case.",
+      "p1": "Account data is processed by the authentication processor (Clerk, Inc., United States), which constitutes an international transfer of data, based on standard contractual clauses and the mechanisms of LGPD art. 33 and GDPR arts. 44 to 49. The geocoding lookup described in item 05 is still made by the operating system to providers that may process it outside the user’s country, under those providers’ own transfer mechanisms.",
       "p2": "This website is hosted by Vercel Inc., under the terms of item 14."
     },
     "s09": {
       "title": "Sharing with third parties",
-      "p1": "The developer does not share, sell, rent or transfer personal data to third parties, for the simple reason that it does not hold any. There is no data <em>processor</em> engaged to process the app’s data."
+      "p1": "The developer does not share, sell, rent or assign personal data to third parties. There is one contracted <em>processor</em>: Clerk, Inc., which provides the authentication service and stores the e-mail, the account identifier and the plan data, bound by contract to the developer’s instructions. If you sign in with Google or Apple, those providers process the sign-in data under their own policies; the developer receives from them only the e-mail and identifier needed to create the account. Photos, addresses and location go through no processor at all, because they never leave the device."
     },
     "s10": {
       "title": "Storage, retention and security",
       "p1": "The data sits in the app’s private area, protected by the operating system’s isolation between apps and by the device’s screen lock. In the Android version, the system’s automatic backup is <strong>disabled</strong>, so that history and preferences are not sent to the user’s Google account.",
       "p2": "Retention is entirely controlled by you: records remain until they are deleted in the app itself, and the history automatically discards the oldest ones once it passes two hundred items, removing the corresponding files as well. Uninstalling the app erases everything it stored. Photos already saved to the device gallery belong to the gallery and stay there — it is up to you to remove them if you wish.",
-      "p3": "No system is infallible. Since the app keeps no remote database, there is no central repository open to a leak, and there is no security incident to report under Article 48 of the LGPD or Article 33 of the GDPR that could arise from the developer’s infrastructure. The relevant risk is physical access to the unlocked device."
+      "p3": "No system is infallible. Account data — e-mail, identifier, plan and count — is held by the authentication processor, under its security measures. Photos, addresses and location exist in no central repository, and therefore cannot leak from the developer’s infrastructure. Should a security incident affect account data, the developer will notify the authority and the data subjects under LGPD art. 48 and GDPR art. 33. The relevant risk to your photos remains physical access to the unlocked device."
     },
     "s11": {
       "title": "When you photograph other people",
@@ -104,7 +104,7 @@
     "s12": {
       "title": "Your rights",
       "p1": "Article 18 of the LGPD and Articles 15 to 22 of the GDPR guarantee you the rights of confirmation and access, correction, deletion, anonymisation, blocking, portability, restriction of processing, objection, withdrawal of consent and information about sharing.",
-      "p2": "Since the data resides only on your device, these rights are exercised directly in the app: viewing and deleting records in the Gallery tab, correcting any field before exporting, revoking the location permission in the system settings, and erasing everything by uninstalling the app. The developer cannot access, export or delete this data for you — not out of refusal, but because it does not hold it.",
+      "p2": "Photos, addresses, history and preferences reside only on your device, and those rights are exercised directly in the app: view and delete entries in the Gallery tab, correct any field before exporting, revoke the location permission in the system settings, and erase everything by uninstalling the app — the developer cannot access, export or delete that data for you, because it does not hold it. As for account data — e-mail, plan and count — you can view it on the account page and request correction, export or deletion at this Policy’s contact e-mail; deleting the account erases that data at the authentication processor.",
       "p3": "For questions or formal requests, write to <email>contato@lymark.app</email>. You also have the right to lodge a complaint with the <strong>ANPD</strong>, in Brazil, or with the supervisory authority of your Member State, in the European Union."
     },
     "s13": {
@@ -113,7 +113,7 @@
     },
     "s14": {
       "title": "About this website",
-      "p1": "This website <strong>uses no cookies</strong>, has no analytics, displays no advertising and embeds no social network buttons. The typefaces are served by the domain itself — your browser makes no request to third-party servers, so the visit generates no transfer of your IP address to external providers.",
+      "p1": "This site has no analytics, shows no advertising and embeds no social-network buttons. It uses only the <strong>cookies strictly necessary</strong> for your account session, set by the authentication processor (item 09) when you sign in; no tracking or advertising cookies. Fonts are served from the site’s own domain. The only requests your browser makes to third parties are those of the sign-in and account screens, addressed to the authentication processor — and, if you choose it, to the sign-in provider (Google or Apple).",
       "p2": "The website is hosted by <strong>Vercel Inc.</strong>, which as a processor logs technical access data — IP address, date, time and the resource requested — for as long as is necessary for the security and the operation of the hosting. The legal basis is the legitimate interest in maintaining the security of the service, Article 7, IX of the LGPD and Article 6(1)(f) of the GDPR."
     },
     "s15": {
@@ -136,7 +136,7 @@
       "description": "Conditions of use of the Lymark app: what it does, what it does not do, and who is responsible for the content of the photos."
     },
     "title": "Terms of Use",
-    "updated": "Last updated: 2 August 2026 · Lymark app, version 1.1.0 (Android)",
+    "updated": "Last updated: 16 August 2026 · Lymark app, version 1.3.0",
     "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
     "s01": {
       "title": "What the app does",
@@ -180,7 +180,7 @@
     },
     "s07": {
       "title": "Termination",
-      "p1": "You may end your use at any time by uninstalling the app, which erases the data it stored. There is no account to close and no subscription to cancel."
+      "p1": "You may stop using the app at any time: deleting the account erases its data on the server, and uninstalling the app erases the data kept on the device. While there is no paid subscription there is no subscription to cancel; when there is, the cancellation terms will appear in these Terms before any charge."
     },
     "s08": {
       "title": "Changes to these terms",

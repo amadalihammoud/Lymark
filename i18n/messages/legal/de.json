@@ -2,14 +2,14 @@
   "privacy": {
     "meta": {
       "title": "Datenschutzrichtlinie",
-      "description": "Wie die Lymark-App mit Fotos, Standort und Verlauf umgeht. Die App hat keinen Server, legt kein Konto an und übermittelt Ihre Fotos nicht."
+      "description": "Wie die Lymark-App Fotos, Standort, Verlauf und Ihr Konto behandelt. Fotos und Standort verlassen das Gerät nicht; der Server speichert nur E-Mail, Tarif und Fotozähler."
     },
     "title": "Datenschutzrichtlinie",
-    "updated": "Letzte Aktualisierung: 2. August 2026 · Lymark-App, Version 1.1.0",
+    "updated": "Letzte Aktualisierung: 16. August 2026 · Lymark-App, Version 1.3.0",
     "intro": "Diese Richtlinie beschreibt, wie die Lymark-App personenbezogene Informationen verarbeitet. Sie entspricht dem Gesetz Nr. 13.709/2018 (Allgemeines Gesetz zum Schutz personenbezogener Daten — LGPD) und der Verordnung (EU) 2016/679 (Datenschutz-Grundverordnung — DSGVO/GDPR) und gilt für die App, die unter dem Bezeichner <strong>com.lycosteam.lymark</strong> vertrieben wird, und für diese Website.",
     "s01": {
       "title": "In einem Satz",
-      "p1": "Lymark <strong>hat keinen Server, legt kein Benutzerkonto an und übermittelt Ihre Fotos nicht</strong>. Alles, was die App erzeugt — Bilder, Adressen, Verlauf und Einstellungen —, bleibt auf Ihrem eigenen Gerät gespeichert, unter Ihrer Kontrolle.",
+      "p1": "Lymark <strong>überträgt weder Ihre Fotos noch Ihren Standort</strong>. Alles, was die App erzeugt — Bilder, Adressen, Verlauf und Einstellungen —, bleibt auf Ihrem eigenen Gerät, unter Ihrer Kontrolle. Es gibt ein Konto, das für die Nutzung der App und für das Abonnement nötig ist: Der Server speichert Ihre E-Mail, die Kontokennung, den Tarif und die Zahl der exportierten Fotos — und sonst nichts.",
       "p2": "Es gibt eine einzige Ausnahme, beschrieben in Abschnitt 05: Um die GPS-Koordinaten in eine lesbare Adresse umzuwandeln, fragt das Betriebssystem des Geräts einen externen Geokodierungsdienst ab."
     },
     "s02": {
@@ -80,22 +80,22 @@
       "title": "Rechtsgrundlagen und Zwecke",
       "p1": "Die Verarbeitung des Standorts erfolgt auf Grundlage Ihrer <strong>Einwilligung</strong> — Art. 7 Abs. I LGPD und Art. 6 Abs. 1 lit. a DSGVO —, erklärt mit der Erteilung der Systemberechtigung und jederzeit widerrufbar, unbeschadet der Rechtmäßigkeit der vor dem Widerruf erfolgten Verarbeitung.",
       "p2": "Die Verarbeitung der übrigen Daten erfolgt zur <strong>Ausführung der von Ihnen angeforderten Funktion</strong> — Art. 7 Abs. V LGPD und Art. 6 Abs. 1 lit. b DSGVO —, denn ohne sie gibt es das Wasserzeichen nicht, das die App erzeugen soll.",
-      "p3": "Es gibt keine Verarbeitung auf Grundlage eines berechtigten Interesses und keine zu Werbung, Profilbildung, Verhaltensanalyse oder irgendeinem sekundären Zweck. Der Entwickler verarbeitet keine besonderen Kategorien von Daten und keine sensiblen Daten."
+      "p3": "Die Verarbeitung der Kontodaten stützt sich auf die Vertragserfüllung (LGPD Art. 7, V; DSGVO Art. 6 Abs. 1 lit. b). Eine Verarbeitung auf Grundlage berechtigten Interesses (LGPD Art. 7, IX; DSGVO Art. 6 Abs. 1 lit. f) besteht nur für Sicherheit und Betrugsprävention — etwa die Protokollierung der IP-Adresse bei Anfragen an den Server. Es gibt keine Verarbeitung für Werbung, Profilbildung, Verhaltensanalyse oder einen sonstigen Nebenzweck und keine Verarbeitung besonderer Kategorien von Daten oder sensibler Daten durch den Entwickler."
     },
     "s08": {
       "title": "Internationale Übermittlung",
-      "p1": "Der Entwickler nimmt keine internationale Datenübermittlung vor, weil er keine Daten erhält. Die in Abschnitt 05 beschriebene Geokodierungsabfrage richtet das Betriebssystem an Anbieter, die sie außerhalb des Landes des Nutzers verarbeiten können, unter den Übermittlungsmechanismen dieser Anbieter selbst — im europäischen Fall Standardvertragsklauseln.",
+      "p1": "Die Kontodaten werden vom Auftragsverarbeiter für die Authentifizierung (Clerk, Inc., USA) verarbeitet; das ist eine internationale Datenübermittlung, gestützt auf Standardvertragsklauseln und die Mechanismen von Art. 33 LGPD und Art. 44 bis 49 DSGVO. Die in Punkt 05 beschriebene Geokodierungsabfrage stellt weiterhin das Betriebssystem an Anbieter, die sie außerhalb des Landes des Nutzers verarbeiten können, nach den Übermittlungsmechanismen dieser Anbieter.",
       "p2": "Diese Website wird nach Abschnitt 14 von Vercel Inc. gehostet."
     },
     "s09": {
       "title": "Weitergabe an Dritte",
-      "p1": "Der Entwickler gibt personenbezogene Daten nicht an Dritte weiter, verkauft sie nicht, vermietet sie nicht und überlässt sie nicht — aus dem einfachen Grund, dass er sie nicht hat. Es ist kein Auftragsverarbeiter (<em>processor</em>) beauftragt, Daten der App zu verarbeiten."
+      "p1": "Der Entwickler gibt personenbezogene Daten nicht an Dritte weiter, verkauft, vermietet oder überlässt sie nicht. Es gibt einen beauftragten Auftragsverarbeiter (<em>processor</em>): Clerk, Inc., die den Authentifizierungsdienst erbringt und E-Mail, Kontokennung und Tarifdaten speichert, vertraglich an die Weisungen des Entwicklers gebunden. Wenn Sie sich mit Google oder Apple anmelden, verarbeiten diese Anbieter die Anmeldedaten nach ihren eigenen Richtlinien; der Entwickler erhält von ihnen nur die E-Mail und die Kennung, die zum Anlegen des Kontos nötig sind. Fotos, Adressen und Standort laufen über keinen Auftragsverarbeiter, weil sie das Gerät nicht verlassen."
     },
     "s10": {
       "title": "Speicherung, Aufbewahrung und Sicherheit",
       "p1": "Die Daten liegen im privaten Bereich der App, geschützt durch die Isolierung der Apps voneinander im Betriebssystem und durch die Bildschirmsperre des Geräts. In der Android-Version ist die automatische Sicherung des Systems <strong>deaktiviert</strong>, sodass Verlauf und Einstellungen nicht an das Google-Konto des Nutzers gesendet werden.",
       "p2": "Die Aufbewahrung steuern allein Sie: Die Einträge bleiben, bis sie in der App selbst gelöscht werden, und der Verlauf verwirft die ältesten automatisch, sobald zweihundert Einträge überschritten sind, und entfernt dabei auch die zugehörigen Dateien. Die App zu deinstallieren löscht alles, was sie gespeichert hat. Die schon in der Gerätegalerie gespeicherten Fotos gehören zur Galerie und bleiben dort — sie zu entfernen liegt bei Ihnen, wenn Sie das wollen.",
-      "p3": "Kein System ist unfehlbar. Da die App keine entfernte Datenbank führt, gibt es kein zentrales Repository, aus dem Daten abfließen könnten, und es gibt keinen nach Art. 48 LGPD oder Art. 33 DSGVO zu meldenden Sicherheitsvorfall, der aus der Infrastruktur des Entwicklers stammen könnte. Das maßgebliche Risiko ist der physische Zugriff auf das entsperrte Gerät."
+      "p3": "Kein System ist unfehlbar. Die Kontodaten — E-Mail, Kennung, Tarif und Zähler — liegen beim Auftragsverarbeiter für die Authentifizierung, unter dessen Sicherheitsmaßnahmen. Fotos, Adressen und Standort existieren in keinem zentralen Speicher und können daher nicht aus der Infrastruktur des Entwicklers abfließen. Bei einem Sicherheitsvorfall, der Kontodaten betrifft, benachrichtigt der Entwickler die Behörde und die Betroffenen nach Art. 48 LGPD und Art. 33 DSGVO. Das maßgebliche Risiko für Ihre Fotos bleibt der physische Zugriff auf das entsperrte Gerät."
     },
     "s11": {
       "title": "Wenn Sie andere Personen fotografieren",
@@ -104,7 +104,7 @@
     "s12": {
       "title": "Ihre Rechte",
       "p1": "Art. 18 LGPD und Art. 15 bis 22 DSGVO sichern Ihnen die Rechte auf Bestätigung und Auskunft, Berichtigung, Löschung, Anonymisierung, Sperrung, Übertragbarkeit, Einschränkung der Verarbeitung, Widerspruch, Widerruf der Einwilligung und Information über Weitergaben zu.",
-      "p2": "Da die Daten allein auf Ihrem Gerät liegen, werden diese Rechte unmittelbar in der App ausgeübt: Einträge im Tab Galerie ansehen und löschen, jedes Feld vor dem Exportieren korrigieren, die Standortberechtigung in den Geräteeinstellungen widerrufen und alles durch Deinstallation der App löschen. Der Entwickler kann diese Daten nicht für Sie abrufen, exportieren oder löschen — nicht aus Verweigerung, sondern weil er sie nicht hat.",
+      "p2": "Fotos, Adressen, Verlauf und Einstellungen liegen nur auf Ihrem Gerät, und diese Rechte üben Sie direkt in der App aus: Einträge im Tab Galerie ansehen und löschen, jedes Feld vor dem Export korrigieren, die Standortberechtigung in den Systemeinstellungen widerrufen und alles durch Deinstallation der App löschen — der Entwickler kann diese Daten nicht für Sie einsehen, exportieren oder löschen, weil er sie nicht besitzt. Die Kontodaten — E-Mail, Tarif und Zähler — können Sie auf der Kontoseite einsehen und deren Berichtigung, Export oder Löschung an die Kontakt-E-Mail dieser Richtlinie verlangen; das Löschen des Kontos löscht diese Daten beim Auftragsverarbeiter für die Authentifizierung.",
       "p3": "Für Fragen oder formelle Anträge schreiben Sie an <email>contato@lymark.app</email>. Sie haben außerdem das Recht, Beschwerde bei der <strong>ANPD</strong> in Brasilien oder bei der Aufsichtsbehörde Ihres Mitgliedstaats in der Europäischen Union einzulegen."
     },
     "s13": {
@@ -113,7 +113,7 @@
     },
     "s14": {
       "title": "Über diese Website",
-      "p1": "Diese Website <strong>verwendet keine Cookies</strong>, hat keine Analytik, zeigt keine Werbung und bindet keine Schaltflächen sozialer Netzwerke ein. Die Schriften liefert die eigene Domain aus — Ihr Browser stellt keine Anfrage an Server Dritter, sodass der Besuch keine Übermittlung der IP-Adresse an externe Anbieter erzeugt.",
+      "p1": "Diese Website hat keine Analyse, zeigt keine Werbung und bindet keine Schaltflächen sozialer Netzwerke ein. Sie verwendet nur die für die Sitzung Ihres Kontos <strong>unbedingt erforderlichen Cookies</strong>, gesetzt vom Auftragsverarbeiter für die Authentifizierung (Punkt 09), wenn Sie sich anmelden; keine Tracking- oder Werbecookies. Schriften werden von der eigenen Domain ausgeliefert. Die einzigen Anfragen Ihres Browsers an Dritte sind die der Anmelde- und Kontoseiten, gerichtet an den Auftragsverarbeiter für die Authentifizierung — und, wenn Sie es wählen, an den Anmeldeanbieter (Google oder Apple).",
       "p2": "Die Website wird von <strong>Vercel Inc.</strong> gehostet, die als Auftragsverarbeiter technische Zugriffsdaten protokolliert — IP-Adresse, Datum, Uhrzeit und angefragte Ressource — für die zur Sicherheit und zum Betrieb des Hostings nötige Zeit. Rechtsgrundlage ist das berechtigte Interesse an der Aufrechterhaltung der Sicherheit des Dienstes, Art. 7 Abs. IX LGPD und Art. 6 Abs. 1 lit. f DSGVO."
     },
     "s15": {
@@ -136,7 +136,7 @@
       "description": "Bedingungen für die Nutzung der Lymark-App: was sie tut, was sie nicht tut und bei wem die Verantwortung für den Inhalt der Fotos liegt."
     },
     "title": "Nutzungsbedingungen",
-    "updated": "Letzte Aktualisierung: 2. August 2026 · Lymark-App, Version 1.1.0 (Android)",
+    "updated": "Letzte Aktualisierung: 16. August 2026 · Lymark-App, Version 1.3.0",
     "intro": "Diese Bedingungen regeln die Nutzung der Lymark-App, die unter dem Bezeichner <strong>com.lycosteam.lymark</strong> von 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25, vertrieben wird. Mit der Installation oder der Nutzung der App stimmen Sie dem hier Geschriebenen zu.",
     "s01": {
       "title": "Was die App tut",
@@ -180,7 +180,7 @@
     },
     "s07": {
       "title": "Beendigung",
-      "p1": "Sie können die Nutzung jederzeit beenden, indem Sie die App deinstallieren; das löscht die von ihr gespeicherten Daten. Es gibt kein Konto zu schließen und kein Abo zu kündigen."
+      "p1": "Sie können die Nutzung jederzeit beenden: Das Löschen des Kontos löscht dessen Daten auf dem Server, und das Deinstallieren der App löscht die auf dem Gerät gespeicherten Daten. Solange es kein bezahltes Abonnement gibt, gibt es kein Abonnement zu kündigen; sobald es eines gibt, stehen die Kündigungsbedingungen vor jeder Abbuchung in diesen Bedingungen."
     },
     "s08": {
       "title": "Änderungen dieser Bedingungen",

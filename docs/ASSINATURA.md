@@ -226,6 +226,13 @@ um fornecedor respondendo a pergunta mais importante do negócio.
 
 ## 7.1 As promessas que precisam cair junto
 
+> **Feito em 16/08/2026**, no commit que ligou o Clerk no site: as quatro
+> chaves abaixo, as oito dos documentos legais (§7.1.1) e mais uma que a lista
+> não tinha — `privacy.s14.p1`, "este site não usa cookies", que a sessão do
+> Clerk desmente. As duas do herói mudaram de nome (`hero.meta.account`,
+> `hero.meta.onDevice`) porque o sentido inverteu. Fica aqui como registro do
+> que valia antes.
+
 Quatro chaves do catálogo afirmam hoje que o Lymark não tem servidor e não
 cria conta. **São verdade agora** — e por isso não podem ser alteradas antes
 da hora: trocá-las hoje criaria a mentira oposta, prometendo conta antes de

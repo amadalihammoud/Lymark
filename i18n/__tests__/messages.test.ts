@@ -53,6 +53,8 @@ const IDENTICAL_ON_PURPOSE: Record<string, readonly string[]> = {
     // "{shown} de {total, plural, one {# foto} other {# fotos}}" — a mesma
     // coincidência acima, com a contagem filtrada.
     'app.gallery.filteredCount',
+    // "{remaining} de {quota} restantes" — as duas línguas escrevem igual.
+    'site.account.photosLeft',
   ],
 };
 

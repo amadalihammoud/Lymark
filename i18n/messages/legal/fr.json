@@ -2,14 +2,14 @@
   "privacy": {
     "meta": {
       "title": "Politique de confidentialité",
-      "description": "Comment l’application Lymark traite les photos, la localisation et l’historique. L’application n’a pas de serveur, ne crée pas de compte et ne transmet pas vos photos."
+      "description": "Comment l’application Lymark traite les photos, la position, l’historique et votre compte. Les photos et la position ne quittent pas l’appareil ; le serveur ne conserve que l’e-mail, l’offre et le décompte de photos."
     },
     "title": "Politique de confidentialité",
-    "updated": "Dernière mise à jour : 2 août 2026 · Application Lymark, version 1.1.0",
+    "updated": "Dernière mise à jour : 16 août 2026 · Application Lymark, version 1.3.0",
     "intro": "La présente politique décrit comment l’application Lymark traite les informations personnelles. Elle est conforme à la loi n° 13.709/2018 (loi générale de protection des données personnelles — LGPD) et au règlement (UE) 2016/679 (règlement général sur la protection des données — RGPD), et s’applique à l’application distribuée sous l’identifiant <strong>com.lycosteam.lymark</strong> ainsi qu’à ce site.",
     "s01": {
       "title": "En une phrase",
-      "p1": "Lymark <strong>n’a pas de serveur, ne crée pas de compte utilisateur et ne transmet pas vos photos</strong>. Tout ce que l’application produit — images, adresses, historique et préférences — reste stocké sur votre propre appareil, sous votre contrôle.",
+      "p1": "Lymark <strong>ne transmet ni vos photos ni votre position</strong>. Tout ce que l’application produit — images, adresses, historique et préférences — reste sur votre propre appareil, sous votre contrôle. Il existe un compte, nécessaire pour utiliser l’application et pour l’abonnement : le serveur conserve votre e-mail, l’identifiant du compte, l’offre et le décompte des photos exportées — et rien d’autre.",
       "p2": "Il existe une seule exception, décrite au point 05 : pour convertir les coordonnées du GPS en une adresse lisible, le système d’exploitation de l’appareil interroge un service de géocodage externe."
     },
     "s02": {
@@ -80,22 +80,22 @@
       "title": "Bases légales et finalités",
       "p1": "Le traitement de la localisation repose sur votre <strong>consentement</strong> — art. 7, I de la LGPD et art. 6(1)(a) du RGPD — donné par l’octroi de l’autorisation du système et révocable à tout moment, sans préjudice de la licéité du traitement antérieur à la révocation.",
       "p2": "Le traitement des autres données a pour base l’<strong>exécution de la fonctionnalité que vous avez demandée</strong> — art. 7, V de la LGPD et art. 6(1)(b) du RGPD —, puisque sans elles le filigrane que l’application se propose de produire n’existe pas.",
-      "p3": "Aucun traitement n’est fondé sur l’intérêt légitime, ni destiné à la publicité, au profilage, à l’analyse du comportement ou à une quelconque finalité secondaire. Le développeur ne traite ni catégories particulières de données ni données sensibles."
+      "p3": "Le traitement des données du compte repose sur l’exécution du contrat (LGPD art. 7, V ; RGPD art. 6(1)(b)). Un traitement fondé sur l’intérêt légitime (LGPD art. 7, IX ; RGPD art. 6(1)(f)) n’existe que pour la sécurité et la prévention de la fraude — par exemple l’enregistrement de l’adresse IP des requêtes au serveur. Il n’y a aucun traitement à des fins publicitaires, de profilage, d’analyse comportementale ou toute finalité secondaire, ni traitement de catégories particulières de données ou de données sensibles par le développeur."
     },
     "s08": {
       "title": "Transfert international",
-      "p1": "Le développeur n’effectue aucun transfert international de données, parce qu’il ne reçoit aucune donnée. La requête de géocodage décrite au point 05 est adressée par le système d’exploitation à des fournisseurs qui peuvent la traiter en dehors du pays de l’utilisateur, sous les mécanismes de transfert propres à ces fournisseurs — les clauses contractuelles types, dans le cas européen.",
+      "p1": "Les données du compte sont traitées par le sous-traitant d’authentification (Clerk, Inc., États-Unis), ce qui constitue un transfert international de données, fondé sur des clauses contractuelles types et sur les mécanismes de l’art. 33 de la LGPD et des art. 44 à 49 du RGPD. La requête de géocodage décrite au point 05 reste effectuée par le système d’exploitation auprès de fournisseurs susceptibles de la traiter hors du pays de l’utilisateur, selon les mécanismes de transfert de ces fournisseurs.",
       "p2": "Ce site est hébergé par Vercel Inc., dans les conditions prévues au point 14."
     },
     "s09": {
       "title": "Partage avec des tiers",
-      "p1": "Le développeur ne partage, ne vend, ne loue ni ne cède de données personnelles à des tiers, pour la simple raison qu’il ne les détient pas. Aucun sous-traitant (<em>processor</em>) n’est engagé pour traiter les données de l’application."
+      "p1": "Le développeur ne partage, ne vend, ne loue ni ne cède de données personnelles à des tiers. Il existe un sous-traitant (<em>processor</em>) : Clerk, Inc., qui fournit le service d’authentification et stocke l’e-mail, l’identifiant du compte et les données de l’offre, liée par contrat aux instructions du développeur. Si vous vous connectez avec Google ou Apple, ces fournisseurs traitent les données de connexion selon leurs propres politiques ; le développeur ne reçoit d’eux que l’e-mail et l’identifiant nécessaires à la création du compte. Les photos, les adresses et la position ne passent par aucun sous-traitant, puisqu’elles ne quittent pas l’appareil."
     },
     "s10": {
       "title": "Stockage, conservation et sécurité",
       "p1": "Les données restent dans l’espace privé de l’application, protégé par l’isolement entre applications du système d’exploitation et par le verrouillage de l’écran de l’appareil. Dans la version Android, la sauvegarde automatique du système est <strong>désactivée</strong>, de sorte que l’historique et les préférences ne sont pas envoyés au compte Google de l’utilisateur.",
       "p2": "La conservation est entièrement sous votre contrôle : les enregistrements demeurent jusqu’à ce qu’ils soient supprimés dans l’application elle-même, et l’historique écarte automatiquement les plus anciens au-delà de deux cents éléments, en supprimant aussi les fichiers correspondants. Désinstaller l’application efface tout ce qu’elle stockait. Les photos déjà enregistrées dans la galerie de l’appareil appartiennent à la galerie et y restent — il vous appartient de les retirer si vous le souhaitez.",
-      "p3": "Aucun système n’est infaillible. Comme l’application ne tient pas de base de données distante, il n’existe pas de dépôt central susceptible de fuite, et aucun incident de sécurité à notifier au titre de l’art. 48 de la LGPD ou de l’art. 33 du RGPD ne peut découler d’une infrastructure du développeur. Le risque à considérer est l’accès physique à l’appareil déverrouillé."
+      "p3": "Aucun système n’est infaillible. Les données du compte — e-mail, identifiant, offre et décompte — sont chez le sous-traitant d’authentification, sous ses mesures de sécurité. Les photos, les adresses et la position n’existent dans aucun dépôt central et ne peuvent donc pas fuiter depuis l’infrastructure du développeur. En cas d’incident de sécurité touchant les données du compte, le développeur en informera l’autorité et les personnes concernées conformément à l’art. 48 de la LGPD et à l’art. 33 du RGPD. Le risque pertinent pour vos photos reste l’accès physique à l’appareil déverrouillé."
     },
     "s11": {
       "title": "Lorsque vous photographiez d’autres personnes",
@@ -104,7 +104,7 @@
     "s12": {
       "title": "Vos droits",
       "p1": "L’art. 18 de la LGPD et les art. 15 à 22 du RGPD vous garantissent les droits de confirmation et d’accès, de rectification, d’effacement, d’anonymisation, de blocage, de portabilité, de limitation du traitement, d’opposition, de retrait du consentement et d’information sur les partages.",
-      "p2": "Comme les données ne se trouvent que sur votre appareil, ces droits s’exercent directement dans l’application : consulter et supprimer des enregistrements dans l’onglet Galerie, corriger n’importe quel champ avant l’export, révoquer l’autorisation de localisation dans les réglages du système, et tout effacer en désinstallant l’application. Le développeur ne peut pas accéder à ces données, les exporter ni les supprimer à votre place — non par refus, mais parce qu’il ne les détient pas.",
+      "p2": "Les photos, les adresses, l’historique et les préférences résident uniquement sur votre appareil, et ces droits s’exercent directement dans l’application : consulter et supprimer des entrées dans l’onglet Galerie, corriger tout champ avant l’export, révoquer l’autorisation de localisation dans les réglages du système et tout effacer en désinstallant l’application — le développeur ne peut ni accéder à ces données, ni les exporter, ni les supprimer pour vous, parce qu’il ne les détient pas. Quant aux données du compte — e-mail, offre et décompte —, vous pouvez les consulter sur la page du compte et en demander la rectification, l’export ou la suppression à l’e-mail de contact de cette Politique ; la suppression du compte efface ces données chez le sous-traitant d’authentification.",
       "p3": "Pour toute question ou demande formelle, écrivez à <email>contato@lymark.app</email>. Vous avez également le droit d’introduire une réclamation auprès de l’<strong>ANPD</strong>, au Brésil, ou auprès de l’autorité de contrôle de votre État membre, dans l’Union européenne."
     },
     "s13": {
@@ -113,7 +113,7 @@
     },
     "s14": {
       "title": "À propos de ce site",
-      "p1": "Ce site <strong>n’utilise pas de cookies</strong>, n’a pas de statistiques de fréquentation, n’affiche pas de publicité et n’intègre pas de boutons de réseaux sociaux. Les polices de caractères sont servies par le domaine lui-même — aucune requête de votre navigateur n’est adressée à des serveurs tiers, de sorte que la visite n’entraîne aucun transfert d’adresse IP à des fournisseurs externes.",
+      "p1": "Ce site n’a pas d’outil d’analyse, n’affiche pas de publicité et n’intègre pas de boutons de réseaux sociaux. Il n’utilise que les <strong>cookies strictement nécessaires</strong> à la session de votre compte, déposés par le sous-traitant d’authentification (point 09) lorsque vous vous connectez ; aucun cookie de suivi ni de publicité. Les polices sont servies depuis le domaine du site. Les seules requêtes de votre navigateur vers des tiers sont celles des écrans de connexion et de compte, adressées au sous-traitant d’authentification — et, si vous le choisissez, au fournisseur de connexion (Google ou Apple).",
       "p2": "Le site est hébergé par <strong>Vercel Inc.</strong>, qui en qualité de sous-traitant enregistre des données techniques d’accès — adresse IP, date, heure et ressource demandée — pendant la durée nécessaire à la sécurité et au fonctionnement de l’hébergement. La base légale est l’intérêt légitime au maintien de la sécurité du service, art. 7, IX de la LGPD et art. 6(1)(f) du RGPD."
     },
     "s15": {
@@ -136,7 +136,7 @@
       "description": "Conditions d’utilisation de l’application Lymark : ce qu’elle fait, ce qu’elle ne fait pas, et à qui incombe la responsabilité du contenu des photos."
     },
     "title": "Conditions d’utilisation",
-    "updated": "Dernière mise à jour : 2 août 2026 · Application Lymark, version 1.1.0 (Android)",
+    "updated": "Dernière mise à jour : 16 août 2026 · Application Lymark, version 1.3.0",
     "intro": "Les présentes conditions régissent l’utilisation de l’application Lymark, distribuée sous l’identifiant <strong>com.lycosteam.lymark</strong> par 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. En installant ou en utilisant l’application, vous acceptez ce qui est écrit ici.",
     "s01": {
       "title": "Ce que fait l’application",
@@ -180,7 +180,7 @@
     },
     "s07": {
       "title": "Fin de l’utilisation",
-      "p1": "Vous pouvez mettre fin à l’utilisation à tout moment en désinstallant l’application, ce qui efface les données qu’elle stockait. Il n’y a pas de compte à supprimer ni d’abonnement à résilier."
+      "p1": "Vous pouvez cesser d’utiliser l’application à tout moment : supprimer le compte efface ses données sur le serveur, et désinstaller l’application efface les données conservées sur l’appareil. Tant qu’il n’existe pas d’abonnement payant, il n’y a pas d’abonnement à résilier ; lorsqu’il existera, les conditions de résiliation figureront dans les présentes Conditions avant toute facturation."
     },
     "s08": {
       "title": "Modifications des présentes conditions",

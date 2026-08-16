@@ -7,7 +7,7 @@
       "privacy": "Privacy Policy",
       "privacyGeocoding": "When GPS is used, the operating system sends the coordinate to Google’s or Apple’s map service to obtain the address. That is the only information that leaves here, and it is the system that sends it, not Lymark.",
       "privacyLocation": "Location is used once per capture, only to fill in the address field, and is not stored separately from the photos.",
-      "privacyOnDevice": "The photos, the addresses and the history stay on this device alone. Lymark has no server, creates no account and sends your photos nowhere.",
+      "privacyOnDevice": "The photos, the addresses and the history stay on this device alone. The account exists for your subscription: the server keeps your e-mail and plan, and never receives your photos or your location.",
       "privacySection": "Privacy",
       "sdk": "Expo SDK",
       "terms": "Terms of Use",
@@ -364,6 +364,22 @@
     }
   },
   "site": {
+    "account": {
+      "backHome": "Back to home",
+      "photos": "Photos",
+      "photosLeft": "{remaining} of {quota} left",
+      "plan": "Plan",
+      "planUnavailable": "Unavailable right now",
+      "plans": {
+        "free": "Free",
+        "pro": "Pro"
+      },
+      "signInTitle": "Sign in",
+      "signOut": "Sign out",
+      "signUpTitle": "Create account",
+      "subscribeSoon": "Subscriptions are not available yet. When they are, you will be able to subscribe here and use any device with the same account.",
+      "title": "Your account"
+    },
     "availability": {
       "contact": "To follow the launch or report a problem, write to <email>contato@lymark.app</email>.",
       "description": "Lymark is at version 1.3.0, in testing on Android ahead of publication on Google Play. There is no iOS version and no web version, and the app collects no payment.",
@@ -371,7 +387,7 @@
     },
     "data": {
       "device": {
-        "description": "Lymark has no server, creates no account and sends your photos nowhere. The history keeps the last two hundred exports in the app's own files.",
+        "description": "The account exists for your subscription: the server keeps your e-mail and plan, and never receives your photos or your location. The history keeps the last two hundred exports in the app’s own files.",
         "field": "On the device",
         "heading": "Photos, addresses and history"
       },
@@ -416,18 +432,20 @@
       "eyebrow": "Field photo documentation",
       "heading": "The photo leaves your phone already saying when, where and what.",
       "meta": {
+        "account": "One-tap account",
         "android": "Android and browser",
         "language": "Brazilian Portuguese",
-        "noAccount": "No account",
-        "noServer": "No server"
+        "onDevice": "Photos stay on the device"
       },
       "note": "Nothing to install."
     },
     "nav": {
+      "account": "Account",
       "home": "Home",
       "homeLabel": "Lymark, home page",
       "label": "Main",
       "privacy": "Privacy",
+      "signIn": "Sign in",
       "terms": "Terms"
     },
     "process": {

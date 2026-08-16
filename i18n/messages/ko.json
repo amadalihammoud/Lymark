@@ -7,7 +7,7 @@
       "privacy": "개인정보 보호 정책",
       "privacyGeocoding": "GPS를 쓸 때는 주소를 얻기 위해 운영체제가 Google 또는 Apple 지도 서비스로 좌표를 보냅니다. 여기서 밖으로 나가는 정보는 이것뿐이며, 보내는 주체는 운영체제이지 Lymark가 아닙니다.",
       "privacyLocation": "위치는 촬영마다 한 번, 주소 항목을 채우는 데만 쓰이며 사진과 따로 저장하지 않습니다.",
-      "privacyOnDevice": "사진과 주소와 기록은 이 기기 안에만 남습니다. Lymark는 서버가 없고, 계정을 만들지 않으며, 사진을 어디로도 보내지 않습니다.",
+      "privacyOnDevice": "사진과 주소와 기록은 이 기기 안에만 남습니다. 계정은 구독을 위한 것입니다. 서버는 이메일과 플랜만 저장하며, 사진이나 위치는 절대 받지 않습니다.",
       "privacySection": "개인정보",
       "sdk": "Expo SDK",
       "terms": "이용 약관",
@@ -364,6 +364,22 @@
     }
   },
   "site": {
+    "account": {
+      "backHome": "처음으로",
+      "photos": "사진",
+      "photosLeft": "{quota}장 중 {remaining}장 남음",
+      "plan": "플랜",
+      "planUnavailable": "지금은 표시할 수 없음",
+      "plans": {
+        "free": "무료",
+        "pro": "Pro"
+      },
+      "signInTitle": "로그인",
+      "signOut": "로그아웃",
+      "signUpTitle": "계정 만들기",
+      "subscribeSoon": "구독은 아직 제공되지 않습니다. 제공되면 여기서 구독하고 같은 계정으로 어떤 기기에서든 쓸 수 있습니다.",
+      "title": "내 계정"
+    },
     "availability": {
       "contact": "출시 소식을 받아보거나 문제를 알리려면 <email>contato@lymark.app</email>으로 메일을 보내주세요.",
       "description": "Lymark는 1.3.0 버전이며, Google Play 공개에 앞서 안드로이드에서 시험 중입니다. iOS 버전도 웹 버전도 없고, 앱은 요금을 받지 않습니다.",
@@ -371,7 +387,7 @@
     },
     "data": {
       "device": {
-        "description": "Lymark는 서버가 없고, 계정을 만들지 않으며, 사진을 어디로도 보내지 않습니다. 기록은 최근 200건의 내보내기를 앱 자체 파일로 보관합니다.",
+        "description": "계정은 구독을 위한 것입니다. 서버는 이메일과 플랜만 저장하며, 사진이나 위치는 절대 받지 않습니다. 기록은 앱 자체 파일에 최근 이백 건의 내보내기를 보관합니다.",
         "field": "기기 안",
         "heading": "사진, 주소, 기록"
       },
@@ -416,18 +432,20 @@
       "eyebrow": "현장 사진 기록",
       "heading": "사진은 언제, 어디서, 무엇인지 말하면서 휴대폰을 떠납니다.",
       "meta": {
+        "account": "한 번의 탭으로 계정",
         "android": "안드로이드와 브라우저",
         "language": "브라질 포르투갈어",
-        "noAccount": "계정 없이",
-        "noServer": "서버 없이"
+        "onDevice": "사진은 기기에만"
       },
       "note": "설치할 필요가 없습니다."
     },
     "nav": {
+      "account": "계정",
       "home": "홈",
       "homeLabel": "Lymark, 홈페이지",
       "label": "주요 탐색",
       "privacy": "개인정보",
+      "signIn": "로그인",
       "terms": "이용약관"
     },
     "process": {

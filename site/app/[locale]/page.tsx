@@ -65,8 +65,8 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
 
           <div className="meta">
             <span>{t('hero.meta.android')}</span>
-            <span>{t('hero.meta.noAccount')}</span>
-            <span>{t('hero.meta.noServer')}</span>
+            <span>{t('hero.meta.account')}</span>
+            <span>{t('hero.meta.onDevice')}</span>
             <span>{t('hero.meta.language')}</span>
           </div>
         </div>

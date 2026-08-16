@@ -1,3 +1,4 @@
+import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
@@ -5,8 +6,10 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { LOCALES, isRtl, type Locale } from '../../../i18n/locales';
+import AccountNav from '../../components/AccountNav';
 import LanguageSelector from '../../components/LanguageSelector';
-import { Link } from '../../i18n/navigation';
+import { CLERK_APPEARANCE, CLERK_LOCALIZATIONS } from '../../i18n/clerk';
+import { Link, getPathname } from '../../i18n/navigation';
 import { routing } from '../../i18n/routing';
 import { OG_LOCALES } from '../../i18n/og-locales';
 import { SITE_ORIGIN, alternatesFor, canonicalFor, urlFor } from '../../i18n/urls';
@@ -116,7 +119,24 @@ export default async function LocaleLayout({
 
   const t = await getTranslations('site');
 
+  /*
+   * As rotas da conta levam o prefixo do idioma como qualquer outra — o Clerk
+   * recebe o caminho já resolvido, e não uma string fixa, senão `/en/entrar`
+   * mandaria de volta para `/entrar` em português.
+   */
+  const at = (href: '/entrar' | '/cadastrar' | '/conta') =>
+    getPathname({ href, locale: locale as Locale });
+
   return (
+    <ClerkProvider
+      localization={CLERK_LOCALIZATIONS[locale as Locale]}
+      appearance={CLERK_APPEARANCE}
+      signInUrl={at('/entrar')}
+      signUpUrl={at('/cadastrar')}
+      signInFallbackRedirectUrl={at('/conta')}
+      signUpFallbackRedirectUrl={at('/conta')}
+      afterSignOutUrl={getPathname({ href: '/', locale: locale as Locale })}
+    >
     <html
       lang={locale}
       dir={isRtl(locale as Locale) ? 'rtl' : 'ltr'}
@@ -136,6 +156,12 @@ export default async function LocaleLayout({
               <nav className="site" aria-label={t('nav.label')}>
                 <Link href="/privacidade">{t('nav.privacy')}</Link>
                 <Link href="/termos">{t('nav.terms')}</Link>
+                {/*
+                  A conta entra no cabeçalho como qualquer outra rota. Sem sessão
+                  é um link; com sessão, o botão do Clerk — que já traz o menu de
+                  sair e gerir a conta no idioma da página.
+                */}
+                <AccountNav signIn={t('nav.signIn')} account={t('nav.account')} />
                 <LanguageSelector />
               </nav>
             </div>
@@ -163,5 +189,6 @@ export default async function LocaleLayout({
         </NextIntlClientProvider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }

@@ -683,6 +683,74 @@ footer.site a:hover {
   color: var(--amber);
 }
 
+
+/* Conta: entrar, cadastrar e o resumo do plano. */
+.account-shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: clamp(2rem, 6vw, 4rem) 3rem;
+  gap: 1rem;
+}
+
+.account-page {
+  align-items: flex-start;
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+.account-page h1 {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.account-email {
+  color: var(--text-muted);
+}
+
+.account-plan {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1.5rem;
+  margin-block: 0.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--navy-600);
+  border-radius: 0.6rem;
+  background: var(--navy-700);
+  width: 100%;
+}
+
+.account-plan dt {
+  color: var(--text-muted);
+}
+
+.account-note {
+  color: var(--text-subtle);
+  font-size: 0.9rem;
+}
+
+.account-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.account-signout {
+  background: none;
+  border: 1px solid var(--navy-500);
+  color: var(--text);
+  border-radius: 0.6rem;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.account-signout:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

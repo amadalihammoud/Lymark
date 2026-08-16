@@ -7,7 +7,7 @@
       "privacy": "プライバシーポリシー",
       "privacyGeocoding": "GPSを使うとき、住所を得るために、OSがGoogleまたはAppleの地図サービスへ座標を送ります。ここから外に出る情報はこれだけで、送るのはOSであってLymarkではありません。",
       "privacyLocation": "位置情報は撮影ごとに一度だけ、住所欄を埋めるためにのみ使い、写真とは別に保存することはありません。",
-      "privacyOnDevice": "写真も住所も履歴も、この端末の中だけに残ります。Lymarkはサーバーを持たず、アカウントも作らず、写真をどこにも送りません。",
+      "privacyOnDevice": "写真も住所も履歴も、この端末の中だけに残ります。アカウントは購読のためのものです。サーバーが保存するのはメールアドレスとプランだけで、写真や位置情報を受け取ることはありません。",
       "privacySection": "プライバシー",
       "sdk": "Expo SDK",
       "terms": "利用規約",
@@ -364,6 +364,22 @@
     }
   },
   "site": {
+    "account": {
+      "backHome": "トップへ戻る",
+      "photos": "写真",
+      "photosLeft": "残り {remaining} 枚（全 {quota} 枚）",
+      "plan": "プラン",
+      "planUnavailable": "現在表示できません",
+      "plans": {
+        "free": "無料",
+        "pro": "Pro"
+      },
+      "signInTitle": "ログイン",
+      "signOut": "ログアウト",
+      "signUpTitle": "アカウント作成",
+      "subscribeSoon": "有料プランはまだ提供していません。提供開始後はここで購読でき、同じアカウントでどの端末でも使えます。",
+      "title": "アカウント"
+    },
     "availability": {
       "contact": "リリース情報の受け取りや不具合のご報告は <email>contato@lymark.app</email> までお願いします。",
       "description": "Lymarkはバージョン1.3.0で、Google Play公開前のAndroidテスト中です。iOS版もWeb版もなく、アプリが料金を受け取ることもありません。",
@@ -371,7 +387,7 @@
     },
     "data": {
       "device": {
-        "description": "Lymarkはサーバーを持たず、アカウントも作らず、写真をどこにも送りません。履歴は直近二百件の書き出しを、アプリ自身のファイルとして保持します。",
+        "description": "アカウントは購読のためのものです。サーバーが保存するのはメールアドレスとプランだけで、写真や位置情報を受け取ることはありません。履歴はアプリ自身のファイルに直近二百件の書き出しを保存します。",
         "field": "端末の中",
         "heading": "写真・住所・履歴"
       },
@@ -416,18 +432,20 @@
       "eyebrow": "現場写真の記録",
       "heading": "写真は、いつ・どこで・何を撮ったかを語りながら端末を出ます。",
       "meta": {
+        "account": "ワンタップでアカウント",
         "android": "Androidとブラウザ",
         "language": "ブラジルポルトガル語",
-        "noAccount": "アカウント不要",
-        "noServer": "サーバーなし"
+        "onDevice": "写真は端末の中に"
       },
       "note": "インストールは不要です。"
     },
     "nav": {
+      "account": "アカウント",
       "home": "ホーム",
       "homeLabel": "Lymark、ホームページ",
       "label": "メインナビゲーション",
       "privacy": "プライバシー",
+      "signIn": "ログイン",
       "terms": "利用規約"
     },
     "process": {

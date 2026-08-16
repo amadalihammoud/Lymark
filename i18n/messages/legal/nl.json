@@ -2,14 +2,14 @@
   "privacy": {
     "meta": {
       "title": "Privacybeleid",
-      "description": "Hoe de Lymark-app omgaat met foto’s, locatie en geschiedenis. De app heeft geen server, maakt geen account aan en verstuurt je foto’s niet."
+      "description": "Hoe de Lymark-app omgaat met foto’s, locatie, geschiedenis en je account. Foto’s en locatie verlaten het apparaat niet; de server bewaart alleen e-mail, abonnement en fototeller."
     },
     "title": "Privacybeleid",
-    "updated": "Laatst bijgewerkt: 2 augustus 2026 · Lymark-app, versie 1.1.0",
+    "updated": "Laatst bijgewerkt: 16 augustus 2026 · Lymark-app, versie 1.3.0",
     "intro": "Dit beleid beschrijft hoe de Lymark-app met persoonsgegevens omgaat. Het voldoet aan Wet nr. 13.709/2018 (Braziliaanse algemene wet inzake de bescherming van persoonsgegevens — LGPD) en aan Verordening (EU) 2016/679 (Algemene verordening gegevensbescherming — AVG), en geldt voor de app die wordt verspreid onder het identificatiekenmerk <strong>com.lycosteam.lymark</strong> en voor deze website.",
     "s01": {
       "title": "In één zin",
-      "p1": "Lymark <strong>heeft geen server, maakt geen gebruikersaccount aan en verstuurt je foto’s niet</strong>. Alles wat de app maakt — afbeeldingen, adressen, geschiedenis en voorkeuren — blijft opgeslagen op je eigen apparaat, onder jouw controle.",
+      "p1": "Lymark <strong>verstuurt je foto’s en je locatie niet</strong>. Alles wat de app maakt — afbeeldingen, adressen, geschiedenis en voorkeuren — blijft op je eigen apparaat, onder jouw controle. Er is een account, nodig om de app te gebruiken en voor het abonnement: de server bewaart je e-mail, de accountidentificatie, het abonnement en het aantal geëxporteerde foto’s — en verder niets.",
       "p2": "Er is één uitzondering, beschreven in punt 05: om de gps-coördinaten om te zetten in een leesbaar adres, bevraagt het besturingssysteem van het apparaat een externe geocodeerdienst."
     },
     "s02": {
@@ -80,22 +80,22 @@
       "title": "Rechtsgrondslagen en doeleinden",
       "p1": "De verwerking van de locatie vindt plaats op basis van jouw <strong>toestemming</strong> — art. 7, I LGPD en art. 6 lid 1 onder a AVG — gegeven bij het verlenen van de systeemtoestemming en op elk moment in te trekken, zonder dat dit de rechtmatigheid van de verwerking vóór de intrekking aantast.",
       "p2": "De verwerking van de overige gegevens vindt plaats voor de <strong>uitvoering van de functie die je hebt gevraagd</strong> — art. 7, V LGPD en art. 6 lid 1 onder b AVG —, want zonder die gegevens bestaat het watermerk niet dat de app zich voorneemt te maken.",
-      "p3": "Er is geen verwerking op basis van gerechtvaardigd belang, en geen verwerking voor advertenties, profilering, gedragsanalyse of enig secundair doel. De ontwikkelaar verwerkt geen bijzondere categorieën van gegevens en geen gevoelige gegevens."
+      "p3": "De verwerking van accountgegevens berust op de uitvoering van de overeenkomst (LGPD art. 7, V; AVG art. 6(1)(b)). Verwerking op grond van gerechtvaardigd belang (LGPD art. 7, IX; AVG art. 6(1)(f)) bestaat alleen voor beveiliging en fraudepreventie — bijvoorbeeld het loggen van het IP-adres bij verzoeken aan de server. Er is geen verwerking voor reclame, profilering, gedragsanalyse of enig ander nevendoel, en geen verwerking van bijzondere categorieën van gegevens of gevoelige gegevens door de ontwikkelaar."
     },
     "s08": {
       "title": "Internationale doorgifte",
-      "p1": "De ontwikkelaar geeft geen gegevens internationaal door, omdat hij geen gegevens ontvangt. De geocodeeraanvraag beschreven in punt 05 wordt door het besturingssysteem gedaan bij aanbieders die hem buiten het land van de gebruiker kunnen verwerken, onder de doorgiftemechanismen van die aanbieders zelf — standaardcontractbepalingen, in het Europese geval.",
+      "p1": "De accountgegevens worden verwerkt door de verwerker voor authenticatie (Clerk, Inc., Verenigde Staten), wat een internationale doorgifte van gegevens is, gebaseerd op standaardcontractbepalingen en de mechanismen van art. 33 LGPD en art. 44 tot 49 AVG. De geocodering uit punt 05 wordt nog steeds door het besturingssysteem gedaan bij aanbieders die haar buiten het land van de gebruiker kunnen verwerken, volgens de doorgiftemechanismen van die aanbieders.",
       "p2": "Deze website wordt gehost door Vercel Inc., zoals beschreven in punt 14."
     },
     "s09": {
       "title": "Delen met derden",
-      "p1": "De ontwikkelaar deelt, verkoopt, verhuurt en draagt geen persoonsgegevens over aan derden, om de eenvoudige reden dat hij ze niet heeft. Er is geen verwerker (<em>processor</em>) ingeschakeld om gegevens van de app te verwerken."
+      "p1": "De ontwikkelaar deelt, verkoopt, verhuurt of draagt geen persoonsgegevens over aan derden. Er is één gecontracteerde verwerker (<em>processor</em>): Clerk, Inc., die de authenticatiedienst levert en de e-mail, de accountidentificatie en de abonnementsgegevens opslaat, contractueel gebonden aan de instructies van de ontwikkelaar. Als je inlogt met Google of Apple, verwerken die aanbieders de inloggegevens volgens hun eigen beleid; de ontwikkelaar ontvangt van hen alleen de e-mail en de identificatie die nodig zijn om het account aan te maken. Foto’s, adressen en locatie gaan door geen enkele verwerker, omdat ze het apparaat niet verlaten."
     },
     "s10": {
       "title": "Opslag, bewaring en beveiliging",
       "p1": "De gegevens staan in het privégedeelte van de app, beschermd door de isolatie tussen apps van het besturingssysteem en door de schermvergrendeling van het apparaat. In de Android-versie staat de automatische back-up van het systeem <strong>uitgeschakeld</strong>, zodat geschiedenis en voorkeuren niet naar het Google-account van de gebruiker worden gestuurd.",
       "p2": "De bewaring bepaal je volledig zelf: de registraties blijven staan totdat ze in de app zelf worden verwijderd, en de geschiedenis gooit de oudste automatisch weg zodra er meer dan tweehonderd items zijn, waarbij ook de bijbehorende bestanden verdwijnen. De app verwijderen wist alles wat hij bewaarde. Foto’s die al in de apparaatgalerij zijn opgeslagen, horen bij de galerij en blijven daar — het is aan jou om ze weg te halen als je dat wilt.",
-      "p3": "Geen enkel systeem is onfeilbaar. Omdat de app geen database op afstand bijhoudt, bestaat er geen centrale opslag die kan uitlekken, en is er geen beveiligingsincident te melden in de zin van art. 48 LGPD of art. 33 AVG dat uit infrastructuur van de ontwikkelaar zou kunnen voortkomen. Het relevante risico is fysieke toegang tot het ontgrendelde apparaat."
+      "p3": "Geen enkel systeem is onfeilbaar. De accountgegevens — e-mail, identificatie, abonnement en teller — staan bij de verwerker voor authenticatie, onder diens beveiligingsmaatregelen. Foto’s, adressen en locatie bestaan in geen enkele centrale opslag en kunnen dus niet uit de infrastructuur van de ontwikkelaar lekken. Bij een beveiligingsincident met accountgegevens meldt de ontwikkelaar dit aan de autoriteit en de betrokkenen volgens art. 48 LGPD en art. 33 AVG. Het relevante risico voor je foto’s blijft fysieke toegang tot het ontgrendelde apparaat."
     },
     "s11": {
       "title": "Wanneer je andere mensen fotografeert",
@@ -104,7 +104,7 @@
     "s12": {
       "title": "Jouw rechten",
       "p1": "Art. 18 LGPD en de art. 15 tot en met 22 AVG geven je het recht op bevestiging en inzage, correctie, verwijdering, anonimisering, blokkering, overdraagbaarheid, beperking van de verwerking, bezwaar, intrekking van de toestemming en informatie over het delen van gegevens.",
-      "p2": "Omdat de gegevens alleen op je apparaat staan, oefen je die rechten rechtstreeks in de app uit: registraties bekijken en verwijderen op het tabblad Galerij, elk veld corrigeren voordat je exporteert, de locatietoestemming intrekken in de apparaatinstellingen, en alles wissen door de app te verwijderen. De ontwikkelaar kan die gegevens niet voor je inzien, exporteren of verwijderen — niet uit onwil, maar omdat hij ze niet heeft.",
+      "p2": "Foto’s, adressen, geschiedenis en voorkeuren staan alleen op je apparaat, en die rechten oefen je rechtstreeks in de app uit: items bekijken en verwijderen in het tabblad Galerij, elk veld corrigeren voor het exporteren, de locatiemachtiging intrekken in de systeeminstellingen en alles wissen door de app te verwijderen — de ontwikkelaar kan die gegevens niet voor je inzien, exporteren of verwijderen, omdat hij ze niet heeft. De accountgegevens — e-mail, abonnement en teller — kun je op de accountpagina bekijken en je kunt correctie, export of verwijdering vragen via het contact-e-mailadres van dit Beleid; het verwijderen van het account wist die gegevens bij de verwerker voor authenticatie.",
       "p3": "Voor vragen of formele verzoeken kun je schrijven naar <email>contato@lymark.app</email>. Je hebt ook het recht een klacht in te dienen bij de <strong>ANPD</strong> in Brazilië, of bij de toezichthoudende autoriteit van je lidstaat in de Europese Unie."
     },
     "s13": {
@@ -113,7 +113,7 @@
     },
     "s14": {
       "title": "Over deze website",
-      "p1": "Deze website <strong>gebruikt geen cookies</strong>, heeft geen analytics, toont geen advertenties en bevat geen socialmediaknoppen. De lettertypen worden door het eigen domein geleverd — je browser doet geen enkele aanvraag bij servers van derden, zodat het bezoek geen doorgifte van je IP-adres aan externe aanbieders oplevert.",
+      "p1": "Deze site heeft geen analytics, toont geen reclame en bevat geen knoppen van sociale netwerken. Hij gebruikt alleen de <strong>strikt noodzakelijke cookies</strong> voor de sessie van je account, geplaatst door de verwerker voor authenticatie (punt 09) wanneer je inlogt; geen tracking- of reclamecookies. Lettertypen worden vanaf het eigen domein geleverd. De enige verzoeken van je browser aan derden zijn die van de inlog- en accountschermen, gericht aan de verwerker voor authenticatie — en, als je daarvoor kiest, aan de inlogaanbieder (Google of Apple).",
       "p2": "De website wordt gehost door <strong>Vercel Inc.</strong>, dat als verwerker technische toegangsgegevens vastlegt — IP-adres, datum, tijd en opgevraagde resource — zolang dat nodig is voor de beveiliging en de werking van de hosting. De rechtsgrondslag is het gerechtvaardigd belang bij het handhaven van de beveiliging van de dienst, art. 7, IX LGPD en art. 6 lid 1 onder f AVG."
     },
     "s15": {
@@ -136,7 +136,7 @@
       "description": "Gebruiksvoorwaarden van de Lymark-app: wat hij doet, wat hij niet doet, en bij wie de verantwoordelijkheid voor de inhoud van de foto’s ligt."
     },
     "title": "Gebruiksvoorwaarden",
-    "updated": "Laatst bijgewerkt: 2 augustus 2026 · Lymark-app, versie 1.1.0 (Android)",
+    "updated": "Laatst bijgewerkt: 16 augustus 2026 · Lymark-app, versie 1.3.0",
     "intro": "Deze voorwaarden regelen het gebruik van de Lymark-app, verspreid onder het identificatiekenmerk <strong>com.lycosteam.lymark</strong> door 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. Door de app te installeren of te gebruiken ga je akkoord met wat hier staat.",
     "s01": {
       "title": "Wat de app doet",
@@ -180,7 +180,7 @@
     },
     "s07": {
       "title": "Beëindiging",
-      "p1": "Je kunt het gebruik op elk moment beëindigen door de app te verwijderen, waarmee de gegevens die hij bewaarde worden gewist. Er is geen account op te zeggen en geen abonnement te beëindigen."
+      "p1": "Je kunt het gebruik op elk moment beëindigen: het account verwijderen wist de gegevens ervan op de server, en de app verwijderen wist de gegevens op het apparaat. Zolang er geen betaald abonnement is, is er geen abonnement op te zeggen; zodra dat er is, staan de opzegvoorwaarden in deze Voorwaarden voordat er iets in rekening wordt gebracht."
     },
     "s08": {
       "title": "Wijzigingen in deze voorwaarden",

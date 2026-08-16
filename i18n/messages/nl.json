@@ -7,7 +7,7 @@
       "privacy": "Privacybeleid",
       "privacyGeocoding": "Bij gebruik van gps stuurt het besturingssysteem de coördinaat naar de kaartendienst van Google of Apple om het adres op te halen. Dat is de enige informatie die hier weggaat, en het is het systeem dat hem stuurt, niet Lymark.",
       "privacyLocation": "De locatie wordt één keer per opname gebruikt, alleen om het adresveld in te vullen, en wordt niet los van de foto’s bewaard.",
-      "privacyOnDevice": "De foto’s, de adressen en de geschiedenis blijven alleen op dit apparaat. Lymark heeft geen server, maakt geen account aan en stuurt je foto’s nergens heen.",
+      "privacyOnDevice": "De foto’s, de adressen en de geschiedenis blijven alleen op dit apparaat. Het account bestaat voor je abonnement: de server bewaart e-mail en abonnement en ontvangt nooit je foto’s of je locatie.",
       "privacySection": "Privacy",
       "sdk": "Expo SDK",
       "terms": "Gebruiksvoorwaarden",
@@ -364,6 +364,22 @@
     }
   },
   "site": {
+    "account": {
+      "backHome": "Terug naar de startpagina",
+      "photos": "Foto’s",
+      "photosLeft": "{remaining} van {quota} over",
+      "plan": "Abonnement",
+      "planUnavailable": "Nu niet beschikbaar",
+      "plans": {
+        "free": "Gratis",
+        "pro": "Pro"
+      },
+      "signInTitle": "Inloggen",
+      "signOut": "Uitloggen",
+      "signUpTitle": "Account aanmaken",
+      "subscribeSoon": "Een betaald abonnement is nog niet beschikbaar. Zodra dat zo is, kun je het hier afsluiten en elk apparaat met hetzelfde account gebruiken.",
+      "title": "Je account"
+    },
     "availability": {
       "contact": "Om de lancering te volgen of een probleem te melden, schrijf naar <email>contato@lymark.app</email>.",
       "description": "Lymark staat op versie 1.3.0 en wordt op Android getest voor publicatie in Google Play. Er is geen iOS-versie en geen webversie, en de app vraagt geen geld.",
@@ -371,7 +387,7 @@
     },
     "data": {
       "device": {
-        "description": "Lymark heeft geen server, maakt geen account aan en stuurt je foto’s nergens heen. De geschiedenis bewaart de laatste tweehonderd exports in de bestanden van de app zelf.",
+        "description": "Het account bestaat voor je abonnement: de server bewaart e-mail en abonnement en ontvangt nooit je foto’s of je locatie. De geschiedenis bewaart de laatste tweehonderd exports in de bestanden van de app zelf.",
         "field": "Op het apparaat",
         "heading": "Foto’s, adressen en geschiedenis"
       },
@@ -416,18 +432,20 @@
       "eyebrow": "Fotodocumentatie in het veld",
       "heading": "De foto verlaat je telefoon en zegt meteen wanneer, waar en wat.",
       "meta": {
+        "account": "Account met één tik",
         "android": "Android en browser",
         "language": "Braziliaans Portugees",
-        "noAccount": "Zonder account",
-        "noServer": "Zonder server"
+        "onDevice": "Foto’s blijven op het apparaat"
       },
       "note": "Niets te installeren."
     },
     "nav": {
+      "account": "Account",
       "home": "Home",
       "homeLabel": "Lymark, startpagina",
       "label": "Hoofdnavigatie",
       "privacy": "Privacy",
+      "signIn": "Inloggen",
       "terms": "Voorwaarden"
     },
     "process": {

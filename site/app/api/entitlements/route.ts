@@ -1,7 +1,7 @@
-import { createClerkClient, verifyToken } from '@clerk/backend';
 import { NextResponse } from 'next/server';
 
-import { METADATA_KEY, handleEntitlements, type EntitlementStore } from '../../../lib/entitlements';
+import { clerkStore } from '../../../lib/clerk-store';
+import { handleEntitlements } from '../../../lib/entitlements';
 
 /**
  * `GET|POST /api/entitlements` — o único endpoint da fase 2 até aqui.
@@ -18,31 +18,6 @@ import { METADATA_KEY, handleEntitlements, type EntitlementStore } from '../../.
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-
-function clerkStore(): EntitlementStore | null {
-  const secretKey = process.env.CLERK_SECRET_KEY;
-  if (!secretKey) return null;
-
-  const clerk = createClerkClient({ secretKey });
-
-  return {
-    verify: async (token) => {
-      try {
-        const payload = await verifyToken(token, { secretKey });
-        return typeof payload.sub === 'string' && payload.sub ? payload.sub : null;
-      } catch {
-        return null;
-      }
-    },
-    read: async (userId) => {
-      const user = await clerk.users.getUser(userId);
-      return (user.privateMetadata as Record<string, unknown> | undefined)?.[METADATA_KEY];
-    },
-    write: async (userId, stored) => {
-      await clerk.users.updateUserMetadata(userId, { privateMetadata: { [METADATA_KEY]: stored } });
-    },
-  };
-}
 
 async function handle(request: Request) {
   const store = clerkStore();
