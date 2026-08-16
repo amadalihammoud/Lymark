@@ -2,9 +2,11 @@ name: Lymark CI/CD
 
 on:
   push:
-    branches: [main, claude/harness-fix, mistral/desktop-web]
+    # A linha de trabalho é `recuperacao/base-limpa`; `main` continua na lista
+    # para o dia em que ela for promovida.
+    branches: [main, recuperacao/base-limpa]
   pull_request:
-    branches: [main]
+    branches: [main, recuperacao/base-limpa]
 
 jobs:
   typecheck:
@@ -69,6 +71,34 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+  # O site tem package.json e lockfile próprios; a cadeia de verificação do
+  # projeto o inclui (tsc + next build), então o CI também.
+  site:
+    name: Site (typecheck + build)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install site dependencies
+        run: npm ci
+        working-directory: site
+
+      - name: Typecheck site
+        run: npx tsc --noEmit
+        working-directory: site
+
+      - name: Build site
+        run: npm run build
+        working-directory: site
 
   build-web:
     name: Build Web
