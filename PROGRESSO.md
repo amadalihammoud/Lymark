@@ -58,7 +58,13 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   emite um token próprio de 90 dias (HMAC, `site/lib/desktop-token.ts`) e o
   deep link `lymark://login#token=…` o devolve ao Electron. A API aceita os
   dois tokens pelo mesmo `verify`. Exige `DESKTOP_TOKEN_SECRET` na Vercel.
-- [ ] **Passo 3** — Stripe para web e desktop.
+- [x] **Passo 3** — Stripe para web e desktop: `GET /api/checkout` (botão
+  "Assinar" na conta vira um link; 303 para o Stripe) e
+  `POST /api/stripe-webhook` (verificação HMAC própria, consulta a
+  assinatura na API e grava `paidUntil` com 3 dias de folga da renovação).
+  Sem SDK. Exige `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` e
+  `STRIPE_PRICE_ID` na Vercel; sem elas, a conta volta ao aviso de
+  "assinatura em breve".
 - [ ] **Passo 4** — faixa de teste fechada na loja (Apple).
 - [ ] **Passo 5** — RevenueCat + Play, depois App Store.
 - [ ] **Passo 6** — cota e freemium completos: token assinado, lote de
@@ -73,6 +79,10 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` e `CLERK_SECRET_KEY`.
 - `DESKTOP_TOKEN_SECRET` no site (Vercel): uma string longa e aleatória —
   é o que assina o token de login do desktop.
+- Stripe (Vercel): `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` (do
+  endpoint `https://lymark.app/api/stripe-webhook`, eventos
+  `checkout.session.completed` e `invoice.paid`) e `STRIPE_PRICE_ID`
+  (preço recorrente criado no painel).
 - A mesma chave publicável no build do app:
   `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` (e, se o endpoint não for o de
   produção, `EXPO_PUBLIC_ENTITLEMENTS_URL`).
@@ -86,5 +96,6 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 
 ## Próximo passo de código
 
-Stripe para web e desktop (Passo 3): é onde não há regra de loja, então o
-dinheiro roda ponta a ponta mais rápido.
+Passo 4 em diante: faixa de teste fechada nas lojas, RevenueCat + Play e
+App Store — e o refinamento do freemium (token assinado, tolerância
+offline já existem; falta o fluxo de compra dentro do app móvel).
