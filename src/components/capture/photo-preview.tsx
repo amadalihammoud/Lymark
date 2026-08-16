@@ -1,4 +1,3 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
 import { Image } from 'expo-image';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -117,14 +116,28 @@ export function PhotoPreview({
     </View>
   ) : null;
 
-  // O ícone leva o olho para as duas ações logo abaixo; só o texto deixava a
-  // maior área da tela sem direção nenhuma.
-  const emptyState = (
-    <View style={styles.emptyState}>
-      <Ionicons name="image-outline" size={44} color={colors.textSubtle} />
-      <Text style={typography.body}>{t('capture.noPhotoSelected')}</Text>
-      <Text style={[typography.caption, styles.emptyHint]}>{t('capture.noPhotoHint')}</Text>
-    </View>
+  /**
+   * O vazio é a vitrine (auditoria, Onda B): em vez do ícone fantasma de
+   * todo app genérico, a moldura escura recebe o CARIMBO REAL — o mesmo
+   * `StampCanvas` da foto, com os campos atuais. Editar a hora ou ligar um
+   * campo mexe no carimbo na hora, antes mesmo de haver foto: o vazio passa
+   * a mostrar exatamente o que o app produz.
+   */
+  const emptyState = (size: { width: number; height: number }) => (
+    <>
+      {size.width > 0 && size.height > 0 ? (
+        <StampCanvas
+          metadata={metadata}
+          preferences={preferences}
+          width={size.width}
+          height={size.height}
+        />
+      ) : null}
+      <View style={styles.emptyState} pointerEvents="none">
+        <Text style={typography.body}>{t('capture.noPhotoSelected')}</Text>
+        <Text style={[typography.caption, styles.emptyHint]}>{t('capture.noPhotoHint')}</Text>
+      </View>
+    </>
   );
 
   /*
@@ -142,7 +155,11 @@ export function PhotoPreview({
     return (
       <View style={styles.fitArea} onLayout={measure}>
         <View style={[styles.reservedArea, reserved]}>
-          {stampedPhoto ?? emptyState}
+          {stampedPhoto ?? (
+            <View style={[styles.frame, styles.placeholder, reserved]}>
+              {emptyState(reserved)}
+            </View>
+          )}
         </View>
       </View>
     );
@@ -151,7 +168,7 @@ export function PhotoPreview({
   return (
     <View style={styles.fullWidth} onLayout={measure}>
       {stampedPhoto ?? (
-        <View style={[styles.frame, styles.placeholder, frame]}>{emptyState}</View>
+        <View style={[styles.frame, styles.placeholder, frame]}>{emptyState(frame)}</View>
       )}
     </View>
   );
@@ -201,7 +218,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   emptyState: {
+    // Sobreposto ao carimbo vivo: os textos ficam no centro e o carimbo no
+    // canto escolhido, sem um empurrar o outro.
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     alignItems: 'center',
+    justifyContent: 'center',
     gap: spacing.sm,
     padding: spacing.xl,
   },

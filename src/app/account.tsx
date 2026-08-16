@@ -31,7 +31,7 @@ export default function AccountScreen() {
   if (!isAuthConfigured) {
     return (
       <Screen>
-        <Section title={t('title')}>
+        <Section title={t('title')} padded>
           <Text style={[typography.body, styles.note]}>{t('notConfigured')}</Text>
         </Section>
       </Screen>
@@ -51,7 +51,7 @@ function DesktopAccount() {
 
   return (
     <Screen>
-      <Section title={t('account.title')}>
+      <Section title={t('account.title')} padded>
         <Text style={[typography.body, styles.note]}>{t('account.connected')}</Text>
         <PlanLine access={access} />
         <Button label={t('account.signOut')} variant="danger" onPress={signOut} />
@@ -80,7 +80,7 @@ function SignedIn() {
 
   return (
     <Screen>
-      <Section title={t('account.title')}>
+      <Section title={t('account.title')} padded>
         <Text style={[typography.body, styles.note]}>
           {t('account.signedInAs', { email })}
         </Text>

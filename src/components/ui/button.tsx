@@ -39,17 +39,22 @@ type ButtonProps = {
   style?: StyleProp<ViewStyle>;
 };
 
+/**
+ * Um acento só (Onda A da auditoria): o azul-médio saiu dos botões. O âmbar
+ * fica reservado à ação principal (`accent`); todo o resto é navy com borda
+ * — a mesma hierarquia da landing, onde um único botão é âmbar por tela.
+ */
 const BACKGROUNDS: Record<ButtonVariant, string> = {
-  primary: colors.primary,
-  primaryAlt: colors.primaryAlt,
+  primary: colors.surfaceRaised,
+  primaryAlt: colors.surface,
   accent: colors.accent,
   ghost: 'transparent',
   danger: 'transparent',
 };
 
 const PRESSED_BACKGROUNDS: Record<ButtonVariant, string> = {
-  primary: colors.primaryPressed,
-  primaryAlt: colors.primary,
+  primary: colors.surface,
+  primaryAlt: colors.surfaceRaised,
   accent: colors.accentPressed,
   ghost: colors.surfaceRaised,
   danger: colors.surfaceRaised,
@@ -74,7 +79,11 @@ export function Button({
   style,
 }: ButtonProps) {
   const inactive = disabled || loading;
-  const foreground = FOREGROUNDS[variant];
+  // Desabilitado não é "a mesma cor, apagada": o âmbar a meia-opacidade
+  // virava um mostarda que parecia erro de cor. Estado desabilitado é navy
+  // com texto apagado, em qualquer variante — a cor só existe quando a ação
+  // existe.
+  const foreground = disabled ? colors.textSubtle : FOREGROUNDS[variant];
 
   return (
     <Pressable
@@ -86,9 +95,10 @@ export function Button({
       style={({ pressed }) => [
         styles.base,
         iconOnly && styles.square,
-        variant === 'ghost' || variant === 'danger' ? styles.bordered : null,
+        variant !== 'accent' ? styles.bordered : null,
         { backgroundColor: pressed ? PRESSED_BACKGROUNDS[variant] : BACKGROUNDS[variant] },
-        inactive && styles.inactive,
+        disabled && styles.disabled,
+        loading && styles.inactive,
         style,
       ]}>
       {loading ? (
@@ -136,5 +146,10 @@ const styles = StyleSheet.create({
   },
   inactive: {
     opacity: 0.45,
+  },
+  disabled: {
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
 });

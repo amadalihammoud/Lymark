@@ -14,6 +14,7 @@ import { isVideoStampAvailable, stampVideo } from '@modules/video-stamp';
 
 import { Button } from '@/components/ui/button';
 import { FieldRow } from '@/components/ui/field-row';
+import { Note } from '@/components/ui/note';
 import { Screen } from '@/components/ui/screen';
 import { Section } from '@/components/ui/section';
 import { useEntitlement } from '@/contexts/entitlement-context';
@@ -214,7 +215,7 @@ function DesktopVideoScreen() {
 
   return (
     <Screen>
-      <Section title={t('fileSection')}>
+      <Section title={t('fileSection')} padded>
         <Button label={t('select')} variant="primary" icon="film-outline" onPress={() => void pick()} />
         {video ? (
           <Text style={[typography.caption, styles.caption]}>
@@ -232,9 +233,9 @@ function DesktopVideoScreen() {
             onChange={(next) => setMetadata((current) => ({ ...current, ...next }))}
           />
 
-          <Section title={t('exportSection')}>
+          <Section title={t('exportSection')} padded>
             {!access.canExport ? (
-              <Text style={[typography.body, styles.warning]}>{tApp('plan.exhaustedMessage')}</Text>
+              <Note tone="critical">{tApp('plan.exhaustedMessage')}</Note>
             ) : null}
             <Button
               label={busy ? t('processing', { percent: progress }) : t('export')}
@@ -379,7 +380,7 @@ function MobileVideoScreen() {
 
   return (
     <Screen>
-      <Section title={t('fileSection')}>
+      <Section title={t('fileSection')} padded>
         <Button label={t('select')} variant="primary" icon="film-outline" onPress={() => void pick()} />
         {selected ? (
           <Text style={[typography.caption, styles.caption]}>
@@ -397,9 +398,9 @@ function MobileVideoScreen() {
             onChange={(next) => setMetadata((current) => ({ ...current, ...next }))}
           />
 
-          <Section title={t('exportSection')}>
+          <Section title={t('exportSection')} padded>
             {!access.canExport ? (
-              <Text style={[typography.body, styles.warning]}>{tApp('plan.exhaustedMessage')}</Text>
+              <Note tone="critical">{tApp('plan.exhaustedMessage')}</Note>
             ) : null}
             <Button
               label={busy ? t('processingMobile') : t('export')}
@@ -510,10 +511,10 @@ function WebVideoScreen() {
 
   return (
     <Screen>
-      <Section title={t('fileSection')}>
+      <Section title={t('fileSection')} padded>
         {/* O limite da web, dito antes do trabalho: tempo real, WebM, e o
             desktop como caminho para vídeo longo. */}
-        <Text style={[typography.caption, styles.caption]}>{t('webNote')}</Text>
+        <Note>{t('webNote')}</Note>
         <Button label={t('select')} variant="primary" icon="film-outline" onPress={pick} />
         {selected ? (
           <Text style={[typography.caption, styles.caption]}>
@@ -531,9 +532,9 @@ function WebVideoScreen() {
             onChange={(next) => setMetadata((current) => ({ ...current, ...next }))}
           />
 
-          <Section title={t('exportSection')}>
+          <Section title={t('exportSection')} padded>
             {!access.canExport ? (
-              <Text style={[typography.body, styles.warning]}>{tApp('plan.exhaustedMessage')}</Text>
+              <Note tone="critical">{tApp('plan.exhaustedMessage')}</Note>
             ) : null}
             <Button
               label={busy ? t('processing', { percent: progress }) : t('export')}
