@@ -19,6 +19,7 @@ import { useLocalePreference } from '@/contexts/locale-context';
 import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
 import { extractDateTimeFromExif } from '@/lib/exif';
 import { saveFileToOutput, getOutputFolder } from '@/lib/file-storage';
+import { sealExportedPhoto } from '@/features/attest/seal';
 import { composeStampedPhoto } from '@/features/watermark/render-photo';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
 import { loadStampImages } from '@/features/watermark/stamp-images';
@@ -129,7 +130,7 @@ export function useBatchProcessing() {
         // `composeStampedPhoto` devolve os bytes sem gravar. O caminho de
         // gravação do app abriria um diálogo por foto no desktop, o que
         // inviabilizaria o lote.
-        const stampedBytes = await composeStampedPhoto({
+        const composedBytes = await composeStampedPhoto({
           photoUri: photo.uri,
           metadata: photoMetadata,
           preferences,
@@ -140,6 +141,10 @@ export function useBatchProcessing() {
         // duas fotos são processadas no mesmo milissegundo.
         const origem = photo.uri.split('/').pop()?.replace(/\.[^.]+$/, '') ?? 'foto';
         const fileName = `lymark_${origem}_${photo.width}x${photo.height}.jpg`;
+
+        // O selo por foto, melhor esforço: num lote de cem, uma queda de
+        // rede no meio não interrompe nada — as fotos sem selo saem iguais.
+        const { bytes: stampedBytes } = await sealExportedPhoto(composedBytes);
 
         const result = await saveFileToOutput(stampedBytes, fileName, 'image/jpeg');
 

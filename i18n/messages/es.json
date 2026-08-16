@@ -417,21 +417,6 @@
       "subscribeSoon": "La suscripción todavía no está disponible. Cuando lo esté, podrás suscribirte aquí y usar cualquier dispositivo con la misma cuenta.",
       "title": "Tu cuenta"
     },
-    "deleteAccount": {
-      "back": "Volver a la cuenta",
-      "confirm": "Eliminar mi cuenta",
-      "deletesNow": "Eliminar la cuenta borra de inmediato tu correo, tu identificador y el registro de plan, cuota y recuento de fotos.",
-      "irreversible": "La eliminación es definitiva y no se puede deshacer. Las fotos en tu dispositivo no se ven afectadas — nunca estuvieron en nuestros servidores.",
-      "retained": "Los registros de transacciones de pago se conservan por el plazo de obligación fiscal, desvinculados del perfil. Los registros técnicos expiran por su propio plazo.",
-      "title": "Eliminar cuenta"
-    },
-    "desktop": {
-      "backAccount": "Volver a la cuenta",
-      "explanation": "Tu cuenta está lista. Haz clic en el botón de abajo para abrir Lymark en tu computadora con la sesión iniciada — el navegador pedirá permiso para abrir la aplicación.",
-      "open": "Conectar la aplicación",
-      "title": "Entrar en la computadora",
-      "unavailable": "La conexión con la aplicación de escritorio aún no está disponible."
-    },
     "availability": {
       "contact": "Para seguir el lanzamiento o informar de un problema, escriba a <email>contato@lymark.app</email>.",
       "description": "Lymark está en la versión 1.3.0, en pruebas en Android antes de publicarse en Google Play. No hay versión para iOS ni versión web, y la aplicación no cobra nada.",
@@ -451,7 +436,22 @@
       "note": "Está detallado —incluido lo que eso significa bajo la LGPD brasileña— en la <privacy>Política de Privacidad</privacy>. Desactivar el permiso de ubicación deja la aplicación plenamente funcional; solo el campo de dirección pasa a escribirse a mano.",
       "title": "Dónde quedan tus datos"
     },
+    "deleteAccount": {
+      "back": "Volver a la cuenta",
+      "confirm": "Eliminar mi cuenta",
+      "deletesNow": "Eliminar la cuenta borra de inmediato tu correo, tu identificador y el registro de plan, cuota y recuento de fotos.",
+      "irreversible": "La eliminación es definitiva y no se puede deshacer. Las fotos en tu dispositivo no se ven afectadas — nunca estuvieron en nuestros servidores.",
+      "retained": "Los registros de transacciones de pago se conservan por el plazo de obligación fiscal, desvinculados del perfil. Los registros técnicos expiran por su propio plazo.",
+      "title": "Eliminar cuenta"
+    },
     "description": "Aplicación Android que sella la hora, la fecha, el día de la semana, la dirección y un código de seguimiento en las fotos de peritaje y comprobante de servicio.",
+    "desktop": {
+      "backAccount": "Volver a la cuenta",
+      "explanation": "Tu cuenta está lista. Haz clic en el botón de abajo para abrir Lymark en tu computadora con la sesión iniciada — el navegador pedirá permiso para abrir la aplicación.",
+      "open": "Conectar la aplicación",
+      "title": "Entrar en la computadora",
+      "unavailable": "La conexión con la aplicación de escritorio aún no está disponible."
+    },
     "features": {
       "address": {
         "description": "El tipo de vía se abrevia y el estado pasa a sigla, para que la dirección quepa en dos líneas sin tapar la foto. Si escribiste antes de que respondiera el GPS, prevalece lo tuyo.",
@@ -498,7 +498,8 @@
       "label": "Principal",
       "privacy": "Privacidad",
       "signIn": "Entrar",
-      "terms": "Términos"
+      "terms": "Términos",
+      "verify": "Verificar"
     },
     "process": {
       "capture": {
@@ -524,6 +525,24 @@
       "caption": "La barra ámbar empieza y termina en los límites de los dígitos, no de la caja de texto.",
       "label": "Muestra del sello de Lymark: hora 07:42, fecha 12 de agosto de 2026, miércoles, una dirección en Guarujá y un código de foto."
     },
-    "title": "Lymark — marca de agua de fecha, hora y dirección en fotos de campo"
+    "title": "Lymark — marca de agua de fecha, hora y dirección en fotos de campo",
+    "verify": {
+      "caveat": "El sello acredita la integridad del archivo y el momento de la emisión. Lo que el sello declara — dirección, fecha, hora — es declaración de quien lo emitió.",
+      "checking": "Verificando…",
+      "declarationNote": "Lo que muestra el sello (dirección, fecha, hora) es declaración del emisor — el sello acredita integridad y emisión, no contenido.",
+      "intro": "Arrastra o elige una foto exportada por Lymark y comprueba al instante si está exactamente como salió de la aplicación — y quién la emitió, cuándo.",
+      "noSealBody": "Este archivo no tiene sello de Lymark. Puede haberse exportado sin conexión, antes de que existiera el sello, o no provenir de Lymark. La ausencia de sello no prueba adulteración.",
+      "noSealTitle": "Sin sello",
+      "notConfigured": "La verificación aún no está disponible.",
+      "pick": "Elegir archivo",
+      "previewAlt": "La foto verificada, con el sello visible",
+      "privacyNote": "La verificación ocurre en tu navegador. El archivo no se envía a ningún servidor.",
+      "sealedBody": "Este archivo está exactamente como salió de Lymark. Emitido por la cuenta {account} el {date}.",
+      "sealedTitle": "Íntegra",
+      "tamperedBody": "El contenido no corresponde al sello: el archivo fue modificado tras la emisión, o el sello pertenece a otro archivo.",
+      "tamperedTitle": "No coincide",
+      "title": "Verificar autenticidad",
+      "unsupported": "Este navegador no admite la verificación de firma. Prueba con un navegador actual."
+    }
   }
 }

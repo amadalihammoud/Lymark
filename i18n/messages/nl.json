@@ -417,21 +417,6 @@
       "subscribeSoon": "Een betaald abonnement is nog niet beschikbaar. Zodra dat zo is, kun je het hier afsluiten en elk apparaat met hetzelfde account gebruiken.",
       "title": "Je account"
     },
-    "deleteAccount": {
-      "back": "Terug naar account",
-      "confirm": "Mijn account verwijderen",
-      "deletesNow": "Het verwijderen van je account wist onmiddellijk je e-mail, je identificatie en het record van abonnement, quotum en fototeller.",
-      "irreversible": "Verwijdering is definitief en kan niet ongedaan worden gemaakt. De foto's op je apparaat blijven onaangetast — ze hebben nooit op onze servers gestaan.",
-      "retained": "Betalingstransacties worden bewaard gedurende de wettelijke fiscale termijn, losgekoppeld van het profiel. Technische logs verlopen volgens hun eigen termijn.",
-      "title": "Account verwijderen"
-    },
-    "desktop": {
-      "backAccount": "Terug naar account",
-      "explanation": "Je account is klaar. Klik op de knop hieronder om Lymark op je computer ingelogd te openen — de browser vraagt toestemming om de app te openen.",
-      "open": "App verbinden",
-      "title": "Inloggen op de computer",
-      "unavailable": "De verbinding met de desktop-app is nog niet beschikbaar."
-    },
     "availability": {
       "contact": "Om de lancering te volgen of een probleem te melden, schrijf naar <email>contato@lymark.app</email>.",
       "description": "Lymark staat op versie 1.3.0 en wordt op Android getest voor publicatie in Google Play. Er is geen iOS-versie en geen webversie, en de app vraagt geen geld.",
@@ -451,7 +436,22 @@
       "note": "Alles staat uitgewerkt — inclusief wat dat betekent onder de Braziliaanse LGPD — in het <privacy>Privacybeleid</privacy>. Het uitschakelen van de locatietoestemming laat de app volledig werken; alleen het adresveld moet dan met de hand worden ingevuld.",
       "title": "Waar je gegevens blijven"
     },
+    "deleteAccount": {
+      "back": "Terug naar account",
+      "confirm": "Mijn account verwijderen",
+      "deletesNow": "Het verwijderen van je account wist onmiddellijk je e-mail, je identificatie en het record van abonnement, quotum en fototeller.",
+      "irreversible": "Verwijdering is definitief en kan niet ongedaan worden gemaakt. De foto's op je apparaat blijven onaangetast — ze hebben nooit op onze servers gestaan.",
+      "retained": "Betalingstransacties worden bewaard gedurende de wettelijke fiscale termijn, losgekoppeld van het profiel. Technische logs verlopen volgens hun eigen termijn.",
+      "title": "Account verwijderen"
+    },
     "description": "Android-app die tijd, datum, dag van de week, adres en een traceercode op inspectiefoto’s en bewijs van uitvoering stempelt.",
+    "desktop": {
+      "backAccount": "Terug naar account",
+      "explanation": "Je account is klaar. Klik op de knop hieronder om Lymark op je computer ingelogd te openen — de browser vraagt toestemming om de app te openen.",
+      "open": "App verbinden",
+      "title": "Inloggen op de computer",
+      "unavailable": "De verbinding met de desktop-app is nog niet beschikbaar."
+    },
     "features": {
       "address": {
         "description": "De straatsoort wordt afgekort en de provincie een code, zodat het adres in twee regels past zonder de foto te bedekken. Wie typt voordat de gps antwoordt, houdt zijn eigen tekst.",
@@ -498,7 +498,8 @@
       "label": "Hoofdnavigatie",
       "privacy": "Privacy",
       "signIn": "Inloggen",
-      "terms": "Voorwaarden"
+      "terms": "Voorwaarden",
+      "verify": "Verifiëren"
     },
     "process": {
       "capture": {
@@ -524,6 +525,24 @@
       "caption": "De amberkleurige streep begint en eindigt bij de rand van de cijfers, niet van het tekstvak.",
       "label": "Voorbeeld van het Lymark-stempel: tijd 07:42, datum 12 augustus 2026, woensdag, een adres in Guarujá en een fotocode."
     },
-    "title": "Lymark — watermerk met datum, tijd en adres op foto’s in het veld"
+    "title": "Lymark — watermerk met datum, tijd en adres op foto’s in het veld",
+    "verify": {
+      "caveat": "Het zegel bevestigt de integriteit van het bestand en het moment van uitgifte. Wat de stempel verklaart — adres, datum, tijd — is de verklaring van de uitgever.",
+      "checking": "Verifiëren…",
+      "declarationNote": "Wat de stempel toont (adres, datum, tijd) is de verklaring van de uitgever — het zegel bevestigt integriteit en uitgifte, niet de inhoud.",
+      "intro": "Sleep of kies een door Lymark geëxporteerde foto en zie direct of die exact zo is als toen hij de app verliet — en wie hem heeft uitgegeven, wanneer.",
+      "noSealBody": "Dit bestand heeft geen Lymark-zegel. Het kan offline zijn geëxporteerd, vóór het zegel bestond, of niet van Lymark komen. Het ontbreken van een zegel bewijst geen manipulatie.",
+      "noSealTitle": "Geen zegel",
+      "notConfigured": "Verificatie is nog niet beschikbaar.",
+      "pick": "Bestand kiezen",
+      "previewAlt": "De geverifieerde foto, stempel zichtbaar",
+      "privacyNote": "De verificatie gebeurt in je browser. Het bestand wordt naar geen enkele server gestuurd.",
+      "sealedBody": "Dit bestand is exact zoals het Lymark verliet. Uitgegeven door account {account} op {date}.",
+      "sealedTitle": "Intact",
+      "tamperedBody": "De inhoud komt niet overeen met het zegel: het bestand is na uitgifte gewijzigd, of het zegel hoort bij een ander bestand.",
+      "tamperedTitle": "Komt niet overeen",
+      "title": "Echtheid verifiëren",
+      "unsupported": "Deze browser ondersteunt geen handtekeningverificatie. Probeer een actuele browser."
+    }
   }
 }

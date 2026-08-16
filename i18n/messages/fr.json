@@ -417,21 +417,6 @@
       "subscribeSoon": "L’abonnement n’est pas encore disponible. Quand il le sera, vous pourrez vous abonner ici et utiliser n’importe quel appareil avec le même compte.",
       "title": "Votre compte"
     },
-    "deleteAccount": {
-      "back": "Retour au compte",
-      "confirm": "Supprimer mon compte",
-      "deletesNow": "La suppression du compte efface immédiatement votre e-mail, votre identifiant et l'enregistrement du forfait, du quota et du compteur de photos.",
-      "irreversible": "La suppression est définitive et irréversible. Les photos sur votre appareil ne sont pas affectées — elles n'ont jamais été sur nos serveurs.",
-      "retained": "Les registres de transactions de paiement sont conservés pendant la durée d'obligation fiscale, dissociés du profil. Les journaux techniques expirent selon leur propre délai.",
-      "title": "Supprimer le compte"
-    },
-    "desktop": {
-      "backAccount": "Retour au compte",
-      "explanation": "Votre compte est prêt. Cliquez sur le bouton ci-dessous pour ouvrir Lymark sur votre ordinateur, déjà connecté — le navigateur demandera l'autorisation d'ouvrir l'application.",
-      "open": "Connecter l'application",
-      "title": "Connexion sur ordinateur",
-      "unavailable": "La connexion à l'application de bureau n'est pas encore disponible."
-    },
     "availability": {
       "contact": "Pour suivre le lancement ou signaler un problème, écrivez à <email>contato@lymark.app</email>.",
       "description": "Lymark en est à la version 1.3.0, en test sur Android avant publication sur Google Play. Il n’existe ni version iOS ni version web, et l’application ne perçoit aucun paiement.",
@@ -451,7 +436,22 @@
       "note": "Tout est détaillé — y compris ce que cela implique au regard de la LGPD brésilienne — dans la <privacy>Politique de confidentialité</privacy>. Désactiver l'autorisation de localisation laisse l'application pleinement fonctionnelle ; seul le champ d'adresse doit alors être saisi à la main.",
       "title": "Où vont vos données"
     },
+    "deleteAccount": {
+      "back": "Retour au compte",
+      "confirm": "Supprimer mon compte",
+      "deletesNow": "La suppression du compte efface immédiatement votre e-mail, votre identifiant et l'enregistrement du forfait, du quota et du compteur de photos.",
+      "irreversible": "La suppression est définitive et irréversible. Les photos sur votre appareil ne sont pas affectées — elles n'ont jamais été sur nos serveurs.",
+      "retained": "Les registres de transactions de paiement sont conservés pendant la durée d'obligation fiscale, dissociés du profil. Les journaux techniques expirent selon leur propre délai.",
+      "title": "Supprimer le compte"
+    },
     "description": "Application Android qui appose l’heure, la date, le jour de la semaine, l’adresse et un code de suivi sur les photos d’état des lieux et de preuve d’intervention.",
+    "desktop": {
+      "backAccount": "Retour au compte",
+      "explanation": "Votre compte est prêt. Cliquez sur le bouton ci-dessous pour ouvrir Lymark sur votre ordinateur, déjà connecté — le navigateur demandera l'autorisation d'ouvrir l'application.",
+      "open": "Connecter l'application",
+      "title": "Connexion sur ordinateur",
+      "unavailable": "La connexion à l'application de bureau n'est pas encore disponible."
+    },
     "features": {
       "address": {
         "description": "Le type de voie est abrégé et le département devient un code, pour que l’adresse tienne sur deux lignes sans couvrir la photo. Si vous avez saisi avant la réponse du GPS, c’est votre saisie qui l’emporte.",
@@ -498,7 +498,8 @@
       "label": "Principale",
       "privacy": "Confidentialité",
       "signIn": "Se connecter",
-      "terms": "Conditions"
+      "terms": "Conditions",
+      "verify": "Vérifier"
     },
     "process": {
       "capture": {
@@ -524,6 +525,24 @@
       "caption": "La barre ambre commence et se termine aux limites des chiffres, pas de la zone de texte.",
       "label": "Exemple du marquage Lymark : heure 07:42, date 12 août 2026, mercredi, une adresse à Guarujá et un code de photo."
     },
-    "title": "Lymark — filigrane de date, heure et adresse sur les photos de terrain"
+    "title": "Lymark — filigrane de date, heure et adresse sur les photos de terrain",
+    "verify": {
+      "caveat": "Le sceau atteste l'intégrité du fichier et le moment de l'émission. Ce que le tampon déclare — adresse, date, heure — est la déclaration de l'émetteur.",
+      "checking": "Vérification…",
+      "declarationNote": "Ce que montre le tampon (adresse, date, heure) est la déclaration de l'émetteur — le sceau atteste l'intégrité et l'émission, pas le contenu.",
+      "intro": "Déposez ou choisissez une photo exportée par Lymark et voyez instantanément si elle est exactement telle qu'elle a quitté l'application — et qui l'a émise, quand.",
+      "noSealBody": "Ce fichier n'a pas de sceau Lymark. Il a pu être exporté hors ligne, avant l'existence du sceau, ou ne pas provenir de Lymark. L'absence de sceau ne prouve pas une altération.",
+      "noSealTitle": "Sans sceau",
+      "notConfigured": "La vérification n'est pas encore disponible.",
+      "pick": "Choisir un fichier",
+      "previewAlt": "La photo vérifiée, tampon visible",
+      "privacyNote": "La vérification se fait dans votre navigateur. Le fichier n'est envoyé à aucun serveur.",
+      "sealedBody": "Ce fichier est exactement tel qu'il a quitté Lymark. Émis par le compte {account} le {date}.",
+      "sealedTitle": "Intègre",
+      "tamperedBody": "Le contenu ne correspond pas au sceau : le fichier a été modifié après l'émission, ou le sceau appartient à un autre fichier.",
+      "tamperedTitle": "Non conforme",
+      "title": "Vérifier l'authenticité",
+      "unsupported": "Ce navigateur ne prend pas en charge la vérification de signature. Essayez un navigateur récent."
+    }
   }
 }

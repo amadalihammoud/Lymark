@@ -755,6 +755,56 @@ footer.site a:hover {
   color: var(--amber);
 }
 
+/* ------------------------------------------------------------- verificação */
+
+/* O botão de escolher arquivo com a mesma pele do CTA âmbar — é a única
+   ação da página, e um <button> não herda o estilo dos <a> do .cta. */
+.cta .verify-pick {
+  display: inline-flex;
+  align-items: center;
+  background: var(--amber);
+  color: var(--navy-900);
+  font-family: var(--font-mark), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  padding: 0.7rem 1.35rem;
+  border: 1px solid var(--amber);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.cta .verify-pick:hover {
+  background: transparent;
+  color: var(--amber);
+}
+
+.verify-result {
+  margin-top: 1.5rem;
+  border-left: 2px solid var(--navy-400);
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.verify-result h2 {
+  font-size: 1.15rem;
+}
+
+.verify-ok {
+  border-left-color: #55b685;
+}
+
+.verify-bad {
+  border-left-color: #e5484d;
+}
+
+.verify-preview {
+  max-width: 100%;
+  margin-top: 0.5rem;
+  border: 1px solid var(--navy-600);
+}
+
 /* A exclusão em vermelho, nos dois lugares: o link discreto da conta e o
    botão de confirmação da página própria. */
 .account-delete-link,

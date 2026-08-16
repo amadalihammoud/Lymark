@@ -417,21 +417,6 @@
       "subscribeSoon": "L’abbonamento non è ancora disponibile. Quando lo sarà, potrai abbonarti qui e usare qualsiasi dispositivo con lo stesso account.",
       "title": "Il tuo account"
     },
-    "deleteAccount": {
-      "back": "Torna all'account",
-      "confirm": "Elimina il mio account",
-      "deletesNow": "Eliminare l'account cancella immediatamente la tua e-mail, il tuo identificativo e il registro di piano, quota e conteggio foto.",
-      "irreversible": "L'eliminazione è definitiva e non può essere annullata. Le foto sul tuo dispositivo non sono toccate — non sono mai state sui nostri server.",
-      "retained": "I registri delle transazioni di pagamento sono conservati per il periodo di obbligo fiscale, scollegati dal profilo. I log tecnici scadono secondo i propri termini.",
-      "title": "Elimina account"
-    },
-    "desktop": {
-      "backAccount": "Torna all'account",
-      "explanation": "Il tuo account è pronto. Fai clic sul pulsante qui sotto per aprire Lymark sul computer già connesso — il browser chiederà il permesso di aprire l'app.",
-      "open": "Collega l'app",
-      "title": "Accedi sul computer",
-      "unavailable": "La connessione con l'app desktop non è ancora disponibile."
-    },
     "availability": {
       "contact": "Per seguire il lancio o segnalare un problema, scrivi a <email>contato@lymark.app</email>.",
       "description": "Lymark è alla versione 1.3.0, in test su Android prima della pubblicazione su Google Play. Non esiste una versione iOS né una versione web, e l’app non incassa nulla.",
@@ -451,7 +436,22 @@
       "note": "È tutto spiegato — compreso ciò che questo comporta ai sensi della LGPD brasiliana — nell'<privacy>Informativa sulla privacy</privacy>. Disattivare il permesso di posizione lascia l'applicazione pienamente funzionante; soltanto il campo dell'indirizzo va digitato a mano.",
       "title": "Dove restano i tuoi dati"
     },
+    "deleteAccount": {
+      "back": "Torna all'account",
+      "confirm": "Elimina il mio account",
+      "deletesNow": "Eliminare l'account cancella immediatamente la tua e-mail, il tuo identificativo e il registro di piano, quota e conteggio foto.",
+      "irreversible": "L'eliminazione è definitiva e non può essere annullata. Le foto sul tuo dispositivo non sono toccate — non sono mai state sui nostri server.",
+      "retained": "I registri delle transazioni di pagamento sono conservati per il periodo di obbligo fiscale, scollegati dal profilo. I log tecnici scadono secondo i propri termini.",
+      "title": "Elimina account"
+    },
     "description": "Applicazione Android che timbra ora, data, giorno della settimana, indirizzo e un codice di tracciamento sulle foto di sopralluogo e di prova di intervento.",
+    "desktop": {
+      "backAccount": "Torna all'account",
+      "explanation": "Il tuo account è pronto. Fai clic sul pulsante qui sotto per aprire Lymark sul computer già connesso — il browser chiederà il permesso di aprire l'app.",
+      "open": "Collega l'app",
+      "title": "Accedi sul computer",
+      "unavailable": "La connessione con l'app desktop non è ancora disponibile."
+    },
     "features": {
       "address": {
         "description": "Il tipo di via viene abbreviato e la provincia diventa una sigla, così l’indirizzo sta in due righe senza coprire la foto. Se hai scritto prima che il GPS rispondesse, vince quello che hai scritto.",
@@ -498,7 +498,8 @@
       "label": "Principale",
       "privacy": "Privacy",
       "signIn": "Accedi",
-      "terms": "Termini"
+      "terms": "Termini",
+      "verify": "Verifica"
     },
     "process": {
       "capture": {
@@ -524,6 +525,24 @@
       "caption": "La barra ambra inizia e finisce ai limiti delle cifre, non della casella di testo.",
       "label": "Esempio del timbro Lymark: ora 07:42, data 12 agosto 2026, mercoledì, un indirizzo a Guarujá e un codice foto."
     },
-    "title": "Lymark — filigrana di data, ora e indirizzo sulle foto sul campo"
+    "title": "Lymark — filigrana di data, ora e indirizzo sulle foto sul campo",
+    "verify": {
+      "caveat": "Il sigillo attesta l'integrità del file e il momento dell'emissione. Ciò che il timbro dichiara — indirizzo, data, ora — è dichiarazione dell'emittente.",
+      "checking": "Verifica…",
+      "declarationNote": "Ciò che il timbro mostra (indirizzo, data, ora) è dichiarazione dell'emittente — il sigillo attesta integrità ed emissione, non il contenuto.",
+      "intro": "Trascina o scegli una foto esportata da Lymark e verifica all'istante se è esattamente come è uscita dall'app — e chi l'ha emessa, quando.",
+      "noSealBody": "Questo file non ha il sigillo Lymark. Può essere stato esportato offline, prima che il sigillo esistesse, o non provenire da Lymark. L'assenza del sigillo non prova alterazione.",
+      "noSealTitle": "Senza sigillo",
+      "notConfigured": "La verifica non è ancora disponibile.",
+      "pick": "Scegli file",
+      "previewAlt": "La foto verificata, con il timbro visibile",
+      "privacyNote": "La verifica avviene nel tuo browser. Il file non viene inviato ad alcun server.",
+      "sealedBody": "Questo file è esattamente come è uscito da Lymark. Emesso dall'account {account} il {date}.",
+      "sealedTitle": "Integra",
+      "tamperedBody": "Il contenuto non corrisponde al sigillo: il file è stato modificato dopo l'emissione, o il sigillo appartiene a un altro file.",
+      "tamperedTitle": "Non corrisponde",
+      "title": "Verifica l'autenticità",
+      "unsupported": "Questo browser non supporta la verifica della firma. Prova un browser recente."
+    }
   }
 }

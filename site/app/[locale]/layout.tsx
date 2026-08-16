@@ -154,6 +154,7 @@ export default async function LocaleLayout({
                 Ly<em>mark</em>
               </Link>
               <nav className="site" aria-label={t('nav.label')}>
+                <Link href="/verificar">{t('nav.verify')}</Link>
                 <Link href="/privacidade">{t('nav.privacy')}</Link>
                 <Link href="/termos">{t('nav.terms')}</Link>
                 {/*

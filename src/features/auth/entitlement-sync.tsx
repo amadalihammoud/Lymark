@@ -8,6 +8,7 @@ import { getExecutionPlatform } from '@/lib/file-storage';
 
 import { ENTITLEMENTS_ENDPOINT, isAuthConfigured } from './config';
 import { useDesktopAuth } from './desktop-auth';
+import { setTokenSupplier } from './token-bridge';
 
 /**
  * A ponte entre a identidade e o direito de acesso.
@@ -41,6 +42,12 @@ export function EntitlementSync() {
 function DesktopBridge() {
   const { token, hydrated: tokenHydrated, signOut } = useDesktopAuth();
   const { hydrated, sync, spentOffline } = useEntitlement();
+
+  // O mesmo fornecimento da ponte do Clerk, com o token do deep link.
+  useEffect(() => {
+    setTokenSupplier(token ? async () => token : null);
+    return () => setTokenSupplier(null);
+  }, [token]);
 
   const spentRef = useRef(spentOffline);
   useEffect(() => {
@@ -88,6 +95,13 @@ function DesktopBridge() {
 function Bridge() {
   const { isSignedIn, getToken } = useAuth();
   const { hydrated, sync, spentOffline } = useEntitlement();
+
+  // O selo de autenticidade pede o token na hora da exportação, fora da
+  // árvore — esta ponte é quem o tem, então é ela quem o fornece.
+  useEffect(() => {
+    setTokenSupplier(isSignedIn ? () => getToken() : null);
+    return () => setTokenSupplier(null);
+  }, [isSignedIn, getToken]);
 
   // Lido por ref para a sincronização não se rearmar a cada exportação.
   const spentRef = useRef(spentOffline);

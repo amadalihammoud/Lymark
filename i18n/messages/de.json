@@ -417,21 +417,6 @@
       "subscribeSoon": "Das Abonnement ist noch nicht verfügbar. Sobald es das ist, können Sie es hier abschließen und mit demselben Konto jedes Gerät nutzen.",
       "title": "Ihr Konto"
     },
-    "deleteAccount": {
-      "back": "Zurück zum Konto",
-      "confirm": "Mein Konto löschen",
-      "deletesNow": "Das Löschen des Kontos entfernt sofort deine E-Mail, deine Kennung und den Eintrag zu Plan, Kontingent und Fotozähler.",
-      "irreversible": "Die Löschung ist endgültig und kann nicht rückgängig gemacht werden. Die Fotos auf deinem Gerät sind nicht betroffen — sie waren nie auf unseren Servern.",
-      "retained": "Zahlungsbelege werden für die gesetzliche Aufbewahrungsfrist gespeichert, getrennt vom Profil. Technische Logs laufen nach eigener Frist ab.",
-      "title": "Konto löschen"
-    },
-    "desktop": {
-      "backAccount": "Zurück zum Konto",
-      "explanation": "Dein Konto ist bereit. Klicke auf die Schaltfläche unten, um Lymark auf deinem Computer angemeldet zu öffnen — der Browser fragt nach der Erlaubnis, die App zu öffnen.",
-      "open": "App verbinden",
-      "title": "Am Computer anmelden",
-      "unavailable": "Die Verbindung zur Desktop-App ist noch nicht verfügbar."
-    },
     "availability": {
       "contact": "Wer den Start verfolgen oder ein Problem melden möchte, schreibt an <email>contato@lymark.app</email>.",
       "description": "Lymark steht bei Version 1.3.0 und wird auf Android getestet, bevor es bei Google Play erscheint. Eine iOS-Version und eine Web-Version gibt es nicht, und die App verlangt kein Geld.",
@@ -451,7 +436,22 @@
       "note": "Alles Weitere steht — einschließlich der Bedeutung nach dem brasilianischen LGPD — in der <privacy>Datenschutzrichtlinie</privacy>. Wird die Standortberechtigung deaktiviert, bleibt die App voll funktionsfähig; lediglich das Adressfeld muss dann von Hand ausgefüllt werden.",
       "title": "Wo Ihre Daten bleiben"
     },
+    "deleteAccount": {
+      "back": "Zurück zum Konto",
+      "confirm": "Mein Konto löschen",
+      "deletesNow": "Das Löschen des Kontos entfernt sofort deine E-Mail, deine Kennung und den Eintrag zu Plan, Kontingent und Fotozähler.",
+      "irreversible": "Die Löschung ist endgültig und kann nicht rückgängig gemacht werden. Die Fotos auf deinem Gerät sind nicht betroffen — sie waren nie auf unseren Servern.",
+      "retained": "Zahlungsbelege werden für die gesetzliche Aufbewahrungsfrist gespeichert, getrennt vom Profil. Technische Logs laufen nach eigener Frist ab.",
+      "title": "Konto löschen"
+    },
     "description": "Android-App, die Uhrzeit, Datum, Wochentag, Adresse und einen Nachverfolgungscode auf Fotos von Begehungen und Leistungsnachweisen stempelt.",
+    "desktop": {
+      "backAccount": "Zurück zum Konto",
+      "explanation": "Dein Konto ist bereit. Klicke auf die Schaltfläche unten, um Lymark auf deinem Computer angemeldet zu öffnen — der Browser fragt nach der Erlaubnis, die App zu öffnen.",
+      "open": "App verbinden",
+      "title": "Am Computer anmelden",
+      "unavailable": "Die Verbindung zur Desktop-App ist noch nicht verfügbar."
+    },
     "features": {
       "address": {
         "description": "Die Straßenbezeichnung wird abgekürzt und das Bundesland zum Kürzel, damit die Adresse in zwei Zeilen passt, ohne das Foto zu verdecken. Wer tippt, bevor das GPS antwortet, behält seine Eingabe.",
@@ -498,7 +498,8 @@
       "label": "Hauptnavigation",
       "privacy": "Datenschutz",
       "signIn": "Anmelden",
-      "terms": "Bedingungen"
+      "terms": "Bedingungen",
+      "verify": "Prüfen"
     },
     "process": {
       "capture": {
@@ -524,6 +525,24 @@
       "caption": "Der bernsteinfarbene Strich beginnt und endet an den Kanten der Ziffern, nicht des Textfelds.",
       "label": "Beispiel des Lymark-Stempels: Uhrzeit 07:42, Datum 12. August 2026, Mittwoch, eine Adresse in Guarujá und ein Fotocode."
     },
-    "title": "Lymark — Wasserzeichen mit Datum, Uhrzeit und Adresse für Fotos vor Ort"
+    "title": "Lymark — Wasserzeichen mit Datum, Uhrzeit und Adresse für Fotos vor Ort",
+    "verify": {
+      "caveat": "Das Siegel bestätigt die Integrität der Datei und den Zeitpunkt der Ausstellung. Was der Stempel erklärt — Adresse, Datum, Uhrzeit — ist die Erklärung des Ausstellers.",
+      "checking": "Prüfung…",
+      "declarationNote": "Was der Stempel zeigt (Adresse, Datum, Uhrzeit), ist die Erklärung des Ausstellers — das Siegel bestätigt Integrität und Ausstellung, nicht den Inhalt.",
+      "intro": "Ziehe eine von Lymark exportierte Aufnahme hierher oder wähle sie aus und sieh sofort, ob sie exakt so ist, wie sie die App verlassen hat — und wer sie wann ausgestellt hat.",
+      "noSealBody": "Diese Datei trägt kein Lymark-Siegel. Sie kann offline exportiert worden sein, vor Einführung des Siegels, oder nicht von Lymark stammen. Das Fehlen des Siegels beweist keine Manipulation.",
+      "noSealTitle": "Ohne Siegel",
+      "notConfigured": "Die Prüfung ist noch nicht verfügbar.",
+      "pick": "Datei wählen",
+      "previewAlt": "Das geprüfte Foto mit sichtbarem Stempel",
+      "privacyNote": "Die Prüfung findet in deinem Browser statt. Die Datei wird an keinen Server gesendet.",
+      "sealedBody": "Diese Datei ist exakt so, wie sie Lymark verlassen hat. Ausgestellt vom Konto {account} am {date}.",
+      "sealedTitle": "Unversehrt",
+      "tamperedBody": "Der Inhalt entspricht nicht dem Siegel: Die Datei wurde nach der Ausstellung verändert, oder das Siegel gehört zu einer anderen Datei.",
+      "tamperedTitle": "Stimmt nicht überein",
+      "title": "Echtheit prüfen",
+      "unsupported": "Dieser Browser unterstützt die Signaturprüfung nicht. Versuche einen aktuellen Browser."
+    }
   }
 }

@@ -417,21 +417,6 @@
       "subscribeSoon": "A assinatura ainda não está disponível. Quando estiver, você poderá assinar aqui e usar em qualquer aparelho com a mesma conta.",
       "title": "Sua conta"
     },
-    "deleteAccount": {
-      "back": "Voltar à conta",
-      "confirm": "Excluir minha conta",
-      "deletesNow": "Excluir a conta apaga imediatamente seu e-mail, seu identificador e o registro de plano, cota e contagem de fotos.",
-      "irreversible": "A exclusão é definitiva e não pode ser desfeita. As fotos no seu aparelho não são afetadas — elas nunca estiveram em nossos servidores.",
-      "retained": "Registros de transação de pagamento são retidos pelo prazo de obrigação fiscal, desvinculados do cadastro. Logs técnicos expiram pelo prazo próprio.",
-      "title": "Excluir conta"
-    },
-    "desktop": {
-      "backAccount": "Voltar à conta",
-      "explanation": "Sua conta está pronta. Clique no botão abaixo para abrir o Lymark no computador já conectado — o navegador vai pedir permissão para abrir o aplicativo.",
-      "open": "Conectar o aplicativo",
-      "title": "Entrar no computador",
-      "unavailable": "A conexão com o aplicativo de computador ainda não está disponível."
-    },
     "availability": {
       "contact": "Para acompanhar o lançamento ou relatar um problema, escreva para <email>contato@lymark.app</email>.",
       "description": "O Lymark está na versão 1.3.0, em testes no Android antes da publicação na Google Play. Não há versão para iOS nem versão web, e o aplicativo não coleta pagamento.",
@@ -451,7 +436,22 @@
       "note": "Está detalhado — inclusive o que isso significa sob a LGPD — na <privacy>Política de Privacidade</privacy>. Desligar a permissão de localização mantém o aplicativo inteiramente funcional; apenas o campo de endereço passa a ser digitado à mão.",
       "title": "Onde os seus dados ficam"
     },
+    "deleteAccount": {
+      "back": "Voltar à conta",
+      "confirm": "Excluir minha conta",
+      "deletesNow": "Excluir a conta apaga imediatamente seu e-mail, seu identificador e o registro de plano, cota e contagem de fotos.",
+      "irreversible": "A exclusão é definitiva e não pode ser desfeita. As fotos no seu aparelho não são afetadas — elas nunca estiveram em nossos servidores.",
+      "retained": "Registros de transação de pagamento são retidos pelo prazo de obrigação fiscal, desvinculados do cadastro. Logs técnicos expiram pelo prazo próprio.",
+      "title": "Excluir conta"
+    },
     "description": "Aplicativo Android que carimba hora, data, dia da semana, endereço e um código de rastreio nas fotos de vistoria e comprovação de serviço.",
+    "desktop": {
+      "backAccount": "Voltar à conta",
+      "explanation": "Sua conta está pronta. Clique no botão abaixo para abrir o Lymark no computador já conectado — o navegador vai pedir permissão para abrir o aplicativo.",
+      "open": "Conectar o aplicativo",
+      "title": "Entrar no computador",
+      "unavailable": "A conexão com o aplicativo de computador ainda não está disponível."
+    },
     "features": {
       "address": {
         "description": "O logradouro é abreviado e o estado vira sigla, para o endereço caber em duas linhas sem cobrir a foto. Se você digitou antes do GPS responder, o que você escreveu prevalece.",
@@ -498,7 +498,8 @@
       "label": "Principal",
       "privacy": "Privacidade",
       "signIn": "Entrar",
-      "terms": "Termos"
+      "terms": "Termos",
+      "verify": "Verificar"
     },
     "process": {
       "capture": {
@@ -524,6 +525,24 @@
       "caption": "A barra âmbar começa e termina nos limites dos dígitos, não da caixa de texto.",
       "label": "Amostra do carimbo do Lymark: hora 07:42, data 12 de agosto de 2026, quarta-feira, endereço em Guarujá e código de foto."
     },
-    "title": "Lymark — marca d'água de data, hora e endereço em fotos de campo"
+    "title": "Lymark — marca d'água de data, hora e endereço em fotos de campo",
+    "verify": {
+      "caveat": "O selo atesta a integridade do arquivo e o momento da emissão. O que o carimbo declara — endereço, data, hora — é declaração de quem emitiu.",
+      "checking": "Verificando…",
+      "declarationNote": "O que o carimbo mostra (endereço, data, hora) é declaração do emissor — o selo atesta a integridade e a emissão, não o conteúdo.",
+      "intro": "Arraste ou escolha uma foto exportada pelo Lymark e veja, na hora, se ela está exatamente como saiu do aplicativo — e quem a emitiu, quando.",
+      "noSealBody": "Este arquivo não tem selo do Lymark. Pode ter sido exportado sem conexão, antes do selo existir, ou não vir do Lymark. A ausência de selo não prova adulteração.",
+      "noSealTitle": "Sem selo",
+      "notConfigured": "A verificação ainda não está disponível.",
+      "pick": "Escolher arquivo",
+      "previewAlt": "A foto verificada, com o carimbo visível",
+      "privacyNote": "A verificação acontece no seu navegador. O arquivo não é enviado a servidor nenhum.",
+      "sealedBody": "Este arquivo está exatamente como saiu do Lymark. Emitido pela conta {account} em {date}.",
+      "sealedTitle": "Íntegra",
+      "tamperedBody": "O conteúdo não corresponde ao selo: o arquivo foi modificado depois da emissão, ou o selo pertence a outro arquivo.",
+      "tamperedTitle": "Não confere",
+      "title": "Verificar autenticidade",
+      "unsupported": "Este navegador não suporta a verificação de assinatura. Tente um navegador atual."
+    }
   }
 }
