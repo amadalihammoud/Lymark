@@ -94,14 +94,14 @@ function stampRows(photo: ReportPhoto, strings: ReportStrings, locale: string): 
 }
 
 function summaryRow(photo: ReportPhoto, index: number, strings: ReportStrings): string {
-  const { metadata } = photo.entry;
-  const cells = [
-    String(index + 1),
-    metadata.date.trim() || '—',
-    metadata.time.trim() || '—',
-    metadata.address.trim() || '—',
-    metadata.code.trim() || '—',
-  ];
+  const { metadata, stampedFields } = photo.entry;
+  // A MESMA regra da ficha por foto: só entra o que foi DE FATO carimbado.
+  // Um campo preenchido numa sessão e nunca aplicado à imagem não pode
+  // aparecer na tabela-resumo como se fosse parte do registro fotográfico.
+  const value = (key: 'date' | 'time' | 'address' | 'code') =>
+    stampedFields.includes(key) && metadata[key].trim() ? metadata[key].trim() : '—';
+
+  const cells = [String(index + 1), value('date'), value('time'), value('address'), value('code')];
   return `<tr>${cells.map((cell) => `<td>${escapeHtml(cell)}</td>`).join('')}</tr>`;
 }
 

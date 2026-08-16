@@ -344,7 +344,7 @@ function MobileVideoScreen() {
   const record = async () => {
     const permission = await ImagePicker.requestCameraPermissionsAsync();
     if (!permission.granted) {
-      notify(tApp('permissions.cameraDenied'), 'warning');
+      notify(t('cameraDenied'), 'warning');
       return;
     }
 
@@ -425,7 +425,7 @@ function MobileVideoScreen() {
   return (
     <Screen>
       <Section title={t('fileSection')} padded>
-        <Button label={t('record')} variant="accent" icon="videocam-outline" onPress={() => void record()} />
+        <Button label={t('record')} variant="primary" icon="videocam-outline" onPress={() => void record()} />
         <Button label={t('select')} variant="primary" icon="film-outline" onPress={() => void pick()} />
         {selected ? (
           <Text style={[typography.caption, styles.caption]}>

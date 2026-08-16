@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text } from 'react-native';
 import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui/button';
+import { ChoiceGrid } from '@/components/ui/choice-grid';
 import { FieldRow } from '@/components/ui/field-row';
 import { Note } from '@/components/ui/note';
 import { Screen } from '@/components/ui/screen';
@@ -20,7 +21,7 @@ import { buildSummaryCsv } from '@/features/report/summary-csv';
 import { resolveExportedPhotoUri } from '@/features/watermark/photo-file';
 import { resolveLogoUri } from '@/features/watermark/logo-file';
 import { isDesktop } from '@/lib/file-storage';
-import { colors, radius, spacing, typography } from '@/theme';
+import { HIT_TARGET, colors, radius, spacing, typography } from '@/theme';
 
 /**
  * Relatório em PDF — a galeria organizada por obra, pronta para entregar.
@@ -88,11 +89,34 @@ function DesktopReportScreen() {
 
   const chosen: Project | null =
     selectedCode === null ? null : (projects.find((p) => p.code === selectedCode) ?? null);
-  const reportEntries = chosen ? chosen.entries : entries;
+
+  // Um projeto pode DEIXAR de existir enquanto a tela está aberta: apagar a
+  // última foto de um código na galeria some com ele em `projects`. Sem esta
+  // reconciliação, o relatório sairia, em silêncio, com a galeria INTEIRA
+  // sob o título preparado para a obra que sumiu.
+  //
+  // Ajuste em tempo de render, não em efeito — o mesmo padrão do
+  // capture-context: React reexecuta antes de pintar, sem cascata.
+  if (selectedCode !== null && !projects.some((p) => p.code === selectedCode)) {
+    setSelectedCode(null);
+  }
+
+  // As fotos do projeto já vêm da mais antiga para a mais nova (ordem de
+  // leitura de um relatório). "Todas as fotos" precisa da MESMA ordem — a
+  // galeria guarda da mais nova para a mais antiga, então aqui se ordena.
+  const reportEntries = chosen
+    ? chosen.entries
+    : [...entries].sort((a, b) => a.exportedAt.localeCompare(b.exportedAt));
 
   const generate = async () => {
     const bridge = globalThis.window?.lymark;
     if (!bridge?.exportReportPdf || !bridge.saveFile || reportEntries.length === 0) return;
+    // O ZIP tem canal próprio; sem ele, falhar dizendo — nunca cair no PDF e
+    // entregar um arquivo sem as fotos que o usuário pediu no pacote.
+    if (format === 'zip' && !bridge.exportProjectZip) {
+      notify(t('failed'), 'warning');
+      return;
+    }
 
     setBusy(true);
     try {
@@ -245,34 +269,27 @@ function DesktopReportScreen() {
         ))}
       </Section>
 
+      {/* ChoiceGrid, e não botões soltos: é o seletor de opção única do
+          app, com papel de rádio e estado de seleção que o leitor de tela
+          anuncia — a cor sozinha não diz qual está escolhido. */}
       <Section title={t('formatSection')} padded>
-        <View style={styles.normRow}>
-          {REPORT_FORMATS.map((option) => (
-            <Button
-              key={option}
-              label={t(`format.${option}`)}
-              variant={format === option ? 'accent' : 'ghost'}
-              onPress={() => setFormat(option)}
-              style={styles.normButton}
-            />
-          ))}
-        </View>
+        <ChoiceGrid
+          columns={2}
+          selected={format}
+          onSelect={setFormat}
+          options={REPORT_FORMATS.map((option) => ({ value: option, label: t(`format.${option}`) }))}
+        />
       </Section>
 
       {/* A norma formata o DOCUMENTO; o CSV é só a tabela, sem página. */}
       {format !== 'csv' ? (
         <Section title={t('normSection')} padded>
-          <View style={styles.normRow}>
-            {REPORT_NORMS.map((option) => (
-              <Button
-                key={option}
-                label={t(`norm.${option}`)}
-                variant={norm === option ? 'accent' : 'ghost'}
-                onPress={() => setNorm(option)}
-                style={styles.normButton}
-              />
-            ))}
-          </View>
+          <ChoiceGrid
+            columns={2}
+            selected={norm}
+            onSelect={setNorm}
+            options={REPORT_NORMS.map((option) => ({ value: option, label: t(`norm.${option}`) }))}
+          />
           <Note>{t('normNote')}</Note>
         </Section>
       ) : null}
@@ -354,20 +371,14 @@ function ProjectRow({
 }
 
 const styles = StyleSheet.create({
-  normRow: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: spacing.md,
-  },
-  normButton: {
-    flexGrow: 1,
-    flexBasis: '45%',
-  },
   projectRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: spacing.md,
+    // Alvo de toque mínimo do app (notebook com tela sensível ao toque roda
+    // o Electron); as demais linhas de escolha já respeitam este piso.
+    minHeight: HIT_TARGET,
     paddingVertical: spacing.md,
     paddingHorizontal: spacing.lg,
     borderRadius: radius.md,

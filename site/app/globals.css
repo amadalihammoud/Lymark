@@ -4,15 +4,20 @@
  * fornecedores diferentes.
  */
 :root {
-  --navy-900: #091a2b;
-  --navy-800: #0d2137;
-  --navy-700: #122b44;
-  --navy-600: #16324f;
-  --navy-500: #1b3d60;
-  --navy-400: #23496e;
+  /* Ancoradas no Manual de Marca, iguais a src/theme/colors.ts: o marinho
+     #15243C (fundo das telas) e o amarelo #F3C218 (único acento). A escala
+     mais clara sobe a partir do fundo, coerente. Um merge antigo havia
+     revertido estes tokens para a paleta pré-manual — o app e o site ficavam
+     lado a lado com amarelos e marinhos diferentes. */
+  --navy-900: #0f192a;
+  --navy-800: #15243c;
+  --navy-700: #1c3050;
+  --navy-600: #223a60;
+  --navy-500: #2a4770;
+  --navy-400: #345480;
 
-  --amber: #f5b60d;
-  --blue-300: #4a76a1;
+  --amber: #f3c218;
+  --blue-300: #6f97c0;
 
   --text: #ffffff;
   --text-on-surface: #c7d6e4;
@@ -615,8 +620,11 @@ section.band {
 /* ------------------------------------------------------------------ notas */
 
 .note {
-  border-left: 2px solid var(--amber);
-  padding: 0.15rem 0 0.15rem 1.15rem;
+  /* Lógico, não físico: em árabe (dir=rtl) a barra âmbar e o recuo precisam
+     ir para a direita junto com o texto, não ficar soltos na margem oposta. */
+  border-inline-start: 2px solid var(--amber);
+  padding: 0.15rem 0;
+  padding-inline-start: 1.15rem;
   margin-top: 2.25rem;
   max-width: var(--measure);
   font-size: 0.9375rem;
