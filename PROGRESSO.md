@@ -1,259 +1,78 @@
-# Progresso - Portar Lymark para Web e Desktop
+# Progresso — Lymark
 
-## Objetivo
-Portar o aplicativo Lymark do mobile (React Native/Expo) para Web e Desktop (Electron) mantendo fidelidade pixel-perfect do carimbo.
-
-**Branch:** claude/harness-fix
-**Data:** 10/08/2026
+**Branch de trabalho:** claude/ultimas-sessoes-app-xj0ydu
+**Última atualização:** 16/08/2026
 
 ---
 
-## Status Geral
+## Onde o projeto está
 
-- Fase 6 (Batch Processing): CONCLUIDO 100%
-- Fase 7 (CI/CD): CONCLUIDO 100%
-- Fase 8 (Deploy): CONCLUIDO 90% (aguardando configuracao de segredos)
-- Fase 0 (Testes): PENDENTE (precisa ser executado pelo usuario)
-- Fase 4 (Modulos Nativos): CONCLUIDO 100%
+A `main` do GitHub foi promovida a partir de `recuperacao/base-limpa` e hoje
+contém todo o trabalho das últimas sessões. A `main` antiga (quebrada) está
+arquivada na tag `arquivo/main-quebrada-2026-08-16`.
 
----
+Verificação feita em 16/08/2026 sobre esse estado:
 
-## Fase 6 - Processamento em Lote - CONCLUIDO
-
-### Implementacoes:
-- Rota /batch em src/app/_layout.tsx
-- Botao Processamento em Lote na CaptureScreen (desktop only)
-- Tela batch.tsx completa com:
-  - Selecao multipla de fotos
-  - Drag and drop (visual e funcional)
-  - Metadados compartilhados (codigo, endereco, empresa)
-  - Selecao de pasta de saida
-  - Barra de progresso com contagem
-  - Relatorio de erros por arquivo
-  - Mensagem de conclusao
-- Hook use-batch-processing.ts:
-  - Processamento SERIAL (requisito G3)
-  - Leitura EXIF individual por foto
-  - Salvamento com saveFileToOutput
-  - Gerenciamento de estado completo
-- IPC Handlers em desktop/main.ts:
-  - save-file-to-output
-  - pick-images
-  - select-output-folder
-  - get-output-folder
-  - add-drag-drop-file
-- Preload API em desktop/preload.ts:
-  - saveFileToOutput
-  - selectOutputFolder
-  - getOutputFolder
-  - onDragDrop
-- Abstracao em src/lib/file-storage.ts:
-  - saveFileToOutput
-  - pickImages
-  - selectOutputFolder
-  - getOutputFolder
+- `npm run typecheck` — limpo
+- `npm run lint` — 0 erros (27 avisos)
+- `npm test` — 588 testes passando, 31 suítes
+- `site`: `npm run build` — sucesso, incluindo a rota `/api/entitlements`
 
 ---
 
-## Fase 7 - CI/CD - CONCLUIDO
+## Concluído (resumo por bloco)
 
-### Arquivos Criados:
-- .github/workflows/ci-cd.yml
-  - TypeScript typecheck
-  - ESLint
-  - Unit tests (Jest)
-  - Build web
-  - Build desktop Linux
-  - Build desktop Windows
+### Porte Web e Desktop (Fases 4–8 do plano original)
+Batch processing, CI/CD, deploy, módulos nativos isolados, segurança do
+Electron. Detalhes no histórico deste arquivo (git log de 10/08/2026).
 
-### Scripts Adicionados:
-- npm run typecheck
-- npm run typecheck:desktop
-- npm run web:build
-- npm run desktop:dev
-- npm run desktop:build
+### i18n — 12 idiomas
+- Catálogo único de traduções para mobile, desktop e site
+  (`i18n/messages/`), zero texto fixo no aplicativo.
+- Carimbo em 12 idiomas: endereço na ordem de cada país, data do EXIF no
+  idioma certo, fontes para cirílico/CJK/árabe (RTL completo).
+- Documentos legais (Política de Privacidade e Termos) em 12 idiomas, com
+  hreflang, sitemap e canônico no site.
 
----
+### Marca
+- Manual de Marca aplicado ao app, ao site e ao carimbo (logotipo da
+  empresa, cores livres, faixa).
+- Landing nova em 12 idiomas, ligada ao app web.
 
-## Fase 8 - Deploy - CONCLUIDO 90%
+### Fase 2 — Identidade, pagamento e direito de acesso
+Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 
-### Arquivos Criados:
-- vercel.json (configuracao para Vercel)
-- .github/workflows/deploy.yml (deploy automatizado)
-- site/CNAME (dominio app.lymark.app)
-
-### Pendente:
-- Configurar secrets no GitHub:
-  - VERCEL_TOKEN
-  - VERCEL_ORG_ID
-  - VERCEL_PROJECT_ID
-- Configurar DNS do dominio lymark.app
-- Configurar SSL (Vercel faz automaticamente)
-
----
-
-## Fase 0 - Testes - PENDENTE
-
-### Para executar:
-1. npm run typecheck
-2. npm run typecheck:desktop
-3. npm run lint
-4. npm test
-5. npm run web
-6. npm run desktop:dev
+- [x] **Passo 1** — `GET /api/entitlements`: cota vitalícia por conta em
+  `privateMetadata` do Clerk, sem banco. Cliente da API, regra de acesso pura
+  e testada, cota ligada ao fluxo de exportação, contador visível.
+- [x] **Passo 2 (site)** — Clerk no site; as promessas de "sem conta" caíram
+  junto (144 lugares nos catálogos e documentos legais — ver §7.1). Sem chave
+  do Clerk configurada, a landing continua no ar.
+- [ ] **Passo 2 (Expo)** — Clerk no aplicativo mobile.
+- [ ] **Passo 2 (Electron)** — Clerk no desktop via deep link (o mais chato).
+- [ ] **Passo 3** — Stripe para web e desktop.
+- [ ] **Passo 4** — faixa de teste fechada na loja (Apple).
+- [ ] **Passo 5** — RevenueCat + Play, depois App Store.
+- [ ] **Passo 6** — cota e freemium completos: token assinado, lote de
+  créditos, tolerância offline.
+- [ ] **Passo 7** — pré-lançamento: LGPD (§8), exclusão de conta, listagens.
 
 ---
 
-## Fase 4 - Modulos Nativos - CONCLUIDO
+## O que depende do usuário (não é código)
 
-### Arquivos .web.ts criados:
-- src/features/watermark/photo-file.web.ts
-- src/features/watermark/export-photo.web.ts
-- src/hooks/use-app-permissions.web.ts
-
-### Modulos isolados:
-- expo-file-system (mobile only)
-- expo-media-library (mobile only)
-- expo-image-picker (mobile only)
-- Alternativas para web/desktop via file-storage.ts
+- Chaves do Clerk no ambiente do site (Vercel):
+  `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` e `CLERK_SECRET_KEY`.
+- Secrets de deploy no GitHub: `VERCEL_TOKEN`, `VERCEL_ORG_ID`,
+  `VERCEL_PROJECT_ID`.
+- DNS do domínio lymark.app.
+- Decisões em aberto de `docs/ASSINATURA.md` §9 e revisão jurídica de §8
+  (LGPD/RGPD) antes de publicar contas.
 
 ---
 
-## Seguranca e Tipagem - CONCLUIDO
+## Próximo passo de código
 
-### Seguranca:
-- Handler delete-file com validacao de caminho (path.relative)
-- Verificacao de que arquivos apagados estao dentro da pasta da galeria
-- Prevencao de directory traversal
-- contextBridge no preload.ts para isolamento seguro
-
-### Tipagem:
-- Parametros tipados em desktop/main.ts
-- Parametros tipados em desktop/preload.ts
-- Tipos do Electron e Node adicionados
-- Interface WindowLymark completa
-
----
-
-## Build e WASM - CONCLUIDO
-
-### Configuracoes:
-- scripts/copy-wasm.js (copia CanvasKit WASM)
-- postbuild hook no package.json
-- Protocolo app:// configurado
-- Content-Type correto para arquivos WASM
-- electron-builder.yml configurado
-
----
-
-## Arquivos Modificados
-
-### Desktop:
-- desktop/main.ts
-- desktop/preload.ts
-- desktop/package.json
-- desktop/electron-builder.yml
-
-### Source:
-- src/app/_layout.tsx
-- src/app/(tabs)/index.tsx
-- src/app/batch.tsx
-- src/hooks/use-batch-processing.ts
-- src/lib/file-storage.ts
-
-### Build:
-- package.json
-- scripts/copy-wasm.js
-
-### CI/CD e Deploy:
-- .github/workflows/ci-cd.yml
-- .github/workflows/deploy.yml
-- vercel.json
-- site/CNAME
-
-### Documentacao:
-- PROGRESSO.md
-
----
-
-## Como Testar
-
-### Desktop (Electron):
-
-npm run desktop:dev
-
-1. Abra o app Electron
-2. Clique em Processamento em Lote na tela Capturar
-3. Selecione fotos ou arraste e solte
-4. Preencha metadados compartilhados
-5. Selecione pasta de saida
-6. Clique em Iniciar Processamento
-
-### Web:
-
-npm run web
-
-Abra http://localhost:19006
-
-### Build para Producao:
-
-npm run web:build
-cd desktop && npm run build
-
----
-
-## Resumo de Commits (10/08/2026)
-
-Total: 20+ commits
-
-Principais:
-- Adiciona rota /batch para processamento em lote
-- Adiciona botao de processamento em lote
-- Adiciona tela de processamento em lote
-- Adiciona hook para processamento em lote
-- Adiciona handlers IPC para lote
-- Adiciona APIs no preload.ts
-- Adiciona funcoes no file-storage.ts
-- Adiciona workflow de CI/CD
-- Adiciona workflow de deploy
-- Adiciona configuracao Vercel
-- Atualiza package.json com scripts de build
-
----
-
-## Proximos Passos
-
-### Prioridade Alta:
-1. Executar testes (npm run typecheck, npm test)
-2. Testar no navegador real
-3. Testar no Electron real
-4. Configurar secrets do GitHub para deploy
-5. Configurar DNS do dominio
-
-### Prioridade Media:
-1. Testar drag and drop no Electron
-2. Testar selecao de pasta de saida
-3. Testar processamento em lote completo
-4. Verificar exibicao de erros
-
-### Prioridade Baixa:
-1. Adicionar mais testes unitarios
-2. Adicionar testes e2e
-3. Documentacao do usuario
-4. Screenshots para loja de apps
-
----
-
-## Status Final
-
-O porte do Lymark para Web e Desktop esta PRONTO para testes.
-
-Tudo o que era necessario para a Fase 6 (Batch Processing) foi implementado.
-CI/CD e Deploy estao configurados e prontos para uso.
-
-O proximo passo e o usuario testar e validar o funcionamento.
-
----
-
-Ultima atualizacao: 10/08/2026
-Status: PRONTO PARA TESTES
+Clerk no aplicativo Expo (Passo 2 continua): login no mobile usando a mesma
+conta do site, alimentando o cliente de entitlements já existente em
+`src/`. Depois, o deep link do Electron.
