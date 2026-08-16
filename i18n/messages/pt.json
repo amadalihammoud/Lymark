@@ -251,7 +251,13 @@
       "empty": "Nenhuma foto exportada ainda. O relatório é montado a partir da galeria.",
       "failed": "Não foi possível gerar o relatório.",
       "fileStem": "relatorio",
-      "generate": "Gerar PDF",
+      "format": {
+        "csv": "Planilha (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)"
+      },
+      "formatSection": "Formato",
+      "generate": "Gerar arquivo",
       "generateSection": "Gerar",
       "norm": {
         "abnt": "ABNT (Brasil)",

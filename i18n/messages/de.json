@@ -251,7 +251,13 @@
       "empty": "Noch keine exportierten Fotos. Der Bericht wird aus der Galerie erstellt.",
       "failed": "Der Bericht konnte nicht erstellt werden.",
       "fileStem": "bericht",
-      "generate": "PDF erstellen",
+      "format": {
+        "csv": "Tabelle (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)"
+      },
+      "formatSection": "Format",
+      "generate": "Datei erstellen",
       "generateSection": "Erstellen",
       "norm": {
         "abnt": "ABNT (Brasilien)",

@@ -251,7 +251,13 @@
       "empty": "Nog geen geëxporteerde foto’s. Het rapport wordt gemaakt vanuit de galerij.",
       "failed": "Het rapport kon niet worden gegenereerd.",
       "fileStem": "rapport",
-      "generate": "PDF genereren",
+      "format": {
+        "csv": "Spreadsheet (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)"
+      },
+      "formatSection": "Formaat",
+      "generate": "Bestand genereren",
       "generateSection": "Genereren",
       "norm": {
         "abnt": "ABNT (Brazilië)",

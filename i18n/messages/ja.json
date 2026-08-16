@@ -251,7 +251,13 @@
       "empty": "書き出した写真はまだありません。レポートはギャラリーから作成されます。",
       "failed": "レポートを作成できませんでした。",
       "fileStem": "report",
-      "generate": "PDFを作成",
+      "format": {
+        "csv": "表計算(CSV)",
+        "pdf": "PDF",
+        "word": "Word(.doc)"
+      },
+      "formatSection": "形式",
+      "generate": "ファイルを作成",
       "generateSection": "作成",
       "norm": {
         "abnt": "ABNT(ブラジル)",

@@ -251,7 +251,13 @@
       "empty": "Aún no hay fotos exportadas. El informe se crea a partir de la galería.",
       "failed": "No se pudo generar el informe.",
       "fileStem": "informe",
-      "generate": "Generar PDF",
+      "format": {
+        "csv": "Hoja de cálculo (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)"
+      },
+      "formatSection": "Formato",
+      "generate": "Generar archivo",
       "generateSection": "Generar",
       "norm": {
         "abnt": "ABNT (Brasil)",

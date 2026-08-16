@@ -251,7 +251,13 @@
       "empty": "Nessuna foto esportata finora. Il report viene creato dalla galleria.",
       "failed": "Impossibile generare il report.",
       "fileStem": "report",
-      "generate": "Genera PDF",
+      "format": {
+        "csv": "Foglio di calcolo (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)"
+      },
+      "formatSection": "Formato",
+      "generate": "Genera file",
       "generateSection": "Genera",
       "norm": {
         "abnt": "ABNT (Brasile)",

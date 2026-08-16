@@ -251,7 +251,13 @@
       "empty": "还没有导出的照片。报告将基于图库生成。",
       "failed": "无法生成报告。",
       "fileStem": "report",
-      "generate": "生成 PDF",
+      "format": {
+        "csv": "表格(CSV)",
+        "pdf": "PDF",
+        "word": "Word(.doc)"
+      },
+      "formatSection": "格式",
+      "generate": "生成文件",
       "generateSection": "生成",
       "norm": {
         "abnt": "ABNT(巴西)",

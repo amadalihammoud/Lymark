@@ -251,7 +251,13 @@
       "empty": "Экспортированных фото пока нет. Отчёт формируется из галереи.",
       "failed": "Не удалось создать отчёт.",
       "fileStem": "otchet",
-      "generate": "Создать PDF",
+      "format": {
+        "csv": "Таблица (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)"
+      },
+      "formatSection": "Формат",
+      "generate": "Создать файл",
       "generateSection": "Создать",
       "norm": {
         "abnt": "ABNT (Бразилия)",

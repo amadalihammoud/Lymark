@@ -251,7 +251,13 @@
       "empty": "Aucune photo exportée pour l'instant. Le rapport est créé à partir de la galerie.",
       "failed": "Impossible de générer le rapport.",
       "fileStem": "rapport",
-      "generate": "Générer le PDF",
+      "format": {
+        "csv": "Tableur (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)"
+      },
+      "formatSection": "Format",
+      "generate": "Générer le fichier",
       "generateSection": "Générer",
       "norm": {
         "abnt": "ABNT (Brésil)",

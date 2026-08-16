@@ -251,7 +251,13 @@
       "empty": "아직 내보낸 사진이 없습니다. 보고서는 갤러리에서 만들어집니다.",
       "failed": "보고서를 생성할 수 없습니다.",
       "fileStem": "report",
-      "generate": "PDF 생성",
+      "format": {
+        "csv": "스프레드시트(CSV)",
+        "pdf": "PDF",
+        "word": "Word(.doc)"
+      },
+      "formatSection": "형식",
+      "generate": "파일 생성",
       "generateSection": "생성",
       "norm": {
         "abnt": "ABNT(브라질)",

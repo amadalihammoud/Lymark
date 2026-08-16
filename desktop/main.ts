@@ -543,11 +543,25 @@ function registerIpcHandlers() {
     if (bytes.length > MAX_FILE_SIZE) {
       return { status: 'failed', error: 'Arquivo muito grande (máx. 50MB).' };
     }
+    // O filtro do diálogo acompanha o que está sendo salvo. Era um JPEG
+    // fixo — servia à foto e atrapalhava qualquer outro formato (o Word e
+    // o CSV do relatório chegam por este mesmo handler).
+    const extension = path.extname(filename).toLowerCase().replace('.', '');
+    const filterByExtension: Record<string, { name: string; extensions: string[] }> = {
+      jpg: { name: 'JPEG', extensions: ['jpg', 'jpeg'] },
+      jpeg: { name: 'JPEG', extensions: ['jpg', 'jpeg'] },
+      doc: { name: 'Word', extensions: ['doc'] },
+      csv: { name: 'CSV', extensions: ['csv'] },
+      pdf: { name: 'PDF', extensions: ['pdf'] },
+      webm: { name: 'WebM', extensions: ['webm'] },
+      mp4: { name: 'MP4', extensions: ['mp4'] },
+    };
+
     const { filePath } = await dialog.showSaveDialog({
       title: translate(currentLocale, 'desktop.dialog.savePhoto'),
       defaultPath: filename,
       filters: [
-        { name: 'JPEG', extensions: ['jpg', 'jpeg'] },
+        filterByExtension[extension] ?? { name: extension.toUpperCase(), extensions: [extension] },
         { name: translate(currentLocale, 'desktop.dialog.allFiles'), extensions: ['*'] },
       ],
     });

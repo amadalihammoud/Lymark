@@ -251,7 +251,13 @@
       "empty": "لا توجد صور مُصدَّرة بعد. يُنشأ التقرير من المعرض.",
       "failed": "تعذر إنشاء التقرير.",
       "fileStem": "report",
-      "generate": "إنشاء PDF",
+      "format": {
+        "csv": "جدول بيانات (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)"
+      },
+      "formatSection": "الصيغة",
+      "generate": "إنشاء الملف",
       "generateSection": "إنشاء",
       "norm": {
         "abnt": "ABNT (البرازيل)",

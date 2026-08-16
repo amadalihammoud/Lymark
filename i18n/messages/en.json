@@ -251,7 +251,13 @@
       "empty": "No exported photos yet. The report is built from your gallery.",
       "failed": "Could not generate the report.",
       "fileStem": "report",
-      "generate": "Generate PDF",
+      "format": {
+        "csv": "Spreadsheet (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)"
+      },
+      "formatSection": "Format",
+      "generate": "Generate file",
       "generateSection": "Generate",
       "norm": {
         "abnt": "ABNT (Brazil)",
