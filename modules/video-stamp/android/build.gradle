@@ -1,0 +1,18 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'expo-module-gradle-plugin'
+
+group = 'expo.modules.videostamp'
+version = '0.1.0'
+
+android {
+  namespace 'expo.modules.videostamp'
+}
+
+dependencies {
+  // Media3 Transformer — o motor oficial do Android para editar vídeo.
+  // A versão 1.8.0 é estável e traz o OverlayEffect que o carimbo usa.
+  implementation 'androidx.media3:media3-transformer:1.8.0'
+  implementation 'androidx.media3:media3-effect:1.8.0'
+  implementation 'androidx.media3:media3-common:1.8.0'
+}

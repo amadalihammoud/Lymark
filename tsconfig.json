@@ -13,6 +13,9 @@
       "@/assets/*": [
         "./assets/*"
       ],
+      "@modules/*": [
+        "./modules/*"
+      ],
       "@i18n/*": [
         "./i18n/*"
       ]

@@ -115,8 +115,17 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   saída WebM, um vídeo de 2 minutos leva 2 minutos — os dois limites ditos
   na tela, com o desktop apontado para vídeo longo. Sem dependência nova;
   WebCodecs fica como evolução quando a cobertura amadurecer.
-- [ ] **Celular** — gravar já com o carimbo (VisionCamera + Skia frame
-  processor), fase própria.
+- [~] **Celular (Android)** — vídeo da galeria carimbado no aparelho:
+  módulo Expo próprio em `modules/video-stamp` (Kotlin, Media3 Transformer
+  com `BitmapOverlay` — o motor oficial do Android, por hardware). O
+  carimbo continua sendo o MESMO PNG do quadro inteiro, escrito no cache e
+  sobreposto pelo módulo; saída salva na galeria. **Precisa de build de
+  desenvolvimento (EAS) para validar em aparelho** — o módulo não existe no
+  Expo Go, e a tela explica a ausência. iOS (AVFoundation) fica para a
+  etapa seguinte.
+- [ ] **Celular (iOS)** — o mesmo módulo em Swift/AVFoundation.
+- [ ] **Gravar já com o carimbo** — aguardando a geração atual da câmera
+  (a VisionCamera 5 removeu o desenho sobre a gravação; sem caminho hoje).
 
 ## Próximo passo de código
 

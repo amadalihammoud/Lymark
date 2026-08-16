@@ -1,6 +1,13 @@
+// A API clássica de caminhos e strings: é o contrato que o módulo nativo
+// espera (caminhos simples), e a mesma que o resto do app usa.
+import * as FileSystem from 'expo-file-system/legacy';
+import * as ImagePicker from 'expo-image-picker';
+import * as MediaLibrary from 'expo-media-library';
 import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { useTranslations } from 'use-intl';
+
+import { isVideoStampAvailable, stampVideo } from '@modules/video-stamp';
 
 import { Button } from '@/components/ui/button';
 import { FieldRow } from '@/components/ui/field-row';
@@ -15,6 +22,7 @@ import { composeStampOverlay } from '@/features/watermark/render-overlay';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
 import { loadStampImages } from '@/features/watermark/stamp-images';
 import { scriptForStamp } from '@/features/watermark/stamp-script';
+import { bytesToBase64 } from '@/lib/base64';
 import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
 import { isDesktop } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
@@ -45,17 +53,9 @@ const SHARED_FIELDS: WatermarkFieldKey[] = ['code', 'address'];
 const EMPTY_METADATA: CaptureMetadata = { code: '', address: '', date: '', time: '', weekday: '' };
 
 export default function VideoScreen() {
-  const t = useTranslations('app.video');
-
   if (isDesktop()) return <DesktopVideoScreen />;
   if (Platform.OS === 'web') return <WebVideoScreen />;
-
-  return (
-    <Screen>
-      <Text style={typography.screenTitle}>{t('unavailableTitle')}</Text>
-      <Text style={typography.body}>{t('unavailableBody')}</Text>
-    </Screen>
-  );
+  return <MobileVideoScreen />;
 }
 
 /**
@@ -244,6 +244,168 @@ function DesktopVideoScreen() {
               <Text style={[typography.caption, styles.caption]}>
                 {t('saved', { path: savedPath })}
               </Text>
+            ) : null}
+          </Section>
+        </>
+      ) : null}
+    </Screen>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Celular: vídeo da galeria, composto pelo módulo nativo (Media3 no Android).
+// ---------------------------------------------------------------------------
+
+type SelectedAsset = {
+  uri: string;
+  name: string;
+  width: number;
+  height: number;
+};
+
+function MobileVideoScreen() {
+  const t = useTranslations('app.video');
+  const tApp = useTranslations('app');
+  const { notify } = useFeedback();
+  const { preferences } = useSettings();
+  const { access, recordExport } = useEntitlement();
+  const { locale: uiLocale } = useLocalePreference();
+  const stampLocale = STAMP_LOCALE[uiLocale];
+
+  const [selected, setSelected] = useState<SelectedAsset | null>(null);
+  const [metadata, setMetadata] = useState<CaptureMetadata>(EMPTY_METADATA);
+  const [busy, setBusy] = useState(false);
+  const [saved, setSaved] = useState(false);
+
+  const stampTypefaces = useStampTypefaces(scriptForStamp(metadata, preferences));
+
+  // Sem o módulo (iOS por enquanto, ou Expo Go), a tela explica em vez de
+  // quebrar — e aponta os caminhos que já existem.
+  if (!isVideoStampAvailable) {
+    return (
+      <Screen>
+        <Text style={typography.screenTitle}>{t('unavailableTitle')}</Text>
+        <Text style={typography.body}>{t('unavailableBody')}</Text>
+      </Screen>
+    );
+  }
+
+  const pick = async () => {
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permission.granted) {
+      notify(t('unreadable'), 'warning');
+      return;
+    }
+
+    const response = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['videos'],
+      allowsEditing: false,
+    });
+    if (response.canceled) return;
+
+    const asset = response.assets?.[0];
+    if (!asset || !asset.width || !asset.height) {
+      notify(t('unreadable'), 'warning');
+      return;
+    }
+
+    setSaved(false);
+    setSelected({
+      uri: asset.uri,
+      name: asset.fileName ?? asset.uri.split('/').pop() ?? 'video',
+      width: asset.width,
+      height: asset.height,
+    });
+
+    // A galeria não entrega a data de gravação; o agora entra como ponto de
+    // partida — editável, como tudo.
+    setMetadata((current) => metadataFromFileClock(current, Date.now(), stampLocale));
+  };
+
+  const exportVideo = async () => {
+    if (!selected || busy) return;
+    if (!stampTypefaces) {
+      notify(tApp('common.error'), 'warning');
+      return;
+    }
+
+    setBusy(true);
+    setSaved(false);
+    try {
+      const images = await loadStampImages(preferences.brandLogoPath);
+      const overlay = await composeStampOverlay({
+        width: selected.width,
+        height: selected.height,
+        metadata,
+        preferences,
+        renderer: createStampRenderer(stampTypefaces, images),
+      });
+
+      // O overlay vai ao módulo por arquivo, não por bytes: atravessar a
+      // ponte com um PNG de quadro inteiro em array seria cópia atrás de
+      // cópia. O Transformer quer caminhos simples, sem esquema `file://`.
+      const stampBase = `${FileSystem.cacheDirectory}lymark-stamp-${Date.now()}`;
+      const overlayUri = `${stampBase}.png`;
+      const outputUri = `${stampBase}.mp4`;
+      await FileSystem.writeAsStringAsync(overlayUri, bytesToBase64(overlay), {
+        encoding: 'base64',
+      });
+
+      await stampVideo(
+        selected.uri,
+        overlayUri.replace('file://', ''),
+        outputUri.replace('file://', ''),
+      );
+
+      await MediaLibrary.saveToLibraryAsync(outputUri);
+
+      setSaved(true);
+      recordExport();
+      notify(t('done'));
+
+      // Os temporários já cumpriram o papel; a cópia da galeria é a que fica.
+      void FileSystem.deleteAsync(overlayUri, { idempotent: true });
+      void FileSystem.deleteAsync(outputUri, { idempotent: true });
+    } catch {
+      notify(t('failed'), 'warning');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Screen>
+      <Section title={t('fileSection')}>
+        <Button label={t('select')} variant="primary" icon="film-outline" onPress={() => void pick()} />
+        {selected ? (
+          <Text style={[typography.caption, styles.caption]}>
+            {selected.name} · {selected.width}x{selected.height}
+          </Text>
+        ) : (
+          <Text style={[typography.caption, styles.caption]}>{t('none')}</Text>
+        )}
+      </Section>
+
+      {selected ? (
+        <>
+          <FieldsSection
+            metadata={metadata}
+            onChange={(next) => setMetadata((current) => ({ ...current, ...next }))}
+          />
+
+          <Section title={t('exportSection')}>
+            {!access.canExport ? (
+              <Text style={[typography.body, styles.warning]}>{tApp('plan.exhaustedMessage')}</Text>
+            ) : null}
+            <Button
+              label={busy ? t('processingMobile') : t('export')}
+              variant="accent"
+              loading={busy}
+              disabled={!access.canExport || busy}
+              onPress={() => void exportVideo()}
+            />
+            {saved ? (
+              <Text style={[typography.caption, styles.caption]}>{t('savedToGallery')}</Text>
             ) : null}
           </Section>
         </>

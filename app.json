@@ -96,10 +96,11 @@
       [
         "expo-media-library",
         {
-          "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem que receberá a marca d'água.",
-          "savePhotosPermission": "O Lymark salva na sua galeria as fotos exportadas com marca d'água.",
+          "photosPermission": "O Lymark acessa suas fotos para você escolher a imagem ou o vídeo que receberá a marca d'água.",
+          "savePhotosPermission": "O Lymark salva na sua galeria as fotos e os vídeos exportados com marca d'água.",
           "granularPermissions": [
-            "photo"
+            "photo",
+            "video"
           ]
         }
       ],

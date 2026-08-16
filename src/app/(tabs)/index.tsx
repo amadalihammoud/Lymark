@@ -468,9 +468,9 @@ export default function CaptureScreen() {
               />
             </>
           )}
-          {/* Na web (fora do desktop) o vídeo também existe — pelo caminho
-              do navegador, com os limites ditos na própria tela. */}
-          {!isDesktop() && Platform.OS === 'web' && (
+          {/* Fora do desktop o vídeo também existe — navegador na web, módulo
+              nativo no celular; cada tela diz seus limites. */}
+          {!isDesktop() && (
             <Button
               label={tApp('nav.video')}
               icon="film-outline"
@@ -485,15 +485,13 @@ export default function CaptureScreen() {
           <Text style={styles.hint}>{t('pickPhotoHint')}</Text>
           {/* O vídeo não depende de foto escolhida: a porta fica visível
               também com a tela vazia, senão o recurso não se descobre. */}
-          {(isDesktop() || Platform.OS === 'web') && (
-            <Button
-              label={tApp('nav.video')}
-              icon="film-outline"
-              variant="primaryAlt"
-              onPress={() => router.push('/video')}
-              style={styles.batchButton}
-            />
-          )}
+          <Button
+            label={tApp('nav.video')}
+            icon="film-outline"
+            variant="primaryAlt"
+            onPress={() => router.push('/video')}
+            style={styles.batchButton}
+          />
         </>
       )}
     </>
