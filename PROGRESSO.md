@@ -101,6 +101,16 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 - DNS do domínio lymark.app.
 - Decisões em aberto de `docs/ASSINATURA.md` §9 e revisão jurídica de §8
   (LGPD/RGPD) antes de publicar contas.
+- **Snyk: os quatro alertas de `image-size@1.2.1` ficam como _ignore_
+  consciente.** São o MESMO pacote, entrando como dependência transitiva do
+  Expo e do React Native — o app não o instala nem o usa. Não há correção a
+  aplicar: o `image-size` não tem versão corrigida publicada ("no supported
+  fix"), e a única sugestão do Snyk é subir para `react-native@0.87.0`, que
+  o Expo SDK 57 não aceita (ele fixa 0.86.2). O caminho vulnerável (laço
+  infinito ao ler imagem malformada, CWE-835) não é exercitado por nós: o
+  desktop lê dimensões com parser próprio, `desktop/image-dimensions.ts`,
+  escrito exatamente para não depender desse pacote e com teste de
+  terminação. Some sozinho quando o Expo subir de SDK.
 
 ---
 
