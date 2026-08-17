@@ -440,6 +440,12 @@
       "savePhoto": "Foto opslaan",
       "saveReport": "Rapport opslaan"
     },
+    "login": {
+      "cancel": "Annuleren",
+      "confirm": "Doorgaan",
+      "message": "Je bent zojuist ingelogd in de browser. Doorgaan en dit account op deze computer gebruiken?",
+      "title": "Inloggen bij Lymark"
+    },
     "menu": {
       "copy": "Kopiëren",
       "cut": "Knippen",

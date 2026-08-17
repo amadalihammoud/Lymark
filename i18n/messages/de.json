@@ -440,6 +440,12 @@
       "savePhoto": "Foto speichern",
       "saveReport": "Bericht speichern"
     },
+    "login": {
+      "cancel": "Abbrechen",
+      "confirm": "Fortfahren",
+      "message": "Sie haben sich gerade im Browser angemeldet. Fortfahren und dieses Konto auf diesem Computer verwenden?",
+      "title": "Bei Lymark anmelden"
+    },
     "menu": {
       "copy": "Kopieren",
       "cut": "Ausschneiden",

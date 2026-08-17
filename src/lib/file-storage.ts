@@ -98,7 +98,7 @@ export interface WindowLymark {
   // dizia `filePath: string`, contradizendo o contrato real.
   onDragDrop?: (
     callback: (photo: { uri: string; width: number; height: number } | null) => void,
-  ) => void;
+  ) => (() => void) | void;
   /**
    * Informa ao Electron o idioma escolhido na interface, para o menu do
    * sistema e os diálogos de arquivo acompanharem.

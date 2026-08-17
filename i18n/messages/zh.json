@@ -440,6 +440,12 @@
       "savePhoto": "保存照片",
       "saveReport": "保存报告"
     },
+    "login": {
+      "cancel": "取消",
+      "confirm": "继续",
+      "message": "您刚在浏览器中登录。要在这台电脑上使用该账户吗?",
+      "title": "登录 Lymark"
+    },
     "menu": {
       "copy": "复制",
       "cut": "剪切",

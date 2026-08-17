@@ -440,6 +440,12 @@
       "savePhoto": "사진 저장",
       "saveReport": "보고서 저장"
     },
+    "login": {
+      "cancel": "취소",
+      "confirm": "계속",
+      "message": "브라우저에서 방금 로그인했습니다. 이 컴퓨터에서 이 계정을 사용할까요?",
+      "title": "Lymark 로그인"
+    },
     "menu": {
       "copy": "복사",
       "cut": "잘라내기",

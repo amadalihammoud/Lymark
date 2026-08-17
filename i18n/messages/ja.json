@@ -440,6 +440,12 @@
       "savePhoto": "写真を保存",
       "saveReport": "レポートを保存"
     },
+    "login": {
+      "cancel": "キャンセル",
+      "confirm": "続ける",
+      "message": "ブラウザでログインしました。このパソコンでこのアカウントを使用しますか?",
+      "title": "Lymarkにログイン"
+    },
     "menu": {
       "copy": "コピー",
       "cut": "切り取り",

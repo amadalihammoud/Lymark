@@ -440,6 +440,12 @@
       "savePhoto": "Salvar foto",
       "saveReport": "Salvar relatório"
     },
+    "login": {
+      "cancel": "Cancelar",
+      "confirm": "Continuar",
+      "message": "Você acabou de entrar no navegador. Continuar e usar esta conta neste computador?",
+      "title": "Entrar no Lymark"
+    },
     "menu": {
       "copy": "Copiar",
       "cut": "Recortar",

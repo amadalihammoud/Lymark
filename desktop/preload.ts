@@ -8,7 +8,7 @@
  * Apenas exponha o que é estritamente necessário.
  */
 
-import { contextBridge, ipcRenderer } from 'electron';
+import { contextBridge, ipcRenderer, webUtils } from 'electron';
 
 // Tipos para as APIs expostas
 export interface LymarkApi {
@@ -107,7 +107,13 @@ export interface LymarkApi {
   }>;
   /** Token do desktop chegando pelo deep link `lymark://login`. */
   onLoginToken: (callback: (token: string) => void) => void;
-  onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
+  /**
+   * Fotos arrastadas para a janela. Devolve a função que cancela a escuta —
+   * a tela do lote a chama ao desmontar.
+   */
+  onDragDrop: (
+    callback: (photo: { uri: string; width: number; height: number } | null) => void,
+  ) => () => void;
 }
 
 // Expor APIs seguras para o renderer
@@ -206,19 +212,53 @@ export const lymarkApi: LymarkApi = {
   },
   
   onDragDrop: (callback) => {
-    // Escutar o evento do main process
-    ipcRenderer.on('ondragdrop', (_, filePath: string) => {
-      // Processar o arquivo arrastado e chamar o callback
-      ipcRenderer.invoke('add-drag-drop-file', { filePath })
-        .then((photo) => {
-          if (photo) {
-            callback(photo);
-          }
-        })
-        .catch(() => {
-          callback(null);
-        });
-    });
+    /*
+     * Quem recebe o arquivo arrastado é a PÁGINA, não o processo principal:
+     * o Electron entrega o drop ao DOM como qualquer navegador. A versão
+     * anterior esperava um evento `ondragdrop` que o main nunca emitia — o
+     * arrastar-e-soltar do lote simplesmente não funcionava, e o handler
+     * `add-drag-drop-file` (com toda a validação de diretório) era inalcançável.
+     *
+     * O preload é o lugar certo para isto: `webUtils.getPathForFile` só existe
+     * aqui, e é o único caminho para descobrir o caminho real de um `File`
+     * arrastado — o renderer com `contextIsolation` não o alcança.
+     */
+    const prevent = (event: DragEvent) => event.preventDefault();
+
+    const onDrop = (event: DragEvent) => {
+      event.preventDefault();
+      const files = Array.from(event.dataTransfer?.files ?? []);
+      if (files.length === 0) return;
+
+      for (const file of files) {
+        let filePath: string;
+        try {
+          filePath = webUtils.getPathForFile(file);
+        } catch {
+          continue;
+        }
+        if (!filePath) continue;
+
+        // O main confere extensão, diretório seguro e dimensões — e devolve
+        // `null` para o que não serve.
+        ipcRenderer
+          .invoke('add-drag-drop-file', { filePath })
+          .then((photo) => {
+            if (photo) callback(photo);
+          })
+          .catch(() => {
+            callback(null);
+          });
+      }
+    };
+
+    window.addEventListener('dragover', prevent);
+    window.addEventListener('drop', onDrop);
+
+    return () => {
+      window.removeEventListener('dragover', prevent);
+      window.removeEventListener('drop', onDrop);
+    };
   },
 };
 
