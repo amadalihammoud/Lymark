@@ -34,10 +34,17 @@ import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
  * `fetch` resolve `blob:` na web e `media://picked/<id>` no desktop (o
  * protocolo é registrado como `supportFetchAPI`), então o mesmo caminho
  * serve às duas plataformas — e nenhuma delas precisa do caminho de disco.
+ *
+ * `Uint8Array`, e não `Buffer`: a janela do Electron roda com
+ * `nodeIntegration: false` e `sandbox: true`, onde **não existe `Buffer`
+ * global**, e o bundle do Expo não traz polyfill. Devolver `Buffer` aqui
+ * lançava `ReferenceError` na primeira foto e derrubava o lote inteiro —
+ * dentro do `try` de cada foto, então o sintoma era "falhou em 100%", sem
+ * dizer por quê.
  */
-async function fetchPhotoBytes(uri: string): Promise<Buffer> {
+async function fetchPhotoBytes(uri: string): Promise<Uint8Array> {
   const response = await fetch(uri);
-  return Buffer.from(await response.arrayBuffer());
+  return new Uint8Array(await response.arrayBuffer());
 }
 
 export interface BatchPhoto {

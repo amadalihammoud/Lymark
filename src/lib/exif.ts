@@ -14,6 +14,15 @@ import type { TimeFormat } from '@/types';
 import { DEFAULT_LOCALE, type Locale } from '@i18n/locales';
 
 /**
+ * De onde o EXIF pode ser lido.
+ *
+ * `Buffer` não aparece aqui de propósito: ele é um `Uint8Array`, então
+ * continua aceito, mas o tipo não obriga ninguém a produzi-lo — e no
+ * renderer do Electron (sandbox) ele nem existe.
+ */
+export type ExifSource = File | Uint8Array | string;
+
+/**
  * Dados de data/hora extraídos do EXIF.
  */
 export interface ExifDateTime {
@@ -31,31 +40,54 @@ export interface ExifDateTime {
  * No mobile, o expo-image-picker já devolve a data no asset.exif.
  * Na web e desktop, precisamos ler do arquivo.
  *
- * @param file - O arquivo a ser lido. Na web: File do input. No desktop: Buffer ou string path.
+ * @param file - O arquivo a ser lido: `File` (web), `Uint8Array` de bytes já
+ *   em memória (o caminho do desktop, onde a foto vem por `media://`), ou um
+ *   caminho de disco (Node, usado pelos testes).
  * @returns Promessa com os dados de data/hora, ou undefined se não encontrado.
  */
 export async function extractDateTimeFromExif(
-  file: File | Buffer | string,
+  file: ExifSource,
 ): Promise<ExifDateTime | undefined> {
   try {
-    let buffer: Buffer;
+    /*
+     * `Uint8Array` é a moeda comum, e não `Buffer`.
+     *
+     * A janela do Electron roda com `nodeIntegration: false` e `sandbox:
+     * true`: ali **não existe `Buffer` global**, e o bundle do Expo não traz
+     * polyfill — tocar em `Buffer` no renderer lança `ReferenceError`. O
+     * `exifreader` aceita `Uint8Array` direto, então o tipo do Node só
+     * aparece no ramo de caminho de disco, que só roda em Node.
+     */
+    let bytes: Uint8Array;
 
     if (typeof file === 'string') {
-      // Desktop: path do arquivo
+      // Caminho de disco: só alcançável em Node (testes e scripts).
       const fs = await import('fs');
-      buffer = fs.readFileSync(file);
-    } else if (file instanceof File) {
+      bytes = new Uint8Array(fs.readFileSync(file));
+    } else if (typeof File !== 'undefined' && file instanceof File) {
       // Web: File do input
-      buffer = Buffer.from(await file.arrayBuffer());
-    } else if (Buffer.isBuffer(file)) {
-      // Buffer direto
-      buffer = file;
+      bytes = new Uint8Array(await file.arrayBuffer());
+    } else if (file instanceof Uint8Array) {
+      // Bytes já em memória (inclui `Buffer`, que é um `Uint8Array`).
+      bytes = file;
     } else {
       return undefined;
     }
 
-    // Ler tags EXIF
-    const tags = exifreader.load(buffer);
+    /*
+     * Ler as tags a partir de um `ArrayBuffer` que contém EXATAMENTE estes
+     * bytes — os tipos do `exifreader` aceitam `ArrayBuffer`, e é a forma
+     * que funciona nos dois runtimes.
+     *
+     * A cópia é feita com `new Uint8Array(bytes)`, e não com `bytes.slice()`:
+     * um `Buffer` do Node é uma janela sobre um pool compartilhado de 8 KB, e
+     * `Buffer.prototype.slice` NÃO copia — devolve outra janela sobre o mesmo
+     * pool. O `.buffer` daí sai com os 8192 bytes do pool inteiro, e o
+     * leitor procura o cabeçalho EXIF no lixo em volta: nenhuma tag é
+     * encontrada, e a data da foto some sem erro nenhum.
+     */
+    const copy = new Uint8Array(bytes);
+    const tags = exifreader.load(copy.buffer as ArrayBuffer);
 
     // Tentar extrair DateTimeOriginal (prioridade)
     if (tags['DateTimeOriginal']) {
@@ -147,7 +179,7 @@ function parseExifDateTime(value: string): ExifDateTime {
  * @returns Promessa com a data formatada, ou undefined
  */
 export async function extractDateFromExif(
-  file: File | Buffer | string,
+  file: ExifSource,
   locale: Locale = DEFAULT_LOCALE,
 ): Promise<string | undefined> {
   const dateTime = await extractDateTimeFromExif(file);
@@ -168,7 +200,7 @@ export async function extractDateFromExif(
  * @returns Promessa com a hora formatada, ou undefined
  */
 export async function extractTimeFromExif(
-  file: File | Buffer | string,
+  file: ExifSource,
   timeFormat: TimeFormat = '24h',
 ): Promise<string | undefined> {
   const dateTime = await extractDateTimeFromExif(file);

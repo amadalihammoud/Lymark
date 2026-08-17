@@ -74,3 +74,36 @@ describe('extractTimeFromExif', () => {
     expect(await extractTimeFromExif(Buffer.from(''))).toBeUndefined();
   });
 });
+
+/**
+ * O lote do desktop não tem caminho de disco: a foto chega por `media://`, e
+ * os bytes vêm de um `fetch`. É um `Uint8Array` puro — sem `Buffer`, que não
+ * existe no renderer do Electron (`nodeIntegration: false`, `sandbox: true`).
+ *
+ * Este teste existe porque o caminho já quebrou de duas formas: passando a
+ * URI onde se esperava caminho (data sumia em silêncio) e passando o
+ * `.buffer` de um `Buffer` do Node, que é uma janela sobre um pool de 8 KB —
+ * o leitor procurava o EXIF no lixo em volta.
+ */
+describe('bytes em memória — o caminho do desktop', () => {
+  it('lê o EXIF de um `Uint8Array` puro, sem `Buffer`', async () => {
+    const bytes = new Uint8Array(jpegComExif('2026:08:01 21:55:00'));
+
+    expect(bytes).toBeInstanceOf(Uint8Array);
+    expect(await extractDateTimeFromExif(bytes)).toMatchObject({
+      date: '2026-08-01',
+      time: '21:55:00',
+    });
+  });
+
+  it('lê igual quando os bytes são uma janela sobre um buffer maior', async () => {
+    // Reproduz o pool do Node: os bytes da foto no MEIO de um buffer grande.
+    const foto = jpegComExif('2026:08:01 07:04:09');
+    const pool = new Uint8Array(8192);
+    pool.set(foto, 4976);
+    const janela = pool.subarray(4976, 4976 + foto.byteLength);
+
+    expect(janela.byteOffset).toBe(4976);
+    expect(await extractTimeFromExif(janela)).toBe('07:04');
+  });
+});
