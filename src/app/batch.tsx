@@ -40,7 +40,11 @@ export default function BatchProcessingScreen() {
   const t = useTranslations('app.batch');
   const tApp = useTranslations('app');
   const { state, metadata, outputFolder, updateMetadata, setOutputFolderPath, startBatch, cancelBatch, loadOutputFolder } = useBatchProcessing();
-  const [photos, setPhotos] = useState<{ uri: string; width: number; height: number }[]>([]);
+  // `name` acompanha a foto porque a URI do desktop é opaca — é dele que sai
+  // o nome do arquivo exportado (ver `BatchPhoto`).
+  const [photos, setPhotos] = useState<
+    { uri: string; name?: string; width: number; height: number }[]
+  >([]);
   const { notify } = useFeedback();
 
   // A recusa por plataforma fica DEPOIS de todos os hooks. Antes, o `return`

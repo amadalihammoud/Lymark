@@ -28,8 +28,28 @@ import { useSettings } from '@/contexts/settings-context';
 import { STAMP_LOCALE } from '@i18n/calendar';
 import type { CaptureMetadata, WatermarkFieldKey } from '@/types';
 
+/**
+ * Os bytes de uma foto escolhida, seja qual for o esquema da URI.
+ *
+ * `fetch` resolve `blob:` na web e `media://picked/<id>` no desktop (o
+ * protocolo é registrado como `supportFetchAPI`), então o mesmo caminho
+ * serve às duas plataformas — e nenhuma delas precisa do caminho de disco.
+ */
+async function fetchPhotoBytes(uri: string): Promise<Buffer> {
+  const response = await fetch(uri);
+  return Buffer.from(await response.arrayBuffer());
+}
+
 export interface BatchPhoto {
   uri: string;
+  /**
+   * Nome do arquivo original.
+   *
+   * A URI do desktop é opaca por desenho (`media://picked/<id>`, para não
+   * expor caminho de disco ao renderer), então o nome vem por fora — é ele
+   * que batiza o arquivo exportado.
+   */
+  name?: string;
   width: number;
   height: number;
 }
@@ -116,7 +136,10 @@ export function useBatchProcessing() {
         // do EXIF e o dia da semana continuava o do lote: uma foto tirada na
         // terça saía carimbada "12 ago. 2026 · Sáb". Numa foto de comprovação,
         // essa contradição fica impressa no próprio documento.
-        const exif = await extractDateTimeFromExif(photo.uri);
+        // Pelos BYTES, e não pela URI: `extractDateTimeFromExif` trata uma
+        // string como CAMINHO DE DISCO (faz readFileSync), e a URI do desktop
+        // é opaca — passá-la deixava data e hora sem preencher em todo lote.
+        const exif = await extractDateTimeFromExif(await fetchPhotoBytes(photo.uri));
         const tirada = exif?.dateTime;
 
         // Mesclar: data/hora do EXIF + endereço/código compartilhado
@@ -139,7 +162,10 @@ export function useBatchProcessing() {
 
         // Nome estável e sem colisão: o carimbo do relógio não basta quando
         // duas fotos são processadas no mesmo milissegundo.
-        const origem = photo.uri.split('/').pop()?.replace(/\.[^.]+$/, '') ?? 'foto';
+        const origem =
+          photo.name?.replace(/\.[^.]+$/, '') ??
+          photo.uri.split('/').pop()?.replace(/\.[^.]+$/, '') ??
+          'foto';
         const fileName = `lymark_${origem}_${photo.width}x${photo.height}.jpg`;
 
         // O selo por foto, melhor esforço: num lote de cem, uma queda de

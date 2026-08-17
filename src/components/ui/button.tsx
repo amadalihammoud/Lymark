@@ -101,17 +101,19 @@ export function Button({
         loading && styles.inactive,
         style,
       ]}>
+      {/* O indicador ocupa o lugar do ÍCONE, não o do rótulo. Substituir o
+          texto inteiro escondia o que ele diz enquanto espera — e é
+          justamente aí que o rótulo carrega o progresso ("Processando… 42%")
+          numa exportação de vídeo que leva minutos. */}
       {loading ? (
-        <ActivityIndicator color={foreground} />
-      ) : (
-        <>
-          {icon ? <Ionicons name={icon} size={iconOnly ? 22 : 18} color={foreground} /> : null}
-          {iconOnly ? null : (
-            <Text style={[typography.button, { color: foreground }]} numberOfLines={1}>
-              {label}
-            </Text>
-          )}
-        </>
+        <ActivityIndicator color={foreground} size="small" />
+      ) : icon ? (
+        <Ionicons name={icon} size={iconOnly ? 22 : 18} color={foreground} />
+      ) : null}
+      {iconOnly || (loading && !icon && !label) ? null : (
+        <Text style={[typography.button, { color: foreground }]} numberOfLines={1}>
+          {label}
+        </Text>
       )}
     </Pressable>
   );

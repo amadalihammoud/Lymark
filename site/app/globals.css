@@ -11,13 +11,18 @@
      lado a lado com amarelos e marinhos diferentes. */
   --navy-900: #0f192a;
   --navy-800: #15243c;
-  --navy-700: #1c3050;
-  --navy-600: #223a60;
-  --navy-500: #2a4770;
-  --navy-400: #345480;
+  --navy-700: #182a45;
+  --navy-600: #1c3151;
+  --navy-500: #233b63;
+  --navy-400: #294675;
 
   --amber: #f3c218;
-  --blue-300: #6f97c0;
+  /* `blue300` do app é #4A76A1 — mas lá ele é permitido só como BORDA, com a
+     exigência de 3:1 de elemento de interface. Aqui `.field` o usa como TEXTO
+     de 11px, onde o mínimo é 4,5:1: sobre o fundo #15243c, #4A76A1 dá 3,25:1.
+     Este tom mais claro cumpre AA como texto e é o único ponto em que a escala
+     do site se afasta da do app — por exigência de contraste, não por acaso. */
+  --blue-300: #7fa3c8;
 
   --text: #ffffff;
   --text-on-surface: #c7d6e4;
@@ -92,14 +97,32 @@ p {
   padding-inline: var(--gutter);
 }
 
+/*
+ * O atalho "pular para o conteúdo" fica escondido até receber foco.
+ *
+ * `left: -9999px` era física: em árabe (`dir=rtl`) a direção de overflow
+ * inverte e esses 9.999px viram rolagem horizontal de verdade na página
+ * inteira. Recortar em zero esconde sem deslocar nada — e sem transformar
+ * um recurso de acessibilidade num defeito de layout.
+ */
 .skip {
   position: absolute;
-  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
+/* Ao receber foco ele reaparece, ancorado no lado de leitura — lógico, para
+   acompanhar o árabe — e desfaz o recorte que o escondia. */
 .skip:focus {
-  left: var(--gutter);
+  inset-inline-start: var(--gutter);
   top: 0.75rem;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
   z-index: 10;
   background: var(--navy-900);
   color: var(--text);
@@ -348,12 +371,21 @@ nav.site button.nav-auth:focus-visible {
   color: var(--amber);
 }
 
-/* O segundo caminho — quem já tem conta. Contornado, para não competir. */
+/*
+ * O segundo caminho — quem já tem conta. Contornado, para não competir com
+ * o âmbar preenchido do botão principal.
+ *
+ * O contorno é o próprio âmbar rebaixado em opacidade, e não o marinho da
+ * escala: `--navy-400` sobre o fundo dá 1,65:1, e a borda É a única forma
+ * do botão — abaixo dos 3:1 de elemento de interface, ela some para quem
+ * enxerga pouco. O âmbar a 55% mantém a hierarquia (mais apagado que o
+ * botão cheio) e continua visível.
+ */
 .cta a.ghost,
 .cta button.ghost {
   background: transparent;
   color: var(--amber);
-  border-color: var(--navy-400);
+  border-color: color-mix(in srgb, var(--amber) 55%, transparent);
 }
 
 .cta a.ghost:hover,
@@ -361,9 +393,21 @@ nav.site button.nav-auth:focus-visible {
   border-color: var(--amber);
 }
 
+/*
+ * O `.note` do hero é uma legenda ao lado do botão, não uma nota de seção.
+ *
+ * A regra genérica `.note` (barra âmbar, recuo, margem de 2,25rem) tem
+ * especificidade menor, mas declara propriedades que esta não sobrescrevia —
+ * então a legenda herdava a barra e a margem, e aparecia deslocada do botão.
+ * Zerar aqui é dizer o que ela é: texto curto, sem ornamento.
+ */
 .cta .note {
   font-size: 0.8125rem;
   color: var(--text-subtle);
+  border-inline-start: 0;
+  padding-inline-start: 0;
+  margin-top: 0;
+  max-width: none;
 }
 
 .meta {

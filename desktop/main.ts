@@ -824,7 +824,15 @@ function registerIpcHandlers() {
     for (const filePath of filePaths) {
       try {
         const { width, height } = readImageSize(filePath);
-        results.push({ uri: registerPickedImage(filePath), width, height });
+        // O NOME vai junto: a URI é opaca (`media://picked/<id>`), e o lote
+        // batiza a saída com o nome do original — sem isto, o arquivo
+        // exportado sairia com o identificador hexadecimal no lugar dele.
+        results.push({
+          uri: registerPickedImage(filePath),
+          name: path.basename(filePath),
+          width,
+          height,
+        });
       } catch {
         // Um arquivo ilegível não pode derrubar o lote inteiro.
         continue;
@@ -933,7 +941,10 @@ function contentSecurityPolicy(scriptHashes: readonly string[]): string {
     // `media:` é o esquema das fotos da galeria, servido por createMediaProtocol.
     "img-src 'self' data: blob: media:",
     "font-src 'self' data:",
-    "connect-src 'self' data: blob:",
+    // `media:` também aqui, e não só em `img-src`: exibir a foto é `<img>`,
+    // mas EXPORTAR é `fetch` (Skia.Data.fromURI, em render-photo.ts) — sem
+    // isto o preview aparece e a exportação falha, que é meia correção.
+    "connect-src 'self' data: blob: media:",
     "object-src 'none'",
     "frame-ancestors 'none'",
     "base-uri 'self'",
@@ -1158,9 +1169,27 @@ function isAuthorizedVideoPath(value: unknown): value is string {
  */
 const pickedImages = new Map<string, string>();
 
+/**
+ * Teto do registro de fotos escolhidas.
+ *
+ * Um lote grande (ou vários seguidos) acrescentaria uma entrada por foto sem
+ * nunca remover nenhuma. O `Map` mantém a ORDEM de inserção, então descartar
+ * a primeira chave descarta a escolha mais antiga — que é também a com menos
+ * chance de ainda estar na tela. O teto é folgado: o seletor do lote entrega
+ * algumas centenas por vez, e a galeria do app guarda no máximo 200.
+ */
+const MAX_PICKED_IMAGES = 1000;
+
 function registerPickedImage(filePath: string): string {
   const id = crypto.randomBytes(12).toString('hex');
   pickedImages.set(id, path.resolve(filePath));
+
+  while (pickedImages.size > MAX_PICKED_IMAGES) {
+    const oldest = pickedImages.keys().next();
+    if (oldest.done) break;
+    pickedImages.delete(oldest.value);
+  }
+
   return `media://picked/${id}`;
 }
 
@@ -1310,6 +1339,10 @@ app.on('second-instance', (_event, argv) => {
 // macOS entrega o deep link por evento, não por argv.
 app.on('open-url', (event, url) => {
   event.preventDefault();
+  // Sem janela, o evento é o que ABRIU o app: não há sessão para trocar, e
+  // o próprio arranque conta como o pedido (mesma razão do argv em
+  // `whenReady`). Com o app já aberto, a guarda e a confirmação valem.
+  if (!mainWindow) loginRequestedAt = Date.now();
   deliverLoginToken(url);
 });
 
@@ -1324,7 +1357,15 @@ app.whenReady().then(() => {
     app.setAsDefaultProtocolClient('lymark', process.execPath, [path.resolve(process.argv[1])]);
   }
 
-  // Deep link que iniciou este processo (Windows/Linux): está no argv.
+  // Deep link que INICIOU este processo (Windows/Linux): está no argv.
+  //
+  // Aqui não havia sessão para trocar — o app nem estava aberto —, então o
+  // próprio arranque por deep link conta como o pedido de login. Sem esta
+  // linha, a guarda de `deliverLoginToken` descartaria todo token de quem
+  // fecha o app antes de concluir o login no navegador.
+  if (process.argv.some((argument) => argument.startsWith('lymark://'))) {
+    loginRequestedAt = Date.now();
+  }
   for (const argument of process.argv) deliverLoginToken(argument);
   // Garantir que a pasta da galeria existe
   ensureGalleryDir();

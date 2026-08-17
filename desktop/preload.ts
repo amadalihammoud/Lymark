@@ -39,7 +39,8 @@ export interface LymarkApi {
   }>;
   pickImages: () => Promise<{
     status: 'selected' | 'cancelled' | 'failed';
-    photos?: Array<{ uri: string; width: number; height: number }>;
+    /** `name` é o nome do arquivo original — a URI é opaca. */
+    photos?: Array<{ uri: string; name?: string; width: number; height: number }>;
     error?: string;
   }>;
   selectOutputFolder: () => Promise<{
