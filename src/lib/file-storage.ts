@@ -127,8 +127,11 @@ export interface WindowLymark {
     overlay: Uint8Array,
     durationMs: number,
   ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
-  /** Progresso da composição do vídeo, em porcentagem inteira. */
-  onVideoProgress?: (callback: (percent: number) => void) => void;
+  /**
+   * Progresso da composição do vídeo, em porcentagem inteira. Devolve a
+   * função que cancela a inscrição — a tela a chama ao desmontar.
+   */
+  onVideoProgress?: (callback: (percent: number) => void) => (() => void) | void;
   /** SHA-256 (base64url) de um arquivo de vídeo, por stream. */
   hashVideoFile?: (path: string) => Promise<{ status: 'ok' | 'failed'; hash?: string }>;
   /** Anexa a caixa do selo de autenticidade ao fim do vídeo. */
@@ -141,7 +144,13 @@ export interface WindowLymark {
     pageWord: string,
     photoNames: string[],
     reportName: string,
-  ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
+  ) => Promise<{
+    status: 'saved' | 'cancelled' | 'failed';
+    path?: string;
+    error?: string;
+    /** Quantas fotos do relatório não estavam no disco e ficaram de fora. */
+    missing?: number;
+  }>;
   /** Imprime o HTML do relatório em PDF e pergunta onde salvar. */
   exportReportPdf?: (
     html: string,

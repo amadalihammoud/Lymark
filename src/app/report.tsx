@@ -43,6 +43,13 @@ import { HIT_TARGET, colors, radius, spacing, typography } from '@/theme';
  */
 const REPORT_FORMATS = ['pdf', 'word', 'csv', 'zip'] as const;
 
+/**
+ * Teto do canal de gravação do desktop (o handler `save-file` recusa acima
+ * disto). O Word carrega as fotos embutidas, então é o único formato que
+ * chega perto: um relatório de muitas fotos precisa sair em PDF ou ZIP.
+ */
+const WORD_MAX_BYTES = 50 * 1024 * 1024;
+
 type ReportFormat = (typeof REPORT_FORMATS)[number];
 
 export default function ReportScreen() {
@@ -211,6 +218,30 @@ function DesktopReportScreen() {
           `${baseName}.pdf`,
         );
         if (result.status === 'saved') {
+          // Foto que não estava no disco não entra no pacote — e o pacote é
+          // entregue como prova, então a ausência precisa ser dita.
+          if (result.missing && result.missing > 0) {
+            notify(t('zipMissing', { count: result.missing }), 'warning');
+          } else {
+            notify(result.path ? t('saved', { path: result.path }) : t('savedShort'), 'neutral');
+          }
+        } else if (result.status === 'failed') {
+          notify(t('failed'), 'warning');
+        }
+        return;
+      }
+
+      // O Word viaja com as fotos embutidas; o canal de gravação tem teto de
+      // 50 MB. Dizer o limite (e para onde ir) vale mais que um erro genérico
+      // depois de minutos redimensionando fotos.
+      if (format === 'word') {
+        const bytes = new TextEncoder().encode(html);
+        if (bytes.length > WORD_MAX_BYTES) {
+          notify(t('wordTooBig'), 'warning');
+          return;
+        }
+        const result = await bridge.saveFile(bytes, `${baseName}.doc`, 'application/msword');
+        if (result.status === 'saved') {
           notify(result.path ? t('saved', { path: result.path }) : t('savedShort'), 'neutral');
         } else if (result.status === 'failed') {
           notify(t('failed'), 'warning');
@@ -218,17 +249,7 @@ function DesktopReportScreen() {
         return;
       }
 
-      const result =
-        format === 'word'
-          ? // O Word abre HTML nativamente: um `.doc` com o documento
-            // dentro, sem dependência nova. É o caminho de quem quer
-            // EDITAR o texto antes de entregar.
-            await bridge.saveFile(
-              new TextEncoder().encode(html),
-              `${baseName}.doc`,
-              'application/msword',
-            )
-          : await bridge.exportReportPdf(html, `${baseName}.pdf`, norm, t('doc.page'));
+      const result = await bridge.exportReportPdf(html, `${baseName}.pdf`, norm, t('doc.page'));
 
       if (result.status === 'saved') {
         notify(result.path ? t('saved', { path: result.path }) : t('savedShort'), 'neutral');

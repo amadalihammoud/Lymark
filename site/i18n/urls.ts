@@ -46,6 +46,11 @@ export const ROUTES = [
   { path: '/', translated: true },
   { path: '/privacidade', translated: true },
   { path: '/termos', translated: true },
+  // A verificação pública é a URL que se manda para um cético, e sai do
+  // catálogo nas doze línguas como a landing. Sem estar aqui, ela herdava o
+  // canônico da home declarado no layout — e o buscador a tratava como
+  // duplicata da landing, removendo do índice justamente a página de prova.
+  { path: '/verificar', translated: true },
 ] as const;
 
 export type Route = (typeof ROUTES)[number]['path'];

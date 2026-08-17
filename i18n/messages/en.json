@@ -279,7 +279,9 @@
       "titleField": "Report title",
       "unavailableBody": "PDF reports are available in the desktop app.",
       "unavailableTitle": "Desktop only",
-      "uncoded": "No code"
+      "uncoded": "No code",
+      "wordTooBig": "The Word document got too large with the photos embedded. Use PDF or the ZIP package.",
+      "zipMissing": "{count, plural, one {Package saved, but # photo was not found on this device.} other {Package saved, but # photos were not found on this device.}}"
     },
     "settings": {
       "about": "About",

@@ -606,9 +606,17 @@ function splitClockSuffix(time: string): { clock: string; letters: [string, stri
   return { clock: match[1], letters: [match[2][0], match[2][1]] as [string, string] };
 }
 
-/** Corpo de cada letra da sigla: metade da tinta, com um respiro entre elas. */
+/**
+ * Corpo de cada letra da sigla: metade da tinta, com um respiro entre elas.
+ *
+ * Sem piso em pontos, de propósito. As métricas que chegam aqui já vêm
+ * escaladas (`metricsForFrame`), e os pisos daquele módulo são de TELA — na
+ * exportação ele mesmo os dispensa. Um piso fixo aqui sobrevivia à
+ * exportação de imagem pequena e empilhava `P` e `M` um sobre o outro,
+ * porque a altura da tinta encolhia e o corpo da letra não.
+ */
 function suffixLetterSize(metrics: ScaleMetrics): number {
-  return Math.max(6, Math.round(metrics.time * TIME_INK_HEIGHT_RATIO * 0.46));
+  return Math.max(1, Math.round(metrics.time * TIME_INK_HEIGHT_RATIO * 0.46));
 }
 
 /** Vão entre os algarismos e a sigla. */

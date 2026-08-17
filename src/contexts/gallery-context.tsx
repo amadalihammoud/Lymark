@@ -45,14 +45,27 @@ function reviveEntries(stored: unknown): GalleryEntry[] {
     // `uri` é o nome que o formato antigo usava para o mesmo dado.
     const path = normalizeStoredPath(candidate.path ?? candidate.uri);
 
-    if (!path || typeof candidate.id !== 'string') return [];
+    // Sem caminho recuperável não há arquivo a apagar — só o registro morto.
+    if (!path) return [];
+
+    // O arquivo tem de sair junto com o registro (ver o cabeçalho deste
+    // módulo). Um registro com caminho válido mas id ou metadata corrompidos
+    // era descartado aqui e o arquivo ficava no aparelho para sempre —
+    // invisível na galeria e inalcançável para apagar.
+    if (typeof candidate.id !== 'string') {
+      deleteExportedPhoto(path);
+      return [];
+    }
 
     // `truthy` não basta: um campo gravado como número por uma versão antiga
     // faz `.trim()` lançar, e o throw acontece dentro do `.then` da
     // hidratação — o app fica sem histórico e sem gravar, para sempre, sem
     // conserto possível dentro do aplicativo.
     const metadata = normalizeMetadata(candidate.metadata);
-    if (!metadata) return [];
+    if (!metadata) {
+      deleteExportedPhoto(path);
+      return [];
+    }
 
     // Registros gravados antes de `stampedFields` existir: assumimos que
     // todos os campos com conteúdo foram carimbados, que era o comportamento

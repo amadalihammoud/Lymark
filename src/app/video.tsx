@@ -151,7 +151,12 @@ function DesktopVideoScreen() {
   const stampTypefaces = useStampTypefaces(scriptForStamp(metadata, preferences));
 
   useEffect(() => {
-    globalThis.window?.lymark?.onVideoProgress?.((percent) => setProgress(percent));
+    // O retorno cancela a inscrição: sem isso, cada visita à tela deixava um
+    // ouvinte vivo chamando `setProgress` de um componente já desmontado.
+    const unsubscribe = globalThis.window?.lymark?.onVideoProgress?.((percent) =>
+      setProgress(percent),
+    );
+    return () => unsubscribe?.();
   }, []);
 
   const pick = async () => {
@@ -379,6 +384,14 @@ function MobileVideoScreen() {
 
     setBusy(true);
     setSaved(false);
+
+    // Declarados fora do `try` para a limpeza no `finally` os alcançar: um
+    // carimbo que falha no meio (codec sem suporte, permissão negada) deixava
+    // o PNG do quadro inteiro e o MP4 órfãos no cache a cada tentativa.
+    const stampBase = `${FileSystem.cacheDirectory}lymark-stamp-${Date.now()}`;
+    const overlayUri = `${stampBase}.png`;
+    const outputUri = `${stampBase}.mp4`;
+
     try {
       const images = await loadStampImages(preferences.brandLogoPath);
       const overlay = await composeStampOverlay({
@@ -392,9 +405,6 @@ function MobileVideoScreen() {
       // O overlay vai ao módulo por arquivo, não por bytes: atravessar a
       // ponte com um PNG de quadro inteiro em array seria cópia atrás de
       // cópia. O Transformer quer caminhos simples, sem esquema `file://`.
-      const stampBase = `${FileSystem.cacheDirectory}lymark-stamp-${Date.now()}`;
-      const overlayUri = `${stampBase}.png`;
-      const outputUri = `${stampBase}.mp4`;
       await FileSystem.writeAsStringAsync(overlayUri, bytesToBase64(overlay), {
         encoding: 'base64',
       });
@@ -411,14 +421,14 @@ function MobileVideoScreen() {
       setSaved(true);
       recordExport();
       notify(t('done'));
-
-      // Os temporários já cumpriram o papel; a cópia da galeria é a que fica.
-      void FileSystem.deleteAsync(overlayUri, { idempotent: true });
-      void FileSystem.deleteAsync(outputUri, { idempotent: true });
     } catch {
       notify(t('failed'), 'warning');
     } finally {
       setBusy(false);
+      // A cópia da galeria é a que fica — os temporários saem sempre, tenha
+      // a exportação dado certo ou não.
+      void FileSystem.deleteAsync(overlayUri, { idempotent: true });
+      void FileSystem.deleteAsync(outputUri, { idempotent: true });
     }
   };
 

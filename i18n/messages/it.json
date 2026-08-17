@@ -279,7 +279,9 @@
       "titleField": "Titolo del report",
       "unavailableBody": "Il report in PDF è disponibile nell'app per computer.",
       "unavailableTitle": "Solo sul computer",
-      "uncoded": "Senza codice"
+      "uncoded": "Senza codice",
+      "wordTooBig": "Il documento Word è diventato troppo grande con le foto incorporate. Usa il PDF o il pacchetto ZIP.",
+      "zipMissing": "{count, plural, one {Pacchetto salvato, ma # foto non è stata trovata sul dispositivo.} other {Pacchetto salvato, ma # foto non sono state trovate sul dispositivo.}}"
     },
     "settings": {
       "about": "Info",

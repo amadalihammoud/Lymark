@@ -333,6 +333,10 @@ function registerIpcHandlers() {
     try {
       const info = await probeVideo(filePath);
       const stat = fs.statSync(filePath);
+      // A escolha do usuário é o que AUTORIZA este caminho nos handlers de
+      // vídeo (ver `allowVideoPath`): sem isto, eles aceitariam qualquer
+      // caminho do disco vindo do renderer.
+      allowVideoPath(filePath);
       return {
         status: 'selected',
         path: filePath,
@@ -368,7 +372,9 @@ function registerIpcHandlers() {
         durationMs,
       }: { path: string; overlay: number[]; durationMs: number },
     ) => {
-      if (typeof inputPath !== 'string' || !Array.isArray(overlay) || overlay.length === 0) {
+      // Só um vídeo que o usuário escolheu no diálogo — o ffmpeg lê o
+      // arquivo e grava o resultado numa pasta alcançável pelo renderer.
+      if (!isAuthorizedVideoPath(inputPath) || !Array.isArray(overlay) || overlay.length === 0) {
         return { status: 'failed', error: 'Pedido inválido.' };
       }
 
@@ -440,6 +446,9 @@ function registerIpcHandlers() {
           cleanup();
           if (code === 0) {
             event.sender.send('video-progress', 100);
+            // O arquivo que acabamos de gravar é o próximo a ser hasheado e
+            // selado pelo renderer — autorizado por termos sido nós a criá-lo.
+            allowVideoPath(outputPath);
             resolve({ status: 'saved', path: outputPath });
           } else {
             // A última linha do stderr é onde o ffmpeg diz o motivo.
@@ -458,7 +467,9 @@ function registerIpcHandlers() {
    */
   ipcMain.handle('hash-video-file', async (_event, { path: filePath }: { path: string }) => {
     try {
-      if (typeof filePath !== 'string') return { status: 'failed' };
+      // Sem a autorização, isto seria um oráculo de hash sobre qualquer
+      // arquivo do disco — inclusive chaves e documentos fora do app.
+      if (!isAuthorizedVideoPath(filePath)) return { status: 'failed' };
       return { status: 'ok', hash: await hashFileSha256(filePath) };
     } catch {
       return { status: 'failed' };
@@ -469,7 +480,10 @@ function registerIpcHandlers() {
     'seal-video',
     (_event, { path: filePath, receipt }: { path: string; receipt: string }) => {
       try {
-        if (typeof filePath !== 'string' || typeof receipt !== 'string') {
+        // `appendSealBox` grava no arquivo. Sem a autorização, seria um
+        // primitivo de append em caminho arbitrário — a caixa do selo
+        // corromperia qualquer documento que o renderer apontasse.
+        if (!isAuthorizedVideoPath(filePath) || typeof receipt !== 'string') {
           return { ok: false };
         }
         appendSealBox(filePath, receipt);
@@ -576,17 +590,26 @@ function registerIpcHandlers() {
           { name: path.basename(reportName), data: pdf },
         ];
 
-        let index = 0;
-        for (const requested of photoNames) {
-          if (typeof requested !== 'string') continue;
+        // A numeração do pacote acompanha a do RELATÓRIO, não a dos arquivos
+        // que sobreviveram: se uma foto sumiu do disco (índice dessincronizado
+        // da pasta), pular sem contar faria a "Foto 3" do PDF virar o arquivo
+        // 002 do pacote — o pacote entregue como prova mentiria sobre si.
+        let missing = 0;
+        photoNames.forEach((requested, position) => {
+          if (typeof requested !== 'string') {
+            missing += 1;
+            return;
+          }
           const safeName = path.basename(requested);
           const filePath = path.join(galleryDir, safeName);
-          if (!isInside(galleryDir, filePath) || !fs.existsSync(filePath)) continue;
+          if (!isInside(galleryDir, filePath) || !fs.existsSync(filePath)) {
+            missing += 1;
+            return;
+          }
 
-          index += 1;
-          const number = String(index).padStart(3, '0');
+          const number = String(position + 1).padStart(3, '0');
           entries.push({ name: `fotos/${number}-${safeName}`, data: fs.readFileSync(filePath) });
-        }
+        });
 
         const { filePath: destination } = await dialog.showSaveDialog({
           title: translate(currentLocale, 'desktop.dialog.saveReport'),
@@ -599,7 +622,9 @@ function registerIpcHandlers() {
         if (!destination) return { status: 'cancelled' };
 
         fs.writeFileSync(destination, buildZip(entries));
-        return { status: 'saved', path: destination };
+        // `missing` volta para a tela dizer quantas fotos do relatório não
+        // estavam no disco — silêncio aqui seria o pacote parecer completo.
+        return { status: 'saved', path: destination, missing };
       } catch {
         return { status: 'failed', error: 'Operação falhou.' };
       }
@@ -1072,6 +1097,30 @@ function ffmpegPath(): string {
 
 /** Extensões aceitas no seletor de vídeo. */
 const VIDEO_EXTENSIONS = ['mp4', 'mov', 'm4v', 'avi', 'mkv', 'webm'];
+
+/**
+ * Os caminhos de vídeo que o USUÁRIO autorizou, escolhendo-os no diálogo do
+ * sistema — mais o que o próprio app gravou como saída.
+ *
+ * Os handlers de vídeo recebem caminho absoluto do renderer (é o contrato:
+ * o ffmpeg e o hash trabalham no processo principal). Sem esta lista, um
+ * renderer comprometido poderia mandar `hash-video-file` sobre `~/.ssh/id_rsa`
+ * (oráculo de hash), `seal-video` sobre qualquer arquivo (append que corrompe)
+ * ou `watermark-video` sobre um documento qualquer. A contenção por diretório
+ * não serve aqui — o vídeo pode estar em qualquer pasta do usuário —, mas a
+ * ESCOLHA dele serve: só o que passou pelo diálogo entra.
+ *
+ * A lista vive na memória do processo principal e morre com ele.
+ */
+const authorizedVideoPaths = new Set<string>();
+
+function allowVideoPath(filePath: string): void {
+  authorizedVideoPaths.add(path.resolve(filePath));
+}
+
+function isAuthorizedVideoPath(value: unknown): value is string {
+  return typeof value === 'string' && authorizedVideoPaths.has(path.resolve(value));
+}
 
 /**
  * Sonda o vídeo com o próprio ffmpeg: dimensões e duração saem do stderr de

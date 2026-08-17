@@ -279,7 +279,9 @@
       "titleField": "Titel des Berichts",
       "unavailableBody": "Der PDF-Bericht ist in der Desktop-App verfügbar.",
       "unavailableTitle": "Nur am Computer",
-      "uncoded": "Ohne Code"
+      "uncoded": "Ohne Code",
+      "wordTooBig": "Das Word-Dokument wurde mit den eingebetteten Fotos zu groß. Nutzen Sie PDF oder das ZIP-Paket.",
+      "zipMissing": "{count, plural, one {Paket gespeichert, aber # Foto wurde auf dem Gerät nicht gefunden.} other {Paket gespeichert, aber # Fotos wurden auf dem Gerät nicht gefunden.}}"
     },
     "settings": {
       "about": "Über",

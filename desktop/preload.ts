@@ -71,8 +71,14 @@ export interface LymarkApi {
     overlay: Uint8Array,
     durationMs: number,
   ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
-  /** Progresso da composição do vídeo, em porcentagem inteira. */
-  onVideoProgress: (callback: (percent: number) => void) => void;
+  /**
+   * Progresso da composição do vídeo, em porcentagem inteira.
+   *
+   * Devolve a função que cancela a inscrição: sem ela, entrar e sair da tela
+   * de vídeo acumulava um ouvinte por visita (e o Node avisa disso a partir
+   * do décimo primeiro), cada um chamando `setProgress` de uma tela morta.
+   */
+  onVideoProgress: (callback: (percent: number) => void) => () => void;
   /** SHA-256 (base64url) de um arquivo de vídeo, por stream. */
   hashVideoFile: (path: string) => Promise<{ status: 'ok' | 'failed'; hash?: string }>;
   /** Anexa a caixa do selo de autenticidade ao fim do vídeo. */
@@ -92,7 +98,13 @@ export interface LymarkApi {
     pageWord: string,
     photoNames: string[],
     reportName: string,
-  ) => Promise<{ status: 'saved' | 'cancelled' | 'failed'; path?: string; error?: string }>;
+  ) => Promise<{
+    status: 'saved' | 'cancelled' | 'failed';
+    path?: string;
+    error?: string;
+    /** Quantas fotos do relatório não estavam no disco e ficaram de fora. */
+    missing?: number;
+  }>;
   /** Token do desktop chegando pelo deep link `lymark://login`. */
   onLoginToken: (callback: (token: string) => void) => void;
   onDragDrop: (callback: (photo: { uri: string; width: number; height: number } | null) => void) => void;
@@ -159,7 +171,11 @@ export const lymarkApi: LymarkApi = {
   },
 
   onVideoProgress: (callback) => {
-    ipcRenderer.on('video-progress', (_, percent: number) => callback(percent));
+    const listener = (_: unknown, percent: number) => callback(percent);
+    ipcRenderer.on('video-progress', listener);
+    return () => {
+      ipcRenderer.removeListener('video-progress', listener);
+    };
   },
 
   hashVideoFile: async (path) => {

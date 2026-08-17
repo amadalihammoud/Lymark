@@ -279,7 +279,9 @@
       "titleField": "Titre du rapport",
       "unavailableBody": "Le rapport PDF est disponible dans l'application de bureau.",
       "unavailableTitle": "Uniquement sur ordinateur",
-      "uncoded": "Sans code"
+      "uncoded": "Sans code",
+      "wordTooBig": "Le document Word est devenu trop volumineux avec les photos intégrées. Utilisez le PDF ou le paquet ZIP.",
+      "zipMissing": "{count, plural, one {Paquet enregistré, mais # photo est introuvable sur l’appareil.} other {Paquet enregistré, mais # photos sont introuvables sur l’appareil.}}"
     },
     "settings": {
       "about": "À propos",

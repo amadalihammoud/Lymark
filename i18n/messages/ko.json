@@ -279,7 +279,9 @@
       "titleField": "보고서 제목",
       "unavailableBody": "PDF 보고서는 데스크톱 앱에서 사용할 수 있습니다.",
       "unavailableTitle": "데스크톱 전용",
-      "uncoded": "코드 없음"
+      "uncoded": "코드 없음",
+      "wordTooBig": "사진을 포함한 Word 문서가 너무 커졌습니다. PDF나 ZIP 패키지를 사용하세요.",
+      "zipMissing": "{count, plural, other {패키지를 저장했지만 사진 #장을 기기에서 찾지 못했습니다.}}"
     },
     "settings": {
       "about": "정보",
