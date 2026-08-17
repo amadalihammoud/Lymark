@@ -182,7 +182,9 @@ function DesktopVideoScreen() {
   const exportVideo = async () => {
     if (!video || busy) return;
     if (!stampTypefaces) {
-      notify(tApp('common.error'), 'warning');
+      // As fontes do carimbo carregam de forma assíncrona; "Erro" faria a
+      // pessoa achar que algo quebrou, quando basta esperar um instante.
+      notify(tApp('capture.stampNotReady'), 'warning');
       return;
     }
 
@@ -228,7 +230,15 @@ function DesktopVideoScreen() {
   return (
     <Screen>
       <Section title={t('fileSection')} padded>
-        <Button label={t('select')} variant="primary" icon="film-outline" onPress={() => void pick()} />
+        {/* Trocar o arquivo no meio da composição deixaria o carimbo de um
+            vídeo sobre outro — o botão espera a exportação terminar. */}
+        <Button
+          label={t('select')}
+          variant="primary"
+          icon="film-outline"
+          onPress={() => void pick()}
+          disabled={busy}
+        />
         {video ? (
           <Text style={[typography.caption, styles.caption]}>
             {video.name} · {video.width}x{video.height}
@@ -378,7 +388,9 @@ function MobileVideoScreen() {
   const exportVideo = async () => {
     if (!selected || busy) return;
     if (!stampTypefaces) {
-      notify(tApp('common.error'), 'warning');
+      // As fontes do carimbo carregam de forma assíncrona; "Erro" faria a
+      // pessoa achar que algo quebrou, quando basta esperar um instante.
+      notify(tApp('capture.stampNotReady'), 'warning');
       return;
     }
 
@@ -435,8 +447,20 @@ function MobileVideoScreen() {
   return (
     <Screen>
       <Section title={t('fileSection')} padded>
-        <Button label={t('record')} variant="primary" icon="videocam-outline" onPress={() => void record()} />
-        <Button label={t('select')} variant="primary" icon="film-outline" onPress={() => void pick()} />
+        <Button
+          label={t('record')}
+          variant="primary"
+          icon="videocam-outline"
+          onPress={() => void record()}
+          disabled={busy}
+        />
+        <Button
+          label={t('select')}
+          variant="primary"
+          icon="film-outline"
+          onPress={() => void pick()}
+          disabled={busy}
+        />
         {selected ? (
           <Text style={[typography.caption, styles.caption]}>
             {selected.name} · {selected.width}x{selected.height}
@@ -526,7 +550,9 @@ function WebVideoScreen() {
   const exportVideo = async () => {
     if (!selected || busy) return;
     if (!stampTypefaces) {
-      notify(tApp('common.error'), 'warning');
+      // As fontes do carimbo carregam de forma assíncrona; "Erro" faria a
+      // pessoa achar que algo quebrou, quando basta esperar um instante.
+      notify(tApp('capture.stampNotReady'), 'warning');
       return;
     }
 
@@ -570,7 +596,13 @@ function WebVideoScreen() {
         {/* O limite da web, dito antes do trabalho: tempo real, WebM, e o
             desktop como caminho para vídeo longo. */}
         <Note>{t('webNote')}</Note>
-        <Button label={t('select')} variant="primary" icon="film-outline" onPress={pick} />
+        <Button
+          label={t('select')}
+          variant="primary"
+          icon="film-outline"
+          onPress={pick}
+          disabled={busy}
+        />
         {selected ? (
           <Text style={[typography.caption, styles.caption]}>
             {selected.name} · {selected.width}x{selected.height}

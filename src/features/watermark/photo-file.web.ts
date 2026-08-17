@@ -153,7 +153,23 @@ export function writeExportedPhoto(bytes: Uint8Array): string {
   if (isDesktop() && typeof window !== 'undefined' && window.lymark?.saveToGallery) {
     // No desktop existe histórico em pasta real, então a foto é gravada assim
     // que nasce — o mesmo comportamento do celular.
-    void window.lymark.saveToGallery(bytes, fileName);
+    //
+    // A gravação não é esperada: esta função é síncrona por contrato (o lado
+    // nativo devolve o caminho na hora), e segurar a exportação por um IPC de
+    // disco atrasaria a tela sem necessidade. Mas o resultado NÃO é
+    // descartado: uma falha de escrita deixaria a galeria apontando para um
+    // arquivo que nunca existiu, e isso precisa ao menos aparecer no console
+    // de quem for investigar a miniatura quebrada.
+    void window.lymark
+      .saveToGallery(bytes, fileName)
+      .then((result) => {
+        if (result.status !== 'saved') {
+          console.warn('[export] a foto não pôde ser gravada na galeria.', result.error);
+        }
+      })
+      .catch((error: unknown) => {
+        console.warn('[export] a foto não pôde ser gravada na galeria.', error);
+      });
     return relativePath;
   }
 

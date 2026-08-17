@@ -1169,9 +1169,27 @@ function isAuthorizedVideoPath(value: unknown): value is string {
  */
 const pickedImages = new Map<string, string>();
 
+/**
+ * Teto do registro de fotos escolhidas.
+ *
+ * Um lote grande (ou vários seguidos) acrescentaria uma entrada por foto sem
+ * nunca remover nenhuma. O `Map` mantém a ORDEM de inserção, então descartar
+ * a primeira chave descarta a escolha mais antiga — que é também a com menos
+ * chance de ainda estar na tela. O teto é folgado: o seletor do lote entrega
+ * algumas centenas por vez, e a galeria do app guarda no máximo 200.
+ */
+const MAX_PICKED_IMAGES = 1000;
+
 function registerPickedImage(filePath: string): string {
   const id = crypto.randomBytes(12).toString('hex');
   pickedImages.set(id, path.resolve(filePath));
+
+  while (pickedImages.size > MAX_PICKED_IMAGES) {
+    const oldest = pickedImages.keys().next();
+    if (oldest.done) break;
+    pickedImages.delete(oldest.value);
+  }
+
   return `media://picked/${id}`;
 }
 

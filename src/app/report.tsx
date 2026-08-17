@@ -324,15 +324,21 @@ function DesktopReportScreen() {
             placeholder={t('doc.title')}
           />
           <FieldRow label={t('authorField')} value={author} onChangeText={setAuthor} />
-          {logoUri ? (
-            <ToggleRow
-              title={t('includeLogo')}
-              description={t('includeLogoDescription')}
-              value={includeLogo}
-              onValueChange={setIncludeLogo}
-              showDivider={false}
-            />
-          ) : null}
+        </Section>
+      ) : null}
+
+      {/* O interruptor do logo vem em cartão próprio, SEM `padded`: o
+          `ToggleRow` já traz o respiro interno, e dentro de um cartão
+          acolchoado ele saía desalinhado dos campos ao lado. */}
+      {format !== 'csv' && logoUri ? (
+        <Section title={t('includeLogo')}>
+          <ToggleRow
+            title={t('includeLogo')}
+            description={t('includeLogoDescription')}
+            value={includeLogo}
+            onValueChange={setIncludeLogo}
+            showDivider={false}
+          />
         </Section>
       ) : null}
 
