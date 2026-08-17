@@ -279,7 +279,9 @@
       "titleField": "Título del informe",
       "unavailableBody": "El informe en PDF está disponible en la aplicación de escritorio.",
       "unavailableTitle": "Solo en la computadora",
-      "uncoded": "Sin código"
+      "uncoded": "Sin código",
+      "wordTooBig": "El documento de Word quedó demasiado grande con las fotos incrustadas. Usa PDF o el paquete ZIP.",
+      "zipMissing": "{count, plural, one {Paquete guardado, pero no se encontró # foto en el dispositivo.} other {Paquete guardado, pero no se encontraron # fotos en el dispositivo.}}"
     },
     "settings": {
       "about": "Acerca de",
@@ -437,6 +439,12 @@
       "pickPhotos": "Seleccionar fotos para el lote",
       "savePhoto": "Guardar foto",
       "saveReport": "Guardar informe"
+    },
+    "login": {
+      "cancel": "Cancelar",
+      "confirm": "Continuar",
+      "message": "Acabas de iniciar sesión en el navegador. ¿Continuar y usar esta cuenta en esta computadora?",
+      "title": "Iniciar sesión en Lymark"
     },
     "menu": {
       "copy": "Copiar",

@@ -279,7 +279,9 @@
       "titleField": "Titel van het rapport",
       "unavailableBody": "Het PDF-rapport is beschikbaar in de desktop-app.",
       "unavailableTitle": "Alleen op de computer",
-      "uncoded": "Zonder code"
+      "uncoded": "Zonder code",
+      "wordTooBig": "Het Word-document werd te groot met de ingesloten foto’s. Gebruik pdf of het ZIP-pakket.",
+      "zipMissing": "{count, plural, one {Pakket opgeslagen, maar # foto is niet op het apparaat gevonden.} other {Pakket opgeslagen, maar # foto’s zijn niet op het apparaat gevonden.}}"
     },
     "settings": {
       "about": "Over",
@@ -437,6 +439,12 @@
       "pickPhotos": "Foto’s voor de batch selecteren",
       "savePhoto": "Foto opslaan",
       "saveReport": "Rapport opslaan"
+    },
+    "login": {
+      "cancel": "Annuleren",
+      "confirm": "Doorgaan",
+      "message": "Je bent zojuist ingelogd in de browser. Doorgaan en dit account op deze computer gebruiken?",
+      "title": "Inloggen bij Lymark"
     },
     "menu": {
       "copy": "Kopiëren",

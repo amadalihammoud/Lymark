@@ -279,7 +279,9 @@
       "titleField": "보고서 제목",
       "unavailableBody": "PDF 보고서는 데스크톱 앱에서 사용할 수 있습니다.",
       "unavailableTitle": "데스크톱 전용",
-      "uncoded": "코드 없음"
+      "uncoded": "코드 없음",
+      "wordTooBig": "사진을 포함한 Word 문서가 너무 커졌습니다. PDF나 ZIP 패키지를 사용하세요.",
+      "zipMissing": "{count, plural, other {패키지를 저장했지만 사진 #장을 기기에서 찾지 못했습니다.}}"
     },
     "settings": {
       "about": "정보",
@@ -437,6 +439,12 @@
       "pickPhotos": "일괄 처리할 사진 선택",
       "savePhoto": "사진 저장",
       "saveReport": "보고서 저장"
+    },
+    "login": {
+      "cancel": "취소",
+      "confirm": "계속",
+      "message": "브라우저에서 방금 로그인했습니다. 이 컴퓨터에서 이 계정을 사용할까요?",
+      "title": "Lymark 로그인"
     },
     "menu": {
       "copy": "복사",

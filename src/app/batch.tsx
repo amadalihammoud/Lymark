@@ -54,15 +54,15 @@ export default function BatchProcessingScreen() {
     loadOutputFolder();
   }, [disponivel, loadOutputFolder]);
 
-  // Configurar drag and drop ao montar o componente
+  // Arrastar fotos para a janela acrescenta ao lote. A escuta é cancelada ao
+  // sair da tela — senão cada visita deixaria um ouvinte de `drop` vivo.
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.lymark?.onDragDrop) {
-      window.lymark.onDragDrop((photo) => {
-        if (photo) {
-          setPhotos((prev) => [...prev, photo]);
-        }
-      });
-    }
+    const unsubscribe = globalThis.window?.lymark?.onDragDrop?.((photo) => {
+      if (photo) {
+        setPhotos((prev) => [...prev, photo]);
+      }
+    });
+    return () => unsubscribe?.();
   }, []);
 
   // Handler para selecionar fotos

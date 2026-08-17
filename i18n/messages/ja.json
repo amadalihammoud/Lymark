@@ -279,7 +279,9 @@
       "titleField": "レポートのタイトル",
       "unavailableBody": "PDFレポートはデスクトップ版アプリで利用できます。",
       "unavailableTitle": "デスクトップ版のみ",
-      "uncoded": "コードなし"
+      "uncoded": "コードなし",
+      "wordTooBig": "写真を埋め込んだWord文書が大きくなりすぎました。PDFかZIPパッケージをお使いください。",
+      "zipMissing": "{count, plural, other {パッケージを保存しましたが、#枚の写真が端末で見つかりませんでした。}}"
     },
     "settings": {
       "about": "について",
@@ -437,6 +439,12 @@
       "pickPhotos": "一括処理する写真を選択",
       "savePhoto": "写真を保存",
       "saveReport": "レポートを保存"
+    },
+    "login": {
+      "cancel": "キャンセル",
+      "confirm": "続ける",
+      "message": "ブラウザでログインしました。このパソコンでこのアカウントを使用しますか?",
+      "title": "Lymarkにログイン"
     },
     "menu": {
       "copy": "コピー",

@@ -279,7 +279,9 @@
       "titleField": "报告标题",
       "unavailableBody": "PDF 报告可在电脑版应用中使用。",
       "unavailableTitle": "仅限电脑端",
-      "uncoded": "无代码"
+      "uncoded": "无代码",
+      "wordTooBig": "嵌入照片后的 Word 文档过大。请使用 PDF 或 ZIP 压缩包。",
+      "zipMissing": "{count, plural, other {已保存压缩包,但有 # 张照片未在设备上找到。}}"
     },
     "settings": {
       "about": "关于",
@@ -437,6 +439,12 @@
       "pickPhotos": "选择要批量处理的照片",
       "savePhoto": "保存照片",
       "saveReport": "保存报告"
+    },
+    "login": {
+      "cancel": "取消",
+      "confirm": "继续",
+      "message": "您刚在浏览器中登录。要在这台电脑上使用该账户吗?",
+      "title": "登录 Lymark"
     },
     "menu": {
       "copy": "复制",

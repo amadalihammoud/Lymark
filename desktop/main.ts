@@ -17,6 +17,7 @@ import {
   REPORT_NORMS,
   type ReportNorm,
 } from './report-pdf';
+import { displayDimensions } from './video-rotation';
 import { appendSealBox, hashFileSha256 } from './video-seal';
 import { buildZip, type ZipEntry } from './zip';
 import { DEFAULT_LOCALE, availableLocales, translate } from './i18n';
@@ -312,8 +313,11 @@ function registerIpcHandlers() {
    * as lojas exigem exclusão de conta acionável de dentro do aplicativo.
    */
   ipcMain.handle('open-account-page', async (_event, args?: { page?: unknown }) => {
-    const url =
-      args?.page === 'delete' ? 'https://lymark.app/conta/excluir' : ACCOUNT_HANDOFF_URL;
+    const deleting = args?.page === 'delete';
+    const url = deleting ? 'https://lymark.app/conta/excluir' : ACCOUNT_HANDOFF_URL;
+    // Abrir o login é o que autoriza a volta pelo deep link (ver
+    // `deliverLoginToken`): sem um pedido recente, nenhum token é aceito.
+    if (!deleting) loginRequestedAt = Date.now();
     await shell.openExternal(url);
     return { ok: true };
   });
@@ -333,6 +337,10 @@ function registerIpcHandlers() {
     try {
       const info = await probeVideo(filePath);
       const stat = fs.statSync(filePath);
+      // A escolha do usuário é o que AUTORIZA este caminho nos handlers de
+      // vídeo (ver `allowVideoPath`): sem isto, eles aceitariam qualquer
+      // caminho do disco vindo do renderer.
+      allowVideoPath(filePath);
       return {
         status: 'selected',
         path: filePath,
@@ -368,7 +376,9 @@ function registerIpcHandlers() {
         durationMs,
       }: { path: string; overlay: number[]; durationMs: number },
     ) => {
-      if (typeof inputPath !== 'string' || !Array.isArray(overlay) || overlay.length === 0) {
+      // Só um vídeo que o usuário escolheu no diálogo — o ffmpeg lê o
+      // arquivo e grava o resultado numa pasta alcançável pelo renderer.
+      if (!isAuthorizedVideoPath(inputPath) || !Array.isArray(overlay) || overlay.length === 0) {
         return { status: 'failed', error: 'Pedido inválido.' };
       }
 
@@ -440,6 +450,9 @@ function registerIpcHandlers() {
           cleanup();
           if (code === 0) {
             event.sender.send('video-progress', 100);
+            // O arquivo que acabamos de gravar é o próximo a ser hasheado e
+            // selado pelo renderer — autorizado por termos sido nós a criá-lo.
+            allowVideoPath(outputPath);
             resolve({ status: 'saved', path: outputPath });
           } else {
             // A última linha do stderr é onde o ffmpeg diz o motivo.
@@ -458,7 +471,9 @@ function registerIpcHandlers() {
    */
   ipcMain.handle('hash-video-file', async (_event, { path: filePath }: { path: string }) => {
     try {
-      if (typeof filePath !== 'string') return { status: 'failed' };
+      // Sem a autorização, isto seria um oráculo de hash sobre qualquer
+      // arquivo do disco — inclusive chaves e documentos fora do app.
+      if (!isAuthorizedVideoPath(filePath)) return { status: 'failed' };
       return { status: 'ok', hash: await hashFileSha256(filePath) };
     } catch {
       return { status: 'failed' };
@@ -469,7 +484,10 @@ function registerIpcHandlers() {
     'seal-video',
     (_event, { path: filePath, receipt }: { path: string; receipt: string }) => {
       try {
-        if (typeof filePath !== 'string' || typeof receipt !== 'string') {
+        // `appendSealBox` grava no arquivo. Sem a autorização, seria um
+        // primitivo de append em caminho arbitrário — a caixa do selo
+        // corromperia qualquer documento que o renderer apontasse.
+        if (!isAuthorizedVideoPath(filePath) || typeof receipt !== 'string') {
           return { ok: false };
         }
         appendSealBox(filePath, receipt);
@@ -576,17 +594,26 @@ function registerIpcHandlers() {
           { name: path.basename(reportName), data: pdf },
         ];
 
-        let index = 0;
-        for (const requested of photoNames) {
-          if (typeof requested !== 'string') continue;
+        // A numeração do pacote acompanha a do RELATÓRIO, não a dos arquivos
+        // que sobreviveram: se uma foto sumiu do disco (índice dessincronizado
+        // da pasta), pular sem contar faria a "Foto 3" do PDF virar o arquivo
+        // 002 do pacote — o pacote entregue como prova mentiria sobre si.
+        let missing = 0;
+        photoNames.forEach((requested, position) => {
+          if (typeof requested !== 'string') {
+            missing += 1;
+            return;
+          }
           const safeName = path.basename(requested);
           const filePath = path.join(galleryDir, safeName);
-          if (!isInside(galleryDir, filePath) || !fs.existsSync(filePath)) continue;
+          if (!isInside(galleryDir, filePath) || !fs.existsSync(filePath)) {
+            missing += 1;
+            return;
+          }
 
-          index += 1;
-          const number = String(index).padStart(3, '0');
+          const number = String(position + 1).padStart(3, '0');
           entries.push({ name: `fotos/${number}-${safeName}`, data: fs.readFileSync(filePath) });
-        }
+        });
 
         const { filePath: destination } = await dialog.showSaveDialog({
           title: translate(currentLocale, 'desktop.dialog.saveReport'),
@@ -599,7 +626,9 @@ function registerIpcHandlers() {
         if (!destination) return { status: 'cancelled' };
 
         fs.writeFileSync(destination, buildZip(entries));
-        return { status: 'saved', path: destination };
+        // `missing` volta para a tela dizer quantas fotos do relatório não
+        // estavam no disco — silêncio aqui seria o pacote parecer completo.
+        return { status: 'saved', path: destination, missing };
       } catch {
         return { status: 'failed', error: 'Operação falhou.' };
       }
@@ -764,13 +793,14 @@ function registerIpcHandlers() {
     // `file://` + caminho cru produz URI inválida no Windows: barras
     // invertidas, sem a terceira barra, e espaço ou `#` no nome quebram tudo.
     // `pathToFileURL` codifica corretamente nas três plataformas.
-    const uri = pathToFileURL(filePath).href;
-
     try {
+      // As dimensões vêm ANTES da URI: sem elas a foto não é utilizável, e
+      // `selected` com 0x0 fazia o preview sair com proporção de espaço
+      // reservado e o lote nomear o arquivo `..._0x0.jpg`. Falhar é o certo.
       const { width, height } = readImageSize(filePath);
-      return { status: 'selected', uri, width, height };
+      return { status: 'selected', uri: registerPickedImage(filePath), width, height };
     } catch {
-      return { status: 'selected', uri, width: 0, height: 0 };
+      return { status: 'failed', error: 'A imagem não pôde ser lida.' };
     }
   });
 
@@ -794,7 +824,7 @@ function registerIpcHandlers() {
     for (const filePath of filePaths) {
       try {
         const { width, height } = readImageSize(filePath);
-        results.push({ uri: pathToFileURL(filePath).href, width, height });
+        results.push({ uri: registerPickedImage(filePath), width, height });
       } catch {
         // Um arquivo ilegível não pode derrubar o lote inteiro.
         continue;
@@ -854,7 +884,7 @@ function registerIpcHandlers() {
       return null; // Arquivo não existe ou não é acessível
     }
       const { width, height } = readImageSize(filePath);
-      return { uri: pathToFileURL(filePath).href, width, height };
+      return { uri: registerPickedImage(filePath), width, height };
     } catch {
       return null;
     }
@@ -1007,13 +1037,32 @@ function createProtocol() {
  */
 function createMediaProtocol() {
   protocol.handle('media', (request) => {
-    let requestedName: string;
+    let url: URL;
     try {
-      requestedName = path.basename(decodeURIComponent(new URL(request.url).pathname));
+      url = new URL(request.url);
     } catch {
       return new Response('Bad Request', { status: 400 });
     }
 
+    // `media://picked/<id>` — uma foto que o usuário escolheu no diálogo,
+    // em qualquer pasta do disco. O renderer nunca vê nem escolhe o caminho:
+    // recebe só o identificador que `pick-image` cunhou (ver `pickedImages`).
+    if (url.hostname === 'picked') {
+      const id = path.basename(decodeURIComponent(url.pathname));
+      const picked = pickedImages.get(id);
+      if (!picked || !fs.existsSync(picked)) {
+        return new Response('Not Found', { status: 404 });
+      }
+
+      const type = CONTENT_TYPES[path.extname(picked).toLowerCase()];
+      if (!type?.startsWith('image/')) {
+        return new Response('Forbidden', { status: 403 });
+      }
+
+      return new Response(fs.readFileSync(picked), { headers: { 'Content-Type': type } });
+    }
+
+    const requestedName = path.basename(decodeURIComponent(url.pathname));
     const galleryDir = ensureGalleryDir();
     const filePath = path.join(galleryDir, requestedName);
 
@@ -1074,6 +1123,48 @@ function ffmpegPath(): string {
 const VIDEO_EXTENSIONS = ['mp4', 'mov', 'm4v', 'avi', 'mkv', 'webm'];
 
 /**
+ * Os caminhos de vídeo que o USUÁRIO autorizou, escolhendo-os no diálogo do
+ * sistema — mais o que o próprio app gravou como saída.
+ *
+ * Os handlers de vídeo recebem caminho absoluto do renderer (é o contrato:
+ * o ffmpeg e o hash trabalham no processo principal). Sem esta lista, um
+ * renderer comprometido poderia mandar `hash-video-file` sobre `~/.ssh/id_rsa`
+ * (oráculo de hash), `seal-video` sobre qualquer arquivo (append que corrompe)
+ * ou `watermark-video` sobre um documento qualquer. A contenção por diretório
+ * não serve aqui — o vídeo pode estar em qualquer pasta do usuário —, mas a
+ * ESCOLHA dele serve: só o que passou pelo diálogo entra.
+ *
+ * A lista vive na memória do processo principal e morre com ele.
+ */
+const authorizedVideoPaths = new Set<string>();
+
+function allowVideoPath(filePath: string): void {
+  authorizedVideoPaths.add(path.resolve(filePath));
+}
+
+function isAuthorizedVideoPath(value: unknown): value is string {
+  return typeof value === 'string' && authorizedVideoPaths.has(path.resolve(value));
+}
+
+/**
+ * As fotos que o usuário escolheu no diálogo (ou arrastou), por identificador.
+ *
+ * A janela roda sobre `app://`, e a CSP não deixa `<img>` nem `fetch`
+ * carregarem `file:` — então uma foto escolhida em qualquer pasta do disco
+ * precisa ser servida por um esquema autorizado. É a mesma razão que criou o
+ * `media://` para a galeria. Aqui o renderer recebe só um `id` opaco
+ * (`media://picked/<id>`), nunca o caminho: ele não escolhe o que é lido, e
+ * a origem do caminho continua sendo a escolha do usuário.
+ */
+const pickedImages = new Map<string, string>();
+
+function registerPickedImage(filePath: string): string {
+  const id = crypto.randomBytes(12).toString('hex');
+  pickedImages.set(id, path.resolve(filePath));
+  return `media://picked/${id}`;
+}
+
+/**
  * Sonda o vídeo com o próprio ffmpeg: dimensões e duração saem do stderr de
  * `ffmpeg -i` (que termina com código 1 por não ter saída — esperado).
  * O ffprobe não vem no `ffmpeg-static`, e para dois números o ffmpeg basta.
@@ -1091,19 +1182,18 @@ function probeVideo(filePath: string): Promise<{
     });
     child.on('error', reject);
     child.on('close', () => {
-      const dimensions = /Video:.*?\s(\d{2,5})x(\d{2,5})/.exec(stderr);
+      // As dimensões de EXIBIÇÃO — já com a rotação declarada aplicada, que
+      // é o quadro que o filtro do ffmpeg entrega (ver `video-rotation.ts`).
+      const size = displayDimensions(stderr);
       const duration = /Duration:\s*(\d+):(\d\d):(\d\d(?:\.\d+)?)/.exec(stderr);
-      if (!dimensions || !duration) {
+      if (!size || !duration) {
         reject(new Error('O arquivo não pôde ser lido como vídeo.'));
         return;
       }
       const durationMs =
         (Number(duration[1]) * 3600 + Number(duration[2]) * 60 + Number(duration[3])) * 1000;
-      resolve({
-        width: Number(dimensions[1]),
-        height: Number(dimensions[2]),
-        durationMs,
-      });
+
+      resolve({ width: size.width, height: size.height, durationMs });
     });
   });
 }
@@ -1121,18 +1211,67 @@ const ACCOUNT_HANDOFF_URL = 'https://lymark.app/conta/desktop';
 /** Token que chegou antes de a janela existir — entregue no primeiro load. */
 let pendingLoginToken: string | null = null;
 
+/**
+ * Quando este app pediu um login (abriu o handoff no navegador).
+ *
+ * O deep link é uma porta que QUALQUER programa da máquina — ou um link numa
+ * página — pode bater: `lymark://login#token=…` com o token de outra conta
+ * trocaria a sessão de quem estiver usando o app, sem uma palavra na tela, e
+ * dali em diante os recibos do selo sairiam no nome de outra pessoa.
+ *
+ * Duas guardas, e as duas simples: o token só é aceito se ESTE app tiver
+ * aberto o login há pouco, e ainda assim a troca é confirmada por quem está
+ * na frente da máquina. Um login legítimo passa por ambas sem atrito — a
+ * pessoa acabou de clicar em "Entrar" e está esperando exatamente isso.
+ */
+let loginRequestedAt = 0;
+
+/** Quanto tempo um pedido de login continua valendo. */
+const LOGIN_WINDOW_MS = 10 * 60 * 1000;
+
 function extractLoginToken(candidate: string): string | null {
   if (!candidate.startsWith('lymark://')) return null;
   const match = /#token=([^&\s]+)/.exec(candidate);
   return match ? match[1] : null;
 }
 
+/**
+ * Confirma com quem está na máquina antes de trocar a sessão.
+ *
+ * `null` de janela é o caso do app aberto PELO deep link: aí não há sessão
+ * para roubar (ninguém estava usando), e o pedido recente já basta.
+ */
+async function confirmLoginToken(): Promise<boolean> {
+  if (!mainWindow) return true;
+
+  const { response } = await dialog.showMessageBox(mainWindow, {
+    type: 'question',
+    buttons: [
+      translate(currentLocale, 'desktop.login.confirm'),
+      translate(currentLocale, 'desktop.login.cancel'),
+    ],
+    defaultId: 0,
+    cancelId: 1,
+    title: translate(currentLocale, 'desktop.login.title'),
+    message: translate(currentLocale, 'desktop.login.message'),
+  });
+
+  return response === 0;
+}
+
 function deliverLoginToken(candidate: string) {
   const token = extractLoginToken(candidate);
   if (!token) return;
 
+  // Ninguém pediu login por aqui: o link veio de fora, e entrar em silêncio
+  // seria trocar a conta de quem está usando o aplicativo.
+  if (Date.now() - loginRequestedAt > LOGIN_WINDOW_MS) return;
+  loginRequestedAt = 0;
+
   if (mainWindow && !mainWindow.webContents.isLoading()) {
-    mainWindow.webContents.send('login-token', token);
+    void confirmLoginToken().then((confirmed) => {
+      if (confirmed && mainWindow) mainWindow.webContents.send('login-token', token);
+    });
   } else {
     // A janela ainda não está de pé (o app acabou de ser aberto pelo próprio
     // deep link). Guardar e entregar quando o load terminar — ver

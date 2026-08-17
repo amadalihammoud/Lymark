@@ -90,6 +90,28 @@ describe('buildStampGeometry — o essencial', () => {
     expect(bottom!.baseline).toBeGreaterThan(top!.baseline);
   });
 
+  it('sigla 12h não se sobrepõe em quadro pequeno: P e M cabem na tinta', () => {
+    // Exportação de imagem miúda: as métricas encolhem junto. Um piso em
+    // pontos na sigla (que é de tela) empilhava as duas letras uma sobre a
+    // outra no arquivo final.
+    const tiny = { width: 100, height: 75 };
+    const g = buildStampGeometry({
+      content: { ...content, time: '2:30 PM' },
+      preferences: { ...DEFAULT_WATERMARK_PREFERENCES, scale: 'small' },
+      frame: tiny,
+      measure,
+      allowGrowth: true,
+    });
+
+    const clock = find(g, '2:30');
+    const top = find(g, 'P');
+    const bottom = find(g, 'M');
+    expect(clock && top && bottom).toBeTruthy();
+    // Cada letra ocupa no máximo o próprio corpo acima da linha de base; se
+    // a de baixo começa depois de a de cima terminar, não há sobreposição.
+    expect(bottom!.baseline - top!.baseline).toBeGreaterThanOrEqual(bottom!.size);
+  });
+
   it('hora que não tem a cara do app é desenhada como veio', () => {
     const g = buildStampGeometry({
       content: { ...content, time: 'por volta das 14h' },

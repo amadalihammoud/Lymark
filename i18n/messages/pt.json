@@ -279,7 +279,9 @@
       "titleField": "Título do relatório",
       "unavailableBody": "O relatório em PDF está disponível no aplicativo de computador.",
       "unavailableTitle": "Somente no computador",
-      "uncoded": "Sem código"
+      "uncoded": "Sem código",
+      "wordTooBig": "O documento do Word ficou grande demais com as fotos embutidas. Use PDF ou o pacote ZIP.",
+      "zipMissing": "{count, plural, one {Pacote salvo, mas # foto não foi encontrada no aparelho.} other {Pacote salvo, mas # fotos não foram encontradas no aparelho.}}"
     },
     "settings": {
       "about": "Sobre",
@@ -437,6 +439,12 @@
       "pickPhotos": "Selecionar fotos para o lote",
       "savePhoto": "Salvar foto",
       "saveReport": "Salvar relatório"
+    },
+    "login": {
+      "cancel": "Cancelar",
+      "confirm": "Continuar",
+      "message": "Você acabou de entrar no navegador. Continuar e usar esta conta neste computador?",
+      "title": "Entrar no Lymark"
     },
     "menu": {
       "copy": "Copiar",
