@@ -90,7 +90,7 @@ export interface WindowLymark {
     filename: string,
   ) => Promise<{ status: 'saved' | 'failed'; path?: string; error?: string }>;
   pickImage?: () => Promise<PickResult>;
-  pickImages?: () => Promise<{ status: 'selected' | 'cancelled' | 'failed'; photos?: Array<{ uri: string; width: number; height: number }>; error?: string }>;
+  pickImages?: () => Promise<{ status: 'selected' | 'cancelled' | 'failed'; photos?: Array<{ uri: string; name?: string; width: number; height: number }>; error?: string }>;
   selectOutputFolder?: () => Promise<FolderResult>;
   getOutputFolder?: () => Promise<{ path: string }>;
   // O preload já resolve o caminho em dimensões antes de chamar de volta, e
