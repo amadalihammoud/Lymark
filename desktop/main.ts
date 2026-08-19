@@ -415,7 +415,33 @@ function registerIpcHandlers() {
           '-crf', '18',
           '-pix_fmt', 'yuv420p',
           '-movflags', '+faststart',
-          '-map_metadata', '0',
+          /*
+           * Nenhum metadado do arquivo de origem atravessa.
+           *
+           * Era `'-map_metadata', '0'`, que copia o bloco global do arquivo
+           * de entrada — e vídeo de celular traz ali a coordenada exata da
+           * gravação (`com.apple.quicktime.location.ISO6709` no iPhone, o
+           * átomo `©xyz` no Android), além de marca e modelo do aparelho.
+           *
+           * O que torna isso um defeito, e não uma escolha, é a assimetria
+           * com a foto: ela é recomposta pelo Skia e re-encodada em
+           * `render-photo.ts`, o que descarta o EXIF inteiro, GPS incluído.
+           * Quem exporta as duas coisas pelo mesmo botão tem toda razão de
+           * supor que se comportam igual — e o vídeo carimbado existe para
+           * ser ENTREGUE a um cliente, a uma seguradora ou à parte contrária.
+           *
+           * O agravante é de precisão: o endereço carimbado é abreviado para
+           * caber em duas linhas e resolve a rua; o átomo preservado dava
+           * latitude e longitude com precisão de metros. O app promete que
+           * "as fotos, os endereços e o histórico ficam apenas neste
+           * aparelho", e o artefato que ele existe para entregar carregava
+           * uma localização mais precisa do que a que o usuário escolheu
+           * declarar.
+           *
+           * A rotação não depende disto: ela é matriz de exibição do fluxo,
+           * o filtro já a aplicou na entrada, e a saída sai sem girar.
+           */
+          '-map_metadata', '-1',
           outputPath,
         ]);
 
@@ -1093,6 +1119,40 @@ function createMediaProtocol() {
 }
 
 /**
+ * O que o documento do relatório pode fazer — que é quase nada.
+ *
+ * Este HTML vem do RENDERER (`export-report-pdf` o recebe por IPC e o entrega
+ * inalterado), e a janela que o carrega não tinha política nenhuma. A janela
+ * principal está presa a esquemas locais justamente para as fotos não saírem
+ * do aparelho; sem esta política, o processo principal abria — a pedido do
+ * renderer — uma segunda janela sem essa trava, e o que a CSP do `app://`
+ * barra saía por ela. Foi reproduzido: `fetch`, `navigator.sendBeacon` e um
+ * `<img>` apontando para fora alcançaram a rede durante o `loadURL`, antes
+ * mesmo de o diálogo de salvar aparecer — cancelar não desfazia nada.
+ *
+ * O molde de `report-html.ts` não tem uma linha de script: é `<style>` em
+ * linha e `<img>` de `media://` (as fotos) e `data:` (o logotipo). Então
+ * `default-src 'none'` cobre tudo o que não está listado, e o que sobra é
+ * exatamente o necessário para imprimir:
+ *
+ * - sem `script-src` → nenhum script executa, em linha ou não;
+ * - sem `connect-src` → cai em `'none'`: `fetch`, `sendBeacon` e WebSocket
+ *   não têm para onde ir;
+ * - `img-src` sem `https:` → o `<img>` também não vaza.
+ */
+const REPORT_CSP = [
+  "default-src 'none'",
+  // As fotos chegam por `media://` e o logotipo por `data:`.
+  'img-src media: data: blob:',
+  // O molde escreve o CSS num `<style>` — não há folha externa.
+  "style-src 'unsafe-inline'",
+  "font-src data:",
+  "base-uri 'none'",
+  "form-action 'none'",
+  "frame-ancestors 'none'",
+].join('; ');
+
+/**
  * Serve o HTML do relatório à janela oculta que o imprime.
  *
  * Não lê disco nem aceita caminho: responde SEMPRE o documento pendente do
@@ -1105,7 +1165,10 @@ function createReportProtocol() {
     if (html === null) return new Response('Not Found', { status: 404 });
 
     return new Response(html, {
-      headers: { 'Content-Type': 'text/html; charset=utf-8' },
+      headers: {
+        'Content-Type': 'text/html; charset=utf-8',
+        'Content-Security-Policy': REPORT_CSP,
+      },
     });
   });
 }
@@ -1267,11 +1330,19 @@ function extractLoginToken(candidate: string): string | null {
 /**
  * Confirma com quem está na máquina antes de trocar a sessão.
  *
- * `null` de janela é o caso do app aberto PELO deep link: aí não há sessão
- * para roubar (ninguém estava usando), e o pedido recente já basta.
+ * Sem janela não há como perguntar, e a resposta certa aí é NÃO entregar
+ * ainda — não "entregar sem perguntar". A versão anterior devolvia `true`
+ * quando `mainWindow` era `null`, com o argumento de que o app aberto pelo
+ * próprio deep link não tem sessão para roubar. O argumento está certo e é
+ * irrelevante: o ataque não é roubar a sessão de quem está usando, é
+ * PLANTAR uma. Um site hostil navega para `lymark://login#token=<token do
+ * atacante>` com o app fechado, a vítima aceita o "abrir Lymark?" genérico
+ * do navegador, e passa a assinar todo selo de autenticidade com a conta de
+ * outra pessoa. Quem confirma agora é `flushPendingLoginToken`, já com a
+ * janela de pé.
  */
 async function confirmLoginToken(): Promise<boolean> {
-  if (!mainWindow) return true;
+  if (!mainWindow) return false;
 
   const { response } = await dialog.showMessageBox(mainWindow, {
     type: 'question',
@@ -1316,8 +1387,19 @@ function deliverLoginToken(candidate: string) {
 
 export function flushPendingLoginToken(contents: Electron.WebContents) {
   if (!pendingLoginToken) return;
-  contents.send('login-token', pendingLoginToken);
+
+  // O token é consumido aqui aconteça o que acontecer: confirmado, entra;
+  // recusado, morre. Deixá-lo pendente faria a pergunta voltar no próximo
+  // `did-finish-load` — e um recarregamento não é um novo pedido de login.
+  const token = pendingLoginToken;
   pendingLoginToken = null;
+
+  // A confirmação que o arranque a frio pulava. Só agora existe janela para
+  // exibi-la, e é este o único caminho por onde um token de app fechado
+  // chega ao renderer.
+  void confirmLoginToken().then((confirmed) => {
+    if (confirmed) contents.send('login-token', token);
+  });
 }
 
 // Instância única: no Windows e no Linux o deep link abre uma segunda
@@ -1339,9 +1421,10 @@ app.on('second-instance', (_event, argv) => {
 // macOS entrega o deep link por evento, não por argv.
 app.on('open-url', (event, url) => {
   event.preventDefault();
-  // Sem janela, o evento é o que ABRIU o app: não há sessão para trocar, e
-  // o próprio arranque conta como o pedido (mesma razão do argv em
-  // `whenReady`). Com o app já aberto, a guarda e a confirmação valem.
+  // Sem janela, o evento é o que ABRIU o app: o próprio arranque conta como
+  // o pedido (mesma razão do argv em `whenReady`). A confirmação não é
+  // dispensada — só adiada para `flushPendingLoginToken`, que a faz assim
+  // que a janela existe.
   if (!mainWindow) loginRequestedAt = Date.now();
   deliverLoginToken(url);
 });
@@ -1359,10 +1442,11 @@ app.whenReady().then(() => {
 
   // Deep link que INICIOU este processo (Windows/Linux): está no argv.
   //
-  // Aqui não havia sessão para trocar — o app nem estava aberto —, então o
-  // próprio arranque por deep link conta como o pedido de login. Sem esta
-  // linha, a guarda de `deliverLoginToken` descartaria todo token de quem
-  // fecha o app antes de concluir o login no navegador.
+  // O arranque por deep link conta como o pedido de login: sem esta linha, a
+  // guarda de `deliverLoginToken` descartaria todo token de quem fecha o app
+  // antes de concluir o login no navegador. Isto satisfaz só a PRIMEIRA das
+  // duas guardas — a segunda, a confirmação humana, é cobrada em
+  // `flushPendingLoginToken`, quando já há janela para perguntar.
   if (process.argv.some((argument) => argument.startsWith('lymark://'))) {
     loginRequestedAt = Date.now();
   }
