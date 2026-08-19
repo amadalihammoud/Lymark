@@ -47,6 +47,20 @@ export function isMp4(bytes: Uint8Array): boolean {
  * Percorre só os CABEÇALHOS — oito bytes por caixa, nunca o conteúdo — e
  * respeita as duas formas especiais de tamanho do padrão: `1` (tamanho de
  * 64 bits a seguir) e `0` (a caixa vai até o fim do arquivo).
+ *
+ * A caixa só vale NO FIM DO ARQUIVO, que é onde este módulo a anexa e o que
+ * o cabeçalho aqui em cima já prometia. Aceitá-la em qualquer fronteira
+ * fazia um recibo autenticar um CONJUNTO de arquivos em vez de um: como o
+ * recibo prende `sha256(arquivo sem a caixa)`, todo arquivo da forma
+ * "original + caixa em alguma fronteira" produzia os mesmos bytes despidos,
+ * o mesmo hash e a mesma assinatura válida.
+ *
+ * No JPEG isso seria inócuo — um segmento COM é inerte e o formato não tem
+ * deslocamento absoluto. No MP4 não é: `stco`/`co64`, dentro do `moov`, são
+ * OFFSETS ABSOLUTOS DE ARQUIVO. Mover a caixa do fim para antes do `mdat`
+ * empurra todas as amostras pelo tamanho dela, e o reprodutor passa a
+ * decodificar outros bytes. Foi demonstrado com o ffmpeg do projeto: os dois
+ * arquivos davam "Íntegra" na página de verificação, e só um tocava.
  */
 function findSealBox(
   bytes: Uint8Array,
@@ -73,7 +87,8 @@ function findSealBox(
     }
     if (size < headerLength || offset + size > bytes.length) return null;
 
-    if (type === BOX_TYPE) {
+    // Só a caixa que TERMINA no fim do arquivo conta — ver o cabeçalho.
+    if (type === BOX_TYPE && offset + size === bytes.length) {
       const payload = bytes.subarray(offset + headerLength, offset + size);
       const text = asciiToString(payload);
       if (text !== null && text.startsWith(SEAL_PREFIX)) {

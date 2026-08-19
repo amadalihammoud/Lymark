@@ -97,6 +97,21 @@ export async function renderReportPdf(
     },
   });
 
+  /*
+   * As mesmas travas que a janela principal tem, e que esta não tinha.
+   *
+   * `will-navigate` e `setWindowOpenHandler` estão registrados em
+   * `mainWindow.webContents` — são por janela, não por aplicativo, então esta
+   * nascia sem nenhum dos dois. A `REPORT_CSP` já impede script de rodar
+   * aqui, o que torna difícil chegar a `window.open`; mas navegação de topo
+   * não é coberta por CSP em lugar nenhum, e uma janela que só existe para
+   * imprimir um documento local não tem por que sair de `report://`.
+   */
+  window.webContents.on('will-navigate', (event, url) => {
+    if (!url.startsWith('report://')) event.preventDefault();
+  });
+  window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+
   try {
     await window.loadURL('report://document/index.html');
 

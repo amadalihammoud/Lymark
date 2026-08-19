@@ -1,12 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
-import { FONT_COVERAGE } from '../../src/features/watermark/font-coverage';
+import { FONT_COVERAGE } from '@/features/watermark/font-coverage';
 import {
   STAMP_FONT_SCRIPTS,
   scriptFor,
   type StampFontScript,
-} from '../../src/features/watermark/stamp-script';
+} from '@/features/watermark/stamp-script';
 import { MONTHS, STAMP_LOCALE, WEEKDAYS_SHORT, stampCanDraw } from '../calendar';
 import { LOCALES } from '../locales';
 

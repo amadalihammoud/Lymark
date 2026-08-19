@@ -41,6 +41,31 @@ describe('o selo no MP4', () => {
     expect(stripSealMp4(mp4)).toBe(mp4);
   });
 
+  it('a caixa do selo só vale no FIM: transplantada para o meio, não autentica', () => {
+    const mp4 = tinyMp4();
+    const box = buildSealBox(RECEIPT);
+
+    // A: como o app grava — a caixa anexada ao fim.
+    const noFim = new Uint8Array([...mp4, ...box]);
+    // B: os MESMOS bytes, com a caixa movida para logo depois do `ftyp`.
+    // O `ftyp` de `tinyMp4` tem 16 bytes; o `mdat` vem depois.
+    const noMeio = new Uint8Array([...mp4.subarray(0, 16), ...box, ...mp4.subarray(16)]);
+
+    expect(noMeio.length).toBe(noFim.length);
+    expect(extractSealMp4(noFim)).toBe(RECEIPT);
+
+    /*
+     * O ponto do teste. Antes, B também devolvia o recibo e `stripSealMp4`
+     * reconstruía o original byte a byte — mesmo hash, mesma assinatura,
+     * veredito "Íntegra" na página de verificação. Só que `stco`/`co64` são
+     * offsets ABSOLUTOS: num arquivo real, mover a caixa desloca todas as
+     * amostras e o arquivo deixa de tocar. Um recibo passava a autenticar um
+     * conjunto de arquivos em vez de um.
+     */
+    expect(extractSealMp4(noMeio)).toBeNull();
+    expect(stripSealMp4(noMeio)).toBe(noMeio);
+  });
+
   it('caixa alheia de tipo desconhecido não é confundida com o selo', () => {
     const mp4 = tinyMp4();
     const foreign = new Uint8Array([0x00, 0x00, 0x00, 0x0c, 0x66, 0x72, 0x65, 0x65, 1, 2, 3, 4]);
