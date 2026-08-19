@@ -19,6 +19,14 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
  * token só precisa reautenticar a sincronização — quem manda no acesso é o
  * entitlement e seus três relógios, nunca o token. Vencido, a pessoa entra
  * pelo navegador de novo.
+ *
+ * O payload carrega `iat` além de `{ sub, exp }`, e é ele que torna o token
+ * REVOGÁVEL. Sem isso, um token capturado valia noventa dias corridos e não
+ * havia como cortá-lo: sair do aplicativo apagava só a cópia local, e nem a
+ * exclusão da conta o invalidava — ele seguia emitindo selos Ed25519 com o
+ * `sub` da vítima. Quem confere o `iat` contra a data de revogação é o
+ * `clerkStore`, que já fala com o Clerk; aqui só o carimbamos e o
+ * devolvemos.
  */
 
 export const DESKTOP_TOKEN_DAYS = 90;
@@ -28,17 +36,35 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 
 export function mintDesktopToken(userId: string, secret: string, now: Date = new Date()): string {
   const payload = base64url(
-    JSON.stringify({ sub: userId, exp: now.getTime() + DESKTOP_TOKEN_DAYS * DAY_MS }),
+    JSON.stringify({
+      sub: userId,
+      iat: now.getTime(),
+      exp: now.getTime() + DESKTOP_TOKEN_DAYS * DAY_MS,
+    }),
   );
   return `${VERSION}.${payload}.${sign(payload, secret)}`;
 }
 
-/** Devolve o `userId` do token, ou `null` se ele não vale. Não lança. */
+/** Quem é o dono do token, e de quando ele é. */
+export interface DesktopTokenClaims {
+  sub: string;
+  /**
+   * Quando foi emitido, em milissegundos.
+   *
+   * `0` para os tokens da primeira versão, que não traziam `iat`. É o valor
+   * seguro: qualquer data de revogação é posterior a zero, então um token
+   * antigo morre no primeiro corte — e, enquanto ninguém revoga nada, ele
+   * continua valendo como antes.
+   */
+  iat: number;
+}
+
+/** Devolve as reivindicações do token, ou `null` se ele não vale. Não lança. */
 export function verifyDesktopToken(
   token: string,
   secret: string,
   now: Date = new Date(),
-): string | null {
+): DesktopTokenClaims | null {
   const parts = token.split('.');
   if (parts.length !== 3 || parts[0] !== VERSION) return null;
   const [, payload, signature] = parts;
@@ -55,11 +81,11 @@ export function verifyDesktopToken(
   }
   if (typeof claims !== 'object' || claims === null) return null;
 
-  const { sub, exp } = claims as Record<string, unknown>;
+  const { sub, exp, iat } = claims as Record<string, unknown>;
   if (typeof sub !== 'string' || sub.length === 0) return null;
   if (typeof exp !== 'number' || now.getTime() >= exp) return null;
 
-  return sub;
+  return { sub, iat: typeof iat === 'number' ? iat : 0 };
 }
 
 function sign(payload: string, secret: string): string {

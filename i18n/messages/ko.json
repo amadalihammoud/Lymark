@@ -483,7 +483,9 @@
       "signUpTitle": "계정 만들기",
       "subscribe": "Lymark Pro 구독",
       "subscribeSoon": "구독은 아직 제공되지 않습니다. 제공되면 여기서 구독하고 같은 계정으로 어떤 기기에서든 쓸 수 있습니다.",
-      "title": "내 계정"
+      "title": "내 계정",
+      "revokeDesktops": "컴퓨터 연결 해제",
+      "revokeDesktopsHint": "모든 컴퓨터에서 앱의 접근을 종료합니다. 언제든지 다시 로그인할 수 있습니다."
     },
     "availability": {
       "contact": "출시 소식을 받아보거나 문제를 알리려면 <email>contato@lymark.app</email>으로 메일을 보내주세요.",

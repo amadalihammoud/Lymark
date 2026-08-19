@@ -483,7 +483,9 @@
       "signUpTitle": "Account aanmaken",
       "subscribe": "Abonneer op Lymark Pro",
       "subscribeSoon": "Een betaald abonnement is nog niet beschikbaar. Zodra dat zo is, kun je het hier afsluiten en elk apparaat met hetzelfde account gebruiken.",
-      "title": "Je account"
+      "title": "Je account",
+      "revokeDesktops": "Computers loskoppelen",
+      "revokeDesktopsHint": "Beëindigt de toegang van de app op alle computers. U kunt zich altijd opnieuw aanmelden."
     },
     "availability": {
       "contact": "Om de lancering te volgen of een probleem te melden, schrijf naar <email>contato@lymark.app</email>.",

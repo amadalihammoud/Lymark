@@ -110,6 +110,25 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
         <a href="https://app.lymark.app">{t('openApp')}</a>
       </p>
 
+      {/*
+        Desconectar os computadores.
+
+        O token que o deep link leva ao aplicativo vale noventa dias e é
+        assinado — antes disto, nada o cortava: sair do aplicativo apagava só
+        a cópia local. E no Windows e no Linux o sistema entrega o link como
+        argumento do processo, então em máquina compartilhada o token fica
+        visível para quem estiver logado ali. Este é o botão de cortar.
+
+        Formulário, e não link: por GET, um prefetch do navegador desconectaria
+        os computadores de quem só passou pela página.
+      */}
+      <form action="/api/desktop-revoke" method="post" className="account-revoke">
+        <button type="submit" className="account-revoke-button">
+          {t('revokeDesktops')}
+        </button>
+        <span className="account-revoke-hint">{t('revokeDesktopsHint')}</span>
+      </form>
+
       <p className="account-actions">
         <Link href="/">{t('backHome')}</Link>
         <SignOutButton>

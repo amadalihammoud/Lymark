@@ -483,7 +483,9 @@
       "signUpTitle": "Create account",
       "subscribe": "Subscribe to Lymark Pro",
       "subscribeSoon": "Subscriptions are not available yet. When they are, you will be able to subscribe here and use any device with the same account.",
-      "title": "Your account"
+      "title": "Your account",
+      "revokeDesktops": "Disconnect computers",
+      "revokeDesktopsHint": "Ends the app's access on every computer. You can sign in again whenever you want."
     },
     "availability": {
       "contact": "To follow the launch or report a problem, write to <email>contato@lymark.app</email>.",

@@ -483,7 +483,9 @@
       "signUpTitle": "创建账号",
       "subscribe": "订阅 Lymark Pro",
       "subscribeSoon": "订阅功能尚未开放。开放后，您可以在这里订阅，并用同一账号在任何设备上使用。",
-      "title": "您的账号"
+      "title": "您的账号",
+      "revokeDesktops": "断开所有电脑",
+      "revokeDesktopsHint": "结束应用在所有电脑上的访问权限。你可以随时重新登录。"
     },
     "availability": {
       "contact": "如需关注发布进展或反馈问题，请写信至 <email>contato@lymark.app</email>。",
