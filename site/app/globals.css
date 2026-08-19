@@ -885,6 +885,39 @@ footer.site a:hover {
   color: var(--amber);
 }
 
+/* Desconectar computadores: mesma pele do sair, com a explicação ao lado —
+   é uma ação de segurança, e quem clica precisa saber o que ela alcança.
+   Empilha no celular, onde os dois lado a lado apertariam o texto. */
+.account-revoke {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.account-revoke-button {
+  background: none;
+  border: 1px solid var(--navy-500);
+  color: var(--text);
+  border-radius: 0.6rem;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  cursor: pointer;
+  flex: none;
+}
+
+.account-revoke-button:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+.account-revoke-hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  flex: 1 1 18rem;
+}
+
 /* ------------------------------------------------------------- verificação */
 
 /* O botão de escolher arquivo com a mesma pele do CTA âmbar — é a única

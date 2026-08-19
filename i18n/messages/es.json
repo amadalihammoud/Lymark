@@ -483,7 +483,9 @@
       "signUpTitle": "Crear cuenta",
       "subscribe": "Suscribirse a Lymark Pro",
       "subscribeSoon": "La suscripción todavía no está disponible. Cuando lo esté, podrás suscribirte aquí y usar cualquier dispositivo con la misma cuenta.",
-      "title": "Tu cuenta"
+      "title": "Tu cuenta",
+      "revokeDesktops": "Desconectar ordenadores",
+      "revokeDesktopsHint": "Finaliza el acceso de la aplicación en todos los ordenadores. Puedes volver a entrar cuando quieras."
     },
     "availability": {
       "contact": "Para seguir el lanzamiento o informar de un problema, escriba a <email>contato@lymark.app</email>.",

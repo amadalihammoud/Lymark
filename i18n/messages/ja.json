@@ -483,7 +483,9 @@
       "signUpTitle": "アカウント作成",
       "subscribe": "Lymark Pro に登録",
       "subscribeSoon": "有料プランはまだ提供していません。提供開始後はここで購読でき、同じアカウントでどの端末でも使えます。",
-      "title": "アカウント"
+      "title": "アカウント",
+      "revokeDesktops": "パソコンの接続を解除",
+      "revokeDesktopsHint": "すべてのパソコンでアプリのアクセスを終了します。いつでも再度サインインできます。"
     },
     "availability": {
       "contact": "リリース情報の受け取りや不具合のご報告は <email>contato@lymark.app</email> までお願いします。",
