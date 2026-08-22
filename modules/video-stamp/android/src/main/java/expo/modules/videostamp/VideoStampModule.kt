@@ -11,6 +11,7 @@ import androidx.media3.common.audio.AudioProcessor
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.effect.BitmapOverlay
 import androidx.media3.effect.OverlayEffect
+import androidx.media3.effect.TextureOverlay
 import androidx.media3.transformer.Composition
 import androidx.media3.transformer.EditedMediaItem
 import androidx.media3.transformer.Effects
@@ -60,7 +61,10 @@ class VideoStampModule : Module() {
           }
 
           val overlay = BitmapOverlay.createStaticBitmapOverlay(bitmap)
-          val videoEffects = ImmutableList.of<Effect>(OverlayEffect(ImmutableList.of(overlay)))
+          // O construtor de OverlayEffect recebe List<TextureOverlay> — generics
+          // de Java são invariantes, então a lista precisa ser tipada na
+          // superclasse, não em BitmapOverlay.
+          val videoEffects = ImmutableList.of<Effect>(OverlayEffect(ImmutableList.of<TextureOverlay>(overlay)))
 
           val editedItem = EditedMediaItem.Builder(MediaItem.fromUri(Uri.parse(inputUri)))
             .setEffects(Effects(ImmutableList.of<AudioProcessor>(), videoEffects))
