@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&family=IBM+Plex+Mono:wght@500&family=Space+Grotesk:wght@400;500;700&family=Pathway+Gothic+One&display=swap">
+  <style>
+    body { margin: 0; background: #15243C; color: #FFFFFF; font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #F3C218; } a:hover { color: #D9A700; }
+    .section { display: flex; flex-direction: column; gap: 8px; }
+    .section-title { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: #93A9C0; }
+    .caption { font-weight: 400; font-size: 12px; line-height: 1.45; color: #8DA4BA; }
+    .card { background: #233B63; border-radius: 8px; overflow: hidden; }
+    .padded { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .toggle-row { min-height: 56px; display: flex; align-items: center; gap: 12px; padding: 12px 16px; box-sizing: border-box; }
+    .toggle-row + .toggle-row { border-top: 1px solid #294675; }
+    .tr-label { flex: 1; font-weight: 500; font-size: 16px; color: #FFFFFF; }
+    .tr-desc { font-weight: 400; font-size: 12px; color: #8DA4BA; margin-top: 2px; line-height: 1.4; }
+    .switch { width: 44px; height: 26px; flex: none; border-radius: 999px; background: #F3C218; position: relative; }
+    .switch::after { content: ''; position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; border-radius: 50%; background: #15243C; }
+    .switch.off { background: #294675; }
+    .switch.off::after { right: auto; left: 3px; background: #93A9C0; }
+    .choice-grid { display: flex; flex-wrap: wrap; padding: 8px; }
+    .choice { min-height: 48px; display: flex; align-items: center; justify-content: center; padding: 10px; border-radius: 5px; border: 2px solid transparent; font-weight: 500; font-size: 14px; color: #FFFFFF; text-align: center; box-sizing: border-box; line-height: 1.2; }
+    .choice.sel { background: #F3C218; border-color: #F3C218; color: #0F192A; font-weight: 700; }
+    .w2 { width: 50%; } .w3 { width: 33.33%; }
+    .swatch { width: 40px; height: 40px; border-radius: 5px; border: 2px solid transparent; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+    .swatch.sel { border-color: #F3C218; }
+    .swatch .fill { width: 78%; height: 78%; border-radius: 3px; border: 1px solid #294675; box-sizing: border-box; }
+    .field-label { font-weight: 500; font-size: 13px; letter-spacing: 0.2px; color: #93A9C0; }
+    .input { min-height: 52px; background: #233B63; border-radius: 5px; padding: 12px 16px; display: flex; align-items: center; font-weight: 500; font-size: 16px; color: #FFFFFF; box-sizing: border-box; }
+    .srow { display: flex; align-items: flex-start; }
+  </style>
+</helmet>
+
+<div style="width: 390px; min-height: 2380px; box-sizing: border-box; background: #15243C; padding: 16px 16px 32px; display: flex; flex-direction: column; gap: 24px;">
+
+  <!-- Cabeçalho da rota empilhada -->
+  <div style="display: flex; align-items: center; gap: 12px; padding-top: 8px;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"></path></svg>
+    <span style="font-weight: 700; font-size: 22px;">Marca d&rsquo;água</span>
+  </div>
+
+  <!-- Pré-visualização -->
+  <div class="section">
+    <div class="section-title">Pré-visualização</div>
+    <div class="caption">Do claro ao escuro, para conferir a legibilidade nos dois extremos.</div>
+    <div style="position: relative; height: 150px; border-radius: 8px; overflow: hidden; border: 1px solid #294675; background: linear-gradient(100deg, #E9E4D8 0%, #9AA0A8 48%, #12161D 100%);">
+      <div style="position: absolute; left: 8px; bottom: 8px; text-shadow: 0 1px 3px rgba(0,0,0,0.85);">
+        <div class="srow">
+          <span style="font-family: 'Pathway Gothic One', 'Arial Narrow', sans-serif; font-size: 34px; line-height: 1; color: #FFFFFF;">07:42</span>
+          <span style="flex: none; width: 2px; font-size: 34px; height: 0.7267em; margin: 0.1633em 0.18em 0 0.3em; background: #F3C218;"></span>
+          <span style="display: flex; flex-direction: column; justify-content: space-between; font-size: 34px; margin-top: 0.1633em; height: 0.7267em;">
+            <span style="font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 9px; line-height: 1; color: #FFFFFF;">12 ago. 2026</span>
+            <span style="font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 9px; line-height: 1; color: #FFFFFF;">Qua</span>
+          </span>
+        </div>
+        <div style="font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 9px; line-height: 1.42; color: #FFFFFF; margin-top: 3px;">Av. Puglisi, 490 - Centro, Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Campos exibidos -->
+  <div class="section">
+    <div class="section-title">Campos exibidos</div>
+    <div class="caption">Só entram na foto os campos ligados que tiverem conteúdo.</div>
+    <div class="card">
+      <div class="toggle-row"><span class="tr-label">Hora</span><span class="switch"></span></div>
+      <div class="toggle-row"><span class="tr-label">Data</span><span class="switch"></span></div>
+      <div class="toggle-row"><span class="tr-label">Dia da semana</span><span class="switch"></span></div>
+      <div class="toggle-row"><span class="tr-label">Endereço / Local</span><span class="switch"></span></div>
+      <div class="toggle-row"><span class="tr-label">Código de foto</span><span class="switch"></span></div>
+    </div>
+  </div>
+
+  <!-- Posição -->
+  <div class="section">
+    <div class="section-title">Posição</div>
+    <div class="caption">Canto da foto onde o bloco é ancorado.</div>
+    <div class="card choice-grid">
+      <div class="choice w2">Superior esquerdo</div>
+      <div class="choice w2">Superior direito</div>
+      <div class="choice sel w2">Inferior esquerdo</div>
+      <div class="choice w2">Inferior direito</div>
+    </div>
+  </div>
+
+  <!-- Tamanho do texto -->
+  <div class="section">
+    <div class="section-title">Tamanho do texto</div>
+    <div class="card choice-grid">
+      <div class="choice w3">Pequeno</div>
+      <div class="choice sel w3">Médio</div>
+      <div class="choice w3">Grande</div>
+    </div>
+  </div>
+
+  <!-- Formato da hora -->
+  <div class="section">
+    <div class="section-title">Formato da hora</div>
+    <div class="caption">Como a hora é preenchida nos campos. O campo continua editável.</div>
+    <div class="card choice-grid">
+      <div class="choice sel w2">24 horas</div>
+      <div class="choice w2">12 horas (AM/PM)</div>
+    </div>
+  </div>
+
+  <!-- Cores do carimbo -->
+  <div class="section">
+    <div class="section-title">Cores do carimbo</div>
+    <div class="caption">A cor da foto é uma escolha da empresa, e não do aplicativo — mexer aqui não muda as cores da tela.</div>
+    <div class="card padded">
+      <div class="caption">Barra vertical</div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <div class="swatch"><div class="fill" style="background: #FFFFFF;"></div></div>
+        <div class="swatch sel"><div class="fill" style="background: #F3C218;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #FF6B57;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #5BD98A;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #63B3ED;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #111820;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #294675; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 700; font-size: 14px;">+</div></div>
+      </div>
+      <div class="caption">Texto</div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <div class="swatch sel"><div class="fill" style="background: #FFFFFF;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #F3C218;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #FF6B57;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #5BD98A;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #63B3ED;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #111820;"></div></div>
+        <div class="swatch"><div class="fill" style="background: #294675; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 700; font-size: 14px;">+</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Código de foto -->
+  <div class="section">
+    <div class="section-title">Código de foto</div>
+    <div class="caption">Na lateral ele não disputa espaço com o conteúdo da imagem.</div>
+    <div class="card choice-grid">
+      <div class="choice sel w2">Lateral direita</div>
+      <div class="choice w2">Junto aos dados</div>
+    </div>
+  </div>
+
+  <!-- Marca carimbada -->
+  <div class="section">
+    <div class="section-title">Marca carimbada</div>
+    <div class="caption">Acima do relógio ela vira assinatura, com logotipo e complemento. Num canto, é uma linha discreta.</div>
+    <div class="card choice-grid">
+      <div class="choice w3">Acima do relógio</div>
+      <div class="choice sel w3">Num canto</div>
+      <div class="choice w3">Nenhuma</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="field-label">Primeira parte</div>
+        <div class="input">Ly</div>
+        <div class="field-label" style="margin-top: 4px;">Cor da primeira parte</div>
+        <div style="display: flex; gap: 8px;">
+          <div class="swatch sel"><div class="fill" style="background: #FFFFFF;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #F3C218;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #FF6B57;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #5BD98A;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #63B3ED;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #111820;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #294675; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 700; font-size: 14px;">+</div></div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="field-label">Segunda parte</div>
+        <div class="input">mark</div>
+        <div class="field-label" style="margin-top: 4px;">Cor da segunda parte</div>
+        <div style="display: flex; gap: 8px;">
+          <div class="swatch"><div class="fill" style="background: #FFFFFF;"></div></div>
+          <div class="swatch sel"><div class="fill" style="background: #F3C218;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #FF6B57;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #5BD98A;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #63B3ED;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #111820;"></div></div>
+          <div class="swatch"><div class="fill" style="background: #294675; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 700; font-size: 14px;">+</div></div>
+        </div>
+      </div>
+      <div class="caption" style="padding: 0 12px;">Deixe a segunda parte vazia para uma marca de cor única. Nome comprido tem o corpo reduzido até caber, em vez de ser cortado.</div>
+      <div class="card choice-grid">
+        <div class="choice w2">Superior esquerdo</div>
+        <div class="choice sel w2">Superior direito</div>
+        <div class="choice w2">Inferior esquerdo</div>
+        <div class="choice w2">Inferior direito</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Faixa de fundo -->
+  <div class="section">
+    <div class="section-title">Faixa de fundo</div>
+    <div class="caption">Garante contraste sobre áreas claras da foto. Sem ela, o texto fica direto sobre a imagem, com sombra.</div>
+    <div class="card choice-grid">
+      <div class="choice sel w3">Nenhuma</div>
+      <div class="choice w3">Atrás do texto</div>
+      <div class="choice w3">Faixa contínua</div>
+    </div>
+  </div>
+
+  <!-- Legibilidade -->
+  <div class="section">
+    <div class="section-title">Legibilidade</div>
+    <div class="card">
+      <div class="toggle-row">
+        <span style="flex: 1;">
+          <span class="tr-label" style="display: block;">Incluir o país</span>
+          <span class="tr-desc" style="display: block;">Ligue se você presta serviço em mais de um país. Fora isso, só ocupa espaço na foto.</span>
+        </span>
+        <span class="switch off"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Restaurar padrão -->
+  <div style="min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: 5px; border: 1px solid #4A76A1; color: #C7D6E4; font-weight: 700; font-size: 16px;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C7D6E4" stroke-width="2" stroke-linecap="round"><path d="M20 8a8.1 8.1 0 0 0-15.5 2M4 16a8.1 8.1 0 0 0 15.5-2"></path><path d="M20 3v5h-5M4 21v-5h5"></path></svg>
+    Restaurar padrão
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

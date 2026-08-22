@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&family=IBM+Plex+Mono:wght@500&family=Space+Grotesk:wght@400;500;700&family=Pathway+Gothic+One&display=swap">
+  <style>
+    body { margin: 0; background: #15243C; color: #FFFFFF; font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #F3C218; } a:hover { color: #D9A700; }
+    figure { margin: 0; display: flex; flex-direction: column; gap: 10px; width: 300px; }
+    .photo { position: relative; width: 300px; height: 400px; overflow: hidden; border: 1px solid #294675; background: radial-gradient(120% 90% at 78% 12%, rgba(74,118,161,0.28), transparent 58%), linear-gradient(168deg, #1C3151, #0F192A); }
+    .photo .wire { position: absolute; inset: 0; background-image: linear-gradient(#294675 1px, transparent 1px), linear-gradient(90deg, #294675 1px, transparent 1px); background-size: 36px 36px; opacity: 0.14; }
+    .cap { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #C7D6E4; }
+    .cap em { font-style: normal; color: #F3C218; }
+    .sub { font-size: 12px; line-height: 1.5; color: #8DA4BA; }
+    .stamp { position: absolute; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.85); bottom: 8px; left: 8px; }
+    .srow { display: flex; align-items: flex-start; }
+    .clock { font-family: 'Pathway Gothic One', 'Arial Narrow', sans-serif; font-weight: 400; line-height: 1; color: #FFFFFF; }
+    .rule { flex: none; width: 2px; height: 0.7267em; margin: 0.1633em 0.18em 0 0.3em; background: #F3C218; }
+    .stack { display: flex; flex-direction: column; justify-content: space-between; margin-top: 0.1633em; height: 0.7267em; }
+    .stack span, .addr { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; line-height: 1; color: #FFFFFF; }
+    .addr { line-height: 1.42; margin-top: 4px; }
+  </style>
+</helmet>
+
+<div style="width: 1004px; height: 560px; box-sizing: border-box; background: #15243C; padding: 28px; display: flex; gap: 24px; align-content: flex-start;">
+
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="srow" style="font-size: 30px;">
+          <span class="clock" style="font-size: 30px;">07:42</span><span class="rule" style="font-size: 30px;"></span>
+          <span class="stack" style="font-size: 30px;"><span style="font-size: 8px;">12 ago. 2026</span><span style="font-size: 8px;">Qua</span></span>
+        </div>
+        <div class="addr" style="font-size: 8px;">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap">Pequeno</figcaption>
+    <div class="sub">Hora 36 pt na calibração; o mais discreto sobre a imagem — pede foto limpa para seguir legível.</div>
+  </figure>
+
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="srow" style="font-size: 40px;">
+          <span class="clock" style="font-size: 40px;">07:42</span><span class="rule" style="font-size: 40px;"></span>
+          <span class="stack" style="font-size: 40px;"><span style="font-size: 11px;">12 ago. 2026</span><span style="font-size: 11px;">Qua</span></span>
+        </div>
+        <div class="addr" style="font-size: 11px;">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap">Médio <em>&middot; padrão</em></figcaption>
+    <div class="sub">Hora 47 pt — o corpo calibrado contra a referência, medida a medida.</div>
+  </figure>
+
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="srow" style="font-size: 50px;">
+          <span class="clock" style="font-size: 50px;">07:42</span><span class="rule" style="font-size: 50px; width: 3px;"></span>
+          <span class="stack" style="font-size: 50px;"><span style="font-size: 14px;">12 ago. 2026</span><span style="font-size: 14px;">Qua</span></span>
+        </div>
+        <div class="addr" style="font-size: 14px;">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap">Grande</figcaption>
+    <div class="sub">Hora 59 pt; para leitura à distância ou impressão do registro.</div>
+  </figure>
+
+</div>
+</x-dc>
+</body>
+</html>

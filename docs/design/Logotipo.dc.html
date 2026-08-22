@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=IBM+Plex+Mono:wght@500&family=Space+Grotesk:wght@400;500;700&family=Pathway+Gothic+One&display=swap">
+  <style>
+    body { margin: 0; background: #15243C; color: #FFFFFF; font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #F3C218; } a:hover { color: #D9A700; }
+    figure { margin: 0; display: flex; flex-direction: column; gap: 10px; width: 340px; }
+    .photo { position: relative; width: 340px; height: 420px; overflow: hidden; border: 1px solid #294675; background: radial-gradient(120% 90% at 78% 12%, rgba(74,118,161,0.28), transparent 58%), linear-gradient(168deg, #1C3151, #0F192A); }
+    .photo .wire { position: absolute; inset: 0; background-image: linear-gradient(#294675 1px, transparent 1px), linear-gradient(90deg, #294675 1px, transparent 1px); background-size: 36px 36px; opacity: 0.14; }
+    .cap { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #C7D6E4; display: flex; align-items: center; gap: 8px; }
+    .chip { flex: none; font-size: 9px; letter-spacing: 1px; padding: 3px 7px; border-radius: 3px; border: 1px solid #4A76A1; color: #C7D6E4; }
+    .chip.nova { border-color: #F3C218; color: #F3C218; }
+    .sub { font-size: 12px; line-height: 1.5; color: #8DA4BA; }
+    .stamp { position: absolute; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.85); bottom: 10px; left: 10px; }
+    .srow { display: flex; align-items: flex-start; }
+    .clock { font-family: 'Pathway Gothic One', 'Arial Narrow', sans-serif; font-weight: 400; font-size: 45px; line-height: 1; color: #FFFFFF; }
+    .rule { flex: none; width: 2px; font-size: 45px; height: 0.7267em; margin: 0.1633em 0.18em 0 0.3em; background: #F3C218; }
+    .stack { display: flex; flex-direction: column; justify-content: space-between; font-size: 45px; margin-top: 0.1633em; height: 0.7267em; }
+    .stack span, .addr { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 12px; line-height: 1; color: #FFFFFF; }
+    .addr { line-height: 1.42; margin-top: 4px; }
+    .lname { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 19px; line-height: 1.1; letter-spacing: 0.023em; color: #FFFFFF; }
+    .lcomp { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.023em; color: #FFFFFF; }
+    .amber { color: #F3C218; }
+    .wordmark-logo { display: flex; align-items: center; gap: 5px; font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 700; color: #FFFFFF; }
+  </style>
+</helmet>
+
+<div style="width: 760px; height: 1096px; box-sizing: border-box; background: #15243C; padding: 28px; display: flex; flex-wrap: wrap; gap: 24px; align-content: flex-start;">
+
+  <!-- 1. Hoje: logotipo quadrado -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 14px;">
+          <svg width="28" height="28" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2.2"></rect><path d="M7 15 L12 8 L17 15" stroke="#F3C218" stroke-width="2.2" fill="none"></path></svg>
+          <span>
+            <span class="lname">Construtora <span class="amber">Silva</span></span>
+            <span class="lcomp" style="display: block; margin-top: 2px;">Vistorias e laudos técnicos</span>
+          </span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip">hoje</span> Logotipo quadrado</figcaption>
+    <div class="sub">A altura do logo acompanha o texto: o topo alinha com o topo do nome e a base, com a linha do complemento. É o caso que o código atual resolve bem.</div>
+  </figure>
+
+  <!-- 2. Hoje: logotipo largo é contido -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 14px;">
+          <span class="wordmark-logo" style="height: 18px;">
+            <svg width="15" height="15" viewBox="0 0 24 24"><path d="M20 4 H6 a2 2 0 0 0-2 2 V20" fill="none" stroke="#F3C218" stroke-width="3.4"></path></svg>
+            <span style="font-size: 11px; letter-spacing: 0.04em;">TERRAVISTA</span>
+          </span>
+          <span>
+            <span class="lname">Terravista <span class="amber">Engenharia</span></span>
+            <span class="lcomp" style="display: block; margin-top: 2px;">Obras e fundações</span>
+          </span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip">hoje</span> Logotipo largo é contido</figcaption>
+    <div class="sub">Acima de 2,4 de proporção o logo perde altura — nunca é esticado nem cortado. Uma assinatura horizontal acaba virando um selo pequeno ao lado do nome.</div>
+  </figure>
+
+  <!-- 3. Proposta: logotipo em pé, título e subtítulo -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 16px;">
+          <svg width="46" height="60" viewBox="0 0 46 60"><path d="M23 2 L44 8 V30 C44 45 35 54 23 58 C11 54 2 45 2 30 V8 Z" fill="none" stroke="#FFFFFF" stroke-width="2.5"></path><path d="M9 13 H37" stroke="#F3C218" stroke-width="4"></path><circle cx="23" cy="33" r="7" fill="#F3C218"></circle></svg>
+          <span>
+            <span style="display: block; font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 700; font-size: 22px; line-height: 1.05; letter-spacing: 0.02em; color: #FFFFFF;">PREFEITURA</span>
+            <span style="display: block; font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.22em; color: #F3C218; margin-top: 4px;">GUARUJÁ</span>
+          </span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip nova">proposta</span> Em pé: título e subtítulo</figcaption>
+    <div class="sub">Para brasões e selos verticais: o logo cresce até as duas linhas de texto — título grande em cima e subtítulo embaixo, ou o inverso, cada um com cor própria. O brasão aqui é um desenho genérico de exemplo.</div>
+  </figure>
+
+  <!-- 4. Proposta: logotipo largo na largura do bloco -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="wordmark-logo" style="width: 158px; height: 34px; margin-bottom: 14px; justify-content: flex-start;">
+          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M20 4 H6 a2 2 0 0 0-2 2 V20" fill="none" stroke="#F3C218" stroke-width="3.4"></path></svg>
+          <span style="font-size: 21px; letter-spacing: 0.04em;">TERRAVISTA</span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip nova">proposta</span> Largo: na largura do bloco</figcaption>
+    <div class="sub">A assinatura adota a largura do bloco de dados, acima do horário, com teto de altura para não dominar a foto. Dispensa o nome em texto ao lado — o logo é a assinatura.</div>
+  </figure>
+
+</div>
+</x-dc>
+</body>
+</html>
