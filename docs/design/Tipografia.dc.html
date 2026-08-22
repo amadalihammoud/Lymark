@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Barlow:wght@400;500&family=IBM+Plex+Mono:wght@500&family=Pathway+Gothic+One&family=Sora:wght@600&family=Space+Grotesk:wght@400;500;700&family=Zilla+Slab:wght@600&display=swap">
+  <style>
+    body { margin: 0; background: #15243C; color: #FFFFFF; font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #F3C218; } a:hover { color: #D9A700; }
+    figure { margin: 0; display: flex; flex-direction: column; gap: 10px; width: 300px; }
+    .photo { position: relative; width: 300px; height: 400px; overflow: hidden; border: 1px solid #294675; background: radial-gradient(120% 90% at 78% 12%, rgba(74,118,161,0.28), transparent 58%), linear-gradient(168deg, #1C3151, #0F192A); }
+    .photo .wire { position: absolute; inset: 0; background-image: linear-gradient(#294675 1px, transparent 1px), linear-gradient(90deg, #294675 1px, transparent 1px); background-size: 36px 36px; opacity: 0.14; }
+    .cap { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #C7D6E4; display: flex; align-items: center; gap: 8px; }
+    .chip { flex: none; font-size: 9px; letter-spacing: 1px; padding: 3px 7px; border-radius: 3px; border: 1px solid #4A76A1; color: #C7D6E4; }
+    .chip.nova { border-color: #F3C218; color: #F3C218; }
+    .sub { font-size: 12px; line-height: 1.5; color: #8DA4BA; }
+    .stamp { position: absolute; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.85); bottom: 8px; left: 8px; }
+    .srow { display: flex; align-items: flex-start; }
+    .clock { font-family: 'Pathway Gothic One', 'Arial Narrow', sans-serif; font-weight: 400; font-size: 40px; line-height: 1; color: #FFFFFF; }
+    .rule { flex: none; width: 2px; font-size: 40px; height: 0.7267em; margin: 0.1633em 0.18em 0 0.3em; background: #F3C218; }
+    .stack { display: flex; flex-direction: column; justify-content: space-between; font-size: 40px; margin-top: 0.1633em; height: 0.7267em; }
+    .stack span, .addr { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 11px; line-height: 1; color: #FFFFFF; }
+    .addr { line-height: 1.42; margin-top: 4px; }
+    .lockup { display: flex; align-items: center; gap: 5px; margin-bottom: 13px; }
+    .lname { font-size: 18px; line-height: 1.1; letter-spacing: 0.023em; color: #FFFFFF; }
+    .lcomp { display: block; font-size: 8px; letter-spacing: 0.023em; color: #FFFFFF; margin-top: 2px; }
+    .amber { color: #F3C218; }
+  </style>
+</helmet>
+
+<div style="width: 1328px; height: 604px; box-sizing: border-box; background: #15243C; padding: 28px; display: flex; flex-wrap: wrap; gap: 24px; align-content: flex-start;">
+
+  <!-- 1. Barlow — hoje -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="lockup">
+          <svg width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2.2"></rect><path d="M7 15 L12 8 L17 15" stroke="#F3C218" stroke-width="2.2" fill="none"></path></svg>
+          <span style="font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500;">
+            <span class="lname">Construtora <span class="amber">Silva</span></span>
+            <span class="lcomp">Vistorias e laudos técnicos</span>
+          </span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip">hoje &middot; padrão</span> Barlow</figcaption>
+    <div class="sub">A fonte atual da marca — a mesma do corpo do carimbo. Neutra, some atrás do conteúdo.</div>
+  </figure>
+
+  <!-- 2. Archivo — proposta -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="lockup">
+          <svg width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2.2"></rect><path d="M7 15 L12 8 L17 15" stroke="#F3C218" stroke-width="2.2" fill="none"></path></svg>
+          <span style="font-family: 'Archivo', 'Arial Black', Arial, sans-serif; font-weight: 600;">
+            <span class="lname">Construtora <span class="amber">Silva</span></span>
+            <span class="lcomp">Vistorias e laudos técnicos</span>
+          </span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip nova">proposta</span> Archivo SemiBold</figcaption>
+    <div class="sub">Grotesca industrial, voz de canteiro e engenharia — presença sem enfeite.</div>
+  </figure>
+
+  <!-- 3. Zilla Slab — proposta -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="lockup">
+          <svg width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2.2"></rect><path d="M7 15 L12 8 L17 15" stroke="#F3C218" stroke-width="2.2" fill="none"></path></svg>
+          <span style="font-family: 'Zilla Slab', Georgia, serif; font-weight: 600;">
+            <span class="lname">Construtora <span class="amber">Silva</span></span>
+            <span class="lcomp">Vistorias e laudos técnicos</span>
+          </span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip nova">proposta</span> Zilla Slab SemiBold</figcaption>
+    <div class="sub">Slab de laudo e cartório — tradição, peso de documento assinado.</div>
+  </figure>
+
+  <!-- 4. Sora — proposta -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="lockup">
+          <svg width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2.2"></rect><path d="M7 15 L12 8 L17 15" stroke="#F3C218" stroke-width="2.2" fill="none"></path></svg>
+          <span style="font-family: 'Sora', 'Trebuchet MS', sans-serif; font-weight: 600;">
+            <span class="lname" style="font-size: 17px;">Construtora <span class="amber">Silva</span></span>
+            <span class="lcomp">Vistorias e laudos técnicos</span>
+          </span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip nova">proposta</span> Sora SemiBold</figcaption>
+    <div class="sub">Geométrica contemporânea, para marcas de tecnologia e serviços digitais.</div>
+  </figure>
+
+  <div style="width: 100%; font-size: 12px; line-height: 1.5; color: #8DA4BA;">Em todas as opções, hora e dados permanecem em Pathway Gothic One e Barlow — é a constância do documento. A fonte escolhida vale só para a marca da empresa, no canto e no cabeçalho. Conjunto curado e embutido no app (licenças OFL), nunca a fonte do aparelho: o mesmo carimbo precisa sair idêntico no celular, no desktop e no navegador.</div>
+</div>
+</x-dc>
+</body>
+</html>

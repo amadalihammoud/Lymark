@@ -17,6 +17,7 @@
     { "file": "Marca.dc.html", "title": "Marca carimbada", "page": "page-3", "x": 0, "y": 0, "w": 1004, "h": 580 },
     { "file": "Logotipo.dc.html", "title": "Logotipo — proporções", "page": "page-3", "x": 0, "y": 720, "w": 760, "h": 1096 },
     { "file": "Cores.dc.html", "title": "Cores e personalização", "page": "page-3", "x": 1124, "y": 0, "w": 720, "h": 1010 },
+    { "file": "Tipografia.dc.html", "title": "Tipografia da marca", "page": "page-3", "x": 0, "y": 1940, "w": 1328, "h": 604 },
     { "file": "Ajustes.dc.html", "title": "Ajustes — Marca d'água", "page": "page-3", "x": 1964, "y": 0, "w": 390, "h": 2380, "print": "flow" }
   ],
   "annotations": [
@@ -24,7 +25,8 @@
     { "id": "nota-site", "page": "page-1", "x": -330, "y": 1040, "w": 290, "text": "lymark.app: a porta de entrada — conta, assinatura e verificação de autenticidade, em 12 idiomas. Plano Grátis: 12 fotos; Pro: sem limite.\n\nO site usa Barlow e a mesma paleta do app, tom por tom." },
     { "id": "nota-disposicoes", "page": "page-2", "x": -330, "y": 0, "w": 290, "text": "O carimbo é UM modelo com ajustes, não um catálogo de modelos prontos. Cada prancheta varia um ajuste por vez, sobre a mesma cena.\n\nMedidas vêm do código real (stamp-layout.ts): a barra âmbar vai do topo à base da tinta dos dígitos; o recuo é 2,9% da largura da foto; o código gira a -90° com o centro a 38% da altura." },
     { "id": "nota-pedido", "page": "page-3", "x": -330, "y": 720, "w": 300, "text": "Pedido desta rodada: logotipos têm proporções variadas.\n\nEm pé (ex.: brasão de prefeitura) pede título grande e subtítulo ao lado — ou o inverso.\n\nLargo (assinatura horizontal) pede a largura do bloco de dados, acima do horário, com altura contida.\n\nA cor da barra vertical e do texto já é livre — qualquer hexadecimal." },
-    { "id": "nota-proposta", "page": "page-3", "x": 784, "y": 720, "w": 290, "text": "Os quadros marcados PROPOSTA ainda não existem no código: hoje o logo acompanha a altura do texto e, acima de 2,4 de proporção, perde altura.\n\nBrasões e logos destas pranchetas são desenhos genéricos de exemplo — o arquivo real da empresa entra por 'Escolher logotipo' (PNG com fundo transparente)." }
+    { "id": "nota-proposta", "page": "page-3", "x": 784, "y": 720, "w": 290, "text": "Os quadros marcados PROPOSTA ainda não existem no código: hoje o logo acompanha a altura do texto e, acima de 2,4 de proporção, perde altura.\n\nBrasões e logos destas pranchetas são desenhos genéricos de exemplo — o arquivo real da empresa entra por 'Escolher logotipo' (PNG com fundo transparente)." },
+    { "id": "nota-tipografia", "page": "page-3", "x": -330, "y": 1940, "w": 300, "text": "Tipografia: hoje a fonte do carimbo é fixa por decisão (fidelidade à referência e constância entre aparelhos).\n\nA proposta abre a escolha SÓ para a marca da empresa — hora e dados continuam em Pathway Gothic One e Barlow. Quatro famílias curadas de partida; a lista é o que se decide aqui." }
   ],
-  "launch": { "view": "canvas", "page": "page-1" }
+  "launch": { "view": "canvas", "page": "page-3" }
 }
