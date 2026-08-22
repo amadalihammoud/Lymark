@@ -37,8 +37,17 @@ import { isManagedLogoPath } from './logo-path';
  * 6 — o par "Lymark / Minha marca" sai: o texto da marca é sempre editável, e
  *     o padrão dele é a marca do próprio app.
  * 7 — o amarelo da marca passa a ser o do Manual de Marca, #F3C218.
+ * 8 — tamanho do logotipo: escala manual (`brandLogoScale`) e, para a
+ *     assinatura horizontal (proporção acima de 2,4), a faixa na largura do
+ *     bloco de dados em vez do encolhimento. Esta versão MUDA a foto de quem
+ *     tem um logo largo — de propósito: o comportamento antigo o reduzia a um
+ *     selo minúsculo, e foi tratado como defeito, não como escolha.
  */
-export const PREFERENCES_SCHEMA_VERSION = 7;
+export const PREFERENCES_SCHEMA_VERSION = 8;
+
+/** Limites da escala manual do logotipo. Fora deles, volta ao automático. */
+export const BRAND_LOGO_SCALE_MIN = 0.5;
+export const BRAND_LOGO_SCALE_MAX = 2.5;
 
 /**
  * O amarelo de antes do Manual de Marca.
@@ -106,6 +115,7 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   brandComplementColor: '#FFFFFF',
   brandLogoPath: null,
   brandLogoAspect: 1,
+  brandLogoScale: 1,
 
   stampAccent: '#F3C218',
   stampTextColor: '#FFFFFF',
@@ -299,6 +309,12 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
       0.2,
       5,
       DEFAULT_WATERMARK_PREFERENCES.brandLogoAspect,
+    ),
+    brandLogoScale: readNumber(
+      stored.brandLogoScale,
+      BRAND_LOGO_SCALE_MIN,
+      BRAND_LOGO_SCALE_MAX,
+      DEFAULT_WATERMARK_PREFERENCES.brandLogoScale,
     ),
 
     stampAccent: manualAmber(

@@ -15,6 +15,8 @@ import { useSettings } from '@/contexts/settings-context';
 import { persistLogo, resolveLogoUri } from '@/features/watermark/logo-file';
 import {
   BRAND_COMPLEMENT_MAX_LENGTH,
+  BRAND_LOGO_SCALE_MAX,
+  BRAND_LOGO_SCALE_MIN,
   BRAND_PART_MAX_LENGTH,
 } from '@/features/watermark/preferences';
 import { colors, radius, spacing, typography } from '@/theme';
@@ -317,6 +319,20 @@ export function WatermarkControls({
 
                 <Text style={styles.hint}>{t('logoFormatNote')}</Text>
                 <Text style={styles.hint}>{t('logoAlignNote')}</Text>
+
+                {preferences.brandLogoPath ? (
+                  <SliderRow
+                    // Escala proporcional — largura e altura juntas. Um eixo
+                    // por vez deformaria o logotipo, e isso não é opção.
+                    label={t('logoSize')}
+                    value={preferences.brandLogoScale}
+                    min={BRAND_LOGO_SCALE_MIN}
+                    max={BRAND_LOGO_SCALE_MAX}
+                    step={0.05}
+                    format={(value) => `${Math.round(value * 100)}%`}
+                    onChange={(brandLogoScale) => updatePreferences({ brandLogoScale })}
+                  />
+                ) : null}
               </View>
             ) : (
               <ChoiceGrid

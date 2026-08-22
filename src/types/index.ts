@@ -193,6 +193,15 @@ export type WatermarkPreferences = {
    */
   brandLogoPath: string | null;
   /**
+   * Escala manual do logotipo, de 0,5 a 2,5 (1 é o tamanho automático).
+   *
+   * Multiplica largura e altura JUNTAS: um controle separado por eixo
+   * deformaria o logotipo da empresa na foto que ela entrega ao cliente.
+   * Vale nos dois formatos — ao lado do texto e na faixa da assinatura
+   * horizontal.
+   */
+  brandLogoScale: number;
+  /**
    * Proporção largura/altura do logotipo, lida na hora de escolher o arquivo.
    *
    * Guardada junto porque a geometria é síncrona: descobrir a proporção no
