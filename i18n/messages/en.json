@@ -402,6 +402,7 @@
       "logoPick": "Choose logo",
       "logoRemove": "Remove",
       "logoReplace": "Replace logo",
+      "logoSize": "Logo size",
       "positionDescription": "The corner of the photo the block is anchored to.",
       "positionTitle": "Position",
       "positions": {

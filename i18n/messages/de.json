@@ -402,6 +402,7 @@
       "logoPick": "Logo wählen",
       "logoRemove": "Entfernen",
       "logoReplace": "Logo ersetzen",
+      "logoSize": "Logogröße",
       "positionDescription": "Die Ecke des Fotos, an der der Block verankert wird.",
       "positionTitle": "Position",
       "positions": {

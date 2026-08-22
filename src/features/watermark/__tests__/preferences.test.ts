@@ -101,6 +101,20 @@ describe('mergeWithDefaults', () => {
     expect(merged).not.toBe(DEFAULT_WATERMARK_PREFERENCES);
     expect(merged.visibleFields).not.toBe(DEFAULT_WATERMARK_PREFERENCES.visibleFields);
   });
+
+  it('escala do logotipo: quem vem de versão antiga fica no automático', () => {
+    // Um registro da versão 7 não conhece o campo — e o automático (1) é
+    // exatamente a geometria de antes, então a foto de ninguém muda sozinha.
+    expect(mergeWithDefaults({}).brandLogoScale).toBe(1);
+    expect(mergeWithDefaults({ brandLogoScale: 2 }).brandLogoScale).toBe(2);
+  });
+
+  it('escala do logotipo: fora da faixa é contida; lixo cai no padrão', () => {
+    expect(mergeWithDefaults({ brandLogoScale: 9 }).brandLogoScale).toBe(2.5);
+    expect(mergeWithDefaults({ brandLogoScale: 0.01 }).brandLogoScale).toBe(0.5);
+    expect(mergeWithDefaults({ brandLogoScale: Number.NaN }).brandLogoScale).toBe(1);
+    expect(mergeWithDefaults({ brandLogoScale: '2' as never }).brandLogoScale).toBe(1);
+  });
 });
 
 /**

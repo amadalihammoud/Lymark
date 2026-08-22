@@ -165,6 +165,8 @@ const HEADER_LOGO_GAP_RATIO = 0.2;
 const HEADER_LOGO_MAX_ASPECT = 2.4;
 /** Largura máxima do conjunto, em frações do quadro. */
 const HEADER_MAX_WIDTH_RATIO = 0.7;
+/** Vão entre a faixa do logotipo e a linha de texto abaixo dela. */
+const BANNER_TEXT_GAP_RATIO = 0.18;
 /** Vão entre o cabeçalho da marca e a linha da hora. */
 const HEADER_BOTTOM_GAP_RATIO = 0.42;
 
@@ -309,6 +311,19 @@ type BrandLockup = {
   letterSpacing: number;
   /** Onde o texto começa: depois do logotipo, quando existe. */
   textX: number;
+  /**
+   * Proporção do logotipo em modo FAIXA — a assinatura horizontal que, em vez
+   * de encolher, adota a largura do bloco de dados, acima do relógio.
+   *
+   * `null` no modo contido (logo ao lado do texto). A faixa só é resolvida em
+   * `layoutDataBlock`, porque a largura-alvo é a do bloco, que ainda não se
+   * conhece aqui: ela sai da hora, do endereço e do código medidos juntos.
+   */
+  bannerAspect: number | null;
+  bannerWidth: number;
+  bannerHeight: number;
+  /** Vão entre a faixa e a primeira linha de texto; zero sem texto. */
+  bannerGap: number;
   logoWidth: number;
   /**
    * Altura do logotipo, e o quanto ele desce dentro do conjunto.
@@ -348,6 +363,17 @@ function measureBrandLockup({
 
   if (parts.length === 0 && complement.length === 0 && !hasLogo) return null;
 
+  // A assinatura horizontal não encolhe mais: vira uma faixa na largura do
+  // bloco, acima do relógio. O limiar é o mesmo 2,4 de antes — abaixo dele o
+  // logo convive bem ao lado do texto; acima, qualquer altura amarrada ao
+  // texto o transformava num selo minúsculo.
+  const aspect = Math.max(0.01, preferences.brandLogoAspect);
+  const banner = hasLogo && aspect > HEADER_LOGO_MAX_ASPECT;
+
+  // Escala manual do logotipo. Multiplica largura e altura JUNTAS — deformar
+  // o logotipo da empresa na foto que ela entrega ao cliente não é opção.
+  const logoScale = preferences.brandLogoScale;
+
   const at = (nameSize: number): BrandLockup => {
     const complementSize =
       complement.length > 0
@@ -375,21 +401,30 @@ function measureBrandLockup({
     // O espaço reservado, esse sim, conta as descendentes: sem isso a perna de
     // um "g" no complemento encostaria no relógio logo abaixo.
     const lastSize = complementBaseline === null ? nameSize : complementSize;
-    const height = anchorHeight + Math.round(lastSize * BRAND_DESCENDER_FROM_BASELINE);
+    const textHeight = anchorHeight + Math.round(lastSize * BRAND_DESCENDER_FROM_BASELINE);
 
-    // Uma assinatura muito horizontal **perde altura**, e não largura: limitar
-    // só a largura a espremeria, entregando ao cliente uma foto com o logotipo
-    // da empresa deformado. A proporção do arquivo é preservada sempre.
-    const aspect = Math.max(0.01, preferences.brandLogoAspect);
-    const logoHeight = hasLogo
-      ? Math.max(1, Math.round(anchorHeight * Math.min(1, HEADER_LOGO_MAX_ASPECT / aspect)))
+    const hasTextRow = parts.length > 0 || complement.length > 0;
+
+    // Modo contido: o logo mora ao lado do texto, na altura da âncora vezes a
+    // escala escolhida. Na escala 1 é exatamente a geometria de antes — a
+    // atualização não muda a foto de quem não mexeu no ajuste.
+    const inlineLogo = hasLogo && !banner;
+    const logoHeight = inlineLogo
+      ? Math.max(1, Math.round(anchorHeight * logoScale))
       : 0;
-    const logoWidth = hasLogo ? Math.max(1, Math.round(logoHeight * aspect)) : 0;
-    // Encolhido, o logotipo é centrado na faixa do texto; encostado no topo
-    // ele pareceria solto acima do nome.
-    const logoOffsetY = Math.round((anchorHeight - logoHeight) / 2);
+    const logoWidth = inlineLogo ? Math.max(1, Math.round(logoHeight * aspect)) : 0;
+    // Menor que a faixa do texto, o logotipo é centrado nela — encostado no
+    // topo pareceria solto. Maior (escala acima de 1), ancora no topo e o
+    // conjunto cresce para baixo, empurrando o relógio junto.
+    const logoOffsetY = logoHeight <= anchorHeight
+      ? Math.round((anchorHeight - logoHeight) / 2)
+      : 0;
 
-    const textX = hasLogo
+    const height = banner
+      ? (hasTextRow ? textHeight : 0)
+      : Math.max(textHeight, logoOffsetY + logoHeight);
+
+    const textX = inlineLogo
       ? logoWidth + Math.max(1, Math.round(anchorHeight * HEADER_LOGO_GAP_RATIO))
       : 0;
 
@@ -412,6 +447,10 @@ function measureBrandLockup({
       complementBaseline,
       letterSpacing,
       textX,
+      bannerAspect: banner ? aspect : null,
+      bannerWidth: 0,
+      bannerHeight: 0,
+      bannerGap: 0,
       logoWidth,
       logoHeight,
       logoOffsetY,
@@ -440,6 +479,7 @@ function emitBrandLockup({
   measure,
   x,
   top,
+  alignRight,
   texts,
   images,
 }: {
@@ -448,10 +488,27 @@ function emitBrandLockup({
   measure: MeasureText;
   x: number;
   top: number;
+  /**
+   * Só o modo faixa alinha linha a linha: a faixa costuma ser mais larga que
+   * o texto abaixo dela, e com a âncora à direita as duas precisam acompanhar
+   * a borda direita do bloco. No modo contido, logo e texto dividem a mesma
+   * linha e o conjunto inteiro já chega posicionado — é a geometria de antes.
+   */
+  alignRight: boolean;
   texts: StampText[];
   images: StampImage[];
 }) {
-  if (preferences.brandLogoPath !== null && lockup.logoWidth > 0) {
+  const isBanner = lockup.bannerAspect !== null && lockup.bannerHeight > 0;
+
+  if (preferences.brandLogoPath !== null && isBanner) {
+    images.push({
+      path: preferences.brandLogoPath,
+      x: alignRight ? x + lockup.width - lockup.bannerWidth : x,
+      y: top,
+      width: lockup.bannerWidth,
+      height: lockup.bannerHeight,
+    });
+  } else if (preferences.brandLogoPath !== null && lockup.logoWidth > 0) {
     images.push({
       path: preferences.brandLogoPath,
       x,
@@ -461,13 +518,23 @@ function emitBrandLockup({
     });
   }
 
-  let cursor = x + lockup.textX;
+  // No modo faixa o texto desce uma linha: a assinatura fica em cima, o nome
+  // e o complemento embaixo dela.
+  const textTop = isBanner ? top + lockup.bannerHeight + lockup.bannerGap : top;
+
+  const nameWidth = lockup.parts.reduce(
+    (total, part) =>
+      total + widthOf(part.text, lockup.nameSize, 'medium', measure, lockup.letterSpacing),
+    0,
+  );
+
+  let cursor = isBanner && alignRight ? x + lockup.width - nameWidth : x + lockup.textX;
 
   for (const part of lockup.parts) {
     texts.push({
       text: part.text,
       x: cursor,
-      baseline: top + lockup.nameBaseline,
+      baseline: textTop + lockup.nameBaseline,
       size: lockup.nameSize,
       font: 'medium',
       color: part.color,
@@ -477,14 +544,23 @@ function emitBrandLockup({
   }
 
   if (lockup.complementBaseline !== null) {
+    const complementSpacing = lockup.complementSize * BRAND_LETTER_SPACING_RATIO;
+    const complementWidth = widthOf(
+      lockup.complement,
+      lockup.complementSize,
+      'medium',
+      measure,
+      complementSpacing,
+    );
+
     texts.push({
       text: lockup.complement,
-      x: x + lockup.textX,
-      baseline: top + lockup.complementBaseline,
+      x: isBanner && alignRight ? x + lockup.width - complementWidth : x + lockup.textX,
+      baseline: textTop + lockup.complementBaseline,
       size: lockup.complementSize,
       font: 'medium',
       color: preferences.brandComplementColor,
-      letterSpacing: lockup.complementSize * BRAND_LETTER_SPACING_RATIO,
+      letterSpacing: complementSpacing,
     });
   }
 }
@@ -685,6 +761,42 @@ function layoutDataBlock({
   const gapAfterHeader = header.height > 0 && addressHeight > 0 ? metrics.gap : 0;
   const gapBeforeCode = codeInBlock ? Math.round(metrics.gap / 2) : 0;
 
+  // A largura do cabeçalho entra sempre, e não só quando há hora: data e dia
+  // da semana continuam sendo desenhados sem ela, e ficavam de fora da conta
+  // — com a âncora à direita, saíam da foto.
+  const widths: number[] = [headerWidth(content, metrics, measure)];
+  if (lockup) widths.push(lockup.width);
+  for (const line of addressLines) widths.push(widthOf(line, metrics.address, 'body', measure));
+  if (codeInBlock && content.code) {
+    widths.push(widthOf(content.code, metrics.code, 'medium', measure, codeSpacing));
+  }
+  const preWidth = Math.max(0, ...widths);
+
+  // A faixa do logotipo se resolve aqui, e não na medição do conjunto: a
+  // largura-alvo dela é a do bloco de dados, que só existe depois de hora,
+  // endereço e código medidos juntos.
+  if (lockup?.bannerAspect) {
+    const aspect = lockup.bannerAspect;
+    // Alvo: a largura do bloco. Teto: a linha da hora — mais alta que isso, a
+    // assinatura vira a protagonista da foto. Um bloco vazio (só a marca na
+    // foto) cai direto no teto. A escala manual multiplica o resultado, e o
+    // quadro limita sempre: a faixa nunca passa da largura reservada ao
+    // cabeçalho.
+    const base = preWidth > 0 ? Math.min(preWidth / aspect, metrics.time) : metrics.time;
+    const maxHeight = (frame.width * HEADER_MAX_WIDTH_RATIO) / aspect;
+    lockup.bannerHeight = Math.max(
+      4,
+      Math.round(Math.min(base * preferences.brandLogoScale, maxHeight)),
+    );
+    lockup.bannerWidth = Math.max(1, Math.round(lockup.bannerHeight * aspect));
+    lockup.bannerGap =
+      lockup.height > 0 ? Math.max(1, Math.round(lockup.bannerHeight * BANNER_TEXT_GAP_RATIO)) : 0;
+    lockup.height += lockup.bannerHeight + lockup.bannerGap;
+    lockup.width = Math.max(lockup.width, lockup.bannerWidth);
+  }
+
+  const blockWidth = Math.max(preWidth, lockup?.width ?? 0);
+
   // O vão sai da altura do próprio conjunto, e não das métricas do carimbo: é
   // ele que define o quanto a marca e o relógio parecem separados, e um nome
   // grande precisa de mais ar do que um pequeno.
@@ -696,17 +808,6 @@ function layoutDataBlock({
 
   const blockHeight =
     lockupHeight + header.height + gapAfterHeader + addressHeight + gapBeforeCode + codeHeight;
-
-  // A largura do cabeçalho entra sempre, e não só quando há hora: data e dia
-  // da semana continuam sendo desenhados sem ela, e ficavam de fora da conta
-  // — com a âncora à direita, saíam da foto.
-  const widths: number[] = [headerWidth(content, metrics, measure)];
-  if (lockup) widths.push(lockup.width);
-  for (const line of addressLines) widths.push(widthOf(line, metrics.address, 'body', measure));
-  if (codeInBlock && content.code) {
-    widths.push(widthOf(content.code, metrics.code, 'medium', measure, codeSpacing));
-  }
-  const blockWidth = Math.max(0, ...widths);
 
   const { backdropStyle } = preferences;
 
@@ -782,6 +883,7 @@ function layoutDataBlock({
       // alinhamento.
       x: left ? blockLeft : blockLeft + blockWidth - lockup.width,
       top: cursor,
+      alignRight: !left,
       texts,
       images,
     });

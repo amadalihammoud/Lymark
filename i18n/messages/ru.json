@@ -402,6 +402,7 @@
       "logoPick": "Выбрать логотип",
       "logoRemove": "Удалить",
       "logoReplace": "Заменить логотип",
+      "logoSize": "Размер логотипа",
       "positionDescription": "Угол фотографии, к которому привязан блок.",
       "positionTitle": "Положение",
       "positions": {

@@ -693,32 +693,86 @@ describe('cabeçalho da marca', () => {
     expect(redondo.images[0].height).toBe(reto.images[0].height);
   });
 
-  it('preserva a proporção de uma assinatura muito horizontal', () => {
-    // Limitar só a largura espremeria o arquivo: a empresa entregaria ao
-    // cliente uma foto com o próprio logotipo deformado. Passando do limite,
-    // ele perde **altura**.
-    const largo = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 4 });
-    const logo = largo.images[0];
+  it('assinatura horizontal vira FAIXA na largura do bloco, sem deformar', () => {
+    // Antes, acima de 2,4 de proporção o logotipo perdia altura até virar um
+    // selo minúsculo ao lado do nome. Agora ele adota a largura do bloco de
+    // dados, acima do relógio. A proporção do arquivo segue intocável —
+    // deformar o logotipo da empresa nunca foi opção.
+    const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 4 });
+    const logo = g.images[0];
+    const hora = find(g, '07:42')!;
 
     expect(logo.width / logo.height).toBeCloseTo(4, 1);
-    expect(logo.height).toBeLessThan(header({
-      brandLogoPath: 'brand/abc.png',
-      brandLogoAspect: 1,
-    }).images[0].height);
+
+    // Acima do relógio: a base da faixa fica antes do topo da tinta da hora.
+    expect(logo.y + logo.height).toBeLessThan(hora.baseline - hora.size * 0.715);
+
+    // Na largura do bloco: a borda direita da faixa acompanha a borda do
+    // elemento mais largo. A tolerância é o arredondar de altura e largura.
+    const rightEdge = Math.max(
+      ...g.texts
+        .filter((t) => !t.rotate)
+        .map(
+          (t) =>
+            t.x +
+            measure(t.text, t.size, t.font) +
+            (t.letterSpacing ?? 0) * Math.max(0, t.text.length - 1),
+        ),
+    );
+    expect(Math.abs(logo.x + logo.width - rightEdge)).toBeLessThanOrEqual(4);
   });
 
-  it('centra na faixa do texto o logotipo que perdeu altura', () => {
+  it('na faixa, o texto da marca desce para baixo da assinatura', () => {
     const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 4 });
     const logo = g.images[0];
     const nome = find(g, 'AUTO')!;
-    const complemento = find(g, 'Vidros automotivos')!;
 
-    const topo = nome.baseline - Math.round(nome.size * 0.71);
-    const base = complemento.baseline;
+    // O topo da tinta do nome fica abaixo da base da faixa, com um respiro —
+    // a assinatura é a primeira linha do conjunto, o texto a segunda.
+    expect(nome.baseline - Math.round(nome.size * 0.71)).toBeGreaterThan(logo.y + logo.height);
+  });
 
-    // Encostado no topo ele pareceria solto acima do nome. O 1 px de tolerância
-    // é a sobra de arredondar a metade de um vão ímpar.
-    expect(Math.abs((logo.y - topo) - (base - (logo.y + logo.height)))).toBeLessThanOrEqual(1);
+  it('a escala manual muda o logotipo proporcionalmente, sem deformar', () => {
+    const base = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 1 });
+    const grande = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 1, brandLogoScale: 2 });
+    const pequeno = header({
+      brandLogoPath: 'brand/abc.png',
+      brandLogoAspect: 1,
+      brandLogoScale: 0.5,
+    });
+
+    // O 1 px de folga é o arredondar da metade de uma âncora ímpar.
+    expect(Math.abs(grande.images[0].height - base.images[0].height * 2)).toBeLessThanOrEqual(1);
+    expect(Math.abs(pequeno.images[0].height - base.images[0].height / 2)).toBeLessThanOrEqual(1);
+
+    for (const g of [base, grande, pequeno]) {
+      expect(g.images[0].width / g.images[0].height).toBeCloseTo(1, 1);
+    }
+  });
+
+  it('escala acima de 1: o conjunto cresce sem o logotipo invadir o relógio', () => {
+    const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 1, brandLogoScale: 2 });
+
+    const logo = g.images[0];
+    const hora = find(g, '07:42')!;
+
+    // O logotipo maior que a faixa do texto empurra o bloco a crescer — a
+    // tinta da hora continua inteira abaixo dele.
+    expect(hora.baseline - hora.size * 0.715).toBeGreaterThan(logo.y + logo.height);
+  });
+
+  it('a faixa respeita o teto de altura e a largura reservada ao cabeçalho', () => {
+    // Escala no máximo, proporção logo acima do limiar: o caso que mais
+    // empurra a faixa. O 1,7 de folga é o arredondar de altura e largura.
+    const g = header({
+      brandLogoPath: 'brand/abc.png',
+      brandLogoAspect: 2.5,
+      brandLogoScale: 2.5,
+    });
+    const logo = g.images[0];
+
+    expect(logo.height).toBeLessThanOrEqual((frame.width * 0.7) / 2.5 + 1);
+    expect(logo.width).toBeLessThanOrEqual(frame.width * 0.7 + 3);
   });
 
   it('não deforma nem com proporção absurda vinda de um registro corrompido', () => {

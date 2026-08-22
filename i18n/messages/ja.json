@@ -402,6 +402,7 @@
       "logoPick": "ロゴを選ぶ",
       "logoRemove": "削除",
       "logoReplace": "ロゴを変更",
+      "logoSize": "ロゴのサイズ",
       "positionDescription": "刻印のかたまりを固定する、写真の隅。",
       "positionTitle": "位置",
       "positions": {
