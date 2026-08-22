@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&family=IBM+Plex+Mono:wght@500&family=Pathway+Gothic+One&family=Space+Grotesk:wght@400;500;700&display=swap">
+  <style>
+    body { margin: 0; background: #15243C; color: #FFFFFF; font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #F3C218; } a:hover { color: #D9A700; }
+    .field-label { font-weight: 500; font-size: 13px; letter-spacing: 0.2px; color: #93A9C0; }
+    .input { min-height: 46px; background: #15243C; border: 1px solid #294675; border-radius: 5px; padding: 10px 12px; display: flex; align-items: center; font-weight: 500; font-size: 15px; color: #FFFFFF; font-variant-numeric: tabular-nums; box-sizing: border-box; }
+    .acc { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 4px; border-top: 1px solid #294675; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: #93A9C0; }
+    .acc svg { margin-left: auto; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; height: 900px; background: #15243C; display: flex; flex-direction: column; overflow: hidden;">
+
+  <!-- Barra de ações: origem à esquerda, modos no centro, exportação âmbar à direita -->
+  <div style="flex: none; display: flex; align-items: center; gap: 16px; padding: 10px 16px; background: #0F192A; border-bottom: 1px solid #1C3151;">
+    <svg width="30" height="30" viewBox="0 0 38 38" aria-label="Lymark">
+      <circle cx="19" cy="19" r="19" fill="#294675"></circle>
+      <rect x="12" y="10.2" width="4.2" height="17.5" fill="#FFFFFF"></rect>
+      <rect x="12" y="23.5" width="10.8" height="4.2" fill="#FFFFFF"></rect>
+      <rect x="26.2" y="10.2" width="3" height="17.5" fill="#F3C218"></rect>
+    </svg>
+    <div style="font-weight: 700; font-size: 20px; letter-spacing: 0.5px;">Ly<span style="color: #F3C218;">mark</span></div>
+
+    <div style="display: flex; background: #15243C; border: 1px solid #294675; border-radius: 999px; padding: 3px; margin-left: 16px;">
+      <span style="padding: 6px 20px; border-radius: 999px; background: #F3C218; color: #0F192A; font-weight: 700; font-size: 13px;">Foto</span>
+      <span style="padding: 6px 20px; border-radius: 999px; color: #93A9C0; font-weight: 500; font-size: 13px;">Vídeo</span>
+      <span style="padding: 6px 20px; border-radius: 999px; color: #93A9C0; font-weight: 500; font-size: 13px;">Lote</span>
+    </div>
+
+    <span style="display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 16px; margin-left: 16px; border-radius: 5px; border: 1px solid #4A76A1; color: #C7D6E4; font-weight: 700; font-size: 14px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#C7D6E4"><path d="M20 4H8a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM8 16l3.2-4 2.3 2.6L16.5 11l3.5 5H8z"></path></svg>
+      Abrir foto…
+    </span>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 10px;">
+      <span style="display: inline-flex; align-items: center; min-height: 40px; padding: 8px 16px; border-radius: 5px; border: 1px solid #4A76A1; background: #294675; font-weight: 700; font-size: 14px;">Compartilhar</span>
+      <span title="Ctrl+S" style="display: inline-flex; align-items: center; min-height: 40px; padding: 8px 22px; border-radius: 5px; background: #F3C218; color: #0F192A; font-weight: 700; font-size: 14px;">Salvar</span>
+    </div>
+  </div>
+
+  <div style="flex: 1; display: flex; min-height: 0;">
+
+    <!-- O palco: a foto é a protagonista, num poço neutro -->
+    <div style="flex: 1; min-width: 0; background: #0F192A; display: flex; align-items: center; justify-content: center;">
+      <div style="position: relative; width: 920px; height: 690px; overflow: hidden; border: 1px solid #294675; background: radial-gradient(120% 90% at 78% 12%, rgba(74,118,161,0.28), transparent 58%), linear-gradient(168deg, #1C3151, #0F192A);">
+        <div style="position: absolute; inset: 0; background-image: linear-gradient(#294675 1px, transparent 1px), linear-gradient(90deg, #294675 1px, transparent 1px); background-size: 36px 36px; opacity: 0.14;"></div>
+        <div style="position: absolute; top: 12px; right: 30px; z-index: 2; font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0.023em; color: #FFFFFF; text-shadow: 0 1px 3px rgba(0,0,0,0.85);">Ly<span style="color: #F3C218;">mark</span></div>
+        <div style="position: absolute; right: 6px; top: 38%; transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl; z-index: 2; font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 9px; letter-spacing: 0.107em; color: #FFFFFF; text-shadow: 0 1px 3px rgba(0,0,0,0.85);">98926A73655DC1</div>
+        <div style="position: absolute; left: 12px; bottom: 12px; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.85);">
+          <div style="display: flex; align-items: flex-start;">
+            <span style="font-family: 'Pathway Gothic One', 'Arial Narrow', sans-serif; font-weight: 400; font-size: 47px; line-height: 1; color: #FFFFFF;">07:42</span>
+            <span style="flex: none; width: 2px; font-size: 47px; height: 0.7267em; margin: 0.1633em 0.18em 0 0.3em; background: #F3C218;"></span>
+            <span style="display: flex; flex-direction: column; justify-content: space-between; font-size: 47px; margin-top: 0.1633em; height: 0.7267em;">
+              <span style="font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; line-height: 1; color: #FFFFFF;">12 ago. 2026</span>
+              <span style="font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; line-height: 1; color: #FFFFFF;">Qua</span>
+            </span>
+          </div>
+          <div style="font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 13px; line-height: 1.42; color: #FFFFFF; margin-top: 5px;">Av. Puglisi, 490 - Centro, Guarujá - SP, 11410-002</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Um painel só, com abas: Dados (muda a cada foto) | Carimbo (configura-se uma vez) -->
+    <div style="width: 340px; flex: none; border-left: 1px solid #1C3151; background: #15243C; display: flex; flex-direction: column; padding: 16px; gap: 14px; overflow: hidden;">
+      <div style="display: flex; background: #0F192A; border-radius: 5px; padding: 3px;">
+        <span style="flex: 1; text-align: center; padding: 9px 0; border-radius: 4px; background: #F3C218; color: #0F192A; font-weight: 700; font-size: 14px;">Dados</span>
+        <span style="flex: 1; text-align: center; padding: 9px 0; border-radius: 4px; color: #93A9C0; font-weight: 500; font-size: 14px;">Carimbo</span>
+      </div>
+
+      <div style="display: flex; gap: 8px;">
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><div class="field-label">Hora</div><div class="input">07:42</div></div>
+        <div style="flex: 1.6; display: flex; flex-direction: column; gap: 6px;"><div class="field-label">Data</div><div class="input" style="white-space: nowrap;">12 ago. 2026</div></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;"><div class="field-label">Dia da semana</div><div class="input">Qua</div></div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div class="field-label">Endereço / Local</div>
+        <div style="display: flex; gap: 8px; align-items: flex-start;">
+          <div class="input" style="flex: 1; position: relative; white-space: nowrap; overflow: hidden; padding-right: 32px; min-width: 0;">Av. Puglisi, 490 - Centro, Guarujá - SP, 11410-002<span style="position: absolute; right: 1px; top: 1px; bottom: 1px; width: 38px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; border-radius: 0 5px 5px 0; background: linear-gradient(90deg, rgba(21,36,60,0), #15243C 55%);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#93A9C0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"></path></svg></span></div>
+          <div style="width: 46px; height: 46px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 5px; border: 1px solid #4A76A1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#C7D6E4"><path d="M21 3L3 10.5l7 2.5 2.5 7L21 3z"></path></svg>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div class="field-label">Código de foto</div>
+        <div style="display: flex; gap: 8px; align-items: flex-start;">
+          <div class="input" style="flex: 1; letter-spacing: 0.5px;">98926A73655DC1</div>
+          <div style="width: 46px; height: 46px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 5px; border: 1px solid #4A76A1;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C7D6E4" stroke-width="2" stroke-linecap="round"><path d="M20 8a8.1 8.1 0 0 0-15.5 2M4 16a8.1 8.1 0 0 0 15.5-2"></path><path d="M20 3v5h-5M4 21v-5h5"></path></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seções colapsáveis: presentes, sem gritar -->
+      <div style="margin-top: 6px;">
+        <div class="acc">Campos exibidos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#93A9C0" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></div>
+        <div class="acc">Código de foto <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#93A9C0" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"></path></svg></div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
