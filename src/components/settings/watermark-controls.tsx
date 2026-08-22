@@ -22,6 +22,7 @@ import {
 import { colors, radius, spacing, typography } from '@/theme';
 import {
   BACKDROP_STYLES,
+  BRAND_LOGO_POSITIONS,
   BRAND_PLACEMENTS,
   CODE_PLACEMENTS,
   TIME_FORMATS,
@@ -321,17 +322,36 @@ export function WatermarkControls({
                 <Text style={styles.hint}>{t('logoAlignNote')}</Text>
 
                 {preferences.brandLogoPath ? (
-                  <SliderRow
-                    // Escala proporcional — largura e altura juntas. Um eixo
-                    // por vez deformaria o logotipo, e isso não é opção.
-                    label={t('logoSize')}
-                    value={preferences.brandLogoScale}
-                    min={BRAND_LOGO_SCALE_MIN}
-                    max={BRAND_LOGO_SCALE_MAX}
-                    step={0.05}
-                    format={(value) => `${Math.round(value * 100)}%`}
-                    onChange={(brandLogoScale) => updatePreferences({ brandLogoScale })}
-                  />
+                  <>
+                    <SliderRow
+                      // Escala proporcional — largura e altura juntas. Um eixo
+                      // por vez deformaria o logotipo, e isso não é opção.
+                      label={t('logoSize')}
+                      value={preferences.brandLogoScale}
+                      min={BRAND_LOGO_SCALE_MIN}
+                      max={BRAND_LOGO_SCALE_MAX}
+                      step={0.05}
+                      format={(value) => `${Math.round(value * 100)}%`}
+                      onChange={(brandLogoScale) => updatePreferences({ brandLogoScale })}
+                    />
+
+                    {/* Canto próprio: um logo grande pode ir para o alto
+                        enquanto os dados ficam embaixo. "Junto ao carimbo" é
+                        o desenho de sempre, dentro do cabeçalho. */}
+                    <Text style={styles.hint}>{t('logoPosition')}</Text>
+                    <ChoiceGrid
+                      columns={2}
+                      selected={preferences.brandLogoPosition}
+                      onSelect={(brandLogoPosition) => updatePreferences({ brandLogoPosition })}
+                      options={BRAND_LOGO_POSITIONS.map((position) => ({
+                        value: position,
+                        label:
+                          position === 'block'
+                            ? t('logoPositionBlock')
+                            : t(`positions.${position}`),
+                      }))}
+                    />
+                  </>
                 ) : null}
               </View>
             ) : (

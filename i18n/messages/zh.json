@@ -400,6 +400,8 @@
       "logoPermissionMessage": "请在“设置 › 权限”中允许访问，以便选择徽标文件。",
       "logoPermissionTitle": "照片访问被拒绝",
       "logoPick": "选择徽标",
+      "logoPosition": "徽标位置",
+      "logoPositionBlock": "与印章一起",
       "logoRemove": "移除",
       "logoReplace": "更换徽标",
       "logoSize": "徽标大小",

@@ -359,7 +359,10 @@ function measureBrandLockup({
   const parts = brandParts(preferences);
   // Mesma normalização das partes: o complemento também é digitado.
   const complement = stampText(preferences.brandComplement).trim();
-  const hasLogo = preferences.brandLogoPath !== null;
+  // Com canto próprio escolhido, o logo sai do conjunto: é desenhado solto
+  // por `layoutCornerLogo`, e o cabeçalho fica só com nome e complemento.
+  const hasLogo =
+    preferences.brandLogoPath !== null && preferences.brandLogoPosition === 'block';
 
   if (parts.length === 0 && complement.length === 0 && !hasLogo) return null;
 
@@ -602,7 +605,12 @@ export function buildStampGeometry({
 
   const { brandPlacement } = preferences;
 
-  if (content.isEmpty && brandPlacement === 'none') return empty;
+  // O logo com canto próprio existe por si: mesmo sem dado nenhum e sem
+  // marca, ele ainda é carimbado — é a independência que o canto significa.
+  const hasCornerLogo =
+    preferences.brandLogoPath !== null && preferences.brandLogoPosition !== 'block';
+
+  if (content.isEmpty && brandPlacement === 'none' && !hasCornerLogo) return empty;
   if (!(frame.width > 0) || !(frame.height > 0)) return empty;
   if (!Number.isFinite(frame.width) || !Number.isFinite(frame.height)) return empty;
 
@@ -638,7 +646,56 @@ export function buildStampGeometry({
     layoutSideCode({ code: content.code, preferences, frame, measure, metrics, inset, texts });
   }
 
+  if (hasCornerLogo) {
+    layoutCornerLogo({ preferences, frame, metrics, inset, images });
+  }
+
   return { ...empty, texts, rects, images };
+}
+
+/**
+ * O logotipo solto num canto, independente do bloco de dados.
+ *
+ * No canto não há texto para dar a régua de altura, então ela vem da linha
+ * da hora — o elemento dominante do carimbo — vezes a escala manual. A
+ * largura respeita a mesma fração do quadro reservada à marca no canto
+ * (`BRAND_MAX_WIDTH_RATIO`): um logo mais largo que isso perde altura, e a
+ * proporção do arquivo nunca é tocada.
+ */
+function layoutCornerLogo({
+  preferences,
+  frame,
+  metrics,
+  inset,
+  images,
+}: {
+  preferences: WatermarkPreferences;
+  frame: StampFrame;
+  metrics: ScaleMetrics;
+  inset: number;
+  images: StampImage[];
+}) {
+  const position = preferences.brandLogoPosition;
+  if (position === 'block' || preferences.brandLogoPath === null) return;
+
+  const aspect = Math.max(0.01, preferences.brandLogoAspect);
+  const maxWidth = frame.width * BRAND_MAX_WIDTH_RATIO;
+
+  const height = Math.max(
+    4,
+    Math.round(Math.min(metrics.time * preferences.brandLogoScale, maxWidth / aspect)),
+  );
+  const width = Math.max(1, Math.round(height * aspect));
+
+  // A âncora usa só o recuo, como a marca no canto: somar o respiro interno
+  // do bloco a deslocaria para dentro.
+  images.push({
+    path: preferences.brandLogoPath,
+    x: clamp(isLeft(position) ? inset : frame.width - inset - width, 0, Math.max(0, frame.width - width)),
+    y: clamp(isTop(position) ? inset : frame.height - inset - height, 0, Math.max(0, frame.height - height)),
+    width,
+    height,
+  });
 }
 
 /** Altura da caixa do bloco superior, e onde a tinta dos algarismos cai nela. */

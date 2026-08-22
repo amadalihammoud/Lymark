@@ -400,6 +400,8 @@
       "logoPermissionMessage": "Allow it in Settings › Permissions to choose the logo file.",
       "logoPermissionTitle": "Photo access denied",
       "logoPick": "Choose logo",
+      "logoPosition": "Logo position",
+      "logoPositionBlock": "With the stamp",
       "logoRemove": "Remove",
       "logoReplace": "Replace logo",
       "logoSize": "Logo size",

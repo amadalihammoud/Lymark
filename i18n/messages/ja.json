@@ -400,6 +400,8 @@
       "logoPermissionMessage": "ロゴのファイルを選ぶには、「設定 › 権限」で許可してください。",
       "logoPermissionTitle": "写真へのアクセスが拒否されました",
       "logoPick": "ロゴを選ぶ",
+      "logoPosition": "ロゴの位置",
+      "logoPositionBlock": "スタンプと一緒",
       "logoRemove": "削除",
       "logoReplace": "ロゴを変更",
       "logoSize": "ロゴのサイズ",

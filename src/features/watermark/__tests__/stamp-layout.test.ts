@@ -761,6 +761,59 @@ describe('cabeçalho da marca', () => {
     expect(hora.baseline - hora.size * 0.715).toBeGreaterThan(logo.y + logo.height);
   });
 
+  it('canto próprio: o logo sai do cabeçalho e ancora sozinho no canto', () => {
+    const g = header({
+      brandLogoPath: 'brand/abc.png',
+      brandLogoAspect: 1,
+      brandLogoPosition: 'top-right',
+    });
+
+    // Um logo só — o do canto; o cabeçalho fica com nome e complemento.
+    expect(g.images).toHaveLength(1);
+    const logo = g.images[0];
+
+    // Régua do canto: a linha da hora (47 no quadro de referência).
+    expect(logo.height).toBe(47);
+    expect(logo.y).toBe(6);
+    expect(logo.x + logo.width).toBeCloseTo(frame.width - 6, 0);
+
+    // O nome continua acima do relógio, sem o logo ao lado.
+    expect(find(g, 'AUTO')).toBeDefined();
+  });
+
+  it('canto próprio: a escala manual vale no canto, sem deformar', () => {
+    const g = header({
+      brandLogoPath: 'brand/abc.png',
+      brandLogoAspect: 2,
+      brandLogoScale: 0.5,
+      brandLogoPosition: 'bottom-right',
+    });
+    const logo = g.images[0];
+
+    expect(logo.height).toBe(Math.round(47 * 0.5));
+    expect(logo.width / logo.height).toBeCloseTo(2, 1);
+    expect(logo.y + logo.height).toBeCloseTo(frame.height - 6, 0);
+  });
+
+  it('canto próprio: o logo é carimbado mesmo sem marca e sem dado nenhum', () => {
+    const g = buildStampGeometry({
+      content: { time: null, date: null, weekday: null, address: null, code: null, showRule: false, isEmpty: true },
+      preferences: {
+        ...DEFAULT_WATERMARK_PREFERENCES,
+        brandPlacement: 'none',
+        brandLogoPath: 'brand/abc.png',
+        brandLogoPosition: 'top-left',
+      },
+      frame,
+      measure,
+    });
+
+    expect(g.images).toHaveLength(1);
+    expect(g.images[0].x).toBe(6);
+    expect(g.images[0].y).toBe(6);
+    expect(g.texts).toHaveLength(0);
+  });
+
   it('a faixa respeita o teto de altura e a largura reservada ao cabeçalho', () => {
     // Escala no máximo, proporção logo acima do limiar: o caso que mais
     // empurra a faixa. O 1,7 de folga é o arredondar de altura e largura.

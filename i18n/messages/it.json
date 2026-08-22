@@ -400,6 +400,8 @@
       "logoPermissionMessage": "Consentilo in Impostazioni › Permessi per scegliere il file del logo.",
       "logoPermissionTitle": "Accesso alle foto negato",
       "logoPick": "Scegli logo",
+      "logoPosition": "Posizione del logo",
+      "logoPositionBlock": "Insieme al timbro",
       "logoRemove": "Rimuovi",
       "logoReplace": "Cambia logo",
       "logoSize": "Dimensione del logo",

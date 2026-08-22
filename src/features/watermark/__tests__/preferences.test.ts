@@ -115,6 +115,13 @@ describe('mergeWithDefaults', () => {
     expect(mergeWithDefaults({ brandLogoScale: Number.NaN }).brandLogoScale).toBe(1);
     expect(mergeWithDefaults({ brandLogoScale: '2' as never }).brandLogoScale).toBe(1);
   });
+
+  it('canto do logotipo: quem vem de versão antiga fica junto ao carimbo', () => {
+    // `block` é exatamente o desenho anterior — a foto de ninguém muda sozinha.
+    expect(mergeWithDefaults({}).brandLogoPosition).toBe('block');
+    expect(mergeWithDefaults({ brandLogoPosition: 'top-right' }).brandLogoPosition).toBe('top-right');
+    expect(mergeWithDefaults({ brandLogoPosition: 'meio' as never }).brandLogoPosition).toBe('block');
+  });
 });
 
 /**

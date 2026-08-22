@@ -400,6 +400,8 @@
       "logoPermissionMessage": "Permítelo en Configuración › Permisos para elegir el archivo del logotipo.",
       "logoPermissionTitle": "Acceso a las fotos denegado",
       "logoPick": "Elegir logotipo",
+      "logoPosition": "Posición del logotipo",
+      "logoPositionBlock": "Junto al sello",
       "logoRemove": "Quitar",
       "logoReplace": "Cambiar logotipo",
       "logoSize": "Tamaño del logotipo",

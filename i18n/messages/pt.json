@@ -400,6 +400,8 @@
       "logoPermissionMessage": "Libere em Configurações › Permissões para escolher o arquivo do logotipo.",
       "logoPermissionTitle": "Acesso às fotos negado",
       "logoPick": "Escolher logotipo",
+      "logoPosition": "Posição do logotipo",
+      "logoPositionBlock": "Junto ao carimbo",
       "logoRemove": "Remover",
       "logoReplace": "Trocar logotipo",
       "logoSize": "Tamanho do logotipo",
