@@ -400,6 +400,8 @@
       "logoPermissionMessage": "Autorisez-le dans Paramètres › Autorisations pour choisir le fichier du logo.",
       "logoPermissionTitle": "Accès aux photos refusé",
       "logoPick": "Choisir un logo",
+      "logoPosition": "Position du logo",
+      "logoPositionBlock": "Avec le tampon",
       "logoRemove": "Retirer",
       "logoReplace": "Changer de logo",
       "logoSize": "Taille du logo",

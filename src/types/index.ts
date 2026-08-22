@@ -26,6 +26,17 @@ export const WATERMARK_POSITIONS = [
 
 export type WatermarkPosition = (typeof WATERMARK_POSITIONS)[number];
 
+/**
+ * Onde o logotipo da empresa é desenhado.
+ *
+ * `block` é o comportamento de sempre: dentro do cabeçalho da marca, junto
+ * ao carimbo. Os quatro cantos soltam o logotipo do bloco — um logo grande
+ * pode ir para o alto enquanto os dados ficam embaixo.
+ */
+export const BRAND_LOGO_POSITIONS = ['block', ...WATERMARK_POSITIONS] as const;
+
+export type BrandLogoPosition = (typeof BRAND_LOGO_POSITIONS)[number];
+
 /** Onde o Código de Foto é carimbado. */
 export const CODE_PLACEMENTS = ['side', 'block'] as const;
 
@@ -192,6 +203,15 @@ export type WatermarkPreferences = {
    * atualização e uma URI absoluta gravada hoje apontaria para o nada depois.
    */
   brandLogoPath: string | null;
+  /**
+   * Canto próprio do logotipo, independente do bloco de dados.
+   *
+   * `block` mantém o logo dentro do cabeçalho da marca, como sempre foi. Um
+   * canto o solta do bloco: ele é desenhado ali sozinho, no tamanho da linha
+   * da hora vezes a escala — e vale para QUALQUER formato de marca, inclusive
+   * quando o cabeçalho está desligado.
+   */
+  brandLogoPosition: BrandLogoPosition;
   /**
    * Escala manual do logotipo, de 0,5 a 2,5 (1 é o tamanho automático).
    *

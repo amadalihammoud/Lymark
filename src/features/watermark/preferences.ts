@@ -1,5 +1,6 @@
 import {
   BACKDROP_STYLES,
+  BRAND_LOGO_POSITIONS,
   BRAND_PLACEMENTS,
   CODE_PLACEMENTS,
   STAMP_COLOR_SWATCHES,
@@ -42,8 +43,11 @@ import { isManagedLogoPath } from './logo-path';
  *     bloco de dados em vez do encolhimento. Esta versão MUDA a foto de quem
  *     tem um logo largo — de propósito: o comportamento antigo o reduzia a um
  *     selo minúsculo, e foi tratado como defeito, não como escolha.
+ * 9 — canto próprio do logotipo (`brandLogoPosition`): `block` mantém o logo
+ *     dentro do cabeçalho, como sempre; um canto o solta do bloco de dados.
+ *     O padrão é `block` — quem atualiza não vê a foto mudar.
  */
-export const PREFERENCES_SCHEMA_VERSION = 8;
+export const PREFERENCES_SCHEMA_VERSION = 9;
 
 /** Limites da escala manual do logotipo. Fora deles, volta ao automático. */
 export const BRAND_LOGO_SCALE_MIN = 0.5;
@@ -116,6 +120,7 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   brandLogoPath: null,
   brandLogoAspect: 1,
   brandLogoScale: 1,
+  brandLogoPosition: 'block',
 
   stampAccent: '#F3C218',
   stampTextColor: '#FFFFFF',
@@ -315,6 +320,11 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
       BRAND_LOGO_SCALE_MIN,
       BRAND_LOGO_SCALE_MAX,
       DEFAULT_WATERMARK_PREFERENCES.brandLogoScale,
+    ),
+    brandLogoPosition: pickAllowed(
+      stored.brandLogoPosition,
+      BRAND_LOGO_POSITIONS,
+      DEFAULT_WATERMARK_PREFERENCES.brandLogoPosition,
     ),
 
     stampAccent: manualAmber(

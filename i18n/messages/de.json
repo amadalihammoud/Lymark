@@ -400,6 +400,8 @@
       "logoPermissionMessage": "Erlauben Sie ihn unter Einstellungen › Berechtigungen, um die Logodatei zu wählen.",
       "logoPermissionTitle": "Zugriff auf Fotos verweigert",
       "logoPick": "Logo wählen",
+      "logoPosition": "Position des Logos",
+      "logoPositionBlock": "Beim Stempel",
       "logoRemove": "Entfernen",
       "logoReplace": "Logo ersetzen",
       "logoSize": "Logogröße",

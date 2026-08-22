@@ -400,6 +400,8 @@
       "logoPermissionMessage": "로고 파일을 고르려면 설정 › 권한에서 허용하세요.",
       "logoPermissionTitle": "사진 접근이 거부됨",
       "logoPick": "로고 선택",
+      "logoPosition": "로고 위치",
+      "logoPositionBlock": "스탬프와 함께",
       "logoRemove": "삭제",
       "logoReplace": "로고 바꾸기",
       "logoSize": "로고 크기",

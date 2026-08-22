@@ -400,6 +400,8 @@
       "logoPermissionMessage": "Разрешите его в разделе Настройки › Разрешения, чтобы выбрать файл логотипа.",
       "logoPermissionTitle": "Доступ к фотографиям запрещён",
       "logoPick": "Выбрать логотип",
+      "logoPosition": "Положение логотипа",
+      "logoPositionBlock": "Рядом со штампом",
       "logoRemove": "Удалить",
       "logoReplace": "Заменить логотип",
       "logoSize": "Размер логотипа",
