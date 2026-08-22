@@ -1,43 +1,260 @@
 {
   "pages": [
-    { "id": "page-1", "name": "Versões do app" },
-    { "id": "page-2", "name": "Carimbo — disposições" },
-    { "id": "page-3", "name": "Marca e logotipo" },
-    { "id": "page-4", "name": "Fluxo v2 — direções" }
+    {
+      "id": "page-1",
+      "name": "Versões do app"
+    },
+    {
+      "id": "page-2",
+      "name": "Carimbo — disposições"
+    },
+    {
+      "id": "page-3",
+      "name": "Marca e logotipo"
+    },
+    {
+      "id": "page-4",
+      "name": "Fluxo v2 — direções"
+    }
   ],
   "artboards": [
-    { "file": "Main.dc.html", "title": "Celular — Capturar", "page": "page-1", "x": 0, "y": 0, "w": 390, "h": 844 },
-    { "file": "Desktop.dc.html", "title": "Desktop — três colunas", "page": "page-1", "x": 510, "y": 0, "w": 1440, "h": 900 },
-    { "file": "Site.dc.html", "title": "Site — lymark.app", "page": "page-1", "x": 510, "y": 1040, "w": 1440, "h": 760 },
-
-    { "file": "Posicoes.dc.html", "title": "Posição do bloco", "page": "page-2", "x": 0, "y": 0, "w": 680, "h": 964 },
-    { "file": "Faixas.dc.html", "title": "Faixa de fundo", "page": "page-2", "x": 800, "y": 0, "w": 1004, "h": 560 },
-    { "file": "Tamanhos.dc.html", "title": "Tamanho do texto", "page": "page-2", "x": 800, "y": 700, "w": 1004, "h": 560 },
-    { "file": "Codigo.dc.html", "title": "Código de foto", "page": "page-2", "x": 0, "y": 1104, "w": 680, "h": 560 },
-
-    { "file": "Marca.dc.html", "title": "Marca carimbada", "page": "page-3", "x": 0, "y": 0, "w": 1004, "h": 580 },
-    { "file": "Logotipo.dc.html", "title": "Logotipo — proporções", "page": "page-3", "x": 0, "y": 720, "w": 760, "h": 1096 },
-    { "file": "Cores.dc.html", "title": "Cores e personalização", "page": "page-3", "x": 1124, "y": 0, "w": 720, "h": 1010 },
-    { "file": "Tipografia.dc.html", "title": "Tipografia da marca", "page": "page-3", "x": 0, "y": 1940, "w": 1328, "h": 604 },
-    { "file": "Ajustes.dc.html", "title": "Ajustes — Marca d'água", "page": "page-3", "x": 1964, "y": 0, "w": 390, "h": 2380, "print": "flow" },
-
-    { "file": "MobileV2.dc.html", "title": "Celular v2 — ações no lugar", "page": "page-4", "x": 0, "y": 0, "w": 390, "h": 844 },
-    { "file": "DesktopV2.dc.html", "title": "Desktop v2A — palco e painel", "page": "page-4", "x": 510, "y": 0, "w": 1440, "h": 900 },
-    { "file": "DesktopV2B.dc.html", "title": "Desktop v2B — documento", "page": "page-4", "x": 510, "y": 1040, "w": 1440, "h": 900 }
+    {
+      "file": "Main.dc.html",
+      "title": "Celular — Capturar",
+      "page": "page-1",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "Desktop.dc.html",
+      "title": "Desktop — três colunas",
+      "page": "page-1",
+      "x": 510,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "Site.dc.html",
+      "title": "Site — lymark.app",
+      "page": "page-1",
+      "x": 510,
+      "y": 1040,
+      "w": 1440,
+      "h": 760
+    },
+    {
+      "file": "Posicoes.dc.html",
+      "title": "Posição do bloco",
+      "page": "page-2",
+      "x": 0,
+      "y": 0,
+      "w": 680,
+      "h": 964
+    },
+    {
+      "file": "Faixas.dc.html",
+      "title": "Faixa de fundo",
+      "page": "page-2",
+      "x": 800,
+      "y": 0,
+      "w": 1004,
+      "h": 560
+    },
+    {
+      "file": "Tamanhos.dc.html",
+      "title": "Tamanho do texto",
+      "page": "page-2",
+      "x": 800,
+      "y": 700,
+      "w": 1004,
+      "h": 560
+    },
+    {
+      "file": "Codigo.dc.html",
+      "title": "Código de foto",
+      "page": "page-2",
+      "x": 0,
+      "y": 1104,
+      "w": 680,
+      "h": 560
+    },
+    {
+      "file": "Marca.dc.html",
+      "title": "Marca carimbada",
+      "page": "page-3",
+      "x": 0,
+      "y": 0,
+      "w": 1004,
+      "h": 580
+    },
+    {
+      "file": "Logotipo.dc.html",
+      "title": "Logotipo — proporções",
+      "page": "page-3",
+      "x": 0,
+      "y": 720,
+      "w": 760,
+      "h": 1700
+    },
+    {
+      "file": "Cores.dc.html",
+      "title": "Cores e personalização",
+      "page": "page-3",
+      "x": 1124,
+      "y": 0,
+      "w": 720,
+      "h": 1010
+    },
+    {
+      "file": "Tipografia.dc.html",
+      "title": "Tipografia da marca",
+      "page": "page-3",
+      "x": 0,
+      "y": 2540,
+      "w": 1328,
+      "h": 604
+    },
+    {
+      "file": "Ajustes.dc.html",
+      "title": "Ajustes — Marca d'água",
+      "page": "page-3",
+      "x": 1964,
+      "y": 0,
+      "w": 390,
+      "h": 2900,
+      "print": "flow"
+    },
+    {
+      "file": "MobileV2.dc.html",
+      "title": "Celular v2 — ações no lugar",
+      "page": "page-4",
+      "x": 0,
+      "y": 0,
+      "w": 390,
+      "h": 844
+    },
+    {
+      "file": "DesktopV2.dc.html",
+      "title": "Desktop v2A — palco e painel",
+      "page": "page-4",
+      "x": 510,
+      "y": 0,
+      "w": 1440,
+      "h": 900
+    },
+    {
+      "file": "DesktopV2B.dc.html",
+      "title": "Desktop v2B — documento · escolhida",
+      "page": "page-4",
+      "x": 510,
+      "y": 1040,
+      "w": 1440,
+      "h": 900
+    }
   ],
   "annotations": [
-    { "id": "nota-versoes", "page": "page-1", "x": -330, "y": 0, "w": 290, "text": "Três formas de rodar o Lymark: celular (Expo — hoje Android; iOS a caminho da loja), desktop (Electron — com Histórico em pasta real, lote e vídeo) e navegador (mesma tela larga, sem Histórico: a foto é carimbada e baixada).\n\nTudo desenhado com os tokens reais de src/theme — marinho #15243C, âmbar #F3C218, Space Grotesk + IBM Plex Mono." },
-    { "id": "nota-site", "page": "page-1", "x": -330, "y": 1040, "w": 290, "text": "lymark.app: a porta de entrada — conta, assinatura e verificação de autenticidade, em 12 idiomas. Plano Grátis: 12 fotos; Pro: sem limite.\n\nO site usa Barlow e a mesma paleta do app, tom por tom." },
-    { "id": "nota-disposicoes", "page": "page-2", "x": -330, "y": 0, "w": 290, "text": "O carimbo é UM modelo com ajustes, não um catálogo de modelos prontos. Cada prancheta varia um ajuste por vez, sobre a mesma cena.\n\nMedidas vêm do código real (stamp-layout.ts): a barra âmbar vai do topo à base da tinta dos dígitos; o recuo é 2,9% da largura da foto; o código gira a -90° com o centro a 38% da altura." },
-    { "id": "nota-pedido", "page": "page-3", "x": -330, "y": 720, "w": 300, "text": "Pedido desta rodada: logotipos têm proporções variadas.\n\nEm pé (ex.: brasão de prefeitura) pede título grande e subtítulo ao lado — ou o inverso.\n\nLargo (assinatura horizontal) pede a largura do bloco de dados, acima do horário, com altura contida.\n\nA cor da barra vertical e do texto já é livre — qualquer hexadecimal." },
-    { "id": "nota-proposta", "page": "page-3", "x": 784, "y": 720, "w": 290, "text": "Os quadros marcados PROPOSTA ainda não existem no código: hoje o logo acompanha a altura do texto e, acima de 2,4 de proporção, perde altura.\n\nBrasões e logos destas pranchetas são desenhos genéricos de exemplo — o arquivo real da empresa entra por 'Escolher logotipo' (PNG com fundo transparente)." },
-    { "id": "nota-tipografia", "page": "page-3", "x": -330, "y": 1940, "w": 300, "text": "Tipografia: hoje a fonte do carimbo é fixa por decisão (fidelidade à referência e constância entre aparelhos).\n\nA proposta abre a escolha SÓ para a marca da empresa — hora e dados continuam em Pathway Gothic One e Barlow. Quatro famílias curadas de partida; a lista é o que se decide aqui." },
-    { "id": "nota-fluxo", "page": "page-4", "x": -330, "y": 0, "w": 300, "text": "Diagnóstico desta rodada: a tela larga era o idioma do celular multiplicado por três colunas, e no celular três naturezas de ação se misturam num rolo só — a exportação fica abaixo da dobra e o Vídeo, no fim de tudo.\n\nPrincípios das direções: a foto é a protagonista; origem, exportação e modos têm lugares próprios; o que se configura uma vez não fica aberto para sempre. O preview ao vivo dos ajustes continua — muda só o custo de tela." },
-    { "id": "nota-celular-v2", "page": "page-4", "x": 0, "y": -150, "w": 350, "text": "Celular v2: o palco vazio É o botão de origem; Salvar/Compartilhar viram barra fixa acima das abas (a ação âmbar nunca sai da tela); Foto | Vídeo é seletor de modo no topo — o Vídeo deixa de morar no fim do rolo." },
-    { "id": "nota-desktop-a", "page": "page-4", "x": 510, "y": -150, "w": 400, "text": "Direção A — palco e painel: barra de ações no topo (origem à esquerda, exportação âmbar à direita, modos no centro), foto grande num poço neutro, e UM painel com abas Dados | Carimbo.\n\nMotivação: hierarquia de ferramenta de foto. Custo: os ajustes do carimbo ficam a um clique de distância (aba), não sempre visíveis." },
-    { "id": "nota-desktop-b", "page": "page-4", "x": 1990, "y": 1040, "w": 400, "text": "Direção B — documento: os dados que saem carimbados viram uma régua editável PRESA à foto (o documento é foto + dados), e o painel lateral só cuida da aparência.\n\nMotivação: editar onde o dado aparece. Custo: a régua aperta com endereço longo e é a direção mais distante do código atual." },
-    { "id": "nota-botoes", "page": "page-4", "x": 1990, "y": -150, "w": 400, "text": "Botões (aprovado 22/08): no desktop, 'Escolher da galeria' vira 'Abrir foto…' (galeria é vocabulário de celular; reticências = abre janela) e muda para a ESQUERDA, na ordem do trabalho — abrir, conferir, exportar; só o par de saída fica à direita, com Ctrl+S no tooltip do Salvar e estado desabilitado sem foto. Depois de salvar: 'Mostrar na pasta'. No navegador, Compartilhar se adapta quando o compartilhamento nativo não existe.\n\nNo celular: a cota informada no momento do gasto — 'Salva · 9 de 12 grátis restantes'. Em investigação no código: salvar e compartilhar a MESMA foto deve descontar a cota UMA vez." },
-    { "id": "nota-ressalvas", "page": "page-4", "x": 1990, "y": 1560, "w": 400, "text": "Ressalvas aplicadas (22/08): endereço na MESMA altura dos demais campos, com a setinha e o esmaecido indicando que há mais texto para o lado; o seletor de posição virou um retângulo QUADRÁTICO — um mapa da foto, com as palavras inteiras, onde cada quadrante é o próprio canto que ele escolhe.\n\nProposta nova registrada: o LOGOTIPO com canto próprio, independente do bloco de dados (um logo grande pode ir para o alto, à esquerda ou à direita; 'Junto ao carimbo' é o comportamento de hoje). Vira código junto com a direção escolhida.\n\nDesktop e navegador compartilham a mesma tela — a direção escolhida vale para os dois." }
+    {
+      "id": "nota-versoes",
+      "page": "page-1",
+      "x": -330,
+      "y": 0,
+      "w": 290,
+      "text": "Três formas de rodar o Lymark: celular (Expo — Android instala pelo APK gerado no EAS; iOS exige iOS 17+, piso do SDK do Clerk, e roda no simulador enquanto a loja não chega), desktop (Electron — com Histórico em pasta real, lote e vídeo) e navegador (mesma tela larga, sem Histórico: a foto é carimbada e baixada).\n\nTudo desenhado com os tokens reais de src/theme — marinho #15243C, âmbar #F3C218, Space Grotesk + IBM Plex Mono."
+    },
+    {
+      "id": "nota-site",
+      "page": "page-1",
+      "x": -330,
+      "y": 1040,
+      "w": 290,
+      "text": "lymark.app: a porta de entrada — conta, assinatura e verificação de autenticidade, em 12 idiomas. Plano Grátis: 12 fotos; Pro: sem limite.\n\nO site usa Barlow e a mesma paleta do app, tom por tom."
+    },
+    {
+      "id": "nota-disposicoes",
+      "page": "page-2",
+      "x": -330,
+      "y": 0,
+      "w": 290,
+      "text": "O carimbo é UM modelo com ajustes, não um catálogo de modelos prontos. Cada prancheta varia um ajuste por vez, sobre a mesma cena.\n\nMedidas vêm do código real (stamp-layout.ts): a barra âmbar vai do topo à base da tinta dos dígitos; o recuo é 2,9% da largura da foto; o código gira a -90° com o centro a 38% da altura."
+    },
+    {
+      "id": "nota-pedido",
+      "page": "page-3",
+      "x": -330,
+      "y": 720,
+      "w": 300,
+      "text": "Pedido desta rodada: logotipos têm proporções variadas.\n\nEm pé (ex.: brasão de prefeitura) pede título grande e subtítulo ao lado — ou o inverso.\n\nLargo (assinatura horizontal) pede a largura do bloco de dados, acima do horário, com altura contida.\n\nA cor da barra vertical e do texto já é livre — qualquer hexadecimal."
+    },
+    {
+      "id": "nota-proposta",
+      "page": "page-3",
+      "x": 784,
+      "y": 720,
+      "w": 290,
+      "text": "Atualização 22/08 — o que era PROPOSTA virou código: a faixa larga (acima de 2,4 de proporção o logo adota a largura do bloco), o tamanho ajustável (50% a 250%) e o canto próprio do logotipo já estão no aplicativo.\n\nSegue em proposta: o logotipo em pé com título e subtítulo — e a tipografia da marca.\n\nBrasões e logos destas pranchetas são desenhos genéricos de exemplo — o arquivo real da empresa entra por 'Escolher logotipo' (PNG com fundo transparente)."
+    },
+    {
+      "id": "nota-tipografia",
+      "page": "page-3",
+      "x": -330,
+      "y": 2540,
+      "w": 300,
+      "text": "Tipografia: hoje a fonte do carimbo é fixa por decisão (fidelidade à referência e constância entre aparelhos).\n\nA proposta abre a escolha SÓ para a marca da empresa — hora e dados continuam em Pathway Gothic One e Barlow. Quatro famílias curadas de partida; a lista é o que se decide aqui."
+    },
+    {
+      "id": "nota-fluxo",
+      "page": "page-4",
+      "x": -330,
+      "y": 0,
+      "w": 300,
+      "text": "Diagnóstico desta rodada: a tela larga era o idioma do celular multiplicado por três colunas, e no celular três naturezas de ação se misturam num rolo só — a exportação fica abaixo da dobra e o Vídeo, no fim de tudo.\n\nPrincípios das direções: a foto é a protagonista; origem, exportação e modos têm lugares próprios; o que se configura uma vez não fica aberto para sempre. O preview ao vivo dos ajustes continua — muda só o custo de tela."
+    },
+    {
+      "id": "nota-celular-v2",
+      "page": "page-4",
+      "x": 0,
+      "y": -150,
+      "w": 350,
+      "text": "Celular v2: o palco vazio É o botão de origem; Salvar/Compartilhar viram barra fixa acima das abas (a ação âmbar nunca sai da tela); Foto | Vídeo é seletor de modo no topo — o Vídeo deixa de morar no fim do rolo."
+    },
+    {
+      "id": "nota-desktop-a",
+      "page": "page-4",
+      "x": 510,
+      "y": -150,
+      "w": 400,
+      "text": "Direção A — palco e painel: barra de ações no topo (origem à esquerda, exportação âmbar à direita, modos no centro), foto grande num poço neutro, e UM painel com abas Dados | Carimbo.\n\nMotivação: hierarquia de ferramenta de foto. Custo: os ajustes do carimbo ficam a um clique de distância (aba), não sempre visíveis.\n\nNão seguida (22/08) — fica como registro da exploração."
+    },
+    {
+      "id": "nota-desktop-b",
+      "page": "page-4",
+      "x": 1990,
+      "y": 1040,
+      "w": 400,
+      "text": "Direção B — documento: os dados que saem carimbados viram uma régua editável PRESA à foto (o documento é foto + dados), e o painel lateral só cuida da aparência.\n\nMotivação: editar onde o dado aparece. Custo: a régua aperta com endereço longo e é a direção mais distante do código atual.\n\nESCOLHIDA (22/08): é a direção que vira implementação — vale para desktop e navegador, que compartilham a tela larga."
+    },
+    {
+      "id": "nota-botoes",
+      "page": "page-4",
+      "x": 1990,
+      "y": -150,
+      "w": 400,
+      "text": "Botões (aprovado 22/08): no desktop, 'Escolher da galeria' vira 'Abrir foto…' (galeria é vocabulário de celular; reticências = abre janela) e muda para a ESQUERDA, na ordem do trabalho — abrir, conferir, exportar; só o par de saída fica à direita, com Ctrl+S no tooltip do Salvar e estado desabilitado sem foto. Depois de salvar: 'Mostrar na pasta'. No navegador, Compartilhar se adapta quando o compartilhamento nativo não existe.\n\nNo celular: a cota informada no momento do gasto — 'Salva · 9 de 12 grátis restantes'. Em investigação no código: salvar e compartilhar a MESMA foto deve descontar a cota UMA vez."
+    },
+    {
+      "id": "nota-ressalvas",
+      "page": "page-4",
+      "x": 1990,
+      "y": 1560,
+      "w": 400,
+      "text": "Ressalvas aplicadas (22/08): endereço na MESMA altura dos demais campos, com a setinha e o esmaecido indicando que há mais texto para o lado; o seletor de posição virou um retângulo QUADRÁTICO — um mapa da foto, com as palavras inteiras, onde cada quadrante é o próprio canto que ele escolhe.\n\nProposta nova registrada: o LOGOTIPO com canto próprio, independente do bloco de dados (um logo grande pode ir para o alto, à esquerda ou à direita; 'Junto ao carimbo' é o comportamento de hoje). JÁ NO CÓDIGO: mergeado junto com o tamanho ajustável e a faixa larga do logotipo.\n\nDesktop e navegador compartilham a mesma tela — a direção escolhida vale para os dois."
+    }
   ],
-  "launch": { "view": "canvas", "page": "page-4" }
+  "launch": {
+    "view": "canvas",
+    "page": "page-3"
+  }
 }

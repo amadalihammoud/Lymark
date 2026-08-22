@@ -37,7 +37,7 @@
   </style>
 </helmet>
 
-<div style="width: 390px; min-height: 2380px; box-sizing: border-box; background: #15243C; padding: 16px 16px 32px; display: flex; flex-direction: column; gap: 24px;">
+<div style="width: 390px; min-height: 2900px; box-sizing: border-box; background: #15243C; padding: 16px 16px 32px; display: flex; flex-direction: column; gap: 24px;">
 
   <!-- Cabeçalho da rota empilhada -->
   <div style="display: flex; align-items: center; gap: 12px; padding-top: 8px;">
@@ -152,8 +152,8 @@
     <div class="section-title">Marca carimbada</div>
     <div class="caption">Acima do relógio ela vira assinatura, com logotipo e complemento. Num canto, é uma linha discreta.</div>
     <div class="card choice-grid">
-      <div class="choice w3">Acima do relógio</div>
-      <div class="choice sel w3">Num canto</div>
+      <div class="choice sel w3">Acima do relógio</div>
+      <div class="choice w3">Num canto</div>
       <div class="choice w3">Nenhuma</div>
     </div>
 
@@ -187,11 +187,44 @@
         </div>
       </div>
       <div class="caption" style="padding: 0 12px;">Deixe a segunda parte vazia para uma marca de cor única. Nome comprido tem o corpo reduzido até caber, em vez de ser cortado.</div>
-      <div class="card choice-grid">
-        <div class="choice w2">Superior esquerdo</div>
-        <div class="choice sel w2">Superior direito</div>
-        <div class="choice w2">Inferior esquerdo</div>
-        <div class="choice w2">Inferior direito</div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="field-label">Logotipo escolhido</div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; flex: none; border-radius: 5px; border: 1px solid #294675; background: #15243C; display: flex; align-items: center; justify-content: center;">
+            <svg width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2.2"></rect><path d="M7 15 L12 8 L17 15" stroke="#F3C218" stroke-width="2.2" fill="none"></path></svg>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <div style="min-height: 40px; display: flex; align-items: center; padding: 0 14px; border-radius: 5px; border: 1px solid #4A76A1; color: #C7D6E4; font-weight: 700; font-size: 14px;">Trocar logotipo</div>
+            <div style="min-height: 40px; display: flex; align-items: center; padding: 0 14px; border-radius: 5px; border: 1px solid #4A76A1; color: #C7D6E4; font-weight: 700; font-size: 14px;">Remover</div>
+          </div>
+        </div>
+        <div class="caption">Use PNG com fundo transparente. Um JPG de fundo branco vira um retângulo branco sobre a foto.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between;">
+          <span class="field-label">Tamanho do logotipo</span>
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 14px; color: #FFFFFF;">100%</span>
+        </div>
+        <div style="position: relative; height: 24px; display: flex; align-items: center;">
+          <div style="position: absolute; left: 0; right: 0; height: 4px; border-radius: 999px; background: #294675;"></div>
+          <div style="position: absolute; left: 0; width: 25%; height: 4px; border-radius: 999px; background: #F3C218;"></div>
+          <div style="position: absolute; left: 25%; width: 20px; height: 20px; margin-left: -10px; border-radius: 50%; background: #F3C218; border: 2px solid #0F192A; box-sizing: border-box;"></div>
+        </div>
+        <div class="caption">De 50% a 250%, largura e altura juntas — o logotipo nunca é deformado.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div class="field-label">Posição do logotipo</div>
+        <div class="card choice-grid">
+          <div class="choice sel w2">Junto ao carimbo</div>
+          <div class="choice w2">Superior esquerdo</div>
+          <div class="choice w2">Superior direito</div>
+          <div class="choice w2">Inferior esquerdo</div>
+          <div class="choice w2">Inferior direito</div>
+        </div>
+        <div class="caption">Canto próprio: um logo grande pode ir para o alto enquanto os dados ficam embaixo. &ldquo;Junto ao carimbo&rdquo; é o desenho de sempre, dentro do cabeçalho.</div>
       </div>
     </div>
   </div>
