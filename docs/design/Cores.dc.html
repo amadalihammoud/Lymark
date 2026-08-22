@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&family=IBM+Plex+Mono:wght@500&family=Space+Grotesk:wght@400;500;700&family=Pathway+Gothic+One&display=swap">
+  <style>
+    body { margin: 0; background: #15243C; color: #FFFFFF; font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #F3C218; } a:hover { color: #D9A700; }
+    .section-title { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: #93A9C0; }
+    .caption { font-weight: 400; font-size: 12px; line-height: 1.5; color: #8DA4BA; }
+    .card { background: #233B63; border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .swrap { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .swatch { width: 44px; height: 44px; border-radius: 5px; border: 2px solid transparent; display: flex; align-items: center; justify-content: center; }
+    .swatch.sel { border-color: #F3C218; }
+    .swatch .fill { width: 78%; height: 78%; border-radius: 3px; border: 1px solid #294675; box-sizing: border-box; }
+    .hex { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 9px; letter-spacing: 0.3px; color: #8DA4BA; }
+    .mini { position: relative; width: 196px; height: 120px; overflow: hidden; border-radius: 3px; border: 1px solid #294675; background: radial-gradient(120% 90% at 78% 12%, rgba(74,118,161,0.28), transparent 58%), linear-gradient(168deg, #1C3151, #0F192A); }
+    .mini .stamp { position: absolute; left: 8px; bottom: 8px; text-shadow: 0 1px 3px rgba(0,0,0,0.85); }
+    .srow { display: flex; align-items: flex-start; }
+    .clock { font-family: 'Pathway Gothic One', 'Arial Narrow', sans-serif; font-weight: 400; font-size: 34px; line-height: 1; }
+    .rule { flex: none; width: 2px; font-size: 34px; height: 0.7267em; margin: 0.1633em 0.18em 0 0.3em; }
+    .stack { display: flex; flex-direction: column; justify-content: space-between; font-size: 34px; margin-top: 0.1633em; height: 0.7267em; }
+    .stack span { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 9px; line-height: 1; }
+    .brandsample { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 20px; letter-spacing: 0.023em; }
+    .parts { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #8DA4BA; }
+    .dot { width: 12px; height: 12px; border-radius: 3px; border: 1px solid #294675; display: inline-block; vertical-align: -1px; }
+    .slider { height: 6px; border-radius: 999px; background: #294675; position: relative; }
+    .slider .fillbar { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: #F3C218; }
+    .slider .knob { position: absolute; top: 50%; width: 22px; height: 22px; margin-top: -11px; margin-left: -11px; border-radius: 50%; background: #F3C218; border: 2px solid #0F192A; box-sizing: border-box; }
+  </style>
+</helmet>
+
+<div style="width: 720px; height: 1010px; box-sizing: border-box; background: #15243C; padding: 28px; display: flex; flex-direction: column; gap: 24px;">
+
+  <!-- Cores do carimbo -->
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="section-title">Cores do carimbo</div>
+    <div class="caption">Seis atalhos escolhidos para funcionar com a sombra do carimbo, em foto clara e escura — e a roda com o espectro inteiro para a cor exata do logotipo. Mexer aqui não muda as cores da tela.</div>
+    <div class="card">
+      <div class="caption">Barra vertical</div>
+      <div style="display: flex; gap: 10px;">
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #FFFFFF;"></div></div><span class="hex">FFFFFF</span></div>
+        <div class="swrap"><div class="swatch sel"><div class="fill" style="background: #F3C218;"></div></div><span class="hex">F3C218</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #FF6B57;"></div></div><span class="hex">FF6B57</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #5BD98A;"></div></div><span class="hex">5BD98A</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #63B3ED;"></div></div><span class="hex">63B3ED</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #111820;"></div></div><span class="hex">111820</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #294675; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 700; font-size: 15px;">+</div></div><span class="hex">roda</span></div>
+      </div>
+      <div class="caption">Texto</div>
+      <div style="display: flex; gap: 10px;">
+        <div class="swrap"><div class="swatch sel"><div class="fill" style="background: #FFFFFF;"></div></div><span class="hex">FFFFFF</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #F3C218;"></div></div><span class="hex">F3C218</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #FF6B57;"></div></div><span class="hex">FF6B57</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #5BD98A;"></div></div><span class="hex">5BD98A</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #63B3ED;"></div></div><span class="hex">63B3ED</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #111820;"></div></div><span class="hex">111820</span></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #294675; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 700; font-size: 15px;">+</div></div><span class="hex">roda</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- A barra vertical na foto -->
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="section-title">A barra vertical na foto</div>
+    <div class="caption">A mesma cena com a barra na cor da empresa — âmbar do Lymark, o azul de um logotipo, o vermelho de outro.</div>
+    <div style="display: flex; gap: 24px;">
+      <div class="mini">
+        <div class="stamp">
+          <div class="srow">
+            <span class="clock" style="color: #FFFFFF;">07:42</span><span class="rule" style="background: #F3C218;"></span>
+            <span class="stack"><span style="color: #FFFFFF;">12 ago. 2026</span><span style="color: #FFFFFF;">Qua</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="mini">
+        <div class="stamp">
+          <div class="srow">
+            <span class="clock" style="color: #FFFFFF;">07:42</span><span class="rule" style="background: #63B3ED;"></span>
+            <span class="stack"><span style="color: #FFFFFF;">12 ago. 2026</span><span style="color: #FFFFFF;">Qua</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="mini">
+        <div class="stamp">
+          <div class="srow">
+            <span class="clock" style="color: #FFFFFF;">07:42</span><span class="rule" style="background: #FF6B57;"></span>
+            <span class="stack"><span style="color: #FFFFFF;">12 ago. 2026</span><span style="color: #FFFFFF;">Qua</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marca em duas partes -->
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="section-title">Marca em duas partes</div>
+    <div class="caption">Uma palavra em duas cores — partes, e não palavras. As duas são desenhadas coladas; quem quer espaço, digita o espaço. Segunda parte vazia dá marca de cor única.</div>
+    <div class="card" style="gap: 14px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="brandsample" style="color: #FFFFFF;">Ly<span style="color: #F3C218;">mark</span></span>
+        <span class="parts"><span class="dot" style="background: #FFFFFF;"></span> Ly &nbsp;+&nbsp; <span class="dot" style="background: #F3C218;"></span> mark <span style="color: #4A76A1;">&nbsp;&middot; padrão de fábrica</span></span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="brandsample" style="color: #FFFFFF;">Auto<span style="color: #63B3ED;">Glass</span></span>
+        <span class="parts"><span class="dot" style="background: #FFFFFF;"></span> Auto &nbsp;+&nbsp; <span class="dot" style="background: #63B3ED;"></span> Glass</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="brandsample" style="color: #FFFFFF;">Construtora<span style="color: #F3C218;"> Silva</span></span>
+        <span class="parts"><span class="dot" style="background: #FFFFFF;"></span> Construtora &nbsp;+&nbsp; <span class="dot" style="background: #F3C218;"></span> &#9251;Silva</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Faixa de fundo -->
+  <div style="display: flex; flex-direction: column; gap: 8px;">
+    <div class="section-title">Faixa de fundo — ajustes finos</div>
+    <div class="card" style="gap: 16px;">
+      <div class="caption">Cor da faixa</div>
+      <div style="display: flex; gap: 10px;">
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #FFFFFF;"></div></div></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #F3C218;"></div></div></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #FF6B57;"></div></div></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #5BD98A;"></div></div></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #63B3ED;"></div></div></div>
+        <div class="swrap"><div class="swatch sel"><div class="fill" style="background: #111820;"></div></div></div>
+        <div class="swrap"><div class="swatch"><div class="fill" style="background: #294675; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-weight: 700; font-size: 15px;">+</div></div></div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="caption">Transparência</span>
+        <span style="font-weight: 500; font-size: 14px; font-variant-numeric: tabular-nums;">75% opaca</span>
+      </div>
+      <div class="slider"><div class="fillbar" style="width: 75%;"></div><div class="knob" style="left: 75%;"></div></div>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <span class="caption">Cantos arredondados <span style="color: #4A76A1;">(0 a 24; na faixa contínua, só os cantos de dentro)</span></span>
+        <span style="font-weight: 500; font-size: 14px; font-variant-numeric: tabular-nums;">4</span>
+      </div>
+      <div class="slider"><div class="fillbar" style="width: 17%;"></div><div class="knob" style="left: 17%;"></div></div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500&family=IBM+Plex+Mono:wght@500&family=Space+Grotesk:wght@400;500;700&family=Pathway+Gothic+One&display=swap">
+  <style>
+    body { margin: 0; background: #15243C; color: #FFFFFF; font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #F3C218; } a:hover { color: #D9A700; }
+    figure { margin: 0; display: flex; flex-direction: column; gap: 10px; width: 300px; }
+    .photo { position: relative; width: 300px; height: 400px; overflow: hidden; border: 1px solid #294675; background: radial-gradient(120% 90% at 78% 12%, rgba(74,118,161,0.28), transparent 58%), linear-gradient(168deg, #1C3151, #0F192A); }
+    .photo .wire { position: absolute; inset: 0; background-image: linear-gradient(#294675 1px, transparent 1px), linear-gradient(90deg, #294675 1px, transparent 1px); background-size: 36px 36px; opacity: 0.14; }
+    .cap { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #C7D6E4; }
+    .cap em { font-style: normal; color: #F3C218; }
+    .sub { font-size: 12px; line-height: 1.5; color: #8DA4BA; }
+    .stamp { position: absolute; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.85); }
+    .srow { display: flex; align-items: flex-start; }
+    .clock { font-family: 'Pathway Gothic One', 'Arial Narrow', sans-serif; font-weight: 400; font-size: 40px; line-height: 1; color: #FFFFFF; }
+    .rule { flex: none; width: 2px; font-size: 40px; height: 0.7267em; margin: 0.1633em 0.18em 0 0.3em; background: #F3C218; }
+    .stack { display: flex; flex-direction: column; justify-content: space-between; font-size: 40px; margin-top: 0.1633em; height: 0.7267em; }
+    .stack span, .addr { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 11px; line-height: 1; color: #FFFFFF; }
+    .addr { line-height: 1.42; margin-top: 4px; }
+  </style>
+</helmet>
+
+<div style="width: 1004px; height: 560px; box-sizing: border-box; background: #15243C; padding: 28px; display: flex; gap: 24px; align-content: flex-start;">
+
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp" style="bottom: 8px; left: 8px;">
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap">Nenhuma <em>&middot; padrão</em></figcaption>
+    <div class="sub">O texto fica direto sobre a imagem; a sombra garante a leitura.</div>
+  </figure>
+
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp" style="bottom: 6px; left: 6px; background: rgba(0,0,0,0.75); border-radius: 4px; padding: 8px 10px;">
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap">Atrás do texto</figcaption>
+    <div class="sub">O cartão abraça o bloco, com folga em volta. Cor, opacidade (75%) e cantos ajustáveis.</div>
+  </figure>
+
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; background: rgba(0,0,0,0.75); border-radius: 6px 6px 0 0; padding: 10px 8px;">
+        <div class="stamp" style="position: static; ">
+          <div class="srow">
+            <span class="clock">07:42</span><span class="rule"></span>
+            <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+          </div>
+          <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+        </div>
+      </div>
+    </div>
+    <figcaption class="cap">Faixa contínua</figcaption>
+    <div class="sub">Atravessa de borda a borda e encosta na margem ancorada. Só os cantos de dentro arredondam.</div>
+  </figure>
+
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=IBM+Plex+Mono:wght@500&family=Space+Grotesk:wght@400;500;700&family=Pathway+Gothic+One&display=swap">
+  <style>
+    body { margin: 0; background: #15243C; color: #FFFFFF; font-family: 'Space Grotesk', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #F3C218; } a:hover { color: #D9A700; }
+    figure { margin: 0; display: flex; flex-direction: column; gap: 10px; width: 300px; }
+    .photo { position: relative; width: 300px; height: 400px; overflow: hidden; border: 1px solid #294675; background: radial-gradient(120% 90% at 78% 12%, rgba(74,118,161,0.28), transparent 58%), linear-gradient(168deg, #1C3151, #0F192A); }
+    .photo .wire { position: absolute; inset: 0; background-image: linear-gradient(#294675 1px, transparent 1px), linear-gradient(90deg, #294675 1px, transparent 1px); background-size: 36px 36px; opacity: 0.14; }
+    .cap { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #C7D6E4; }
+    .cap em { font-style: normal; color: #F3C218; }
+    .sub { font-size: 12px; line-height: 1.5; color: #8DA4BA; }
+    .stamp { position: absolute; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.85); bottom: 8px; left: 8px; }
+    .srow { display: flex; align-items: flex-start; }
+    .clock { font-family: 'Pathway Gothic One', 'Arial Narrow', sans-serif; font-weight: 400; font-size: 40px; line-height: 1; color: #FFFFFF; }
+    .rule { flex: none; width: 2px; font-size: 40px; height: 0.7267em; margin: 0.1633em 0.18em 0 0.3em; background: #F3C218; }
+    .stack { display: flex; flex-direction: column; justify-content: space-between; font-size: 40px; margin-top: 0.1633em; height: 0.7267em; }
+    .stack span, .addr { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-size: 11px; line-height: 1; color: #FFFFFF; }
+    .addr { line-height: 1.42; margin-top: 4px; }
+    .brandline { position: absolute; top: 8px; right: 8px; z-index: 2; font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.023em; color: #FFFFFF; text-shadow: 0 1px 3px rgba(0,0,0,0.85); }
+    .lockup { display: flex; align-items: center; gap: 5px; margin-bottom: 13px; }
+    .lname { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 18px; line-height: 1.1; letter-spacing: 0.023em; color: #FFFFFF; }
+    .lcomp { font-family: 'Barlow', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 8px; letter-spacing: 0.023em; color: #FFFFFF; margin-top: 2px; }
+    .amber { color: #F3C218; }
+  </style>
+</helmet>
+
+<div style="width: 1004px; height: 580px; box-sizing: border-box; background: #15243C; padding: 28px; display: flex; gap: 24px; align-content: flex-start;">
+
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="brandline">Ly<span class="amber">mark</span></div>
+      <div class="stamp">
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap">Num canto <em>&middot; padrão</em></figcaption>
+    <div class="sub">Linha discreta, com canto próprio — sem espaço para logotipo nem para duas alturas de texto. Duas partes, cada uma com sua cor.</div>
+  </figure>
+
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="lockup">
+          <svg width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2.2"></rect><path d="M7 15 L12 8 L17 15" stroke="#F3C218" stroke-width="2.2" fill="none"></path></svg>
+          <span>
+            <span class="lname">Construtora <span class="amber">Silva</span></span>
+            <span class="lcomp" style="display: block;">Vistorias e laudos técnicos</span>
+          </span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap">Acima do relógio</figcaption>
+    <div class="sub">Vira assinatura: logotipo à esquerda, nome e complemento à direita, dentro do bloco — mesma âncora e mesma faixa de fundo do relógio.</div>
+  </figure>
+
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap">Nenhuma</figcaption>
+    <div class="sub">Só os dados. Nunca há duas marcas na mesma foto — cabeçalho e canto são o mesmo dado em dois formatos.</div>
+  </figure>
+
+</div>
+</x-dc>
+</body>
+</html>
