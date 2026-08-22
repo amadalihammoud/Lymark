@@ -17,6 +17,7 @@
     .cap { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #C7D6E4; display: flex; align-items: center; gap: 8px; }
     .chip { flex: none; font-size: 9px; letter-spacing: 1px; padding: 3px 7px; border-radius: 3px; border: 1px solid #4A76A1; color: #C7D6E4; }
     .chip.nova { border-color: #F3C218; color: #F3C218; }
+    .chip.prop { border-style: dashed; border-color: #8DA4BA; color: #8DA4BA; }
     .sub { font-size: 12px; line-height: 1.5; color: #8DA4BA; }
     .stamp { position: absolute; z-index: 2; text-shadow: 0 1px 3px rgba(0,0,0,0.85); bottom: 10px; left: 10px; }
     .srow { display: flex; align-items: flex-start; }
@@ -32,7 +33,7 @@
   </style>
 </helmet>
 
-<div style="width: 760px; height: 1096px; box-sizing: border-box; background: #15243C; padding: 28px; display: flex; flex-wrap: wrap; gap: 24px; align-content: flex-start;">
+<div style="width: 760px; height: 1700px; box-sizing: border-box; background: #15243C; padding: 28px; display: flex; flex-wrap: wrap; gap: 24px; align-content: flex-start;">
 
   <!-- 1. Hoje: logotipo quadrado -->
   <figure>
@@ -79,8 +80,8 @@
         <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
       </div>
     </div>
-    <figcaption class="cap"><span class="chip">hoje</span> Logotipo largo é contido</figcaption>
-    <div class="sub">Acima de 2,4 de proporção o logo perde altura — nunca é esticado nem cortado. Uma assinatura horizontal acaba virando um selo pequeno ao lado do nome.</div>
+    <figcaption class="cap"><span class="chip">hoje</span> Largo até 2,4×: junto ao nome</figcaption>
+    <div class="sub">Até 2,4 de proporção o logo acompanha a altura do texto, ao lado do nome. Mais largo que isso, ele não é mais encolhido a selo: vira a faixa do quadro 4.</div>
   </figure>
 
   <!-- 3. Proposta: logotipo em pé, título e subtítulo -->
@@ -102,7 +103,7 @@
         <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
       </div>
     </div>
-    <figcaption class="cap"><span class="chip nova">proposta</span> Em pé: título e subtítulo</figcaption>
+    <figcaption class="cap"><span class="chip prop">proposta</span> Em pé: título e subtítulo</figcaption>
     <div class="sub">Para brasões e selos verticais: o logo cresce até as duas linhas de texto — título grande em cima e subtítulo embaixo, ou o inverso, cada um com cor própria. O brasão aqui é um desenho genérico de exemplo.</div>
   </figure>
 
@@ -122,8 +123,54 @@
         <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
       </div>
     </div>
-    <figcaption class="cap"><span class="chip nova">proposta</span> Largo: na largura do bloco</figcaption>
-    <div class="sub">A assinatura adota a largura do bloco de dados, acima do horário, com teto de altura para não dominar a foto. Dispensa o nome em texto ao lado — o logo é a assinatura.</div>
+    <figcaption class="cap"><span class="chip nova">no app</span> Largo: na largura do bloco</figcaption>
+    <div class="sub">Acima de 2,4 de proporção a assinatura adota a largura do bloco de dados, acima do horário — a altura segue a proporção do arquivo, com teto de 70% da largura da foto. O logo é a assinatura; dispensa o nome em texto ao lado.</div>
+  </figure>
+
+  <!-- 5. No app: canto próprio do logotipo -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div style="position: absolute; z-index: 2; top: 12px; left: 12px;">
+        <svg width="52" height="68" viewBox="0 0 46 60"><path d="M23 2 L44 8 V30 C44 45 35 54 23 58 C11 54 2 45 2 30 V8 Z" fill="none" stroke="#FFFFFF" stroke-width="2.5"></path><path d="M9 13 H37" stroke="#F3C218" stroke-width="4"></path><circle cx="23" cy="33" r="7" fill="#F3C218"></circle></svg>
+      </div>
+      <div class="stamp">
+        <div style="margin-bottom: 14px;">
+          <span class="lname">Construtora <span class="amber">Silva</span></span>
+          <span class="lcomp" style="display: block; margin-top: 2px;">Vistorias e laudos técnicos</span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip nova">no app</span> Canto próprio</figcaption>
+    <div class="sub">O logotipo ancora em qualquer canto da foto, independente do bloco de dados — um brasão grande vai para o alto enquanto os dados ficam embaixo. &ldquo;Junto ao carimbo&rdquo; segue sendo o padrão.</div>
+  </figure>
+
+  <!-- 6. No app: tamanho ajustável -->
+  <figure>
+    <div class="photo">
+      <div class="wire"></div>
+      <div class="stamp">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 14px;">
+          <svg width="42" height="42" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2.2"></rect><path d="M7 15 L12 8 L17 15" stroke="#F3C218" stroke-width="2.2" fill="none"></path></svg>
+          <span>
+            <span class="lname">Construtora <span class="amber">Silva</span></span>
+            <span class="lcomp" style="display: block; margin-top: 2px;">Vistorias e laudos técnicos</span>
+          </span>
+        </div>
+        <div class="srow">
+          <span class="clock">07:42</span><span class="rule"></span>
+          <span class="stack"><span>12 ago. 2026</span><span>Qua</span></span>
+        </div>
+        <div class="addr">Av. Puglisi, 490 - Centro,<br>Guarujá - SP, 11410-002</div>
+      </div>
+    </div>
+    <figcaption class="cap"><span class="chip nova">no app</span> Tamanho ajustável: 50% a 250%</figcaption>
+    <div class="sub">Um controle único escala largura e altura juntas — deformar não é opção. Aqui, o mesmo logotipo do quadro 1 em 150%. Vale junto ao carimbo, na faixa larga e no canto próprio.</div>
   </figure>
 
 </div>
