@@ -7,6 +7,13 @@ version = '0.1.0'
 
 android {
   namespace 'expo.modules.videostamp'
+
+  defaultConfig {
+    // Exigido pelo autolinking do Expo no build nativo: sem versionName o
+    // Gradle do EAS caía com "'android.defaultConfig.versionName' is not
+    // defined" ao configurar o projeto :video-stamp.
+    versionName '0.1.0'
+  }
 }
 
 dependencies {
