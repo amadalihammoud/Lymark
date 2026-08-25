@@ -5,6 +5,7 @@ import { useTranslations } from 'use-intl';
 
 import { AppHeader } from '@/components/brand/app-header';
 import { CaptureActions } from '@/components/capture/capture-actions';
+import { CaptureDocument } from '@/components/capture/document/capture-document';
 import { MetadataForm } from '@/components/capture/metadata-form';
 import { PhotoPreview } from '@/components/capture/photo-preview';
 import { Button } from '@/components/ui/button';
@@ -32,7 +33,7 @@ import {
   CodePlacementControl,
 } from '@/components/settings/watermark-controls';
 import { useLayoutMode } from '@/lib/breakpoints';
-import { canUseDeviceCamera, isDesktop } from '@/lib/file-storage';
+import { canUseDeviceCamera, isDesktop, isMobile } from '@/lib/file-storage';
 import { colors, spacing, typography } from '@/theme';
 import { WATERMARK_FIELD_KEYS, type WatermarkFieldKey } from '@/types';
 
@@ -512,6 +513,50 @@ export default function CaptureScreen() {
   //
   // O cabeçalho não aparece aqui: na tela larga ele é a barra que atravessa a
   // janela, montada em `(tabs)/_layout`.
+  /*
+   * Desktop e navegador compartilham o desenho de DOCUMENTO a partir de 1280,
+   * onde há largura para a barra, o palco e o painel ao mesmo tempo. Abaixo
+   * disso a régua espremeria o endereço até ficar ilegível — em silêncio, que
+   * é o pior modo de falhar.
+   *
+   * `!isMobile()` exclui o aplicativo nativo: um iPad em paisagem entra em
+   * `ultra`, e ali a régua fica presa ao pé do documento numa tela sem
+   * rolagem — o teclado virtual a cobriria sem saída. No navegador o problema
+   * não existe da mesma forma, porque ele rola o campo focado para dentro da
+   * área visível.
+   */
+  if (mode === 'ultra' && !isMobile()) {
+    return (
+      <Screen scrollable={false}>
+        <CaptureDocument
+          photo={draft.photo}
+          metadata={draft.metadata}
+          preferences={preferences}
+          visibleFields={preferences.visibleFields}
+          source={captureActions}
+          hasPhoto={hasPhoto}
+          busy={busy}
+          pending={pending}
+          isEmpty={content.isEmpty}
+          addressHint={addressHint}
+          locating={locating}
+          onChangeField={handleChangeField}
+          onSyncDateTime={syncDateTime}
+          onRegenerateCode={() => {
+            codeEdited.current = false;
+            regenerateCode();
+          }}
+          onLocate={handleLocate}
+          onSave={() => requestAction('save')}
+          onShare={() => requestAction('share')}
+          onReset={handleReset}
+          onVideo={() => router.push('/video')}
+          onBatch={handleBatchProcessing}
+        />
+      </Screen>
+    );
+  }
+
   if (wide) {
     return (
       <Screen scrollable={false} contentStyle={styles.wide}>

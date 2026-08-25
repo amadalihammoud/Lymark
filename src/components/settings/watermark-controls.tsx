@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { ChoiceGrid } from '@/components/ui/choice-grid';
 import { ColorField } from '@/components/ui/color-field';
 import { FieldRow } from '@/components/ui/field-row';
+import { QuadrantPicker } from '@/components/ui/quadrant-picker';
 import { Section } from '@/components/ui/section';
 import { SliderRow } from '@/components/ui/slider-row';
 import { ToggleRow } from '@/components/ui/toggle-row';
@@ -29,6 +30,7 @@ import {
   WATERMARK_FIELD_KEYS,
   WATERMARK_POSITIONS,
   WATERMARK_SCALES,
+  type BrandLogoPosition,
 } from '@/types';
 
 /**
@@ -107,6 +109,7 @@ export function CodePlacementControl() {
 export function WatermarkControls({
   includeFields = true,
   includeReset = true,
+  positionAsMap = false,
 }: {
   /**
    * Desligado onde os interruptores de campo e o lugar do código já aparecem
@@ -121,6 +124,14 @@ export function WatermarkControls({
    * Configurações, que é onde se procura por ela.
    */
   includeReset?: boolean;
+  /**
+   * Troca as grades de posição pelo mapa 2x2 da foto.
+   *
+   * Ligado só no painel da tela larga, onde há largura para um controle que
+   * tem a FORMA do que ele controla. O padrão desligado mantém a rota de
+   * Configurações e o celular exatamente como estão.
+   */
+  positionAsMap?: boolean;
 } = {}) {
   const t = useTranslations('app.watermark');
   const tCommon = useTranslations('app.common');
@@ -175,15 +186,26 @@ export function WatermarkControls({
       {includeFields ? <WatermarkFieldToggles /> : null}
 
       <Section title={t('positionTitle')} description={t('positionDescription')}>
-        <ChoiceGrid
-          columns={2}
-          selected={preferences.position}
-          onSelect={(position) => updatePreferences({ position })}
-          options={WATERMARK_POSITIONS.map((position) => ({
-            value: position,
-            label: t(`positions.${position}`),
-          }))}
-        />
+        {positionAsMap ? (
+          <QuadrantPicker
+            cells={WATERMARK_POSITIONS.map((position) => ({
+              value: position,
+              label: t(`positions.${position}`),
+            }))}
+            value={preferences.position}
+            onSelect={(position) => updatePreferences({ position })}
+          />
+        ) : (
+          <ChoiceGrid
+            columns={2}
+            selected={preferences.position}
+            onSelect={(position) => updatePreferences({ position })}
+            options={WATERMARK_POSITIONS.map((position) => ({
+              value: position,
+              label: t(`positions.${position}`),
+            }))}
+          />
+        )}
       </Section>
 
       <Section title={t('sizeTitle')}>
@@ -339,18 +361,38 @@ export function WatermarkControls({
                         enquanto os dados ficam embaixo. "Junto ao carimbo" é
                         o desenho de sempre, dentro do cabeçalho. */}
                     <Text style={styles.hint}>{t('logoPosition')}</Text>
-                    <ChoiceGrid
-                      columns={2}
-                      selected={preferences.brandLogoPosition}
-                      onSelect={(brandLogoPosition) => updatePreferences({ brandLogoPosition })}
-                      options={BRAND_LOGO_POSITIONS.map((position) => ({
-                        value: position,
-                        label:
-                          position === 'block'
-                            ? t('logoPositionBlock')
-                            : t(`positions.${position}`),
-                      }))}
-                    />
+                    {positionAsMap ? (
+                      /*
+                        "Junto ao carimbo" vai numa célula à parte, de largura
+                        inteira — e não espremido num dos quatro quadrantes.
+                        São CINCO valores, e ele é o padrão salvo: usar um
+                        quadrante para ele apagaria um canto de quem já o
+                        tivesse escolhido, sem que houvesse estado "nada
+                        selecionado" para onde essa pessoa pudesse cair.
+                      */
+                      <QuadrantPicker
+                        cells={WATERMARK_POSITIONS.map((position) => ({
+                          value: position as BrandLogoPosition,
+                          label: t(`positions.${position}`),
+                        }))}
+                        extra={{ value: 'block', label: t('logoPositionBlock') }}
+                        value={preferences.brandLogoPosition}
+                        onSelect={(brandLogoPosition) => updatePreferences({ brandLogoPosition })}
+                      />
+                    ) : (
+                      <ChoiceGrid
+                        columns={2}
+                        selected={preferences.brandLogoPosition}
+                        onSelect={(brandLogoPosition) => updatePreferences({ brandLogoPosition })}
+                        options={BRAND_LOGO_POSITIONS.map((position) => ({
+                          value: position,
+                          label:
+                            position === 'block'
+                              ? t('logoPositionBlock')
+                              : t(`positions.${position}`),
+                        }))}
+                      />
+                    )}
                   </>
                 ) : null}
               </View>
