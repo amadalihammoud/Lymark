@@ -323,8 +323,8 @@
       "saved": "{path}에 저장됨",
       "savedToGallery": "스탬프 동영상을 갤러리에 저장했습니다.",
       "select": "동영상 선택",
-      "unavailableBody": "동영상 스탬프는 데스크톱 앱에서 사용할 수 있습니다.",
-      "unavailableTitle": "컴퓨터 전용",
+      "unavailableBody": "모바일 동영상 스탬프는 EAS 빌드로 설치한 Lymark(네이티브 모듈 포함)가 필요합니다. Expo Go에서는 사용할 수 없습니다. 공식 앱 또는 EAS 빌드를 설치하거나 데스크톱 / 웹을 사용하세요.",
+      "unavailableTitle": "설치된 앱이 필요합니다",
       "unreadable": "파일을 동영상으로 읽을 수 없습니다.",
       "webNote": "브라우저에서는 동영상이 실시간으로 처리되며(2분짜리 동영상은 2분 소요) WebM 형식으로 저장됩니다. 긴 동영상은 데스크톱 앱을 사용하세요."
     },

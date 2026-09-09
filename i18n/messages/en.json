@@ -323,8 +323,8 @@
       "saved": "Saved to {path}",
       "savedToGallery": "Stamped video saved to your gallery.",
       "select": "Choose video",
-      "unavailableBody": "Video stamping is available in the desktop app.",
-      "unavailableTitle": "Desktop only",
+      "unavailableBody": "Mobile video stamping needs Lymark installed from an EAS build (with the native module). It is not available in Expo Go. Install the official app from the store or an EAS build, or use the desktop / web version.",
+      "unavailableTitle": "Installed app required",
       "unreadable": "The file could not be read as a video.",
       "webNote": "In the browser, the video is processed in real time — a 2-minute video takes 2 minutes — and comes out in WebM format. For long videos, use the desktop app."
     },

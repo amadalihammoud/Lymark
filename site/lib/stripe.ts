@@ -132,6 +132,47 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 /** Os eventos que importam: primeira compra e cada renovação paga. */
 const RELEVANT_EVENTS = new Set(['checkout.session.completed', 'invoice.paid']);
 
+
+/**
+ * Cancela assinaturas Stripe ligadas a uma conta Clerk.
+ *
+ * Usado na exclusão de conta: apagar o usuário no Clerk sem cancelar a
+ * cobrança deixaria o cartão sendo debitado sem produto. Melhor esforço —
+ * falha de rede no Stripe não bloqueia a exclusão da conta (o contrário
+ * deixaria a pessoa presa numa conta que pediu para apagar).
+ *
+ * A busca é por `metadata.userId`, o mesmo campo gravado no checkout.
+ */
+export async function cancelSubscriptionsForUser(options: {
+  config: StripeConfig;
+  userId: string;
+  fetchImpl?: typeof fetch;
+}): Promise<void> {
+  const { config, userId, fetchImpl = fetch } = options;
+  const query = encodeURIComponent(`metadata['userId']:'${userId}'`);
+  const listed = await fetchImpl(`${API}/subscriptions/search?query=${query}&limit=100`, {
+    headers: { Authorization: `Bearer ${config.secretKey}` },
+  });
+  if (!listed.ok) return;
+
+  const body: unknown = await listed.json();
+  const rows = (body as { data?: unknown } | null)?.data;
+  if (!Array.isArray(rows)) return;
+
+  for (const row of rows) {
+    if (typeof row !== 'object' || row === null) continue;
+    const id = (row as { id?: unknown }).id;
+    const status = (row as { status?: unknown }).status;
+    if (typeof id !== 'string' || id.length === 0) continue;
+    if (status === 'canceled') continue;
+
+    await fetchImpl(`${API}/subscriptions/${id}`, {
+      method: 'DELETE',
+      headers: { Authorization: `Bearer ${config.secretKey}` },
+    });
+  }
+}
+
 /**
  * Trata um evento já verificado: descobre a assinatura, lê dela a conta e o
  * fim do período, e grava `paidUntil`.
@@ -177,8 +218,22 @@ export async function handleStripeEvent(
 
   // Preserva a contagem: o webhook só sabe do pagamento, e zerar `used` aqui
   // apagaria fotos já contabilizadas.
-  const stored = readStored(await store.read(parsed.userId));
-  await store.write(parsed.userId, { ...stored, plan: 'pro', paidUntil });
+  //
+  // Conta já excluída no Clerk: o Stripe ainda pode mandar `invoice.paid`.
+  // Tratar como `ignored` (2xx na rota) evita retentativa infinita; gravar
+  // num usuário inexistente devolveria 500 para sempre.
+  let stored;
+  try {
+    stored = readStored(await store.read(parsed.userId));
+  } catch {
+    return { outcome: 'ignored' };
+  }
+
+  try {
+    await store.write(parsed.userId, { ...stored, plan: 'pro', paidUntil });
+  } catch {
+    return { outcome: 'ignored' };
+  }
 
   return { outcome: 'updated', userId: parsed.userId, paidUntil };
 }
