@@ -64,30 +64,16 @@ Arquivos estáticos em `public/web/` têm precedência no filesystem da Vercel.
 
 ### Redirect de `app.lymark.app`
 
-No painel Vercel → Domains:
+No painel Vercel → Domains do projeto **`lymark`** (Root Directory = `site`;
+**não** o projeto antigo `lymark-app`):
 
-1. Adicione `app.lymark.app` ao projeto (ou mantenha o domínio antigo).
-2. Configure redirect **308/301** de `https://app.lymark.app/*` →
-   `https://lymark.app/web` (ou pelo menos a raiz → `/web`).
+1. Adicione o domínio `app.lymark.app` (e, se existir, `www.app.lymark.app`)
+   ao projeto **lymark**.
+2. Não configure redirect no painel de Domains — o Next já trata isso.
 
-Alternativa via `vercel.json` no projeto que ainda responde em
-`app.lymark.app` (se for o mesmo projeto, use `redirects` com `has` de host):
-
-```json
-{
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "app.lymark.app" }],
-      "destination": "https://lymark.app/web",
-      "permanent": true
-    }
-  ]
-}
-```
-
-(Confirme se misturar com as rewrites de `/web` no mesmo arquivo não cria
-loop — o destino é outro host/path.)
+O redirect **308** está em `site/next.config.mjs` (`redirects()` com
+`has: [{ type: 'host', value }]`): qualquer path em `app.lymark.app` ou
+`www.app.lymark.app` vai para `https://lymark.app/web`.
 
 ## Fluxo do usuário
 
