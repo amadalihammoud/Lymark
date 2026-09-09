@@ -29,6 +29,7 @@ import {
   ukUA,
   viVN,
   zhCN,
+  zhTW,
   deDE,
   daDK,
   fiFI,
@@ -65,6 +66,8 @@ import type { Locale } from '../../i18n/locales';
  *
  * Fase 4: `be`, `ca` e `is` usam o pacote nativo; `et`, `tg`, `mk`, `tk`, `ky`,
  * `nn`, `lb`, `dz`, `mt` e `dv` caem no inglês.
+ *
+ * Variantes V1: `zh-Hant` usa `zhTW` (Traditional Chinese / Taiwan).
  */
 export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   pt: ptBR,
@@ -76,6 +79,7 @@ export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   nl: nlNL,
   ru: ruRU,
   zh: zhCN,
+  'zh-Hant': zhTW,
   ja: jaJP,
   ko: koKR,
   ar: arSA,

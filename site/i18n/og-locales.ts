@@ -23,6 +23,7 @@ export const OG_LOCALES: Record<Locale, string> = {
   nl: 'nl_NL',
   ru: 'ru_RU',
   zh: 'zh_CN',
+  'zh-Hant': 'zh_TW',
   ja: 'ja_JP',
   ko: 'ko_KR',
   // O Facebook usa `ar_AR` para o árabe, sem território real — é o código que

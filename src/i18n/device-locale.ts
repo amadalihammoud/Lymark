@@ -1,22 +1,64 @@
-import { DEFAULT_LOCALE, LOCALES, type Locale } from '@i18n/locales';
+import { DEFAULT_LOCALE, LOCALES, isLocale, type Locale } from '@i18n/locales';
 
 /**
  * O idioma que o aparelho pede, reduzido ao que o Lymark tem.
  *
- * A negociação é deliberadamente simples: comparamos apenas a parte primária
- * da etiqueta. Quem está com o aparelho em `pt-PT`, `pt-AO` ou `pt-BR` recebe
- * português; `zh-Hant` recebe o catálogo chinês. Distinguir variantes exigiria
- * catálogos que não existem, e escolher o inglês por não haver `pt-PT` exato
- * seria pior do que aproximar.
+ * A negociação tenta o mais específico primeiro: etiqueta completa, depois
+ * idioma+escrita (`zh-Hant` a partir de `zh-Hant-TW`), depois heurística de
+ * região para o chinês (`zh-TW`/`zh-HK` → `zh-Hant`, `zh-CN` → `zh`), e só então
+ * a parte primária. Quem está com o aparelho em `pt-PT` ou `pt-BR` continua
+ * recebendo português; quem está em `zh-Hant` ou `zh-TW` recebe o catálogo
+ * tradicional, sem cair no simplificado só porque a primária é `zh`.
  */
 export function resolveDeviceLocale(): Locale {
   for (const tag of deviceLanguageTags()) {
-    const primary = tag.split(/[-_]/)[0]?.toLowerCase();
-    const match = LOCALES.find((locale) => locale === primary);
+    const match = matchTag(tag);
     if (match) return match;
   }
 
   return DEFAULT_LOCALE;
+}
+
+/**
+ * Resolve uma etiqueta BCP-47 / underscores ao catálogo mais próximo.
+ *
+ * Exportada para os testes cobrirem as colisões `zh` / `zh-Hant` sem depender
+ * do `navigator` do ambiente.
+ */
+export function matchTag(tag: string): Locale | undefined {
+  const normalized = tag.trim().replace(/_/g, '-');
+  if (!normalized) return undefined;
+
+  const parts = normalized.split('-').filter(Boolean);
+  if (parts.length === 0) return undefined;
+
+  const lowerFull = parts.join('-').toLowerCase();
+  const exact = LOCALES.find((locale) => locale.toLowerCase() === lowerFull);
+  if (exact) return exact;
+
+  // idioma + Script (zh-Hant a partir de zh-Hant-TW / zh-Hans-CN)
+  if (parts.length >= 2) {
+    const langScript = `${parts[0]}-${parts[1]}`.toLowerCase();
+    const withScript = LOCALES.find((locale) => locale.toLowerCase() === langScript);
+    if (withScript) return withScript;
+  }
+
+  const primary = parts[0]!.toLowerCase();
+  const upper = parts.map((p) => p.toUpperCase());
+
+  // Chinês: região e escrita explícitas antes de cair no catálogo `zh`.
+  if (primary === 'zh') {
+    if (upper.includes('HANT') || upper.some((p) => p === 'TW' || p === 'HK' || p === 'MO')) {
+      if (isLocale('zh-Hant')) return 'zh-Hant';
+    }
+    if (upper.includes('HANS') || upper.some((p) => p === 'CN' || p === 'SG')) {
+      return 'zh';
+    }
+    // `zh` sem região: o catálogo histórico (simplificado).
+    return 'zh';
+  }
+
+  return LOCALES.find((locale) => locale === primary);
 }
 
 /**
