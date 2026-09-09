@@ -15,12 +15,19 @@ const intl = createMiddleware(routing);
  * chamada da API quebraria o aplicativo). Por dentro, o next-intl decide o
  * idioma só das páginas.
  *
+ * `/web` é o export estático do Expo (SPA). Não passa pelo next-intl: não tem
+ * locale de site, e um redirect de prefixo quebraria o `baseUrl` e as rotas
+ * do app. Arquivos com extensão já saem pelo `matcher`; aqui pulamos o
+ * prefixo `/web` inteiro.
+ *
  * Nada aqui exige login. A porta de entrada é decisão de cada tela — a landing
  * e os documentos legais são públicos por definição —, e a API confere o token
  * ela mesma, em `lib/entitlements.ts`.
  */
 const withoutClerk = (request: NextRequest) => {
-  if (request.nextUrl.pathname.startsWith('/api')) return;
+  const { pathname } = request.nextUrl;
+  if (pathname.startsWith('/api')) return;
+  if (pathname === '/web' || pathname.startsWith('/web/')) return;
   return intl(request);
 };
 
@@ -42,7 +49,8 @@ export const config = {
   /**
    * Páginas e API. `_next` e `_vercel` são infraestrutura, e qualquer caminho
    * com ponto é arquivo estático — passar o `favicon.ico` pelos negociadores
-   * só gastaria tempo.
+   * só gastaria tempo. `/web` também fica de fora do matcher para não
+   * negociar locale no SPA hospedado (reforço além do early-return acima).
    */
-  matcher: ['/((?!_next|_vercel|.*\\..*).*)'],
+  matcher: ['/((?!_next|_vercel|web(?:/|$)|.*\\..*).*)'],
 };

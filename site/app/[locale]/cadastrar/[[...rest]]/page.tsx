@@ -25,6 +25,8 @@ export default async function SignUpPage({ params }: { params: Promise<{ locale:
       <SignUp
         path={getPathname({ href: '/cadastrar', locale: locale as Locale })}
         signInUrl={getPathname({ href: '/entrar', locale: locale as Locale })}
+        forceRedirectUrl="/web"
+        fallbackRedirectUrl="/web"
       />
     </section>
   );

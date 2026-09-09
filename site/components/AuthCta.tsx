@@ -1,19 +1,16 @@
 'use client';
 
 import { SignInButton, SignUpButton, useAuth } from '@clerk/nextjs';
-import { useLocale } from 'next-intl';
 
-import { Link, getPathname } from '../i18n/navigation';
-import type { Locale } from '../../i18n/locales';
+import { Link } from '../i18n/navigation';
 
 /**
  * Os botões de conta do hero — em MODAL, sem sair da página.
  *
  * O formulário do Clerk abre por cima da landing: quem clica não perde o
- * lugar, e ao concluir é levado à conta (`forceRedirectUrl`), de onde o
- * aplicativo abre. As páginas `/entrar` e `/cadastrar` continuam existindo —
- * são o destino de link direto, do fluxo do desktop e de quem navega sem
- * JavaScript; o modal é o atalho, não o substituto.
+ * lugar, e ao concluir vai ao app em `/web` (`forceRedirectUrl`). As páginas
+ * `/entrar` e `/cadastrar` continuam existindo — link direto, desktop e
+ * quem navega sem JavaScript; o modal é o atalho, não o substituto.
  *
  * Com sessão, os dois botões viram um só: ninguém cria conta já logado.
  */
@@ -27,19 +24,20 @@ export default function AuthCta({
   account: string;
 }) {
   const { isLoaded, isSignedIn } = useAuth();
-  const locale = useLocale() as Locale;
-  const conta = getPathname({ href: '/conta', locale });
 
   if (isLoaded && isSignedIn) {
     return <Link href="/conta">{account}</Link>;
   }
 
+  // Depois do login no modal, o app web no mesmo domínio.
+  const appWeb = '/web';
+
   return (
     <>
-      <SignUpButton mode="modal" forceRedirectUrl={conta} signInForceRedirectUrl={conta}>
+      <SignUpButton mode="modal" forceRedirectUrl={appWeb} signInForceRedirectUrl={appWeb}>
         <button type="button">{signUp}</button>
       </SignUpButton>
-      <SignInButton mode="modal" forceRedirectUrl={conta} signUpForceRedirectUrl={conta}>
+      <SignInButton mode="modal" forceRedirectUrl={appWeb} signUpForceRedirectUrl={appWeb}>
         <button type="button" className="ghost">
           {signIn}
         </button>

@@ -1,7 +1,12 @@
 import { useAuth } from '@clerk/expo';
 import type { ReactNode } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { useTranslations } from 'use-intl';
 
+import { Screen } from '@/components/ui/screen';
+import { Section } from '@/components/ui/section';
 import { getExecutionPlatform } from '@/lib/file-storage';
+import { colors, spacing, typography } from '@/theme';
 
 import { isAuthConfigured } from './config';
 import { useDesktopAuth } from './desktop-auth';
@@ -15,14 +20,35 @@ import { DesktopSignIn, SignInFlow } from './sign-in-flow';
  * portão, o botão da landing abria o app web direto e o login era opcional:
  * a cota inteira podia ser gasta sem conta nenhuma.
  *
- * Sem chave do Clerk (e, no desktop, sempre que o segredo do site faltar), o
- * portão fica aberto: é a degradação que permite desenvolver e testar sem
- * segredo nenhum — a mesma do site e da tela de conta.
+ * Em desenvolvimento (`__DEV__`), sem chave do Clerk o portão fica aberto:
+ * dá para compilar e testar sem segredo. Em produção (`!__DEV__`), sem chave
+ * o app **não** abre — mostra tela de bloqueio. No desktop o fluxo de token
+ * continua o mesmo.
  */
 export function AuthGate({ children }: { children: ReactNode }) {
   if (getExecutionPlatform() === 'desktop') return <DesktopGate>{children}</DesktopGate>;
-  if (!isAuthConfigured) return <>{children}</>;
+  if (!isAuthConfigured) {
+    if (__DEV__) return <>{children}</>;
+    return <AuthMisconfigured />;
+  }
   return <ClerkGate>{children}</ClerkGate>;
+}
+
+function AuthMisconfigured() {
+  const t = useTranslations('app.account');
+
+  return (
+    <Screen>
+      <Section title={t('title')}>
+        <View style={styles.block}>
+          <Text style={[typography.body, styles.note]}>{t('notConfigured')}</Text>
+          <Text style={[typography.caption, styles.hint]}>
+            Login unavailable / misconfigured — EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY missing.
+          </Text>
+        </View>
+      </Section>
+    </Screen>
+  );
 }
 
 function ClerkGate({ children }: { children: ReactNode }) {
@@ -42,3 +68,17 @@ function DesktopGate({ children }: { children: ReactNode }) {
 
   return token ? <>{children}</> : <DesktopSignIn />;
 }
+
+const styles = StyleSheet.create({
+  block: {
+    gap: spacing.sm,
+    paddingVertical: spacing.md,
+  },
+  note: {
+    color: colors.textMuted,
+  },
+  hint: {
+    color: colors.textMuted,
+    opacity: 0.8,
+  },
+});

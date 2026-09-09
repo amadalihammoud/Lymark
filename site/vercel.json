@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/web", "destination": "/web/index.html" },
+    { "source": "/web/", "destination": "/web/index.html" },
+    {
+      "source": "/web/((?!_expo|assets|canvaskit\\.wasm|.*\\..*).*)",
+      "destination": "/web/index.html"
+    }
+  ]
+}
