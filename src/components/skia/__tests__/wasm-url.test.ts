@@ -9,11 +9,30 @@
  *
  * O caso da raiz é o que torna isto traiçoeiro: ali o caminho relativo acerta
  * por coincidência. Um teste só com a home passaria e não protegeria nada.
+ *
+ * O caso `/web` cobre o export hospedado em lymark.app/web: sem o base path o
+ * pedido ia para a raiz do domínio e dava 404, mesmo com o arquivo em
+ * `/web/canvaskit.wasm`.
  */
 
 import { canvasKitWasmUrl } from '../wasm-url';
 
 describe('canvasKitWasmUrl', () => {
+  const previousExpo = process.env.EXPO_BASE_URL;
+  const previousLymark = process.env.LYMARK_WEB_BASE;
+
+  beforeEach(() => {
+    delete process.env.EXPO_BASE_URL;
+    delete process.env.LYMARK_WEB_BASE;
+  });
+
+  afterAll(() => {
+    if (previousExpo === undefined) delete process.env.EXPO_BASE_URL;
+    else process.env.EXPO_BASE_URL = previousExpo;
+    if (previousLymark === undefined) delete process.env.LYMARK_WEB_BASE;
+    else process.env.LYMARK_WEB_BASE = previousLymark;
+  });
+
   it('pede na raiz a partir da home', () => {
     expect(canvasKitWasmUrl('https://app.lymark.app/')).toBe(
       'https://app.lymark.app/canvaskit.wasm',
@@ -49,5 +68,38 @@ describe('canvasKitWasmUrl', () => {
     expect(canvasKitWasmUrl('https://app.lymark.app/photo/x?share=1#topo')).toBe(
       'https://app.lymark.app/canvaskit.wasm',
     );
+  });
+
+  describe('com base path /web (export hospedado)', () => {
+    it('respeita EXPO_BASE_URL a partir da home hospedada', () => {
+      process.env.EXPO_BASE_URL = '/web';
+      expect(canvasKitWasmUrl('https://lymark.app/web/')).toBe(
+        'https://lymark.app/web/canvaskit.wasm',
+      );
+    });
+
+    it.each([
+      'https://lymark.app/web/settings',
+      'https://lymark.app/web/settings/language',
+      'https://lymark.app/web/gallery',
+      'https://lymark.app/web/photo/a1b2c3',
+    ])('respeita EXPO_BASE_URL a partir de %s', (baseURI) => {
+      process.env.EXPO_BASE_URL = '/web';
+      expect(canvasKitWasmUrl(baseURI)).toBe('https://lymark.app/web/canvaskit.wasm');
+    });
+
+    it('aceita LYMARK_WEB_BASE quando EXPO_BASE_URL não está definido', () => {
+      process.env.LYMARK_WEB_BASE = '/web';
+      expect(canvasKitWasmUrl('https://lymark.app/web/settings/language')).toBe(
+        'https://lymark.app/web/canvaskit.wasm',
+      );
+    });
+
+    it('normaliza barra final em EXPO_BASE_URL', () => {
+      process.env.EXPO_BASE_URL = '/web/';
+      expect(canvasKitWasmUrl('https://lymark.app/web/gallery')).toBe(
+        'https://lymark.app/web/canvaskit.wasm',
+      );
+    });
   });
 });

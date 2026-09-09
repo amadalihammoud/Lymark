@@ -13,18 +13,40 @@
  * `/settings/canvaskit.wasm`, dava 404, o Skia não inicializava e o aplicativo
  * inteiro ficava em branco. Só a home escapava, por a raiz ser o próprio
  * diretório dela.
+ *
+ * No export hospedado (`LYMARK_WEB_BASE=/web` → `experiments.baseUrl` via
+ * `app.config.js`), o arquivo vive em `/web/canvaskit.wasm`. O
+ * `babel-preset-expo` embute esse baseUrl em `process.env.EXPO_BASE_URL` no
+ * transform — é a forma documentada pelo Expo de ler o prefixo no cliente.
+ * Sem isso o pedido ia para `https://lymark.app/canvaskit.wasm` (404) em vez
+ * de `https://lymark.app/web/canvaskit.wasm`.
  */
 
-/** O prefixo em que o build é servido. Vazio hoje; ver `experiments.baseUrl`. */
-const BASE_PATH = '/';
+/**
+ * Prefixo absoluto (com barras) sob o qual o build é servido.
+ *
+ * Lê `EXPO_BASE_URL` (inlined no bundle a partir de `experiments.baseUrl`) e,
+ * fora do transform (Jest/Node), aceita `LYMARK_WEB_BASE` como fallback — o
+ * mesmo env que o `web:build:hosted` exporta. Vazio → raiz (`/`), para não
+ * quebrar Electron (`app://lymark/`), `app.lymark.app` nem localhost.
+ */
+function resolveBasePath(): string {
+  const raw =
+    (typeof process !== 'undefined' &&
+      (process.env.EXPO_BASE_URL || process.env.LYMARK_WEB_BASE)) ||
+    '';
+  const trimmed = String(raw).trim().replace(/^\/+|\/+$/g, '');
+  return trimmed ? `/${trimmed}/` : '/';
+}
 
 /**
- * A URL absoluta do `canvaskit.wasm`, resolvida a partir da raiz da origem.
+ * A URL absoluta do `canvaskit.wasm`, resolvida a partir da raiz da origem
+ * (respeitando o base path do export, se houver).
  *
  * Resolve **contra** o `baseURI` em vez de devolver um caminho absoluto cru
  * porque é isso que preserva esquema e origem: no Electron eles são
  * `app://lymark/`, e `/canvaskit.wasm` sozinho sairia da origem do aplicativo.
  */
 export function canvasKitWasmUrl(baseURI: string): string {
-  return new URL(`${BASE_PATH}canvaskit.wasm`, baseURI).href;
+  return new URL(`${resolveBasePath()}canvaskit.wasm`, baseURI).href;
 }
