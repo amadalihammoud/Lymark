@@ -67,7 +67,7 @@ describe('resolveDeviceLocale', () => {
   });
 
   it('cai no português quando nenhum idioma pedido existe', () => {
-    expect(withDeviceLanguages(['is-IS', 'sw-KE'], resolveDeviceLocale)).toBe('pt');
+    expect(withDeviceLanguages(['is-IS', 'xx-XX'], resolveDeviceLocale)).toBe('pt');
   });
 
   it('usa o Intl quando o navegador não expõe a lista', () => {

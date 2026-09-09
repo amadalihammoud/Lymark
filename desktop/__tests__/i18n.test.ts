@@ -1,3 +1,5 @@
+import { LOCALES } from '@i18n/locales';
+
 import { availableLocales, translate } from '../i18n';
 
 /**
@@ -54,6 +56,6 @@ describe('availableLocales', () => {
 
     expect(locales).toContain('pt');
     expect(locales).toContain('ar');
-    expect(locales).toHaveLength(12);
+    expect(locales).toHaveLength(LOCALES.length);
   });
 });
