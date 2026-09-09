@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Codsiga",
+      "pitch": "Saacadda, taariikhda, maalinta shaqada, cinwaanka iyo koodhka raadraaca ku qor sawiradaada  si aad u diiwaangeliso goobta, baaritaanka goobta iyo caddeynta adeegga.",
+      "platform": "Barxadda",
+      "privacy": "Siyaasadda Arrimaha Khaaska ah",
+      "privacyGeocoding": "Marka GPS la isticmaalo, nidaamka hawlgalka wuxuu u diraa xuduudka Googles ama adeegga khariidadaha Apples si uu u helo cinwaanka. taasi waa macluumaadka kaliya ee ka haray halkan, waana nidaamka u diraa, ma aha Lymark.",
+      "privacyLocation": "Meesha waxaa loo isticmaalaa hal mar halkii sawir, kaliya si loo buuxiyo goobta cinwaanka, loona keydiyo si gooni ah sawirada.",
+      "privacyOnDevice": "Sawirada, cinwaannada iyo taariikhda ayaa kaliya ku jira qalabkan. Xisaabta ayaa jirta diiwaangelintaada: serverku wuxuu hayaa emaylkaaga iyo qorshahaaga, mana helo sawiradaada ama meesha aad joogtid.",
+      "privacySection": "Arrimaha gaarka ah",
+      "sdk": "Expo SDK",
+      "terms": "Shuruudaha isticmaalka",
+      "title": "Ku saabsan Lymark",
+      "version": "Nooca"
+    },
+    "account": {
+      "browserHint": "Isku-xirka ayaa ka dhacaya biraawsarka. Isku-xirka halkaas oo aad isticmaasho koontadaada iyo app-ka ayaa isku xiraya.",
+      "code": "Xeerka",
+      "codeSent": "Waxaan u dirnay lambarka 0",
+      "connected": "Isku xidhka",
+      "continue": "Sii wad",
+      "deleteAccount": "Ka saar xisaabta",
+      "email": "Emailka",
+      "failed": "Ma shaqeyn, hubi emailka ama koodhka oo isku day mar kale.",
+      "notConfigured": "Xiriirka ma heli karo dhismaha.",
+      "signInBrowser": "Isku soo biir adoo isticmaalaya browser",
+      "signOut": "Isku qor",
+      "signedInAs": "Waxaa la saxiixay 0",
+      "title": "Xisaabta",
+      "verify": "Hubi"
+    },
+    "batch": {
+      "addressHint": "Wadada, lambarka  Magaalada",
+      "clearList": "Liiska cad",
+      "codeHint": "Tusaale ahaan LYM-001",
+      "done": "{count, plural, one {Qalabka la dhammeeyo: sawirka#la dhammeeyay.} other {Wax ka qabashada la dhammeeyay: sawirada#la dhammeeyay.}}",
+      "doneSection": "Dhammaadka",
+      "dropZone": "Halkan ku jiido oo hoos u dhig sawirada, ama isticmaal badhanka Select photos",
+      "errorsSection": "Khaladaadka",
+      "folder": "Fowler: 0",
+      "noPhotos": "Ugu yaraan hal sawir ka soo xulo.",
+      "outputNote": "Sawirada la shaqeeyay waxaa lagu keydiyaa galka la doortay.",
+      "outputSection": "Wax soo saarka",
+      "photosSection": "Sawirada la shaqeynayo",
+      "processing": "Wax ka baaraandegista...",
+      "progress": "0 oo ka mid ah 1 (2%)",
+      "results": "{success, plural, one {# guul} other {# guul}}, {failed, plural, one {# guuldarro} other {# guuldarro}}",
+      "selectFolder": "Xulo folder-ka wax soo saarka",
+      "selectPhotos": "Xulo sawirada",
+      "selected": "{count, plural, one {# sawir la doortay} other {# sawirrood la doortay}}",
+      "sharedNote": "Qiimahaas waxaa lagu dabaqi karaa dhammaan sawirada. taariikhda iyo waqtiga sawir kasta waxaa laga akhriyaa EXIF-ga.",
+      "sharedSection": "Macluumaadka metadata ee la wadaago",
+      "start": "Bilow wax ka qabashada",
+      "unavailableBody": "Muuqaalkan waa desktop kaliya.",
+      "unavailableTitle": "Wax ka qabashada qaybaha aan la heli karin"
+    },
+    "capture": {
+      "accuracy": "Meesha laga helo ±0 m.",
+      "accuracyImprecise": "Meesha ku jirta ±0 m  hubi lambarka wadada ka hor intaadan dhoofin.",
+      "address": "Cinwaanka",
+      "addressFailedTitle": "Cinwaanka lama helin",
+      "addressHint": "Sawirka ku qor meesha aad joogto ama cinwaanka",
+      "camera": "Sawir qaado",
+      "code": "Xeerka",
+      "dateHint": "1-da Janaayo 2026",
+      "dateTimeGroup": "Taariikhda iyo waqtiga",
+      "emptyWarning": "Macluumaad looma shaabadeyn doono  sawirka ayaa soo bixi doona iyada oo aan lahayn calaamad biyo ah.",
+      "gallery": "Ka dooran gallery",
+      "galleryDenied": "Sawirka ayaa loo diiday, sidaa darteed sawirku wuxuu ku jiraa kaliya barnaamijka. U oggolow Settings › Permissions si aad u keydiso gallery.",
+      "galleryFailed": "Sawirka ayaa taariikhda lagu soo qoray, laakiin qalabku wuxuu diiday in lagu qoro gallery.",
+      "generateCode": "Soo saar",
+      "hiddenFields": "{count, plural, one {Beerta qarsoon} other {Beeraha qarsoon}}:{fields}ku dhaji Settings › Fields iyo booska.",
+      "keepMyAddress": "Qaado tan aan leeyahay",
+      "locate": "Meesha loo helo",
+      "locateByGps": "Aqoonsiga GPS-ga",
+      "lookup": {
+        "denied": "U oggolow goobta Settings › Permissions, ama ku qor cinwaanka.",
+        "disabled": "Meesha ayaa la damiyay, ku dhaji goobaha degdega ah oo isku day mar kale.",
+        "timeout": "GPS-ga ayaa waqtigiisa jawaabin. Waxay inta badan ku fashilmaysaa gudaha  qor cinwaanka.",
+        "unavailable": "Cinwaanka looma xallin karo booskan. gacanta ku qor."
+      },
+      "newCapture": "Bilow qabasho cusub",
+      "noFieldsBack": "Ku noqo dib",
+      "noFieldsContinue": "Si kastaba ha ahaatee sii wad",
+      "noFieldsMessage": "Waxba ma laha oo la shaabadeeyo. buuxi beeraha, ama dib u eeg Settings › Beeraha iyo booska.",
+      "noFieldsTitle": "Sawirka ayaa soo bixi doona iyada oo aan lahayn calaamad biyo ah",
+      "noPhotoHint": "Sawir qaado ama ka soo doorato gallery si aad u bilowdo.",
+      "noPhotoSelected": "Sawir la doortay ma jiro",
+      "openFailed": "Sawirka lama furi karin. mar kale isku day.",
+      "permissionMessage": "U oggolow helitaanka Settings › ogolaanshaha si ay u sii wadaan.",
+      "permissionTitle": "Ogolaanshaha loo baahan yahay",
+      "pickPhoto": "Dooro sawir",
+      "pickPhotoHint": "Dooro sawir si aad u awooddo tallaabooyinka.",
+      "previewLabel": "Muuqaalka hore ee sawirka lagu calaamadeeyay biyaha",
+      "renderFailedTitle": "Ma awoodin in ay soo saaraan image ah",
+      "replaceAddressMessage": "GPS laga helay: 0",
+      "replaceAddressTitle": "Ma badal baad cinwaanka aad qortay?",
+      "resetConfirm": "Ka tuur",
+      "resetMessage": "Sawirka la doortay iyo beeraha la buuxiyay waa la tuuri doonaa.",
+      "resetTitle": "Bilowdo qabasho cusub?",
+      "saved": "Sawirka lagu keydiyay gallery-ka qalabka iyo taariikhda.",
+      "savedAppOnlyTitle": "Kaliya lagu keydiyay gudaha Lymark",
+      "shareDialogTitle": "La wadaag sawirka biyo-xidhka ah",
+      "shareFailedMessage": "Sawirka waxaa la abuuray oo waa taariikhda Lymark. Waxaad ka wadaagi kartaa tabka Gallery.",
+      "shareFailedTitle": "Ma wadaagi kartid",
+      "shareUnavailableMessage": "Qalabkani ma laha shaashad saami ah. Sawirka ayaa ku jiray taariikhda Lymark.",
+      "shareUnavailableTitle": "Qaybinta aan la heli karin",
+      "sharedFileTitle": "Sawirka biyo-xidhka ah",
+      "stampNotReady": "Calaamadda ayaa wali la diyaarinayaa.",
+      "syncNow": "Hada waa",
+      "timestamp": "Taariikhda/Saacadda",
+      "title": "Qabashada",
+      "useGpsAddress": "Isticmaal GPS-ga",
+      "weekdayHint": "Dhinaca kale",
+      "weekdayShort": "Maalinta"
+    },
+    "colorPicker": {
+      "hue": "Xaaji",
+      "other": "kala dooran midab kale",
+      "saturationBrightness": "Quruxda iyo dhalaalka",
+      "use": "Isticmaal midabkan"
+    },
+    "common": {
+      "back": "Dib u soo noqoshada",
+      "cancel": "Ka noqoshada",
+      "delete": "Ka saar",
+      "error": "Khaladaadka",
+      "gotIt": "Waan helnay",
+      "loading": "Loading...",
+      "no": "Ma aha",
+      "ok": "Waa hagaag",
+      "save": "Ku badbaadi",
+      "share": "La wadaag",
+      "success": "Guusha",
+      "tryAgain": "Mar kale isku day.",
+      "unknownError": "Khaladaad aan la garanayn",
+      "yes": "Haa waa"
+    },
+    "gallery": {
+      "cancelSelection": "Xulashada joojinta",
+      "clear": "Taariikhda cad",
+      "clearConfirm": "Si cad",
+      "clearMessage": "Diiwaanada Lymark waa la tirtiri doonaa. Sawirada horey loogu badbaadiyey gallery qalabka ma saameynayaan.",
+      "count": "{count, plural, one {Sawirka#la dhoofiyay} other {Sawirada#la dhoofiyay}}",
+      "delete": "Ka saar",
+      "empty": "Ma jiraan wax sawir ah oo weli",
+      "emptyAction": "Tag si aad u qabato",
+      "emptyDescription": "Sawirada aad dhoofinayso oo leh calaamad biyo ah ayaa halkan ku soo muuqda, taariikhda, meesha iyo koodhka.",
+      "filteredCount": "{shown} ee {total, plural, one {# sawir} other {# sawirrood}}",
+      "noResults": "Ma jiro sawirro laga helay 0.",
+      "photoLabel": "Sawirka 0",
+      "removeMessage": "Qoraallada ka baxda Lymark. Sawirada horey loogu badbaadiyey gallery qalab ma saameynayaan.",
+      "removeTitle": "{count, plural, one {Ka saar taariikhda} other {Ka saar qoraallada#}}",
+      "removed": "{count, plural, one {Guriga laga saaray.} other {Waxyaabaha la soo qoray waa la tirtiray.}}",
+      "saveDeniedMessage": "U oggolow in aad ku kaydiso sawirada gallery qalab ee Settings › Permissions.",
+      "saveDeniedTitle": "Sawirka loo diiday",
+      "savedAll": "{count, plural, one {Hal sawir oo lagu badbaadiyay gallery-ka qalabka.} other {Sawirada#ee lagu keydiyay gallery-ka qalabka.}}",
+      "savedSome": "Sawirada lagu badbaadiyey 0 ee 1",
+      "searchPlaceholder": "Raadinta cinwaanka, taariikhda ama koodhka",
+      "selectedCount": "{count, plural, one {# sawir la doortay} other {# sawirrood la doortay}}",
+      "share": "La wadaag",
+      "title": "Galeriyada"
+    },
+    "language": {
+      "automatic": "Qalabka isku dheelitirka",
+      "automaticNote": "Lymark wuxuu raacayaa luqadda lagu dhigay qalabkaaga.",
+      "label": "Luqadda",
+      "selector": "Xulo luqadda"
+    },
+    "login": {
+      "access": "Isku qor si aad u hesho",
+      "apple": "Isku qor Apple",
+      "google": "Isku qor Google",
+      "subtitle": "Isku qor si aad u sii wadato",
+      "title": "Isku qor si aad u hesho Lymark"
+    },
+    "nav": {
+      "batch": "Wax ka qabashada qaybaha",
+      "photoDetail": "Faahfaahinta sawirka",
+      "report": "Warbixinta",
+      "video": "Fiidiyowga"
+    },
+    "notFound": {
+      "body": "Shaashadani ma aha qayb ka mid ah Lymark.",
+      "screenTitle": "Bogga lama helin",
+      "title": "Ma jiro waddo sidan oo kale ah"
+    },
+    "permissions": {
+      "allow": "U oggolow",
+      "allowed": "Waxaa loo oggol yahay",
+      "blocked": {
+        "later": "Hadda ma aha",
+        "message": "Nidaamku mar kale ma weydiisan doono. si aad u oggolaato, fur goobaha qalabkaaga.",
+        "openSettings": "Qalabka furitaanka",
+        "title": "Oggolaanshaha waa la xannibay"
+      },
+      "camera": "Kaamerada",
+      "cameraRationale": "Waa in la sameeyaa sawirka heli doona calaamadda biyaha.",
+      "denied": "Waxaa loo diiday",
+      "granted": "Waxaa la ogol yahay",
+      "intro": "Lymark wuxuu weydiinayaa kaliya waxa ay u baahan tahay si ay u shaabadeyso sawir. Sawiradaadu marnaba kama baxayaan qalabka: markaad isticmaasho GPS, nidaamka hawlgalka wuxuu adeegga khariidadda u diraa iskoodna isku xirka, si uu u noqdo cinwaan.",
+      "location": "Meesha loo dejiyo",
+      "locationRationale": "Waxay buuxisaa goobta cinwaanka si otomaatig ah markaad qabato.",
+      "mediaLibrary": "Ku kaydi gallery",
+      "mediaLibraryRationale": "Si aad u qorto sawirada la dhoofiyo gallery qalabka.",
+      "openDeviceSettings": "Qalabka",
+      "recheck": "Mar kale hubi",
+      "request": "Codsiga ogolaanshaha",
+      "section": "Helitaanka",
+      "title": "Ogolaanshaha"
+    },
+    "photo": {
+      "backToGallery": "Dib ugu noqoshada gallery",
+      "exportedAt": "Dhoofinta 0",
+      "noWatermark": "Sawirkan waxaa la dhoofiyay iyada oo aan lahayn calaamad biyo ah.",
+      "notFoundBody": "Waxaa laga yaabaa in taariikhda laga saaray qoraalkan.",
+      "notFoundTitle": "Sawirka lama helin",
+      "remove": "Ka saar",
+      "removeBody": "Diiwaanka wuxuu ka tagayaa Lymark. Sawirka lagu keydiyay gallery qalabka ma saameynayo.",
+      "removeTitle": "Ka saar taariikhda",
+      "share": "La wadaag",
+      "stampedData": "Xogta la shaabadeeyay"
+    },
+    "plan": {
+      "exhausted": "Sawirada bilaashka ah ee la isticmaalay",
+      "exhaustedMessage": "12 sawir oo qorshaha bilaashka ah ayaa la baabi'iyey. Lymark",
+      "free": "Bilaash",
+      "pro": "Waxqabadka",
+      "reconnect": "Dib u xidh si aad u xaqiijiso diiwaangelintaada",
+      "remaining": "{remaining, plural, one {# sawir bilaash ah ayaa haray} other {# sawirrood bilaash ah ayaa haray}}",
+      "title": "Qorshaha",
+      "unlimited": "Xadka ma jiro"
+    },
+    "report": {
+      "allPhotos": "Dhammaan sawirada",
+      "authorField": "Qoraa / shirkad",
+      "detailsSection": "Faahfaahin",
+      "doc": {
+        "author": "Qoraaga",
+        "declaration": "Macluumaadka la shaabadeeyay (macluumaadka cinwaanka, taariikhda, waqtiga iyo koodhka) waa bayaan uu soo saaray sawirada.",
+        "exportedAt": "Dhoofinta",
+        "generatedAt": "Waxaa la soo saaray",
+        "page": "Bogga",
+        "photo": "Sawirka 0",
+        "photosSection": "Sawirada sawirada",
+        "signature": "Saxiixa qofka masuulka ka ah",
+        "summary": "Isku soo wada duuboo",
+        "title": "Warbixinta sawirka",
+        "totalPhotos": "Sawirada guud:"
+      },
+      "empty": "Ma jiraan wax sawir ah oo la dhoofiyay weli. warbixinta ayaa laga sameeyay galleryadaada.",
+      "failed": "Ma abuuri kartid warbixinta.",
+      "fileStem": "warbixinta",
+      "format": {
+        "csv": "Shaxda (0)",
+        "pdf": "PDF",
+        "word": "0 (.doc)",
+        "zip": "Xirmada (0)"
+      },
+      "formatSection": "Qaabka loo qaabeeyo",
+      "generate": "Abuur faylka",
+      "generateSection": "Soo saar",
+      "includeLogo": "Logo ku yaal daboolka",
+      "includeLogoDescription": "Calaamaddaada, isla markaana laga helay sumadda.",
+      "norm": {
+        "abnt": "0 (Baraasiil)",
+        "din5008": "0 (Jarmalka)",
+        "ibape": "0 style (Baraasiil)",
+        "iso": "Caalamiga ah",
+        "letter": "Warqad (Maraykanka)"
+      },
+      "normNote": "Heerka ayaa qeexaya warqad iyo qaabeynta  xadka, font iyo lambarrada bogga. content warbixinta waa isku mid dhammaantood; style 0 ku darayaa block saxiixa.",
+      "normSection": "Heerka dukumiintiga",
+      "projectsSection": "Mashruuca / shaqada",
+      "saved": "Waxaa lagu badbaadiyey 0",
+      "savedShort": "Warbixinta waa la badbaadiyay.",
+      "title": "Warbixinta",
+      "titleField": "Magaca warbixinta",
+      "unavailableBody": "Warbixinnada waxaa laga heli karaa barnaamijka desktop-ka.",
+      "unavailableTitle": "Kaliya desktop",
+      "uncoded": "Codsi ma jiro",
+      "wordTooBig": "Dukumiintiga 0 wuxuu noqday mid aad u weyn sawirrada lagu rakibay. Isticmaal 1 ama xirmada 2.",
+      "zipMissing": "{count, plural, one {Xirmada ayaa la badbaadiyey, laakiin sawirka#lama helin qalabkan.} other {Xirmada ayaa la badbaadiyey, laakiin sawirada#lama helin qalabkan.}}"
+    },
+    "settings": {
+      "about": "Ku saabsan",
+      "aboutDescription": "Nooca, asturnaanta iyo dhibcaha",
+      "appSection": "Codsiga",
+      "deviceSection": "Qalabka",
+      "deviceSectionDescription": "Hel bogga uu Lymark weydiisto.",
+      "fields": "Beeraha iyo booska",
+      "fieldsDescription": "Dooro beeraha soo bandhigaan, geeska iyo size",
+      "history": "Taariikhda",
+      "historyDescription": "Safarada la dhoofiyo ee lagu hayo qalabka",
+      "language": "Luqadda",
+      "permissions": "Ogolaanshaha",
+      "permissionsDescription": "Sawirada, sawirada iyo meesha ay ku sugan yihiin",
+      "save": "Ku badbaadi",
+      "title": "Qalabka",
+      "watermark": "Calaamadda biyaha",
+      "watermarkSection": "Calaamadda biyaha",
+      "watermarkSectionDescription": "Maxaa lagu calaamadeeyay sawirka iyo meesha."
+    },
+    "signup": {
+      "subtitle": "Isdiiwaangelinta si aad u bilowdo",
+      "title": "Abuur koontadaada Lymark"
+    },
+    "tagline": "Calaamadda biyaha oo leh waqtiga, taariikhda iyo meesha",
+    "title": "Calaamadda Lymark",
+    "video": {
+      "cameraDenied": "Ma jiro wax kamarad ah oo la heli karo.",
+      "done": "Fiidiyowga waa la calaamadeeyay oo la badbaadiyey.",
+      "export": "Video dhoofinta la calaamadeeyay",
+      "exportSection": "Dhoofinta",
+      "failed": "Fiidiyowga lama daabaci karo.",
+      "fieldsSection": "Beeraha shaabadaha",
+      "fileSection": "Fiidiyowga",
+      "none": "Ma jiro fiidiyow la doortay.",
+      "processing": "Wax ka baaraandegista... 0%",
+      "processingMobile": "Wax ka baaraandegista...",
+      "record": "Soo duub video hadda",
+      "saved": "Waxaa lagu badbaadiyey 0",
+      "savedToGallery": "Fiidiyowga la calaamadeeyay ee lagu keydiyay galleryadaada.",
+      "select": "Xulo fiidiyowga",
+      "unavailableBody": "Xidhitaanka fiidiyowga moobiilka wuxuu u baahan yahay Lymark laga rakibayEASdhisme (oo leh module-ka hooyo). Ma heli karoExpo Go. Ku rakib barnaamijka rasmiga ah ee dukaanka amaEASdhisme, ama isticmaal desktop / web version.",
+      "unavailableTitle": "Codsiga la rakibay waa loo baahan yahay",
+      "unreadable": "Faylka lama aqrin karo sida fiidiyowga.",
+      "webNote": "Barta internetka, fiidiyowga waxaa lagu baaraandegaa waqtiga dhabta ah  fiidiyowga 2 daqiiqo ah wuxuu qaataa 2 daqiiqo  wuxuuna ku soo baxayaa qaab 0. Fiidiyowyada dheer, isticmaal barnaamijka desktop."
+    },
+    "watermark": {
+      "accentColor": "Qalabka dhererka",
+      "backdropBandNote": "Bandka ayaa ku socda dhinac ilaa dhinac sawirka oo ku taagan xadka meesha sumadda lagu xidho. Muuqaal mashquul ah  goob dhismeed, barxadda, wejiga dadku ku badan yihiin  waxay u akhridaa sida qoraalka dukumiintiga  halkii ay ku jiri lahayd isku dhejinta.",
+      "backdropBlockNote": "Baakada waxay raacdaa cabirka qoraalka, iyadoo la buuxiyey hareeraha.",
+      "backdropColor": "Midabka xariiqda",
+      "backdropDescription": "Waxay ka dhigtaa isbarbardhigga meelaha iftiinka leh ee sawirka. iyada oo aan la helin, qoraalka ayaa toos ugu fadhiya sawirka, hooska.",
+      "backdropInnerRadius": "Dhinacyada gudaha",
+      "backdropOpacity": "Iskaashiga",
+      "backdropOpacityValue": "0% oo aan hufanayn",
+      "backdropRadius": "Xagalka wareega",
+      "backdropRadiusSquare": "Qeybta laba jibbaaran",
+      "backdropStyles": {
+        "band": "Bandwidth-ka buuxa",
+        "block": "Qoraalka ka dambeeya",
+        "none": "Ma jiro"
+      },
+      "backdropTitle": "Bandka taageerada",
+      "brandDescription": "Saacadda korkeeda waxay noqoneysaa calaamad, oo leh astaan iyo cinwaan.",
+      "brandFirstColor": "Midabka qaybta koowaad",
+      "brandFirstHint": "Dhismayaasha",
+      "brandFirstPart": "Qaybta koowaad",
+      "brandNote": "Qaybta labaad iska daa si aad u hesho calaamad midab leh. Magaca dheer waa la yareeyaa ilaa uu ku habboon yahay, halkii laga gooyn lahaa.",
+      "brandPlacements": {
+        "corner": "Meel gees ah",
+        "header": "Saacadda ka sarreysa",
+        "none": "Ma jiro"
+      },
+      "brandSecondColor": "Midabka qaybta labaad",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Qaybta labaad",
+      "brandTitle": "Calaamadda la shaabadeeyay",
+      "codeDescription": "Dhinaca kale, ma tartamayo meel la mid ah sawirka laftiisa.",
+      "codePlacements": {
+        "block": "Marka la eego xogta",
+        "side": "Dhinaca midig"
+      },
+      "codeTitle": "Codka sawirka",
+      "colors": {
+        "amber": "Amber",
+        "black": "Madow",
+        "blue": "Cagaaran",
+        "green": "Cagaaran",
+        "red": "Cagaaran",
+        "white": "Cad"
+      },
+      "colorsDescription": "Midabka sawirka waa doorashada shirkadda, ma aha app s  beddelidda halkan ma beddeleyso midabada shaashadda.",
+      "colorsTitle": "Midabada shaabadda",
+      "complement": "Qoraalka",
+      "complementColor": "Midabka calaamadaha",
+      "complementHint": "Kormeerka iyo warbixinnada farsamada",
+      "cornerConflict": "Calaamadda iyo xogta waxay ku yaalaan hal gees  waxay isku dhafan doonaan sawirka.",
+      "fields": {
+        "address": "Cinwaanka / Meesha",
+        "code": "Codka sawirka",
+        "date": "Taariikhda",
+        "time": "Waqtiga",
+        "weekday": "Maalinta shaqada"
+      },
+      "fieldsDescription": "Kaliya beeraha ku jira oo leh waxyaabaha ku jira ayaa galaya sawirka.",
+      "fieldsTitle": "Beeraha la muujiyey",
+      "includeCountry": "Ka mid noqoshada dalka",
+      "includeCountryDescription": "Ku dhaji haddii aad ka shaqayso xuduudaha kale, haddii kale waxay ku qaadataa meel kaliya sawirka.",
+      "legibilityTitle": "Wax lagu akhriyo",
+      "logoAdded": "Logo lagu daray cinwaanka sumadda.",
+      "logoAlignNote": "Dhererka logo wuxuu raacaa qoraalka: dusha sare waxay la jaan qaadataa magaca sare iyo hoose waxay la jaan qaadataa khadka aasaasiga ah ee cinwaanka.",
+      "logoChosen": "Logo la doortay",
+      "logoErrorMessage": "Isku day sawir kale. PNG leh asalka hufan waa qaabka ugu fiican ee shaqeeya.",
+      "logoErrorTitle": "Faylkan lama isticmaali karo",
+      "logoFormatNote": "Isticmaal PNG leh asalka hufan. JPG leh asalka cad wuxuu ku noqdaa mid cad oo toosan sawirka  qaabka ma kaydiyo hufan, barnaamijkuna ma haysto hab lagu qiyaaso waxa asalka ah.",
+      "logoPermissionMessage": "U oggolow in aad doorato faylka logo-ka ee Settings › Permissions.",
+      "logoPermissionTitle": "Sawirka loo diiday",
+      "logoPick": "Xulo logo",
+      "logoPosition": "Meesha logo",
+      "logoPositionBlock": "Marka la eego shaabadda",
+      "logoRemove": "Ka saar",
+      "logoReplace": "Beddel logo",
+      "logoSize": "Cabbirka logo",
+      "positionDescription": "geeska sawirka block waa la xidhay.",
+      "positionTitle": "Meesha loo dhigay",
+      "positions": {
+        "bottom-left": "Hoos bidix",
+        "bottom-right": "Midigta hoose",
+        "top-left": "Dhinaca bidix ee kore",
+        "top-right": "Midigta sare"
+      },
+      "previewCurrent": "Sawirka hadda jira ee tabka qabashada.",
+      "previewEmpty": "Iftiinka ilaa mugdiga, si loo hubiyo akhriska labada dhinacba.",
+      "previewNoFields": "Ma jiro goob la doortay  sawirka ayaa soo baxaya iyada oo aan lahayn watermark.",
+      "previewTitle": "Muuqaalka hore",
+      "reset": "Soo celinta qalabka aan la isticmaalin",
+      "sizeTitle": "Cabirka qoraalka",
+      "sizes": {
+        "large": "Waa mid weyn",
+        "medium": "Dhexe",
+        "small": "Wax yar"
+      },
+      "textColor": "Qoraalka",
+      "timeFormatDescription": "Sida waqtiga loo buuxiyo beeraha. beeraha ayaa sii ahaada mid la beddeli karo.",
+      "timeFormatTitle": "Qaabka waqtiga",
+      "timeFormats": {
+        "12h": "12 saacadood (Bilowga / Galabtii)",
+        "24h": "24 saacadood"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Dhammaan faylasha",
+      "images": "Sawirada",
+      "pickFolder": "Xulo folder-ka wax soo saarka",
+      "pickPhoto": "Xulo sawirka",
+      "pickPhotos": "Xulo sawirada xulashada",
+      "savePhoto": "Sawirka badbaadi",
+      "saveReport": "Warbixinta badbaadin"
+    },
+    "login": {
+      "cancel": "Ka noqoshada",
+      "confirm": "Sii wad",
+      "message": "Waxaad hadda soo gali jirtay browserka. sii wad oo isticmaali xisaabtan kombiyuutarka?",
+      "title": "Isku qor Lymark"
+    },
+    "menu": {
+      "copy": "Codsiga",
+      "cut": "Go'doomiyaha",
+      "edit": "Wax ka beddela",
+      "file": "Faylka",
+      "fullscreen": "Shaashadda oo dhan",
+      "help": "Caawimaad",
+      "paste": "Xajka",
+      "quit": "Jooji",
+      "redo": "Redo",
+      "reload": "Dib u buuxinta",
+      "selectAll": "Xulo dhammaan",
+      "settings": "Qalabka",
+      "undo": "Waa la joojiyay",
+      "view": "Muuqaalka",
+      "zoomIn": "Ku dhawaaq",
+      "zoomOut": "Isku soo wada duuboo",
+      "zoomReset": "Cabbirka dhabta ah"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Guriga dib ugu noqo",
+      "openApp": "Fur barnaamijka",
+      "photos": "Sawirada",
+      "photosLeft": "0 ee 1 bidix",
+      "plan": "Qorshaha",
+      "planUnavailable": "Hadda lama heli karo",
+      "plans": {
+        "free": "Bilaash",
+        "pro": "Waxqabadka"
+      },
+      "signInTitle": "Isku qor",
+      "signOut": "Isku qor",
+      "signUpTitle": "Abuur xisaab",
+      "subscribe": "Isdiiwaangaliya Lymark Pro",
+      "subscribeSoon": "Xisaabinta wali lama heli karo, marka ay jiraan, waxaad ka diiwaangelin kartaa halkan oo waxaad isticmaali kartaa qalab kasta oo leh isla xisaabta.",
+      "title": "Xisaabtaada",
+      "revokeDesktops": "Isku xir kombiyuutarada",
+      "revokeDesktopsHint": "Waxay joojineysaa helitaanka barnaamijka kombiyuutar kasta. Waxaad mar kale soo gali kartaa markasta oo aad rabto."
+    },
+    "availability": {
+      "contact": "Si aad u raacdo bilowga ama aad u sheegto dhibaato, u qor <email>contato@lymark.app</email>.",
+      "description": "Lymark wuxuu ku jiraa nooca 1.3.0, tijaabooyinka Android ka hor inta aan la daabacinGoogle Play. Ma jiro nooca iOS iyo nooca webka, barnaamijkuna ma qaado lacag bixin.",
+      "title": "Helitaanka"
+    },
+    "data": {
+      "device": {
+        "description": "Xisaabta ayaa jira macaamiishaada: serverku wuxuu hayaa emaylkaaga iyo qorshahaaga, mana helo sawiradaada ama meesha aad joogto. taariikhda ayaa haysata laba boqolkii ugu dambeeyay ee dhoofinta ee barnaamijka faylasha laftiisa.",
+        "field": "Qalabka",
+        "heading": "Sawirada, cinwaanada iyo taariikhda"
+      },
+      "external": {
+        "description": "Si aad u bedesho barta iyo dhererka cinwaanka la aqri karo, nidaamka hawlgalka wuxuu weydiinayaa adeegga geocoding ee Google ama Apple. Taasi waa macluumaadka kaliya ee ka baxaya, nidaamkuna wuu soo diraa, ma aha barnaamijka.",
+        "field": "Ka saar qalabka",
+        "heading": "Kaliya isku-darka cinwaanka"
+      },
+      "note": "Waxa ay tahay in la qeexo  oo ay ku jiraan waxa ay ka dhigan tahay in Brazil 0  in <privacy>Siyaasadda Arrimaha Khaaska ah</privacy>. Ka saarida ogolaanshaha goobta ayaa ka dhigaysa app-ka si buuxda u shaqeynaya; kaliya waa in cinwaanka cinwaanka gacanta lagu qoro.",
+      "title": "Halka ay ku jiraan xogtaada"
+    },
+    "deleteAccount": {
+      "back": "Xisaabta dib u soo noqoshada",
+      "confirm": "Ka saar xisaabtayda",
+      "deletesNow": "Marka aad tirtirto koontadaada waxaa isla markiiba la tirtiraa emailkaaga, aqoonsigaaga, iyo diiwaanka qorshaha, qoontada iyo tirada sawirada.",
+      "irreversible": "tirtirka waa mid joogto ah oo aan la celin karin. Sawirada ku jira qalabkaaga lama saameynayo  marnaba ma jirin server-yada.",
+      "retained": "Diiwaanka macaamilkii lacag bixinta waxaa lagu hayaa muddada canshuurta ee sharciga looga baahan yahay, oo aan laga xiriirin astaantaada.",
+      "title": "Ka saar xisaabta"
+    },
+    "description": "Codsiga Android ee calaamadeeya waqtiga, taariikhda, maalinta shaqada, cinwaanka iyo koodhka raadraaca sawirada kormeerka goobta iyo caddaynta adeegga.",
+    "desktop": {
+      "backAccount": "Xisaabta dib u soo noqoshada",
+      "explanation": "Koontadaada ayaa diyaar ah. Guji badhanka hoose si aad u furto Lymark kumbuyuutarkaaga oo horey u saxiixday  browserku wuxuu weydiin doonaa ogolaansho si aad u furto barnaamijka.",
+      "open": "Isku xir app-ka",
+      "title": "Isku qor desktop-ka",
+      "unavailable": "Xiriirka barnaamijka desktop-ka weli lama heli karo."
+    },
+    "download": {
+      "appStore": {
+        "description": "Waxyaabaha la midka ah Android, ee iOS.",
+        "field": "App Store",
+        "heading": "iPhone iyo iPad"
+      },
+      "browser": {
+        "action": "Isku qor",
+        "description": "Isku qor xisaabtaada oo app-ka ayaa ka furi doona biraawsarka  telefoonka ama kombiyuutarka.",
+        "field": "Browser",
+        "heading": "Isticmaal hadda, waxba ma rakibto"
+      },
+      "desktop": {
+        "description": "Sawirada, fiidiyowyada dheer iyo warbixinnada culus.",
+        "field": "Kombuyuutarka",
+        "heading": "Windows iyo Linux"
+      },
+      "googlePlay": {
+        "description": "Codsiga taleefanka, oo leh kamarad, gallery iyo fiidiyow la shaabadeeyay.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Dhawaan ayaan soo galayaa",
+      "title": "Halkee loo isticmaali karaa Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "Nooca wadada waa la gaabiyaa, xaaladdu waxay noqoneysaa koodhkeeda, sidaa darteed cinwaanka wuxuu ku habboon yahay laba khad oo aan la daboolin sawirka. Haddii aad qorto ka hor inta aan GPS-ku jawaabin, waxa aad qortay ayaa ku guuleysta.",
+        "field": "Cinwaanka",
+        "heading": "Waxaa lagu buuxiyaa GPS, oo gacanta lagu hagaajin karo"
+      },
+      "code": {
+        "description": "Waxaa jira si aad u soo qaadan karto sawir gaar ah oo ku jira amar shaqo ama warbixin. Waxay ku socotaa hoos u wareegsan dhinaca midig, ama waxay la jirtaa xariiqa xogta  doorashadaada.",
+        "field": "Codka sawirka",
+        "heading": "14 jilaa oo ay soo saarto matoorka sirta"
+      },
+      "note": "Meel kasta ayaa si gooni ah u shidaya oo u baxaya, iyo block-yada waxay ku xidhan yihiin mid ka mid ah afarta gees, saddex cabir. Muuqaalka hore wuxuu isticmaalaa sawirkaaga dhabta ah, ma aha muunad guud: waxa aad ku aragto shaashadda waa waxa si dhab ah loo dhoofiyo.",
+      "time": {
+        "description": "Hal badhanka ayaa saddexda beeroodba dib ugu soo celinaya hada la qabsaday markii ay qaadatay waqti ka badan intii la filayay.",
+        "field": "Waqtiga iyo taariikhda",
+        "heading": "Saacadda qalabka, marka la qabto"
+      },
+      "title": "Maxaa ku jira sawirka"
+    },
+    "footer": {
+      "description": "Lymark  diiwaanka sawirada taariikhda, waqtiga iyo cinwaanka.",
+      "documentsLabel": "Dukumiintiyada",
+      "privacy": "Siyaasadda Arrimaha Khaaska ah",
+      "support": "Taageerada:",
+      "terms": "Shuruudaha isticmaalka"
+    },
+    "hero": {
+      "ctaAccount": "U tag xisaabtayda",
+      "ctaLogin": "Isku qor",
+      "ctaSignup": "Abuur koonto bilaash ah",
+      "description": "Lymark wuxuu calaamadeynayaa waqtiga, taariikhda, maalinta shaqada, cinwaanka iyo koodhka raadraaca tooska ah ee sawirka. Faylka ka soo baxa barnaamijka wuxuu ku jiraa macluumaadka gudaha  oo aan ahayn metadata oo la socda, taas oo horey u socotaWhatsApp.",
+      "eyebrow": "Dukumiintiyada sawirada beerta",
+      "heading": "Sawirka ayaa taleefankaaga ku dhigaya in uu sheegayo goorta, meesha iyo waxa.",
+      "meta": {
+        "account": "Xisaabta hal taabasho",
+        "android": "Android iyo browser",
+        "language": "Boortaqiiska Brazil",
+        "onDevice": "Sawirada waxay ku sii jiraan qalabka"
+      },
+      "note": "Waxba ma haysato."
+    },
+    "nav": {
+      "account": "Xisaabta",
+      "home": "Guriga",
+      "homeLabel": "Lymark, bogga guriga",
+      "label": "Qeybta ugu weyn",
+      "privacy": "Arrimaha gaarka ah",
+      "signIn": "Isku qor",
+      "terms": "Shuruudaha",
+      "verify": "Hubi"
+    },
+    "process": {
+      "capture": {
+        "description": "Raadinta cinwaanka waxay bilaabataa isla markii sawirku yimaado. Beeraha ayaa furan si loo habeeyo inta ay socoto.",
+        "field": "Qabashada",
+        "heading": "Sawirka ama sawirka"
+      },
+      "note": "Labada tallaabo ayaa si ula kac ah loo kala saaraa. Kaydinta iyo wadaagista waxay xallisaa dhibaatooyin kala duwan, iyo iyaga isku duubista hal badhan waxay jiidi doontaa qof kasta oo kaliya doonaya inuu sawirka ku soo diro shaashadda dirista.",
+      "save": {
+        "description": "Waxay la jaan qaadataa sawirada kale ee taleefankaaga, oo loo heli karo barnaamij kasta  oo ay ku jiraan ka dib markaad ka saartid Lymark.",
+        "field": "Ku badbaadi",
+        "heading": "Waxay tagtaa gallery qalabka"
+      },
+      "share": {
+        "description": "0, email, Drive: meesha loo socdo waxaa doorta nidaamka hawlgalka, barnaamijkuna ma qaybqaato dirista.",
+        "field": "La wadaag",
+        "heading": "Furitaanka shaashadda share ee nidaamka"
+      },
+      "title": "Wadada sawirku raaco"
+    },
+    "skipToContent": "Ka gudub waxyaabaha ku jira",
+    "specimen": {
+      "caption": "Xeerka amber wuxuu ka bilaabmaa oo ku dhammaadaa xadka lambarada, ma aha sanduuqa qoraalka.",
+      "label": "Tusaale ka mid ah shaabadda Lymark: 07:42, taariikhda 12ka Ogosto 2026, Arbacada, cinwaanka Guarujá iyo koodhka sawirka."
+    },
+    "title": "Lymark  taariikhda, waqtiga iyo cinwaanka calaamadda biyaha ee sawirada duurka",
+    "verify": {
+      "caveat": "Calaamadu waxay caddeyneysaa daacadnimada faylka iyo waqtiga la soo saaray. Waxa calaamadu sheegeyso  cinwaanka, taariikhda, waqtiga  waa bayaanka soo saaraha.",
+      "checking": "Waxaan hubinayaa...",
+      "declarationNote": "Waxa shaabadda muujinaysa (macluumaad, taariikh, saacad) waa bayaanka soo saaraha  shaabadda waxay caddeeyaan daacadnimada iyo soo saarista, ma aha content.",
+      "intro": "Hoos ka dhig ama dooro sawir ay dhoofinayso Lymark oo isla markiiba arag haddii ay tahay sida saxda ah ee ay uga tagtay app  iyo cidda soo saartay, goorta.",
+      "noSealBody": "Faylkani ma laha shaabadda Lymark. Waxaa laga yaabaa in la dhoofiyay offline, ka hor inta shaabadda aysan jirin, ama laga yaabaa in aanay ka iman Lymark.",
+      "noSealTitle": "Wax shaabad ah ma jiro",
+      "notConfigured": "Xaqiijinta weli lama heli karo.",
+      "pick": "Xulo faylka",
+      "previewAlt": "Sawirka la xaqiijiyay, shaabadda la arki karo",
+      "privacyNote": "Xaqiijinta waxay dhacdaa biraawsarkaaga. Faylka looma diro server kasta.",
+      "sealedBody": "Faylkani waa sida uu ka tagay Lymark. waxaa soo saaray xisaab{account}ee{date}.",
+      "sealedTitle": "Wax aan la dhicin",
+      "tamperedBody": "Waxyaabaha ku jira ma aha mid la mid ah shaabadda: faylka ayaa la beddelay ka dib markii la soo saaray, ama shaabadda waxay ka tirsan tahay fayl kale.",
+      "tamperedTitle": "Isku-dhafka",
+      "title": "Hubi xaqiiqda",
+      "unsupported": "Daalacadan ma taageerto xaqiijinta saxiixa. Isku day daalacashada hadda jirta."
+    }
+  }
+}

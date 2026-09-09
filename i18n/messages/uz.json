@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Ilova",
+      "pitch": "O'zingizning fotosuratlaringizga vaqt, sanasi, hafta kuni, manzili va izlanish kodini  sohada qayd etish, joylarni tekshirish va xizmatni tasdiqlash uchun bosing.",
+      "platform": "Platform",
+      "privacy": "Maxfiylik siyosati",
+      "privacyGeocoding": "GPS ishlatilganda, operatsion tizim koordinatni manzilni olish uchun Google yoki Apple xaritasi xizmatiga yuboradi. Bu erda qolgan yagona ma'lumot va uni Lymark emas, balki tizim yuboradi.",
+      "privacyLocation": "Manzil har bir fotosuratda bir marta ishlatiladi, faqat manzil maydoni to'ldiriladi va fotosuratlardan alohida saqlanmaydi.",
+      "privacyOnDevice": "Xisabiyot sizning obuna uchun mavjud: server sizning elektron pochta xabaringizni va rejalaringizni saqlaydi va hech qachon fotosuratlaringizni yoki joyingizni olmaydi.",
+      "privacySection": "Maxfiylik",
+      "sdk": "Expo SDK",
+      "terms": "Foydalanish shartlari",
+      "title": "Lymark haqida",
+      "version": "Tarjima"
+    },
+    "account": {
+      "browserHint": "Ilova brauzerda amalga oshiriladi. U erda hisob qaydnomangiz bilan kiring va dastur o'z-o'zi ulanish o'tkazadi.",
+      "code": "Kod",
+      "codeSent": "Biz kodni 0ga yubordik",
+      "connected": "Bogʻlangan",
+      "continue": "Davom qiling",
+      "deleteAccount": "Hisobni oʻchirish",
+      "email": "Elektron pochta",
+      "failed": "Bu ishlamadi. Email yoki kodni tekshiring va yana urinib ko'ring.",
+      "notConfigured": "Bu tizimda hali ro'yxatdan o'tish imkoniyati mavjud emas.",
+      "signInBrowser": "Brauzer orqali kirish",
+      "signOut": "Ishlab chiqarish",
+      "signedInAs": "0 deb imzolangan",
+      "title": "Hisobvaraq",
+      "verify": "Tekshirish"
+    },
+    "batch": {
+      "addressHint": "Ko'cha, raqam  Shahar",
+      "clearList": "Toʻgʻri roʻyxat",
+      "codeHint": "Misol uchun, LYM-001",
+      "done": "{count, plural, one {Ishlab chiqarish tugadi:#fotosurat tugadi.} other {Ishlab chiqarish tugadi:#fotosuratlari tayyor.}}",
+      "doneSection": "Bitilgan",
+      "dropZone": "Fotosuratlarni shu yerga olib tashlash yoki Select photos tugmasini ishlatish",
+      "errorsSection": "Xatolar",
+      "folder": "Jild: 0",
+      "noPhotos": "Hech bo'lmaganda bitta fotosuratni tanlang.",
+      "outputNote": "Ishlab chiqilgan fotosuratlar tanlangan jildga saqlanadi.",
+      "outputSection": "Ishlab chiqarish",
+      "photosSection": "Ishlab chiqarish uchun fotosuratlar",
+      "processing": "Ishlab chiqish...",
+      "progress": "0 of 1 (2%)",
+      "results": "{success, plural, one {#muvaffaqiyati} other {#muvaffaqiyatlari}}, {failed, plural, one {#muvaffaqiyatsiz tugadi} other {#xatolari}}",
+      "selectFolder": "Chiqish jildini tanlash",
+      "selectPhotos": "Rasmlarni tanlash",
+      "selected": "{count, plural, one {X#fotosurat tanlangan} other {Tanlangan fotosuratlar #}}",
+      "sharedNote": "Ushbu qiymatlar HIM fotosuratlarga qo'llaniladi. Har bir fotosuratning sanasi va vaqti o'z EXIF-dan o'qiladi.",
+      "sharedSection": "Metadatalar",
+      "start": "Ishlab chiqarishni boshlash",
+      "unavailableBody": "Ushbu xususiyat faqat ish stoli uchun.",
+      "unavailableTitle": "Kataklarni qayta ishlash mavjud emas"
+    },
+    "capture": {
+      "accuracy": "±0 m ichida joylashing.",
+      "accuracyImprecise": "±0 m  ichida joylashgan joyda eksport qilishdan oldin ko'cha raqamiga qarab turing.",
+      "address": "Manzil",
+      "addressFailedTitle": "Manzil topilmadi",
+      "addressHint": "Joylash joyini bosing yoki manzilni kiriting",
+      "camera": "Rasm oling",
+      "code": "Kod",
+      "dateHint": "2026 yil 1 yanvar",
+      "dateTimeGroup": "Sana va vaqt",
+      "emptyWarning": "Hech qanday ma'lumotlar bosilmaydi  fotosurat suv belgisiz chiqariladi.",
+      "gallery": "Galeriyalardan tanlang",
+      "galleryDenied": "Fotosuratga kirish taqiqlangan, shuning uchun rasm faqat dastur ichida mavjud. Uni galereyaga saqlash uchun moslamalar › Ruxsatlar bo'yicha ruxsat bering.",
+      "galleryFailed": "Rasm tarixga kirdi, lekin qurilma uni galereyaga yozishni rad etdi. Bo'sh joyni tekshiring va yana urinib ko'ring.",
+      "generateCode": "Ishlab chiqarish",
+      "hiddenFields": "{count, plural, one {Yashirin maydon} other {Yashirin maydonlar}}:{fields}ularni sozlash › Maydonlar va joylashma",
+      "keepMyAddress": "Meningki qolsin",
+      "locate": "joylash",
+      "locateByGps": "GPS orqali manzilni topish",
+      "lookup": {
+        "denied": "Joyni moslamalar › Ruxsatlar \" da qoʻyish yoki manzilni kiriting.",
+        "disabled": "Qurilmada joylashishi o'chirilgan. Tez o'rnatishlarda uni yoqib, yana urinib ko'ring.",
+        "timeout": "GPS o'z vaqtida javob bermadi. U ko'pincha ichki uyda muvaffaqiyatsiz tugadi.",
+        "unavailable": "Manzilni shu joyda aniqlab bo'lmadi. Uni qo'lda kiriting."
+      },
+      "newCapture": "Yangi tutish boshlansin",
+      "noFieldsBack": "Qaytib boring .",
+      "noFieldsContinue": "Qanday boʻlmasin davom eting .",
+      "noFieldsMessage": "Hech qanday maydonda bosish uchun hech narsa yo'q. Maydonlarni to'ldiring yoki Sozlamalar › Maydonlar va joyni ko'rib chiqing.",
+      "noFieldsTitle": "Rasm suv belgisi boʻlmagan holda chiqariladi",
+      "noPhotoHint": "Avval fotosurat oling yoki galereyadan birini tanlang.",
+      "noPhotoSelected": "Tanlangan rasm yoʻq",
+      "openFailed": "Rasm ochib bo'lmadi. Yana sinab ko'ring.",
+      "permissionMessage": "Toʻgʻri yoʻl tutish uchun moslamalarni qoʻllash",
+      "permissionTitle": "Ruxsat talab etiladi",
+      "pickPhoto": "Rasmni tanlang",
+      "pickPhotoHint": "Harakatlarni qo'llash uchun fotosuratni tanlang.",
+      "previewLabel": "Suv belgisi bilan ko'rsatilgan fotosuratni ko'rib chiqish",
+      "renderFailedTitle": "Rasmni yaratolmadi",
+      "replaceAddressMessage": "GPS aniqlangan: 0",
+      "replaceAddressTitle": "Yozib qo'ygan manzilni almashtiringmi?",
+      "resetConfirm": "Yolg'izish",
+      "resetMessage": "Tanlangan fotosurat va to'ldirilgan maydonlar tashlanadi.",
+      "resetTitle": "Yangi tutish boshlash?",
+      "saved": "Tasvir qurilmalar galereyasida va tarixda saqlanadi.",
+      "savedAppOnlyTitle": "Faqat Lymark ichida saqlanadi",
+      "shareDialogTitle": "Suv belgisi bilan fotosuratni baham koʻring",
+      "shareFailedMessage": "Rasm yaratilgan va Lymark tarixida mavjud. Siz uni Galeriya tabidan bo'lishishingiz mumkin.",
+      "shareFailedTitle": "Ba'zilar bilan bo'lisholmadi",
+      "shareUnavailableMessage": "Ushbu qurilma uchun hech qanday aktsiyalar varaqasi yo'q. Rasm Lymark tarixida saqlanib qolgan.",
+      "shareUnavailableTitle": "Bajarish mavjud emas",
+      "sharedFileTitle": "Suv belgisi bilan tasvirlangan rasm",
+      "stampNotReady": "Muqobil hali tayyorlanmoqda.",
+      "syncNow": "Endi",
+      "timestamp": "Sana/soat",
+      "title": "Qutqaruv",
+      "useGpsAddress": "GPS-dan foydalaning",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Kun"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "boshqa rangni tanlang",
+      "saturationBrightness": "To'qima va yorug'lik",
+      "use": "Ushbu rangdan foydalaning"
+    },
+    "common": {
+      "back": "Orqaga qaytish",
+      "cancel": "bekor qilish",
+      "delete": "Oʻchirish",
+      "error": "Xato",
+      "gotIt": "Toʻgʻri.",
+      "loading": "Yuklash...",
+      "no": "Yoʻq",
+      "ok": "Toʻgʻri",
+      "save": "saqlash",
+      "share": "Bajarish",
+      "success": "Muvaffaqiyat",
+      "tryAgain": "Yana sinab ko'ring.",
+      "unknownError": "Noma'lum xato",
+      "yes": "Ha , shunday"
+    },
+    "gallery": {
+      "cancelSelection": "Toʻgʻri tanlash",
+      "clear": "O'z tarixini aniq",
+      "clearConfirm": "Ochiq",
+      "clearMessage": "Lymarkning yozuvlari o'chirib tashlanadi.",
+      "count": "{count, plural, one {X#eksport qilingan fotosurat} other { eksport qilingan fotosuratlar #}}",
+      "delete": "Oʻchirish",
+      "empty": "Hozircha fotosuratlar yoʻq",
+      "emptyAction": "Qutqaruvga boring",
+      "emptyDescription": "Suv belgisi bilan eksport qilgan fotosuratlar bu erda sana, joy va kod bilan ko'rsatilgan.",
+      "filteredCount": "{shown}{total, plural, one {X#fotosurat} other {X#fotosuratlari}}",
+      "noResults": "0 0  uchun fotosurat topilmadi.",
+      "photoLabel": "Rasmdan 0",
+      "removeMessage": "Yozuvlar Lymarkdan chiqib ketadi. Qurilmalar galereyasida saqlangan rasmlar ta'sirlanmaydi.",
+      "removeTitle": "{count, plural, one {Tarixdan olib tashlash} other {#yozuvlarini olib tashlash}}",
+      "removed": "{count, plural, one {Kirish olib tashlandi.} other {Yozuvlar olib tashlandi.}}",
+      "saveDeniedMessage": "Rasmlarni qurilma galereyasiga saqlash uchun moslamalar > Ruxsatlar > Ruxsatlar boʻyicha ruxsat bering.",
+      "saveDeniedTitle": "Fotosuratga kirish taqiqlandi",
+      "savedAll": "{count, plural, one {Qurilmalar galereyasida saqlangan bir fotosurat.} other {X#fotosuratlari qurilmalar galereyasida saqlanadi.}}",
+      "savedSome": "Saqlangan fotosuratlarning 0 of 1",
+      "searchPlaceholder": "Manzil, sana yoki kod bo'yicha qidirish",
+      "selectedCount": "{count, plural, one {X#fotosurat tanlangan} other {Tanlangan fotosuratlar #}}",
+      "share": "Bajarish",
+      "title": "Galeriya"
+    },
+    "language": {
+      "automatic": "Tugmalar qurilma",
+      "automaticNote": "Lymark vositangizda o'rnatilgan tilni kuzatib boradi.",
+      "label": "Til",
+      "selector": "Tilni tanlash"
+    },
+    "login": {
+      "access": "Kirish uchun kirish",
+      "apple": "Apple bilan kirish",
+      "google": "Google bilan kiring",
+      "subtitle": "Davom etish uchun kirish",
+      "title": "Lymarkga kirish uchun kiring"
+    },
+    "nav": {
+      "batch": "Kataklarni qayta ishlash",
+      "photoDetail": "Rasm tafsilotlari",
+      "report": "0 hisobot",
+      "video": "Videoni"
+    },
+    "notFound": {
+      "body": "Ushbu ekran Lymarkning bir qismi emas.",
+      "screenTitle": "Sahifa topilmadi",
+      "title": "Bunday yoʻl yoʻq"
+    },
+    "permissions": {
+      "allow": "Ruxsat bering",
+      "allowed": "Ruxsat etilgan",
+      "blocked": {
+        "later": "Hozir emas",
+        "message": "Tizim yana so'ramaydi. Uni ruxsat berish uchun qurilmangizning moslamalarini oching.",
+        "openSettings": "Ochiq moslamalar",
+        "title": "Ruxsat bloklandi"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Suv belgisini olish uchun fotosurat olish kerak.",
+      "denied": "Man etilgan",
+      "granted": "Maʼqul",
+      "intro": "Lymark faqat fotosuratni bosish uchun nima kerakligini so'raydi. Sizning rasmlaringiz qurilmadan hech qachon chiqmaydi: siz GPS-dan foydalanganda, operatsion tizim xarita xizmatiga koordinatni yolg'iz yuboradi, shunda u manzilga aylanishi mumkin.",
+      "location": "Joylash joyi",
+      "locationRationale": "Manzil maydoni avtomatik ravishda to'ldirilganda.",
+      "mediaLibrary": "Galeriyaga saqlash",
+      "mediaLibraryRationale": "Eksport qilingan fotosuratlarni qurilmalar galereyasiga yozish.",
+      "openDeviceSettings": "Oʻrnatish",
+      "recheck": "Yana tekshirib koʻring",
+      "request": "Ruxsatnoma soʻrash",
+      "section": "Kirish",
+      "title": "Ruxsatnomalar"
+    },
+    "photo": {
+      "backToGallery": "Galeriyaga qaytish",
+      "exportedAt": "0da eksport qilingan",
+      "noWatermark": "Ushbu fotosurat suv belgisi bo'lmagan holda eksport qilingan.",
+      "notFoundBody": "Bu yozuv tarixdan olib tashlangan bo'lishi mumkin.",
+      "notFoundTitle": "Rasm topilmadi",
+      "remove": "Oʻchirish",
+      "removeBody": "Lymark-dan chiqarilgan rekord. Qurilmalar galereyasida saqlangan rasm ta'sirlanmaydi.",
+      "removeTitle": "Tarixdan olib tashlash",
+      "share": "Bajarish",
+      "stampedData": "Bosib qo'yilgan ma'lumotlar"
+    },
+    "plan": {
+      "exhausted": "Bepul ishlatilgan fotosuratlar",
+      "exhaustedMessage": "Bepul rejangizning 12 ta fotosurati yo'q. Lymark-ga obuna bo'ling va bu erda ham ko'proq nashr qiling.",
+      "free": "Bepul",
+      "pro": "Maqsad",
+      "reconnect": "Abonnementingizni tasdiqlash uchun qayta ulanish",
+      "remaining": "{remaining, plural, one {X#bepul fotosurat Chap} other {X#bepul fotosuratlar chap}}",
+      "title": "Reja",
+      "unlimited": "Chegara yo'q"
+    },
+    "report": {
+      "allPhotos": "Barcha fotosuratlar",
+      "authorField": "Muallif / kompaniya",
+      "detailsSection": "Xulosalar",
+      "doc": {
+        "author": "Muallif",
+        "declaration": "Mu'rrrza qilingan ma'lumotlar (manzil, sana, vaqt va kod) fotosuratlarni chiqargan shaxsning deklaratsiyasi hisoblanadi.",
+        "exportedAt": "Eksport qilingan",
+        "generatedAt": "O'tkazilgan",
+        "page": "Sahifa",
+        "photo": "Rasmlar",
+        "photosSection": "Fotografik yozuvlar",
+        "signature": "Mas'ul shaxsning imzosi",
+        "summary": "Qisqa ma'lumot",
+        "title": "Rasm bayonoti",
+        "totalPhotos": "Jami fotosuratlar:"
+      },
+      "empty": "Hozircha eksport qilinmagan fotosuratlar. Hisobot sizning galereyangizdan yaratilgan.",
+      "failed": "Hisobot yaratolmadi.",
+      "fileStem": "hisobot",
+      "format": {
+        "csv": "Ishlab chiqarish jadvali (0)",
+        "pdf": "PDF",
+        "word": "0 (.doc)",
+        "zip": "Paket (0)"
+      },
+      "formatSection": "Formatlash",
+      "generate": "Faylni yaratish",
+      "generateSection": "Ishlab chiqarish",
+      "includeLogo": "Alovdagi logotip",
+      "includeLogoDescription": "Markasingizning logotipi, markaldagi hammasi.",
+      "norm": {
+        "abnt": "0 (Braziliya)",
+        "din5008": "0 (Germaniya)",
+        "ibape": "0 uslubi (Braziliya)",
+        "iso": "Xalqaro",
+        "letter": "Xat (AQSh)"
+      },
+      "normNote": "Standart qog'ozni va formatlashni belgilaydi  marjinasi, shrift va sahifa raqamlari. Hisobot tarkibi ularning barchasida bir xil; 0 usuli imzo blokini qo'shadi.",
+      "normSection": "Hujjat standart",
+      "projectsSection": "Loyiha / ish",
+      "saved": "0 gacha saqlangan",
+      "savedShort": "Hisobot saqlandi.",
+      "title": "0 hisobot",
+      "titleField": "Hisobotning nomi",
+      "unavailableBody": "0 hisobotlar ish stoli dasturida mavjud.",
+      "unavailableTitle": "Faqat ish stoli",
+      "uncoded": "Kod yo'q",
+      "wordTooBig": "0 hujjat fotosuratlar o'rnatilgan holda juda katta bo'ldi. 1 yoki 2 paketidan foydalaning.",
+      "zipMissing": "{count, plural, one {Paket saqlangan, ammo#fotosurati ushbu qurilmada topilmadi.} other {Paket saqlangan, ammo#fotosuratlari ushbu qurilmada topilmadi.}}"
+    },
+    "settings": {
+      "about": "haqida",
+      "aboutDescription": "Versiya, maxfiylik va kreditlar",
+      "appSection": "Ilova",
+      "deviceSection": "Qurilma",
+      "deviceSectionDescription": "Lymark talab qilganlarga kirish.",
+      "fields": "Maydonlar va joy",
+      "fieldsDescription": "Qaysi maydonlar koʻrsatiladi, burch va oʻlchamni tanlang",
+      "history": "Tarix",
+      "historyDescription": "Qurilmada saqlangan eksport qilingan fotosuratlar",
+      "language": "Til",
+      "permissions": "Ruxsatnomalar",
+      "permissionsDescription": "Kamera, fotosuratlar va joy",
+      "save": "saqlash",
+      "title": "Oʻrnatish",
+      "watermark": "Suv belgisi",
+      "watermarkSection": "Suv belgisi",
+      "watermarkSectionDescription": "Fotodasturda nima va qayerda bosilgan."
+    },
+    "signup": {
+      "subtitle": "Boshlang uchun ro'yxatdan o'tish",
+      "title": "Lymark hisobingizni yaratish"
+    },
+    "tagline": "Vaqt, sana va joy bilan suv belgisi",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Kameraga kirish yo'q. Qurilma sozlamalarida ruxsat bering.",
+      "done": "Videoni bosma qilib saqlab qo'yish.",
+      "export": "Eksport bosilgan video",
+      "exportSection": "Eksport",
+      "failed": "Videoni bosib chiqarish mumkin emas.",
+      "fieldsSection": "Tovarlash maydonlari",
+      "fileSection": "Videoni",
+      "none": "Video tanlanmagan.",
+      "processing": "Ishlab chiqarish ... 0%",
+      "processingMobile": "Ishlab chiqish...",
+      "record": "Endi videoni tomosha qiling",
+      "saved": "0 gacha saqlangan",
+      "savedToGallery": "Foydalanuvchi videoni galereyangizga saqlab qo'ygan.",
+      "select": "Videolarni tanlash",
+      "unavailableBody": "Mobil video stemplash uchun LymarkEASqurilmasi (o'z moduli bilan) dan o'rnatilgan. BuExpo Goda mavjud emas. Duka yokiEASqurilmasidan rasmiy dasturni o'rnating yoki ish stoli / veb-versiyasini ishlating.",
+      "unavailableTitle": "O'rnatilgan dastur talab qilinadi",
+      "unreadable": "Fayl videoga o'qiladigan bo'lmadi.",
+      "webNote": "Browserda video real vaqtda qayta ishlanadi  2 daqiqalik video 2 daqiqa davom etadi  va 0 formatida chiqadi. Uzoq videolar uchun ish stoli ilovasi bilan foydalaning."
+    },
+    "watermark": {
+      "accentColor": "vertikal bar",
+      "backdropBandNote": "Band fotosuratning bo'ylab bo'lak-bo'lak bo'lib, markab mustahkamlangan marginga qarshi turadi.",
+      "backdropBlockNote": "Tuxta o'lchamidan keyin, uning atrofida to'plamlar bilan.",
+      "backdropColor": "Band rangi",
+      "backdropDescription": "Bu fotosuratning yorug' joylarida kontrastni saqlaydi.",
+      "backdropInnerRadius": "Ichki burchaklar",
+      "backdropOpacity": "Ochiqlik",
+      "backdropOpacityValue": "0% shaffof emas",
+      "backdropRadius": "Yuzlangan burchaklar",
+      "backdropRadiusSquare": "Tuman",
+      "backdropStyles": {
+        "band": "To'liq kenglik bandasi",
+        "block": "Matnning ortida",
+        "none": "Hech kim"
+      },
+      "backdropTitle": "Tirik band",
+      "brandDescription": "Soatning yuqori qismida logotipi va tagline bilan imzoga aylanadi.",
+      "brandFirstColor": "Birinchi qismning rang",
+      "brandFirstHint": "Qurilishchilar",
+      "brandFirstPart": "Birinchi qism",
+      "brandNote": "Ikkinchi qismni bo'sh qoldiring, bu esa bitta rangli belgi bo'ladi.",
+      "brandPlacements": {
+        "corner": "Burchakda",
+        "header": "Soatdan yuqori",
+        "none": "Hech kim"
+      },
+      "brandSecondColor": "Ikkinchi qismning rang",
+      "brandSecondHint": "Smit",
+      "brandSecondPart": "Ikkinchi qism",
+      "brandTitle": "Mu'rrza qilingan belgi",
+      "codeDescription": "Bu rasmning o'zi bilan o'rin uchun raqobat qilmaydi.",
+      "codePlacements": {
+        "block": "Ma'lumotlarning yonida",
+        "side": "Oʻng tomondan"
+      },
+      "codeTitle": "Rasm kodlari",
+      "colors": {
+        "amber": "Amber",
+        "black": "Qora",
+        "blue": "Koʻk",
+        "green": "Yashil",
+        "red": "Qizil",
+        "white": "Oq"
+      },
+      "colorsDescription": "Rasmdagi rang kompaniya tanlovi, dastur emas. Buni o'zgartirish ekrani rangini o'zgartirib yubormaydi.",
+      "colorsTitle": "Stamp ranglari",
+      "complement": "Tagline",
+      "complementColor": "Tagline rang",
+      "complementHint": "Tekshirishlar va texnik hisobotlar",
+      "cornerConflict": "Ishq va ma'lumotlar bir burchada joylashgan.",
+      "fields": {
+        "address": "Manzil / joy",
+        "code": "Rasm kodlari",
+        "date": "Tarix",
+        "time": "Vaqt",
+        "weekday": "Haftaning kunlari"
+      },
+      "fieldsDescription": "Faqat tarkibiy bo'lgan va o'rnatilgan maydonlar fotosuratga yetadi.",
+      "fieldsTitle": "Koʻrsatilgan maydonlar",
+      "includeCountry": "Mamlakatni oʻz ichiga oling",
+      "includeCountryDescription": "Agar chegaralar bo'ylab ishlayotgan bo'lsangiz uni yoqing. Aks holda u faqat fotosuratda joy oladi.",
+      "legibilityTitle": "O'qish qobiliyati",
+      "logoAdded": "Markaz boshliqida logotip qo'shildi.",
+      "logoAlignNote": "Logotipning balandligi matnning orqasidan keladi: uning yuqori qismi nomning yuqori qismi bilan, past qismi esa tagline boshlang'ich qismi bilan mos keladi.",
+      "logoChosen": "Tanlangan logotip",
+      "logoErrorMessage": "Boshqa rasmni sinab ko'ring. Ochiq fonli PNG format eng yaxshi ishlaydi.",
+      "logoErrorTitle": "Ushbu fayldan foydalanish mumkin emas",
+      "logoFormatNote": "O'z fonida oq fonli JPG fotosuratda oq to'g'riroq burchakga aylanadi  format shaffoflikni saqlamaydi va dasturda fon nima ekanligini tasavvur qilishning hech qanday usuli yo'q.",
+      "logoPermissionMessage": "Logotip faylini tanlash uchun moslamalar > Ruxsatlar bo'yicha ruxsat bering.",
+      "logoPermissionTitle": "Fotosuratga kirish taqiqlandi",
+      "logoPick": "Logotipni tanlash",
+      "logoPosition": "Logotipning o'rni",
+      "logoPositionBlock": "Muhr bilan",
+      "logoRemove": "Oʻchirish",
+      "logoReplace": "Logotipni almashtirish",
+      "logoSize": "Logotip o'lchamlari",
+      "positionDescription": "Blok fotosuratning burchagida mustahkamlangan.",
+      "positionTitle": "Manzil",
+      "positions": {
+        "bottom-left": "Chapdagi pastki qism",
+        "bottom-right": "O'ng tomonda",
+        "top-left": "Chap yuqori",
+        "top-right": "Yuqori oʻng"
+      },
+      "previewCurrent": "Qabul qilish tabidan joriy fotosuratdan.",
+      "previewEmpty": "Yorug'likdan qorong'igacha, har ikki chetda o'qishni tekshirish uchun.",
+      "previewNoFields": "Tanlangan hech qanday maydon yo'q  fotosurat suv belgisiz chiqariladi.",
+      "previewTitle": "Koʻrib chiqish",
+      "reset": "Bitta andozalarni tiklash",
+      "sizeTitle": "Matn oʻlchami",
+      "sizes": {
+        "large": "Katta",
+        "medium": "Oʻrtacha",
+        "small": "Kichik"
+      },
+      "textColor": "Matn",
+      "timeFormatDescription": "Vaqt qanday qilib maydonlarga to'ldirilgan. Maydon tahrirlanmaydigan bo'lib qoladi.",
+      "timeFormatTitle": "Vaqt formatlari",
+      "timeFormats": {
+        "12h": "12 soat (soat)",
+        "24h": "24 soat"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Barcha fayllar",
+      "images": "Rasmlar",
+      "pickFolder": "Chiqish jildini tanlash",
+      "pickPhoto": "Rasmni tanlash",
+      "pickPhotos": "Parch uchun fotosuratlarni tanlash",
+      "savePhoto": "Rasmni saqlash",
+      "saveReport": "Hisobotni saqlash"
+    },
+    "login": {
+      "cancel": "bekor qilish",
+      "confirm": "Davom qiling",
+      "message": "Siz shunchaki brauzer orqali kirishdingiz. Ushbu kompyuterdagi hisobdan foydalanishni davom ettiring?",
+      "title": "Lymark-ga kiring"
+    },
+    "menu": {
+      "copy": "Koʻchirilgan",
+      "cut": "Qitish",
+      "edit": "tahrirlash",
+      "file": "Fayl",
+      "fullscreen": "Toʻliq ekran",
+      "help": "Yordam",
+      "paste": "Past",
+      "quit": "Toʻxtatish",
+      "redo": "Redo",
+      "reload": "Qayta yuklash",
+      "selectAll": "Hamma tanlang",
+      "settings": "Oʻrnatish",
+      "undo": "O ' zgarish",
+      "view": "Koʻrinish",
+      "zoomIn": "Zoom",
+      "zoomOut": "Zoom out",
+      "zoomReset": "Asosiy o'lcham"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Uyga qaytish",
+      "openApp": "Ilova ochish",
+      "photos": "Rasmlar",
+      "photosLeft": "0ning 1 chap",
+      "plan": "Reja",
+      "planUnavailable": "Hozirda mavjud emas",
+      "plans": {
+        "free": "Bepul",
+        "pro": "Maqsad"
+      },
+      "signInTitle": "Kiring",
+      "signOut": "Ishlab chiqarish",
+      "signUpTitle": "Hisob yaratish",
+      "subscribe": "Lymark Pro-ga obuna boʻling",
+      "subscribeSoon": "Abonnementlar hali mavjud emas. Agar mavjud bo'lsa, siz bu erda obuna bo'lib, bir xil hisobda bo'lgan har qanday qurilmani ishlatishingiz mumkin.",
+      "title": "Sizning hisobingiz",
+      "revokeDesktops": "Kompyuterlarni uzish",
+      "revokeDesktopsHint": "Har bir kompyuterda dasturga kirish imkoniyatini tugatadi. Siz xohlaganingizda qayta kirishingiz mumkin."
+    },
+    "availability": {
+      "contact": "Ishlab chiqarishdan keyin yoki muammo haqida xabar berish uchun quyidagi manzilga yozing:<email>contato@lymark.app</email>.",
+      "description": "Lymark versiyasi 1.3.0da, Androidda sinovdan o'tadi,Google Playda nashr etilishdan oldin.",
+      "title": "Qolaversa"
+    },
+    "data": {
+      "device": {
+        "description": "Hisobot sizning obuna uchun mavjud: server sizning elektron pochta xabaringizni va rejalaringizni saqlaydi, fotosuratlaringizni yoki joyingizni hech qachon qabul qilmaydi. Tarix oxirgi ikki yuz eksportni dasturning o'z fayllarida saqlaydi.",
+        "field": "Qurilma",
+        "heading": "Fotosuratlar, manzillar va tarix"
+      },
+      "external": {
+        "description": "Uzoq va uzunlikni o'qiladigan manzilga aylantirish uchun operatsion tizim Google yoki Applening geokodifikatsiya xizmatiga so'rov beradi. Bu yagona ma'lumot qoladi va tizim uni yuboradi, dastur emas.",
+        "field": "Qurilma tashlangan",
+        "heading": "Faqat koordinatni manzilga aylantirish"
+      },
+      "note": "Bu borada Braziliyada 0                                                                                                                                                                                                                            <privacy>Maxfiylik siyosati</privacy>. Joylash ruxsatnomasini o'chirib qo'yish dasturni to'liq ishlashi kerak; faqat manzil maydoni qo'lda yozilishi kerak.",
+      "title": "Ma'lumotlaringiz joylashgan joy"
+    },
+    "deleteAccount": {
+      "back": "Hisobga qaytish",
+      "confirm": "Hisobimni oʻchirish",
+      "deletesNow": "Hisobingizni o'chirish elektron pochtangizni, identifikatoringizni, reja, kvotani va fotosuratlar sonini darhol o'chiradi.",
+      "irreversible": "O'chirish doimiy va bekor qilinmaydi. Qurilmangizdagi fotosuratlar ta'sirlanmaydi.",
+      "retained": "To'lovlar to'lovlari to'g'risidagi yozuvlar sizning profilingizdan bog'lanmagan holda, qonuniy ravishda talab qilingan soliq davri davomida saqlanadi.",
+      "title": "Hisobni oʻchirish"
+    },
+    "description": "Android dasturida vaqt, sana, kun, manzil va joyni tekshirish va xizmatni tasdiqlash fotosuratlariga izlanish kodini belgilaydi.",
+    "desktop": {
+      "backAccount": "Hisobga qaytish",
+      "explanation": "Hisobotingiz tayyor. Kompyuteringizda Lymarkni ochish uchun quyida tugmani bosing.",
+      "open": "Ilova bilan bogʻlaning",
+      "title": "Ish stolida kiring",
+      "unavailable": "Ish stoli dasturlari aloqasi hali mavjud emas."
+    },
+    "download": {
+      "appStore": {
+        "description": "Androidda iOS-da xuddi shunday tajriba bor.",
+        "field": "App Store",
+        "heading": "iPhone va iPad"
+      },
+      "browser": {
+        "action": "Kiring",
+        "description": "Hisobvaraqingiz bilan kiring va dastur brauzerda ochiladi  telefon yoki kompyuter.",
+        "field": "Tarmoq",
+        "heading": "Uni hozir ishlating, o'rnatish uchun hech narsa yo'q"
+      },
+      "desktop": {
+        "description": "Fotokassalar, uzun videolar va 0 hisobotlar  og'ir xizmat versiyasi.",
+        "field": "Kompyuter",
+        "heading": "Windows va Linux"
+      },
+      "googlePlay": {
+        "description": "Telefon ilovasi, kamera, galereya va video bilan.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Yaqinda keladi",
+      "title": "Lymark- dan qayerda foydalanish kerak"
+    },
+    "features": {
+      "address": {
+        "description": "Ko'cha turi qisqartiriladi va davlat uning kodiga aylanadi, shuning uchun manzil fotosuratni o'z ichiga olmasdan ikki satrga mos keladi. Agar GPS javob bermasdan oldin yozgan bo'lsangiz, yozganingiz g'alaba qozonadi.",
+        "field": "Manzil",
+        "heading": "GPS bilan to'ldirilgan, qo'lda tuzatilishi mumkin"
+      },
+      "code": {
+        "description": "Bu mavjud bo'lib, siz ish tartibi yoki hisobotda bitta aniq fotosuratni keltirib chiqara olasiz. Bu o'ng chekkada aylantiriladi yoki siz tanlagan ma'lumotlar blokida o'rnatiladi.",
+        "field": "Rasm kodlari",
+        "heading": "Kriptografik generator tomonidan chizilgan 14 ta belgi"
+      },
+      "note": "Har bir maydon o'z-o'zidan yoqadi va o'chiradi, blok uchta o'lchamda to'rt burchakdan birida mustahkamlanadi. Ko'rib chiqish sizning haqiqiy fotosuratingizdan foydalanadi, umumiy namuna emas: ekranda ko'rganingiz, aslida eksport qilinadi.",
+      "time": {
+        "description": "Bir tugma uchta maydonni hozirgi kunga qaytaradi, chunki u tushirish kutilganidan ko'proq vaqtni oladi.",
+        "field": "Soat va sanasi",
+        "heading": "Qurilma soatidan, ushlab turish paytida"
+      },
+      "title": "Rasmga nima kiradi"
+    },
+    "footer": {
+      "description": "Lymark  tarix, vaqt va manzili bilan fotosuratlar.",
+      "documentsLabel": "Hujjatlar",
+      "privacy": "Maxfiylik siyosati",
+      "support": "Qo'llab-quvvatlash:",
+      "terms": "Foydalanish shartlari"
+    },
+    "hero": {
+      "ctaAccount": "Mening hisobimga boring .",
+      "ctaLogin": "Kiring",
+      "ctaSignup": "Bepul hisob yaratish",
+      "description": "Lymark vaqt, sanasi, hafta kuni, manzili va izlanish kodini rasman rasmga belgilaydi. Ilovadan chiqadigan faylda o'z ichiga o'sha ma'lumotlarni  emas, balki birinchiWhatsAppoldinga o'tadigan metadata sifatida olib keladi.",
+      "eyebrow": "Sahna fotosuratlari bilan hujjatlashtirish",
+      "heading": "Rasmda telefoningiz qachon, qayerda va nima bo'lishini ko'rsatadi.",
+      "meta": {
+        "account": "Bir martalik hisob",
+        "android": "Android va brauzer",
+        "language": "Braziliyalik portugal tili",
+        "onDevice": "Fotosuratlar qurilmada qoladi"
+      },
+      "note": "O'rnatish uchun hech narsa yo'q."
+    },
+    "nav": {
+      "account": "Hisobvaraq",
+      "home": "Uyga",
+      "homeLabel": "Lymark, bosh sahifasi",
+      "label": "Bosh",
+      "privacy": "Maxfiylik",
+      "signIn": "Kiring",
+      "terms": "Shartlar",
+      "verify": "Tekshirish"
+    },
+    "process": {
+      "capture": {
+        "description": "Manzilni qidirish fotosurat kelgan paytdan boshlab boshlanadi.",
+        "field": "Qutqaruv",
+        "heading": "Kamera yoki galeriya"
+      },
+      "note": "Ushbu ikki harakatni alohida saqlash va almashish turli muammolarni hal qiladi va ularni bitta tugmaga qo'shish fotosuratni yuborish ekrani orqali to'plashni istagan har bir kishini olib ketadi.",
+      "save": {
+        "description": "Bu telefoningizdagi fotosuratlarning qolgan qismi bilan birga, har qanday dasturda mavjud, shu jumladan Lymark-ni o'chirgandan so'ng.",
+        "field": "saqlash",
+        "heading": "Qurilmalar galereyasiga oʻtadi"
+      },
+      "share": {
+        "description": "0, elektron pochta, Drive: manzil operatsion tizim tomonidan tanlanadi va dastur jo'natishda ishtirok etmaydi.",
+        "field": "Bajarish",
+        "heading": "Tizimning ulush varaqasini ochish"
+      },
+      "title": "Rasmning yo'li"
+    },
+    "skipToContent": "Maʼlumotga oʻtish",
+    "specimen": {
+      "caption": "Amber qoidasi matn qutisi emas, balki raqamlar chegaralarida boshlanadi va tugadi.",
+      "label": "Lymark pochta markasi namunasini ko'rsatish: soat 07:42, 2026-yil 12-avgust, chorshanba, Guarujádagi manzil va fotosurat kod."
+    },
+    "title": "Lymark  maydondagi fotosuratlar uchun sana, vaqt va manzil suv belgisi",
+    "verify": {
+      "caveat": "Muhr faylning yaxlitligini va chiqarilgan vaqtni tasdiqlaydi. Muhrda nima deb e'lon qilingan bo'lsa  manzili, sanasi, vaqti  emitentning e'lonidir.",
+      "checking": "Tekshiruv...",
+      "declarationNote": "Muhrda ko'rsatilgan (manzil, sana, vaqt) emitentning deklaratsiyasi  muhrda e'lon qilingan tarkib emas, balki mutlaqligi va berilganligi tasdiqlanadi.",
+      "intro": "Lymark tomonidan eksport qilingan fotosuratni tashlang yoki tanlang va uni o'rnatilganda va kim chiqarganida to'g'riligini tezda ko'ring.",
+      "noSealBody": "Ushbu faylda Lymark muhrlari yo'q. Bu muhr mavjud bo'lishidan oldin offline eksport qilingan bo'lishi mumkin yoki Lymarkdan kelmasligi mumkin.",
+      "noSealTitle": "Muhrsiz",
+      "notConfigured": "Tekshirish hali mavjud emas.",
+      "pick": "Faylni tanlash",
+      "previewAlt": "Tekshirilgan fotosurat, ko'rinadigan pochta belgisi",
+      "privacyNote": "Verifikatsiya brauzeringizda sodir bo'ladi. Fayl hech qanday serverga yuborilmaydi.",
+      "sealedBody": "Ushbu fayl Lymarkdan chiqqanidek ,{account}hisobidan chiqarilgan . {date}",
+      "sealedTitle": "Toʻgʻri",
+      "tamperedBody": "Ma'lumotlar muhr bilan mos kelmaydi: fayl chiqarilgandan so'ng o'zgartirilgan yoki muhr boshqa faylga tegishli.",
+      "tamperedTitle": "Toʻgʻri kelmaydi",
+      "title": "Aslligini tekshirish",
+      "unsupported": "Ushbu brauzer imzolarni tasdiqlashni qo'llab-quvvatlamaydi. Joriy brauzerda sinab ko'ring."
+    }
+  }
+}

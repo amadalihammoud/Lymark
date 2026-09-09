@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Məxfilik siyasəti",
+      "description": "Lymark tətbiqi fotoşəkillər, yer, tarix və hesabınızı necə idarə edir. Fotoşəkillər və yer heç vaxt cihazdan çıxmır; server yalnız e-poçt, plan və foto sayını saxlayır."
+    },
+    "title": "Məxfilik siyasəti",
+    "updated": "Cavab: Cavab, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza, cəza Lymark",
+    "intro": "Bu siyasət Lymark tətbiqin şəxsi məlumatları necə idarə etdiyini təsvir edir. Bu, 13.709/2018 nömrəli Lei (Ümumi şəxsi məlumatların qorunması QanunuLGPD) və (AB) 2016/679 (Ümumi məlumatların qorunması haqqında Əsas QaydaGDPR) qaydalarına uyğun olaraq tətbiq olunur və identifikator altında paylanan tətbiqetmələrə tətbiq olunur <strong>com.lycosteam.lymark</strong>və bu veb saytına.",
+    "s01": {
+      "title": "Bir cümlədə",
+      "p1": "Lymark <strong>fotolarınızı və ya yerinizi göndərmir</strong>. Apletinin yaratdığı hər şey  şəkillər, ünvanlar, tarix və üstünlüklər  öz cihazınızda, sizin nəzarətinizdə qalacaq.",
+      "p2": "05-ci maddədə təsvir olunan tək istisna var: GPS koordinatlarını oxuna bilən bir ünvana çevirmək üçün cihazın əməliyyat sisteminin xarici ge kodlaşdırma xidməti ilə müraciət etməsi lazımdır."
+    },
+    "s02": {
+      "title": "Bu siyasət kimlərə tətbiq olunur",
+      "p1": "Bu tətbiq tətbiqindən istifadə edən və ya bu veb saytı ziyarət edən hər kəsə aiddir. Braziliyada məlumat subyektləri üçün işlənmə 1 və Milli Məlumat Müdafiəsi İdarəsinin nəzarəti altında keçirilir. Avropa İqtisadi Ərazi və Birləşmiş Krallıqda məlumat subyektləri üçün işlənmə 2 və 0 ilə davam edir."
+    },
+    "s03": {
+      "title": "Kontrolçü kimdir?",
+      "p1": "The controller of the personal data — <em>controlador</em>, in the terminology of the LGPD — is 29.015.357 AMAD ALI HAMMOUD, registered under CNPJ 29.015.357/0001-25, with an address at Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Şəxsi məlumatların işlənməsi üzrə məsul şəxs 2-nin 41-ci maddəsi üçün 1-dir və onunla 2- adresində əlaqə qurula bilər.<email>contato@lymark.app</email>. İşləmələrin həcmi və xarakterinə görə  bu proses nə həssas məlumatları nə də sistematik nəzarəti əhatə edir <em>Məlumat Mühafizəsi üzrə işçi</em>3 37-ci maddəsi ilə."
+    },
+    "s04": {
+      "title": "Tətbiq hansı məlumatları idarə edir",
+      "p1": "Aşağıdakı bütün məlumatlar yalnız cihazın daxilindəki tətbiqin xüsusi sahəsində qeyd olunur və heç bir məlumat inkişaf etdiricisinə göndərilmir.",
+      "defs": {
+        "photos": {
+          "term": "Fotolar",
+          "def": "Qalanjadan seçdiyiniz və ya kamera ilə çəkdiyiniz şəkil və su işarəsi ilə ixrac edilmiş fayl. Fotograf üçüncü tərəflərin  şəxsi məlumatlarını  11 -ci maddəni bax."
+        },
+        "location": {
+          "term": "Yerləşmə",
+          "def": "Əməliyyatın nəticəsi ilə əlaqədar olaraq, fotoşəkillə birlikdə yalnız əldə edilmiş məzmunun təxminən bir dəfə alınması üçün təxminən genişqytə və uzunqytə."
+        },
+        "datetime": {
+          "term": "Tarix, saat və həftə günü",
+          "def": "Alınma anında cihaz saatından oxuyun və sizin tərəfindən redaktə edilə bilər."
+        },
+        "code": {
+          "term": "Foto kod",
+          "def": "Təsadüfi olaraq çəkilmiş on dörd hexadecimal simvolun bir sıralaması. Nə cihaz identifikatorundan, nə də sizinkidən alınmır və tətbiqlər arasında izləmə imkanı vermir."
+        },
+        "history": {
+          "term": "Tarix",
+          "def": "Son 200 ixracın qeyd edilməsi, cihazdakı fayl yolu və şəkil üzərində damğalanmış məlumatlar."
+        },
+        "preferences": {
+          "term": "Tərəflər",
+          "def": "Görünən sahələr, mövqe, ölçülər və digər su işarəsi seçimləri."
+        }
+      },
+      "p2": "Tətbiq <strong>toplamır</strong>: ad, e-poçt, telefon, şəxsiyyət sənədləri, reklam identifikatoru, cihaz identifikatoru, əlaqə məlumatları, təqvim, brauzer tarixçəsi, istifadə ölçülərini, qəza hesabatları və ya sizin və ya cihazınız haqqında hər hansı digər məlumat."
+    },
+    "s05": {
+      "title": "Cihazdan çıxan yeganə məlumat",
+      "p1": "Yerləşmə icazəsi verildiyi zaman tətbiq əməliyyat sistemindən GPS koordinatlarını poçt ünvanına çevirməsini xahiş edir. Bu tərcümə  geriyə geokodlaşdırma  əməliyyat sistemi tərəfindən həyata keçirilir, bu məqsədlə koordinatları xəritə xidmətinə göndərir: <strong>Google</strong>Android cihazlarında və <strong>Apple</strong>iOS cihazlarında.",
+      "p2": "Bu məlumatlar Lymark-dan deyil, əməliyyat sistemindən gəlir. tətbiq heç bir nüsxəsini qəbul etmir, vasitəçilik etmir və geri qaytarılan ünvandan başqa heç bir şeyə giriş əldə etmir. Bu provayderlərin həyata keçirdiyi işlənmə öz məxfilik siyasətləri ilə tənzimlənir.",
+      "p3": "<strong>Heç bir foto tətbiqin hərəkətləri vasitəsilə qurğudan çıxmır.</strong>Paylaşmaq düyməsini istifadə etsəniz, görüntülər proqramın məxfilik siyasəti altında sistem paylaşması səhifəsində seçdiyiniz məqsəd tətbiqi tərəfindən ötürülür."
+    },
+    "s06": {
+      "title": "İzin verilməsi və niyə",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Su işarəsi qəbul ediləcək fotoşəkil çəkmək üçün. Yalnız Təşvirə  vurduğunuz zaman tələb olunur."
+        },
+        "photos": {
+          "term": "Foto və media",
+          "def": "Mövcud bir şəkil seçmək və ixrac edilmiş faylı qalereyaya yazmaq üçün. Fotoşəkillərə giriş məhduddur və yazı icazəsi yalnız yazmaq üçün istifadə olunur  tətbiq nə brauzer, nə də qalereyanı oxuyur."
+        },
+        "location": {
+          "term": "İstifadə zamanı yer",
+          "def": "Adres sahəsini doldurmaq üçün. Yalnız tətbiq istifadə olunduğu müddətdə ön planda tələb olunur və <strong>Heç vaxt arxa planda</strong>."
+        }
+      },
+      "p1": "Bütün icazələr seçməlidir və cihaz parametrlərində istənilən vaxt ləğv edilə bilər. İndirmə yeri tətbiqi tam işlə təmin edir: ünvanı sonra siz yazırsınız. Galeriya girişini rədd etmək yalnız avtomatik saxlanmayı mane edir və fotoşəkil hələ də paylaşıla bilər."
+    },
+    "s07": {
+      "title": "Hüquqi əsaslar və məqsədlər",
+      "p1": "Yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarının yerləşmə məmurlarına əsasənlik olaraq həyata keçirilir.<strong>razılıq</strong> Sistemə icazə verdiyiniz zaman ifadə olunan 0 7 maddəsinin I və 1  6 maddəsinin 1) a) maddələri, ləğv edilmədən əvvəl həyata keçirilən işəyin qanunilığına xarakterizə olunmadan, istənilən vaxt geri çəkilə bilər.",
+      "p2": "Qalan məlumatların işlənməsi <strong>tələb etdiyiniz xüsusiyyətin icrası</strong>  0 7 maddəsi, V maddəsi və 6 1)  b maddəsi, çünki bu olmadan tətbiq üçün istehsal etmək üçün su işarəsi yoxdur.",
+      "p3": "Hesab məlumatlarının işlənməsi bir müqavilənin icrasına əsaslanır (0 maddə 7, V; 1 maddə 6(1)(b)). Qanuni maraqlara əsaslanan işlənmə (0 maddə 7, IX; 1 maddə 6(1)(f)) yalnız təhlükəsizlik və saxtakarlıqların qarşısını almaq üçün mövcuddur  məsələn, müraciətlərin IP ünvanını serverə qeyd etmək. Reklam, profillaşdırma, davranış analizi və ya hər hansı bir ikincil məqsəd üçün işlənmə, inkişaf etdiricisi tərəfindən xüsusi kateqoriya məlumatların və ya həssas məlumatların işlənməsi yoxdur."
+    },
+    "s08": {
+      "title": "Beynəlxalq transfer",
+      "p1": "Hesab məlumatları, standart müqavilə müddəalarına və 33 və 42 maddələrin mexanizmlərinə əsasən beynəlxalq məlumat ötürülməsini təşkil edən təsdiqləmə prosessorunun (0, ABŞ) tərəfindən işlənir. 44-49. 05-ci maddədə təsvir olunan coqodlaşdırma axtarışı hələ də əməliyyat sistemi tərəfindən istifadəçinin ölkəsi xaricində onu işə salmaq istəyən provayderlərə, həmin provayderlərin öz köçürmə mexanizmləri ilə həyata keçirilir.",
+      "p2": "Bu veb saytın 14 nömrəli maddəyə əsasən 0 tərəfindən ev sahibliyi olunur."
+    },
+    "s09": {
+      "title": "Üçüncü şəxslərlə bölüşdürmə",
+      "p1": "İnkişaf etdirən şəxs şəxsi məlumatları üçüncü şəxslərə bölüşmür, satmır, kirayə almır və ya vermir.<em>prosessor</em>Bu xidmətlər, öz tətbiqlərini yerinə yetirmək üçün istifadəçilərin istifadəyə verilən məlumatları öz tətbiqlərinə uyğun olaraq işə salırlar."
+    },
+    "s10": {
+      "title": "Qoruyucu, saxlama və təhlükəsizlik",
+      "p1": "Versiyalar tətbiqlərin şəxsi sahəsində yerləşir, əməliyyat sistemi tətbiqlər arasında təcrid və cihazın ekran qapanması ilə qorunur. Android versiyasında sistemin avtomatik yedekləmə sistemi<strong>əlil</strong>, istifadəçinin Google hesabına tarix və seçimləri göndərilməsin.",
+      "p2": "Bu, tətbiqdə saxlanılan bütün sənədləri silmək üçün istifadə olunur. Tətbiqdə saxlanılan sənədlər tətbiqdə silinənə qədər saxlanılır və tarix iki yüz ədəd keçdikdən sonra ən köhnə sənədləri avtomatik olaraq atır və uyğun faylları da silər. Tətbiqdən çıxarmaq saxlanılan hər şeyi silər. Cihaz qalereyasında saxlanılan fotoşəkillər qalereyaya aiddir və orada qalır.",
+      "p3": "Heç bir sistem səhvsiz deyil. Hesab məlumatları  e-poçt, identifikator, plan və sayın  öz təhlükəsizlik tədbirləri ilə etibarlılıq prosesorunun saxladığıdır. Fotoşəkillər, ünvanlar və yer mərkəzi bir anbarda mövcud deyil və buna görə də inkişaf etdiricinin infrastrukturundan sızdırıla bilməz. Əgər təhlükəsizlik hadisəsi hesab məlumatlarını təsir etsə, inkişaf etdiricisi orqanı və məlumat subyektlərini 0 maddəsi ilə xəbərdar edəcək.  48 və 1 maddəsi. 33. Fotoşəkillərinizə aid risklər açılmış cihazın fiziki girişində qalır."
+    },
+    "s11": {
+      "title": "Başqa insanları fotoşəkil çəkəndə",
+      "p1": "Peşəkar fəaliyyətiniz zamanı müəyyənləşdirilə bilən insanları fotoşəkilləndikdə,<strong>Sən</strong>Bu məlumatların icra olunması üçün sənədlər və məlumatlar verilməlidir."
+    },
+    "s12": {
+      "title": "Hüquqlarınız",
+      "p1": "0 18 maddəsi və 1 15-22 maddələri sizə təsdiq və giriş, düzəliş, silmə, anonimləşdirmə, bloklama, daşınma, emal məhdudiyyəti, etiraz, razılığın geri çəkilməsi və paylaşılan məlumatlar haqqında hüquqları təmin edir.",
+      "p2": "Fotoşəkillər, ünvanlar, tarix və üstünlüklər yalnız cihazınızda yerləşir və bu hüquqlar tətbiqdə birbaşa tətbiq edilir: Galeriya zolağında girişləri görün və silin, ixrac etməzdən əvvəl hər hansı bir sahəni düzəldin, sistem parametrlərindəki yerləşmə icazəsini ləğv edin və tətbiqini sökərək hər şeyi silin  inkişaf etdiricisi bu məlumatlara daxil ola bilməz, ixrac edə və ya silə bilməz, çünki bu məlumatları saxlamır. Hesab məlumatlarına gəldikdə  e-poçt, plan və say  hesab səhifəsində baxa bilərsiniz və bu Siyasətin əlaqə e-poçtında düzəliş, ixrac və ya silinməni xahiş edə bilərsiniz; hesabı silmək bu məlumatları təsdiqləmə prosesorunda silər.",
+      "p3": "Sual və ya rəsmi müraciət üçün məktub yazın <email>contato@lymark.app</email>Həmçinin, siz də şikayət etmək hüququnuz var.<strong>ANPD</strong>Bu, bir çox ölkələrin və ölkələrin mütəxəssislərinin və ya mütəxəssislərin səlahiyyətlərini təmin etmək üçün nəzərdə tutulmuşdur."
+    },
+    "s13": {
+      "title": "Avtomatik qərarlar",
+      "p1": "Siz haqqında qanunvericilik 20 maddəsi və 22 maddəsi ilə bağlı heç bir avtomatlaşdırılmış qərar, profilyaya və ya işlənməyə heç bir hüquqi təsir yoxdur."
+    },
+    "s14": {
+      "title": "Bu sayt haqqında",
+      "p1": "Bu saytın analitikası yoxdur, reklam göstərmir və sosial şəbəkə düymələri yerləşdirilmir.<strong>qətiyyən zəruri olan çerezlər</strong>Hesabınız üçün otentifikasiya prosesorunun (09-cu maddə) daxil olunduğunuzda müəyyənləşdirdiyi otentifikasiya prosesorunun (İşə daxil olunduğunuzda) istifadəsi üçün istifadə edilə bilər. İstifadə və reklam çerezləri yoxdur. Fontlar saytın öz domenindən verilir. Tərkib brauzerinizin üçüncü tərəflərə etdiyi tək istəklər autentifikasiya prosesoruna və hesab ekranlarına ünvanlanmışdır.",
+      "p2": "Sayt <strong>Vercel Inc.</strong>, ki, bir icraçı kimi texniki giriş məlumatlarını qeyd edir  IP ünvanı, tarix, vaxt və tələb olunan resurs  təhlükəsizliyi və hosting fəaliyyətinə görə lazım olan müddət ərzində. Hüquqi əsas xidmət təhlükəsizliyinin qorunması ilə bağlı qanuni maraqdır, 1-nin 7-ci maddəsi IX və 2-nin 6(1) )"
+    },
+    "s15": {
+      "title": "Bu siyasətin dəyişiklikləri",
+      "p1": "Dəyişikliklər bu səhifədə yeni yeniləmə tarixi ilə dərc olunacaq."
+    },
+    "s16": {
+      "title": "Uşaqlar və yeniyetmələr",
+      "p1": "Lymark 18 yaş və ya daha yuxarı yaşda olan insanlar üçün nəzərdə tutulmuş iş vasitəsidir."
+    },
+    "s17": {
+      "title": "Mümkün olan qanunvericilik",
+      "p1": "Bu siyasət, əhatə etdiyi məlumat subyektlərinə 0 tətbiqinin məhdudlaşdırılmamasına mühümlük olmadan Braziliya hüququ ilə tənzimlənir."
+    },
+    "note": "Həmçinin bax:<terms>İstifadə şərtləri</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "İstifadə şərtləri",
+      "description": "Lymark tətbiqinin istifadə şərtləri: nə edir, nə etmir və fotoşəkillərin məzmunundan kimin məsuliyyəti var."
+    },
+    "title": "İstifadə şərtləri",
+    "updated": "Son yenilənmiş: 16 avqust 2026 · Lymark tətbiqi, 1.3.0 versiyası",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Tətbiq nə edir",
+      "p1": "Lymark bir fotoşəkil üzərində bir sıra məlumatları üst-üstə qoyur  vaxt, tarix, həftə günü, ünvan və bir identifikasiya kodu  və piksellərə daxil olan bu məlumatlarla yeni bir görüntü faylı yaradır."
+    },
+    "s02": {
+      "title": "Tətbiq nə etməz",
+      "p1": "Bu məqam bu şərtlərdə ən vacibdir və biz onu diqqətlə oxumağı xahiş edirik.",
+      "items": {
+        "certify": "<strong>Tətbiq heç nəyi təsdiq etmir.</strong>Bu, forensik yoxlama deyil, ictimai inamla sənəd verilmir və mütəxəssis dəlillərini təşkil etmir.",
+        "editable": "<strong>Hər sahə istifadəçi tərəfindən redaktə edilə bilər.</strong>Zaman, tarix, ünvan və kod ixracdan əvvəl sərbəst dəyişdirilə bilər, dizayn: peşəkar GPS səhv bir ünvan düzəltmək üçün bacarmalıdır.",
+        "clock": "<strong>Zaman cihaz saatından gəlir.</strong>Bu, etibarlı bir vaxt serverinə sinxronizasiya olmur.",
+        "address": "<strong>Adres təxmin edilir.</strong>Onun dəqiqliyi GPS siqnalına və əməliyyat sisteminin xəritə xidməti verilənlər bazasına bağlıdır.",
+        "code": "<strong>Foto kodu notariyanın qeydiyyatı deyil.</strong>Bu, heç bir sübut dəyərinə malik olmayan daxili istinad üçün təsadüfi bir təyinatçıdır."
+      },
+      "p2": "İstifadə halınız üçün üçüncü şəxslərə qarşı hüquqi qüvvəyə malik sübut tələb olunursa, notarial sənəd və ya vaxt möhürü ilə rəqəmsal sertifikatlaşdırma xidmətini axtarın. Lymark"
+    },
+    "s03": {
+      "title": "Məsuliyyətləriniz",
+      "items": {
+        "photos": "Yeganə məsuliyyətiniz çəkdiyiniz fotoşəkillər, onların üzərindəki məzmunu və yaradılan fayllardan istifadəsi üçündir.",
+        "thirdParties": "Digər insanları, onların əmlakını və ya evlərini fotoşəkil çəkərkən, sənədli şəxslərə aid olan fotoşəkil hüquqlarına, peşə məxfiliyinə və Ümumi Şəxsi Məlumat Müdafiəsi Qanununa riayət etmək üçün lazımi icazələr almaq sizə bağlıdır.",
+        "prohibited": "Tətbiqdən yalan qeydlər düzəltmək, hər kəsi səhv salmaq, verilməmiş bir xidmətin icrasını simulyasiya etmək və ya qanunsuz bir hərəkət etmək üçün istifadə qadağandır.",
+        "backups": "Əsas hesab etdiyiniz hər şeyin yedekini saxlamaq sizin işinizdir."
+      }
+    },
+    "s04": {
+      "title": "İstifadə lisenziyası",
+      "p1": "Biz sizə tətbiqdən istifadə etmək və quraşdırmaq üçün şəxsi, ləğv edilə bilən, müstəsna olmayan və köçürülə bilən lisenziyanı, o cümlədən peşə məqsədləri üçün veririk.",
+      "p2": "<strong>Fotoşəkilləriniz sizindir.</strong>Biz sizin çəkdiyiniz və ya yaratdığınız şəkillər üzərində heç bir hüququmuz yoxdur. Lymark"
+    },
+    "s05": {
+      "title": "Mövcudluq və yeniləmələr",
+      "p1": "Tətbiq mövcud olduğu kimi təqdim olunur. Hər bir cihazla uyğunluq və ya düzəliş və ya yeni versiyaların vaxtına dair heç bir zəmanət yoxdur. Xüsusiyyətlər dəyişdirilə və ya dayandırıla bilər.",
+      "p2": "İxrac edilmiş şəklin keyfiyyəti cihazdan və əməliyyat sistemindən asılıdır və orijinal fotoqrafiyadan daha aşağı qətnamə ola bilər."
+    },
+    "s06": {
+      "title": "Məsuliyyətin məhdudlaşdırılması",
+      "p1": "Braziliya qanunvericiliyi ilə icazə verilən maksimum məbləğdə, inkişaf etdiricisi tətbiq tərəfindən istehsal olunan fotoşəkil məzmununa məhkəmədə və ya ondan kənarda hər hansı bir iddia ilə əlaqə ETİM-in məlumatına əsasən qəbul edilmiş qərarlardan, itirilmiş mənfəətlərdən, məlumatların itirilməsindən və ya zərərlərdən irəli gələn dolayı itkilər üçün məsuliyyət daşımır.",
+      "p2": "Bu məhdudluq<strong>çıxarmır</strong>İstehlakçıya 8.078/1990 saylı qanunla təmin olunan hüquqlar və niyyətsiz davranış və ya ciddi səhlənkarlıq üçün məsuliyyət."
+    },
+    "s07": {
+      "title": "Qələbə",
+      "p1": "Tətbiqdən istənilən vaxt istifadəni dayandıra bilərsiniz: hesabı silmək serverdəki məlumatlarını silər, tətbiqdən çıxartmaq cihazda saxlanılan məlumatları silər. Ödənişli abunə olmasa da, ETİNİNİNİNİNİNİNİNİNİNİNİNİNİZİNİZİNİZİNİZİNİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZİZ"
+    },
+    "s08": {
+      "title": "Bu şərtlərin dəyişdirilməsi",
+      "p1": "Bu səhifədə yeni yeniləmə tarixi ilə dəyişikliklər dərc olunacaq."
+    },
+    "s09": {
+      "title": "Mümkün olan qanun və forum",
+      "p1": "Bu şərtlərdən irəli gələn mübahisələri həll etmək üçün seçilən forum istifadəçinin yaşayış məntəqəsidir."
+    },
+    "note": "Məlumatların idarə edilməsi haqqında bax:<privacy>Məxfilik siyasəti</privacy>. Suallar: <email>contato@lymark.app</email>."
+  }
+}

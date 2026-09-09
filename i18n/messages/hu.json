@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "A fotókra feltüntetje a időpontot, dátumot, a hétköznapot, a címet és a nyomon követési kódot  a mezői nyilvántartások, a helyszínellenőrzések és a szolgáltatás bizonyítása céljából.",
+      "platform": "Platform",
+      "privacy": "Az adatvédelmi politika",
+      "privacyGeocoding": "A GPS használatakor a rendszer a koordinátátát a Google vagy az Apple térképszolgáltatáshoz küld, hogy megszerezzék a címet. Ez az egyetlen információ, ami itt marad, és a rendszer küldja, nem a Lymark.",
+      "privacyLocation": "A helyszínt csak egyszer használjuk felvételként, csak a cím mezőt töltsük be, és nem tároljuk elkülönülten a fényképektől.",
+      "privacyOnDevice": "A fotók, címek és a történelem csak ezen a készüléken maradnak. A fiók a regisztrációhoz tartozik: a szerver megőrzi az e-mail-t és a tervet, és soha nem kapja meg a fotókat vagy a helyezkedést.",
+      "privacySection": "Az adatvédelmi biztos",
+      "sdk": "Expo SDK",
+      "terms": "Használati feltételek",
+      "title": "A Lymarkról",
+      "version": "Verzió"
+    },
+    "account": {
+      "browserHint": "A bejelentkezés a böngészőben történik. Jelentkezzen be a fiókjával, és az alkalmazás önmagában csatlakozik.",
+      "code": "Kód",
+      "codeSent": "Küldtük a kódot a 0",
+      "connected": "Összefüggő",
+      "continue": "Folytassa",
+      "deleteAccount": "A számla törlés",
+      "email": "E-mail",
+      "failed": "Ellenőrizd az e-mail-t vagy a kódot, és próbáld meg újra.",
+      "notConfigured": "A bejelentkezés még nem áll rendelkezésre ebben a rendszerben.",
+      "signInBrowser": "Bíróhelyen belép",
+      "signOut": "Írja ki!",
+      "signedInAs": "Írásban a 0",
+      "title": "Számlá",
+      "verify": "Ellenőrizze"
+    },
+    "batch": {
+      "addressHint": "Utca, szám  Város",
+      "clearList": "Nyilvános lista",
+      "codeHint": "pl. LYM-001",
+      "done": "{count, plural, one {Feldolgozás kész: # fénykép.} other {Feldolgozás kész: # fénykép.}}",
+      "doneSection": "Készült",
+      "dropZone": "Vidd le és dobd le a fotókat, vagy használd a Select photos gombot",
+      "errorsSection": "Helyes tévedés",
+      "folder": "Részlet: 0",
+      "noPhotos": "Válasszon ki legalább egy képet.",
+      "outputNote": "A feldolgozott fotókat a kiválasztott mappába tárolják.",
+      "outputSection": "A kibocsátás",
+      "photosSection": "A képek feldolgozása",
+      "processing": "- A feldolgozás...",
+      "progress": "0 1 (2%)",
+      "results": "{success, plural, one {# siker} other {# siker}}, {failed, plural, one {# hiba} other {# hiba}}",
+      "selectFolder": "Válassza kiállítási mappát",
+      "selectPhotos": "Válassza ki a fotókat",
+      "selected": "{count, plural, one {# fénykép kiválasztva} other {# fénykép kiválasztva}}",
+      "sharedNote": "Ezek a értékek minden fotóra vonatkoznak.",
+      "sharedSection": "Megosztott metadatok",
+      "start": "Kezdjük a feldolgozást",
+      "unavailableBody": "Ez a funkció csak asztali.",
+      "unavailableTitle": "A készlet feldolgozása nem elérhető"
+    },
+    "capture": {
+      "accuracy": "A helyzet ±0 m-en belül.",
+      "accuracyImprecise": "A ±0 m  belüli helyzete az export előtt ellenőrizze az utcai számot.",
+      "address": "Címe",
+      "addressFailedTitle": "Nem találtak címet",
+      "addressHint": "Nyomja meg a helyt, vagy írja be a címet",
+      "camera": "Vedd fel a képet!",
+      "code": "Kód",
+      "dateHint": "2026 január 1-je",
+      "dateTimeGroup": "Nap és idő",
+      "emptyWarning": "Az adatok nem lesznek betűzve. A fénykép vízjel nélkül kerül ki.",
+      "gallery": "Válasszon a galériából",
+      "galleryDenied": "A fotóhoz való hozzáférést megtiltották, így a kép csak az alkalmazáson belül létezik.",
+      "galleryFailed": "A kép a történelembe ment, de a készülék nem adta meg a galériába.",
+      "generateCode": "Generálódás",
+      "hiddenFields": "{count, plural, one {Rejtett mező} other {Rejtett mezők}}: {fields} — kapcsolja be a Beállítások › Mezők és pozíció menüpontban.",
+      "keepMyAddress": "Tartsd meg a sajátomat.",
+      "locate": "A helyszín",
+      "locateByGps": "Helyébe GPS-en keresztül",
+      "lookup": {
+        "denied": "Adjon be a helyt a beállítások > engedélyezések táblázatában, vagy írja be a címet.",
+        "disabled": "A helyszín kikapcsolva van a készüléknél.",
+        "timeout": "A GPS nem válaszolt időben, gyakran nem működik a házban.",
+        "unavailable": "A cím nem oldható meg ebben a helyzetben."
+      },
+      "newCapture": "Kezdje meg egy új fogást.",
+      "noFieldsBack": "Menj vissza!",
+      "noFieldsContinue": "Továbbra is.",
+      "noFieldsMessage": "Nincs mező, amit meg kell tüntetni. Töltsük be a mezőket, vagy nézzük át a beállítások › Térek és helyzet.",
+      "noFieldsTitle": "A fotó vízjelzés nélkül jön ki.",
+      "noPhotoHint": "Vedd fel egy képet vagy válassz egyet a galériából.",
+      "noPhotoSelected": "Nem választott fénykép",
+      "openFailed": "Nem lehetett kinyitni a képet.",
+      "permissionMessage": "Adjon hozzáférést a beállítások > A jogosultságok folytatása.",
+      "permissionTitle": "Szükséges engedély",
+      "pickPhoto": "Válassz egy képet",
+      "pickPhotoHint": "Válasszon ki egy fotót, hogy engedélyezze az akciókat.",
+      "previewLabel": "A vízjelölt fénykép előképe",
+      "renderFailedTitle": "Nem tudott létrehozni a képet.",
+      "replaceAddressMessage": "GPS-hely: 0",
+      "replaceAddressTitle": "Átcserélje a címet, amit írt?",
+      "resetConfirm": "A kivetés",
+      "resetMessage": "A kiválasztott fénykép és a betöltött mezőket eldobják.",
+      "resetTitle": "Új fogás?",
+      "saved": "A fényképeket a készülék galériába és a történelembe mentették.",
+      "savedAppOnlyTitle": "Csak a Lymark-ban mentve",
+      "shareDialogTitle": "A vízjelölt fotó megosztása",
+      "shareFailedMessage": "A képet generálták, és a Lymark történetében van. A Galéria táblázatból megoszthatjuk.",
+      "shareFailedTitle": "Nem tudtam megosztani.",
+      "shareUnavailableMessage": "A készüléknek nincs részvényjegye, a kép a Lymark történetében maradt.",
+      "shareUnavailableTitle": "A részesedés nem elérhető",
+      "sharedFileTitle": "Vízjelző fénykép",
+      "stampNotReady": "A bélyeget még mindig készülnek.",
+      "syncNow": "Most már.",
+      "timestamp": "Nap/idő",
+      "title": "Megfogás",
+      "useGpsAddress": "Használd a GPS-t.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Nap"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "Válassz másik színt",
+      "saturationBrightness": "A telítés és a fény",
+      "use": "Használd ezt a színt"
+    },
+    "common": {
+      "back": "Vissza.",
+      "cancel": "Törölni",
+      "delete": "Törölni",
+      "error": "Hibás",
+      "gotIt": "- Megvan.",
+      "loading": "- A feltöltés...",
+      "no": "Nem, nem.",
+      "ok": "- Rendben.",
+      "save": "- A tárolás",
+      "share": "Célra",
+      "success": "Siker",
+      "tryAgain": "Próbáld meg újra!",
+      "unknownError": "Nem ismert hiba",
+      "yes": "Igen, igen."
+    },
+    "gallery": {
+      "cancelSelection": "Törölje ki a választást",
+      "clear": "Világos történelem",
+      "clearConfirm": "Nyilvánvaló",
+      "clearMessage": "A Lymark rekordjai törölnek, a készülék galériájában már mentett képek nem érintik.",
+      "count": "{count, plural, one {# fénykép exportálva} other {# fénykép exportálva}}",
+      "delete": "Törölni",
+      "empty": "Még nincs fénykép.",
+      "emptyAction": "Menj elkapni!",
+      "emptyDescription": "A vízjelzővel exportált fotók itt jelennek meg, dátummal, helyével és kódjával.",
+      "filteredCount": "{shown} / {total, plural, one {# fénykép} other {# fénykép}}",
+      "noResults": "Nincs fotó a 0   .",
+      "photoLabel": "Fotó: 0",
+      "removeMessage": "A bejegyzések elhagyják a Lymarkot.",
+      "removeTitle": "{count, plural, one {Eltávolítás az előzményekből} other {# bejegyzés eltávolítása}}",
+      "removed": "{count, plural, one {Bejegyzés eltávolítva.} other {Bejegyzések eltávolítva.}}",
+      "saveDeniedMessage": "Adja meg a beállítások > engedélyek részben, hogy a képeket a készülék galériába mentse meg.",
+      "saveDeniedTitle": "Fotóhoz való hozzáférés megtagadva",
+      "savedAll": "{count, plural, one {Egy fénykép mentve az eszköz galériájába.} other {# fénykép mentve az eszköz galériájába.}}",
+      "savedSome": "A 0 1 fotó mentett.",
+      "searchPlaceholder": "Adszolyt, dátumot vagy kódot keresni",
+      "selectedCount": "{count, plural, one {# fénykép kiválasztva} other {# fénykép kiválasztva}}",
+      "share": "Célra",
+      "title": "Galéria"
+    },
+    "language": {
+      "automatic": "Összehangolt eszköz",
+      "automaticNote": "A Lymark követja a készülékben beállított nyelvet.",
+      "label": "Nyelv",
+      "selector": "Válassza ki a nyelvet"
+    },
+    "login": {
+      "access": "Be kell lépni a hozzáférésre",
+      "apple": "Jelentkezzen be az Apple-val",
+      "google": "Jelentkezzen be a Google-nál",
+      "subtitle": "Jelentkezz be, hogy folytassuk",
+      "title": "Jelentkezzen be, hogy elérje a Lymarkot"
+    },
+    "nav": {
+      "batch": "A parti feldolgozás",
+      "photoDetail": "Fotó részletek",
+      "report": "0 jelentés",
+      "video": "Videó"
+    },
+    "notFound": {
+      "body": "Ez a képernyő nem része a Lymarknak.",
+      "screenTitle": "Nem talált oldal",
+      "title": "Nincs ilyen út."
+    },
+    "permissions": {
+      "allow": "Engedje meg!",
+      "allowed": "Megengedett",
+      "blocked": {
+        "later": "Most nem.",
+        "message": "A rendszer nem kér újra, hogy megengedje, nyisd ki a készülék beállításait.",
+        "openSettings": "Nyitott beállítások",
+        "title": "Az engedélyt megtiltották."
+      },
+      "camera": "Kamera",
+      "cameraRationale": "A vízjelzésre vonatkozó fotót kell készíteni.",
+      "denied": "Megtagadta",
+      "granted": "Megengedett",
+      "intro": "A Lymark csak azt kér, hogy mit kell egy fotó feltüntetéséhez. A képek soha nem hagyják el a készüléket: amikor GPS-t használsz, a műszerrendszer a térképszolgáltatásnak egyedül küldja a koordinátátát, így címké válhat.",
+      "location": "Helyezkedés",
+      "locationRationale": "A cím mezőt automatikusan kitölti, ha felveszi.",
+      "mediaLibrary": "A galériába menteni",
+      "mediaLibraryRationale": "A kivitelben lévő fotókat a készülék galériába írják.",
+      "openDeviceSettings": "Beállítások",
+      "recheck": "Ellenőrizzétek újra.",
+      "request": "Kérje meg a engedélyt",
+      "section": "A hozzáférés",
+      "title": "Hivatal"
+    },
+    "photo": {
+      "backToGallery": "Vissza a galériába",
+      "exportedAt": "A 0 export",
+      "noWatermark": "Ezt a képet vízjel nélkül exportálták.",
+      "notFoundBody": "Ez a feljegyzés talán eltávolított a történelemből.",
+      "notFoundTitle": "Fotó nem talált",
+      "remove": "A távolítás",
+      "removeBody": "A lemez elhagyja a Lymarkot, a készülék galériájába mentett kép nem érinti.",
+      "removeTitle": "A történelemből eltávolítva",
+      "share": "Célra",
+      "stampedData": "A címzett adatok"
+    },
+    "plan": {
+      "exhausted": "A szabad felhasznált fotók",
+      "exhaustedMessage": "A 12 fotó a ingyenes tervből eltűnt. Lymark",
+      "free": "Szabad",
+      "pro": "Pro",
+      "reconnect": "Újra csatlakoztatni a feliratkozás megerősítéséhez",
+      "remaining": "{remaining, plural, one {# ingyenes fénykép maradt} other {# ingyenes fénykép maradt}}",
+      "title": "Terv",
+      "unlimited": "Nincs határ"
+    },
+    "report": {
+      "allPhotos": "Minden fotó",
+      "authorField": "Író / cég",
+      "detailsSection": "Tárgyalás",
+      "doc": {
+        "author": "Író",
+        "declaration": "A pecsételt adatok (cím, dátum, idő és kód) a fényképek kibocsátója nyilatkozata.",
+        "exportedAt": "Az export",
+        "generatedAt": "A",
+        "page": "Oldalak",
+        "photo": "Fotó 0",
+        "photosSection": "Fotográfiai feljegyzések",
+        "signature": "A felelős személy aláírása",
+        "summary": "Összefoglaló",
+        "title": "Fotójelentés",
+        "totalPhotos": "Összes fotók:"
+      },
+      "empty": "A jelentés a galériádból készült.",
+      "failed": "Nem tudott jelentést készíteni.",
+      "fileStem": "jelentés",
+      "format": {
+        "csv": "A számviteli lap (0)",
+        "pdf": "PDF",
+        "word": "0 (.doc)",
+        "zip": "A csomag (0)"
+      },
+      "formatSection": "Format",
+      "generate": "Adatokat generál",
+      "generateSection": "Generálódás",
+      "includeLogo": "Logo a borítékon",
+      "includeLogoDescription": "A márka logója, az a bélyeg, kapcsold ki, hogy ne legyen a dokumentumban.",
+      "norm": {
+        "abnt": "0 (Brazilia)",
+        "din5008": "0 (Németország)",
+        "ibape": "0 stílus (Brazilia)",
+        "iso": "Nemzetközi",
+        "letter": "Írás (USA)"
+      },
+      "normNote": "A szabvány a papírot és a  margina, a betű és a lapszámlálás formátumát határozza meg. A jelentés tartalma mindegyikben azonos; a 0 stílus egy aláírási blokkot ad hozzá.",
+      "normSection": "Dokumentum szabvány",
+      "projectsSection": "Projekt / munka",
+      "saved": "A 0-ra mentett",
+      "savedShort": "A jelentés mentett.",
+      "title": "0 jelentés",
+      "titleField": "Jelentés cím",
+      "unavailableBody": "A 0 jelentések a számítógépes alkalmazásban állnak rendelkezésre.",
+      "unavailableTitle": "Csak asztali",
+      "uncoded": "Nincs kód.",
+      "wordTooBig": "A 0 dokumentum túl nagy lett a beágyazott fotók miatt.",
+      "zipMissing": "{count, plural, one {Csomag mentve, de # fénykép nem található az eszközön.} other {Csomag mentve, de # fénykép nem található az eszközön.}}"
+    },
+    "settings": {
+      "about": "A következőkről:",
+      "aboutDescription": "Verzió, magánélet és hitelek",
+      "appSection": "App",
+      "deviceSection": "A készülék",
+      "deviceSectionDescription": "A Lymark kérésére hozzáférhet.",
+      "fields": "A mező és a helyzet",
+      "fieldsDescription": "Válassza ki, mely mezőket mutatnak, a sarkot és a méretet",
+      "history": "Évészet",
+      "historyDescription": "A készülékben tárolt exportált fényképek",
+      "language": "Nyelv",
+      "permissions": "Hivatal",
+      "permissionsDescription": "Kamera, fénykép és hely",
+      "save": "- A tárolás",
+      "title": "Beállítások",
+      "watermark": "Vízjel",
+      "watermarkSection": "Vízjel",
+      "watermarkSectionDescription": "Mit és hol van feltüntetve a képre."
+    },
+    "signup": {
+      "subtitle": "Regisztrálj, hogy elkezdhessük!",
+      "title": "Készítsen a Lymark fiókját"
+    },
+    "tagline": "Vízjelzés idővel, dátummal és helyvel",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Nincs kamerához való hozzáférés.",
+      "done": "A videót megmarkolták és megőrizték.",
+      "export": "Export bélyegzett videó",
+      "exportSection": "Export",
+      "failed": "A videót nem lehetett nyomtatni.",
+      "fieldsSection": "A bélyegzőmezők",
+      "fileSection": "Videó",
+      "none": "Nincs kiválasztott videó.",
+      "processing": "A feldolgozás... 0%",
+      "processingMobile": "- A feldolgozás...",
+      "record": "Most rögzítsd a videót.",
+      "saved": "A 0-ra mentett",
+      "savedToGallery": "A galériádba mentett videót.",
+      "select": "Válassza ki a videót",
+      "unavailableBody": "A mobil videó betöméshez a Lymarkot aEASbuild-ból (a native modulral) kell telepíteni. Nem áll rendelkezésre aExpo Go-ben.",
+      "unavailableTitle": "Feltöltött alkalmazás",
+      "unreadable": "A fájlt nem lehetett videóként olvasni.",
+      "webNote": "A böngészőben a videót valós időben feldolgozzák. A 2 perces videó 2 percet vesz igénybe, és a hosszú videók esetében a desktop alkalmazást használhatja."
+    },
+    "watermark": {
+      "accentColor": "Vertikális sáv",
+      "backdropBandNote": "A zenekar a fénykép széléről a szélére halad, és a pecsét rögzített határánál nyugszik.",
+      "backdropBlockNote": "A háttér a szöveg méretét követi, körülötte pedig betöltést.",
+      "backdropColor": "Rávszín",
+      "backdropDescription": "A fényszínek fényszínén kontrasztot tart fenn, és nélküle a szöveg közvetlenül a képre ül, árnyékkal.",
+      "backdropInnerRadius": "Belső sarkok",
+      "backdropOpacity": "Átláthatóság",
+      "backdropOpacityValue": "0% átlátszatlan",
+      "backdropRadius": "Köröző sarkok",
+      "backdropRadiusSquare": "Kiterjedt",
+      "backdropStyles": {
+        "band": "Teljes szélességi sáv",
+        "block": "A szöveg mögött",
+        "none": "Egyetlen"
+      },
+      "backdropTitle": "Támogató zenekar",
+      "brandDescription": "A óra felett egy aláírás, logóval és címkevel.",
+      "brandFirstColor": "Az első rész színe",
+      "brandFirstHint": "Fejlesztők",
+      "brandFirstPart": "Első rész",
+      "brandNote": "A második részt üresen hagyjuk, hogy egy színes jel legyen.",
+      "brandPlacements": {
+        "corner": "Egy sarokban.",
+        "header": "Az óra felett",
+        "none": "Egyetlen"
+      },
+      "brandSecondColor": "Második rész színe",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Második rész",
+      "brandTitle": "Megbélyegtett jel",
+      "codeDescription": "A külső oldalról nem versenyez a helyért a képmel.",
+      "codePlacements": {
+        "block": "Az adatok mellett",
+        "side": "Jobb oldalon"
+      },
+      "codeTitle": "Fotó kód",
+      "colors": {
+        "amber": "Amber",
+        "black": "Fekete",
+        "blue": "Kék",
+        "green": "Zöld",
+        "red": "Vörös",
+        "white": "Fehér"
+      },
+      "colorsDescription": "A fénykép színje a vállalat választása, nem a alkalmazás, hanem a változat nem változtatja meg a képernyő színét.",
+      "colorsTitle": "Bélyegző színek",
+      "complement": "Tagline",
+      "complementColor": "A címke színe",
+      "complementHint": "Ellenőrzések és műszaki jelentések",
+      "cornerConflict": "A jel és az adatok ugyanabban a sarkon vannak.",
+      "fields": {
+        "address": "Címe / Helyezkedés",
+        "code": "Fotó kód",
+        "date": "Nap",
+        "time": "Az idő",
+        "weekday": "Hétköznap"
+      },
+      "fieldsDescription": "Csak azok a mezők, amelyek tartalmuk van, érkeznek a fotóhoz.",
+      "fieldsTitle": "A feltüntetett mezők",
+      "includeCountry": "Az országot is beleértve",
+      "includeCountryDescription": "Kapcsold be, ha átlépsz a határokon, különben csak a fotón lesz hely.",
+      "legibilityTitle": "A olvashatóság",
+      "logoAdded": "Logo a márka címkéhez.",
+      "logoAlignNote": "A logó magassága a szöveg után halad: a felső része a cím felső részével és a alsó része a címke alapvonalával egyezik.",
+      "logoChosen": "Választott logó",
+      "logoErrorMessage": "Próbáld ki egy másik képet. A leginkább a tiszta háttérrel rendelkező PNG formátum működik.",
+      "logoErrorTitle": "Ez a fájl nem használható",
+      "logoFormatNote": "Használjon átlátható háttérrel rendelkező PNG-t. A fehér háttérrel rendelkező JPG fehér térképpökerévé válik a képen.",
+      "logoPermissionMessage": "A beállítások > Hagyhatásoknál engedélyezze a logófájlt kiválasztani.",
+      "logoPermissionTitle": "Fotóhoz való hozzáférés megtagadva",
+      "logoPick": "Válassza ki a logót",
+      "logoPosition": "Logoállás",
+      "logoPositionBlock": "A bélyegvel.",
+      "logoRemove": "A távolítás",
+      "logoReplace": "A logót cseréljük",
+      "logoSize": "Logo mérete",
+      "positionDescription": "A fotó sarkára van rögzítve a blokk.",
+      "positionTitle": "A helyzet",
+      "positions": {
+        "bottom-left": "Bal alján",
+        "bottom-right": "Jobbra alsó",
+        "top-left": "Bal felső rész",
+        "top-right": "Jobbra felsőre"
+      },
+      "previewCurrent": "A jelenlegi fotó a Foglaló tábláról.",
+      "previewEmpty": "Fényről sötétségre, hogy ellenőrizzük a olvashatóságot mindkét szélsőségben.",
+      "previewNoFields": "Nincs kiválasztott mező  a fotó vízjel nélkül jelenik meg.",
+      "previewTitle": "Előzetes előnézés",
+      "reset": "Visszaállítása",
+      "sizeTitle": "A szöveg mérete",
+      "sizes": {
+        "large": "Nagy",
+        "medium": "Közép",
+        "small": "Kis"
+      },
+      "textColor": "szöveg",
+      "timeFormatDescription": "Hogy a térekbe töltjük az időt.",
+      "timeFormatTitle": "Időformátum",
+      "timeFormats": {
+        "12h": "12 óra (Már/Pénz)",
+        "24h": "24 órán keresztül"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Minden fájl",
+      "images": "Képek",
+      "pickFolder": "Válassza kiállítási mappát",
+      "pickPhoto": "Válassza ki a képet",
+      "pickPhotos": "Válassza ki a fotókat a sorba",
+      "savePhoto": "A fénykép mentése",
+      "saveReport": "A mentőjelentés"
+    },
+    "login": {
+      "cancel": "Törölni",
+      "confirm": "Folytassa",
+      "message": "Most jelentkeztél be a böngészőn keresztül.",
+      "title": "Jelentkezzen be a Lymark-on"
+    },
+    "menu": {
+      "copy": "- Készültek.",
+      "cut": "Készítés",
+      "edit": "Editálj",
+      "file": "Adat",
+      "fullscreen": "Teljes képernyő",
+      "help": "Segítség",
+      "paste": "Pálta",
+      "quit": "- Ne csináld!",
+      "redo": "Redo",
+      "reload": "Újraöltözés",
+      "selectAll": "Válassza ki az összeset",
+      "settings": "Beállítások",
+      "undo": "Eltörölés",
+      "view": "Látás",
+      "zoomIn": "Gyorsabban",
+      "zoomOut": "- A nagyítás",
+      "zoomReset": "Valódi méret"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Vissza hazamentem.",
+      "openApp": "Nyissa ki az alkalmazást",
+      "photos": "Fotók",
+      "photosLeft": "A 0  a 1  bal",
+      "plan": "Terv",
+      "planUnavailable": "Jelenleg nem elérhető.",
+      "plans": {
+        "free": "Szabad",
+        "pro": "Pro"
+      },
+      "signInTitle": "Jelentkezz be",
+      "signOut": "Írja ki!",
+      "signUpTitle": "Számla létrehozása",
+      "subscribe": "A Lymark Pro-ra feliratkozzon",
+      "subscribeSoon": "A előfizetések még nem állnak rendelkezésre.",
+      "title": "A számláját.",
+      "revokeDesktops": "Szüntesd el a számítógépeket",
+      "revokeDesktopsHint": "A felhasználó hozzáférését minden számítógépen megszüntette, és bármikor bejelentkezhet."
+    },
+    "availability": {
+      "contact": "A kiindítás követése vagy a probléma bejelentése érdekében írd a <email>contato@lymark.app</email>.",
+      "description": "A Lymark a 1.3.0 verziónál tesztel Android-on, mielőtt aGoogle Play-en közzéteszi. Nincs iOS-verzió és nincs webverzió, és az alkalmazás nem fizet.",
+      "title": "A rendelkezésre álló"
+    },
+    "data": {
+      "device": {
+        "description": "A fiók a regisztrációhoz tartozik: a szerver megőrzi az e-mail-t és a tervet, és soha nem kapja meg a fotókat vagy a helyét.",
+        "field": "A készülékre",
+        "heading": "Fotók, címek és történelem"
+      },
+      "external": {
+        "description": "A szélességi és hosszúság olvasható címre való átalakításához a rendszer a Google vagy az Apple geokódáló szolgáltatását kérdez. Ez az egyetlen információ, ami marad, és a rendszer küldja, nem az alkalmazás.",
+        "field": "A készülék kivételével",
+        "heading": "Csak egy koordinátátát alakítunk címre."
+      },
+      "note": "Mindent el van írva, beleértve azt is, hogy ez mit jelent Brazília 0 <privacy>Az adatvédelmi politika</privacy>. A helymeghatározási engedély kikapcsolása teljesen működtethetővé teszi az alkalmazást; csak a cím mezőt kell kézzel beírni.",
+      "title": "Ahol a adataid vannak"
+    },
+    "deleteAccount": {
+      "back": "Vissza a számlához",
+      "confirm": "Törölje ki a fiókomat.",
+      "deletesNow": "Ha törölöd a fiókodat, azonnal törölöd az e-mailedet, az azonosítót, a terv, a kvóta és a fotó számának nyilvántartását.",
+      "irreversible": "A törlés állandó, és nem lehet visszavonni. A készüléken lévő fotók nem befolyásolhatók.",
+      "retained": "A fizetési tranzakciók nyilvántartásai a törvény által előírt pénzügyi időszakig tartanak fenn, nem kapcsolódnak a profilhoz.",
+      "title": "A számla törlés"
+    },
+    "description": "Android alkalmazás, amely a időpontot, dátumot, hétköznapot, címet és nyomon követési kódot jelzi a helyszínellenőrzésre és a szolgáltatás bizonyítására vonatkozó fotókra.",
+    "desktop": {
+      "backAccount": "Vissza a számlához",
+      "explanation": "A fiókja kész. Nyomja meg a lejjebb lévő gombot, hogy megnyitja a Lymarkot a számítógépen, amely már be van írva.",
+      "open": "Kapcsolja össze az alkalmazást",
+      "title": "Jelentkezzen be az asztalra",
+      "unavailable": "A desktop alkalmazás kapcsolat még nem áll rendelkezésre."
+    },
+    "download": {
+      "appStore": {
+        "description": "Ugyanaz az Android, az iOS.",
+        "field": "App Store",
+        "heading": "iPhone és iPad"
+      },
+      "browser": {
+        "action": "Jelentkezz be",
+        "description": "Jelentkezzen be a fiókjával, és az alkalmazás megnyitódik a böngészőben  telefon vagy számítógép.",
+        "field": "Próbáló",
+        "heading": "Most használd, nincs telepíthető."
+      },
+      "desktop": {
+        "description": "Fotóparcsok, hosszú videók és 0 jelentések  a nehéz feladatú verzió.",
+        "field": "Számítógép",
+        "heading": "Windows és Linux"
+      },
+      "googlePlay": {
+        "description": "A telefon alkalmazás, kamerával, galériával és bélyegzett videóval.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Hamarosan jövök.",
+      "title": "Hol kell használni a Lymark- t"
+    },
+    "features": {
+      "address": {
+        "description": "A utcai típus rövidítve az állam lesz a kódja, így a cím két sorba illeszkedik, anélkül, hogy a fotót fednénk.",
+        "field": "Címe",
+        "heading": "GPS-el töltött, kézzel javítható"
+      },
+      "code": {
+        "description": "A kép létezik, hogy egy adott fotót idézhess egy munka sorrendben vagy egy jelentésben.",
+        "field": "Fotó kód",
+        "heading": "14 karakter, amit egy kriptográfiai generátor készített"
+      },
+      "note": "Minden mező be- és kiáll, és a blokk három méretben rögzít a négy sarok bármelyikére. A előnézetben a tényleges fotót használja, nem egy általános mintát: amit a képernyőn látsz, szó szerint exportáljuk.",
+      "time": {
+        "description": "Egy gomb visszakapcsolja a három mezőt a jelenre, amikor a rögzítés vártnál hosszabb ideig tartott.",
+        "field": "Idő és dátum",
+        "heading": "A készülék órájából a fogás pillanatában"
+      },
+      "title": "Mi a képbe kerül?"
+    },
+    "footer": {
+      "description": "Lymark  fotófelvételek dátummal, idővel és címmel.",
+      "documentsLabel": "Dokumentumok",
+      "privacy": "Az adatvédelmi politika",
+      "support": "Támogatás:",
+      "terms": "Használati feltételek"
+    },
+    "hero": {
+      "ctaAccount": "Menj a számlámra!",
+      "ctaLogin": "Jelentkezz be",
+      "ctaSignup": "Készítsen egy ingyenes fiókot",
+      "description": "A Lymark a dátumot, az időt, a napot, a címet és a nyomon követési kódot közvetlenül a képre tüntetik.",
+      "eyebrow": "A mező fotódokumentációja",
+      "heading": "A fénykép már azt mondja, mikor, hol és mit.",
+      "meta": {
+        "account": "Egy csukású számla",
+        "android": "Android és böngésző",
+        "language": "Brazíliai portugál",
+        "onDevice": "A fényképek a készülékre maradnak."
+      },
+      "note": "Semmi felépítés."
+    },
+    "nav": {
+      "account": "Számlá",
+      "home": "Otthon",
+      "homeLabel": "Lymark, otthoni oldal",
+      "label": "Fő",
+      "privacy": "Az adatvédelmi biztos",
+      "signIn": "Jelentkezz be",
+      "terms": "A feltételek",
+      "verify": "Ellenőrizze"
+    },
+    "process": {
+      "capture": {
+        "description": "A címkeresés a fénykép megjelenése után kezdődik. A mezők nyitva maradnak a kiállításra.",
+        "field": "Megfogás",
+        "heading": "Kamera vagy galéria"
+      },
+      "note": "A két műveletet szándékosan elkülönítjük. A tárolás és megosztás különböző problémákat old meg, és ha egy gombba dobnánk őket, bárki, aki csak a képet szeretne tárolni egy küldőképernyőn keresztül.",
+      "save": {
+        "description": "A többi fotóhoz tartozik, bármely alkalmazás számára elérhető, beleértve a Lymark eltávolítását is.",
+        "field": "- A tárolás",
+        "heading": "A készülék galériába megy."
+      },
+      "share": {
+        "description": "0, e-mail, Drive: a rendeltetési helyet a működtető rendszer választja ki, és az alkalmazás nem vesz részt a küldésben.",
+        "field": "Célra",
+        "heading": "Nyitja a rendszer részesedési lapot"
+      },
+      "title": "A fotó útját"
+    },
+    "skipToContent": "Átlépj a tartalomra",
+    "specimen": {
+      "caption": "A bém szabály a számok szélén kezdődik és végződik, nem a szöveges doboznál.",
+      "label": "A Lymark bélyeg mintája: idő 07:42, dátum 12 augusztus 2026, szerdán, Guarujá cím és fotokód."
+    },
+    "title": "Lymark  dátum, idő és cím a mezőképek vízjelzése",
+    "verify": {
+      "caveat": "A pecsét a fájl integritását és a kiadás időpontját tanúsítja.",
+      "checking": "- Ellenőrzés...",
+      "declarationNote": "A pecsét a kibocsátó nyilatkozatát (cím, dátum, időpont) jelzi, a pecsét nem a tartalom, hanem az integritás és a kibocsátás tanúsága.",
+      "intro": "Dobd le vagy válaszd ki a Lymark által exportált fotót, és azonnal nézd meg, hogy pontosan olyan-e, ahogy elhagyta az alkalmazást  és ki adott ki, mikor.",
+      "noSealBody": "Ez a fájlok nem tartalmazza a Lymark pecsétet. Lehet, hogy offline exportált, mielőtt a pecsét létezett, vagy nem származik a Lymarkból.",
+      "noSealTitle": "Nem van pecsét",
+      "notConfigured": "A vizsgálat még nem áll rendelkezésre.",
+      "pick": "Válassza ki a fájlt",
+      "previewAlt": "A hitelesített fénykép, a pecsét látható",
+      "privacyNote": "A böngészőben történik a hitelesítés. A fájlt nem küldik semmilyen szerverre.",
+      "sealedBody": "Ez a fájlt pontosan úgy találták, ahogy a Lymark-ban volt, a{account}számlán. {date}",
+      "sealedTitle": "Tiszta",
+      "tamperedBody": "A tartalom nem egyezik a pecsétkel: a fájl kiadás után módosult, vagy a pecsét egy másik fájlhoz tartozik.",
+      "tamperedTitle": "Nem egyezik össze",
+      "title": "A hitelesség ellenőrzése",
+      "unsupported": "Ez a böngésző nem támogatja a aláírás ellenőrzését. Próbáld ki egy jelenlegi böngészőt."
+    }
+  }
+}

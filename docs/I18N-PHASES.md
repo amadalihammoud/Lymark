@@ -3,18 +3,29 @@
 The shared catalog lives in `i18n/messages/` (plus `i18n/messages/legal/`).
 Portuguese (`pt`) is the source language; English (`en`) disambiguates.
 
-## Phase 1 (this PR)
+## Phase 1 (merged)
 
 Eighteen locales added alongside the original twelve:
 
 `hi`, `sw`, `id`, `ms`, `bn`, `ur`, `tr`, `vi`, `ro`, `uk`, `el`, `pl`, `th`, `fa`, `sr`, `am`, `cs`, `he`
 
-RTL set: `ar`, `he`, `ur`, `fa`.
+RTL set after Phase 1: `ar`, `he`, `ur`, `fa`.
 
 Clerk UI (`@clerk/localizations`): most Phase 1 codes map to a native pack.
 **Fallbacks to English localization:** `sw`, `ur`, `am` (not published by Clerk yet).
 
-## Phases 2–4
+## Phase 2 (this PR)
+
+Fifteen locales:
+
+`my`, `uz`, `ne`, `hu`, `kk`, `ps`, `so`, `sv`, `az`, `mg`, `si`, `km`, `rw`, `ht`, `bg`
+
+RTL set: `ar`, `he`, `ur`, `fa`, `ps` (Pashto added).
+
+Clerk UI: `hu`, `kk`, `sv`, `bg` use native packs.
+**Fallbacks to English localization:** `my`, `uz`, `ne`, `ps`, `so`, `az`, `mg`, `si`, `km`, `rw`, `ht`.
+
+## Phases 3–4
 
 Not in this PR. Further locale batches will follow the same pattern:
 

@@ -1,5 +1,6 @@
 import {
   arSA,
+  bgBG,
   bnIN,
   csCZ,
   elGR,
@@ -9,9 +10,11 @@ import {
   frFR,
   heIL,
   hiIN,
+  huHU,
   idID,
   itIT,
   jaJP,
+  kkKZ,
   koKR,
   msMY,
   nlNL,
@@ -20,6 +23,7 @@ import {
   roRO,
   ruRU,
   srRS,
+  svSE,
   thTH,
   trTR,
   ukUA,
@@ -44,6 +48,9 @@ import type { Locale } from '../../i18n/locales';
  *
  * Fase 1: `sw`, `ur` e `am` não existem em `@clerk/localizations` — caem no
  * inglês (`enUS`) até o Clerk publicar esses pacotes.
+ *
+ * Fase 2: `my`, `uz`, `ne`, `ps`, `so`, `az`, `mg`, `si`, `km`, `rw`, `ht`
+ * também caem no inglês; `hu`, `kk`, `sv` e `bg` usam o pacote nativo.
  */
 export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   pt: ptBR,
@@ -76,6 +83,21 @@ export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   am: enUS, // Clerk sem Amárico — fallback EN
   cs: csCZ,
   he: heIL,
+  my: enUS, // Clerk sem Burmese — fallback EN
+  uz: enUS, // Clerk sem Uzbek — fallback EN
+  ne: enUS, // Clerk sem Nepali — fallback EN
+  hu: huHU,
+  kk: kkKZ,
+  ps: enUS, // Clerk sem Pashto — fallback EN
+  so: enUS, // Clerk sem Somali — fallback EN
+  sv: svSE,
+  az: enUS, // Clerk sem Azerbaijani — fallback EN
+  mg: enUS, // Clerk sem Malagasy — fallback EN
+  si: enUS, // Clerk sem Sinhala — fallback EN
+  km: enUS, // Clerk sem Khmer — fallback EN
+  rw: enUS, // Clerk sem Kinyarwanda — fallback EN
+  ht: enUS, // Clerk sem Haitian Creole — fallback EN
+  bg: bgBG,
 };
 
 /**

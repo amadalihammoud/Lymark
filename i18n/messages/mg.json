@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Fampiharana",
+      "pitch": "Sampato ny ora, ny daty, ny andro fiasana, ny adiresy ary ny kaody fanaraha-maso amin'ny sarinao  ho an'ny firaketana an-tsaha, ny fanaraha-maso ny toerana ary ny porofo momba ny serivisy.",
+      "platform": "Sehatra",
+      "privacy": "Politika momba ny tsiambaratelo",
+      "privacyGeocoding": "Rehefa ampiasaina ny GPS, ny rafitra miasa dia mandefa ny koordinatera amin'ny serivisy sarintany Google na Apple mba hahazoana ny adiresy. Izany no hany fampahalalana sisa tavela eto, ary ny rafitra no mandefa azy, fa tsy ny Lymark.",
+      "privacyLocation": "Ny toerana dia ampiasaina indray mandeha isaky ny fakana, mba hamenoana ny saha adiresy ihany, ary tsy voatahiry misaraka amin'ny sary.",
+      "privacyOnDevice": "Ny sary, ny adiresy ary ny tantara dia mijanona ao amin'ity fitaovana ity ihany.",
+      "privacySection": "Ny fiainana manokana",
+      "sdk": "Expo SDK",
+      "terms": "Fepetra fampiasana",
+      "title": "Momba ny Lymark",
+      "version": "Fomba fijery"
+    },
+    "account": {
+      "browserHint": "Ny fisoratana anarana dia atao ao amin'ny navigateur. Midira ao amin'ny kaontinao ary mifandray ny fampiharana avy hatrany.",
+      "code": "Fanamarihana",
+      "codeSent": "Nandefa kaody ho an'ny 0 izahay",
+      "connected": "Mifandray",
+      "continue": "Tohizo",
+      "deleteAccount": "Fandikana kaonty",
+      "email": "Hafatra mailaka",
+      "failed": "Tsy nahomby izany. Jereo ny mailaka na ny kaody ary andramo indray.",
+      "notConfigured": "Mbola tsy misy ny fidirana amin'ity fananganana ity.",
+      "signInBrowser": "Midira amin'ny alalan'ny navigateur",
+      "signOut": "Misoratra anarana",
+      "signedInAs": "Voasonia ho 0",
+      "title": "Kaonty",
+      "verify": "Hamarino"
+    },
+    "batch": {
+      "addressHint": "Lalana, isa  Tanàna",
+      "clearList": "Lisitry ny mazava",
+      "codeHint": "Ohatra, LYM-001",
+      "done": "{count, plural, one {Vita ny fanodinana: Vita ny sary#.} other {Vita ny fanodinana: Vita ny sary#.}}",
+      "doneSection": "Vita",
+      "dropZone": "Atosory sy aoriho eto ny sary, na ampiasao ny bokotra Select photos",
+      "errorsSection": "Fahadisoana",
+      "folder": "Fampirimana: 0",
+      "noPhotos": "Safidio ny sary iray farafahakeliny.",
+      "outputNote": "Voatahiry ao amin'ny lahatahiry voafantina ny sary voahodina.",
+      "outputSection": "Famoahana",
+      "photosSection": "Sarimihetsika ho ampiasaina",
+      "processing": "Fampiasana...",
+      "progress": "0 amin'ny 1 (2%)",
+      "results": "{success, plural, one {#fahombiazana} other {Fahombiazana#}}, {failed, plural, one {Tsy fahombiazana#} other {Tsy fahombiazana#}}",
+      "selectFolder": "Safidio ny lahatahiry famoahana",
+      "selectPhotos": "Safidio ny sary",
+      "selected": "{count, plural, one {Voafidy ny sary#} other {Sary voafantina#}}",
+      "sharedNote": "Ireo soatoavina ireo dia ampiharina amin'ny sary SY SY. Ny daty sy ny ora isaky ny sary dia vakiana avy amin'ny EXIF azy manokana.",
+      "sharedSection": "Fampizarana metadata",
+      "start": "Manomboha ny fanodinana",
+      "unavailableBody": "Ity endri-javatra ity dia birao birao ihany.",
+      "unavailableTitle": "Tsy misy ny fanodinana andiany"
+    },
+    "capture": {
+      "accuracy": "Toerana ao anatin'ny ±0 m.",
+      "accuracyImprecise": "Toerana eo amin'ny ±0 m  Jereo ny laharana an-dalambe alohan'ny fanondranana.",
+      "address": "Adiresy",
+      "addressFailedTitle": "Tsy hita ny adiresy",
+      "addressHint": "Tsindrio eo amin'ny toerana misy anao, na soraty ny adiresy",
+      "camera": "Makà sary",
+      "code": "Fanamarihana",
+      "dateHint": "1 Janoary 2026",
+      "dateTimeGroup": "Daty sy ora",
+      "emptyWarning": "Tsy hisy angon-drakitra ho voasarona  hivoaka ny sary tsy misy marika rano.",
+      "gallery": "Safidio avy amin'ny galerie",
+      "galleryDenied": "Voarara ny fidirana amin'ny sary, ka tsy misy afa-tsy ao anatin'ny fampiharana ny sary. Avelao ao amin'ny Settings › Permissions mba hamonjy azy ao amin'ny galeria.",
+      "galleryFailed": "Niditra tao amin'ny tantara ny sary, saingy tsy nety nosoratana tao amin'ny galeria ilay fitaovana.",
+      "generateCode": "Mamorona",
+      "hiddenFields": "{count, plural, one {Sahan-tsaha miafina} other {Tanimboly miafina}}:{fields}apetraho ao amin'ny Fikirana › Sahan-tsaha sy toerana.",
+      "keepMyAddress": "Raiso ny ahy",
+      "locate": "Fikarohana",
+      "locateByGps": "Fikarohana adiresy amin'ny alalan'ny GPS",
+      "lookup": {
+        "denied": "Avelao ny toerana ao amin'ny Fikirana > Fahazoan-dalana, na soraty ny adiresy.",
+        "disabled": "Voafafa ny toerana misy ny fitaovana, alefaso ao amin'ny toerana haingana ary andramo indray.",
+        "timeout": "Tsy namaly ara-potoana ny GPS. Matetika tsy mahomby ao anaty trano izy  manoratra ny adiresy.",
+        "unavailable": "Tsy azo voavaha amin'ity toerana ity ny adiresy."
+      },
+      "newCapture": "Manomboha fakàna vaovao",
+      "noFieldsBack": "Miverena",
+      "noFieldsContinue": "Tohizo izany na izany aza",
+      "noFieldsMessage": "Tsy misy saha misy zavatra mba hanisy tombo-kase. Fenoy ny saha, na hijery Settings › Fields sy toerana.",
+      "noFieldsTitle": "Hivoaka tsy misy marika rano ny sary",
+      "noPhotoHint": "Alao sary na safidio iray avy amin'ny galeria mba hanombohana.",
+      "noPhotoSelected": "Tsy misy sary voafantina",
+      "openFailed": "Tsy afaka nisokatra ny sary.",
+      "permissionMessage": "Avelao ny fidirana ao amin'ny Fikirana > Fanamarinana hanohy.",
+      "permissionTitle": "Ilaina ny fahazoan-dàlana",
+      "pickPhoto": "Misafidiana sary",
+      "pickPhotoHint": "Safidio ny sary mba hahafahana manao ny hetsika.",
+      "previewLabel": "Fampisehoana mialoha ny sary misy marika rano",
+      "renderFailedTitle": "Tsy afaka mamorona ny sary",
+      "replaceAddressMessage": "Hita ny GPS: 0",
+      "replaceAddressTitle": "Fanoloana ny adiresy nosoratanao?",
+      "resetConfirm": "Fandroahana",
+      "resetMessage": "Hofoanana ny sary voafantina sy ny saha fenoina.",
+      "resetTitle": "Manomboka fakana vaovao?",
+      "saved": "Voatahiry ao amin'ny tranombakoka sy ny tantara ny sary.",
+      "savedAppOnlyTitle": "Voatahiry ao anatin'ny Lymark ihany",
+      "shareDialogTitle": "Zarao ny sary misy marika rano",
+      "shareFailedMessage": "Ny sary dia namorona ary ao amin'ny tantaran'ny Lymark. Azonao atao ny mizara azy avy amin'ny tabilao Gallery.",
+      "shareFailedTitle": "Tsy afaka nizara",
+      "shareUnavailableMessage": "Tsy manana tahirin-kevitra momba ny fizarana ity fitaovana ity. Lymark",
+      "shareUnavailableTitle": "Tsy misy ny fizarana",
+      "sharedFileTitle": "Sary misy marika rano",
+      "stampNotReady": "Mbola eo am-panomanana ny tombo-kase.",
+      "syncNow": "Ankehitriny",
+      "timestamp": "Daty/Fotoana",
+      "title": "Fandresena",
+      "useGpsAddress": "Ampiasao ny GPS",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Andro"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "mifidy loko hafa",
+      "saturationBrightness": "Feno sy famirapiratana",
+      "use": "Ampiasao ity loko ity"
+    },
+    "common": {
+      "back": "Niverina",
+      "cancel": "Fandikana",
+      "delete": "Fandikana",
+      "error": "Fahadisoana",
+      "gotIt": "Fantatro izany",
+      "loading": "Famoahana...",
+      "no": "Tsy izany",
+      "ok": "Eny, tsara.",
+      "save": "Vonjeo",
+      "share": "Mizara",
+      "success": "Fahombiazana",
+      "tryAgain": "Andramo indray.",
+      "unknownError": "Fahadisoana tsy fantatra",
+      "yes": "Eny"
+    },
+    "gallery": {
+      "cancelSelection": "Fanamarinana fanafoanana",
+      "clear": "Tantara mazava",
+      "clearConfirm": "Mazava",
+      "clearMessage": "Ho voafafa ny rakitsoratra ao amin'ny Lymark. Tsy voakasik'izany ny sary efa voatahiry ao amin'ny galeria fitaovana.",
+      "count": "{count, plural, one {Sary#naondrana} other {Sary#naondrana}}",
+      "delete": "Fandikana",
+      "empty": "Tsy mbola misy sary",
+      "emptyAction": "Mandehana ho any amin'ny Fandresena",
+      "emptyDescription": "Aseho eto ireo sary alefa miaraka amin'ny marika rano, miaraka amin'ny daty, toerana ary kaody.",
+      "filteredCount": "{shown}ny {total, plural, one {Sary#} other {Sary#}}",
+      "noResults": "Tsy hita ny sary ho an'ny 0.",
+      "photoLabel": "Sary avy amin'ny 0",
+      "removeMessage": "Tsy misy fiantraikany amin'ny sary efa voatahiry ao amin'ny galeriam-pitaovana. Lymark",
+      "removeTitle": "{count, plural, one {Esory amin'ny tantara} other {Esory ny rakitsoratra#}}",
+      "removed": "{count, plural, one {Nesorina ny fidirana.} other {Nesorina ny rakitsoratra.}}",
+      "saveDeniedMessage": "Avelao ao amin'ny Fikirana > Fahazoan-dalana ny hamonjy ireo sary ao amin'ny galeria fitaovana.",
+      "saveDeniedTitle": "Voarara ny fidirana amin'ny sary",
+      "savedAll": "{count, plural, one {Sary iray voatahiry ao amin'ny galeria fitaovana.} other {#sary voatahiry ao amin'ny fitaovana gallery.}}",
+      "savedSome": "0 amin'ny 1 sary voatahiry.",
+      "searchPlaceholder": "Fikarohana amin'ny alàlan'ny adiresy, daty na kaody",
+      "selectedCount": "{count, plural, one {Voafidy ny sary#} other {Sary voafantina#}}",
+      "share": "Mizara",
+      "title": "Gallery"
+    },
+    "language": {
+      "automatic": "Fitaovana mifanandrify",
+      "automaticNote": "Manaraka ny fiteny napetraka ao amin'ny fitaovanao ny Lymark.",
+      "label": "Fiteny",
+      "selector": "Safidio ny fiteny"
+    },
+    "login": {
+      "access": "Midira amin'ny fidirana",
+      "apple": "Midira amin'ny Apple",
+      "google": "Midira ao amin'ny Google",
+      "subtitle": "Midira mba hanohizana",
+      "title": "Midira mba hidirana amin'ny Lymark"
+    },
+    "nav": {
+      "batch": "Famolavolana andiany",
+      "photoDetail": "Antsipiriany amin'ny sary",
+      "report": "0 tatitra",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Tsy anisan'ny Lymark ity efijery ity.",
+      "screenTitle": "Tsy hita ny pejy",
+      "title": "Tsy misy lalana toy izany"
+    },
+    "permissions": {
+      "allow": "Avelao",
+      "allowed": "Avela",
+      "blocked": {
+        "later": "Tsy izao",
+        "message": "Tsy hangataka intsony ny rafitra.",
+        "openSettings": "Fikirana misokatra",
+        "title": "Voarara ny fahazoan-dàlana"
+      },
+      "camera": "Fakan-tsary",
+      "cameraRationale": "Ilaina ny maka ny sary izay hahazo ny mari-pamantarana.",
+      "denied": "Nolavina",
+      "granted": "Azo atao",
+      "intro": "Ny sary tsy miala amin'ny fitaovana mihitsy: rehefa mampiasa GPS ianao, ny rafitra fiasa dia mandefa ny serasera sarintany irery ny koordinatera, mba ho lasa adiresy. Lymark",
+      "location": "Toerana",
+      "locationRationale": "Fenoy ny saha adiresy ho azy rehefa maka.",
+      "mediaLibrary": "Tehirizo ao amin'ny galeria",
+      "mediaLibraryRationale": "Hanoratra sary naondrana any amin'ny galeriam-pitaovana.",
+      "openDeviceSettings": "Fikirana",
+      "recheck": "Jereo indray",
+      "request": "Mangataka fahazoan-dàlana",
+      "section": "Fidirana",
+      "title": "Fampidirana"
+    },
+    "photo": {
+      "backToGallery": "Miverina any amin'ny Gallery",
+      "exportedAt": "Navoaka tamin'ny 0",
+      "noWatermark": "Navoaka tsy misy marika rano io sary io.",
+      "notFoundBody": "Mety ho nesorina tao amin'ny tantara io rakitsoratra io.",
+      "notFoundTitle": "Tsy hita ny sary",
+      "remove": "Esory",
+      "removeBody": "Tsy misy fiantraikany amin'ny sary voatahiry ao amin'ny galeriam-pitaovana ny rakitsoratra. Lymark",
+      "removeTitle": "Esory amin'ny tantara",
+      "share": "Mizara",
+      "stampedData": "Famaritana ny angon-drakitra"
+    },
+    "plan": {
+      "exhausted": "Sary maimaimpoana ampiasaina",
+      "exhaustedMessage": "Tsy misy intsony ireo sary 12 avy amin'ny drafitra maimaimpoana. Lymark",
+      "free": "Maimaimpoana",
+      "pro": "Mpanao",
+      "reconnect": "Mifandraisa indray mba hanamafisana ny famandrihanao",
+      "remaining": "{remaining, plural, one {#sary maimaimpoana ankavia} other {Sary maimaimpoana#}}",
+      "title": "Drafitra",
+      "unlimited": "Tsy misy fetra"
+    },
+    "report": {
+      "allPhotos": "Sary rehetra",
+      "authorField": "Mpanoratra / orinasa",
+      "detailsSection": "Antsipiriany",
+      "doc": {
+        "author": "Mpanoratra",
+        "declaration": "Ny angon-drakitra voasarona (toerana, daty, ora ary kaody) dia fanambarana avy amin'ny mpanome ny sary.",
+        "exportedAt": "Navoahana tamin'ny",
+        "generatedAt": "Namboarina tamin'ny",
+        "page": "Pejy",
+        "photo": "Sary 0",
+        "photosSection": "Fanamarihana sary",
+        "signature": "Sonia-tanana avy amin'ny tompon'andraikitra",
+        "summary": "Famintinana",
+        "title": "Tatitra sary",
+        "totalPhotos": "Sary iray manontolo:"
+      },
+      "empty": "Tsy mbola nisy sary naondrana, ny tatitra dia avy amin'ny galerianao.",
+      "failed": "Tsy afaka namorona ny tatitra.",
+      "fileStem": "tatitra",
+      "format": {
+        "csv": "Taratasy takelaka (0)",
+        "pdf": "PDF",
+        "word": "0 (.doc)",
+        "zip": "Fonosana (0)"
+      },
+      "formatSection": "Fomba famolavolana",
+      "generate": "Mamorona rakitra",
+      "generateSection": "Mamorona",
+      "includeLogo": "Logo eo amin'ny fonony",
+      "includeLogoDescription": "Ny famantarana ny marikao, ilay mitovy amin'ny marika.",
+      "norm": {
+        "abnt": "0 (Brasilia)",
+        "din5008": "0 (Alemana)",
+        "ibape": "0 fomba (Brasilia)",
+        "iso": "Iraisam-pirenena",
+        "letter": "Taratasy (Etazonia)"
+      },
+      "normNote": "Ny fenitra dia mametraka ny taratasy sy ny famolavolana ny sisin'ny , ny fanamarihana ny endri-tsoratra sy ny pejy. Ny votoatin'ny tatitra dia mitovy amin'izy rehetra; ny fomba 0 dia manampy sakana sonia.",
+      "normSection": "Fandaminana ny antontan-taratasy",
+      "projectsSection": "Tetikasa / asa",
+      "saved": "Voavonjy ho amin'ny 0",
+      "savedShort": "Voavonjy ny tatitra.",
+      "title": "0 tatitra",
+      "titleField": "Lohatenin'ny tatitra",
+      "unavailableBody": "0 Ny tatitra dia azo alaina ao amin'ny fampiharana birao.",
+      "unavailableTitle": "Ny birao ihany",
+      "uncoded": "Tsy misy kaody",
+      "wordTooBig": "Ny antontan-taratasy 0 dia lasa lehibe loatra miaraka amin'ireo sary tafiditra. Ampiasao ny fonosana 1 na 2.",
+      "zipMissing": "{count, plural, one {Voavonjy ny fonosana, saingy tsy hita ny sary#amin'ity fitaovana ity.} other {Voavonjy ny fonosana, saingy tsy hita tamin'ity fitaovana ity ny sarin'ny#.}}"
+    },
+    "settings": {
+      "about": "Momba ny",
+      "aboutDescription": "Famoahana, fiainana manokana ary mari-pankasitrahana",
+      "appSection": "Fampiharana",
+      "deviceSection": "Fitaovana",
+      "deviceSectionDescription": "Midira amin'ny fangatahana Lymark.",
+      "fields": "Ny saha sy ny toerana",
+      "fieldsDescription": "Safidio izay saha mampiseho, ny zoro sy ny habeny",
+      "history": "Tantara",
+      "historyDescription": "Sary napetraka tao amin'ilay fitaovana",
+      "language": "Fiteny",
+      "permissions": "Fampidirana",
+      "permissionsDescription": "Fakan-tsary, sary ary toerana",
+      "save": "Vonjeo",
+      "title": "Fikirana",
+      "watermark": "Sary rano",
+      "watermarkSection": "Sary rano",
+      "watermarkSectionDescription": "Inona no voatondro ao amin'ilay sary, ary aiza."
+    },
+    "signup": {
+      "subtitle": "Misoratra anarana mba hanombohana",
+      "title": "Mamorona kaonty Lymark"
+    },
+    "tagline": "Sary misy rano miaraka amin'ny fotoana, daty ary toerana",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Tsy misy fidirana amin'ny fakantsary.",
+      "done": "Voafetra sy voatahiry ny lahatsary.",
+      "export": "Fampisehoana horonan-tsary voarindra",
+      "exportSection": "Fanondranana",
+      "failed": "Tsy azo nosoratana ilay lahatsary.",
+      "fieldsSection": "Fitaovana fanamarihana",
+      "fileSection": "Video",
+      "none": "Tsy misy lahatsary voafantina.",
+      "processing": "Famolavolana... 0%",
+      "processingMobile": "Fampiasana...",
+      "record": "Raketo izao ny lahatsary",
+      "saved": "Voavonjy ho amin'ny 0",
+      "savedToGallery": "Voatahiry ao amin'ny galerianao ny lahatsary voatahiry.",
+      "select": "Safidio ny lahatsary",
+      "unavailableBody": "Ny fametrahana sary mihetsika amin'ny finday dia mila Lymark napetraka avy amin'nyEAS(miaraka amin'ny môdely teratany). Tsy misy amin'nyExpo Go. Ampidiro ny fampiharana ofisialy avy amin'ny fivarotana na nyEAS, na ampiasao ny kinova birao / tranonkala.",
+      "unavailableTitle": "Fampiharana napetraka no takiana",
+      "unreadable": "Tsy azo vakiana ho lahatsary ilay rakitra.",
+      "webNote": "Ao amin'ny navigateur, ny lahatsary dia voahodina amin'ny fotoana tena izy  lahatsary 2 minitra maharitra 2 minitra  ary nivoaka amin'ny endrika 0. Ho an'ny lahatsary lava, ampiasao ny fampiharana birao."
+    },
+    "watermark": {
+      "accentColor": "Tsipika mitsangana",
+      "backdropBandNote": "Mivezivezy amin'ny sisin'ny sary ny tarika ary mijanona eo amin'ny sisin'ny toerana misy ny tombo-kase.",
+      "backdropBlockNote": "Miaraka amin'ny haben'ny lahatsoratra ny rindrina, ary misy fametahana manodidina azy.",
+      "backdropColor": "Loko bandy",
+      "backdropDescription": "Mifanohitra amin'ny faritra mazava ao amin'ny sary ny lahatsoratra, ary tsy misy azy, dia mipetraka eo amin'ny sary, miaraka amin'ny aloka.",
+      "backdropInnerRadius": "Ny zoro anatiny",
+      "backdropOpacity": "Fampisehoana",
+      "backdropOpacityValue": "0% tsy mangarahara",
+      "backdropRadius": "Fatorana boribory",
+      "backdropRadiusSquare": "Square",
+      "backdropStyles": {
+        "band": "Band feno sakany",
+        "block": "Ao ambadiky ny lahatsoratra",
+        "none": "Tsy misy"
+      },
+      "backdropTitle": "Fandrindran-dahatsoratra",
+      "brandDescription": "Manomboka eo ambonin'ny famantaranandro, lasa famantarana, misy sary famantarana sy teny faneva.",
+      "brandFirstColor": "Loko ny ampahany voalohany",
+      "brandFirstHint": "Mpanorina",
+      "brandFirstPart": "Fizarana voalohany",
+      "brandNote": "Avelao ho foana ny ampahany faharoa mba hanamarihana loko iray.",
+      "brandPlacements": {
+        "corner": "Tao amin'ny zoro iray",
+        "header": "Mihoatra ny famantaranandro",
+        "none": "Tsy misy"
+      },
+      "brandSecondColor": "Loko ny ampahany faharoa",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Fizarana faharoa",
+      "brandTitle": "Famantarana voasarona",
+      "codeDescription": "Tsy mifaninana amin'ny sary mihitsy izy io.",
+      "codePlacements": {
+        "block": "Manaraka ny angon-drakitra",
+        "side": "Ny lafiny ankavanana"
+      },
+      "codeTitle": "Kaody sary",
+      "colors": {
+        "amber": "Amber",
+        "black": "Mainty",
+        "blue": "Mainty",
+        "green": "Maitso",
+        "red": "Mena",
+        "white": "fotsy"
+      },
+      "colorsDescription": "Ny loko amin'ny sary dia safidin'ny orinasa, fa tsy ny fampiharana manova azy eto dia tsy manova ny lokon'ny efijery.",
+      "colorsTitle": "Loko marika",
+      "complement": "Teny nalaina",
+      "complementColor": "Loko misy ny tagline",
+      "complementHint": "Fikarohana sy tatitra ara-teknika",
+      "cornerConflict": "Ao amin'ny zoro iray ihany ny marika sy ny angona  hifanindry eo amin'ny sary izy ireo.",
+      "fields": {
+        "address": "Adiresy / Toerana",
+        "code": "Kaody sary",
+        "date": "Daty",
+        "time": "Fotoana",
+        "weekday": "Andro amin'ny herinandro"
+      },
+      "fieldsDescription": "Ireo saha izay misy votoaty ihany no tonga amin'ny sary.",
+      "fieldsTitle": "Ireo saha aseho",
+      "includeCountry": "Ampidiro ao ny firenena",
+      "includeCountryDescription": "Asio izany raha miasa any ampitan-dranomasina ianao, raha tsy izany dia tsy misy toerana afa-tsy amin'ny sary.",
+      "legibilityTitle": "Fahaiza-mamaky",
+      "logoAdded": "Logo nampiana ny lohatenin'ny marika.",
+      "logoAlignNote": "Manaraka ny lahatsoratra ny haavon'ny sary famantarana: mifanaraka amin'ny tampon'ny anarana ny tampony ary mifanaraka amin'ny tsipika fototra amin'ny teny faneva ny ambany.",
+      "logoChosen": "Logo voafantina",
+      "logoErrorMessage": "Andramo sary hafa. Ny endrika tsara indrindra dia ny PNG misy fototra mangarahara.",
+      "logoErrorTitle": "Tsy azo ampiasaina ity rakitra ity",
+      "logoFormatNote": "Ampiasao ny PNG misy fototra mangarahara. JPG misy fototra fotsy dia lasa rectangle fotsy amin'ny sary  tsy mitahiry mangarahara ny endrika, ary tsy misy fomba hanombanana ny fototra ny fampiharana.",
+      "logoPermissionMessage": "Avelao ao amin'ny Fikirana > Fahazoan-dàlana hisafidianana ny rakitra logo.",
+      "logoPermissionTitle": "Voarara ny fidirana amin'ny sary",
+      "logoPick": "Safidio ny sary famantarana",
+      "logoPosition": "Toerana misy ny logo",
+      "logoPositionBlock": "Miaraka amin'ny tombo-kase",
+      "logoRemove": "Esory",
+      "logoReplace": "Fanoloana ny logo",
+      "logoSize": "Fomba famantarana",
+      "positionDescription": "Ny zoro amin'ny sary no nifanarahana tamin'ny sakana.",
+      "positionTitle": "Toerana",
+      "positions": {
+        "bottom-left": "Ambany ankavia",
+        "bottom-right": "Ambany ankavanana",
+        "top-left": "Ambony ankavia",
+        "top-right": "Ambony ankavanana"
+      },
+      "previewCurrent": "Mijery ny sary amin'izao fotoana izao avy amin'ny tabilao Capture.",
+      "previewEmpty": "Avy amin'ny mazava ka hatramin'ny maizina, mba hijerena ny fahafaha-mamaky amin'ny farany roa.",
+      "previewNoFields": "Tsy misy saha voafantina  ny sary dia mivoaka tsy misy mari-pamantarana.",
+      "previewTitle": "Fampisehoana mialoha",
+      "reset": "Avereno ny toerana misy anao",
+      "sizeTitle": "Hafatry ny lahatsoratra",
+      "sizes": {
+        "large": "Lehibe",
+        "medium": "Medium",
+        "small": "Vitsy"
+      },
+      "textColor": "Fandikana",
+      "timeFormatDescription": "Ny fomba famenoana ny fotoana amin'ny saha.",
+      "timeFormatTitle": "Fomba famoronana fotoana",
+      "timeFormats": {
+        "12h": "12 ora (AM/PM)",
+        "24h": "24 ora"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Ireo rakitra rehetra",
+      "images": "Sary",
+      "pickFolder": "Safidio ny lahatahiry famoahana",
+      "pickPhoto": "Safidio ny sary",
+      "pickPhotos": "Safidio ny sary ho an'ny andiany",
+      "savePhoto": "Tehirizo ny sary",
+      "saveReport": "Tahiry tatitra"
+    },
+    "login": {
+      "cancel": "Fandikana",
+      "confirm": "Tohizo",
+      "message": "Vao avy niditra tamin'ny alalan'ny navigateur ianao.",
+      "title": "Midira ao amin'ny Lymark"
+    },
+    "menu": {
+      "copy": "Fandikana",
+      "cut": "Fitaovana",
+      "edit": "Fanovana",
+      "file": "Fanamarihana",
+      "fullscreen": "Fampisehoana feno",
+      "help": "Fanampiana",
+      "paste": "Fitaovana",
+      "quit": "Avelao",
+      "redo": "Redo",
+      "reload": "Fampidinana indray",
+      "selectAll": "Safidio ny rehetra",
+      "settings": "Fikirana",
+      "undo": "Tsy azo raisina",
+      "view": "Fampisehoana",
+      "zoomIn": "Manantona",
+      "zoomOut": "Manantona",
+      "zoomReset": "Ny habeny tena izy"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Miverina any an-tranony",
+      "openApp": "Sokafy ny fampiharana",
+      "photos": "Sary",
+      "photosLeft": "0 amin'ny 1 havia",
+      "plan": "Drafitra",
+      "planUnavailable": "Tsy misy amin'izao fotoana izao",
+      "plans": {
+        "free": "Maimaimpoana",
+        "pro": "Mpanao"
+      },
+      "signInTitle": "Midira ao",
+      "signOut": "Misoratra anarana",
+      "signUpTitle": "Mamorona kaonty",
+      "subscribe": "Misoratra anarana amin'ny Lymark Pro",
+      "subscribeSoon": "Tsy misy ny famandrihana, rehefa misy, dia afaka misoratra anarana eto ianao ary mampiasa fitaovana rehetra miaraka amin'ny kaonty iray ihany.",
+      "title": "Ny kaontinao",
+      "revokeDesktops": "Fampidinana solosaina",
+      "revokeDesktopsHint": "Manakatona ny fidirana amin'ny fampiharana amin'ny solosaina rehetra. Azonao atao ny miditra indray rehefa tianao."
+    },
+    "availability": {
+      "contact": "Raha te hanaraka ny fandefasana na hitory olana ianao, manorata amin'ny <email>contato@lymark.app</email>.",
+      "description": "Lymark dia amin'ny kinova 1.3.0, amin'ny fitsapana amin'ny Android alohan'ny famoahana azy amin'nyGoogle Play. Tsy misy kinova iOS ary tsy misy kinova amin'ny Internet, ary tsy manangona fandoavam-bola ny fampiharana.",
+      "title": "Azo atao"
+    },
+    "data": {
+      "device": {
+        "description": "Misy ny kaonty ho an'ny famandrihanao: mitazona ny mailaka sy ny drafitrao ny mpizara, ary tsy mandray ny sarinao na ny toerana misy anao mihitsy.",
+        "field": "Ao amin'ny fitaovana",
+        "heading": "Sary, adiresy ary tantara"
+      },
+      "external": {
+        "description": "Mba hanovana ny latitude sy longitude ho adiresy azo vakiana, ny rafitra fiasa dia manontany ny serivisy geocoding an'ny Google na Apple. Izany no hany fampahalalana sisa tavela, ary ny rafitra no mandefa azy, fa tsy ny fampiharana.",
+        "field": "Tsy misy fitaovana",
+        "heading": "Ny famadihana ny andalana ho adiresy fotsiny"
+      },
+      "note": "Voalaza avokoa ny  anisan'izany ny dikan'izany ao amin'ny 0   ao amin'ny <privacy>Politika momba ny tsiambaratelo</privacy>. Ny famonoana ny fahazoan-dàlana amin'ny toerana dia mamela ny fampiharana hiasa tanteraka; ny saha adiresy ihany no tsy maintsy soratana an-tanana.",
+      "title": "Izay misy ny angon-drakitrao"
+    },
+    "deleteAccount": {
+      "back": "Miverina amin'ny kaonty",
+      "confirm": "Esory ny kaontiny",
+      "deletesNow": "Ny famafana ny kaontinao dia mamafa avy hatrany ny mailakao, ny mombamomba anao, ary ny firaketana ny drafitra, ny quota ary ny isan'ny sary.",
+      "irreversible": "Ny famafana dia maharitra ary tsy azo atao ny manova. Tsy misy fiantraikany ny sary ao amin'ny fitaovana  tsy teo amin'ny mpizara anay mihitsy izy ireo.",
+      "retained": "Ny rakitsoratry ny fifanakalozana fandoavam-bola dia tazonina mandritra ny vanim-potoana ara-bola takian'ny lalàna, tsy mifandray amin'ny mombamomba anao.",
+      "title": "Fandikana kaonty"
+    },
+    "description": "Fampiharana Android izay manisy tombo-kase ny ora, ny daty, ny andro fiasana, ny adiresy ary ny kaody fanaraha-maso amin'ny toerana-maso sy ny porofo-ny-fanompoana sary.",
+    "desktop": {
+      "backAccount": "Miverina amin'ny kaonty",
+      "explanation": "Vonona ny kaontinao. Tsindrio ny bokotra etsy ambany hanokafana ny Lymark amin'ny solosainao efa tafiditra ao  hangataka alalana hanokafana ny fampiharana ny navigateur.",
+      "open": "Ampifandraiso ny fampiharana",
+      "title": "Midira ao amin'ny birao",
+      "unavailable": "Mbola tsy misy ny fifandraisana amin'ny fampiharana birao."
+    },
+    "download": {
+      "appStore": {
+        "description": "Ny traikefa mitovy amin'ny Android, amin'ny iOS.",
+        "field": "App Store",
+        "heading": "iPhone sy iPad"
+      },
+      "browser": {
+        "action": "Midira ao",
+        "description": "Midira amin'ny kaontinao ary misokatra eo amin'ny navigateur  finday na solosaina ny fampiharana.",
+        "field": "Mpitety tranonkala",
+        "heading": "Ampiasao izao, tsy misy napetraka"
+      },
+      "desktop": {
+        "description": "Fotoana maromaro, horonan-tsary lava ary tatitra momba ny asa mavesatra.",
+        "field": "Solosaina",
+        "heading": "Windows sy Linux"
+      },
+      "googlePlay": {
+        "description": "Ny fampiharana finday, miaraka amin'ny fakantsary, galeria ary horonan-tsary voarindra.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Ho avy tsy ho ela",
+      "title": "Aiza no hampiasana ny Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "Raha manoratra alohan'ny hamaly ny GPS ianao, dia mandresy ilay nanoratra.",
+        "field": "Adiresy",
+        "heading": "Feno GPS, azo amboarina amin'ny tanana"
+      },
+      "code": {
+        "description": "Misy izany mba hahafahanao manondro sary iray manokana ao amin'ny filaharana na tatitra. Mivezivezy mihodina midina eo amin'ny sisiny ankavanana izy io, na mipetraka eo amin'ny sakana angon-drakitra  safidinao.",
+        "field": "Kaody sary",
+        "heading": "Tantara efatra ambin'ny folo, nosoratan'ny mpamorona famaritana"
+      },
+      "note": "Ny saha tsirairay dia mihetsika sy mihetsika irery, ary ny sakana dia miorina amin'ny zoro efatra, amin'ny habe telo. Ny fampisehoana mialoha dia mampiasa ny sary tena misy anao, fa tsy santionany ankapobeny: izay hitanao amin'ny efijery dia ara-bakiteny izay alefa any ivelany.",
+      "time": {
+        "description": "Ny bokotra iray no mamerina ireo saha telo ireo ho amin'izao fotoana izao rehefa naharitra ela kokoa noho ny nantenaina ny fakana azy ireo.",
+        "field": "Fotoana sy daty",
+        "heading": "Avy amin'ny famantaranandro fitaovana, amin'ny fotoana fakana"
+      },
+      "title": "Inona no miditra ao amin'ny sary"
+    },
+    "footer": {
+      "description": "Lymark  rakitsoratra sary misy daty, ora ary adiresy.",
+      "documentsLabel": "Fanamarihana",
+      "privacy": "Politika momba ny tsiambaratelo",
+      "support": "Fanohanana:",
+      "terms": "Fepetra fampiasana"
+    },
+    "hero": {
+      "ctaAccount": "Mandehana any amin'ny kaontiko",
+      "ctaLogin": "Midira ao",
+      "ctaSignup": "Mamorona kaonty maimaimpoana",
+      "description": "Ny rakitra izay mivoaka avy amin'ny fampiharana dia mitondra ny fampahalalana ao anatiny  fa tsy toy ny metadata mitaingina eo anilan'ny, izay ny voalohanyWhatsAppmandroso manala. Lymark",
+      "eyebrow": "Fanamarihana sary an-tsaha",
+      "heading": "Ny sary dia mamela ny findainao milaza hoe rahoviana, aiza ary inona.",
+      "meta": {
+        "account": "Kaonty iray tsindrio",
+        "android": "Android sy ny navigateur",
+        "language": "Portiogey Breziliana",
+        "onDevice": "Mijanona ao amin'ny fitaovana ny sary"
+      },
+      "note": "Tsy misy zavatra hapetraka."
+    },
+    "nav": {
+      "account": "Kaonty",
+      "home": "Trano",
+      "homeLabel": "Lymark, pejy fandraisana",
+      "label": "Ny tena",
+      "privacy": "Ny fiainana manokana",
+      "signIn": "Midira ao",
+      "terms": "Fepetra",
+      "verify": "Hamarino"
+    },
+    "process": {
+      "capture": {
+        "description": "Manomboka ny fikarohana ny adiresy amin'ny fotoana hidirana ny sary. Misokatra ny saha mba hanitsiana raha mbola mihazakazaka.",
+        "field": "Fandresena",
+        "heading": "Fitaovana na trano fandraisam-bahiny"
+      },
+      "note": "Ny famonjena sy ny fizarana dia mamaha olana samihafa, ary ny fametahana azy ireo ho bokotra iray dia hisintona izay rehetra te-hametraka ny sary amin'ny alàlan'ny efijery fandefasana.",
+      "save": {
+        "description": "Miaraka amin'ny sary sisa amin'ny findainao izy io, azo ampiasaina amin'ny fampiharana rehetra  ao anatin'izany rehefa avy manala ny Lymark ianao.",
+        "field": "Vonjeo",
+        "heading": "Mandeha any amin'ny tranombarotra fitaovana"
+      },
+      "share": {
+        "description": "0, mailaka, Drive: ny toerana itodiana dia nofidian'ny rafitra fiasa, ary tsy mandray anjara amin'ny fandefasana ny fampiharana.",
+        "field": "Mizara",
+        "heading": "Manokatra ny fisie fizarana rafitra"
+      },
+      "title": "Ny lalana raisin'ny sary"
+    },
+    "skipToContent": "Mialà amin'ny votoaty",
+    "specimen": {
+      "caption": "Ny fitsipika ambara dia manomboka sy mifarana amin'ny sisin'ny isa, fa tsy amin'ny boaty soratra.",
+      "label": "Santionan'ny tombo-kase Lymark: ora 07:42, daty 12 Aogositra 2026, Alarobia, adiresy any Guarujá ary kaody sary."
+    },
+    "title": "Lymark  daty, ora ary adiresy mari-drano ho an'ny sary an-tsaha",
+    "verify": {
+      "caveat": "Ny tombo-kase dia manambara ny fahamarinan'ny rakitra sy ny fotoana famoahana azy.",
+      "checking": "Manamarina...",
+      "declarationNote": "Ny fanehoana ny fanambarana ny mpanome ny tombo-kase (toerana, daty, ora)  ny tombo-kase dia manambara ny fahamendrehana sy ny famoahana, fa tsy ny votoatiny.",
+      "intro": "Alefaso na safidio ny sary iray naondran'i Lymark ary jereo avy hatrany raha toa ka toy ny nialan'ny fampiharana  izy io ary iza no namoaka azy, rehefa.",
+      "noSealBody": "Tsy misy tombo-kase Lymark ity rakitra ity. Mety ho naondrana ivelan'ny aterineto izy io, talohan'ny nisy ny tombo-kase, na mety tsy avy any Lymark. Tsy manaporofo fa nisy fanodikodinam-bokatra ny tsy fisian'ny tombo-kase.",
+      "noSealTitle": "Tsy misy tombo-kase",
+      "notConfigured": "Mbola tsy misy ny fanamarinana.",
+      "pick": "Safidio ny rakitra",
+      "previewAlt": "Ny sary voamarina, ny tombo-kase hita",
+      "privacyNote": "Ny fanamarinana dia atao ao amin'ny navigateur. Tsy alefa amin'ny mpizara iray ny rakitra.",
+      "sealedBody": "Io rakitra io dia mitovy amin'ny navelany tao amin'ny Lymark. {account} {date}",
+      "sealedTitle": "Tsy simba",
+      "tamperedBody": "Tsy mifanaraka amin'ny tombo-kase ny votoatiny: niova ny rakitsoratra taorian'ny famoahana azy, na ny tombo-kase dia an'ny rakitra hafa.",
+      "tamperedTitle": "Tsy mifanaraka",
+      "title": "Hamarino ny maha-izy azy",
+      "unsupported": "Tsy manohana ny fanamarinana sonia ity navigateur ity. Andramo ny navigateur ankehitriny."
+    }
+  }
+}
