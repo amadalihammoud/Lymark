@@ -28,4 +28,22 @@ export const OG_LOCALES: Record<Locale, string> = {
   // O Facebook usa `ar_AR` para o árabe, sem território real — é o código que
   // ele reconhece.
   ar: 'ar_AR',
+  hi: 'hi_IN',
+  sw: 'sw_KE',
+  id: 'id_ID',
+  ms: 'ms_MY',
+  bn: 'bn_BD',
+  ur: 'ur_PK',
+  tr: 'tr_TR',
+  vi: 'vi_VN',
+  ro: 'ro_RO',
+  uk: 'uk_UA',
+  el: 'el_GR',
+  pl: 'pl_PL',
+  th: 'th_TH',
+  fa: 'fa_IR',
+  sr: 'sr_RS',
+  am: 'am_ET',
+  cs: 'cs_CZ',
+  he: 'he_IL',
 };

@@ -1,16 +1,31 @@
 import {
   arSA,
-  deDE,
+  bnIN,
+  csCZ,
+  elGR,
   enUS,
   esES,
+  faIR,
   frFR,
+  heIL,
+  hiIN,
+  idID,
   itIT,
   jaJP,
   koKR,
+  msMY,
   nlNL,
+  plPL,
   ptBR,
+  roRO,
   ruRU,
+  srRS,
+  thTH,
+  trTR,
+  ukUA,
+  viVN,
   zhCN,
+  deDE,
 } from '@clerk/localizations';
 
 import type { Locale } from '../../i18n/locales';
@@ -19,13 +34,16 @@ import type { Locale } from '../../i18n/locales';
  * A interface do Clerk — telas de entrar, cadastrar e conta — no idioma do
  * site.
  *
- * O Clerk traz os doze idiomas prontos; o que este arquivo faz é só amarrar
- * cada código do catálogo à variante que ele mantém. Não há tradução nossa
- * aqui, e é de propósito: os textos das telas de autenticação mudam a cada
- * versão do componente, e traduzir por fora seria correr atrás deles.
+ * O Clerk traz a maior parte dos idiomas prontos; o que este arquivo faz é
+ * amarrar cada código do catálogo à variante que ele mantém. Não há tradução
+ * nossa aqui, e é de propósito: os textos das telas de autenticação mudam a
+ * cada versão do componente, e traduzir por fora seria correr atrás deles.
  *
  * `ptBR` e não `ptPT` pela mesma razão dos documentos legais: o produto é
  * brasileiro, e o português do catálogo também.
+ *
+ * Fase 1: `sw`, `ur` e `am` não existem em `@clerk/localizations` — caem no
+ * inglês (`enUS`) até o Clerk publicar esses pacotes.
  */
 export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   pt: ptBR,
@@ -40,6 +58,24 @@ export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   ja: jaJP,
   ko: koKR,
   ar: arSA,
+  hi: hiIN,
+  sw: enUS, // Clerk sem Kiswahili — fallback EN
+  id: idID,
+  ms: msMY,
+  bn: bnIN,
+  ur: enUS, // Clerk sem Urdu — fallback EN
+  tr: trTR,
+  vi: viVN,
+  ro: roRO,
+  uk: ukUA,
+  el: elGR,
+  pl: plPL,
+  th: thTH,
+  fa: faIR,
+  sr: srRS,
+  am: enUS, // Clerk sem Amárico — fallback EN
+  cs: csCZ,
+  he: heIL,
 };
 
 /**

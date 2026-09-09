@@ -19,6 +19,8 @@ export const DEFAULT_LOCALE = 'pt' as const;
 /**
  * A ordem é a de exibição no seletor de idioma, não alfabética: primeiro o
  * idioma de origem, depois o alcance decrescente.
+ *
+ * A Fase 1 (hi…he) amplia o catálogo sem reordenar os doze originais.
  */
 export const LOCALES = [
   'pt',
@@ -33,6 +35,24 @@ export const LOCALES = [
   'ja',
   'ko',
   'ar',
+  'hi',
+  'sw',
+  'id',
+  'ms',
+  'bn',
+  'ur',
+  'tr',
+  'vi',
+  'ro',
+  'uk',
+  'el',
+  'pl',
+  'th',
+  'fa',
+  'sr',
+  'am',
+  'cs',
+  'he',
 ] as const;
 
 export type Locale = (typeof LOCALES)[number];
@@ -54,6 +74,24 @@ export const LOCALE_NAMES: Record<Locale, string> = {
   ja: '日本語',
   ko: '한국어',
   ar: 'العربية',
+  hi: 'हिन्दी',
+  sw: 'Kiswahili',
+  id: 'Bahasa Indonesia',
+  ms: 'Bahasa Melayu',
+  bn: 'বাংলা',
+  ur: 'اردو',
+  tr: 'Türkçe',
+  vi: 'Tiếng Việt',
+  ro: 'Română',
+  uk: 'Українська',
+  el: 'Ελληνικά',
+  pl: 'Polski',
+  th: 'ไทย',
+  fa: 'فارسی',
+  sr: 'Srpski',
+  am: 'አማርኛ',
+  cs: 'Čeština',
+  he: 'עברית',
 };
 
 /**
@@ -63,9 +101,9 @@ export const LOCALE_NAMES: Record<Locale, string> = {
  * Separada de `LOCALES` porque as duas ordens respondem a perguntas diferentes.
  * `LOCALES` é a ordem canônica do catálogo, e a de `hreflang` e do mapa do
  * site, onde ordem nenhuma é lida por gente. Esta é lida por gente, e a única
- * propriedade que ajuda quem procura o próprio idioma numa lista de doze é
+ * propriedade que ajuda quem procura o próprio idioma numa lista é
  * poder parar de procurar: em ordem alfabética, quem busca "Nederlands" sabe
- * onde olhar sem ler as outras onze. A ordem por alcance decrescente, que era a
+ * onde olhar sem ler as outras. A ordem por alcance decrescente, que era a
  * usada, obriga a ler a lista inteira.
  *
  * Ordenada pelo nome que cada idioma dá a si mesmo, comparando **ponto de
@@ -102,10 +140,13 @@ export const LOCALES_BY_NAME: readonly Locale[] = [...LOCALES].sort((a, b) =>
  *   decisão de produto: pedir "feche e abra de novo" no meio de uma vistoria
  *   é diferente de pedir na tela de idioma.
  *
+ * Fase 1 acrescenta hebraico (`he`), urdu (`ur`) e persa (`fa`) — a mesma
+ * regra de `dir="rtl"` no documento.
+ *
  * O que NÃO deve espelhar, e por isso não usa propriedade lógica: a marca
  * desenhada em `wordmark.tsx`. Um logotipo é o mesmo em toda língua.
  */
-export const RTL_LOCALES: readonly Locale[] = ['ar'];
+export const RTL_LOCALES: readonly Locale[] = ['ar', 'he', 'ur', 'fa'];
 
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);
