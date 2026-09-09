@@ -53,7 +53,7 @@ Catalog total after Phase 4: **73** locales (12 original + 18 + 15 + 15 + 13).
 
 After the full base catalog (Phases 1–4), regional **script/region variants** of existing languages can be added without renaming the base locale (so URLs and `hreflang` stay stable).
 
-### V1 (this PR) — Chinese Traditional
+### V1 (merged) — Chinese Traditional
 
 - Keep `zh` as **Simplified Chinese** (zh-Hans content). Display name: `中文（简体）`.
 - Add `zh-Hant` (**Traditional Chinese**, Taiwan/HK). Display name: `中文（繁體）`.
@@ -63,9 +63,19 @@ After the full base catalog (Phases 1–4), regional **script/region variants** 
 - RTL unchanged (Chinese remains LTR).
 - Catalog total after V1: **74** locales.
 
-### V2 (planned)
+### V2 (this PR) — Portuguese (Portugal) + Spanish regional
 
-Further regional variants as needed (candidate examples: `pt-PT` vs keeping `pt` as Brazilian Portuguese, or `en-GB`). Prefer BCP-47 tags; do not rename base locales that already ship in URLs.
+- Keep `pt` as **Brazilian Portuguese**. Display name: `Português (Brasil)`.
+- Add `pt-PT` (**European Portuguese**). Display name: `Português (Portugal)`.
+- Keep `es` as the historical default Spanish catalog (mixed LatAm/peninsular wording — left unchanged for URL/`hreflang` stability).
+- Add `es-419` (**Latin American Spanish**, LatAm-neutral). Display name: `Español (Latinoamérica)`.
+- Add `es-ES` (**Spain / Peninsular Spanish**). Display name: `Español (España)`.
+- Messages: `pt-PT` / `es-419` / `es-ES` under `i18n/messages/` + `i18n/messages/legal/`.
+- Clerk UI: `ptPT`, `esES` for `es-ES` (and existing `es`), `esMX` for `es-419` (no Clerk `es-419` pack).
+- Open Graph: `pt_PT`, `es_LA` (`es-419`), `es_ES`.
+- Device negotiation: `pt-PT` → `pt-PT`; other `pt-*` / bare `pt` → `pt`. `es-ES` → `es-ES`; `es-419` / `es-MX` / other LatAm regions → `es-419`; bare `es` → `es`.
+- RTL unchanged.
+- Catalog total after V2: **77** locales.
 
 ### V3 (planned)
 

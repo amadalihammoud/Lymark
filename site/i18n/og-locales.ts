@@ -15,8 +15,11 @@ import type { Locale } from '../../i18n/locales';
  */
 export const OG_LOCALES: Record<Locale, string> = {
   pt: 'pt_BR',
+  'pt-PT': 'pt_PT',
   en: 'en_US',
   es: 'es_ES',
+  'es-419': 'es_LA',
+  'es-ES': 'es_ES',
   fr: 'fr_FR',
   it: 'it_IT',
   de: 'de_DE',

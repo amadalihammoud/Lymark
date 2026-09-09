@@ -25,8 +25,11 @@ export const DEFAULT_LOCALE = 'pt' as const;
  */
 export const LOCALES = [
   'pt',
+  'pt-PT',
   'en',
   'es',
+  'es-419',
+  'es-ES',
   'fr',
   'it',
   'de',
@@ -107,9 +110,12 @@ export type Locale = (typeof LOCALES)[number];
  * língua numa lista procura pela palavra que conhece — "Deutsch", não "Alemão".
  */
 export const LOCALE_NAMES: Record<Locale, string> = {
-  pt: 'Português',
+  pt: 'Português (Brasil)',
+  'pt-PT': 'Português (Portugal)',
   en: 'English',
   es: 'Español',
+  'es-419': 'Español (Latinoamérica)',
+  'es-ES': 'Español (España)',
   fr: 'Français',
   it: 'Italiano',
   de: 'Deutsch',

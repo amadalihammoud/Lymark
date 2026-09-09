@@ -18,8 +18,11 @@ import type { Locale } from './locales';
 /** Os doze meses, já com a pontuação que cada idioma usa na abreviação. */
 export const MONTHS: Record<Locale, readonly string[]> = {
   pt: ['jan.', 'fev.', 'mar.', 'abr.', 'mai.', 'jun.', 'jul.', 'ago.', 'set.', 'out.', 'nov.', 'dez.'],
+  'pt-PT': ['jan.', 'fev.', 'mar.', 'abr.', 'mai.', 'jun.', 'jul.', 'ago.', 'set.', 'out.', 'nov.', 'dez.'],
   en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   es: ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sept.', 'oct.', 'nov.', 'dic.'],
+  'es-419': ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sep.', 'oct.', 'nov.', 'dic.'],
+  'es-ES': ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sept.', 'oct.', 'nov.', 'dic.'],
   // O francês é irregular de propósito: "mars", "mai", "juin" e "août" não se
   // abreviam, e os demais levam ponto. Por isso o token guarda a própria
   // pontuação em vez de o padrão acrescentá-la.
@@ -126,8 +129,11 @@ export const MONTHS: Record<Locale, readonly string[]> = {
  */
 export const DATE_PATTERN: Record<Locale, string> = {
   pt: '{d} {mon} {y}',
+  'pt-PT': '{d} {mon} {y}',
   en: '{d} {mon} {y}',
   es: '{d} {mon} {y}',
+  'es-419': '{d} {mon} {y}',
+  'es-ES': '{d} {mon} {y}',
   fr: '{d} {mon} {y}',
   it: '{d} {mon} {y}',
   // O alemão põe ponto depois do dia: "12. Aug. 2026".
@@ -205,8 +211,11 @@ export const DATE_PATTERN: Record<Locale, string> = {
 /** Abreviação do dia da semana — o que cabe no carimbo, abaixo da data. */
 export const WEEKDAYS_SHORT: Record<Locale, readonly string[]> = {
   pt: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+  'pt-PT': ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
   en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   es: ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+  'es-419': ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
+  'es-ES': ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'],
   fr: ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'],
   it: ['dom', 'lun', 'mar', 'mer', 'gio', 'ven', 'sab'],
   de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
@@ -283,8 +292,11 @@ export const WEEKDAYS_SHORT: Record<Locale, readonly string[]> = {
 /** Nome completo — usado onde há espaço, como no detalhe da galeria. */
 export const WEEKDAYS_LONG: Record<Locale, readonly string[]> = {
   pt: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
+  'pt-PT': ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
   en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   es: ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+  'es-419': ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+  'es-ES': ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
   fr: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
   it: ['domenica', 'lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato'],
   de: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
@@ -400,8 +412,11 @@ export const USES_24_HOUR = true;
  */
 export const STAMP_LOCALE: Record<Locale, Locale> = {
   pt: 'pt',
+  'pt-PT': 'pt-PT',
   en: 'en',
   es: 'es',
+  'es-419': 'es-419',
+  'es-ES': 'es-ES',
   fr: 'fr',
   it: 'it',
   de: 'de',

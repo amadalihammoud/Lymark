@@ -43,9 +43,19 @@ describe('resolveDeviceLocale', () => {
     expect(withDeviceLanguages(['ja'], resolveDeviceLocale)).toBe('ja');
   });
 
-  it('ignora a região: pt-PT e pt-AO recebem o catálogo português', () => {
-    expect(withDeviceLanguages(['pt-PT'], resolveDeviceLocale)).toBe('pt');
+  it('distingue português europeu de brasileiro', () => {
+    expect(withDeviceLanguages(['pt-PT'], resolveDeviceLocale)).toBe('pt-PT');
+    expect(withDeviceLanguages(['pt-BR'], resolveDeviceLocale)).toBe('pt');
     expect(withDeviceLanguages(['pt-AO'], resolveDeviceLocale)).toBe('pt');
+    expect(withDeviceLanguages(['pt'], resolveDeviceLocale)).toBe('pt');
+  });
+
+  it('mapeia espanhol peninsular e latino-americano', () => {
+    expect(withDeviceLanguages(['es-ES'], resolveDeviceLocale)).toBe('es-ES');
+    expect(withDeviceLanguages(['es-419'], resolveDeviceLocale)).toBe('es-419');
+    expect(withDeviceLanguages(['es-MX'], resolveDeviceLocale)).toBe('es-419');
+    expect(withDeviceLanguages(['es-AR'], resolveDeviceLocale)).toBe('es-419');
+    expect(withDeviceLanguages(['es'], resolveDeviceLocale)).toBe('es');
   });
 
   it('distingue a escrita: zh-Hant recebe o catálogo tradicional', () => {
@@ -64,7 +74,8 @@ describe('resolveDeviceLocale', () => {
   });
 
   it('aceita separador com sublinhado, que alguns aparelhos ainda usam', () => {
-    expect(withDeviceLanguages(['es_MX'], resolveDeviceLocale)).toBe('es');
+    expect(withDeviceLanguages(['es_MX'], resolveDeviceLocale)).toBe('es-419');
+    expect(withDeviceLanguages(['pt_PT'], resolveDeviceLocale)).toBe('pt-PT');
     expect(withDeviceLanguages(['zh_TW'], resolveDeviceLocale)).toBe('zh-Hant');
   });
 
@@ -95,5 +106,14 @@ describe('matchTag', () => {
   it('não deixa zh-Hant colidir com a primária zh', () => {
     expect(matchTag('zh-Hant-TW')).toBe('zh-Hant');
     expect(matchTag('zh-CN')).toBe('zh');
+  });
+
+  it('não deixa pt-PT / es-ES / es-419 colidir com a primária', () => {
+    expect(matchTag('pt-PT')).toBe('pt-PT');
+    expect(matchTag('pt-BR')).toBe('pt');
+    expect(matchTag('es-ES')).toBe('es-ES');
+    expect(matchTag('es-419')).toBe('es-419');
+    expect(matchTag('es-MX')).toBe('es-419');
+    expect(matchTag('es')).toBe('es');
   });
 });
