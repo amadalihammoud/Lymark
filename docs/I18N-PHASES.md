@@ -36,7 +36,7 @@ RTL set unchanged: `ar`, `he`, `ur`, `fa`, `ps`. Tigrinya (`ti`) is Ethiopic scr
 Clerk UI: `da`, `fi`, `sk`, `hr`, `mn` use native packs.
 **Fallbacks to English localization:** `ka`, `lo`, `hy`, `lt`, `sq`, `sl`, `ti`, `lv`, `bs`, `rn`.
 
-## Phase 4 (this PR — final / full coverage)
+## Phase 4 (merged — final / full coverage)
 
 Thirteen locales:
 
@@ -48,3 +48,25 @@ Clerk UI: `be`, `ca`, `is` use native packs.
 **Fallbacks to English localization:** `et`, `tg`, `mk`, `tk`, `ky`, `nn`, `lb`, `dz`, `mt`, `dv`.
 
 Catalog total after Phase 4: **73** locales (12 original + 18 + 15 + 15 + 13).
+
+## Regional variants
+
+After the full base catalog (Phases 1–4), regional **script/region variants** of existing languages can be added without renaming the base locale (so URLs and `hreflang` stay stable).
+
+### V1 (this PR) — Chinese Traditional
+
+- Keep `zh` as **Simplified Chinese** (zh-Hans content). Display name: `中文（简体）`.
+- Add `zh-Hant` (**Traditional Chinese**, Taiwan/HK). Display name: `中文（繁體）`.
+- Messages: `i18n/messages/zh-Hant.json` + `i18n/messages/legal/zh-Hant.json`.
+- Clerk UI: `zhTW`. Open Graph: `zh_TW`.
+- Device negotiation: `zh-Hant` / `zh-TW` / `zh-HK` / `zh-MO` → `zh-Hant`; `zh-Hans` / `zh-CN` / `zh-SG` / bare `zh` → `zh`.
+- RTL unchanged (Chinese remains LTR).
+- Catalog total after V1: **74** locales.
+
+### V2 (planned)
+
+Further regional variants as needed (candidate examples: `pt-PT` vs keeping `pt` as Brazilian Portuguese, or `en-GB`). Prefer BCP-47 tags; do not rename base locales that already ship in URLs.
+
+### V3 (planned)
+
+Additional script or orthography splits (e.g. Serbian Latin if a Cyrillic `sr` base stays) once product priority and stamp font coverage allow.

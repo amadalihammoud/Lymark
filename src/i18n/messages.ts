@@ -71,6 +71,7 @@ import ur from '@i18n/messages/ur.json';
 import uz from '@i18n/messages/uz.json';
 import vi from '@i18n/messages/vi.json';
 import zh from '@i18n/messages/zh.json';
+import zhHant from '@i18n/messages/zh-Hant.json';
 
 import type { Locale } from '@i18n/locales';
 
@@ -96,6 +97,7 @@ export const MESSAGES = {
   nl,
   ru,
   zh,
+  'zh-Hant': zhHant,
   ja,
   ko,
   ar,

@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "應用",
+      "pitch": "在照片上加蓋時間、日期、星期、地址和一個追蹤編號——用於現場照片記錄、現場查驗和服務憑證。",
+      "platform": "平臺",
+      "privacy": "隱私政策",
+      "privacyGeocoding": "使用 GPS 時，作業系統會把座標傳送給 Google 或 Apple 的地圖服務以換取地址。這是唯一離開本機的資訊，而且是由系統傳送的，不是 Lymark。",
+      "privacyLocation": "定位每次拍攝只使用一次，僅用於填寫地址欄位，不會獨立於照片另行儲存。",
+      "privacyOnDevice": "照片、地址和歷史記錄都只留在這臺裝置上。賬號僅用於訂閱：伺服器只儲存郵箱和方案，絕不接收您的照片或位置。",
+      "privacySection": "隱私",
+      "sdk": "Expo SDK",
+      "terms": "使用條款",
+      "title": "關於Lymark",
+      "version": "版本"
+    },
+    "account": {
+      "browserHint": "登入在瀏覽器中完成。在那裡登入您的賬戶，應用會自動連線。",
+      "code": "驗證碼",
+      "codeSent": "我們已向 {email} 傳送驗證碼",
+      "connected": "已連線",
+      "continue": "繼續",
+      "deleteAccount": "刪除賬戶",
+      "email": "電子郵箱",
+      "failed": "未成功。請檢查郵箱或驗證碼後重試。",
+      "notConfigured": "此版本暫不支援登入。",
+      "signInBrowser": "透過瀏覽器登入",
+      "signOut": "退出登入",
+      "signedInAs": "已登入：{email}",
+      "title": "賬戶",
+      "verify": "驗證"
+    },
+    "batch": {
+      "addressHint": "街道、門牌號 - 城市",
+      "clearList": "清空列表",
+      "codeHint": "例如：LYM-001",
+      "done": "{count, plural, other {處理完成：共 # 張照片。}}",
+      "doneSection": "完成",
+      "dropZone": "把照片拖放到這裡，或使用“選擇照片”按鈕",
+      "errorsSection": "錯誤",
+      "folder": "資料夾：{name}",
+      "noPhotos": "請至少選擇一張照片。",
+      "outputNote": "處理後的照片會儲存到所選資料夾。",
+      "outputSection": "輸出",
+      "photosSection": "待處理的照片",
+      "processing": "處理中…",
+      "progress": "{current} / {total}（{percent}%）",
+      "results": "{success, plural, other {成功 #}}，{failed, plural, other {失敗 #}}",
+      "selectFolder": "選擇輸出資料夾",
+      "selectPhotos": "選擇照片",
+      "selected": "{count, plural, other {已選擇 # 張照片}}",
+      "sharedNote": "這些值會應用到所有照片。每張照片的日期和時間分別讀取自各自的 EXIF。",
+      "sharedSection": "共用資訊",
+      "start": "開始處理",
+      "unavailableBody": "此功能僅在桌面版提供。",
+      "unavailableTitle": "批次處理不可用"
+    },
+    "capture": {
+      "accuracy": "位置誤差 ±{meters} 米。",
+      "accuracyImprecise": "位置誤差 ±{meters} 米，匯出前請核對門牌號。",
+      "address": "地址",
+      "addressFailedTitle": "未獲取到地址",
+      "addressHint": "點按定位，或手動輸入地址",
+      "camera": "拍照",
+      "code": "程式碼",
+      "dateHint": "2026年1月1日",
+      "dateTimeGroup": "日期和時間",
+      "emptyWarning": "沒有可新增的資料，照片將不帶水印匯出。",
+      "gallery": "從相簿選擇",
+      "galleryDenied": "照片訪問被拒絕，因此圖片只存在於應用內。請在“設定 › 許可權”中允許，以便儲存到相簿。",
+      "galleryFailed": "圖片已進入歷史記錄，但裝置拒絕寫入相簿。請檢查可用空間後重試。",
+      "generateCode": "生成",
+      "hiddenFields": "{count, plural, other {隱藏的欄位}}：{fields} — 可在“設定 › 欄位與位置”中開啟。",
+      "keepMyAddress": "保留我輸入的",
+      "locate": "定位",
+      "locateByGps": "透過 GPS 定位地址",
+      "lookup": {
+        "denied": "請在“設定 › 許可權”中允許定位，或手動輸入地址。",
+        "disabled": "裝置的定位已關閉。請在快捷設定中開啟後重試。",
+        "timeout": "GPS 未及時響應。在室內經常如此，請手動輸入地址。",
+        "unavailable": "無法解析當前位置的地址。請手動輸入。"
+      },
+      "newCapture": "開始新的拍攝",
+      "noFieldsBack": "返回",
+      "noFieldsContinue": "仍然繼續",
+      "noFieldsMessage": "沒有任何欄位有可新增的內容。請填寫欄位，或檢視“設定 › 欄位與位置”。",
+      "noFieldsTitle": "這張照片將不帶水印",
+      "noPhotoHint": "拍一張照片或從相簿中選擇一張，即可開始。",
+      "noPhotoSelected": "未選擇照片",
+      "openFailed": "無法開啟這張照片，請重試。",
+      "permissionMessage": "請在“設定 › 許可權”中允許訪問後繼續。",
+      "permissionTitle": "需要許可權",
+      "pickPhoto": "選擇照片",
+      "pickPhotoHint": "請先選擇一張照片，才能使用這些操作。",
+      "previewLabel": "帶水印的照片預覽",
+      "renderFailedTitle": "無法生成圖片",
+      "replaceAddressMessage": "GPS 找到：\n\n{address}",
+      "replaceAddressTitle": "替換你輸入的地址？",
+      "resetConfirm": "放棄",
+      "resetMessage": "已選擇的照片和已填寫的欄位將被放棄。",
+      "resetTitle": "開始新的拍攝？",
+      "saved": "照片已儲存到裝置相簿和歷史記錄。",
+      "savedAppOnlyTitle": "僅儲存在 Lymark 中",
+      "shareDialogTitle": "分享帶水印的照片",
+      "shareFailedMessage": "圖片已生成並儲存在 Lymark 的歷史記錄中。你可以在“相簿”標籤頁分享它。",
+      "shareFailedTitle": "分享失敗",
+      "shareUnavailableMessage": "本裝置沒有分享面板。圖片保留在 Lymark 的歷史記錄中。",
+      "shareUnavailableTitle": "無法分享",
+      "sharedFileTitle": "帶水印的照片",
+      "stampNotReady": "水印仍在準備中。",
+      "syncNow": "現在",
+      "timestamp": "日期/時間",
+      "title": "捕獲",
+      "useGpsAddress": "使用 GPS 的",
+      "weekdayHint": "週一",
+      "weekdayShort": "星期"
+    },
+    "colorPicker": {
+      "hue": "色相",
+      "other": "選擇其他顏色",
+      "saturationBrightness": "飽和度與亮度",
+      "use": "使用此顏色"
+    },
+    "common": {
+      "back": "返回",
+      "cancel": "取消",
+      "delete": "刪除",
+      "error": "錯誤",
+      "gotIt": "知道了",
+      "loading": "載入中...",
+      "no": "否",
+      "ok": "確定",
+      "save": "儲存",
+      "share": "分享",
+      "success": "成功",
+      "tryAgain": "請重試。",
+      "unknownError": "未知錯誤",
+      "yes": "是"
+    },
+    "gallery": {
+      "cancelSelection": "取消選擇",
+      "clear": "清空歷史記錄",
+      "clearConfirm": "清空",
+      "clearMessage": "Lymark 的記錄將被刪除。已儲存到裝置相簿的圖片不受影響。",
+      "count": "{count, plural, other {已匯出 # 張照片}}",
+      "delete": "刪除",
+      "empty": "還沒有照片",
+      "emptyAction": "前往拍攝",
+      "emptyDescription": "新增水印後匯出的照片會顯示在這裡，附帶日期、地點和編號。",
+      "filteredCount": "{total, plural, other {共 # 張，顯示 {shown} 張}}",
+      "noResults": "未找到與“{query}”匹配的照片。",
+      "photoLabel": "{when} 的照片",
+      "removeMessage": "記錄將從 Lymark 中移除。已儲存到裝置相簿的圖片不受影響。",
+      "removeTitle": "{count, plural, other {從歷史記錄中移除 # 條記錄}}",
+      "removed": "{count, plural, other {記錄已移除。}}",
+      "saveDeniedMessage": "請在“設定 › 許可權”中允許訪問，以便將圖片儲存到裝置相簿。",
+      "saveDeniedTitle": "照片訪問被拒絕",
+      "savedAll": "{count, plural, other {已將 # 張照片儲存到裝置相簿。}}",
+      "savedSome": "已儲存 {saved} 張照片，共 {total} 張。",
+      "searchPlaceholder": "按地址、日期或編號搜尋",
+      "selectedCount": "{count, plural, other {已選擇 # 張照片}}",
+      "share": "分享",
+      "title": "相簿"
+    },
+    "language": {
+      "automatic": "跟隨裝置",
+      "automaticNote": "Lymark 跟隨裝置的語言設定。",
+      "label": "語言",
+      "selector": "選擇語言"
+    },
+    "login": {
+      "access": "登入訪問",
+      "apple": "使用Apple登入",
+      "google": "使用Google登入",
+      "subtitle": "登入以繼續",
+      "title": "登入以訪問Lymark"
+    },
+    "nav": {
+      "batch": "批次處理",
+      "photoDetail": "照片詳情",
+      "report": "PDF 報告",
+      "video": "影片"
+    },
+    "notFound": {
+      "body": "這個頁面不屬於 Lymark。",
+      "screenTitle": "未找到頁面",
+      "title": "路徑不存在"
+    },
+    "permissions": {
+      "allow": "允許",
+      "allowed": "已授予",
+      "blocked": {
+        "later": "暫不",
+        "message": "系統不會再次詢問。如需允許，請開啟裝置設定。",
+        "openSettings": "開啟設定",
+        "title": "許可權已被阻止"
+      },
+      "camera": "相機",
+      "cameraRationale": "用於拍攝將新增水印的照片。",
+      "denied": "已拒絕",
+      "granted": "已授予",
+      "intro": "Lymark 只申請新增水印所需的許可權。您的照片不會離開裝置：使用 GPS 時，作業系統只把座標傳送給地圖服務，用於換取地址。",
+      "location": "定位",
+      "locationRationale": "拍攝時自動填寫地址欄位。",
+      "mediaLibrary": "儲存到相簿",
+      "mediaLibraryRationale": "用於將匯出的照片儲存到裝置相簿。",
+      "openDeviceSettings": "設定",
+      "recheck": "重新檢查",
+      "request": "請求許可權",
+      "section": "訪問許可權",
+      "title": "許可權"
+    },
+    "photo": {
+      "backToGallery": "返回相簿",
+      "exportedAt": "匯出於 {when}",
+      "noWatermark": "這張照片匯出時沒有水印。",
+      "notFoundBody": "這條記錄可能已從歷史記錄中移除。",
+      "notFoundTitle": "未找到照片",
+      "remove": "移除",
+      "removeBody": "該記錄將離開 Lymark。已儲存到裝置相簿的圖片不受影響。",
+      "removeTitle": "從歷史記錄中移除",
+      "share": "分享",
+      "stampedData": "已新增的資料"
+    },
+    "plan": {
+      "exhausted": "免費照片已用完",
+      "exhaustedMessage": "免費方案的 12 張照片已用完。訂閱 Lymark 即可繼續新增水印。",
+      "free": "免費",
+      "pro": "Pro",
+      "reconnect": "請聯網以確認訂閱",
+      "remaining": "{remaining, plural, other {還剩 # 張免費照片}}",
+      "title": "方案",
+      "unlimited": "不限量"
+    },
+    "report": {
+      "allPhotos": "全部照片",
+      "authorField": "負責人 / 公司",
+      "detailsSection": "詳細資訊",
+      "doc": {
+        "author": "負責人",
+        "declaration": "蓋章資料(地址、日期、時間和程式碼)是照片簽發者的宣告。",
+        "exportedAt": "匯出時間",
+        "generatedAt": "生成時間",
+        "page": "頁",
+        "photo": "照片 {index}",
+        "photosSection": "照片記錄",
+        "signature": "負責人簽名",
+        "summary": "摘要",
+        "title": "照片報告",
+        "totalPhotos": "照片總數:"
+      },
+      "empty": "還沒有匯出的照片。報告將基於相簿生成。",
+      "failed": "無法生成報告。",
+      "fileStem": "report",
+      "format": {
+        "csv": "表格(CSV)",
+        "pdf": "PDF",
+        "word": "Word(.doc)",
+        "zip": "壓縮包(ZIP)"
+      },
+      "formatSection": "格式",
+      "generate": "生成檔案",
+      "generateSection": "生成",
+      "includeLogo": "封面上的標誌",
+      "includeLogoDescription": "您品牌的標誌,與水印中相同。關閉後文件將不含標誌。",
+      "norm": {
+        "abnt": "ABNT(巴西)",
+        "din5008": "DIN 5008(德國)",
+        "ibape": "IBAPE 風格(巴西)",
+        "iso": "國際",
+        "letter": "信紙(美國)"
+      },
+      "normNote": "規範決定紙張和排版:頁邊距、字型和頁碼。報告內容在所有規範中相同;IBAPE 風格會增加簽名欄。",
+      "normSection": "文件規範",
+      "projectsSection": "工地 / 專案",
+      "saved": "已儲存到 {path}",
+      "savedShort": "報告已儲存。",
+      "title": "PDF 報告",
+      "titleField": "報告標題",
+      "unavailableBody": "PDF 報告可在電腦版應用中使用。",
+      "unavailableTitle": "僅限電腦端",
+      "uncoded": "無程式碼",
+      "wordTooBig": "嵌入照片後的 Word 文件過大。請使用 PDF 或 ZIP 壓縮包。",
+      "zipMissing": "{count, plural, other {已儲存壓縮包,但有 # 張照片未在裝置上找到。}}"
+    },
+    "settings": {
+      "about": "關於",
+      "aboutDescription": "版本、隱私與致謝",
+      "appSection": "應用",
+      "deviceSection": "裝置",
+      "deviceSectionDescription": "Lymark 申請的訪問許可權。",
+      "fields": "欄位與位置",
+      "fieldsDescription": "選擇顯示的欄位、所在角落和大小",
+      "history": "歷史記錄",
+      "historyDescription": "儲存在裝置上的已匯出照片",
+      "language": "語言",
+      "permissions": "許可權",
+      "permissionsDescription": "相機、照片和定位",
+      "save": "儲存",
+      "title": "設定",
+      "watermark": "水印",
+      "watermarkSection": "水印",
+      "watermarkSectionDescription": "照片上新增什麼內容，以及新增在哪裡。"
+    },
+    "signup": {
+      "subtitle": "註冊以開始",
+      "title": "建立您的Lymark賬戶"
+    },
+    "tagline": "帶時間、日期和地點的水印",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "無相機許可權。請在裝置設定中允許。",
+      "done": "影片已加蓋並儲存。",
+      "export": "匯出加蓋影片",
+      "exportSection": "匯出",
+      "failed": "無法為影片加蓋。",
+      "fieldsSection": "印章欄位",
+      "fileSection": "影片",
+      "none": "未選擇影片。",
+      "processing": "處理中… {percent}%",
+      "processingMobile": "處理中…",
+      "record": "立即錄製影片",
+      "saved": "已儲存到 {path}",
+      "savedToGallery": "加蓋影片已儲存到相簿。",
+      "select": "選擇影片",
+      "unavailableBody": "手機端影片蓋章需要透過 EAS 構建安裝的 Lymark（含原生模組）。Expo Go 中不可用。請安裝正式版或 EAS 構建，或使用電腦 / 網頁版。",
+      "unavailableTitle": "需要已安裝的應用",
+      "unreadable": "無法將該檔案讀取為影片。",
+      "webNote": "在瀏覽器中，影片以實時速度處理——2 分鐘的影片需要 2 分鐘——並以 WebM 格式輸出。較長的影片請使用桌面應用。"
+    },
+    "watermark": {
+      "accentColor": "豎條",
+      "backdropBandNote": "色帶橫貫照片兩端，並貼合水印戳所在的邊緣。在工地、院落、繁雜立面等畫面上，它更像檔案的圖注，而不是貼上去的標籤。",
+      "backdropBlockNote": "底襯隨文字大小變化，四周留有邊距。",
+      "backdropColor": "底襯顏色",
+      "backdropDescription": "在照片的明亮區域上保持對比度。沒有底襯時，文字直接帶陰影顯示在圖片上。",
+      "backdropInnerRadius": "內側圓角",
+      "backdropOpacity": "透明度",
+      "backdropOpacityValue": "不透明度 {percent}%",
+      "backdropRadius": "圓角",
+      "backdropRadiusSquare": "直角",
+      "backdropStyles": {
+        "band": "通欄色帶",
+        "block": "文字底襯",
+        "none": "無"
+      },
+      "backdropTitle": "底襯",
+      "brandDescription": "放在時間上方時，它是帶徽標和副標題的簽名；放在角落時，它是一行不顯眼的文字。",
+      "brandFirstColor": "第一部分顏色",
+      "brandFirstHint": "建設",
+      "brandFirstPart": "第一部分",
+      "brandNote": "第二部分留空即為單色標識。名稱過長會自動縮小到放得下，而不是被截斷。",
+      "brandPlacements": {
+        "corner": "角落",
+        "header": "時間上方",
+        "none": "不顯示"
+      },
+      "brandSecondColor": "第二部分顏色",
+      "brandSecondHint": " 集團",
+      "brandSecondPart": "第二部分",
+      "brandTitle": "加蓋的標識",
+      "codeDescription": "放在側邊就不會和畫面內容爭奪空間。",
+      "codePlacements": {
+        "block": "緊靠資料",
+        "side": "右側"
+      },
+      "codeTitle": "照片編號",
+      "colors": {
+        "amber": "琥珀色",
+        "black": "黑色",
+        "blue": "藍色",
+        "green": "綠色",
+        "red": "紅色",
+        "white": "白色"
+      },
+      "colorsDescription": "照片上的顏色由公司決定，而非應用決定——在此修改不會改變介面的顏色。",
+      "colorsTitle": "水印戳顏色",
+      "complement": "副標題",
+      "complementColor": "副標題顏色",
+      "complementHint": "查驗與技術報告",
+      "cornerConflict": "標識和資料在同一個角落，照片上會互相重疊。",
+      "fields": {
+        "address": "地址 / 地點",
+        "code": "照片編號",
+        "date": "日期",
+        "time": "時間",
+        "weekday": "星期"
+      },
+      "fieldsDescription": "只有開啟且有內容的欄位才會出現在照片上。",
+      "fieldsTitle": "顯示的欄位",
+      "includeCountry": "包含國家",
+      "includeCountryDescription": "如果您跨國作業，請開啟。否則只會佔用照片空間。",
+      "legibilityTitle": "可讀性",
+      "logoAdded": "徽標已新增到標識標題。",
+      "logoAlignNote": "徽標高度隨文字變化：頂部與名稱頂部對齊，底部與副標題的基線對齊。",
+      "logoChosen": "已選擇的徽標",
+      "logoErrorMessage": "請嘗試其他圖片。透明背景的 PNG 效果最好。",
+      "logoErrorTitle": "無法使用此檔案",
+      "logoFormatNote": "請使用透明背景的 PNG。白底 JPG 會在照片上變成一個白色矩形——該格式不儲存透明度，應用也無法猜測哪些部分是背景。",
+      "logoPermissionMessage": "請在“設定 › 許可權”中允許訪問，以便選擇徽標檔案。",
+      "logoPermissionTitle": "照片訪問被拒絕",
+      "logoPick": "選擇徽標",
+      "logoPosition": "徽標位置",
+      "logoPositionBlock": "與印章一起",
+      "logoRemove": "移除",
+      "logoReplace": "更換徽標",
+      "logoSize": "徽標大小",
+      "positionDescription": "水印塊所錨定的照片角落。",
+      "positionTitle": "位置",
+      "positions": {
+        "bottom-left": "左下",
+        "bottom-right": "右下",
+        "top-left": "左上",
+        "top-right": "右上"
+      },
+      "previewCurrent": "疊加在“拍攝”標籤頁的當前照片上。",
+      "previewEmpty": "由淺到深的漸變，用於檢查兩端的可讀性。",
+      "previewNoFields": "未選擇任何欄位，照片將不帶水印匯出。",
+      "previewTitle": "預覽",
+      "reset": "恢復預設",
+      "sizeTitle": "文字大小",
+      "sizes": {
+        "large": "大",
+        "medium": "中",
+        "small": "小"
+      },
+      "textColor": "文字",
+      "timeFormatDescription": "時間填入欄位的格式。欄位仍可編輯。",
+      "timeFormatTitle": "時間格式",
+      "timeFormats": {
+        "12h": "12 小時(AM/PM)",
+        "24h": "24 小時"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "所有檔案",
+      "images": "圖片",
+      "pickFolder": "選擇輸出資料夾",
+      "pickPhoto": "選擇照片",
+      "pickPhotos": "選擇要批次處理的照片",
+      "savePhoto": "儲存照片",
+      "saveReport": "儲存報告"
+    },
+    "login": {
+      "cancel": "取消",
+      "confirm": "繼續",
+      "message": "您剛在瀏覽器中登入。要在這臺電腦上使用該賬戶嗎?",
+      "title": "登入 Lymark"
+    },
+    "menu": {
+      "copy": "複製",
+      "cut": "剪下",
+      "edit": "編輯",
+      "file": "檔案",
+      "fullscreen": "全屏",
+      "help": "幫助",
+      "paste": "貼上",
+      "quit": "退出",
+      "redo": "重做",
+      "reload": "重新載入",
+      "selectAll": "全選",
+      "settings": "設定",
+      "undo": "撤銷",
+      "view": "檢視",
+      "zoomIn": "放大",
+      "zoomOut": "縮小",
+      "zoomReset": "實際大小"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "返回首頁",
+      "openApp": "開啟應用",
+      "photos": "照片",
+      "photosLeft": "剩餘 {remaining} 張，共 {quota} 張",
+      "plan": "方案",
+      "planUnavailable": "暫時無法顯示",
+      "plans": {
+        "free": "免費",
+        "pro": "Pro"
+      },
+      "signInTitle": "登入",
+      "signOut": "退出登入",
+      "signUpTitle": "建立賬號",
+      "subscribe": "訂閱 Lymark Pro",
+      "subscribeSoon": "訂閱功能尚未開放。開放後，您可以在這裡訂閱，並用同一賬號在任何裝置上使用。",
+      "title": "您的賬號",
+      "revokeDesktops": "斷開所有電腦",
+      "revokeDesktopsHint": "結束應用在所有電腦上的訪問許可權。你可以隨時重新登入。"
+    },
+    "availability": {
+      "contact": "如需關注釋出進展或反饋問題，請寫信至 <email>contato@lymark.app</email>。",
+      "description": "Lymark 目前為 1.3.0 版本，正在 Android 上測試，尚未在 Google Play 上架。沒有 iOS 版本，也沒有網頁版本，應用不收取任何費用。",
+      "title": "可用情況"
+    },
+    "data": {
+      "device": {
+        "description": "賬號僅用於訂閱：伺服器只儲存郵箱和方案，絕不接收您的照片或位置。歷史記錄在應用自己的檔案中保留最近兩百次匯出。",
+        "field": "在裝置上",
+        "heading": "照片、地址和歷史記錄"
+      },
+      "external": {
+        "description": "要把經緯度變成能讀的地址，作業系統會向 Google 或 Apple 的地理編碼服務查詢。這是唯一離開本機的資訊，而且由系統發出，不是應用。",
+        "field": "離開裝置的部分",
+        "heading": "只有把座標換成地址這一件事"
+      },
+      "note": "詳情都寫在<privacy>隱私政策</privacy>裡，包括這在巴西《通用資料保護法》（LGPD）下的含義。關閉定位許可權後，應用仍然完全可用，只是地址需要手動輸入。",
+      "title": "你的資料在哪裡"
+    },
+    "deleteAccount": {
+      "back": "返回賬戶",
+      "confirm": "刪除我的賬戶",
+      "deletesNow": "刪除賬戶會立即清除您的電子郵箱、識別符號以及套餐、配額和照片計數記錄。",
+      "irreversible": "刪除是永久性的，無法撤銷。您裝置上的照片不受影響——它們從未存放在我們的伺服器上。",
+      "retained": "支付交易記錄將按法定財務義務期限保留，並與您的資料脫鉤。技術日誌按其自身期限過期。",
+      "title": "刪除賬戶"
+    },
+    "description": "一款 Android 應用，在現場查驗和服務憑證照片上加蓋時間、日期、星期、地址和一個追蹤編號。",
+    "desktop": {
+      "backAccount": "返回賬戶",
+      "explanation": "您的賬戶已準備就緒。點選下方按鈕，即可在電腦上以已登入狀態開啟 Lymark——瀏覽器會請求開啟應用的許可權。",
+      "open": "連線應用",
+      "title": "在電腦上登入",
+      "unavailable": "桌面應用連線暫不可用。"
+    },
+    "download": {
+      "appStore": {
+        "description": "與 Android 相同的體驗,在 iOS 上。",
+        "field": "App Store",
+        "heading": "iPhone 和 iPad"
+      },
+      "browser": {
+        "action": "登入",
+        "description": "用賬戶登入後,應用直接在瀏覽器中開啟——手機或電腦都可以。",
+        "field": "瀏覽器",
+        "heading": "立即使用,無需安裝"
+      },
+      "desktop": {
+        "description": "批次照片、長影片和 PDF 報告——重度工作版本。",
+        "field": "電腦",
+        "heading": "Windows 和 Linux"
+      },
+      "googlePlay": {
+        "description": "手機應用:相機、相簿和蓋章影片。",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "即將推出",
+      "title": "在哪裡使用 Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "道路型別會縮寫，省份改用簡稱，好讓地址在兩行內放下，不遮住照片。如果你在 GPS 回應之前就輸入了，以你輸入的為準。",
+        "field": "地址",
+        "heading": "由 GPS 填寫，可手動更正"
+      },
+      "code": {
+        "description": "它的用處是在工單或報告中指明某一張照片。可以豎排在右側，也可以緊挨資料塊，由你決定。",
+        "field": "照片編號",
+        "heading": "十四位字元，由加密生成器抽取"
+      },
+      "note": "每個欄位可單獨開關，整塊可以固定在四個角中的任意一個，並有三種大小。預覽用的是你當前這張照片，而不是示例圖：螢幕上看到的，就是匯出後的樣子。",
+      "time": {
+        "description": "如果拍攝比預想的久，一個按鈕就能把三個欄位拉回當前時刻。三者都可以手動修改。",
+        "field": "時間和日期",
+        "heading": "取自裝置時鐘，以拍攝那一刻為準"
+      },
+      "title": "照片上會出現什麼"
+    },
+    "footer": {
+      "description": "Lymark — 帶日期、時間和地址的照片記錄。",
+      "documentsLabel": "文件",
+      "privacy": "隱私政策",
+      "support": "支援：",
+      "terms": "使用條款"
+    },
+    "hero": {
+      "ctaAccount": "前往我的賬戶",
+      "ctaLogin": "登入",
+      "ctaSignup": "建立免費賬戶",
+      "description": "Lymark 把時間、日期、星期、地址和追蹤編號直接印在畫面上。從應用匯出的檔案，資訊就長在圖裡——而不是附在旁邊，一經 WhatsApp 轉發就被抹掉。",
+      "eyebrow": "現場照片記錄",
+      "heading": "照片離開手機時，已經寫明瞭何時、何地、何事。",
+      "meta": {
+        "account": "一鍵登入",
+        "android": "Android 與瀏覽器",
+        "language": "巴西葡萄牙語",
+        "onDevice": "照片留在裝置上"
+      },
+      "note": "無需安裝。"
+    },
+    "nav": {
+      "account": "賬號",
+      "home": "首頁",
+      "homeLabel": "Lymark，首頁",
+      "label": "主導航",
+      "privacy": "隱私",
+      "signIn": "登入",
+      "terms": "條款",
+      "verify": "驗證"
+    },
+    "process": {
+      "capture": {
+        "description": "照片一進來，就開始查地址。在這期間，各個欄位都可以隨時調整。",
+        "field": "拍攝",
+        "heading": "相機或相簿"
+      },
+      "note": "這兩個動作是有意分開的。儲存和分享解決的是不同的問題；合成一個按鈕，只想歸檔的人就得多走一遍傳送流程。",
+      "save": {
+        "description": "它和手機裡其他照片放在一起，任何應用都能用到——即使解除安裝了 Lymark 也還在。",
+        "field": "儲存",
+        "heading": "存入裝置相簿"
+      },
+      "share": {
+        "description": "WhatsApp、郵件、雲盤：去向由作業系統決定，應用不參與傳送。",
+        "field": "分享",
+        "heading": "開啟系統分享面板"
+      },
+      "title": "一張照片的路徑"
+    },
+    "skipToContent": "跳到主要內容",
+    "specimen": {
+      "caption": "琥珀色分隔線的起止對齊數字的邊緣，而不是文字框的邊緣。",
+      "label": "Lymark 水印示例：時間 07:42，日期 2026 年 8 月 12 日星期三，瓜魯雅的地址，以及照片編號。"
+    },
+    "title": "Lymark — 為現場照片加蓋日期、時間和地址的水印",
+    "verify": {
+      "caveat": "印章證明檔案的完整性和簽發時刻。水印所宣告的內容——地址、日期、時間——是簽發者的宣告。",
+      "checking": "驗證中…",
+      "declarationNote": "水印顯示的內容（地址、日期、時間）是簽發者的宣告——印章證明完整性與簽發，而非內容。",
+      "intro": "拖入或選擇一張由 Lymark 匯出的照片，立即檢視它是否與離開應用時完全一致——以及由誰、何時簽發。",
+      "noSealBody": "此檔案沒有 Lymark 印章。它可能是離線匯出的、在印章功能之前匯出的，或並非來自 Lymark。沒有印章並不證明被篡改。",
+      "noSealTitle": "無印章",
+      "notConfigured": "驗證功能暫不可用。",
+      "pick": "選擇檔案",
+      "previewAlt": "已驗證的照片，水印可見",
+      "privacyNote": "驗證在您的瀏覽器中完成。檔案不會傳送到任何伺服器。",
+      "sealedBody": "此檔案與離開 Lymark 時完全一致。由賬戶 {account} 於 {date} 簽發。",
+      "sealedTitle": "完整",
+      "tamperedBody": "內容與印章不符：檔案在簽發後被修改，或印章屬於另一個檔案。",
+      "tamperedTitle": "不匹配",
+      "title": "驗證真實性",
+      "unsupported": "此瀏覽器不支援簽名驗證。請嘗試新版瀏覽器。"
+    }
+  }
+}

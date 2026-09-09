@@ -1,4 +1,4 @@
-import { resolveDeviceLocale } from '../device-locale';
+import { matchTag, resolveDeviceLocale } from '../device-locale';
 
 /**
  * A negociação de idioma decide o que a pessoa lê na primeira abertura do
@@ -48,12 +48,24 @@ describe('resolveDeviceLocale', () => {
     expect(withDeviceLanguages(['pt-AO'], resolveDeviceLocale)).toBe('pt');
   });
 
-  it('ignora a escrita: zh-Hant recebe o catálogo chinês', () => {
-    expect(withDeviceLanguages(['zh-Hant-TW'], resolveDeviceLocale)).toBe('zh');
+  it('distingue a escrita: zh-Hant recebe o catálogo tradicional', () => {
+    expect(withDeviceLanguages(['zh-Hant-TW'], resolveDeviceLocale)).toBe('zh-Hant');
+    expect(withDeviceLanguages(['zh-Hant'], resolveDeviceLocale)).toBe('zh-Hant');
+  });
+
+  it('mapeia regiões chinesas sem colidir zh e zh-Hant', () => {
+    expect(withDeviceLanguages(['zh-TW'], resolveDeviceLocale)).toBe('zh-Hant');
+    expect(withDeviceLanguages(['zh-HK'], resolveDeviceLocale)).toBe('zh-Hant');
+    expect(withDeviceLanguages(['zh-MO'], resolveDeviceLocale)).toBe('zh-Hant');
+    expect(withDeviceLanguages(['zh-CN'], resolveDeviceLocale)).toBe('zh');
+    expect(withDeviceLanguages(['zh-SG'], resolveDeviceLocale)).toBe('zh');
+    expect(withDeviceLanguages(['zh-Hans-CN'], resolveDeviceLocale)).toBe('zh');
+    expect(withDeviceLanguages(['zh'], resolveDeviceLocale)).toBe('zh');
   });
 
   it('aceita separador com sublinhado, que alguns aparelhos ainda usam', () => {
     expect(withDeviceLanguages(['es_MX'], resolveDeviceLocale)).toBe('es');
+    expect(withDeviceLanguages(['zh_TW'], resolveDeviceLocale)).toBe('zh-Hant');
   });
 
   it('não distingue maiúsculas', () => {
@@ -76,5 +88,12 @@ describe('resolveDeviceLocale', () => {
 
   it('cai no português quando nenhuma das duas fontes serve', () => {
     expect(withDeviceLanguages(undefined, resolveDeviceLocale, 'cy-GB')).toBe('pt');
+  });
+});
+
+describe('matchTag', () => {
+  it('não deixa zh-Hant colidir com a primária zh', () => {
+    expect(matchTag('zh-Hant-TW')).toBe('zh-Hant');
+    expect(matchTag('zh-CN')).toBe('zh');
   });
 });

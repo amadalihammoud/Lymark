@@ -31,6 +31,7 @@ export const MONTHS: Record<Locale, readonly string[]> = {
   // Chinês, japonês e coreano escrevem o mês como número, e o marcador vem do
   // padrão da data — "8月", "8월". Abreviação de nome de mês não existe.
   zh: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  'zh-Hant': ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   ja: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   ko: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
@@ -134,6 +135,7 @@ export const DATE_PATTERN: Record<Locale, string> = {
   nl: '{d} {mon} {y}',
   ru: '{d} {mon} {y}',
   zh: '{y}年{mon}月{d}日',
+  'zh-Hant': '{y}年{mon}月{d}日',
   ja: '{y}年{mon}月{d}日',
   ko: '{y}년 {mon}월 {d}일',
   ar: '{d} {mon} {y}',
@@ -211,6 +213,7 @@ export const WEEKDAYS_SHORT: Record<Locale, readonly string[]> = {
   nl: ['zo', 'ma', 'di', 'wo', 'do', 'vr', 'za'],
   ru: ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
   zh: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+  'zh-Hant': ['週日', '週一', '週二', '週三', '週四', '週五', '週六'],
   ja: ['日', '月', '火', '水', '木', '金', '土'],
   ko: ['일', '월', '화', '수', '목', '금', '토'],
   ar: ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
@@ -288,6 +291,7 @@ export const WEEKDAYS_LONG: Record<Locale, readonly string[]> = {
   nl: ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'],
   ru: ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'],
   zh: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+  'zh-Hant': ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
   ja: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'],
   ko: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
   ar: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
@@ -406,6 +410,7 @@ export const STAMP_LOCALE: Record<Locale, Locale> = {
   ru: 'ru',
   // Árabe e CJK: sem glifos nas fontes do carimbo.
   zh: 'en',
+  'zh-Hant': 'en',
   ja: 'en',
   ko: 'en',
   ar: 'en',
