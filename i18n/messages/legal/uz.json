@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Maxfiylik siyosati",
+      "description": "Lymark ilovasi fotosuratlar, joylash joy, tarix va hisobingizni qanday boshqaradi. Fotosuratlar va joylash joy hech qachon qurilmadan chiqmaydi; server faqat elektron pochta xabarlarini, reja va fotosuratlar sonini saqlaydi."
+    },
+    "title": "Maxfiylik siyosati",
+    "updated": "So'nggi marta yangilangan: 2026 yil 16 avgust · Lymark app, 1.3.0 versiyasi",
+    "intro": "Ushbu siyosat Lymark ilovasi shaxsiy ma'lumotlarni qanday boshqarishini tasvirlaydi. U Lei n° 13.709/2018 (Janarli shaxsiy ma'lumotlarni himoya qilish to'g'risidagi qonunLGPD) va (EU) 2016/679 (Janarli ma'lumotlarni himoya qilish to'g'risidagi qonunGDPR) ga muvofiqdir va identifikator ostida tarqatilgan ilovasiga nisbatan amal qiladi <strong>com.lycosteam.lymark</strong>va ushbu veb-saytga.",
+    "s01": {
+      "title": "Bir gap bilan",
+      "p1": "Lymark <strong>fotosuratlaringizni yoki joyingizni uzatmaydi</strong>. Ilova yaratadigan hamma narsa  rasmlar, manzillar, tarix va afzalliklar  o'zingizning qurilmangizda qoladi, sizning nazoratingiz ostida. Ilovadan foydalanish va obunalik uchun hisob qaydnomasi mavjud: server sizning elektron pochta xabaringizni, hisob qaydnomangizni, eksport qilingan fotosuratlar rejasini va sonini saqlaydi  va boshqa hech narsa.",
+      "p2": "05-bandda tasvirlangan bitta istisno bor: GPS koordinatlarini o'qiladigan manzilga aylantirish uchun qurilma operatsion tizimi tashqi geokodifikatsiya xizmatidan so'rov oladi."
+    },
+    "s02": {
+      "title": "Ushbu siyosat kimlarga amal qiladi",
+      "p1": "Bu dasturdan foydalanuvchi yoki ushbu veb-saytga tashrif buyuradigan har bir kishiga tegishli. Braziliyadagi ma'lumotlar subyektlari uchun qayta ishlash 1 va Milliy ma'lumotlar muhofazasi organining nazorati ostida (3)."
+    },
+    "s03": {
+      "title": "Boshqaruvchining kimligi",
+      "p1": "The controller of the personal data — <em>controlador</em>, in the terminology of the LGPD — is 29.015.357 AMAD ALI HAMMOUD, registered under CNPJ 29.015.357/0001-25, with an address at Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Shaxsiy ma'lumotlarni qayta ishlash uchun mas'ul shaxs 2ning 41-moddasi uchun 1 hisoblanadi, u bilan 2da bog'lanish mumkin.<email>contato@lymark.app</email>. Ishlab chiqarish hajmi va xususiyatiga koʻra  bu oʻta hissiy maʼlumotlarni oʻz ichiga olmaydi va tizimli nazoratni ham oʻz ichiga olmaydi <em>Ma'lumotlarni himoya qilish bo'yicha xodim</em>3ning 37-moddasi asosida."
+    },
+    "s04": {
+      "title": "Ilova qanday ma'lumotlarni boshqaradi",
+      "p1": "Quyidagi barcha ma'lumotlar faqat dasturiy ta'minotning ichki xususiy sohasi ichida qayd etiladi va ularning hech biri ishlab chiquvchiga yuborilmaydi.",
+      "defs": {
+        "photos": {
+          "term": "Rasmlar",
+          "def": "Galereyadan tanlagan rasm yoki kamera bilan olingan rasm va suv belgisi bilan eksport qilingan fayl. Fotodramada uchinchi shaxslar shaxsiy ma'lumotlar 11 -bandni ko'rib chiqing."
+        },
+        "location": {
+          "term": "Joylash joyi",
+          "def": "Manzil maydoni to'ldirish uchun bir marta olingan taxminan uzunlik va uzunlik. Ko'paymalar yozilmaydi: fotosurat bilan birga faqat manzil matni saqlanadi."
+        },
+        "datetime": {
+          "term": "Sana, vaqt va hafta kuni",
+          "def": "Qopish paytida qurilma soatidan o'qib, siz tahrirlashingiz mumkin."
+        },
+        "code": {
+          "term": "Rasm kodlari",
+          "def": "Bu 14 hexadecimal belgilarning tartibini tartibsiz ravishda chizadi. Bu ne qurilma identifikatoridan, na sizning qurilmangizdan kelib chiqadi va dasturlar bo'ylab izlanish olib borishni imkon bermaydi."
+        },
+        "history": {
+          "term": "Tarix",
+          "def": "So'nggi 200 ta eksportning qaydnomasi, uskunadagi fayl yo'li va rasmga muhrlangan ma'lumotlar."
+        },
+        "preferences": {
+          "term": "Preferentsiyalar",
+          "def": "Ko'rinadigan maydonlar, joy, o'lcham va boshqa suv belgilari variantlari."
+        }
+      },
+      "p2": "Ilova<strong>yig'maydi</strong>: ism, elektron pochta, telefon, shaxsni aniqlash hujjatlari, reklama identifikatori, qurilma identifikatori, kontakt ma'lumotlar, kalendar, brauzerlik tarixi, foydalanish ma'lumotlari, crash hisobotlari yoki siz yoki qurilmangiz haqida boshqa ma'lumot."
+    },
+    "s05": {
+      "title": "Qurilma tashqaridan chiqadigan yagona ma'lumot",
+      "p1": "Manzilga ruxsat berishdan so'ng, dastur operatsion tizimdan GPS koordinatlarini pochta manziliga aylantirishni so'raydi. Bu tarjima  terma geokodifikatsiya  operatsion tizimning o'zi amalga oshiradi, bu maqsad uchun koordinatlar xarita xizmatiga yuboradi: <strong>Google</strong>Android qurilmalarida va <strong>Olma</strong>iOS qurilmalarida.",
+      "p2": "Ushbu xabar Lymarkdan emas, operatsion tizimdan keladi. Ilova uning nusxasini olmaydi, प्रकारga o'tmaydi va qaytarib berilgan manzildan tashqari hech qanday narsaga kirmaydi. Ushbu provayderlar tomonidan amalga oshiriladigan qayta ishlash ularning shaxsiy maxfiylik siyosati bilan tartibga solinadi.",
+      "p3": "<strong>Ilova har qanday harakat orqali qurilmani hech qanday fotosurat tark etmaydi.</strong>Agar siz \"Share\" tugmasini ishlatsangiz, rasm ushbu dasturning maxfiylik siyosati ostida tizimning \"share\" sahifasida tanlagan maqsadli dastur tomonidan uzatiladi."
+    },
+    "s06": {
+      "title": "Ruxsatnomalar talab qilinadi va nima uchun",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Suv belgisini qabul qiladigan fotosuratni olish uchun. Faqat Shayot olishni bosing. Ilova mikrofonga kirishni talab qilmaydi."
+        },
+        "photos": {
+          "term": "Fotosuratlar va ommaviy axborot vositalari",
+          "def": "Mavjud rasmni tanlash va eksport qilingan faylni galereyaga yozish uchun. Fotalarga kirish cheklangan va yozish ruxsatnomasi faqat yozish uchun ishlatiladi  dastur sizning galereyangizni ko'rmaydi yoki o'qib bo'lmaydi."
+        },
+        "location": {
+          "term": "Foydalanishda joylashishi",
+          "def": "Manzil maydoni to'ldirish uchun. Iltimos dasturiy ta'minot ishlatilayotganida, faqat dasturiy ta'minot ishlatilayotganida, va <strong>hech qachon orqaga</strong>."
+        }
+      },
+      "p1": "Barcha ruxsatnomalar o'z ixtiyori bilan beriladi va qurilma sozlamalarida istalgan vaqtda bekor qilinadi. Manzilni rad etish dasturni to'liq ishlashi uchun ishlaydi: manzilni siz bosasiz. Galeriyaga kirishdan bosh tortish faqat avtomatik saqlashni to'sadi va fotosurat hali ham baham ko'rish mumkin."
+    },
+    "s07": {
+      "title": "Huquqiy asoslar va maqsadlar",
+      "p1": "Joylash joyini qayta ishlash sizning <strong>rozilik</strong>  0ning 7-moddasi I va 1  ning 61)  a) moddasi, siz tizimga ruxsat berganingizda ko'rsatilgan va bekor qilinadigan har qanday vaqtda, bekor qilinishdan oldin amalga oshirilgan qayta ishlashning qonuniyligiga daxl qilmasdan.",
+      "p2": "Qolgan ma'lumotlarni qayta ishlash <strong>talab qilgan xususiyatning bajarilishi</strong>   0ning 7-moddasi V va  1   ning 6 (1) (b) moddasi, chunki usiz dastur ishlab chiqarishi uchun suv belgisi yo'q.",
+      "p3": "Hisobot ma'lumotlarini qayta ishlash shartnoma bajarilishiga asoslanadi (0 7 -modda, V; 1 6 -modda) (b). Qonuniy manfaatga asoslangan qayta ishlash (0 7 -modda, IX -modda; 1 6 -modda) faqat xavfsizlik va firibgarlik oldini olish uchun mavjud  Misol uchun, serverga so'rovlarning IP manzili qayd etiladi. Reklama, profillashtirish, xulq-atvor tahlillari yoki boshqa ikkinchi darajali maqsadlar uchun qayta ishlash mavjud emas, shuningdek, ishlab chiquvchi tomonidan ma'lumotlar yoki o'ta muhim ma'lumotlar maxsus toifalarini qayta ishlash mavjud emas."
+    },
+    "s08": {
+      "title": "Xalqaro oʻtkazish",
+      "p1": "Hisobot ma'lumotlarini xalqaro ma'lumotlarni o'tkazish uchun sertifikatlashtirish protsessor (0, AQSh) tomonidan qayta ishlanadi. Bu standart shartnomaviy klauzulalarga asoslangan va 1 33-moddalari va 2-moddalar mexanizmlariga asoslangan. 44-dan 49.",
+      "p2": "Ushbu veb-sayt 14 bo'lmaidagi shartlar bo'yicha 0 tomonidan uyushtiriladi."
+    },
+    "s09": {
+      "title": "Uchinchi shaxslar bilan o'zaro aloqasi",
+      "p1": "Ishlab chiquvchi shaxsiy ma'lumotlarni uchinchi shaxslarga taqsimlamaydi, sotmaydi, ijaraga olmaydi yoki bermaydi.<em>protsessor</em>0, bu sahifalarni tasdiqlovchi xizmatni taqdim etadi va elektron pochta xabarini, hisob identifikatorini va reja ma'lumotlarini saqlaydi. Agar siz Google yoki Apple bilan kirishsangiz, ushbu provayderlar kirish ma'lumotlarini o'z siyosatlari asosida qayta ishlashadi; ishlab chiquvchi ulardan faqat hisobni yaratish uchun zarur bo'lgan elektron pochta xabarini va identifikatorni oladi. Fotosuratlar, manzillar va joylash joy hech qanday protsessor orqali o'tmaydi, chunki ular hech qachon qurilmani tark etmaydilar."
+    },
+    "s10": {
+      "title": "saqlash, saqlash va xavfsizlik",
+      "p1": "Ma'lumotlar dasturning shaxsiy sohasi bo'lib, operatsion tizimning dasturlar o'rtasidagi izolyatsiyasi va qurilma ekranini qulflash orqali himoyalangan. Android versiyasida tizimning avtomatik nusxasi<strong>nogironlar</strong>, shunda foydalanuvchining Google hisob raqamiga tarix va tanlovi yuborilmaydi.",
+      "p2": "Xatira qilish siz tomonidan to'liq nazorat qilinadi: yozuvlar dasturning o'zida o'chguncha saqlanib qoladi va tarix ikki yuz element o'tganida eng qadimgilarini avtomatik ravishda tashlaydi, tegishli fayllarni ham olib tashlaydi. Ilovani o'chirib tashlash uning saqlashini o'chiradi. Qurilma galereyasida saqlangan fotosuratlar galereyaga tegishli va u erda qolish  xohlasangiz ularni olib tashlash sizning zimmangizga kiradi.",
+      "p3": "Hech qanday tizim xato qilmaydigan. Hisobot ma'lumotlari  elektron pochta, identifikator, reja va hisob  uning xavfsizlik choralari bo'yicha autentifikatsiya protsessor tomonidan saqlanadi. Fotosuratlar, manzillar va joylashishi hech qanday markaziy omborda mavjud emas va shuning uchun ishlab chiquvchi infratuzilmasidan chiqishi mumkin emas. Agar xavfsizlik hodisasi hisob ma'lumotlariga ta'sir qilsa, ishlab chiquvchi ushbu ma'lumotlarni rasmiy va ma'lumot subyektlariga 0 moddalari 48 va 1 moddalari asosida xabar qiladi. 33."
+    },
+    "s11": {
+      "title": "Boshqa odamlarni suratga olish",
+      "p1": "Kasbiy faoliyatingiz davomida aniq odamlar fotosuratini ko'rsangiz, <strong>siz</strong>ko'rsatilgan ma'lumotlarga nisbatan ushbu ma'lumotlarning muharriri bo'lish, va siz ularning huquqiy asosini, ma'lumotlarni va huquqlariga javob berishdan iborat."
+    },
+    "s12": {
+      "title": "Sizning huquqlaringiz",
+      "p1": "0ning 18-moddasi va 1ning 15-moddalaridan 22-moddasiga qadar sizga tasdiqlash va kirish, tuzatish, o'chirish, anonimlashtirish, blokirovka qilish, o'tkazilishi, qayta ishlashni cheklash, e'tiroz, rozilikni bekor qilish va almashish haqida ma'lumot olish huquqlarini kafolatlaydi.",
+      "p2": "Fotosuratlar, manzillar, tarix va preferentsiyalar faqat qurilmangizda mavjud va ushbu huquqlar to'g'ridan-to'g'ri dasturda amalga oshiriladi: Galeriya tabidagi yozuvlarni ko'rish va o'chirish, eksport qilishdan oldin har qanday maydonni tuzatish, tizim sozlamalarida joylashishga ruxsatni bekor qilish va dasturni o'chirib tashlash orqali hamma narsani o'chirish  ishlab chiquvchi ushbu ma'lumotlarga kirish, eksport yoki o'chirish mumkin emas, chunki u siz uchun mavjud emas. Hisobot ma'lumotlari  elektron pochta, reja va hisob  Siz uni hisob sahifasida ko'rishingiz va bu siyosatning kontakt elektron pochta xabaridan tuzatish, eksport yoki o'chirishni so'rashingiz mumkin; hisobni o'chirish ushbu ma'lumotlarni autentifikatsiya protsessorida o'chirishadi.",
+      "p3": "Savollar yoki rasmiy talablar uchun <email>contato@lymark.app</email>Shuningdek , sizda qonunchilikka qarshi shikoyat qilish huquqi bor .<strong>ANPD</strong>, Braziliyada yoki sizning davlatingizning nazorat organida, Yevropa Ittifoqida."
+    },
+    "s13": {
+      "title": "Avtomatik qarorlar",
+      "p1": "0 ning 20-moddasi va 1 ning 22-moddasi bo'yicha siz haqingizda huquqiy ta'sir ko'rsatadigan avtomatlashtirilgan qarorlar, profillar tuzish yoki qayta ishlash yo'q."
+    },
+    "s14": {
+      "title": "Ushbu veb-sayt haqida",
+      "p1": "Ushbu saytda hech qanday tahlillar mavjud emas, reklama ko'rsatilmaydi va ijtimoiy tarmoqlar tugmalari joylashtirilmaydi.<strong>qat'iy zarur cookie-fayllar</strong>hisobingiz seansida autentifikatsiya protsessorining (09-band) o'rnatishi; siz kirish paytida kuzatuv yoki reklama kukilari yo'q. Shriftlar saytning o'z domenidan xizmat ko'rsatilgan. brauzeringiz uchinchi shaxslarga faqatgina kirish va hisob ekranlari orqali murojaat qiladi, bu autentifikatsiya protsessorining () va, agar siz uni tanlasangiz, kirish provayderining (Google yoki Apple) manzillariga yuboriladi.",
+      "p2": "Sayt <strong>Vercel Inc.</strong>, u, protsessor sifatida, texnik kirish ma'lumotlarini  IP-manzil, sana, vaqt va talab qilingan resursni  xosting xavfsizligi va ishlashi uchun zarur bo'lgan muddat davomida qayd etadi. Huquqiy asos - xizmat xavfsizligini saqlashning qonuniy manfaatidir, 1ning 7-moddasi IX va 2ning 6(1)(f)"
+    },
+    "s15": {
+      "title": "Ushbu siyosatga o'zgartirishlar",
+      "p1": "O'zgarishlar ushbu sahifada yangi yangilanish sanasi bilan e'lon qilinadi. Ma'lumotlarni qayta ishlashni sezilarli darajada o'zgartiradigan o'zgarishlar ular kuchga kirishdan oldin ilova ichida ham xabar qilinadi."
+    },
+    "s16": {
+      "title": "Bolalar va o'smirlar",
+      "p1": "Lymark 18 yoshdan katta bo'lgan odamlar uchun mo'ljallangan ish vositasi bo'lib, u bolalar yoki o'smirlarga qaratilgan emas va bu auditoriya haqida ma'lumotlarni qasddan to'plamaydi."
+    },
+    "s17": {
+      "title": "Amaldagi qonun",
+      "p1": "Ushbu siyosat Braziliya qonunchiligiga amal qiladi, bu esa ma'lumotlar subyektiga 0ning qo'llanilishiga daxildir."
+    },
+    "note": "Shuningdek , <terms>Foydalanish shartlari</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Foydalanish shartlari",
+      "description": "Lymark dasturidan foydalanish shartlari: u nima qiladi, nima qilmaydi va fotosuratlarning tarkibi uchun kim javobgar."
+    },
+    "title": "Foydalanish shartlari",
+    "updated": "So'nggi marta yangilangan: 2026 yil 16 avgust · Lymark app, 1.3.0 versiyasi",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Ilova nima qiladi",
+      "p1": "Lymark fotosuratga ma'lumotlarni bir qatorga o'tkazib, vaqt, sanasi, hafta kuni, manzili va identifikatsiya kodini o'rnatadi va ushbu ma'lumot pikseyllarga o'rnatilgan holda yangi rasm faylini yaratadi."
+    },
+    "s02": {
+      "title": "Ilova nima qilmaydi",
+      "p1": "Bu masala bu so'zlar orasida eng muhim bo'lib, uni diqqat bilan o'qishni so'raymiz.",
+      "items": {
+        "certify": "<strong>Ilova hech narsani tasdiqlamaydi.</strong>Bu sud ekspertizasi emas, u ommaviy ishonch bilan hujjat chiqarmaydi va ekspert dalillarini tashkil etmaydi.",
+        "editable": "<strong>Har bir maydon foydalanuvchi tomonidan tahrirlanishi mumkin.</strong>Soat, sana, manzili va kodni eksport qilishdan oldin erkin o'zgartirish mumkin: mutaxassis GPS xatoga tushgan manzilni tuzatishi kerak. Natijada, muhrlangan qiymat foydalanuvchi muhrlashni xohlagan narsani aks ettiradi.",
+        "clock": "<strong>Vaqt qurilma soatidan keladi</strong>, noto'g'ri bo'lishi mumkin yoki qo'lda o'rnatilgan bo'lishi mumkin.",
+        "address": "<strong>Manzil taxmin qilingan.</strong>Uning aniqligi GPS signalidan va operatsion tizimning xaritasi xizmati bazalaridan bog'liq.",
+        "code": "<strong>Fotokod notarial idoraga ro'yxatdan o'tish emas.</strong>Bu ichki ma'lumot uchun tasodifiy identifikator bo'lib, hech qanday dalil qiymatga ega emas."
+      },
+      "p2": "Agar sizda foydalanish uchun uchinchi shaxslarga qarshi qonuniy kuchga ega bo'lgan dalillar talab qilinsa, notarial hujjat yoki vaqt belgilari bilan raqamli sertifikatlash xizmatini qidiring. Lymark"
+    },
+    "s03": {
+      "title": "Sizning mas'uliyatlaringiz",
+      "items": {
+        "photos": "Siz suratga olgan fotosuratlar, ularning tarkibiga o'zingiz belgi qo'ygan va yaratilgan fayllardan foydalanadigan siz faqat siz javobgarsiz.",
+        "thirdParties": "Boshqa odamlarni, ularning mol-mulkini yoki joylarini suratga olishda, siz kerakli ruxsatlarni olish va suratga olingan ma'lumotlar subyektiga nisbatan tasvir huquqlarini, professional maxfiylikni va umumiy shaxsiy ma'lumotlar himoyasi qonunini e'tiborga olishdan o'zingizga bog'liq.",
+        "prohibited": "Ilova orqali soxta hujjatni yaratish, kimnidir yo'ldan ozdirish, taqdim etilmagan xizmatni bajarishni taqlid qilish yoki qonunga xilof ish qilish taqiqlanadi.",
+        "backups": "Siz muhim deb hisoblagan har qanday dasturning nusxalarini saqlash sizning zimmangizdadir."
+      }
+    },
+    "s04": {
+      "title": "Foydalanish litsenziyasi",
+      "p1": "Biz sizga dasturni o'rnatish va undan foydalanish uchun shaxsiy, bekor qilinadigan, mutlaq va o'tkazilishi mumkin bo'lmagan litsenziyani, shu jumladan, professional maqsadlarda beramiz.",
+      "p2": "<strong>Rasmlaringiz sizningdir.</strong>Biz siz tomosha qilgan yoki yaratgan rasmlarga nisbatan huquqimiz yo'q. Lymark nomi, brend va vizual identifikatsiya ishlab chiquvchi mulki bo'lib qolmoqda."
+    },
+    "s05": {
+      "title": "Qolaversa, ushbu ma'lumotlarning mavjudligi va yangilanishi",
+      "p1": "Ilova hozirgi holatda taqdim etiladi. Har bir qurilma bilan uzluksiz ishlash, har bir qurilma bilan moslashuvchanlik kafolati yo'q, tuzatish yoki yangi versiyalar uchun muddatga doir majburiyatlar yo'q.",
+      "p2": "Eksport qilingan rasmning sifati qurilma va operatsion tizimga bog'liq va asl fotosuratga qaraganda kamroq aniqlikdagi bo'lishi mumkin."
+    },
+    "s06": {
+      "title": "Havolaning cheklanishi",
+      "p1": "Braziliya qonunchiligi tomonidan ruxsat etilgan maksimal darajada, ishlab chiquvchi ilova tomonidan yaratilgan fotosurat tarkibiga qarshi sudda yoki undan tashqari har qanday da'vo qilishdan kelib chiqqan holda, o'z-o'zidan ko'ra, o'z-o'zidan ko'ra, o'z-o'zidan yo'qotgan zarar, zarar, ma'lumotlar yo'qotish yoki zarar uchun javobgar emas.",
+      "p2": "Ushbu cheklov <strong>olib tashlanmaydi</strong>iste'molchiga 8.078/1990-yilgi qonun bilan kafolatlangan huquqlar, qasddan noto'g'ri ish yoki jiddiy beparvolik uchun javobgarlik."
+    },
+    "s07": {
+      "title": "Toʻxtatish",
+      "p1": "Siz dasturdan istalgan vaqtda foydalanishni to'xtatishingiz mumkin: hisobni o'chirish uning serverdagi ma'lumotlarini o'chiradi va dasturni o'chirib tashlash qurilmada saqlangan ma'lumotlarni o'chiradi. To'lovli obuna bo'lmasa ham, bekor qilish uchun obuna yo'q; agar bo'lsa, bekor qilish shartlari har qanday to'lovdan oldin ushbu shartlarda ko'rinadi."
+    },
+    "s08": {
+      "title": "Ushbu shartlarga o'zgartirishlar",
+      "p1": "O'zgarishlar ushbu sahifada yangi yangilanish sanasi bilan e'lon qilinadi."
+    },
+    "s09": {
+      "title": "Amaldagi qonun va forum",
+      "p1": "Ushbu shartlardan kelib chiqadigan nizolarni hal qilish uchun tanlangan forum foydalanuvchi joylashgan joy bo'ladi."
+    },
+    "note": "Ma'lumotlarni qayta ishlash haqida ko'proq ma'lumot olish uchun <privacy>Maxfiylik siyosati</privacy>Savollar: <email>contato@lymark.app</email>."
+  }
+}

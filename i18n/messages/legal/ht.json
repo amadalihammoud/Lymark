@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Politik sou vi prive",
+      "description": "Ki jan app Lymark la okipe foto, kote, istwa ak kont ou. Foto ak kote pa janm kite aparèy la; sèvè a kenbe sèlman imel, plan ak foto konte."
+    },
+    "title": "Politik sou vi prive",
+    "updated": "Dènye mete ajou: 16 Out 2026 · Lymark app, vèsyon 1.3.0",
+    "intro": "Politik sa a dekri fason aplikasyon Lymark la manipile enfòmasyon pèsonèl. Li konfòme li ak Lei no 13.709/2018 (Jeneral Lwa sou Pwoteksyon Done PèsonèlLGPD) ak avèk Règleman (EU) 2016/679 (Jeneral Règleman sou Pwoteksyon DoneGDPR), epi li aplike nan app la distribye anba idantifikatè a <strong>com.lycosteam.lymark</strong>ak sit entènèt sa a.",
+    "s01": {
+      "title": "Nan yon fraz",
+      "p1": "Lymark <strong>pa transmèt foto ou oswa kote ou ye</strong>Tout bagay ki app a pwodwi  imaj, adrès, istwa ak preferans  rete sou aparèy ou, anba kontwòl ou. Gen yon kont, ki nesesè pou itilize app a ak pou abònman an: sèvè a kenbe imèl ou, ID kont, plan an ak konte a nan foto ekspòte  ak pa gen anyen lòt bagay.",
+      "p2": "Gen yon eksepsyon sèl, ki dekri nan pwen 05: pou fè kowòdone GPS yo tounen yon adrès li, sistèm operasyon aparèy la mande yon sèvis jeokoding ekstèn."
+    },
+    "s02": {
+      "title": "Pou ki moun politik sa a aplike",
+      "p1": "Li aplike pou nenpòt moun ki itilize app a oswa vizite sit entènèt sa a. Pou moun ki sijè a done nan Brezil, pwosesis la swiv 1 ak sipèvizyon nan National Data Protection Authority (3). Pou moun ki sijè a done nan Esfè Ekonomik Ewopeyen an ak nan Wayòm Ini a, li swiv 2 ak 0."
+    },
+    "s03": {
+      "title": "Ki moun ki kontwole a se",
+      "p1": "The controller of the personal data — <em>controlador</em>, in the terminology of the LGPD — is 29.015.357 AMAD ALI HAMMOUD, registered under CNPJ 29.015.357/0001-25, with an address at Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Moun ki an chaj pou pwosesis done pèsonèl, pou rezon nan atik 41 nan 2, se 1, ki ka kontakte nan <email>contato@lymark.app</email>. Lè w konsidere volim ak nati pwosesis la  ki pa enplike ni done sansib nan echèl ni sijesyatif siveyans  pa gen okenn obligasyon pou nonmen yon <em>Ofisye Pwoteksyon Done</em>dapre atik 37 nan 3."
+    },
+    "s04": {
+      "title": "Ki enfòmasyon app a okipe",
+      "p1": "Tout enfòmasyon ki anba a yo anrejistre sèlman nan zòn prive app a andedan aparèy la, epi pa gen anyen nan li yo voye bay devlopè a.",
+      "defs": {
+        "photos": {
+          "term": "Foto",
+          "def": "Imaj la ou chwazi nan galeri a oswa kaptire ak kamera a, ak dosye a ekspòte ak mak dlo a. Yon foto ka gen twazyèm pati done pèsonèl gade atik 11."
+        },
+        "location": {
+          "term": "Kote yo ye",
+          "def": "Latitid ak longitid aproksimatif, jwenn yon fwa pou chak kaptire, pou rezon sèl la pou ranpli jaden adrès la. Kowòdone yo pa anrejistre: sèlman tèks adrès ki rive a kenbe, ansanm ak foto a."
+        },
+        "datetime": {
+          "term": "Dat, lè ak jou semèn",
+          "def": "Li nan aparèy la revèy nan moman an nan kaptire, ak editable pa ou."
+        },
+        "code": {
+          "term": "Kòd foto",
+          "def": "Yon sekans de katòz karaktè seksyèm trase nan alethom. Li pa sòti nan yon idantifyan aparèy ni nan youn nan ou, epi li pa pèmèt okenn swiv atravè apps."
+        },
+        "history": {
+          "term": "Istwa",
+          "def": "Yon dosye de 200 dènye ekspòtasyon, ki gen wout dosye sou aparèy la ak done yo sele sou imaj la."
+        },
+        "preferences": {
+          "term": "Priferans",
+          "def": "Champs vizib, pozisyon, gwosè ak lòt opsyon mak dlo yo."
+        }
+      },
+      "p2": "Aplikasyon an <strong>pa kolekte</strong>: non, imèl, telefòn, dokiman idantite, idantifikasyon piblisite, idantifikasyon aparèy, done kontak, kalandriye, istwa navigasyon, metrik itilizasyon, rapò aksidan oswa nenpòt lòt enfòmasyon sou ou oswa sou aparèy ou. Pa gen okenn analiz, piblisite, atribisyon oswa swiv SDK enkòpore."
+    },
+    "s05": {
+      "title": "Enfòmasyon sèlman ki kite aparèy la",
+      "p1": "Lè ou bay pèmisyon kote a, app a mande sistèm nan fonksyone pou vire kowòdone GPS yo nan yon adrès postal. Tradiksyon sa a  reverse geocoding  se fè pa sistèm nan fonksyone tèt li, ki nan rezon sa a voye kowòdone yo nan sèvis kat li yo: <strong>Google</strong>sou aparèy android ak <strong>Apèl</strong>sou aparèy iOS.",
+      "p2": "Kominikasyon sa a soti nan sistèm nan opere, epi yo pa soti nan Lymark. app a pa resevwa okenn kopi li yo, pa medyatè li epi yo pa gen aksè a anyen pi lwen pase adrès la retounen.",
+      "p3": "<strong>Pa gen foto kite aparèy la nan nenpòt aksyon nan app la.</strong>Si ou itilize bouton Pataje, imaj la transmèt pa app destinasyon ou chwazi nan fèy pataje sistèm  messenger, imel, depo nwaj  anba règleman sou vi prive app sa a."
+    },
+    "s06": {
+      "title": "Permis yo mande, e poukisa",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Pou pran foto a ki pral resevwa mak dlo a. Demann sèlman lè ou tape Tire foto. App a pa mande pou aksè mikwofòn."
+        },
+        "photos": {
+          "term": "Foto ak medya",
+          "def": "Pou chwazi yon imaj ki deja egziste epi ekri dosye a ekspòte nan galeri a. Aksè a se restriksyon nan foto, ak pèmisyon ekri a se itilize sèlman pou ekri  app a pa navige ni li galeri ou."
+        },
+        "location": {
+          "term": "Kote pandan y ap itilize",
+          "def": "Pou ranpli jaden adrès la. Demann nan premye plan, sèlman pandan apl la nan itilize, ak <strong>pa janm nan background</strong>."
+        }
+      },
+      "p1": "Tout pèmisyon yo se opsyonèl epi yo ka revoke nan nenpòt ki lè nan anviwònman aparèy yo. Reje kote kenbe app a konplètman fonksyonèl: adrès la Lè sa a, se ou ki tape. Reje aksè galeri sèlman anpeche otomatik ekonomize, ak foto a ka toujou pataje."
+    },
+    "s07": {
+      "title": "Baz legal ak objektif",
+      "p1": "Pwosesis kote a fèt sou baz ou <strong>konsantman</strong> Atik 7, I nan 0 ak Atik 6 1)  a nan 1  eksprime lè ou bay pèmisyon sistèm lan, epi yo ka revoke nan nenpòt ki lè, san yo pa fè domaj nan legalite a nan pwosesis la te pote soti anvan revokasyon an.",
+      "p2": "Pwosesis la nan done ki rete yo pran plas pou <strong>pèfòmans karakteristik ou mande a</strong> Atik 7, V nan 0 ak Atik 6(1)(b nan 1  depi san li pa gen okenn mak dlo pou app a pwodwi.",
+      "p3": "Pwosesis done kont repòte sou pèfòmans nan yon kontra (0 Atik 7, V; 1 Atik 6(1)(b)). Pwosesis ki baze sou enterè lejitim (0 Atik 7, IX; 1 Atik 6(1)(f)) egziste sèlman pou sekirite ak prevansyon fwod  Pou egzanp, anrejistreman adrès IP la nan demann nan sèvè a. Pa gen okenn pwosesis pou piblisite, pwofil, analiz konpòtman oswa nenpòt ki rezon segondè, ak pa gen okenn pwosesis kategori espesyal nan done oswa done sansib pa devlopè a."
+    },
+    "s08": {
+      "title": "Transfè entènasyonal",
+      "p1": "Done kont yo trete pa processeur otantisasyon an (0, Etazini), ki konstitye yon transfè entènasyonal done, ki baze sou klazòl kontra estanda ak mekanis yo nan 1 art. 33 ak 2 art. 44 a 49. Rechèch la geocoding ki dekri nan pwen 05 toujou fèt pa sistèm nan fonksyone bay founisè ki ka trete li deyò peyi itilizatè a, anba founisè sa yo  pwòp mekanis transfè.",
+      "p2": "Sit entènèt sa a anime pa 0, anba tèm nan pwen 14."
+    },
+    "s09": {
+      "title": "Pataje ak twazyèm pati",
+      "p1": "Devlopè a pa pataje, vann, lwe oswa bay bay done pèsonèl bay twazyèm pati.<em>processeur</em>0, ki bay sèvis otantisasyon an epi ki estoke imèl la, idantite kont ak done plan, ki mare pa kontra nan enstriksyon devlopè a. Si ou siyen nan Google oswa Apple, founisè sa yo trete done yo nan login anba politik pwòp yo; devlopè a resevwa nan men yo sèlman imèl la ak idantite ki nesesè yo kreye kont la. Foto, adrès ak kote ale nan pa gen okenn processeur nan tout, paske yo pa janm kite aparèy la."
+    },
+    "s10": {
+      "title": "Magazin, retansyon ak sekirite",
+      "p1": "Done yo chita nan zòn prive app a, pwoteje pa izolasyon sistèm nan fonksyone ant apps ak pa ekran fèmen aparèy la. Nan vèsyon an android, sistèm nan otomatik backup se<strong>enfim</strong>, pou istwa ak preferans yo pa voye nan itilizatè a Google kont.",
+      "p2": "Retezon an se antyèman kontwole pa ou: dosye yo rete jiskaske yo efase nan app la tèt li, ak istwa a otomatikman jete pi ansyen yo yon fwa li pase de santèn atik, retire dosye ki koresponn yo tou. Deinstalle app a efase tout sa li te estoke. Foto deja sove nan galeri aparèy la fè pati galeri a epi rete la  li se jiska ou yo efase yo si ou vle.",
+      "p3": "Pa gen okenn sistèm ki enfailbl. Done kont  Imèl, idantifikasyon, plan ak konte  yo kenbe pa processeur otantisasyon an, anba mezi sekirite li yo. Foto, adrès ak kote yo egziste nan okenn depo santral, e se poutèt sa pa ka koule soti nan enfrastrikti a nan devlopè a. Si yon ensidan sekirite afekte done kont, devlopè a ap enfòme otorite a ak sijè yo nan anba 0 atik 48 ak 1 atik 33. Risk ki enpòtan pou foto ou rete aksè fizik nan aparèy la louvri."
+    },
+    "s11": {
+      "title": "Lè ou fotografi lòt moun",
+      "p1": "Lè ou fotografi moun idantifye nan kou a nan aktivite pwofesyonèl ou, <strong>ou</strong>vin administratè done sa yo nan relasyon ak sijè a nan done yo ki montre, epi li se jiska ou yo bay baz legal la, enfòmasyon an ak repons a dwa yo. Devlopè a pa patisipe nan pwosesis sa a epi li pa gen aksè a imaj yo."
+    },
+    "s12": {
+      "title": "Dwa ou yo",
+      "p1": "Atik 18 nan 0 a ak atik 15 a 22 nan 1 a garanti ou dwa pou konfimasyon ak aksè, koreksyon, efase, anonimasyon, bloke, portabilité, restriksyon sou pwosesis, objeksyon, revokasyon konsantman ak enfòmasyon sou pataje.",
+      "p2": "Foto, adrès, istwa ak preferans rete sèlman sou aparèy ou, ak dwa sa yo yo egzekite dirèkteman nan app la: wè ak efase antre nan tab la Galeri, korije nenpòt jaden anvan ekspòtasyon, revoke pèmisyon kote nan anviwònman yo sistèm, ak efase tout bagay pa deinstalle app la  devlopè a pa ka jwenn aksè, ekspòtasyon oswa efase done sa yo pou ou, paske li pa kenbe li. Kòm pou done kont  Imèl, plan ak konte  ou ka wè li sou paj la kont ak mande koreksyon, ekspòtasyon oswa efase nan imèl kontak sa a Policy  a; efase kont efase done sa yo nan processeur otantisasyon an.",
+      "p3": "Pou kesyon oswa demann fòmèl, ekri <email>contato@lymark.app</email>Ou gen dwa tou pou ou depoze yon plent nan<strong>ANPD</strong>, nan Brezil, oswa ak otorite sipèvizyon nan eta manm ou a, nan Inyon Ewopeyen an."
+    },
+    "s13": {
+      "title": "Desizyon otomatik",
+      "p1": "Pa gen okenn desizyon otomatik, pwofil oswa pwosesis ki gen efè legal sou ou, dapre Atik 20 nan 0 ak Atik 22 nan 1."
+    },
+    "s14": {
+      "title": "Sou sit entènèt sa a",
+      "p1": "Sit sa a pa gen okenn analiz, pa montre okenn piblisite ak entegre okenn bouton rezo sosyal.<strong>bonbon ki estrikteman nesesè</strong>pou sesyon kont ou, mete pa processeur d'authentification (pout 09) lè ou antre; pa gen okenn tracking oswa piblisite cookies. Fonts yo sèvi soti nan domèn sit la pwòp. sèl demann navigatè ou fè nan twazyèm pati yo se sa yo ki nan login ak kont ekran, adrese a processeur d'authentification ak, si ou chwazi li, bay login (Google oswa Apple).",
+      "p2": "Sit entènèt la anime pa <strong>Vercel Inc.</strong>, ki kòm yon processeur anrejistre done aksè teknik  adrès IP, dat, lè ak resous la mande  pou osi lontan ke li nesesè pou sekirite a ak operasyon an nan hosting la. Baze legal la se enterè lejitim nan kenbe sekirite a nan sèvis la, Atik 7, IX nan 1 ak Atik 6(1)(f nan 2."
+    },
+    "s15": {
+      "title": "Chanjman nan politik sa a",
+      "p1": "Chanjman yo pral pibliye sou paj sa a, ak yon nouvo dat aktyalizasyon. Chanjman ki chanje pwosesis done yo pral tou kominike nan app a anvan yo pran efè."
+    },
+    "s16": {
+      "title": "Timoun ak adolesan",
+      "p1": "Lymark se yon zouti travay, ki fèt pou moun ki gen 18 an oswa plis. Li pa vize a timoun oswa adolesan, epi li pa entansyonèlman kolekte done sou odyans sa a."
+    },
+    "s17": {
+      "title": "Lwa ki aplikab",
+      "p1": "Politik sa a gouvène pa lwa Brezilyen, san yo pa fè pou aplike 0 a moun ki gen done li kouvri."
+    },
+    "note": "Gade tou <terms>Kondisyon pou itilize</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Kondisyon pou itilize",
+      "description": "Kondisyon itilizasyon app Lymark la: sa li fè, sa li pa fè, ak ki moun ki responsab pou kontni foto yo."
+    },
+    "title": "Kondisyon pou itilize",
+    "updated": "Dènye mete ajou: 16 Out 2026 · Lymark app, vèsyon 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Ki sa ki app a fè",
+      "p1": "Lymark kouvri yon seri enfòmasyon sou yon foto  tan, dat, jou semèn, adrès ak yon kòd idantifikasyon  epi jenere yon nouvo dosye imaj ak enfòmasyon sa yo bati nan piksèl yo. Li se yon zouti pou òganize ak anrejistreman travay jaden."
+    },
+    "s02": {
+      "title": "Ki sa ki app a pa fè",
+      "p1": "Se pwen sa a ki pi enpòtan nan tèm sa yo, e nou mande pou li li ak atansyon.",
+      "items": {
+        "certify": "<strong>Aplikasyon an pa sètifye oswa otantisite anyen.</strong>Li pa yon egzamine forensik, li pa bay yon dokiman ak konfyans piblik la epi li pa konstitye prèv ekspè.",
+        "editable": "<strong>Chak jaden se modifiable pa itilizatè a.</strong>Tan, dat, adrès ak kòd ka chanje lib anvan ekspòtasyon, pa konsepsyon: pwofesyonèl la bezwen yo dwe kapab korije yon adrès GPS la te fè erè.",
+        "clock": "<strong>Tan an vini nan aparèy la revèy</strong>, ki ka enkorekte oswa ka te mete nan men. Pa gen okenn senkronizasyon ak yon sèvè tan serye.",
+        "address": "<strong>Adrès la se yon estimasyon.</strong>Egzakte li depann sou siyal la GPS ak sou baz done nan sèvis la kat sistèm nan opere.",
+        "code": "<strong>Kòd foto a se pa yon enskripsyon nan yon biwo notè.</strong>Li se yon idantifyan aletral pou referans entèn, san okenn valè prèv nan tout."
+      },
+      "p2": "Si ka itilizasyon ou mande pou prèv ki gen fòs legal kont twazyèm pati, chèche yon atè notaryèl oswa yon sèvis sètifikasyon dijital ak yon timestamp  Lymark se yon ranplasman pou tou de."
+    },
+    "s03": {
+      "title": "Responsablite ou",
+      "items": {
+        "photos": "Ou responsab pou foto ou pran yo, pou kontni ou mete sou yo ak pou itilizasyon ou fè nan dosye yo ki te pwodwi.",
+        "thirdParties": "Lè w ap fotografi lòt moun, pwopriyete yo oswa lokal yo, li depann de ou pou ou jwenn otorizasyon ki nesesè yo epi pou ou respekte dwa imaj, sekrè pwofesyonèl ak Lwa Jeneral sou Pwoteksyon Done Pèsonèl la sou sijè done yo ki retranspòte yo.",
+        "prohibited": "Itilize app a pou fè yon dosye fo, pou twonpe nenpòt moun, simile pèfòmans nan yon sèvis ki pa te bay oswa pote soti nan nenpòt zak ilegal se entèdi.",
+        "backups": "Li depann de ou pou kenbe kopi kopi de nenpòt bagay ou konsidere enpòtan. App a kenbe yon istwa lokal limite, ki pa yon kopi kopi."
+      }
+    },
+    "s04": {
+      "title": "Lisans pou itilize",
+      "p1": "Nou bay ou yon lisans pèsonèl, revokab, ki pa esklizik epi ki pa transfere pou enstale ak itilize app a, tou pou rezon pwofesyonèl.",
+      "p2": "<strong>Foto ou yo se ou.</strong>Nou pa reklame okenn dwa sou imaj ou kaptire oswa jenere. Non Lymark la, mak ak idantite vizyèl rete pwopriyete a nan devlopè a."
+    },
+    "s05": {
+      "title": "Disponiblite ak ajou",
+      "p1": "Aplikasyon an bay jan li ye. Pa gen okenn garanti nan operasyon san entèripsyon, nan konpatibilite ak chak aparèy, ni okenn angajman nan yon dat limit pou ranje oswa nouvo vèsyon. Karakteristik yo ka chanje oswa sispann.",
+      "p2": "Kalite imaj ekspòte a depann sou aparèy la ak sou sistèm opere a, epi li ka gen rezizyon pi ba pase foto orijinal la."
+    },
+    "s06": {
+      "title": "Limitasyon responsablite",
+      "p1": "Nan limit maksimòm ki pèmèt pa lwa Brezilyen an, devlopè a pa responsab pou pèt endirèk, pwofi pèdi, pèt done oswa domaj ki soti nan desizyon ki te pran sou baz enfòmasyon an sele  ki gen ladan soti nan nenpòt defi, nan tribinal oswa deyò li, nan kontni an nan yon foto ki te pwodwi pa app la.",
+      "p2": "Limitasyon sa a <strong>pa retire</strong>dwa yo garanti nan konsomatè a pa Lei 8.078/1990, ni responsablite pou move konpòtman vle oswa neglijans grav."
+    },
+    "s07": {
+      "title": "Fimasyon",
+      "p1": "Ou ka sispann itilize app a nan nenpòt ki lè: efase kont efase done li yo sou sèvè a, ak désinstaller app efase done yo ki kenbe sou aparèy la. Pandan ke pa gen okenn abònman peye pa gen okenn abònman anile; lè gen, tèm yo anile ap parèt nan tèm sa yo anvan nenpòt chaj."
+    },
+    "s08": {
+      "title": "Chanjman nan tèm sa yo",
+      "p1": "Chanjman yo pral pibliye sou paj sa a ak yon nouvo dat aktyalizasyon."
+    },
+    "s09": {
+      "title": "Lwa ki aplikab ak fowòm",
+      "p1": "Lwa Brezilyen aplike. Forum la chwazi pou rezoud diskisyon ki soti nan tèm sa yo se sa a nan rezidans itilizatè a."
+    },
+    "note": "Sou manyen done, gade <privacy>Politik sou vi prive</privacy>Kesyon: <email>contato@lymark.app</email>."
+  }
+}

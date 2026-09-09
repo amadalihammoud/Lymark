@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Mete timè, dat, jou semèn, adrès ak yon kòd swiv sou foto ou  pou dosye jaden, enspeksyon sit ak prèv sèvis.",
+      "platform": "Platfòm",
+      "privacy": "Politik sou vi prive",
+      "privacyGeocoding": "Lè GPS itilize, sistèm nan opere voye kowòdone a nan sèvis Googles oswa Apples kat pou jwenn adrès la. Sa a se enfòmasyon an sèlman ki kite isit la, epi li se sistèm nan ki voye li, pa Lymark.",
+      "privacyLocation": "Kote a itilize yon fwa pou chak rekèt, sèlman pou ranpli jaden adrès la, epi li pa estoke separe de foto yo.",
+      "privacyOnDevice": "Foto yo, adrès yo ak istwa a rete sou aparèy sa a sèlman. Kont la egziste pou abònman ou: sèvè a kenbe imèl ou ak plan, epi yo pa janm resevwa foto ou oswa kote ou ye.",
+      "privacySection": "Privès",
+      "sdk": "Expo SDK",
+      "terms": "Kondisyon pou itilize",
+      "title": "Sou Lymark",
+      "version": "Vèsyon"
+    },
+    "account": {
+      "browserHint": "Enskri nan navigatè a. Enskri la ak kont ou ak app a konekte nan tèt li.",
+      "code": "Kòd",
+      "codeSent": "Nou voye yon kòd pou 0",
+      "connected": "Konekte",
+      "continue": "Kontinye",
+      "deleteAccount": "Efase kont",
+      "email": "Imèl",
+      "failed": "Sa pa t travay. Tcheke imel la oswa kòd la epi eseye ankò.",
+      "notConfigured": "Enskripsyon an pa disponib nan konstriksyon sa a ankò.",
+      "signInBrowser": "Enskri nan navigatè",
+      "signOut": "Enskri soti",
+      "signedInAs": "Te siyen kòm 0",
+      "title": "Kont",
+      "verify": "Verifye"
+    },
+    "batch": {
+      "addressHint": "lari, nimewo  vil",
+      "clearList": "Lis klè",
+      "codeHint": "Egzanp LYM-001",
+      "done": "{count, plural, one {Pwosesis fini: Foto#fini.} other {Pwosesis fini: Foto#fini.}}",
+      "doneSection": "Fini",
+      "dropZone": "Rale ak kite foto isit la, oswa sèvi ak bouton an Select photos",
+      "errorsSection": "Erè",
+      "folder": "Dosye: 0",
+      "noPhotos": "Chwazi omwen yon foto.",
+      "outputNote": "Foto yo trete yo sove nan katab la chwazi.",
+      "outputSection": "Pwodwi",
+      "photosSection": "Foto yo pou trete",
+      "processing": "Pwosesis ...",
+      "progress": "0 nan 1 (2%)",
+      "results": "{success, plural, one {#siksè} other {#siksè}}, {failed, plural, one {#echèk} other {#echèk}}",
+      "selectFolder": "Chwazi dosye pwodiksyon",
+      "selectPhotos": "Chwazi foto",
+      "selected": "{count, plural, one {Foto#chwazi} other {Foto yo chwazi #}}",
+      "sharedNote": "Valè sa yo aplike nan TOUT foto yo.",
+      "sharedSection": "Metadata pataje",
+      "start": "Kòmanse pwosesis",
+      "unavailableBody": "Karakteristik sa a se Desktop sèlman.",
+      "unavailableTitle": "Pwosesis batch pa disponib"
+    },
+    "capture": {
+      "accuracy": "Posibilite nan ±0 m.",
+      "accuracyImprecise": "Posibilite nan ±0 m  tcheke nimewo lari a anvan ekspòtasyon.",
+      "address": "Adrès",
+      "addressFailedTitle": "Pa gen okenn adrès jwenn",
+      "addressHint": "Tape sou kote, oswa tape adrès la",
+      "camera": "Fè foto",
+      "code": "Kòd",
+      "dateHint": "1 janvye 2026",
+      "dateTimeGroup": "Dat ak lè",
+      "emptyWarning": "Pa gen okenn done yo pral timbre  foto a pral soti san yon mak dlo.",
+      "gallery": "Chwazi nan galeri",
+      "galleryDenied": "Foto aksè te refize, se konsa imaj la sèlman egziste nan app a. pèmèt li nan anviwònman › Permis pou sove li nan galeri a.",
+      "galleryFailed": "Imaj la te ale nan istwa a, men aparèy la refize ekri li nan galeri a. Tcheke espas la gratis epi eseye ankò.",
+      "generateCode": "Jere",
+      "hiddenFields": "{count, plural, one {Se jaden kache} other {Champs kache}}:{fields}vire yo sou anviwònman › jaden ak pozisyon.",
+      "keepMyAddress": "Kenbe mwen an",
+      "locate": "Ki kote yo jwenn",
+      "locateByGps": "Jwenn adrès atravè GPS",
+      "lookup": {
+        "denied": "pèmèt kote nan anviwònman › Permis, oswa tape adrès la.",
+        "disabled": "Kote a se fèmen sou aparèy la. vire li sou anviwònman yo vit epi eseye ankò.",
+        "timeout": "GPS pa reponn nan tan. Li souvan echwe nan andedan kay la  tape adrès la.",
+        "unavailable": "Adrès la pa t 'kapab rezoud nan pozisyon sa a. Tape li nan men."
+      },
+      "newCapture": "Kòmanse yon nouvo kaptire",
+      "noFieldsBack": "Ale tounen",
+      "noFieldsContinue": "Kontinye de tout fason",
+      "noFieldsMessage": "Pa gen okenn jaden gen anyen pou timbre. ranpli jaden yo, oswa revize Ajisteman › jaden ak pozisyon.",
+      "noFieldsTitle": "Foto a pral soti san yon mak dlo",
+      "noPhotoHint": "Fè yon foto oswa chwazi youn nan galeri a pou kòmanse.",
+      "noPhotoSelected": "Pa gen foto chwazi",
+      "openFailed": "Foto a pa t ka louvri. eseye ankò.",
+      "permissionMessage": "pèmèt aksè nan anviwònman › Permisyon kontinye.",
+      "permissionTitle": "Permis nesesè",
+      "pickPhoto": "Chwazi yon foto",
+      "pickPhotoHint": "Chwazi yon foto pou pèmèt aksyon yo.",
+      "previewLabel": "Preview foto ki gen mak dlo",
+      "renderFailedTitle": "Pa t ' kapab jenere imaj la",
+      "replaceAddressMessage": "GPS jwenn: 0",
+      "replaceAddressTitle": "Ranplase adrès ou te tape a?",
+      "resetConfirm": "Jete",
+      "resetMessage": "Foto a chwazi ak jaden yo ranpli yo pral jete.",
+      "resetTitle": "Kòmanse yon nouvo kaptire?",
+      "saved": "Foto sove nan galeri aparèy la ak nan istwa a.",
+      "savedAppOnlyTitle": "Salve sèlman nan Lymark",
+      "shareDialogTitle": "Pataje foto ki gen dlo",
+      "shareFailedMessage": "Imaj la te pwodwi e li se nan istwa a Lymark. Ou ka pataje li nan tab la Galeri.",
+      "shareFailedTitle": "Pa t ' kapab pataje",
+      "shareUnavailableMessage": "Aparèy sa a pa gen okenn paj pataje. Imaj la rete nan istwa Lymark la.",
+      "shareUnavailableTitle": "Pataje pa disponib",
+      "sharedFileTitle": "Foto ki gen mak dlo",
+      "stampNotReady": "Yo ap prepare timèl la toujou.",
+      "syncNow": "Koulye a,",
+      "timestamp": "Dat/Tan",
+      "title": "Kapte",
+      "useGpsAddress": "Sèvi ak GPS la",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Jou"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "chwazi yon lòt koulè",
+      "saturationBrightness": "Satirasyon ak klète",
+      "use": "Sèvi ak koulè sa a"
+    },
+    "common": {
+      "back": "Retounen",
+      "cancel": "Annule",
+      "delete": "Efase",
+      "error": "Erè",
+      "gotIt": "Mwen jwenn li",
+      "loading": "Chajman...",
+      "no": "Pa gen okenn",
+      "ok": "Oke",
+      "save": "Sove",
+      "share": "Pataje",
+      "success": "Reyisit",
+      "tryAgain": "Eseye ankò.",
+      "unknownError": "Erè enkoni",
+      "yes": "Wi, se vre."
+    },
+    "gallery": {
+      "cancelSelection": "Annule seleksyon",
+      "clear": "Istwa klè",
+      "clearConfirm": "Klè",
+      "clearMessage": "Lymark dosye yo pral efase. Imaj deja sove nan galeri aparèy la pa afekte.",
+      "count": "{count, plural, one {Foto#ekspòte} other {Foto#ekspòte}}",
+      "delete": "Efase",
+      "empty": "Pa gen foto ankò",
+      "emptyAction": "Ale nan kaptire",
+      "emptyDescription": "Foto ou ekspòte ak yon mak dlo parèt isit la, ak dat, kote ak kòd.",
+      "filteredCount": "{shown}nan {total, plural, one {Foto#} other {Foto#}}",
+      "noResults": "Pa gen foto pou 0.",
+      "photoLabel": "Foto ki soti nan 0",
+      "removeMessage": "Entri yo kite Lymark. Imaj deja sove nan galeri aparèy yo pa afekte.",
+      "removeTitle": "{count, plural, one {Retire nan istwa} other {Retire entrées#}}",
+      "removed": "{count, plural, one {Entè retire.} other {Entri yo retire.}}",
+      "saveDeniedMessage": "pèmèt li nan anviwònman › Permis pou sove imaj yo nan galeri aparèy la.",
+      "saveDeniedTitle": "Aksè foto refize",
+      "savedAll": "{count, plural, one {Yon foto sove nan galeri aparèy la.} other {Foto yo#sove nan galeri aparèy la.}}",
+      "savedSome": "0 nan 1 foto sove.",
+      "searchPlaceholder": "Rechèch pa adrès, dat oswa kòd",
+      "selectedCount": "{count, plural, one {Foto#chwazi} other {Foto yo chwazi #}}",
+      "share": "Pataje",
+      "title": "Galeri"
+    },
+    "language": {
+      "automatic": "Aparèy match",
+      "automaticNote": "Lymark swiv lang la mete sou aparèy ou.",
+      "label": "Lang",
+      "selector": "Chwazi lang"
+    },
+    "login": {
+      "access": "Enskri pou aksè",
+      "apple": "Enskri ak Apple",
+      "google": "Enskri ak Google",
+      "subtitle": "Enskri pou kontinye",
+      "title": "Enskri pou jwenn aksè nan Lymark"
+    },
+    "nav": {
+      "batch": "Pwosesis batch",
+      "photoDetail": "Detay foto",
+      "report": "Rapò",
+      "video": "Videyo"
+    },
+    "notFound": {
+      "body": "Ekran sa a se pa yon pati nan Lymark.",
+      "screenTitle": "Pa gen paj",
+      "title": "Pa gen okenn wout sa a"
+    },
+    "permissions": {
+      "allow": "Kite",
+      "allowed": "Se pèmèt",
+      "blocked": {
+        "later": "Pa kounye a",
+        "message": "Sistèm pa pral mande ankò. Pou pèmèt li, louvri anviwònman aparèy ou.",
+        "openSettings": "Aplike anviwònman",
+        "title": "Pèmisyon bloke"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Li mande pou pran foto a ki pral resevwa mak dlo a.",
+      "denied": "Yo refize",
+      "granted": "Li te pèmèt",
+      "intro": "Lymark mande sèlman pou sa li bezwen pou timbre yon foto. imaj ou pa janm kite aparèy la: lè ou itilize GPS, sistèm nan opere voye sèvis kat la kowòdone pou kont li, se konsa li ka vin yon adrès.",
+      "location": "Kote yo ye",
+      "locationRationale": "Ranpli nan jaden adrès otomatikman lè ou pran.",
+      "mediaLibrary": "Save nan galeri",
+      "mediaLibraryRationale": "Pou ekri ekspòte foto nan galeri aparèy la.",
+      "openDeviceSettings": "Enstalasyon",
+      "recheck": "Tcheke ankò",
+      "request": "Mande pèmisyon",
+      "section": "Aksè",
+      "title": "Pèmisyon"
+    },
+    "photo": {
+      "backToGallery": "Retounen nan Galeri a",
+      "exportedAt": "Ekspòte sou 0",
+      "noWatermark": "Foto sa a te ekspòte san yon mak dlo.",
+      "notFoundBody": "Yo te retire dosye sa a nan istwa a.",
+      "notFoundTitle": "Foto pa jwenn",
+      "remove": "Retire",
+      "removeBody": "dosye a kite Lymark. Imaj la sove nan galeri aparèy la pa afekte.",
+      "removeTitle": "Retire nan istwa",
+      "share": "Pataje",
+      "stampedData": "Done ki gen yon mak"
+    },
+    "plan": {
+      "exhausted": "Foto gratis itilize",
+      "exhaustedMessage": "12 foto plan gratis yo te ale. Lymark",
+      "free": "Gratis",
+      "pro": "Pwofesyonèl",
+      "reconnect": "Rekonekte pou konfime abònman ou",
+      "remaining": "{remaining, plural, one {#foto gratis kite} other {#foto gratis kite}}",
+      "title": "Plan",
+      "unlimited": "Pa gen limit"
+    },
+    "report": {
+      "allPhotos": "Tout foto",
+      "authorField": "Otè / konpayi",
+      "detailsSection": "Detay",
+      "doc": {
+        "author": "Otè",
+        "declaration": "Done yo tempe (adrès, dat, lè ak kòd) se yon deklarasyon pa moun ki pibliye foto yo.",
+        "exportedAt": "Ekspòte sou",
+        "generatedAt": "Jere sou",
+        "page": "Paj",
+        "photo": "Foto 0",
+        "photosSection": "Dosye foto",
+        "signature": "Senbòl moun ki responsab la",
+        "summary": "Rezime",
+        "title": "Rapò foto",
+        "totalPhotos": "Foto total:"
+      },
+      "empty": "Pa gen foto ekspòte ankò.",
+      "failed": "Pa t 'kapab pwodwi rapò a.",
+      "fileStem": "rapò",
+      "format": {
+        "csv": "Tablo kalandriye (0)",
+        "pdf": "PDF",
+        "word": "0 (.doc)",
+        "zip": "Pakè (0)"
+      },
+      "formatSection": "Format",
+      "generate": "Jere dosye",
+      "generateSection": "Jere",
+      "includeLogo": "Logo sou kouvèti a",
+      "includeLogoDescription": "Logo mak ou, menm logo a ki nan timè a. Fè li koupe pou kite l 'nan dokiman an.",
+      "norm": {
+        "abnt": "0 (Brazili)",
+        "din5008": "0 (Almay)",
+        "ibape": "0 style (Brasil)",
+        "iso": "Entènasyonal",
+        "letter": "Lèt (USA)"
+      },
+      "normNote": "Estanda a mete papye a ak fòma  marges, font ak paj numérotation. kontni an rapò se menm nan tout yo; style la 0 ajoute yon blòk siyati.",
+      "normSection": "Dokiman estanda",
+      "projectsSection": "Pwojè / travay",
+      "saved": "Sekou pou 0",
+      "savedShort": "Rapò sove.",
+      "title": "Rapò",
+      "titleField": "Tit rapò",
+      "unavailableBody": "Rapò yo disponib nan app Desktop la.",
+      "unavailableTitle": "Desktop sèlman",
+      "uncoded": "Pa gen kòd",
+      "wordTooBig": "Dokiman an 0 te vin twò gwo ak foto yo enkòpore. Sèvi ak 1 oswa pake a 2.",
+      "zipMissing": "{count, plural, one {Pakè a sove, men foto#pa te jwenn sou aparèy sa a.} other {Pakè a sove, men foto#pa te jwenn sou aparèy sa a.}}"
+    },
+    "settings": {
+      "about": "Sou",
+      "aboutDescription": "vèsyon, vi prive ak kredi",
+      "appSection": "App",
+      "deviceSection": "Aparèy",
+      "deviceSectionDescription": "Aksè ke Lymark mande.",
+      "fields": "Champs ak pozisyon",
+      "fieldsDescription": "Chwazi ki jaden yo montre, kwen an ak gwosè a",
+      "history": "Istwa",
+      "historyDescription": "Foto ekspòte ki rete sou aparèy la",
+      "language": "Lang",
+      "permissions": "Pèmisyon",
+      "permissionsDescription": "Kamera, foto ak kote",
+      "save": "Sove",
+      "title": "Enstalasyon",
+      "watermark": "Mak dlo",
+      "watermarkSection": "Mak dlo",
+      "watermarkSectionDescription": "Ki sa ki mete yon timè sou foto a, ak ki kote."
+    },
+    "signup": {
+      "subtitle": "Enskri pou kòmanse",
+      "title": "Kreye kont Lymark ou"
+    },
+    "tagline": "Mak dlo ak lè, dat ak plas",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Pa gen aksè kamera.",
+      "done": "Videyo estamp ak sove.",
+      "export": "Ekspòte videyo timbo",
+      "exportSection": "Ekspò",
+      "failed": "Yo pa t ka mete yon timè sou videyo a.",
+      "fieldsSection": "Chenn timèl",
+      "fileSection": "Videyo",
+      "none": "Pa gen videyo chwazi.",
+      "processing": "Pwosesis ... 0%",
+      "processingMobile": "Pwosesis ...",
+      "record": "Enskri videyo kounye a",
+      "saved": "Sekou pou 0",
+      "savedToGallery": "Videyo ki gen yon timbre sove nan galeri ou.",
+      "select": "Chwazi videyo",
+      "unavailableBody": "Videyo mobil estampage bezwen Lymark enstale soti nan yonEASbati (ak modil natif natal la). Li pa disponib nanExpo Go. enstale app ofisyèl la soti nan magazen an oswa yonEASbati, oswa sèvi ak vèsyon an Desktop / entènèt.",
+      "unavailableTitle": "Enstale app ki nesesè",
+      "unreadable": "Dosye a pa t 'kapab li kòm yon videyo.",
+      "webNote": "Nan navigatè a, videyo a trete nan tan reyèl  yon videyo 2 minit pran 2 minit  epi soti nan fòma 0. Pou videyo long, sèvi ak app a Desktop."
+    },
+    "watermark": {
+      "accentColor": "Bar vètikal",
+      "backdropBandNote": "Band lan kouri bò a bò nan foto a epi li repoze kont marj la kote timè a ancre. Sou yon sèn okipe  yon sit bilding, yon lakou, yon fasad fowo  li li kòm tit dokiman an olye ke yon plak ki mete sou tèt la.",
+      "backdropBlockNote": "Yon lòt bò se gwosè tèks la, ak yon kouch sou li.",
+      "backdropColor": "Koulè bann",
+      "backdropDescription": "Li kenbe kontras sou zòn limyè nan foto a. San li, tèks la chita dirèkteman sou imaj la, ak yon lonbraj.",
+      "backdropInnerRadius": "Kòn enteryè",
+      "backdropOpacity": "Transparans",
+      "backdropOpacityValue": "0% opaque",
+      "backdropRadius": "Kòn wonn",
+      "backdropRadiusSquare": "Katye",
+      "backdropStyles": {
+        "band": "Band plen lajè",
+        "block": "Anba tèks la",
+        "none": "Pa gen okenn"
+      },
+      "backdropTitle": "Band sipò",
+      "brandDescription": "Pi wo pase zèl la, li vin yon siyati, ak logo ak tagline. Nan yon kwen, li se yon liy diskret.",
+      "brandFirstColor": "Koulè premye pati",
+      "brandFirstHint": "Konstriktè",
+      "brandFirstPart": "Premye pati",
+      "brandNote": "Kite dezyèm pati a vid pou yon mak ki gen yon koulè sèl.",
+      "brandPlacements": {
+        "corner": "Nan yon kwen",
+        "header": "Pi wo pase revèy la",
+        "none": "Pa gen okenn"
+      },
+      "brandSecondColor": "Koulè dezyèm pati",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Dezyèm pati",
+      "brandTitle": "Mak ki gen mak",
+      "codeDescription": "Nan bò a li pa konpetisyon pou plas ak foto a tèt li.",
+      "codePlacements": {
+        "block": "Ansanm ak done yo",
+        "side": "bò dwat"
+      },
+      "codeTitle": "Kòd foto",
+      "colors": {
+        "amber": "Amber",
+        "black": "Nwa",
+        "blue": "Blue",
+        "green": "Green",
+        "red": "Wouj",
+        "white": "Blan"
+      },
+      "colorsDescription": "Koulè a sou foto a se chwa konpayi an, pa app a chanje li isit la pa chanje koulè yo nan ekran an.",
+      "colorsTitle": "Koulè timèl",
+      "complement": "Tagline",
+      "complementColor": "Koulè tagline",
+      "complementHint": "Enspeksyon ak rapò teknik",
+      "cornerConflict": "Mak la ak done yo nan kwen an menm  yo pral kouvri sou foto a.",
+      "fields": {
+        "address": "Adrès / kote",
+        "code": "Kòd foto",
+        "date": "Dat",
+        "time": "Tan",
+        "weekday": "Jou semèn"
+      },
+      "fieldsDescription": "Se sèlman jaden ki sou ak gen kontni rive nan foto a.",
+      "fieldsTitle": "Chenn ki montre",
+      "includeCountry": "Enklike nan peyi a",
+      "includeCountryDescription": "Fè li vire si ou travay atravè fwontyè, otreman li pran plas sèlman sou foto a.",
+      "legibilityTitle": "Libilite",
+      "logoAdded": "Logo ajoute nan tèt mak la.",
+      "logoAlignNote": "Wotè logo a swiv tèks la: tèt li aline ak tèt non an ak anba li ak liy debaz la nan tagline a.",
+      "logoChosen": "Logo chwazi",
+      "logoErrorMessage": "Eseye yon lòt imaj. Yon PNG ak yon background transparan se fòma a ki travay pi byen.",
+      "logoErrorTitle": "Dosye sa a pa t ' kapab itilize",
+      "logoFormatNote": "Sèvi ak yon PNG ak yon background transparan. Yon JPG ak yon background blan vin yon rektang blan sou foto a  fòma a pa magazen transparans, ak app a pa gen okenn fason yo devine ki sa ki background.",
+      "logoPermissionMessage": "pèmèt li nan anviwònman › Permisyon yo chwazi dosye logo a.",
+      "logoPermissionTitle": "Aksè foto refize",
+      "logoPick": "Chwazi logo",
+      "logoPosition": "Posibilite logo",
+      "logoPositionBlock": "Avèk timè a",
+      "logoRemove": "Retire",
+      "logoReplace": "Ranplase logo",
+      "logoSize": "Gwosè logo",
+      "positionDescription": "Kounye a nan foto a blòk la se ankile nan.",
+      "positionTitle": "Posibilite",
+      "positions": {
+        "bottom-left": "Anlè gòch",
+        "bottom-right": "Anba dwat",
+        "top-left": "Pi wo a gòch",
+        "top-right": "Pi wo dwat"
+      },
+      "previewCurrent": "Sou foto aktyèl la soti nan bwat la Capture.",
+      "previewEmpty": "Soti nan limyè a nan fènwa, pou tcheke libilite nan tou de ekstrèm.",
+      "previewNoFields": "Pa gen jaden chwazi  foto a soti san yon mak dlo.",
+      "previewTitle": "Preview",
+      "reset": "Retounen default",
+      "sizeTitle": "Gwosè tèks",
+      "sizes": {
+        "large": "Gwo",
+        "medium": "Medyòm",
+        "small": "Ti"
+      },
+      "textColor": "Tèks",
+      "timeFormatDescription": "Ki jan tan an ranpli nan jaden yo.",
+      "timeFormatTitle": "Fòma tan",
+      "timeFormats": {
+        "12h": "12 èdtan (AM/PM)",
+        "24h": "24 èdtan"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Tout dosye",
+      "images": "Imaj",
+      "pickFolder": "Chwazi dosye pwodiksyon",
+      "pickPhoto": "Chwazi foto",
+      "pickPhotos": "Chwazi foto pou batch la",
+      "savePhoto": "Salve foto",
+      "saveReport": "Rete rapò"
+    },
+    "login": {
+      "cancel": "Annule",
+      "confirm": "Kontinye",
+      "message": "Ou te fèk antre nan navigatè a. Kontinye ak sèvi ak kont sa a sou òdinatè sa a?",
+      "title": "Enskri nan Lymark"
+    },
+    "menu": {
+      "copy": "Kopi",
+      "cut": "Koupe",
+      "edit": "Edit",
+      "file": "Dosye",
+      "fullscreen": "Ekran plen",
+      "help": "Ede",
+      "paste": "Paste",
+      "quit": "Kite",
+      "redo": "Redo",
+      "reload": "Reload",
+      "selectAll": "Chwazi tout",
+      "settings": "Enstalasyon",
+      "undo": "Anboche",
+      "view": "View",
+      "zoomIn": "Zoom nan",
+      "zoomOut": "Zoom soti",
+      "zoomReset": "Gwosè aktyèl"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Retounen lakay ou",
+      "openApp": "Ouvri app a",
+      "photos": "Foto",
+      "photosLeft": "0 nan 1 kite",
+      "plan": "Plan",
+      "planUnavailable": "Pa disponib kounye a",
+      "plans": {
+        "free": "Gratis",
+        "pro": "Pwofesyonèl"
+      },
+      "signInTitle": "Enskri",
+      "signOut": "Enskri soti",
+      "signUpTitle": "Kreye kont",
+      "subscribe": "Abònman pou Lymark Pro",
+      "subscribeSoon": "Abònman yo pa disponib ankò. Lè yo ye, ou pral kapab abònman isit la epi sèvi ak nenpòt aparèy ki gen kont la menm.",
+      "title": "Kont ou",
+      "revokeDesktops": "Dekonekte òdinatè",
+      "revokeDesktopsHint": "Li mete fen aksè a app a sou chak òdinatè. Ou ka rantre nan nenpòt lè ou vle."
+    },
+    "availability": {
+      "contact": "Pou swiv lansman an oswa rapòte yon pwoblèm, ekri <email>contato@lymark.app</email>.",
+      "description": "Lymark se nan vèsyon 1.3.0, nan tès sou android anvan piblikasyon souGoogle Play. Pa gen okenn vèsyon iOS ak pa gen okenn vèsyon entènèt, epi app a pa kolekte okenn peman.",
+      "title": "Disponib"
+    },
+    "data": {
+      "device": {
+        "description": "Kont la egziste pou abònman ou: sèvè a kenbe imèl ou ak plan, epi yo pa janm resevwa foto ou oswa kote ou. Istwa a kenbe de santèn dènye ekspòtasyon yo nan dosye app a pwòp.",
+        "field": "Sou aparèy la",
+        "heading": "Foto, adrès ak istwa"
+      },
+      "external": {
+        "description": "Pou fè latitid ak longitid tounen yon adrès lizib, sistèm operasyon an mande sèvis la Google oswa Apple nan géocoding. Sa a se enfòmasyon an sèlman ki kite, ak sistèm lan voye li, pa app la.",
+        "field": "Fèmen aparèy la",
+        "heading": "Jis vire yon kowòdone nan yon adrès"
+      },
+      "note": "Li se tout mete deyò  ki gen ladan sa vle di anba Brezil 0   nan <privacy>Politik sou vi prive</privacy>. Fèmen pèmisyon kote kite app a konplètman fonksyonèl; sèlman jaden adrès la Lè sa a, gen yo dwe tape nan men.",
+      "title": "Ki kote done ou yo chita"
+    },
+    "deleteAccount": {
+      "back": "Retounen nan kont",
+      "confirm": "Efase kont mwen an",
+      "deletesNow": "Efase kont ou imedyatman efase imèl ou, idantifikasyon ou, ak dosye plan, kwote ak foto konte.",
+      "irreversible": "Efase se pèmanan epi yo pa ka ranvèse. foto yo sou aparèy ou yo pa afekte  yo pa janm te sou serveurs nou yo.",
+      "retained": "Nou kenbe dosye tranzaksyon peman pou peryòd fiskal legalman egzije a, ki pa gen okenn lyen nan pwofil ou.",
+      "title": "Efase kont"
+    },
+    "description": "Aplikasyon android ki timè tan, dat, jou nan semèn, adrès ak yon kòd swiv sou sit-inspection ak prèv nan sèvis foto.",
+    "desktop": {
+      "backAccount": "Retounen nan kont",
+      "explanation": "Kont ou a pare. Klike sou bouton ki anba a yo louvri Lymark sou òdinatè ou deja siyen nan  navigatè a ap mande pèmisyon yo louvri app a.",
+      "open": "Konekte app a",
+      "title": "Enskri sou Desktop",
+      "unavailable": "Koneksyon app Desktop la pa disponib ankò."
+    },
+    "download": {
+      "appStore": {
+        "description": "Menm eksperyans ak android, sou iOS.",
+        "field": "App Store",
+        "heading": "iPhone ak iPad"
+      },
+      "browser": {
+        "action": "Enskri",
+        "description": "Enskri ak kont ou epi app a louvri dwa nan navigatè a  telefòn oswa òdinatè.",
+        "field": "Navigatè",
+        "heading": "Sèvi ak li kounye a, pa gen anyen enstale"
+      },
+      "desktop": {
+        "description": "Batch foto, videyo long ak 0 rapò  vèsyon an lou-devwa.",
+        "field": "òdinatè",
+        "heading": "Windows ak Linux"
+      },
+      "googlePlay": {
+        "description": "Aplikasyon telefòn lan, ak kamera, galeri ak videyo estamp.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Ap vini byento",
+      "title": "Ki kote pou itilize Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "Se kalite lari a ki abrevi ak eta a vin kòd li yo, se konsa adrès la anfòm nan de liy san yo pa kouvri foto a. Si ou tape anvan GPS reponn, sa ou tape genyen.",
+        "field": "Adrès",
+        "heading": "Ranpli pa GPS, koreksyon pa men"
+      },
+      "code": {
+        "description": "Li egziste pou ou ka site yon foto espesifik nan yon lòd travay oswa yon rapò. Li kouri vire desann kwen dwat la, oswa chita ak blòk la done  chwa ou.",
+        "field": "Kòd foto",
+        "heading": "Katòz karaktè, trase pa yon jeneratè kriptografik"
+      },
+      "note": "Chak jaden vire sou ak koupe sou pwòp li yo, ak blòk la ancre nan nenpòt nan kat kwen yo, nan twa gwosè. Preview la itilize foto aktyèl ou, pa yon echantiyon jenèrik: sa ou wè sou ekran an se literalman sa ki ekspòte.",
+      "time": {
+        "description": "Yon bouton ap fè tout twa jaden yo tounen nan prezan lè kaptire a te pran pi long pase espere.",
+        "field": "Tan ak dat",
+        "heading": "Soti nan revèy la aparèy, nan moman an nan kaptire"
+      },
+      "title": "Ki sa ki ale sou imaj la"
+    },
+    "footer": {
+      "description": "Lymark  dosye foto ak dat, lè ak adrès.",
+      "documentsLabel": "Dokiman",
+      "privacy": "Politik sou vi prive",
+      "support": "Sipò:",
+      "terms": "Kondisyon pou itilize"
+    },
+    "hero": {
+      "ctaAccount": "Ale sou kont mwen an",
+      "ctaLogin": "Enskri",
+      "ctaSignup": "Kreye yon kont gratis",
+      "description": "Lymark timè tan, dat, jou semèn, adrès ak yon kòd swiv dirèkteman sou imaj la. Dosye a ki soti nan app a pote enfòmasyon an andedan li  pa kòm metadata monte ansanm, ki premyeWhatsAppdevan strips lwen.",
+      "eyebrow": "Dokimantasyon foto jaden",
+      "heading": "Foto a deja kite telefòn ou a di lè, ki kote ak ki sa.",
+      "meta": {
+        "account": "Yon sèl-tape kont",
+        "android": "Android ak navigatè",
+        "language": "Pòtigè Brezilyen",
+        "onDevice": "Foto rete sou aparèy la"
+      },
+      "note": "Pa gen anyen pou enstale."
+    },
+    "nav": {
+      "account": "Kont",
+      "home": "Kay",
+      "homeLabel": "Lymark, paj lakay",
+      "label": "Main",
+      "privacy": "Privès",
+      "signIn": "Enskri",
+      "terms": "Tèm",
+      "verify": "Verifye"
+    },
+    "process": {
+      "capture": {
+        "description": "Rechèch adrès la kòmanse nan moman foto a vini. jaden yo rete louvri pou ajisteman pandan ke li kouri.",
+        "field": "Kapte",
+        "heading": "Kamera oswa galeri"
+      },
+      "note": "De aksyon yo kenbe apa sou lide. sove ak pataje rezoud pwoblèm diferan, ak plisman yo nan yon bouton ta trennen nenpòt moun ki jis vle ranpli foto a nan yon ekran voye.",
+      "save": {
+        "description": "Li chita ak rès foto yo nan telefòn ou, ki disponib nan nenpòt ki app  ki gen ladan apre ou désinstaller Lymark.",
+        "field": "Sove",
+        "heading": "Ale nan galeri aparèy la"
+      },
+      "share": {
+        "description": "0, imèl, kondwi: destinasyon an chwazi pa sistèm nan fonksyone, ak app a pa patisipe nan voye.",
+        "field": "Pataje",
+        "heading": "Ouvri paj pataje sistèm"
+      },
+      "title": "Chemen yon foto pran"
+    },
+    "skipToContent": "Skip pou kontni",
+    "specimen": {
+      "caption": "Règ la Amber kòmanse ak fini nan kwen yo nan chif yo, pa nan bwat tèks la.",
+      "label": "Echantiyon nan timè Lymark: tan 07:42, dat 12 Out 2026, Mèkredi, yon adrès nan Guarujá ak yon kòd foto."
+    },
+    "title": "Lymark  dat, lè ak adrès dlo pou foto jaden",
+    "verify": {
+      "caveat": "Se sele a temwaye entegrite dosye a ak moman an nan emisyon. Sa se sele a deklare  adrès, dat, lè  se deklarasyon an nan emisyon an.",
+      "checking": "Chèche...",
+      "declarationNote": "Sa timè a montre (adrès, dat, lè) se deklarasyon emiten an  timè a ateste entegrite ak emisyon, pa kontni.",
+      "intro": "Kite oswa chwazi yon foto ki te ekspòte pa Lymark epi wè imedyatman si li se egzakteman jan li te kite app la  ak ki moun ki pibliye li, lè.",
+      "noSealBody": "Dosye sa a pa gen okenn sele Lymark. Li ka te ekspòte offline, anvan sele a te egziste, oswa li ka pa soti nan Lymark.",
+      "noSealTitle": "Pa gen sele",
+      "notConfigured": "Verifikasyon pa disponib ankò.",
+      "pick": "Chwazi dosye",
+      "previewAlt": "Foto a verifye, timè vizib",
+      "privacyNote": "Verifikasyon an fèt nan navigatè ou. dosye a pa voye nan nenpòt ki sèvè.",
+      "sealedBody": "Dosye sa a se egzakteman menm jan li te kite Lymark. {account} {date}",
+      "sealedTitle": "Entan",
+      "tamperedBody": "Kontni a pa matche ak sele a: dosye a te modifye apre emisyon an, oswa sele a fè pati yon lòt dosye.",
+      "tamperedTitle": "Pa sanble",
+      "title": "Verifye otantisite",
+      "unsupported": "Navigatè sa a pa sipòte verifikasyon siyati. Eseye yon navigatè aktyèl."
+    }
+  }
+}

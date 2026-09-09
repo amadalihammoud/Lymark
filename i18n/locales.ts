@@ -20,7 +20,8 @@ export const DEFAULT_LOCALE = 'pt' as const;
  * A ordem é a de exibição no seletor de idioma, não alfabética: primeiro o
  * idioma de origem, depois o alcance decrescente.
  *
- * A Fase 1 (hi…he) amplia o catálogo sem reordenar os doze originais.
+ * As Fases 1 (hi…he) e 2 (my…bg) ampliam o catálogo sem reordenar os doze
+ * originais.
  */
 export const LOCALES = [
   'pt',
@@ -53,6 +54,21 @@ export const LOCALES = [
   'am',
   'cs',
   'he',
+  'my',
+  'uz',
+  'ne',
+  'hu',
+  'kk',
+  'ps',
+  'so',
+  'sv',
+  'az',
+  'mg',
+  'si',
+  'km',
+  'rw',
+  'ht',
+  'bg',
 ] as const;
 
 export type Locale = (typeof LOCALES)[number];
@@ -92,6 +108,21 @@ export const LOCALE_NAMES: Record<Locale, string> = {
   am: 'አማርኛ',
   cs: 'Čeština',
   he: 'עברית',
+  my: 'မြန်မာ',
+  uz: 'Oʻzbekcha',
+  ne: 'नेपाली',
+  hu: 'Magyar',
+  kk: 'Қазақша',
+  ps: 'پښتو',
+  so: 'Soomaali',
+  sv: 'Svenska',
+  az: 'Azərbaycan',
+  mg: 'Malagasy',
+  si: 'සිංහල',
+  km: 'ខ្មែរ',
+  rw: 'Ikinyarwanda',
+  ht: 'Kreyòl ayisyen',
+  bg: 'Български',
 };
 
 /**
@@ -140,13 +171,13 @@ export const LOCALES_BY_NAME: readonly Locale[] = [...LOCALES].sort((a, b) =>
  *   decisão de produto: pedir "feche e abra de novo" no meio de uma vistoria
  *   é diferente de pedir na tela de idioma.
  *
- * Fase 1 acrescenta hebraico (`he`), urdu (`ur`) e persa (`fa`) — a mesma
- * regra de `dir="rtl"` no documento.
+ * Fase 1 acrescenta hebraico (`he`), urdu (`ur`) e persa (`fa`); a Fase 2
+ * acrescenta pashto (`ps`) — a mesma regra de `dir="rtl"` no documento.
  *
  * O que NÃO deve espelhar, e por isso não usa propriedade lógica: a marca
  * desenhada em `wordmark.tsx`. Um logotipo é o mesmo em toda língua.
  */
-export const RTL_LOCALES: readonly Locale[] = ['ar', 'he', 'ur', 'fa'];
+export const RTL_LOCALES: readonly Locale[] = ['ar', 'he', 'ur', 'fa', 'ps'];
 
 export function isLocale(value: string): value is Locale {
   return (LOCALES as readonly string[]).includes(value);

@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Tətbiq",
+      "pitch": "Fotoşəkillərinizə saat, tarix, həftə günü, ünvan və izləmə kodunu  sahə qeydləri, sayt yoxlamaları və xidmət sübutları üçün möhürləyin.",
+      "platform": "Platforma",
+      "privacy": "Məxfilik siyasəti",
+      "privacyGeocoding": "GPS istifadə edildikdə, əməliyyat sistemi koordinatı Google və ya Apple xəritə xidmətlərinə göndərir. Bu, burada qalan yeganə məlumatdır və Lymark deyil, onu göndərən sistemdir.",
+      "privacyLocation": "Yer tutma yalnız ünvan sahəsini doldurmaq üçün bir dəfə istifadə olunur və fotolardan ayrı saxlanılmır.",
+      "privacyOnDevice": "Şəkillər, ünvanlar və tarixçə yalnız bu cihazda qalır. Hesab abunə üçün mövcuddur: server e-poçtunuzu və planınızı saxlayır və heç vaxt fotoşəkillərinizi və ya yerinizi almır.",
+      "privacySection": "Məxfilik",
+      "sdk": "Expo SDK",
+      "terms": "İstifadə şərtləri",
+      "title": "Lymark haqqında",
+      "version": "Versiya"
+    },
+    "account": {
+      "browserHint": "Giriş brauzerdə baş verir. Hesabınızla daxil olun və tətbiq öz-özünə qoşulur.",
+      "code": "Kod",
+      "codeSent": "Kodu 0-a göndərdik.",
+      "connected": "Bağlı",
+      "continue": "Dövlət",
+      "deleteAccount": "Hesabı silmək",
+      "email": "E-poçt",
+      "failed": "E-poçt və ya kodu yoxlayın və yenidən cəhd edin.",
+      "notConfigured": "Bu quruluşda hələ ki, giriş yoxdur.",
+      "signInBrowser": "Brauzer vasitəsilə daxil olun",
+      "signOut": "İmzalayın.",
+      "signedInAs": "İmzalanmışdır",
+      "title": "Hesab",
+      "verify": "Təyinat"
+    },
+    "batch": {
+      "addressHint": "Sərhəd, nömrəsi  Şəhər",
+      "clearList": "Açıq siyahı",
+      "codeHint": "M.Ö.LYM-001",
+      "done": "{count, plural, one {İşlənmə bitdi:#foto hazır.} other {İşləmə bitdi:#fotoları bitdi.}}",
+      "doneSection": "Bitirilir",
+      "dropZone": "Fotoları buraya sürükləyin və buraxın və ya Select photos düyməsini istifadə edin",
+      "errorsSection": "Xətalar",
+      "folder": "Qapı: 0",
+      "noPhotos": "Ən azı bir foto seçin.",
+      "outputNote": "İşlənmiş fotolar seçilmiş qovşağa saxlanılır.",
+      "outputSection": "İstehsal",
+      "photosSection": "İşləmək üçün fotolar",
+      "processing": "İşləmə...",
+      "progress": "0 1 (2%)",
+      "results": "{success, plural, one {#uğurlu} other {#uğurları}}, {failed, plural, one {#uğursuzluğu} other {#səhvləri}}",
+      "selectFolder": "Çıxış klassikasını seçin",
+      "selectPhotos": "Fotoları seçin",
+      "selected": "{count, plural, one {Seçilmiş foto #} other {Seçilmiş#fotoları}}",
+      "sharedNote": "Bu dəyərlər TAMAL fotolara tətbiq olunur.",
+      "sharedSection": "Paylaşılan metadatalar",
+      "start": "İşləməni başlatın",
+      "unavailableBody": "Bu xüsusiyyət yalnız masaüstü üçündir.",
+      "unavailableTitle": "Satışda işlənməyən"
+    },
+    "capture": {
+      "accuracy": "Mütəxəssislər",
+      "accuracyImprecise": "İxracdan əvvəl küçə nömrəsini ±0 m  məsafədə yoxlayın.",
+      "address": "Adres",
+      "addressFailedTitle": "Heç bir ünvan tapılmadı",
+      "addressHint": "Yerə vurun və ya ünvanı yazın",
+      "camera": "Foto çək.",
+      "code": "Kod",
+      "dateHint": "2026-cı il yanvarın 1-i",
+      "dateTimeGroup": "Tarix və saat",
+      "emptyWarning": "Heç bir məlumat damğalanmayacaq  foto su işarəsi olmadan çıxacaq.",
+      "gallery": "Galeridən seçin",
+      "galleryDenied": "Foto girişinə icazə verilmədi, buna görə şəkil yalnız tətbiq daxilində mövcuddur.",
+      "galleryFailed": "Görüntülər tarixə daxil oldu, amma cihaz onu qalereyaya yazmaqdan imtina etdi.",
+      "generateCode": "Yükləmək",
+      "hiddenFields": "{count, plural, one {Gizli sahə} other {Gizli sahələr}}:{fields}Onları \"Əməllər\" səhifəsində açın.",
+      "keepMyAddress": "Mənimkini saxla.",
+      "locate": "Yerləşdirin",
+      "locateByGps": "GPS vasitəsilə ünvanı tapmaq",
+      "lookup": {
+        "denied": "Əsasnamələr> İzinlər səhifəsində yerləşdirilməsinə icazə verin və ya ünvanı yazın.",
+        "disabled": "Cihazın yeri söndürülüb.",
+        "timeout": "GPS vaxtında cavab vermədi.",
+        "unavailable": "Bu mövqedə ünvanı həll etmək mümkün deyildi."
+      },
+      "newCapture": "Yeni bir tutma başlayın.",
+      "noFieldsBack": "Geri dön.",
+      "noFieldsContinue": "Hər halda davam edin.",
+      "noFieldsMessage": "Heç bir sahədə möhürləmək üçün heç bir şey yoxdur. sahələri doldur və ya Ayarlar › Sahələr və mövqe baxın.",
+      "noFieldsTitle": "Foto su işarəsi olmadan çıxacaq.",
+      "noPhotoHint": "Foto çəkin və ya qalereyadan birini seçin.",
+      "noPhotoSelected": "Seçilmiş foto yoxdur",
+      "openFailed": "Foto açılmadı.",
+      "permissionMessage": "Əlaqələrdə giriş icazəsi > İzinlər davam etdirilsin.",
+      "permissionTitle": "İzin tələb olunur",
+      "pickPhoto": "Foto seçin",
+      "pickPhotoHint": "Fəaliyyətləri təmin etmək üçün bir foto seçin.",
+      "previewLabel": "Su işarəsi ilə çəkilmiş fotoşəkil",
+      "renderFailedTitle": "Görüntüyü yaratmaq mümkün olmayıb",
+      "replaceAddressMessage": "GPS tapıldı: 0",
+      "replaceAddressTitle": "Yazdığın ünvanı dəyişdirmək?",
+      "resetConfirm": "Atın",
+      "resetMessage": "Seçilən foto və doldurulmuş sahələr atılacaq.",
+      "resetTitle": "Yeni bir tutma başlamaq?",
+      "saved": "Foto cihaz qalereyasına və tarixə saxlanılır.",
+      "savedAppOnlyTitle": "Yalnız Lymark daxilində saxlanılır",
+      "shareDialogTitle": "Su işarəsi ilə çəkilmiş şəkil paylaşın",
+      "shareFailedMessage": "Görüntülər yaradılıb və Lymark tarixindədir.",
+      "shareFailedTitle": "Paylaşa bilmədim",
+      "shareUnavailableMessage": "Bu cihazın payı yoxdur. Lymark",
+      "shareUnavailableTitle": "Paylaşma mümkün deyil",
+      "sharedFileTitle": "Su işarəsi ilə çəkilmiş foto",
+      "stampNotReady": "Dərman hələ hazırlanır.",
+      "syncNow": "İndi",
+      "timestamp": "Tarix/Saat",
+      "title": "Qəbul",
+      "useGpsAddress": "GPS-dən istifadə edin.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Günü"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "başqa rəng seçin",
+      "saturationBrightness": "Doluşma və parlaqlıq",
+      "use": "Bu rəngdən istifadə edin"
+    },
+    "common": {
+      "back": "Geri qayıt.",
+      "cancel": "İndirim",
+      "delete": "Silmək",
+      "error": "Xəta",
+      "gotIt": "Aldım.",
+      "loading": "Yükləmə...",
+      "no": "Yox, yox.",
+      "ok": "Tamam.",
+      "save": "Qoru",
+      "share": "Paylaşmaq",
+      "success": "Uğurlu",
+      "tryAgain": "Yenə cəhd edin.",
+      "unknownError": "Məlum olmayan səhv",
+      "yes": "Bəli."
+    },
+    "gallery": {
+      "cancelSelection": "Seçimi ləğv etmək",
+      "clear": "Açıq tarix",
+      "clearConfirm": "Açıq",
+      "clearMessage": "Lymark-ın qeydləri silinəcək.",
+      "count": "{count, plural, one {ixrac edilmiş#foto} other {ixrac edilmiş#fotoşəkillər}}",
+      "delete": "Silmək",
+      "empty": "Hələ foto yoxdur.",
+      "emptyAction": "Tutmaq üçün gedin",
+      "emptyDescription": "Su işarəsi ilə ixrac etdiyiniz fotolar burada göstərilir, tarix, yer və kod ilə.",
+      "filteredCount": "{shown}{total, plural, one {#foto} other {#fotoları}}",
+      "noResults": "0  üçün heç bir foto tapılmadı.",
+      "photoLabel": "Foto: 0",
+      "removeMessage": "Lymark-dan çıxmış yazılar. Cihaz qalereyasına saxlanılan şəkillər təsirlənmir.",
+      "removeTitle": "{count, plural, one {Tarixdən çıxar} other {#yazıları çıxar}}",
+      "removed": "{count, plural, one {Giriş məhdudlaşdırılıb.} other {Məlumatlar silinib.}}",
+      "saveDeniedMessage": "Görüntüləri qurğunun qalereyasına saxlamaq üçün parametrlər › icazələr səhifəsində icazə verin.",
+      "saveDeniedTitle": "Foto girişinə icazə verilməyib",
+      "savedAll": "{count, plural, one {Cihaz qalereyasına saxlanan bir foto.} other { fotoları cihaz qalereyasına saxlanılır. #}}",
+      "savedSome": "Qoruyan fotoşəkillərdən 0",
+      "searchPlaceholder": "Adres, tarix və kodla axtarış",
+      "selectedCount": "{count, plural, one {Seçilmiş foto #} other {Seçilmiş#fotoları}}",
+      "share": "Paylaşmaq",
+      "title": "Galeriya"
+    },
+    "language": {
+      "automatic": "Düzəliş cihazı",
+      "automaticNote": "Lymark cihazınızda müəyyən edilmiş dilə izləyir.",
+      "label": "Dillər",
+      "selector": "Dilin seçilməsi"
+    },
+    "login": {
+      "access": "Giriş üçün daxil olun",
+      "apple": "Apple ilə daxil olun",
+      "google": "Google ilə daxil olun",
+      "subtitle": "Qeydiyyat üçün daxil olun",
+      "title": "Lymark-a daxil olmaq üçün daxil olun"
+    },
+    "nav": {
+      "batch": "Satışların işlənməsi",
+      "photoDetail": "Fotoşəkil detalları",
+      "report": "Hesabat",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Bu ekran Lymark-ın bir hissəsi deyil.",
+      "screenTitle": "Sayt tapılmadı",
+      "title": "Belə bir yol yoxdur."
+    },
+    "permissions": {
+      "allow": "İzin ver.",
+      "allowed": "İzin verilir",
+      "blocked": {
+        "later": "İndi yox.",
+        "message": "Sistem yenidən soruşmayacaq.",
+        "openSettings": "Açıq parametrlər",
+        "title": "İzin bloklanıb"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Su işarəsi alacaq şəkil çəkmək məcburiyyətindədir.",
+      "denied": "Qadağlı",
+      "granted": "Müvafiq",
+      "intro": "Lymark yalnız bir fotoşəkil üçün lazım olanları soruşur. Görüntüləriniz cihazdan heç vaxt çıxmır: GPS istifadə edərkən əməliyyat sistemi xəritə xidmətinə koordinatı yalnız göndərir, belə ki, bu bir ünvan ola bilər.",
+      "location": "Yerləşmə",
+      "locationRationale": "Adres sahəsində avtomatik olaraq doldurulur.",
+      "mediaLibrary": "Galeriyaya saxlayın",
+      "mediaLibraryRationale": "Aparıcılar qalereyasına ixrac edilmiş fotoları yazmaq üçün.",
+      "openDeviceSettings": "Qeydiyyatlar",
+      "recheck": "Yenə yoxlayın.",
+      "request": "icazə tələb etmək",
+      "section": "Giriş",
+      "title": "İzinlər"
+    },
+    "photo": {
+      "backToGallery": "Qalanjına qayıt",
+      "exportedAt": "0da ixrac edilir",
+      "noWatermark": "Bu foto su işarəsi olmadan ixrac edilmişdir.",
+      "notFoundBody": "Bu qeyd tarixdən silinmiş ola bilər.",
+      "notFoundTitle": "Foto tapılmadı",
+      "remove": "çıxarmaq",
+      "removeBody": "Layihə Lymark-ı tərk edir.",
+      "removeTitle": "Tarixdən çıxar",
+      "share": "Paylaşmaq",
+      "stampedData": "Düzgün məlumatlar"
+    },
+    "plan": {
+      "exhausted": "Pulsuz istifadə edilmiş fotolar",
+      "exhaustedMessage": "Pulsuz planın 12 şəkli yox oldu. Lymark",
+      "free": "Pulsuz",
+      "pro": "Pro",
+      "reconnect": "Əmanətini təsdiq etmək üçün yenidən bağlan",
+      "remaining": "{remaining, plural, one {#pulsuz foto sol} other {X#pulsuz fotolar qalıb}}",
+      "title": "Plan",
+      "unlimited": "Sərhəd yoxdur"
+    },
+    "report": {
+      "allPhotos": "Bütün fotolar",
+      "authorField": "Müəllif / şirkət",
+      "detailsSection": "Detaylar",
+      "doc": {
+        "author": "Yazıçı",
+        "declaration": "Mürəkkəb məlumatlar (aş, tarix, saat və kod) fotoşəkillərin emitentinin bəyanatıdır.",
+        "exportedAt": "İxrac edilən",
+        "generatedAt": "Qəzet",
+        "page": "Səhifə",
+        "photo": "Foto 0",
+        "photosSection": "Fotoqrafik qeydlər",
+        "signature": "Müvəkkil şəxs tərəfindən imzalanmış",
+        "summary": "Qısaca",
+        "title": "Foto-report",
+        "totalPhotos": "Ümumi fotolar:"
+      },
+      "empty": "Hələki ixrac olunmamış fotoşəkillər yoxdur.",
+      "failed": "Hesabatı yaratmaq mümkün olmayıb.",
+      "fileStem": "hesabat",
+      "format": {
+        "csv": "Hesablama (0)",
+        "pdf": "PDF",
+        "word": "0 (.doc)",
+        "zip": "Paket (0)"
+      },
+      "formatSection": "Format",
+      "generate": "Fayl yaratmaq",
+      "generateSection": "Yükləmək",
+      "includeLogo": "Kərpizdəki logo",
+      "includeLogoDescription": "Markanın logoyu, möhürdən alınan eyni.",
+      "norm": {
+        "abnt": "0 (Braziliya)",
+        "din5008": "0 (Almaniya)",
+        "ibape": "0 üslub (Braziliya)",
+        "iso": "Beynəlxalq",
+        "letter": "Məktub (ABŞ)"
+      },
+      "normNote": "Standart kağız və formatlaşdırma  kənarlarını, font və səhifə nömrələrini müəyyən edir. hesabat məzmununun hamısı eynidir; 0 üsulu imzalanma blokunu əlavə edir.",
+      "normSection": "Sənəd standartı",
+      "projectsSection": "Layihə / iş",
+      "saved": "Qoruyan 0",
+      "savedShort": "Hesabat saxlanılıb.",
+      "title": "Hesabat",
+      "titleField": "Hesabat başlığı",
+      "unavailableBody": "0 hesabatlar masaüstü tətbiqdə mövcuddur.",
+      "unavailableTitle": "Yalnız masaüstü",
+      "uncoded": "Kod yoxdur.",
+      "wordTooBig": "0 sənədi şəkillərlə çox böyük oldu. 1 və ya 2 paketi istifadə edin.",
+      "zipMissing": "{count, plural, one {Paket saxlanılıb, amma bu cihazda#foto tapılmadı.} other {Paket saxlanılıb, lakin bu cihazda#fotoları tapılmadı.}}"
+    },
+    "settings": {
+      "about": "haqqında",
+      "aboutDescription": "Versiya, məxfilik və kreditlər",
+      "appSection": "Tətbiq",
+      "deviceSection": "Cihaz",
+      "deviceSectionDescription": "Lymark-ın istədiyi giriş.",
+      "fields": "Sahələr və mövqe",
+      "fieldsDescription": "Hansı sahələr göstərildiyini, küncünü və ölçüsünü seçin",
+      "history": "Tarix",
+      "historyDescription": "Cihazda saxlanan ixrac edilmiş fotolar",
+      "language": "Dillər",
+      "permissions": "İzinlər",
+      "permissionsDescription": "Kamera, foto və yer",
+      "save": "Qoru",
+      "title": "Qeydiyyatlar",
+      "watermark": "Su işarəsi",
+      "watermarkSection": "Su işarəsi",
+      "watermarkSectionDescription": "Fotoya nəyin məmurluğu qoyulur və harada."
+    },
+    "signup": {
+      "subtitle": "Başlamaq üçün qeydiyyatdan keçin",
+      "title": "Lymark hesabınızı yaratın"
+    },
+    "tagline": "Vaxt, tarix və yer ilə su işarəsi",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Kamera giriş yoxdur.",
+      "done": "Video möhürlənib saxlanılıb.",
+      "export": "İxrac üçün möhürləndirilmiş video",
+      "exportSection": "İxrac",
+      "failed": "Video çap edilə bilmədi.",
+      "fieldsSection": "Dərs sahələri",
+      "fileSection": "Video",
+      "none": "Video seçilməyib.",
+      "processing": "İşləmə... 0%",
+      "processingMobile": "İşləmə...",
+      "record": "İndi video qeyd edin",
+      "saved": "Qoruyan 0",
+      "savedToGallery": "Qalanjınıza saxlanan video.",
+      "select": "Video seçin",
+      "unavailableBody": "Mobil video ştamplama üçün LymarkEASquruluşu (məşhur modulla) quraşdırılmalıdır.Expo Go-də mövcud deyil. Dükkandan rəsmi tətbiq və yaEASquruluşu quraşdırın və ya masaüstü / veb versiyasından istifadə edin.",
+      "unavailableTitle": "Qurulmuş tətbiq tələb olunur",
+      "unreadable": "Dosya video kimi oxunula bilmədi.",
+      "webNote": "Brauzerdə video real vaxtda işlənir  2 dəqiqəlik video 2 dəqiqə çəkir  və 0 formatında çıxır. Uzun videolar üçün masaüstü tətbiqdən istifadə edin."
+    },
+    "watermark": {
+      "accentColor": "Düzlük çubuğu",
+      "backdropBandNote": "Şəkil üzərindəki səhnə, bir bina sahəsi, bir həyət, bir sıx fasad üzərindəki səhnə üzərindəki etiketdən daha çox sənədin başlığı kimi oxunur.",
+      "backdropBlockNote": "Əlyazmanın arxasında mətn ölçüsü, ətrafında örtüklə bağlıdır.",
+      "backdropColor": "Şəklənin rəngi",
+      "backdropDescription": "Bu, fotoşəkil üzərindəki işıqlı sahələrdə kontrast saxlayır.",
+      "backdropInnerRadius": "Daxili künclər",
+      "backdropOpacity": "Şəffaflıq",
+      "backdropOpacityValue": "0% qeyri-pərt",
+      "backdropRadius": "Dövrəmiş künclər",
+      "backdropRadiusSquare": "Kvadrat",
+      "backdropStyles": {
+        "band": "Tam genişlik bantı",
+        "block": "Mətn arxasında",
+        "none": "Heç biri"
+      },
+      "backdropTitle": "Təklif bantı",
+      "brandDescription": "Saatın üstündə, bir logosu və etiketlə imzalanır.",
+      "brandFirstColor": "Birinci hissənin rəngi",
+      "brandFirstHint": "Tikintiçilər",
+      "brandFirstPart": "Birinci hissə",
+      "brandNote": "İkinci hissəni boş buraxın və bir rəngli bir işarə edin.",
+      "brandPlacements": {
+        "corner": "Bir küncdə",
+        "header": "Saatın üstündə",
+        "none": "Heç biri"
+      },
+      "brandSecondColor": "İkinci hissənin rəngi",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "İkinci hissə",
+      "brandTitle": "Düzgün işarə",
+      "codeDescription": "Yan tərəfdən, şəkil özü ilə yer üçün rəqabət aparmır.",
+      "codePlacements": {
+        "block": "Məlumatların yanında",
+        "side": "Sağ tərəf"
+      },
+      "codeTitle": "Foto kod",
+      "colors": {
+        "amber": "Amber",
+        "black": "Qara",
+        "blue": "Mavi",
+        "green": "Yaşıl",
+        "red": "Qırmızı",
+        "white": "Ağ"
+      },
+      "colorsDescription": "Fotoda rəng şirkətin seçimidir, tətbiq deyil. Onu dəyişdirmək ekran rənglərini dəyişmir.",
+      "colorsTitle": "Dərs rəngləri",
+      "complement": "Etiket",
+      "complementColor": "Etiket rəngləri",
+      "complementHint": "Təftişlər və texniki hesabatlar",
+      "cornerConflict": "Qeyd və məlumatlar eyni köşədədir.",
+      "fields": {
+        "address": "Adres / yer",
+        "code": "Foto kod",
+        "date": "Tarix",
+        "time": "Vaxt",
+        "weekday": "Həftə günü"
+      },
+      "fieldsDescription": "Yalnız məzmunlu sahələr fotoya çatır.",
+      "fieldsTitle": "Göstərilən sahələr",
+      "includeCountry": "Ölkə daxil edin",
+      "includeCountryDescription": "Sərhədlər keçən işçilərin əlindədirsə, onu aç, əks halda yalnız fotoşəkildə yer alır.",
+      "legibilityTitle": "Oxunma qabiliyyəti",
+      "logoAdded": "Markalı başlığına logo əlavə edilmişdir.",
+      "logoAlignNote": "Logo hündürlüyü mətni izləyir: üst hissəsi adın yuxarı hissəsi ilə, alt hissəsi isə sloganın əsas xəttinə uyğun gəlir.",
+      "logoChosen": "Seçilmiş logo",
+      "logoErrorMessage": "Başqa bir şəkil sınayın. Şəffaf fonlu PNG ən yaxşı işləyən formatdır.",
+      "logoErrorTitle": "Bu fayl istifadə edilə bilmədi",
+      "logoFormatNote": "şəffaf bir fonlu PNG istifadə edin. Ağ bir fonlu JPG fotoşəkildə ağ düzbucaq olur  format şəffaflığı saxlamaz və tətbiqdə fonun nə olduğunu təxmin etmək üçün heç bir yol yoxdur.",
+      "logoPermissionMessage": "Logonun faylını seçmək üçün Ayarlar › İzinlər səhifəsində icazə verin.",
+      "logoPermissionTitle": "Foto girişinə icazə verilməyib",
+      "logoPick": "Logo seçin",
+      "logoPosition": "Logo mövqeyi",
+      "logoPositionBlock": "Müəssisə ilə.",
+      "logoRemove": "çıxarmaq",
+      "logoReplace": "Logo əvəz",
+      "logoSize": "Logo ölçüsü",
+      "positionDescription": "Bloq fotoşəkilin köşəsinə bağlanmışdır.",
+      "positionTitle": "Vəziyyət",
+      "positions": {
+        "bottom-left": "Solun alt hissəsi",
+        "bottom-right": "Sağdan aşağı",
+        "top-left": "Sol üstdə",
+        "top-right": "Sağ üstdə"
+      },
+      "previewCurrent": "Yükləmə tabundan olan fotoşəkil üzərində.",
+      "previewEmpty": "Hər iki ucadan oxunma qabiliyyətini yoxlamaq üçün işıqdan qaranlıqa.",
+      "previewNoFields": "Seçilmiş heç bir sahə yoxdur  şəkil su işarəsi olmadan çıxır.",
+      "previewTitle": "Əvvəlki görüntülə",
+      "reset": "Əsas parametrləri bərpa etmək",
+      "sizeTitle": "Mətn ölçüsü",
+      "sizes": {
+        "large": "Böyük",
+        "medium": "Orta",
+        "small": "Kiçik"
+      },
+      "textColor": "Mətn",
+      "timeFormatDescription": "Zamanın sahələrə necə doldurulduğu.",
+      "timeFormatTitle": "Zaman formatı",
+      "timeFormats": {
+        "12h": "12 saat (sahər/axşam)",
+        "24h": "24 saat"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Bütün sənədlər",
+      "images": "Şəkillər",
+      "pickFolder": "Çıxış klassikasını seçin",
+      "pickPhoto": "Foto seçin",
+      "pickPhotos": "Parçaya uyğun şəkillər seçin",
+      "savePhoto": "Foto saxlayın",
+      "saveReport": "Hesabatı saxlayın"
+    },
+    "login": {
+      "cancel": "İndirim",
+      "confirm": "Dövlət",
+      "message": "Bu kompüterdəki hesabı istifadə etməyə davam et.",
+      "title": "Lymark-a daxil olun"
+    },
+    "menu": {
+      "copy": "İmzalama",
+      "cut": "Kəsmək",
+      "edit": "Düzenləmə",
+      "file": "Dosya",
+      "fullscreen": "Tam ekran",
+      "help": "Yardım",
+      "paste": "Qovşaq",
+      "quit": "Qeydiyir.",
+      "redo": "Redo",
+      "reload": "Yenidən yükləmə",
+      "selectAll": "Bütünləri seçin",
+      "settings": "Qeydiyyatlar",
+      "undo": "İndirim",
+      "view": "Görünüş",
+      "zoomIn": "Zoom daxil",
+      "zoomOut": "Zoom out",
+      "zoomReset": "Həqiqi ölçüsü"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Evə qayıt.",
+      "openApp": "Tətbiq açın",
+      "photos": "Fotolar",
+      "photosLeft": "Soldan 0",
+      "plan": "Plan",
+      "planUnavailable": "Hazırda mövcud deyil.",
+      "plans": {
+        "free": "Pulsuz",
+        "pro": "Pro"
+      },
+      "signInTitle": "İmzalayın",
+      "signOut": "İmzalayın.",
+      "signUpTitle": "Hesab yaratmaq",
+      "subscribe": "Lymark Pro-ya abunə olun",
+      "subscribeSoon": "Əmanət hələ mövcud deyil. Əmanət olarkən, burada abunə ola və eyni hesabı olan istənilən cihazdan istifadə edə bilərsiniz.",
+      "title": "Hesabınız",
+      "revokeDesktops": "Kompüterləri bağlamaq",
+      "revokeDesktopsHint": "Hər kompüterdə tətbiqin girişini bitirir. İstənilən vaxt yenidən daxil ola bilərsiniz."
+    },
+    "availability": {
+      "contact": "İndirməni izləmək və ya bir problem barədə məlumat vermək üçün <email>contato@lymark.app</email>.",
+      "description": "Lymark versiyası 1.3.0 versiyasında Android-də test olunur.Google Play-də yayımlanmadan əvvəl.",
+      "title": "Mövcudluq"
+    },
+    "data": {
+      "device": {
+        "description": "Hesab abunə üçün mövcuddur: server e-poçtunuzu və planınızı saxlayır və heç vaxt fotoşəkillərinizi və ya yerinizi almir. Tarix son iki yüz ixracı tətbiqin öz fayllarında saxlayır.",
+        "field": "Cihazda",
+        "heading": "Fotolar, ünvanlar və tarix"
+      },
+      "external": {
+        "description": "Əməliyyat sistemi Google və ya Apple-ın geokodlaşdırma xidmətindən oxunula bilən bir ünvana çevrilmək üçün yalnız bu məlumatı buraxır və tətbiq yox, sistem göndərir.",
+        "field": "Cihazdan kənar",
+        "heading": "Yalnız koordinatları ünvana çevirmək"
+      },
+      "note": "Bütün bunlar                                                                                                                                                                                                                                <privacy>Məxfilik siyasəti</privacy>. Yerləşmə icazəsinin söndürülməsi tətbiqini tam işləməyə buraxır; yalnız ünvan sahəsi əl ilə yazılmalıdır.",
+      "title": "Məlumatların yerləşdiyi yer"
+    },
+    "deleteAccount": {
+      "back": "Hesablara qayıdın.",
+      "confirm": "Hesabımı sil",
+      "deletesNow": "Hesabınızı silmək e-poçtunuzu, şəxsiyyət və plan, kvot və foto sayını dərhal silər.",
+      "irreversible": "Silmə davamlıdır və ləğv edilə bilməz. Cihazınızdakı fotolar təsirlənmir  onlar heç vaxt serverlərimizdə olmayıb.",
+      "retained": "Ödəniş əməliyyatlarının qeydləri qanunla tələb olunan maliyyə dövrü üçün saxlanılır, profilinizlə əlaqəsi yoxdur.",
+      "title": "Hesabı silmək"
+    },
+    "description": "Android tətbiqi, saatı, tarixini, iş günü, ünvanı və sayt yoxlama və xidmət sübutu fotolarına izləmə kodunu möhürləyir.",
+    "desktop": {
+      "backAccount": "Hesablara qayıdın.",
+      "explanation": "Hesabınız hazırdır. Aşağıdakı düyməni basaraq artıq daxil olan kompüterinizdəki Lymark-ı açın  brauzer tətbiqi açmaq üçün icazə istəyəcəkdir.",
+      "open": "Tətbiq bağlan",
+      "title": "Masaüstünə daxil olun",
+      "unavailable": "Masaüstü tətbiq bağlantısı hələ mövcud deyil."
+    },
+    "download": {
+      "appStore": {
+        "description": "Androiddəki iOS-da olduğu kimi.",
+        "field": "App Store",
+        "heading": "iPhone və iPad"
+      },
+      "browser": {
+        "action": "İmzalayın",
+        "description": "Hesabınızla daxil olun və tətbiq brauzerdə açılır  telefon və ya kompüter.",
+        "field": "Browser",
+        "heading": "İndi istifadə edin, quraşdırmaq üçün heç bir şey yoxdur."
+      },
+      "desktop": {
+        "description": "Fotoşəkillər, uzun videolar və 0 hesabatlar  ağır yük versiyası.",
+        "field": "Kompüter",
+        "heading": "Windows və Linux"
+      },
+      "googlePlay": {
+        "description": "Telefon tətbiqi, kamera, qalereya və video ilə.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Tezliklə gəlir.",
+      "title": "Lymark- ı harada istifadə etmək olar"
+    },
+    "features": {
+      "address": {
+        "description": "Bu yolun adı qısaldılır və dövlət onun koduna çevrilir, belə ki, ünvan fotoşəkilini örtmədən iki satırda yerləşir.",
+        "field": "Adres",
+        "heading": "GPS ilə doldurulmuş, əl ilə düzəldilə bilər"
+      },
+      "code": {
+        "description": "Bu, iş sifarişində və ya hesabatda bir xüsusi fotoqrafiya istinad edə biləcəyiniz üçün mövcuddur.",
+        "field": "Foto kod",
+        "heading": "14 simvol, kriptografik generator tərəfindən çəkilmişdir"
+      },
+      "note": "Hər sahə öz-özünə açılır və söndürülür və blok üç ölçülü dörd köşənin hər birinə bağlanır. Ön görüntülərində sizin fotoşəkiliniz, ümumi nümunə deyil istifadə olunur: ekranda gördüyünüz şey əslində ixrac olunur.",
+      "time": {
+        "description": "Bir düymə üç sahəni də hazırkı dövrə qaytarır.",
+        "field": "Saat və tarix",
+        "heading": "Təchizat saatından tutulduğu anda"
+      },
+      "title": "Görüntüyə nə daxil olur?"
+    },
+    "footer": {
+      "description": "Lymark  Fotoqrafik qeydlər, tarix, vaxt və ünvan.",
+      "documentsLabel": "Sənədlər",
+      "privacy": "Məxfilik siyasəti",
+      "support": "Dəstək:",
+      "terms": "İstifadə şərtləri"
+    },
+    "hero": {
+      "ctaAccount": "Hesabıma gedin.",
+      "ctaLogin": "İmzalayın",
+      "ctaSignup": "Pulsuz hesab yaratın",
+      "description": "Lymark saatı, tarixini, həftə günü, ünvanı və izləmə kodunu birbaşa şəkil üzərində damğaldır. tətbiqdən çıxan fayl daxilində məlumatları  deyil, birincisiWhatsAppirəli sürən metadata kimi daşımır.",
+      "eyebrow": "Sahə foto sənədləri",
+      "heading": "Foto artıq telefonunuza nə vaxt, harada və nəyi yazır.",
+      "meta": {
+        "account": "Bir təpə hesabı",
+        "android": "Android və brauzer",
+        "language": "Braziliya portuqaliyası",
+        "onDevice": "Fotolar cihazda qalır."
+      },
+      "note": "Qurmaq üçün heç nə yoxdur."
+    },
+    "nav": {
+      "account": "Hesab",
+      "home": "Ev",
+      "homeLabel": "Lymark, ev səhifəsi",
+      "label": "Əsas",
+      "privacy": "Məxfilik",
+      "signIn": "İmzalayın",
+      "terms": "Şərtlər",
+      "verify": "Təyinat"
+    },
+    "process": {
+      "capture": {
+        "description": "Foto daxil olunduğu anda ünvan axtarışı başlayır.",
+        "field": "Qəbul",
+        "heading": "Kamera və ya qalereya"
+      },
+      "note": "İki hərəkət məqsədyönlü olaraq ayrılır. Saqlama və paylaşma müxtəlif problemləri həll edir və onları bir düyməyə qatmaq fotoşəkil göndərmə ekranından fayl etmək istəyən hər kəsi çəkər.",
+      "save": {
+        "description": "Lymark-ı sildikdən sonra da hər hansı bir tətbiq üçün mövcud olan telefonunuzun qalan fotoları ilə birlikdə yerləşir.",
+        "field": "Qoru",
+        "heading": "Cihazlar qalereyasına gedir."
+      },
+      "share": {
+        "description": "0, e-poçt, Drive: istiqamət əməliyyat sistemi tərəfindən seçilir və tətbiq göndərmədə iştirak etmir.",
+        "field": "Paylaşmaq",
+        "heading": "Sistem pay payı lövhəsini açır"
+      },
+      "title": "Bir fotoşəkil çəkən yol"
+    },
+    "skipToContent": "Məzmunun üstünə keç",
+    "specimen": {
+      "caption": "Amber qayda, mətn qutusu deyil, rəqəmlərin kənarlarında başlayır və bitir.",
+      "label": "Lymark markasının nümunəsi: saat 07:42, 12 avqust 2026-cı il, çərşənbə, Guarujada bir ünvan və foto kod."
+    },
+    "title": "Lymark  sahə fotoları üçün tarix, vaxt və ünvan su işarəsi",
+    "verify": {
+      "caveat": "Mürəkkəb sənədin bütövlüyünə və buraxılışın vaxtına şahidlik edir.",
+      "checking": "- Yoxlayıram...",
+      "declarationNote": "Mürəkkəblik və buraxılışın məzmunu deyil, möhürün göstərdiyi (aşırı, tarixi, vaxtı) emitentin bəyanatıdır.",
+      "intro": "Lymark tərəfindən ixrac edilmiş bir fotoyu buraxın və dərhal görün ki, tətbiqdən ayrılmış olduğu kimi olub və kim onu nə vaxt buraxmışdır.",
+      "noSealBody": "Bu fayl Lymark möhürü yoxdur. Bu möhür mövcud olmadan əvvəl offline ixrac edilmiş ola bilər, və ya Lymark-dan gəlmək mümkün deyil. bir möhürün olmaması bir manipulyasiya sübut etmir.",
+      "noSealTitle": "Mürəkkəb yoxdur.",
+      "notConfigured": "Hələ yoxlama mümkün deyil.",
+      "pick": "Dosyayı seçin",
+      "previewAlt": "Səmərəli foto, möhür görünür",
+      "privacyNote": "Verifikasiya brauzerinizdə baş verir. Fayl heç bir serverə göndərilmir.",
+      "sealedBody": "Bu sənəd Lymark-dan ayrılmış olduğu kimi,{account}hesabı ilə buraxılmışdır. {date}",
+      "sealedTitle": "Hədəsi pozulmuş",
+      "tamperedBody": "Mətn möhürlə uyğun deyil: sənəd buraxıldıqdan sonra dəyişdirilmişdir və ya mühür başqa bir sənədə aiddir.",
+      "tamperedTitle": "Düzülməmə",
+      "title": "Aəttiqlliyini yoxlayın",
+      "unsupported": "Bu brauzer imza təsdiqini dəstəkləmir."
+    }
+  }
+}

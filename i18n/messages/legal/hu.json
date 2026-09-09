@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Az adatvédelmi politika",
+      "description": "A Lymark alkalmazás hogyan kezel a fényképeket, a helyszínt, a történelmet és a fiókot. A fényképek és a helyszínek soha nem hagyják el a készüléket; a szerver csak az e-mailt, a tervet és a fényképek számát tartja."
+    },
+    "title": "Az adatvédelmi politika",
+    "updated": "Utoljára frissített: 2026 augusztus 16 · Lymark app, 1.3.0 verzió",
+    "intro": "Ez a politika leírja, hogyan kezel a Lymark alkalmazás személyes adatokat. A 13.709/2018 (az általános személyes adatok védelme törvényeLGPD) és a 2016/679 (az általános adatvédelmi rendeletGDPR) rendeletnek megfelelő, és a azonosító alatt eloszlott alkalmazásra vonatkozik.<strong>com.lycosteam.lymark</strong>és a honlapra.",
+    "s01": {
+      "title": "Egy mondatban",
+      "p1": "Lymark <strong>nem továbbítja a fotókat vagy a tartózkodási helyét</strong>Az alkalmazás által létrehozott minden  kép, cím, előadás és preferenciák  a saját készülékedben marad, a te irányításod alatt. Van egy fiók, amely szükséges az alkalmazás használatához és a feliratkozáshoz: a szerver tárolja az e-mailt, a fiók azonosítóját, a tervét és az exportált fényképek számát  és semmi más.",
+      "p2": "A 5. pontban ismertetett egyetlen kivétel létezik: a GPS koordináták olvasható címre való átalakítása érdekében a készülék operációs rendszere külső geokódáló szolgáltatást kér."
+    },
+    "s02": {
+      "title": "Kihez vonatkozik ez a politika",
+      "p1": "Az alkalmazás alkalmazását használó vagy a weboldalt látogató minden személyre vonatkozik. A Brazíliában élő adatkezelők esetében az 1 és az adatvédelmi hatóság felügyelete következik. Az Európai Gazdasági Térségben és az Egyesült Királyságban élő adatkezelők esetében az 2 és a 0 követik a feldolgozást."
+    },
+    "s03": {
+      "title": "Ki az irányító?",
+      "p1": "The controller of the personal data — <em>controlador</em>, in the terminology of the LGPD — is 29.015.357 AMAD ALI HAMMOUD, registered under CNPJ 29.015.357/0001-25, with an address at Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "A személyes adatok feldolgozásáért felelős személy a 2 41. cikkében a 1 címmel, aki a 2 címen elérhető.<email>contato@lymark.app</email>A feldolgozás méretét és jellegét figyelembe véve, amely nem magában foglalja a méretű érzékeny adatokat sem a rendszeres nyomon követést sem, nem kötelező a<em>Adatvédelmi tisztviselő</em>a 3 37. cikkével összhangban."
+    },
+    "s04": {
+      "title": "Milyen információkat kezel az alkalmazás",
+      "p1": "Az alábbi információk kizárólag az alkalmazás magántermében rögzülnek a készülékben, és ezek közül semmi sem kerül továbbításra a fejlesztőhöz.",
+      "defs": {
+        "photos": {
+          "term": "Fotók",
+          "def": "A galériából kiválasztott kép vagy a fényképezőgép segítségével készült kép, valamint a vízjelzéssel exportált fájlt."
+        },
+        "location": {
+          "term": "Helyezkedés",
+          "def": "A cím mező betöltésének egyetlen céljával, a képet egy képetől egyszer meghozott megközelítőleg szélesség és hosszúság."
+        },
+        "datetime": {
+          "term": "Nap, idő és hétnap",
+          "def": "Olvassa el a készülék óráját a rögzítés pillanatában, és szerkeszthető Ön által."
+        },
+        "code": {
+          "term": "Fotó kód",
+          "def": "14 szexadecimális karakterből álló sorozat, amelyet véletlenszerűen rajzoltak. Ez nem származik sem a készülék azonosítójából, sem az Önökből, és nem teszi lehetővé a követést az alkalmazások között."
+        },
+        "history": {
+          "term": "Évészet",
+          "def": "Az utolsó 200 exportot tartalmazó feljegyzés, amely tartalmazza a készülék fájlútját és a képen feltüntetett adatokat."
+        },
+        "preferences": {
+          "term": "A preferenciák",
+          "def": "Látható mezők, helyzet, méret és egyéb vízjelzési lehetőségek."
+        }
+      },
+      "p2": "Az alkalmazás<strong>nem gyűjt</strong>: név, e-mail, telefon, személyazonosságok, reklám azonosító, eszköz azonosító, kapcsolattartási adatok, naptár, böngészési történelem, felhasználási mutatók, balesetjelentések vagy más információ a személyről vagy a készülékről. Nincs beépített elemzés, reklám, tulajdonítás vagy nyomon követés SDK."
+    },
+    "s05": {
+      "title": "Az egyetlen információ, ami elhagyja a készüléket.",
+      "p1": "Amikor megadja a helyezési engedélyt, az alkalmazás arra kér a rendszertől, hogy a GPS koordinátákat postai címre alakítsa. Ezt a fordítást  fordított geokódot  a rendszer maga végzi, amely e célból a koordinátákat küld a térképszolgáltatásához: <strong>Google</strong>Android készülékeken és <strong>Apple</strong>iOS eszközökön.",
+      "p2": "A szolgáltatók nem adnak meg a szolgáltatást, hanem a szolgáltató által a szolgáltató által végzett adatkezelést saját adatvédelmi politikáik szabályozzák. Lymark",
+      "p3": "<strong>Egyetlen fénykép sem hagyja el a készüléket a alkalmazás bármely művelete révén.</strong>Ha a megosztás gombot használja, a képet a rendszer megosztási lapjában a rendszer megosztási lapjában kiválasztott céljelző alkalmazás továbbítja a program adatvédelmi politikája alá tartozó e-mail, felhő tárolás."
+    },
+    "s06": {
+      "title": "Kérett engedélyek és miért",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "A fotóhoz, amely a vízjelzést kapja. Csak akkor kérhető, ha a Tűz foto gombot."
+        },
+        "photos": {
+          "term": "Fotók és média",
+          "def": "A meglévő kép kiválasztása és az exportált fájlt a galériába írni. A hozzáférés csak fotókra korlátozódik, és a írásengedély csak a leíráshoz használható."
+        },
+        "location": {
+          "term": "A használat közben található hely",
+          "def": "A cím mezőt kitöltenie. A feltétel elsődleges, csak akkor, ha a alkalmazás használatban van, és <strong>Soha a háttérben</strong>."
+        }
+      },
+      "p1": "A kijelző beállításai során minden engedély nem kötelező és visszavonható. A tartózkodási hely megakadályozása a teljes funkcióval tartja az alkalmazást: az adreset akkor az Ön által írja be. A galéria hozzáférésének megtagadása csak megakadályozza az automatikus mentést, és a fénykép még mindig megosztható."
+    },
+    "s07": {
+      "title": "Jogalanyok és célok",
+      "p1": "A helyszín feldolgozása a személy szerinti <strong>hozzájárulás</strong> A 0 7. cikk I. és a 1  6. cikk (1)  a) a rendszer engedélyezésével kifejezve, és bármikor visszavonható, a visszavonás előtt végzett feldolgozás jogszerűségének sérelme nélkül.",
+      "p2": "A fennmaradó adatok feldolgozása a<strong>a kért funkció teljesítése</strong> A 0 7. cikkének V., a 1  6. cikkének (1) bekezdése b) pontja, mivel nélküle nincs vízjel a felhasználó számára.",
+      "p3": "A fiók adatainak feldolgozása egy szerződés teljesítésén alapul (0 V. 7. cikk; 1 61. cikk) (b)). A jogos érdekek alapján történő feldolgozás (0 IX. 7. cikk; 1 61. cikk) csak a biztonság és a csalás megelőzése céljából létezik."
+    },
+    "s08": {
+      "title": "Nemzetközi átadás",
+      "p1": "A számlaadatok a hitelesítési feldolgozó (0, Egyesült Államok) által kezdenek feldolgozni, amely a szabványos szerződéses záradékokon és a 1 33. és 2. 44.-49. sz. mechanizmusokon alapuló nemzetközi adatátvitelnek minősül. A 05. pontban leírt geokódolási keresést a rendszer továbbra is a felhasználó országa kívüli szolgáltatóknak, a szolgáltatók saját átviteli mechanizmusok keretében feldolgozhatja.",
+      "p2": "A weboldalt a 14. pont szerinti 0 üzemeltette."
+    },
+    "s09": {
+      "title": "A harmadik felekhez való megosztás",
+      "p1": "A fejlesztő nem osztja meg, nem értékesíti, nem bérli vagy nem adja át személyes adatokat harmadik félnek.<em>feldolgozó</em>A Google vagy az Apple szolgáltatói a bejelentkezés adatait saját politikáik szerint feldolgozzák; a fejlesztő csak a fiók létrehozásához szükséges e-mail és azonosítót kap el. A fényképek, címek és a helyszín egyáltalán nem kerülnek feldolgozón keresztül, mivel soha nem hagyják el a készüléket."
+    },
+    "s10": {
+      "title": "A tárolás, a megőrzés és a biztonság",
+      "p1": "Az adatok az alkalmazás magánterületein vannak, a rendszer alkalmazások közötti elszigeteltségével és a készülék képernyő zárásával védve.<strong>fogyatékos</strong>A felhasználó Google-fiókjába nem küldik a történelmet és preferenciáit.",
+      "p2": "A tárolást teljesen Ön irányítja: a felvételek addig maradnak, amíg nem törlik őket a saját alkalmazásban, és a történelem automatikusan eldobja a legidősebbeket, miután kétszáz elemet átad, eltávolítva a megfelelő fájlok is. A felvételek eltávolítása törli mindazt, amit tárolt. A készülék galériájában már mentett képek a galériához tartoznak, és ott maradnak.",
+      "p3": "A rendszer nem hibás. A fiókadatok  e-mail, azonosító, terv és szám  az hitelesítési feldolgozó által tartják, a biztonsági intézkedései alapján. A fotók, címek és a hely nem léteznek központi adattárban, és ezért nem szivároghatnak a fejlesztő infrastruktúrájából. Ha egy biztonsági incidens hatással van a fiókadatokra, a fejlesztő értesíti a hatóságot és az érintetteket a 0 cikk 48. és 1 cikk 33."
+    },
+    "s11": {
+      "title": "Amikor másokat fotózol",
+      "p1": "Ha azonosítható embereket fotózol a szakmai tevékenységed során,<strong>Te...</strong>Az adatkezelő az érintettek tekintetében az adatkezelővé válik, és Ön a jogi alap, az információk és a jogaik jogainak megválaszolása."
+    },
+    "s12": {
+      "title": "Jogok",
+      "p1": "A 0 18. cikke és a 1 15.-22. cikke garantálja a megerősítés és hozzáférés, korrekció, törlés, anonimizáció, blokkolás, hordozható, feldolgozás korlátozása, kifogás, a hozzájárulás visszavonása és a megosztásról szóló információk jogát.",
+      "p2": "A fényképek, címek, előadások és preferenciák csak a készülékén vannak, és ezeket a jogokat közvetlenül az alkalmazásban gyakorolják: nézd meg és töröld a galériakártyában található bejegyzéseket, javítsd meg bármely mezőt exportálás előtt, visszavedd a helyteljesítési engedélyt a rendszerbeállításokban, és töröld meg mindent az alkalmazás eltávolításával. A fejlesztő nem tudja hozzáférni, exportálni vagy törölni az adatokat, mert nem tartja meg. Ami a fiókadatokról szól, e-mail, terv és számításra vonatkozó adatokról, a fióklapra nézd meg és kérd a helyesbítést, exportot vagy törléset a jelen Politika e-mailén; a fiók törlésével a fiók törli az adatokat az autentifikációs feldolgozóban.",
+      "p3": "Kérdések vagy formális kérések esetén írd meg a következő címre:<email>contato@lymark.app</email>- Joguk van panaszt tenni a<strong>ANPD</strong>A tagállamoknak a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokban a tagállamokbanban az Unióban az"
+    },
+    "s13": {
+      "title": "Automatizált döntések",
+      "p1": "A 0 20. cikk és a 1 22. cikk értelmében nem történik automatizált döntéshozatal, profilkiállítás vagy feldolgozás, amely joghatást okozna Önre vonatkozóan."
+    },
+    "s14": {
+      "title": "A honlapról",
+      "p1": "A weboldal nem tartalmaz analítikát, nem mutat hirdetéseket, és nem tartalmaz közösségi hálózati gombokat.<strong>szigorúan szükséges sütik</strong>a számla-időszakhoz a hitelesítési feldolgozó (pont 09) által megadott hitelesítési adatbázis (pont 09) bejegyzés esetén; nem követhető vagy hirdetési cookie-k. A fontokat a webhely saját domainjáról szolgálják. A böngészője harmadik felekhez csak a bejelentkezés és a számla-képernyőkről kér, amelyeket a hitelesítési feldolgozóra (pont 09) és ha ezt választja, a bejelentkezés szolgáltatójára (Google vagy Apple) küld.",
+      "p2": "A weboldalt a <strong>Vercel Inc.</strong>A szolgáltató, amely a feldolgozóként a műszaki hozzáférési adatokat rögzíti, az IP cím, a dátum, az idő és a kért erőforrás, amíg ez a szállítók biztonságának és működésének érdekében szükséges."
+    },
+    "s15": {
+      "title": "A politika módosításai",
+      "p1": "A módosítások ezen a oldalon kerülnek közzé, új frissítéssel. Az adatok feldolgozását lényegesen megváltoztató változások az alkalmazáson belül is közlik őket, mielőtt hatályba lépnek."
+    },
+    "s16": {
+      "title": "Gyermekek és serdülők",
+      "p1": "A Lymark egy 18 éves vagy annál idősebb személyre szánt munkaeszköz, amely nem irányul gyermekek vagy serdülők felé, és nem gyűjt szándékosan adatokat erről a közönségről."
+    },
+    "s17": {
+      "title": "A vonatkozó jogszabályok",
+      "p1": "A szóban forgó szakpolitika brazil jognak felel meg, a szóban forgó személyekre való 0 alkalmazásának sérelme nélkül."
+    },
+    "note": "Lásd a <terms>Használati feltételek</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Használati feltételek",
+      "description": "A Lymark alkalmazás használatának feltételei: mit tesz, mit nem, és ki felel a fényképek tartalmáért."
+    },
+    "title": "Használati feltételek",
+    "updated": "Utoljára frissített: 2026 augusztus 16 · Lymark app, 1.3.0 verzió",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Mit tesz az alkalmazás",
+      "p1": "A Lymark egy fotóra  idő, dátum, hétköznapi, cím és azonosító kód  felhelyez egy információt, és egy új képfájlt generál, amely az adatokhoz épül."
+    },
+    "s02": {
+      "title": "Amit az alkalmazás nem tesz",
+      "p1": "Ez a pont a legfontosabb ezekből a szempontokból, és kérjük, hogy figyelmesen olvassátok el.",
+      "items": {
+        "certify": "<strong>Az alkalmazás nem tanúsít semmit sem.</strong>Nem törvényszéki vizsgálat, nem ad ki nyilvános hitű dokumentumot, és nem szakértői bizonyíték.",
+        "editable": "<strong>Minden mező szerkeszthető a felhasználó által.</strong>Az idő, a dátum, a cím és a kód szabadon módosítható az export előtt, a tervezés szerint: a szakembernek képesnek kell lennie arra, hogy kijavítsa a GPS-szel hibás címet.",
+        "clock": "<strong>Az idő a készülék órától jön.</strong>A rendszer nem szinkronizálható egy megbízható időszolgáltatóval.",
+        "address": "<strong>A cím egy becslés.</strong>A pontossága a GPS-jelzésre és az operációs rendszer térképszolgáltatásának adatbázisára függ.",
+        "code": "<strong>A fotó kód nem egy jegyzőkönyv.</strong>Ez egy belső referencia-számú véletlenszerű azonosító, amely semmilyen bizonyítékértékgel nem rendelkezik."
+      },
+      "p2": "Ha a felhasználási esetedben harmadik felek ellen jogszerű bizonyítékot kell szerezni, kérj egy jegyzőkönyv vagy egy időjelű digitális tanúsítási szolgáltatást. Lymark"
+    },
+    "s03": {
+      "title": "A felelősséged",
+      "items": {
+        "photos": "Ön egyedül felelős a felvett fényképekért, a feltüntetett tartalomért és a generált fájlok felhasználásáért.",
+        "thirdParties": "Ha más személyeket, vagyonukat vagy helyiségeiket fényképezik, az Ön felelőssége, hogy megkeresse a szükséges engedélyeket, és meg kell tartani a képen való jogokat, a szakmai titkot és a személyes adatok védelmére vonatkozó általános törvényt a bemutatott érintettekkel kapcsolatban.",
+        "prohibited": "A felhasználás tilos hamis nyilvántartást készíteni, félrevezetni, olyan szolgáltatás teljesítésének szimulálása, amelyet nem nyújtottak be, vagy bármilyen jogellenes cselekedet végrehajtása érdekében.",
+        "backups": "A program korlátozott helyi előadást tart, ami nem biztonsági másolat."
+      }
+    },
+    "s04": {
+      "title": "Használati engedély",
+      "p1": "A felhasználók számára személyes, visszavonható, kizárólagos és nem átadható engedélyt adunk a alkalmazás telepítésére és használatára, beleértve a szakmai célokat is.",
+      "p2": "<strong>A képek a tiétek.</strong>Nem állítunk fel semmilyen jogot a felvételekre, amelyeket készít vagy készít, a Lymark név, márka és vizuális identitás a fejlesztő tulajdonában marad."
+    },
+    "s05": {
+      "title": "A rendelkezésre állás és frissítések",
+      "p1": "A alkalmazás a jelenlegi állapotában van, nem garantálható a folyamatos működés, a minden eszköz kompatibilitása, és nem kötelező érvényben tartani a javítások vagy új verziók határidőt.",
+      "p2": "Az exportált kép minősége a készüléktől és az operációs rendszertől függ, és alacsonyabb felbontású lehet, mint az eredeti fénykép."
+    },
+    "s06": {
+      "title": "A felelősség korlátozása",
+      "p1": "A brazil jog által engedélyezett maximális mértékben a fejlesztő nem vállal felelősséget a közvetett veszteségek, a vesztes nyereségek, az adatok elvesztése vagy a címzett információk alapján hozott határozatok  következtében keletkező károkért, beleértve a képet az alkalmazás által generált fotó tartalmának bírósági vagy külső kérdéseivel szemben.",
+      "p2": "Ez a korlátozás<strong>nem eltávolítja</strong>a fogyasztónak a 8.078/1990-as törvény által biztosított jogok, valamint a szándékos visszaélés vagy súlyos gondatlanságért nem vállalható felelősség."
+    },
+    "s07": {
+      "title": "A megszüntetés",
+      "p1": "A felhasználó bármikor felfüggesztheti az alkalmazást: a fiók törlésével töröljük a szerverben lévő adatokat, és a fiók eltávolítása töröljük a készülékben tárolt adatokat."
+    },
+    "s08": {
+      "title": "A jelen feltételek módosítása",
+      "p1": "A módosítások ezen a oldalon közzétettek lesznek, és az új frissítés időpontja is megjelennek."
+    },
+    "s09": {
+      "title": "A vonatkozó jog és a fórum",
+      "p1": "A brazil jog érvényes: a jelen feltételekből eredő viták rendezésére a felhasználó lakóhelye a választott fórum."
+    },
+    "note": "Az adatkezelésről lásd a <privacy>Az adatvédelmi politika</privacy>Kérdések:<email>contato@lymark.app</email>."
+  }
+}

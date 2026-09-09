@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Siyaasadda Arrimaha Khaaska ah",
+      "description": "Sida barnaamijka Lymark uu u maareeyo sawirada, goobta, taariikhda iyo koontadaada. Sawirada iyo goobta marnaba kama baxdo qalabka; serverku wuxuu haystaa kaliya email, qorshe iyo tirada sawirada."
+    },
+    "title": "Siyaasadda Arrimaha Khaaska ah",
+    "updated": "Markii ugu dambeysay la cusbooneysiiyay: 16 Agoosto 2026 · Lymark app, version 1.3.0",
+    "intro": "Siyaasaddan ayaa sharxaya sida barnaamijka Lymark uu u maareeyo macluumaadka shakhsiyeed. Waxay u hoggaansantahay Lei no. 13.709/2018 (Dawladda Guud ee Ilaalinta Macluumaadka ShakhsiyeedLGPD) iyo Xeerka (EU) 2016/679 (Xeerka Guud ee Ilaalinta MacluumaadkaGDPR), waxayna khuseysaa barnaamijka lagu qaybiyo aqoonsiga <strong>com.lycosteam.lymark</strong>iyo boggan internetka.",
+    "s01": {
+      "title": "Hal jumlad",
+      "p1": "Lymark <strong>ma soo gudbinayo sawiradaada ama meesha aad joogto</strong>Wax kasta oo barnaamijka soo saaro  sawirada, cinwaanada, taariikhda iyo doorbidyada  waxay ku sii jiri doonaan qalabkaaga, gacantaada. Waxaa jira koonto, oo loo baahan yahay in la isticmaalo barnaamijka iyo diiwaangelinta: serverku wuxuu kaydiyaa emaylkaaga, aqoonsiga koontada, qorshaha iyo tirada sawirada la dhoofiyo  iyo wax kale.",
+      "p2": "Waxaa jira hal ka reeban, oo lagu sharxay qodobka 05: si aad u bedesho isku xirka GPS cinwaan la aqriyo, nidaamka hawlgalka qalabka ayaa weydiinaya adeegga geocoding-ka dibadda."
+    },
+    "s02": {
+      "title": "Cidda siyaasaddan ay khuseyso",
+      "p1": "Waxay khuseysaa qof kasta oo isticmaala barnaamijka ama booqda boggan internetka. Dadka la xiriira xogta ee Brazil, wax ka qabashada waxay ku xigtaa 1 iyo kormeerka Hay'adda Qaranka ee Ilaalinta Macluumaadka (3)."
+    },
+    "s03": {
+      "title": "Yaa xakamaynta",
+      "p1": "The controller of the personal data — <em>controlador</em>, in the terminology of the LGPD — is 29.015.357 AMAD ALI HAMMOUD, registered under CNPJ 29.015.357/0001-25, with an address at Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Qofka mas'uulka ka ah processing xogta shaqsiyeed, ujeedada qodobka 41 ee 2, waa 1, kuwaas oo la xiriiri karaa <email>contato@lymark.app</email>. Marka la eego tirada iyo nooca processing  taas oo aan ku lug lahayn xog xasaasi ah oo baaxad weyn ah ama kormeerka nidaamsan  ma jirto wax qasab ah in la magacaabo <em>Sarkaalka ilaalinta xogta</em>Sida ku cad qodobka 37 ee 3."
+    },
+    "s04": {
+      "title": "Macluumaadka ay barnaamijku maareynayo",
+      "p1": "Dhammaan macluumaadka hoose waxaa lagu diiwaangeliyaa oo keliya aagga gaarka ah ee app  ee ku jira qalabka, mana aha mid ka mid ah waxaa loo diraa horumariye.",
+      "defs": {
+        "photos": {
+          "term": "Sawirada",
+          "def": "Sawirka aad ka doorato gallery ama qabashada kamaradda, iyo file la dhoofiyo watermark ah. Sawirka waxaa laga yaabaa in ay ka kooban tahay dhinacyada saddexaad  xogta shakhsiyeed  arag qodobka 11."
+        },
+        "location": {
+          "term": "Meesha loo dejiyo",
+          "def": "Xadhigga iyo dhererka qiyaasta ah, oo la helo hal mar halkii sawir, ujeedada kaliya ee buuxinta beerta cinwaanka."
+        },
+        "datetime": {
+          "term": "Taariikhda, waqtiga iyo maalinta shaqada",
+          "def": "Ka akhriso saacadda qalabka xilliga qabashada, oo aad wax ka beddeli karto."
+        },
+        "code": {
+          "term": "Codka sawirka",
+          "def": "Waa taxane ka kooban afar iyo toban xaraf oo lixdan ah oo si random ah loo soo saaray. Ma ka soo jeedo aqoonsi qalab ama mid ka mid ah kuwaaga, mana awood u yeesho raadinta barnaamijyada."
+        },
+        "history": {
+          "term": "Taariikhda",
+          "def": "Diiwaanka laba boqolkii ugu dambeeyay ee dhoofinta, oo ay ku jiraan wadada faylka ee qalabka iyo xogta lagu calaamadeeyay sawirka."
+        },
+        "preferences": {
+          "term": "Fursadaha",
+          "def": "Beeraha muuqda, booska, cabirka iyo fursadaha kale ee calaamadaha biyaha."
+        }
+      },
+      "p2": "Codsiga <strong>ma soo ururinayo</strong>: magaca, email, telefoonka, dukumiintiyada aqoonsiga, aqoonsiga xayeysiinta, aqoonsiga qalabka, xogta xiriirka, jadwalka, taariikhda daalacan, cabirka isticmaalka, warbixinnada burburka ama wixii macluumaad kale oo adiga kugu saabsan ama qalabkaaga. Ma jiro falanqayn, xayeysiin, tixraac ama raadinta SDK ku rakibay."
+    },
+    "s05": {
+      "title": "Macluumaadka kaliya ee ka baxaya qalabka",
+      "p1": "Markaad ogolaato ogolaanshaha goobta, barnaamijka wuxuu codsanayaa nidaamka hawlgalka inuu u beddelo isku xirka GPS cinwaan boostada. Tarjumaaddaas  geocoding dib loo soo celiyo  waxaa sameeya nidaamka hawlgalka laftiisa, kaas oo ujeedadaas u diraya isku xirka adeegga khariidadiisa: <strong>Google</strong>qalabka Android iyo <strong>Cabbirka</strong>qalabka macruufka",
+      "p2": "Isgaarsiintaasi waxay ka timaadaa nidaamka hawlgalka, ma aha Lymark. barnaamijka ma helo nuqul ka mid ah, ma dhexdhexaadiyo iyo ma heli karo wax ka baxsan cinwaanka la soo celiyay.",
+      "p3": "<strong>Ma jiro sawir ka baxaya qalabka iyada oo loo marayo waxqabadka barnaamijka.</strong>Haddii aad isticmaasho badhanka Share, sawirka waxaa loo gudbiyaa app-ka meesha aad u tagto ee aad doorato shaashadda nidaamka wadaagida  fariin, email, kaydinta daruuriga  ee ku hoos jira siyaasadda asturnaanta app ee."
+    },
+    "s06": {
+      "title": "Ogolaanshaha la codsaday iyo sababta",
+      "defs": {
+        "camera": {
+          "term": "Kaamerada",
+          "def": "Si aad u qaadato sawirka heli doona calaamadda biyaha. Waxaa la codsadaa oo keliya marka aad taabato Too photo. App-ka ma codsado marin u helista makarafoonka."
+        },
+        "photos": {
+          "term": "Sawirada iyo warbaahinta",
+          "def": "Si aad u doorato sawir jira oo aad u qorto faylka la dhoofiyo gallery. Helitaanka waxaa lagu xaddiday sawirada, ogolaanshaha qoraalkuna waxaa loo isticmaalaa oo keliya qoraalka  barnaamijka ma raadiyo ama ma akhriyo gallery."
+        },
+        "location": {
+          "term": "Meesha ay ku yaalaan inta ay isticmaalaan",
+          "def": "Si aad u buuxiso goobta cinwaanka. Waxaa lagu codsaday hore, oo kaliya inta app-ka la isticmaalayo, iyo <strong>marnaba dibadda</strong>."
+        }
+      },
+      "p1": "Dhammaan ogolaanshaha waa ikhtiyaari waxaana la soo celin karaa wakhti kasta oo ku jira goobaha qalabka. Goobta diidmada ayaa sii haysa barnaamijka si buuxda u shaqeynaya: cinwaanka ayaa markaa lagu qoro adiga. Diidmada marin gallery kaliya waxay ka hortagtaa badbaadada otomaatiga ah, sawirkuna wali waa la wadaagi karaa."
+    },
+    "s07": {
+      "title": "Aasaaska iyo ujeeddooyinka sharciga",
+      "p1": "Meesha loo socdo waxaa lagu sameeyaa adiga oo ku salaysan <strong>ogolaanshaha</strong> Qodobka 7, I ee 0 iyo qodobka 6(1)    (a) ee 1  marka aad ogolaato nidaamka, oo dib loo celin karo wakhti kasta, iyada oo aan la xaddidayn sharci ahaanshaha processing ka hor inta aan dib loo celin.",
+      "p2": "Xogta ka hartay waxaa loo baaraandegaa <strong>waxqabadka muuqaalka aad dalbatay</strong> Qodobka 7, V ee 0 iyo qodobka 6(1)(b) ee 1  tan iyo marka aan lahayn watermark app ah in ay soo saaraan.",
+      "p3": "Qalabka xogta koontada wuxuu ku saleysan yahay fulinta heshiis (0 qodobka 7, V; 1 qodobka 6(1)(b)). Qalabka lagu shaqeynayo dan sharci ah (0 qodobka 7, IX; 1 qodobka 6(1)(f)) wuxuu u shaqeeyaa oo keliya amniga iyo ka hortagga khiyaamooyinka  tusaale ahaan, diiwaangelinta cinwaanka IP ee codsiyada serverka. Ma jiro wax ka shaqeynaya xayeysiinta, profile, falanqaynta dabeecadda ama ujeedo kale oo labaad, mana jiro wax ka shaqeynaya noocyada gaarka ah ee xogta ama xogta xasaasiga ah ee soo saaraha."
+    },
+    "s08": {
+      "title": "Gaadiidka caalamiga ah",
+      "p1": "Xisaabta xogta waxaa ka baaraandegaya processor xaqiijinta (0, Mareykanka), taas oo ka dhigan gudbinta xogta caalamiga ah, oo ku saleysan qodobbada heshiiska caadiga ah iyo farsamooyinka qodobbada 33 iyo 49 ee 44 ilaa 49. Raadinta geocoding ee lagu sharaxay qodobka 05 ayaa weli nidaamka hawlgalka uu u sameeyaa bixiyeyaasha ka shaqeyn kara dalka isticmaalaha, iyadoo la raacayo farsamooyinka gudbinta ee bixiyeyaashaas.",
+      "p2": "Boggan waxaa marti gelisa 0, marka loo eego qodobka 14."
+    },
+    "s09": {
+      "title": "Wadaagista dhinacyada saddexaad",
+      "p1": "Horumariyehu ma wadaago, iibin, kiraysan ama u wareejinayo xogta shaqsiyeed dhinacyada saddexaad.<em>qalabka wax lagu baaraandego</em>0, oo bixisa adeegga xaqiijinta iyo kaydinta emaylka, aqoonsiga koontada iyo xogta qorshaha, oo qandaraas ku xiran tilmaamaha horumariye. Haddii aad iska diiwaangeliso Google ama Apple, bixiyeyaashu waxay ka baaraandegaan xogta is-qorista siyaasadooda; horumariyehu wuxuu ka helaa kaliya emaylka iyo aqoonsiga loo baahan yahay si loo abuuro koontada. Sawirada, cinwaannada iyo meesha ay ku yaalaan ma maraan wax ka shaqeynaya, maxaa yeelay waligood ma ka baxaan qalabka."
+    },
+    "s10": {
+      "title": "Kaydinta, haynta iyo amniga",
+      "p1": "Macluumaadka waxaa lagu hayaa aagga gaarka ah ee barnaamijka, oo lagu ilaaliyo nidaamka hawlgalka go'doominta barnaamijyada iyo qufulka shaashadda qalabka.<strong>dadka naafada ah</strong>, si taariikhda iyo doorbidyada aan loo dirin koontada Google ee isticmaalaha.",
+      "p2": "Xadhigga waxaa si buuxda kuu xakameynaya: diiwaannada ayaa sii jooga ilaa la tirtiro app-ka laftiisa, taariikhda ayaa si otomaatig ah u tuura kuwa ugu da'da weyn marka ay soo gudbiso laba boqol oo shay, iyadoo la tirtirayo faylasha la xiriira sidoo kale. Ka saarista app-ka waxay tirtirtaa wax kasta oo lagu keydiyay. Sawirada horeyba loo keydiyay gallery qalabku waxay ka tirsan yihiin gallery iyo halkaas jooga  waa adiga inaad tirtirto haddii aad rabto.",
+      "p3": "Nidaam kasta waa mid aan khalad lahayn. Xogta xisaabta  emayl, aqoonsi, qorshe iyo tirinta  waxaa haysta processor-ka xaqiijinta, iyadoo la raacayo tallaabooyinka amniga. Sawirada, cinwaannada iyo meesha ay ku yaalaan ma jiraan keydka dhexe, sidaa darteedna kama baxsan karaan kaabayaasha horumariyaha. Haddii dhacdo amni ay saameyso xogta xisaabta, horumariyaha ayaa u wargelin doona hay'adda iyo kuwa xogta la xiriira sida ku cad qodobka 0 48 iyo qodobka 1 33. Khatarta khuseysa sawiradaada waxay sii ahaataa marin jireed oo ku saabsan qalabka la xannibo."
+    },
+    "s11": {
+      "title": "Markaad sawir qaaddo dadka kale",
+      "p1": "Markaad sawir qaaddo dad la aqoonsan karo inta aad shaqeyneyso xirfadaada, <strong>adiga</strong>aad noqotid maamuliyaha xogtaas marka la eego dadka ay xogtu soo bandhigtay, adiga ayaa ku xiran inaad bixiso aasaaska sharciga, macluumaadka iyo jawaabta xuquuqdaas."
+    },
+    "s12": {
+      "title": "Xuquuqdaada",
+      "p1": "Qodobka 18 ee 0 iyo qodobada 15 ilaa 22 ee 1 waxay kuu xaqiijinayaan xuquuqda xaqiijinta iyo helitaanka, hagaajinta, tirtirka, aqoon la'aanta, xannibaadda, qaadi kara, xaddidaadda processing, diidmada, ka noqoshada ogolaanshaha iyo macluumaadka la wadaago.",
+      "p2": "Sawirada, cinwaanada, taariikhda iyo doorbidyada waxay ku yaalaan qalabkaaga oo keliya, xuquuqdaas waxaa si toos ah loogu isticmaalaa barnaamijka: arag iyo tirtir waxyaabo ku jira tabka Gallery, hagaajinta duurka ka hor intaadan dhoofin, ka noqoshada oggolaanshaha goobta ee goobaha nidaamka, iyo tirtirida wax kasta adoo ka tirtiraya barnaamijka  horumariyeha ma heli karo, dhoofin karo ama tirtiri karo xogtaas adiga, maxaa yeelay ma haysto. Sida xogta koontada  emayl, qorshe iyo tirinta  waxaad ka arki kartaa bogga koontada oo codsan kartaa hagaajinta, dhoofinta ama tirtirka emayl-ka xiriirka ee Siyaasadan ; tirtirka koontada ayaa tirtiri doona xogtaas processor-ka xaqiijinta.",
+      "p3": "Su'aalaha ama codsiyada rasmiga ah, u qor: <email>contato@lymark.app</email>Waxaad sidoo kale xaq u leedahay inaad dacwad u gudbiso<strong>ANPD</strong>, Brazil ama hay'adda kormeerka ee wadankaaga, ee Midowga Yurub."
+    },
+    "s13": {
+      "title": "Go'aamada otomaatiga ah",
+      "p1": "Ma jiro go'aan, shaashad ama wax ka qabasho otomaatig ah oo saameyn sharci ah ku leh adiga, sida ku cad qodobka 20 ee 0 iyo qodobka 22 ee 1."
+    },
+    "s14": {
+      "title": "Boggan internetka",
+      "p1": "Boggan ma laha falanqayn, ma muujiyo xayeysiis iyo ma geliyo badhanka shabakadaha bulshada.<strong>cookies waa lagama maarmaan</strong>marka aad ku biirto koontadaada, waxaa dejiya processor-ka aqoonsiga (qaybta 09) marka aad gasho; ma jiro cookies raadraaca ama xayeysiinta. font-yada waxaa laga adeegsadaa goobta domain. Codsiyada kaliya ee biraawsarkaaga uu u gudbiyo dhinacyada saddexaad waa kuwa ku jira shaashadda diiwaangelinta iyo koontada, oo loo dirayo processor-ka aqoonsiga  iyo, haddii aad doorato, bixiyaha diiwaangelinta (Google ama Apple).",
+      "p2": "Bogga internetka waxaa marti galiya <strong>Vercel Inc.</strong>, oo sida processor diiwaan gelisa xogta helitaanka farsamada  cinwaanka IP, taariikhda, waqtiga iyo kheyraadka la codsaday  inta ay u baahan tahay amniga iyo hawlgalka martigelinta."
+    },
+    "s15": {
+      "title": "Isbedelka siyaasaddan",
+      "p1": "Isbeddelada waxaa lagu daabacayaa boggan, iyadoo la cusbooneysiinayo taariikh cusub. Isbedelada si weyn u beddelaya wax ka qabashada xogta ayaa sidoo kale lagu soo wargali doonaa barnaamijka ka hor inta aysan dhaqan gelin."
+    },
+    "s16": {
+      "title": "Carruurta iyo dhalinyarada",
+      "p1": "Lymark waa qalab shaqo oo loogu talagalay dadka da'doodu tahay 18 sano ama ka weyn.Ma aha mid loogu talagalay carruurta ama dhalinyarada, mana aha mid si ula kac ah u ururinaysa xogta ku saabsan dhagaystayaashaas."
+    },
+    "s17": {
+      "title": "Sharciga khuseeya",
+      "p1": "Siyaasaddan waxaa xukuma sharciga Brazil, iyada oo aan la xaddidnayn codsiga 0 ee dadka ay xogtu ka kooban tahay."
+    },
+    "note": "Sidoo kale eeg <terms>Shuruudaha isticmaalka</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Shuruudaha isticmaalka",
+      "description": "Shuruudaha isticmaalka barnaamijka Lymark: waxa uu sameeyo, waxa uusan samayn, iyo cidda mas'uul ka ah waxyaabaha ku jira sawirada."
+    },
+    "title": "Shuruudaha isticmaalka",
+    "updated": "Markii ugu dambeysay la cusbooneysiiyay: 16 Agoosto 2026 · Lymark app, version 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Waxyaabaha ay qabato barnaamijka",
+      "p1": "Lymark wuxuu ku dhejiyaa xogta sawirka  waqtiga, taariikhda, maalinta shaqada, cinwaanka iyo koodh aqoonsi  wuxuuna abuuraa fayl sawir cusub oo macluumaadkaas lagu dhisay pixels."
+    },
+    "s02": {
+      "title": "Waxyaabaha ay barnaamijku sameyn weydo",
+      "p1": "Qodobkan waa midka ugu muhiimsan ee arrimahan, waxaanan idinka codsanaynaa in si taxadar leh loo akhriyo.",
+      "items": {
+        "certify": "<strong>Codsiga ma xaqiijiyo ama xaqiijin wax.</strong>Ma aha baaritaan maxkamadeed, ma soo saarto dukumiinti aaminsan dadweynaha, mana aha caddayn khabiir ah.",
+        "editable": "<strong>Beeraha oo dhan waa in la beddelaa isticmaalaha.</strong>Waqtiga, taariikhda, cinwaanka iyo koodhka waxaa la beddeli karaa si xor ah ka hor inta aan la dhoofin, sida loogu talagalay: xirfadlaha wuxuu u baahan yahay inuu awoodo inuu saxdo cinwaanka GPS-ka uu khalad ku dhacay.",
+        "clock": "<strong>Waqtiga ayaa ka yimaada saacadda qalabka</strong>, oo laga yaabo inay khalad yihiin ama ay gacanta ku soo dhigeen.",
+        "address": "<strong>Cinwaanka waa qiyaas.</strong>Xaqiiqadeeda waxay ku xiran tahay calaamadda GPS iyo xogta xogta ee adeegga khariidadaha nidaamka hawlgalka.",
+        "code": "<strong>Xeerka sawirka ma aha diiwaangelinta xafiiska diiwaangelinta.</strong>Waa aqoonsi random ah oo tixraac gudaha ah, oo aan lahayn wax caddayn ah."
+      },
+      "p2": "Haddii kiiskaaga isticmaalka uu u baahan yahay caddayn sharci ah oo ka dhan ah dhinacyada saddexaad, raadi dukumiintiyo notarial ama adeeg shahaado digital ah oo leh shaabadda waqtiga  Lymark waa bedelka labadaba."
+    },
+    "s03": {
+      "title": "Waajibaadkaaga",
+      "items": {
+        "photos": "Adiga oo keliya ayaa mas'uul ka ah sawirada aad qabato, waxyaabaha aad ku calaamadeysid iyo isticmaalka aad ka sameysid faylasha la sameeyay.",
+        "thirdParties": "Markaad sawir qaaddo dadka kale, hantidooda ama meelahooda, waa adiga inaad hesho oggolaanshaha lagama maarmaanka u ah iyo inaad u hoggaansanto xuquuqda sawirka, sirta xirfadeed iyo Sharciga Guud ee Ilaalinta Macluumaadka Shakhsiyeed ee la xiriira dadka la soo bandhigay.",
+        "prohibited": "Isticmaalka barnaamijka si loo abuuro diiwaan been abuur ah, in qof kasta loo khiyaanaynayo, in la tijaabiyo adeeg aan la bixin ama in la sameeyo wax sharci darro ah waa mamnuuc.",
+        "backups": "Waa adiga inaad keydiso wax kasta oo aad u aragto inay muhiim yihiin. Barnaamijka wuxuu haystaa taariikhda maxalliga ah ee xadidan, taas oo aan ahayn keyd."
+      }
+    },
+    "s04": {
+      "title": "Liisanka isticmaalka",
+      "p1": "Waxaan ku siineynaa liisan shaqsiyeed, dib loo celin karo, aan gaar ahayn iyo aan la wareejin karin si aad u rakibto oo aad u isticmaasho barnaamijka, oo ay ku jiraan ujeedooyin xirfadeed.",
+      "p2": "<strong>Sawiradaadu waa adiga.</strong>Ma sheegno xuquuqda sawirada aad qabato ama soo saartid. Magaca Lymark, sumadda iyo aqoonsiga muuqaalka ayaa weli ah hantida horumariye."
+    },
+    "s05": {
+      "title": "Helitaanka iyo cusbooneysiinta",
+      "p1": "Barnaamijka waxaa la siiyaa sida uu yahay. Ma jiro dammaanad ah hawlgalka aan kala go 'lahayn, oo ku saabsan la jaan qaadida qalab kasta, ama wax ballanqaad ah oo ku saabsan waqti-dhimis ah oo loogu talagalay hagaajinta ama noocyada cusub.",
+      "p2": "Tayada sawirka la dhoofiyo waxay ku xiran tahay qalabka iyo nidaamka hawlgalka, waxayna noqon kartaa mid ka hooseysa qaabka sawirka asalka ah."
+    },
+    "s06": {
+      "title": "Xaddidaadda mas'uuliyadda",
+      "p1": "Ilaa inta ugu badan ee ay sharciga Brazil u oggolaato, horumariye ma masuul ka yahay khasaaro aan toos ahayn, faa'iidooyin lumay, luminta xogta ama khasaaro ka dhashay go'aamada lagu gaaray macluumaadka la shaabadeeyay  oo ay ku jiraan wixii ka dambeeya dacwad, maxkamad ama dibadda, oo ku saabsan nuxurka sawirka ay soo saartay barnaamijka.",
+      "p2": "Xaddidan <strong>ma ka saarayo</strong>xuquuqda loo damaanad qaaday macaamiisha by Lei No. 8.078/1990, iyo masuuliyadda si ula kac ah u xadgudub ama dayacaad weyn."
+    },
+    "s07": {
+      "title": "Iska bixinta",
+      "p1": "Waxaad joojin kartaa isticmaalka barnaamijka wakhti kasta: tirtirka koontada waxay tirtiri doontaa xogta ku jirta serverka, iyo tirtirka barnaamijka wuxuu tirtiri doonaa xogta ku jirta qalabka. In kasta oo aysan jirin wax ka bixinta lacag bixinta ah ma jiro wax ka bixinta ah oo la joojiyo; marka ay jirto, shuruudaha tirtirka ayaa ku soo muuqan doona Shuruudahaas ka hor inta aan la bixin."
+    },
+    "s08": {
+      "title": "Isbedelka shuruudahaas",
+      "p1": "Isbeddelada waxaa lagu daabacayaa boggan iyadoo la cusbooneysiinayo taariikhda cusub."
+    },
+    "s09": {
+      "title": "Sharciga iyo golaha la xiriira",
+      "p1": "Sharciga Brazil ayaa khuseeya. Goobta loo doortay in lagu xaliyo khilaafaadka ka dhasha shuruudahan waa meesha uu isticmaaluhu deggan yahay."
+    },
+    "note": "Marka la eego maareynta xogta, ka eeg <privacy>Siyaasadda Arrimaha Khaaska ah</privacy>Su'aalaha: <email>contato@lymark.app</email>."
+  }
+}

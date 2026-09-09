@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Politika momba ny tsiambaratelo",
+      "description": "Ahoana no fomba hitantanana ny sary, ny toerana, ny tantara ary ny kaontinao ny fampiharana Lymark. Tsy miala amin'ny fitaovana ny sary sy ny toerana; ny mpizara dia mitazona ny mailaka, ny drafitra ary ny isan'ny sary ihany."
+    },
+    "title": "Politika momba ny tsiambaratelo",
+    "updated": "Nohavaozina farany: 16 Aogositra 2026 · Lymark app, dikan-teny 1.3.0",
+    "intro": "Ity politika ity dia mamaritra ny fomba itondran'ny fampiharana Lymark ny mombamomba ny tena manokana. Mifanaraka amin'ny Lei no 13.709/2018 (Fitsarana ankapobeny momba ny fiarovana ny angon-drakitra manokanaLGPD) sy ny Lalàna (EU) 2016/679 (Fandaminana ankapobeny momba ny fiarovana ny angon-drakitraGDPR) izy io, ary mihatra amin'ny fampiharana zaraina amin'ny alàlan'ny famantarana <strong>com.lycosteam.lymark</strong>ary amin'ity tranonkala ity.",
+    "s01": {
+      "title": "Amin'ny fehezanteny iray",
+      "p1": "Lymark <strong>tsy mandefa ny sarinao na ny toerana misy anao</strong>. Ny zavatra rehetra ateraky ny fampiharana  sary, adiresy, tantara ary safidinao  mijanona ao amin'ny fitaovanao manokana, eo ambany fifehezan'ny anao. Misy kaonty, takiana hampiasa ny fampiharana sy ny famandrihana: ny mpizara dia mitahiry ny mailakao, ny famantarana ny kaonty, ny drafitra sy ny isan'ny sary naondrana  ary tsy misy zavatra hafa.",
+      "p2": "Misy fanesorana tokana, voalaza ao amin'ny teboka 05: mba hanovana ny koordinatera GPS ho adiresy azo vakiana, ny rafitra fiasan'ny fitaovana dia manontany serivisy geocoding ivelany."
+    },
+    "s02": {
+      "title": "Iza no ampiharina amin'ity politika ity",
+      "p1": "Mihatra amin'ny olona rehetra mampiasa ny fampiharana na mitsidika ity tranonkala ity. Ho an'ireo olona voakasik'ny angon-drakitra ao Brezila, ny fanodinana dia manaraka ny 1 sy ny fanaraha-maso ataon'ny National Data Protection Authority (3). Ho an'ireo olona voakasik'ny angon-drakitra ao amin'ny Faritra Ara-toekarena Eoropeana sy any Angletera, dia manaraka ny 2 sy ny 0."
+    },
+    "s03": {
+      "title": "Iza no mpandraharaha",
+      "p1": "The controller of the personal data — <em>controlador</em>, in the terminology of the LGPD — is 29.015.357 AMAD ALI HAMMOUD, registered under CNPJ 29.015.357/0001-25, with an address at Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Ny olona tompon'andraikitra amin'ny fanodinana ny angon-drakitra manokana, amin'ny maha-izy azy ny andininy faha-41 ao amin'ny 2, dia 1, izay azo mifandray amin'ny <email>contato@lymark.app</email>. Raha jerena ny habetsaky ny fanodinana sy ny toetry ny  izay tsy misy angon-drakitra saro-pady amin'ny ambaratonga na fanaraha-maso ara-drafitra  tsy misy adidy hanendry ny <em>Mpiandraikitra ny fiarovana ny angon-drakitra</em>araka ny andininy faha-37 amin'ny 3."
+    },
+    "s04": {
+      "title": "Inona no fampahalalana entin'ny fampiharana",
+      "p1": "Ny fampahalalana rehetra etsy ambany dia voarakitra manokana ao amin'ny faritra manokana ao anatin'ny fitaovana, ary tsy misy na iray aza amin'izany no alefa amin'ny mpamorona.",
+      "defs": {
+        "photos": {
+          "term": "Sary",
+          "def": "Ny sary nofidinao tao amin'ny galerie na nalaina tamin'ny fakantsary, ary ny rakitra naondrana tamin'ny marika rano."
+        },
+        "location": {
+          "term": "Toerana",
+          "def": "Ny latitude sy longitude eo ho eo, azo indray mandeha isaky ny fakana, ho an'ny tanjona tokana amin'ny famenoana ny saha adiresy."
+        },
+        "datetime": {
+          "term": "Daty, ora ary andro fiasana",
+          "def": "Vakio avy amin'ny famantaranandro amin'ny fotoana fakana azy, ary azo ovaina avy aminao."
+        },
+        "code": {
+          "term": "Kaody sary",
+          "def": "Sokajy misy litera enina ambin'ny folo noforonina tsy nahitana na ny famantarana ny fitaovana na ny anao, ary tsy ahafahan'ny fampiharana manara-maso."
+        },
+        "history": {
+          "term": "Tantara",
+          "def": "Fanamarihana momba ny fanondranana 200 farany, ahitana ny lalana amin'ny rakitra ao amin'ny fitaovana sy ny angon-drakitra voatampina amin'ny sary."
+        },
+        "preferences": {
+          "term": "Fitiavana",
+          "def": "Ireo saha hita maso, toerana, habe ary ireo safidy hafa momba ny mari-pana."
+        }
+      },
+      "p2": "Ny fampiharana <strong>tsy manangona</strong>: anarana, mailaka, telefaonina, antontan-taratasy maha-izy anao, famantarana dokam-barotra, famantarana fitaovana, angon-drakitra fifandraisana, tetiandro, tantaran'ny fitetezana, metrika fampiasana, tatitra momba ny fahasimban'ny na ny fampahalalana hafa momba anao na momba ny fitaovana. Tsy misy fanazavana momba ny fanadihadiana, dokam-barotra, fampidirana na fanaraha-maso SDK tafiditra."
+    },
+    "s05": {
+      "title": "Ny hany fampahalalana mivoaka avy amin'ny fitaovana",
+      "p1": "Rehefa manome ny fahazoan-dàlana amin'ny toerana ianao, mangataka amin'ny rafitra miasa ny rafitra hiova ny koordinatera GPS ho adiresy paositra.<strong>Google</strong>amin'ny fitaovana Android sy <strong>Apple</strong>amin'ny fitaovana iOS.",
+      "p2": "Avy amin'ny rafitra fiasa, fa tsy avy amin'ny Lymark no misy izany fifandraisana izany. Tsy mahazo kopia izany ny fampiharana, tsy mifampiraharaha amin'izany ary tsy manana fidirana amin'ny zavatra hafa ankoatry ny adiresy namerina.",
+      "p3": "<strong>Tsy misy sary mandao ny fitaovana amin'ny alalan'ny hetsika rehetra ny fampiharana.</strong>Raha mampiasa ny bokotra Share ianao, dia alefan'ny fampiharana toerana alefanao ao amin'ny rakitra fizarana rafitra  messenger, mailaka, fitehirizana rahona  ao amin'ny politikan'ny fiainana manokana amin'io fampiharana io ny sary."
+    },
+    "s06": {
+      "title": "Nangataka fahazoan-dalana, ary nahoana?",
+      "defs": {
+        "camera": {
+          "term": "Fakan-tsary",
+          "def": "Mba haka ny sary izay hahazo ny watermark. Nangatahina ihany rehefa tsindrio Torao sary. Ny fampiharana dia tsy mangataka fidirana amin'ny mikrô."
+        },
+        "photos": {
+          "term": "Sary sy haino aman-jery",
+          "def": "Mba hisafidianana sary efa misy sy hanoratana ny rakitra naondrana any amin'ny galerie. Voafetra ho an'ny sary ny fidirana, ary ny fahazoan-dàlana hanoratra dia ampiasaina fotsiny amin'ny fanoratana  tsy mijery na mamaky ny galeria ny fampiharana."
+        },
+        "location": {
+          "term": "Toerana misy azy mandritra ny fampiasana",
+          "def": "Mba hamenoana ny saha adiresy. Nangatahana teo aloha, raha mbola ampiasaina ny fampiharana, ary <strong>Tsy ho hita ao ambadiky ny fiainana</strong>."
+        }
+      },
+      "p1": "Ny fahazoan-dàlana rehetra dia tsy voatery ary azo averina amin'ny fotoana rehetra amin'ny fikirakirana ny fitaovana. Ny fandavana toerana dia mitazona ny fampiharana miasa tanteraka: ny adiresy dia soratana avy eo. Ny fandavana ny fidirana amin'ny galeria dia manakana ny famonjena mandeha ho azy ihany, ary mbola azo zaraina ny sary."
+    },
+    "s07": {
+      "title": "Fototra ara-dalàna sy tanjona",
+      "p1": "Ny fanodinana ny toerana dia atao amin'ny alalan'ny <strong>fanekena</strong> Ny andininy faha-7 ao amin'ny 0 sy ny andininy faha-6 1)  a) ao amin'ny 1  dia aseho rehefa manome ny fahazoan-dàlana amin'ny rafitra ianao, ary azo averina amin'ny fotoana rehetra, tsy misy fiantraikany amin'ny maha-ara-dalàna ny fanodinana natao talohan'ny fanafoanana.",
+      "p2": "Ny fanodinana ny tahirin-kevitra sisa dia atao ho an'ny <strong>fampisehoana ny endri-javatra nangatahinao</strong> Andininy faha-7, V amin'ny 0 sy ny andininy faha-6(1)  (b) amin'ny 1  satria raha tsy misy izany dia tsy misy mari-pana ho an'ny fampiharana.",
+      "p3": "Ny fanodinana ny angon-drakitra momba ny kaonty dia miorina amin'ny fanatanterahana fifanarahana (0 andininy faha-7, V; 1 andininy faha-6(1)(b)). Ny fanodinana miorina amin'ny tombontsoa ara-dalàna (0 andininy faha-7, IX; 1 andininy faha-6(1)(f)) dia misy ihany ho fiarovana sy fisorohana ny hosoka  ohatra, ny fisoratana anarana amin'ny adiresy IP an'ny fangatahana amin'ny mpizara. Tsy misy fanodinana ho an'ny dokam-barotra, famoronana profil, famakafakana ny fitondran-tena na tanjona faharoa, ary tsy misy fanodinana sokajy manokana momba ny angona na angona saro-pady ataon'ny mpamorona."
+    },
+    "s08": {
+      "title": "Fandefasana iraisam-pirenena",
+      "p1": "Ny angon-drakitra momba ny kaonty dia raisin'ny mpikirakira fanamarinana (0, Etazonia), izay miteraka famindrana iraisam-pirenena ny angon-drakitra, mifototra amin'ny fehezan-dalàna mahazatra sy ny mekanisma ao amin'ny andininy faha-33 sy ny andininy faha-44 ka hatramin'ny 49. Ny fikarohana momba ny geocoding voalaza ao amin'ny teboka 05 dia mbola ataon'ny rafitra miasa amin'ireo mpamatsy izay mety manodina azy ivelan'ny firenena mpampiasa, eo ambanin'ny mekanisma famindrana an'ireo mpamatsy ireo.",
+      "p2": "Ny tranokala ity dia raisin'ny 0, araka ny fepetra voalazan'ny teboka 14."
+    },
+    "s09": {
+      "title": "Fampizarana amin'ny antoko fahatelo",
+      "p1": "Tsy mizara, mivarotra, manofa na manolotra angon-drakitra manokana amin'ny antoko fahatelo ny mpandraharaha.<em>mpikirakira</em>: 0, izay manome ny serivisy fanamarinana ary mitahiry ny mailaka, ny mombamomba ny kaonty ary ny angon-drakitra momba ny drafitra, voafatotra amin'ny fifanarahana amin'ny torolàlana momba ny mpamorona. Raha miditra amin'ny Google na Apple ianao, ireo mpamatsy ireo dia manodina ny angon-drakitra momba ny fidirana amin'ny alàlan'ny politikany manokana; ny mpamorona dia tsy mahazo afa-tsy ny mailaka sy ny famantarana ilaina amin'ny famoronana ny kaonty avy amin'izy ireo. Tsy misy processeur mihitsy ny sary, ny adiresy ary ny toerana, satria tsy miala amin'ny fitaovana mihitsy izy ireo."
+    },
+    "s10": {
+      "title": "Fitahirizana, fitahirizana ary fiarovana",
+      "p1": "Ny angon-drakitra dia miorina ao amin'ny faritra manokana an'ny fampiharana, arovan'ny rafitra fiasa miafina eo anelanelan'ny fampiharana sy ny fanidiana ny efijery ny fitaovana.<strong>tsy manana fahafahana</strong>, mba tsy halefa any amin'ny kaonty Google'ny mpampiasa ny tantara sy ny safidiny.",
+      "p2": "Ny fitahirizana dia fehezin'ny tenanao tanteraka: mitoetra ny rakitsoratra mandra-pahatongan'ny famafana azy ireo ao amin'ny fampiharana mihitsy, ary ny tantara dia manala ny antitra indrindra rehefa mandalo singa roanjato izy, manala ireo rakitra mifandraika aminy koa. Manala ny zavatra voatahiry ny fampiharana. Ireo sary efa voatahiry ao amin'ny galeriam-pitaovana dia an'ny galeria ary mijanona ao  miankina aminao ny manala azy ireo raha tianao.",
+      "p3": "Tsy misy rafitra tsy mety diso. Ny angon-drakitra momba ny kaonty  mailaka, famantarana, drafitra ary isa  dia tazonin'ny mpikirakira fanamarinana, eo ambanin'ny fepetra fiarovana azy. Tsy misy sary, adiresy ary toerana ao anaty tahiry foibe, ary noho izany dia tsy azo alaina avy amin'ny fotodrafitrasa ny mpamorona. Raha misy tranga fiarovana misy fiantraikany amin'ny angon-drakitra momba ny kaonty, ny mpamorona dia hampandre ny manampahefana sy ny olona voakasik'izany araka ny andininy 0  48 sy 1 andininy 33. Ny loza mety hitranga amin'ny sarinao dia mijanona ho fidirana ara-batana amin'ny fitaovana tsy voasakana."
+    },
+    "s11": {
+      "title": "Rehefa maka sary olona hafa ianao",
+      "p1": "Rehefa maka sary olona azo fantarina ianao mandritra ny asanao matihanina, <strong>ianao</strong>Ny mpandraharaha dia tsy mandray anjara amin'io fanodinana io ary tsy manana fidirana amin'ireo sary."
+    },
+    "s12": {
+      "title": "Ny zo anananao",
+      "p1": "Ny andininy faha-18 ao amin'ny 0 sy ny andininy faha-15 ka hatramin'ny faha-22 ao amin'ny 1 dia manome anao ny zo hanamafisana sy hiditra, hanitsiana, hamafana, hanafina anarana, hanakanana, azo entina, hanakanana ny fanodinana, hanakiana, hisintonana ny fanekena ary fampahalalana momba ny fizarana.",
+      "p2": "Ny sary, ny adiresy, ny tantara ary ny safidinao dia mijanona ao amin'ny fitaovanao ihany, ary ireo zo ireo dia ampiharina mivantana ao amin'ny fampiharana: mijery sy mamafa ny fidirana ao amin'ny tabilao Gallery, manitsy saha rehetra alohan'ny fanondranana, manafoana ny fahazoan-dàlana amin'ny toerana ao amin'ny fikirakirana rafitra, ary mamafa ny zava-drehetra amin'ny alàlan'ny fanafoanana ny fampiharana  tsy afaka miditra, manafatra na mamafa ireo angona ireo ho anao ny mpamorona, satria tsy mitazona azy ireo. Raha ny angon-drakitra momba ny kaonty  mailaka, drafitra ary isa  azonao jerena ao amin'ny pejy kaonty ary angataho ny fanitsiana, fanondranana na famafana amin'ny mailaka fifandraisana amin'ity Politika ity; manala ny kaonty dia mamafa ireo angona ao amin'ny mpandraharaha fanamarinana.",
+      "p3": "Raha mila fanontaniana na fangatahana ofisialy dia manorata amin'ny <email>contato@lymark.app</email>Manana zo hametraka fitarainana amin'ny<strong>ANPD</strong>, any Brezila, na any amin'ny manampahefana mpanara-maso ao amin'ny firenena mpikambana ao aminao, ao amin'ny Vondrona Eoropeana."
+    },
+    "s13": {
+      "title": "Fitsarana mandeha ho azy",
+      "p1": "Tsy misy fanapahan-kevitra, famoronana profil na fanodinana mandeha ho azy izay miteraka vokany ara-dalàna momba anao, araka ny andininy faha-20 amin'ny 0 sy ny andininy faha-22 amin'ny 1."
+    },
+    "s14": {
+      "title": "Momba ity tranonkala ity",
+      "p1": "Tsy misy ny fanadihadiana, tsy misy dokam-barotra ary tsy misy bokotra tambajotra sosialy ao amin'ity tranonkala ity.<strong>Cookies tena ilaina</strong>ho an'ny fivorian'ny kaontinao, napetraky ny mpikirakira fanamarinana (andalana 09) rehefa miditra ianao; tsy misy cookies fanaraha-maso na dokam-barotra. Ny endri-tsoratra dia alefa avy amin'ny sehatra manokana an'ny tranokala. Ny fangatahana tokana ataon'ny mpitety tranonkala amin'ny antoko fahatelo dia ireo amin'ny efijery fidirana sy kaonty, izay alefa amin'ny mpikirakira fanamarinana  ary, raha misafidy azy ianao, amin'ny mpamatsy fidirana (Google na Apple).",
+      "p2": "Ny tranonkala dia voatokana amin'ny <strong>Vercel Inc.</strong>, izay toy ny mpandraharaha iray dia mitandrina ny angon-drakitra momba ny fidirana ara-teknika  adiresy IP, daty, ora ary loharanom-baovao nangatahina  raha mbola ilaina amin'ny fiarovana sy ny fiasan'ny fampiantranoana. Ny fototra ara-dalàna dia ny tombontsoa ara-dalàna amin'ny fitazonana ny fiarovana ny serivisy, andininy faha-7, IX amin'ny 1 sy ny andininy faha-6(1)(f) amin'ny 2."
+    },
+    "s15": {
+      "title": "Fanovana amin'ity politika ity",
+      "p1": "Hanao gazety amin'ity pejy ity ny fanovana, miaraka amin'ny daty fanavaozana vaovao."
+    },
+    "s16": {
+      "title": "Ankizy sy zatovo",
+      "p1": "Ny Lymark dia fitaovana miasa, natao ho an'ny olona 18 taona no ho miakatra. Tsy natao ho an'ny ankizy na ny tanora izy io, ary tsy manangona angon-drakitra momba io mpihaino io."
+    },
+    "s17": {
+      "title": "Lalàna azo ampiharina",
+      "p1": "Mifehy ny lalàna Breziliana ity politika ity, tsy misy fiantraikany amin'ny fampiharana ny 0 amin'ireo olona voakasik'izany."
+    },
+    "note": "Jereo koa ny <terms>Fepetra fampiasana</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Fepetra fampiasana",
+      "description": "Fepetra momba ny fampiasana ny fampiharana Lymark: inona no ataony, inona no tsy ataony, ary iza no tompon'andraikitra amin'ny votoatin'ny sary."
+    },
+    "title": "Fepetra fampiasana",
+    "updated": "Nohavaozina farany: 16 Aogositra 2026 · Lymark app, dikan-teny 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Inona no ataon'ny fampiharana",
+      "p1": "Ny Lymark dia manisy fampahalalana maromaro amin'ny sary  fotoana, daty, andro fiasana, adiresy ary kaody famantarana  ary mamorona rakitra sary vaovao miaraka amin'izany fampahalalana izany ao anaty pixel."
+    },
+    "s02": {
+      "title": "Inona no tsy ataon'ny fampiharana",
+      "p1": "Io no teboka manan-danja indrindra amin'ireo teny ireo, ary mangataka izahay mba hovakiana tsara.",
+      "items": {
+        "certify": "<strong>Tsy manamarina na manamarina na inona na inona ny fampiharana.</strong>Tsy fitsapana forensika izany, tsy mamoaka antontan-taratasy amin'ny finoana ho an'ny daholobe ary tsy maha-porofo manam-pahaizana.",
+        "editable": "<strong>Ny saha rehetra dia azo ovaina amin'ny alalan'ny mpampiasa.</strong>Ny ora, ny daty, ny adiresy ary ny kaody dia azo ovaina malalaka alohan'ny fanondranana, araka ny endrika: mila mahay manitsy adiresy diso ny GPS ny matihanina.",
+        "clock": "<strong>Avy amin'ny famantaranandro ny fotoana</strong>Tsy misy synchronization amin'ny mpizara fotoana azo itokisana.",
+        "address": "<strong>Fanamarihana ny adiresy.</strong>Miankina amin'ny famantarana GPS sy ny tahiry momba ny serivisy sarintany ao amin'ny rafitra fandidiana ny fahamarinan'ny azy.",
+        "code": "<strong>Tsy fisoratana anarana any amin'ny biraon'ny notarià ny kaody sary.</strong>Famaritana tsy misy dikany ho an'ny porofo, tsy misy dikany."
+      },
+      "p2": "Raha mitaky porofo misy hery ara-dalàna manohitra ny antoko fahatelo ny tranga fampiasana anao, tadiavo ny taratasy fanamarinana na ny serivisy fanamarinana nomerika misy tombo-kase  Lymark dia manolo ny roa tonta."
+    },
+    "s03": {
+      "title": "Ny andraikinao",
+      "items": {
+        "photos": "Ianao irery no tompon'andraikitra amin'ny sary alainao, ny votoatin'ny marikao amin'izy ireo ary ny fampiasana ireo rakitra novokarina.",
+        "thirdParties": "Rehefa maka sary ny olona hafa, ny fananany na ny tranony, dia miankina aminao ny mahazo ny fahazoan-dàlana ilaina ary ny fanarahana ny zon'ny sary, ny tsiambaratelo ara-barotra ary ny lalàna ankapobeny momba ny fiarovana ny angon-drakitra manokana momba ireo olona voatanisa.",
+        "prohibited": "Voarara ny fampiasana ny fampiharana mba hamoronana rakitsoratra diso, hamitahana olona, hamitahana ny fanatanterahana asa fanompoana izay tsy natolotra na hanaovana hetsika tsy ara-dalàna.",
+        "backups": "Miankina aminao ny mitazona ny rakitsoratra misy ny zava-dehibe rehetra."
+      }
+    },
+    "s04": {
+      "title": "Fanamarinana fampiasana",
+      "p1": "Manome anao fahazoan-dàlana manokana, azo averina, tsy mitokana ary tsy azo ovaina izahay hametraka sy hampiasa ny fampiharana, na ho an'ny tanjona matihanina aza.",
+      "p2": "<strong>Ny sarinao no anao.</strong>Tsy mitaky zo amin'ny sary azonao na namoronana ianao. Lymark"
+    },
+    "s05": {
+      "title": "Fandraisana anjara sy fanavaozana",
+      "p1": "Tsy misy antoka ny fiasan'ny fampiharana tsy tapaka, ny mifanentana amin'ny fitaovana rehetra, na ny fanoloran-tena amin'ny fe-potoana farany ho an'ny fanamboarana na ny kinova vaovao.",
+      "p2": "Ny kalitaon'ny sary naondrana dia miankina amin'ny fitaovana sy ny rafitra fiasa, ary mety ho ambany kokoa noho ny sary tany am-boalohany ny famahana azy."
+    },
+    "s06": {
+      "title": "Famerana ny andraikitra",
+      "p1": "Raha toa ka tsy azo atao amin'ny fomba feno ny fanavaozana ny fampiharana, dia tsy azo antoka fa ny mpampiasa dia tsy afaka manao ny asany amin'ny fomba tsy ara-dalàna.",
+      "p2": "Io fetra io <strong>tsy manala</strong>ny zo azo antoka ho an'ny mpanjifa amin'ny alalan'ny Lalàna faha 8.078/1990, ary tsy misy andraikitra amin'ny tsy fitandremana na tsy fitandremana henjana."
+    },
+    "s07": {
+      "title": "Famaranana",
+      "p1": "Azonao atao ny manajanona ny fampiasana ny fampiharana amin'ny fotoana rehetra: ny famafana ny kaonty dia mamafa ny angon-drakitra ao amin'ny mpizara, ary ny fanafoanana ny fampiharana dia mamafa ny angon-drakitra voatahiry ao amin'ny fitaovana. Raha tsy misy famandrihana karama dia tsy misy famandrihana hanafoanana; raha misy, ny fepetran'ny fanafoanana dia hiseho ao amin'ireo Fepetra ireo alohan'ny handoavana sarany."
+    },
+    "s08": {
+      "title": "Fanovana amin'ireo fepetra ireo",
+      "p1": "Ny fanovana dia havoaka amin'ity pejy ity miaraka amin'ny daty fanavaozana vaovao."
+    },
+    "s09": {
+      "title": "Lalàna sy forum azo ampiharina",
+      "p1": "Ny lalàna Breziliana no mihatra. Ny sehatra voafidy hamahana ny fifandirana vokatry ny fepetra ireo dia ny toerana misy ny mpampiasa."
+    },
+    "note": "Momba ny fitantanana ny angon-drakitra, jereo ny <privacy>Politika momba ny tsiambaratelo</privacy>Fanontaniana: <email>contato@lymark.app</email>."
+  }
+}
