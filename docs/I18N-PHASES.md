@@ -63,7 +63,7 @@ After the full base catalog (Phases 1–4), regional **script/region variants** 
 - RTL unchanged (Chinese remains LTR).
 - Catalog total after V1: **74** locales.
 
-### V2 (this PR) — Portuguese (Portugal) + Spanish regional
+### V2 (merged) — Portuguese (Portugal) + Spanish regional
 
 - Keep `pt` as **Brazilian Portuguese**. Display name: `Português (Brasil)`.
 - Add `pt-PT` (**European Portuguese**). Display name: `Português (Portugal)`.
@@ -77,6 +77,15 @@ After the full base catalog (Phases 1–4), regional **script/region variants** 
 - RTL unchanged.
 - Catalog total after V2: **77** locales.
 
-### V3 (planned)
+### V3 (this PR — final regional variants) — British English + Canadian French
 
-Additional script or orthography splits (e.g. Serbian Latin if a Cyrillic `sr` base stays) once product priority and stamp font coverage allow.
+- Keep `en` as the historical default English catalog (US-leaning / shared). Display name: `English`.
+- Add `en-GB` (**British English**). Display name: `English (UK)`. Spelling and date wording adapted from `en` (e.g. `1 Jan 2026`, share menu, house number, email).
+- Keep `fr` as European French. Display name: `Français`.
+- Add `fr-CA` (**Canadian French / Quebec-appropriate**). Display name: `Français (Canada)`. Adapted from `fr` (`courriel`, inspection / preuve de service, etc.).
+- Messages: `en-GB` / `fr-CA` under `i18n/messages/` + `i18n/messages/legal/`.
+- Clerk UI: `enGB` for `en-GB`; `fr-CA` falls back to `frFR` (Clerk does not publish `frCA`).
+- Open Graph: `en_GB`, `fr_CA`.
+- Device negotiation: `en-GB` / `en-AU` / `en-UK` → `en-GB`; other `en-*` / bare `en` → `en`. `fr-CA` → `fr-CA`; other `fr-*` / bare `fr` → `fr`.
+- RTL unchanged.
+- Catalog total after V3: **79** locales.

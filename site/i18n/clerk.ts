@@ -4,6 +4,7 @@ import {
   bnIN,
   csCZ,
   elGR,
+  enGB,
   enUS,
   esES,
   esMX,
@@ -73,15 +74,19 @@ import type { Locale } from '../../i18n/locales';
  *
  * Variantes V2: `pt-PT` usa `ptPT`; `es-ES` usa `esES`; `es-419` usa `esMX`
  * (Clerk não publica um pacote `es-419` — México é o LatAm nativo mais próximo).
+ *
+ * Variantes V3: `en-GB` usa `enGB`; `fr-CA` cai em `frFR` (Clerk não publica `frCA`).
  */
 export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   pt: ptBR,
   'pt-PT': ptPT,
   en: enUS,
+  'en-GB': enGB,
   es: esES,
   'es-419': esMX,
   'es-ES': esES,
   fr: frFR,
+  'fr-CA': frFR, // Clerk sem fr-CA — fallback frFR
   it: itIT,
   de: deDE,
   nl: nlNL,
