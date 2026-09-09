@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplikace",
+      "pitch": "Na fotkách zapíšejte čas, datum, den, adresu a sledovací kód  pro záznamy o místě, inspekce na místě a doklad o službě.",
+      "platform": "Platforma",
+      "privacy": "Politika ochrany osobních údajů",
+      "privacyGeocoding": "Když se používá GPS, operační systém posílá souřadnice do služby map Google nebo Apple, aby získala adresu.",
+      "privacyLocation": "Místo se používá jednou za snímek, pouze k vyplnění pole adresy a není uloženo odděleně od fotografií.",
+      "privacyOnDevice": "Fotky, adresy a historie zůstávají pouze na tomto zařízení. Účet existuje pro váš předplatný: server uchovává váš e-mail a plán a nikdy nepřijímá vaše fotografie ani vaši polohu.",
+      "privacySection": "Soukromí",
+      "sdk": "Expo SDK",
+      "terms": "Podmínky použití",
+      "title": "O Lymarku",
+      "version": "Verze"
+    },
+    "account": {
+      "browserHint": "Vstup se probíhá v prohlížeči. Vstupte se tam svým účtem a aplikace se připojí sama.",
+      "code": "Kód",
+      "codeSent": "Poslali jsme kód na {email}",
+      "connected": "Spojené",
+      "continue": "Pokračujte",
+      "deleteAccount": "Účet vymazat",
+      "email": "E-mail",
+      "failed": "Nefungovalo to, zkontroluj e-mail nebo kód a zkus to znovu.",
+      "notConfigured": "V tomto bloku není ještě k dispozici přihláška.",
+      "signInBrowser": "Vstupte do prohlížeče",
+      "signOut": "Přihlásit se",
+      "signedInAs": "Podepsaný jako {email}",
+      "title": "Účet",
+      "verify": "Ověřit"
+    },
+    "batch": {
+      "addressHint": "Ulice, číslo  Město",
+      "clearList": "Čisté seznam",
+      "codeHint": "např. LYM-001",
+      "done": "{count, plural, one {Zpracování dokončeno: # fotografie.} few {Zpracování dokončeno: # fotografie.} many {Zpracování dokončeno: # fotografií.} other {Zpracování dokončeno: # fotografií.}}",
+      "doneSection": "Dojdu",
+      "dropZone": "Přetáhněte a odložte fotografie zde nebo použijte tlačítko Vybrat fotografie",
+      "errorsSection": "Vypady",
+      "folder": "Soubor: {name}",
+      "noPhotos": "Vyber alespoň jednu fotku.",
+      "outputNote": "Zpracované fotografie jsou uloženy do vybraného složky.",
+      "outputSection": "Výstup",
+      "photosSection": "Fotografie k zpracování",
+      "processing": "Zpracování...",
+      "progress": "{current} z {total} ({percent}%)",
+      "results": "{success, plural, one {# úspěch} few {# úspěchy} many {# úspěchů} other {# úspěchu}}, {failed, plural, one {# chyba} few {# chyby} many {# chyb} other {# chyby}}",
+      "selectFolder": "Vyberte výstupní složku",
+      "selectPhotos": "Vyberte fotografie",
+      "selected": "{count, plural, one {Vybrána # fotografie} few {Vybrány # fotografie} many {Vybráno # fotografií} other {Vybráno # fotografií}}",
+      "sharedNote": "Tyto hodnoty se vztahují na VŠE fotografie.",
+      "sharedSection": "Sdílené metadata",
+      "start": "Začít zpracování",
+      "unavailableBody": "Tato funkce je pouze na stůl.",
+      "unavailableTitle": "Zpracování v dávkách není k dispozici"
+    },
+    "capture": {
+      "accuracy": "Poloha v ±{meters} m.",
+      "accuracyImprecise": "Poloha v rámci ±{meters} m  před vývozem ověřte číslo ulice.",
+      "address": "Adresa",
+      "addressFailedTitle": "Žádná adresa nebyla nalezená",
+      "addressHint": "Na tlačítko Locate nebo na adresu",
+      "camera": "Fotku.",
+      "code": "Kód",
+      "dateHint": "1. ledna 2026",
+      "dateTimeGroup": "Datum a čas",
+      "emptyWarning": "Žádné údaje nebudou odtlačeny  fotka vyjde bez vodní značky.",
+      "gallery": "Vyberte si z galerie",
+      "galleryDenied": "Foto přístup byl zamítnut, takže obrázek existuje pouze uvnitř aplikace.",
+      "galleryFailed": "Obrázko bylo zapsáno do historie, ale zařízení odmítlo zapsat do galerie.",
+      "generateCode": "Generovat",
+      "hiddenFields": "{count, plural, one {Skryté pole} few {Skrytá pole} many {Skrytých polí} other {Skrytá pole}}: {fields} — zapněte v Nastavení › Pole a pozice.",
+      "keepMyAddress": "Nech si moje .",
+      "locate": "Získejte",
+      "locateByGps": "Zaměřte adresu pomocí GPS",
+      "lookup": {
+        "denied": "V položce Nastavení > Povolení se povolí umístění nebo zadajte adresu.",
+        "disabled": "Poloha je vypnutá na zařízení. Zapněte ji v rychlém nastavení a zkus znovu.",
+        "timeout": "GPS neodpověděl včas.",
+        "unavailable": "Adresa se v této pozici nemohla vyřešit."
+      },
+      "newCapture": "Začněte nový úlovek .",
+      "noFieldsBack": "Vrať se zpátky.",
+      "noFieldsContinue": "Pokračujte stejně.",
+      "noFieldsMessage": "Žádné pole nemá nic, co by bylo možné pečovat. Vyplňte pole nebo přečtěte nastavení › Pole a poloha.",
+      "noFieldsTitle": "Fotka vyjde bez vodní značky.",
+      "noPhotoHint": "Začněte s fotkou nebo si vyberte jednu z galerie.",
+      "noPhotoSelected": "Žádná fotografie nevybrána",
+      "openFailed": "Fotku se nedokázalo otevřít.",
+      "permissionMessage": "Vstupy v nastavení > Závěry pokračovat.",
+      "permissionTitle": "Potřeba povolení",
+      "pickPhoto": "Vyberte si fotku",
+      "pickPhotoHint": "Vyberte si fotografii, abyste aktivovali akce.",
+      "previewLabel": "Předehled fotky s vodní značkou",
+      "renderFailedTitle": "Nedokázal generovat obrázek",
+      "replaceAddressMessage": "GPS nalezen: {address}",
+      "replaceAddressTitle": "Změnit adresu, kterou jste napsala?",
+      "resetConfirm": "Odhoďte",
+      "resetMessage": "Vybraná fotografie a vyplněné pole budou vyřazeny.",
+      "resetTitle": "Začít nový úlovek?",
+      "saved": "Fotografie uložené do galerie zařízení a do historie.",
+      "savedAppOnlyTitle": "Zachráněno pouze uvnitř Lymaru",
+      "shareDialogTitle": "Sdílejte fotku s vodní značkou",
+      "shareFailedMessage": "Obraz byl vytvořen a je v historii Lymark. Můžete ho sdílet z karty Galerie.",
+      "shareFailedTitle": "Nemohl jsem se sdílet.",
+      "shareUnavailableMessage": "Tento přístroj nemá sdílený list.",
+      "shareUnavailableTitle": "Nevystupněné sdílení",
+      "sharedFileTitle": "Foto s vodní značkou",
+      "stampNotReady": "Přepich se ještě připravuje.",
+      "syncNow": "Teď už.",
+      "timestamp": "Datum/čas",
+      "title": "Získání",
+      "useGpsAddress": "Použij GPS.",
+      "weekdayHint": "Číslo",
+      "weekdayShort": "Den"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "vybrat jinou barvu",
+      "saturationBrightness": "Sáturace a jasnost",
+      "use": "Použijte tuto barvu"
+    },
+    "common": {
+      "back": "Zpátky.",
+      "cancel": "Zrušit",
+      "delete": "Zmazat",
+      "error": "Chyby",
+      "gotIt": "- Jasně.",
+      "loading": "- Nabíjení...",
+      "no": "Ne, ne.",
+      "ok": "Dobře.",
+      "save": "Zachraňovat",
+      "share": "Podíl",
+      "success": "Úspěch",
+      "tryAgain": "Zkus to znovu.",
+      "unknownError": "Neznámá chyba",
+      "yes": "Ano, ano."
+    },
+    "gallery": {
+      "cancelSelection": "Odvolání",
+      "clear": "Jasná historie",
+      "clearConfirm": "Jasně",
+      "clearMessage": "Zobrazy uložené v galerii zařízení nejsou ovlivněny.",
+      "count": "{count, plural, one {Exportována # fotografie} few {Exportovány # fotografie} many {Exportováno # fotografií} other {Exportováno # fotografií}}",
+      "delete": "Zmazat",
+      "empty": "Ještě žádné fotky.",
+      "emptyAction": "Jděte chytit",
+      "emptyDescription": "Fotky, které vyvážíte s vodní značkou, se zobrazují zde, s datem, místem a kódem.",
+      "filteredCount": "{shown} z {total, plural, one {# fotografie} few {# fotografií} many {# fotografií} other {# fotografie}}",
+      "noResults": "Žádné fotky nebyly nalezeny pro {query}.",
+      "photoLabel": "Fotografie z {when}",
+      "removeMessage": "Zobrazování už uložené do galerie zařízení se netýká.",
+      "removeTitle": "{count, plural, one {Odebrat z historie} few {Odebrat # záznamy} many {Odebrat # záznamů} other {Odebrat # záznamu}}",
+      "removed": "{count, plural, one {Záznam odebrán.} few {Záznamy odebrány.} many {Záznamy odebrány.} other {Záznamy odebrány.}}",
+      "saveDeniedMessage": "V nastavení > Povolení je umožnit uložit obrázky do galerie zařízení.",
+      "saveDeniedTitle": "Foto přístup odmítnut",
+      "savedAll": "{count, plural, one {Jedna fotografie uložena do galerie zařízení.} few {# fotografie uloženy do galerie zařízení.} many {# fotografií uloženo do galerie zařízení.} other {# fotografie uloženo do galerie zařízení.}}",
+      "savedSome": "{saved} {total} fotky uložené.",
+      "searchPlaceholder": "Vyhledávání adresou, datem nebo kódem",
+      "selectedCount": "{count, plural, one {Vybrána # fotografie} few {Vybrány # fotografie} many {Vybráno # fotografií} other {Vybráno # fotografií}}",
+      "share": "Podíl",
+      "title": "Galerie"
+    },
+    "language": {
+      "automatic": "Přepínací zařízení",
+      "automaticNote": "Lymark sleduje nastavený jazyk na vašem zařízení.",
+      "label": "Hovoření",
+      "selector": "Vyberte jazyk"
+    },
+    "login": {
+      "access": "Přihlásit se k přístupu",
+      "apple": "Přihlásit se s Apple",
+      "google": "Přihlásit se na Google",
+      "subtitle": "Přihlásit se k pokračování",
+      "title": "Přihlásit se k přístupu k Lymark"
+    },
+    "nav": {
+      "batch": "Zpracování dávek",
+      "photoDetail": "Fotografii",
+      "report": "PDF zpráva",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Tato obrazovka není součástí Lymaru.",
+      "screenTitle": "Strana nenalezena",
+      "title": "Taková cesta neexistuje."
+    },
+    "permissions": {
+      "allow": "Dovolte mi.",
+      "allowed": "Dopuszní",
+      "blocked": {
+        "later": "Teď ne.",
+        "message": "Aby to bylo možné, otevřete nastavení zařízení.",
+        "openSettings": "Otevřené nastavení",
+        "title": "Zpověď zablokovaná"
+      },
+      "camera": "Kamery",
+      "cameraRationale": "Je nutné udělat fotku, která dostane vodní značku.",
+      "denied": "Odmítnutí",
+      "granted": "Uvědomeno",
+      "intro": "Lymark žádá pouze o to, co potřebuje k odtisknutí fotografie. Vaše obrázky nikdy neopouštějí zařízení: když používáte GPS, operační systém pošle mapovému službě pouze souřadnici, takže se může stát adresou.",
+      "location": "Místo",
+      "locationRationale": "Když zachytíte, automaticky vyplníte pole adresy.",
+      "mediaLibrary": "Uložte do galerie",
+      "mediaLibraryRationale": "Napíše exportované fotografie do galerie zařízení.",
+      "openDeviceSettings": "Nastavení",
+      "recheck": "Zase to zkontrolujte.",
+      "request": "Žádost o povolení",
+      "section": "Přístup",
+      "title": "Zpovědi"
+    },
+    "photo": {
+      "backToGallery": "Zpět do galerie",
+      "exportedAt": "Vývoz na {when}",
+      "noWatermark": "Tato fotka byla vyvezena bez vodní značky.",
+      "notFoundBody": "Tento záznam byl možná odstraněn z historie.",
+      "notFoundTitle": "Foto nenalezena",
+      "remove": "Odstraň",
+      "removeBody": "Zobraz uložený do galerie zařízení není ovlivněn.",
+      "removeTitle": "Odstraň z historie",
+      "share": "Podíl",
+      "stampedData": "Označené údaje"
+    },
+    "plan": {
+      "exhausted": "Zbytek zpracovaných fotografií zdarma",
+      "exhaustedMessage": "12 fotografií z bezplatného plánu je pryč.",
+      "free": "Vyplatněné",
+      "pro": "Pro",
+      "reconnect": "Připravte se k potvrzení přihlášky",
+      "remaining": "{remaining, plural, one {Zbývá # fotografie zdarma} few {Zbývají # fotografie zdarma} many {Zbývá # fotografií zdarma} other {Zbývá # fotografie zdarma}}",
+      "title": "Plán",
+      "unlimited": "Žádné omezení"
+    },
+    "report": {
+      "allPhotos": "Všechny fotky",
+      "authorField": "Autor / společnost",
+      "detailsSection": "Podrobnosti",
+      "doc": {
+        "author": "Autor",
+        "declaration": "Ozdobené údaje (adresa, datum, čas a kód) jsou prohlášením vydávajícího fotografií.",
+        "exportedAt": "Vývoz na",
+        "generatedAt": "Vytvořené na",
+        "page": "Stránka",
+        "photo": "Foto: {index}",
+        "photosSection": "Fotografické záznamy",
+        "signature": "Podpis odpovědného",
+        "summary": "Zhrnutí",
+        "title": "Fotografická zpráva",
+        "totalPhotos": "Celkové fotky:"
+      },
+      "empty": "Zpráva je z vaší galerie.",
+      "failed": "Nešlo to generovat zprávu.",
+      "fileStem": "zpráva",
+      "format": {
+        "csv": "Tabulka (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Balíček (ZIP)"
+      },
+      "formatSection": "Formátování",
+      "generate": "Vytvořit soubor",
+      "generateSection": "Generovat",
+      "includeLogo": "Logo na obálce",
+      "includeLogoDescription": "Logo vaší značky, stejné jako na známce, vypněte ho, abyste ho nechali mimo dokument.",
+      "norm": {
+        "abnt": "ABNT (Brazilie)",
+        "din5008": "DIN 5008 (Německo)",
+        "ibape": "IBAPE styl (Brazilie)",
+        "iso": "Mezinárodní",
+        "letter": "Dopis (USA)"
+      },
+      "normNote": "Standard stanoví papír a formátování  okrajů, čipy a číslování stránek. Obsah zprávy je ve všech stejný; styl IBAPE přidává podpisový blok.",
+      "normSection": "Standardní dokument",
+      "projectsSection": "Projekt / práce",
+      "saved": "Zachráněno na {path}",
+      "savedShort": "Zpráva uložená.",
+      "title": "PDF zpráva",
+      "titleField": "Název zprávy",
+      "unavailableBody": "PDF zprávy jsou k dispozici v aplikaci pro pracovní stůl.",
+      "unavailableTitle": "Pouze na pracovním počítači",
+      "uncoded": "Žádný kód",
+      "wordTooBig": "Word dokument se stal příliš velkým s vstavenými fotkami.",
+      "zipMissing": "{count, plural, one {Balíček uložen, ale # fotografie na zařízení nebyla nalezena.} few {Balíček uložen, ale # fotografie na zařízení nebyly nalezeny.} many {Balíček uložen, ale # fotografií na zařízení nebylo nalezeno.} other {Balíček uložen, ale # fotografie na zařízení nebylo nalezeno.}}"
+    },
+    "settings": {
+      "about": "O",
+      "aboutDescription": "Verze, soukromí a kreditní údaje",
+      "appSection": "Aplikace",
+      "deviceSection": "Přístroj",
+      "deviceSectionDescription": "Přístup, který Lymark požaduje.",
+      "fields": "Polia a poloha",
+      "fieldsDescription": "Vyberte, které pole se zobrazí, rohu a velikost",
+      "history": "Historie",
+      "historyDescription": "Vývozné fotografie uchovávané na zařízení",
+      "language": "Hovoření",
+      "permissions": "Zpovědi",
+      "permissionsDescription": "Kamera, fotografie a umístění",
+      "save": "Zachraňovat",
+      "title": "Nastavení",
+      "watermark": "Vodoznak",
+      "watermarkSection": "Vodní značka",
+      "watermarkSectionDescription": "Co je na fotce zapsáno a kde."
+    },
+    "signup": {
+      "subtitle": "Zapíš se , abys začal .",
+      "title": "Vytvořte svůj účet Lymark"
+    },
+    "tagline": "Vodní značka s časem, datem a místem",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Žádný přístup k fotoaparátu.",
+      "done": "Video zapsané a uložené.",
+      "export": "Video s odtlačkou na vývoz",
+      "exportSection": "Vývoz",
+      "failed": "Video nebylo možné vytisknout.",
+      "fieldsSection": "Políčky značek",
+      "fileSection": "Video",
+      "none": "Žádné video nevybráno.",
+      "processing": "Zpracování... {percent}%",
+      "processingMobile": "Zpracování...",
+      "record": "Zaznamenajte video teď.",
+      "saved": "Zachráněno na {path}",
+      "savedToGallery": "Zapečeté video uložené do vaší galerie.",
+      "select": "Vyberte video",
+      "unavailableBody": "V současné době je v systému Expo Go dostupná oficiální aplikace nebo EAS build nebo desktopová verze.",
+      "unavailableTitle": "Vložení aplikace je nutné",
+      "unreadable": "Soubor nemohl být přečetěn jako video.",
+      "webNote": "V prohlížeči je video zpracováváno v reálném čase  2 minutové video trvá 2 minuty  a vyjde v formátu WebM."
+    },
+    "watermark": {
+      "accentColor": "Vrtálná páčka",
+      "backdropBandNote": "Na záběru je navíc nahlédnuta kniha, která se objevuje na obou stranách.",
+      "backdropBlockNote": "Podložka se vztahuje na velikost textu, kolem ní je nalepena.",
+      "backdropColor": "Barva pásma",
+      "backdropDescription": "Bez něj se text posadí přímo na obrázek, s stínem.",
+      "backdropInnerRadius": "Vnitřní rohy",
+      "backdropOpacity": "Transparentnost",
+      "backdropOpacityValue": "{percent}% neprůhledné",
+      "backdropRadius": "Zvrouhlé rohu",
+      "backdropRadiusSquare": "Částečný",
+      "backdropStyles": {
+        "band": "Služba pro přenos",
+        "block": "Za textem",
+        "none": "Žádný"
+      },
+      "backdropTitle": "Způsobný pás",
+      "brandDescription": "Nad hodinkou se stává podpisem, s logem a sloganem.",
+      "brandFirstColor": "Barva první části",
+      "brandFirstHint": "Výstavníci",
+      "brandFirstPart": "První část",
+      "brandNote": "Dlouhé jméno je zmenšeno, dokud se nezdá, místo aby bylo odříznuto.",
+      "brandPlacements": {
+        "corner": "V rohu.",
+        "header": "Nad hodinkou .",
+        "none": "Žádný"
+      },
+      "brandSecondColor": "Barva druhé části",
+      "brandSecondHint": "Smithová",
+      "brandSecondPart": "Druhá část",
+      "brandTitle": "Označení ozdobené",
+      "codeDescription": "Na straně se neví o místo s samotným obrázkem.",
+      "codePlacements": {
+        "block": "Vedle údajů",
+        "side": "Pravá strana"
+      },
+      "codeTitle": "Fotokód",
+      "colors": {
+        "amber": "Amberová",
+        "black": "Černá",
+        "blue": "Modrá",
+        "green": "Zelená",
+        "red": "Červená",
+        "white": "Bílá"
+      },
+      "colorsDescription": "Barva na fotografii je volba společnosti, ne aplikace, která ji mění, nezmění barvy obrazovky.",
+      "colorsTitle": "Barvy známek",
+      "complement": "Základní název",
+      "complementColor": "Barva značky",
+      "complementHint": "Inspekce a technické zprávy",
+      "cornerConflict": "Značka a údaje jsou ve stejném rohu  na fotografii se překrývají.",
+      "fields": {
+        "address": "Adresa / Místo",
+        "code": "Fotokód",
+        "date": "Datum",
+        "time": "Čas",
+        "weekday": "Vydání"
+      },
+      "fieldsDescription": "Na fotografii dosáhnou pouze pole, které jsou na obrázku a obsahují obsah.",
+      "fieldsTitle": "Vykazované pole",
+      "includeCountry": "Zahrnout zemi",
+      "includeCountryDescription": "Zapněte ho, když pracujete přes hranice, jinak bude mít místo jen na fotce.",
+      "legibilityTitle": "Čtení",
+      "logoAdded": "Logo přidáno do nadpisů značky.",
+      "logoAlignNote": "Výška logoty následuje text: její horní část se vyrovná s horní částí názvu a dolní část se základní linií taglínu.",
+      "logoChosen": "Vybraný logo",
+      "logoErrorMessage": "Zkuste jiný obrázek. PNG s transparentním pozadím je formát, který funguje nejlépe.",
+      "logoErrorTitle": "Tento soubor nemohl být použit.",
+      "logoFormatNote": "Použijte PNG s transparentním pozadím. JPG s bílým pozadím se na fotografii stane bílým pravouhlým  formát neukládá transparentnost a aplikace nemá žádný způsob, jak odhadnout, co je pozadí.",
+      "logoPermissionMessage": "V položce Nastavení > Povolení si vyberte soubor logo.",
+      "logoPermissionTitle": "Foto přístup odmítnut",
+      "logoPick": "Vyberte logo",
+      "logoPosition": "Poloha loga",
+      "logoPositionBlock": "S pečivkou .",
+      "logoRemove": "Odstraň",
+      "logoReplace": "Náhradní logo",
+      "logoSize": "Rozsah logo",
+      "positionDescription": "Na rohu fotografie je blok zakotven.",
+      "positionTitle": "Poloha",
+      "positions": {
+        "bottom-left": "V dolní levé části",
+        "bottom-right": "Půl vpravo",
+        "top-left": "Vpravo nahoře",
+        "top-right": "Vpravo nahoře"
+      },
+      "previewCurrent": "Na současné fotce z karty Získání.",
+      "previewEmpty": "Od světla do tmy, aby se ověřila čtení v obou extrémních směrech.",
+      "previewNoFields": "Žádné vybrané pole  fotka nevychází bez vodní značky.",
+      "previewTitle": "Předchozí prohlídka",
+      "reset": "Vrátit nastavení",
+      "sizeTitle": "Velikost textu",
+      "sizes": {
+        "large": "Velké",
+        "medium": "střední",
+        "small": "Malý"
+      },
+      "textColor": "Text",
+      "timeFormatDescription": "Jak se čas vyplňuje do polí.",
+      "timeFormatTitle": "Časový formát",
+      "timeFormats": {
+        "12h": "12 hodin (přichůdce/večer)",
+        "24h": "24 hodin"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Všechny soubory",
+      "images": "Obrázky",
+      "pickFolder": "Vyberte výstupní složku",
+      "pickPhoto": "Vyberte fotku",
+      "pickPhotos": "Vyberte fotografie pro dávku",
+      "savePhoto": "Uložte fotku",
+      "saveReport": "Zprávy o uložení"
+    },
+    "login": {
+      "cancel": "Zrušit",
+      "confirm": "Pokračujte",
+      "message": "Právě jste se přihlásil přes prohlížeč.",
+      "title": "Přihlásit se na Lymark"
+    },
+    "menu": {
+      "copy": "Kopie",
+      "cut": "Zřízání",
+      "edit": "Vyměnit",
+      "file": "Soubor",
+      "fullscreen": "Plný obrazovka",
+      "help": "Pomoc",
+      "paste": "Čistička",
+      "quit": "Přestaň.",
+      "redo": "Redo",
+      "reload": "Přepínání",
+      "selectAll": "Vyberte všechny",
+      "settings": "Nastavení",
+      "undo": "Zrušení",
+      "view": "Výhled",
+      "zoomIn": "Zkresli",
+      "zoomOut": "Zkresli",
+      "zoomReset": "Skutečná velikost"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Vrátit se domů",
+      "openApp": "Otevři aplikaci",
+      "photos": "Fotografie",
+      "photosLeft": "{remaining} z {quota} vlevo",
+      "plan": "Plán",
+      "planUnavailable": "V současné době nedostupný",
+      "plans": {
+        "free": "Vyplatněné",
+        "pro": "Pro"
+      },
+      "signInTitle": "Přihlásit se",
+      "signOut": "Přihlásit se",
+      "signUpTitle": "Vytvořit účet",
+      "subscribe": "Přihlásit se na Lymark Pro",
+      "subscribeSoon": "Předplatné nejsou ještě k dispozici, ale pokud budou k dispozici, můžete se zde přihlásit a použít jakékoliv zařízení s stejným účtem.",
+      "title": "Váš účet",
+      "revokeDesktops": "Odpoj počítače",
+      "revokeDesktopsHint": "Zruší přístup aplikace na každém počítači."
+    },
+    "availability": {
+      "contact": "Chcete-li sledovat spuštění nebo ohlásit problém, napište na adresu <email>contato@lymark.app</email>.",
+      "description": "Lymark je ve verzi 1.3.0, testování na Androidu před publikováním na Google Play.",
+      "title": "Dostupnost"
+    },
+    "data": {
+      "device": {
+        "description": "Účet existuje pro vaše předplatné: server uchovává vaše e-mailové zprávy a plán, nikdy nepřijímá vaše fotografie nebo vaše umístění.",
+        "field": "Na zařízení",
+        "heading": "Fotografie, adresy a historie"
+      },
+      "external": {
+        "description": "Aby se šířka a délka změnily v čitelnou adresu, operační systém požádá o službu geokódování společnosti Google nebo Apple. To jsou jediné informace, které zůstávají, a systém je pošle, ne aplikace.",
+        "field": "Zde je zařízení",
+        "heading": "Jenom přeměňování souřadnice na adresu"
+      },
+      "note": "Vše je stanoveno  včetně toho, co to znamená v brazilském LGPD  v <privacy>Politika ochrany osobních údajů</privacy>. Vypnutí povolení k umístění ponechává aplikaci plně funkční; pak je třeba využít pouze pole adresy ručně.",
+      "title": "Kde jsou vaše údaje"
+    },
+    "deleteAccount": {
+      "back": "Zpět k účtu",
+      "confirm": "Vymazat můj účet",
+      "deletesNow": "Odstranění účtu okamžitě vymazá e-mail, identifikační číslo a záznam o plánu, kvóte a počtu fotografií.",
+      "irreversible": "Snímky na vašem zařízení nejsou ovlivněny  nikdy nebyly na našich serverech.",
+      "retained": "Záznamy o platebních transakcích jsou uchovávány po dobu požadovanou zákonem, bez odkazu na váš profil.",
+      "title": "Účet vymazat"
+    },
+    "description": "Aplikace pro Android, která odtlačkuje čas, datum, den v týdnu, adresu a sledovací kód na fotografii z inspekce a osvědčení služby.",
+    "desktop": {
+      "backAccount": "Zpět k účtu",
+      "explanation": "Váš účet je připraven. Klikněte na níže uvedený tlačítko k otevření Lymark na vašem počítači již přihlášeném  prohlížeč požádá o povolení k otevření aplikace.",
+      "open": "Připojte aplikaci",
+      "title": "Vstupte na pracovní plochu",
+      "unavailable": "Přípojka k desktopové aplikaci není ještě k dispozici."
+    },
+    "download": {
+      "appStore": {
+        "description": "Stejná zkušenost jako Android, na iOS.",
+        "field": "App Store",
+        "heading": "iPhone a iPad"
+      },
+      "browser": {
+        "action": "Přihlásit se",
+        "description": "Přihlaste se svým účtem a aplikace se otevře přímo v prohlížeči  telefon nebo počítač.",
+        "field": "Průzkumník",
+        "heading": "Použij ho teď, nic nainstalovat."
+      },
+      "desktop": {
+        "description": "Fotografické zábory, dlouhé videa a PDF zprávy  těžko-duty verze.",
+        "field": "Počítač",
+        "heading": "Windows a Linux"
+      },
+      "googlePlay": {
+        "description": "Telefonní aplikace, s kamerou, galerie a odtlačeným videem.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Brzy přijdu.",
+      "title": "Kde použít Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "Typ ulice je zkrácen a stát se stane jeho kódem, takže adresa se změní do dvou řádků bez pokrytí fotografie.",
+        "field": "Adresa",
+        "heading": "Vyplněné GPSem, ručně opravitelné"
+      },
+      "code": {
+        "description": "Existuje tak, aby se mohl citovat na jednu konkrétní fotografii v pracovním řádu nebo zprávě.",
+        "field": "Fotokód",
+        "heading": "Čtrnáct znaků, nakreslených kryptografickým generátorem"
+      },
+      "note": "Každé pole se zapne a vypne samo o sobě, blok se zakotví na kterémkoli ze čtyř koutů, ve třech velikostech. Předchozí zobrazení používá vaši skutečnou fotografii, ne obecnou vzorku: to, co vidíte na obrazovce, je doslova to, co se vyváží.",
+      "time": {
+        "description": "Jeden tlačítko všechny tři pole přivádí zpět do současnosti, když to trvalo delší dobu než se očekávalo.",
+        "field": "Čas a datum",
+        "heading": "Od hodin zařízení v okamžiku zachytění"
+      },
+      "title": "Co se dostane na obrázek"
+    },
+    "footer": {
+      "description": "Lymark  fotografické záznamy s datem, časem a adresou.",
+      "documentsLabel": "Dokumenty",
+      "privacy": "Politika ochrany osobních údajů",
+      "support": "Podpora:",
+      "terms": "Podmínky použití"
+    },
+    "hero": {
+      "ctaAccount": "Jdi na můj účet.",
+      "ctaLogin": "Přihlásit se",
+      "ctaSignup": "Vytvořte si zdarma účet",
+      "description": "Lymark značí čas, datum, den týdne, adresu a sledovací kód přímo na obrázek. Soubor, který vyjde z aplikace, nese informace uvnitř  ne jako metadata, které se vedle, které první WhatsApp vpřed strips pryč.",
+      "eyebrow": "Dokumenty s fotografií v terénu",
+      "heading": "Na fotce je už tvůj telefon, který říká, kdy, kde a co.",
+      "meta": {
+        "account": "Jednotko-tiskový účet",
+        "android": "Android a prohlížeč",
+        "language": "Brazílský portugalština",
+        "onDevice": "Fotky zůstávají na zařízení"
+      },
+      "note": "Nic nainstalovat."
+    },
+    "nav": {
+      "account": "Účet",
+      "home": "Domů",
+      "homeLabel": "Lymark, domovská stránka",
+      "label": "Hlavní",
+      "privacy": "Soukromí",
+      "signIn": "Přihlásit se",
+      "terms": "Podmínky",
+      "verify": "Ověřit"
+    },
+    "process": {
+      "capture": {
+        "description": "Hledání adres začíná v okamžiku, kdy se přihlásí obrázek. Pole zůstávají otevřené pro úpravu, zatímco se běží.",
+        "field": "Získání",
+        "heading": "Kamery nebo galerie"
+      },
+      "note": "Zachovávání a sdílení řeší různé problémy a skládání je do jednoho tlačítka by přetáhlo každého, kdo chce fotku pouze přihlásit přes zasílovací obrazovku.",
+      "save": {
+        "description": "Skládá se s ostatními fotkami telefonu, které jsou k dispozici pro každou aplikaci  včetně odinstalování Lymaru.",
+        "field": "Ušetřit",
+        "heading": "Jde do galerie zařízení"
+      },
+      "share": {
+        "description": "WhatsApp, e-mail, Drive: cíl je vybrán operačním systémem a aplikace se do zasílání nezúčastní.",
+        "field": "Podíl",
+        "heading": "Otevře list sdíleného systému"
+      },
+      "title": "Cesta, kterou fotka vyberá"
+    },
+    "skipToContent": "Přepínám na obsah",
+    "specimen": {
+      "caption": "Běrožedné pravidlo začíná a končí na okraji čísel, ne na textové krabici.",
+      "label": "Vzorek známky Lymark: čas 07:42, datum 12. srpna 2026, středa, adresa v Guarujá a kód fotografie."
+    },
+    "title": "Lymark  datum, čas a adresa vodní značka pro pole fotky",
+    "verify": {
+      "caveat": "Pečeť potvrzuje integrity souboru a okamžik vydání.",
+      "checking": "Zkontroluji...",
+      "declarationNote": "Známka (adresa, datum, čas) je prohlášením emitenta  známka potvrzuje integritetu a vydání, nikoli obsah.",
+      "intro": "Odložte nebo vyberte fotografii vyváženou Lymark a okamžitě zjistěte, zda je přesně taková, jaká opustila aplikaci  a kdo ji vydal, kdy.",
+      "noSealBody": "Tento soubor nemá pečeť Lymark. Může být exportován offline, než pečeť existovala, nebo nemusí pocházet z Lymark.",
+      "noSealTitle": "Žádná pečeť",
+      "notConfigured": "Ověření není ještě k dispozici.",
+      "pick": "Vyberte soubor",
+      "previewAlt": "Ověřená fotografie, známka viditelná",
+      "privacyNote": "Ověření probíhá ve vašem prohlížeči. Soubor není zaslán na žádný server.",
+      "sealedBody": "Tento soubor je přesně takový, jaký byl v Lymarku, vydaný na účet {account} na {date}.",
+      "sealedTitle": "Neporušená",
+      "tamperedBody": "Obsah se neslučuje s pečetí: soubor byl po vydání změněn nebo pečetí patří k jinému souboru.",
+      "tamperedTitle": "Neslučitelnost",
+      "title": "Ověřte pravost",
+      "unsupported": "Tento prohlížeč nepodporuje ověřování podpisů. Zkuste aktuální prohlížeč."
+    }
+  }
+}

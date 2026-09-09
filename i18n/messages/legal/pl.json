@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Polityka prywatności",
+      "description": "Jak aplikacja Lymark obsługuje zdjęcia, lokalizację, historię i konto."
+    },
+    "title": "Polityka prywatności",
+    "updated": "Ostatnio zaktualizowana: 16 sierpnia 2026 · aplikacja Lymark, wersja 1.3.0",
+    "intro": "Niniejsza polityka opisuje sposób, w jaki aplikacja Lymark obsługuje dane osobowe. Zgodnie z przepisami Lei nr 13.709/2018 (ogólna ustawa o ochronie danych osobowych  LGPD) i rozporządzenia (UE) 2016/679 (ogólne rozporządzenie o ochronie danych  GDPR) stosuje się do aplikacji rozprowadzanej pod identyfikatorem <strong>com.lycosteam.lymark</strong>i na tej stronie.",
+    "s01": {
+      "title": "W jednym zdaniu",
+      "p1": "Lymark <strong>nie przesyła zdjęć ani lokalizacji</strong>Wszystko, co aplikacja tworzy  obrazy, adresy, historia i preferencje  pozostaje na twoim urządzeniu, pod twoją kontrolą. Istnieje konto, które jest wymagane do korzystania z aplikacji i do subskrypcji: serwer przechowuje gura, identyfikator konta, plan i liczbę wyeksportowanych zdjęć  i nic innego.",
+      "p2": "Istnieje tylko jedno wyjątek opisane w pkt 05: aby zmienić współrzędne GPS w czytelny adres, system operacyjny urządzenia zadaje zapytanie zewnętrznej usługi geokodowania."
+    },
+    "s02": {
+      "title": "Do kogo dotyczy ta polityka",
+      "p1": "W przypadku osób, których dane dotyczą w Brazylii, przetwarzanie następuje zgodnie z LGPD i nadzorem Narodowego Urzędu Ochrony Danych (ANPD)."
+    },
+    "s03": {
+      "title": "Kto jest kontrolerem",
+      "p1": "Administrator danych osobowych  <em>kontroler</em>, w terminologii LGPD  jest 29.015.357 AMAD ALI HAMMOUD, zarejestrowany pod nazwą CNPJ 29.015.357/0001-25, z adresem Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Osobą odpowiedzialną za przetwarzanie danych osobowych w rozumieniu art. 41 LGPD jest Amad Ali Hammoud, z którym można skontaktować się pod adresem <email>contato@lymark.app</email>- ze względu na wielkość i charakter przetwarzania , które nie obejmuje ani danych wrażliwych w skali, ani systematycznego monitorowania  nie ma obowiązku wyznaczenia<em>Urzędnik ds. ochrony danych</em>Zgodnie z art. 37 GDPR."
+    },
+    "s04": {
+      "title": "Jakie informacje obsługuje aplikacja",
+      "p1": "Wszystkie poniższe informacje są rejestrowane wyłącznie w obszarze prywatnym aplikacji w obrębie urządzenia i nic z tego nie jest przesyłane do programisty.",
+      "defs": {
+        "photos": {
+          "term": "Zdjęcia",
+          "def": "Zdjęcie, które wybierzesz z galerii lub zdjęcia z aparatem, oraz plik wywieziony z znakiem wodnym."
+        },
+        "location": {
+          "term": "Położenie",
+          "def": "Przybliżająca szerokość i długość geograficzna, uzyskana raz na zdjęcie, wyłącznie w celu wypełnienia pola adresowego."
+        },
+        "datetime": {
+          "term": "Data, godzina i dzień tygodnia",
+          "def": "Czytaj z zegarka urządzenia w momencie wykonania zdjęcia i możesz je edytować."
+        },
+        "code": {
+          "term": "Kod zdjęcia",
+          "def": "Sekwencja czternastu znaków sześćdziesiątych, wyciągnięta losowo. Nie pochodzi ani z identyfikatora urządzenia, ani z twojego, i nie umożliwia śledzenia między aplikacjami."
+        },
+        "history": {
+          "term": "Historia",
+          "def": "Zapis ostatnich 200 wywozów, zawierający ścieżkę pliku na urządzeniu i dane zapisane na zdjęciu."
+        },
+        "preferences": {
+          "term": "Wymogi",
+          "def": "Widoczne pola, pozycja, rozmiar i inne opcje znaku wodnego."
+        }
+      },
+      "p2": "Aplikacja <strong>nie zbiera</strong>: nazwisko, e-mail, telefon, dokumenty tożsamości, identyfikator reklamy, identyfikator urządzenia, dane kontaktowe, kalendarz, historia przeglądania, metryki użytkowania, raporty awarii lub wszelkie inne informacje o Tobie lub o Twoim urządzeniu."
+    },
+    "s05": {
+      "title": "Jedyna informacja, która wychodzi z urządzenia",
+      "p1": "Kiedy przyznaje się do zezwolenia na lokalizację, aplikacja prosi system operacyjny o przekształcenie współrzędnych GPS w adres pocztowy.<strong>Google</strong>w urządzeniach z systemem Android i <strong>Jabłka</strong>na urządzeniach z systemem iOS.",
+      "p2": "W przypadku gdy aplikacja jest w stanie przekazać informacje o danych, które zostały przekazane przez użytkownika, w przypadku gdy jest ona w stanie przekazać informacje, które zostały przekazane przez użytkownika, w przypadku gdy jest ona w stanie przekazać informacje, które zostały przekazane przez użytkownika, w przypadku gdy jest ona w stanie przekazać informacje, które zostały przekazane przez użytkownika, w przypadku gdy jest ona w stanie przekazać informacje, które zostały przekazane przez użytkownika, w przypadku gdy jest ona w stanie przekazać informacje, które zostały przekazane przez użytkownika, w przypadku gdy jest ona w stanie przekazać informacje, które zostały przekazane przez użytkownika, w przypadku gdy jest ona w stanie przekazać informacje, które zostały przekazane przez użytkownika.",
+      "p3": "<strong>Żadne zdjęcie nie opuszcza urządzenia przez działanie aplikacji.</strong>Jeśli użyjesz przycisku udostępnianie, obraz jest przesyłany przez aplikację przeznaczoną, którą wybrałeś w arkuszu udostępniania systemów  messenger, e-mail, przechowywanie w chmurze  w ramach polityki prywatności tej aplikacji."
+    },
+    "s06": {
+      "title": "Wniosek o pozwolenie i dlaczego",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Aby zrobić zdjęcie, które otrzyma znak wodny. Poproszone tylko przy naciśnięciu Wykorzystaj zdjęcie. Aplikacja nie wymaga dostępu do mikrofonu."
+        },
+        "photos": {
+          "term": "Zdjęcia i media",
+          "def": "Aby wybrać istniejący obraz i napisać wyeksportowany plik do galerii. Dostęp jest ograniczony do fotografii, a zezwolenie na pisanie jest używane tylko do pisania  aplikacja nie przegląda ani nie czyta galerii."
+        },
+        "location": {
+          "term": "Lokalizacja podczas użytkowania",
+          "def": "W celu wypełnienia pola adresowego.<strong>Nigdy na tle</strong>."
+        }
+      },
+      "p1": "Wszystkie uprawnienia są opcjonalne i mogą być odwołane w dowolnym momencie w ustawień urządzenia. Odmowa lokalizacji utrzymuje aplikację w pełni funkcjonalną: adres jest następnie wpisany przez ciebie. Odmowa dostępu do galerii uniemożliwia tylko automatyczne zapisywanie, a zdjęcie nadal można udostępniać."
+    },
+    "s07": {
+      "title": "Podstawy prawne i cele",
+      "p1": "Przetwarzanie lokalizacji odbywa się na podstawie danych o <strong>zgodę</strong> Artykuł 7 I LGPD i art. 61) ) GDPR  wyrażone w momencie udzielenia zezwolenia na system i odwołalne w każdej chwili, bez uszczerbku dla zgodności z prawem przetwarzania przeprowadzonego przed odwołaniem.",
+      "p2": "Zbyt wiele danych przetwarzanych jest w celu<strong>wydajność funkcji, o którą prosiłeś</strong> Artykuł 7 V LGPD i art. 6 1) b GDPR  ponieważ bez niego nie ma oznaki wodnej, którą może wytwarzać aplikacja.",
+      "p3": "Przetwarzanie danych konta opiera się na wykonywaniu umowy (art. 7, V, LGPD, art. 61) (b)). Przetwarzanie oparte na uzasadnionym interesie (art. 7, IX, LGPD, art. 61) (f)) jest wykonywane wyłącznie w celu ochrony i zapobiegania oszustwom  np. zapisywanie adresu IP wniosków do serwera."
+    },
+    "s08": {
+      "title": "Transfer międzynarodowy",
+      "p1": "Dane konta są przetwarzane przez podmiot przetwarzający uwierzytelnianie (Clerk, Inc., Stany Zjednoczone), który stanowi międzynarodowy przekaz danych, oparty na standardowych klauzach umownych i mechanizmach art. 33 LGPD i art. 44-49.",
+      "p2": "Strona internetowa ta jest obsługiwana przez Vercel Inc., zgodnie z warunkami pkt 14."
+    },
+    "s09": {
+      "title": "Udział w wymianie informacji z osobami trzecimi",
+      "p1": "Właściciel nie udostępnia, nie sprzedaje, nie wynajmuje ani nie przekazuje danych osobowych osobom trzecim.<em>procesor</em>Clerk, Inc., który świadczy usługę uwierzytelniania i przechowuje e-mail, identyfikator konta i dane dotyczące planu, związane umową z instrukcjami dewelopera. Jeśli zalogowasz się w Google lub Apple, dostawcy przetwarzają dane o zalogowaniu zgodnie z własnymi zasadami; deweloper otrzymuje od nich tylko e-mail i identyfikator niezbędny do utworzenia konta. Zdjęcia, adresy i lokalizacja nie przechodzą przez żadnego przetwórcy, ponieważ nigdy nie opuszczają urządzenia."
+    },
+    "s10": {
+      "title": "Przechowywanie, przechowywanie i zabezpieczenie",
+      "p1": "Dane znajdują się w prywatnym obszarze aplikacji, chronione przez izolację systemu operacyjnego między aplikacjami i blokadą ekranu urządzenia.<strong>niepełnosprawny</strong>, tak aby historia i preferencje nie były wysyłane do konta Google użytkownika.",
+      "p2": "Zapisy pozostają w całości kontrolowane przez użytkownika, dopóki nie zostaną usunięte w samej aplikacji, a historia automatycznie wyrzuca najstarsze po przejściu dwóch setek elementów, usuwając również odpowiednie pliki. Uninstalowanie aplikacji usuwa wszystko, co przechowywane. Zdjęcia już zapisane w galerii urządzenia należą do galerii i pozostają tam  zależy od ciebie, aby je usunąć, jeśli chcesz.",
+      "p3": "Żaden system nie jest nieomylny. Dane konta  e-mail, identyfikator, plan i liczba  są przechowywane przez procesora uwierzytelniania, zgodnie z jego środkami bezpieczeństwa. Zdjęcia, adresy i lokalizacja nie istnieją w centralnym repositorium i dlatego nie mogą się wyciekać z infrastruktury deweloperów. Jeśli incydent bezpieczeństwa wpłynie na dane konta, deweloper powiadomi organ i podmioty danych zgodnie z art. 48 LGPD i art. 33 GDPR."
+    },
+    "s11": {
+      "title": "Kiedy fotografujesz innych ludzi",
+      "p1": "Kiedy fotografujesz identyfikowalnych ludzi w trakcie swojej działalności zawodowej,<strong>- Ty .</strong>W przypadku gdy dane dane są przetwarzane przez podmioty danych, które są przedstawione, podmiot ten nie bierze udziału w przetwarzaniu danych i nie ma dostępu do tych danych."
+    },
+    "s12": {
+      "title": "Twoje prawa",
+      "p1": "Artykuł 18 LGPD i art. 15-22 GDPR gwarantują Państwu prawa do potwierdzenia i dostępu, poprawy, usunięcia, anonimowania, blokowania, przenoszenia, ograniczenia przetwarzania, sprzeciwu, wycofania zgody i informacji dotyczących udostępniania.",
+      "p2": "Zdjęcia, adresy, historia i preferencje znajdują się tylko na Twoim urządzeniu, a te prawa są wykonywane bezpośrednio w aplikacji: wyświetlanie i usunięcie wpisów w zakładce Galeria, poprawienie każdego pola przed wywozem, cofnięcie zezwolenia na lokalizację w ustawień systemu i usunięcie wszystkiego poprzez dezinstalowanie aplikacji  deweloper nie może uzyskać dostępu, wywozić lub usunąć tych danych dla Ciebie, ponieważ nie posiada ich. Jeśli chodzi o dane konta  e-mail, plan i liczba  możesz je zobaczyć na stronie konta i poprosić o poprawę, wywożenie lub usunięcie w e-mailie kontaktowym niniejszej polityki  usunięcie konta usuwa te dane w procesorze uwierzytelniania.",
+      "p3": "W przypadku pytań lub formalnych wniosków, napisz do:<email>contato@lymark.app</email>Masz również prawo złożyć skargę w<strong>ANPD</strong>, w Brazylii lub w organach nadzorczych Państwa Członkowskiego w Unii Europejskiej."
+    },
+    "s13": {
+      "title": "Automatyczne decyzje",
+      "p1": "Nie ma automatycznej decyzji, profilowania lub przetwarzania, które wywołują skutki prawne w odniesieniu do Ciebie, zgodnie z art. 20 LGPD i art. 22 GDPR."
+    },
+    "s14": {
+      "title": "O tej stronie",
+      "p1": "Strona ta nie posiada analityki, nie pokazuje reklamy ani nie włącza przycisków sieci społecznościowych.<strong>płyta ściśle niezbędna</strong>w przypadku sesji konta, ustawionej przez procesor uwierzytelniania (punkty 09) podczas logowania; nie ma plików cookie śledzeniowych ani reklamowych. Słowa czcionkowe są serwowane z własnej domeny strony. Jedyne żądania, które przeglądarka składa stronom trzecim, są żądania ekranu logowania i konta, adresowane do procesora uwierzytelniania  i, jeśli wybierzesz go, do dostawcy logowania (Google lub Apple).",
+      "p2": "Strona internetowa jest hostowana przez <strong>Vercel Inc.</strong>, który jako podmiot przetwarzający zapisuje dane techniczne o dostępie  adres IP, datę, godzinę i zasoby żądane  tak długo, jak jest to konieczne dla bezpieczeństwa i funkcjonowania hostingu. Podstawą prawną jest uzasadniony interes w utrzymaniu bezpieczeństwa usługi, art. 7 LGPD, art. IX LGPD i art. 6(1)(f) GDPR."
+    },
+    "s15": {
+      "title": "Zmiany w tej polityce",
+      "p1": "Zmiany, które znacząco zmieniają przetwarzanie danych, zostaną również przekazane wewnątrz aplikacji przed ich wejściem w życie."
+    },
+    "s16": {
+      "title": "Dzieci i młodzież",
+      "p1": "Lymark jest narzędziem pracy przeznaczonym dla osób w wieku 18 lat i starszych."
+    },
+    "s17": {
+      "title": "Właściwe prawo",
+      "p1": "W przypadku gdy dane dane osobowe są w stanie przejść do obrotu w ramach procedury, w której są one w stanie przejść do obrotu, w przypadku gdy dane osobowe są w stanie przejść do obrotu w ramach procedury, w której są one w stanie przejść do obrotu, w przypadku gdy dane osobowe są w stanie przejść do obrotu w ramach procedury, w której są one w stanie przejść do obrotu w ramach procedury, w której są one w stanie przejść do obrotu w ramach procedury."
+    },
+    "note": "Zob. również <terms>Warunki użytkowania</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Warunki użytkowania",
+      "description": "Warunki korzystania z aplikacji Lymark: co robi, co nie robi i kto jest odpowiedzialny za zawartość zdjęć."
+    },
+    "title": "Warunki użytkowania",
+    "updated": "Ostatnio zaktualizowana: 16 sierpnia 2026 · aplikacja Lymark, wersja 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Co robi aplikacja",
+      "p1": "Lymark pokrywa zestaw informacji na fotografii  godzinę, datę, dzień pracy, adres i kod identyfikacyjny  i generuje nowy plik obrazu z tymi informacjami wbudowanymi w piksele."
+    },
+    "s02": {
+      "title": "Co aplikacja nie robi",
+      "p1": "Ten punkt jest najważniejszy w tych kategoriach i prosimy o uważne czytanie.",
+      "items": {
+        "certify": "<strong>Aplikacja nie certyfikuje ani nie uwierzytelnia niczego.</strong>Nie jest to badanie forensyczne, nie wydaje dokumentu wiary publicznej i nie stanowi dowodu eksperckiego.",
+        "editable": "<strong>Każde pole jest edytowane przez użytkownika.</strong>Czas, data, adres i kod można swobodnie zmienić przed wywozem, według projektu: profesjonalista musi być w stanie poprawić adres, który GPS nie poprawił.",
+        "clock": "<strong>Czas pochodzi z zegarka urządzenia</strong>Nie ma synchronizacji z zaufanym serwerem czasu.",
+        "address": "<strong>Adres jest szacunkiem.</strong>Jego dokładność zależy od sygnału GPS i bazy danych usługi map systemu operacyjnego.",
+        "code": "<strong>Kod fotograficzny nie jest rejestracją notariusza.</strong>Jest to identyfikator losowy do wewnętrznego odniesienia, bez żadnej wartości dowodowej."
+      },
+      "p2": "Jeżeli w przypadku użytkowania wymagane są dowody o mocy prawnej przeciwko stronom trzecim, należy uzyskać notarialny akt lub usługę certyfikacji cyfrowej z pieczęcią czasową."
+    },
+    "s03": {
+      "title": "Twoje obowiązki",
+      "items": {
+        "photos": "Jesteś wyłącznie odpowiedzialny za zdjęcia, które udajecie sobie, za treść, którą na nich wyświetlicie, oraz za wykorzystanie wygenerowanych plików.",
+        "thirdParties": "Fotografując inne osoby, ich własność lub ich pomieszczenia, należy uzyskać niezbędne zezwolenia i przestrzegać praw do obrazu, tajemnicy zawodowej i ogólnego prawa ochrony danych osobowych w odniesieniu do przedstawionych osób.",
+        "prohibited": "Wykorzystanie aplikacji do tworzenia fałszywych danych, wprowadzenia w błąd, symulacji wykonywania nieprzydanej usługi lub wykonywania jakichkolwiek niezgodnych z prawem czynności jest zabronione.",
+        "backups": "To do ciebie należy zachować kopie zapasowe tego, co uważasz za ważne."
+      }
+    },
+    "s04": {
+      "title": "Licencja użytkowania",
+      "p1": "Zapewniamy Ci osobistą, odwołalną, niewyłączną i nieprzekazalną licencję na instalowanie i korzystanie z aplikacji, w tym do celów zawodowych.",
+      "p2": "<strong>Twoje zdjęcia są twoje.</strong>Nie mamy prawa do zdjęć, które gracie lub generujecie."
+    },
+    "s05": {
+      "title": "Dostępność i aktualizacje",
+      "p1": "Aplikacja jest dostępna tak, jak jest. Nie ma gwarancji na bezprzerwanie działania, zgodność z każdym urządzeniem, ani żadnego zobowiązania do ustalenia terminu na naprawy lub nowe wersje.",
+      "p2": "Jakość wywożonego obrazu zależy od urządzenia i systemu operacyjnego i może mieć niższą rozdzielczość niż oryginalny obraz."
+    },
+    "s06": {
+      "title": "Ograniczenie odpowiedzialności",
+      "p1": "W maksymalnym zakresie dozwolonym przez prawo brazylijskie, deweloper nie ponosi odpowiedzialności za straty pośrednie, straty zysków, straty danych lub szkody wynikające z decyzji podjętych na podstawie informacji o tym, co zostało zapisane  w tym z jakiegokolwiek zarzutu, w sądzie lub poza nim, do treści fotografii generowanej przez aplikację.",
+      "p2": "To ograniczenie .<strong>nie usuwa</strong>prawa gwarantowane konsumentom na mocy ustawy nr 8.078/1990, ani odpowiedzialność za celowe niewłaściwe postępowanie lub poważne zaniedbanie."
+    },
+    "s07": {
+      "title": "Zrezygnowanie",
+      "p1": "Możesz w każdej chwili przestać korzystać z aplikacji: usunięcie konta usuwa dane na serwerze, a uninstallacja aplikacji usuwa dane przechowywane na urządzeniu."
+    },
+    "s08": {
+      "title": "Zmiany w tych warunkach",
+      "p1": "Zmiany zostaną opublikowane na tej stronie z nową datą aktualizacji."
+    },
+    "s09": {
+      "title": "Dotyczy to prawa i forum",
+      "p1": "W przypadku gdy użytkownik ma prawo do prawa brazylijskiego, forum, w którym rozstrzyga się spory wynikające z niniejszych warunków, jest forum, w którym znajduje się jego miejsce zamieszkania."
+    },
+    "note": "W sprawie obsługi danych, patrz <privacy>Polityka prywatności</privacy>Pytania:<email>contato@lymark.app</email>."
+  }
+}

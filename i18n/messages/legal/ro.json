@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Politica de confidențialitate",
+      "description": "Cum aplicația Lymark gestionează fotografiile, locația, istoricul și contul dvs. Fotografiile și locația nu părăsesc niciodată dispozitivul; serverul păstrează doar e-mail-ul, planul și numărul de fotografii."
+    },
+    "title": "Politica de confidențialitate",
+    "updated": "Ultima actualizare: 16 august 2026 · Lymark app, versiune 1.3.0",
+    "intro": "Această politică descrie modul în care aplicația Lymark tratează informațiile cu caracter personal. Ea respectă Lei nr. 13.709/2018 (Legea generală privind protecția datelor cu caracter personal  LGPD) și Regulamentul (UE) 2016/679 (Reglementul general privind protecția datelor  GDPR), și se aplică aplicației distribuite sub identificator <strong>com.lycosteam.lymark</strong>şi pe acest site.",
+    "s01": {
+      "title": "Într-o singură propoziţie",
+      "p1": "Lymark <strong>nu transmite fotografiile sau locația dvs.</strong>. Tot ce produce aplicația  imagini, adrese, istoric și preferințe  rămâne pe dispozitivul dvs., sub controlul dvs. Există un cont, necesar pentru a utiliza aplicația și pentru abonament: serverul păstrează e-mail-ul dvs., identificatorul contului, planul și numărul de fotografii exportate  și nimic altceva.",
+      "p2": "Există o singură excepție, descrisă la punctul 05: pentru a transforma coordonatele GPS într-o adresă lizibilă, sistemul de operare al dispozitivului solicită un serviciu de geocodificare extern."
+    },
+    "s02": {
+      "title": "Pentru cine se aplică această politică",
+      "p1": "În cazul persoanelor vizate în Brazilia, prelucrarea se efectuează în conformitate cu LGPD și cu supravegherea Autorității Naționale de Protecție a Datelor (ANPD)."
+    },
+    "s03": {
+      "title": "Cine este controlerul",
+      "p1": "Administratorul datelor cu caracter personal  <em>controlator</em>, în terminologia LGPD  este 29.015.357 AMAD ALI HAMMOUD, înregistrat sub numele de CNPJ 29.015.357/0001-25, cu adresa Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Persoana responsabilă cu prelucrarea datelor cu caracter personal, în sensul articolului 41 din LGPD, este Amad Ali Hammoud, care poate fi contactată la <email>contato@lymark.app</email>. Având în vedere volumul şi natura prelucrării  care nu implică nici date sensibile la scară largă, nici monitorizarea sistematică  nu există obligaţia de a desemna un <em>Ofițerul de protecție a datelor</em>în temeiul articolului 37 din GDPR."
+    },
+    "s04": {
+      "title": "Ce informaţii se ocupă de aplicaţie",
+      "p1": "Toate informațiile de mai jos sunt înregistrate exclusiv în zona privată a aplicației din interiorul dispozitivului și nimic din acestea nu este trimis dezvoltatorului.",
+      "defs": {
+        "photos": {
+          "term": "Fotografii",
+          "def": "Imaginea pe care o alegeți din galerie sau pe care o luați cu camera și fișierul exportat cu marca de apă."
+        },
+        "location": {
+          "term": "Localizare",
+          "def": "Latitudinea și longitudinea aproximative, obținute o dată pe captura, cu scopul unic de a completa câmpul de adresă."
+        },
+        "datetime": {
+          "term": "Data, ora și ziua de muncă",
+          "def": "Citeste din ceasul dispozitivului in momentul capturarii si editabil de tine."
+        },
+        "code": {
+          "term": "Codul foto",
+          "def": "O secvenţă de 14 caractere hexadecimale desenate la întâmplare. Nu derivă nici de la un identificator de dispozitiv, nici de la unul al tău, şi nu permite urmări între aplicaţii."
+        },
+        "history": {
+          "term": "Istoria",
+          "def": "Un registru al ultimelor 200 de exporturi, care conține drumul fișierului de pe dispozitiv și datele amprentează pe imagine."
+        },
+        "preferences": {
+          "term": "Preferințe",
+          "def": "Câmpurile vizibile, poziția, dimensiunea și alte opțiuni de semn de apă."
+        }
+      },
+      "p2": "Aplicaţia <strong>nu colectează</strong>: nume, e-mail, telefon, documente de identitate, identificator de publicitate, identificator de dispozitiv, date de contact, calendar, istoric de navigare, metrici de utilizare, rapoarte de crash sau orice alte informații despre dvs. sau despre dispozitivul dvs. Nu există nici un SDK de analiză, publicitate, atribuire sau urmărire integrat."
+    },
+    "s05": {
+      "title": "Singura informaţie care părăseşte dispozitivul",
+      "p1": "Când acordă permisiunea de locație, aplicația solicită sistemului de operare să transforme coordonatele GPS într-o adresă poștală.<strong>Google</strong>pe dispozitive Android şi <strong>Apple</strong>pe dispozitivele iOS.",
+      "p2": "Această comunicare provine din sistemul de operare, nu din Lymark. Aplicația nu primește nicio copie a acestuia, nu îl mediează și nu are acces la nimic în afara adresei returnate.",
+      "p3": "<strong>Nici o fotografie nu părăseşte dispozitivul prin orice acțiune a aplicației.</strong>Dacă utilizați butonul Partaje, imaginea este transmisă de aplicația de destinație pe care o alegeți în fișa de partajare a sistemului  messenger, e-mail, stocare în cloud  în cadrul politicii de confidențialitate a aceleiași aplicații."
+    },
+    "s06": {
+      "title": "Permisia solicitată și de ce",
+      "defs": {
+        "camera": {
+          "term": "Camera",
+          "def": "Pentru a face o fotografie care va primi semnul de apă. Cerut doar atunci când tactionați Faceți o fotografie. Aplicația nu solicită acces la microfon."
+        },
+        "photos": {
+          "term": "Fotografii și media",
+          "def": "Pentru a alege o imagine existentă și pentru a scrie fișierul exportat în galerie. Accesul este limitat la fotografii, iar permisiunea de scriere este utilizată doar pentru a scrie  aplicația nu browses nici nu citește galeria."
+        },
+        "location": {
+          "term": "Localizare în timp ce este utilizată",
+          "def": "Pentru a completa câmpul de adresă. solicitat în prim plan, numai în timp ce aplicația este utilizată, și <strong>Niciodată în fundal</strong>."
+        }
+      },
+      "p1": "Toate permisiunile sunt opționale și revocabile în orice moment în setările dispozitivului. Refuzarea locației menține aplicația în funcțiune completă: adresa este apoi tipată de dvs. Refuzarea accesului la galerie împiedică doar salvarea automată, iar fotografia poate fi încă împărtășită."
+    },
+    "s07": {
+      "title": "Baze și scopuri juridice",
+      "p1": "Procesarea localizării are loc pe baza informațiilor dumneavoastră <strong>consimțământul</strong> Articolul 7, I din LGPD și articolul 6 ((1) ) din GDPR  exprimate atunci când acordă autorizația sistemului și revocabile în orice moment, fără a aduce atingere legalității prelucrării efectuate înainte de revocare.",
+      "p2": "Procesarea celorlalte date are loc pentru <strong>performanța caracteristicilor pe care le-ați solicitat</strong> Articolul 7, V din LGPD și articolul 6 ((1) b) din GDPR  deoarece fără acesta nu există un semn de apă pentru aplicație de a produce.",
+      "p3": "Procesarea datelor contului se bazează pe îndeplinirea unui contract (art. 7, V, art. 6 ((1))) (art. 7, IX, art. 6 ((1))) (art. 7, IX, art. 6 ((1)))) (art. 7 ((1))) (art. 7 ((1))) (art. 7 ((1))) (art. 6 (()))) (art. 7 (()) (art. 7)) (art. 7 ((1))) (art. 7)) (art. 7 (()) (art. 7)) (art. 6 (()) (art. 7)) (art. 7)) (art. 7 (()) (art. 7)) (art. 6 (()) (art. 7)) (art. 7 (()) (art. 6 (()) (art. 7)) (art. 7)) (art. 6 (()) (art. 7)) (art. 6 (()) (art. 7)) (art. 6 (()) (art. 7)) (art. 7)) (art. 7 (()) (art. 7)) (art. 7 (()) (art. 7)) (art. 7)) (art. 7 (() (art. 7)) (art. 7)) (art. 7)) (art. 6 (() (art. 6 (()))) (art. 1) (art. 6)))) (art. 1) (art. 6 (()))))) (art. 1) (art. 6 (() (art. 1) (art. 1) (art. 6)))))))))))) (art. 1) (art. 1) (art. 6 (() (art. 1) (art. 1) (art. 1) (art. 1) (art. 6)) (art. 1) (art. 1) (art. 1) (art. 6)))) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1) (art. 1))))) (art. 1) (art"
+    },
+    "s08": {
+      "title": "Transfer internațional",
+      "p1": "Datele de cont sunt prelucrate de procesorul de autentificare (Clerk, Inc., SUA), care constituie un transfer internațional de date, pe baza clauzelor contractuale standard și a mecanismelor art. 33 din LGPD și art. 44-49.",
+      "p2": "Acest site este găzduit de Vercel Inc., în conformitate cu termenii punctului 14."
+    },
+    "s09": {
+      "title": "Partajarea cu terțe părți",
+      "p1": "Dezvoltatorul nu împărtăşeşte, vinde, închiriează sau cedează date cu caracter personal terţilor.<em>procesor</em>: Clerk, Inc., care furnizează serviciul de autentificare și stochează e-mail-ul, identificatorul contului și datele de plan, legate prin contract de instrucțiunile dezvoltatorului. Dacă vă conectați cu Google sau Apple, acești furnizori prelucrează datele de conectare în conformitate cu propriile politici; dezvoltatorul primește de la ei doar e-mail-ul și identificatorul necesar pentru crearea contului. Fotografiile, adresele și locația nu trec prin niciun procesor, deoarece nu părăsesc niciodată dispozitivul."
+    },
+    "s10": {
+      "title": "Stocare, reținere și securitate",
+      "p1": "Datele se află în zona privată a aplicației, protejate de izolarea sistemului de operare între aplicații și de blocajul de ecran al dispozitivului.<strong>învalide</strong>, astfel încât istoricul și preferințele nu sunt trimise la contul Google al utilizatorului.",
+      "p2": "Reținutul este în întregime controlat de tine: înregistrările rămân până când sunt șterse în aplicație, iar istoricul arunca automat cele mai vechi după ce trec două sute de elemente, eliminând și fișierele corespunzătoare. Dezinstallarea aplicației șterge tot ce a fost stocat. Fotografiile deja salvate în galeria dispozitivului aparțin galerii și rămân acolo  depinde de tine să le ștergi dacă vrei.",
+      "p3": "În cazul în care un incident de securitate afectează datele contului, dezvoltatorul notifică autorității și persoanelor vizate în conformitate cu art. 48 LGPD și art. 33 GDPR. Riscul relevant pentru fotografiile dvs. rămâne accesul fizic la dispozitivul desblocat."
+    },
+    "s11": {
+      "title": "Când fotografizi alţi oameni",
+      "p1": "Când fotografizi persoane identificabile în cursul activităţii tale profesionale, <strong>- Tu ?</strong>În cazul în care un operator nu este autorizat să furnizeze informații, în conformitate cu articolul 4 alineatul (1) litera (c) din Regulamentul (UE) nr."
+    },
+    "s12": {
+      "title": "Drepturile tale",
+      "p1": "Articolul 18 din LGPD și articolele 15-22 din GDPR vă garantează drepturile de confirmare și de acces, rectificare, ștergere, anonimizare, blocare, portabilitate, restricție a prelucrării, obiecție, retragere a consimțământului și informații privind partajarea.",
+      "p2": "Fotografiile, adresele, istoricul și preferințele se află doar pe dispozitivul dvs. și aceste drepturi sunt exercitate direct în aplicație: vizualizarea și ștergerea entităților din fișierul Galerie, corectarea oricărui câmp înainte de exportare, revocarea permisiunii de localizare în setările sistemului și ștergerea tuturor prin dezactivarea aplicației  dezvoltatorul nu poate accesa, exporta sau șterge aceste date pentru dvs., deoarece nu le deține. În ceea ce privește datele contului  e-mail, planul și numărătoarea  puteți vizualiza-le pe pagina contului și solicita corectarea, exportarea sau ștergerea la e-mailul de contact al acestei politici ; ștergerea contului șterge datele de la procesatorul de autentificare.",
+      "p3": "Pentru întrebări sau cereri oficiale, scrieți la <email>contato@lymark.app</email>De asemenea, aveţi dreptul să depuneţi o plângere la<strong>ANPD</strong>, în Brazilia, sau cu autoritatea de supraveghere a statului membru al dumneavoastră, în Uniunea Europeană."
+    },
+    "s13": {
+      "title": "Decizii automatizate",
+      "p1": "Nu există decizii, profilare sau prelucrare automate care să producă efecte juridice în ceea ce privește dvs., în conformitate cu articolul 20 din LGPD și cu articolul 22 din GDPR."
+    },
+    "s14": {
+      "title": "Despre acest site",
+      "p1": "Acest site nu are analiză, nu arată publicitate și nu include butoane de rețea socială.<strong>cookie-uri strict necesare</strong>pentru sesiunea contului dvs., setată de procesorul de autentificare (punctul 09) la înregistrare; nu există cookie-uri de urmărire sau de publicitate. Fonts-urile sunt servite din propriul domeniu al site-ului. Singurele solicitări pe care browserul dvs. le face unor terțe părți sunt cele ale ecranelor de autentificare și de cont, adresate procesorului de autentificare  și, dacă o alegeți, furnizorului de autentificare (Google sau Apple).",
+      "p2": "Site-ul este găzduit de <strong>Vercel Inc.</strong>, care, în calitate de procesator, înregistrează datele tehnice de acces  adresa IP, data, ora și resursa solicitată  atâta timp cât este necesar securității și funcționării găzduirii."
+    },
+    "s15": {
+      "title": "Modificări ale acestei politici",
+      "p1": "Modificările vor fi publicate pe această pagină, cu o nouă dată de actualizare.Modificările care modifică în manyabil prelucrarea datelor vor fi comunicate și în interiorul aplicației înainte de a intra în vigoare."
+    },
+    "s16": {
+      "title": "Copiii și adolescenții",
+      "p1": "Lymark este un instrument de lucru destinat persoanelor cu vârsta de 18 ani sau mai mare."
+    },
+    "s17": {
+      "title": "Legea aplicabilă",
+      "p1": "Această politică este reglementată de dreptul brazilian, fără a aduce atingere aplicării GDPR perso manya de date pe care le acoperă."
+    },
+    "note": "Vezi şi <terms>Termeni de utilizare</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Termeni de utilizare",
+      "description": "Condiții de utilizare a aplicației Lymark: ce face, ce nu face și cine este responsabil pentru conținutul manyașelor."
+    },
+    "title": "Termeni de utilizare",
+    "updated": "Ultima actualizare: 16 august 2026 · Lymark app, versiune 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Ce face aplicaţia",
+      "p1": "Lymark suprapun un set de informații pe o fotografie  timp, dată, zi de muncă, adresă și un cod de identificare  și generează un nou fișier de imagine cu aceste informații încorporate în pixeli."
+    },
+    "s02": {
+      "title": "Ce nu face aplicaţia",
+      "p1": "Acest punct este cel mai important din aceste termeni, iar noi vă rugăm să-l citiți cu atenție.",
+      "items": {
+        "certify": "<strong>Aplicaţia nu certifică sau autentifică nimic.</strong>Nu este o examinare forense, nu emite un document de încredere publică și nu constituie dovezi experte.",
+        "editable": "<strong>Fiecare câmp este editabil de către utilizator.</strong>Data, ora, adresa și codul pot fi modificate liber înainte de export, prin design: profesionistul trebuie să poată corecta o adresă pe care GPS-ul a greșit.",
+        "clock": "<strong>Timpul vine de la ceasul dispozitivului</strong>, care poate fi incorect sau poate fi setat manual.",
+        "address": "<strong>Adresa e o estimare.</strong>Precisionul său depinde de semnalul GPS și de baza de date a serviciului de hărți al sistemului de manyabilitate.",
+        "code": "<strong>Codul de fotografie nu este o înregistrare la un notar.</strong>Este un identificator aleatoriu pentru referință internă, fără nicio valoare probativă."
+      },
+      "p2": "Dacă cazul de utilizare necesită dovezi cu putere legală împotriva unor terțe părți, solicitați un act notarial sau manyalizarea digitală cu timbre  Lymark este un substitut pentru niciuna dintre acestea."
+    },
+    "s03": {
+      "title": "Responsabilităţile tale",
+      "items": {
+        "photos": "Sunteți singurul responsabil pentru fotografiile pe care le captați, pentru conținutul pe care îl marcați și pentru manya utilizarea fișierelor generate.",
+        "thirdParties": "Atunci când fotografiați alte persoane, proprietățile sau spațiile lor, depinde de dvs. să obțineți autorizațiile necesare și să respectați drepturile de imagine, secretul profesional și Legea generală privind protecția datelor cu caracter personal în ceea ce privește persoanele vizate.",
+        "prohibited": "Este interzis să folosești aplicația pentru a crea un registru fals, pentru a înșela pe oricine, pentru a simula manyabilitatea unui serviciu care nu a fost furnizat sau pentru a efectua orice act ilegal.",
+        "backups": "De la tine depinde să păstrezi un backup al oricărui lucru pe care îl consideri important."
+      }
+    },
+    "s04": {
+      "title": "Licența de utilizare",
+      "p1": "Vă acordăm o licență personală, revocabilă, non-exclusive și non-transferabilă pentru a instala și utiliza aplicația, inclusiv în scopuri profesionale.",
+      "p2": "<strong>Fotografiile tale sunt ale tale.</strong>Numele, marca şi identitatea vizuală rămân proprietatea dezvoltatorului."
+    },
+    "s05": {
+      "title": "Disponibilitate și actualizări",
+      "p1": "Aplicația este oferită așa cum este.Nu există nicio garanție de funcționare neîntreruptă, de compatibilitate cu fiecare dispozitiv, nici nici un angajament privind un termen pentru corectări sau versiuni noi.Funcțiunile pot fi modificate sau întrerupte.",
+      "p2": "Calitatea imaginii exportate depinde de dispozitiv și de sistemul de operare și poate avea o rezoluție mai mică decât fotografia originală."
+    },
+    "s06": {
+      "title": "Limitarea răspunderii",
+      "p1": "În măsura maximă permisă de legislația braziliană, dezvoltatorul nu este răspunzător pentru pierderile indirecte, pierderile de profit, pierderile de date sau prejudiciile rezultate din deciziile luate pe baza informațiilor ștampilate  inclusiv din orice contestație, în instanță sau din afara acesteia, a conținutului unei fotografii generate de aplicație.",
+      "p2": "Această limitare <strong>nu elimină</strong>drepturile garantate consumatorului prin Lei nr. 8.078/1990, și nici răspunderea pentru o acţiune greşită sau neglijentă grea."
+    },
+    "s07": {
+      "title": "Terminare",
+      "p1": "Puteți opri utilizarea aplicației în orice moment: ștergerea contului șterge datele sale de pe server și dezactivarea aplicației șterge datele păstrate pe dispozitiv."
+    },
+    "s08": {
+      "title": "Modificări ale acestor termeni",
+      "p1": "Modificările vor fi publicate pe această pagină cu o nouă dată de actualizare."
+    },
+    "s09": {
+      "title": "Legea aplicabilă și forumul",
+      "p1": "În cazul în care se aplică dreptul brazilian, forumul ales pentru soluționarea litigiilor care decurg din aceste condiții este cel al domiciliului utilizatorului."
+    },
+    "note": " privind manipularea datelor, a se vedea<privacy>Politica de confidențialitate</privacy>Întrebări:<email>contato@lymark.app</email>."
+  }
+}

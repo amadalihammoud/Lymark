@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Sera ya faragha",
+      "description": "Jinsi programu ya Lymark inavyoshughulikia picha, eneo, historia na akaunti yako. Picha na eneo kamwe kuondoka kifaa; seva huhifadhi tu barua pepe, mpango na idadi ya picha."
+    },
+    "title": "Sera ya faragha",
+    "updated": "Mwisho updated: 16 Agosti 2026 · Lymark app, toleo 1.3.0",
+    "intro": "Sera hii inaelezea jinsi programu ya Lymark inavyoshughulikia habari ya kibinafsi. Inatii Lei no 13.709/2018 (Sheria ya Ulinzi wa Takwimu za Kibinafsi  LGPD) na na Sheria (EU) 2016/679 (Sheria ya Ulinzi wa Takwimu  GDPR), na inatumika kwa programu inayosambazwa chini ya kitambulisho <strong>com.lycosteam.lymark</strong>na kwenye tovuti hii.",
+    "s01": {
+      "title": "Katika sentensi moja",
+      "p1": "Lymark <strong>haisemi picha zako au eneo lako</strong>. Kila kitu ambacho programu hutoa  picha, anwani, historia na upendeleo  huishi kwenye kifaa chako, chini ya udhibiti wako. Kuna akaunti, inahitajika kutumia programu na kwa usajili: seva huhifadhi barua pepe yako, kitambulisho cha akaunti, mpango na hesabu ya picha zilizoingizwa  na hakuna kitu kingine.",
+      "p2": "Kuna kutofautiana moja, kama ilivyoelezwa katika kifungu 05: kubadilisha GPS koordinati katika anwani kusoma, mfumo wa uendeshaji wa kifaa hutoa maswali ya huduma ya geocoding nje."
+    },
+    "s02": {
+      "title": "Ni nani ambao sera hii inatumika",
+      "p1": "Ni ya mtu yeyote ambaye anatumia programu au kutembelea tovuti hii. Kwa data masuala nchini Brazil, usindikaji hufuata LGPD na usimamizi wa Taifa Data Protection Authority (ANPD). Kwa data masuala katika Eneo la Uchumi la Ulaya na Uingereza, ni kufuatia GDPR na UK GDPR."
+    },
+    "s03": {
+      "title": "Nani controller ni",
+      "p1": "Mdhibiti wa data ya kibinafsi  <em>controllador</em>, katika utaratibu wa LGPD  ni 29.015.357 AMAD ALI HAMMOUD, iliyosajiliwa chini ya CNPJ 29.015.357/0001-25, na anwani katika Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Mtu anayesimamia usindikaji wa data binafsi, kwa madhumuni ya kifungu cha 41 cha LGPD, ni Amad Ali Hammoud, ambaye anaweza kuwasiliana na <email>contato@lymark.app</email>. Kwa kuzingatia kiasi na asili ya usindikaji  ambayo haina kuhusisha data nyeti kwa kiwango wala ufuatiliaji wa kimfumo  hakuna wajibu wa kuamua <em>Afisa wa Ulinzi wa Takwimu</em>chini ya kifungu cha 37 cha GDPR."
+    },
+    "s04": {
+      "title": "Ni habari gani inayoshughulikiwa na programu",
+      "p1": "Habari zote hapa chini ni kumbukumbu tu katika eneo binafsi la programu ndani ya kifaa, na hakuna yoyote ya hiyo hutumwa kwa watengenezaji.",
+      "defs": {
+        "photos": {
+          "term": "Picha",
+          "def": "Picha ya kuchagua kutoka gallery au kukamata na kamera, na faili nje na watermark. picha inaweza kuwa na wa tatu data binafsi angalia kifungu 11."
+        },
+        "location": {
+          "term": "Mahali",
+          "def": "Latitude na longitude ya karibu, kupatikana mara moja kwa kila picha, kwa madhumuni ya pekee ya kujaza uwanja wa anwani."
+        },
+        "datetime": {
+          "term": "Tarehe, saa na siku ya wiki",
+          "def": "Soma kutoka saa kifaa wakati wa kukamata, na editable na wewe."
+        },
+        "code": {
+          "term": "Nambari ya picha",
+          "def": "Mfuatano wa herufi kumi na nne za hexadecimal zilizochorwa kwa nasibu. Hazitokani na kitambulisho cha kifaa wala kutoka kwa yako, na haziwezesha kufuatilia kati ya programu."
+        },
+        "history": {
+          "term": "Historia",
+          "def": "Rekodi ya mauzo ya mwisho mia mbili, ambayo ina njia faili kwenye kifaa na data stempu juu ya picha."
+        },
+        "preferences": {
+          "term": "Mapendeleo",
+          "def": "Maeneo inayoonekana, nafasi, ukubwa na chaguzi nyingine watermark."
+        }
+      },
+      "p2": "Programu <strong>haikusanyi</strong>: jina, barua pepe, simu, nyaraka za kitambulisho, kitambulisho cha matangazo, kitambulisho cha kifaa, data ya mawasiliano, kalenda, historia ya utafutaji, vipimo vya matumizi, ripoti za ajali au habari nyingine yoyote juu yako au kuhusu kifaa chako. Hakuna uchambuzi, matangazo, sifa au kufuatilia SDK imeingizwa."
+    },
+    "s05": {
+      "title": "Habari pekee ambayo huondoka kifaa",
+      "p1": "Wakati kutoa idhini ya eneo, programu inaomba mfumo wa uendeshaji kugeuza wima GPS katika anwani ya posta. tafsiri  geocoding kinyume  hufanywa na mfumo wa uendeshaji yenyewe, ambayo kwa kusudi hilo hutumia wima kwa huduma yake ramani: <strong>Google</strong>kwenye vifaa vya Android na <strong>Apple</strong>kwenye vifaa vya iOS.",
+      "p2": "Mawasiliano hayo yanatoka kwenye mfumo wa uendeshaji, na si kutoka Lymark. programu haipati nakala yake, haipati utaratibu wake na haina ufikiaji wa kitu chochote zaidi ya anwani iliyorejeshwa. Usindikaji unaofanywa na watoa huduma hao unatawaliwa na sera zao za faragha.",
+      "p3": "<strong>Hakuna picha kuondoka kifaa kupitia hatua yoyote ya programu.</strong>Kama unatumia kifungo cha Shiriki, picha ni kuhamishwa na programu ya marudio wewe kuchagua katika mfumo kushiriki karatasi ya ujumbe, barua pepe, uhifadhi wa wingu  chini ya sera ya faragha ya programu hiyo."
+    },
+    "s06": {
+      "title": "Marufuku ya kuagiza viwanja vya ndege",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Kuchukua picha ambayo itapokea watermark. Kuomba tu wakati wewe bonyeza Toa picha. programu haina kuomba upatikanaji wa kipaza sauti."
+        },
+        "photos": {
+          "term": "Picha na vyombo vya habari",
+          "def": "Kuchagua picha iliyopo na kuandika faili nje ya kumbukumbu kwenye maktaba. Ufikiaji ni mdogo kwa picha, na ruhusa ya kuandika hutumiwa tu kwa kuandika  programu wala kuvinjari wala kusoma maktaba yako."
+        },
+        "location": {
+          "term": "Mahali wakati wa matumizi",
+          "def": "Kujaza uwanja wa anwani. Imeombwa katika eneo la mbele, tu wakati programu ni kutumika, na <strong>kamwe katika background</strong>."
+        }
+      },
+      "p1": "ruhusa zote ni ya hiari na inaweza kuruhusiwa wakati wowote katika mipangilio ya kifaa. Kukataa eneo huweka programu kazi kikamilifu: anwani hiyo huandikwa na wewe. Kukataa ufikiaji wa gallery huzuia tu uhifadhi wa moja kwa moja, na picha bado inaweza kushirikiwa."
+    },
+    "s07": {
+      "title": "Misingi na madhumuni ya kisheria",
+      "p1": "Usindikaji wa eneo hufanyika kwa msingi wa yako <strong>idhini</strong> Kifungu cha 7, I ya LGPD na kifungu cha 6(1) (a) cha GDPR  iliyoonyeshwa wakati unapotoa ruhusa ya mfumo, na inaweza kuondolewa wakati wowote, bila kujali uhalali wa usindikaji uliofanywa kabla ya kuondolewa.",
+      "p2": "Usindikaji wa data zilizobaki hufanyika kwa ajili ya <strong>utendaji wa kipengele ulichoomba</strong> Kifungu cha 7, V ya LGPD na kifungu cha 6(1)(b) ya GDPR  kwa kuwa bila hiyo hakuna watermark kwa ajili ya programu ya kuzalisha.",
+      "p3": "Usindikaji wa data akaunti hutegemea utekelezaji wa mkataba (LGPD kifungu 7, V; GDPR kifungu 6(1)(b)). Usindikaji kulingana na maslahi halali (LGPD kifungu 7, IX; GDPR kifungu 6(1)(f)) ni tu kwa ajili ya usalama na kuzuia udanganyifu  kwa mfano, kumbukumbu ya anwani ya IP ya maombi kwa server. Hakuna usindikaji kwa ajili ya matangazo, profile, uchambuzi wa tabia au madhumuni yoyote ya pili, na hakuna usindikaji wa aina maalum ya data au data nyeti na developer."
+    },
+    "s08": {
+      "title": "Uhamisho wa kimataifa",
+      "p1": "Takwimu za akaunti zinashughulikiwa na mchakato wa uthibitishaji (Clerk, Inc., Marekani), ambayo ni uhamisho wa kimataifa wa data, kulingana na kifungu cha kawaida cha mkataba na utaratibu wa LGPD art. 33 na GDPR art. 44 hadi 49. Utafutaji wa geocoding ilivyoelezwa katika pointi 05 bado hufanywa na mfumo wa uendeshaji kwa watoa huduma ambao wanaweza kuฮudumia nje ya nchi ya mtumiaji, chini ya watoa huduma hizo wenyewe utaratibu wa uhamisho.",
+      "p2": "Tovuti hii ni mwenyeji wa Vercel Inc., chini ya masharti ya kifungu cha 14."
+    },
+    "s09": {
+      "title": "Kushirikiana na watu wa tatu",
+      "p1": "Mjenzi haishiriki, kuuza, kukodisha au kuhamisha data binafsi kwa watu wa tatu.<em>mchakato</em>: Clerk, Inc., ambayo hutoa huduma ya uthibitishaji na kuhifadhi barua pepe, kitambulisho cha akaunti na data ya mpango, iliyofungwa kwa mkataba kwa maagizo ya developer."
+    },
+    "s10": {
+      "title": "Hifadhi, uhifadhi na usalama",
+      "p1": "Data iko katika eneo binafsi la programu, kulindwa na mfumo wa uendeshaji kutengwa kati ya programu na kifaa screen lock.<strong>wenye ulemavu</strong>, ili historia na mapendekezo hayapelekwe kwenye akaunti ya Google ya mtumiaji.",
+      "p2": "Hifadhi ni kikamilifu kudhibitiwa na wewe: rekodi kukaa mpaka wao ni kufutwa katika programu yenyewe, na historia moja kwa moja discards wale wazee mara moja kupita vitu mia mbili, kuondoa faili zinazohusiana pia. Uninstalling programu kufuta kila kitu ni kuhifadhiwa. Picha tayari kuhifadhiwa katika kifaa gallery ni mali ya kumbukumbu na kukaa huko  ni juu yako kuondoa yao kama unataka.",
+      "p3": "Hakuna mfumo ni kamili. data ya akaunti  barua pepe, kitambulisho, mpango na hesabu  huhifadhiwa na processor ya uthibitishaji, chini ya hatua zake za usalama. Picha, anwani na eneo hazipo katika kumbukumbu kuu, na kwa hivyo haziwezi kuvuja kutoka kwa miundombinu ya developer. Ikiwa tukio la usalama linaathiri data ya akaunti, developer itaarifu mamlaka na maswala ya data chini ya ZZLIT0ฮart. 48 na ZZLIT1Hart. 33. Hatari husika kwa picha zako inabaki kuwa na ufikiaji wa mwili kwa kifaa kilichofunguliwa."
+    },
+    "s11": {
+      "title": "Unapopiga picha za watu wengine",
+      "p1": "Unapopiga picha watu wanaoweza kutambuliwa katika shughuli zako za kitaaluma,<strong>wewe</strong>kuwa mlinzi wa data hiyo kuhusiana na data masuala iliyoonyeshwa, na ni juu yako kutoa msingi wa kisheria, habari na majibu ya haki zao."
+    },
+    "s12": {
+      "title": "Haki zako",
+      "p1": "Kifungu cha 18 cha LGPD na makala 15 hadi 22 ya GDPR zinakupa haki ya uthibitisho na ufikiaji, marekebisho, kufuta, kutangaza jina, kuzuia, kubeba, upungufu wa usindikaji, upinzani, kuondoa idhini na habari kuhusu ushiriki.",
+      "p2": "Picha, anwani, historia na upendeleo huishi tu kwenye kifaa chako, na haki hizo zinatumiwa moja kwa moja kwenye programu: kuona na kufuta kuingia kwenye kichupo cha Galeria, kurekebisha uwanja wowote kabla ya kuuza nje, kufuta ruhusa ya eneo katika mipangilio ya mfumo, na kufuta kila kitu kwa kuondoa programu  msanidi programu hawezi kufikia, kuuza nje au kufuta data hizo kwa sababu haizuihifadhi.ฮistori ya akaunti  barua pepe, mpango na hesabu  unaweza kuiona kwenye ukurasa wa akaunti na kuomba kurekebisha, kuuza nje au kufuta kwenye barua pepe ya mawasiliano ya Sera hii; kufuta akaunti hufuta data hiyo kwenye processor ya uthibitisho.",
+      "p3": "Kwa maswali au maombi rasmi, andika kwa <email>contato@lymark.app</email>Pia una haki ya kuweka malalamiko kwa<strong>ANPD</strong>, nchini Brazil, au na mamlaka ya usimamizi ya nchi yako ya kidemokrasia, katika Umoja wa Ulaya."
+    },
+    "s13": {
+      "title": "Maamuzi ya automatiska",
+      "p1": "Hakuna uamuzi wa automatiska, kuunda wasifu au usindikaji ambao hutoa athari za kisheria juu yako, kulingana na kifungu cha 20 cha LGPD na kifungu cha 22 cha GDPR."
+    },
+    "s14": {
+      "title": "Kuhusu tovuti hii",
+      "p1": "Tovuti hii haina analytics, haina matangazo na haina embedded social network buttons.<strong>cookies muhimu sana</strong>kwa kikao chako cha akaunti, iliyowekwa na processor ya uthibitishaji (pointi ya 09) wakati wa kuingia; hakuna kuki za kufuatilia au matangazo. Fonts hutumika kutoka kwa kikoa cha tovuti. Maombi tu browser yako hufanya kwa watu wa tatu ni wale wa kuingia na akaunti skrini, zinazotumwa kwa processor ya uthibitishaji  na, kama wewe kuchagua, kwa mtoaji wa kuingia (Google au Apple).",
+      "p2": "Tovuti hiyo imewekwa na <strong>Vercel Inc.</strong>, ambayo kama processor huweka kumbukumbu data ya ufikiaji wa kiufundi  anwani ya IP, tarehe, saa na rasilimali iliyoombwa  kwa muda mrefu kama ni muhimu kwa usalama na utendaji wa mwenyeji. Msingi wa kisheria ni maslahi halali katika kudumisha usalama wa huduma, kifungu cha 7, IX ya LGPD na kifungu cha 6(1)(f) ya GDPR."
+    },
+    "s15": {
+      "title": "Mabadiliko katika sera hii",
+      "p1": "Mabadiliko yatachapishwa kwenye ukurasa huu, na tarehe mpya ya sasisho. Mabadiliko ambayo hubadilisha kwa kiasi kikubwa usindikaji wa data pia yatatangazwa ndani ya programu kabla ya kuanza kutumika."
+    },
+    "s16": {
+      "title": "Watoto na matineja",
+      "p1": "Lymark ni zana ya kazi, iliyoundwa kwa watu wenye umri wa miaka 18 au zaidi. Haikusudiwa kwa watoto au vijana, na haikusanya data kwa makusudi juu ya hadhira hiyo."
+    },
+    "s17": {
+      "title": "Sheria inayotumika",
+      "p1": "Sera hii inatawaliwa na sheria ya Brazil, bila kujali matumizi ya GDPR kwa wale data ni inashughulikia."
+    },
+    "note": "Ona pia <terms>Masharti ya Matumizi</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Masharti ya Matumizi",
+      "description": "Masharti ya matumizi ya programu ya Lymark: nini hufanya, nini haifanyi, na ni nani anayehusika na yaliyomo kwenye picha."
+    },
+    "title": "Masharti ya Matumizi",
+    "updated": "Mwisho updated: 16 Agosti 2026 · Lymark app, toleo 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Nini programu hufanya",
+      "p1": "Lymark overlays seti ya habari juu ya picha  wakati, tarehe, siku ya wiki, anwani na nambari ya kitambulisho  na kuzalisha faili mpya ya picha na habari hiyo kujengwa katika vifupi."
+    },
+    "s02": {
+      "title": "Nini programu haina kufanya",
+      "p1": "Sehemu hii ni muhimu zaidi katika maneno haya, na tunaomba usome kwa makini.",
+      "items": {
+        "certify": "<strong>Programu hiyo haithibitishi au kuthibitisha chochote.</strong>Si uchunguzi wa kisheria, haina kutoa hati kwa imani ya umma na si ni ushahidi wa wataalam. rekodi ya stempu ambayo iliingia wakati wa kukamata  haina kuthibitisha ukweli wa kwamba.",
+        "editable": "<strong>Kila uwanja ni editable na mtumiaji.</strong>Wakati, tarehe, anwani na code inaweza kubadilishwa kwa uhuru kabla ya nje, kwa muundo: mtaalamu anahitaji kuwa na uwezo wa kurekebisha anwani GPS got makosa.",
+        "clock": "<strong>Wakati huja kutoka kwa kifaa saa</strong>Hakuna ushirikiano na seva ya wakati ya kuaminika.",
+        "address": "<strong>Anwani ni makadirio.</strong>Usahihi wake hutegemea ishara ya GPS na database ya mfumo wa uendeshaji 's ramani huduma.",
+        "code": "<strong>Nambari ya picha si usajili katika ofisi ya notari.</strong>Ni kitambulisho cha random kwa ajili ya kumbukumbu ya ndani, bila thamani ya ushahidi yoyote."
+      },
+      "p2": "Ikiwa kesi yako ya matumizi inahitaji ushahidi wenye nguvu ya kisheria dhidi ya watu wa tatu, pata hati ya notari au huduma ya udhibitisho wa dijiti na muhuri wa wakati  Lymark ni mbadala wa yoyote."
+    },
+    "s03": {
+      "title": "Madaraka Yako",
+      "items": {
+        "photos": "Wewe ndiye unawajibika tu kwa picha unazochora, maudhui unayoweka kwenye picha hizo na matumizi unayotumia faili zinazozalishwa.",
+        "thirdParties": "Wakati wa kupiga picha watu wengine, mali zao au majengo yao, ni juu yako kupata ruhusa zinazohitajika na kuzingatia haki za picha, siri ya kitaaluma na Sheria ya Ulinzi wa Takwimu za Kibinafsi kwa wale walioonyeshwa.",
+        "prohibited": "Kutumia programu hiyo kutengeneza rekodi bandia, kumdanganya mtu yeyote, kuiga utendaji wa huduma ambayo haikuwasilishwa au kufanya tendo lolote lisilo halali ni marufuku.",
+        "backups": "Ni juu yako kuweka nakala rudufu za kila kitu unachokiona kuwa muhimu."
+      }
+    },
+    "s04": {
+      "title": "Leseni ya matumizi",
+      "p1": "Tunakupa leseni ya kibinafsi, inayoweza kufutwa, isiyo ya kipekee na isiyoweza kuhamishwa ya kusanikisha na kutumia programu, pamoja na kwa madhumuni ya kitaaluma.",
+      "p2": "<strong>Picha zako ni zako.</strong>Sisi si haki juu ya picha wewe kunyakua au kuzalisha. jina Lymark, chapa na kitambulisho cha kuona bado mali ya developer."
+    },
+    "s05": {
+      "title": "Upatikanaji na sasisho",
+      "p1": "Programu hutolewa kama ilivyo. Hakuna dhamana ya utendaji usio na kikomo, ya utangamano na kila kifaa, wala ahadi yoyote ya tarehe ya mwisho ya marekebisho au matoleo mapya.",
+      "p2": "Ubora wa picha nje inategemea kifaa na mfumo wa uendeshaji, na inaweza kuwa na azimio la chini kuliko picha ya awali."
+    },
+    "s06": {
+      "title": "Uzuiaji wa dhima",
+      "p1": "Katika kiwango cha juu kinachoruhusiwa na sheria ya Brazil, msanidi programu hawezi kuwajibika kwa hasara zisizo za moja kwa moja, faida zilizopotea, kupoteza data au uharibifu unaotokana na maamuzi yaliyotolewa kwa msingi wa habari iliyochapishwa  ikiwa ni pamoja na kutoka kwa upinzani wowote, mahakamani au nje yake, kwa yaliyomo kwenye picha iliyozalishwa na programu.",
+      "p2": "Ulemavu huu <strong>haichukulii</strong>haki zinazotolewa kwa watumiaji na sheria ya 8.078/1990, wala dhima kwa ajili ya uovu wa makusudi au ukosefu mkubwa wa uangalifu."
+    },
+    "s07": {
+      "title": "Kuvunja",
+      "p1": "Unaweza kuacha kutumia programu wakati wowote: kufuta akaunti hufuta data yake kwenye seva, na kufuta programu hufuta data iliyohifadhiwa kwenye kifaa. Wakati hakuna usajili wa kulipwa hakuna usajili wa kufuta; wakati kuna, masharti ya kufuta yataonekana katika Masharti haya kabla ya malipo yoyote."
+    },
+    "s08": {
+      "title": "Mabadiliko ya Masharti haya",
+      "p1": "Mabadiliko yatachapishwa kwenye ukurasa huu na tarehe mpya ya sasisho."
+    },
+    "s09": {
+      "title": "Sheria na jukwaa linalofaa",
+      "p1": "Sheria ya Brazil inatumika. jukwaa lililochaguliwa kutatua mizozo inayotokana na masharti haya ni ya makao ya mtumiaji."
+    },
+    "note": "Kuhusu usindikaji wa data, ona <privacy>Sera ya faragha</privacy>Maswali:<email>contato@lymark.app</email>."
+  }
+}

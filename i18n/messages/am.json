@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "መተግበሪያ",
+      "pitch": "የጊዜ, ቀን, የስራ ቀን, አድራሻ እና የመከታተያ ኮድ በፎቶዎችዎ ላይ ይለጥፉ  ለሜዳ መዝገቦች, ለጣቢያ ምርመራዎች እና ለአገልግሎት ማረጋገጫ. Cannes.",
+      "platform": "መድረክ",
+      "privacy": "የግላዊነት ፖሊሲ",
+      "privacyGeocoding": "GPS ሲጠቀሙ, ስርዓተ ክወናው አድራሻውን ለማግኘት Google ወይም Apple ካርታ አገልግሎት ላይ ቅንብር ይልካል. ይህ ብቻ ነው መረጃ እዚህ ይቀራል, እና ይህ የላከው ስርዓት ነው, Lymark አይደለም.",
+      "privacyLocation": "ቦታው በአንድ ጊዜ የሚጠቀመው የአድራሻ መስክ ለመሙላት ብቻ ሲሆን ከፎቶዎቹ በተለየ ሁኔታ አይከማችም።",
+      "privacyOnDevice": "ፎቶዎች፣ አድራሻዎች እና ታሪክ በዚህ መሣሪያ ላይ ብቻ ይቀራሉ። መለያው ለደንበኝነት ምዝገባዎ ይገኛል: አገልጋዩ ኢሜይልዎን እና ዕቅዱን ይይዛል, እና ፎቶዎችዎን ወይም ቦታዎን በጭራሽ አይቀበልም.",
+      "privacySection": "ግላዊነት",
+      "sdk": "Expo SDK",
+      "terms": "የአጠቃቀም ውሎች",
+      "title": "ስለ ሊማርክ",
+      "version": "ስሪት"
+    },
+    "account": {
+      "browserHint": "መግቢያ በአሳሽ ውስጥ ይከናወናል. በዚያ በመለያዎ ይግቡ እና መተግበሪያው በራሱ ይገናኛል.",
+      "code": "ኮድ",
+      "codeSent": "ኮዱን ለ {email} ላክን",
+      "connected": "የተገናኘ",
+      "continue": "ቀጥል",
+      "deleteAccount": "መለያ መሰረዝ",
+      "email": "ኢሜይል",
+      "failed": "ያ አልተሳካም ኢሜይል ወይም ኮድ ይመልከቱ እና እንደገና ይሞክሩ.",
+      "notConfigured": "በዚህ ግንባታ ውስጥ መግቢያ ገና አይገኝም.",
+      "signInBrowser": "በአሳሽ በኩል መግቢያ ያስገቡ",
+      "signOut": "ይመዝገቡ",
+      "signedInAs": "{email} በመባል የተፈረመ",
+      "title": "ሂሳብ",
+      "verify": "ማረጋገጥ"
+    },
+    "batch": {
+      "addressHint": "ጎዳና ቁጥር  ከተማ",
+      "clearList": "ግልጽ ዝርዝር",
+      "codeHint": "ለምሳሌ LYM-001",
+      "done": "{count, plural, one {ሂደቱ ተጠናቋል፦ # ፎቶ።} other {ሂደቱ ተጠናቋል፦ # ፎቶዎች።}}",
+      "doneSection": "የተጠናቀቀ",
+      "dropZone": "ፎቶዎችን እዚህ ስቀሉ ወይም ይጥሉ ፎቶዎችን ይምረጡ አዝራር",
+      "errorsSection": "ስህተቶች",
+      "folder": "አቃፊ: {name}",
+      "noPhotos": "ቢያንስ አንድ ፎቶ ይምረጡ።",
+      "outputNote": "የተሰሩ ፎቶዎች በተመረጠው አቃፊ ውስጥ ይቀመጣሉ.",
+      "outputSection": "ውጤቱ",
+      "photosSection": "ፎቶዎች",
+      "processing": "ማቀነባበሪያ...",
+      "progress": "{current} ከ {total} ({percent}%)",
+      "results": "{success, plural, one {# ስኬት} other {# ስኬቶች}}, {failed, plural, one {# ውድቀት} other {# ውድቀቶች}}",
+      "selectFolder": "የውጤት አቃፊን ይምረጡ",
+      "selectPhotos": "ፎቶዎችን ይምረጡ",
+      "selected": "{count, plural, one {# ፎቶ ተመርጧል} other {# ፎቶዎች ተመርጠዋል}}",
+      "sharedNote": "እነዚህ እሴቶች ለሁሉም ፎቶዎች ይተገበራሉ እያንዳንዱ ፎቶ ከራሱ EXIF ቀን እና ሰዓት ይነበባሉ ።",
+      "sharedSection": "የተጋራ ሜታዳታ",
+      "start": "ማቀነባበሪያውን ጀምር",
+      "unavailableBody": "ይህ ባህሪ የዴስክቶፕ ብቻ ነው.",
+      "unavailableTitle": "የጅምላ ማቀነባበሪያ አይገኝም"
+    },
+    "capture": {
+      "accuracy": "±{meters} m ውስጥ ያለው ቦታ",
+      "accuracyImprecise": "በ ±{meters} m  ውስጥ ያለው ቦታ ከመላኩ በፊት የመንገድ ቁጥርን ያረጋግጡ ።",
+      "address": "አድራሻ",
+      "addressFailedTitle": "አድራሻ አልተገኘም",
+      "addressHint": "አካባቢውን መታ አድርግ ወይም አድራሻውን ጻፍ",
+      "camera": "ፎቶ አንሺ",
+      "code": "ኮድ",
+      "dateHint": "ጥር 1, 2026",
+      "dateTimeGroup": "ቀን እና ሰዓት",
+      "emptyWarning": "ምንም መረጃ አይታተም  ፎቶው ያለ የውሃ ምልክት ይወጣል።",
+      "gallery": "ከጋለሪ ውስጥ ይምረጡ",
+      "galleryDenied": "ፎቶ መዳረሻ የተከለከለ ነው, ስለዚህ ምስሉ ብቻ መተግበሪያው ውስጥ ይገኛል. ወደ ጋለሪ ለማስቀመጥ ቅንብሮች ውስጥ ያስችላሉ.",
+      "galleryFailed": "ምስሉ ወደ ታሪክ ውስጥ ገብቷል, ነገር ግን መሣሪያው ወደ ማዕከለ-ስዕሉ ለመጻፍ ፈቃደኛ አልሆነም.",
+      "generateCode": "ማመንጨት",
+      "hiddenFields": "{count, plural, one {የተደበቀ መስክ} other {የተደበቁ መስኮች}}: {fields} — በቅንብሮች › መስኮች እና አቀማመጥ ያብሩ።",
+      "keepMyAddress": "የእኔን ጠብቅ",
+      "locate": "አካባቢ",
+      "locateByGps": "በጂፒኤስ በኩል አድራሻ ማግኘት",
+      "lookup": {
+        "denied": "ቅንብሮች › ፍቃዶች ውስጥ አካባቢን ይፍቀዱ ወይም አድራሻውን ያስገቡ።",
+        "disabled": "መሣሪያው ላይ ያለው ቦታ ተዘግቷል. በፍጥነት ቅንብሮች ውስጥ ያበራሉ እና እንደገና ይሞክሩት.",
+        "timeout": "የጂፒኤስ ሰዓት ላይ መልስ አልሰጠም. ብዙውን ጊዜ በቤት ውስጥ አይሳካም.",
+        "unavailable": "አድራሻው በዚህ ቦታ ላይ ሊፈታ አልቻለም. በእጅ ያስገቡት."
+      },
+      "newCapture": "አዲስ ማጥቃት ይጀምሩ",
+      "noFieldsBack": "ተመልሰህ ሂድ",
+      "noFieldsContinue": "እንደዚያም ቢሆን ቀጥል",
+      "noFieldsMessage": "ምንም መስክ መለያ የሚሰጥ ነገር የለውም መስኮቹን ሞልተው ወይም ቅንብሮች › መስኮች እና ቦታን ይመልከቱ።",
+      "noFieldsTitle": "ፎቶው ያለ የውሃ ምልክት ይወጣል",
+      "noPhotoHint": "ፎቶግራፍ አንሳ ወይም መጀመሪያ ላይ ከጋለሪው አንዱን ምረጥ።",
+      "noPhotoSelected": "የተመረጠ ፎቶ የለም",
+      "openFailed": "ፎቶው ሊከፈት አልቻለም እንደገና ሞክር።",
+      "permissionMessage": "በቅንብሮች › ፍቃዶች ውስጥ መዳረሻን ይፍቀዱ.",
+      "permissionTitle": "ፈቃድ ያስፈልጋል",
+      "pickPhoto": "ፎቶ ይምረጡ",
+      "pickPhotoHint": "እርምጃዎቹን ለማስቻል ፎቶ ይምረጡ።",
+      "previewLabel": "የውሃ ምልክት የተደረገበት ፎቶ ቅድመ እይታ",
+      "renderFailedTitle": "ምስሉን ማመንጨት አልተቻለም",
+      "replaceAddressMessage": "GPS ተገኘ: {address}",
+      "replaceAddressTitle": "የጻፍከውን አድራሻ መለወጥ?",
+      "resetConfirm": "መጣል",
+      "resetMessage": "የተመረጠው ፎቶ እና የተሞሉ መስኮች ይጣላሉ.",
+      "resetTitle": "አዲስ ማጥቃት መጀመር?",
+      "saved": "ፎቶው በመሣሪያው ጋለሪ እና በታሪክ ውስጥ ተቀምጧል.",
+      "savedAppOnlyTitle": "በሊማርክ ውስጥ ብቻ የተቀመጠ",
+      "shareDialogTitle": "የውሃ ምልክት የተደረገበት ፎቶ አጋራ",
+      "shareFailedMessage": "ምስሉ የተፈጠረ ሲሆን በ Lymark ታሪክ ውስጥ ይገኛል። ከገላሬ ትር ማጋራት ይችላሉ ።",
+      "shareFailedTitle": "ማጋራት አልተቻለም",
+      "shareUnavailableMessage": "ይህ መሣሪያ ምንም የጋራ ወረቀት የለውም. ምስሉ በሊማርክ ታሪክ ውስጥ ቆየ.",
+      "shareUnavailableTitle": "ማጋራት አይቻልም።",
+      "sharedFileTitle": "የውሃ ምልክት የተደረገበት ፎቶ",
+      "stampNotReady": "ማህተሙ አሁንም እየተዘጋጀ ነው።",
+      "syncNow": "አሁን",
+      "timestamp": "ቀን/ጊዜ",
+      "title": "መያዝ",
+      "useGpsAddress": "የ GPS አንዱን ይጠቀሙ",
+      "weekdayHint": "ሞን",
+      "weekdayShort": "ቀን"
+    },
+    "colorPicker": {
+      "hue": "ሁ",
+      "other": "ሌላ ቀለም ይምረጡ",
+      "saturationBrightness": "የጨው እና ብሩህነት",
+      "use": "ይህን ቀለም ይጠቀሙ"
+    },
+    "common": {
+      "back": "ወደ ኋላ",
+      "cancel": "መሰረዝ",
+      "delete": "መሰረዝ",
+      "error": "ስህተት",
+      "gotIt": "ተረድቻለሁ",
+      "loading": "ጭነት...",
+      "no": "አይደለም",
+      "ok": "እሺ",
+      "save": "አስቀምጥ",
+      "share": "ማጋራት",
+      "success": "ስኬት",
+      "tryAgain": "እንደገና ይሞክሩ.",
+      "unknownError": "ያልታወቀ ስህተት",
+      "yes": "አዎ"
+    },
+    "gallery": {
+      "cancelSelection": "የመሰረዝ ምርጫ",
+      "clear": "ግልጽ ታሪክ",
+      "clearConfirm": "ግልጽ",
+      "clearMessage": "የሊማርክ መዛግብት ይደመሰሳሉ. ቀደም ሲል በመሣሪያ ጋለሪ ውስጥ የተቀመጡ ምስሎች አይጎዱም.",
+      "count": "{count, plural, one {# ፎቶ ወደ ውጭ ተልኳል} other {# ፎቶዎች ወደ ውጭ ተልከዋል}}",
+      "delete": "መሰረዝ",
+      "empty": "እስካሁን ፎቶዎች አልነበሩም",
+      "emptyAction": "ወደ መያዝ ሂድ",
+      "emptyDescription": "የውሃ ምልክት ጋር ወደ ውጭ የምታወጡት ፎቶዎች እዚህ ይታያሉ፣ ቀን፣ ቦታና ኮድ ይዟል።",
+      "filteredCount": "{shown} ከ {total, plural, one {# ፎቶ} other {# ፎቶዎች}}",
+      "noResults": "ለ {query} ምንም ፎቶ አልተገኘም።",
+      "photoLabel": "ፎቶ ከ {when}",
+      "removeMessage": "ጽሑፎቹ ከሊማርክ ይወጣሉ. ቀደም ሲል በመሣሪያ ጋለሪ ውስጥ የተቀመጡ ምስሎች ተጽዕኖ አያሳድሩም።",
+      "removeTitle": "{count, plural, one {ከታሪክ አስወግድ} other {# መግቢያዎችን አስወግድ}}",
+      "removed": "{count, plural, one {መግቢያ ተወግዷል።} other {መግቢያዎች ተወግደዋል።}}",
+      "saveDeniedMessage": "በቅንብሮች › ፍቃዶች ውስጥ ምስሎችን ወደ መሣሪያ ጋለሪ ለማስቀመጥ ያስችሉ።",
+      "saveDeniedTitle": "የፎቶ መዳረሻ ተከልክሏል",
+      "savedAll": "{count, plural, one {አንድ ፎቶ በመሣሪያው ጋለሪ ተቀምጧል።} other {# ፎቶዎች በመሣሪያው ጋለሪ ተቀምጠዋል።}}",
+      "savedSome": "{saved} ከ {total} ፎቶዎች የተቀመጡ.",
+      "searchPlaceholder": "አድራሻ፣ ቀን ወይም ኮድ በመጠቀም ፍለጋ",
+      "selectedCount": "{count, plural, one {# ፎቶ ተመርጧል} other {# ፎቶዎች ተመርጠዋል}}",
+      "share": "ማጋራት",
+      "title": "ጋለሪ"
+    },
+    "language": {
+      "automatic": "የመመሳሰል መሣሪያ",
+      "automaticNote": "Lymark በመሣሪያዎ ላይ የተቀመጠውን ቋንቋ ይከታተላል።",
+      "label": "ቋንቋ",
+      "selector": "ቋንቋ ይምረጡ"
+    },
+    "login": {
+      "access": "ለመድረስ መግቢያ",
+      "apple": "በአፕል በኩል ይመዝገቡ",
+      "google": "በ Google ይግቡ",
+      "subtitle": "ለመቀጠል ይመዝገቡ",
+      "title": "Lymark ን ለመድረስ መግቢያ አድርግ"
+    },
+    "nav": {
+      "batch": "የቡድን ማቀነባበሪያ",
+      "photoDetail": "የፎቶ ዝርዝሮች",
+      "report": "የ PDF ሪፖርት",
+      "video": "ቪዲዮ"
+    },
+    "notFound": {
+      "body": "ይህ ማያ ገጽ የሊማርክ አካል አይደለም።",
+      "screenTitle": "ገጽ አልተገኘም",
+      "title": "እንዲህ ያለ መንገድ የለም"
+    },
+    "permissions": {
+      "allow": "ይሁን",
+      "allowed": "የተፈቀደለት",
+      "blocked": {
+        "later": "አሁን አይደለም",
+        "message": "ስርዓቱ እንደገና አይጠይቅም. ለመፍቀድ, መሣሪያዎን ቅንብሮች ይክፈቱ.",
+        "openSettings": "ክፍት ቅንብሮች",
+        "title": "ፈቃድ ተከልክሏል"
+      },
+      "camera": "ካሜራ",
+      "cameraRationale": "የውሃ ምልክት የሚቀበለው ፎቶ ለመውሰድ ያስፈልጋል።",
+      "denied": "የተከለከለ",
+      "granted": "የተሰጠው",
+      "intro": "Lymark አንድ ፎቶ ለመምታት የሚያስፈልገውን ብቻ ይጠይቃል. ምስሎችዎ መሣሪያውን በጭራሽ አይለቁም: GPS ን ሲጠቀሙ, ስርዓተ ክወናው የአድራሻውን አድራሻ እንዲሆኑ ካርታውን ብቻ በመላክ ለአገልግሎት ያስተላልፋል.",
+      "location": "ቦታ",
+      "locationRationale": "እርስዎ ሲቀበሉ አድራሻ መስክ ውስጥ በራስ-ሰር ይሞላል.",
+      "mediaLibrary": "ወደ ጋለሪ አስቀምጥ",
+      "mediaLibraryRationale": "ወደ መሣሪያው ጋለሪ ወደ ውጭ ፎቶዎችን መጻፍ.",
+      "openDeviceSettings": "ቅንብሮች",
+      "recheck": "እንደገና ይመልከቱ",
+      "request": "ፈቃድ መጠየቅ",
+      "section": "መዳረሻ",
+      "title": "ፈቃድ"
+    },
+    "photo": {
+      "backToGallery": "ወደ ጋለሪው ተመለስ",
+      "exportedAt": "በ {when} ላይ የተላከው",
+      "noWatermark": "ይህ ፎቶ ያለ የውሃ ምልክት ተልኳል።",
+      "notFoundBody": "ይህ መዝገብ ከታሪክ የተሰረዘ ሊሆን ይችላል።",
+      "notFoundTitle": "ፎቶ አልተገኘም",
+      "remove": "ማስወገድ",
+      "removeBody": "መዝገቡ ሊማርክን ይተወዋል፤ ወደ መሣሪያ ጋለሪው የተቀመጠው ምስል አልተጎዳም።",
+      "removeTitle": "ከታሪክ አስወግዱ",
+      "share": "ማጋራት",
+      "stampedData": "የታተሙ መረጃዎች"
+    },
+    "plan": {
+      "exhausted": "በነጻ የተጠቀሙ ፎቶዎች",
+      "exhaustedMessage": "የ 12ቱ ነፃ ፎቶዎች ጠፍተዋል ለሊማርክ ተመዝግበው ማተሚያዎን ይቀጥሉ",
+      "free": "ነፃ",
+      "pro": "ፕሮ",
+      "reconnect": "የደንበኝነት ምዝገባዎን ለማረጋገጥ እንደገና ያገናኙ",
+      "remaining": "{remaining, plural, one {# ነፃ ፎቶ ቀርቷል} other {# ነፃ ፎቶዎች ቀርተዋል}}",
+      "title": "እቅድ",
+      "unlimited": "ገደብ የለውም"
+    },
+    "report": {
+      "allPhotos": "ሁሉም ፎቶዎች",
+      "authorField": "ደራሲ / ኩባንያ",
+      "detailsSection": "ዝርዝር መረጃ",
+      "doc": {
+        "author": "ደራሲ",
+        "declaration": "የታተሙ መረጃዎች (አድራሻ፣ ቀን፣ ሰዓት እና ኮድ) የፎቶዎቹ ባለቤት የሚያቀርበው መግለጫ ነው።",
+        "exportedAt": "በ",
+        "generatedAt": "በ",
+        "page": "ገጽ",
+        "photo": "ፎቶ {index}",
+        "photosSection": "የፎቶግራፍ መዛግብት",
+        "signature": "ኃላፊው ፊርማ",
+        "summary": "ማጠቃለያ",
+        "title": "የፎቶ ሪፖርት",
+        "totalPhotos": "ጠቅላላ ፎቶዎች:"
+      },
+      "empty": "እስካሁን ድረስ ምንም ፎቶዎች አልተላኩም ሪፖርቱ ከጋለሪዎ የተሰራ ነው",
+      "failed": "ሪፖርቱን ማመንጨት አልተቻለም።",
+      "fileStem": "ሪፖርት",
+      "format": {
+        "csv": "የሂሳብ ሉህ (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "ጥቅል (ZIP)"
+      },
+      "formatSection": "ቅርጸት",
+      "generate": "ፋይል ያመነጫል",
+      "generateSection": "ማመንጨት",
+      "includeLogo": "በጋሻው ላይ ያለው አርማ",
+      "includeLogoDescription": "የምርት ስም አርማዎ፣ ከፖስታው ጋር ተመሳሳይ ነው።",
+      "norm": {
+        "abnt": "ABNT (ብራዚል)",
+        "din5008": "DIN 5008 (ጀርመን)",
+        "ibape": "IBAPE ቅጥ (ብራዚል)",
+        "iso": "ዓለም አቀፍ",
+        "letter": "ደብዳቤ (አሜሪካ)"
+      },
+      "normNote": "ይህ መደበኛ ወረቀቱን እና ቅርጸቱን ይገልጻል  ጠርዞች ፣ ቅርጸ-ቁምፊ እና የገጽ ቁጥር። ሪፖርቱ ይዘት በሁሉም ውስጥ አንድ ነው ፣ የ IBAPE ዘይቤ የፊርማ ብሎክን ይጨምራል ።",
+      "normSection": "ሰነድ መደበኛ",
+      "projectsSection": "ፕሮጀክት / ሥራ",
+      "saved": "ወደ {path} ተቀምጧል",
+      "savedShort": "ሪፖርቱ ተቀምጧል።",
+      "title": "የ PDF ሪፖርት",
+      "titleField": "የሪፖርቱ ርዕስ",
+      "unavailableBody": "PDF ሪፖርቶች በዴስክቶፕ መተግበሪያ ውስጥ ይገኛሉ.",
+      "unavailableTitle": "የዴስክቶፕ ብቻ",
+      "uncoded": "ኮድ የለም",
+      "wordTooBig": "Word ሰነድ ፎቶዎች ጋር አብሮ በጣም ትልቅ ሆኗል. PDF ወይም ZIP ጥቅል ይጠቀሙ.",
+      "zipMissing": "{count, plural, one {ጥቅሉ ተቀምጧል፣ ግን # ፎቶ በመሣሪያው ላይ አልተገኘም።} other {ጥቅሉ ተቀምጧል፣ ግን # ፎቶዎች በመሣሪያው ላይ አልተገኙም።}}"
+    },
+    "settings": {
+      "about": "ስለ",
+      "aboutDescription": "ስሪት፣ ግላዊነት እና ክሬዲት",
+      "appSection": "መተግበሪያ",
+      "deviceSection": "መሣሪያ",
+      "deviceSectionDescription": "የሊማርክ ጥያቄ የሚቀርብበትን መዳረሻ።",
+      "fields": "መስኮች እና አቋም",
+      "fieldsDescription": "የትኞቹ መስኮች ይታያሉ ይምረጡ, ማዕዘን እና መጠን",
+      "history": "ታሪክ",
+      "historyDescription": "በሳሽው ላይ የተቀመጡ የውጭ ፎቶዎች",
+      "language": "ቋንቋ",
+      "permissions": "ፈቃድ",
+      "permissionsDescription": "ካሜራ፣ ፎቶዎች እና ቦታ",
+      "save": "አስቀምጥ",
+      "title": "ቅንብሮች",
+      "watermark": "የውሃ ምልክት",
+      "watermarkSection": "የውሃ ምልክት",
+      "watermarkSectionDescription": "ምን በፎቶው ላይ ይለቀቃል?"
+    },
+    "signup": {
+      "subtitle": "ለመጀመር መመዝገብ",
+      "title": "የ Lymark መለያዎን ይፍጠሩ"
+    },
+    "tagline": "የውሃ ምልክት ከጊዜ፣ ቀንና ቦታ ጋር",
+    "title": "የሊማርክ ምልክት",
+    "video": {
+      "cameraDenied": "ካሜራ መዳረሻ የለም.",
+      "done": "ቪዲዮ የታተመ እና የተቀመጠ.",
+      "export": "የወጪ ንግድ የታሸገ ቪዲዮ",
+      "exportSection": "ኤክስፖርት",
+      "failed": "ቪዲዮው መታተም አልቻለም።",
+      "fieldsSection": "የሰም መስኮች",
+      "fileSection": "ቪዲዮ",
+      "none": "ምንም ቪዲዮ አልተመረጠም።",
+      "processing": "ማቀነባበሪያ... {percent}%",
+      "processingMobile": "ማቀነባበሪያ...",
+      "record": "ቪዲዮውን አሁን ቀረጹ",
+      "saved": "ወደ {path} ተቀምጧል",
+      "savedToGallery": "ወደ ጋለሪዎ የተቀመጠ ቪዲዮ።",
+      "select": "ቪዲዮ ይምረጡ",
+      "unavailableBody": "የሞባይል ቪዲዮ ማተሚያ Lymark ከ EAS ግንባታ (በመሠረታዊ ሞጁል) የተጫነ ነው ። በ Expo Go ውስጥ አይገኝም ። ከሱቁ ወይም ከ EAS ግንባታ ኦፊሴላዊ መተግበሪያውን ይጫኑ ወይም የዴስክቶፕ / የድር ስሪት ይጠቀሙ ።",
+      "unavailableTitle": "የተጫነ መተግበሪያ ያስፈልጋል",
+      "unreadable": "ፋይሉ እንደ ቪዲዮ ሊነበብ አልቻለም።",
+      "webNote": "በ አሳሽ ውስጥ ቪዲዮው በእውነተኛ ጊዜ ይሰራል  የ 2 ደቂቃ ቪዲዮ 2 ደቂቃ ይወስዳል  እና በ WebM ቅርጸት ይወጣል። ለረጅም ቪዲዮዎች የዴስክቶፕ መተግበሪያውን ይጠቀሙ።"
+    },
+    "watermark": {
+      "accentColor": "ቋሚ አሞሌ",
+      "backdropBandNote": "ባንድው በፎቶው ላይ ከዳር እስከ ዳር ይሮጣል እና ማህተሙ በተሰቀለበት ጠርዝ ላይ ይደርሳል ። በጨዋታ በተሞላበት ትዕይንት ላይ  የግንባታ ቦታ ፣ ግቢ ፣ የተጨናነቀ ፊት ለፊት  ከላይ የተቀመጠው ተለጣፊ ሳይሆን እንደ ሰነዱ መግለጫ ይነበባል ።",
+      "backdropBlockNote": "የጽሑፉ መጠን በጽሑፉ ዙሪያ የሚገኝ የጽሑፍ ቅርጽ ነው።",
+      "backdropColor": "የሰንጠረዥ ቀለም",
+      "backdropDescription": "በፎቶው ላይ በብርሃን ቦታዎች ላይ ያለውን ተቃራኒ ይይዛል። ያለ እሱ ጽሑፉ በቀጥታ ምስሉ ላይ ይቀመጥና ጥላ ይቀርባል።",
+      "backdropInnerRadius": "የውስጥ ማዕዘኖች",
+      "backdropOpacity": "ግልፅነት",
+      "backdropOpacityValue": "{percent}% ግልጽ ያልሆነ",
+      "backdropRadius": "የተደበደቡ ማዕዘኖች",
+      "backdropRadiusSquare": "ካሬ",
+      "backdropStyles": {
+        "band": "ሙሉ-ሰፊነት ባንድ",
+        "block": "ከጽሑፉ በስተጀርባ",
+        "none": "ምንም"
+      },
+      "backdropTitle": "የጀርባ ባንድ",
+      "brandDescription": "ከሰዓቱ በላይ አርማና መለያ ያለው ፊርማ ይሆናል። አንድ ጥግ ላይ ደግሞ የተዘዋዋሪ መስመር ነው።",
+      "brandFirstColor": "የመጀመሪያ ክፍል ቀለም",
+      "brandFirstHint": "የግንባታ ሠራተኞች",
+      "brandFirstPart": "የመጀመሪያ ክፍል",
+      "brandNote": "ሁለተኛውን ክፍል ባዶ አድርግ፤ ከዚያም አንድ ቀለም ያለው ምልክት ይታይ። ረጅም ስም ከመቁረጥ ይልቅ የሚስማማበት ጊዜ እስኪደርስ ድረስ ይቀንሳል።",
+      "brandPlacements": {
+        "corner": "በኮርኩር ውስጥ",
+        "header": "ከሰዓቱ በላይ",
+        "none": "ምንም"
+      },
+      "brandSecondColor": "ሁለተኛ ክፍል ቀለም",
+      "brandSecondHint": "ስሚዝ",
+      "brandSecondPart": "ሁለተኛ ክፍል",
+      "brandTitle": "የታተመ ምልክት",
+      "codeDescription": "ከቀዳሚ ግምገማዎች ላይ ያለው ፎቶ",
+      "codePlacements": {
+        "block": "መረጃዎች አጠገብ",
+        "side": "በቀኝ በኩል"
+      },
+      "codeTitle": "የፎቶ ኮድ",
+      "colors": {
+        "amber": "አምበር",
+        "black": "ጥቁር",
+        "blue": "ሰማያዊ",
+        "green": "አረንጓዴ",
+        "red": "ቀይ",
+        "white": "ነጭ"
+      },
+      "colorsDescription": "በፎቶው ላይ ያለው ቀለም የኩባንያው ምርጫ ነው ፣ መተግበሪያው አይደለም እዚህ ላይ መለወጥ የማያ ገጹን ቀለም አይቀይርም።",
+      "colorsTitle": "የሰምብሮች ቀለሞች",
+      "complement": "የሽፋን መግለጫ",
+      "complementColor": "የጽሑፍ ቀለም",
+      "complementHint": "የምርመራና የቴክኒክ ሪፖርቶች",
+      "cornerConflict": "ምልክቱና መረጃዎቹ በአንድ ጥግ ላይ ናቸው  በፎቶው ላይ ይጋጫሉ።",
+      "fields": {
+        "address": "አድራሻ / ቦታ",
+        "code": "የፎቶ ኮድ",
+        "date": "ቀን",
+        "time": "ጊዜ",
+        "weekday": "የሳምንቱ ቀን"
+      },
+      "fieldsDescription": "ይዘቱ ያለውና የተሰራባቸው መስኮች ብቻ ፎቶውን ይደርሱበታል።",
+      "fieldsTitle": "የተመለከቱ መስኮች",
+      "includeCountry": "አገሪቱን ያካትቱ",
+      "includeCountryDescription": "ድንበር አልፎ መሥራት ካለብህ አስገባው፤ አለበለዚያ በፎቶው ላይ ብቻ ቦታ ይኖረዋል።",
+      "legibilityTitle": "ሊነበብ የሚችል",
+      "logoAdded": "አርማው ወደ የምርት ስም ራስጌ ተጨምሯል.",
+      "logoAlignNote": "አርማው ከፍታ ከጽሑፉ በኋላ ነው: ከላይኛው ከስሙ አናት ጋር እና ታችኛው ከሽፋኑ መነሻ መስመር ጋር ይጣጣማል.",
+      "logoChosen": "የተመረጠው አርማ",
+      "logoErrorMessage": "ሌላ ምስል ይሞክሩ። ግልጽ የሆነ ዳራ ያለው PNG በጣም የሚሰራ ቅርጸት ነው።",
+      "logoErrorTitle": "ይህ ፋይል መጠቀም አልተቻለም",
+      "logoFormatNote": "አንድ PNG ን ይጠቀሙ ግልጽ የሆነ ዳራ. አንድ JPG ነጭ ዳራ ጋር ፎቶ ላይ ነጭ አራት ማዕዘን ይሆናል  ቅርጸት ግልጽነት አያከማችም, እና መተግበሪያው ዳራ ምን እንደሆነ መገመት ምንም መንገድ የለውም.",
+      "logoPermissionMessage": "አርማውን ለመምረጥ በቅንብሮች › ፍቃዶች ውስጥ ያስገቡ።",
+      "logoPermissionTitle": "የፎቶ መዳረሻ ተከልክሏል",
+      "logoPick": "አርማ ይምረጡ",
+      "logoPosition": "የሎጎ አቋም",
+      "logoPositionBlock": "በሰምቡ",
+      "logoRemove": "ማስወገድ",
+      "logoReplace": "አርማውን ይተካሉ",
+      "logoSize": "የሎጎ መጠን",
+      "positionDescription": "የፎቶው ጥግ ብሎክ የተመሰረተው ነው።",
+      "positionTitle": "አቋም",
+      "positions": {
+        "bottom-left": "በስተግራ ታች",
+        "bottom-right": "በስተቀኝ ታች",
+        "top-left": "ከላይ በስተግራ",
+        "top-right": "ከላይ በስተቀኝ"
+      },
+      "previewCurrent": "ከያዘው ትር ላይ ካለው የአሁኑ ፎቶ ላይ።",
+      "previewEmpty": "ከብርሃን እስከ ጨለማ፣ በሁለቱም ጫፎች ላይ ንባብን ለመፈተሽ።",
+      "previewNoFields": "የተመረጠ መስክ የለም  ፎቶው ያለ የውሃ ምልክት ይወጣል።",
+      "previewTitle": "ቅድመ እይታ",
+      "reset": "ነባሪዎቹን መልሶ ማግኘት",
+      "sizeTitle": "የጽሑፍ መጠን",
+      "sizes": {
+        "large": "ትልቅ",
+        "medium": "መካከለኛ",
+        "small": "ትንሽ"
+      },
+      "textColor": "ጽሑፍ",
+      "timeFormatDescription": "ጊዜው እንዴት ወደ መስኮች እንደሚሞላ። መስኩ ሊስተካከል ይችላል።",
+      "timeFormatTitle": "የጊዜ ቅርጸት",
+      "timeFormats": {
+        "12h": "12 ሰዓት (ጠዋቱ/ሰዓት)",
+        "24h": "24 ሰዓት"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "ሁሉም ፋይሎች",
+      "images": "ምስሎች",
+      "pickFolder": "የውጤት አቃፊን ይምረጡ",
+      "pickPhoto": "ፎቶ ይምረጡ",
+      "pickPhotos": "ለቡድን ፎቶዎችን ይምረጡ",
+      "savePhoto": "ፎቶ ማስቀመጥ",
+      "saveReport": "የዝግጅት አቀራረብ"
+    },
+    "login": {
+      "cancel": "መሰረዝ",
+      "confirm": "ቀጥል",
+      "message": "አሁን በአሳሽ በኩል ገብተሃል በዚህ ኮምፒውተር ላይ ይህን መለያ መጠቀምህን ቀጥል?",
+      "title": "ወደ Lymark መግባት"
+    },
+    "menu": {
+      "copy": "ኮፒ",
+      "cut": "ተቆርጦ",
+      "edit": "አርትዕ",
+      "file": "ፋይል",
+      "fullscreen": "ሙሉ ማያ ገጽ",
+      "help": "እርዳታ",
+      "paste": "አጣራ",
+      "quit": "አቁም",
+      "redo": "ሬዶ",
+      "reload": "እንደገና መጫን",
+      "selectAll": "ሁሉንም ይምረጡ",
+      "settings": "ቅንብሮች",
+      "undo": "የተሻረ",
+      "view": "እይታ",
+      "zoomIn": "አጉልተው ያግኙ",
+      "zoomOut": "ማጉላት",
+      "zoomReset": "ትክክለኛ መጠን"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "ወደ ቤት ተመለስ",
+      "openApp": "መተግበሪያውን ይክፈቱ",
+      "photos": "ፎቶዎች",
+      "photosLeft": "{remaining} ከ {quota} በስተግራ",
+      "plan": "እቅድ",
+      "planUnavailable": "በአሁኑ ጊዜ አይገኝም",
+      "plans": {
+        "free": "ነፃ",
+        "pro": "ፕሮ"
+      },
+      "signInTitle": "መግቢያ ገዝ",
+      "signOut": "ይመዝገቡ",
+      "signUpTitle": "መለያ መፍጠር",
+      "subscribe": "ለሊማርክ ፕሮ ይመዝገቡ",
+      "subscribeSoon": "የደንበኝነት ምዝገባዎች ገና አይገኙም. ሲሆኑ, እዚህ ላይ መመዝገብ እና ተመሳሳይ መለያ ጋር ማንኛውም መሣሪያ መጠቀም ይችላሉ.",
+      "title": "የእርስዎ መለያ",
+      "revokeDesktops": "ኮምፒውተሮችን ማሰናከል",
+      "revokeDesktopsHint": "መተግበሪያው በሁሉም ኮምፒውተር ላይ መዳረሻ ያበቃል."
+    },
+    "availability": {
+      "contact": "የጀርባውን እንቅስቃሴ ለመከታተል ወይም ችግርን ለመግለጽ ወደ <email>contato@lymark.app</email>.",
+      "description": "Lymark በ Android ላይ በዝግጅት ላይ ከመታተሙ በፊት በ Android ላይ በ 1.30 ስሪት ላይ ይገኛል ። የ iOS ስሪት ወይም የድር ስሪት የለም ፣ እና መተግበሪያው ክፍያ አይጠይቅም ።",
+      "title": "ተደራሽነት"
+    },
+    "data": {
+      "device": {
+        "description": "መለያው ለደንበኝነት ምዝገባዎ ይገኛል: አገልጋዩ የእርስዎን ኢሜይል እና ዕቅድ ይይዛል, እና ፎቶዎችዎን ወይም ቦታዎን በጭራሽ አይቀበልም.",
+        "field": "መሣሪያው ላይ",
+        "heading": "ፎቶዎች፣ አድራሻዎች እና ታሪክ"
+      },
+      "external": {
+        "description": "ሰሜናዊ እና ሰሜናዊ አድራሻን ሊነበብ የሚችል አድራሻ ለማድረግ ስርዓተ ክወናው የ Google ወይም የአፕል ጂኦኮዲንግ አገልግሎት ይጠይቃል. ይህ የሚተው ብቸኛው መረጃ ነው, እና ስርዓቱ ይልካል, መተግበሪያው አይደለም.",
+        "field": "መሣሪያውን ያጥፉ",
+        "heading": "አንድ ቅንብር ብቻ አድራሻ ወደ መቀየር"
+      },
+      "note": "ይህ ሁሉ የተቀመጠው ነው  ይህ በብራዚል LGPD  ውስጥ ምን ማለት እንደሆነ ጨምሮ <privacy>የግላዊነት ፖሊሲ</privacy>. የመገኛ ቦታን ፈቃድ ማሰናከል መተግበሪያውን ሙሉ በሙሉ ይሠራል; ከዚያም የአድራሻ መስክ ብቻ በእጅ መታየት አለበት.",
+      "title": "መረጃዎ የት እንደሚገኝ"
+    },
+    "deleteAccount": {
+      "back": "ወደ ሂሳቡ ተመለስ",
+      "confirm": "የእኔን መለያ መሰረዝ",
+      "deletesNow": "መለያዎን መሰረዝ ወዲያውኑ ኢሜይልዎን፣ መታወቂያዎን እንዲሁም የፕላን፣ የኮታ እና የፎቶ ቆጠራዎን መዝገብ ይሰርዛል።",
+      "irreversible": "መሰረዝ ቋሚ ነው እና ሊስተካከል አይችልም። በመሣሪያዎ ላይ ያሉ ፎቶዎች አልተጎዱም  እነሱ በአገልጋዮቻችን ላይ በጭራሽ አልነበሩም ።",
+      "retained": "የክፍያ ግብይቶች መዝገቦች በሕግ ለተጠየቀው የገንዘብ ጊዜ ይከማቻሉ፣ ከገለጻችሁ ጋር አይገናኙም። ቴክኒካዊ መዝገቦች በራሳቸው መርሐግብር ይጠናቀቃሉ።",
+      "title": "መለያ መሰረዝ"
+    },
+    "description": "የ Android መተግበሪያ የጣቢያ ምርመራ እና አገልግሎት ማረጋገጫ ፎቶዎች ላይ ሰዓት, ቀን, የስራ ቀን, አድራሻ እና የመከታተያ ኮድ ያተረመረው.",
+    "desktop": {
+      "backAccount": "ወደ ሂሳቡ ተመለስ",
+      "explanation": "የእርስዎ መለያ ዝግጁ ነው. ከዚህ በታች ያለውን አዝራር ጠቅ ያድርጉ እና በመተግበሪያው ላይ አስቀድመው የተፈረመውን  ላይ Lymark ለመክፈት አሳሽ መተግበሪያውን ለመክፈት ፈቃድ ይጠይቃል.",
+      "open": "መተግበሪያውን ያገናኙ",
+      "title": "በዴስክቶፕ ላይ ይግቡ",
+      "unavailable": "የዴስክቶፕ መተግበሪያ ግንኙነት ገና አይገኝም."
+    },
+    "download": {
+      "appStore": {
+        "description": "በ iOS ላይ እንደ Android ተመሳሳይ ተሞክሮ።",
+        "field": "App Store",
+        "heading": "አይፎን እና አይፓድ"
+      },
+      "browser": {
+        "action": "መግቢያ ገዝ",
+        "description": "በመለያዎ ውስጥ ይግቡ እና መተግበሪያው በአሳሽ ውስጥ ይከፈታል  ስልክ ወይም ኮምፒውተር.",
+        "field": "አሳሽ",
+        "heading": "አሁን ይጠቀሙት, ለመጫን ምንም"
+      },
+      "desktop": {
+        "description": "የፎቶዎች ጭነቶች, ረዥም ቪዲዮዎች እና PDF ሪፖርቶች  ከባድ-አገልግሎት ስሪት.",
+        "field": "ኮምፒውተር",
+        "heading": "ዊንዶውስ እና ሊኑክስ"
+      },
+      "googlePlay": {
+        "description": "የስልክ መተግበሪያ, ካሜራ, ማዕከለ እና የታተመ ቪዲዮ ጋር.",
+        "field": "Google Play",
+        "heading": "የ Android"
+      },
+      "soon": "በቅርቡ ይመጣል",
+      "title": "Lymark ን የት መጠቀም እንደሚቻል"
+    },
+    "features": {
+      "address": {
+        "description": "የከተማው ጎዳና ዓይነት አጭር ሲሆን ግዛቱ ኮዱ ይሆናል፤ ስለዚህ አድራሻው ፎቶውን ሳይሸፍን በሁለት መስመሮች ውስጥ ይገጥማል።",
+        "field": "አድራሻ",
+        "heading": "በ GPS የተሞላ፣ በእጅ ሊስተካከል የሚችል"
+      },
+      "code": {
+        "description": "ይህ አለ ስለዚህ አንድ የተወሰነ ፎቶ ውስጥ ጠቅለል ይችላሉ የሥራ ቅደም ተከተል ወይም ሪፖርት. ይህ በቀኝ ጠርዝ ላይ ይሽከረከራል, ወይም ምርጫዎ  ውሂብ ብሎክ ጋር ይቀመጣል.",
+        "field": "የፎቶ ኮድ",
+        "heading": "14 ቁምፊዎች፣ በዲጂታል ማመንጫ የተሰነዘሩ"
+      },
+      "note": "እያንዳንዱ መስክ በራሱ ይበራል እና ይዘጋል, እና ብሎክ በሶስት መጠኖች ውስጥ በአራቱ ማዕዘኖች ውስጥ በማንኛውም ላይ ይጣበቃል. ቅድመ እይታው የእውነተኛ ፎቶዎን ይጠቀማል, አጠቃላይ ናሙና አይደለም: በማያ ገጹ ላይ የሚያዩት ቃል በቃል ወደ ውጭ የሚላከው ነው.",
+      "time": {
+        "description": "አንድ አዝራር ሁሉንም ሦስት መስኮች ወደ ቀድሞው ጊዜ ይዞታል፣ ይህም ከጠበቅነው በላይ ጊዜ ወስዷል።",
+        "field": "ጊዜና ቀን",
+        "heading": "ከሳይንስ ሰዓት፣ በያዘበት ጊዜ"
+      },
+      "title": "ምን ምስል ላይ ይሄዳል"
+    },
+    "footer": {
+      "description": "Lymark  የፎቶግራፍ መዝገቦች ከቀን፣ ሰዓት እና አድራሻ ጋር።",
+      "documentsLabel": "ሰነዶች",
+      "privacy": "የግላዊነት ፖሊሲ",
+      "support": "ድጋፍ",
+      "terms": "የአጠቃቀም ውሎች"
+    },
+    "hero": {
+      "ctaAccount": "ወደ ገንዘቤ ሂድ",
+      "ctaLogin": "መግቢያ ገዝ",
+      "ctaSignup": "ነፃ መለያ ይፍጠሩ",
+      "description": "Lymark ሰዓት, ቀን, የሳምንቱ ቀን, አድራሻ እና የመከታተያ ኮድ በቀጥታ ምስል ላይ ይለጥፋል. ከመተግበሪያው የሚወጣው ፋይል በውስጡ ያለውን መረጃ ይዟል  ሳይሆን በዙሪያው በሚጓዙት ሜታዳታዎች, ይህም የመጀመሪያው WhatsApp ወደፊት ያወጣል.",
+      "eyebrow": "የመስክ ፎቶ ሰነድ",
+      "heading": "ፎቶው ስልክዎን ቀድሞውኑ መቼ ፣ የት እና ምን እንደሚል ይተውዎታል ።",
+      "meta": {
+        "account": "የአንድ ጠቅታ ሂሳብ",
+        "android": "Android እና አሳሽ",
+        "language": "የብራዚል ፖርቱጋልኛ",
+        "onDevice": "ፎቶዎች በመሣሪያው ላይ ይቆያሉ"
+      },
+      "note": "ለመጫን ምንም ነገር የለም."
+    },
+    "nav": {
+      "account": "ሂሳብ",
+      "home": "ቤት",
+      "homeLabel": "የሊማርክ፣ መነሻ ገጽ",
+      "label": "ዋና",
+      "privacy": "ግላዊነት",
+      "signIn": "መግቢያ ገዝ",
+      "terms": "ውሎች",
+      "verify": "ማረጋገጥ"
+    },
+    "process": {
+      "capture": {
+        "description": "አድራሻ ፍለጋ ፎቶው ሲመጣ ይጀምራል. መስኮች በሚሰራበት ጊዜ ለማስተካከል ክፍት ይቆያሉ.",
+        "field": "መያዝ",
+        "heading": "ካሜራ ወይም ጋለሪ"
+      },
+      "note": "ሁለቱ እርምጃዎች ሆን ብለው ተለያይተው ይቀጥላሉ. ማስቀመጥ እና መጋራት የተለያዩ ችግሮችን ይፈታል, እና በአንድ አዝራር ውስጥ በማጠፍ ፎቶውን በመላክ ማያ ገጽ በኩል ለማቅረብ የሚፈልግ ማንኛውም ሰው ይጎትታል.",
+      "save": {
+        "description": "ይህ ከስልክዎ ፎቶዎች ጋር ይቀመጣል, ማንኛውም መተግበሪያ  ላይ ይገኛል  Lymark ከጫኑ በኋላ ጨምሮ.",
+        "field": "አስቀምጥ",
+        "heading": "ወደ መሳሪያ ጋለሪ ይሄዳል"
+      },
+      "share": {
+        "description": "WhatsApp, ኢሜይል, Drive: መድረሻው በኦፕሬቲንግ ሲስተም የተመረጠ ሲሆን መተግበሪያው በመላኪያ ውስጥ ምንም ዓይነት ተሳትፎ የለውም.",
+        "field": "ማጋራት",
+        "heading": "የስርዓት አክሲዮን ወረቀቱን ይከፍታል"
+      },
+      "title": "ፎቶ የሚወስደው መንገድ"
+    },
+    "skipToContent": "ይዘት ላይ ይዝጉ",
+    "specimen": {
+      "caption": "የበርዝ ደንቡ የሚጀምረውና የሚጠናቀቀው በቁጥር አጠገብ እንጂ በጽሑፍ ሳጥን ላይ አይደለም።",
+      "label": "የሊማርክ ማህተም ናሙና: ሰዓት 07:42, ቀን 12 ነሐሴ 2026, ረቡዕ, በጓሩጃ ውስጥ አንድ አድራሻ እና የፎቶ ኮድ."
+    },
+    "title": "የሊማርክ  የሜዳ ፎቶዎች የውሃ ምልክት ቀን፣ ሰዓት እና አድራሻ",
+    "verify": {
+      "caveat": "ማህተሙ የፋይሉ ታማኝነት እና የወጣበት ጊዜ ያረጋግጣል ። ማህተሙ የሚገልጸው  አድራሻ ፣ ቀን ፣ ሰዓት  የአሳሽ መግለጫ ነው ።",
+      "checking": "እየፈተነ...",
+      "declarationNote": "ማህተሙ የሚያንፀባርቀው (አድራሻ፣ ቀን፣ ሰዓት) የአውጪው መግለጫ ነው  ማህተሙ ይዘት ሳይሆን ታማኝነትና ማቅረቢያውን ያረጋግጣል።",
+      "intro": "Lymark የተላከ ፎቶን ጣል ወይም ይምረጡ እና ወዲያውኑ መተግበሪያውን እንደወጣው በትክክል  እና ማን እንደወጣው እና መቼ እንደሆነ ወዲያውኑ ይመልከቱ።",
+      "noSealBody": "ይህ ፋይል የሊማርክ ማህተም የለውም. ማህተም ከመኖሩ በፊት ከመስመር ውጭ ወደ ውጭ መላክ ወይም ከሊማርክ ሊመጣ አይችልም. ማህተም አለመኖሩ ማግባባትን አያረጋግጥም.",
+      "noSealTitle": "ምንም ማህተም የለም",
+      "notConfigured": "ማረጋገጫ ገና አልተገኘም።",
+      "pick": "ፋይል ይምረጡ",
+      "previewAlt": "የተረጋገጠ ፎቶ፣ የታየ ማህተም",
+      "privacyNote": "ማረጋገጫ በ አሳሽዎ ውስጥ ይከናወናል ፋይሉ ወደ ማንኛውም አገልጋይ አይላክም።",
+      "sealedBody": "ይህ ፋይል ልክ እንደ Lymark ነው. {account} ላይ {date} ላይ የተለቀቀ.",
+      "sealedTitle": "ያልተነካ",
+      "tamperedBody": "ይዘቱ ከዓርማው ጋር አይጣጣምም: መዝገቡ ከተሰጠ በኋላ ተለውጧል, ወይም ማህተሙ ሌላ መዝገብ ነው.",
+      "tamperedTitle": "አለመጣጣም",
+      "title": "ትክክለኛነትን ማረጋገጥ",
+      "unsupported": "ይህ አሳሽ ፊርማ ማረጋገጫ አይደግፍም. አሁን ያለው አሳሽ ይሞክሩ."
+    }
+  }
+}

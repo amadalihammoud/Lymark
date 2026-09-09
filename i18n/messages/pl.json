@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplikacja",
+      "pitch": "Opieki na zdjęciach  w celu zapisu terenów, inspekcji w miejscu i dowodu obsługi.",
+      "platform": "Platforma",
+      "privacy": "Polityka prywatności",
+      "privacyGeocoding": "Kiedy używa się GPS, system operacyjny wysyła współrzędnik do Google lub Apple usługi mapy, aby uzyskać adres. To jedyna informacja, która zostaje tutaj, a to system, który wysyła, a nie Lymark.",
+      "privacyLocation": "Lokalizacja jest używana raz na zdjęcie, tylko do wypełnienia pola adresowego i nie jest przechowywana oddzielnie od zdjęć.",
+      "privacyOnDevice": "Konto istnieje dla Twojej subskrypcji: serwer przechowuje Twoje e-mail i plan, a nigdy nie otrzymuje Twoich zdjęć ani Twojej lokalizacji.",
+      "privacySection": "Prywatność",
+      "sdk": "Expo SDK",
+      "terms": "Warunki użytkowania",
+      "title": "O Lymark",
+      "version": "Wersja"
+    },
+    "account": {
+      "browserHint": "Login odbywa się w przeglądarce.",
+      "code": "Kod",
+      "codeSent": "Wysłaliśmy kod do {email}",
+      "connected": "Włączone",
+      "continue": "/Wciąż",
+      "deleteAccount": "Usunięcie konta",
+      "email": "/Mailing",
+      "failed": "Sprawdź e-mail lub kod i spróbuj jeszcze raz.",
+      "notConfigured": "W tej budowie nie ma jeszcze dostępnych danych.",
+      "signInBrowser": "Wpis w przeglądarkę",
+      "signOut": "/Przepisz się /",
+      "signedInAs": "Podpisane jako {email}",
+      "title": "Konto",
+      "verify": "Sprawdź"
+    },
+    "batch": {
+      "addressHint": "Ulica, numer  Miasto",
+      "clearList": "Wyjaśnięta lista",
+      "codeHint": "np. LYM-001",
+      "done": "{count, plural, one {Przetwarzanie zakończone: # zdjęcie.} few {Przetwarzanie zakończone: # zdjęcia.} many {Przetwarzanie zakończone: # zdjęć.} other {Przetwarzanie zakończone: # zdjęcia.}}",
+      "doneSection": "Wykonane",
+      "dropZone": "Przeciągnij i upuść zdjęcia tutaj lub użyj przycisku Select photos",
+      "errorsSection": "Władze",
+      "folder": "Plik: {name}",
+      "noPhotos": "Wybierz przynajmniej jedno zdjęcie.",
+      "outputNote": "Przetworzone zdjęcia są zapisywane w wybranym folderze.",
+      "outputSection": "Wynik",
+      "photosSection": "Zdjęcia do przetwarzania",
+      "processing": "Przetwarzanie...",
+      "progress": "{current} z {total} ({percent}%)",
+      "results": "{success, plural, one {# sukces} few {# sukcesy} many {# sukcesów} other {# sukcesu}}, {failed, plural, one {# błąd} few {# błędy} many {# błędów} other {# błędu}}",
+      "selectFolder": "Wybierz folder wyjściowy",
+      "selectPhotos": "Wybierz zdjęcia",
+      "selected": "{count, plural, one {Wybrano # zdjęcie} few {Wybrano # zdjęcia} many {Wybrano # zdjęć} other {Wybrano # zdjęcia}}",
+      "sharedNote": "Wskaźniki te mają zastosowanie do WSZYSTKIEJ fotografii.",
+      "sharedSection": "Wspólne metadane",
+      "start": "Rozpoczęcie przetwarzania",
+      "unavailableBody": "Ta funkcja jest wyłącznie dla komputerów stacjonarnych.",
+      "unavailableTitle": "Niewykorzystane przetwarzanie partii"
+    },
+    "capture": {
+      "accuracy": "Pozycja w zakresie ±{meters} m.",
+      "accuracyImprecise": "Pozycja w zakresie ±{meters} m  sprawdź numer ulicy przed wywozem.",
+      "address": "Adres",
+      "addressFailedTitle": "/Nie znaleziono adresu",
+      "addressHint": "Kliknij pozycję lub wpisz adres",
+      "camera": "Zrób zdjęcie.",
+      "code": "Kod",
+      "dateHint": "1 stycznia 2026",
+      "dateTimeGroup": "Data i godzina",
+      "emptyWarning": "Żadne dane nie zostaną zapisane  zdjęcie wyjdzie bez znaku wodnego.",
+      "gallery": "Wybierz z galerii",
+      "galleryDenied": "Zdjęcie zostało odmowione, więc istnieje tylko w aplikacji.",
+      "galleryFailed": "Obraz trafił do historii, ale urządzenie odmówiło zapisania go do galerii.",
+      "generateCode": "Wytwarzanie",
+      "hiddenFields": "{count, plural, one {Ukryte pole} few {Ukryte pola} many {Ukrytych pól} other {Ukryte pola}}: {fields} — włącz w Ustawieniach › Pola i pozycja.",
+      "keepMyAddress": "Trzymaj moje .",
+      "locate": "Znajduje się",
+      "locateByGps": "/Prześledzenie adresu za pomocą GPS",
+      "lookup": {
+        "denied": "Pozwól lokalizację w ustawieniach › zezwoleniach lub wpisz adres.",
+        "disabled": "/Przełącz ustawienia /i spróbuj ponownie.",
+        "timeout": "GPS nie odpowiada na czas.",
+        "unavailable": "Nie można było znaleźć adresu w tej pozycji."
+      },
+      "newCapture": "Zacznij nowy załamanie",
+      "noFieldsBack": "Wracaj.",
+      "noFieldsContinue": "W każdym razie kontynuuj.",
+      "noFieldsMessage": "Żadne pole nie ma nic do zapieczętowania. Wypełnij pola lub przeglądaj Ustawienia › Pola i pozycja.",
+      "noFieldsTitle": "Zdjęcie wyjdzie bez znaku wodnego.",
+      "noPhotoHint": "Zrób sobie zdjęcie albo wybierz z galerii.",
+      "noPhotoSelected": "Nie wybrano zdjęcia",
+      "openFailed": "Nie mogłem otworzyć zdjęcia.",
+      "permissionMessage": "Wystarczy włączyć w ustawieniach > Pozwolenia na kontynuację.",
+      "permissionTitle": "Potrzebne zezwolenie",
+      "pickPhoto": "Wybierz zdjęcie",
+      "pickPhotoHint": "Wybierz zdjęcie, aby włączyć działania.",
+      "previewLabel": "Przedwzór zdjęcia z oznaczeniem wodnym",
+      "renderFailedTitle": "Nie udało się wygenerować obrazu",
+      "replaceAddressMessage": "GPS znaleziony: {address}",
+      "replaceAddressTitle": "Zastąpić adres, który napisałeś?",
+      "resetConfirm": "Wyrzucić",
+      "resetMessage": "Wybrane zdjęcie i wypełnione pola zostaną odrzucone.",
+      "resetTitle": "Zaczniemy nowy proces?",
+      "saved": "Zdjęcie zapisane w galerii urządzeń i w historii.",
+      "savedAppOnlyTitle": "Zapisywane tylko w Lymark",
+      "shareDialogTitle": "Podziel się zdjęciem z znakami wodnymi",
+      "shareFailedMessage": "Obraz został wygenerowany i znajduje się w historii Lymark. Możesz go udostępnić z karty Galeria.",
+      "shareFailedTitle": "Nie mogłem się z nimi podzielić.",
+      "shareUnavailableMessage": "Ten urządzenie nie ma karty akcji.",
+      "shareUnavailableTitle": "Niewykorzystane podział",
+      "sharedFileTitle": "Zdjęcie z wodą",
+      "stampNotReady": "Poniżej jest jeszcze pieczęć.",
+      "syncNow": "Teraz .",
+      "timestamp": "Data/godzina",
+      "title": "Złapać",
+      "useGpsAddress": "Użyj GPS.",
+      "weekdayHint": "Wydanie",
+      "weekdayShort": "Dzień"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "Wybierz inny kolor",
+      "saturationBrightness": "Nasycenie i jasność",
+      "use": "Użyj tego koloru"
+    },
+    "common": {
+      "back": "Wracając",
+      "cancel": "Odwołanie",
+      "delete": "Wymazać",
+      "error": "Wybór",
+      "gotIt": "- Rozumiem.",
+      "loading": "Ładowanie...",
+      "no": "Nie , nie .",
+      "ok": "- W porządku.",
+      "save": "Zapisz",
+      "share": "Podzielić się",
+      "success": "Sukces",
+      "tryAgain": "Spróbuj jeszcze raz.",
+      "unknownError": "Nieznany błąd",
+      "yes": "- Tak ."
+    },
+    "gallery": {
+      "cancelSelection": "Wybrana rezygnacja",
+      "clear": "Jasna historia",
+      "clearConfirm": "Jasne",
+      "clearMessage": "Obrazy już zapisane w galerii urządzenia nie będą dotknięte.",
+      "count": "{count, plural, one {Wyeksportowano # zdjęcie} few {Wyeksportowano # zdjęcia} many {Wyeksportowano # zdjęć} other {Wyeksportowano # zdjęcia}}",
+      "delete": "Wymazać",
+      "empty": "Jeszcze nie ma zdjęć.",
+      "emptyAction": "Idź do złapania",
+      "emptyDescription": "Zdjęcia, które wyeksportujesz z znakem wodnym, pojawiają się tutaj, z datą, miejscem i kodem.",
+      "filteredCount": "{shown} z {total, plural, one {# zdjęcia} few {# zdjęć} many {# zdjęć} other {# zdjęcia}}",
+      "noResults": "Nie znaleziono zdjęć na {query}.",
+      "photoLabel": "Zdjęcie z {when}",
+      "removeMessage": "Wpisy opuszczają Lymark. Obrazy już zapisane w galerii urządzenia nie są dotknięte.",
+      "removeTitle": "{count, plural, one {Usuń z historii} few {Usuń # wpisy} many {Usuń # wpisów} other {Usuń # wpisu}}",
+      "removed": "{count, plural, one {Usunięto wpis.} few {Usunięto wpisy.} many {Usunięto wpisy.} other {Usunięto wpisy.}}",
+      "saveDeniedMessage": "Włącz w ustawieniach › Uzwolywania do zapisywania zdjęć do galerii urządzenia.",
+      "saveDeniedTitle": "Odmowa dostępu do zdjęć",
+      "savedAll": "{count, plural, one {Jedno zdjęcie zapisane w galerii urządzenia.} few {# zdjęcia zapisane w galerii urządzenia.} many {# zdjęć zapisanych w galerii urządzenia.} other {# zdjęcia zapisane w galerii urządzenia.}}",
+      "savedSome": "{saved} z {total} zdjęcia zapisane.",
+      "searchPlaceholder": "Szukaj na adres, datę lub kod",
+      "selectedCount": "{count, plural, one {Wybrano # zdjęcie} few {Wybrano # zdjęcia} many {Wybrano # zdjęć} other {Wybrano # zdjęcia}}",
+      "share": "Podzielić się",
+      "title": "Galeria"
+    },
+    "language": {
+      "automatic": "Urządzenie dopasowe",
+      "automaticNote": "Lymark śledzi ustawiony język na urządzeniu.",
+      "label": "Język",
+      "selector": "Wybierz język"
+    },
+    "login": {
+      "access": "/Przypisać się do dostępu",
+      "apple": "Zapisz się z Apple",
+      "google": "Wpis z Google",
+      "subtitle": "/Przejdź do programu /",
+      "title": "Wpis do Lymark"
+    },
+    "nav": {
+      "batch": "Przetwarzanie partii",
+      "photoDetail": "Szczegóły zdjęć",
+      "report": "Sprawozdanie PDF",
+      "video": "Wideo"
+    },
+    "notFound": {
+      "body": "Ten ekran nie jest częścią Lymark.",
+      "screenTitle": "Strona nie znaleziona",
+      "title": "Nie ma takiej drogi."
+    },
+    "permissions": {
+      "allow": "- Pozwólcie.",
+      "allowed": "Pozwolone",
+      "blocked": {
+        "later": "Nie teraz.",
+        "message": "Aby to zrobić, otwórz ustawienia urządzenia.",
+        "openSettings": "Otwarte ustawienia",
+        "title": "Zalecenie"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "/Muszą zrobić zdjęcie, które otrzyma znaczkę wodną.",
+      "denied": "Odmówione",
+      "granted": "Przyznane",
+      "intro": "Lymark pyta tylko o to, czego potrzebuje, aby zapisać zdjęcie. Twoje obrazy nigdy nie opuszczają urządzenia: gdy używasz GPS, system operacyjny wysyła służbie mapy samą współrzędę, dzięki czemu może stać się adresem.",
+      "location": "Położenie",
+      "locationRationale": "Wypełnia pole adresowe automatycznie, gdy je wykonujesz.",
+      "mediaLibrary": "Zapisz do galerii",
+      "mediaLibraryRationale": "Aby napisać wyeksportowane zdjęcia do galerii urządzeń.",
+      "openDeviceSettings": "Ustawienia",
+      "recheck": "Sprawdź jeszcze raz.",
+      "request": "Wniosek o pozwolenie",
+      "section": "Dostęp",
+      "title": "Pozwolenia"
+    },
+    "photo": {
+      "backToGallery": "Wracając do galerii",
+      "exportedAt": "Wywożone na {when}",
+      "noWatermark": "To zdjęcie zostało wyeksportowane bez znaku wodnego.",
+      "notFoundBody": "Ten zapis może być usunięty z historii.",
+      "notFoundTitle": "Zdjęcie nie znaleziono",
+      "remove": "Wyciąć",
+      "removeBody": "Nagranie zostaje na Lymark, a obraz zapisywany w galerii urządzenia nie jest dotknięty.",
+      "removeTitle": "Wyłącz z historii",
+      "share": "Podzielić się",
+      "stampedData": "Dane o stemplowaniu"
+    },
+    "plan": {
+      "exhausted": "Darmowe zdjęcia użyte",
+      "exhaustedMessage": "12 zdjęć bezpłatnego planu zniknęło.",
+      "free": "Bezpłatne",
+      "pro": "Pro",
+      "reconnect": "Połączenie do potwierdzenia subskrypcji",
+      "remaining": "{remaining, plural, one {Pozostało # darmowe zdjęcie} few {Pozostały # darmowe zdjęcia} many {Pozostało # darmowych zdjęć} other {Pozostało # darmowego zdjęcia}}",
+      "title": "Plan",
+      "unlimited": "Bez ograniczeń"
+    },
+    "report": {
+      "allPhotos": "Wszystkie zdjęcia",
+      "authorField": "Autor / firma",
+      "detailsSection": "Szczegóły",
+      "doc": {
+        "author": "Autor",
+        "declaration": "Dane stemplowane (adres, data, godzina i kod) są deklaracją wydawcy zdjęć.",
+        "exportedAt": "Wyroby wywożone w",
+        "generatedAt": "Wytwarzane w",
+        "page": "Strona",
+        "photo": "Zdjęcie {index}",
+        "photosSection": "Wpisy fotograficzne",
+        "signature": "Podpis osoby odpowiedzialne",
+        "summary": "Podsumowanie",
+        "title": "Raport zdjęciowy",
+        "totalPhotos": "Całkowita zdjęcie:"
+      },
+      "empty": "Raport został zbudowany z twojej galerii.",
+      "failed": "Nie mogłem wygenerować raportu.",
+      "fileStem": "sprawozdanie",
+      "format": {
+        "csv": "Artykuł:",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Wyroby (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Tworzenie pliku",
+      "generateSection": "Wytwarzanie",
+      "includeLogo": "Logo na okładce",
+      "includeLogoDescription": "Twój logo marki, ten sam z pieczęci.",
+      "norm": {
+        "abnt": "ABNT (Brazylia)",
+        "din5008": "DIN 5008 (Niemcy)",
+        "ibape": "Styl IBAPE (Brazylia)",
+        "iso": "Międzynarodowe",
+        "letter": "List (USA)"
+      },
+      "normNote": "Standardowy standard określa papier i formatowanie  marginesów, numerów czcionki i stron.",
+      "normSection": "Standardowy dokument",
+      "projectsSection": "Projekt / praca",
+      "saved": "Zapisywane do {path}",
+      "savedShort": "Raport zapisane.",
+      "title": "Sprawozdanie PDF",
+      "titleField": "Tytuł sprawozdania",
+      "unavailableBody": "Raporty PDF są dostępne w aplikacji do pracy.",
+      "unavailableTitle": "Tylko na komputerze",
+      "uncoded": "Nie ma kodu",
+      "wordTooBig": "Dokument Word stał się zbyt duży z wbudowanymi zdjęciami.",
+      "zipMissing": "{count, plural, one {Pakiet zapisany, ale nie znaleziono # zdjęcia na urządzeniu.} few {Pakiet zapisany, ale nie znaleziono # zdjęć na urządzeniu.} many {Pakiet zapisany, ale nie znaleziono # zdjęć na urządzeniu.} other {Pakiet zapisany, ale nie znaleziono # zdjęcia na urządzeniu.}}"
+    },
+    "settings": {
+      "about": "O",
+      "aboutDescription": "Wersja, prywatność i kredyty",
+      "appSection": "Aplikacja",
+      "deviceSection": "Urządzenie",
+      "deviceSectionDescription": "Dostęp, który Lymark żąda.",
+      "fields": "Poły i pozycja",
+      "fieldsDescription": "Wybierz pole, które pokazują kąt i rozmiar",
+      "history": "Historia",
+      "historyDescription": "Zdjęcia wywożone przechowywane na urządzeniu",
+      "language": "Język",
+      "permissions": "Pozwolenia",
+      "permissionsDescription": "Kamera, zdjęcia i lokalizacja",
+      "save": "Zapisz",
+      "title": "Ustawienia",
+      "watermark": "Znak wodny",
+      "watermarkSection": "Wodny znak",
+      "watermarkSectionDescription": "Co jest na zdjęciu i gdzie."
+    },
+    "signup": {
+      "subtitle": "Zapisz się , żeby zacząć .",
+      "title": "Utwórz konto Lymark"
+    },
+    "tagline": "Znaki wodne z czasem, datą i miejscem",
+    "title": "Świat",
+    "video": {
+      "cameraDenied": "Nie ma dostępu do aparatu.",
+      "done": "Wideo zapisane i zapisane.",
+      "export": "Wideo wywozowe o stemplowaniu",
+      "exportSection": "Eksport",
+      "failed": "Wideo nie mogło zostać wydane.",
+      "fieldsSection": "Połączenia znaku",
+      "fileSection": "Wideo",
+      "none": "Nie wybrano wideo.",
+      "processing": "Przetwarzanie... {percent}%",
+      "processingMobile": "Przetwarzanie...",
+      "record": "/Zagnij teraz /wideo",
+      "saved": "Zapisywane do {path}",
+      "savedToGallery": "Wideo zapisane w galerii.",
+      "select": "Wybierz wideo",
+      "unavailableBody": "W przypadku aplikacji do stampilowania wideo mobilnego Lymark jest zainstalowany z komputera EAS (z modułem native).",
+      "unavailableTitle": "Wymagane jest zainstalowanie aplikacji",
+      "unreadable": "Nie można było przeczytać tego pliku jako wideo.",
+      "webNote": "W przeglądarce wideo jest przetwarzane w czasie rzeczywistym  2 minuty wideo zajmuje 2 minuty  i wychodzi w formacie WebM."
+    },
+    "watermark": {
+      "accentColor": "Wersjalny pasek",
+      "backdropBandNote": "Zespół biegnie od krawędzi do krawędzi przez zdjęcie i leży na krawędzi, gdzie znacznik jest zakotwiczony.",
+      "backdropBlockNote": "Podłoga jest po wielkości tekstu, wokół której znajduje się wypełnienie.",
+      "backdropColor": "Kolor pasma",
+      "backdropDescription": "Bez niego tekst jest bezpośrednio na zdjęciu, z cieniem.",
+      "backdropInnerRadius": "Wnętrza",
+      "backdropOpacity": "Przejrzystość",
+      "backdropOpacityValue": "{percent}% nieprzezroczyste",
+      "backdropRadius": "Węże okrągłe",
+      "backdropRadiusSquare": "Połoga",
+      "backdropStyles": {
+        "band": "Płyta pełnej szerokości",
+        "block": "Za tekstem",
+        "none": "Nie ma żadnych"
+      },
+      "backdropTitle": "Zespół wspierający",
+      "brandDescription": "Nad zegarem staje się podpis, z logo i tagliną.",
+      "brandFirstColor": "Kolor pierwszej części",
+      "brandFirstHint": "Budownicy",
+      "brandFirstPart": "Pierwsza część",
+      "brandNote": "Długa nazwa jest zmniejszana, aż do momentu, gdy się pasuje, zamiast być odcięta.",
+      "brandPlacements": {
+        "corner": "W kącie",
+        "header": "Nad zegarem",
+        "none": "Nie ma żadnych"
+      },
+      "brandSecondColor": "Kolor drugiej części",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Część druga",
+      "brandTitle": "Oznaczenie oślepone",
+      "codeDescription": "Z boku nie konkuruje o miejsce z samym obrazem.",
+      "codePlacements": {
+        "block": "Obok danych",
+        "side": "Prawa strona"
+      },
+      "codeTitle": "Kod zdjęcia",
+      "colors": {
+        "amber": "Amber",
+        "black": "Czarny",
+        "blue": "Niebieski",
+        "green": "Zieleń",
+        "red": "Czerwony",
+        "white": "Białe"
+      },
+      "colorsDescription": "Kolor na zdjęciu jest wyborem firmy, a nie aplikacja.",
+      "colorsTitle": "Kolory znaczek",
+      "complement": "Słowa:",
+      "complementColor": "Kolor tagline",
+      "complementHint": "Inspekcje i sprawozdania techniczne",
+      "cornerConflict": "Znaczenie i dane znajdują się w tym samym rogu.",
+      "fields": {
+        "address": "Adres / miejsce",
+        "code": "Kod zdjęcia",
+        "date": "Data",
+        "time": "Czas",
+        "weekday": "Dzień tygodnia"
+      },
+      "fieldsDescription": "Tylko pola, które są na nim i zawierają treść, dotrą do zdjęcia.",
+      "fieldsTitle": "Połączenia",
+      "includeCountry": "Włączyć w to kraj",
+      "includeCountryDescription": "Włącz go, jeśli pracujesz poza granicami, bo inaczej będzie wystarczać tylko na zdjęciu.",
+      "legibilityTitle": "Czytelność",
+      "logoAdded": "Logo dodane do nagłówka marki.",
+      "logoAlignNote": "Wysokość logo następuje po tekście: jego górna część pasuje do górnej części nazwy, a dolna do linii bazowej taglina.",
+      "logoChosen": "Wybrany logo",
+      "logoErrorMessage": "Spróbuj innego obrazu. PNG z przejrzystym tłem jest formatem, który najlepiej działa.",
+      "logoErrorTitle": "Ten plik nie może być używany",
+      "logoFormatNote": "Użyj PNG z przejrzystym tłem. JPG z białym tłem staje się białym prostokątem na zdjęciu  format nie przechowuje przejrzystości, a aplikacja nie ma sposobu na zgadnięcie, co jest tłem.",
+      "logoPermissionMessage": "W ustawieniach › Uzwolywania wybierz plik logo.",
+      "logoPermissionTitle": "Odmowa dostępu do zdjęć",
+      "logoPick": "Wybierz logo",
+      "logoPosition": "Pozycja logo",
+      "logoPositionBlock": "Z pieczęcią.",
+      "logoRemove": "Wyciąć",
+      "logoReplace": "Logo zastąpienie",
+      "logoSize": "Rozmiar logo",
+      "positionDescription": "W rogu zdjęcia blok jest zakotwiczony.",
+      "positionTitle": "Pozycja",
+      "positions": {
+        "bottom-left": "Poniżej lewej",
+        "bottom-right": "Poniżej w prawo",
+        "top-left": "Górna lewej",
+        "top-right": "Po prawej górze"
+      },
+      "previewCurrent": "Na bieżąco zdjęcie z karty \"Uchwycić\".",
+      "previewEmpty": "Od światła do ciemności, aby sprawdzić czytelność w obu skrajnościach.",
+      "previewNoFields": "Żadne pole nie zostało wybrane  zdjęcie wychodzi bez oznaki wodnej.",
+      "previewTitle": "Wystarczy przegląd",
+      "reset": "Odzyskanie domyślnych",
+      "sizeTitle": "Wielkość tekstu",
+      "sizes": {
+        "large": "Wielkie",
+        "medium": "Średnie",
+        "small": "Małe"
+      },
+      "textColor": "Tekst",
+      "timeFormatDescription": "Jak czas jest wypełniony w polach.",
+      "timeFormatTitle": "Format czasu",
+      "timeFormats": {
+        "12h": "12 godzin (po południu)",
+        "24h": "24 godziny na dobę"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Wszystkie pliki",
+      "images": "Zdjęcia",
+      "pickFolder": "Wybierz folder wyjściowy",
+      "pickPhoto": "Wybierz zdjęcie",
+      "pickPhotos": "Wybierz zdjęcia do partii",
+      "savePhoto": "Zapisz zdjęcie",
+      "saveReport": "Zapisz raport"
+    },
+    "login": {
+      "cancel": "Odwołanie",
+      "confirm": "/Wciąż",
+      "message": "Wpisujesz się w przeglądarkę.",
+      "title": "Zapisz się na Lymark"
+    },
+    "menu": {
+      "copy": "Kopiowanie",
+      "cut": "Wykrój",
+      "edit": "Edytor",
+      "file": "Plik",
+      "fullscreen": "Pełny ekran",
+      "help": "Pomoc",
+      "paste": "Właszcza",
+      "quit": "Odpuść .",
+      "redo": "Redo",
+      "reload": "Przeładowanie",
+      "selectAll": "Wybierz wszystkie",
+      "settings": "Ustawienia",
+      "undo": "Nieważne",
+      "view": "Widok",
+      "zoomIn": "Zwiększ",
+      "zoomOut": "Zwiększ się",
+      "zoomReset": "W rzeczywistym rozmiarze"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Wracam do domu.",
+      "openApp": "Otwórz aplikację",
+      "photos": "Zdjęcia",
+      "photosLeft": "{remaining} z {quota} w lewo",
+      "plan": "Plan",
+      "planUnavailable": "Nie jest dostępny .",
+      "plans": {
+        "free": "Bezpłatne",
+        "pro": "Pro"
+      },
+      "signInTitle": "/Paniepisz się",
+      "signOut": "/Przepisz się /",
+      "signUpTitle": "Tworzenie konta",
+      "subscribe": "/ Subskrybuj Lymark Pro",
+      "subscribeSoon": "Podpisów nie ma jeszcze, a kiedy będą, będzie można się tu subskryptować i używać dowolnego urządzenia z tym samym kontem.",
+      "title": "Twoje konto",
+      "revokeDesktops": "Odłącz komputery",
+      "revokeDesktopsHint": "Możesz się zalogować, kiedy tylko chcesz."
+    },
+    "availability": {
+      "contact": "Aby śledzić uruchomienie lub zgłosić problem, napisz do <email>contato@lymark.app</email>.",
+      "description": "Lymark jest w wersji 1.3.0, w testach na Androida przed publikacją na Google Play.",
+      "title": "Dostępność"
+    },
+    "data": {
+      "device": {
+        "description": "Konto istnieje dla Twojej subskrypcji: serwer przechowuje Twoje e-mail i plan, a nigdy nie otrzymuje Twoich zdjęć ani lokalizacji.",
+        "field": "Na urządzeniu",
+        "heading": "Zdjęcia, adresy i historia"
+      },
+      "external": {
+        "description": "Aby zmienić szerokość i długość geograficzną w czytelny adres, system operacyjny zadaje zapytania na usługi geocodowania Google lub Apple. To jedyna informacja, która zostaje, a system ją wysyła, a nie aplikacja.",
+        "field": "Wyłącz urządzenie",
+        "heading": "Tylko przekształcanie współrzędnej w adres"
+      },
+      "note": "Wszystko jest określone  w tym co to oznacza w Brazylii LGPD  w <privacy>Polityka prywatności</privacy>. Wyłączenie zezwolenia na lokalizację pozostawia aplikację w pełni funkcjonalną; tylko pole adresowe musi być wpisane ręcznie.",
+      "title": "Gdzie znajdują się twoje dane"
+    },
+    "deleteAccount": {
+      "back": "Wracając do rachunku",
+      "confirm": "Wymaż mój konto",
+      "deletesNow": "Usuwanie konta natychmiast usuwa e-mail, identyfikator oraz zapis planu, kwoty i liczby zdjęć.",
+      "irreversible": "Zdjęcia na urządzeniu nie są dotknięte  nigdy nie były na naszych serwerach.",
+      "retained": "Zapisy transakcji płatniczych są przechowywane przez wymagany przez prawo okres fiskalny, niezwiązane z Twoim profilu.",
+      "title": "Usunięcie konta"
+    },
+    "description": "Aplikacja Android, która zapewnia czas, datę, dzień pracy, adres i kod śledzenia na zdjęciach z inspekcji i dowodu usługi.",
+    "desktop": {
+      "backAccount": "Wracając do rachunku",
+      "explanation": "Konto jest gotowe. Kliknij przycisk poniżej, aby otworzyć Lymark na komputerze już zalogowany  przeglądarka poprosi o pozwolenie na otwarcie aplikacji.",
+      "open": "Połącz aplikację",
+      "title": "Wpis na komputer",
+      "unavailable": "Połączenie aplikacji do komputerów nie jest jeszcze dostępne."
+    },
+    "download": {
+      "appStore": {
+        "description": "To samo, co na Androidzie, na iOS.",
+        "field": "App Store",
+        "heading": "iPhone i iPad"
+      },
+      "browser": {
+        "action": "/Paniepisz się",
+        "description": "Zapisz się na konto i aplikacja otworzy się w przeglądarce  telefon lub komputer.",
+        "field": "Browser",
+        "heading": "Użyj go teraz, nic do zainstalowania"
+      },
+      "desktop": {
+        "description": "Wydatki z fotografii, długich filmów i raportów PDF  wersja ciężko-duty.",
+        "field": "Komputer",
+        "heading": "Windows i Linux"
+      },
+      "googlePlay": {
+        "description": "Aplikacja telefoniczna, z kamerą, galerią i stemplowanym filmem.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "/Szybko przyjdę.",
+      "title": "Gdzie użyć Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "Jeśli wpiszesz przed odpowiedzią GPS, to wygrywa to, co wpiszesz.",
+        "field": "Adres",
+        "heading": "Wypłynone przez GPS, korygujące się ręcznie"
+      },
+      "code": {
+        "description": "Istnieje tak, aby można było cytować jeden konkretny zdjęcie w kolejności pracy lub raportu.",
+        "field": "Kod zdjęcia",
+        "heading": "14 znaków, rysunek z generatora kryptograficznego"
+      },
+      "note": "Każde pole włącza się i wyłącza się samodzielnie, a blok przyłącza się do każdego z czterech kątów, w trzech rozmiarach.",
+      "time": {
+        "description": "Jeden przycisk odciąga wszystkie trzy pola do teraźniejszości, gdy zdjęcie trwało dłużej niż oczekiwano.",
+        "field": "Czas i data",
+        "heading": "Z zegarka urządzenia, w momencie uchwycenia"
+      },
+      "title": "Co trafi na obraz"
+    },
+    "footer": {
+      "description": "Lymark  zapisy fotograficzne z datą, godziną i adresem.",
+      "documentsLabel": "Dokumenty",
+      "privacy": "Polityka prywatności",
+      "support": "Wsparcie:",
+      "terms": "Warunki użytkowania"
+    },
+    "hero": {
+      "ctaAccount": "Idź na mój rachunek.",
+      "ctaLogin": "/Paniepisz się",
+      "ctaSignup": "Tworzyć bezpłatny konto",
+      "description": "Lymark oznacza godzinę, datę, dzień tygodnia, adres i kod śledzenia bezpośrednio na zdjęcie. Plik, który wychodzi z aplikacji, zawiera informacje w nim  nie jako metadata wzdłuż, które pierwszy WhatsApp w przodu odcina.",
+      "eyebrow": "Dokumenty zdjęciowe pola",
+      "heading": "Zdjęcie zostawia już telefon mówiący, kiedy, gdzie i co.",
+      "meta": {
+        "account": "Konto z jednym kliknięciem",
+        "android": "Android i przeglądarka",
+        "language": "Południowa portugalska",
+        "onDevice": "Zdjęcia pozostają na urządzeniu"
+      },
+      "note": "Nic do zainstalowania."
+    },
+    "nav": {
+      "account": "Konto",
+      "home": "Dom",
+      "homeLabel": "Lymark, strona główna",
+      "label": "Główne",
+      "privacy": "Prywatność",
+      "signIn": "/Paniepisz się",
+      "terms": "Warunki",
+      "verify": "Sprawdź"
+    },
+    "process": {
+      "capture": {
+        "description": "W poszukiwaniu adresów rozpoczyna się od momentu przyjęcia zdjęcia pola pozostają otwarte do dostosowania podczas uruchomienia.",
+        "field": "Złapać",
+        "heading": "Kamera lub galeria"
+      },
+      "note": "Zapisywanie i dzielenie się zdjęciami rozwiązują różne problemy, a przepinanie ich w jednym przycisku przyciągałoby każdego, kto chce tylko przesłać zdjęcie przez ekran wysyłania.",
+      "save": {
+        "description": "Jest wraz z resztą zdjęć z telefonu, dostępne dla każdej aplikacji  w tym po odinstalowaniu Lymarka.",
+        "field": "Zapisz",
+        "heading": "Wchodzi do galerii urządzeń"
+      },
+      "share": {
+        "description": "WhatsApp, e-mail, Drive: miejsce przeznaczenia jest wybierane przez system operacyjny, a aplikacja nie bierze udziału w wysyłce.",
+        "field": "Podzielić się",
+        "heading": "Otwiera kartę podziału systemu"
+      },
+      "title": "/Przechodzenie zdjęcia"
+    },
+    "skipToContent": "Przejść do treści",
+    "specimen": {
+      "caption": "Zasada błękitna zaczyna się i kończy na krawędzi cyfr, a nie skrzynki tekstowej.",
+      "label": "Wskaźnik znaczki Lymark: godzina 07:42, data 12 sierpnia 2026 r., środek, adres w Guarujá i kod zdjęcia."
+    },
+    "title": "Lymark  data, czas i adres znak wodny dla zdjęć pola",
+    "verify": {
+      "caveat": "Peczęć świadczy o integralności akta i chwili wydania.",
+      "checking": "Sprawdzam...",
+      "declarationNote": "To, co pokazuje pieczęć (adres, data, godzina) jest deklaracją emitenta  pieczęć świadczy o integralności i wydaniu, a nie treści.",
+      "intro": "Odłóż lub wybierz zdjęcie wyeksportowane przez Lymark i natychmiast sprawdź, czy jest dokładnie takie, jak opuściło aplikację  i kto je wysłał, kiedy.",
+      "noSealBody": "Ten plik nie ma pieczęci Lymark. Może być wyeksportowany poza systemem offline, zanim pieczęć istniała, albo może nie pochodzić z Lymark.",
+      "noSealTitle": "Bez pieczęci",
+      "notConfigured": "Weryfikacja nie jest jeszcze dostępna.",
+      "pick": "Wybierz plik",
+      "previewAlt": "Zweryfikowane zdjęcie, znamiona widoczna",
+      "privacyNote": "W weryfikacji w przeglądarce nie wysyłane są pliki do żadnego serwera.",
+      "sealedBody": "Ten plik jest dokładnie taki, jak został opuszczony przez Lymark.",
+      "sealedTitle": "Niepłuszczona",
+      "tamperedBody": "Zawartość nie pasuje do pieczęci: plik został zmieniony po wydaniu, lub pieczęć należy do innego pliku.",
+      "tamperedTitle": "Niezgodność",
+      "title": "Sprawdzenie autentyczności",
+      "unsupported": "Ten przeglądarka nie obsługuje weryfikacji podpisów."
+    }
+  }
+}

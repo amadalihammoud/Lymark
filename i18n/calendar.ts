@@ -34,6 +34,25 @@ export const MONTHS: Record<Locale, readonly string[]> = {
   ja: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   ko: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'],
+  hi: ['जन', 'फर', 'मार्च', 'अप्रै', 'मई', 'जून', 'जुल', 'अग', 'सित', 'अक्टू', 'नव', 'दिस'],
+  sw: ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ago', 'Sep', 'Okt', 'Nov', 'Des'],
+  id: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+  ms: ['Jan', 'Feb', 'Mac', 'Apr', 'Mei', 'Jun', 'Jul', 'Ogo', 'Sep', 'Okt', 'Nov', 'Dis'],
+  bn: ['জানু', 'ফেব', 'মার্চ', 'এপ্রি', 'মে', 'জুন', 'জুল', 'আগ', 'সেপ্ট', 'অক্ট', 'নভে', 'ডিসে'],
+  ur: ['جنوری', 'فروری', 'مارچ', 'اپریل', 'مئی', 'جون', 'جولائی', 'اگست', 'ستمبر', 'اکتوبر', 'نومبر', 'دسمبر'],
+  tr: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
+  vi: ['Th1', 'Th2', 'Th3', 'Th4', 'Th5', 'Th6', 'Th7', 'Th8', 'Th9', 'Th10', 'Th11', 'Th12'],
+  ro: ['ian.', 'feb.', 'mar.', 'apr.', 'mai', 'iun.', 'iul.', 'aug.', 'sept.', 'oct.', 'nov.', 'dec.'],
+  uk: ['січ.', 'лют.', 'бер.', 'квіт.', 'трав.', 'черв.', 'лип.', 'серп.', 'вер.', 'жовт.', 'лист.', 'груд.'],
+  el: ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαΐ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'],
+  pl: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'],
+  th: ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'],
+  fa: ['ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن', 'ژوئیه', 'اوت', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر'],
+  // Cirílico sérvio — Roboto Condensed cobre; UI também em cirílico (NLLB srp_Cyrl).
+  sr: ['јан', 'феб', 'мар', 'апр', 'мај', 'јун', 'јул', 'авг', 'сеп', 'окт', 'нов', 'дец'],
+  am: ['ጃንዩ', 'ፌብሩ', 'ማርች', 'ኤፕሪ', 'ሜይ', 'ጁን', 'ጁላይ', 'ኦገስ', 'ሴፕቴ', 'ኦክቶ', 'ኖቬም', 'ዲሴም'],
+  cs: ['led', 'úno', 'bře', 'dub', 'kvě', 'čvn', 'čvc', 'srp', 'zář', 'říj', 'lis', 'pro'],
+  he: ['ינו׳', 'פבר׳', 'מרץ', 'אפר׳', 'מאי', 'יונ׳', 'יול׳', 'אוג׳', 'ספט׳', 'אוק׳', 'נוב׳', 'דצמ׳'],
 };
 
 /**
@@ -75,6 +94,24 @@ export const DATE_PATTERN: Record<Locale, string> = {
   ja: '{y}年{mon}月{d}日',
   ko: '{y}년 {mon}월 {d}일',
   ar: '{d} {mon} {y}',
+  hi: '{d} {mon} {y}',
+  sw: '{d} {mon} {y}',
+  id: '{d} {mon} {y}',
+  ms: '{d} {mon} {y}',
+  bn: '{d} {mon} {y}',
+  ur: '{d} {mon} {y}',
+  tr: '{d} {mon} {y}',
+  vi: '{d} {mon} {y}',
+  ro: '{d} {mon} {y}',
+  uk: '{d} {mon} {y}',
+  el: '{d} {mon} {y}',
+  pl: '{d} {mon} {y}',
+  th: '{d} {mon} {y}',
+  fa: '{d} {mon} {y}',
+  sr: '{d}. {mon} {y}.',
+  am: '{d} {mon} {y}',
+  cs: '{d}. {mon} {y}',
+  he: '{d} {mon} {y}',
 };
 
 /** Abreviação do dia da semana — o que cabe no carimbo, abaixo da data. */
@@ -91,6 +128,24 @@ export const WEEKDAYS_SHORT: Record<Locale, readonly string[]> = {
   ja: ['日', '月', '火', '水', '木', '金', '土'],
   ko: ['일', '월', '화', '수', '목', '금', '토'],
   ar: ['أحد', 'إثنين', 'ثلاثاء', 'أربعاء', 'خميس', 'جمعة', 'سبت'],
+  hi: ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'],
+  sw: ['Jp', 'Jt', 'Jn', 'Tt', 'Al', 'Ij', 'Jm'],
+  id: ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'],
+  ms: ['Ahd', 'Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab'],
+  bn: ['রবি', 'সোম', 'মঙ্গল', 'বুধ', 'বৃহ', 'শুক্র', 'শনি'],
+  ur: ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'],
+  tr: ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'],
+  vi: ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+  ro: ['dum', 'lun', 'mar', 'mie', 'joi', 'vin', 'sâm'],
+  uk: ['нд', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'],
+  el: ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'],
+  pl: ['ndz', 'pon', 'wt', 'śr', 'czw', 'pt', 'sob'],
+  th: ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'],
+  fa: ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه'],
+  sr: ['нед', 'пон', 'уто', 'сре', 'чет', 'пет', 'суб'],
+  am: ['እሁድ', 'ሰኞ', 'ማክሰ', 'ረቡዕ', 'ሐሙስ', 'ዓርብ', 'ቅዳሜ'],
+  cs: ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'],
+  he: ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳', 'ו׳', 'ש׳'],
 };
 
 /** Nome completo — usado onde há espaço, como no detalhe da galeria. */
@@ -107,6 +162,24 @@ export const WEEKDAYS_LONG: Record<Locale, readonly string[]> = {
   ja: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'],
   ko: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
   ar: ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
+  hi: ['रविवार', 'सोमवार', 'मंगलवार', 'बुधवार', 'गुरुवार', 'शुक्रवार', 'शनिवार'],
+  sw: ['Jumapili', 'Jumatatu', 'Jumanne', 'Jumatano', 'Alhamisi', 'Ijumaa', 'Jumamosi'],
+  id: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+  ms: ['Ahad', 'Isnin', 'Selasa', 'Rabu', 'Khamis', 'Jumaat', 'Sabtu'],
+  bn: ['রবিবার', 'সোমবার', 'মঙ্গলবার', 'বুধবার', 'বৃহস্পতিবার', 'শুক্রবার', 'শনিবার'],
+  ur: ['اتوار', 'پیر', 'منگل', 'بدھ', 'جمعرات', 'جمعہ', 'ہفتہ'],
+  tr: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+  vi: ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'],
+  ro: ['duminică', 'luni', 'marți', 'miercuri', 'joi', 'vineri', 'sâmbătă'],
+  uk: ['неділя', 'понеділок', 'вівторок', 'середа', 'четвер', 'пʼятниця', 'субота'],
+  el: ['Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο'],
+  pl: ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'],
+  th: ['วันอาทิตย์', 'วันจันทร์', 'วันอังคาร', 'วันพุธ', 'วันพฤหัสบดี', 'วันศุกร์', 'วันเสาร์'],
+  fa: ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه'],
+  sr: ['недеља', 'понедељак', 'уторак', 'среда', 'четвртак', 'петак', 'субота'],
+  am: ['እሁድ', 'ሰኞ', 'ማክሰኞ', 'ረቡዕ', 'ሐሙስ', 'ዓርብ', 'ቅዳሜ'],
+  cs: ['neděle', 'pondělí', 'úterý', 'středa', 'čtvrtek', 'pátek', 'sobota'],
+  he: ['יום ראשון', 'יום שני', 'יום שלישי', 'יום רביעי', 'יום חמישי', 'יום שישי', 'שבת'],
 };
 
 /**
@@ -137,11 +210,12 @@ export const USES_24_HOUR = true;
  *   Barlow (2,9% de diferença média) para que a troca não mude o desenho do
  *   bloco.
  *
- * Falta árabe, hebraico, CJK, tailandês e índico. O árabe é o caso mais
- * distante: não basta ter os glifos, porque `drawText` mapeia caractere a
- * caractere e a escrita árabe exige *shaping* — as letras mudam de forma
- * conforme a posição na palavra. Resolver aquilo significa trocar para a API
- * `Paragraph` e refazer a linha de base do harness de fidelidade.
+ * Falta árabe, hebraico, CJK, tailandês, índico, persa, urdu e amárico. O
+ * árabe é o caso mais distante: não basta ter os glifos, porque `drawText`
+ * mapeia caractere a caractere e a escrita árabe exige *shaping* — as letras
+ * mudam de forma conforme a posição na palavra. Resolver aquilo significa
+ * trocar para a API `Paragraph` e refazer a linha de base do harness de
+ * fidelidade.
  *
  * **Isto é uma limitação de fonte, não de tradução.** A interface continua no
  * idioma escolhido; só a data impressa na imagem muda. O endereço é caso à
@@ -163,6 +237,25 @@ export const STAMP_LOCALE: Record<Locale, Locale> = {
   ja: 'en',
   ko: 'en',
   ar: 'en',
+  // Fase 1 — latim / latim estendido / cirílico / grego: desenha.
+  hi: 'en',
+  sw: 'sw',
+  id: 'id',
+  ms: 'ms',
+  bn: 'en',
+  ur: 'en',
+  tr: 'tr',
+  vi: 'vi',
+  ro: 'ro',
+  uk: 'uk',
+  el: 'el',
+  pl: 'pl',
+  th: 'en',
+  fa: 'en',
+  sr: 'sr',
+  am: 'en',
+  cs: 'cs',
+  he: 'en',
 };
 
 /** `true` quando o carimbo consegue desenhar o idioma da interface. */

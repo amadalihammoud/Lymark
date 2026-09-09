@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Bấm dấu thời gian, ngày, ngày làm việc, địa chỉ và mã theo dõi trên ảnh của bạn  để ghi lại trường, kiểm tra trang web và chứng minh dịch vụ.",
+      "platform": "Nền tảng",
+      "privacy": "Chính sách bảo mật",
+      "privacyGeocoding": "Khi sử dụng GPS, hệ điều hành gửi các điều phối đến dịch vụ địa chỉ của Google hoặc Apple để có được địa chỉ. Đó là thông tin duy nhất để lại ở đây, và đó là hệ thống gửi nó, không phải Lymark.",
+      "privacyLocation": "Vị trí được sử dụng một lần mỗi lần chụp, chỉ để điền vào trường địa chỉ, và không được lưu trữ riêng biệt với các bức ảnh.",
+      "privacyOnDevice": "Các hình ảnh, địa chỉ và lịch sử chỉ ở trên thiết bị này. Tài khoản tồn tại cho đăng ký của bạn: máy chủ lưu trữ email và kế hoạch của bạn, và không bao giờ nhận được hình ảnh hoặc vị trí của bạn.",
+      "privacySection": "Sự riêng tư",
+      "sdk": "Expo SDK",
+      "terms": "Điều khoản sử dụng",
+      "title": "Về Lymark",
+      "version": "Phiên bản"
+    },
+    "account": {
+      "browserHint": "Đăng nhập xảy ra trong trình duyệt. Đăng nhập ở đó với tài khoản của bạn và ứng dụng kết nối tự động.",
+      "code": "Mã",
+      "codeSent": "Chúng tôi đã gửi mã đến {email}",
+      "connected": "Kết nối",
+      "continue": "Tiếp tục",
+      "deleteAccount": "xóa tài khoản",
+      "email": "Email",
+      "failed": "Không có hiệu quả, kiểm tra email hay mã và thử lại.",
+      "notConfigured": "Đăng nhập chưa sẵn sàng trong bộ này.",
+      "signInBrowser": "Nhập vào thông qua trình duyệt",
+      "signOut": "Đăng ký ra",
+      "signedInAs": "Được ký tên là {email}",
+      "title": "Tài khoản",
+      "verify": "Kiểm tra"
+    },
+    "batch": {
+      "addressHint": "Phố, số  Thành phố",
+      "clearList": "Danh sách rõ ràng",
+      "codeHint": "Ví dụ: LYM-001",
+      "done": "{count, plural, other {Đã xử lý xong: # ảnh.}}",
+      "doneSection": "Kết thúc",
+      "dropZone": "Nhổ và thả ảnh ở đây, hoặc sử dụng nút Select photos",
+      "errorsSection": "Hầm",
+      "folder": "Dữ liệu: {name}",
+      "noPhotos": "Chọn ít nhất một bức ảnh.",
+      "outputNote": "Những bức ảnh được xử lý được lưu vào thư mục được chọn.",
+      "outputSection": "Tạo ra",
+      "photosSection": "Hình ảnh để xử lý",
+      "processing": "- Lấy lại...",
+      "progress": "{current} của {total} ({percent}%)",
+      "results": "{success, plural, other {# thành công}}, {failed, plural, other {# thất bại}}",
+      "selectFolder": "Chọn thư mục đầu ra",
+      "selectPhotos": "Chọn hình ảnh",
+      "selected": "{count, plural, other {Đã chọn # ảnh}}",
+      "sharedNote": "Những giá trị này được áp dụng cho tất cả các bức ảnh.",
+      "sharedSection": "Mét-đồ sơ chia sẻ",
+      "start": "Bắt đầu xử lý",
+      "unavailableBody": "Tính năng này chỉ dành cho máy tính để bàn.",
+      "unavailableTitle": "Việc xử lý lô không có sẵn"
+    },
+    "capture": {
+      "accuracy": "Vị trí trong ±{meters} m.",
+      "accuracyImprecise": "Đường ±{meters} m  kiểm tra số đường trước khi xuất khẩu.",
+      "address": "Địa chỉ",
+      "addressFailedTitle": "Không có địa chỉ nào được tìm thấy",
+      "addressHint": "Nhấp vào vị trí, hoặc nhập địa chỉ",
+      "camera": "Tạo ảnh",
+      "code": "Mã",
+      "dateHint": "Ngày 1 tháng 1 năm 2026",
+      "dateTimeGroup": "Ngày và giờ",
+      "emptyWarning": "Không có dữ liệu nào sẽ được dán dấu  ảnh sẽ xuất hiện mà không có dấu nước.",
+      "gallery": "Chọn từ phòng trưng bày",
+      "galleryDenied": "Phiên bản truy cập ảnh đã bị từ chối, vì vậy hình ảnh chỉ tồn tại trong ứng dụng. Cho phép nó trong Settings › Permissions để lưu nó vào phòng trưng bày.",
+      "galleryFailed": "Hình ảnh đã được ghi lại trong lịch sử, nhưng thiết bị từ chối viết nó vào phòng trưng bày.",
+      "generateCode": "Tạo ra",
+      "hiddenFields": "{count, plural, other {Trường ẩn}}: {fields} — bật trong Cài đặt › Trường và vị trí.",
+      "keepMyAddress": "Hãy giữ cái của tôi.",
+      "locate": "Đặt chỗ",
+      "locateByGps": "Địa chỉ bằng GPS",
+      "lookup": {
+        "denied": "Cho phép vị trí trong Settings › Permissions, hoặc nhập địa chỉ.",
+        "disabled": "Địa điểm trên thiết bị bị bị tắt. Đưa nó vào cài đặt nhanh và thử lại.",
+        "timeout": "GPS không trả lời đúng giờ. Nó thường thất bại trong nhà.",
+        "unavailable": "Địa chỉ không thể giải quyết ở vị trí này."
+      },
+      "newCapture": "Bắt đầu một cuộc bắt giữ mới",
+      "noFieldsBack": "Trở lại.",
+      "noFieldsContinue": "Dù sao thì tiếp tục đi.",
+      "noFieldsMessage": "Không có trường nào có gì để dán dấu. Sẵn đi vào các trường hoặc xem Settings › Fields and position.",
+      "noFieldsTitle": "Hình ảnh sẽ xuất hiện mà không có dấu nước",
+      "noPhotoHint": "Hãy chụp ảnh hoặc chọn một bức ảnh từ phòng trưng bày để bắt đầu.",
+      "noPhotoSelected": "Không có ảnh được chọn",
+      "openFailed": "Hình ảnh không thể mở được.",
+      "permissionMessage": "Cho phép truy cập trong Settings › Permissions để tiếp tục.",
+      "permissionTitle": "Giấy phép cần thiết",
+      "pickPhoto": "Chọn một bức ảnh",
+      "pickPhotoHint": "Chọn một bức ảnh để kích hoạt các hành động.",
+      "previewLabel": "Hình trước của bức ảnh có dấu nước",
+      "renderFailedTitle": "Không thể tạo hình ảnh",
+      "replaceAddressMessage": "GPS được tìm thấy: {address}",
+      "replaceAddressTitle": "Thay địa chỉ mà anh gõ?",
+      "resetConfirm": "Thả đi",
+      "resetMessage": "Hình ảnh được chọn và các trường được lấp sẽ bị loại bỏ.",
+      "resetTitle": "Bắt đầu bắt một con người mới?",
+      "saved": "Hình ảnh được lưu vào bộ sưu tập thiết bị và lịch sử.",
+      "savedAppOnlyTitle": "Chỉ được lưu trong Lymark",
+      "shareDialogTitle": "Chia sẻ hình ảnh có dấu nước",
+      "shareFailedMessage": "Hình ảnh đã được tạo ra và nằm trong lịch sử Lymark. Bạn có thể chia sẻ nó từ tab Gallery.",
+      "shareFailedTitle": "Không thể chia sẻ",
+      "shareUnavailableMessage": "Thiết bị này không có tờ cổ phần.",
+      "shareUnavailableTitle": "Không có chia sẻ",
+      "sharedFileTitle": "Hình ảnh có dấu nước",
+      "stampNotReady": "Bức tim vẫn đang được chuẩn bị.",
+      "syncNow": "Giờ thì",
+      "timestamp": "Ngày/Thời gian",
+      "title": "Tận bắt",
+      "useGpsAddress": "Sử dụng GPS",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Ngày"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "chọn màu khác",
+      "saturationBrightness": "Sự bão hòa và độ sáng",
+      "use": "Sử dụng màu này"
+    },
+    "common": {
+      "back": "Trở lại",
+      "cancel": "Tháo lại",
+      "delete": "Xóa",
+      "error": "Trận lỗi",
+      "gotIt": "Được rồi.",
+      "loading": "Lái...",
+      "no": "Không",
+      "ok": "Được rồi.",
+      "save": "- Cứu",
+      "share": "Chia sẻ",
+      "success": "Thành công",
+      "tryAgain": "Cố lại đi.",
+      "unknownError": "Hầm không rõ",
+      "yes": "- Phải."
+    },
+    "gallery": {
+      "cancelSelection": "Cancel chọn",
+      "clear": "Lịch sử rõ ràng",
+      "clearConfirm": "Rõ ràng",
+      "clearMessage": "Các hồ sơ của Lymark sẽ bị xóa.",
+      "count": "{count, plural, other {Đã xuất # ảnh}}",
+      "delete": "Xóa",
+      "empty": "Không có hình ảnh nào.",
+      "emptyAction": "Đi bắt",
+      "emptyDescription": "Những bức ảnh mà bạn xuất khẩu với dấu nước sẽ xuất hiện ở đây, với ngày, địa điểm và mã.",
+      "filteredCount": "{shown} / {total, plural, other {# ảnh}}",
+      "noResults": "Không có hình ảnh nào được tìm thấy cho {query}.",
+      "photoLabel": "Ảnh từ {when}",
+      "removeMessage": "Các mục xuất hiện từ Lymark. Hình ảnh đã lưu trong bộ sưu tập thiết bị không bị ảnh hưởng.",
+      "removeTitle": "{count, plural, one {Xóa khỏi lịch sử} other {Xóa # mục}}",
+      "removed": "{count, plural, other {Đã xóa mục.}}",
+      "saveDeniedMessage": "Cho phép trong Settings › Permissions để lưu hình ảnh vào bộ sưu tập thiết bị.",
+      "saveDeniedTitle": "Nhận ảnh bị từ chối",
+      "savedAll": "{count, plural, one {Đã lưu một ảnh vào thư viện thiết bị.} other {Đã lưu # ảnh vào thư viện thiết bị.}}",
+      "savedSome": "{saved} của {total} ảnh được lưu.",
+      "searchPlaceholder": "Tìm kiếm theo địa chỉ, ngày hoặc mã",
+      "selectedCount": "{count, plural, other {Đã chọn # ảnh}}",
+      "share": "Chia sẻ",
+      "title": "Phòng trưng bày"
+    },
+    "language": {
+      "automatic": "Thiết bị phù hợp",
+      "automaticNote": "Lymark theo dõi ngôn ngữ được thiết lập trên thiết bị của bạn.",
+      "label": "Ngôn ngữ",
+      "selector": "Chọn ngôn ngữ"
+    },
+    "login": {
+      "access": "Nhập vào để truy cập",
+      "apple": "Đăng nhập với Apple",
+      "google": "Đăng nhập với Google",
+      "subtitle": "Đăng nhập để tiếp tục",
+      "title": "Nhập vào để truy cập Lymark"
+    },
+    "nav": {
+      "batch": "Chuyển khai hàng loạt",
+      "photoDetail": "Thông tin chi tiết về ảnh",
+      "report": "Báo cáo PDF",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Màn hình này không phải là một phần của Lymark.",
+      "screenTitle": "Trang không tìm thấy",
+      "title": "Không có con đường như vậy"
+    },
+    "permissions": {
+      "allow": "Cho phép",
+      "allowed": "Được phép",
+      "blocked": {
+        "later": "Không phải lúc này.",
+        "message": "Hệ thống sẽ không hỏi lại. Để cho phép, hãy mở cài đặt thiết bị của bạn.",
+        "openSettings": "Mở cài đặt",
+        "title": "Kiểm soát"
+      },
+      "camera": "Máy ảnh",
+      "cameraRationale": "Cần chụp ảnh để nhận dấu nước.",
+      "denied": "Chưa được",
+      "granted": "Được chấp thuận",
+      "intro": "Lymark chỉ hỏi những gì nó cần để dán dấu một bức ảnh. Hình ảnh của bạn không bao giờ rời khỏi thiết bị: khi bạn sử dụng GPS, hệ điều hành gửi cho dịch vụ bản đồ chỉ định tuyến, vì vậy nó có thể trở thành một địa chỉ.",
+      "location": "Địa điểm",
+      "locationRationale": "Đơn vị này sẽ tự động điền vào trường địa chỉ khi bạn chụp.",
+      "mediaLibrary": "Cung cấp cho phòng trưng bày",
+      "mediaLibraryRationale": "Để viết ảnh xuất khẩu vào bộ sưu tập thiết bị.",
+      "openDeviceSettings": "Cài đặt",
+      "recheck": "Hãy kiểm tra lại.",
+      "request": "Ứng dụng yêu cầu cho phép",
+      "section": "Phiên bản",
+      "title": "Giấy phép"
+    },
+    "photo": {
+      "backToGallery": "Trở lại phòng trưng bày",
+      "exportedAt": "Xuất khẩu bằng {when}",
+      "noWatermark": "Ảnh này được xuất khẩu mà không có dấu nước.",
+      "notFoundBody": "Có thể ghi chép này đã bị xóa khỏi lịch sử.",
+      "notFoundTitle": "Hình ảnh không tìm thấy",
+      "remove": "Tắt",
+      "removeBody": "Phiên bản rời khỏi Lymark.",
+      "removeTitle": "Tắt khỏi lịch sử",
+      "share": "Chia sẻ",
+      "stampedData": "Dữ liệu được đánh dấu"
+    },
+    "plan": {
+      "exhausted": "Những bức ảnh miễn phí đã sử dụng",
+      "exhaustedMessage": "12 bức ảnh của kế hoạch miễn phí đã biến mất.",
+      "free": "Tự do",
+      "pro": "Tương tự",
+      "reconnect": "Kết nối lại để xác nhận đăng ký của bạn",
+      "remaining": "{remaining, plural, other {Còn # ảnh miễn phí}}",
+      "title": "Kế hoạch",
+      "unlimited": "Không giới hạn"
+    },
+    "report": {
+      "allPhotos": "Tất cả hình ảnh",
+      "authorField": "Tác giả / công ty",
+      "detailsSection": "Chi tiết",
+      "doc": {
+        "author": "Tác giả",
+        "declaration": "Dữ liệu được đeo dấu (địa chỉ, ngày, giờ và mã) là một tuyên bố của người phát hành hình ảnh.",
+        "exportedAt": "Xuất khẩu trên",
+        "generatedAt": "Được tạo ra trên",
+        "page": "Trang",
+        "photo": "Ảnh: {index}",
+        "photosSection": "Các hồ sơ chụp ảnh",
+        "signature": "chữ ký của người chịu trách nhiệm",
+        "summary": "Tổng kết",
+        "title": "Báo cáo ảnh",
+        "totalPhotos": "Tổng số hình ảnh:"
+      },
+      "empty": "Không có ảnh xuất khẩu nào, báo cáo được xây dựng từ phòng trưng bày của ông.",
+      "failed": "Không thể tạo ra báo cáo.",
+      "fileStem": "báo cáo",
+      "format": {
+        "csv": "bảng tính (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Bao bì (ZIP)"
+      },
+      "formatSection": "Phương thức",
+      "generate": "Tạo file",
+      "generateSection": "Tạo ra",
+      "includeLogo": "Logo trên bìa",
+      "includeLogoDescription": "Logo thương hiệu của bạn, giống như nhãn hiệu.",
+      "norm": {
+        "abnt": "ABNT (Brazil)",
+        "din5008": "DIN 5008 (Đức)",
+        "ibape": "Thiết kế IBAPE (Brazil)",
+        "iso": "Quốc tế",
+        "letter": "Bức thư (Mỹ)"
+      },
+      "normNote": "Tiêu chuẩn đặt giấy và định dạng  biên, chữ và số trang. Nội dung báo cáo đều giống nhau trong tất cả chúng; phong cách IBAPE thêm một khối chữ ký.",
+      "normSection": "Tiêu chuẩn tài liệu",
+      "projectsSection": "Dự án / công việc",
+      "saved": "Được lưu vào {path}",
+      "savedShort": "Báo cáo được lưu.",
+      "title": "Báo cáo PDF",
+      "titleField": "Tiêu đề báo cáo",
+      "unavailableBody": "Các báo cáo PDF có sẵn trong ứng dụng máy tính để bàn.",
+      "unavailableTitle": "Chỉ dành cho máy tính để bàn",
+      "uncoded": "Không có mã",
+      "wordTooBig": "Tài liệu Word đã quá lớn với các bức ảnh nhúng. sử dụng PDF hoặc gói ZIP.",
+      "zipMissing": "{count, plural, other {Đã lưu gói, nhưng không tìm thấy # ảnh trên thiết bị.}}"
+    },
+    "settings": {
+      "about": "Về",
+      "aboutDescription": "Phiên bản, quyền riêng tư và tín dụng",
+      "appSection": "App",
+      "deviceSection": "Thiết bị",
+      "deviceSectionDescription": "Nhập vào yêu cầu của Lymark.",
+      "fields": "Các trường và vị trí",
+      "fieldsDescription": "Chọn các trường hiển thị, góc và kích thước",
+      "history": "Lịch sử",
+      "historyDescription": "Hình ảnh xuất khẩu được lưu giữ trên thiết bị",
+      "language": "Ngôn ngữ",
+      "permissions": "Giấy phép",
+      "permissionsDescription": "Máy ảnh, ảnh và vị trí",
+      "save": "- Cứu",
+      "title": "Cài đặt",
+      "watermark": "Hình mờ",
+      "watermarkSection": "Watermark",
+      "watermarkSectionDescription": "Cái gì được dán dấu trên bức ảnh, và ở đâu."
+    },
+    "signup": {
+      "subtitle": "Đăng ký để bắt đầu",
+      "title": "Tạo tài khoản Lymark của bạn"
+    },
+    "tagline": "Biểu tượng nước với thời gian, ngày và địa điểm",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Không có khả năng truy cập máy ảnh.",
+      "done": "Video được dán dấu và lưu.",
+      "export": "Video xuất khẩu bằng dấu",
+      "exportSection": "Xuất khẩu",
+      "failed": "Video không thể được dán.",
+      "fieldsSection": "Các trường dấu ấn",
+      "fileSection": "Video",
+      "none": "Không có video nào được chọn.",
+      "processing": "Phân biến... {percent}%",
+      "processingMobile": "- Lấy lại...",
+      "record": "Đăng video ngay bây giờ",
+      "saved": "Được lưu vào {path}",
+      "savedToGallery": "Video được lưu vào phòng trưng bày của bạn.",
+      "select": "Chọn video",
+      "unavailableBody": "Đánh dấu video di động cần Lymark được cài đặt từ một bộ phận xây dựng EAS (với mô-đun gốc). Nó không có sẵn trong Expo Go. Sắp đặt ứng dụng chính thức từ cửa hàng hoặc bộ phận xây dựng EAS, hoặc sử dụng phiên bản máy tính để bàn / web.",
+      "unavailableTitle": "Cần cài đặt ứng dụng",
+      "unreadable": "Dữ liệu không thể đọc được như một video.",
+      "webNote": "Trong trình duyệt, video được xử lý trong thời gian thực. Một video 2 phút mất 2 phút và xuất hiện theo định dạng WebM. Đối với các video dài, sử dụng ứng dụng máy tính để bàn."
+    },
+    "watermark": {
+      "accentColor": "Dải dọc",
+      "backdropBandNote": "Nhóm băng chạy từ cạnh sang cạnh trên bức ảnh và nằm trên biên mà con dấu được neo. Trên một cảnh bận rộn  một trang nhà xây dựng, một sân, một mặt tiền đông đúc  nó đọc như tiêu đề tài liệu  thay vì một nhãn dán được đặt trên đầu.",
+      "backdropBlockNote": "Các nền theo kích thước của văn bản, với nhai xung quanh nó.",
+      "backdropColor": "Màu băng",
+      "backdropDescription": "Giữ sự tương phản trên các vùng sáng của bức ảnh.",
+      "backdropInnerRadius": "Các góc bên trong",
+      "backdropOpacity": "Nhìn trộm",
+      "backdropOpacityValue": "{percent}% không minh bạch",
+      "backdropRadius": "Các góc tròn",
+      "backdropRadiusSquare": "Phẳng",
+      "backdropStyles": {
+        "band": "Phạm vi rộng đầy đủ",
+        "block": "Đằng sau văn bản",
+        "none": "Không có"
+      },
+      "backdropTitle": "Nhóm hỗ trợ",
+      "brandDescription": "Trên đồng hồ nó trở thành một chữ ký, với logo và khẩu hiệu.",
+      "brandFirstColor": "Màu của phần đầu tiên",
+      "brandFirstHint": "Các nhà xây dựng",
+      "brandFirstPart": "Phần đầu tiên",
+      "brandNote": "Để phần thứ hai trống để có dấu hiệu màu đơn.",
+      "brandPlacements": {
+        "corner": "Trong một góc",
+        "header": "Trên đồng hồ",
+        "none": "Không có"
+      },
+      "brandSecondColor": "Màu của phần thứ hai",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Phần thứ hai",
+      "brandTitle": "Chứng chỉ dấu",
+      "codeDescription": "Bên cạnh đó nó không cạnh tranh với bức tranh.",
+      "codePlacements": {
+        "block": "Bên cạnh dữ liệu",
+        "side": "Bên phải"
+      },
+      "codeTitle": "Mã ảnh",
+      "colors": {
+        "amber": "Amber",
+        "black": "Đen",
+        "blue": "Màu xanh",
+        "green": "Sơn xanh",
+        "red": "Đỏ",
+        "white": "Trắng"
+      },
+      "colorsDescription": "Màu sắc trên bức ảnh là sự lựa chọn của công ty, không phải ứng dụng thay đổi nó ở đây không thay đổi màu sắc màn hình.",
+      "colorsTitle": "Màu sắc dấu ấn",
+      "complement": "Tagline",
+      "complementColor": "Màu sắc thẻ",
+      "complementHint": "Chuyến kiểm tra và báo cáo kỹ thuật",
+      "cornerConflict": "Các dấu hiệu và dữ liệu ở cùng một góc  chúng sẽ chồng chéo trên ảnh.",
+      "fields": {
+        "address": "Địa chỉ / Địa điểm",
+        "code": "Mã ảnh",
+        "date": "Ngày",
+        "time": "Thời gian",
+        "weekday": "Ngày trong tuần"
+      },
+      "fieldsDescription": "Chỉ những trường có nội dung và có nội dung mới đạt đến ảnh.",
+      "fieldsTitle": "Các trường được hiển thị",
+      "includeCountry": "Bao gồm cả quốc gia",
+      "includeCountryDescription": "Đưa nó vào nếu bạn làm việc xuyên biên giới, nếu không nó chỉ có chỗ trong ảnh.",
+      "legibilityTitle": "Đọc được",
+      "logoAdded": "Logo được thêm vào tiêu đề thương hiệu.",
+      "logoAlignNote": "Độ cao logo theo văn bản: phía trên của nó phù hợp với phía trên của tên và phía dưới của nó với đường cơ bản của dòng chữ.",
+      "logoChosen": "Logo được chọn",
+      "logoErrorMessage": "Hãy thử một hình ảnh khác. Một PNG với nền minh bạch là định dạng hoạt động tốt nhất.",
+      "logoErrorTitle": "Dữ liệu này không thể được sử dụng",
+      "logoFormatNote": "Sử dụng PNG với nền minh bạch. Một JPG với nền trắng trở thành hình chữ nhật trắng trên ảnh  định dạng không lưu trữ tính minh bạch, và ứng dụng không có cách nào để đoán được nền là gì.",
+      "logoPermissionMessage": "Cho phép trong Settings › Permissions để chọn tệp logo.",
+      "logoPermissionTitle": "Nhận ảnh bị từ chối",
+      "logoPick": "Chọn logo",
+      "logoPosition": "Vị trí logo",
+      "logoPositionBlock": "Với dấu ấn",
+      "logoRemove": "Tắt",
+      "logoReplace": "Thay thế logo",
+      "logoSize": "Kích thước logo",
+      "positionDescription": "góc của bức ảnh khối được gắn với.",
+      "positionTitle": "Tầm nhìn",
+      "positions": {
+        "bottom-left": "Dưới bên trái",
+        "bottom-right": "Dưới phải",
+        "top-left": "Ở phía trên bên trái",
+        "top-right": "Ở trên bên phải"
+      },
+      "previewCurrent": "Trên bức ảnh hiện tại từ tab Capture.",
+      "previewEmpty": "Từ ánh sáng đến tối, để kiểm tra khả năng đọc ở cả hai cực.",
+      "previewNoFields": "Không có trường được chọn  ảnh sẽ xuất hiện mà không có dấu nước.",
+      "previewTitle": "Xem trước",
+      "reset": "Khôi phục các mặc định",
+      "sizeTitle": "kích thước văn bản",
+      "sizes": {
+        "large": "Lớn",
+        "medium": "Trung bình",
+        "small": "Tự động"
+      },
+      "textColor": "Bài viết",
+      "timeFormatDescription": "Làm thế nào thời gian được lấp vào các trường.",
+      "timeFormatTitle": "Khung thời gian",
+      "timeFormats": {
+        "12h": "12 giờ (AM/PM)",
+        "24h": "24 giờ"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Tất cả các tệp",
+      "images": "Hình ảnh",
+      "pickFolder": "Chọn thư mục đầu ra",
+      "pickPhoto": "Chọn ảnh",
+      "pickPhotos": "Chọn hình ảnh cho lô",
+      "savePhoto": "Bảo lưu ảnh",
+      "saveReport": "Save report"
+    },
+    "login": {
+      "cancel": "Tháo lại",
+      "confirm": "Tiếp tục",
+      "message": "Anh vừa đăng nhập qua trình duyệt.",
+      "title": "Đăng nhập vào Lymark"
+    },
+    "menu": {
+      "copy": "Tải lại",
+      "cut": "Giảm",
+      "edit": "Đổi chỉnh",
+      "file": "File",
+      "fullscreen": "màn hình đầy đủ",
+      "help": "Giúp",
+      "paste": "Bơ",
+      "quit": "Quên đi.",
+      "redo": "Redo",
+      "reload": "Lắp lại",
+      "selectAll": "Chọn tất cả",
+      "settings": "Cài đặt",
+      "undo": "Tháo bỏ",
+      "view": "Xem",
+      "zoomIn": "Zoom vào",
+      "zoomOut": "Zoom out",
+      "zoomReset": "Kích thước thực tế"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Trở về nhà",
+      "openApp": "Mở ứng dụng",
+      "photos": "Hình ảnh",
+      "photosLeft": "{remaining} của {quota} bên trái",
+      "plan": "Kế hoạch",
+      "planUnavailable": "Không có sẵn ngay bây giờ",
+      "plans": {
+        "free": "Tự do",
+        "pro": "Tương tự"
+      },
+      "signInTitle": "Đăng nhập",
+      "signOut": "Đăng ký ra",
+      "signUpTitle": "Tạo tài khoản",
+      "subscribe": "Đăng ký Lymark Pro",
+      "subscribeSoon": "Các đăng ký chưa có sẵn. Khi có, bạn sẽ có thể đăng ký ở đây và sử dụng bất kỳ thiết bị nào có cùng tài khoản.",
+      "title": "Tài khoản của bạn",
+      "revokeDesktops": "Tháo máy tính",
+      "revokeDesktopsHint": "Kết thúc truy cập ứng dụng trên mọi máy tính. Bạn có thể đăng nhập lại bất cứ khi nào bạn muốn."
+    },
+    "availability": {
+      "contact": "Để theo dõi việc ra mắt hoặc báo cáo một vấn đề, hãy viết thư đến <email>contato@lymark.app</email>.",
+      "description": "Lymark đang ở phiên bản 1.3.0, trong quá trình thử nghiệm trên Android trước khi được xuất bản trên Google Play. Không có phiên bản iOS và không có phiên bản web, và ứng dụng không thu phí.",
+      "title": "Sự sẵn có"
+    },
+    "data": {
+      "device": {
+        "description": "Tài khoản tồn tại cho đăng ký của bạn: máy chủ lưu trữ email và kế hoạch của bạn, và không bao giờ nhận được ảnh hoặc vị trí của bạn. Lịch sử lưu trữ hai trăm xuất khẩu cuối cùng trong các tệp của ứng dụng.",
+        "field": "Trên thiết bị",
+        "heading": "Hình ảnh, địa chỉ và lịch sử"
+      },
+      "external": {
+        "description": "Để biến vĩ độ và độ dài thành địa chỉ có thể đọc được, hệ điều hành hỏi dịch vụ mã hóa địa lý của Google hoặc Apple. Đó là thông tin duy nhất để lại, và hệ thống gửi nó, không phải ứng dụng.",
+        "field": "Tắt thiết bị",
+        "heading": "Chỉ chuyển đổi một tọa độ thành địa chỉ"
+      },
+      "note": "Tất cả đều được đặt ra  bao gồm cả điều đó có nghĩa là trong Brazil LGPD  trong <privacy>Chính sách bảo mật</privacy>. Khóa quyền vị trí làm cho ứng dụng hoạt động đầy đủ; chỉ cần nhập trường địa chỉ bằng tay.",
+      "title": "Dưới đây là dữ liệu của bạn"
+    },
+    "deleteAccount": {
+      "back": "Trở lại với kế toán",
+      "confirm": "Xóa tài khoản của tôi",
+      "deletesNow": "Việc xóa tài khoản của bạn sẽ xóa ngay email, nhận dạng của bạn, và hồ sơ kế hoạch, hạn ngạch và số ảnh của bạn.",
+      "irreversible": "Việc xóa là vĩnh viễn và không thể hủy bỏ. Những bức ảnh trên thiết bị của bạn không bị ảnh hưởng  chúng chưa bao giờ trên máy chủ của chúng tôi.",
+      "retained": "Các hồ sơ giao dịch thanh toán được lưu giữ trong thời gian tài chính theo pháp luật, không liên kết với hồ sơ của bạn.",
+      "title": "xóa tài khoản"
+    },
+    "description": "Ứng dụng Android đánh dấu thời gian, ngày, ngày làm việc, địa chỉ và mã theo dõi trên các bức ảnh kiểm tra trang web và chứng minh dịch vụ.",
+    "desktop": {
+      "backAccount": "Trở lại với kế toán",
+      "explanation": "Tài khoản của bạn đã sẵn sàng. Bấm vào nút dưới đây để mở Lymark trên máy tính của bạn đã đăng nhập  trình duyệt sẽ yêu cầu sự cho phép mở ứng dụng.",
+      "open": "Kết nối ứng dụng",
+      "title": "Nhập vào trên máy tính để bàn",
+      "unavailable": "Kết nối ứng dụng máy tính để bàn vẫn chưa có sẵn."
+    },
+    "download": {
+      "appStore": {
+        "description": "Tác nghiệm tương tự như Android, trên iOS.",
+        "field": "App Store",
+        "heading": "iPhone và iPad"
+      },
+      "browser": {
+        "action": "Đăng nhập",
+        "description": "Nhập vào với tài khoản của bạn và ứng dụng sẽ mở ngay trong trình duyệt  điện thoại hoặc máy tính.",
+        "field": "Browser",
+        "heading": "Sử dụng nó ngay bây giờ, không có gì để cài đặt"
+      },
+      "desktop": {
+        "description": "Các lô hình ảnh, video dài và báo cáo PDF  phiên bản hạng nặng.",
+        "field": "Máy tính",
+        "heading": "Windows và Linux"
+      },
+      "googlePlay": {
+        "description": "Ứng dụng điện thoại, với máy ảnh, phòng trưng bày và video được đếm dấu.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Tới đây thôi.",
+      "title": "Sử dụng Lymark ở đâu"
+    },
+    "features": {
+      "address": {
+        "description": "Các loại đường phố được rút ngắn và trạng thái trở thành mã của nó, vì vậy địa chỉ phù hợp trong hai dòng mà không bao gồm bức ảnh. Nếu bạn gõ trước khi GPS trả lời, điều bạn gõ thắng.",
+        "field": "Địa chỉ",
+        "heading": "Được lấp đầy bằng GPS, có thể sửa bằng tay"
+      },
+      "code": {
+        "description": "Nó tồn tại để bạn có thể trích dẫn một bức ảnh cụ thể trong một thứ tự làm việc hoặc báo cáo. Nó chạy xoay xuống cạnh phải, hoặc nằm với khối dữ liệu  tùy chọn của bạn.",
+        "field": "Mã ảnh",
+        "heading": "14 ký tự, được vẽ bởi một máy phát điện mã hóa"
+      },
+      "note": "Mỗi trường tự động bật và tắt, và khối được neo vào bất kỳ góc nào trong bốn góc, trong ba kích thước.",
+      "time": {
+        "description": "Một nút sẽ đưa cả ba trường trở lại hiện tại khi chụp mất nhiều thời gian hơn dự kiến.",
+        "field": "Thời gian và ngày",
+        "heading": "Từ đồng hồ thiết bị, tại thời điểm bắt giữ"
+      },
+      "title": "Điều gì sẽ vào hình ảnh"
+    },
+    "footer": {
+      "description": "Lymark  ghi lại hình ảnh với ngày, giờ và địa chỉ.",
+      "documentsLabel": "Tài liệu",
+      "privacy": "Chính sách bảo mật",
+      "support": "Hỗ trợ:",
+      "terms": "Điều khoản sử dụng"
+    },
+    "hero": {
+      "ctaAccount": "Đi vào tài khoản của tôi",
+      "ctaLogin": "Đăng nhập",
+      "ctaSignup": "Tạo tài khoản miễn phí",
+      "description": "Lymark dán dấu thời gian, ngày, ngày làm việc, địa chỉ và mã theo dõi trực tiếp vào hình ảnh. tệp xuất hiện từ ứng dụng mang thông tin bên trong nó  không phải là metadata đi cùng, mà WhatsApp đầu tiên đi trước loại bỏ.",
+      "eyebrow": "Tài liệu ảnh trường",
+      "heading": "Hình ảnh đã để lại điện thoại của bạn nói khi nào, ở đâu và gì.",
+      "meta": {
+        "account": "Tài khoản một lần",
+        "android": "Android và trình duyệt",
+        "language": "Tiếng Bồ Đào Nha Brazil",
+        "onDevice": "Những bức ảnh vẫn còn trên thiết bị"
+      },
+      "note": "Không có gì để cài đặt."
+    },
+    "nav": {
+      "account": "Tài khoản",
+      "home": "Nhà",
+      "homeLabel": "Lymark, trang đầu",
+      "label": "Đường chính",
+      "privacy": "Sự riêng tư",
+      "signIn": "Đăng nhập",
+      "terms": "Điều khoản",
+      "verify": "Kiểm tra"
+    },
+    "process": {
+      "capture": {
+        "description": "Việc tìm kiếm địa chỉ bắt đầu ngay khi bức ảnh được đưa vào. Các trường vẫn mở để điều chỉnh trong khi nó chạy.",
+        "field": "Tận bắt",
+        "heading": "Máy ảnh hoặc phòng trưng bày"
+      },
+      "note": "Hai hành động được giữ riêng biệt cố ý. Cung cấp và chia sẻ giải quyết các vấn đề khác nhau, và gấp chúng vào một nút sẽ kéo bất cứ ai chỉ muốn lưu hình qua màn hình gửi.",
+      "save": {
+        "description": "Nó nằm với phần còn lại của ảnh điện thoại của bạn, có sẵn cho bất kỳ ứng dụng  bao gồm cả sau khi bạn gỡ bỏ cài đặt Lymark.",
+        "field": "- Cứu",
+        "heading": "Đi vào bộ sưu tập thiết bị"
+      },
+      "share": {
+        "description": "WhatsApp, email, Drive: điểm đến được chọn bởi hệ điều hành, và ứng dụng không tham gia vào việc gửi.",
+        "field": "Chia sẻ",
+        "heading": "Mở sổ chia sẻ hệ thống"
+      },
+      "title": "Con đường mà một bức ảnh đi"
+    },
+    "skipToContent": "Trượt sang nội dung",
+    "specimen": {
+      "caption": "Quy tắc màu amber bắt đầu và kết thúc ở các cạnh của các chữ số, không phải của hộp văn bản.",
+      "label": "Mô hình dấu Lymark: giờ 07:42, ngày 12 tháng 8 năm 2026, thứ Tư, địa chỉ ở Guarujá và mã ảnh."
+    },
+    "title": "Lymark  ngày, giờ và địa chỉ dấu nước cho ảnh trường",
+    "verify": {
+      "caveat": "Mẫu mưu chứng minh tính toàn vẹn của hồ sơ và thời điểm phát hành.",
+      "checking": "- Tôi đang kiểm tra...",
+      "declarationNote": "Những gì dấu ấn cho thấy (số địa chỉ, ngày, giờ) là tuyên bố của nhà phát hành  dấu chứng minh tính toàn vẹn và phát hành, không phải nội dung.",
+      "intro": "Thả hoặc chọn một bức ảnh được Lymark xuất và xem ngay lập tức liệu nó có chính xác như nó đã rời khỏi ứng dụng  và ai đã phát hành nó, khi nào.",
+      "noSealBody": "Dữ liệu này không có dấu ấn Lymark. Nó có thể đã được xuất khẩu ngoài khơi, trước khi dấu hiệu tồn tại, hoặc có thể không đến từ Lymark.",
+      "noSealTitle": "Không có con dấu",
+      "notConfigured": "Việc xác minh chưa có sẵn.",
+      "pick": "Chọn tệp",
+      "previewAlt": "Hình ảnh xác minh, dấu ấn có thể nhìn thấy",
+      "privacyNote": "Việc xác minh diễn ra trong trình duyệt của bạn.",
+      "sealedBody": "Dữ liệu này chính xác như nó đã rời khỏi Lymark.",
+      "sealedTitle": "Không bị ảnh hưởng",
+      "tamperedBody": "Nội dung không phù hợp với con dấu: hồ sơ đã được sửa đổi sau khi phát hành, hoặc con dấu thuộc về một hồ sơ khác.",
+      "tamperedTitle": "Không phù hợp",
+      "title": "Kiểm tra tính xác thực",
+      "unsupported": "trình duyệt này không hỗ trợ xác minh chữ ký. Hãy thử trình duyệt hiện tại."
+    }
+  }
+}

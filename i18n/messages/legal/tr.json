@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Gizlilik Politikası",
+      "description": "Lymark uygulaması fotoğrafları, konumunuzu, geçmişinizi ve hesabınızı nasıl ele alıyor."
+    },
+    "title": "Gizlilik Politikası",
+    "updated": "Son güncelleştirilmiş: 16 Ağustos 2026 · Lymark uygulaması, sürüm 1.3.0",
+    "intro": "Bu politika, Lymark uygulamasının kişisel verileri nasıl ele aldığını açıklar. Bu, Lei no 13.709/2018 (Bütün Kişisel Veriler Koruma Yasası  LGPD) ve (AB) 2016/679 (Bütün Veriler Koruma Yönetimi  GDPR) ile uyumludur ve kimlik belirleyicisi altında dağıtılan uygulamaya uygulanır.<strong>com.lycosteam.lymark</strong>ve bu web sitesine.",
+    "s01": {
+      "title": "Tek cümleyle",
+      "p1": "Lymark <strong>fotoğraflarınızı ya da konumunuzu göndermez.</strong>. Uygulama tarafından üretilen her şey  resim, adres, tarih ve tercih  kendi cihazınızda, kontrolünüzde kalır. Uygulama kullanmak ve abonelik için gerekli olan bir hesap vardır: sunucu e-postalarınızı, hesap kimliğini, planınızı ve ihraç edilen fotoğrafların sayısını  ve başka hiçbir şey saklar.",
+      "p2": "05. maddeye göre tek bir istisna vardır: GPS koordinatlarını okuyabilir bir adrese dönüştürmek için, cihazın işletim sistemi dış bir jeokodlama hizmetine sorgular atar."
+    },
+    "s02": {
+      "title": "Bu politika kime uygulanır",
+      "p1": "Bu uygulama kullanan veya web sitesini ziyaret eden herkese uygulanır.Brasili'deki veri konularında işleme LGPD ve Ulusal Veri Koruma Kurumu (ANPD) tarafından denetlenir."
+    },
+    "s03": {
+      "title": "Kontrolü kim ?",
+      "p1": "Kişisel verilerin denetleyicisi  <em>kontrolci</em>LGPD  terminolojisinde 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25 olarak kayıtlı, Avenida Ana Costa, 433, Gonzaga, Santos - SP adresinde.",
+      "p2": "LGPD'in 41. maddesinin amacıyla kişisel verilerin işlenmesiyle sorumlu kişi Amad Ali Hammoud'dir.<email>contato@lymark.app</email>- İşlemin büyüklüğü ve doğasını göz önünde bulundurarak  bu işlem ne büyük çapta hassas verileri ne de sistematik bir izlemeyi içerir  bir işçi tayin etme zorunluluğu yoktur <em>Veriler Koruma Bakanı</em>GDPR'in 37. maddesine göre."
+    },
+    "s04": {
+      "title": "Uygulama hangi bilgileri ele alır",
+      "p1": "Aşağıdaki tüm bilgiler yalnızca cihazın içindeki uygulama özel alanında kaydedilir ve hiçbir şey geliştiricisine gönderilmez.",
+      "defs": {
+        "photos": {
+          "term": "Fotoğraflar",
+          "def": "Galeriden seçtiğiniz veya kamera ile çektiğiniz görüntü ve su işareti ile ihraç edilen dosya."
+        },
+        "location": {
+          "term": "Yerleşim",
+          "def": "Yaklaşık en genişlik ve uzunluk, fotoğraf başına bir kez elde edilen, adres alanını doldurma amacıyla. Koordinatlar kaydedilmez: fotoğrafın yanında sadece elde edilen adres metni saklanır."
+        },
+        "datetime": {
+          "term": "Tarih, saat ve haftalık gün",
+          "def": "Alım anında cihaz saatinden okuyun ve düzenlenebilir."
+        },
+        "code": {
+          "term": "Fotoğraf kodu",
+          "def": "14 altı asırlık karakterden oluşan bir dizide rastgele çizilmiştir. Ne bir cihaz kimliği ne de bir cihazınızdan kaynaklanmaktadır ve uygulamaların arasında izlemeyi mümkün kılmaz."
+        },
+        "history": {
+          "term": "Tarih",
+          "def": "Son 200 ihracatın kaydı, cihazdaki dosya yolu ve görüntüye damgalanmış verileri içerir."
+        },
+        "preferences": {
+          "term": "Tercihleri",
+          "def": "Görünen alanlar, konum, boyut ve diğer su işaretleri seçenekleri."
+        }
+      },
+      "p2": "Uygulama<strong>toplamaz</strong>: isim, e-posta, telefon, kimlik belgeleri, reklam kimliği, cihaz kimliği, iletişim verileri, takvim, tarama geçmişi, kullanım ölçütleri, kaza raporları veya sizin veya cihazınız hakkında diğer herhangi bir bilgi."
+    },
+    "s05": {
+      "title": "Cihazı terk eden tek bilgi",
+      "p1": "Yerleşim izni verdiğinizde, uygulama işletim sisteminden GPS koordinatlarını bir posta adresi haline getirmesini ister. Bu çevirisi  ters jeokodlama  işletim sistemi tarafından gerçekleştirilir, bu amaçla koordinatları harita hizmetine gönderir: <strong>Google</strong>Android cihazlarında ve <strong>Elma</strong>iOS cihazlarında.",
+      "p2": "Bu iletişim Lymark'tan değil işletim sisteminden gelir. Uygulama bir kopyası almaz, aracılık etmez ve geri gönderilen adresden başka bir şeye erişemez. Bu sağlayıcıların gerçekleştirdiği işleme kendi gizlilik politikaları ile yönetilir.",
+      "p3": "<strong>Hiçbir fotoğraf uygulamanın herhangi bir eyleminden cihazı terk etmez.</strong>Paylaş düğmesini kullanırsanız, görüntü, sistem paylaşım sayfasında seçtiğiniz hedef uygulaması tarafından aktarılır  messenger, e-posta, bulut depolama  bu uygulamanın gizlilik politikası altında."
+    },
+    "s06": {
+      "title": "İzinler talep edildi ve neden",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Su işareti alacak fotoğraf çekmek için. Sadece Take photo'e tıkladığınızda istenilir. Uygulama mikrofon erişimini istemez."
+        },
+        "photos": {
+          "term": "Fotoğraflar ve medya",
+          "def": "Kullanılan fotoğraflar için kullanılabilir. Bu uygulama sadece yazma için kullanılır."
+        },
+        "location": {
+          "term": "Kullanılırken konum",
+          "def": "Adres alanını doldurmak için. Ön planda istenen, sadece uygulama kullanılırken ve <strong>Asla arka planda</strong>."
+        }
+      },
+      "p1": "Tüm izinler seçmeli ve cihaz ayarlarında herhangi bir zamanda iptal edilebilir. Yerleşim reddetmek uygulamayı tamamen işlevsel tutar: adres daha sonra size yazılır. Galeriden erişimi reddetmek yalnızca otomatik kaydetmeyi engeller ve fotoğraf hala paylaşılabilir."
+    },
+    "s07": {
+      "title": "Yasal temeller ve amaçlar",
+      "p1": "Yerleşim işlemleri, sizin adresiniz üzerine yapılır.<strong>onay</strong> LGPD'in 7. maddesinin I. ve GDPR'in 6. maddesinin 1) a) maddesinin, sistem izinini verdiğinizde ifade edildiği ve iptal edilmeden önce yapılan işlemeyin yasallığına zarar vermeden, her zaman geri çekilebilir.",
+      "p2": "Geri kalan verilerin işlenmesi <strong>talep ettiğiniz özelliğin performansını göstermek</strong> LGPD'in 7. maddesinin V'si ve GDPR'in 6. maddesinin 1) b)'si, bu olmadan uygulamanın üretmesi için su işaretleri yoktur.",
+      "p3": "Hesap verilerinin işlenmesi bir sözleşmenin yerine getirilmesine dayanır (LGPD maddesinin 7, V; GDPR maddesinin 61) (b)). meşru ilgi üzerine işleme (LGPD maddesinin 7, IX; GDPR maddesinin 6(1) (f)) yalnızca güvenlik ve dolandırıcılık önlemesi için vardır  örneğin, isteklerin IP adresini sunucuya kaydetmek. Reklam, profilyasyon, davranışsal analiz veya herhangi bir ikinci amaç için işleme yoktur ve geliştiricinin özel kategorilerdeki verilerin veya hassas verilerin işlenmesi yoktur."
+    },
+    "s08": {
+      "title": "Uluslararası transfer",
+      "p1": "Hesap verileri, standart sözleşme şartlarına ve LGPD maddesinin 33 ve GDPR maddesinin mekanizmalarına dayanan uluslararası veri aktarımı oluşturan kimlik doğrulama işlemcisi (Clerk, Inc., ABD) tarafından işlenir. 44 ila 49.",
+      "p2": "Bu web sitesi, Vercel Inc. tarafından 14. maddeye göre barındırılır."
+    },
+    "s09": {
+      "title": "Üçüncü kişilerle paylaşım",
+      "p1": "Geliştiriciler kişisel verileri üçüncü taraflara paylaşmaz, satmaz, kiralamaz veya vermez.<em>işlemci</em>: Clerk, Inc., kimlik doğrulama hizmeti sağlayan ve e-posta, hesap kimliği ve plan verilerini depolayan, geliştirici  talimatlarına sözleşme bağlayan. Google veya Apple ile giriş yaparsanız, bu sağlayıcılar giriş verilerini kendi politikaları ile işliyor; geliştirici onlardan sadece hesabı oluşturmak için gerekli olan e-posta ve kimliği alır. Fotoğraflar, adresler ve konum hiçbir işlemciyle geçmez, çünkü asla cihazı terk etmezler."
+    },
+    "s10": {
+      "title": "Depolama, saklama ve güvenlik",
+      "p1": "Veriler uygulamaların özel alanında yer alır ve işletim sistemi tarafından uygulamalar arasında izolasyon ve cihazın ekran kilitliği tarafından korunur. Android sürümünde, sistemin otomatik yedekleme sistemi<strong>engelli</strong>, böylece geçmiş ve tercihler kullanıcı'nın Google hesabına gönderilmez.",
+      "p2": "Kayıtlama tamamen sizin kontrolünüzdedir: kayıtlar uygulamada silinene kadar kalır ve tarihsel kayıtlar iki yüz öğe geçtiğinde en eski olanları otomatik olarak atır ve ilgili dosyaları da çıkarır. Uygulama'yı kaldırmak, sakladığı her şeyi siler. Cihaz galerisi'nde zaten kaydedilen fotoğraflar galeriden gelir ve orada kalır.",
+      "p3": "Hiçbir sistem hatacı değildir. Hesap verileri  E-posta, kimlik, plan ve sayım  özgüven tedbirleri uyarınca kimlik doğrulama işlemcisi tarafından saklanır. Fotoğraflar, adresler ve konumlar merkezi bir deposu içinde bulunmaz ve bu nedenle geliştiricinin altyapısından sızdırılamaz. Bir güvenlik olayı hesabın verilerini etkileyecekse, geliştiriciler yetkiyi ve verilerin konularını LGPD maddesine göre bildirirler."
+    },
+    "s11": {
+      "title": "Başkalarını fotoğrafladığında",
+      "p1": "Profesyonel faaliyetiniz sırasında tanınabilir insanları fotoğrafladığınızda,<strong>Sen</strong>Bu verilerin, görüntülenen verilerin konusu ile ilgili olarak, işleyicisi olmak ve bu verilerin yasal temeli, bilgileri ve haklarına karşı tepki vermek sizin işiniz."
+    },
+    "s12": {
+      "title": "Hakların",
+      "p1": "LGPD'in 18. maddesinde ve GDPR'in 15.-22 maddeleri size onay ve erişim, düzeltme, silme, isimsizleştirme, engelleme, taşınabilirlik, işleme kısıtlaması, itiraz, onayın geri alınması ve paylaşım hakkındaki bilgiler hakkını garanti eder.",
+      "p2": "Fotoğraflar, adresler, tarih ve tercihler yalnızca cihazınızda bulunur ve bu haklar doğrudan uygulamada kullanılır: Galerisi sekmesindeki girişleri görüntüleyip silin, ihracat etmeden önce herhangi bir alanı düzeltin, sistem ayarlarında yerleşim iznini iptal edin ve uygulamayı kaldırarak her şeyi silin  geliştiricinin bu verilere erişemeyeceği, ihracat edemeyeceği veya silemeyeceği, çünkü bu verileri tutmuyor. Hesap verilerine gelince  E-posta, plan ve sayım  Hesap sayfasında görüntüleyebilir ve bu Politika'nın iletişim e-postalarında düzeltme, ihracat veya silme talep edebilirsiniz; Hesap silinmesi bu verileri doğrulama işlemcisinde siler.",
+      "p3": "Sorular veya resmi istekler için,<email>contato@lymark.app</email>Ayrıca, Başkanlık Dairesi'ne şikayet etme hakkınız var.<strong>ANPD</strong>, Brezilya'da veya Avrupa Birliği'nde, ülkenizin denetim organıyla."
+    },
+    "s13": {
+      "title": "Otomatik kararlar",
+      "p1": "LGPD'in 20. ve GDPR'in 22. maddesine göre, size yönelik yasal etkileri oluşturacak otomatik bir karar, profil oluşturma veya işleme yoktur."
+    },
+    "s14": {
+      "title": "Bu web sitesi hakkında",
+      "p1": "Bu sitede analiz yok, reklam göstermiyor ve sosyal ağ düğmeleri yerleştirilmiyor.<strong>Kesinlikle gerekli çerezler</strong>Hesabınız için oturum açtığınızda kimlik doğrulama işlemcisi tarafından belirlenen (madde 09); takip veya reklam çerezleri yoktur. Şifre sitenin kendi alanından servis edilir. Tarayıcılarınızın üçüncü taraflara yaptığı tek talepler, kimlik doğrulama işlemcisine () ve seçtiğiniz takdirde kimlik doğrulama sağlayıcısına (Google veya Apple) gönderilen kimlik doğrulama işlemcisi ve hesap ekranlarıdır.",
+      "p2": "Web sitesi <strong>Vercel Inc.</strong>, ki bir işlemci olarak teknik erişim verilerini kaydeder  IP adresi, tarih, saat ve talep edilen kaynak  barındırma güvenliği ve işlevi için gerekli olduğu sürece. Hukuki temellisi, hizmetin güvenliğini korumakla ilgili meşru çıkar, LGPD'in 7. maddesinin IX'i ve GDPR'in 6. maddesinin 1) f)"
+    },
+    "s15": {
+      "title": "Bu politika değişikliği",
+      "p1": "Bu sayfada yeni bir güncelleme tarihi ile değişiklikler yayınlanacak. Verilerin işlenmesini önemli ölçüde değiştiren değişiklikler, etkinleşmeden önce uygulamada da iletilecektir."
+    },
+    "s16": {
+      "title": "Çocuklar ve gençler",
+      "p1": "Lymark, 18 yaş ve üstü kişilere yönelik bir çalışma aracıdır."
+    },
+    "s17": {
+      "title": "Uygulanabilir hukuk",
+      "p1": "Bu politika, GDPR'nin kapsamına giren verilerin uygulanmasına engel olmadan Brezilya hukukuyla yönetilir."
+    },
+    "note": "Ayrıca <terms>Kullanım Şartları</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Kullanım Şartları",
+      "description": "Lymark uygulamasının kullanım koşulları: ne yaparsa, ne yapmasarsa ve fotoğrafların içeriği için kim sorumlu."
+    },
+    "title": "Kullanım Şartları",
+    "updated": "Son güncelleştirilmiş: 16 Ağustos 2026 · Lymark uygulaması, sürüm 1.3.0",
+    "intro": "Bu terimler, tanımlayıcı altında dağıtılan Lymark uygulamasının kullanımını yönlendirir <strong>com.lycosteam.lymark</strong>29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25 tarafından. Uygulama yükleyerek veya kullanarak, burada yazılanlara katılıyorsunuz.",
+    "s01": {
+      "title": "Uygulama ne yapar",
+      "p1": "Lymark, bir fotoğrafta bir bilgi kümesini  zaman, tarih, hafta günü, adres ve bir kimlik kodu  üzerine örtüyor ve piksellere yerleştirilmiş bu bilgi ile yeni bir görüntü dosyası oluşturur."
+    },
+    "s02": {
+      "title": "Uygulama ne yapmaz",
+      "p1": "Bu konu bu terimlerde en önemli konu ve dikkatle okunmasını rica ediyoruz.",
+      "items": {
+        "certify": "<strong>Uygulama hiçbir şeyi onaylamaz veya doğruluyor.</strong>Bu bir adli muayene değil, kamuya güvenen bir belge vermiyor ve uzman kanıt oluşturmuyor.",
+        "editable": "<strong>Her alan kullanıcı tarafından düzenlenebilir.</strong>Zaman, tarih, adres ve kod, ihracattan önce tasarlanmış olarak serbestçe değiştirilebilir: profesyonel GPS'in yanlış bir adres düzeltmek için yeterli olmalıdır. Sonuç olarak, damgalanmış değer, kullanıcının damgalamaya karar verdiğini yansıtır.",
+        "clock": "<strong>Zaman cihaz saatinden geliyor.</strong>, yanlış olabilir veya elle ayarlanmış olabilir.",
+        "address": "<strong>Adres tahmin.</strong>Dürüstlüğü GPS sinyali ve işletim sisteminin harita hizmetinin veritabanına bağlıdır.",
+        "code": "<strong>Fotoğraf kodu bir noter'in kayıtlı olduğu bir kayıt değildir.</strong>Bu, iç referans için rastgele bir tanımlayıcıdır ve hiçbir kanıt değeri yoktur."
+      },
+      "p2": "Kullanım durumunuzda üçüncü taraflara karşı yasal güç olan kanıt gerekirse, notaryal bir belge veya zaman damgası ile dijital sertifikasyon hizmetini arayın  Lymark her ikisinin yerine geçer."
+    },
+    "s03": {
+      "title": "Sorumluluklarınız",
+      "items": {
+        "photos": "Yaptığınız fotoğraflar, üzerindeki içerik ve oluşturulan dosyaların kullanımından yalnızca siz sorumlusunuz.",
+        "thirdParties": "Başka kişilerin, mülklerinin veya evlerinin fotoğraflarını çekerken, resimde yer alan kişilerle ilgili olarak gerekli izinleri almak ve görüntü haklarına, mesleki sırlara ve genel kişisel veriler koruma yasasına uymak size kalmıştır.",
+        "prohibited": "Uygulama ile sahte bir kayıt oluşturmak, kimseyi yanıltmak, sağlanmamış bir hizmetin gerçekleştirilmesini simüle etmek veya herhangi bir yasadışı eylem yapmak yasaktır.",
+        "backups": "Uygulama, yedekleme yapmayan sınırlı yerel geçmişi korur."
+      }
+    },
+    "s04": {
+      "title": "Kullanım izni",
+      "p1": "Uygulama yüklemesi ve kullanımına, profesyonel amaçlar dahil olmak üzere, size kişisel, iptal edilebilir, eşsiz ve aktarılamaz bir lisans veriyoruz. Uygulamaların tamamı veya kısmi olarak parçalanmasına, değiştirilmesine, yeniden dağıtılmasına veya ticarileştirilmesine izin verilmez.",
+      "p2": "<strong>Fotoğrafların senin.</strong>Yaptığınız veya oluşturduğunuz görüntüler üzerinde hiçbir hak talep etmiyoruz. Lymark adı, marka ve görsel kimliği geliştiriciye ait kalır."
+    },
+    "s05": {
+      "title": "Kullanılabilirlik ve güncellemeler",
+      "p1": "Uygulama mevcut haliyle sunulmaktadır.Sürekli çalışmanın, her bir cihazla uyumluluğun, düzeltmeler veya yeni sürümler için bir süreye bağlılığın hiçbir garantisi yoktur.",
+      "p2": "Dışarıya aktarılan resmin kalitesi cihaz ve işletim sistemine bağlıdır ve orijinal fotoğraftan daha düşük çözünürlükte olabilir."
+    },
+    "s06": {
+      "title": "Sorumluluk sınırlaması",
+      "p1": "Brezilya yasaları tarafından izin verilen en büyük ölçüde, geliştiricinin, uygulama tarafından oluşturulan fotoğrafın içeriğine karşı mahkeme veya dıştaki herhangi bir mücadeleden kaynaklanan dolaylı kayıplar, kayıp kârlar, veri kaybı veya damgalar için sorumlu olmadığı belirtilmiştir.",
+      "p2": "Bu sınırlama<strong>çıkarmaz</strong>Tüketicinin, 8.078/1990 sayılı yasa ile garanti edilen hakları ve kasıtlı yanlış davranış veya kaba ihmal için sorumlulukları."
+    },
+    "s07": {
+      "title": "Sonlandırma",
+      "p1": "Uygulama kullanımı her an sona erdirebilirsiniz: Hesabı silmek sunucudaki verilerini siler ve uygulamayı kaldırmak cihazda saklanan verileri siler. Ödenmiş abonelik olmadığı halde, iptal etmek için abonelik yoktur; varsa iptal koşulları herhangi bir ücret ödemeden önce bu Şartlarda görünecektir."
+    },
+    "s08": {
+      "title": "Bu şartlarda değişiklikler",
+      "p1": "Değişiklikler yeni bir güncelleme tarihi ile bu sayfada yayınlanacak."
+    },
+    "s09": {
+      "title": "Uygulanabilir hukuk ve forum",
+      "p1": "Bu şartlardan kaynaklanan anlaşmazlıkları çözmek için seçilen forum, kullanıcıların yaşadığı yerdir."
+    },
+    "note": "Verilerin işlenmesi hakkında,<privacy>Gizlilik Politikası</privacy>Sorular:<email>contato@lymark.app</email>."
+  }
+}

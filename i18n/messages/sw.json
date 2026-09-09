@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Programu",
+      "pitch": "Stamp wakati, tarehe, siku ya wiki, anwani na kufuatilia code kwenye picha yako  kwa ajili ya rekodi uwanja, tovuti ukaguzi na uthibitisho wa huduma.",
+      "platform": "Jukwaa",
+      "privacy": "Sera ya faragha",
+      "privacyGeocoding": "Wakati GPS ni kutumika, mfumo wa uendeshaji hutuma mstari wa Google au Apple huduma ya ramani kupata anwani. Hiyo ni habari pekee ambayo kuondoka hapa, na ni mfumo kwamba inatuma, si Lymark.",
+      "privacyLocation": "Mahali hutumiwa mara moja kwa kila picha, tu kujaza uwanja wa anwani, na si kuhifadhiwa tofauti na picha.",
+      "privacyOnDevice": "Picha, anwani na historia huishi kwenye kifaa hiki tu. Akaunti ipo kwa ajili ya usajili wako: seva huhifadhi barua pepe yako na mpango, na kamwe kupokea picha yako au eneo lako.",
+      "privacySection": "Uhusiano wa kibinafsi",
+      "sdk": "Expo SDK",
+      "terms": "Masharti ya Matumizi",
+      "title": "Kuhusu Lymark",
+      "version": "Toleo"
+    },
+    "account": {
+      "browserHint": "Kuingia hufanyika katika browser. Kuingia huko na akaunti yako na programu kuunganisha yenyewe.",
+      "code": "Nambari",
+      "codeSent": "Tumepeleka nambari kwa {email}",
+      "connected": "Kuunganishwa",
+      "continue": "Endelea",
+      "deleteAccount": "Futa akaunti",
+      "email": "Barua pepe",
+      "failed": "Haikufanya kazi, angalia barua pepe au nambari na ujaribu tena.",
+      "notConfigured": "Kuingia si inapatikana katika jengo hili bado.",
+      "signInBrowser": "Ingia kupitia kivinjari",
+      "signOut": "Kujiandikisha",
+      "signedInAs": "Imesainiwa kama {email}",
+      "title": "Akaunti",
+      "verify": "Tathmini"
+    },
+    "batch": {
+      "addressHint": "Barabara, namba  Jiji",
+      "clearList": "Orodha wazi",
+      "codeHint": "Kwa mfano LYM-001",
+      "done": "{count, plural, one {Uchakataji umekamilika: picha #.} other {Uchakataji umekamilika: picha #.}}",
+      "doneSection": "Kuisha",
+      "dropZone": "Drag na kuacha picha hapa, au kutumia kitufe cha Chagua picha",
+      "errorsSection": "Makosa",
+      "folder": "Folda: {name}",
+      "noPhotos": "Chagua angalau picha moja.",
+      "outputNote": "Picha zilizopangwa huhifadhiwa kwenye folda iliyochaguliwa.",
+      "outputSection": "Matokeo",
+      "photosSection": "Picha za kusindika",
+      "processing": "Kusindika...",
+      "progress": "{current} ya {total} ({percent}%)",
+      "results": "{success, plural, one {# limefaulu} other {# yamefaulu}}, {failed, plural, one {# limeshindwa} other {# yameshindwa}}",
+      "selectFolder": "Chagua folda ya pato",
+      "selectPhotos": "Chagua picha",
+      "selected": "{count, plural, one {picha # imechaguliwa} other {picha # zimechaguliwa}}",
+      "sharedNote": "Thamani hizi zinatumika kwa picha zote.",
+      "sharedSection": "Metadata ya pamoja",
+      "start": "Kuanza usindikaji",
+      "unavailableBody": "Kipengele hiki ni desktop tu.",
+      "unavailableTitle": "Uzalishaji wa kundi haupatikani"
+    },
+    "capture": {
+      "accuracy": "Mahali ndani ya ±{meters} m.",
+      "accuracyImprecise": "Mahali ndani ya ±{meters} m  angalia nambari ya barabara kabla ya kuuza nje.",
+      "address": "Anwani",
+      "addressFailedTitle": "Hakuna anwani iliyopatikana",
+      "addressHint": "Bonyeza mahali pa kupata, au andika anwani",
+      "camera": "Piga picha",
+      "code": "Nambari",
+      "dateHint": "Januari 1, 2026",
+      "dateTimeGroup": "Tarehe na saa",
+      "emptyWarning": "Hakuna data itakuwa stamped  picha itakuwa nje bila watermark.",
+      "gallery": "Chagua kutoka gallery",
+      "galleryDenied": "Ufikiaji wa picha uliokatazwa, kwa hivyo picha hiyo ipo tu ndani ya programu. Iruhusu katika Mipangilio › ruhusa kuiokoa kwenye nyumba ya sanaa.",
+      "galleryFailed": "Picha hiyo iliingia katika historia, lakini kifaa hicho kilikataa kuiandika kwenye ukumbi.",
+      "generateCode": "Kuzalisha",
+      "hiddenFields": "{count, plural, one {Sehemu iliyofichwa} other {Sehemu zilizofichwa}}: {fields} — washa katika Vipimo › Sehemu na nafasi.",
+      "keepMyAddress": "Weka yangu",
+      "locate": "Pata mahali",
+      "locateByGps": "Pata anwani kupitia GPS",
+      "lookup": {
+        "denied": "Ruhusu eneo katika Mipangilio › ruhusa, au andika anwani.",
+        "disabled": "Mahali ni mbali kwenye kifaa. Ingiza katika mipangilio ya haraka na jaribu tena.",
+        "timeout": "GPS hakujibu kwa wakati. mara nyingi inashindwa ndani ya nyumba  aina ya anwani.",
+        "unavailable": "Anwani haikuweza kutatuliwa katika nafasi hii."
+      },
+      "newCapture": "Kuanza kukamata mpya",
+      "noFieldsBack": "Rudi",
+      "noFieldsContinue": "Endelea hata hivyo",
+      "noFieldsMessage": "Hakuna uwanja ina kitu cha kutangaza. kujaza mashamba, au kuangalia Mipangilio › Mashamba na nafasi.",
+      "noFieldsTitle": "Picha itaonekana bila watermark",
+      "noPhotoHint": "Chukua picha au uchague moja kutoka kwenye makumbusho ili kuanza.",
+      "noPhotoSelected": "Hakuna picha iliyochaguliwa",
+      "openFailed": "Picha haikuweza kufunguliwa. Jaribu tena.",
+      "permissionMessage": "Ruhusu ufikiaji katika Mipangilio › ruhusa kuendelea.",
+      "permissionTitle": "Ruhusa inahitajika",
+      "pickPhoto": "Chagua picha",
+      "pickPhotoHint": "Chagua picha ili kuwezesha hatua.",
+      "previewLabel": "Kuangalia picha iliyoonyeshwa kwa maji",
+      "renderFailedTitle": "Haikuweza kuzalisha picha",
+      "replaceAddressMessage": "GPS kupatikana: {address}",
+      "replaceAddressTitle": "Kubadilisha anwani uliyoandika?",
+      "resetConfirm": "Kuondoa",
+      "resetMessage": "Picha iliyochaguliwa na mashamba yaliyojazwa yatatolewa.",
+      "resetTitle": "Kuanza kukamata mpya?",
+      "saved": "Picha zilizohifadhiwa kwenye kumbukumbu ya kifaa na historia.",
+      "savedAppOnlyTitle": "Kuhifadhiwa tu ndani ya Lymark",
+      "shareDialogTitle": "Shiriki picha ya maji",
+      "shareFailedMessage": "Picha ilizalishwa na iko katika historia Lymark. Unaweza kushiriki kutoka tab Gallery.",
+      "shareFailedTitle": "Haikuweza kushiriki",
+      "shareUnavailableMessage": "Kifaa hiki hana karatasi ya hisa. Picha alibaki katika historia Lymark.",
+      "shareUnavailableTitle": "Kushiriki hakuna",
+      "sharedFileTitle": "Picha iliyo na alama ya maji",
+      "stampNotReady": "Stampu hiyo bado inaandaliwa.",
+      "syncNow": "Sasa",
+      "timestamp": "Tarehe/Saa",
+      "title": "Kukamata",
+      "useGpsAddress": "Tumia GPS moja",
+      "weekdayHint": "Mwezi",
+      "weekdayShort": "Siku"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "chagua rangi nyingine",
+      "saturationBrightness": "Urefu na mwangaza",
+      "use": "Tumia rangi hii"
+    },
+    "common": {
+      "back": "Kurudi",
+      "cancel": "Kufuta",
+      "delete": "Futa",
+      "error": "Kosa",
+      "gotIt": "Nimepata",
+      "loading": "Kubeba...",
+      "no": "Hapana",
+      "ok": "Sawa",
+      "save": "Kuokoa",
+      "share": "Kushiriki",
+      "success": "Mafanikio",
+      "tryAgain": "Jaribu tena.",
+      "unknownError": "Kosa lisilojulikana",
+      "yes": "Ndiyo"
+    },
+    "gallery": {
+      "cancelSelection": "Kufuta uchaguzi",
+      "clear": "Historia ya wazi",
+      "clearConfirm": "Safi",
+      "clearMessage": "Rekodi za Lymark zitafutwa. Picha tayari kuhifadhiwa katika kumbukumbu ya kifaa si kuathiriwa.",
+      "count": "{count, plural, one {picha # imesafirishwa} other {picha # zimesafirishwa}}",
+      "delete": "Futa",
+      "empty": "Bado hakuna picha",
+      "emptyAction": "Nenda Kukamata",
+      "emptyDescription": "Picha unazotuma nje na alama ya maji zinaonyeshwa hapa, na tarehe, mahali na nambari.",
+      "filteredCount": "{shown} kati ya {total, plural, one {picha #} other {picha #}}",
+      "noResults": "Hakuna picha zilizopatikana kwa ajili ya {query}.",
+      "photoLabel": "Picha kutoka {when}",
+      "removeMessage": "Maandishi kuondoka Lymark. Picha tayari kuhifadhiwa katika kifaa gallery si kuathiriwa.",
+      "removeTitle": "{count, plural, one {Ondoa kwenye historia} other {Ondoa rekodi #}}",
+      "removed": "{count, plural, one {Rekodi imeondolewa.} other {Rekodi zimeondolewa.}}",
+      "saveDeniedMessage": "Icha katika Mipangilio › ruhusa kuhifadhi picha kwenye kumbukumbu ya kifaa.",
+      "saveDeniedTitle": "Ufikiaji wa picha ukataliwa",
+      "savedAll": "{count, plural, one {Picha moja imehifadhiwa kwenye galeri ya kifaa.} other {Picha # zimehifadhiwa kwenye galeri ya kifaa.}}",
+      "savedSome": "{saved} ya {total} picha zilizohifadhiwa.",
+      "searchPlaceholder": "Tafuta kwa anwani, tarehe au nambari",
+      "selectedCount": "{count, plural, one {picha # imechaguliwa} other {picha # zimechaguliwa}}",
+      "share": "Kushiriki",
+      "title": "Maonyesho"
+    },
+    "language": {
+      "automatic": "Kifaa cha kufanikisha",
+      "automaticNote": "Lymark hufuatilia lugha iliyowekwa kwenye kifaa chako.",
+      "label": "Lugha",
+      "selector": "Chagua lugha"
+    },
+    "login": {
+      "access": "Ingia kwa ajili ya ufikiaji",
+      "apple": "Ingia na Apple",
+      "google": "Ingia na Google",
+      "subtitle": "Ingia kuendelea",
+      "title": "Ingia ili upate Lymark"
+    },
+    "nav": {
+      "batch": "Kutengeneza kwa kundi",
+      "photoDetail": "Picha za kina",
+      "report": "Ripoti ya PDF",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Kiwamba hiki si sehemu ya Lymark.",
+      "screenTitle": "Ukurasa haukupatikana",
+      "title": "Hakuna njia kama hiyo"
+    },
+    "permissions": {
+      "allow": "Acha",
+      "allowed": "Iliyoruhusiwa",
+      "blocked": {
+        "later": "Si sasa",
+        "message": "Ili kuiruhusu, fungua mipangilio ya kifaa chako.",
+        "openSettings": "Mipangilio ya wazi",
+        "title": "Kibali kimefungwa"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Inahitajika kuchukua picha ambayo itapokea watermark.",
+      "denied": "Kukataliwa",
+      "granted": "Ametupatia",
+      "intro": "Lymark inataka tu kile inahitaji kwa stempu picha. picha yako kamwe kuondoka kifaa: wakati wewe kutumia GPS, mfumo wa uendeshaji kutuma ramani huduma ya koordinati peke yake, hivyo inaweza kuwa anwani.",
+      "location": "Mahali",
+      "locationRationale": "Fills katika uwanja wa anwani moja kwa moja wakati wewe kukamata.",
+      "mediaLibrary": "Hifadhi kwenye sanaa",
+      "mediaLibraryRationale": "Kuandika picha nje ya kifaa gallery.",
+      "openDeviceSettings": "Mipangilio",
+      "recheck": "Angalia tena",
+      "request": "Ombi la ruhusa",
+      "section": "Ufikiaji",
+      "title": "Ruhusa"
+    },
+    "photo": {
+      "backToGallery": "Kurudi Kwenye Maonyesho",
+      "exportedAt": "Uagizaji wa bidhaa za kigeni",
+      "noWatermark": "Picha hii ilipelekwa nje bila watermark.",
+      "notFoundBody": "Huenda rekodi hiyo iliondolewa katika historia.",
+      "notFoundTitle": "Picha haijapatikana",
+      "remove": "Ondoa",
+      "removeBody": "Rekodi huondoka Lymark. Picha iliyohifadhiwa kwenye kumbukumbu ya kifaa haiathiriwi.",
+      "removeTitle": "Kuondolewa katika historia",
+      "share": "Kushiriki",
+      "stampedData": "Takwimu zilizowekwa muhuri"
+    },
+    "plan": {
+      "exhausted": "Picha za bure zilizotumiwa",
+      "exhaustedMessage": "Picha 12 za mpango wa bure zimepotea.",
+      "free": "Huru",
+      "pro": "Pro",
+      "reconnect": "Unganisha upya ili kuthibitisha usajili wako",
+      "remaining": "{remaining, plural, one {picha # ya bure imebaki} other {picha # za bure zimebaki}}",
+      "title": "Mpango",
+      "unlimited": "Hakuna kikomo"
+    },
+    "report": {
+      "allPhotos": "Picha zote",
+      "authorField": "Mwandishi / kampuni",
+      "detailsSection": "Maelezo",
+      "doc": {
+        "author": "Mwandishi",
+        "declaration": "Takwimu zilizowekwa muhuri (anawasi, tarehe, saa na nambari) ni taarifa ya mtoaji wa picha.",
+        "exportedAt": "Uagizaji wa bidhaa",
+        "generatedAt": "Kuzalishwa kwa",
+        "page": "Ukurasa",
+        "photo": "Picha {index}",
+        "photosSection": "Rekodi za picha",
+        "signature": "Saini ya mtu anayehusika",
+        "summary": "Muhtasari",
+        "title": "Ripoti ya picha",
+        "totalPhotos": "Picha zote:"
+      },
+      "empty": "Hakuna picha nje bado. ripoti ni kujengwa kutoka gallery yako.",
+      "failed": "Haikuweza kuzalisha ripoti.",
+      "fileStem": "ripoti",
+      "format": {
+        "csv": "Tabia (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Pakiti (ZIP)"
+      },
+      "formatSection": "Fomati",
+      "generate": "Kuzalisha faili",
+      "generateSection": "Kuzalisha",
+      "includeLogo": "Nembo kwenye jalada",
+      "includeLogoDescription": "Usimpe alama yako ya chapa, ile ile ya posta.",
+      "norm": {
+        "abnt": "ABNT (Brazil)",
+        "din5008": "DIN 5008 (Ujerumani)",
+        "ibape": "Mtindo wa IBAPE (Brazil)",
+        "iso": "Kimataifa",
+        "letter": "Barua (Marekani)"
+      },
+      "normNote": "Kiwango huweka karatasi na utungaji wa kando, font na namba ya ukurasa. yaliyomo kwenye ripoti ni sawa katika zote; mtindo wa IBAPE unaongeza block ya saini.",
+      "normSection": "Kiwango cha hati",
+      "projectsSection": "Mradi / kazi",
+      "saved": "Kuhifadhiwa kwa {path}",
+      "savedShort": "Ripoti imehifadhiwa.",
+      "title": "Ripoti ya PDF",
+      "titleField": "Kichwa cha ripoti",
+      "unavailableBody": "Ripoti PDF zinapatikana katika programu desktop.",
+      "unavailableTitle": "Desktop tu",
+      "uncoded": "Hakuna code",
+      "wordTooBig": "Hati Word got kubwa sana na picha zilizopigwa.",
+      "zipMissing": "{count, plural, one {Kifurushi kimehifadhiwa, lakini picha # haikupatikana kwenye kifaa.} other {Kifurushi kimehifadhiwa, lakini picha # hazikupatikana kwenye kifaa.}}"
+    },
+    "settings": {
+      "about": "Kuhusu",
+      "aboutDescription": "Toleo, faragha na mikopo",
+      "appSection": "Programu",
+      "deviceSection": "Kifaa",
+      "deviceSectionDescription": "Ufikiaji ambao Lymark inahitaji.",
+      "fields": "Sehemu na msimamo",
+      "fieldsDescription": "Chagua ambayo masoko kuonyesha, kona na ukubwa",
+      "history": "Historia",
+      "historyDescription": "Picha zilizochukuliwa nje zilizohifadhiwa kwenye kifaa",
+      "language": "Lugha",
+      "permissions": "Ruhusa",
+      "permissionsDescription": "Kamera, picha na eneo",
+      "save": "Kuokoa",
+      "title": "Mipangilio",
+      "watermark": "Alama ya maji",
+      "watermarkSection": "Maji",
+      "watermarkSectionDescription": "Ni nini kinachowekwa kwenye picha, na wapi."
+    },
+    "signup": {
+      "subtitle": "Jiandikishe kuanza",
+      "title": "Unda akaunti yako ya Lymark"
+    },
+    "tagline": "Alama ya maji na wakati, tarehe na mahali",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Hakuna kamera ya kupata. kuruhusu katika mipangilio ya kifaa.",
+      "done": "Video iliyotungwa na kuhifadhiwa.",
+      "export": "Video ya nje ya stempu",
+      "exportSection": "Uuzaji",
+      "failed": "Video hiyo haikuweza kuchapishwa.",
+      "fieldsSection": "Sehemu za posta",
+      "fileSection": "Video",
+      "none": "Hakuna video iliyochaguliwa.",
+      "processing": "Usindikaji... {percent}%",
+      "processingMobile": "Kusindika...",
+      "record": "Rekodi video sasa",
+      "saved": "Kuhifadhiwa kwa {path}",
+      "savedToGallery": "Video ya stempu iliyohifadhiwa kwenye ukumbi wako.",
+      "select": "Chagua video",
+      "unavailableBody": "Video ya simu ya stempu inahitaji Lymark imewekwa kutoka EAS build (na moduli ya asili). Haipatikani katika Expo Go. Weka programu rasmi kutoka duka au build EAS, au tumia toleo la desktop / wavuti.",
+      "unavailableTitle": "Ufungaji wa programu inahitajika",
+      "unreadable": "Faili hiyo haikuweza kusomwa kama video.",
+      "webNote": "Katika browser, video ni kusindika katika muda halisi  video ya dakika 2 inachukua dakika 2  na inakuja katika muundo WebM. Kwa video ndefu, tumia programu ya desktop."
+    },
+    "watermark": {
+      "accentColor": "Bar ya umbo",
+      "backdropBandNote": "Band inaenda makali hadi makali kwenye picha na inakaa dhidi ya ncha ambapo stempu imefungwa. Juu ya eneo la kazi ya kujenga, ua, jengo lenye watu wengi, inasomeka kama kichwa cha hati badala ya sticker iliyowekwa juu.",
+      "backdropBlockNote": "Upande wa nyuma unafuata ukubwa wa maandishi, na unazungukwa na pazia.",
+      "backdropColor": "Rangi ya bendi",
+      "backdropDescription": "Inalinda tofauti juu ya maeneo yenye nuru ya picha. Bila hiyo, maandishi huwekwa moja kwa moja kwenye picha, na kivuli.",
+      "backdropInnerRadius": "Vipande vya ndani",
+      "backdropOpacity": "Uwazi",
+      "backdropOpacityValue": "{percent}% opaque",
+      "backdropRadius": "Vipande vya pembe",
+      "backdropRadiusSquare": "Mraba",
+      "backdropStyles": {
+        "band": "Bandwidth kamili",
+        "block": "Nyuma ya maandishi",
+        "none": "Hakuna"
+      },
+      "backdropTitle": "Bandia ya kuunga mkono",
+      "brandDescription": "Juu ya saa hiyo inakuwa ishara, na alama na ishara.",
+      "brandFirstColor": "Rangi ya sehemu ya kwanza",
+      "brandFirstHint": "Wajenzi",
+      "brandFirstPart": "Sehemu ya Kwanza",
+      "brandNote": "Acha sehemu ya pili ikiwa tupu ili upate alama ya rangi moja.",
+      "brandPlacements": {
+        "corner": "Katika kona",
+        "header": "Juu ya saa",
+        "none": "Hakuna"
+      },
+      "brandSecondColor": "Rangi ya sehemu ya pili",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Sehemu ya pili",
+      "brandTitle": "Alama ya kutungwa",
+      "codeDescription": "Kwa upande mwingine, haishindani nafasi na picha yenyewe.",
+      "codePlacements": {
+        "block": "Jamii ya data",
+        "side": "upande wa kulia"
+      },
+      "codeTitle": "Nambari ya picha",
+      "colors": {
+        "amber": "Amber",
+        "black": "Nyeusi",
+        "blue": "Bluu",
+        "green": "Kijani",
+        "red": "Nyekundu",
+        "white": "Nyeupe"
+      },
+      "colorsDescription": "Rangi kwenye picha ni uchaguzi wa kampuni, si programu kubadilisha hapa si kubadilisha rangi screen.",
+      "colorsTitle": "Rangi za vifungo",
+      "complement": "Ujumbe",
+      "complementColor": "Rangi ya maandishi",
+      "complementHint": "Ukaguzi na ripoti za kiufundi",
+      "cornerConflict": "Alama na data ni katika kona moja  wao kuingiliana juu ya picha.",
+      "fields": {
+        "address": "Anwani / Mahali",
+        "code": "Nambari ya picha",
+        "date": "Tarehe",
+        "time": "Wakati",
+        "weekday": "Siku ya juma"
+      },
+      "fieldsDescription": "Sehemu zilizo kwenye picha na zenye maudhui ndizo tu zinazopata picha.",
+      "fieldsTitle": "Sehemu zilizoonyeshwa",
+      "includeCountry": "Jumuisha nchi",
+      "includeCountryDescription": "Ichocheze ikiwa unafanya kazi kwa mipaka, vinginevyo itachukua nafasi tu kwenye picha.",
+      "legibilityTitle": "Uweza wa kusoma",
+      "logoAdded": "Logo aliongeza kwa kichwa cha chapa.",
+      "logoAlignNote": "Urefu wa nembo hufuata maandishi: juu yake inalingana na juu ya jina na chini yake na msingi wa kichwa.",
+      "logoChosen": "Nembo iliyochaguliwa",
+      "logoErrorMessage": "Jaribu picha nyingine. PNG yenye mandhari ya uwazi ni muundo unaofanya kazi vizuri zaidi.",
+      "logoErrorTitle": "Faili hii haikuweza kutumiwa",
+      "logoFormatNote": "Tumia PNG na background ya uwazi. JPG na background nyeupe inakuwa rectangle nyeupe kwenye picha  muundo haina kuhifadhi uwazi, na programu haina njia ya kuamua ni background.",
+      "logoPermissionMessage": "Icha katika Mipangilio › ruhusa kuchagua faili ya nembo.",
+      "logoPermissionTitle": "Ufikiaji wa picha ukataliwa",
+      "logoPick": "Chagua nembo",
+      "logoPosition": "Mahali pa nembo",
+      "logoPositionBlock": "Kwa muhuri",
+      "logoRemove": "Ondoa",
+      "logoReplace": "Badilisha nembo",
+      "logoSize": "Ukubwa wa nembo",
+      "positionDescription": "Sehemu ya picha block ni anchored kwa.",
+      "positionTitle": "Mahali",
+      "positions": {
+        "bottom-left": "Chini kushoto",
+        "bottom-right": "Chini kulia",
+        "top-left": "Juu kushoto",
+        "top-right": "Juu kulia"
+      },
+      "previewCurrent": "Zaidi ya picha ya sasa kutoka tab Capture.",
+      "previewEmpty": "Kutoka mwanga hadi giza, ili kuangalia uweza wa kusoma katika miisho yote miwili.",
+      "previewNoFields": "Hakuna uwanja uliochaguliwa  picha inakuja bila watermark.",
+      "previewTitle": "Maoni ya awali",
+      "reset": "Rekebisha vipimo vya awali",
+      "sizeTitle": "Ukubwa wa maandishi",
+      "sizes": {
+        "large": "Kubwa",
+        "medium": "Kati",
+        "small": "Kiwango cha chini"
+      },
+      "textColor": "Maandishi",
+      "timeFormatDescription": "Jinsi wakati hujazwa katika mashamba.",
+      "timeFormatTitle": "Mpango wa wakati",
+      "timeFormats": {
+        "12h": "Saa 12 (AM/PM)",
+        "24h": "Saa 24"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Faili zote",
+      "images": "Picha",
+      "pickFolder": "Chagua folda ya pato",
+      "pickPhoto": "Chagua picha",
+      "pickPhotos": "Chagua picha kwa kundi",
+      "savePhoto": "Hifadhi picha",
+      "saveReport": "Hifadhi ripoti"
+    },
+    "login": {
+      "cancel": "Kufuta",
+      "confirm": "Endelea",
+      "message": "Umeingia tu kupitia kivinjari. Endelea na kutumia akaunti hii kwenye kompyuta hii?",
+      "title": "Ingia katika Lymark"
+    },
+    "menu": {
+      "copy": "Nakala",
+      "cut": "Kukata",
+      "edit": "Hariri",
+      "file": "Faili",
+      "fullscreen": "Screen kamili",
+      "help": "Msaada",
+      "paste": "Kinyunyizi",
+      "quit": "Acha",
+      "redo": "Redo",
+      "reload": "Kuongeza tena",
+      "selectAll": "Chagua zote",
+      "settings": "Mipangilio",
+      "undo": "Kuondolewa",
+      "view": "Maoni",
+      "zoomIn": "Zoom katika",
+      "zoomOut": "Zoom nje",
+      "zoomReset": "Ukubwa halisi"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Kurudi nyumbani",
+      "openApp": "Fungua programu",
+      "photos": "Picha",
+      "photosLeft": "{remaining} ya {quota} kushoto",
+      "plan": "Mpango",
+      "planUnavailable": "Haipatikani sasa",
+      "plans": {
+        "free": "Huru",
+        "pro": "Pro"
+      },
+      "signInTitle": "Saini katika",
+      "signOut": "Kujiandikisha",
+      "signUpTitle": "Unda akaunti",
+      "subscribe": "Jiandikishe kwa Lymark Pro",
+      "subscribeSoon": "Miundombinu bado haipo. Wakati wao ni, utakuwa na uwezo wa kujiandikisha hapa na kutumia kifaa chochote na akaunti hiyo hiyo.",
+      "title": "Akaunti yako",
+      "revokeDesktops": "Kuondoa kompyuta",
+      "revokeDesktopsHint": "Inaondoa ufikiaji wa programu kwenye kila kompyuta. Unaweza kuingia tena wakati wowote unataka."
+    },
+    "availability": {
+      "contact": "Ili kufuatilia uzinduzi au kuripoti tatizo, andika kwa <email>contato@lymark.app</email>.",
+      "description": "Lymark ni katika toleo 1.3.0, katika majaribio juu ya Android kabla ya kuchapishwa juu ya Google Play. Hakuna toleo iOS na hakuna toleo mtandao, na programu haina kukusanya malipo.",
+      "title": "Upatikanaji"
+    },
+    "data": {
+      "device": {
+        "description": "Akaunti ipo kwa ajili ya usajili wako: seva huhifadhi barua pepe yako na mpango, na kamwe kupokea picha yako au eneo lako. historia huhifadhi mauzo ya mwisho mia mbili katika faili ya programu mwenyewe.",
+        "field": "Kwenye kifaa",
+        "heading": "Picha, anwani na historia"
+      },
+      "external": {
+        "description": "Ili kugeuza latitude na longitude kuwa anwani inayoweza kusomwa, mfumo wa uendeshaji unatafuta huduma ya Google au Apple ya geocoding. Hiyo ndiyo habari pekee ambayo inachukua, na mfumo huituma, sio programu.",
+        "field": "Kuondoa kifaa",
+        "heading": "Tu kugeuza mstari katika anwani"
+      },
+      "note": "Ni yote imewekwa  ikiwa ni pamoja na nini maana ya chini ya Brazil LGPD  katika <privacy>Sera ya faragha</privacy>. Kulemaza ruhusa ya eneo hutoa programu kazi kamili; ni uwanja wa anwani tu ambao unapaswa kuandikwa kwa mkono.",
+      "title": "Ambapo data yako iko"
+    },
+    "deleteAccount": {
+      "back": "Kurudi kwenye akaunti",
+      "confirm": "Futa akaunti yangu",
+      "deletesNow": "Kufuta akaunti yako hufuta barua pepe yako, kitambulisho chako, na rekodi ya mpango, kiasi na idadi ya picha.",
+      "irreversible": "Ufutaji ni kudumu na haiwezi kufutwa. picha kwenye kifaa chako si kuathiriwa  wao kamwe walikuwa kwenye seva zetu.",
+      "retained": "Rekodi za shughuli za malipo huhifadhiwa kwa kipindi kifedha required kisheria, bila kuunganishwa na wasifu wako.",
+      "title": "Futa akaunti"
+    },
+    "description": "Android programu ambayo stamps wakati, tarehe, siku ya wiki, anwani na kufuatilia code kwenye tovuti ya ukaguzi na uthibitisho wa huduma picha.",
+    "desktop": {
+      "backAccount": "Kurudi kwenye akaunti",
+      "explanation": "Akaunti yako iko tayari. Bonyeza kifungo hapa chini kufungua Lymark kwenye kompyuta yako tayari imeingia  browser itauliza ruhusa ya kufungua programu.",
+      "open": "Unganisha programu",
+      "title": "Ingia kwenye desktop",
+      "unavailable": "Uunganisho wa programu ya desktop bado haupo."
+    },
+    "download": {
+      "appStore": {
+        "description": "Uzoefu huo kama Android, kwenye iOS.",
+        "field": "App Store",
+        "heading": "iPhone na iPad"
+      },
+      "browser": {
+        "action": "Saini katika",
+        "description": "Ingia na akaunti yako na programu hufunguka moja kwa moja katika kivinjari  simu au kompyuta.",
+        "field": "Browser",
+        "heading": "Tumia sasa, hakuna kitu cha kufunga"
+      },
+      "desktop": {
+        "description": "Vipande vya picha, video ndefu na PDF ripoti  hard-kazi toleo.",
+        "field": "Kompyuta",
+        "heading": "Windows na Linux"
+      },
+      "googlePlay": {
+        "description": "Programu ya simu, na kamera, sanaa na video stempu.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Karibuni",
+      "title": "Ambapo kutumia Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "Aina ya barabara hupunguzwa na hali inakuwa nambari yake, kwa hiyo anwani inafaa katika mistari miwili bila kufunika picha. Ikiwa umeandika kabla ya GPS kujibu, kile ulichoandika kinashinda.",
+        "field": "Anwani",
+        "heading": "Kujazwa kwa GPS, kurekebishwa kwa mkono"
+      },
+      "code": {
+        "description": "Ni kuwepo ili uweze kutaja picha moja maalum katika utaratibu wa kazi au ripoti. Inaendesha kugeuka chini ya makali ya kulia, au inakaa na block ya data  uchaguzi wako.",
+        "field": "Nambari ya picha",
+        "heading": "Wahusika 14, waliochorwa na jenereta ya uandishi"
+      },
+      "note": "Kila uwanja unawasha na kuzima kwa yenyewe, na block anchors kwenye yoyote ya pembe nne, katika ukubwa tatu. Preview inatumia picha yako halisi, si sampuli ya kawaida: kile unaona kwenye skrini ni literally nini ni nje.",
+      "time": {
+        "description": "Kitufe kimoja huleta sehemu zote tatu hadi sasa wakati ambapo kukamata kulichukua muda mrefu kuliko ilivyotarajiwa.",
+        "field": "Wakati na tarehe",
+        "heading": "Kutoka saa kifaa, wakati wa kukamata"
+      },
+      "title": "Ni nini kinachoingia kwenye picha"
+    },
+    "footer": {
+      "description": "Lymark  rekodi za picha na tarehe, saa na anwani.",
+      "documentsLabel": "Hati",
+      "privacy": "Sera ya faragha",
+      "support": "Msaada:",
+      "terms": "Masharti ya Matumizi"
+    },
+    "hero": {
+      "ctaAccount": "Nenda kwenye akaunti yangu",
+      "ctaLogin": "Saini katika",
+      "ctaSignup": "Unda akaunti ya bure",
+      "description": "Lymark stempu wakati, tarehe, siku ya wiki, anwani na kufuatilia kanuni moja kwa moja juu ya picha. faili ambayo hutoka programu ina taarifa ndani yake  si kama metadata kusafiri pamoja, ambayo kwanza WhatsApp mbele strip mbali.",
+      "eyebrow": "Rekodi ya picha za uwanjani",
+      "heading": "Picha huondoka kwenye simu yako ikisema wakati, wapi na nini.",
+      "meta": {
+        "account": "Akaunti moja ya kubofya",
+        "android": "Android na kivinjari",
+        "language": "Kireno cha Kireno cha Brazili",
+        "onDevice": "Picha kukaa kwenye kifaa"
+      },
+      "note": "Hakuna kitu cha kufunga."
+    },
+    "nav": {
+      "account": "Akaunti",
+      "home": "Nyumbani",
+      "homeLabel": "Lymark, ukurasa wa kwanza",
+      "label": "Kuu",
+      "privacy": "Uhusiano wa kibinafsi",
+      "signIn": "Saini katika",
+      "terms": "Masharti",
+      "verify": "Tathmini"
+    },
+    "process": {
+      "capture": {
+        "description": "Utafutaji wa anwani huanza wakati picha inakuja. Mashamba huendelea wazi kwa ajili ya marekebisho wakati ni mbio.",
+        "field": "Kukamata",
+        "heading": "Kamera au jumba la sanaa"
+      },
+      "note": "Kuhifadhi na kushiriki hutatua matatizo tofauti, na kuzifunga katika kifungo kimoja kungemvuta mtu yeyote ambaye anataka tu kuweka picha kupitia skrini ya kutuma.",
+      "save": {
+        "description": "Ni pamoja na picha zingine za simu yako, inapatikana kwa programu yoyote  ikiwa ni pamoja na baada ya uninstall Lymark.",
+        "field": "Kuokoa",
+        "heading": "Inaenda kwenye kibanda kifaa"
+      },
+      "share": {
+        "description": "WhatsApp, barua pepe, gari: marudio ni kuchaguliwa na mfumo wa uendeshaji, na programu haina kushiriki katika kutuma.",
+        "field": "Kushiriki",
+        "heading": "Inafungua karatasi ya kushiriki mfumo"
+      },
+      "title": "Njia inayochukuliwa na picha"
+    },
+    "skipToContent": "Punguza maudhui",
+    "specimen": {
+      "caption": "Kanuni ya Amber huanza na kumalizika kwenye ncha za nambari, si kwenye sanduku la maandishi.",
+      "label": "Mfano wa posta ya Lymark: saa 07:42, tarehe 12 Agosti 2026, Jumatano, anwani katika Guarujá na nambari ya picha."
+    },
+    "title": "Lymark  tarehe, saa na anwani watermark kwa picha uwanja",
+    "verify": {
+      "caveat": "Muhuri huthibitisha uadilifu wa faili na wakati wa kutolewa. Nini muhuri kutangaza  anwani, tarehe, saa  ni taarifa ya mtoaji.",
+      "checking": "Kuangalia...",
+      "declarationNote": "Kilichoonyeshwa kwenye muhuri (anawasi, tarehe, saa) ni taarifa ya mtoaji  muhuri huthibitisha uadilifu na kutolewa, si maudhui.",
+      "intro": "Acha au chagua picha nje na Lymark na kuona papo hapo kama ni kama ni kuondoka programu  na nani iliyotolewa, wakati.",
+      "noSealBody": "Faili hii haina muhuri Lymark. inaweza kuwa nje ya mtandao, kabla ya muhuri kuwepo, au inaweza kuwa haikutoka Lymark. Ukosefu wa muhuri hauthibitisha kuharibu.",
+      "noSealTitle": "Hakuna muhuri",
+      "notConfigured": "Ukaguzi bado haupatikani.",
+      "pick": "Chagua faili",
+      "previewAlt": "Picha iliyothibitishwa, stempu inayoonekana",
+      "privacyNote": "uthibitisho hufanyika katika browser yako. faili haina kutumwa kwa server yoyote.",
+      "sealedBody": "Faili hii ni kama ilivyokuwa Lymark, iliyotolewa na akaunti {account} juu ya {date}.",
+      "sealedTitle": "Haijatengenezwa",
+      "tamperedBody": "Maudhui hayafanani na muhuri: faili ilibadilishwa baada ya kutolewa, au muhuri ni mali ya faili nyingine.",
+      "tamperedTitle": "Kupingana",
+      "title": "Hakikisha uhalisi",
+      "unsupported": "Browser hii haina msaada uthibitisho wa saini. Jaribu browser ya sasa."
+    }
+  }
+}
