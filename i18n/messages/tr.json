@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Uygulama",
+      "pitch": "Fotoğraflarınızda saat, tarih, hafta günü, adres ve izleme kodu 'yi yer kayıtları, siteler kontrolü ve servis kanıtı için damgalayın.",
+      "platform": "Platform",
+      "privacy": "Gizlilik Politikası",
+      "privacyGeocoding": "GPS kullanıldığında, işletim sistemi koordinatı adres almak için Google'ın veya Apple'ın haritası hizmetine gönderir.",
+      "privacyLocation": "Yerleme, yalnızca adres alanını doldurmak için, her çekime bir kez kullanılır ve fotoğraflardan ayrı olarak saklanmaz.",
+      "privacyOnDevice": "Fotoğraflar, adresler ve geçmiş sadece bu cihazda kalır. Hesap aboneliğiniz için var: sunucu e-postalarınızı ve planlarınızı saklar ve fotoğraflarınızı veya konumunuzu asla almaz.",
+      "privacySection": "Gizlilik",
+      "sdk": "Expo SDK",
+      "terms": "Kullanım Şartları",
+      "title": "Lymark Hakkında",
+      "version": "Versiyon"
+    },
+    "account": {
+      "browserHint": "Kullanıcıya giriş yapılır. Hesabınızla giriş yapın ve uygulama kendiliğinden bağlanır.",
+      "code": "Kod",
+      "codeSent": "{email}'e bir kod gönderdik.",
+      "connected": "Bağlı",
+      "continue": "Devam et .",
+      "deleteAccount": "Hesap sil",
+      "email": "E-posta",
+      "failed": "E-posta veya kodu kontrol et ve tekrar dene.",
+      "notConfigured": "Bu binada henüz giriş yok.",
+      "signInBrowser": "Tarayıcı üzerinden giriş yap",
+      "signOut": "İmzalayın .",
+      "signedInAs": "{email} olarak imzaladı",
+      "title": "Hesap",
+      "verify": "Kontrol et"
+    },
+    "batch": {
+      "addressHint": "Sokak, numara  Şehir",
+      "clearList": "Açık liste",
+      "codeHint": "örneğin LYM-001",
+      "done": "{count, plural, one {İşlem bitti: # fotoğraf.} other {İşlem bitti: # fotoğraf.}}",
+      "doneSection": "Bitirilir",
+      "dropZone": "Fotoğrafları buraya çek ve bırak veya Select photos düğmesini kullan",
+      "errorsSection": "Hatalar",
+      "folder": "Dosya: {name}",
+      "noPhotos": "En az bir fotoğraf seç.",
+      "outputNote": "İşlenmiş fotoğraflar seçilen klasöre kaydedilmiştir.",
+      "outputSection": "Çıktı",
+      "photosSection": "İşleme için fotoğraflar",
+      "processing": "İşleme...",
+      "progress": "{current}'in {total} ({percent}%)",
+      "results": "{success, plural, one {# başarı} other {# başarı}}, {failed, plural, one {# hata} other {# hata}}",
+      "selectFolder": "Çıktı klasörünü seç",
+      "selectPhotos": "Fotoğrafları seç",
+      "selected": "{count, plural, one {# fotoğraf seçildi} other {# fotoğraf seçildi}}",
+      "sharedNote": "Bu değerler, TÜM fotoğraflara uygulanır.",
+      "sharedSection": "Paylaşılan metadata",
+      "start": "İşlemeyi başlat",
+      "unavailableBody": "Bu özellik sadece masaüstü.",
+      "unavailableTitle": "Satışlı işleme imkansız"
+    },
+    "capture": {
+      "accuracy": "±{meters} m'de konum.",
+      "accuracyImprecise": "±{meters} m  içinde konum, ihracattan önce sokak numarasını kontrol edin.",
+      "address": "Adres",
+      "addressFailedTitle": "Adres bulunamadı .",
+      "addressHint": "Yerini tıklayın veya adresini girin",
+      "camera": "Fotoğraf çek .",
+      "code": "Kod",
+      "dateHint": "1 Ocak 2026",
+      "dateTimeGroup": "Tarih ve saat",
+      "emptyWarning": "Hiçbir veri damgalamayacak. Fotoğraf su işaretsiz çıkacak.",
+      "gallery": "Galeriden seçin",
+      "galleryDenied": "Fotoğraf erişim reddedildi, bu yüzden resim sadece uygulamanın içinde var.",
+      "galleryFailed": "Resim tarihe girdi ama cihaz galeride yazmayı reddetti.",
+      "generateCode": "Yaratmak",
+      "hiddenFields": "{count, plural, one {Gizli alan} other {Gizli alanlar}}: {fields} — Ayarlar › Alanlar ve konum’dan açın.",
+      "keepMyAddress": "Benimkini tut .",
+      "locate": "Yerleşme",
+      "locateByGps": "GPS ile adres tespit",
+      "lookup": {
+        "denied": "Ayarlar › İzinler'de konum yetkisini etkinleştir veya adresi girin.",
+        "disabled": "Cihazın konumunu kapatın.",
+        "timeout": "GPS zamanında cevap vermedi.",
+        "unavailable": "Adres bu pozisyonda çözülmedi."
+      },
+      "newCapture": "Yeni bir yakalama başlat .",
+      "noFieldsBack": "Geri dön .",
+      "noFieldsContinue": "Her neyse devam et .",
+      "noFieldsMessage": "Hiçbir alanı damgalamak için bir şey yok. Alanları doldurun veya Ayarlar › Alanlar ve konumları gözden geçirin.",
+      "noFieldsTitle": "Fotoğraf su işaretsiz çıkacak.",
+      "noPhotoHint": "Fotoğraf çekmek ya da galeriden birini seçmek için başlayın.",
+      "noPhotoSelected": "Fotoğraf seçilmedi",
+      "openFailed": "Fotoğraf açılamadı.",
+      "permissionMessage": "Ayarlar › İzinler devam etmesi için erişimi izin verin.",
+      "permissionTitle": "İzin gerekebilir",
+      "pickPhoto": "Fotoğraf seçin",
+      "pickPhotoHint": "Eylemleri etkinleştirmek için bir fotoğraf seçin.",
+      "previewLabel": "Su işaretli fotoğrafın ön görüntüsü",
+      "renderFailedTitle": "Resim oluşturamadım .",
+      "replaceAddressMessage": "GPS bulunmuş: {address}",
+      "replaceAddressTitle": "Yazdığın adresi mi değiştirdin?",
+      "resetConfirm": "At",
+      "resetMessage": "Seçilen fotoğraf ve doldurulmuş alanlar atılacak.",
+      "resetTitle": "Yeni bir yakalama mı başlatacağız?",
+      "saved": "Fotoğraf cihaz galerisine ve tarihine kaydedildi.",
+      "savedAppOnlyTitle": "Sadece Lymark'ın içinde kaydedildi .",
+      "shareDialogTitle": "Su işaretli fotoğraf paylaş",
+      "shareFailedMessage": "Resim oluşturuldu ve Lymark tarihinde yer almaktadır. Galerisi sekmesinden paylaşabilirsiniz.",
+      "shareFailedTitle": "Paylaşamadım.",
+      "shareUnavailableMessage": "Bu cihazın pay sayfası yok.",
+      "shareUnavailableTitle": "Paylaşım kullanılamıyor",
+      "sharedFileTitle": "Su işaretli fotoğraf",
+      "stampNotReady": "Mür hali hazırlanmaktadır.",
+      "syncNow": "Şimdi .",
+      "timestamp": "Tarih/Saat",
+      "title": "Yakalama",
+      "useGpsAddress": "GPS kullan .",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Gün"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "Başka bir renk seçin",
+      "saturationBrightness": "Doymak ve parlaklık",
+      "use": "Bu rengi kullan"
+    },
+    "common": {
+      "back": "Geri dön .",
+      "cancel": "İptal",
+      "delete": "Sil",
+      "error": "Hata",
+      "gotIt": "- Tamam .",
+      "loading": "- Yüklenme...",
+      "no": "Hayır , hayır .",
+      "ok": "Tamam.",
+      "save": "Kaydet",
+      "share": "Paylaşmak",
+      "success": "Başarılı",
+      "tryAgain": "Tekrar dene.",
+      "unknownError": "Bilinmeyen hata",
+      "yes": "Evet ."
+    },
+    "gallery": {
+      "cancelSelection": "İptal Seçimi",
+      "clear": "Açık tarih",
+      "clearConfirm": "Açık",
+      "clearMessage": "Lymark'ın kayıtları silinecek.",
+      "count": "{count, plural, one {# fotoğraf dışa aktarıldı} other {# fotoğraf dışa aktarıldı}}",
+      "delete": "Sil",
+      "empty": "Henüz fotoğraf yok.",
+      "emptyAction": "Yakalamaya Git",
+      "emptyDescription": "Su işaretli ihraç ettiğiniz fotoğraflar, tarih, yer ve kod ile burada gösterilir.",
+      "filteredCount": "{shown} / {total, plural, one {# fotoğraf} other {# fotoğraf}}",
+      "noResults": "{query}  için fotoğraf bulunamadı.",
+      "photoLabel": "{when}'den alınan fotoğraf",
+      "removeMessage": "Girişler Lymark'tan ayrılır.",
+      "removeTitle": "{count, plural, one {Geçmişten kaldır} other {# kaydı kaldır}}",
+      "removed": "{count, plural, one {Kayıt kaldırıldı.} other {Kayıtlar kaldırıldı.}}",
+      "saveDeniedMessage": "Görüntüleri cihaz galerisine kaydetmek için Ayarlar › İzinler'de izin verin.",
+      "saveDeniedTitle": "Fotoğraf erişim reddedildi",
+      "savedAll": "{count, plural, one {Bir fotoğraf cihaz galerisine kaydedildi.} other {# fotoğraf cihaz galerisine kaydedildi.}}",
+      "savedSome": "{saved}'den {total} fotoğrafları kaydedildi.",
+      "searchPlaceholder": "Adres, tarih veya kod ile arama",
+      "selectedCount": "{count, plural, one {# fotoğraf seçildi} other {# fotoğraf seçildi}}",
+      "share": "Paylaşmak",
+      "title": "Galeri"
+    },
+    "language": {
+      "automatic": "Uyumlama cihazı",
+      "automaticNote": "Lymark cihazınızda belirtilen dili takip eder.",
+      "label": "Dil",
+      "selector": "Dil seç"
+    },
+    "login": {
+      "access": "Giriş için giriş",
+      "apple": "Apple ile giriş yap",
+      "google": "Google ile giriş yap",
+      "subtitle": "Devam etmek için giriş yap",
+      "title": "Lymark erişimi için giriş yap"
+    },
+    "nav": {
+      "batch": "Satışlı işleme",
+      "photoDetail": "Fotoğraf detayları",
+      "report": "PDF raporu",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Bu ekran Lymark'ın bir parçası değil.",
+      "screenTitle": "Sayfa bulunamadı",
+      "title": "Böyle bir yol yok."
+    },
+    "permissions": {
+      "allow": "İzin ver .",
+      "allowed": "İzin verilir",
+      "blocked": {
+        "later": "Şimdi olmaz.",
+        "message": "Sistem tekrar sormayacak.",
+        "openSettings": "Açık ayarlar",
+        "title": "İzin engellendi"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Su işaretini alacak fotoğrafı çekmek için gerekli.",
+      "denied": "Reddedildi",
+      "granted": "Kabul Edilir",
+      "intro": "Lymark sadece bir fotoğrafı damgalamak için ne gerekiyorsa sorar. Görüntüleri asla cihazdan çıkmaz: GPS kullandığınızda, işletim sistemi harita hizmetine koordinatı tek başına gönderir, böylece bir adres haline gelebilir.",
+      "location": "Yerleşim",
+      "locationRationale": "Adres alanını otomatik olarak doldur.",
+      "mediaLibrary": "Galeride sakla",
+      "mediaLibraryRationale": "Dışarıya aktarılan fotoğrafları cihaz galerisine yazmak için.",
+      "openDeviceSettings": "Ayarlar",
+      "recheck": "Tekrar kontrol et .",
+      "request": "İzin istemek",
+      "section": "Erişim",
+      "title": "İzinler"
+    },
+    "photo": {
+      "backToGallery": "Galerine Geri Dönün",
+      "exportedAt": "{when}'de ihraç edilen",
+      "noWatermark": "Bu fotoğraf su işaretsiz ihraç edildi.",
+      "notFoundBody": "Bu kayıt tarihteki kayıtlardan silinmiş olabilir.",
+      "notFoundTitle": "Fotoğraf bulunamadı",
+      "remove": "Çıkar",
+      "removeBody": "Kayıt Lymark'ı terk ediyor.",
+      "removeTitle": "Tarihteki olaylardan çıkar",
+      "share": "Paylaşmak",
+      "stampedData": "Mürit verileri"
+    },
+    "plan": {
+      "exhausted": "Ücretsiz fotoğraflar kullanıldı",
+      "exhaustedMessage": "Ücretsiz planın 12 fotoğrafı yok.",
+      "free": "Ücretsiz",
+      "pro": "Pro",
+      "reconnect": "aboneliğini onaylamak için yeniden bağlan",
+      "remaining": "{remaining, plural, one {# ücretsiz fotoğraf kaldı} other {# ücretsiz fotoğraf kaldı}}",
+      "title": "Plan",
+      "unlimited": "Sınır yok"
+    },
+    "report": {
+      "allPhotos": "Tüm fotoğraflar",
+      "authorField": "Yazar / şirket",
+      "detailsSection": "Detaylar",
+      "doc": {
+        "author": "Yazar",
+        "declaration": "Mürit edilen veriler (suç, tarih, saat ve kod) fotoğrafların yayıncısı tarafından yapılan bir açıklama.",
+        "exportedAt": "Dışarıya aktarılan",
+        "generatedAt": "Üretilen",
+        "page": "Sayfa",
+        "photo": "Fotoğraf: {index}",
+        "photosSection": "Fotoğraf kayıtları",
+        "signature": "Sorumlu kişinin imzası",
+        "summary": "Özet",
+        "title": "Fotoğraf rapor",
+        "totalPhotos": "Toplam fotoğraflar:"
+      },
+      "empty": "Rapor, galerinizden yapılmış.",
+      "failed": "Raporu oluşturamadım.",
+      "fileStem": "Rapor",
+      "format": {
+        "csv": "Hesap Tablosu (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Paket (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Dosya oluştur",
+      "generateSection": "Yaratmak",
+      "includeLogo": "Kapak üzerinde logo",
+      "includeLogoDescription": "Marka logonu, damga ile aynı.",
+      "norm": {
+        "abnt": "ABNT (Brazil)",
+        "din5008": "DIN 5008 (Almanya)",
+        "ibape": "IBAPE tarzı (Brasil)",
+        "iso": "Uluslararası",
+        "letter": "Mektup (ABD)"
+      },
+      "normNote": "Standart, kağıt ve biçimlendirme  kenarları, yazı tipi ve sayfa numarasını belirler. Rapor içeriği hepsinde aynıdır; IBAPE tarzı bir imza bloğu ekler.",
+      "normSection": "Belge Standartı",
+      "projectsSection": "Proje / iş",
+      "saved": "{path}'e kaydedildi",
+      "savedShort": "Rapor kaydedildi.",
+      "title": "PDF raporu",
+      "titleField": "Rapor başlığı",
+      "unavailableBody": "PDF raporları masaüstü uygulamasında mevcuttur.",
+      "unavailableTitle": "Sadece masaüstü",
+      "uncoded": "- Şifre yok.",
+      "wordTooBig": "Word belgesinin fotoğraflar dahil edilmesiyle çok büyükleşti.",
+      "zipMissing": "{count, plural, one {Paket kaydedildi, ancak cihazda # fotoğraf bulunamadı.} other {Paket kaydedildi, ancak cihazda # fotoğraf bulunamadı.}}"
+    },
+    "settings": {
+      "about": "- Evet.",
+      "aboutDescription": "Versiyon, gizlilik ve kredi",
+      "appSection": "Uygulama",
+      "deviceSection": "Cihaz",
+      "deviceSectionDescription": "Lymark'ın istediği erişim.",
+      "fields": "Alanlar ve konum",
+      "fieldsDescription": "Hangi alanlar gösterilir, köşeler ve boyutları seçin",
+      "history": "Tarih",
+      "historyDescription": "Cihazda tutulan ihraç edilmiş fotoğraflar",
+      "language": "Dil",
+      "permissions": "İzinler",
+      "permissionsDescription": "Kamera, fotoğraf ve konum",
+      "save": "Kaydet",
+      "title": "Ayarlar",
+      "watermark": "Filigran",
+      "watermarkSection": "Su işaretleri",
+      "watermarkSectionDescription": "Fotoğrafta neyi ve nerede damgalamış?"
+    },
+    "signup": {
+      "subtitle": "Başlamak için kayıt ol .",
+      "title": "Lymark hesabınızı oluşturun"
+    },
+    "tagline": "Su işaretleri, zaman, tarih ve yer",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Kamera erişimi yok.",
+      "done": "Video damgalanmış ve kaydedilmiş.",
+      "export": "Dışarıya aktarma damgası video",
+      "exportSection": "Dışarıya aktarım",
+      "failed": "Video muhafaza edilemiyordu.",
+      "fieldsSection": "Mürç alanları",
+      "fileSection": "Video",
+      "none": "Video seçilmedi.",
+      "processing": "İşleme... {percent}%",
+      "processingMobile": "İşleme...",
+      "record": "Şimdi video kaydet .",
+      "saved": "{path}'e kaydedildi",
+      "savedToGallery": "Galerinize kaydedilen video.",
+      "select": "Video seçin",
+      "unavailableBody": "Mobil video damgalama Lymark'ı EAS yapılandırması (doğuş modülü ile) tarafından yüklenmesi gerekir. Expo Go'de mevcut değildir. Mağazadan resmi uygulamayı veya EAS yapılandırmasını yükleyin veya masaüstü / web sürümünü kullanın.",
+      "unavailableTitle": "Kurulumlu uygulama gereklidir",
+      "unreadable": "Dosya bir video olarak okunamadı.",
+      "webNote": "Tarayıcıda, video gerçek zamanlı olarak işlenir  2 dakikalık bir video 2 dakikalık sürer  ve WebM biçiminde çıkar. Uzun videolar için masaüstü uygulamasını kullanın."
+    },
+    "watermark": {
+      "accentColor": "Dök bar",
+      "backdropBandNote": "Şarkı, fotoğrafın kenarından kenara doğru hareket eder ve damga demirlendiği kenarın karşısında dayanır.",
+      "backdropBlockNote": "Alt tarafı metin boyutuna bağlıdır ve çevresinde bir dolgu vardır.",
+      "backdropColor": "Şerit rengi",
+      "backdropDescription": "Fotoğrafın aydınlatılmış alanlarında kontrastı korur.",
+      "backdropInnerRadius": "İç köşeler",
+      "backdropOpacity": "Açıklık",
+      "backdropOpacityValue": "{percent}% çürük",
+      "backdropRadius": "Dört köşeler",
+      "backdropRadiusSquare": "Çekirde",
+      "backdropStyles": {
+        "band": "Tam genişlik bantı",
+        "block": "Metnin arkasında",
+        "none": "Hiçbiri"
+      },
+      "backdropTitle": "Arkadaşlık grubu",
+      "brandDescription": "Saatin üzerinde, logo ve slogan ile imzalı bir çizgi haline gelir.",
+      "brandFirstColor": "İlk bölümün rengi",
+      "brandFirstHint": "İnşaatçılar",
+      "brandFirstPart": "Birinci bölüm",
+      "brandNote": "İkinci bölümü boş bırakıp tek renkli bir işaret bırakın.",
+      "brandPlacements": {
+        "corner": "Bir köşede .",
+        "header": "Saatten yukarı",
+        "none": "Hiçbiri"
+      },
+      "brandSecondColor": "İkinci bölüm rengi",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "İkinci bölüm",
+      "brandTitle": "Müritlik işaretleri",
+      "codeDescription": "Yan tarafta resim ile yer için yarışmıyor.",
+      "codePlacements": {
+        "block": "Verilerin yanında",
+        "side": "Sağ tarafta"
+      },
+      "codeTitle": "Fotoğraf kodu",
+      "colors": {
+        "amber": "Amber",
+        "black": "Siyah",
+        "blue": "Mavi",
+        "green": "Yeşil",
+        "red": "Kırmızı",
+        "white": "Beyaz"
+      },
+      "colorsDescription": "Fotoğraftaki renk şirketin seçimi, uygulamadan değil.",
+      "colorsTitle": "Mürçeler",
+      "complement": "Etiket",
+      "complementColor": "Etiket rengi",
+      "complementHint": "Denetim ve teknik raporlar",
+      "cornerConflict": "İşaret ve veriler aynı köşede  fotoğrafta üst üste geçecek.",
+      "fields": {
+        "address": "Adres / Yer",
+        "code": "Fotoğraf kodu",
+        "date": "Tarih",
+        "time": "Zaman",
+        "weekday": "Haftalık gün"
+      },
+      "fieldsDescription": "Sadece içeriği olan alanlar fotoğrafın içine ulaşıyor.",
+      "fieldsTitle": "Gösterilen alanlar",
+      "includeCountry": "Ülkeyi de dahil edin",
+      "includeCountryDescription": "Sınırları geçerek çalışırsanız açın yoksa sadece fotoğrafta yer alır.",
+      "legibilityTitle": "Okuyabilirlik",
+      "logoAdded": "Marka başlığındaki logo eklendi.",
+      "logoAlignNote": "Logo yüksekliği metni takip eder: üstü adın üstüyle ve altı sloganın temel çizgisiyle uyumludur.",
+      "logoChosen": "Seçilen logo",
+      "logoErrorMessage": "Başka bir görüntü deneyin. Şeffaf arka planlı bir PNG en iyi biçimdir.",
+      "logoErrorTitle": "Bu dosya kullanılamadı .",
+      "logoFormatNote": "Açık bir arka planlı bir PNG kullanın. Beyaz arka planlı bir JPG fotoğrafta beyaz dikdörtgen haline gelir  format şeffaflık saklamaz ve uygulama arka planın ne olduğunu tahmin etmenin bir yolu yoktur.",
+      "logoPermissionMessage": "Logo dosyasını seçmek için Ayarlar › İzinler'de izin verin.",
+      "logoPermissionTitle": "Fotoğraf erişim reddedildi",
+      "logoPick": "Logo seçin",
+      "logoPosition": "Logo pozisyonu",
+      "logoPositionBlock": "Mür ile",
+      "logoRemove": "Çıkar",
+      "logoReplace": "Logo değiştir",
+      "logoSize": "Logo boyutu",
+      "positionDescription": "Fotoğrafın köşesi blokun demirlenmiş olduğu yer.",
+      "positionTitle": "Konum",
+      "positions": {
+        "bottom-left": "Solun alt tarafında",
+        "bottom-right": "Sağdan aşağı",
+        "top-left": "Solda yukarıda",
+        "top-right": "Sağda yukarıda"
+      },
+      "previewCurrent": "Yakınlık sekmesinden gelen fotoğrafın üzerinden.",
+      "previewEmpty": "Işıktan karanlığa, her iki uçta da okuyabilme yeteneğini kontrol etmek için.",
+      "previewNoFields": "Seçilen hiçbir alan yok  fotoğraf su işaretsiz çıkıyor.",
+      "previewTitle": "Önceden Görüş",
+      "reset": "Öntanımlıları geri yükle",
+      "sizeTitle": "Metin boyutu",
+      "sizes": {
+        "large": "Büyük",
+        "medium": "Ortalama",
+        "small": "Küçük"
+      },
+      "textColor": "Metin",
+      "timeFormatDescription": "Zamanın nasıl doldurulduğu alanlar.",
+      "timeFormatTitle": "Zaman biçimi",
+      "timeFormats": {
+        "12h": "12 saat (Aşırı/Aşam)",
+        "24h": "24 saatlik"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Tüm dosyalar",
+      "images": "Resimler",
+      "pickFolder": "Çıktı klasörünü seç",
+      "pickPhoto": "Fotoğraf seç",
+      "pickPhotos": "Parçaya ait fotoğrafları seçin",
+      "savePhoto": "Fotoğraf kaydet",
+      "saveReport": "Kaydet Raporu"
+    },
+    "login": {
+      "cancel": "İptal",
+      "confirm": "Devam et .",
+      "message": "Arayıcıdan giriş yaptın.",
+      "title": "Lymark'a giriş yap"
+    },
+    "menu": {
+      "copy": "Kopya",
+      "cut": "Kesinlikle",
+      "edit": "Düzenle",
+      "file": "Dosya",
+      "fullscreen": "Tam ekran",
+      "help": "Yardım",
+      "paste": "Pasta",
+      "quit": "Bırak .",
+      "redo": "- Redo",
+      "reload": "Yeniden yüklenme",
+      "selectAll": "Tümünü seç",
+      "settings": "Ayarlar",
+      "undo": "İptal edilmiştir.",
+      "view": "Görüntü",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom Out",
+      "zoomReset": "Gerçek boyut"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Eve dön .",
+      "openApp": "Uygulama aç",
+      "photos": "Fotoğraflar",
+      "photosLeft": "{remaining}'in soluna {quota}",
+      "plan": "Plan",
+      "planUnavailable": "Şu anda kullanılamıyor .",
+      "plans": {
+        "free": "Ücretsiz",
+        "pro": "Pro"
+      },
+      "signInTitle": "Kayıt edin .",
+      "signOut": "İmzalayın .",
+      "signUpTitle": "Hesap oluştur",
+      "subscribe": "Lymark Pro'ya abone olun",
+      "subscribeSoon": "Abonelik henüz mevcut değil. Bu durumda burada abonelik yapabilir ve aynı hesabı olan herhangi bir cihazı kullanabilirsiniz.",
+      "title": "Hesabınız",
+      "revokeDesktops": "Bilgisayarları kopar",
+      "revokeDesktopsHint": "Her bilgisayarın uygulamasına erişimi sona erer. İstediğiniz zaman tekrar giriş yapabilirsiniz."
+    },
+    "availability": {
+      "contact": "Başlatmayı takip etmek veya bir sorunu bildirmek için, <email>contato@lymark.app</email>.",
+      "description": "Lymark, Android'de test edilmekte olan versiyon 1.3.0'da, Google Play'de yayınlanmadan önce.",
+      "title": "Kullanılabilirlik"
+    },
+    "data": {
+      "device": {
+        "description": "Hesap aboneliğiniz için var: sunucu e-posta ve planınızı saklar ve fotoğraflarınızı veya konumunuzu asla almaz. Tarih, son iki yüz ihracatı uygulamanın kendi dosyalarında saklar.",
+        "field": "Cihazda",
+        "heading": "Fotoğraflar, adresler ve tarih"
+      },
+      "external": {
+        "description": "Genişlik ve uzunlukları okuyabilir bir adrese dönüştürmek için, işletim sistemi Google veya Apple'ın co-kodlama hizmetini sorar. Bu, kalan tek bilgi ve sistem onu gönderir, uygulama değil.",
+        "field": "Cihazı kapat",
+        "heading": "Sadece koordinatları bir adrese dönüştürmek"
+      },
+      "note": "Brezilya'nın LGPD'i dahil olmak üzere <privacy>Gizlilik Politikası</privacy>Yerleşim izni kapatılınca uygulama tamamen işlevsel hale gelir; sadece adres alanı el ile yazılmalıdır.",
+      "title": "Verilerinizin bulunduğu yer"
+    },
+    "deleteAccount": {
+      "back": "Hesaplara geri dönün .",
+      "confirm": "Hesabımı sil",
+      "deletesNow": "Hesabınızı silmek e-posta adresinizi, kimliğinizi ve plan, kvota ve fotoğraf sayısını hemen siler.",
+      "irreversible": "Silme kalıcıdır ve iptal edilemez. Cihazınızdaki fotoğraflar etkilenmez  onlar asla sunucularımızda değildi.",
+      "retained": "Ödeme işlemleri kayıtları, yasal olarak gerekli mali dönem boyunca, profilinizden bağlantı kesmeden saklanır.",
+      "title": "Hesap sil"
+    },
+    "description": "Android uygulaması, saat, tarih, hafta günü, adres ve izleme kodu ile sitenin denetimi ve servis kanıtı fotoğraflarına damga vurur.",
+    "desktop": {
+      "backAccount": "Hesaplara geri dönün .",
+      "explanation": "Hesabınız hazır. Aşağıdaki düğmeye tıklayarak Lymark'ı açın.",
+      "open": "Uygulama bağlayın",
+      "title": "Masaüstüne giriş yap",
+      "unavailable": "Masaüstü uygulaması bağlantısı henüz mevcut değil."
+    },
+    "download": {
+      "appStore": {
+        "description": "Android'de iOS'da olduğu gibi.",
+        "field": "App Store",
+        "heading": "iPhone ve iPad"
+      },
+      "browser": {
+        "action": "Kayıt edin .",
+        "description": "Hesabınızla giriş yapın ve uygulama tarayıcıda açılır  Telefon veya bilgisayar.",
+        "field": "Tarayıcı",
+        "heading": "Şimdi kullan, kurmak için bir şey yok."
+      },
+      "desktop": {
+        "description": "Fotoğraf seri, uzun videolar ve PDF raporları  ağır görev versiyonu.",
+        "field": "Bilgisayar",
+        "heading": "Windows ve Linux"
+      },
+      "googlePlay": {
+        "description": "Telefon uygulaması, kamera, galerisi ve video ile.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Yakında geliyorum.",
+      "title": "Lymark nerede kullanılır"
+    },
+    "features": {
+      "address": {
+        "description": "Sokak tipi kısaltılır ve eyalet onun kodu olur, bu nedenle adres fotoğrafı kapsamadan iki satırda yer alır.",
+        "field": "Adres",
+        "heading": "GPS ile doldurulmuş, el ile düzeltilebilir"
+      },
+      "code": {
+        "description": "Bu, bir çalışma sırası veya raporunda belirli bir fotoğrafı atabilmeniz için mevcuttur. Sağ kenarına döndürülmüş olarak çalışır veya seçtiğiniz veri blokuna  katılır.",
+        "field": "Fotoğraf kodu",
+        "heading": "14 karakter, bir kripto jeneratörü tarafından çizilmiştir"
+      },
+      "note": "Her alan kendiliğinden açılır ve kapalıdır ve blok üç boyutta dört köşeden herhangi birine demirlenir. Önbellek, genel bir örnek değil, gerçek fotoğrafınızı kullanır. Ekranda gördüğünüz şey, doğrudan ihraç edilir.",
+      "time": {
+        "description": "Tek bir düğme, üç alanı beklenenden daha uzun sürdüğünde, günümüze geri çeker.",
+        "field": "Zaman ve tarih",
+        "heading": "Cihaz saatinden, yakalama anında"
+      },
+      "title": "Resime ne girer?"
+    },
+    "footer": {
+      "description": "Lymark  tarih, saat ve adres ile fotoğraf kayıtları.",
+      "documentsLabel": "Belgeler",
+      "privacy": "Gizlilik Politikası",
+      "support": "Destek:",
+      "terms": "Kullanım Şartları"
+    },
+    "hero": {
+      "ctaAccount": "Hesabıma git .",
+      "ctaLogin": "Kayıt edin .",
+      "ctaSignup": "Ücretsiz bir hesap oluştur",
+      "description": "Lymark, saat, tarih, hafta günü, adres ve izleme kodunu doğrudan görüntüme damgalar. Uygulama dışındaki dosya,  ile birlikte metadata olarak değil, uygulamadan çıkan bilgileri içerir.",
+      "eyebrow": "Alan fotoğraf belgesi",
+      "heading": "Fotoğraf telefonunuzun ne zaman, nerede ve ne olduğunu söylüyor.",
+      "meta": {
+        "account": "Tek dokunma hesabı",
+        "android": "Android ve tarayıcı",
+        "language": "Brezilya Portekiz",
+        "onDevice": "Fotoğraflar cihazda kalır ."
+      },
+      "note": "Kurulacak bir şey yok."
+    },
+    "nav": {
+      "account": "Hesap",
+      "home": "Ev",
+      "homeLabel": "Lymark, ana sayfa",
+      "label": "Ana",
+      "privacy": "Gizlilik",
+      "signIn": "Kayıt edin .",
+      "terms": "Şartlar",
+      "verify": "Kontrol et"
+    },
+    "process": {
+      "capture": {
+        "description": "Adres araması fotoğraf geldiği andan itibaren başlar.",
+        "field": "Yakalama",
+        "heading": "Kamera veya galerisi"
+      },
+      "note": "Bu iki eylem kasıtlı olarak ayrı kalır. Kaydetmek ve paylaşmak farklı sorunları çözür ve onları tek bir düğmeye katlamak fotoğrafı göndermek isteyen herkesi gönder ekranı üzerinden çekirirdi.",
+      "save": {
+        "description": "Lymark'ı kaldırdıktan sonra da dahil olmak üzere, telefonunuzun geri kalan fotoğraflarıyla birlikte  herhangi bir uygulamada kullanılabilir.",
+        "field": "Kaydet",
+        "heading": "Cihazlar galerisine gider ."
+      },
+      "share": {
+        "description": "WhatsApp, e-posta, Drive: Uygulama sistemi tarafından hedef seçilir ve uygulama göndermede yer almıyor.",
+        "field": "Paylaşmak",
+        "heading": "Sistem pay sayfasını açar"
+      },
+      "title": "Bir fotoğrafın yaptığı yol"
+    },
+    "skipToContent": "İçeriğe geç",
+    "specimen": {
+      "caption": "Amber kural, metin kutusunun değil, rakamların kenarlarında başlar ve biter.",
+      "label": "Lymark damgasının örneği: saat 07:42, 12 Ağustos 2026 tarihli, Çarşamba, Guarujá'daki bir adres ve bir fotoğraf kodu."
+    },
+    "title": "Lymark  alan fotoğrafları için tarih, saat ve adres su işaretleri",
+    "verify": {
+      "caveat": "Mür dosyanın bütünlüğünü ve yayınlanma anını tanıtır. Mürün'ün açıkladığı  adres, tarih, saat , yayıncı'nın açıklamasıdır.",
+      "checking": "Kontrol ediyorum...",
+      "declarationNote": "Mür (suç, tarih, saat) emitenin açıklamasını gösterir  mühr, içeriği değil bütünlüğünü ve emisyonunu tanıtır.",
+      "intro": "Lymark tarafından ihraç edilen bir fotoğrafı bırakın veya seçin ve uygulamayı 'den tam olarak bıraktığı gibi olup olmadığını ve kimin ve ne zaman yayınladığını anında görün.",
+      "noSealBody": "Bu dosyada Lymark mühürü yoktur. Mühür var olmadan önce çevrimdışı olarak ihraç edilmiş olabilir veya Lymark'tan gelmeyebilir.",
+      "noSealTitle": "Mürettebat yok.",
+      "notConfigured": "Henüz doğrulama yapılmadı.",
+      "pick": "Dosya seç",
+      "previewAlt": "Doğrulanmış fotoğraf, damga görünür",
+      "privacyNote": "Verifikasyon tarayıcınızda gerçekleşir. Dosya herhangi bir sunucuya gönderilmez.",
+      "sealedBody": "Bu dosya tam olarak Lymark'ın arkasında, {date}'deki {account} hesabı tarafından yayınlanmış.",
+      "sealedTitle": "- Sağlam.",
+      "tamperedBody": "İçeriği mühürle eşleşmez: dosya yayınlandıktan sonra değiştirilmiştir veya mühür başka bir dosyayaya ait.",
+      "tamperedTitle": "Uygulmazlık",
+      "title": "Doğruluğu doğrula",
+      "unsupported": "Bu tarayıcı imza doğrulama desteklemiyor."
+    }
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Politika ochrany osobních údajů",
+      "description": "Jak aplikace Lymark zachovává fotografie, umístění, historii a váš účet. Fotky a umístění nikdy neopouštějí zařízení; server uchovává pouze e-mail, plán a počet fotografií."
+    },
+    "title": "Politika ochrany osobních údajů",
+    "updated": "Poslední aktualizace: 16. srpna 2026 · Lymark app, verze 1.3.0",
+    "intro": "Tato politika popisuje, jak aplikace Lymark zachází s osobními údaji. Je v souladu s zákonem č. 13.709/2018 (Obecný zákon o ochraně osobních údajů  LGPD) a nařízením (EU) 2016/679 (Obecný nařízení o ochraně údajů  GDPR) a platí pro aplikaci distribuovanou pod identifikačníkem <strong>com.lycosteam.lymark</strong>a na tuto webovou stránku.",
+    "s01": {
+      "title": "V jedné věti",
+      "p1": "Lymark <strong>nepřenáší vaše fotografie ani vaši polohu</strong>Vše, co aplikace vytváří  obrázky, adresy, historii a preference  zůstává na vašem zařízení, pod vaší kontrolou. Pro použití aplikace a pro předplatné je nutné mít účet: server uchovává e-mail, identifikátor účtu, plán a počet vyvezených fotografií  a nic jiného.",
+      "p2": "Existuje pouze jedna výjimka popsaná v bodě 05: pro přepočítání GPS souřadnic do čitelné adresy se operační systém zařízení vyžádá externí geokódovací službu."
+    },
+    "s02": {
+      "title": "Na které se tato politika vztahuje",
+      "p1": "Tato pravidla se vztahují na všechny osoby, které aplikaci používají nebo navštíví tuto webovou stránku. Pro subjekty údajů v Brazílii se zpracování provádí podle LGPD a dohledu Národního úřadu pro ochranu údajů (ANPD)."
+    },
+    "s03": {
+      "title": "Kdo je kontrolér?",
+      "p1": "Správce osobních údajů  <em>kontrolér</em>, v terminologii LGPD  je 29.015.357 AMAD ALI HAMMOUD, registrovaný pod názvem CNPJ 29.015.357/0001-25, s adresou Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Pro účely článku 41 LGPD je osobou odpovědnou za zpracování osobních údajů Amad Ali Hammoud, která je možné kontaktovat na <email>contato@lymark.app</email>. Vzhledem k objemu a povaze zpracování , které nezahání ani citlivé údaje v rozsahu, ani systematický monitorování  není povinnost jmenovat<em>Úředník pro ochranu údajů</em>podle článku 37 GDPR."
+    },
+    "s04": {
+      "title": "Jaké informace aplikace zachází",
+      "p1": "Všechny níže uvedené informace jsou zaznamenány výhradně v soukromé oblasti aplikace uvnitř zařízení a nic z toho není zasláno vývojáři.",
+      "defs": {
+        "photos": {
+          "term": "Fotografie",
+          "def": "Obraz, který si vyberete z galerie nebo který zachycujete fotoaparátem, a soubor vyvážený s vodní značkou. Fotografie mohou obsahovat osobní údaje třetích stran  viz bod 11."
+        },
+        "location": {
+          "term": "Místo",
+          "def": "Přibližná šířka a délka, získaná jednou za snímek, pouze pro účely vyplnění pole adres. Koordináty nejsou zaznamenány: vedle fotografie je uchováno pouze výsledný adresní text."
+        },
+        "datetime": {
+          "term": "Datum, čas a den týdne",
+          "def": "Čte se z hodinového zařízení v okamžiku zachytění a upravitelný vámi."
+        },
+        "code": {
+          "term": "Fotokód",
+          "def": "Sekvence 14 šestidesátých znaků, které jsou náhodně kreslené."
+        },
+        "history": {
+          "term": "Historie",
+          "def": "Záznam posledních 200 vývozů, který obsahuje cestu souboru na zařízení a údaje, které jsou odtlačeny na obrázek."
+        },
+        "preferences": {
+          "term": "Preference",
+          "def": "Viditelné pole, poloha, velikost a další možnosti vodních značek."
+        }
+      },
+      "p2": "Aplikace <strong>neshromažďuje</strong>: jméno, e-mail, telefon, doklady totožnosti, reklamní identifikátor, identifikátor zařízení, kontaktní údaje, kalendář, historii prohlížení, metriky používání, zprávy o zkustech nebo jakékoli jiné informace o vás nebo o vašem zařízení."
+    },
+    "s05": {
+      "title": "Jediná informace, která opouští zařízení",
+      "p1": "Když udělíte povolení k umístění, aplikace požádá operační systém, aby přeměnil GPS souřadnice na poštovní adresu.<strong>Google</strong>na zařízení s Androidem a <strong>Jablko</strong>na zařízení iOS.",
+      "p2": "Tato komunikace pochází z operačního systému, nikoli od společnosti Lymark. Aplikace nepřijímá její kopii, nepřemíří s ní a nemá přístup k ničemu jinému než k navrácené adrese.",
+      "p3": "<strong>Žádná fotografie neopouští zařízení prostřednictvím jakékoli akce aplikace.</strong>Pokud použijete tlačítko Sdílet, obrázek bude přenášena aplikací cíle, kterou jste vybrali v seznamu sdílení systému  messenger, e-mail, cloud storage  v rámci politiky ochrany osobních údajů této aplikace."
+    },
+    "s06": {
+      "title": "Žádost o povolení a proč",
+      "defs": {
+        "camera": {
+          "term": "Kamery",
+          "def": "Nafocení fotografie, která bude mít vodní značku. Požádaná pouze při klepnutí na Vytáhněte fotografii. Aplikace nevyžaduje přístup k mikrofonu."
+        },
+        "photos": {
+          "term": "Fotografie a média",
+          "def": "Vybrat existující obrázek a napsat exportovaný soubor do galerie. Přístup je omezen na fotografie a povolení k psaní se používá pouze pro psaní."
+        },
+        "location": {
+          "term": "Místo při používání",
+          "def": "Vyplňte pole adresy. Požádané v prvním pozadí, pouze v době používání aplikace, a <strong>Nikdy v pozadí</strong>."
+        }
+      },
+      "p1": "Všechny oprávnění jsou volitelné a mohou být kdykoliv odvozeny v nastavení zařízení. Odmítnutí umístění udržuje aplikaci plně funkční: adresu pak zadáte. Odmítnutí přístupu do galerie pouze brání automatickému ukládání a fotografie se stále mohou sdílet."
+    },
+    "s07": {
+      "title": "Právní základy a účely",
+      "p1": "Zpracování polohy probíhá na základě Vaší<strong>souhlas</strong> Článek 7 LGPD I a článek 6 1) a GDPR  vyjádřený při udělení povolení systému a odvolatelný kdykoli, aniž je dotčena zákonnost zpracování provedeného před odvoláním.",
+      "p2": "Zbytek údajů se zpracovává pro <strong>výkon funkce, kterou jste požádali</strong> Článek 7 V LGPD a článek 6(1) b GDPR , protože bez něj neexistuje vodní značka pro aplikaci k výrobě.",
+      "p3": "Zpracování údajů o účtu je založeno na plnění smlouvy (LGPD článek 7, V; GDPR článek 6(1) b)). Zpracování založené na oprávněném zájmu (LGPD článek 7, IX; GDPR článek 6(1) f)) existuje pouze pro účely bezpečnosti a předcházení podvodům  například zaznamenávání IP adresy žádostí na server. Žádné zpracování není prováděno pro účely reklamy, profilování, analýzy chování nebo jakéhokoli sekundárního účelu a žádný zpracování zvláštních kategorií údajů nebo citlivých údajů prováděné vývojářem."
+    },
+    "s08": {
+      "title": "Mezinárodní přenos",
+      "p1": "Údaje o účtu zpracovává zpracovávač o autentizaci (Clerk, Inc., Spojené státy americké), který představuje mezinárodní přenos údajů na základě standardních smluvních doložek a mechanismů článku 33 LGPD a článků 44 až 49.",
+      "p2": "Tento web je hostován společností Vercel Inc. podle ustanovení bodu 14."
+    },
+    "s09": {
+      "title": "Sdílení s třetími stranami",
+      "p1": "Vývojník sdílí, prodává, pronáší ani nepřidává osobní údaje třetím osobám.<em>procesor</em>Clerk, Inc., který poskytuje autentizační službu a ukládá e-mail, identifikátor účtu a údaje o plánu, které jsou smlouvou svázány na pokyny vývojáře. Pokud se přihlásíte s Google nebo Apple, tyto poskytovatelé zpracovávají údaje o přihlášení podle svých vlastních zásad; vývojář od nich přijímá pouze e-mail a identifikátor potřebný k vytvoření účtu. Fotografie, adresy a umístění procházejí žádným zpracovatelem, protože nikdy neopouštějí zařízení."
+    },
+    "s10": {
+      "title": "Uchovávání, uchovávání a zabezpečení",
+      "p1": "Data jsou umístěna v soukromé oblasti aplikace, chráněné izolací operačního systému mezi aplikacemi a zámkem obrazovky zařízení. V verzi Android je automatická záloha systému<strong>zdravotně postižené</strong>, aby se historie a preference neposílály na účet uživatele v Googlu.",
+      "p2": "Údržba je zcela ovládána vámi: záznamy zůstávají, dokud nejsou vymazány v samotné aplikaci, a historie automaticky vyhozuje ty nejstarší, jakmile projde dvě stě položek, odstraní také odpovídající soubory. Odinstalování aplikace vymaže vše, co bylo uloženo. Fotografie, které jsou již uložené v galerii zařízení patří do galerie a zůstanou tam  je na vás, abyste je odstranil, pokud chcete.",
+      "p3": "Žádný systém není neomylný. Údaje o účtu  e-mail, identifikátor, plán a počítání  jsou uchovávány procesorem pro ověření, podle jeho bezpečnostních opatření. Fotografie, adresy a umístění neexistují v žádném centrálním úložišti a proto nemohou uniknout z infrastruktury vývojáře. Pokud bezpečnostní incident ovlivní údaje o účtu, vývojář oznámí orgán a subjekty údajů podle článku 48 LGPD a článku 33 GDPR."
+    },
+    "s11": {
+      "title": "Když fotografujete ostatní lidi",
+      "p1": "Když fotografujete identifikovatelné lidi v průběhu své profesní činnosti, <strong>- Ty?</strong>Účastník zpracování údajů se stane správcem těchto údajů ve vztahu k představovaným subjektům údajů a je na vás, abyste poskytli právní základ, informace a odpověď na jejich práva."
+    },
+    "s12": {
+      "title": "Vaše práva",
+      "p1": "Článek 18 LGPD a články 15 až 22 GDPR vám zaručují práva na potvrzení a přístup, opravu, vymazání, anonymizování, blokování, přenosnost, omezení zpracování, námitky, odvolání souhlasu a informace o sdílení.",
+      "p2": "Fotografie, adresy, historie a preference se nacházejí pouze na vašem zařízení a tato práva jsou vykonávána přímo v aplikaci: zobrazení a vymazání záznamů v karty Galerie, opravování jakéhokoli pole před exportem, odvolání povolení k umístění v nastavení systému a vymazání všeho odinstalováním aplikace  vývojář nemůže k nim přístup, export nebo vymazání těchto údajů pro vás, protože je neobsahuje. Pokud jde o údaje o účtu  e-mail, plán a počítání  můžete je zobrazit na stránce účtu a požádat o opravy, export nebo vymazání na kontaktním e-mailové adrese této politiky ; vymazání účtu vymazá tyto údaje v procesoru autentifikace.",
+      "p3": "Pro otázky nebo formální žádosti píšte na adresu <email>contato@lymark.app</email>Máte také právo podat stížnost u Úřadu pro ochranu právních předpisů.<strong>ANPD</strong>, v Brazílii nebo u dozorového orgánu vašeho členského státu v Evropské unii."
+    },
+    "s13": {
+      "title": "Automatické rozhodnutí",
+      "p1": "Žádné automatizované rozhodnutí, profilování nebo zpracování, které by vás dotkly právních účinků, nejsou v souladu s článkem 20 LGPD a článkem 22 GDPR."
+    },
+    "s14": {
+      "title": "O této webové stránce",
+      "p1": "Tato stránka nemá žádné analytické údaje, nevykazuje žádnou reklamu a neobsahuje tlačítka sociálních sítí.<strong>soubory cookie nezbytné</strong>pro váš účet, nastavený procesorem pro autentikaci (bod 09) při přihlášení; žádné sledovací nebo reklamní soubory cookie. Čísla jsou slouženy z domény vlastní stránky. Jediné požadavky, které váš prohlížeč předává třetím stranám, jsou ty z přihlášení a obrazovky účtu, adresované procesoru pro autentikaci  a pokud si ji vyberete, poskytovateli přihlášení (Google nebo Apple).",
+      "p2": "Webové stránky jsou hostovány <strong>Vercel Inc.</strong>, který jako zpracovatel zaznamenává technické přístupové údaje  IP adresa, datum, čas a požadovaný zdroj  po dobu, která je nezbytná pro bezpečnost a provoz hostingu. Právním základem je oprávněný zájem o zachování bezpečnosti služby, článek 7 IX LGPD a článek 6(1)(f) GDPR."
+    },
+    "s15": {
+      "title": "Změny této politiky",
+      "p1": "Změny budou zveřejněny na této stránce s novým datem aktualizace.Změny, které podstatně mění zpracování údajů, budou před vstupem v platnost oznámeny i v rámci aplikace."
+    },
+    "s16": {
+      "title": "Děti a dospívající",
+      "p1": "Lymark je pracovní nástroj určený pro osoby starší 18 let a není zaměřen na děti nebo dospívající a nezohledává údaje o tomto publiku."
+    },
+    "s17": {
+      "title": "Príslušné právo",
+      "p1": "Tato politika je řízena brazilským právem, aniž je dotčena aplikace GDPR na subjekty údajů, které se týkají."
+    },
+    "note": "<terms>Podmínky použití</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Podmínky použití",
+      "description": "Podmínky používání aplikace Lymark: co dělá, co ne a kdo je zodpovědný za obsah fotografií."
+    },
+    "title": "Podmínky použití",
+    "updated": "Poslední aktualizace: 16. srpna 2026 · Lymark app, verze 1.3.0",
+    "intro": "Tyto podmínky řídí používání aplikace Lymark, která je distribuována pod identifikačním označením <strong>com.lycosteam.lymark</strong>29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. Instalem nebo používáním aplikace souhlasíte s tím, co je zde napsáno.",
+    "s01": {
+      "title": "Co dělá aplikace",
+      "p1": "Lymark přepíná soubor informací na fotografii  čas, datum, den v týdnu, adresu a identifikační kód  a vytváří nový soubor obrázků s těmito informacemi vestavěnými do pixelů."
+    },
+    "s02": {
+      "title": "Co aplikace nedělá",
+      "p1": "Tento bod je nejdůležitější z těchto pojistek a žádáme, abyste ho pozorně četli.",
+      "items": {
+        "certify": "<strong>Aplikace nic necertifikuje ani neověřuje.</strong>Není to soudní vyšetření, nevydají dokument veřejné víry a nepředstavují odborné důkazy.",
+        "editable": "<strong>Každé pole je upravitelné uživatelem.</strong>Čas, datum, adresa a kód lze před vyvezením volně změnit, podle návrhu: profesionál musí být schopen napravit adresu, kterou se GPS mýlil.",
+        "clock": "<strong>Čas je z hodinového zařízení.</strong>Neexistuje synchronizace s důvěryhodným časovým serverem.",
+        "address": "<strong>Adresa je odhad.</strong>Jeho přesnost závisí na GPS signálu a databázi mapové služby operačního systému.",
+        "code": "<strong>Fotokód není registrací v notářské kanceláři.</strong>Jedná se o náhodný identifikátor pro vnitřní referenci, který nemá žádnou důkazní hodnotu."
+      },
+      "p2": "Pokud vaše použití vyžaduje důkaz s právní silou proti třetím osobám, požádejte o notářský list nebo digitální osvědčení s časovou značkou  Lymark je náhradou pro žádnou z nich."
+    },
+    "s03": {
+      "title": "Vaše odpovědnosti",
+      "items": {
+        "photos": "Jste výhradně zodpovědní za fotografie, které zachytíte, za obsah, který na nich vytisknete, a za používání vytvořených souborů.",
+        "thirdParties": "Při fotografování jiných lidí, jejich majetku nebo jejich prostor je na vás, abyste získali nezbytné povolení a dodržovali práva na obraz, profesní tajemství a obecný zákon o ochraně osobních údajů ve vztahu k zobrazeným subjektům údajů.",
+        "prohibited": "Použití aplikace k vytváření falešného záznamu, k zavádění někoho do omylu, k simulaci výkonu služby, která nebyla poskytnuta, nebo k provádění jakéhokoli nezákonného činu je zakázáno.",
+        "backups": "Aplikace má omezenou místní historii, což není záloha."
+      }
+    },
+    "s04": {
+      "title": "Použití licence",
+      "p1": "Dáváme vám osobní, odvolatelnou, neexkluzivní a nepřenosnou licenci na instalaci a používání aplikace, včetně pro profesní účely.",
+      "p2": "<strong>Tvoje fotky jsou tvoje.</strong>Název, značka a vizuální identita Lymaru zůstávají vlastnictvím vývojáře."
+    },
+    "s05": {
+      "title": "Dostupnost a aktualizace",
+      "p1": "Aplikace je poskytována tak, jak je. Není zaručeno, že bude fungovat bez přerušení, že bude kompatibilní s každým zařízení, ani není stanoveno lhůta pro opravy nebo nové verze.",
+      "p2": "Kvalita vyváženého obrazu závisí na zařízení a operačním systému a může být o nižším rozlišení než původní fotografie."
+    },
+    "s06": {
+      "title": "Omezení odpovědnosti",
+      "p1": "V maximální míře, kterou to umožňuje brazilské právo, není vývojář odpovědný za nepřímé ztráty, ztracené zisky, ztrátu dat nebo škody vyplývající z rozhodnutí přijatých na základě pečovatelných informací  včetně jakéhokoli stíhání obsahu fotografie vytvořené aplikací, ať již soudně nebo mimo ni.",
+      "p2": "Toto omezení <strong>nevylučuje</strong>práv zaručených spotřebiteli podle zákona č. 8.078/1990, ani odpovědnosti za úmyslné nedodržování nebo hrubou nedbalost."
+    },
+    "s07": {
+      "title": "Zrušení",
+      "p1": "Můžete kdykoliv přestat používat aplikaci: vymazání účtu vymazá její údaje na serveru a odinstalování aplikace vymazá údaje uchovávané na zařízení."
+    },
+    "s08": {
+      "title": "Změny těchto podmínek",
+      "p1": "Změny budou zveřejněny na této stránce s novým aktualizačním datem."
+    },
+    "s09": {
+      "title": "Príslušné právo a fórum",
+      "p1": "V souvislosti s tímto právem se používá brazilské právo."
+    },
+    "note": "O manipulaci s údaji viz <privacy>Politika ochrany osobních údajů</privacy>Otázky:<email>contato@lymark.app</email>."
+  }
+}

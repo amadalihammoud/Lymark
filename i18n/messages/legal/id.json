@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Kebijakan Privasi",
+      "description": "Bagaimana aplikasi Lymark menangani foto, lokasi, sejarah dan akun Anda. Foto dan lokasi tidak pernah meninggalkan perangkat; server hanya menyimpan email, rencana dan jumlah foto."
+    },
+    "title": "Kebijakan Privasi",
+    "updated": "Terakhir diperbarui: 16 Agustus 2026 · Lymark app, versi 1.3.0",
+    "intro": "Kebijakan ini menjelaskan bagaimana aplikasi Lymark menangani informasi pribadi. Ini sesuai dengan Lei no 13.709/2018 (Hukum Perlindungan Data Pribadi Umum  LGPD) dan dengan Peraturan (EU) 2016/679 (Peraturan Perlindungan Data Umum  GDPR), dan berlaku untuk aplikasi yang didistribusikan dengan identifier <strong>com.lycosteam.lymark</strong>dan ke situs web ini.",
+    "s01": {
+      "title": "Dalam satu kalimat",
+      "p1": "Lymark <strong>tidak mengirimkan foto atau lokasi Anda</strong>. Semua yang dihasilkan aplikasi  gambar, alamat, sejarah dan preferensi  tetap di perangkat Anda sendiri, di bawah kendali Anda. Ada akun, yang diperlukan untuk menggunakan aplikasi dan untuk berlangganan: server menyimpan email Anda, ID akun, rencana dan jumlah foto yang diekspor  dan tidak ada yang lain.",
+      "p2": "Ada satu pengecualian, yang dijelaskan dalam item 05: untuk mengubah koordinat GPS menjadi alamat yang dapat dibaca, sistem operasi perangkat meminta layanan geocoding eksternal."
+    },
+    "s02": {
+      "title": "Siapa yang ditandatangani kebijakan ini",
+      "p1": "Ini berlaku untuk siapa pun yang menggunakan aplikasi atau mengunjungi situs web ini. Bagi subjek data di Brasil, pemrosesan mengikuti LGPD dan pengawasan dari Otoritas Perlindungan Data Nasional (ANPD)."
+    },
+    "s03": {
+      "title": "Siapa pengontrolnya",
+      "p1": "Pengendali data pribadi  <em>kontrolor</em>, dalam terminologi LGPD  adalah 29.015.357 AMAD ALI HAMMOUD, terdaftar di bawah CNPJ 29.015.357/0001-25, dengan alamat di Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Orang yang bertanggung jawab atas pemrosesan data pribadi, dalam tujuan artikel 41 LGPD, adalah Amad Ali Hammoud, yang dapat dihubungi di <email>contato@lymark.app</email>. Mengingat volume dan sifat pemrosesan yang tidak melibatkan data sensitif pada skala atau pemantauan sistematis tidak ada kewajiban untuk menunjuk seorang<em>Pejabat Perlindungan Data</em>berdasarkan artikel 37 GDPR."
+    },
+    "s04": {
+      "title": "Informasi apa yang ditangani aplikasi",
+      "p1": "Semua informasi di bawah ini tercatat secara eksklusif di area pribadi aplikasi di dalam perangkat, dan tidak ada yang dikirim ke pengembang.",
+      "defs": {
+        "photos": {
+          "term": "Foto-foto",
+          "def": "Gambar yang Anda pilih dari galeri atau menangkap dengan kamera, dan file yang diekspor dengan watermark. Foto dapat berisi data pribadi pihak ketiga  lihat item 11."
+        },
+        "location": {
+          "term": "Lokasi",
+          "def": "Latitude dan longitude yang diperoleh sekali per tangkapan, untuk tujuan tunggal mengisi bidang alamat. Koordinat tidak tercatat: hanya teks alamat yang dihasilkan yang disimpan, di samping foto."
+        },
+        "datetime": {
+          "term": "Tanggal, waktu dan hari kerja",
+          "def": "Baca dari jam perangkat pada saat penangkapan, dan dapat diedit oleh Anda."
+        },
+        "code": {
+          "term": "Kode foto",
+          "def": "Sebuah urutan 14 karakter heksadecimal yang ditarik secara acak. Tidak berasal dari perangkat identifier atau dari salah satu Anda, dan tidak memungkinkan pelacakan di seluruh aplikasi."
+        },
+        "history": {
+          "term": "Sejarah",
+          "def": "Rekaman 200 ekspor terakhir, berisi jalur file pada perangkat dan data dicetak pada gambar."
+        },
+        "preferences": {
+          "term": "Preferensi",
+          "def": "Bidang yang terlihat, posisi, ukuran dan pilihan watermark lainnya."
+        }
+      },
+      "p2": "Aplikasi <strong>tidak mengumpulkan</strong>: nama, email, telepon, dokumen identitas, identifikasi iklan, identifikasi perangkat, data kontak, kalender, riwayat browsing, metrik penggunaan, laporan kecelakaan atau informasi lain tentang Anda atau perangkat Anda. Tidak ada analisis, iklan, atribusi atau pelacakan SDK tertanam."
+    },
+    "s05": {
+      "title": "Satu-satunya informasi yang meninggalkan perangkat",
+      "p1": "Ketika Anda memberikan izin lokasi, aplikasi meminta sistem operasi untuk mengubah koordinat GPS menjadi alamat pos. Terjemahan itu  geocoding terbalik  dilakukan oleh sistem operasi itu sendiri, yang untuk tujuan itu mengirim koordinat ke layanan peta: <strong>Google</strong>pada perangkat Android dan <strong>Apel</strong>pada perangkat iOS.",
+      "p2": "Komunikasi tersebut berasal dari sistem operasi, bukan dari Lymark. aplikasi tidak menerima salinan dari itu, tidak memediasi dan tidak memiliki akses ke apa pun selain alamat yang dikembalikan. Pengolahan yang dilakukan oleh penyedia ini diatur oleh kebijakan privasi mereka sendiri.",
+      "p3": "<strong>Tidak ada foto yang keluar dari perangkat melalui tindakan aplikasi.</strong>Jika Anda menggunakan tombol Share, gambar akan dikirimkan oleh aplikasi tujuan yang Anda pilih di bagian bagian share sheet  messenger, email, cloud storage  di bawah kebijakan privasi aplikasi tersebut."
+    },
+    "s06": {
+      "title": "Izin yang diminta, dan mengapa",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Untuk mengambil foto yang akan menerima watermark. Hanya diminta ketika Anda mengetuk Tarik foto. Aplikasi tidak meminta akses mikrofon."
+        },
+        "photos": {
+          "term": "Foto dan media",
+          "def": "Untuk memilih gambar yang ada dan untuk menulis file yang diekspor ke galeri. Akses terbatas pada foto, dan izin menulis hanya digunakan untuk menulis  aplikasi tidak menelusuri atau membaca galeri Anda."
+        },
+        "location": {
+          "term": "Lokasi saat digunakan",
+          "def": "Untuk mengisi bidang alamat. Di minta di latar depan, hanya saat aplikasi digunakan, dan <strong>Tidak pernah di latar belakang</strong>."
+        }
+      },
+      "p1": "Semua izin adalah opsional dan dapat dicabut kapan saja dalam pengaturan perangkat. Menolak lokasi membuat aplikasi tetap berfungsi sepenuhnya: alamat kemudian ditik oleh Anda. Menolak akses galeri hanya mencegah penyimpanan otomatis, dan foto masih dapat dibagikan."
+    },
+    "s07": {
+      "title": "Dasar dan tujuan hukum",
+      "p1": "Pengolahan lokasi terjadi berdasarkan data Anda <strong>persetujuan</strong> Pasal 7, I LGPD dan Pasal 6  1) ) GDPR  dinyatakan ketika Anda memberikan izin sistem, dan dapat dicabut kapan saja, tanpa menghalangi kelegalan pemrosesan yang dilakukan sebelum pencabutan.",
+      "p2": "Pengolahan data yang tersisa terjadi untuk <strong>kinerja fitur yang Anda minta</strong> Pasal 7, V dari LGPD dan Pasal 6  1)  b dari GDPR  karena tanpa itu tidak ada tanda air untuk aplikasi untuk menghasilkan.",
+      "p3": "Pengolahan data akun didasarkan pada pelaksanaan kontrak (LGPD art. 7, V; GDPR art. 6(1)(b)). Pengolahan berdasarkan kepentingan sah (LGPD art. 7, IX; GDPR art. 6(1)(f)) hanya ada untuk keamanan dan pencegahan penipuan  misalnya, mencatat alamat IP permintaan ke server. Tidak ada pengolahan untuk iklan, per profil, analisis perilaku atau tujuan sekunder, dan tidak ada pengolahan kategori khusus data atau data sensitif oleh pengembang."
+    },
+    "s08": {
+      "title": "Transfer internasional",
+      "p1": "Data akun diproses oleh prosesor otentikasi (Clerk, Inc., Amerika Serikat), yang merupakan transfer data internasional, berdasarkan klausa kontrak standar dan mekanisme LGPD art. 33 dan GDPR art. 44 sampai 49. Pencarian geokoding yang dijelaskan dalam item 05 masih dilakukan oleh sistem operasi ke penyedia yang dapat memprosesnya di luar negara pengguna, di bawah mekanisme transfer penyedia tersebut sendiri.",
+      "p2": "Situs web ini dihoskan oleh Vercel Inc., berdasarkan ketentuan item 14."
+    },
+    "s09": {
+      "title": "Pembagian dengan pihak ketiga",
+      "p1": "Pengembang tidak membagikan, menjual, menyewa atau menyerahkan data pribadi kepada pihak ketiga.<em>prosesor</em>: Clerk, Inc., yang menyediakan layanan otentikasi dan menyimpan email, identifikasi akun dan data rencana, terikat kontrak dengan instruksi pengembang. Jika Anda masuk dengan Google atau Apple, penyedia tersebut memproses data masuk sesuai kebijakan mereka sendiri; pengembang hanya menerima dari mereka email dan identifikasi yang diperlukan untuk membuat akun. Foto, alamat dan lokasi tidak melalui prosesor sama sekali, karena mereka tidak pernah meninggalkan perangkat."
+    },
+    "s10": {
+      "title": "Penyimpanan, penyimpanan dan keamanan",
+      "p1": "Data berada di area pribadi aplikasi, dilindungi oleh isolasi sistem operasi antara aplikasi dan oleh kunci layar perangkat.<strong>penyandang cacat</strong>, sehingga sejarah dan preferensi tidak dikirim ke akun Google pengguna.",
+      "p2": "Penyimpanan sepenuhnya dikendalikan oleh Anda: catatan tetap sampai dihapus di aplikasi itu sendiri, dan sejarah secara otomatis membuang yang tertua setelah melewati dua ratus item, menghapus file yang sesuai juga. Uninstalling aplikasi menghapus semua yang disimpan. Foto yang sudah disimpan di galeri perangkat milik galeri dan tinggal di sana  terserah Anda untuk menghapus mereka jika Anda mau.",
+      "p3": "Tidak ada sistem yang tidak terbebani. Data akun  email, identifikasi, rencana dan hitungan  disimpan oleh prosesor otentikasi, di bawah langkah-langkah keamanannya. Foto, alamat dan lokasi tidak ada di repositori pusat, dan karena itu tidak dapat bocor dari infrastruktur pengembang. Jika insiden keamanan mempengaruhi data akun, pengembang akan memberi tahu otoritas dan subjek data di bawah LGPD art. 48 dan GDPR art. 33. Risiko yang relevan untuk foto Anda tetap akses fisik ke perangkat yang tidak terkunci."
+    },
+    "s11": {
+      "title": "Ketika Anda memotret orang lain",
+      "p1": "Ketika Anda memotret orang yang dapat diidentifikasi dalam kegiatan profesional Anda,<strong>Kau</strong>menjadi pengendali data tersebut sehubungan dengan subjek data yang digambarkan, dan terserah Anda untuk memberikan dasar hukum, informasi dan tanggapan terhadap hak-hak mereka. Pengembang tidak berpartisipasi dalam pemrosesan tersebut dan tidak memiliki akses ke gambar."
+    },
+    "s12": {
+      "title": "Hak-hakmu",
+      "p1": "Pasal 18 LGPD dan Pasal 15 sampai 22 GDPR menjamin hak konfirmasi dan akses, koreksi, penghapusan, anonimasi, pemblokiran, portabilitas, pembatasan pemrosesan, keberatan, penarikan persetujuan dan informasi tentang pembagian.",
+      "p2": "Foto, alamat, sejarah dan preferensi hanya berada di perangkat Anda, dan hak-hak tersebut dileksanakkan langsung di aplikasi: melihat dan menghapus entri di tab Galeri, memperbaiki bidang sebelum mengekspor, mencabut izin lokasi dalam pengaturan sistem, dan menghapus semuanya dengan menghapus aplikasi  pengembang tidak dapat mengakses, mengekspor atau menghapus data itu untuk Anda, karena tidak memilikinya.",
+      "p3": "Untuk pertanyaan atau permintaan formal, tulis ke <email>contato@lymark.app</email>Anda juga berhak mengajukan keluhan ke<strong>ANPD</strong>, di Brasil, atau dengan otoritas pengawasan negara anggota Anda, di Uni Eropa."
+    },
+    "s13": {
+      "title": "Keputusan otomatis",
+      "p1": "Tidak ada keputusan otomatis, profil atau pemrosesan yang menghasilkan efek hukum tentang Anda, berdasarkan Pasal 20 LGPD dan Pasal 22 GDPR."
+    },
+    "s14": {
+      "title": "Tentang situs web ini",
+      "p1": "Situs ini tidak memiliki analisis, tidak menampilkan iklan dan tidak memasukkan tombol jejaring sosial.<strong>cookie yang sangat diperlukan</strong>untuk sesi akun Anda, ditetapkan oleh prosesor otentikasi (item 09) saat Anda masuk; tidak ada cookie pelacakan atau iklan. Fonts dilayani dari domain situs sendiri. Satu-satunya permintaan browser Anda kepada pihak ketiga adalah permintaan dari layar login dan akun, yang ditujukan ke prosesor otentikasi  dan, jika Anda memilihnya, ke penyedia login (Google atau Apple).",
+      "p2": "Situs web ini dihoskan oleh <strong>Vercel Inc.</strong>, yang sebagai prosesor mencatat data akses teknis  alamat IP, tanggal, waktu dan sumber daya yang diminta  selama diperlukan untuk keamanan dan operasi hosting. Dasar hukum adalah kepentingan sah dalam menjaga keamanan layanan, Pasal 7, IX LGPD dan Pasal 6 ((1) ((f) GDPR."
+    },
+    "s15": {
+      "title": "Perubahan kebijakan ini",
+      "p1": "Perubahan akan dipublikasikan di halaman ini, dengan tanggal pembaruan baru. Perubahan yang secara substansial mengubah pemrosesan data juga akan dikomunikasikan di dalam aplikasi sebelum mereka berlaku."
+    },
+    "s16": {
+      "title": "Anak-anak dan remaja",
+      "p1": "Lymark adalah alat kerja yang ditujukan untuk orang berusia 18 tahun atau lebih."
+    },
+    "s17": {
+      "title": "Hukum yang berlaku",
+      "p1": "Kebijakan ini diatur oleh hukum Brasil, tanpa menghalangi penerapan GDPR pada subjek data yang dicakupnya."
+    },
+    "note": "Lihat juga <terms>Ketentuan Penggunaan</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Ketentuan Penggunaan",
+      "description": "Ketentuan penggunaan aplikasi Lymark: apa yang dilakukan, apa yang tidak dilakukan, dan siapa yang bertanggung jawab atas konten foto."
+    },
+    "title": "Ketentuan Penggunaan",
+    "updated": "Terakhir diperbarui: 16 Agustus 2026 · Lymark app, versi 1.3.0",
+    "intro": "Istilah ini mengatur penggunaan aplikasi Lymark, yang didistribusikan di bawah identifier <strong>com.lycosteam.lymark</strong>dengan 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. Dengan menginstal atau menggunakan aplikasi, Anda setuju dengan apa yang tertulis di sini.",
+    "s01": {
+      "title": "Apa yang dilakukan aplikasi",
+      "p1": "Lymark melapisi satu set informasi pada foto  waktu, tanggal, hari kerja, alamat dan kode identifikasi  dan menghasilkan file gambar baru dengan informasi yang tertanam dalam piksel."
+    },
+    "s02": {
+      "title": "Apa yang tidak dilakukan aplikasi",
+      "p1": "Hal ini adalah hal yang paling penting dalam hal ini, dan kami meminta Anda membacanya dengan hati-hati.",
+      "items": {
+        "certify": "<strong>Aplikasi ini tidak mencertifikasi atau menverifikasi apa pun.</strong>Ini bukan pemeriksaan forensik, tidak mengeluarkan dokumen dengan kepercayaan publik dan tidak merupakan bukti ahli.",
+        "editable": "<strong>Setiap bidang dapat diedit oleh pengguna.</strong>Waktu, tanggal, alamat dan kode dapat diubah secara bebas sebelum ekspor, dengan desain: profesional perlu dapat memperbaiki alamat GPS salah. Akibatnya nilai cap mencerminkan apa yang pengguna memutuskan untuk cap.",
+        "clock": "<strong>Waktu datang dari jam perangkat</strong>, yang mungkin tidak benar atau mungkin telah ditetapkan secara manual. Tidak ada sinkronisasi dengan server waktu yang dapat diandalkan.",
+        "address": "<strong>Alamatnya adalah perkiraan.</strong>Keterakannya tergantung pada sinyal GPS dan pada database layanan peta sistem operasi.",
+        "code": "<strong>Kode foto bukanlah pendaftaran di kantor notaris.</strong>Ini adalah pengidentifikasi acak untuk referensi internal, tanpa nilai bukti sama sekali."
+      },
+      "p2": "Jika kasus penggunaan Anda memerlukan bukti yang sah terhadap pihak ketiga, cari surat notaris atau layanan sertifikasi digital dengan cap waktu  Lymark adalah pengganti keduanya."
+    },
+    "s03": {
+      "title": "Tanggung jawabmu",
+      "items": {
+        "photos": "Anda bertanggung jawab atas foto yang Anda tangkap, konten yang Anda capai dan penggunaan file yang Anda buat.",
+        "thirdParties": "Saat memotret orang lain, properti mereka atau fasilitas mereka, terserah Anda untuk mendapatkan izin yang diperlukan dan untuk menghormati hak gambar, rahasia profesional dan Hukum Perlindungan Data Pribadi Umum sehubungan dengan subjek data yang digambarkan.",
+        "prohibited": "Menggunakan aplikasi untuk membuat catatan palsu, untuk menyesatkan siapa pun, untuk mensimulasikan kinerja layanan yang tidak diberikan atau untuk melakukan tindakan ilegal dilarang.",
+        "backups": "Terserah Anda untuk menyimpan niloan dari apa pun yang Anda anggap penting. Aplikasi menyimpan sejarah lokal terbatas, yang bukan cadangan."
+      }
+    },
+    "s04": {
+      "title": "Lisensi penggunaan",
+      "p1": "Kami memberikan lisensi pribadi, yang dapat dicabut, tidak eksklusif dan tidak dapat ditransfer untuk menginstal dan menggunakan aplikasi, termasuk untuk tujuan profesional.",
+      "p2": "<strong>Foto-foto Anda adalah Anda.</strong>Kami tidak mengklaim hak atas gambar yang Anda capture atau menghasilkan. Nama Lymark, merek dan identitas visual tetap properti pengembang."
+    },
+    "s05": {
+      "title": "Ketersediaan dan pembaruan",
+      "p1": "Aplikasi ini disediakan seperti sekarang nilo. tidak ada jaminan operasi yang tidak terganggu, kompatibilitas dengan setiap perangkat, atau komitmen untuk tenggat waktu untuk perbaikan atau versi baru. Fitur dapat diubah atau dihentikan.",
+      "p2": "Kualitas gambar yang diekspor tergantung pada perangkat dan sistem operasi, dan mungkin memiliki resolusi yang lebih rendah dari foto asli."
+    },
+    "s06": {
+      "title": "Pembatasan tanggung jawab",
+      "p1": "Dalam batas maksimum yang di nilo oleh hukum Brasil, pengembang tidak bertanggung jawab atas kerugian tidak langsung, kerugian keuntungan, kehilangan data atau kerusakan yang timbul dari keputusan yang dibuat berdasarkan informasi yang dicetak  termasuk dari setiap penantang, di pengadilan atau di luarnya, terhadap konten foto yang dihasilkan oleh aplikasi.",
+      "p2": "Pembatasan ini <strong>tidak menghapus</strong>Hak-hak yang di nilotikan kepada konsumen oleh Lei no 8.078/1990, dan tidak bertanggung jawab atas kesalahan sengaja atau kelalaian kasar."
+    },
+    "s07": {
+      "title": "Pembatasan",
+      "p1": "Anda dapat berhenti menggunakan aplikasi kapan saja: menghapus akun akan menghapus data di server, dan menghapus aplikasi akan menghapus data yang disimpan di perangkat."
+    },
+    "s08": {
+      "title": "Perubahan pada syarat-syarat ini",
+      "p1": "Perubahan akan dipublikasikan di halaman ini dengan tanggal pembaruan baru. Penggunaan terus menerus setelah publikasi berarti persetujuan dengan versi yang berlaku."
+    },
+    "s09": {
+      "title": "Hukum dan forum yang berlaku",
+      "p1": "Hukum Brasil berlaku. forum yang dipilih untuk menyelesaikan sengketa yang timbul dari syarat-syarat ini adalah tempat tinggal pengguna."
+    },
+    "note": "Tentang penanganan data, lihat <privacy>Kebijakan Privasi</privacy>. Pertanyaan: <email>contato@lymark.app</email>."
+  }
+}

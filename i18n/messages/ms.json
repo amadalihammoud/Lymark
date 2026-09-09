@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplikasi",
+      "pitch": "Setimlah waktu, tarikh, hari kerja, alamat dan kod penjejakan pada gambar anda untuk rekod lapangan, pemeriksaan tapak dan bukti perkhidmatan.",
+      "platform": "Platform",
+      "privacy": "Dasar Privasi",
+      "privacyGeocoding": "Apabila GPS digunakan, sistem operasi menghantar koordinat ke perkhidmatan peta Google atau Apple untuk mendapatkan alamat. Itu adalah satu-satunya maklumat yang ditinggalkan di sini, dan sistem yang menghantarnya, bukan Lymark.",
+      "privacyLocation": "Lokasi digunakan sekali setiap tangkapan, hanya untuk mengisi medan alamat, dan tidak disimpan secara berasingan dari foto.",
+      "privacyOnDevice": "Foto, alamat dan sejarah tinggal di peranti ini sahaja. Akaun itu ada untuk langganan anda: pelayan menyimpan e-mel dan rancangan anda, dan tidak pernah menerima foto anda atau lokasi anda.",
+      "privacySection": "Privasi",
+      "sdk": "Expo SDK",
+      "terms": "Syarat Penggunaan",
+      "title": "Mengenai Lymark",
+      "version": "Versi"
+    },
+    "account": {
+      "browserHint": "Login masuk berlaku di dalam penyemak imbas. Login di sana dengan akaun anda dan aplikasi akan menyambung secara automatik.",
+      "code": "Kod",
+      "codeSent": "Kami menghantar kod ke {email}",
+      "connected": "Berhubung",
+      "continue": "Berlanjut",
+      "deleteAccount": "Hapus akaun",
+      "email": "Email",
+      "failed": "Periksa e-mel atau kod dan cuba lagi.",
+      "notConfigured": "Pendaftaran belum tersedia dalam bangunan ini.",
+      "signInBrowser": "Masuk melalui penyemak imbas",
+      "signOut": "Tulis keluar",
+      "signedInAs": "Difirman sebagai {email}",
+      "title": "Akaun",
+      "verify": "Periksa"
+    },
+    "batch": {
+      "addressHint": "Jalan, nombor  Bandar",
+      "clearList": "Senarai yang jelas",
+      "codeHint": "contohnya LYM-001",
+      "done": "{count, plural, other {Pemprosesan selesai: # foto diproses.}}",
+      "doneSection": "Selesai",
+      "dropZone": "Seret dan letakkan gambar di sini, atau gunakan butang Pilih gambar",
+      "errorsSection": "Kesalahan",
+      "folder": "Folder: {name}",
+      "noPhotos": "Pilih sekurang-kurangnya satu gambar.",
+      "outputNote": "Foto yang diproses disimpan ke folder yang dipilih.",
+      "outputSection": "Keluar",
+      "photosSection": "Foto untuk diproses",
+      "processing": "Mengproses...",
+      "progress": "{current} dari {total} ({percent}%)",
+      "results": "{success, plural, other {# berjaya}}, {failed, plural, other {# gagal}}",
+      "selectFolder": "Pilih folder output",
+      "selectPhotos": "Pilih gambar",
+      "selected": "{count, plural, other {# foto dipilih}}",
+      "sharedNote": "Nilai-nilai ini digunakan untuk SELAMEN foto. Setiap foto tarikh dan masa dibaca dari EXIF sendiri.",
+      "sharedSection": "Metadata dikongsi",
+      "start": "Mulakan pemprosesan",
+      "unavailableBody": "Fitur ini hanya desktop.",
+      "unavailableTitle": "Pengolahan kumpulan tidak tersedia"
+    },
+    "capture": {
+      "accuracy": "Kedudukan dalam ±{meters} m.",
+      "accuracyImprecise": "Kedudukan dalam ±{meters} m  periksa nombor jalan sebelum mengeksport.",
+      "address": "Alamat",
+      "addressFailedTitle": "Tiada alamat yang ditemui",
+      "addressHint": "Ketuk lokasi, atau ketik alamat",
+      "camera": "Buat gambar",
+      "code": "Kod",
+      "dateHint": "1 Januari 2026",
+      "dateTimeGroup": "Tarikh dan masa",
+      "emptyWarning": "Tiada data akan ditempak  foto akan keluar tanpa tanda air.",
+      "gallery": "Pilih dari galeri",
+      "galleryDenied": "Akses foto ditolak, jadi imej hanya wujud di dalam aplikasi. Membolehkannya di Seting › Permisi untuk menyimpannya ke galeri.",
+      "galleryFailed": "Gambar itu masuk ke dalam sejarah, tetapi peranti menolak untuk menulisnya ke galeri.",
+      "generateCode": "Menjana",
+      "hiddenFields": "{count, plural, other {Medan tersembunyi}}: {fields} — hidupkan dalam Tetapan › Medan dan kedudukan.",
+      "keepMyAddress": "Jaga saya.",
+      "locate": "Mencari",
+      "locateByGps": "Mengesan alamat melalui GPS",
+      "lookup": {
+        "denied": "Membolehkan lokasi di Seting › Permian, atau ketik alamat.",
+        "disabled": "Lokasi di peranti dimatikan. Putarnya di tetapan cepat dan cuba lagi.",
+        "timeout": "GPS tidak menjawab tepat pada masanya. Ia sering gagal di dalam rumah  ketik alamat.",
+        "unavailable": "Alamat tidak dapat dijawab di kedudukan ini."
+      },
+      "newCapture": "Mulakan penangkapan baru",
+      "noFieldsBack": "Kembalilah.",
+      "noFieldsContinue": "Berlanjutlah sama ada",
+      "noFieldsMessage": "Tiada medan yang boleh ditempati. Isian medan, atau lihat Seting › Bidang dan kedudukan.",
+      "noFieldsTitle": "Gambar akan keluar tanpa tanda air.",
+      "noPhotoHint": "Buat gambar atau pilih salah satu dari galeri untuk bermula.",
+      "noPhotoSelected": "Tiada gambar yang dipilih",
+      "openFailed": "Gambar itu tidak dapat dibuka.",
+      "permissionMessage": "Membolehkan akses di Seting › Permian untuk meneruskan.",
+      "permissionTitle": "Permohonan diperlukan",
+      "pickPhoto": "Pilih gambar",
+      "pickPhotoHint": "Pilih gambar untuk membolehkan tindakan.",
+      "previewLabel": "Pratinjau foto yang ditandai dengan air",
+      "renderFailedTitle": "Tidak dapat menghasilkan imej",
+      "replaceAddressMessage": "GPS ditemui: {address}",
+      "replaceAddressTitle": "Mengganti alamat yang anda ketik?",
+      "resetConfirm": "Buang",
+      "resetMessage": "Foto yang dipilih dan medan yang diisi akan dibuang.",
+      "resetTitle": "Mulakan penangkapan baru?",
+      "saved": "Foto disimpan di galeri peranti dan dalam sejarah.",
+      "savedAppOnlyTitle": "Hanya disimpan di dalam Lymark",
+      "shareDialogTitle": "Bagikan gambar yang ditandai dengan air",
+      "shareFailedMessage": "Imej itu dihasilkan dan terdapat dalam sejarah Lymark. Anda boleh berkongsi dari tab Galeri.",
+      "shareFailedTitle": "Tidak boleh berkongsi",
+      "shareUnavailableMessage": "Peranti ini tiada saham, gambarnya kekal dalam sejarah Lymark.",
+      "shareUnavailableTitle": "Perkongsian tidak tersedia",
+      "sharedFileTitle": "Foto yang ditandai dengan air",
+      "stampNotReady": "Stempel masih disediakan.",
+      "syncNow": "Sekarang.",
+      "timestamp": "Tarikh/Waktu",
+      "title": "Pengangkutan",
+      "useGpsAddress": "Gunakan GPS yang",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Hari"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "Pilih warna lain",
+      "saturationBrightness": "Penekan dan kecerahan",
+      "use": "Gunakan warna ini"
+    },
+    "common": {
+      "back": "Kembali",
+      "cancel": "Batalkan",
+      "delete": "Hapus",
+      "error": "Kesalahan",
+      "gotIt": "Sudah faham.",
+      "loading": "Memungut...",
+      "no": "Tidak",
+      "ok": "Baiklah.",
+      "save": "Simpan",
+      "share": "Berbagi",
+      "success": "Kesuksesan",
+      "tryAgain": "Cuba lagi.",
+      "unknownError": "Kesalahan yang tidak diketahui",
+      "yes": "Ya."
+    },
+    "gallery": {
+      "cancelSelection": "Batalkan pilihan",
+      "clear": "Sejarah yang jelas",
+      "clearConfirm": "Jelas",
+      "clearMessage": "Rekod Lymark akan dihapuskan. Gambar yang sudah disimpan di galeri peranti tidak terjejas.",
+      "count": "{count, plural, other {# foto dieksport}}",
+      "delete": "Hapus",
+      "empty": "Belum ada gambar.",
+      "emptyAction": "Pergi Capture",
+      "emptyDescription": "Foto yang anda eksport dengan tanda air muncul di sini, dengan tarikh, tempat dan kod.",
+      "filteredCount": "{shown} daripada {total, plural, other {# foto}}",
+      "noResults": "Tiada gambar yang ditemui untuk {query}.",
+      "photoLabel": "Foto dari {when}",
+      "removeMessage": "Entri meninggalkan Lymark. Gambar yang sudah disimpan di galeri peranti tidak terjejas.",
+      "removeTitle": "{count, plural, one {Buang dari sejarah} other {Buang # entri}}",
+      "removed": "{count, plural, other {Entri dibuang.}}",
+      "saveDeniedMessage": "Membolehkannya di Settings › Permian untuk menyimpan gambar ke galeri peranti.",
+      "saveDeniedTitle": "Akses foto ditolak",
+      "savedAll": "{count, plural, one {Satu foto disimpan ke galeri peranti.} other {# foto disimpan ke galeri peranti.}}",
+      "savedSome": "{saved} dari {total} foto disimpan.",
+      "searchPlaceholder": "Cari mengikut alamat, tarikh atau kod",
+      "selectedCount": "{count, plural, other {# foto dipilih}}",
+      "share": "Berbagi",
+      "title": "Galeri"
+    },
+    "language": {
+      "automatic": "Peranti yang sesuai",
+      "automaticNote": "Lymark mengikuti bahasa yang ditetapkan pada peranti anda.",
+      "label": "Bahasa",
+      "selector": "Pilih bahasa"
+    },
+    "login": {
+      "access": "Masuk dalam akses",
+      "apple": "Masuk dalam dengan Apple",
+      "google": "Masuk dalam dengan Google",
+      "subtitle": "Masuk untuk meneruskan",
+      "title": "Masuk untuk mengakses Lymark"
+    },
+    "nav": {
+      "batch": "Pengolahan kumpulan",
+      "photoDetail": "Maklumat foto",
+      "report": "Laporan PDF",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Skrin ini bukan sebahagian daripada Lymark.",
+      "screenTitle": "Halaman tidak ditemui",
+      "title": "Tiada jalan seperti itu"
+    },
+    "permissions": {
+      "allow": "Biarkan",
+      "allowed": "Diizinkan",
+      "blocked": {
+        "later": "Tidak sekarang.",
+        "message": "Sistem tidak akan meminta lagi. Untuk membenarkan, buka tetapan peranti anda.",
+        "openSettings": "Tetapan terbuka",
+        "title": "Permohonan terhalang"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Diperlukan untuk mengambil gambar yang akan menerima tanda air.",
+      "denied": "Dilarang",
+      "granted": "Diiktiraf",
+      "intro": "Lymark hanya meminta apa yang diperlukan untuk menempel foto. Imej anda tidak pernah meninggalkan peranti: apabila anda menggunakan GPS, sistem operasi menghantar perkhidmatan peta koordinat sahaja, jadi ia boleh menjadi alamat.",
+      "location": "Lokasi",
+      "locationRationale": "Isi dalam medan alamat secara automatik apabila anda menangkap.",
+      "mediaLibrary": "Simpan ke galeri",
+      "mediaLibraryRationale": "Untuk menulis gambar yang dieksport ke galeri peranti.",
+      "openDeviceSettings": "Tetapan",
+      "recheck": "Periksa lagi",
+      "request": "Meminta kebenaran",
+      "section": "Akses",
+      "title": "Permisi"
+    },
+    "photo": {
+      "backToGallery": "Kembali ke Galeri",
+      "exportedAt": "Dieksport dengan {when}",
+      "noWatermark": "Foto ini dieksport tanpa tanda air.",
+      "notFoundBody": "Rekod ini mungkin telah dikeluarkan dari sejarah.",
+      "notFoundTitle": "Foto tidak ditemui",
+      "remove": "Hapus",
+      "removeBody": "Rekod meninggalkan Lymark. Imej yang disimpan ke galeri peranti tidak terjejas.",
+      "removeTitle": "Hapus dari sejarah",
+      "share": "Berbagi",
+      "stampedData": "Data yang ditempak"
+    },
+    "plan": {
+      "exhausted": "Foto percuma yang digunakan",
+      "exhaustedMessage": "12 gambar rancangan percuma hilang.",
+      "free": "Bebas",
+      "pro": "Pro",
+      "reconnect": "Berhubung semula untuk mengesahkan langganan anda",
+      "remaining": "{remaining, plural, other {Baki # foto percuma}}",
+      "title": "Rancangan",
+      "unlimited": "Tiada had"
+    },
+    "report": {
+      "allPhotos": "Semua gambar",
+      "authorField": "Penulis / syarikat",
+      "detailsSection": "Maklumat",
+      "doc": {
+        "author": "Penulis",
+        "declaration": "Data yang dicetak (alamat, tarikh, masa dan kod) adalah kenyataan oleh penerbit foto.",
+        "exportedAt": "Dieksport pada",
+        "generatedAt": "Dihasilkan pada",
+        "page": "Halaman",
+        "photo": "Foto: {index}",
+        "photosSection": "Rekod fotografi",
+        "signature": "Penandatanganan orang yang bertanggungjawab",
+        "summary": "Ringkasan",
+        "title": "Laporan foto",
+        "totalPhotos": "Foto keseluruhan:"
+      },
+      "empty": "Tiada gambar yang dikeluarkan, laporan itu dibuat dari galeri anda.",
+      "failed": "Tidak dapat menghasilkan laporan.",
+      "fileStem": "laporan",
+      "format": {
+        "csv": "Tabel perancangan (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Paket (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Menjana fail",
+      "generateSection": "Menjana",
+      "includeLogo": "Logo pada sampul",
+      "includeLogoDescription": "Logo jenama anda, sama seperti tanda cap. Matikan untuk meninggalkannya di dalam dokumen.",
+      "norm": {
+        "abnt": "ABNT (Brazil)",
+        "din5008": "DIN 5008 (Jerman)",
+        "ibape": "Gaya IBAPE (Brazil)",
+        "iso": "Antarabangsa",
+        "letter": "Surat (AS)"
+      },
+      "normNote": "Standard menetapkan kertas dan pemformatan margin, font dan pengendalian halaman. Kandungan laporan adalah sama di semua; gaya IBAPE menambah blok tandatangan.",
+      "normSection": "Standar dokumen",
+      "projectsSection": "Projek / pekerjaan",
+      "saved": "Di simpan ke {path}",
+      "savedShort": "Laporan disimpan.",
+      "title": "Laporan PDF",
+      "titleField": "Judul laporan",
+      "unavailableBody": "Laporan PDF boleh didapati dalam aplikasi desktop.",
+      "unavailableTitle": "Hanya desktop",
+      "uncoded": "Tiada kod",
+      "wordTooBig": "Dokumen Word menjadi terlalu besar dengan foto tertanam. Gunakan PDF atau pakej ZIP.",
+      "zipMissing": "{count, plural, other {Pakej disimpan, tetapi # foto tidak dijumpai pada peranti.}}"
+    },
+    "settings": {
+      "about": "Tentang",
+      "aboutDescription": "Versi, privasi dan kredit",
+      "appSection": "Aplikasi",
+      "deviceSection": "Peranti",
+      "deviceSectionDescription": "Akses yang diminta Lymark.",
+      "fields": "Bidang dan kedudukan",
+      "fieldsDescription": "Pilih bidang yang ditunjukkan, sudut dan saiz",
+      "history": "Sejarah",
+      "historyDescription": "Foto yang dieksport yang disimpan di peranti",
+      "language": "Bahasa",
+      "permissions": "Permisi",
+      "permissionsDescription": "Kamera, foto dan lokasi",
+      "save": "Simpan",
+      "title": "Tetapan",
+      "watermark": "Tanda air",
+      "watermarkSection": "Tanda air",
+      "watermarkSectionDescription": "Apa yang ditempel di gambar, dan di mana."
+    },
+    "signup": {
+      "subtitle": "Daftar untuk bermula",
+      "title": "Buat akaun Lymark anda"
+    },
+    "tagline": "Tanda air dengan masa, tarikh dan tempat",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Tiada akses kamera.",
+      "done": "Video ditempak dan disimpan.",
+      "export": "Video yang ditempak eksport",
+      "exportSection": "Eksport",
+      "failed": "Video itu tidak dapat dicetak.",
+      "fieldsSection": "Bidang setim",
+      "fileSection": "Video",
+      "none": "Tiada video yang dipilih.",
+      "processing": "Pengolahan ... {percent}%",
+      "processingMobile": "Mengproses...",
+      "record": "Rekod video sekarang",
+      "saved": "Di simpan ke {path}",
+      "savedToGallery": "Video yang dicetak disimpan ke galeri anda.",
+      "select": "Pilih video",
+      "unavailableBody": "Stamping video mudah alih memerlukan Lymark dipasang dari pembinaan EAS (dengan modul asli). Ia tidak tersedia dalam Expo Go. Pasang aplikasi rasmi dari kedai atau pembinaan EAS, atau gunakan versi desktop / web.",
+      "unavailableTitle": "Aplikasi yang dipasang diperlukan",
+      "unreadable": "Fail tidak dapat dibaca sebagai video.",
+      "webNote": "Dalam pelayar, video diproses dalam masa nyata  video 2 minit mengambil masa 2 minit  dan keluar dalam format WebM. Untuk video panjang, gunakan aplikasi desktop."
+    },
+    "watermark": {
+      "accentColor": "Bar menegak",
+      "backdropBandNote": "Band berjalan tepi ke tepi di seluruh foto dan berbaring di tepi di mana setimpel itu diikat. Di atas adegan yang sibuk  tapak bangunan, halaman, fasad yang ramai  ia dibaca sebagai tajuk dokumen  daripada stiker yang diletakkan di atasnya.",
+      "backdropBlockNote": "Layar belakang mengikut saiz teks, dengan padding di sekitarnya.",
+      "backdropColor": "Warna pita",
+      "backdropDescription": "Memelihara kontras di kawasan cahaya gambar. Tanpa itu, teks duduk terus di atas gambar, dengan bayangan.",
+      "backdropInnerRadius": "Sudut dalaman",
+      "backdropOpacity": "Ketelusan",
+      "backdropOpacityValue": "{percent}% tidak jelas",
+      "backdropRadius": "Sudut bulat",
+      "backdropRadiusSquare": "Square",
+      "backdropStyles": {
+        "band": "Band lebar penuh",
+        "block": "Di sebalik teks",
+        "none": "Tiada"
+      },
+      "backdropTitle": "Band sokongan",
+      "brandDescription": "Di atas jam itu menjadi tanda tangan, dengan logo dan tagline.",
+      "brandFirstColor": "Warna bahagian pertama",
+      "brandFirstHint": "Pembina",
+      "brandFirstPart": "Bahagian pertama",
+      "brandNote": "Tinggalkan bahagian kedua kosong untuk tanda warna tunggal. Nama panjang dikurangkan sehingga ia sesuai, bukannya dipotong.",
+      "brandPlacements": {
+        "corner": "Di sudut",
+        "header": "Di atas jam",
+        "none": "Tiada"
+      },
+      "brandSecondColor": "Warna bahagian kedua",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Bahagian Kedua",
+      "brandTitle": "Tanda yang ditandai",
+      "codeDescription": "Di sisi lain ia tidak bersaing untuk ruang dengan gambar itu sendiri.",
+      "codePlacements": {
+        "block": "Di samping data",
+        "side": "Sisi kanan"
+      },
+      "codeTitle": "Kod foto",
+      "colors": {
+        "amber": "Amber",
+        "black": "Hitam",
+        "blue": "Biru",
+        "green": "Hijau",
+        "red": "Merah",
+        "white": "Putih"
+      },
+      "colorsDescription": "Warna pada gambar adalah pilihan syarikat, bukan aplikasi mengubahnya di sini tidak mengubah warna skrin.",
+      "colorsTitle": "Warna setim",
+      "complement": "Tagline",
+      "complementColor": "Warna tagline",
+      "complementHint": "Pemeriksaan dan laporan teknikal",
+      "cornerConflict": "Tanda dan data berada di sudut yang sama  mereka akan tumpang tindih pada gambar.",
+      "fields": {
+        "address": "Alamat / Tempat",
+        "code": "Kod foto",
+        "date": "Tarikh",
+        "time": "Masa",
+        "weekday": "Hari kerja"
+      },
+      "fieldsDescription": "Hanya medan yang terdapat dan mempunyai kandungan yang mencapai foto.",
+      "fieldsTitle": "Bidang yang ditunjukkan",
+      "includeCountry": "Termasuk negara",
+      "includeCountryDescription": "Putarnya jika anda bekerja di luar sempadan. jika tidak ia hanya mengambil ruang pada gambar.",
+      "legibilityTitle": "Pembaca",
+      "logoAdded": "Logo ditambah kepada tajuk jenama.",
+      "logoAlignNote": "Ketinggian logo mengikuti teks: bahagian atasnya sejajar dengan bahagian atas nama dan bahagian bawahnya dengan garis asas tagline.",
+      "logoChosen": "Logo yang dipilih",
+      "logoErrorMessage": "Cuba gambar lain. PNG dengan latar belakang telus adalah format yang berfungsi terbaik.",
+      "logoErrorTitle": "fail ini tidak boleh digunakan",
+      "logoFormatNote": "Gunakan PNG dengan latar belakang telus. JPG dengan latar belakang putih menjadi segi empat putih pada foto  format tidak menyimpan ketelusan, dan aplikasi tidak mempunyai cara untuk menebak apa latar belakang.",
+      "logoPermissionMessage": "Membolehkannya di Seting › Permian untuk memilih fail logo.",
+      "logoPermissionTitle": "Akses foto ditolak",
+      "logoPick": "Pilih logo",
+      "logoPosition": "Kedudukan logo",
+      "logoPositionBlock": "Dengan cap",
+      "logoRemove": "Hapus",
+      "logoReplace": "Mengganti logo",
+      "logoSize": "Ukuran logo",
+      "positionDescription": "Sudut foto blok ini diikat.",
+      "positionTitle": "Kedudukan",
+      "positions": {
+        "bottom-left": "Di bahagian bawah kiri",
+        "bottom-right": "Di bahagian bawah kanan",
+        "top-left": "Di sebelah kiri atas",
+        "top-right": "Di sebelah kanan atas"
+      },
+      "previewCurrent": "Melalui foto semasa dari tab Capture.",
+      "previewEmpty": "Dari cahaya ke gelap, untuk memeriksa kebolehbacaannya di kedua-dua hujung.",
+      "previewNoFields": "Tiada medan yang dipilih  foto keluar tanpa tanda air.",
+      "previewTitle": "Pratinjau",
+      "reset": "Mengembalikan lalai",
+      "sizeTitle": "Ukuran teks",
+      "sizes": {
+        "large": "Besar",
+        "medium": "Medium",
+        "small": "Kecil"
+      },
+      "textColor": "Teks",
+      "timeFormatDescription": "Bagaimana masa diisi ke dalam medan.",
+      "timeFormatTitle": "Format masa",
+      "timeFormats": {
+        "12h": "12 jam (AM/PM)",
+        "24h": "24 jam"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Semua fail",
+      "images": "Gambar",
+      "pickFolder": "Pilih folder output",
+      "pickPhoto": "Pilih foto",
+      "pickPhotos": "Pilih gambar untuk kumpulan",
+      "savePhoto": "Simpan gambar",
+      "saveReport": "Simpan laporan"
+    },
+    "login": {
+      "cancel": "Batalkan",
+      "confirm": "Berlanjut",
+      "message": "Kamu baru saja masuk melalui pelayar.",
+      "title": "Masuk dalam Lymark"
+    },
+    "menu": {
+      "copy": "Copy",
+      "cut": "Potong",
+      "edit": "Edit",
+      "file": "File",
+      "fullscreen": "Skrin penuh",
+      "help": "Bantuan",
+      "paste": "Paste",
+      "quit": "Berhentilah",
+      "redo": "Redo",
+      "reload": "Pemuatan semula",
+      "selectAll": "Pilih semua",
+      "settings": "Tetapan",
+      "undo": "Tidak berlaku",
+      "view": "Lihat",
+      "zoomIn": "Zoom dalam",
+      "zoomOut": "Menghampiri keluar",
+      "zoomReset": "Ukuran sebenar"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Kembali ke rumah.",
+      "openApp": "Buka aplikasi",
+      "photos": "Foto",
+      "photosLeft": "{remaining} dari {quota} kiri",
+      "plan": "Rancangan",
+      "planUnavailable": "Tidak tersedia sekarang",
+      "plans": {
+        "free": "Bebas",
+        "pro": "Pro"
+      },
+      "signInTitle": "Masukkan",
+      "signOut": "Tulis keluar",
+      "signUpTitle": "Buat akaun",
+      "subscribe": "Langganan Lymark Pro",
+      "subscribeSoon": "Langganan belum tersedia. Apabila mereka ada, anda boleh langganan di sini dan menggunakan mana-mana peranti dengan akaun yang sama.",
+      "title": "Akaun anda",
+      "revokeDesktops": "Putus komputer",
+      "revokeDesktopsHint": "Mengakhiri akses aplikasi di setiap komputer. Anda boleh log masuk lagi bila-bila masa anda mahu."
+    },
+    "availability": {
+      "contact": "Untuk mengikuti pelancaran atau melaporkan masalah, tulis ke <email>contato@lymark.app</email>.",
+      "description": "Lymark berada pada versi 1.3.0, dalam ujian pada Android sebelum diterbitkan di Google Play. Tidak ada versi iOS dan tidak ada versi web, dan aplikasi tidak mengambil bayaran.",
+      "title": "Kebolehgunaan"
+    },
+    "data": {
+      "device": {
+        "description": "Akaun itu ada untuk langganan anda: pelayan menyimpan e-mel dan rancangan anda, dan tidak pernah menerima foto atau lokasi anda. Sejarah menyimpan dua ratus eksport terakhir dalam fail aplikasi sendiri.",
+        "field": "Di atas peranti",
+        "heading": "Foto, alamat dan sejarah"
+      },
+      "external": {
+        "description": "Untuk mengubah garis lintang dan garis bujur menjadi alamat yang boleh dibaca, sistem operasi meminta perkhidmatan geocoding Google atau Apple. Itu satu-satunya maklumat yang ditinggalkan, dan sistem menghantarnya, bukan aplikasi.",
+        "field": "Hapus peranti",
+        "heading": "Hanya mengubah koordinat menjadi alamat"
+      },
+      "note": "Semua telah ditetapkan  termasuk apa yang bermakna di bawah Brazil LGPD  dalam <privacy>Dasar Privasi</privacy>. Menghidupkan kebenaran lokasi meninggalkan aplikasi berfungsi sepenuhnya; hanya medan alamat yang kemudian perlu diketik dengan tangan.",
+      "title": "Di mana data anda berada"
+    },
+    "deleteAccount": {
+      "back": "Kembali ke akaun",
+      "confirm": "Hapus akaun saya",
+      "deletesNow": "Menghapuskan akaun anda dengan serta-merta memadam e-mel anda, ID anda, dan rekod rancangan, kuota dan jumlah foto.",
+      "irreversible": "Penghapusan adalah kekal dan tidak boleh dibatalkan. Foto di peranti anda tidak terjejas  mereka tidak pernah di pelayan kami.",
+      "retained": "Rekod transaksi pembayaran disimpan untuk tempoh fiskal yang diperlukan oleh undang-undang, tidak dikaitkan dengan profil anda.",
+      "title": "Hapus akaun"
+    },
+    "description": "Aplikasi Android yang menegam masa, tarikh, hari kerja, alamat dan kod penjejakan pada pemeriksaan tapak dan bukti perkhidmatan foto.",
+    "desktop": {
+      "backAccount": "Kembali ke akaun",
+      "explanation": "Akaun anda sudah siap. Klik butang di bawah untuk membuka Lymark pada komputer anda yang sudah ditandatangani  pelayar akan meminta kebenaran untuk membuka aplikasi.",
+      "open": "Sambungkan aplikasi",
+      "title": "Masuk dalam desktop",
+      "unavailable": "Sambungan aplikasi desktop belum tersedia."
+    },
+    "download": {
+      "appStore": {
+        "description": "Pengalaman yang sama seperti Android, pada iOS.",
+        "field": "App Store",
+        "heading": "iPhone dan iPad"
+      },
+      "browser": {
+        "action": "Masukkan",
+        "description": "Masukkan dengan akaun anda dan aplikasi akan dibuka di dalam pelayar  telefon atau komputer.",
+        "field": "Penyemak imbas",
+        "heading": "Gunakan sekarang, tiada apa untuk dipasang"
+      },
+      "desktop": {
+        "description": "Kumpulan foto, video panjang dan PDF melaporkan  versi tugas berat.",
+        "field": "Komputer",
+        "heading": "Windows dan Linux"
+      },
+      "googlePlay": {
+        "description": "Aplikasi telefon, dengan kamera, galeri dan video cap.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Datang tak lama lagi.",
+      "title": "Di mana untuk menggunakan Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "Jenis jalan dikurangkan dan negara menjadi kodnya, jadi alamat sesuai dalam dua baris tanpa menutup foto. Jika anda menaip sebelum GPS menjawab, apa yang anda ketik menang.",
+        "field": "Alamat",
+        "heading": "Diisi dengan GPS, boleh diperbetulkan dengan tangan"
+      },
+      "code": {
+        "description": "Ia wujud supaya anda boleh mengutip satu foto tertentu dalam urutan kerja atau laporan. Ia berjalan berputar ke tepi kanan, atau terletak dengan blok data pilihan anda.",
+        "field": "Kod foto",
+        "heading": "Empat belas watak, digambar oleh penjana kripto"
+      },
+      "note": "Setiap medan dihidupkan dan dipadamkan sendiri, dan blok bercanggah ke mana-mana sudut, dalam tiga saiz. Pratinjau menggunakan foto sebenar anda, bukan sampel generik: apa yang anda lihat di skrin secara harfiah adalah apa yang dieksport.",
+      "time": {
+        "description": "Satu butang akan memindahkan ketiga-tiga medan ke masa kini apabila pengambilan mengambil masa yang lebih lama daripada yang dijangkakan.",
+        "field": "Waktu dan tarikh",
+        "heading": "Dari jam peranti, pada masa penangkapan"
+      },
+      "title": "Apa yang masuk ke dalam imej"
+    },
+    "footer": {
+      "description": "Lymark  Rekod fotografi dengan tarikh, masa dan alamat.",
+      "documentsLabel": "Dokumen",
+      "privacy": "Dasar Privasi",
+      "support": "Sokongan:",
+      "terms": "Syarat Penggunaan"
+    },
+    "hero": {
+      "ctaAccount": "Pergi ke akaun saya.",
+      "ctaLogin": "Masukkan",
+      "ctaSignup": "Buat akaun percuma",
+      "description": "Lymark menegam masa, tarikh, hari kerja, alamat dan kod penjejakan terus ke atas imej. fail yang keluar dari aplikasi membawa maklumat di dalamnya  bukan sebagai metadata yang naik di samping, yang WhatsApp ke hadapan pertama mengeluarkannya.",
+      "eyebrow": "Rekod foto lapangan",
+      "heading": "Gambar itu meninggalkan telefon anda yang sudah memberitahu kapan, di mana dan apa.",
+      "meta": {
+        "account": "Rekod satu pencetakan",
+        "android": "Android dan penyemak imbas",
+        "language": "Bahasa Portugis Brazil",
+        "onDevice": "Foto kekal di peranti"
+      },
+      "note": "Tiada apa untuk dipasang."
+    },
+    "nav": {
+      "account": "Akaun",
+      "home": "Rumah",
+      "homeLabel": "Lymark, laman utama",
+      "label": "Utama",
+      "privacy": "Privasi",
+      "signIn": "Masukkan",
+      "terms": "Syarat",
+      "verify": "Periksa"
+    },
+    "process": {
+      "capture": {
+        "description": "Pencarian alamat bermula pada masa gambar masuk. Bidang kekal terbuka untuk menyesuaikan semasa ia berjalan.",
+        "field": "Pengangkutan",
+        "heading": "Kamera atau galeri"
+      },
+      "note": "Kedua-dua tindakan itu disimpan secara sengaja. Menyimpan dan berkongsi menyelesaikan masalah yang berbeza, dan melipatnya ke dalam satu butang akan menyeret sesiapa sahaja yang hanya mahu memfailkan foto melalui skrin menghantar.",
+      "save": {
+        "description": "Ia terletak dengan foto-foto telefon anda yang lain, tersedia untuk mana-mana aplikasi  termasuk selepas anda menghapuskan Lymark.",
+        "field": "Simpan",
+        "heading": "Pergi ke galeri peranti"
+      },
+      "share": {
+        "description": "WhatsApp, e-mel, Drive: destinasi dipilih oleh sistem operasi, dan aplikasi tidak mengambil bahagian dalam menghantar.",
+        "field": "Berbagi",
+        "heading": "Membuka lembaran saham sistem"
+      },
+      "title": "Jalan yang diambil oleh foto"
+    },
+    "skipToContent": "Saling ke kandungan",
+    "specimen": {
+      "caption": "Peraturan Amber bermula dan berakhir di tepi digit, bukan kotak teks.",
+      "label": "Contoh setim Lymark: masa 07:42, tarikh 12 Ogos 2026, Rabu, alamat di Guarujá dan kod foto."
+    },
+    "title": "Lymark  tarikh, masa dan alamat watermark untuk gambar medan",
+    "verify": {
+      "caveat": "Segel ini membuktikan integriti fail dan masa penerbitan. Apa yang dinyatakan segel itu  alamat, tarikh, masa  adalah deklarasi penerbit.",
+      "checking": "Memantau...",
+      "declarationNote": "Apa yang ditunjukkan oleh setim (alamat, tarikh, masa) adalah deklarasi penerbit  setim membuktikan integriti dan pengeluaran, bukan kandungan.",
+      "intro": "Letakkan atau pilih foto yang dieksport oleh Lymark dan lihat dengan serta-merta sama ada ia benar-benar seperti yang ditinggalkan aplikasi  dan siapa yang mengeluarkannya, bila.",
+      "noSealBody": "File ini tidak mempunyai segel Lymark. Ia mungkin telah dieksportkan luar talian, sebelum segel itu wujud, atau mungkin tidak berasal dari Lymark.",
+      "noSealTitle": "Tiada segel",
+      "notConfigured": "Verifikasi belum tersedia.",
+      "pick": "Pilih fail",
+      "previewAlt": "Foto yang disahkan, cap yang kelihatan",
+      "privacyNote": "Verifikasi berlaku di penyemak imbas anda. fail tidak dihantar ke mana-mana pelayan.",
+      "sealedBody": "File ini sama seperti yang ditinggalkan Lymark. dikeluarkan oleh akaun {account} di {date}.",
+      "sealedTitle": "Tidak terluka",
+      "tamperedBody": "Kandungan tidak sesuai dengan segel: fail telah diubahsuai selepas dikeluarkan, atau segel itu termasuk dalam fail lain.",
+      "tamperedTitle": "Tidak sesuai",
+      "title": "Memperiksa keaslian",
+      "unsupported": "Pelayar ini tidak menyokong pengesahan tandatangan. Cuba pelayar semasa."
+    }
+  }
+}

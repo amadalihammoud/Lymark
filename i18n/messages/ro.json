@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplicatie",
+      "pitch": "Stampilați ora, data, ziua de muncă, adresa și un cod de urmărire pe fotografiile dvs.  pentru înregistrări de teren, inspecții de pe site și dovada de serviciu.",
+      "platform": "Platforma",
+      "privacy": "Politica de confidențialitate",
+      "privacyGeocoding": "Când se utilizează GPS, sistemul de operare trimite coordonata către serviciul de hărți Google sau Apple pentru a obține adresa.",
+      "privacyLocation": "Locația este utilizată o dată pe captura, doar pentru a completa câmpul de adresă și nu este stocată separat de fotografii.",
+      "privacyOnDevice": "Contul există pentru abonamentul dvs.: serverul păstrează e-mail-ul și planul dvs., și nu primește niciodată fotografiile sau locația dvs.",
+      "privacySection": "Privilitatea",
+      "sdk": "Expo SDK",
+      "terms": "Termeni de utilizare",
+      "title": "Despre Lymark",
+      "version": "Versiune"
+    },
+    "account": {
+      "browserHint": "Se face înregistrare în browser. Se înregistrează acolo cu contul tău și aplicația se conectează de la sine.",
+      "code": "Codul",
+      "codeSent": "Am trimis un cod la {email}",
+      "connected": "Conectate",
+      "continue": "Continuă",
+      "deleteAccount": "Ștergeți contul",
+      "email": "E-mail",
+      "failed": "Verifică e-mailul sau codul şi încearcă din nou.",
+      "notConfigured": "Log-in-ul nu este disponibil în această construcţie încă.",
+      "signInBrowser": "Log in prin browser",
+      "signOut": "Înregistraţi-vă .",
+      "signedInAs": "Semnat ca {email}",
+      "title": "Contul",
+      "verify": "Verificarea"
+    },
+    "batch": {
+      "addressHint": "Stradă, numărul  Oraș",
+      "clearList": "Lista limpede",
+      "codeHint": "de exemplu, LYM-001",
+      "done": "{count, plural, one {Procesare terminată: # fotografie.} few {Procesare terminată: # fotografii.} other {Procesare terminată: # de fotografii.}}",
+      "doneSection": "Finisată",
+      "dropZone": "Trage şi aruncă fotografii aici sau foloseşte butonul Selectează fotografii",
+      "errorsSection": "Greșeli",
+      "folder": "Dosar: {name}",
+      "noPhotos": "Alege cel puţin o fotografie.",
+      "outputNote": "Fotografiile procesate sunt salvate în dosarul selectat.",
+      "outputSection": "Producție",
+      "photosSection": "Fotografii de procesat",
+      "processing": "Procesarea...",
+      "progress": "{current} din {total} ({percent}%)",
+      "results": "{success, plural, one {# succes} few {# succese} other {# de succese}}, {failed, plural, one {# eșec} few {# eșecuri} other {# de eșecuri}}",
+      "selectFolder": "Selectați folderul de ieșire",
+      "selectPhotos": "Selectați fotografiile",
+      "selected": "{count, plural, one {# fotografie selectată} few {# fotografii selectate} other {# de fotografii selectate}}",
+      "sharedNote": "Aceste valori sunt aplicate TOATE fotografiile.",
+      "sharedSection": "Metadatele partajate",
+      "start": "Începe procesarea",
+      "unavailableBody": "Această caracteristică este doar desktop.",
+      "unavailableTitle": "Procesarea în loturi este indisponibilă"
+    },
+    "capture": {
+      "accuracy": "Poziția în ±{meters} m.",
+      "accuracyImprecise": "Poziția în ±{meters} m  verifică numărul stradă înainte de export.",
+      "address": "Adresa",
+      "addressFailedTitle": "Nici o adresă nu a fost găsită",
+      "addressHint": "Atâtați pe localizare sau ați intra adresa",
+      "camera": "Ia o fotografie.",
+      "code": "Codul",
+      "dateHint": "1 ianuarie 2026",
+      "dateTimeGroup": "Data și ora",
+      "emptyWarning": "Nu vor fi amprentează date.",
+      "gallery": "Alege din galerie",
+      "galleryDenied": "Fotografia a fost refuzată, astfel încât imaginea există doar în interiorul aplicației. Permiteți-o în Setări › Permisiuni pentru a o salva în galerie.",
+      "galleryFailed": "Imaginea a intrat în istorie, dar dispozitivul a refuzat să o scrie în galerie.",
+      "generateCode": "Generarea",
+      "hiddenFields": "{count, plural, one {Câmp ascuns} few {Câmpuri ascunse} other {Câmpuri ascunse}}: {fields} — activați în Setări › Câmpuri și poziție.",
+      "keepMyAddress": "Păstrează-mi-a mea .",
+      "locate": "Locarea",
+      "locateByGps": "Locarea adresei prin GPS",
+      "lookup": {
+        "denied": "Permite localizarea în Setări › Permisiuni sau introduce adresa.",
+        "disabled": "Localizarea este dezactivată pe dispozitiv.",
+        "timeout": "GPS-ul nu a răspuns la timp. De multe ori nu reușește în interior.",
+        "unavailable": "Adresa nu a putut fi rezolvată în această poziţie."
+      },
+      "newCapture": "Începe o nouă captura",
+      "noFieldsBack": "Du-te înapoi.",
+      "noFieldsContinue": "Continuă oricum .",
+      "noFieldsMessage": "Niciun câmp nu are nimic de marcat. Umple câmpurile sau revizui Setări › câmpuri și poziție.",
+      "noFieldsTitle": "Fotografia va ieşi fără un semn de apă.",
+      "noPhotoHint": "Ia o fotografie sau alege una din galerie pentru a începe.",
+      "noPhotoSelected": "Nu a fost selectată nicio fotografie",
+      "openFailed": "Nu a putut fi deschisă fotografia.",
+      "permissionMessage": "Permite accesul în Setări › Permisiuni pentru a continua.",
+      "permissionTitle": "Permisie necesară",
+      "pickPhoto": "Alege o fotografie",
+      "pickPhotoHint": "Alege o fotografie pentru a activa acțiunile.",
+      "previewLabel": "Previzualizarea fotografiilor cu marcaje cu apă",
+      "renderFailedTitle": "Nu a putut genera imaginea",
+      "replaceAddressMessage": "GPS găsit: {address}",
+      "replaceAddressTitle": "Înlocuieşti adresa pe care ai scris-o?",
+      "resetConfirm": "Aruncaţi",
+      "resetMessage": "Fotografia aleasă și câmpurile completate vor fi eliminate.",
+      "resetTitle": "Să începem o nouă captura?",
+      "saved": "Fotografia salvată în galeria dispozitivului şi în istoric.",
+      "savedAppOnlyTitle": "Salvate doar în interiorul Lymark",
+      "shareDialogTitle": "Partajați fotografia cu marca de apă",
+      "shareFailedMessage": "Imaginea a fost generată și este în istoricul Lymark. O puteți împărtăși de la unghiul Galerie.",
+      "shareFailedTitle": "Nu am putut împărtăşi",
+      "shareUnavailableMessage": "Acest dispozitiv nu are nicio foaie de acțiuni.",
+      "shareUnavailableTitle": "Partajare indisponibilă",
+      "sharedFileTitle": "Foto cu marca de apă",
+      "stampNotReady": "Stigul este încă în pregătire.",
+      "syncNow": "Acum,",
+      "timestamp": "Data/Ora",
+      "title": "Captura",
+      "useGpsAddress": "Foloseşte GPS-ul .",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Ziua"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "alege o altă culoare",
+      "saturationBrightness": "Saturare și luminozitate",
+      "use": "Foloseşte această culoare"
+    },
+    "common": {
+      "back": "Înapoi",
+      "cancel": "Anularea",
+      "delete": "Ștergeți",
+      "error": "Erorile",
+      "gotIt": "Am înţeles .",
+      "loading": "Încărcare...",
+      "no": "Nu, nu.",
+      "ok": "Bine, bine.",
+      "save": "Salvaţi",
+      "share": "Partajare",
+      "success": "Succesul",
+      "tryAgain": "Încearcă din nou.",
+      "unknownError": "Erore necunoscute",
+      "yes": "Da, nu."
+    },
+    "gallery": {
+      "cancelSelection": "Selecția de anulare",
+      "clear": "Istorie clară",
+      "clearConfirm": "Curat",
+      "clearMessage": "Imaginile deja salvate în galeria dispozitivului nu sunt afectate.",
+      "count": "{count, plural, one {# fotografie exportată} few {# fotografii exportate} other {# de fotografii exportate}}",
+      "delete": "Ștergeți",
+      "empty": "Încă nu am fotografiat.",
+      "emptyAction": "Du-te la captura",
+      "emptyDescription": "Fotografiile pe care le exporţi cu un watermark se arată aici, cu dată, loc şi cod.",
+      "filteredCount": "{shown} din {total, plural, one {# fotografie} few {# fotografii} other {# de fotografii}}",
+      "noResults": "Nu am găsit fotografii pentru {query}.",
+      "photoLabel": "Foto de la {when}",
+      "removeMessage": "Imaginile deja salvate în galeria dispozitivului nu sunt afectate.",
+      "removeTitle": "{count, plural, one {Elimină din istoric} few {Elimină # înregistrări} other {Elimină # de înregistrări}}",
+      "removed": "{count, plural, one {Înregistrare eliminată.} few {Înregistrări eliminate.} other {Înregistrări eliminate.}}",
+      "saveDeniedMessage": "Permiteți-l în Setări › Permisiuni pentru a salva imaginile în galeria dispozitivului.",
+      "saveDeniedTitle": "Accesul la fotografii este refuzat.",
+      "savedAll": "{count, plural, one {O fotografie salvată în galeria dispozitivului.} few {# fotografii salvate în galeria dispozitivului.} other {# de fotografii salvate în galeria dispozitivului.}}",
+      "savedSome": "{saved} de la {total} fotografii salvat.",
+      "searchPlaceholder": "Căutare după adresă, dată sau cod",
+      "selectedCount": "{count, plural, one {# fotografie selectată} few {# fotografii selectate} other {# de fotografii selectate}}",
+      "share": "Partajare",
+      "title": "Galerie"
+    },
+    "language": {
+      "automatic": "Dispozitiv de corespunzătoare",
+      "automaticNote": "Lymark urmăreşte limbajul setat pe dispozitivul dumneavoastră.",
+      "label": "Limba",
+      "selector": "Selecționați limba"
+    },
+    "login": {
+      "access": "Log- in pentru acces",
+      "apple": "Iniţiaţi cu Apple",
+      "google": "Inregistrați-vă cu Google",
+      "subtitle": "Semnaţi-vă pentru a continua .",
+      "title": "Log- in pentru a accesa Lymark"
+    },
+    "nav": {
+      "batch": "Procesarea în loturi",
+      "photoDetail": "Detalii din fotografie",
+      "report": "Raportul PDF",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Acest ecran nu face parte din Lymark.",
+      "screenTitle": "Pagina nu a fost găsită",
+      "title": "Nu există un astfel de drum."
+    },
+    "permissions": {
+      "allow": "Permiteţi-mi.",
+      "allowed": "Permis",
+      "blocked": {
+        "later": "Nu acum.",
+        "message": "Pentru a permite, deschide setările dispozitivului.",
+        "openSettings": "Setări deschise",
+        "title": "Permisia blocată"
+      },
+      "camera": "Camera",
+      "cameraRationale": "Trebuie să faci o fotografie care să primească semnul de apă.",
+      "denied": "Refuz",
+      "granted": "Acordată",
+      "intro": "Lymark cere doar ce are nevoie pentru a marca o fotografie. Imaginile tale nu părăsesc niciodată dispozitivul: atunci când folosești GPS, sistemul de operare trimite serviciului de harta coordonatele singur, astfel încât acesta să poată deveni o adresă.",
+      "location": "Localizare",
+      "locationRationale": "Se completează în câmpul de adresă automat când capturezi.",
+      "mediaLibrary": "Salvă-l în galerie",
+      "mediaLibraryRationale": "Pentru a scrie fotografii exportate în galeria dispozitivului.",
+      "openDeviceSettings": "Setări",
+      "recheck": "Verifică din nou",
+      "request": "Cererea de permisiune",
+      "section": "Acces",
+      "title": "Permisia"
+    },
+    "photo": {
+      "backToGallery": "Înapoi la galerie",
+      "exportedAt": "Exportate pe {when}",
+      "noWatermark": "Această fotografie a fost exportată fără un semn de apă.",
+      "notFoundBody": "Acest record poate fi eliminat din istorie.",
+      "notFoundTitle": "Foto nu a fost găsită",
+      "remove": "Îndepărtaţi",
+      "removeBody": "Înregistrarea părăseşte Lymark.",
+      "removeTitle": "Îndepărtaţi din istorie",
+      "share": "Partajare",
+      "stampedData": "Datele însemnate"
+    },
+    "plan": {
+      "exhausted": "Fotografii gratuite utilizate",
+      "exhaustedMessage": "Cele 12 fotografii ale planului gratuit au dispărut.",
+      "free": "Libere",
+      "pro": "Pro",
+      "reconnect": "Reconectaţi-vă pentru a confirma abonamentul",
+      "remaining": "{remaining, plural, one {# fotografie gratuită rămasă} few {# fotografii gratuite rămase} other {# de fotografii gratuite rămase}}",
+      "title": "Planul",
+      "unlimited": "Nu există limită"
+    },
+    "report": {
+      "allPhotos": "Toate fotografiile",
+      "authorField": "Autor / companie",
+      "detailsSection": "Detalii",
+      "doc": {
+        "author": "Autorul",
+        "declaration": "Datele ștampilate (adresse, dată, oră și cod) sunt o declarație a emitentului fotografiilor.",
+        "exportedAt": "Exportate pe",
+        "generatedAt": "Generate pe",
+        "page": "Pagina",
+        "photo": "Foto: {index}",
+        "photosSection": "Înregistrări fotografice",
+        "signature": "Semnătura persoanei responsabile",
+        "summary": "Rezumat",
+        "title": "Raportul fotografic",
+        "totalPhotos": "Fotografii totale:"
+      },
+      "empty": "Nu au fost exportate fotografii încă.",
+      "failed": "Nu a putut genera raportul.",
+      "fileStem": "Raport",
+      "format": {
+        "csv": "Tabelă de calcul (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Pașegă (ZIP)"
+      },
+      "formatSection": "Formatare",
+      "generate": "Generarea fișierului",
+      "generateSection": "Generarea",
+      "includeLogo": "Logo pe coperta",
+      "includeLogoDescription": "Logo-ul marcii tale, același pe timbru.",
+      "norm": {
+        "abnt": "ABNT (Brazilia)",
+        "din5008": "DIN 5008 (Germania)",
+        "ibape": "Stil IBAPE (Brazilia)",
+        "iso": "Internaţional",
+        "letter": "Scrisoare (SUA)"
+      },
+      "normNote": "Standardul stabilește hârtia și formatarea marjelor , fontului și numărării paginii. Conținutul raportului este același în toate acestea; stilul IBAPE adaugă un bloc de semnătură.",
+      "normSection": "Standard de documentare",
+      "projectsSection": "Proiect / loc de muncă",
+      "saved": "Salvat la {path}",
+      "savedShort": "Raportul salvat.",
+      "title": "Raportul PDF",
+      "titleField": "Titlul raportului",
+      "unavailableBody": "Rapoartele PDF sunt disponibile în aplicația de pe desktop.",
+      "unavailableTitle": "Doar pe desktop",
+      "uncoded": "Nu există cod",
+      "wordTooBig": "Documentul Word a devenit prea mare cu fotografiile încorporate.",
+      "zipMissing": "{count, plural, one {Pachet salvat, dar # fotografie nu a fost găsită pe dispozitiv.} few {Pachet salvat, dar # fotografii nu au fost găsite pe dispozitiv.} other {Pachet salvat, dar # de fotografii nu au fost găsite pe dispozitiv.}}"
+    },
+    "settings": {
+      "about": "Despre",
+      "aboutDescription": "Versiune, confidențialitate și credite",
+      "appSection": "Aplicatie",
+      "deviceSection": "Dispozitiv",
+      "deviceSectionDescription": "Acces la ceea ce Lymark solicită.",
+      "fields": "Campuri și poziție",
+      "fieldsDescription": "Alege câmpurile care arată, colțul și dimensiunea",
+      "history": "Istoria",
+      "historyDescription": "Fotografii exportate păstrate pe dispozitiv",
+      "language": "Limba",
+      "permissions": "Permisia",
+      "permissionsDescription": "Camera, fotografiile și locația",
+      "save": "Salvaţi",
+      "title": "Setări",
+      "watermark": "Filigran",
+      "watermarkSection": "Marcă de apă",
+      "watermarkSectionDescription": "Ce se imprime pe fotografie şi unde."
+    },
+    "signup": {
+      "subtitle": "Înregistraţi-vă pentru a începe",
+      "title": "Creează contul Lymark"
+    },
+    "tagline": "Marca de apă cu ora, data și locul",
+    "title": "Marcă de lichid",
+    "video": {
+      "cameraDenied": "Nu e acces la cameră, permite-i în setările dispozitivului.",
+      "done": "Video-ul marcat şi salvat.",
+      "export": "Exportul de videoclipuri cu timbre",
+      "exportSection": "Export",
+      "failed": "Videoclipul nu a putut fi imprimat.",
+      "fieldsSection": "Campuri de timbre",
+      "fileSection": "Video",
+      "none": "Nu a fost selectat niciun videoclip.",
+      "processing": "Procesarea... {percent}%",
+      "processingMobile": "Procesarea...",
+      "record": "Înregistraţi acum video .",
+      "saved": "Salvat la {path}",
+      "savedToGallery": "Videoclipuri înregistrate în galeria ta.",
+      "select": "Alegeți video",
+      "unavailableBody": "Imprimarea video mobilă necesită Lymark instalat dintr-o construcție EAS (cu modulul nativ). Nu este disponibilă în Expo Go. Instalați aplicația oficială din magazin sau o construcție EAS, sau folosiți versiunea desktop / web.",
+      "unavailableTitle": "Aplicație instalată necesară",
+      "unreadable": "Dosarul nu a putut fi citit ca un video.",
+      "webNote": "În browser, video-ul este procesat în timp real  un video de 2 minute durează 2 minute  și apare în format WebM. Pentru videoclipuri lungi, folosiți aplicația desktop."
+    },
+    "watermark": {
+      "accentColor": "Bară verticală",
+      "backdropBandNote": "Bandul merge de la capăt la capăt prin fotografie și se odihnește împotriva marjei în care este ancorat timbreul.",
+      "backdropBlockNote": "În spatele textului se află dimensiunea textului, cu o îmbrăcăminte în jurul său.",
+      "backdropColor": "Culoarea benzii",
+      "backdropDescription": "Păstrează contrastul asupra zonelor luminoase ale fotografiilor. Fără el, textul stă direct pe imagine, cu o umbră.",
+      "backdropInnerRadius": "In interior",
+      "backdropOpacity": "Transparență",
+      "backdropOpacityValue": "{percent}% opace",
+      "backdropRadius": "Cuțite rotunde",
+      "backdropRadiusSquare": "Cuadrate",
+      "backdropStyles": {
+        "band": "Bandă de lățime completă",
+        "block": "În spatele textului",
+        "none": "Niciuna"
+      },
+      "backdropTitle": "Banda de susținere",
+      "brandDescription": "În sus, se transformă într-o semnătură, cu logo şi slogan.",
+      "brandFirstColor": "Culoarea primei părți",
+      "brandFirstHint": "Constructori",
+      "brandFirstPart": "Prima parte",
+      "brandNote": "Un nume lung este redus până când se potriveşte, în loc să fie tăiat.",
+      "brandPlacements": {
+        "corner": "Într-un colţ",
+        "header": "Mai sus de ceas .",
+        "none": "Niciuna"
+      },
+      "brandSecondColor": "Culoarea celei de-a doua părți",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Al doilea",
+      "brandTitle": "Marca însemnată",
+      "codeDescription": "Pe partea de jos nu concurează pentru spaţiu cu imaginea însăşi.",
+      "codePlacements": {
+        "block": "Alături de date",
+        "side": "Datorită părții drepte"
+      },
+      "codeTitle": "Codul foto",
+      "colors": {
+        "amber": "Amber",
+        "black": "Negru",
+        "blue": "Albastru",
+        "green": "Învergine",
+        "red": "Roșu",
+        "white": "Albe"
+      },
+      "colorsDescription": "Culoarea pe fotografie este alegerea companiei, nu aplicatia modificand-o aici nu schimba culorile ecranului.",
+      "colorsTitle": "Culoare de timbre",
+      "complement": "Titlul",
+      "complementColor": "Culoarea taglinei",
+      "complementHint": "Inspecții și rapoarte tehnice",
+      "cornerConflict": "Marca şi datele sunt în acelaşi colţ.",
+      "fields": {
+        "address": "Adresa / Loc",
+        "code": "Codul foto",
+        "date": "Data",
+        "time": "Timpul",
+        "weekday": "Ziua săptămânii"
+      },
+      "fieldsDescription": "Doar câmpurile care sunt pe și au conținut ajung la fotografie.",
+      "fieldsTitle": "Câmpuri afișate",
+      "includeCountry": "Includă țara",
+      "includeCountryDescription": "Dacă lucrezi peste graniţe, porneşte-l, altfel are loc doar în fotografie.",
+      "legibilityTitle": "Legibil",
+      "logoAdded": "Logo adăugat la titlul brandului.",
+      "logoAlignNote": "Înălțimea logo-ului urmează textul: partea de sus se aliniază cu partea de sus a numelui și partea de jos cu linia de bază a sloganului.",
+      "logoChosen": "Logo ales",
+      "logoErrorMessage": "Încearcă o altă imagine. Un PNG cu un fundal transparent este formatul care funcționează cel mai bine.",
+      "logoErrorTitle": "Acest fişier nu a putut fi utilizat",
+      "logoFormatNote": "Foloseste un PNG cu un fundal transparent. Un JPG cu un fundal alb devine un dreptunghi alb pe fotografie  formatul nu stochează transparență, iar aplicația nu are nici o modalitate de a ghici ce este fundal.",
+      "logoPermissionMessage": "Permiteți-l în Setări › Permisiuni pentru a alege fișierul de logo.",
+      "logoPermissionTitle": "Accesul la fotografii este refuzat.",
+      "logoPick": "Alege logo-ul",
+      "logoPosition": "Poziția logo-ului",
+      "logoPositionBlock": "Cu timbrele",
+      "logoRemove": "Îndepărtaţi",
+      "logoReplace": "Înlocuiește logo-ul",
+      "logoSize": "Dimensiunea logo-ului",
+      "positionDescription": "In coltul fotografiului blocul este ancorat.",
+      "positionTitle": "Poziție",
+      "positions": {
+        "bottom-left": "În partea de jos stângă",
+        "bottom-right": "În jos la dreapta",
+        "top-left": "În sus la stânga",
+        "top-right": "În sus la dreapta"
+      },
+      "previewCurrent": "Pe fotografia curentă din tabul Capture.",
+      "previewEmpty": "De la lumină la întuneric, pentru a verifica legibilitatea la ambele extreme.",
+      "previewNoFields": "Niciun câmp selectat  fotografia apare fără un semn de apă.",
+      "previewTitle": "Previzualizare",
+      "reset": "Restaurați default",
+      "sizeTitle": "Dimensiunea textului",
+      "sizes": {
+        "large": "Mare",
+        "medium": "Mediu",
+        "small": "Mic"
+      },
+      "textColor": "Textul",
+      "timeFormatDescription": "Cum se umple timpul în câmpuri.",
+      "timeFormatTitle": "Formatul timpului",
+      "timeFormats": {
+        "12h": "12 ore (AM/PM)",
+        "24h": "24 de ore"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Toate fişierele",
+      "images": "Imagini",
+      "pickFolder": "Selectați folderul de ieșire",
+      "pickPhoto": "Selectați fotografia",
+      "pickPhotos": "Selectați fotografiile pentru lot",
+      "savePhoto": "Salvați fotografia",
+      "saveReport": "Salvă raportul"
+    },
+    "login": {
+      "cancel": "Anularea",
+      "confirm": "Continuă",
+      "message": "Tocmai te-ai înregistrat prin browser.",
+      "title": "Inregistraţi-vă la Lymark"
+    },
+    "menu": {
+      "copy": "Copie",
+      "cut": "Tăiere",
+      "edit": "Editarea",
+      "file": "Fișier",
+      "fullscreen": "Ecrane pline",
+      "help": "Ajutor",
+      "paste": "Paste",
+      "quit": "Renunţă !",
+      "redo": "Redo",
+      "reload": "Răzbunare",
+      "selectAll": "Selectaţi toate",
+      "settings": "Setări",
+      "undo": "Îndepărtat",
+      "view": "Priviziune",
+      "zoomIn": "- Închide-te",
+      "zoomOut": "- Da . - Da .",
+      "zoomReset": "Dimensiunea reală"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Înapoi acasă.",
+      "openApp": "Deschideți aplicația",
+      "photos": "Fotografii",
+      "photosLeft": "{remaining} de la {quota} stânga",
+      "plan": "Planul",
+      "planUnavailable": "Nu e disponibil acum.",
+      "plans": {
+        "free": "Libere",
+        "pro": "Pro"
+      },
+      "signInTitle": "Semnaţi-vă .",
+      "signOut": "Înregistraţi-vă .",
+      "signUpTitle": "Crearea de cont",
+      "subscribe": "Abonează-te la Lymark Pro",
+      "subscribeSoon": "Abonamentele nu sunt disponibile încă, atunci când vor fi disponibile, veți putea să vă abonați aici și să utilizați orice dispozitiv cu același cont.",
+      "title": "Contul tău",
+      "revokeDesktops": "Desconectați computerele",
+      "revokeDesktopsHint": "Încheie accesul aplicaţiei pe fiecare computer."
+    },
+    "availability": {
+      "contact": "Pentru a urmări lansarea sau a raporta o problemă, scrie la <email>contato@lymark.app</email>.",
+      "description": "Lymark este la versiunea 1.3.0, testarea pe Android înainte de publicare pe Google Play. Nu există versiune iOS și nu există versiune web, iar aplicația nu colectează niciun plată.",
+      "title": "Disponibilitate"
+    },
+    "data": {
+      "device": {
+        "description": "Contul există pentru abonamentul dvs.: serverul păstrează e-mail-ul și planul dvs., și nu primește niciodată fotografiile sau locația dvs. Istoria păstrează ultimele două sute de exporturi în propriile fișiere ale aplicației.",
+        "field": "Pe dispozitiv",
+        "heading": "Fotografii, adrese și istoric"
+      },
+      "external": {
+        "description": "Pentru a transforma latitudinea și longitudinea într-o adresă legibilă, sistemul de operare solicită serviciul de geocoding al Google sau Apple. Aceasta este singura informație care rămâne, iar sistemul o trimite, nu aplicația.",
+        "field": "Fără dispozitiv",
+        "heading": "Doar transformarea unei coordonate într-o adresă"
+      },
+      "note": "Totul este stabilit  inclusiv ceea ce înseamnă în Brazilia LGPD  în <privacy>Politica de confidențialitate</privacy>. Închiderea permisului de locație lasă aplicația în funcțiune completă; numai câmpul de adresă trebuie să fie scris manual.",
+      "title": "Unde sunt datele tale"
+    },
+    "deleteAccount": {
+      "back": "Înapoi la cont",
+      "confirm": "Șterge contul meu",
+      "deletesNow": "Ștergerea contului dvs. șterge imediat e-mail-ul, identificatorul dvs., precum și înregistrarea planului, cotei și numărului de fotografii.",
+      "irreversible": "Ștergerea este permanentă și nu poate fi anulată. Fotografiile de pe dispozitivul dvs. nu sunt afectate  nu au fost niciodată pe serverele noastre.",
+      "retained": "Înregistrările tranzacțiilor de plată sunt păstrate pentru perioada fiscală legală necesară, neînlocuite cu profilul dvs.",
+      "title": "Ștergeți contul"
+    },
+    "description": "Aplicație Android care marca ora, data, zi de muncă, adresa și un cod de urmărire pe site-inspecție și proof-of-service fotografii.",
+    "desktop": {
+      "backAccount": "Înapoi la cont",
+      "explanation": "Accountul dvs. este gata. Faceți clic pe butonul de mai jos pentru a deschide Lymark pe computerul dvs. deja semnat  browserul va cere permisiunea de a deschide aplicația.",
+      "open": "Conectați aplicația",
+      "title": "Log in pe desktop",
+      "unavailable": "Conexiunea aplicației desktop nu este disponibilă încă."
+    },
+    "download": {
+      "appStore": {
+        "description": "Aceeaşi experienţă ca Android, pe iOS.",
+        "field": "App Store",
+        "heading": "iPhone și iPad"
+      },
+      "browser": {
+        "action": "Semnaţi-vă .",
+        "description": "Inregistrați-vă cu contul dvs. și aplicația se deschide chiar în browserul  telefon sau calculator.",
+        "field": "Browser",
+        "heading": "Foloseşte-l acum, nimic de instalat"
+      },
+      "desktop": {
+        "description": "Parțialuri de fotografii, video-uri lungi și PDF raporte  versiunea grea.",
+        "field": "Computer",
+        "heading": "Windows și Linux"
+      },
+      "googlePlay": {
+        "description": "Aplicaţia telefonică, cu cameră, galerie şi video.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Vin în curând.",
+      "title": "Unde să utilizaţi Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "Tipul de stradă este scurs şi statul devine codul său, astfel încât adresa se potriveşte în două linii fără a acoperi fotografia.",
+        "field": "Adresa",
+        "heading": "Înregistrat cu GPS, corectat manual"
+      },
+      "code": {
+        "description": "Acesta există astfel încât să puteți cita o fotografie specifică într-o ordine de lucru sau un raport.",
+        "field": "Codul foto",
+        "heading": "14 caractere, desenate de un generator criptografic"
+      },
+      "note": "Fiecare câmp se pornește și se oprește pe cont propriu, iar blocul se ancorează la oricare dintre cele patru colțuri, în trei dimensiuni. Previzuația utilizează fotografia ta reală, nu o mostră generică: ceea ce vezi pe ecran este literalmente ceea ce este exportat.",
+      "time": {
+        "description": "Un buton face ca toate cele trei câmpuri să revină la prezent, când capturarea a durat mai mult decât se aștepta.",
+        "field": "Ora și data",
+        "heading": "De la ceasul dispozitivului, în momentul captării"
+      },
+      "title": "Ce se întâmplă pe imagine"
+    },
+    "footer": {
+      "description": "Lymark  înregistrări fotografice cu dată, oră și adresă.",
+      "documentsLabel": "Documente",
+      "privacy": "Politica de confidențialitate",
+      "support": "Suport:",
+      "terms": "Termeni de utilizare"
+    },
+    "hero": {
+      "ctaAccount": "Du-te la contul meu .",
+      "ctaLogin": "Semnaţi-vă .",
+      "ctaSignup": "Creează un cont gratuit",
+      "description": "Lymark imprimează ora, data, ziua de muncă, adresa și un cod de urmărire direct pe imagine. Fișierul care iese din aplicație are informațiile în interiorul ei  nu ca metadata care se deplasează alături, pe care prima WhatsApp înainte stripe departe.",
+      "eyebrow": "Documentare cu fotografii de teren",
+      "heading": "Fotografia îţi lasă deja telefonul spunând când, unde şi ce.",
+      "meta": {
+        "account": "Contul cu o singură apăsare",
+        "android": "Android și browser",
+        "language": "Portugalie braziliană",
+        "onDevice": "Fotografiile rămân pe dispozitiv"
+      },
+      "note": "Nimic de instalat."
+    },
+    "nav": {
+      "account": "Contul",
+      "home": "Acasă",
+      "homeLabel": "Lymark, pagina de pornire",
+      "label": "Principala",
+      "privacy": "Privilitatea",
+      "signIn": "Semnaţi-vă .",
+      "terms": "Termenii",
+      "verify": "Verificarea"
+    },
+    "process": {
+      "capture": {
+        "description": "Căutarea adreselor începe în momentul în care apare fotografia.",
+        "field": "Captura",
+        "heading": "Camera sau galeria"
+      },
+      "note": "Salvarea și împărțirea rezolvă diferite probleme, iar împărțirea acestora într-un singur buton ar trage pe oricine dorește doar să înregistreze fotografia printr-un ecran de trimitere.",
+      "save": {
+        "description": "Acesta se află cu restul fotografiilor de pe telefon, disponibilă pentru orice aplicație  inclusiv după ce desinstalați Lymark.",
+        "field": "Salvaţi",
+        "heading": "Merge la galeria dispozitivelor"
+      },
+      "share": {
+        "description": "WhatsApp, e-mail, Drive: destinația este aleasă de sistemul de operare, iar aplicația nu participă la trimitere.",
+        "field": "Partajare",
+        "heading": "Deschide fișierul de partajare al sistemului"
+      },
+      "title": "Calea pe care o fotografie o ia"
+    },
+    "skipToContent": "Skip la conținut",
+    "specimen": {
+      "caption": "Regula ambre începe și se termină la marginile cifrei, nu a cutiei de text.",
+      "label": "Eșantion de ștampilar Lymark: ora 07:42, data de 12 august 2026, miercuri, o adresă din Guarujá și un cod de fotografie."
+    },
+    "title": "Lymark  data, ora și adresa semn de apă pentru fotografiile de câmp",
+    "verify": {
+      "caveat": "Ceea ce declara pe ștampila  adresa, data, ora  este declarația emitentului.",
+      "checking": "Verificarea...",
+      "declarationNote": "Ceea ce arată timbrele (adresse, dată, oră) este declarația emitentului  timbrele atestă integritatea și emisia, nu conținutul.",
+      "intro": "Aruncați sau alegeți o fotografie exportată de Lymark și vedeți instantaneu dacă este exact așa cum a părăsit aplicația  și cine a emis-o, când.",
+      "noSealBody": "Acest fișier nu are sigiliu Lymark. Poate a fost exportat offline, înainte ca sigiliul să existe, sau poate nu provine de la Lymark.",
+      "noSealTitle": "Fără sigiliu",
+      "notConfigured": "Verificarea nu este disponibilă încă.",
+      "pick": "Alegeţi fişier",
+      "previewAlt": "Foto verificată, timbru vizibil",
+      "privacyNote": "Verificarea se face în browserul dvs. Fișierul nu este trimis la niciun server.",
+      "sealedBody": "Acest dosar este exact așa cum a părăsit Lymark.",
+      "sealedTitle": "Intaln",
+      "tamperedBody": "Conținutul nu se potrivește cu sigiliul: dosarul a fost modificat după eliberare, sau sigiliul aparține unui alt dosar.",
+      "tamperedTitle": "Neconcordanţă",
+      "title": "Verificarea autenticității",
+      "unsupported": "Acest browser nu suportă verificarea semnăturii."
+    }
+  }
+}

@@ -88,7 +88,7 @@ export const LOCALE_NAMES: Record<Locale, string> = {
   pl: 'Polski',
   th: 'ไทย',
   fa: 'فارسی',
-  sr: 'Srpski',
+  sr: 'Српски',
   am: 'አማርኛ',
   cs: 'Čeština',
   he: 'עברית',

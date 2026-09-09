@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Chính sách bảo mật",
+      "description": "Cách ứng dụng Lymark xử lý hình ảnh, vị trí, lịch sử và tài khoản của bạn."
+    },
+    "title": "Chính sách bảo mật",
+    "updated": "Được cập nhật cuối cùng: 16 tháng 8 năm 2026 · Lymark app, phiên bản 1.3.0",
+    "intro": "Chính sách này mô tả cách ứng dụng Lymark xử lý thông tin cá nhân. Nó tuân thủ Lei số 13.709/2018 (Cơ luật bảo vệ dữ liệu cá nhân chung  LGPD) và Quy định (EU) 2016/679 (Cơ chế bảo vệ dữ liệu chung  GDPR), và áp dụng cho ứng dụng được phân phối dưới danh hiệu <strong>com.lycosteam.lymark</strong>và đến trang web này.",
+    "s01": {
+      "title": "Trong một câu",
+      "p1": "Lymark <strong>không truyền hình của bạn hoặc vị trí của bạn</strong>. Tất cả mọi thứ ứng dụng tạo ra  hình ảnh, địa chỉ, lịch sử và sở thích  vẫn ở trên thiết bị của bạn, dưới sự kiểm soát của bạn. Có một tài khoản, cần thiết để sử dụng ứng dụng và cho đăng ký: máy chủ lưu trữ email của bạn, nhận dạng tài khoản, kế hoạch và số lượng ảnh xuất khẩu  và không có gì khác.",
+      "p2": "Có một ngoại lệ duy nhất, được mô tả ở điểm 05: để biến các điều phối GPS thành một địa chỉ có thể đọc được, hệ điều hành của thiết bị sẽ truy vấn một dịch vụ lập trình địa lý bên ngoài."
+    },
+    "s02": {
+      "title": "Những người mà chính sách này áp dụng",
+      "p1": "Nó áp dụng cho bất kỳ ai sử dụng ứng dụng hoặc truy cập trang web này. Đối với các đối tượng dữ liệu ở Brazil, việc xử lý theo LGPD và giám sát của Cơ quan Bảo vệ dữ liệu quốc gia (ANPD). Đối với các đối tượng dữ liệu ở Khu vực Kinh tế châu Âu và Vương quốc Anh, nó theo GDPR và UK GDPR."
+    },
+    "s03": {
+      "title": "Người kiểm soát là ai",
+      "p1": "Người quản lý dữ liệu cá nhân  <em>controllador</em>, trong thuật ngữ của LGPD  là 29.015.357 AMAD ALI HAMMOUD, đăng ký dưới tên CNPJ 29.015.357/0001-25, với địa chỉ Avenida Ana Costa, 433, Gonzaga, Santos - SP.",
+      "p2": "Người chịu trách nhiệm xử lý dữ liệu cá nhân, cho mục đích của Điều 41 của LGPD, là Amad Ali Hammoud, có thể liên hệ với <email>contato@lymark.app</email>. Với khối lượng và tính chất của việc xử lý  không liên quan đến dữ liệu nhạy cảm quy mô hoặc theo dõi có hệ thống  không có nghĩa vụ bổ nhiệm một <em>Nhân viên bảo vệ dữ liệu</em>Theo Điều 37 của GDPR."
+    },
+    "s04": {
+      "title": "Thông tin mà ứng dụng xử lý",
+      "p1": "Tất cả thông tin dưới đây được ghi lại độc quyền trong khu vực riêng tư của ứng dụng bên trong thiết bị, và không có gì được gửi đến nhà phát triển.",
+      "defs": {
+        "photos": {
+          "term": "Hình ảnh",
+          "def": "Hình ảnh bạn chọn từ phòng trưng bày hoặc chụp bằng máy ảnh, và tệp xuất khẩu với dấu nước. Một bức ảnh có thể chứa dữ liệu cá nhân của bên thứ ba  xem mục 11."
+        },
+        "location": {
+          "term": "Địa điểm",
+          "def": "Tương đương vĩ độ và độ dài, được lấy một lần mỗi lần chụp, chỉ có mục đích để điền vào trường địa chỉ. Các tọa độ không được ghi lại: chỉ có văn bản địa chỉ kết quả được lưu lại, bên cạnh bức ảnh."
+        },
+        "datetime": {
+          "term": "Ngày, giờ và ngày làm việc",
+          "def": "Đọc từ đồng hồ thiết bị vào thời điểm chụp, và có thể chỉnh sửa bởi bạn."
+        },
+        "code": {
+          "term": "Mã ảnh",
+          "def": "Một chuỗi 14 ký tự hexadecimal được vẽ ngẫu nhiên. Nó không bắt nguồn từ một bộ nhận dạng thiết bị hoặc từ một trong các ứng dụng của bạn, và nó không cho phép theo dõi trên các ứng dụng."
+        },
+        "history": {
+          "term": "Lịch sử",
+          "def": "Một bản ghi của 200 xuất khẩu cuối cùng, chứa đường dẫn tập tin trên thiết bị và dữ liệu được dán dấu trên hình ảnh."
+        },
+        "preferences": {
+          "term": "Tự ưu tiên",
+          "def": "Các trường hiển thị, vị trí, kích thước và các tùy chọn dấu nước khác."
+        }
+      },
+      "p2": " Ứng dụng<strong>không thu thập</strong>: tên, email, điện thoại, tài liệu nhận dạng, nhận dạng quảng cáo, nhận dạng thiết bị, dữ liệu liên hệ, lịch, lịch sử duyệt web, số liệu sử dụng, báo cáo hỏng hoặc bất kỳ thông tin nào khác về bạn hoặc về thiết bị của bạn. Không có SDK phân tích, quảng cáo, thuộc tính hoặc theo dõi được nhúng."
+    },
+    "s05": {
+      "title": "Thông tin duy nhất rời khỏi thiết bị",
+      "p1": "Khi bạn cấp phép vị trí, ứng dụng yêu cầu hệ điều hành biến các tọa độ GPS thành địa chỉ bưu chính.<strong>Google</strong>trên các thiết bị Android và <strong>Apple</strong>trên các thiết bị iOS.",
+      "p2": "Thông tin đó đến từ hệ điều hành, chứ không phải từ Lymark. ứng dụng không nhận được bản sao của nó, không trung gian nó và không có quyền truy cập vào bất cứ thứ gì ngoài địa chỉ trả lại.",
+      "p3": "<strong>Không có bức ảnh nào rời khỏi thiết bị thông qua bất kỳ hành động nào của ứng dụng.</strong>Nếu bạn sử dụng nút Chia sẻ, hình ảnh sẽ được truyền bởi ứng dụng đích bạn chọn trong bảng chia sẻ hệ thống  thư ký, email, lưu trữ đám mây  trong chính sách bảo mật của ứng dụng đó."
+    },
+    "s06": {
+      "title": "Các giấy phép được yêu cầu và lý do tại sao",
+      "defs": {
+        "camera": {
+          "term": "Máy ảnh",
+          "def": "Để chụp ảnh sẽ nhận được watermark. Chỉ được yêu cầu khi bạn nhấn Tạo ảnh. Ứng dụng không yêu cầu truy cập micro."
+        },
+        "photos": {
+          "term": "Hình ảnh và phương tiện truyền thông",
+          "def": "Để chọn một hình ảnh hiện có và viết tập tin xuất khẩu vào phòng trưng bày. Việc truy cập được giới hạn cho ảnh, và quyền viết chỉ được sử dụng để viết  ứng dụng không duyệt hoặc đọc phòng trưng bày của bạn."
+        },
+        "location": {
+          "term": "Vị trí trong khi sử dụng",
+          "def": "Để điền vào trường địa chỉ. <strong>Không bao giờ ở phía sau</strong>."
+        }
+      },
+      "p1": "Tất cả quyền phép là tùy chọn và có thể bị hủy bỏ bất cứ lúc nào trong cài đặt thiết bị. Việc từ chối vị trí giữ cho ứng dụng hoạt động đầy đủ: địa chỉ sau đó được bạn gõ. Việc từ chối truy cập phòng trưng bày chỉ ngăn chặn lưu tự động, và ảnh vẫn có thể được chia sẻ."
+    },
+    "s07": {
+      "title": "Cơ sở pháp lý và mục đích",
+      "p1": "Việc xử lý vị trí diễn ra dựa trên cơ sở của bạn <strong>đồng ý</strong> Điều 7, I của LGPD và Điều 6 (1) (a) của GDPR  được thể hiện khi bạn cấp cho hệ thống cho phép, và có thể hủy bỏ bất cứ lúc nào, không ảnh hưởng đến tính hợp pháp của việc xử lý được thực hiện trước khi hủy bỏ.",
+      "p2": "Việc xử lý các dữ liệu còn lại được thực hiện cho <strong>hiệu suất của tính năng bạn yêu cầu</strong> Điều 7, V của LGPD và Điều 6(1)(b) của GDPR  vì không có nó không có dấu nước để ứng dụng sản xuất.",
+      "p3": "Việc xử lý dữ liệu tài khoản dựa trên việc thực hiện hợp đồng (LGPD Art. 7, V; GDPR Art. 6(1) (b)). Việc xử lý dựa trên lợi ích hợp pháp (LGPD Art. 7, IX; GDPR Art. 6(1) (f)) chỉ tồn tại cho bảo mật và phòng chống gian lận  ví dụ, ghi tên địa chỉ IP của các yêu cầu cho máy chủ. Không có xử lý cho quảng cáo, hồ sơ, phân tích hành vi hoặc bất kỳ mục đích thứ cấp nào, và không có xử lý các loại dữ liệu đặc biệt hoặc dữ liệu nhạy cảm bởi nhà phát triển."
+    },
+    "s08": {
+      "title": "Chuyển chuyển quốc tế",
+      "p1": "Dữ liệu tài khoản được xử lý bởi bộ xử lý xác thực (Clerk, Inc., Hoa Kỳ), đó là một chuyển giao dữ liệu quốc tế, dựa trên các điều khoản hợp đồng tiêu chuẩn và cơ chế của LGPD Art. 33 và GDPR Art. 44 đến 49. Việc tìm kiếm mã hóa địa lý được mô tả ở điểm 05 vẫn được thực hiện bởi hệ điều hành cho các nhà cung cấp có thể xử lý nó bên ngoài quốc gia người dùng, theo cơ chế chuyển giao của các nhà cung cấp đó.",
+      "p2": "Trang web này được lưu trữ bởi Vercel Inc., theo điều khoản của mục 14."
+    },
+    "s09": {
+      "title": "Chia sẻ với bên thứ ba",
+      "p1": "Nhà phát triển không chia sẻ, bán, thuê hoặc giao dữ liệu cá nhân cho bên thứ ba.<em>bộ xử lý</em>: Clerk, Inc., cung cấp dịch vụ xác thực và lưu trữ email, nhận dạng tài khoản và dữ liệu kế hoạch, ràng buộc theo hợp đồng với hướng dẫn của nhà phát triển. Nếu bạn đăng nhập với Google hoặc Apple, các nhà cung cấp này xử lý dữ liệu đăng nhập theo chính sách của riêng họ; nhà phát triển chỉ nhận từ họ email và nhận dạng cần thiết để tạo tài khoản. Hình ảnh, địa chỉ và vị trí không đi qua bất kỳ bộ xử lý nào, vì họ không bao giờ rời khỏi thiết bị."
+    },
+    "s10": {
+      "title": "Đài lưu trữ, lưu giữ và bảo mật",
+      "p1": "Dữ liệu nằm trong khu vực riêng tư của ứng dụng, được bảo vệ bởi hệ điều hành cách ly giữa các ứng dụng và bằng khóa màn hình của thiết bị. Trong phiên bản Android, bản sao lưu tự động của hệ thống là<strong>người khuyết tật</strong>, để lịch sử và sở thích không được gửi đến tài khoản Google của người dùng.",
+      "p2": "Việc lưu trữ được hoàn toàn kiểm soát bởi bạn: các hồ sơ vẫn tồn tại cho đến khi chúng được xóa trong ứng dụng, và lịch sử tự động loại bỏ các hồ sơ cũ nhất khi nó vượt qua hai trăm mục, cũng loại bỏ các tệp tương ứng. Khi gỡ bỏ ứng dụng xóa tất cả mọi thứ nó lưu trữ. Hình ảnh đã được lưu trong bộ sưu tập thiết bị thuộc về bộ sưu tập và ở đó.",
+      "p3": "Không có hệ thống nào là không sai. Dữ liệu tài khoản  thư điện tử, nhận dạng, kế hoạch và số  được lưu giữ bởi bộ xử lý xác thực, theo các biện pháp bảo mật của nó. Hình ảnh, địa chỉ và vị trí không tồn tại trong kho lưu trữ trung tâm, và do đó không thể rò rỉ từ cơ sở hạ tầng của nhà phát triển. Nếu một sự cố bảo mật ảnh hưởng đến dữ liệu tài khoản, nhà phát triển sẽ thông báo cho cơ quan và đối tượng dữ liệu theo LGPD Art. 48 và GDPR Art. 33. Nguy cơ liên quan đến ảnh của bạn vẫn là truy cập vật lý vào thiết bị mở khóa."
+    },
+    "s11": {
+      "title": "Khi bạn chụp ảnh người khác",
+      "p1": "Khi bạn chụp ảnh những người có thể nhận ra trong quá trình hoạt động chuyên nghiệp của bạn,<strong>- Anh</strong>trở thành người kiểm soát dữ liệu đó liên quan đến các đối tượng dữ liệu được mô tả, và bạn phải cung cấp cơ sở pháp lý, thông tin và phản ứng với các quyền của họ."
+    },
+    "s12": {
+      "title": "Quyền của bạn",
+      "p1": "Điều 18 của LGPD và các Điều 15 đến 22 của GDPR đảm bảo cho bạn quyền xác nhận và truy cập, sửa chữa, xóa, ẩn danh, chặn, di chuyển, hạn chế xử lý, phản đối, rút lại sự đồng ý và thông tin về chia sẻ.",
+      "p2": "Hình ảnh, địa chỉ, lịch sử và sở thích chỉ nằm trên thiết bị của bạn, và các quyền đó được thực hiện trực tiếp trong ứng dụng: xem và xóa các mục trong tab Gallery, sửa chữa bất kỳ trường nào trước khi xuất khẩu, hủy bỏ quyền đặt chỗ trong cài đặt hệ thống, và xóa tất cả bằng cách gỡ bỏ ứng dụng.",
+      "p3": "Đối với các câu hỏi hoặc yêu cầu chính thức, hãy viết thư đến <email>contato@lymark.app</email>Bạn cũng có quyền nộp đơn khiếu nại với <strong>ANPD</strong>, ở Brazil, hoặc với cơ quan giám sát của quốc gia thành viên của bạn, ở Liên minh châu Âu."
+    },
+    "s13": {
+      "title": "Quyết định tự động",
+      "p1": "Không có quyết định, hồ sơ hoặc xử lý tự động tạo ra hiệu ứng pháp lý đối với bạn, theo Điều 20 của LGPD và Điều 22 của GDPR."
+    },
+    "s14": {
+      "title": "Về trang web này",
+      "p1": "Trang web này không có phân tích, không hiển thị quảng cáo và không nhúng nút mạng xã hội.<strong>cookie là điều cần thiết nghiêm ngặt</strong>cho phiên đăng ký tài khoản của bạn, được thiết lập bởi bộ xử lý xác thực (nơi 09) khi bạn đăng nhập; không có cookie theo dõi hoặc quảng cáo. Các phông chữ được phục vụ từ miền riêng của trang web. Các yêu cầu duy nhất của trình duyệt của bạn với bên thứ ba là các màn hình đăng nhập và tài khoản, được gửi đến bộ xử lý xác thực và, nếu bạn chọn nó, đến nhà cung cấp đăng nhập (Google hoặc Apple).",
+      "p2": "Trang web được lưu trữ bởi <strong>Vercel Inc.</strong>, là một bộ xử lý ghi lại dữ liệu truy cập kỹ thuật  địa chỉ IP, ngày, giờ và nguồn lực được yêu cầu  trong thời gian cần thiết cho an ninh và hoạt động của máy lưu trữ."
+    },
+    "s15": {
+      "title": "Thay đổi chính sách này",
+      "p1": "Những thay đổi thay đổi đáng kể sẽ được thông báo bên trong ứng dụng trước khi chúng có hiệu lực."
+    },
+    "s16": {
+      "title": "Trẻ em và thanh thiếu niên",
+      "p1": "Lymark là một công cụ làm việc dành cho những người trên 18 tuổi. Nó không nhắm vào trẻ em hoặc thanh thiếu niên, và nó không cố tình thu thập dữ liệu về khán giả đó."
+    },
+    "s17": {
+      "title": "Luật áp dụng",
+      "p1": "Chính sách này được quy định bởi luật pháp Brazil, không ảnh hưởng đến việc áp dụng GDPR đối với các đối tượng dữ liệu mà nó bao gồm."
+    },
+    "note": "Xem thêm:<terms>Điều khoản sử dụng</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Điều khoản sử dụng",
+      "description": "Điều kiện sử dụng ứng dụng Lymark: nó làm gì, nó không làm gì và ai chịu trách nhiệm về nội dung của hình ảnh."
+    },
+    "title": "Điều khoản sử dụng",
+    "updated": "Được cập nhật cuối cùng: 16 tháng 8 năm 2026 · Lymark app, phiên bản 1.3.0",
+    "intro": "Các điều khoản này quy định việc sử dụng ứng dụng Lymark, được phân phối dưới dạng nhận dạng <strong>com.lycosteam.lymark</strong>29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. Bằng cách cài đặt hoặc sử dụng ứng dụng, bạn đồng ý với những gì được viết ở đây.",
+    "s01": {
+      "title": "Những gì ứng dụng làm",
+      "p1": "Lymark chồng lên một bộ thông tin trên một bức ảnh  thời gian, ngày, ngày làm việc, địa chỉ và mã nhận dạng  và tạo ra một tệp hình ảnh mới với thông tin đó được tích hợp trong các pixel."
+    },
+    "s02": {
+      "title": "Những gì ứng dụng không làm",
+      "p1": "Đây là điểm quan trọng nhất trong các điều khoản này, và chúng tôi yêu cầu bạn đọc kỹ.",
+      "items": {
+        "certify": "<strong>Ứng dụng không chứng nhận hoặc xác thực bất cứ điều gì.</strong>Nó không phải là một cuộc kiểm tra pháp y, nó không phát hành một tài liệu với niềm tin công cộng và nó không tạo thành bằng chứng chuyên gia.",
+        "editable": "<strong>Mỗi trường có thể được người dùng chỉnh sửa.</strong>Thời gian, ngày, địa chỉ và mã có thể được thay đổi tự do trước khi xuất khẩu, theo thiết kế: chuyên gia cần phải có thể sửa chữa một địa chỉ GPS đã sai.",
+        "clock": "<strong>Thời gian đến từ đồng hồ thiết bị</strong>, có thể không chính xác hoặc có thể đã được đặt bằng tay. Không có đồng bộ hóa với một máy chủ thời gian đáng tin cậy.",
+        "address": "<strong>Địa chỉ là ước tính.</strong>Độ chính xác của nó phụ thuộc vào tín hiệu GPS và cơ sở dữ liệu của dịch vụ bản đồ của hệ điều hành.",
+        "code": "<strong>Mã ảnh không phải là đăng ký tại văn phòng công chứng.</strong>Nó là một định danh ngẫu nhiên cho tham chiếu nội bộ, không có giá trị bằng chứng nào cả."
+      },
+      "p2": "Nếu trường hợp sử dụng của bạn yêu cầu bằng chứng có hiệu lực pháp lý đối với bên thứ ba, hãy tìm kiếm một văn bản công nhận hoặc một dịch vụ chứng nhận kỹ thuật số với dấu thời gian  Lymark là một sự thay thế cho cả hai."
+    },
+    "s03": {
+      "title": "Các trách nhiệm của bạn",
+      "items": {
+        "photos": "Bạn là người chịu trách nhiệm duy nhất cho các bức ảnh bạn chụp, cho nội dung bạn dán dấu trên chúng và cho việc bạn sử dụng các tệp được tạo ra.",
+        "thirdParties": "Khi chụp ảnh người khác, tài sản hoặc cơ sở của họ, bạn phải có được các giấy phép cần thiết và tuân thủ quyền hình ảnh, bí mật nghề nghiệp và Luật Bảo vệ dữ liệu cá nhân chung liên quan đến các đối tượng dữ liệu được mô tả.",
+        "prohibited": "Sử dụng ứng dụng để tạo ra một hồ sơ sai, để gây hiểu lầm cho bất kỳ ai, để mô phỏng việc thực hiện một dịch vụ mà không được cung cấp hoặc để thực hiện bất kỳ hành động bất hợp pháp nào là bị cấm.",
+        "backups": "Tùy thuộc vào bạn để giữ sao lưu của bất cứ điều gì bạn coi là quan trọng."
+      }
+    },
+    "s04": {
+      "title": "Giấy phép sử dụng",
+      "p1": "Chúng tôi cấp cho bạn một giấy phép cá nhân, có thể hủy bỏ, không độc quyền và không thể chuyển giao để cài đặt và sử dụng ứng dụng, bao gồm cả cho mục đích chuyên nghiệp.",
+      "p2": "<strong>Những bức ảnh của anh là của anh.</strong>Chúng tôi không tuyên bố quyền trên hình ảnh bạn chụp hoặc tạo ra. tên Lymark, thương hiệu và danh tính hình ảnh vẫn là tài sản của nhà phát triển."
+    },
+    "s05": {
+      "title": "Thiết lập và cập nhật",
+      "p1": "Ứng dụng được cung cấp như hiện tại. Không có đảm bảo hoạt động liên tục, tương thích với từng thiết bị, cũng như không có cam kết về thời hạn cho các sửa chữa hoặc phiên bản mới.",
+      "p2": "Chất lượng hình ảnh xuất khẩu phụ thuộc vào thiết bị và hệ điều hành, và có thể có độ phân giải thấp hơn so với bức ảnh gốc."
+    },
+    "s06": {
+      "title": "Giới hạn trách nhiệm",
+      "p1": "Trong phạm vi tối đa được phép bởi luật pháp Brazil, nhà phát triển không chịu trách nhiệm cho các tổn thất gián tiếp, lợi nhuận bị mất, mất dữ liệu hoặc thiệt hại phát sinh từ các quyết định được đưa ra dựa trên thông tin đinh  bao gồm cả từ bất kỳ thách thức nào, tại tòa án hoặc ngoài đó, đối với nội dung của một bức ảnh được tạo ra bởi ứng dụng.",
+      "p2": "Sự hạn chế này<strong>không loại bỏ</strong>Các quyền được bảo đảm cho người tiêu dùng bởi Lei số 8.078/1990, cũng không phải chịu trách nhiệm về hành vi sai trái cố ý hoặc thiếu thận trọng nghiêm trọng."
+    },
+    "s07": {
+      "title": "Tháo dỡ",
+      "p1": "Bạn có thể ngừng sử dụng ứng dụng bất cứ lúc nào: xóa tài khoản sẽ xóa dữ liệu của nó trên máy chủ, và gỡ bỏ ứng dụng sẽ xóa dữ liệu được lưu trữ trên thiết bị. Trong khi không có đăng ký trả tiền, không có đăng ký nào để hủy; khi có, các điều khoản hủy sẽ xuất hiện trong các Điều khoản này trước khi có bất kỳ phí nào."
+    },
+    "s08": {
+      "title": "Thay đổi các điều khoản này",
+      "p1": "Những thay đổi sẽ được công bố trên trang này với ngày cập nhật mới."
+    },
+    "s09": {
+      "title": "Luật và diễn đàn áp dụng",
+      "p1": "Luật pháp Brazil áp dụng. Phòng giải quyết tranh chấp phát sinh từ các điều khoản này là nơi cư trú của người dùng."
+    },
+    "note": "Về việc xử lý dữ liệu, xem <privacy>Chính sách bảo mật</privacy>. Các câu hỏi: <email>contato@lymark.app</email>."
+  }
+}
