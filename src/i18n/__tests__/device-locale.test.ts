@@ -58,6 +58,19 @@ describe('resolveDeviceLocale', () => {
     expect(withDeviceLanguages(['es'], resolveDeviceLocale)).toBe('es');
   });
 
+  it('distingue inglês britânico (e AU) do catálogo en', () => {
+    expect(withDeviceLanguages(['en-GB'], resolveDeviceLocale)).toBe('en-GB');
+    expect(withDeviceLanguages(['en-AU'], resolveDeviceLocale)).toBe('en-GB');
+    expect(withDeviceLanguages(['en-US'], resolveDeviceLocale)).toBe('en');
+    expect(withDeviceLanguages(['en'], resolveDeviceLocale)).toBe('en');
+  });
+
+  it('distingue francês canadense do europeu', () => {
+    expect(withDeviceLanguages(['fr-CA'], resolveDeviceLocale)).toBe('fr-CA');
+    expect(withDeviceLanguages(['fr-FR'], resolveDeviceLocale)).toBe('fr');
+    expect(withDeviceLanguages(['fr'], resolveDeviceLocale)).toBe('fr');
+  });
+
   it('distingue a escrita: zh-Hant recebe o catálogo tradicional', () => {
     expect(withDeviceLanguages(['zh-Hant-TW'], resolveDeviceLocale)).toBe('zh-Hant');
     expect(withDeviceLanguages(['zh-Hant'], resolveDeviceLocale)).toBe('zh-Hant');
@@ -77,6 +90,8 @@ describe('resolveDeviceLocale', () => {
     expect(withDeviceLanguages(['es_MX'], resolveDeviceLocale)).toBe('es-419');
     expect(withDeviceLanguages(['pt_PT'], resolveDeviceLocale)).toBe('pt-PT');
     expect(withDeviceLanguages(['zh_TW'], resolveDeviceLocale)).toBe('zh-Hant');
+    expect(withDeviceLanguages(['en_GB'], resolveDeviceLocale)).toBe('en-GB');
+    expect(withDeviceLanguages(['fr_CA'], resolveDeviceLocale)).toBe('fr-CA');
   });
 
   it('não distingue maiúsculas', () => {
@@ -84,9 +99,9 @@ describe('resolveDeviceLocale', () => {
   });
 
   it('respeita a ordem de preferência da pessoa', () => {
-    // Galês (cy) não existe no catálogo; o francês é a segunda escolha dela e
-    // deve vencer o português, que é apenas o padrão do app.
-    expect(withDeviceLanguages(['cy-GB', 'fr-CA', 'en'], resolveDeviceLocale)).toBe('fr');
+    // Galês (cy) não existe no catálogo; o francês canadense é a segunda escolha
+    // dela e deve vencer o português, que é apenas o padrão do app.
+    expect(withDeviceLanguages(['cy-GB', 'fr-CA', 'en'], resolveDeviceLocale)).toBe('fr-CA');
   });
 
   it('cai no português quando nenhum idioma pedido existe', () => {
@@ -108,12 +123,19 @@ describe('matchTag', () => {
     expect(matchTag('zh-CN')).toBe('zh');
   });
 
-  it('não deixa pt-PT / es-ES / es-419 colidir com a primária', () => {
+  it('não deixa pt-PT / es-ES / es-419 / en-GB / fr-CA colidir com a primária', () => {
     expect(matchTag('pt-PT')).toBe('pt-PT');
     expect(matchTag('pt-BR')).toBe('pt');
     expect(matchTag('es-ES')).toBe('es-ES');
     expect(matchTag('es-419')).toBe('es-419');
     expect(matchTag('es-MX')).toBe('es-419');
     expect(matchTag('es')).toBe('es');
+    expect(matchTag('en-GB')).toBe('en-GB');
+    expect(matchTag('en-AU')).toBe('en-GB');
+    expect(matchTag('en-US')).toBe('en');
+    expect(matchTag('en')).toBe('en');
+    expect(matchTag('fr-CA')).toBe('fr-CA');
+    expect(matchTag('fr-FR')).toBe('fr');
+    expect(matchTag('fr')).toBe('fr');
   });
 });

@@ -13,6 +13,7 @@ import dv from '@i18n/messages/dv.json';
 import dz from '@i18n/messages/dz.json';
 import el from '@i18n/messages/el.json';
 import en from '@i18n/messages/en.json';
+import enGB from '@i18n/messages/en-GB.json';
 import es from '@i18n/messages/es.json';
 import es419 from '@i18n/messages/es-419.json';
 import esES from '@i18n/messages/es-ES.json';
@@ -20,6 +21,7 @@ import et from '@i18n/messages/et.json';
 import fa from '@i18n/messages/fa.json';
 import fi from '@i18n/messages/fi.json';
 import fr from '@i18n/messages/fr.json';
+import frCA from '@i18n/messages/fr-CA.json';
 import he from '@i18n/messages/he.json';
 import hi from '@i18n/messages/hi.json';
 import hr from '@i18n/messages/hr.json';
@@ -94,10 +96,12 @@ export const MESSAGES = {
   pt,
   'pt-PT': ptPT,
   en,
+  'en-GB': enGB,
   es,
   'es-419': es419,
   'es-ES': esES,
   fr,
+  'fr-CA': frCA,
   it,
   de,
   nl,

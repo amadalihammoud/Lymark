@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Stamps the time, date, weekday, address and a tracking code onto your photos — for field records, site inspections and proof of service.",
+      "platform": "Platform",
+      "privacy": "Privacy Policy",
+      "privacyGeocoding": "When GPS is used, the operating system sends the coordinate to Google’s or Apple’s map service to obtain the address. That is the only information that leaves here, and it is the system that sends it, not Lymark.",
+      "privacyLocation": "Location is used once per capture, only to fill in the address field, and is not stored separately from the photos.",
+      "privacyOnDevice": "The photos, the addresses and the history stay on this device alone. The account exists for your subscription: the server keeps your email and plan, and never receives your photos or your location.",
+      "privacySection": "Privacy",
+      "sdk": "Expo SDK",
+      "terms": "Terms of Use",
+      "title": "About Lymark",
+      "version": "Version"
+    },
+    "account": {
+      "browserHint": "Sign-in happens in the browser. Sign in there with your account and the app connects by itself.",
+      "code": "Code",
+      "codeSent": "We sent a code to {email}",
+      "connected": "Connected",
+      "continue": "Continue",
+      "deleteAccount": "Delete account",
+      "email": "Email",
+      "failed": "That didn't work. Check the email or code and try again.",
+      "notConfigured": "Sign-in is not available in this build yet.",
+      "signInBrowser": "Sign in via browser",
+      "signOut": "Sign out",
+      "signedInAs": "Signed in as {email}",
+      "title": "Account",
+      "verify": "Verify"
+    },
+    "batch": {
+      "addressHint": "Street, number — City",
+      "clearList": "Clear list",
+      "codeHint": "e.g. LYM-001",
+      "done": "{count, plural, one {Processing finished: # photo done.} other {Processing finished: # photos done.}}",
+      "doneSection": "Finished",
+      "dropZone": "Drag and drop photos here, or use the “Select photos” button",
+      "errorsSection": "Errors",
+      "folder": "Folder: {name}",
+      "noPhotos": "Select at least one photo.",
+      "outputNote": "Processed photos are saved to the selected folder.",
+      "outputSection": "Output",
+      "photosSection": "Photos to process",
+      "processing": "Processing…",
+      "progress": "{current} of {total} ({percent}%)",
+      "results": "{success, plural, one {# success} other {# successes}}, {failed, plural, one {# failure} other {# failures}}",
+      "selectFolder": "Select output folder",
+      "selectPhotos": "Select photos",
+      "selected": "{count, plural, one {# photo selected} other {# photos selected}}",
+      "sharedNote": "These values are applied to ALL the photos. Each photo’s date and time are read from its own EXIF.",
+      "sharedSection": "Shared metadata",
+      "start": "Start processing",
+      "unavailableBody": "This feature is desktop only.",
+      "unavailableTitle": "Batch processing unavailable"
+    },
+    "capture": {
+      "accuracy": "Position within ±{meters} m.",
+      "accuracyImprecise": "Position within ±{meters} m — check the house number before exporting.",
+      "address": "Address",
+      "addressFailedTitle": "No address found",
+      "addressHint": "Tap locate, or type the address",
+      "camera": "Take photo",
+      "code": "Code",
+      "dateHint": "1 Jan 2026",
+      "dateTimeGroup": "Date and time",
+      "emptyWarning": "No data will be stamped — the photo will come out without a watermark.",
+      "gallery": "Choose from gallery",
+      "galleryDenied": "Photo access was denied, so the image only exists inside the app. Allow it in Settings › Permissions to save it to the gallery.",
+      "galleryFailed": "The image went into the history, but the device refused to write it to the gallery. Check the free space and try again.",
+      "generateCode": "Generate",
+      "hiddenFields": "{count, plural, one {Hidden field} other {Hidden fields}}: {fields} — turn them on in Settings › Fields and position.",
+      "keepMyAddress": "Keep mine",
+      "locate": "Locate",
+      "locateByGps": "Locate address via GPS",
+      "lookup": {
+        "denied": "Allow location in Settings › Permissions, or type the address.",
+        "disabled": "Location is turned off on the device. Turn it on in the quick settings and try again.",
+        "timeout": "GPS did not answer in time. It often fails indoors — type the address.",
+        "unavailable": "The address could not be resolved at this position. Type it in by hand."
+      },
+      "newCapture": "Start a new capture",
+      "noFieldsBack": "Go back",
+      "noFieldsContinue": "Continue anyway",
+      "noFieldsMessage": "No field has anything to stamp. Fill the fields in, or review Settings › Fields and position.",
+      "noFieldsTitle": "The photo will come out without a watermark",
+      "noPhotoHint": "Take a photo or choose one from the gallery to begin.",
+      "noPhotoSelected": "No photo selected",
+      "openFailed": "The photo could not be opened. Try again.",
+      "permissionMessage": "Allow access in Settings › Permissions to continue.",
+      "permissionTitle": "Permission needed",
+      "pickPhoto": "Choose a photo",
+      "pickPhotoHint": "Choose a photo to enable the actions.",
+      "previewLabel": "Preview of the watermarked photo",
+      "renderFailedTitle": "Could not generate the image",
+      "replaceAddressMessage": "GPS found:\n\n{address}",
+      "replaceAddressTitle": "Replace the address you typed?",
+      "resetConfirm": "Discard",
+      "resetMessage": "The chosen photo and the filled-in fields will be discarded.",
+      "resetTitle": "Start a new capture?",
+      "saved": "Photo saved to the device gallery and to the history.",
+      "savedAppOnlyTitle": "Saved only inside Lymark",
+      "shareDialogTitle": "Share watermarked photo",
+      "shareFailedMessage": "The image was generated and is in the Lymark history. You can share it from the Gallery tab.",
+      "shareFailedTitle": "Could not share",
+      "shareUnavailableMessage": "This device has no share menu. The image stayed in the Lymark history.",
+      "shareUnavailableTitle": "Sharing unavailable",
+      "sharedFileTitle": "Watermarked photo",
+      "stampNotReady": "The stamp is still being prepared.",
+      "syncNow": "Now",
+      "timestamp": "Date/Time",
+      "title": "Capture",
+      "useGpsAddress": "Use the GPS one",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Day"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "choose another colour",
+      "saturationBrightness": "Saturation and brightness",
+      "use": "Use this colour"
+    },
+    "common": {
+      "back": "Back",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "error": "Error",
+      "gotIt": "Got it",
+      "loading": "Loading...",
+      "no": "No",
+      "ok": "OK",
+      "save": "Save",
+      "share": "Share",
+      "success": "Success",
+      "tryAgain": "Try again.",
+      "unknownError": "Unknown error",
+      "yes": "Yes"
+    },
+    "gallery": {
+      "cancelSelection": "Cancel selection",
+      "clear": "Clear history",
+      "clearConfirm": "Clear",
+      "clearMessage": "Lymark's records will be deleted. Images already saved to the device gallery are not affected.",
+      "count": "{count, plural, one {# photo exported} other {# photos exported}}",
+      "delete": "Delete",
+      "empty": "No photos yet",
+      "emptyAction": "Go to Capture",
+      "emptyDescription": "Photos you export with a watermark show up here, with date, place and code.",
+      "filteredCount": "{shown} of {total, plural, one {# photo} other {# photos}}",
+      "noResults": "No photos found for “{query}”.",
+      "photoLabel": "Photo from {when}",
+      "removeMessage": "The entries leave Lymark. Images already saved to the device gallery are not affected.",
+      "removeTitle": "{count, plural, one {Remove from history} other {Remove # entries}}",
+      "removed": "{count, plural, one {Entry removed.} other {Entries removed.}}",
+      "saveDeniedMessage": "Allow it in Settings › Permissions to save the images to the device gallery.",
+      "saveDeniedTitle": "Photo access denied",
+      "savedAll": "{count, plural, one {One photo saved to the device gallery.} other {# photos saved to the device gallery.}}",
+      "savedSome": "{saved} of {total} photos saved.",
+      "searchPlaceholder": "Search by address, date or code",
+      "selectedCount": "{count, plural, one {# photo selected} other {# photos selected}}",
+      "share": "Share",
+      "title": "Gallery"
+    },
+    "language": {
+      "automatic": "Match device",
+      "automaticNote": "Lymark follows the language set on your device.",
+      "label": "Language",
+      "selector": "Select language"
+    },
+    "login": {
+      "access": "Sign in to access",
+      "apple": "Sign in with Apple",
+      "google": "Sign in with Google",
+      "subtitle": "Sign in to continue",
+      "title": "Sign in to access Lymark"
+    },
+    "nav": {
+      "batch": "Batch processing",
+      "photoDetail": "Photo details",
+      "report": "PDF report",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "This screen is not part of Lymark.",
+      "screenTitle": "Page not found",
+      "title": "No such path"
+    },
+    "permissions": {
+      "allow": "Allow",
+      "allowed": "Allowed",
+      "blocked": {
+        "later": "Not now",
+        "message": "The system will not ask again. To allow it, open your device settings.",
+        "openSettings": "Open settings",
+        "title": "Permission blocked"
+      },
+      "camera": "Camera",
+      "cameraRationale": "Required to take the photo that will receive the watermark.",
+      "denied": "Denied",
+      "granted": "Granted",
+      "intro": "Lymark asks only for what it needs to stamp a photo. Your images never leave the device: when you use GPS, the operating system sends the map service the coordinate alone, so it can become an address.",
+      "location": "Location",
+      "locationRationale": "Fills in the address field automatically when you capture.",
+      "mediaLibrary": "Save to gallery",
+      "mediaLibraryRationale": "To write exported photos to the device gallery.",
+      "openDeviceSettings": "Settings",
+      "recheck": "Check again",
+      "request": "Request permission",
+      "section": "Access",
+      "title": "Permissions"
+    },
+    "photo": {
+      "backToGallery": "Back to the Gallery",
+      "exportedAt": "Exported on {when}",
+      "noWatermark": "This photo was exported without a watermark.",
+      "notFoundBody": "This record may have been removed from the history.",
+      "notFoundTitle": "Photo not found",
+      "remove": "Remove",
+      "removeBody": "The record leaves Lymark. The image saved to the device gallery is not affected.",
+      "removeTitle": "Remove from history",
+      "share": "Share",
+      "stampedData": "Stamped data"
+    },
+    "plan": {
+      "exhausted": "Free photos used up",
+      "exhaustedMessage": "The 12 photos of the free plan are gone. Subscribe to Lymark to keep stamping.",
+      "free": "Free",
+      "pro": "Pro",
+      "reconnect": "Reconnect to confirm your subscription",
+      "remaining": "{remaining, plural, one {# free photo left} other {# free photos left}}",
+      "title": "Plan",
+      "unlimited": "No limit"
+    },
+    "report": {
+      "allPhotos": "All photos",
+      "authorField": "Author / company",
+      "detailsSection": "Details",
+      "doc": {
+        "author": "Author",
+        "declaration": "The stamped data (address, date, time and code) is a declaration by the issuer of the photos.",
+        "exportedAt": "Exported on",
+        "generatedAt": "Generated on",
+        "page": "Page",
+        "photo": "Photo {index}",
+        "photosSection": "Photographic records",
+        "signature": "Signature of the person in charge",
+        "summary": "Summary",
+        "title": "Photo report",
+        "totalPhotos": "Total photos:"
+      },
+      "empty": "No exported photos yet. The report is built from your gallery.",
+      "failed": "Could not generate the report.",
+      "fileStem": "report",
+      "format": {
+        "csv": "Spreadsheet (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Package (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Generate file",
+      "generateSection": "Generate",
+      "includeLogo": "Logo on the cover",
+      "includeLogoDescription": "Your brand logo, the same one from the stamp. Turn it off to leave it out of the document.",
+      "norm": {
+        "abnt": "ABNT (Brazil)",
+        "din5008": "DIN 5008 (Germany)",
+        "ibape": "IBAPE style (Brazil)",
+        "iso": "International",
+        "letter": "Letter (US)"
+      },
+      "normNote": "The standard sets the paper and formatting — margins, font and page numbering. The report content is the same in all of them; the IBAPE style adds a signature block.",
+      "normSection": "Document standard",
+      "projectsSection": "Project / job",
+      "saved": "Saved to {path}",
+      "savedShort": "Report saved.",
+      "title": "PDF report",
+      "titleField": "Report title",
+      "unavailableBody": "PDF reports are available in the desktop app.",
+      "unavailableTitle": "Desktop only",
+      "uncoded": "No code",
+      "wordTooBig": "The Word document got too large with the photos embedded. Use PDF or the ZIP package.",
+      "zipMissing": "{count, plural, one {Package saved, but # photo was not found on this device.} other {Package saved, but # photos were not found on this device.}}"
+    },
+    "settings": {
+      "about": "About",
+      "aboutDescription": "Version, privacy and credits",
+      "appSection": "App",
+      "deviceSection": "Device",
+      "deviceSectionDescription": "Access that Lymark requests.",
+      "fields": "Fields and position",
+      "fieldsDescription": "Choose which fields show, the corner and the size",
+      "history": "History",
+      "historyDescription": "Exported photos kept on the device",
+      "language": "Language",
+      "permissions": "Permissions",
+      "permissionsDescription": "Camera, photos and location",
+      "save": "Save",
+      "title": "Settings",
+      "watermark": "Watermark",
+      "watermarkSection": "Watermark",
+      "watermarkSectionDescription": "What gets stamped onto the photo, and where."
+    },
+    "signup": {
+      "subtitle": "Sign up to get started",
+      "title": "Create your Lymark account"
+    },
+    "tagline": "Watermark with time, date and place",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "No camera access. Allow it in the device settings.",
+      "done": "Video stamped and saved.",
+      "export": "Export stamped video",
+      "exportSection": "Export",
+      "failed": "The video could not be stamped.",
+      "fieldsSection": "Stamp fields",
+      "fileSection": "Video",
+      "none": "No video selected.",
+      "processing": "Processing… {percent}%",
+      "processingMobile": "Processing…",
+      "record": "Record video now",
+      "saved": "Saved to {path}",
+      "savedToGallery": "Stamped video saved to your gallery.",
+      "select": "Choose video",
+      "unavailableBody": "Mobile video stamping needs Lymark installed from an EAS build (with the native module). It is not available in Expo Go. Install the official app from the store or an EAS build, or use the desktop / web version.",
+      "unavailableTitle": "Installed app required",
+      "unreadable": "The file could not be read as a video.",
+      "webNote": "In the browser, the video is processed in real time — a 2-minute video takes 2 minutes — and comes out in WebM format. For long videos, use the desktop app."
+    },
+    "watermark": {
+      "accentColor": "Vertical bar",
+      "backdropBandNote": "The band runs edge to edge across the photo and rests against the margin where the stamp is anchored. Over a busy scene — a building site, a yard, a crowded façade — it reads as the document’s caption rather than a sticker placed on top.",
+      "backdropBlockNote": "The backing follows the size of the text, with padding around it.",
+      "backdropColor": "Band colour",
+      "backdropDescription": "Keeps contrast over light areas of the photo. Without it, the text sits directly on the image, with a shadow.",
+      "backdropInnerRadius": "Inner corners",
+      "backdropOpacity": "Transparency",
+      "backdropOpacityValue": "{percent}% opaque",
+      "backdropRadius": "Rounded corners",
+      "backdropRadiusSquare": "Square",
+      "backdropStyles": {
+        "band": "Full-width band",
+        "block": "Behind the text",
+        "none": "None"
+      },
+      "backdropTitle": "Backing band",
+      "brandDescription": "Above the clock it becomes a signature, with logo and tagline. In a corner, it is a discreet line.",
+      "brandFirstColor": "First part colour",
+      "brandFirstHint": "Builders",
+      "brandFirstPart": "First part",
+      "brandNote": "Leave the second part empty for a single-colour mark. A long name is shrunk until it fits, rather than cut off.",
+      "brandPlacements": {
+        "corner": "In a corner",
+        "header": "Above the clock",
+        "none": "None"
+      },
+      "brandSecondColor": "Second part colour",
+      "brandSecondHint": " Smith",
+      "brandSecondPart": "Second part",
+      "brandTitle": "Stamped mark",
+      "codeDescription": "On the side it does not compete for room with the picture itself.",
+      "codePlacements": {
+        "block": "Next to the data",
+        "side": "Right side"
+      },
+      "codeTitle": "Photo code",
+      "colors": {
+        "amber": "Amber",
+        "black": "Black",
+        "blue": "Blue",
+        "green": "Green",
+        "red": "Red",
+        "white": "White"
+      },
+      "colorsDescription": "The colour on the photo is the company’s choice, not the app’s — changing it here does not change the screen colours.",
+      "colorsTitle": "Stamp colours",
+      "complement": "Tagline",
+      "complementColor": "Tagline colour",
+      "complementHint": "Inspections and technical reports",
+      "cornerConflict": "The mark and the data are in the same corner — they will overlap on the photo.",
+      "fields": {
+        "address": "Address / Place",
+        "code": "Photo code",
+        "date": "Date",
+        "time": "Time",
+        "weekday": "Weekday"
+      },
+      "fieldsDescription": "Only the fields that are on and have content reach the photo.",
+      "fieldsTitle": "Fields shown",
+      "includeCountry": "Include the country",
+      "includeCountryDescription": "Turn it on if you work across borders. Otherwise it only takes room on the photo.",
+      "legibilityTitle": "Legibility",
+      "logoAdded": "Logo added to the brand header.",
+      "logoAlignNote": "The logo height follows the text: its top aligns with the top of the name and its bottom with the baseline of the tagline.",
+      "logoChosen": "Chosen logo",
+      "logoErrorMessage": "Try another image. A PNG with a transparent background is the format that works best.",
+      "logoErrorTitle": "This file could not be used",
+      "logoFormatNote": "Use a PNG with a transparent background. A JPG with a white background becomes a white rectangle on the photo — the format does not store transparency, and the app has no way of guessing what is background.",
+      "logoPermissionMessage": "Allow it in Settings › Permissions to choose the logo file.",
+      "logoPermissionTitle": "Photo access denied",
+      "logoPick": "Choose logo",
+      "logoPosition": "Logo position",
+      "logoPositionBlock": "With the stamp",
+      "logoRemove": "Remove",
+      "logoReplace": "Replace logo",
+      "logoSize": "Logo size",
+      "positionDescription": "The corner of the photo the block is anchored to.",
+      "positionTitle": "Position",
+      "positions": {
+        "bottom-left": "Bottom left",
+        "bottom-right": "Bottom right",
+        "top-left": "Top left",
+        "top-right": "Top right"
+      },
+      "previewCurrent": "Over the current photo from the Capture tab.",
+      "previewEmpty": "From light to dark, to check legibility at both extremes.",
+      "previewNoFields": "No field selected — the photo comes out without a watermark.",
+      "previewTitle": "Preview",
+      "reset": "Restore defaults",
+      "sizeTitle": "Text size",
+      "sizes": {
+        "large": "Large",
+        "medium": "Medium",
+        "small": "Small"
+      },
+      "textColor": "Text",
+      "timeFormatDescription": "How the time is filled into the fields. The field stays editable.",
+      "timeFormatTitle": "Time format",
+      "timeFormats": {
+        "12h": "12-hour (AM/PM)",
+        "24h": "24-hour"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "All files",
+      "images": "Images",
+      "pickFolder": "Select output folder",
+      "pickPhoto": "Select photo",
+      "pickPhotos": "Select photos for the batch",
+      "savePhoto": "Save photo",
+      "saveReport": "Save report"
+    },
+    "login": {
+      "cancel": "Cancel",
+      "confirm": "Continue",
+      "message": "You just signed in through the browser. Continue and use this account on this computer?",
+      "title": "Sign in to Lymark"
+    },
+    "menu": {
+      "copy": "Copy",
+      "cut": "Cut",
+      "edit": "Edit",
+      "file": "File",
+      "fullscreen": "Full screen",
+      "help": "Help",
+      "paste": "Paste",
+      "quit": "Quit",
+      "redo": "Redo",
+      "reload": "Reload",
+      "selectAll": "Select all",
+      "settings": "Settings",
+      "undo": "Undo",
+      "view": "View",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "zoomReset": "Actual size"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Back to home",
+      "openApp": "Open the app",
+      "photos": "Photos",
+      "photosLeft": "{remaining} of {quota} left",
+      "plan": "Plan",
+      "planUnavailable": "Unavailable right now",
+      "plans": {
+        "free": "Free",
+        "pro": "Pro"
+      },
+      "signInTitle": "Sign in",
+      "signOut": "Sign out",
+      "signUpTitle": "Create account",
+      "subscribe": "Subscribe to Lymark Pro",
+      "subscribeSoon": "Subscriptions are not available yet. When they are, you will be able to subscribe here and use any device with the same account.",
+      "title": "Your account",
+      "revokeDesktops": "Disconnect computers",
+      "revokeDesktopsHint": "Ends the app's access on every computer. You can sign in again whenever you want."
+    },
+    "availability": {
+      "contact": "To follow the launch or report a problem, write to <email>contato@lymark.app</email>.",
+      "description": "Lymark is at version 1.3.0, in testing on Android ahead of publication on Google Play. There is no iOS version and no web version, and the app collects no payment.",
+      "title": "Availability"
+    },
+    "data": {
+      "device": {
+        "description": "The account exists for your subscription: the server keeps your email and plan, and never receives your photos or your location. The history keeps the last two hundred exports in the app’s own files.",
+        "field": "On the device",
+        "heading": "Photos, addresses and history"
+      },
+      "external": {
+        "description": "To turn latitude and longitude into a readable address, the operating system queries Google's or Apple's geocoding service. That is the only information that leaves, and the system sends it, not the app.",
+        "field": "Off the device",
+        "heading": "Only turning a coordinate into an address"
+      },
+      "note": "It is all set out — including what that means under Brazil's LGPD — in the <privacy>Privacy Policy</privacy>. Turning off the location permission leaves the app fully functional; only the address field then has to be typed by hand.",
+      "title": "Where your data sits"
+    },
+    "deleteAccount": {
+      "back": "Back to account",
+      "confirm": "Delete my account",
+      "deletesNow": "Deleting your account immediately erases your email, your identifier, and the record of plan, quota and photo count.",
+      "irreversible": "Deletion is permanent and cannot be undone. The photos on your device are not affected — they were never on our servers.",
+      "retained": "Payment transaction records are retained for the legally required fiscal period, unlinked from your profile. Technical logs expire on their own schedule.",
+      "title": "Delete account"
+    },
+    "description": "Android app that stamps the time, date, weekday, address and a tracking code onto site-inspection and proof-of-service photos.",
+    "desktop": {
+      "backAccount": "Back to account",
+      "explanation": "Your account is ready. Click the button below to open Lymark on your computer already signed in — the browser will ask permission to open the app.",
+      "open": "Connect the app",
+      "title": "Sign in on desktop",
+      "unavailable": "The desktop app connection is not available yet."
+    },
+    "download": {
+      "appStore": {
+        "description": "The same experience as Android, on iOS.",
+        "field": "App Store",
+        "heading": "iPhone and iPad"
+      },
+      "browser": {
+        "action": "Sign in",
+        "description": "Sign in with your account and the app opens right in the browser — phone or computer.",
+        "field": "Browser",
+        "heading": "Use it now, nothing to install"
+      },
+      "desktop": {
+        "description": "Photo batches, long videos and PDF reports — the heavy-duty version.",
+        "field": "Computer",
+        "heading": "Windows and Linux"
+      },
+      "googlePlay": {
+        "description": "The phone app, with camera, gallery and stamped video.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Coming soon",
+      "title": "Where to use Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "The street type is abbreviated and the state becomes its code, so the address fits in two lines without covering the photo. If you typed before GPS answered, what you typed wins.",
+        "field": "Address",
+        "heading": "Filled in by GPS, correctable by hand"
+      },
+      "code": {
+        "description": "It exists so you can cite one specific photo in a work order or a report. It runs rotated down the right edge, or sits with the data block — your choice.",
+        "field": "Photo code",
+        "heading": "Fourteen characters, drawn by a cryptographic generator"
+      },
+      "note": "Every field switches on and off on its own, and the block anchors to any of the four corners, in three sizes. The preview uses your actual photo, not a generic sample: what you see on screen is literally what gets exported.",
+      "time": {
+        "description": "One button snaps all three fields back to the present when the capture took longer than expected. All of them stay editable.",
+        "field": "Time and date",
+        "heading": "From the device clock, at the moment of capture"
+      },
+      "title": "What goes onto the image"
+    },
+    "footer": {
+      "description": "Lymark — photographic records with date, time and address.",
+      "documentsLabel": "Documents",
+      "privacy": "Privacy Policy",
+      "support": "Support:",
+      "terms": "Terms of Use"
+    },
+    "hero": {
+      "ctaAccount": "Go to my account",
+      "ctaLogin": "Sign in",
+      "ctaSignup": "Create a free account",
+      "description": "Lymark stamps the time, date, weekday, address and a tracking code straight onto the image. The file that comes out of the app carries the information inside it — not as metadata riding alongside, which the first WhatsApp forward strips away.",
+      "eyebrow": "Field photo documentation",
+      "heading": "The photo leaves your phone already saying when, where and what.",
+      "meta": {
+        "account": "One-tap account",
+        "android": "Android and browser",
+        "language": "Brazilian Portuguese",
+        "onDevice": "Photos stay on the device"
+      },
+      "note": "Nothing to install."
+    },
+    "nav": {
+      "account": "Account",
+      "home": "Home",
+      "homeLabel": "Lymark, home page",
+      "label": "Main",
+      "privacy": "Privacy",
+      "signIn": "Sign in",
+      "terms": "Terms",
+      "verify": "Verify"
+    },
+    "process": {
+      "capture": {
+        "description": "The address lookup starts the moment the photo comes in. The fields stay open for adjustment while it runs.",
+        "field": "Capture",
+        "heading": "Camera or gallery"
+      },
+      "note": "The two actions are kept apart on purpose. Saving and sharing solve different problems, and folding them into one button would drag anyone who just wants to file the photo through a send screen.",
+      "save": {
+        "description": "It sits with the rest of your phone's photos, available to any app — including after you uninstall Lymark.",
+        "field": "Save",
+        "heading": "Goes to the device gallery"
+      },
+      "share": {
+        "description": "WhatsApp, email, Drive: the destination is chosen by the operating system, and the app takes no part in sending.",
+        "field": "Share",
+        "heading": "Opens the system share menu"
+      },
+      "title": "The path a photo takes"
+    },
+    "skipToContent": "Skip to content",
+    "specimen": {
+      "caption": "The amber rule starts and ends at the edges of the digits, not of the text box.",
+      "label": "Sample of the Lymark stamp: time 07:42, date 12 August 2026, Wednesday, an address in Guarujá and a photo code."
+    },
+    "title": "Lymark — date, time and address watermark for field photos",
+    "verify": {
+      "caveat": "The seal attests to the file's integrity and the moment of issuance. What the stamp declares — address, date, time — is the issuer's declaration.",
+      "checking": "Checking…",
+      "declarationNote": "What the stamp shows (address, date, time) is the issuer's declaration — the seal attests to integrity and issuance, not content.",
+      "intro": "Drop or choose a photo exported by Lymark and see instantly whether it is exactly as it left the app — and who issued it, when.",
+      "noSealBody": "This file has no Lymark seal. It may have been exported offline, before the seal existed, or may not come from Lymark. Absence of a seal does not prove tampering.",
+      "noSealTitle": "No seal",
+      "notConfigured": "Verification is not available yet.",
+      "pick": "Choose file",
+      "previewAlt": "The verified photo, stamp visible",
+      "privacyNote": "Verification happens in your browser. The file is not sent to any server.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Intact",
+      "tamperedBody": "The content does not match the seal: the file was modified after issuance, or the seal belongs to another file.",
+      "tamperedTitle": "Mismatch",
+      "title": "Verify authenticity",
+      "unsupported": "This browser does not support signature verification. Try a current browser."
+    }
+  }
+}

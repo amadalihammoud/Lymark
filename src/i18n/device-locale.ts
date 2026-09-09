@@ -5,10 +5,12 @@ import { DEFAULT_LOCALE, LOCALES, isLocale, type Locale } from '@i18n/locales';
  *
  * A negociação tenta o mais específico primeiro: etiqueta completa, depois
  * idioma+escrita (`zh-Hant` a partir de `zh-Hant-TW`), depois heurística de
- * região (chinês, português europeu, espanhol peninsular / latino-americano),
- * e só então a parte primária. Quem está com o aparelho em `pt-BR` continua
- * no catálogo brasileiro; `pt-PT` recebe o europeu. `es-MX` e demais regiões
- * latino-americanas caem em `es-419`; `es-ES` no peninsular.
+ * região (chinês, português europeu, espanhol peninsular / latino-americano,
+ * inglês britânico / australiano, francês canadense), e só então a parte
+ * primária. Quem está com o aparelho em `pt-BR` continua no catálogo
+ * brasileiro; `pt-PT` recebe o europeu. `es-MX` e demais regiões
+ * latino-americanas caem em `es-419`; `es-ES` no peninsular. `en-GB` /
+ * `en-AU` caem em `en-GB`; `fr-CA` no francês canadense.
  */
 export function resolveDeviceLocale(): Locale {
   for (const tag of deviceLanguageTags()) {
@@ -102,6 +104,22 @@ export function matchTag(tag: string): Locale | undefined {
     }
     // `es` sem região (ou região não listada): catálogo histórico.
     return 'es';
+  }
+
+  // Inglês: `en-GB` / `en-AU` → britânico; demais regiões / bare `en` → `en`.
+  if (primary === 'en') {
+    if (regions.some((p) => p === 'GB' || p === 'AU' || p === 'UK')) {
+      if (isLocale('en-GB')) return 'en-GB';
+    }
+    return 'en';
+  }
+
+  // Francês: `fr-CA` é catálogo próprio; demais regiões / bare `fr` → `fr`.
+  if (primary === 'fr') {
+    if (regions.some((p) => p === 'CA')) {
+      if (isLocale('fr-CA')) return 'fr-CA';
+    }
+    return 'fr';
   }
 
   return LOCALES.find((locale) => locale === primary);
