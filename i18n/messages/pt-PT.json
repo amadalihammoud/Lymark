@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplicação",
+      "pitch": "Carimba hora, data, dia da semana, morada e um código de rastreio nas suas fotos — para registo de campo, vistoria e comprovação de serviço.",
+      "platform": "Plataforma",
+      "privacy": "Política de Privacidade",
+      "privacyGeocoding": "Ao usar o GPS, o sistema operacional envia a coordenada ao serviço de mapas do Google ou da Apple para obter o morada. É a única informação que sai daqui, e quem a envia é o sistema, não o Lymark.",
+      "privacyLocation": "A localização é usada uma vez por captura, apenas para preencher o campo de morada, e não é armazenada separadamente das fotos.",
+      "privacyOnDevice": "As fotos, os moradas e o histórico ficam apenas neste aparelho. A conta existe para a sua assinatura: o servidor guarda e-mail e plano, e nunca recebe as suas fotos nem a sua localização.",
+      "privacySection": "Privacidade",
+      "sdk": "Expo SDK",
+      "terms": "Termos de Uso",
+      "title": "Sobre o Lymark",
+      "version": "Versão"
+    },
+    "account": {
+      "browserHint": "O início de sessão acontece no navegador. Entre lá com a sua conta e a aplicação liga-se sozinha.",
+      "code": "Código",
+      "codeSent": "Enviámos um código para {email}",
+      "connected": "Conectado",
+      "continue": "Continuar",
+      "deleteAccount": "Eliminar conta",
+      "email": "E-mail",
+      "failed": "Algo correu mal. Verifique o e-mail ou o código e tente de novo.",
+      "notConfigured": "O login ainda não está disponível nesta versão da aplicação.",
+      "signInBrowser": "Entrar pelo navegador",
+      "signOut": "Sair da conta",
+      "signedInAs": "Conectado como {email}",
+      "title": "Conta",
+      "verify": "Verificar"
+    },
+    "batch": {
+      "addressHint": "Rua, número - Cidade",
+      "clearList": "Limpar lista",
+      "codeHint": "Ex: LYM-001",
+      "done": "{count, plural, one {Processamento concluído: # fotografia processada.} other {Processamento concluído: # fotografias processadas.}}",
+      "doneSection": "Concluído",
+      "dropZone": "Arraste e largue fotografias aqui, ou use o botão “Selecionar fotografias”",
+      "errorsSection": "Erros",
+      "folder": "Pasta: {name}",
+      "noPhotos": "Selecione pelo menos uma fotografia.",
+      "outputNote": "As fotos processadas serão guardadas na pasta selecionada.",
+      "outputSection": "Saída",
+      "photosSection": "Fotos para processar",
+      "processing": "Processando…",
+      "progress": "{current} de {total} ({percent} %)",
+      "results": "{success, plural, one {# êxito} other {# êxitos}}, {failed, plural, one {# falha} other {# falhas}}",
+      "selectFolder": "Selecionar pasta de saída",
+      "selectPhotos": "Selecionar fotos",
+      "selected": "{count, plural, one {# fotografia selecionada} other {# fotografias selecionadas}}",
+      "sharedNote": "Estes valores serão aplicados a TODAS as fotografias. A data e a hora de cada fotografia são lidas do EXIF individualmente.",
+      "sharedSection": "Metadados compartilhados",
+      "start": "Iniciar processamento",
+      "unavailableBody": "Esta funcionalidade está disponível apenas no computador.",
+      "unavailableTitle": "Processamento em lote indisponível"
+    },
+    "capture": {
+      "accuracy": "Posição com ±{meters} m de incerteza (GPS).",
+      "accuracyImprecise": "Posição com ±{meters} m de incerteza — verifique o número antes de exportar.",
+      "address": "Morada",
+      "addressFailedTitle": "Morada não obtida",
+      "addressHint": "Toque em localizar ou escreva a morada",
+      "camera": "Tirar foto",
+      "code": "Código",
+      "dateHint": "01 jan. 2026",
+      "dateTimeGroup": "Data e hora",
+      "emptyWarning": "Nenhum dado será carimbado — a foto sairá sem marca de água.",
+      "gallery": "Escolher da galeria",
+      "galleryDenied": "O acesso às fotos foi negado, então a imagem existe só dentro do app. Libere em Definições › Permissões para guardar na galeria.",
+      "galleryFailed": "A imagem entrou no histórico, mas o aparelho recusou gravá-la na galeria. Confirme o espaço livre e tente novamente.",
+      "generateCode": "Gerar",
+      "hiddenFields": "{count, plural, one {Campo oculto} other {Campos ocultos}}: {fields} — ative em Definições › Campos e posição.",
+      "keepMyAddress": "Manter o meu",
+      "locate": "Localizar",
+      "locateByGps": "Localizar morada pelo GPS",
+      "lookup": {
+        "denied": "Libere a localização em Definições › Permissões, ou digite o morada.",
+        "disabled": "A localização do aparelho está desligada. Ligue nos definições rápidas e tente de novo.",
+        "timeout": "O GPS não respondeu a tempo. Dentro de prédios costuma falhar — digite o morada.",
+        "unavailable": "Não foi possível resolver o morada nesta posição. Digite manualmente."
+      },
+      "newCapture": "Começar nova captura",
+      "noFieldsBack": "Voltar",
+      "noFieldsContinue": "Continuar assim",
+      "noFieldsMessage": "Nenhum campo tem conteúdo para carimbar. Preencha os campos ou reveja Definições › Campos e posição.",
+      "noFieldsTitle": "A foto sairá sem marca de água",
+      "noPhotoHint": "Tire uma fotografia ou escolha da galeria para começar.",
+      "noPhotoSelected": "Nenhuma foto selecionada",
+      "openFailed": "Não foi possível abrir a fotografia. Tente novamente.",
+      "permissionMessage": "Libere o acesso em Definições › Permissões para continuar.",
+      "permissionTitle": "Permissão necessária",
+      "pickPhoto": "Escolher foto",
+      "pickPhotoHint": "Escolha uma fotografia para ativar as ações.",
+      "previewLabel": "Pré-visualização da foto com marca de água",
+      "renderFailedTitle": "Falha ao gerar a imagem",
+      "replaceAddressMessage": "O GPS devolveu:\n\n{address}",
+      "replaceAddressTitle": "Substituir o morada digitado?",
+      "resetConfirm": "Descartar",
+      "resetMessage": "A fotografia escolhida e os campos preenchidos serão descartados.",
+      "resetTitle": "Começar nova captura?",
+      "saved": "Foto guardada na galeria do aparelho e no histórico.",
+      "savedAppOnlyTitle": "Guardada apenas no Lymark",
+      "shareDialogTitle": "Partilhar foto com marca de água",
+      "shareFailedMessage": "A imagem foi gerada e está no histórico do Lymark. Pode partilhá-la pela galeria do aparelho.",
+      "shareFailedTitle": "Não foi possível partilhar",
+      "shareUnavailableMessage": "Este aparelho não oferece a folha de partilha. A imagem ficou no histórico do Lymark.",
+      "shareUnavailableTitle": "Partilha indisponível",
+      "sharedFileTitle": "Foto com marca de água",
+      "stampNotReady": "O carimbo ainda está a ser preparado.",
+      "syncNow": "Agora",
+      "timestamp": "Data/Hora",
+      "title": "Capturar",
+      "useGpsAddress": "Usar o do GPS",
+      "weekdayHint": "Seg",
+      "weekdayShort": "Dia"
+    },
+    "colorPicker": {
+      "hue": "Matiz",
+      "other": "escolher outra cor",
+      "saturationBrightness": "Saturação e brilho",
+      "use": "Usar esta cor"
+    },
+    "common": {
+      "back": "Voltar",
+      "cancel": "Cancelar",
+      "delete": "Apagar",
+      "error": "Erro",
+      "gotIt": "Entendi",
+      "loading": "Carregando...",
+      "no": "Não",
+      "ok": "OK",
+      "save": "Guardar",
+      "share": "Partilhar",
+      "success": "Sucesso",
+      "tryAgain": "Tente novamente.",
+      "unknownError": "Erro desconhecido",
+      "yes": "Sim"
+    },
+    "gallery": {
+      "cancelSelection": "Cancelar seleção",
+      "clear": "Limpar histórico",
+      "clearConfirm": "Limpar",
+      "clearMessage": "Os registos do Lymark serão apagados. As imagens já guardadas na galeria do aparelho não são afetadas.",
+      "count": "{count, plural, one {# fotografia exportada} other {# fotografias exportadas}}",
+      "delete": "Apagar",
+      "empty": "Nenhuma foto ainda",
+      "emptyAction": "Ir para Capturar",
+      "emptyDescription": "As fotos que você exportar com marca de água aparecem aqui, com data, local e código.",
+      "filteredCount": "{shown} de {total, plural, one {# fotografia} other {# fotografias}}",
+      "noResults": "Nenhuma fotografia encontrada para “{query}”.",
+      "photoLabel": "Foto de {when}",
+      "removeMessage": "Os registos saem do Lymark. As imagens já guardadas na galeria do aparelho não são afetadas.",
+      "removeTitle": "{count, plural, one {Remover do histórico} other {Remover # registos}}",
+      "removed": "{count, plural, one {Registo removido.} other {Registos removidos.}}",
+      "saveDeniedMessage": "Libere em Definições › Permissões para guardar as imagens na galeria do aparelho.",
+      "saveDeniedTitle": "Acesso às fotos negado",
+      "savedAll": "{count, plural, one {Uma foto guardada na galeria do aparelho.} other {# fotos guardadas na galeria do aparelho.}}",
+      "savedSome": "{saved} de {total} fotos guardadas.",
+      "searchPlaceholder": "Buscar por morada, data ou código",
+      "selectedCount": "{count, plural, one {# fotografia selecionada} other {# fotografias selecionadas}}",
+      "share": "Partilhar",
+      "title": "Galeria"
+    },
+    "language": {
+      "automatic": "Igual ao aparelho",
+      "automaticNote": "O Lymark segue o idioma configurado no dispositivo.",
+      "label": "Idioma",
+      "selector": "Selecione o idioma"
+    },
+    "login": {
+      "access": "Entrar para aceder",
+      "apple": "Entrar com Apple",
+      "google": "Entrar com Google",
+      "subtitle": "Faça login para continuar",
+      "title": "Entre para aceder ao Lymark"
+    },
+    "nav": {
+      "batch": "Processamento em lote",
+      "photoDetail": "Detalhe da foto",
+      "report": "Relatório PDF",
+      "video": "Vídeo"
+    },
+    "notFound": {
+      "body": "Este ecrã não faz parte do Lymark.",
+      "screenTitle": "Página não encontrada",
+      "title": "Caminho inexistente"
+    },
+    "permissions": {
+      "allow": "Permitir",
+      "allowed": "Liberado",
+      "blocked": {
+        "later": "Agora não",
+        "message": "O sistema não vai perguntar de novo. Para autorizar, abra as definições do aparelho.",
+        "openSettings": "Abrir ajustes",
+        "title": "Permissão bloqueada"
+      },
+      "camera": "Câmara",
+      "cameraRationale": "Necessária para tirar a foto que receberá a marca de água.",
+      "denied": "Negado",
+      "granted": "Concedido",
+      "intro": "O Lymark só pede o que precisa para carimbar uma foto. As suas imagens não saem do aparelho: quando você usa o GPS, apenas a coordenada é enviada pelo sistema operacional ao serviço de mapas, para virar morada.",
+      "location": "Localização",
+      "locationRationale": "Preenche o campo de morada automaticamente ao capturar.",
+      "mediaLibrary": "Guardar na galeria",
+      "mediaLibraryRationale": "Para gravar as fotografias exportadas na galeria do aparelho.",
+      "openDeviceSettings": "Ajustes",
+      "recheck": "Verificar novamente",
+      "request": "Solicitar permissão",
+      "section": "Acessos",
+      "title": "Permissões"
+    },
+    "photo": {
+      "backToGallery": "Voltar para a Galeria",
+      "exportedAt": "Exportada em {when}",
+      "noWatermark": "Esta foto foi exportada sem marca de água.",
+      "notFoundBody": "Este registo pode ter sido removido do histórico.",
+      "notFoundTitle": "Foto não encontrada",
+      "remove": "Remover",
+      "removeBody": "O registo sai do Lymark. A imagem guardada na galeria do aparelho não é afetada.",
+      "removeTitle": "Remover do histórico",
+      "share": "Partilhar",
+      "stampedData": "Dados carimbados"
+    },
+    "plan": {
+      "exhausted": "Fotos gratuitas esgotadas",
+      "exhaustedMessage": "As 12 fotografias do plano gratuito acabaram. Assine o Lymark para continuar a carimbar.",
+      "free": "Grátis",
+      "pro": "Pro",
+      "reconnect": "Volte a ligar para confirmar a sua assinatura",
+      "remaining": "{remaining, plural, one {# fotografia gratuita restante} other {# fotografias gratuitas restantes}}",
+      "title": "Plano",
+      "unlimited": "Sem limite"
+    },
+    "report": {
+      "allPhotos": "Todas as fotos",
+      "authorField": "Responsável / empresa",
+      "detailsSection": "Detalhes",
+      "doc": {
+        "author": "Responsável",
+        "declaration": "Os dados carimbados (morada, data, hora e código) são declaração de quem emitiu as fotos.",
+        "exportedAt": "Exportada em",
+        "generatedAt": "Gerado em",
+        "page": "Página",
+        "photo": "Foto {index}",
+        "photosSection": "Registos fotográficos",
+        "signature": "Assinatura do responsável",
+        "summary": "Resumo",
+        "title": "Relatório fotográfico",
+        "totalPhotos": "Total de fotos:"
+      },
+      "empty": "Ainda não há fotografias exportadas. O relatório é montado a partir da galeria.",
+      "failed": "Não foi possível gerar o relatório desta vez.",
+      "fileStem": "relatorio",
+      "format": {
+        "csv": "Planilha (CSV)",
+        "pdf": "PDF",
+        "word": "Word (.doc)",
+        "zip": "Pacote (ZIP)"
+      },
+      "formatSection": "Formato",
+      "generate": "Gerar ficheiro",
+      "generateSection": "Gerar",
+      "includeLogo": "Logo na capa",
+      "includeLogoDescription": "O logótipo da sua marca, o mesmo do carimbo. Desligue para o documento sair sem ele.",
+      "norm": {
+        "abnt": "ABNT (Brasil)",
+        "din5008": "DIN 5008 (Alemanha)",
+        "ibape": "Estilo IBAPE (Brasil)",
+        "iso": "Internacional",
+        "letter": "Carta (EUA)"
+      },
+      "normNote": "A norma define o papel e a formatação — margens, tipo de letra e numeração de páginas.",
+      "normSection": "Padrão do documento",
+      "projectsSection": "Obra / projeto",
+      "saved": "Guardado em {path}",
+      "savedShort": "Relatório guardado.",
+      "title": "Relatório em PDF",
+      "titleField": "Título do relatório",
+      "unavailableBody": "O relatório em PDF está disponível na aplicação de computador.",
+      "unavailableTitle": "Somente no computador",
+      "uncoded": "Sem código",
+      "wordTooBig": "O documento do Word ficou demasiado grande com as fotografias embutidas. Use PDF ou o pacote ZIP.",
+      "zipMissing": "{count, plural, one {Pacote guardado, mas # foto não foi encontrada no aparelho.} other {Pacote guardado, mas # fotos não foram encontradas no aparelho.}}"
+    },
+    "settings": {
+      "about": "Sobre",
+      "aboutDescription": "Versão, privacidade e créditos da aplicação",
+      "appSection": "Aplicação",
+      "deviceSection": "Aparelho",
+      "deviceSectionDescription": "Acessos que o Lymark pede.",
+      "fields": "Campos e posição",
+      "fieldsDescription": "Escolha os campos apresentados, o canto e o tamanho",
+      "history": "Histórico",
+      "historyDescription": "Fotografias exportadas guardadas no aparelho",
+      "language": "Idioma",
+      "permissions": "Permissões",
+      "permissionsDescription": "Câmara, fotos e localização",
+      "save": "Guardar",
+      "title": "Definições",
+      "watermark": "Marca de água",
+      "watermarkSection": "Marca de água",
+      "watermarkSectionDescription": "O que é carimbado sobre a fotografia e onde."
+    },
+    "signup": {
+      "subtitle": "Registe-se para começar a usar",
+      "title": "Crie sua conta no Lymark"
+    },
+    "tagline": "Marca de água com hora, data e local",
+    "title": "Lymark",
+    "video": {
+      "cameraDenied": "Sem acesso à câmara. Libere nos ajustes do aparelho.",
+      "done": "Vídeo carimbado e guardado.",
+      "export": "Exportar vídeo carimbado",
+      "exportSection": "Exportar",
+      "failed": "Não foi possível carimbar este vídeo.",
+      "fieldsSection": "Campos do carimbo",
+      "fileSection": "Vídeo",
+      "none": "Nenhum vídeo escolhido.",
+      "processing": "Processando… {percent}%",
+      "processingMobile": "Processando…",
+      "record": "Gravar vídeo agora",
+      "saved": "Guardado em {path}",
+      "savedToGallery": "Vídeo carimbado guardado na galeria.",
+      "select": "Escolher vídeo",
+      "unavailableBody": "O carimbo de vídeo no telemóvel exige o Lymark instalado por um build EAS (com o módulo nativo). No Expo Go o módulo não está disponível. Instale o app oficial pela loja ou por um build EAS, ou use o computador / navegador.",
+      "unavailableTitle": "Precisa do app instalado",
+      "unreadable": "O ficheiro não pôde ser lido como vídeo.",
+      "webNote": "No navegador, o vídeo é processado em tempo real — um vídeo de 2 minutos leva 2 minutos — e sai em formato WebM. Para vídeos longos, use a aplicação de computador."
+    },
+    "watermark": {
+      "accentColor": "Barra vertical",
+      "backdropBandNote": "A faixa atravessa a fotografia de extremo a extremo e encosta na margem onde o carimbo está.",
+      "backdropBlockNote": "O fundo acompanha o tamanho do texto, com folga à volta.",
+      "backdropColor": "Cor da faixa",
+      "backdropDescription": "Garante contraste sobre zonas claras da fotografia. Sem ela, o texto fica diretamente sobre a imagem.",
+      "backdropInnerRadius": "Cantos de dentro",
+      "backdropOpacity": "Transparência",
+      "backdropOpacityValue": "{percent}% opaca",
+      "backdropRadius": "Cantos arredondados",
+      "backdropRadiusSquare": "Retos",
+      "backdropStyles": {
+        "band": "Faixa contínua",
+        "block": "Atrás do texto",
+        "none": "Nenhuma"
+      },
+      "backdropTitle": "Faixa de fundo",
+      "brandDescription": "Acima do relógio torna-se assinatura, com logótipo e complemento. Num canto, é um selo discreto.",
+      "brandFirstColor": "Cor da primeira parte",
+      "brandFirstHint": "Construtora",
+      "brandFirstPart": "Primeira parte",
+      "brandNote": "Deixe a segunda parte vazia para uma marca de cor única. Um nome comprido tem o corpo reduzido até caber, em vez de ser cortado.",
+      "brandPlacements": {
+        "corner": "Num canto",
+        "header": "Acima do relógio",
+        "none": "Nenhuma"
+      },
+      "brandSecondColor": "Cor da segunda parte",
+      "brandSecondHint": " Silva",
+      "brandSecondPart": "Segunda parte",
+      "brandTitle": "Marca carimbada",
+      "codeDescription": "Na lateral não disputa espaço com o conteúdo da imagem.",
+      "codePlacements": {
+        "block": "Junto aos dados",
+        "side": "Lateral direita"
+      },
+      "codeTitle": "Código de foto",
+      "colors": {
+        "amber": "Âmbar",
+        "black": "Preto",
+        "blue": "Azul",
+        "green": "Verde",
+        "red": "Vermelho",
+        "white": "Branco"
+      },
+      "colorsDescription": "A cor da foto é uma escolha da empresa, e não da aplicação — mexer aqui não muda as cores do ecrã.",
+      "colorsTitle": "Cores do carimbo",
+      "complement": "Complemento",
+      "complementColor": "Cor do complemento",
+      "complementHint": "Vistorias, inspeções e laudos técnicos",
+      "cornerConflict": "A marca e os dados estão no mesmo canto — vão sobrepor-se na fotografia.",
+      "fields": {
+        "address": "Morada / Local",
+        "code": "Código de foto",
+        "date": "Data",
+        "time": "Hora",
+        "weekday": "Dia da semana"
+      },
+      "fieldsDescription": "Só entram na fotografia os campos ligados que tiverem conteúdo.",
+      "fieldsTitle": "Campos exibidos",
+      "includeCountry": "Incluir o país",
+      "includeCountryDescription": "Ligue se presta serviço em mais do que um país. Caso contrário, só ocupa espaço na fotografia.",
+      "legibilityTitle": "Legibilidade",
+      "logoAdded": "Logótipo adicionado ao cabeçalho da marca.",
+      "logoAlignNote": "A altura do logótipo acompanha o texto: o topo alinha com o topo do nome e a base, com a base do complemento.",
+      "logoChosen": "Logótipo escolhido",
+      "logoErrorMessage": "Tente outra imagem. PNG com fundo transparente costuma funcionar melhor.",
+      "logoErrorTitle": "Não foi possível usar este ficheiro",
+      "logoFormatNote": "Use PNG com fundo transparente. Um JPG de fundo branco vira um retângulo branco sobre a foto — o formato não guarda transparência, e não há como a aplicação adivinhar o que é fundo.",
+      "logoPermissionMessage": "Libere em Definições › Permissões para escolher o ficheiro do logótipo.",
+      "logoPermissionTitle": "Acesso às fotos negado",
+      "logoPick": "Escolher logótipo",
+      "logoPosition": "Posição do logótipo",
+      "logoPositionBlock": "Junto ao carimbo",
+      "logoRemove": "Remover",
+      "logoReplace": "Trocar logótipo",
+      "logoSize": "Tamanho do logótipo",
+      "positionDescription": "Canto da fotografia onde o bloco é ancorado.",
+      "positionTitle": "Posição",
+      "positions": {
+        "bottom-left": "Inferior esquerdo",
+        "bottom-right": "Inferior direito",
+        "top-left": "Superior esquerdo",
+        "top-right": "Superior direito"
+      },
+      "previewCurrent": "Sobre a fotografia atual do separador Capturar.",
+      "previewEmpty": "Do claro ao escuro, para verificar a legibilidade nos dois extremos.",
+      "previewNoFields": "Nenhum campo selecionado — a foto sai sem marca de água.",
+      "previewTitle": "Pré-visualização",
+      "reset": "Restaurar padrão",
+      "sizeTitle": "Tamanho do texto",
+      "sizes": {
+        "large": "Grande",
+        "medium": "Médio",
+        "small": "Pequeno"
+      },
+      "textColor": "Texto",
+      "timeFormatDescription": "Como a hora é preenchida nos campos. O valor continua editável.",
+      "timeFormatTitle": "Formato da hora",
+      "timeFormats": {
+        "12h": "12 horas (AM/PM)",
+        "24h": "24 horas"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Todos os ficheiros",
+      "images": "Imagens",
+      "pickFolder": "Selecionar pasta de saída",
+      "pickPhoto": "Selecionar foto",
+      "pickPhotos": "Selecionar fotografias para o lote",
+      "savePhoto": "Guardar foto",
+      "saveReport": "Guardar relatório"
+    },
+    "login": {
+      "cancel": "Cancelar",
+      "confirm": "Continuar",
+      "message": "Acabou de entrar no navegador. Continuar e usar esta conta neste computador?",
+      "title": "Entrar no Lymark"
+    },
+    "menu": {
+      "copy": "Copiar",
+      "cut": "Recortar",
+      "edit": "Editar",
+      "file": "Ficheiro",
+      "fullscreen": "Ecrã inteiro",
+      "help": "Ajuda",
+      "paste": "Colar",
+      "quit": "Sair",
+      "redo": "Refazer",
+      "reload": "Recarregar",
+      "selectAll": "Selecionar tudo",
+      "settings": "Definições",
+      "undo": "Desfazer",
+      "view": "Exibir",
+      "zoomIn": "Aumentar zoom",
+      "zoomOut": "Diminuir zoom",
+      "zoomReset": "Tamanho normal"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Voltar ao início",
+      "openApp": "Abrir a aplicação",
+      "photos": "Fotos",
+      "photosLeft": "{remaining} de {quota} restantes no plano",
+      "plan": "Plano",
+      "planUnavailable": "Indisponível no momento",
+      "plans": {
+        "free": "Grátis",
+        "pro": "Pro"
+      },
+      "signInTitle": "Entrar",
+      "signOut": "Sair",
+      "signUpTitle": "Criar conta",
+      "subscribe": "Assinar o Lymark Pro",
+      "subscribeSoon": "A assinatura ainda não está disponível. Quando estiver, poderá assinar aqui e usar em qualquer aparelho com a mesma conta.",
+      "title": "Sua conta",
+      "revokeDesktops": "Desconectar computadores",
+      "revokeDesktopsHint": "Encerra o acesso da aplicação em todos os computadores. Você entra de novo quando quiser."
+    },
+    "availability": {
+      "contact": "Para acompanhar o lançamento ou comunicar um problema, escreva para <email>contato@lymark.app</email>.",
+      "description": "O Lymark está na versão 1.3.0, em testes no Android antes da publicação na Google Play. Não há versão para iOS nem versão web, e a aplicação não coleta pagamento.",
+      "title": "Disponibilidade"
+    },
+    "data": {
+      "device": {
+        "description": "A conta existe para a sua assinatura: o servidor guarda e-mail e plano, e nunca recebe as suas fotos nem a sua localização. O histórico guarda as últimas duzentas exportações em ficheiros do própria aplicação.",
+        "field": "No aparelho",
+        "heading": "Fotos, moradas e histórico"
+      },
+      "external": {
+        "description": "Para transformar a latitude e a longitude num morada legível, o sistema operacional consulta o serviço de geocodificação do Google ou da Apple. É a única informação que sai, e ela sai pelo sistema, não pela aplicação.",
+        "field": "Fora do aparelho",
+        "heading": "Apenas a conversão de coordenada em morada"
+      },
+      "note": "Está detalhado — inclusive o que isso significa sob a LGPD — na <privacy>Política de Privacidade</privacy>. Desligar a permissão de localização mantém a aplicação inteiramente funcional; apenas o campo de morada passa a ser digitado à mão.",
+      "title": "Onde os seus dados ficam"
+    },
+    "deleteAccount": {
+      "back": "Voltar à conta",
+      "confirm": "Eliminar minha conta",
+      "deletesNow": "Eliminar a conta apaga imediatamente seu e-mail, seu identificador e o registo de plano, cota e contagem de fotos.",
+      "irreversible": "A eliminação é definitiva e não pode ser desfeita. As fotos no seu aparelho não são afetadas — elas nunca estiveram em nossos servidores.",
+      "retained": "Registos de transação de pagamento são retidos pelo prazo de obrigação fiscal, desvinculados do cadastro. Logs técnicos expiram pelo prazo próprio.",
+      "title": "Eliminar conta"
+    },
+    "description": "Aplicação Android que carimba hora, data, dia da semana, morada e um código de rastreio nas fotos de vistoria e comprovação de serviço.",
+    "desktop": {
+      "backAccount": "Voltar à conta",
+      "explanation": "Sua conta está pronta. Clique no botão abaixo para abrir o Lymark no computador já conectado — o navegador vai pedir permissão para abrir a aplicação.",
+      "open": "Conectar a aplicação",
+      "title": "Entrar no computador",
+      "unavailable": "A ligação com a aplicação de computador ainda não está disponível."
+    },
+    "download": {
+      "appStore": {
+        "description": "A mesma experiência do Android, agora no iOS.",
+        "field": "App Store",
+        "heading": "iPhone e iPad"
+      },
+      "browser": {
+        "action": "Entrar na conta",
+        "description": "Entre com a sua conta e a aplicação abre no próprio navegador — telemóvel ou computador.",
+        "field": "Navegador",
+        "heading": "Use agora, sem instalar"
+      },
+      "desktop": {
+        "description": "Lote de fotografias, vídeo longo e relatórios em PDF — a versão de trabalho pesado.",
+        "field": "Computador",
+        "heading": "Windows e Linux"
+      },
+      "googlePlay": {
+        "description": "A aplicação do telemóvel, com câmara, galeria e vídeo carimbado.",
+        "field": "Google Play",
+        "heading": "Android"
+      },
+      "soon": "Em breve",
+      "title": "Onde usar o Lymark"
+    },
+    "features": {
+      "address": {
+        "description": "O logradouro é abreviado e o estado vira sigla, para o morada caber em duas linhas sem cobrir a foto. Se você digitou antes do GPS responder, o que você escreveu prevalece.",
+        "field": "Morada",
+        "heading": "Preenchido pelo GPS e corrigível à mão"
+      },
+      "code": {
+        "description": "Serve para citar uma fotografia específica numa ordem de serviço ou num laudo. Vai rodado na lateral direita ou junto ao bloco de dados, à sua escolha.",
+        "field": "Código de foto",
+        "heading": "Catorze caracteres, gerados de forma criptográfica"
+      },
+      "note": "Cada campo é ligado ou desligado individualmente, e o bloco pode ser ancorado em qualquer um dos quatro cantos — em três tamanhos. A pré-visualização usa a sua foto atual, e não um exemplo genérico: o que aparece no ecrã é literalmente o que é exportado.",
+      "time": {
+        "description": "Um botão repõe os três campos no instante atual quando a captura demorou mais do que o previsto. Todos permanecem editáveis.",
+        "field": "Hora e data",
+        "heading": "Do relógio do aparelho, no instante da captura"
+      },
+      "title": "O que entra na imagem"
+    },
+    "footer": {
+      "description": "Lymark — registo fotográfico com data, hora e morada.",
+      "documentsLabel": "Documentos",
+      "privacy": "Política de Privacidade",
+      "support": "Suporte:",
+      "terms": "Termos de Uso"
+    },
+    "hero": {
+      "ctaAccount": "Ir para a minha conta",
+      "ctaLogin": "Entrar",
+      "ctaSignup": "Criar conta gratuitas",
+      "description": "O Lymark carimba hora, data, dia da semana, morada e um código de rastreio diretamente na imagem. O ficheiro que sai da aplicação já sai com a informação embutida — não é um dado que acompanha a foto e se perde no primeiro encaminhamento por WhatsApp.",
+      "eyebrow": "Registo fotográfico de campo",
+      "heading": "A foto sai do telemóvel já dizendo quando, onde e o quê.",
+      "meta": {
+        "account": "Conta em um toque",
+        "android": "Android e navegador",
+        "language": "Português do Brasil",
+        "onDevice": "Fotos ficam no aparelho"
+      },
+      "note": "Nada para instalar."
+    },
+    "nav": {
+      "account": "Conta",
+      "home": "Início",
+      "homeLabel": "Lymark, página inicial",
+      "label": "Principal",
+      "privacy": "Privacidade",
+      "signIn": "Entrar",
+      "terms": "Termos",
+      "verify": "Verificar"
+    },
+    "process": {
+      "capture": {
+        "description": "O morada começa a ser buscado assim que a foto entra. Os campos ficam abertos para ajuste enquanto isso.",
+        "field": "Capturar",
+        "heading": "Câmara ou galeria"
+      },
+      "note": "As duas ações são separadas de propósito. Guardar e partilhar resolvem problemas diferentes, e juntar as duas num botão só obrigaria quem quer apenas arquivar a passar por um ecrã de envio.",
+      "save": {
+        "description": "Fica junto com as outras fotos do telemóvel, disponível para qualquer aplicação — inclusive depois de desinstalar o Lymark.",
+        "field": "Guardar",
+        "heading": "Fica na galeria do aparelho"
+      },
+      "share": {
+        "description": "WhatsApp, e-mail, Drive: o destino é escolhido pelo sistema operacional, e a aplicação não participa do envio.",
+        "field": "Partilhar",
+        "heading": "Abre a folha do sistema"
+      },
+      "title": "O percurso de uma foto"
+    },
+    "skipToContent": "Pular para o conteúdo",
+    "specimen": {
+      "caption": "A barra âmbar começa e termina nos limites dos dígitos — não da caixa de texto.",
+      "label": "Amostra do carimbo do Lymark: hora 07:42, data 12 de agosto de 2026, quarta-feira, morada em Guarujá e código de foto."
+    },
+    "title": "Lymark — marca de água de data, hora e morada em fotos de campo",
+    "verify": {
+      "caveat": "O selo atesta a integridade do ficheiro e o momento da emissão. O que o carimbo declara — morada, data, hora — é declaração de quem emitiu.",
+      "checking": "Verificando…",
+      "declarationNote": "O que o carimbo mostra (morada, data, hora) é declaração do emissor — o selo atesta a integridade e a emissão, não o conteúdo.",
+      "intro": "Arraste ou escolha uma foto exportada pelo Lymark e veja, na hora, se ela está exatamente como saiu da aplicação — e quem a emitiu, quando.",
+      "noSealBody": "Este ficheiro não tem selo do Lymark. Pode ter sido exportado sem ligação, antes do selo existir, ou não vir do Lymark. A ausência de selo não prova adulteração.",
+      "noSealTitle": "Sem selo",
+      "notConfigured": "A verificação ainda não se encontra disponível.",
+      "pick": "Escolher ficheiro",
+      "previewAlt": "A fotografia verificada, com o carimbo visível",
+      "privacyNote": "A verificação acontece no seu navegador. O ficheiro não é enviado a servidor nenhum.",
+      "sealedBody": "Este ficheiro está exatamente como saiu do Lymark. Emitido pela conta {account} em {date}.",
+      "sealedTitle": "Íntegra",
+      "tamperedBody": "O conteúdo não corresponde ao selo: o ficheiro foi modificado depois da emissão, ou o selo pertence a outro ficheiro.",
+      "tamperedTitle": "Não confere",
+      "title": "Verificar autenticidade",
+      "unsupported": "Este navegador não suporta a verificação de assinatura. Experimente um navegador atual."
+    }
+  }
+}

@@ -6,6 +6,7 @@ import {
   elGR,
   enUS,
   esES,
+  esMX,
   faIR,
   frFR,
   heIL,
@@ -20,6 +21,7 @@ import {
   nlNL,
   plPL,
   ptBR,
+  ptPT,
   roRO,
   ruRU,
   srRS,
@@ -68,11 +70,17 @@ import type { Locale } from '../../i18n/locales';
  * `nn`, `lb`, `dz`, `mt` e `dv` caem no inglês.
  *
  * Variantes V1: `zh-Hant` usa `zhTW` (Traditional Chinese / Taiwan).
+ *
+ * Variantes V2: `pt-PT` usa `ptPT`; `es-ES` usa `esES`; `es-419` usa `esMX`
+ * (Clerk não publica um pacote `es-419` — México é o LatAm nativo mais próximo).
  */
 export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   pt: ptBR,
+  'pt-PT': ptPT,
   en: enUS,
   es: esES,
+  'es-419': esMX,
+  'es-ES': esES,
   fr: frFR,
   it: itIT,
   de: deDE,

@@ -56,6 +56,19 @@ const IDENTICAL_ON_PURPOSE: Record<string, readonly string[]> = {
     // "{remaining} de {quota} restantes" — as duas línguas escrevem igual.
     'site.account.photosLeft',
   ],
+  // Variantes regionais do espanhol herdam as mesmas coincidências com o pt.
+  'es-419': [
+    'site.hero.eyebrow',
+    'app.gallery.count',
+    'app.gallery.filteredCount',
+    'site.account.photosLeft',
+  ],
+  'es-ES': [
+    'site.hero.eyebrow',
+    'app.gallery.count',
+    'app.gallery.filteredCount',
+    'site.account.photosLeft',
+  ],
 };
 
 const catalogs = new Map(LOCALES.map((locale) => [locale, flatten(load(locale))]));

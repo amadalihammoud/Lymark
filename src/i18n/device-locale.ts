@@ -5,10 +5,10 @@ import { DEFAULT_LOCALE, LOCALES, isLocale, type Locale } from '@i18n/locales';
  *
  * A negociação tenta o mais específico primeiro: etiqueta completa, depois
  * idioma+escrita (`zh-Hant` a partir de `zh-Hant-TW`), depois heurística de
- * região para o chinês (`zh-TW`/`zh-HK` → `zh-Hant`, `zh-CN` → `zh`), e só então
- * a parte primária. Quem está com o aparelho em `pt-PT` ou `pt-BR` continua
- * recebendo português; quem está em `zh-Hant` ou `zh-TW` recebe o catálogo
- * tradicional, sem cair no simplificado só porque a primária é `zh`.
+ * região (chinês, português europeu, espanhol peninsular / latino-americano),
+ * e só então a parte primária. Quem está com o aparelho em `pt-BR` continua
+ * no catálogo brasileiro; `pt-PT` recebe o europeu. `es-MX` e demais regiões
+ * latino-americanas caem em `es-419`; `es-ES` no peninsular.
  */
 export function resolveDeviceLocale(): Locale {
   for (const tag of deviceLanguageTags()) {
@@ -22,8 +22,8 @@ export function resolveDeviceLocale(): Locale {
 /**
  * Resolve uma etiqueta BCP-47 / underscores ao catálogo mais próximo.
  *
- * Exportada para os testes cobrirem as colisões `zh` / `zh-Hant` sem depender
- * do `navigator` do ambiente.
+ * Exportada para os testes cobrirem as colisões regionais sem depender do
+ * `navigator` do ambiente.
  */
 export function matchTag(tag: string): Locale | undefined {
   const normalized = tag.trim().replace(/_/g, '-');
@@ -44,18 +44,64 @@ export function matchTag(tag: string): Locale | undefined {
   }
 
   const primary = parts[0]!.toLowerCase();
-  const upper = parts.map((p) => p.toUpperCase());
+  // Subtags after the language — never treat `pt`/`es` themselves as region PT/ES.
+  const regions = parts.slice(1).map((p) => p.toUpperCase());
 
   // Chinês: região e escrita explícitas antes de cair no catálogo `zh`.
   if (primary === 'zh') {
-    if (upper.includes('HANT') || upper.some((p) => p === 'TW' || p === 'HK' || p === 'MO')) {
+    if (regions.includes('HANT') || regions.some((p) => p === 'TW' || p === 'HK' || p === 'MO')) {
       if (isLocale('zh-Hant')) return 'zh-Hant';
     }
-    if (upper.includes('HANS') || upper.some((p) => p === 'CN' || p === 'SG')) {
+    if (regions.includes('HANS') || regions.some((p) => p === 'CN' || p === 'SG')) {
       return 'zh';
     }
     // `zh` sem região: o catálogo histórico (simplificado).
     return 'zh';
+  }
+
+  // Português: `pt-PT` é catálogo próprio; demais regiões (BR, AO, …) → `pt`.
+  if (primary === 'pt') {
+    if (regions.some((p) => p === 'PT')) {
+      if (isLocale('pt-PT')) return 'pt-PT';
+    }
+    return 'pt';
+  }
+
+  // Espanhol: peninsular vs latino-americano vs catálogo histórico `es`.
+  if (primary === 'es') {
+    if (regions.some((p) => p === 'ES')) {
+      if (isLocale('es-ES')) return 'es-ES';
+    }
+    if (
+      regions.some((p) => p === '419') ||
+      regions.some((p) =>
+        [
+          'MX',
+          'AR',
+          'CO',
+          'CL',
+          'PE',
+          'VE',
+          'EC',
+          'GT',
+          'CU',
+          'BO',
+          'DO',
+          'HN',
+          'PY',
+          'SV',
+          'NI',
+          'PA',
+          'CR',
+          'UY',
+          'PR',
+        ].includes(p),
+      )
+    ) {
+      if (isLocale('es-419')) return 'es-419';
+    }
+    // `es` sem região (ou região não listada): catálogo histórico.
+    return 'es';
   }
 
   return LOCALES.find((locale) => locale === primary);
