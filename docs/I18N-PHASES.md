@@ -25,7 +25,7 @@ RTL set: `ar`, `he`, `ur`, `fa`, `ps` (Pashto added).
 Clerk UI: `hu`, `kk`, `sv`, `bg` use native packs.
 **Fallbacks to English localization:** `my`, `uz`, `ne`, `ps`, `so`, `az`, `mg`, `si`, `km`, `rw`, `ht`.
 
-## Phase 3 (this PR)
+## Phase 3 (merged)
 
 Fifteen locales:
 
@@ -36,11 +36,15 @@ RTL set unchanged: `ar`, `he`, `ur`, `fa`, `ps`. Tigrinya (`ti`) is Ethiopic scr
 Clerk UI: `da`, `fi`, `sk`, `hr`, `mn` use native packs.
 **Fallbacks to English localization:** `ka`, `lo`, `hy`, `lt`, `sq`, `sl`, `ti`, `lv`, `bs`, `rn`.
 
-## Phase 4
+## Phase 4 (this PR — final / full coverage)
 
-Not in this PR. Further locale batches will follow the same pattern:
+Thirteen locales:
 
-1. Extend `LOCALES` / `LOCALE_NAMES` / `RTL_LOCALES` / calendar maps / Clerk & OG maps.
-2. Add `i18n/messages/<code>.json` and `i18n/messages/legal/<code>.json` with key parity to `pt`.
-3. Wire static imports in `src/i18n/messages.ts`.
-4. Note any Clerk fallbacks in the PR.
+`et`, `tg`, `mk`, `be`, `tk`, `ky`, `nn`, `lb`, `dz`, `mt`, `is`, `dv`, `ca`
+
+RTL set: `ar`, `he`, `ur`, `fa`, `ps`, `dv` (Divehi / Thaana added). Dzongkha (`dz`) is Tibetan script and **LTR**.
+
+Clerk UI: `be`, `ca`, `is` use native packs.
+**Fallbacks to English localization:** `et`, `tg`, `mk`, `tk`, `ky`, `nn`, `lb`, `dz`, `mt`, `dv`.
+
+Catalog total after Phase 4: **73** locales (12 original + 18 + 15 + 15 + 13).

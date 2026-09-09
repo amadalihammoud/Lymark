@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Política de privacitat",
+      "description": "Com l'aplicació Lymark gestiona les fotos, la ubicació, el historial i el teu compte. Les fotos i la ubicació mai surten del dispositiu; el servidor només manté el correu electrònic, el pla i el compte de fotos."
+    },
+    "title": "Política de privacitat",
+    "updated": "Últimament actualitzat: 16 d'agost de 2026 · Lymark app, versió 1.3.0",
+    "intro": "Aquesta política descriu com l'aplicació Lymark tracta la informació personal. Es compleix amb la Lei no 13.709/2018 (Lei General de Protecció de Dades Personales  LGPD) i amb el Reglament (UE) 2016/679 (Reglament General de Protecció de Dades  GDPR ), i s'aplica a l'aplicació distribuïda sota l'identificador <strong> com.lycosteam.lymark </strong>i a aquest lloc web.",
+    "s01": {
+      "title": "En una frase",
+      "p1": " Lymark  <strong>no transmet les seves fotos o la seva ubicació</strong>. Tot el que l'aplicació produeix  imatges, adreces, historial i preferències  es manté en el seu propi dispositiu, sota el seu control. Hi ha un compte, necessari per utilitzar l'aplicació i per a la subscripció: el servidor guarda el seu correu electrònic, l'identificador de compte, el pla i el conte de les fotos exportades  i res més.",
+      "p2": "Hi ha una única excepció, descrita en el punt 05: per convertir les coordinades GPS en una adreça legible, el sistema operatiu del dispositiu requereix un servei de geocodificació extern."
+    },
+    "s02": {
+      "title": "A qui s'aplica aquesta política",
+      "p1": "Es aplica a qualsevol persona que utilitzi l'aplicació o visiteixi aquest lloc web. Per als subjectes de dades a Brasil, el tractament segueix la LGPD i la supervisió de l'Autoritat Nacional de Protecció de Dades (ANPD)."
+    },
+    "s03": {
+      "title": "Qui és el controlador",
+      "p1": "El responsable del tractament de les dades personals  <em>controlador</em>, en la terminologia de la LGPD  és 29.015.357 AMAD ALI HAMMOUD , registrada amb CNPJ 29.015.357/0001-25 , amb una adreça a Avenida Ana Costa, 433, Gonzaga, Santos - SP .",
+      "p2": "La persona responsable del tractament de dades personals, a efectes de l'article 41 de la LGPD , és Amad Ali Hammoud , que es pot contactar a <email> contato@lymark.app </email>. Tenint en compte el volum i la naturalesa del tractament  que no implica ni dades sensibles a escala ni un seguiment sistemàtic  no hi ha obligació de nomenar un <em>Responsable de protecció de dades</em>Segons l' article 37 de la GDPR ."
+    },
+    "s04": {
+      "title": "Quina informació tracta l'aplicació",
+      "p1": "Tota la informació a continuació es registra exclusivament en l'àrea privada de l'aplicació dins del dispositiu, i cap d'ells s'envia al desenvolupador.",
+      "defs": {
+        "photos": {
+          "term": "Fotografies",
+          "def": "La imatge que tries de la galeria o captura amb la càmera, i el fitxer exportat amb el marc d'aigua. Una fotografia pot contenir dades personals de tercers  veure punt 11."
+        },
+        "location": {
+          "term": "L'ubicació",
+          "def": "Llengitud i latitud aproximades, obtingudes una vegada per captura, amb l'únic objectiu de omplir el camp d'adreces."
+        },
+        "datetime": {
+          "term": "Data, hora i dia de la setmana",
+          "def": "Llegeix des del rellotge del dispositiu en el moment de la captura, i editable per tu."
+        },
+        "code": {
+          "term": "Codi de fotografia",
+          "def": "Una seqüència de catorze caracteres hexadecimals dibuixats aleatoriament. No deriva ni d'un identificador de dispositiu ni d'un dels teus, i no permet el seguiment entre aplicacions."
+        },
+        "history": {
+          "term": "Història",
+          "def": "Un registre de les últimes 200 exportacions, que conté el camí del fitxer del dispositiu i les dades estampades a la imatge."
+        },
+        "preferences": {
+          "term": "Preferències",
+          "def": "Els camps visibles, la posició, la mida i les altres opcions de marca d'aigua."
+        }
+      },
+      "p2": "L' aplicació <strong>no recull</strong>: nom, correu electrònic, telèfon, documents d'identitat, identificador publicitari, identificador de dispositiu, dades de contacte, calendari, historial de navegació, métriques d'ús, informes de crash o qualsevol altra informació sobre vostè o sobre el seu dispositiu. No hi ha integrats SDK d'anàlisi, publicitat, atribució o seguiment."
+    },
+    "s05": {
+      "title": "L'única informació que deixa el dispositiu",
+      "p1": "Quan concedeix el permís de localització, l'aplicació demana al sistema operatiu que converteixi les coordinades GPS en una adreça postal. Aquesta traducció  revers geocoding  és realitzada pel propi sistema operatiu, que per a aquest motiu envia les coordinades al seu servei de mapes: <strong>Google</strong>en dispositius Android i <strong>Apple</strong>en dispositius iOS.",
+      "p2": "Aquesta comunicació prové del sistema operatiu, i no de Lymark. L'aplicació no rebia cap còpia, no la media i no té accés a res més enllà de l'adreça retornada.",
+      "p3": "<strong>Cap fotografia deixa el dispositiu a través de cap acció de l'aplicació.</strong>Si utilitza el botó Partil·lar, la imatge es transmet per l'aplicació de destinació que seleccioneu en la ficha de compartir del sistema  messenger, correu electrònic, emmagatzematge en nuvitat  sota la política de privacitat d'aquesta aplicació."
+    },
+    "s06": {
+      "title": "Permis requeriments i per què",
+      "defs": {
+        "camera": {
+          "term": "La càmera",
+          "def": "Per fer la foto que rebrà la marca d'aigua. Solament sol·licitat quan toqui a Tràs foto. L'aplicació no sol·licita accés a micròfon."
+        },
+        "photos": {
+          "term": "Fotografies i mitjans de comunicació",
+          "def": "Per a escollir una imatge existent i escriure el fitxer exportat a la galeria. L'accés està limitat a les fotografies, i el permís d'escriure s'utilitza només per escriure  l'aplicació ni navega ni llegeix la galeria."
+        },
+        "location": {
+          "term": "L'ubicació en l'ús",
+          "def": "Per omplir el camp d'adreces. Solicitat en primer plan, només mentre l'aplicació està en ús, i <strong>mai en el fons</strong>."
+        }
+      },
+      "p1": "Tots els permisos són opcionals i es poden revocar en qualsevol moment en les configuracions del dispositiu. Recusar la ubicació manté l'aplicació plenament funcional: l'adreça es escriu. Recusar l'accés a la galeria només impedeix l'estalvi automàtic, i la foto encara pot ser compartida."
+    },
+    "s07": {
+      "title": "Bases i finalitats legals",
+      "p1": "El tractament de la ubicació es realitza en funció de la seva informació.<strong>consentiment</strong> Article 7, I de la LGPD i l'article 6(1)(a) de la GDPR  expressat quan concedi l'autorització del sistema, i revocable en qualsevol moment, sense perjudici de la legalitat del tractament realitzat abans de la revocació.",
+      "p2": "El tractament de les restants dades es realitza per a la <strong>prestació de la característica que ha demanat</strong> Article 7, V de la LGPD i l'article 6(1)(b) de la GDPR  ja que sense ella no hi ha marca d'aigua per a la aplicació per produir.",
+      "p3": "El tractament de les dades de compte rep en l'execució d'un contracte (LGPD art. 7, V; GDPR art. 6(1)(b)). El tractament basat en interès legítim (LGPD art. 7, IX; GDPR art. 6(1)(f)) existeix només per a la seguretat i prevenció del frau  per exemple, registrar l'adreça IP de les sol·licituds al servidor. No hi ha tractament per a publicitat, perfil, anàlisi de comportament o cap finalitat secundària, i no hi ha tractament de categories especials de dades o dades sensibles per part de l'entor."
+    },
+    "s08": {
+      "title": "Transferència internacional",
+      "p1": "Els dades de compte són tractats pel processador d'autenticació (Clerk, Inc. , Estats Units), que constitueix una transferència internacional de dades, basada en clausulats contractuals estàndards i els mecanismes de LGPD art. 33 i GDPR art. 44 a 49.",
+      "p2": "Aquest lloc web és albergat per Vercel Inc. , sota els termes del punt 14."
+    },
+    "s09": {
+      "title": "Parts amb tercers",
+      "p1": "L'empresari no comparteix, venda, lloguer o cedir dades personals a tercers.<em>processador</em>Clerk, Inc., que proporciona el servei d'autenticació i emmagatzem el correu electrònic, l'identificador de compte i les dades del pla, vinculats per contracte a les instruccions del desenvolupador. Si vostè es connecta amb Google o Apple, aquests proveïdors processen les dades d'accés sota les seves pròpies polítiques; el desenvolupador només reben d'ells el correu electrònic i l'identificador necessari per crear l'account. Les fotos, adreces i ubicació no passen per cap processador en absolut, perquè mai surten del dispositiu."
+    },
+    "s10": {
+      "title": "Emmagatzematge, retenció i seguretat",
+      "p1": "Les dades estan en l'àrea privada de l'aplicació, protegida per l'aïllament del sistema operatiu entre les aplicacions i pel bloqueig de pantalla del dispositiu.<strong>discapacitat</strong>, de manera que l'història i les preferències no es enviin al compte Google de l'usuari.",
+      "p2": "La conservació és totalment controlada per vostè: els registres es mantenen fins que es suprimen en l'aplicació mateixa, i l'història automàticament descartarà els més antics una vegada que passi dos-cents elements, eliminant també els arxius corresponents. Desinstalar l'aplicació esborra tot el que va emmagatzemar. Les fotos ja guardades a la galeria del dispositiu pertanyen a la galeria i es queden allà  és a vostè eliminar-les si ho desitja.",
+      "p3": "Cap sistema és infalible. Les dades de compte  correu electrònic, identificador, pla i compte  es conserven pel processador d'autenticació, sota les seves mesures de seguretat. Les fotos, adreces i ubicació no existeixen en cap repositori central, i per tant no poden filtrar de l'infraestructura del desenvolupador. Si un incident de seguretat afecta les dades de compte, el desenvolupador notificarà l'autoritat i els subjectes de dades sota l'art. 48 de LGPD i l'art. 33 de GDPR. El risc rellevant per a les seves fotos segueix sent l'accés físic al dispositiu desblocat."
+    },
+    "s11": {
+      "title": "Quan fotografies altres persones",
+      "p1": "Quan fotografiques persones identificables en el curs de la teva activitat professional,<strong>tu</strong>En aquest sentit, la Comissió Europea ha decidit que la Comissió Europea ha de prendre en compte la possibilitat de presentar una proposta de resolució de la Comissió Europea sobre la protecció de les dades de caràcter personal."
+    },
+    "s12": {
+      "title": "Els teus drets",
+      "p1": "L'article 18 de la LGPD i els articles 15 a 22 de la GDPR li garantiran els drets de confirmació i d'accés, correcció, supressió, anonimització, bloqueig, portabilitat, restricció de tractament, objecció, revocació del consentiment i informació sobre el compartir.",
+      "p2": "Les fotos, adreces, historial i preferències només resideixen en el teu dispositiu, i aquests drets s'exercen directament a l'aplicació: veure i eliminar les entrades a la pesta Galeria, corregir qualsevol camp abans d'exportar, revocar l'autorització de ubicació en les configuracions del sistema, i borrar tot desinstalar l'aplicació  el desenvolupador no pot accedir, exportar o borrar aquestes dades per a tu, perquè no la conserva. Quant a les dades de compte  correu electrònic, planificació i conte  pots veure-les a la pàgina de compte i sol·licitar correcció, exportació o borra al correu electrònic de contacte d'aquesta Política ; borrar el compte eliminen aquestes dades al processador d'autenticació.",
+      "p3": "Per a preguntes o peticions formals, escriu a <email> contato@lymark.app </email>També té dret a presentar una queixa a la<strong> ANPD </strong>, al Brasil, o amb l'autoritat de control del seu Estat membre, a la Unió Europea."
+    },
+    "s13": {
+      "title": "Decisions automàtiques",
+      "p1": "No hi ha cap decisió automàtica, elaboració de perfil o tractament que produï en vostè efectes legals, segons l'article 20 de la LGPD i l'article 22 de la GDPR."
+    },
+    "s14": {
+      "title": "Sobre aquest lloc web",
+      "p1": "Aquest lloc no té analítiques, no mostra publicitat ni incorpora botons de xarxes socials.<strong>cookies estrictament necessàries</strong>per a la seva sessió de compte, establerta pel processador d'autenticació (ponent 09) quan es connecteixi; no hi ha cookies de seguiment o publicitat. Les fonts es serveixen des del propi domini del lloc. Les úniques peticions que el seu navegador fa a tercers són les de les pantalla d'autenticació i de compte, adreçades al processador d'autenticació  i, si ho escolli, al proveïdor d'autenticació (Google o Apple).",
+      "p2": "El lloc web és albergat per <strong> Vercel Inc. </strong>, que com a processador registre les dades d'accés tècnic  adreça IP, data, hora i el recurs sol·licitat  durant el temps necessari per a la seguretat i el funcionament de l'hosting. La base jurídica és l'interès legítim en mantenir la seguretat del servei, l'article 7, IX de la LGPD i l'article 6(1)(f) de la GDPR."
+    },
+    "s15": {
+      "title": "Modificacions a la política",
+      "p1": "Els canvis seran publicats en aquesta pàgina, amb una nova data d'actualització. Els canvis que modifiquin significativament el tractament de dades també seran comunicats dins de l'aplicació abans que entren en vigor."
+    },
+    "s16": {
+      "title": "nens i adolescents",
+      "p1": "Lymark és una eina de нөх de treball, destinada a persones de 18 anys o més. No està dirigida a nens o adolescents, i no rec recull de manera intencional dades sobre aquest públic."
+    },
+    "s17": {
+      "title": "L'aplicació de la legislació",
+      "p1": "Aquesta política es regeix pel dret brasilià, sense perjudici de l'aplicació de la GDPR als subjectes de dades que cobreix."
+    },
+    "note": "Vegeu també el <terms>Condicions d'ús</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Condicions d'ús",
+      "description": "Condicions d'ús de l'aplicació Lymark: què fa, què no fa i qui és responsable del contingut de les fotos."
+    },
+    "title": "Condicions d'ús",
+    "updated": "Últimament actualitzat: 16 d'agost de 2026 · Lymark app, versió 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Què fa l'aplicació",
+      "p1": "Lymark superposa unھیل d'informació a una fotografia  hora, data, dia de la setmana, adreça i un codi d'identificació  i genera un nou fitxer d'imatge amb aquesta informació integrada en els píxels."
+    },
+    "s02": {
+      "title": "Què no fa l'aplicació",
+      "p1": "Aquest punt és el més important d'aquests termes, i ens demanem que el llegiu amb atenció.",
+      "items": {
+        "certify": "<strong>L'aplicació no certifica ni autentica res.</strong>No és un examen forense, no emet un нөхí de fe pública i no constitueix proves d'experts.",
+        "editable": "<strong>Cada camp és editable per l'usuari.</strong>L'hora, la data, l'adreça i el codi es poden canviar lliurement abans d'exportar, per disseny: el professional ha de ser capaç de corregir una adreça que el GPS s'ha equivocat.",
+        "clock": "<strong>L'hora arriba des del rellotge del dispositiu</strong>, que poden ser incorrectes o poden haver estat нөх. No hi ha sincronizació amb un servidor de temps de confiança.",
+        "address": "<strong>L'adreça és una estimació.</strong>La seva exactitud depèn de la senyals GPS i de la base de dades del servei de mapes del sistema operatiu.",
+        "code": "<strong>El codi de foto no és un registre en una oficina de notari.</strong>És un identificador aleatori per a referència interna, sense cap valor de prova."
+      },
+      "p2": "Si el seu cas d'ús requereix proves amb força legal contra tercers, sol·liciteu un acte notari o un servei de certificació digital amb un timbre de temps  Lymark és un substitut per a cap de les dues."
+    },
+    "s03": {
+      "title": "Les seves responsabilitats",
+      "items": {
+        "photos": "Vostè és únicament responsable de les fotografies que captura, del contingut que marca en elles i de l'ús que fa dels arxius generats.",
+        "thirdParties": "Quan fotografies altres persones, la seva propietat o les seves instal·lacions, és de tu obtenir les autorizacions necessàries i observar els drets d'imatge, el secret professional i la Llei General de Protecció de Dades Personales en relació amb els subjectes de dades retratats.",
+        "prohibited": "És prohibit utilitzar l'aplicació per fabricar нөх records falsos, per enganxar qualsevol persona, per simulare la prestació d'un servei que no es va prestar o per realitzar qualsevol acte il·legal.",
+        "backups": "És a tu que cal guardar les copies de нөх de tot el que consideres important."
+      }
+    },
+    "s04": {
+      "title": "Licència d'ús",
+      "p1": "Us concedim una llicència personal, revogable, no exclusiva i no transferible per instal·lar i utilitzar l'aplicació, incloent-hi fins professionals. No està permès descompillar, modificar, redistribuir o comercialitzar l'aplicació, total o parcial.",
+      "p2": "<strong>Les teves fotografies són teves.</strong>No reclamem cap dret sobre les imatges que captegueu o genereu. El nom, la marca i la identitat visual de Lymark segueixen sent propietat del desenvolupador."
+    },
+    "s05": {
+      "title": "Disponibilitat i actualitzacions",
+      "p1": "L'aplicació es proporciona tal com és. No hi ha cap garantia de funcionament continu, de compatibilitat amb cada dispositiu, ni cap compromís amb un termini per a correccions o noves versions.",
+      "p2": "La qualitat de la imatge exportada depèn del dispositiu i del sistema operatiu, i pot ser de menor resolució que la fotografia original."
+    },
+    "s06": {
+      "title": "Limitació de responsabilitat",
+      "p1": "En la mesura màxima permesa per la legislació brasilera, el desenvolupador no és responsable de pèrdues indirectes, beneficis perduts, pèrdua de dades o danys derivats de decisions preses sobre la base de la informació estampada  incloent qualsevol impugnació, en judici o fora d'ell, al contingut d'una fotografia generada per l'aplicació.",
+      "p2": "Aquesta limitació <strong>no elimina</strong>Els drets garanïts al consumidor pel Lei no 8.078/1990, ni la responsabilitat per mala conducta intencional o negligència greva."
+    },
+    "s07": {
+      "title": "Terminament",
+      "p1": "Podeu deixar d'utilitzar l'aplicació en qualsevol moment: eliminar l'account esborra les seves dades al servidor, i desinstal·lar l'aplicació esborra les dades conservades al dispositiu. Mentre no hi ha subscripció de pagament no hi ha subscripció per cancel·lar; quan hi ha, els termes de cancel·lació apareixerà en aquestes condicions abans de qualsevol càrrega."
+    },
+    "s08": {
+      "title": "Modificacions a aquests termes",
+      "p1": "Els canvis seran publicats en aquesta pàgina amb una nova data d'actualització."
+    },
+    "s09": {
+      "title": "L'aplicació de la llei i el forum",
+      "p1": "Es aplica la legislació brasilera. El fòrum elegit per resoldre disputes derivades d'aquests termes és el del domicili de l'usuari."
+    },
+    "note": "Sobre el tractament de dades, végiu el<privacy>Política de privacitat</privacy>. Preguntas: <email> contato@lymark.app </email>."
+  }
+}

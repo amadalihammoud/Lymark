@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Ulyma",
+      "pitch": "Fotolaryňyza wagt, gün, iş güni, adres we izleme kodyny möhürläň  meýdan hasabatlary, ýer seretmeleri we hyzmat subutnamalary üçin.",
+      "platform": "Platforma",
+      "privacy": "Gizlilik polisiýasy",
+      "privacyGeocoding": "GPS ulanylsa, işleji sistemasy koordinata Google's ýa-da Apple's map servisi bilen alamatlary almaga iberýär. Bu ýerde ýekeje maglumat galýar we ony Lymark däl-de, sistemat iberýär.",
+      "privacyLocation": "Ýeri bir gezek suratlandyrylýar, diňe adres meýdanyny doldurmak üçin ulanylýar we fotolardan aýry saklanmaýar.",
+      "privacyOnDevice": "Fotolar, adresler we taryhy diňe bu esbapda galýar. Hesabyň barlygy siziň abunaňyz üçin: server e-poçtunuzu we planyňyzy saklaýar, ýöne hiç haçan fotolaryňyzy ýa-da ýerleşýän ýeriňizi kabul etmeýär.",
+      "privacySection": "Gizlinlik",
+      "sdk": " Expo SDK ",
+      "terms": "Ulyş şertleri",
+      "title": "Lymark barada ",
+      "version": "Garawul diňi"
+    },
+    "account": {
+      "browserHint": "Seretgiçde giriş bolýar. Ol ýerde hasabyňyz bilen girüň we ulag öz-özünden ulanýar.",
+      "code": "Kod",
+      "codeSent": "Biz {email} -a kod iberdik .",
+      "connected": "Baglanyşykly",
+      "continue": "Ýokaryň",
+      "deleteAccount": "Hesaby ýitirip",
+      "email": "E-poçt",
+      "failed": "Bu işe yaramady. E-poçtuny ýa-da kody barla we ýene synla.",
+      "notConfigured": "Bu gurluşykda entek girmek ýok.",
+      "signInBrowser": "Brawser arkaly gir",
+      "signOut": "Çykyşyňy ýaz",
+      "signedInAs": "{email} hökmünde ýazyldy",
+      "title": "Hesap",
+      "verify": "Seret"
+    },
+    "batch": {
+      "addressHint": "Sokaga, san  Şäheriň",
+      "clearList": "Açyk list",
+      "codeHint": "M.G. LYM-001",
+      "done": "{count, plural,  one {Çykyş tamamlanýar: # fotosuny tamamlanýar.} other {Çykyş tamamlanýar: # fotosuny tamamlanýar.}}",
+      "doneSection": "Bitirilýär",
+      "dropZone": "Fotolary şundan çekip goýber, ýa-da Select photos düýşüni ulan",
+      "errorsSection": "Hatalar",
+      "folder": "Pult: {name} ",
+      "noPhotos": "Ähtimal bir suraty saýlaň.",
+      "outputNote": "Saýlanan suratlar saýlanan folderda saklanýar.",
+      "outputSection": "Çykyş",
+      "photosSection": "Fotolary işlemek",
+      "processing": "Bejergi...",
+      "progress": "{current} {total} ({percent} %)",
+      "results": "{success, plural,  one {# üstünligi} other {# üstünlikler}}, {failed, plural,  one {# ukyplylygy} other {# ukyplary}}",
+      "selectFolder": "Çykyş äpişgesini saýla",
+      "selectPhotos": "Fotolary saýla",
+      "selected": "{count, plural,  one {# fotos saýlandy} other {# fotos saýlandy}}",
+      "sharedNote": "Bu qiymetler HAMMA fotolara ulanylýar. Her bir fotoň güni we wagty öz EXIF-inden okalýar.",
+      "sharedSection": "Metadata paýlaşylýar",
+      "start": "İşleme başla",
+      "unavailableBody": "Bu funktsiya diňe stolda.",
+      "unavailableTitle": "Batçyk işleme edilmeýär"
+    },
+    "capture": {
+      "accuracy": "± {meters} m-de ýerleşýän.",
+      "accuracyImprecise": "± {meters} m  ýerinde daşary çykyşdan öň köçäniň sanyny barlaň.",
+      "address": "Adres",
+      "addressFailedTitle": "Adres tapylmady",
+      "addressHint": "Ýeri tap ýa-da adresini ýaz",
+      "camera": "Foto çek",
+      "code": "Kod",
+      "dateHint": "2026-nji ýylyň 1 - nji ýanwarynda",
+      "dateTimeGroup": "Gün we wagt",
+      "emptyWarning": "Öňki suratda hiç hili maglumat bolmaýar  fotonyň suw belgisi bolmadyk görnüşi çykýar.",
+      "gallery": "Galeriden saýla",
+      "galleryDenied": "Fotolara girmäge rugsat berilmedi, şol sebäpli surat diňe ulanýan ýerdedir. Ony galereýa saklamak üçin Saýlamalar › Ruhlandyryjylar bölüminde goýber.",
+      "galleryFailed": "Resim taryhda galdy, ýöne gural ony galereýa ýazmaga razylaşmady. boş ýerleri barla we ýene synla.",
+      "generateCode": "Ýaradylýan",
+      "hiddenFields": "{count, plural,  one {Gizlin meýdan} other {Gizlin meýdanlar}}: {fields}  olary \"Setting\" bölüminde \"Peldler we ýer\" bölüminde aç.",
+      "keepMyAddress": "Meniňkiden sakla",
+      "locate": "Ýeri",
+      "locateByGps": "GPS arkaly adresi tap",
+      "lookup": {
+        "denied": "Saýlamalar › Ruhatlar \" diýen bölümde ýerleşmegi rugsat ediň ýa-da adresini girip bilersiňiz.",
+        "disabled": "Gural ýerini söndürýär. ony tiz düzümlerde aç we ýene synal.",
+        "timeout": "GPS wagtynda jogap bermedi. Köplenç öýüň içinde ýitmez",
+        "unavailable": "Bu ýerde adres çözülmedi. Ony el bilen girip goý."
+      },
+      "newCapture": "Täze tutmagy başla",
+      "noFieldsBack": "Geri gaýt",
+      "noFieldsContinue": "Häzir bolsa dowam et",
+      "noFieldsMessage": "Hiç bir meýdança möhürlenmek üçin bir zat ýok. meýdanlary doldur, ýa-da \"Settings › Fields and position\" bölümini barla.",
+      "noFieldsTitle": "Foto suwuň belgesiz çykar",
+      "noPhotoHint": "Foto çekip başlaň ýa-da galereýden birini saýlaň.",
+      "noPhotoSelected": "Foto saýlanmady",
+      "openFailed": "Foto açylmady. Ýene synanyň.",
+      "permissionMessage": "Seretmelerde > Bermegi dowam etmek üçin rugsat ber",
+      "permissionTitle": "Räsimiň gerek",
+      "pickPhoto": "Foto saýla",
+      "pickPhotoHint": "Ekleýji hereketleri açmak üçin bir suraty saýlaň.",
+      "previewLabel": "Suwy belgili suratyň öňünden seredilmegi",
+      "renderFailedTitle": "Resimi döretip bilmedim",
+      "replaceAddressMessage": "GPS tapyldy: {address} ",
+      "replaceAddressTitle": "Seniň ýazan adresini üýtgetmek?",
+      "resetConfirm": "Ýykyl",
+      "resetMessage": "Saýlanan surat we doldurylýan meýdanlar taşlanar.",
+      "resetTitle": "Täze tutmagy başlamak?",
+      "saved": "Foto esbap galerisine we taryhda salynýar.",
+      "savedAppOnlyTitle": "diňe Lymark içi saklanýar",
+      "shareDialogTitle": "Suwy belgili surata bölüş",
+      "shareFailedMessage": "Resim döredildi we Lymark taryhynda. Siz ony Galeri tabdan paýlap bilersiňiz.",
+      "shareFailedTitle": "Şerik edip bilmedim",
+      "shareUnavailableMessage": "Bu guramanyň paýlama sahypasy ýok. Şaryş Lymark taryhynda galdy.",
+      "shareUnavailableTitle": "paýlaşmak üçin berilmeýär",
+      "sharedFileTitle": "Suw bilen belgilenýän surat",
+      "stampNotReady": "Şatça henizem taýýarlanýar.",
+      "syncNow": "Indi",
+      "timestamp": "Gün/Saat",
+      "title": "Ýapyşyş",
+      "useGpsAddress": "GPS-i ulan",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Gün"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "başga bir reňk saýla",
+      "saturationBrightness": "Döwşük we parlagy",
+      "use": "Bu reňki bilen"
+    },
+    "common": {
+      "back": "Ýolbaşçylyk maslahaty",
+      "cancel": "Ýokaryla",
+      "delete": "Çykyş",
+      "error": "Hata",
+      "gotIt": "Aldy",
+      "loading": "Ýüklenmek...",
+      "no": "Ýok",
+      "ok": "Gowy",
+      "save": "Saýla",
+      "share": "Paylaşmak",
+      "success": "Başaryş",
+      "tryAgain": "ýene synanyň.",
+      "unknownError": "Tanylmadyk hat",
+      "yes": "Hawa"
+    },
+    "gallery": {
+      "cancelSelection": "Çykyş saýlamagy",
+      "clear": "Ýakyn taryhy",
+      "clearConfirm": "Açyk",
+      "clearMessage": "Lymark-yň rekordlary silinýär. Al-hazirda gural galerýasynda salnan suratlar täsir etmeýär.",
+      "count": "{count, plural,  one {# fotoy ýüklendi} other {# esbaplary eksport edildi}}",
+      "delete": "Çykyş",
+      "empty": "Häzirde fotoklip ýok",
+      "emptyAction": "Ýesirlige git",
+      "emptyDescription": "Suwuz bilen eksport edýän suratlar bu ýerde, gün, ýer we kod bilen görkezilýär.",
+      "filteredCount": " {shown}{total, plural,  one {# foto} other {# fotos}}",
+      "noResults": " {query}  üçin hiç hili surat tapylmady.",
+      "photoLabel": "Foto: {when} ",
+      "removeMessage": "Bu entrikalar Lymark-i taşlaýar. Esbap galerisine öňden salnan suratlar täsir etmeýär.",
+      "removeTitle": "{count, plural,  one {Tarihdan çykaryl} other {# entrikalaryny aýyr}}",
+      "removed": "{count, plural,  one {Giriş ýykyldy.} other {Ýazgylar aýrylypdyr.}}",
+      "saveDeniedMessage": "Saýlanan suratlary gural galerisine salmak üçin \"Setting\" > \"Permissions\" diýen bölümde goýuň.",
+      "saveDeniedTitle": "Fotolary görmäge rugsat berilmedi",
+      "savedAll": "{count, plural,  one {Ýarag galerýasyna salnan bir surat.} other {# suraty gural galerýasyna salynýar.}}",
+      "savedSome": "{saved} {total} fotos salnan.",
+      "searchPlaceholder": "Adres, gün ýa-da kod boýunça gözle",
+      "selectedCount": "{count, plural,  one {# fotos saýlandy} other {# fotos saýlandy}}",
+      "share": "Paylaşmak",
+      "title": "Galeriýa"
+    },
+    "language": {
+      "automatic": "Ýüzleşme gural",
+      "automaticNote": "Lymark guralyňyzda goýlan dilini diňleýär.",
+      "label": "Dil",
+      "selector": "Dil saýla"
+    },
+    "login": {
+      "access": "Giriş üçin gir",
+      "apple": "Apple bilen gir",
+      "google": "Google bilen gir",
+      "subtitle": "Öňürti dowam etmek üçin gir",
+      "title": "Lymark - ga girmek üçin gir"
+    },
+    "nav": {
+      "batch": "Batçak işleme",
+      "photoDetail": "Fotoşəkil maglumaty",
+      "report": "PDF hasabaty",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Bu ekran Lymark -yň agzasy däl .",
+      "screenTitle": "Sahypa tapylmady",
+      "title": "Şeýle ýol ýok"
+    },
+    "permissions": {
+      "allow": "Ýokary",
+      "allowed": "Ýokarylan",
+      "blocked": {
+        "later": "Häzir däl",
+        "message": "Sistem ýene soramaýar. Ony rugsat bermek üçin, gurallaryňyzyň düzgüniny açyň.",
+        "openSettings": "Açyk düzgüni",
+        "title": "Räsimiň bloklanmagy"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Suw belgesini almak üçin surat çekmeli.",
+      "denied": "Ýok edilýär",
+      "granted": "Berlip",
+      "intro": "Lymark diňe bir surata möhür bermek üçin zerurlyklary soraýar. Saýgalaryň hiç haçan guramadan çykmaýar: GPS ulananyňyzda işletim sistemi harita gullugyna koordinatny ýeke özi iberýär, şonuň üçin ol bir ünjä öwrülýär.",
+      "location": "Mekan",
+      "locationRationale": "Adres meýdanyna çekilende otomatik doldurýar.",
+      "mediaLibrary": "Galerýa sal",
+      "mediaLibraryRationale": "Esasy suratlary esbap galerisine ýazmak üçin.",
+      "openDeviceSettings": "Saýlamalar",
+      "recheck": "Tekrar barla",
+      "request": "Ruhy talap",
+      "section": "Seret",
+      "title": "Ruhatlar"
+    },
+    "photo": {
+      "backToGallery": "Galerýa dolanmak",
+      "exportedAt": "{when} bilen eksport edilýär ",
+      "noWatermark": "Bu surat suwuň belgisi bolmadyk ýüklendi.",
+      "notFoundBody": "Bu habar taryhy taryhyndan çykandyr.",
+      "notFoundTitle": "Foto tapylmady",
+      "remove": "Çykyş",
+      "removeBody": "Bu ýazgy Lymark-i goýýar. Ýarag galerýasynaжайыz salnan surat täsir etmeýär.",
+      "removeTitle": "Tarihdan çykaryl",
+      "share": "Paylaşmak",
+      "stampedData": "Çaplanan maglumatlar"
+    },
+    "plan": {
+      "exhausted": "Pulsuz ulanylan suratlar",
+      "exhaustedMessage": "Pulsuz planyň 12 suraty ýok. Lymark-a ýazylgyжайыň üçin çap etmäň.",
+      "free": "Pulsuz",
+      "pro": "Pro",
+      "reconnect": "Çykdyryjylygyňy tassyklamak üçin ýene-de ulan",
+      "remaining": "{remaining, plural,  one {# pulsuz surat çep} other {# pulsuz suratlar goý}}",
+      "title": "Ýaryş",
+      "unlimited": "Çykyş ýok"
+    },
+    "report": {
+      "allPhotos": "Ähli suratlar",
+      "authorField": "Muny ýazan / şertnama",
+      "detailsSection": "Haýsy jikme-jik",
+      "doc": {
+        "author": "Ýaradyjy",
+        "declaration": "Fotolary çap edýän adam (wagyzçy, suratçy, suratçy) suratlandyrylýanжайы, suratlary çap edýän wagtyny we kodyny görkezýär.",
+        "exportedAt": "Çykyş",
+        "generatedAt": "Ýaradylan",
+        "page": "Sahypa",
+        "photo": "Foto: {index} ",
+        "photosSection": "Fotoşəkiller",
+        "signature": "Ýolbaşçynyň golýazma",
+        "summary": "Öňki",
+        "title": "Foto hasabat",
+        "totalPhotos": "Ýüklü fotolar:"
+      },
+      "empty": "Häzirki esbaplar ýüklenilmedi. Raport galerýasyndan ýasalan.",
+      "failed": "Raporty döretip bilmedim.",
+      "fileStem": "hasabat",
+      "format": {
+        "csv": "Esbap tablasy (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Paket (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Faýly döret",
+      "generateSection": "Ýaradylýan",
+      "includeLogo": "Garawul diňi",
+      "includeLogoDescription": "Marka logoň, möhürden çykan şonuň ýaly. Ony dokumentden taşlamak üçin söndür.",
+      "norm": {
+        "abnt": "ABNT (Braziliýa)",
+        "din5008": "DIN 5008 (Germany)",
+        "ibape": "IBAPE stili (Braziliýa)",
+        "iso": "Halkara",
+        "letter": "Hat (ABŞ)"
+      },
+      "normNote": "Standart kagyzy we formatlama  çäklerini, şrift we sahypa sanyny goýýar. hasabat mazmuny olaryň hemmesinde birdir; IBAPE stili gol çekmek bloky goşýar.",
+      "normSection": "Doküment standarty",
+      "projectsSection": "Proýekt / ýumuş",
+      "saved": "{path} - e salynýar ",
+      "savedShort": "Raport salnan.",
+      "title": "PDF hasabaty",
+      "titleField": "Raportyň ady",
+      "unavailableBody": "PDF hasabatlary stolda ulanylýan ulagda ulanylýar.",
+      "unavailableTitle": "Tek stol",
+      "uncoded": "Kod ýok",
+      "wordTooBig": "Word dokümentiniň fotolary örän uly boldy. PDF ýa-da ZIP paketini ulanyň.",
+      "zipMissing": "{count, plural,  one {Paket salnypdy, ýöne bu esbapda # fotony tapylmady.} other {Paket salnypdy, ýöne bu esbapda # fotosy tapylmady.}}"
+    },
+    "settings": {
+      "about": "Hakkynda",
+      "aboutDescription": "Şertler, gizlilik we kreditler",
+      "appSection": "Ulyma",
+      "deviceSection": "Gural",
+      "deviceSectionDescription": "Lymark-iň talap edýän ýolu.",
+      "fields": "Daşlar we ýer",
+      "fieldsDescription": "Öňki meýdanlary, köşeleri we ölçegini saýla",
+      "history": "Tarih",
+      "historyDescription": "Esbapda saklanan daşary ýurtdan daşary çykyş edilen suratlar",
+      "language": "Dil",
+      "permissions": "Ruhatlar",
+      "permissionsDescription": "Kamera, suratlar we ýer",
+      "save": "Saýla",
+      "title": "Saýlamalar",
+      "watermark": "Suw mertigi",
+      "watermarkSection": "Suw mertigi",
+      "watermarkSectionDescription": "Fotodrama näme we nirede möhürlenýär."
+    },
+    "signup": {
+      "subtitle": "Başlamak üçin ýazyl",
+      "title": "Lymark hasabyňy ýarat"
+    },
+    "tagline": "Suw mertibi wagty, güni we ýer bilen",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Kamera girmez. Ýolagyň düzgüni boýunça goý.",
+      "done": "Video çaplan we salnan.",
+      "export": "Çykyş möhürli video",
+      "exportSection": "Çykyş",
+      "failed": "Wideo çap edilmedi.",
+      "fieldsSection": "Çapyrma meýdanlary",
+      "fileSection": "Video",
+      "none": "Video saýlanmady.",
+      "processing": "İşleýş... {percent} %",
+      "processingMobile": "Bejergi...",
+      "record": "Häzir klip çek",
+      "saved": "{path} - e salynýar ",
+      "savedToGallery": "Saýlanan klip galerýaňa salnan.",
+      "select": "Videolary saýla",
+      "unavailableBody": "Mobil video möhürleme üçin Lymark (tökgün moduly bilen) bir EAS gurluşygyndan (EAS gurluşygyndan) gurulmaly. Bu Expo Go-da ýok. Dükandan resmi ulag ýa-da EAS gurluşygyndan gurulmaly ýa-da stol / web-versiýasyndan ulanmaly.",
+      "unavailableTitle": "Ulylan ýoly bar",
+      "unreadable": "Faýlyň videoklip hökmünde okalmady.",
+      "webNote": "Brawzerde videolar real wagtda işlenýär  2 minutlyk videolar 2 minutlyk  we WebM formatynda çykýar. Uzak videolar üçin, stolda ulan."
+    },
+    "watermark": {
+      "accentColor": "Dökme çubugy",
+      "backdropBandNote": "Bu çaryş suratda çap edilýär we şertnama berkidilip duran çaryşyň kenarynda durýar.",
+      "backdropBlockNote": "Bu ýazgylaryň arasyndaky ýapyklamalar hem ýapyklamalar bilen ýazylýar.",
+      "backdropColor": "Gürçiniň reňki",
+      "backdropDescription": "Fotoşəkliň ýagty ýerlerinde kontrast saklaýandyr. Ol bolmasa, metin düýbünden suratyň üstünde, kölegesine guşýar.",
+      "backdropInnerRadius": "Içki burçlar",
+      "backdropOpacity": "Açyklyk",
+      "backdropOpacityValue": "{percent} % ýönekeý",
+      "backdropRadius": "Daşary köşe",
+      "backdropRadiusSquare": "Çatr",
+      "backdropStyles": {
+        "band": "Täze giňligi bar çakyry",
+        "block": "Mesejiniň arkasynda",
+        "none": "Hiç bir"
+      },
+      "backdropTitle": "Galan çep",
+      "brandDescription": "Saatyň üstünde logos we tagline bilen bir hatlaşýar.",
+      "brandFirstColor": "Birinji bölek reňki",
+      "brandFirstHint": "Gurluşykçylar",
+      "brandFirstPart": "Birinji bölüm",
+      "brandNote": "Ikinji bölümi boş goýup, bir sany nyşan goýuň.",
+      "brandPlacements": {
+        "corner": "Köşede",
+        "header": "Saatyň üstünde",
+        "none": "Hiç bir"
+      },
+      "brandSecondColor": "Ikinji bölüminiň reňki",
+      "brandSecondHint": "Smit",
+      "brandSecondPart": "Ikinji bölüm",
+      "brandTitle": "Çykyşly belgiler",
+      "codeDescription": "Bu bolsa, onuň özi bilen bilelikde ýer üçin bäsdeşlik etmeýär.",
+      "codePlacements": {
+        "block": "Maýdanyň ýanynda",
+        "side": "Sag tarap"
+      },
+      "codeTitle": "Foto kody",
+      "colors": {
+        "amber": "Amber",
+        "black": "Gara",
+        "blue": "Mavi",
+        "green": "Ýaprak",
+        "red": "Gyzyl",
+        "white": "Apal"
+      },
+      "colorsDescription": "Fotoda renki şertnama däl-de, şertnama saýlaýandyr.",
+      "colorsTitle": "Ştamplar",
+      "complement": "Tagline",
+      "complementColor": "Tagline reňki",
+      "complementHint": "Teklipler we texniki hasabatlar",
+      "cornerConflict": "Çykyş we maglumat bir burçda  olar fotoda üstüni örtüp bilerler.",
+      "fields": {
+        "address": "Adres / ýer",
+        "code": "Foto kody",
+        "date": "Gün",
+        "time": "Wagtyň geçmegi",
+        "weekday": "Hepdäniň güni"
+      },
+      "fieldsDescription": "Fotoda diňe ýapyşan we içerigi bolan meýdanlar bar.",
+      "fieldsTitle": "Gösteren meýdanlar",
+      "includeCountry": "Ülke-de",
+      "includeCountryDescription": "Eger sen serhedden geçýän bolsaň ony aç. Ýogsa ol diňe fotodaky ýeri alýar.",
+      "legibilityTitle": "Okylyş",
+      "logoAdded": "Markasyň başyna logo goşuldy.",
+      "logoAlignNote": "Logo beýikligi metniň yzynda: onuň ýokarky bölegi atyň ýokarky bölegi bilen, aşagy bolsa taglininiň esas haty bilen birara meňzeşdir.",
+      "logoChosen": "Saýlanan logo",
+      "logoErrorMessage": "Başga bir surat synanyň. Garawul diňi formaty iň gowy işleşýär.",
+      "logoErrorTitle": "Bu faýl ulanylmady",
+      "logoFormatNote": "Pňg bilen äşgär arka plan. Aplylyň agry arka planly JPG-i suratda ak düzgürge öwrülýär  format äşgärlik saklamaýar, we ulagda arka planyň nämedigini bilmäge hiç hili ýoly ýok.",
+      "logoPermissionMessage": "Logos faýlyny saýlamak üçin \"Mükanlar\" > \"Mükanlar\" bölüminde goýuň.",
+      "logoPermissionTitle": "Fotolary görmäge rugsat berilmedi",
+      "logoPick": "Logo saýla",
+      "logoPosition": "Logo ornuny",
+      "logoPositionBlock": "Şapka bilen",
+      "logoRemove": "Çykyş",
+      "logoReplace": "Logoy üýtget",
+      "logoSize": "Logo ölçegi",
+      "positionDescription": "Fotoşəkliň köşesinde blok berkidilipdir.",
+      "positionTitle": "Ýokary",
+      "positions": {
+        "bottom-left": "Sol altynda",
+        "bottom-right": "Sagda aşak",
+        "top-left": "Çepden ýokarda",
+        "top-right": "Ýokarda sag"
+      },
+      "previewCurrent": "Häzirki fotonyň \"Eýniş\" tabundan.",
+      "previewEmpty": "Ýagtydan garaňkylyga çenli, iki uçda hem okalmagyny barlamak üçin.",
+      "previewNoFields": " Foto suwuzluk bilen çykýar.",
+      "previewTitle": "Öňki seredil",
+      "reset": "Öňki ýaly öňki ýalylary gaýd et",
+      "sizeTitle": "Mesej ölçegi",
+      "sizes": {
+        "large": "Uly",
+        "medium": "Ortaça",
+        "small": "Kiçi"
+      },
+      "textColor": "Makala",
+      "timeFormatDescription": "Bu ýerde wagt nädip doldurylýar?",
+      "timeFormatTitle": "Wagtyň formaty",
+      "timeFormats": {
+        "12h": "12 sagat (A/S)",
+        "24h": "24 sagat"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Ähli faýllar",
+      "images": "Çykyşlar",
+      "pickFolder": "Çykyş äpişgesini saýla",
+      "pickPhoto": "Fotolary saýla",
+      "pickPhotos": "Parçanyň suratlaryny saýla",
+      "savePhoto": "Fotolary sakla",
+      "saveReport": "Saýlan hasabat"
+    },
+    "login": {
+      "cancel": "Ýokaryla",
+      "confirm": "Ýokaryň",
+      "message": "Sen ýaňy-da brauzer arkaly girdiň. Bu kompýuteriň bu hasabyny ulanmaga dowam et?",
+      "title": "Lymark - a gir"
+    },
+    "menu": {
+      "copy": "Çykyş",
+      "cut": "Öçürilen",
+      "edit": "Edit",
+      "file": "Faýl",
+      "fullscreen": "Täze ekran",
+      "help": "Kömek",
+      "paste": "Pasta",
+      "quit": "Gatyş",
+      "redo": "Redo",
+      "reload": "Ýüklenmek",
+      "selectAll": "Ähliny saýla",
+      "settings": "Saýlamalar",
+      "undo": "Ýok edil",
+      "view": "Görüş",
+      "zoomIn": "Öňürtiş",
+      "zoomOut": "Çykyş",
+      "zoomReset": "Asl ölçegi"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Öýe dolanmak",
+      "openApp": "Ulyjyny aç",
+      "photos": "Fotolar",
+      "photosLeft": "{remaining} of {quota} left",
+      "plan": "Ýaryş",
+      "planUnavailable": "Häzir ulanylmaýar",
+      "plans": {
+        "free": "Pulsuz",
+        "pro": "Pro"
+      },
+      "signInTitle": "Giriş",
+      "signOut": "Çykyşyňy ýaz",
+      "signUpTitle": "Hesab ýarat",
+      "subscribe": "Lymark Pro -ya abonne bol",
+      "subscribeSoon": "Şertnamalar entek berilmeýär. Ol bolanda, siz bu ýerde ýazylyp, şol hasabyň bardygy ýaly, her hili esbaplary ulanyp bilersiňiz.",
+      "title": "Saňa hasabat",
+      "revokeDesktops": "Kompýuteri söndür",
+      "revokeDesktopsHint": "Ulyma her bir kompýuteriň baryny aýyrýar. Sen islän wagtda ýene-de girip bilersiň."
+    },
+    "availability": {
+      "contact": "Başlanmagyň soňuna ýa-da bir soragyň bardygyny habarlamak üçin,<email> contato@lymark.app </email>.",
+      "description": "Lymark versiýa 1.3.0-da, Android-de test edilýär. Google Play-da çap edilmezden öň. iOS versiýa we web versiýa ýok, we ulag pul ýygnamaýar.",
+      "title": "Gulluk"
+    },
+    "data": {
+      "device": {
+        "description": "Saýlanmaçyňka bar: server e-poçtunuzy we planyny saklaýar, hiç haçan suratlaryňyzy ýa-da ýerleşýän ýeriňizi almaýar. Tarih barlan soňky iki ýüz esbaplary öz faýllarynda saklaýar.",
+        "field": "Guralynda",
+        "heading": "Fotolar, adresler we taryhy"
+      },
+      "external": {
+        "description": "Ätiç we uzynlygy okalýan ünjä öwrmek üçin işletim sistemi Google ýa-da Apple'yň geokodlama gullugyna sorap biler. Bu ýeke-täk maglumaty goýýar we ony sistem iberýär, däl-de, tətbiqetme.",
+        "field": "Ýaragdan çyk",
+        "heading": "Diňe koordinata adres edip çevirmek"
+      },
+      "note": "Bu barlyk  şol sanda braziliýaly LGPD <privacy>Gizlilik polisiýasy</privacy>.Ýerleşme ygtyýaryny söndürmek bilen, ulag doly işläp bolýar; diňe adres meýdany el bilen ýazylmaly.",
+      "title": "Öňki maglumatlaryňyzyň ýerinde"
+    },
+    "deleteAccount": {
+      "back": "Şoňa görä-de ,",
+      "confirm": "Hesabymy sil",
+      "deletesNow": "Hesabyňy silmek bilen e-poçtanyňy, tanalýan adyňy we plan, kvotanyň we suratlaryň sanynyň rekordyny derrew silýär.",
+      "irreversible": "Silmek hemişelik we üýtgedilmez. Saýlagyňdaky suratlar täsir etmeýär  olar hiç haçan serverimizde bolmady.",
+      "retained": "Ödüş işlemleri barada maglumatlar kanuny talap edilen fiskal pursadyň dowamynda saklanýar.",
+      "title": "Hesaby ýitirip"
+    },
+    "description": "Android-de wagt, gün, hepdäniň güni, adres we ýer seretmegi we seretmegiň subutnamalary bilen suratlara barlan kody möhürleýän bir tətbiq.",
+    "desktop": {
+      "backAccount": "Şoňa görä-de ,",
+      "explanation": "Saýlagyňyz taýýar. Lymark-i açmak üçin aşakda agzalan düýşüne basyň.",
+      "open": "Ulymajy ulan",
+      "title": "Masaüstede gir",
+      "unavailable": "Daşary endikler ulanmagy entek ýüklenmedi."
+    },
+    "download": {
+      "appStore": {
+        "description": "Androidde iOS-da şeýle täjirlik bar.",
+        "field": " App Store ",
+        "heading": "iPhone we iPad"
+      },
+      "browser": {
+        "action": "Giriş",
+        "description": "Saýlan hasabyňyz bilen girüň we ulag  telefon ýa-da kompýuteriň brauzerinde açylýar.",
+        "field": "Brawzer",
+        "heading": "Häzir ulan, goýbermek üçin hiç zat ýok"
+      },
+      "desktop": {
+        "description": "Foto serişdeler, uzyn videolar we PDF habarlar  agyr serişde.",
+        "field": "Kompýuter",
+        "heading": "Windows we Linux"
+      },
+      "googlePlay": {
+        "description": "Telefon alyşy, kamera, galereýa we möhürlenen video bilen.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Tizden geler",
+      "title": "Lymark nirede ulanylýar "
+    },
+    "features": {
+      "address": {
+        "description": "Eger GPS jogap bermezden öň ýazsaňyz, ýazan zatlaryňyz ýeňiş gazanar.",
+        "field": "Adres",
+        "heading": "GPS bilen doldurylýan, el bilen düzediş edilýän"
+      },
+      "code": {
+        "description": "Bu bir iş düzgüni ýa-da hasabatda bir aýratyn surata atyp biler ýaly bar. Ol sag kenarda aýlanyp ýörär ýa-da saýlan  maglumat bloky bilen ýerleşýär.",
+        "field": "Foto kody",
+        "heading": "14 sany surat, kriptografiýa generatory bilen suratlandyrylýar"
+      },
+      "note": "Her bir meýdan özbaşdak açylýar we söndürilýär, blok üç ölçegde dört burçdan birinde berkidýär. Öňki seredende fotoňyz, generik nusga däl-de ulanylýar: ekranda görýän zatlar älemde eksport edilýär.",
+      "time": {
+        "description": "Bir buton üç meýdanyny häzirki ýere çeker.",
+        "field": "Saaty we güni",
+        "heading": "Ýapynjalama pursadyndaky esbap sagadyndan"
+      },
+      "title": "Resimde näme bar"
+    },
+    "footer": {
+      "description": "Lymark  Fotoşalanyşlar, wagt we ünsi bilen.",
+      "documentsLabel": "Belgeler",
+      "privacy": "Gizlilik polisiýasy",
+      "support": "Garawul diňi:",
+      "terms": "Ulyş şertleri"
+    },
+    "hero": {
+      "ctaAccount": "Meniň hasabatyma git",
+      "ctaLogin": "Giriş",
+      "ctaSignup": "Pulsuz hasabat ýasamak",
+      "description": "Lymark sagady, güni, hepdesi, adresini we köplük kodyny suratyna çäklendirip goýýar. Ulagdan çykýan faýlda onuň içinde  metadata hökmünde däl-de, onuň ýanynda ýola düşen metadata hökmünde bar.",
+      "eyebrow": "Sahy fotolary",
+      "heading": "Foto telefonyňyzdaky haçan, nirede we näme diýýän ýeri goýýar.",
+      "meta": {
+        "account": "Bir tapdan ýaňa",
+        "android": "Android we brauzer",
+        "language": "Braziliýaly portugalça",
+        "onDevice": "Fotolar guralda galýar"
+      },
+      "note": "Üstüne goýulýan zat ýok."
+    },
+    "nav": {
+      "account": "Hesap",
+      "home": "Öý",
+      "homeLabel": "Lymark , öý sahypa",
+      "label": "Esasy",
+      "privacy": "Gizlinlik",
+      "signIn": "Giriş",
+      "terms": "Termiýalar",
+      "verify": "Seret"
+    },
+    "process": {
+      "capture": {
+        "description": "Adres gözlewi surat gelende başlaýar. Şaryş işlän mahaly meýdanlar üýtgedilmek üçin açyk dur.",
+        "field": "Ýapyşyş",
+        "heading": "Kamera ýa-da galerýa"
+      },
+      "note": "Bu iki hereketni bilgeşleýin aýyrýarlar. Saýlamak we paýlaşmak dürli kynçylyklary çözýär we olary bir butona bölmek fotoşarygy ibermek üçin ekran arkaly ýazmak isleýänleriň ählisini çekip gider.",
+      "save": {
+        "description": "Bu telefonyň galan suratlary bilen bilelikde, her bir                                                                                                                                                                                                                           ",
+        "field": "Saýla",
+        "heading": "Esbap galerisine gidýär"
+      },
+      "share": {
+        "description": "WhatsApp , e-poçt, Sürügi: barlag ýoly işleji sistemasy bilen saýlanýar we ulag iberilmede hiç hili gatnaşyk etmeýär.",
+        "field": "Paylaşmak",
+        "heading": "Sistem paýlama sahypasyny açýar"
+      },
+      "title": "Fotoşəkil tarapyndan ýola düşen ýoly"
+    },
+    "skipToContent": "Mundan başga - da",
+    "specimen": {
+      "caption": "Amber kanuny tekst sandygynyň däl-de, sanlaryň kenarynda başlaýar we gutarýar.",
+      "label": "Lymark möhüriniň nusgasy: wagt 07:42, sany 12 Awgust 2026, çarşenbe güni, Guarujada bir adres we foto kody."
+    },
+    "title": "Lymark  meýdan suratlary üçin gün, wagt we adres suw belgisi",
+    "verify": {
+      "caveat": "Mürç faýlyň aýypsyzlygyny we çykarylan pursadyny tassyklaýar.",
+      "checking": "Kontrol edýärin...",
+      "declarationNote": "Merkeziň (meşhur, gün, wagt) görkezýän zady emitentiniň deklarasiýadyr  merkeziň manysy däl-de, dogruçyllygy we çykarylyşyny tassyklaýar.",
+      "intro": "Lymark-da eksport edilen bir suraty goýber we ony çalt gör, ol şonuň ýaly  we ony kim we haçan çykardy.",
+      "noSealBody": "Bu faýlda Lymark möhür ýokdur. Bu möhür bar bolmanka, offline äkidilen bolmaly ýa-da Lymarkden gelmejek bolmaly.",
+      "noSealTitle": "Mürç ýok",
+      "notConfigured": "Hany barlanýan däl.",
+      "pick": "Faýl saýla",
+      "previewAlt": "Kanallanan surat, möhür görilýär",
+      "privacyNote": "Verifikasiýa brauzerinde bolýar. Faýly hiç bir serverde iberilmeýär.",
+      "sealedBody": "Bu faýl Lymark-da goýlan ýaly , {account}-da {date}-da çykarylan .",
+      "sealedTitle": "Ýagşy",
+      "tamperedBody": "Mülkiýet möhür bilen deňeşdirilmeýär: faýl çykaransoň üýtgedildi ýa-da möhür başga faýldan.",
+      "tamperedTitle": "Ýalan ýer",
+      "title": "Adylylygy barla",
+      "unsupported": "Bu tarapyndan imzalar barlagyny goldama. Häzirki tarapyndan synanyň."
+    }
+  }
+}

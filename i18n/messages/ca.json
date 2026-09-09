@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplicació",
+      "pitch": "Estampollar l'hora, la data, el dia de la setmana, l'adreça i un codi de seguiment en les seves fotografies  per a registres de camp, inspeccions del lloc i prova de servei.",
+      "platform": "Plataforma",
+      "privacy": "Política de privacitat",
+      "privacyGeocoding": "Quan s'utilitza el GPS, el sistema operatiu envia la coordinada al servei de mapes de Google o Apple per obtenir l'adreça. Aquesta és l'única informació que deixa aquí, i és el sistema que l'envia, no Lymark.",
+      "privacyLocation": "La localització s'utilitza una vegada per captura, només per omplir el camp d'adreces, i no es almacena separat de les fotos.",
+      "privacyOnDevice": "Les fotos, adreces i l'histori queden només en aquest dispositiu.",
+      "privacySection": "Privatesa",
+      "sdk": " Expo SDK ",
+      "terms": "Condicions d'ús",
+      "title": "Sobre Lymark ",
+      "version": "Versió"
+    },
+    "account": {
+      "browserHint": "La connexió es realitza en el navegador.",
+      "code": "Codi",
+      "codeSent": "Hem enviat un codi a {email} ",
+      "connected": "Coneixut",
+      "continue": "Continuar",
+      "deleteAccount": "Eliminar compte",
+      "email": "E-mail",
+      "failed": "No va funcionar, comprova l'e-mail o el codi i torna a intentar-ho.",
+      "notConfigured": "La connexió no està disponible en aquesta edificació encara.",
+      "signInBrowser": "Inscriure-se a través del navegador",
+      "signOut": "Sorteix",
+      "signedInAs": "Signat com a {email} ",
+      "title": "Conta",
+      "verify": "Verificar"
+    },
+    "batch": {
+      "addressHint": "Calle, número  Ciutat",
+      "clearList": "Llista clara",
+      "codeHint": "per exemple LYM-001",
+      "done": "{count, plural,  one {Finalitzat el processament: # foto finalitzada.} other {Processament acabat: fotos # terminades.}}",
+      "doneSection": "Finit",
+      "dropZone": "Arrastreu i deixeu les fotos aquí, o utilitzeu el botó Select photos",
+      "errorsSection": "Errors",
+      "folder": "Carregador: {name} ",
+      "noPhotos": "Seleccioneu almenys una foto.",
+      "outputNote": "Les fotos processades s'emmagatzemen en la carpeta seleccionada.",
+      "outputSection": "Producció",
+      "photosSection": "Fotografies per processar",
+      "processing": "Processament...",
+      "progress": "{current} de {total} ({percent} %)",
+      "results": "{success, plural,  one {Succes #} other {Els èxits de #}}, {failed, plural,  one {Fallida #} other {Error #}}",
+      "selectFolder": "Seleccioneu la carpeta de sortida",
+      "selectPhotos": "Seleccionar fotografies",
+      "selected": "{count, plural,  one {Foto # seleccionada} other {# fotografies seleccionades}}",
+      "sharedNote": "Aquests valors s'apliquen a TOTES les fotos.",
+      "sharedSection": "Metadades compartides",
+      "start": "Iniciar el processament",
+      "unavailableBody": "Aquesta característica és només de escritori.",
+      "unavailableTitle": "Processament en lots no disponible"
+    },
+    "capture": {
+      "accuracy": "Posició dins de ± {meters} m.",
+      "accuracyImprecise": "La posició dins de ± {meters} m  comprova el número de carrer abans d'exportar.",
+      "address": "Direcció",
+      "addressFailedTitle": "No s'ha trobat cap adreça",
+      "addressHint": "Toqueu en localitzar, o escriu l'adreça",
+      "camera": "Fes una foto",
+      "code": "Codi",
+      "dateHint": "1 de gener de 2026",
+      "dateTimeGroup": "Data i hora",
+      "emptyWarning": "No s'estamparan dades  la foto sortirà sense una marca d'aigua.",
+      "gallery": "Escollir de la galeria",
+      "galleryDenied": "L'accés a la foto es va negar, per tant, l'imatge només existeix a l'interior de l'aplicació.",
+      "galleryFailed": "La imatge va entrar en la història, però el dispositiu es va negar a escriure-la a la galeria.",
+      "generateCode": "Generar",
+      "hiddenFields": "{count, plural,  one {Camp ocult} other {Camps amagats}}: {fields}  activar-los en Configuracions › Camps i posició.",
+      "keepMyAddress": "Tingues el meu",
+      "locate": "Localització",
+      "locateByGps": "Localitzar l'adreça mitjançant GPS",
+      "lookup": {
+        "denied": "Permet ubicació en Configuracions › Permissions, o escriure l'adreça.",
+        "disabled": "La localització està desactivada en el dispositiu.",
+        "timeout": "El GPS no va respondre a temps. sovint falla dins de casa  escriure l'adreça.",
+        "unavailable": "L'adreça no es pot resoldre en aquesta posició."
+      },
+      "newCapture": "Comença una nova captura",
+      "noFieldsBack": "Torna.",
+      "noFieldsContinue": "Continuem de totes maneres",
+      "noFieldsMessage": "Cap camp té res per estampar. Enllen els camps, o revisar Configuracions › Camps i posició.",
+      "noFieldsTitle": "La foto sortirà sense marca d'aigua.",
+      "noPhotoHint": "Fes una foto o escollis una de la galeria per començar.",
+      "noPhotoSelected": "No es va seleccionar cap foto",
+      "openFailed": "La foto no es va obrir.",
+      "permissionMessage": "Permetre l'accés en Configuracions › Permes per continuar.",
+      "permissionTitle": "Permissió necessària",
+      "pickPhoto": "Escollir una foto",
+      "pickPhotoHint": "Seleccioneu una foto per activar les accions.",
+      "previewLabel": "Preview de la foto amb marca d'aigua",
+      "renderFailedTitle": "No es va poder generar l'imatge",
+      "replaceAddressMessage": "GPS trobat: {address} ",
+      "replaceAddressTitle": "Replaçar l'adreça que has digitat?",
+      "resetConfirm": "Disposar",
+      "resetMessage": "La foto escollida i els camps omplirats es descartaran.",
+      "resetTitle": "Començar una nova captura?",
+      "saved": "Foto guardada a la galeria de dispositius i a la història.",
+      "savedAppOnlyTitle": "Només enregistrat a l' interior de Lymark ",
+      "shareDialogTitle": "Compartir foto amb marca d'aigua",
+      "shareFailedMessage": "La imatge va ser generada i està en l'histori Lymark. Pots compartir-la a la pesta Galeria.",
+      "shareFailedTitle": "No podia compartir",
+      "shareUnavailableMessage": "Aquest dispositiu no té ficha de parts.",
+      "shareUnavailableTitle": "Parts no disponibles",
+      "sharedFileTitle": "Foto amb marca d'aigua",
+      "stampNotReady": "El sel·lo encara està preparat.",
+      "syncNow": "Ara, ara.",
+      "timestamp": "Data/hora",
+      "title": "Captura",
+      "useGpsAddress": "Utilitza el GPS.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Dia"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "escollir un altre color",
+      "saturationBrightness": "Saturament i brillantor",
+      "use": "Utilitzeu aquest color"
+    },
+    "common": {
+      "back": "Tornar",
+      "cancel": "Cancel·lar",
+      "delete": "Eliminar",
+      "error": "Error",
+      "gotIt": "Ho entenc.",
+      "loading": "Carregant...",
+      "no": "No, no.",
+      "ok": "- Sí .",
+      "save": "Salvar",
+      "share": "Compartir",
+      "success": "El èxit",
+      "tryAgain": "Intentar-ho de nou.",
+      "unknownError": "Error desconegut",
+      "yes": "Sí, sí."
+    },
+    "gallery": {
+      "cancelSelection": "Selecció d'anull",
+      "clear": "Història clara",
+      "clearConfirm": "Clar",
+      "clearMessage": "Els registres de Lymark s'eliminarà. Les imatges ja guardades a la galeria de dispositius no es veuen afectades.",
+      "count": "{count, plural,  one {Foto # exportada} other {Fotografies # exportades}}",
+      "delete": "Eliminar",
+      "empty": "Encara no hi ha fotografies.",
+      "emptyAction": "- A Capturar",
+      "emptyDescription": "Les fotos que exporta amb una marca d'aigua apareixen aquí, amb data, lloc i codi.",
+      "filteredCount": "{shown} de {total, plural,  one {Foto #} other {Fotografies #}}",
+      "noResults": "No hi ha fotografies trobades per a  {query} .",
+      "photoLabel": "Foto de {when} ",
+      "removeMessage": "Les entrades deixen Lymark. Les imatges ja guardades a la galeria de dispositius no estan afectades.",
+      "removeTitle": "{count, plural,  one {Eliminar de la història} other {Eliminar les entries #}}",
+      "removed": "{count, plural,  one {L'entrada es retira.} other {Les inscripcions eliminates.}}",
+      "saveDeniedMessage": "Permetre-ho en Configuracions › Permes per guardar les imatges a la galeria de dispositius.",
+      "saveDeniedTitle": "Accès a la fotografia negat",
+      "savedAll": "{count, plural,  one {Una foto guardada a la galeria de dispositius.} other {# fotos guardades a la galeria de dispositius.}}",
+      "savedSome": "{saved} de les fotos {total} guardades.",
+      "searchPlaceholder": "Buscar per adreça, data o codi",
+      "selectedCount": "{count, plural,  one {Foto # seleccionada} other {# fotografies seleccionades}}",
+      "share": "Compartir",
+      "title": "Galeria"
+    },
+    "language": {
+      "automatic": "Dispositiu de correspondència",
+      "automaticNote": "Lymark segueix el llenguatge establert en el teu dispositiu.",
+      "label": "Idioma",
+      "selector": "Seleccionar llengua"
+    },
+    "login": {
+      "access": "Inscriure-se per accedir",
+      "apple": "Inscriure-se amb Apple",
+      "google": "Inscriure-se amb Google",
+      "subtitle": "Inscriure-se per continuar",
+      "title": "Inscriure-se per accedir a Lymark "
+    },
+    "nav": {
+      "batch": "Processament en lots",
+      "photoDetail": "Detalls fotogràfics",
+      "report": "Informe PDF",
+      "video": "Vídeo"
+    },
+    "notFound": {
+      "body": "Aquesta pantalla no forma part de Lymark .",
+      "screenTitle": "Pàgina no trobada",
+      "title": "No hi ha aquest camí"
+    },
+    "permissions": {
+      "allow": "Permetre",
+      "allowed": "Permetut",
+      "blocked": {
+        "later": "No ara.",
+        "message": "El sistema no preguntarà de nou. Per permetre-ho, obre les configuracions del dispositiu.",
+        "openSettings": "Configuracions obertes",
+        "title": "Permissió bloquejada"
+      },
+      "camera": "La càmera",
+      "cameraRationale": "Requerida per fer la foto que rebrà la marca d'aigua.",
+      "denied": "Refusada",
+      "granted": "Concedida",
+      "intro": "Lymark només pregunta el que necessita per estampar una foto. Les seves imatges mai deixen el dispositiu: quan utilitzeu GPS, el sistema operatiu envia al servei de mapes la coordinació sola, per tal de que pugui convertir-se en una adreça.",
+      "location": "L'ubicació",
+      "locationRationale": "En el camp d'adreces s'emplen automàticament quan captura.",
+      "mediaLibrary": "Escondeix a la galeria",
+      "mediaLibraryRationale": "Escriure fotografies exportades a la galeria de dispositius.",
+      "openDeviceSettings": "Configuracions",
+      "recheck": "Revisar.",
+      "request": "Solicitar permís",
+      "section": "Accès",
+      "title": "Permis"
+    },
+    "photo": {
+      "backToGallery": "Tornar a la galeria",
+      "exportedAt": "Exportats en {when} ",
+      "noWatermark": "Aquesta foto va ser exportada sense una marca d'aigua.",
+      "notFoundBody": "Aquest registre pot haver estat eliminat de la història.",
+      "notFoundTitle": "Foto no trobada",
+      "remove": "Retirar",
+      "removeBody": "El registre deixa Lymark. La imatge guardada a la galeria del dispositiu no està afectada.",
+      "removeTitle": "Eliminar de la història",
+      "share": "Compartir",
+      "stampedData": "Dades estampades"
+    },
+    "plan": {
+      "exhausted": "Fotografies gratuïtes utilitzades",
+      "exhaustedMessage": "Les 12 fotografies del pla gratuït han desaparegut.",
+      "free": "Lliure",
+      "pro": "Pro",
+      "reconnect": "Reconectar per confirmar la seva subscripció",
+      "remaining": "{remaining, plural,  one {# foto lliure a l'esquerra} other {# fotos gratuïtes de l'esquerra}}",
+      "title": "Plan",
+      "unlimited": "No hi ha límits"
+    },
+    "report": {
+      "allPhotos": "Totes les fotos",
+      "authorField": "Autor / empresa",
+      "detailsSection": "Detalls",
+      "doc": {
+        "author": "Autor",
+        "declaration": "Les dades estampades (adreça, data, hora i codi) són una declaració de l'emitent de les fotografies.",
+        "exportedAt": "Exportats en",
+        "generatedAt": "Generats en",
+        "page": "Pàgina",
+        "photo": "Foto {index} ",
+        "photosSection": "Registres fotogràfics",
+        "signature": "Firma de la persona responsable",
+        "summary": "Resum",
+        "title": "Raport fotogràfic",
+        "totalPhotos": "Fotografies totales:"
+      },
+      "empty": "Encara no hi ha fotografies exportades.",
+      "failed": "No va poder generar el informe.",
+      "fileStem": "informe",
+      "format": {
+        "csv": "Establiment (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Paquet (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Generar fitxer",
+      "generateSection": "Generar",
+      "includeLogo": "Logotipt en la portada",
+      "includeLogoDescription": "El logotip de la marca, el mateix del timbre.",
+      "norm": {
+        "abnt": "ABNT (Bràzil)",
+        "din5008": "DIN 5008 (Alemanya)",
+        "ibape": "IBAPE estil (Bràzil)",
+        "iso": "Internacional",
+        "letter": "Carta (EUA)"
+      },
+      "normNote": "L'estandard defineix el paper i el formatament de marges, font i numeració de pàgines. El contingut del informe és el mateix en tots ells; l'estil IBAPE addiciona un bloc de signatura.",
+      "normSection": "Norma de document",
+      "projectsSection": "Projecte / treball",
+      "saved": "Es va guardar a {path} ",
+      "savedShort": "Informat guardat.",
+      "title": "Informe PDF",
+      "titleField": "Titull del informe",
+      "unavailableBody": "Els informes PDF estan disponibles en l'aplicació de escritori.",
+      "unavailableTitle": "Només en escritori",
+      "uncoded": "No hi ha codi",
+      "wordTooBig": "El document Word es va fer massa gran amb les fotos incrustades.",
+      "zipMissing": "{count, plural,  one {El paquet s'ha salvado, però no es va trobar la foto # en aquest dispositiu.} other {El paquet es va guardar, però no es van trobar fotos # en aquest dispositiu.}}"
+    },
+    "settings": {
+      "about": "Sobre",
+      "aboutDescription": "Versió, privacitat i crèdits",
+      "appSection": "Aplicació",
+      "deviceSection": "Dispositiu",
+      "deviceSectionDescription": "Accés que Lymark sol·licita.",
+      "fields": "Camps i posició",
+      "fieldsDescription": "Seleccionar els camps que apareixen, l'angle i la mida",
+      "history": "Història",
+      "historyDescription": "Les fotografies exportades conservades en l'aparell",
+      "language": "Idioma",
+      "permissions": "Permis",
+      "permissionsDescription": "Càmera, fotografies i ubicació",
+      "save": "Salvar",
+      "title": "Configuracions",
+      "watermark": "Marca d'aigua",
+      "watermarkSection": "Marca d'aigua",
+      "watermarkSectionDescription": "Què queda estampat a la foto, i on."
+    },
+    "signup": {
+      "subtitle": "Inscriure-se per començar",
+      "title": "Crea la teva compte Lymark"
+    },
+    "tagline": "Marca d'aigua amb hora, data i lloc",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "No hi ha accés a la càmera.",
+      "done": "El vídeo estampat i guardat.",
+      "export": "Vídeo estampat d'exportació",
+      "exportSection": "Exportació",
+      "failed": "El vídeo no es va poder estampar.",
+      "fieldsSection": "Camps de timbres",
+      "fileSection": "Vídeo",
+      "none": "Cap vídeo seleccionat.",
+      "processing": "Processament... {percent} %",
+      "processingMobile": "Processament...",
+      "record": "Gravar vídeo ara",
+      "saved": "Es va guardar a {path} ",
+      "savedToGallery": "El vídeo estampat guardat a la teva galeria.",
+      "select": "Seleccionar vídeo",
+      "unavailableBody": "La estampada de vídeo mòbil necessita Lymark instal·lada a partir d'una construcció EAS (amb el mòdul natiu). No està disponible en Expo Go . Installa l'aplicació oficial de la botiga o una construcció EAS, o utilitza la versió de escritori / web.",
+      "unavailableTitle": "Cal instal·lar l'aplicació",
+      "unreadable": "El fitxer no es podia llegir com a vídeo.",
+      "webNote": "En el navegador, el vídeo es processa en temps real  un vídeo de 2 minuts dura 2 minuts  i sorgeix en format WebM. Per vídeos llargs, utilitzeu l'aplicació de escritori."
+    },
+    "watermark": {
+      "accentColor": "Barrera vertical",
+      "backdropBandNote": "La banda corre de costat en costat a través de la foto i descansa contra el marge on el timbre està ancorat.",
+      "backdropBlockNote": "El suport segueix el mida del text, amb rellotjament al voltant.",
+      "backdropColor": "Color de banda",
+      "backdropDescription": "Manté el contrast sobre les zones lleugeres de la foto. Sense ella, el text s'asseya directament sobre la imatge, amb una ombra.",
+      "backdropInnerRadius": "Angles interiors",
+      "backdropOpacity": "Transparència",
+      "backdropOpacityValue": "{percent} % opacs",
+      "backdropRadius": "Angles redondats",
+      "backdropRadiusSquare": "Quadrats",
+      "backdropStyles": {
+        "band": "Band de largesa plena",
+        "block": "A darrere del text",
+        "none": "Ningú"
+      },
+      "backdropTitle": "Banda de suport",
+      "brandDescription": "Al cap del rellotge es converteix en una firma, amb logotip i lema.",
+      "brandFirstColor": "Color de la primera part",
+      "brandFirstHint": "Constructors",
+      "brandFirstPart": "Primera part",
+      "brandNote": "Deixar la segona part vaga per a una marca de color únic.",
+      "brandPlacements": {
+        "corner": "En un cantó",
+        "header": "Al llarg de l'horari",
+        "none": "Ningú"
+      },
+      "brandSecondColor": "Color de la segona part",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Segona part",
+      "brandTitle": "Marca estampada",
+      "codeDescription": "A la banda no competeix per la plaça amb la imatge mateixa.",
+      "codePlacements": {
+        "block": "Al costat de les dades",
+        "side": "L'esquerra"
+      },
+      "codeTitle": "Codi de fotografia",
+      "colors": {
+        "amber": "Amber",
+        "black": "Negre",
+        "blue": "Blau",
+        "green": "El verd",
+        "red": "Roig",
+        "white": "Blanc"
+      },
+      "colorsDescription": "El color de la foto és la decisió de l'empresa, no l'aplicació.",
+      "colorsTitle": "Colors de timbres",
+      "complement": "Titulació",
+      "complementColor": "Color de la etiqueta",
+      "complementHint": "Inspeccions i informes tècnics",
+      "cornerConflict": "La marca i les dades estan en el mateix cantó  es superponen a la foto.",
+      "fields": {
+        "address": "Direcció / lloc",
+        "code": "Codi de fotografia",
+        "date": "Data",
+        "time": "El temps",
+        "weekday": "Diari de la setmana"
+      },
+      "fieldsDescription": "Només els camps que estan en i tenen contingut arriben a la foto.",
+      "fieldsTitle": "Els camps mostrats",
+      "includeCountry": "Inclou el país",
+      "includeCountryDescription": "Activa-lo si treballes a través de les fronteres, o només tindrà lloc en la foto.",
+      "legibilityTitle": "Llegabilitat",
+      "logoAdded": "Logotipt afegit a l'encapçala de marca.",
+      "logoAlignNote": "La altura del logotipt segueix el text: la part superior es alinea amb la part superior del nom i la part inferior amb la línia de base del lema.",
+      "logoChosen": "Logotipt elegit",
+      "logoErrorMessage": "Prova una altra imatge. Un PNG amb un fons transparent és el format que funciona millor.",
+      "logoErrorTitle": "Aquest fitxer no es pot utilitzar",
+      "logoFormatNote": "Utilitzeu un PNG amb un fons transparent. Un JPG amb un fons blanc es converteix en un rectangle blanc en la foto  el format no emmagatzem transparència, i l'aplicació no té manera de adivinar què és el fons.",
+      "logoPermissionMessage": "Permetre-ho en Configuracions › Permes per a seleccionar el fitxer de logotip.",
+      "logoPermissionTitle": "Accès a la fotografia negat",
+      "logoPick": "Seleccionar el logotip",
+      "logoPosition": "Posició del logotip",
+      "logoPositionBlock": "Amb el sel.",
+      "logoRemove": "Retirar",
+      "logoReplace": "Remplaçar el logotip",
+      "logoSize": "Dimensió del logotip",
+      "positionDescription": "L'angle de la foto al qual el bloc està ancorat.",
+      "positionTitle": "Posició",
+      "positions": {
+        "bottom-left": "Baixa esquerra",
+        "bottom-right": "A la dreta inferior",
+        "top-left": "Al cap esquerre",
+        "top-right": "Alt a la dreta"
+      },
+      "previewCurrent": "Sobre la foto actual de la pesta Capture.",
+      "previewEmpty": "De llum a fosc, per comprovar la legibilitat en els dos extrems.",
+      "previewNoFields": "Cap camp seleccionat  la foto es pot veure sense un marc d'aigua.",
+      "previewTitle": "Preview",
+      "reset": "Restaurar les configuracions predefinides",
+      "sizeTitle": "Dimensió del text",
+      "sizes": {
+        "large": "Gran",
+        "medium": "Mediu",
+        "small": "Petit"
+      },
+      "textColor": "Text",
+      "timeFormatDescription": "Com el temps es llena en els camps. El camp queda editable.",
+      "timeFormatTitle": "Format de temps",
+      "timeFormats": {
+        "12h": "12 hores (hora de la matinada/hora de la tarda)",
+        "24h": "24 hores"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Tots els arxius",
+      "images": "Imatges",
+      "pickFolder": "Seleccioneu la carpeta de sortida",
+      "pickPhoto": "Seleccionar foto",
+      "pickPhotos": "Seleccionar fotografies per al lot",
+      "savePhoto": "Escondeix foto",
+      "saveReport": "Informe de conservació"
+    },
+    "login": {
+      "cancel": "Cancel·lar",
+      "confirm": "Continuar",
+      "message": "Acabes de iniciar sesión a través del navegador.",
+      "title": "Inscriure-se a Lymark "
+    },
+    "menu": {
+      "copy": "Copia",
+      "cut": "Cortar",
+      "edit": "Edició",
+      "file": "Arxiu",
+      "fullscreen": "L' pantalla completa",
+      "help": "Ajuda",
+      "paste": "Paste",
+      "quit": "Deixar",
+      "redo": "Redo",
+      "reload": "Recarrega",
+      "selectAll": "Seleccioneu tots",
+      "settings": "Configuracions",
+      "undo": "Descomposició",
+      "view": "Vista",
+      "zoomIn": "Enxumeu",
+      "zoomOut": "Enxumeix",
+      "zoomReset": "Dimensió real"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Tornar a casa",
+      "openApp": "Abrir l'aplicació",
+      "photos": "Fotografies",
+      "photosLeft": "{remaining} de {quota} esquerra",
+      "plan": "Plan",
+      "planUnavailable": "No està disponible ara mateix",
+      "plans": {
+        "free": "Lliure",
+        "pro": "Pro"
+      },
+      "signInTitle": "Inscriure-se",
+      "signOut": "Sorteix",
+      "signUpTitle": "Creació de compte",
+      "subscribe": "Subscriure-se a Lymark Pro",
+      "subscribeSoon": "Les subscripcions encara no estan disponibles. Quan siguin, podràs subscriure aquí i utilitzar qualsevol dispositiu amb el mateix compte.",
+      "title": "El teu compte",
+      "revokeDesktops": "Desconectar ordinadors",
+      "revokeDesktopsHint": "Acaba l'accés a l'aplicació en cada ordinador."
+    },
+    "availability": {
+      "contact": "Per seguir el llançament o informar d'un problema, escriu a <email> contato@lymark.app </email>.",
+      "description": "Lymark està a la versió 1.3.0, en proves en Android abans de la publicació en Google Play. No hi ha versió iOS i no hi ha versió web, i l'aplicació no cobra cap pagament.",
+      "title": "Disponibilitat"
+    },
+    "data": {
+      "device": {
+        "description": "El compte existeix per a la seva subscripció: el servidor conserva el seu correu electrònic i el seu pla, i mai reben les seves fotos o la seva ubicació.",
+        "field": "En el dispositiu",
+        "heading": "Fotografies, adreces i història"
+      },
+      "external": {
+        "description": "Per convertir la latitud i la longitud en una adreça legible, el sistema operatiu consulta el servei de geo-codificació de Google o Apple. Aquesta és l'única informació que deixa, i el sistema la envia, no l'aplicació.",
+        "field": "Desactivat",
+        "heading": "Només convertir una coordinació en una adreça"
+      },
+      "note": "Tot està establert  inclosos el que això significa sota el LGPD de Brasil  en el <privacy>Política de privacitat</privacy>. Desactivar l'autorització de localització deixa l'aplicació totalment funcional; només el camp d'adreça ha de ser digitat a mà.",
+      "title": "On es troben les seves dades"
+    },
+    "deleteAccount": {
+      "back": "Tornar a la contabilitat",
+      "confirm": "Eliminar el meu compte",
+      "deletesNow": "L'eliminació del teu compte eliminen immediatament el teu correu electrònic, el teu identificador, i el registre del pla, quota i número de fotos.",
+      "irreversible": "La eliminació és permanent i no es pot revocar. Les fotos del teu dispositiu no estan afectades  mai van ser en els nostres servidors.",
+      "retained": "Els registres de transaccions de pagament es conserven durant el període fiscal legalment exigit, sense vincular-se al seu perfil.",
+      "title": "Eliminar compte"
+    },
+    "description": "Aplicació Android que marca l'hora, data, dia de la setmana, adreça i un codi de seguiment en les fotos de l'inspecció del lloc i de la prova de servei.",
+    "desktop": {
+      "backAccount": "Tornar a la contabilitat",
+      "explanation": "El teu compte està preparat. Clica en el botó a continuació per obrir Lymark en el teu ordinador ja signat en  el navegador demanarà permís per obrir l'aplicació.",
+      "open": "Conectar l'aplicació",
+      "title": "Inscriure-se en el desktop",
+      "unavailable": "La connexió de l'aplicació de escritorio encara no està disponible."
+    },
+    "download": {
+      "appStore": {
+        "description": "La mateixa experiència que Android, en iOS.",
+        "field": " App Store ",
+        "heading": "iPhone i iPad"
+      },
+      "browser": {
+        "action": "Inscriure-se",
+        "description": "S'inscriu amb el seu compte i l'aplicació s'obre directament en el navegador  telèfon o ordinador.",
+        "field": "navegador",
+        "heading": "Utilitza-la ara, no hi ha res per instal·lar-la."
+      },
+      "desktop": {
+        "description": "Parts de fotos, vídeos llargs i PDF informa  la versió pesada.",
+        "field": "Computació",
+        "heading": "Windows i Linux"
+      },
+      "googlePlay": {
+        "description": "L'aplicació telefònica, amb càmera, galeria i vídeo estampat.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Vint aviat.",
+      "title": "On utilitzar Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "La línia de carrer es abrevia i l'estat es converteix en el seu codi, de manera que l'adreça s'ajusta en dues línies sense cobrir la foto.",
+        "field": "Direcció",
+        "heading": "Enregistrat per GPS, correctable a mà"
+      },
+      "code": {
+        "description": "Existeix per tal que puguis citar una fotografia específica en un ordre de treball o un informe. Es roda rotat cap al marge dret, o s'asseya amb el bloc de dades  de la teva elecció.",
+        "field": "Codi de fotografia",
+        "heading": "Catorze caràcters, dibuixats per un generador criptogràfic"
+      },
+      "note": "Cada camp s'activa i desconeix per si mateix, i el bloc s'ancra a qualsevol dels quatre cantons, en tres dimensions. La vista previa utilitza la teva foto real, no una mostra genèrica: el que veus a l'escriptura és literalment el que es exporta.",
+      "time": {
+        "description": "Un botó torna tots tres camps al present quan la captura va durar més temps del que s'esperava.",
+        "field": "Hora i data",
+        "heading": "Des de l'horari del dispositiu, en el moment de la captura"
+      },
+      "title": "Què passa a la imatge"
+    },
+    "footer": {
+      "description": "Lymark  Registres fotogràfics amb data, hora i adreça.",
+      "documentsLabel": "Documents",
+      "privacy": "Política de privacitat",
+      "support": "Suport:",
+      "terms": "Condicions d'ús"
+    },
+    "hero": {
+      "ctaAccount": "Vés al meu compte",
+      "ctaLogin": "Inscriure-se",
+      "ctaSignup": "Crea una compte gratuïta",
+      "description": "Lymark marca l'hora, la data, el dia de la setmana, l'adreça i un codi de seguiment directament a la imatge. El fitxer que surt de l'aplicació porta la informació dins de ella  no com a metadades que van al costat, que el primer WhatsApp endavant tira lluny.",
+      "eyebrow": "Documentació fotogràfica de camp",
+      "heading": "La foto deixa el teu telèfon ja dient quan, on i què.",
+      "meta": {
+        "account": "Compte d'un cop",
+        "android": "Android i navegador",
+        "language": "Portugués brasilià",
+        "onDevice": "Les fotos es queden en l'aparell"
+      },
+      "note": "Res per instal·lar."
+    },
+    "nav": {
+      "account": "Conta",
+      "home": "Casa",
+      "homeLabel": "Lymark , pàgina inicial",
+      "label": "Principal",
+      "privacy": "Privatesa",
+      "signIn": "Inscriure-se",
+      "terms": "Termes",
+      "verify": "Verificar"
+    },
+    "process": {
+      "capture": {
+        "description": "La recerca d'adreces comença en el moment en què la foto arriba. Els camps es mantenen oberts per ajustar mentre es corre.",
+        "field": "Captura",
+        "heading": "Càmera o galeria"
+      },
+      "note": "Les dues accions es mantenen separades de manera intencional. Salvar i compartir resolen diferents problemes, i doblar-les en un botó arrestaria qualsevol persona que vulgui simplement arxivar la foto a través d'una pantalla de envi.",
+      "save": {
+        "description": "Es troba amb la resta de les fotos del teu telèfon, disponible per a qualsevol aplicació  incloent després de desinstalar Lymark .",
+        "field": "Salvar",
+        "heading": "Va a la galeria de dispositius"
+      },
+      "share": {
+        "description": "WhatsApp , correu electrònic, Drive: el destí és escollit pel sistema operatiu, i l'aplicació no participa en l'enviament.",
+        "field": "Compartir",
+        "heading": "Obre la ficha de parts del sistema"
+      },
+      "title": "El camí que pren una fotografia"
+    },
+    "skipToContent": "Skip a contingut",
+    "specimen": {
+      "caption": "La regla ambèr comença i acaba als límits dels xifres, no del text.",
+      "label": "Esprova del sellet Lymark: hora 07:42, data 12 d'agost de 2026, dimecres, adreça a Guarujá i codi de fotografia."
+    },
+    "title": "Lymark  data, hora i adreça marca d'aigua per a les fotografies de camp",
+    "verify": {
+      "caveat": "El segell atesta la integritat del fitxer i el moment de la seva emessa.",
+      "checking": "- Vull comprovar...",
+      "declarationNote": "El que mostra el segell (adreça, data, hora) és la declaració de l'emitent  el segell atesta a la integritat i l'emissió, no al contingut.",
+      "intro": "Deixar o escollir una foto exportada per Lymark i veure instantàniament si és exactament com va deixar l'aplicació  i qui l'ha emès, quan.",
+      "noSealBody": "Aquest fitxer no té sigell Lymark. Pot haver estat exportat fora de línia, abans que el sigell existís, o pot no provenir de Lymark.",
+      "noSealTitle": "No hi ha segell",
+      "notConfigured": "La verificació encara no està disponible.",
+      "pick": "Seleccionar fitxer",
+      "previewAlt": "La foto verificada, sel·lo visible",
+      "privacyNote": "La verificació es fa en el teu navegador. El fichier no es enviarà a cap servidor.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Intactes",
+      "tamperedBody": "El contingut no coincideix amb el segell: el fitxer va ser modificat després de la seva emessa, o el segell pertany a un altre fitxer.",
+      "tamperedTitle": "Desconformisme",
+      "title": "Verificar l'autenticitat",
+      "unsupported": "Aquest navegador no supporta la verificació de la firma. Proba un navegador actual."
+    }
+  }
+}

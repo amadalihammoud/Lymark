@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Stemplar på tida, datoen, dagen på veikana, adressen og ein sporingskode på bildene dine for å registrera, inspeksjon på området og bevis på service.",
+      "platform": "Platforma",
+      "privacy": "Personverner",
+      "privacyGeocoding": "Når GPS blir brukt, sender operativsystemet koordinaten til Googles eller Apples karttjeneste for å få adressen. Det er den einaste informasjonen som blir over, og det er systemet som sender det, ikkje Lymark.",
+      "privacyLocation": "Lokalisering vert brukt ein gong per oppfang, berre for å fylla inn adressfeltet, og vert ikkje lagra særskilt frå fotona.",
+      "privacyOnDevice": "Foton, adressane og historia blei berre på den. Konta finst for abonnemanget ditt: serveren held e-post og plan, og tek aldri imot fotona eller plasseringa.",
+      "privacySection": "Personvernd",
+      "sdk": " Expo SDK ",
+      "terms": "Treningar",
+      "title": "Om Lymark ",
+      "version": "Versionen"
+    },
+    "account": {
+      "browserHint": "Logga inn i nettlesaren din, og appen samlast sjølv.",
+      "code": "Kode",
+      "codeSent": "Vi har sendt ein kode til {email} ",
+      "connected": "Knytta",
+      "continue": "Fortsette",
+      "deleteAccount": "Ta bort kontoen",
+      "email": "E-post",
+      "failed": "Det funkte ikkje, sjekk e-posten eller koden og prøv igjen.",
+      "notConfigured": "Logg-in er ikkje tilgjengeleg i denne bygda ennå.",
+      "signInBrowser": "Logg inn via nettlesar",
+      "signOut": "Skriv ned",
+      "signedInAs": "Signerte inn som {email} ",
+      "title": "Konto",
+      "verify": "Verifisera"
+    },
+    "batch": {
+      "addressHint": "Galle, nummer  by",
+      "clearList": "Klar liste",
+      "codeHint": "f.eks. LYM-001",
+      "done": "{count, plural,  one {Beredskap ferdig: #-foto ferdig.} other {Behandling ferdig: #-fotografiar ferdig.}}",
+      "doneSection": "Finne opp",
+      "dropZone": "Drag og drop bilder her, eller bruk knappen Selektera bilder",
+      "errorsSection": "Feile",
+      "folder": "Folder: {name} ",
+      "noPhotos": "Velg minst eit foto.",
+      "outputNote": "Dei behandlade bilda vert lagra i den valde mappa.",
+      "outputSection": "Utfall",
+      "photosSection": "Fotoar til å behandle",
+      "processing": "Forverknad...",
+      "progress": "{current} av {total} ({percent} %)",
+      "results": "{success, plural,  one {# suksess} other {# held fram}}, {failed, plural,  one {# feil} other {Feltingsfall i #}}",
+      "selectFolder": "Velg utgangsspeilen",
+      "selectPhotos": "Velg bilder",
+      "selected": "{count, plural,  one {Foto # selektert} other {#-fotograf er selektert}}",
+      "sharedNote": "Denne verdien blir brukt på ALLE bilder.",
+      "sharedSection": "Meddeilege metadata",
+      "start": "Startar å behandle",
+      "unavailableBody": "Denne funksjonen er berre skrivbord.",
+      "unavailableTitle": "Batcharbeiding ikkje tilgjengeleg"
+    },
+    "capture": {
+      "accuracy": "Posisjon innanfor ± {meters} m.",
+      "accuracyImprecise": "Posisjon innanfor ± {meters} m  kontrollera gatenummer før eksport.",
+      "address": "Adress",
+      "addressFailedTitle": "Ingen adresser funne",
+      "addressHint": "Trykk på lokaliser, eller skriv inn adressen",
+      "camera": "Ta eit foto",
+      "code": "Kode",
+      "dateHint": "1. januar 2026",
+      "dateTimeGroup": "Dato og tid",
+      "emptyWarning": "Ingen data vert stempla  fotot blir sett ut utan vannmerke.",
+      "gallery": "Velg frå galleri",
+      "galleryDenied": "Fotoar blei nekta, slik at bilda berre finst inne i appen. Lat dei gå inn i Settings › Permissions for å lagra dei i galleriet.",
+      "galleryFailed": "Bildet gjekk inn i historia, men maskinen nekta å skriva det inn i galleriet. Sjekk det frie rommet og prøv igjen.",
+      "generateCode": "Generera",
+      "hiddenFields": "{count, plural,  one {Skjulte felt} other {Skjulte felt}}: {fields}  slå dei på i Settings › Felder og posisjon.",
+      "keepMyAddress": "Behold meg",
+      "locate": "Lokaliser",
+      "locateByGps": "Finn adressen med GPS",
+      "lookup": {
+        "denied": "Tillate plassering i Settings › Tillatingar, eller skriv inn adressen.",
+        "disabled": "Lokaliseringen er avstängd på maskinen. Legg på den i dei raske stillingane og prøv igjen.",
+        "timeout": "GPS svara ikkje i tide. Det funkar ofte ikkje inne.",
+        "unavailable": "Adressen kunne ikkje bli løyst på denne posisjonen. Skriv den inn ved handa."
+      },
+      "newCapture": "Start ein ny oppfangst",
+      "noFieldsBack": "Gå tilbake",
+      "noFieldsContinue": "Fortsett likevel",
+      "noFieldsMessage": "Ingen felt har noko å stampar. Fyll feltene inn eller sjå inn Settings › Felder og posisjon.",
+      "noFieldsTitle": "Fotoen kjem ut utan vannmerke.",
+      "noPhotoHint": "Ta eit foto eller velg eit frå galleriet for å byrja.",
+      "noPhotoSelected": "Ingen foto selektert",
+      "openFailed": "Fotoen kunne ikkje opna seg. Prøv igjen.",
+      "permissionMessage": "Tillat tiltrenging i Settings > Tillatingar til å fortsette.",
+      "permissionTitle": "Tillating trengs",
+      "pickPhoto": "Velg ein foto",
+      "pickPhotoHint": "Velg ein foto for å aktivere handlingane.",
+      "previewLabel": "Forhandsvisning av det vannmerkede bildet",
+      "renderFailedTitle": "Kan ikkje generera bilda",
+      "replaceAddressMessage": "GPS funne: {address} ",
+      "replaceAddressTitle": "Du vil erstatta adressen du skreiv?",
+      "resetConfirm": "Kast bort",
+      "resetMessage": "Det valde bildet og fylte felt blir kastet.",
+      "resetTitle": "Starta ein ny oppfangst?",
+      "saved": "Foto lagd i galleria og historia.",
+      "savedAppOnlyTitle": "Speiret berre inne i Lymark ",
+      "shareDialogTitle": "Deila vannmerkt foto",
+      "shareFailedMessage": "Bildet vart generert og er i Lymark historie. Du kan dele det frå fanen Gallery.",
+      "shareFailedTitle": "Kan ikkje dela med deg",
+      "shareUnavailableMessage": "Dette apparatet har ikkje noko tildeileg. Biletet blei verande i Lymark historia.",
+      "shareUnavailableTitle": "Deling ikkje tilgjengeleg",
+      "sharedFileTitle": "Vatnemarkert foto",
+      "stampNotReady": "Stemmellet vert endå laga.",
+      "syncNow": "No er det",
+      "timestamp": "Dato/time",
+      "title": "Ta opp",
+      "useGpsAddress": "Bruk GPS-en",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Dagen"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "velg ein annan farge",
+      "saturationBrightness": "Sätning og lysstyrke",
+      "use": "Bruk denne fargen"
+    },
+    "common": {
+      "back": "Tilbaka",
+      "cancel": "Avbryt",
+      "delete": "Ta bort",
+      "error": "Feil",
+      "gotIt": "Eg fattar det.",
+      "loading": "Ladding...",
+      "no": "Nei, ikkje sant.",
+      "ok": "OK, det er ikkje så bra.",
+      "save": "Ta med deg",
+      "share": "Deling",
+      "success": "Framgang",
+      "tryAgain": "Prøv igjen.",
+      "unknownError": "Ukenne feil",
+      "yes": "Ja, det er det."
+    },
+    "gallery": {
+      "cancelSelection": "Avbryt val",
+      "clear": "Klart historie",
+      "clearConfirm": "Klar",
+      "clearMessage": "Dei rekorda til Lymark vert slettet.",
+      "count": "{count, plural,  one {Fotoen til # blei eksportert} other {#-fotografane er eksportert}}",
+      "delete": "Ta bort",
+      "empty": "Ingen bilder enda",
+      "emptyAction": "Gå til å fanga",
+      "emptyDescription": "Fotografiane du eksporterar med eit vannmerke dukkar opp her, med dato, stad og kode.",
+      "filteredCount": "{shown} av {total, plural,  one {Foto av #} other {Fotoar av #}}",
+      "noResults": "Ingen bilder funne for  {query} .",
+      "photoLabel": "Foto frå {when} ",
+      "removeMessage": "Inngrepet forlater Lymark. Bilder som er lagde i enhetsgalleriet vert ikkje berørt.",
+      "removeTitle": "{count, plural,  one {Ta bort frå historia} other {Ta bort #- innlegg}}",
+      "removed": "{count, plural,  one {Eining avleidd.} other {Inngreppane er fjerna.}}",
+      "saveDeniedMessage": "Lat det gå i Settings › Permissions for å lagra bildene til enhetsgalleriet.",
+      "saveDeniedTitle": "Fototilgang nekta",
+      "savedAll": "{count, plural,  one {Eit foto lagd i galleria for dei.} other {#-fotoar lagra til dei lagre galleria.}}",
+      "savedSome": "{saved} av {total}-fotos lagde.",
+      "searchPlaceholder": "Søk etter adresse, dato eller kode",
+      "selectedCount": "{count, plural,  one {Foto # selektert} other {#-fotograf er selektert}}",
+      "share": "Deling",
+      "title": "Gallerie"
+    },
+    "language": {
+      "automatic": "Matching-apparat",
+      "automaticNote": "Lymark følgjer språket sett på tilsetet ditt.",
+      "label": "Spr sume",
+      "selector": "Velg språk"
+    },
+    "login": {
+      "access": "Log өзүн til tilgang",
+      "apple": "Log өзүн med Apple",
+      "google": "Log өзүн med Google",
+      "subtitle": "Log өзүн for å fortsette",
+      "title": "Log өзүн til å få tilgang til Lymark "
+    },
+    "nav": {
+      "batch": "B sumear",
+      "photoDetail": "D өзүнlegg på fotona",
+      "report": "Rapport PDF",
+      "video": "Video sume"
+    },
+    "notFound": {
+      "body": "Denne өзүн er ikkje ein del av Lymark .",
+      "screenTitle": "S өзүн ikkje funne",
+      "title": "Ingen өзүн slik veg"
+    },
+    "permissions": {
+      "allow": "Lat sume vera",
+      "allowed": "Til sume",
+      "blocked": {
+        "later": "Ik өзүн ikkje",
+        "message": "Systemet spør ikkje igjen. For å gje deg lov, opna stillingane på maskinen.",
+        "openSettings": "Åpne innstillingar",
+        "title": "Til өзүнleggjande avfall"
+      },
+      "camera": "Kamera өзүн",
+      "cameraRationale": "Eg sume til å ta eit foto som vil få vannmerket.",
+      "denied": "Av sume",
+      "granted": "Det sume",
+      "intro": "Lymark spør berre kva det treng for å stempla eit foto. Bilda dine forlater aldri einheten: når du bruker GPS, sender operativsystemet karttjenesten koordinaten sjølv, slik at det kan bli ein adress.",
+      "location": "St өзүн",
+      "locationRationale": "F өзүн i adressfeltet automatisk når du tek.",
+      "mediaLibrary": "Ta өзүн til galleria",
+      "mediaLibraryRationale": "For өзүнleggjande av bilder til galleria.",
+      "openDeviceSettings": "In өзүнleggingar",
+      "recheck": "Sj өзүн igjen",
+      "request": "Be om tillating",
+      "section": "Tilgang til",
+      "title": "Tillatingar"
+    },
+    "photo": {
+      "backToGallery": "Tilbake til galleriet",
+      "exportedAt": "Exportert på {when} ",
+      "noWatermark": "Dette bildet vart eksportert utan vannmerke.",
+      "notFoundBody": "Denne rekorden kan ha vore fjernt frå historia.",
+      "notFoundTitle": "Foto ikkje funne",
+      "remove": "Ta bort",
+      "removeBody": "Filmane blir lagde i galleria av dei.",
+      "removeTitle": "Ta bort frå historia",
+      "share": "Deling",
+      "stampedData": "Stempla data"
+    },
+    "plan": {
+      "exhausted": "Gratis brukte bilder",
+      "exhaustedMessage": "Dei tolv bilda på den gratis planen er borte.",
+      "free": "Frie",
+      "pro": "Pro",
+      "reconnect": "Knyt deg til nytt for å bekrefta prenumerasjonen",
+      "remaining": "{remaining, plural,  one {# gratis foto til venstre} other {# gratis bilder til venstre}}",
+      "title": "Plan",
+      "unlimited": "Ingen grens"
+    },
+    "report": {
+      "allPhotos": "Alle bileta",
+      "authorField": "Forfattar / selskap",
+      "detailsSection": "Detaljer",
+      "doc": {
+        "author": "Forfattar",
+        "declaration": "Dei stampede data (adress, dato, tid og kode) er ei deklarasjon av utgjevaren av bilda.",
+        "exportedAt": "Utførd i",
+        "generatedAt": "Generert på",
+        "page": "Sidan",
+        "photo": "Foto: {index} ",
+        "photosSection": "Fotografiske rekord",
+        "signature": "Signering av den som er ansvarleg",
+        "summary": "Sammendrag",
+        "title": "Fotoversjon",
+        "totalPhotos": "Totalt bilder:"
+      },
+      "empty": "Ingen eksporderte bilder enda. Rapporten er laga frå galleriet ditt.",
+      "failed": "Eg fekk ikkje meldinga.",
+      "fileStem": "rapport",
+      "format": {
+        "csv": "Skriftspredikar (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Pakke (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Generer fil",
+      "generateSection": "Generera",
+      "includeLogo": "Logo på omslaget",
+      "includeLogoDescription": "Du må slå av merkesemda, slik at du ikkje tek det inn i dokumentet.",
+      "norm": {
+        "abnt": "ABNT (Brazil)",
+        "din5008": "DIN 5008 (Tyskland)",
+        "ibape": "IBAPE stil (Brazil)",
+        "iso": "Internasjonalt",
+        "letter": "Brev (USA)"
+      },
+      "normNote": "Standarden fastsetter papiret og formateringen  margina, skrift og side nummerering. Rapporten innehållen er den same i alle dei; IBAPE stilen legg til ein signatur blokk.",
+      "normSection": "Dokumentstandard",
+      "projectsSection": "Prosjekt / jobb",
+      "saved": "Skapt til {path} ",
+      "savedShort": "Rapporten er lagd.",
+      "title": "Rapport PDF",
+      "titleField": "Rapporttittel",
+      "unavailableBody": "PDF-rapporter er tilgjengelege i skrivbordsappen.",
+      "unavailableTitle": "berre skrivbord",
+      "uncoded": "Ingen kode",
+      "wordTooBig": "Dokumentet til Word vart for stort med dei innbyggde bilda.",
+      "zipMissing": "{count, plural,  one {Pakka vart lagd, men det blei ikkje funne noko av #-foto på denne eininga.} other {Pakka vart lagd, men dei fekk ikkje noko av dei bilda på denne telefonen.}}"
+    },
+    "settings": {
+      "about": "Om",
+      "aboutDescription": "Versi, personverner og kreditt",
+      "appSection": "App",
+      "deviceSection": "Enhet",
+      "deviceSectionDescription": "Tilgang til Lymark som ber.",
+      "fields": "Feltet og posisjonen",
+      "fieldsDescription": "Velg kva felt som viser, hjørnet og storleiken",
+      "history": "Historie",
+      "historyDescription": "Eksporterte bilder som vert lagde på utstyret",
+      "language": "Språk",
+      "permissions": "Tillatingar",
+      "permissionsDescription": "Kamera, foton og plassering",
+      "save": "Ta med deg",
+      "title": "Innstillingar",
+      "watermark": "Vannmerke",
+      "watermarkSection": "Vannmerke",
+      "watermarkSectionDescription": "Kva blir stampet på bildet, og kvar."
+    },
+    "signup": {
+      "subtitle": "Registrer deg for å byrja",
+      "title": "Skapa kontoen din Lymark"
+    },
+    "tagline": "Vatnemark med tid, dato og sted",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Ingen kamera, berre tillate det i stillinga.",
+      "done": "Videoen er stampd og lagd.",
+      "export": "Utførsleiving av videoar",
+      "exportSection": "Utføringa",
+      "failed": "Videoen kunne ikkje bli stampd.",
+      "fieldsSection": "Feltet med stemplar",
+      "fileSection": "Video",
+      "none": "Ingen video blei selektert.",
+      "processing": "Forarbeid... {percent} %",
+      "processingMobile": "Forverknad...",
+      "record": "Ta videoen opp no",
+      "saved": "Skapt til {path} ",
+      "savedToGallery": "Stempla video lagd til תקפה.",
+      "select": "Velg video",
+      "unavailableBody": "Mobil video stempling treng Lymark installert frå ein EAS build (med den native modulen). Det er ikkje tilgjengeleg i Expo Go . Install app frå butikken eller ein EAS build, eller bruk skrivebord / webversjon.",
+      "unavailableTitle": "Installerte app trengs",
+      "unreadable": "Dosja kunne ikkje læysast תקlippe.",
+      "webNote": "I nettlesaren blir videoen תקנת realtid  ein 2-minutters video tar 2 minuttar  og kjem ut i WebM format. For lange videoar, bruk skrivbordsappen."
+    },
+    "watermark": {
+      "accentColor": "Vertikal bar",
+      "backdropBandNote": "Bandet går kant til kant over תקlavet og hviler seg mot margina der stemplet er forankra. Over ein travel scene  ein byggeplass, ein gård, ein overfylt fasade  det les som dokumentet  underskrift i staden for ein plikker plassert på toppen.",
+      "backdropBlockNote": "Bakgrunnen følgjer stor תקsten, med padding rundt den.",
+      "backdropColor": "Bandfarge",
+      "backdropDescription": "Det er ein måte å sjå på תקlassene på, og utan det settar teksta seg over bilden, og skuggan er skuffa.",
+      "backdropInnerRadius": "Innre hjørna",
+      "backdropOpacity": "Åpenheit",
+      "backdropOpacityValue": "{percent} % תק",
+      "backdropRadius": "Rundt hjørn",
+      "backdropRadiusSquare": "Fjerde",
+      "backdropStyles": {
+        "band": "Fulle breddeband",
+        "block": "Bakover teksten",
+        "none": "Ingen"
+      },
+      "backdropTitle": "Backing band",
+      "brandDescription": "Over uret blir det eit underskrift, med logo og tagline. I ein hjørne er det ein diskret linje.",
+      "brandFirstColor": "Farge på første del",
+      "brandFirstHint": "Byggjarar",
+      "brandFirstPart": "Første del",
+      "brandNote": "Læg den andre delen tom for ein fargjenmark. Ein lang namn blir krympa til det passar, i staden for å bli skåret av.",
+      "brandPlacements": {
+        "corner": "I eit hjørne",
+        "header": "Over uret",
+        "none": "Ingen"
+      },
+      "brandSecondColor": "Farge på den andre delen",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Anden del",
+      "brandTitle": "Stempelt merke",
+      "codeDescription": "På sida av det konkurrerer det ikkje om plass med bildet sjølv.",
+      "codePlacements": {
+        "block": "Ved sidan data",
+        "side": "Høyre sida"
+      },
+      "codeTitle": "Foto-kode",
+      "colors": {
+        "amber": "Amber",
+        "black": "Svart",
+        "blue": "Blåt",
+        "green": "Grønn",
+        "red": "Rødt",
+        "white": "Hvite"
+      },
+      "colorsDescription": "Fargen på bildet er selskapets val, ikkje appen endrar han ikkje farga på skjermen.",
+      "colorsTitle": "Færgfargar",
+      "complement": "Slogn",
+      "complementColor": "Farge på tagline",
+      "complementHint": "Inspeksjon og tekniske rapporter",
+      "cornerConflict": "Merket og data er i same hjørne.",
+      "fields": {
+        "address": "Adress / Sted",
+        "code": "Foto-kode",
+        "date": "Dato",
+        "time": "Tiden",
+        "weekday": "Dag i uken"
+      },
+      "fieldsDescription": "berre felt som er på og har innhald når fram til bildet.",
+      "fieldsTitle": "Feltet som er vist",
+      "includeCountry": "Inkluderer landet",
+      "includeCountryDescription": "Lat det gå på om du jobbar over landsmegra.",
+      "legibilityTitle": "Lesbarheit",
+      "logoAdded": "Logo lagt til i merkeheader.",
+      "logoAlignNote": "Høyden på logoet følgjer teksten: toppen av logoen er i linje med namnet og botten med utgangsgraden til taglinjen.",
+      "logoChosen": "Velde logo",
+      "logoErrorMessage": "Prøv eit anna bilde. Ein PNG med gjennomsiktig bakgrunn er formatet som fungerer best.",
+      "logoErrorTitle": "Denne filen kunne ikkje bli brukt",
+      "logoFormatNote": "Bruk ein PNG med gjennomsiktig bakgrunn. Ein JPG med vit bakgrunn blir ein vit rettangel på bildet  formatet lagrer ikkje masculinitet, og appen har ingen måte å gjette kva bakgrunn er på.",
+      "logoPermissionMessage": "Lat det i Settings › Permissions til å velja logo-filen.",
+      "logoPermissionTitle": "Fototilgang nekta",
+      "logoPick": "Velg logo",
+      "logoPosition": "Posisjon på logoen",
+      "logoPositionBlock": "Med stemplet",
+      "logoRemove": "Ta bort",
+      "logoReplace": "Byggde ut logo",
+      "logoSize": "Størrelse av logo",
+      "positionDescription": "Kornet på bildet er blokken forankra på.",
+      "positionTitle": "Posisjon",
+      "positions": {
+        "bottom-left": "Nedre til venstre",
+        "bottom-right": "Nedre til høgre",
+        "top-left": "Høyrste til venstre",
+        "top-right": "Høyre over"
+      },
+      "previewCurrent": "Over det aktuelle bildet frå fliken \"Fågrep\".",
+      "previewEmpty": "Frå lys til mørk, for å kontrollere læsilegheita på begge ekstremer.",
+      "previewNoFields": "Ingen felt som er vald  foton kjem ut utan vannmerke.",
+      "previewTitle": "Forhandsvis",
+      "reset": "Återställa default",
+      "sizeTitle": "Tekstststørrelse",
+      "sizes": {
+        "large": "Større",
+        "medium": "Medel",
+        "small": "Større"
+      },
+      "textColor": "Tekst",
+      "timeFormatDescription": "Korleis blir tida fylt i feltane. Feltet held seg til å kunne redigera.",
+      "timeFormatTitle": "Tidsformat",
+      "timeFormats": {
+        "12h": "12 timar (morges/morgestid)",
+        "24h": "24 timar"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Alle arkivar",
+      "images": "Bild",
+      "pickFolder": "Velg utgangsspeilen",
+      "pickPhoto": "Velg foton",
+      "pickPhotos": "Velg bilder for partiet",
+      "savePhoto": "Ta opp foton",
+      "saveReport": "Ta opp redigering"
+    },
+    "login": {
+      "cancel": "Avbryt",
+      "confirm": "Fortsette",
+      "message": "Du logga nettopp inn gjennom nettlesaren. Fortseta å bruke denne kontoen på denne datamaskina?",
+      "title": "Logg deg inn på Lymark "
+    },
+    "menu": {
+      "copy": "Kopiert",
+      "cut": "Snij",
+      "edit": "Redigera",
+      "file": "File",
+      "fullscreen": "Fulle skjerm",
+      "help": "Hjelp",
+      "paste": "Paste",
+      "quit": "Kvarkje meir",
+      "redo": "Redo",
+      "reload": "Omlasting",
+      "selectAll": "Velg alle",
+      "settings": "Innstillingar",
+      "undo": "Utilgjengeleg",
+      "view": "Sjekk",
+      "zoomIn": "Zoom inn",
+      "zoomOut": "Zume ut",
+      "zoomReset": "Faktiske storlek"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Til heime",
+      "openApp": "Åpne appen",
+      "photos": "Fotografiar",
+      "photosLeft": "{remaining} av {quota} til venstre",
+      "plan": "Plan",
+      "planUnavailable": "Ikkje tilgjengeleg no",
+      "plans": {
+        "free": "Frie",
+        "pro": "Pro"
+      },
+      "signInTitle": "Logg inn",
+      "signOut": "Skriv ned",
+      "signUpTitle": "Skapa konto",
+      "subscribe": "Abonnera på Lymark Pro",
+      "subscribeSoon": "Abonnement er ikkje tilgjengeleg enda. Når det er til, kan du prenumere her og bruke kva einaste enhet som har same konto.",
+      "title": "Konta ditt",
+      "revokeDesktops": "Slukk av datamaskinane",
+      "revokeDesktopsHint": "Du kan logga inn igjen når du vil."
+    },
+    "availability": {
+      "contact": "For å fylgje lanseringen eller rapportera eit problem, skriv til <email> contato@lymark.app </email>.",
+      "description": "Lymark er på versjon 1.3.0, og testar på Android før publisering på Google Play. Det finst ikkje iOS-versjon og ikkje webversjon, og appen samlar ikkje inn betaling.",
+      "title": "Tilgjengeleg"
+    },
+    "data": {
+      "device": {
+        "description": "Konta er til for abonnemanget ditt: serveren held e-post og plan, og tek aldri imot fotona eller plasseringa. Historien held dei siste to hundre eksportene i apps eigne filer.",
+        "field": "På einheten",
+        "heading": "Fotoar, adressar og historie"
+      },
+      "external": {
+        "description": "For å gjera latitude og longitude til ein lesbar adresse, spør operativsystemet Google eller Apples geokoderingstjeneste. Det er den einaste informasjonen som kjem, og systemet sender det, ikkje appen.",
+        "field": "Avsett",
+        "heading": "berre omskelande av ein koordinat til ein adresse"
+      },
+      "note": "Det er alt sett fram  inkludert kva det tyder under Brasil LGPD  i <privacy>Personverner</privacy>. Når du slukkar av lokalasjonstillatinga, blir appen fullt funksjonell; berre adressfeltet må då skrivast inn manuelt.",
+      "title": "Kor data dine ligg"
+    },
+    "deleteAccount": {
+      "back": "Tilbake til rekjultaten",
+      "confirm": "Ta av kontoen min",
+      "deletesNow": "Om du sleppar kontoen din, slepp e-post, identifikator og plan, quota og fotokontrol.",
+      "irreversible": "Dei er ikkje berørt. Dei er ikkje berørt. Dei var aldri på servera våre.",
+      "retained": "Dei registrerte gjeldtransaksjonane blir goymt i den lovleg kravde finansperioden, utan å knyta til profilen din.",
+      "title": "Ta bort kontoen"
+    },
+    "description": "Android-app som stemplar på tid, dato, dag, adresse og ein sporingskode på inspeksjon og prov-of-service-fotograf.",
+    "desktop": {
+      "backAccount": "Tilbake til rekjultaten",
+      "explanation": "Konta ditt er klar. Klikk på knappen nedan for å opna Lymark på datamaskina som du har logga på  nettlesaren vil be om tillating til å opna appen.",
+      "open": "Legg til app",
+      "title": "Logg inn på skrivbordet",
+      "unavailable": "Konneksjonen til skrivstoballe er ikkje tilgjengeleg enda."
+    },
+    "download": {
+      "appStore": {
+        "description": "Det same som Android, på iOS.",
+        "field": " App Store ",
+        "heading": "iPhone og iPad"
+      },
+      "browser": {
+        "action": "Logg inn",
+        "description": "Logg deg inn med kontoen din og appen opna rett i nettlesaren  telefon eller datamaskin.",
+        "field": "Browser",
+        "heading": "Bruk det no, ikkje noko å installere"
+      },
+      "desktop": {
+        "description": "Fotoparter, lange videoar og PDF rapporterar  den tunge versjonen.",
+        "field": "Computer",
+        "heading": "Windows og Linux"
+      },
+      "googlePlay": {
+        "description": "Telefonappen, med kamera, gallerie og stampt video.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Eg kjem snart",
+      "title": "Kvar skal du bruke Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "Straddetypet blir forkortet og staten blir koden, så adressen passar i to radar utan å dekka fotona.",
+        "field": "Adress",
+        "heading": "Fyllt inn med GPS, rettleg med hendene"
+      },
+      "code": {
+        "description": "Det finst slik at du kan sitera på eit bestemt foto i ein arbeidsordn eller ein rapport. Det går rotert nedover på høgre kant, eller sit med datablokken  du veljer.",
+        "field": "Foto-kode",
+        "heading": "14 karakter, teikna av ein krypteringsgenerator"
+      },
+      "note": "Eit felt slår på og av av av seg sjølv, og blokken forankrar seg på kva som helst av dei fire hjørna, i tre storlekar. Forhandsgranskinga bruker det eigentlege bildet ditt, ikkje eit generisk prøve: det du ser på skjermen er bokstavelegvis det som blir eksportert.",
+      "time": {
+        "description": "Ein knapp klemmer alle dei tre feltene tilbake til noet då det tok lengre tid enn eg hadde tenkt. Alle dei held seg til å kunne redigera.",
+        "field": "Tids og dato",
+        "heading": "Frå uret på utstyret, på det tidspunktet det vart fanga"
+      },
+      "title": "Kva går inn på bilda"
+    },
+    "footer": {
+      "description": "Lymark  fotografiske rekord med dato, tid og adresse.",
+      "documentsLabel": "Dokumentar",
+      "privacy": "Personverner",
+      "support": "Støtte:",
+      "terms": "Treningar"
+    },
+    "hero": {
+      "ctaAccount": "Gå til kontoen min",
+      "ctaLogin": "Logg inn",
+      "ctaSignup": "Skapa ein gratis konto",
+      "description": "Lymark stemplar tida, datoen, veitsdagen, adressen og ein sporingskode rett på bildet. Filen som kjem ut av appen ber informasjonen inne i den  ikkje som metadata som rider langs, som den første WhatsApp framover stryppa bort.",
+      "eyebrow": "Dokumentasjon med fjeldefotoklar",
+      "heading": "Fotoen lèt telefonen din fortelja når, kvar og kva.",
+      "meta": {
+        "account": "Ein-tap konto",
+        "android": "Android og nettlesar",
+        "language": "Brasilsk portugisisk",
+        "onDevice": "Bilder heldt på maskinen"
+      },
+      "note": "Det er ikkje noko å installera."
+    },
+    "nav": {
+      "account": "Konto",
+      "home": "Heime",
+      "homeLabel": "Lymark , startseinna",
+      "label": "Hovudsak",
+      "privacy": "Personvernd",
+      "signIn": "Logg inn",
+      "terms": "Trenslepp",
+      "verify": "Verifisera"
+    },
+    "process": {
+      "capture": {
+        "description": "Adresseløysinga startar når fotona kjem inn. Felta vert opna for justering medan dei går.",
+        "field": "Ta opp",
+        "heading": "Kamera eller galleri"
+      },
+      "note": "Dei to handlingane blir halde skilnad med vilje. Spara og dela løyser ulike problem, og å foldje dei inn i ein knapp ville dra kvar og ein som berre vil arkivera fotona gjennom ein sendskjerm.",
+      "save": {
+        "description": "Det sitar saman med resten av bilda på telefonen, tilgjengelig for alle app  inkludert etter at du avinstallerar Lymark .",
+        "field": "Ta med deg",
+        "heading": "Gå til utstyrsgaleriet"
+      },
+      "share": {
+        "description": "WhatsApp , e-post, Drive: Destinasjonen vert valt av operativsystemet, og appen tek ikkje del i sending.",
+        "field": "Deling",
+        "heading": "Åpnar systempartsidlet"
+      },
+      "title": "Veien ein foto tek"
+    },
+    "skipToContent": "Skip til innhald",
+    "specimen": {
+      "caption": "Den amber-regelen startar og endar på kantene av siftar, ikkje på tekskassene.",
+      "label": "Sempelt på Lymark-stemplet: tid 07:42, dato 12. august 2026, onsdag, adressen i Guarujá og ein fotokode."
+    },
+    "title": "Lymark  dato, tid og adressumerk for fjeldefotoklipp",
+    "verify": {
+      "caveat": "Stikket vitnar om integriteten til arkivet og tidspunktet for utgivelsen. Det som stemplet deklarerer  adresse, dato, tid  er utgjevars deklarasjon.",
+      "checking": "Eg sjekkar...",
+      "declarationNote": "Det som merkar (adress, dato, time) er utgjevarens erklæring  merker seglet integritet og utgivelsen, ikkje innehållet.",
+      "intro": "Droppa eller velg ein foto som er eksportert av Lymark og sjå om det er akkurat slik det forlot appen  og kven som gav det ut, når.",
+      "noSealBody": "Denne filen har ikkje Lymark-segling. Den kan ha vore eksportert offline, før segelen eksisterte, eller kanskje ikkje kjem frå Lymark. Avsaknaden av segel beviser ikkje for å ha vore manipulert.",
+      "noSealTitle": "Ingen segl",
+      "notConfigured": "Verifikasjon er ikkje tilgjengeleg enda.",
+      "pick": "Velg filen",
+      "previewAlt": "Det verifiserte bildet, stempel synleg",
+      "privacyNote": "Verifikasjon skjer i nettlesaren din. Filen vert ikkje sendt til nokon server.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Utrude",
+      "tamperedBody": "Innholdet samsvarar ikkje med segelen: arkivet vart endra etter utgivelsen, eller segelen tilhøyr ein annan arkiv.",
+      "tamperedTitle": "Utilpasning",
+      "title": "Verifisera autentisitet",
+      "unsupported": "Denne nettlesaren understøtter ikkje signaturverifikasjon. Prøv ein gjeldende nettlesar."
+    }
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Isikuvabaduste poliitika",
+      "description": "Kuidas Lymark rakendus käsitleb fotosid, asukohta, ajalugu ja teie konto."
+    },
+    "title": "Isikuvabaduste poliitika",
+    "updated": "Viimane värskendamine: 16. august 2026 · Lymark rakendus, versioon 1.3.0",
+    "intro": "Käesolevas poliitikas kirjeldatakse, kuidas Lymark rakendus käsitleb isikuandmeid. See vastab Lei nr 13.709/2018 (Üldne isikuandmete kaitse seadus  LGPD) ja määrusele (EL) 2016/679 (Üldne isikuandmete kaitse määrus  GDPR ), ning see kehtib identifitseeriva all levitatud rakenduse suhtes <strong> com.lycosteam.lymark </strong>ja selle veebisaidi.",
+    "s01": {
+      "title": "Ühes lauses",
+      "p1": " Lymark  <strong>ei edasta teie fotosid ega asukohta</strong>Kõik, mida rakendus toodab  pilte, aadressid, ajalugu ja eelistused  jääb teie enda seadmesse, teie kontrolli all.",
+      "p2": "Punktis 05 kirjeldatud üks erand on olemas: GPS-koordinate muutmiseks lugemiliseks aadressiks küsib seadme operatsioonisüsteem välist geokodierimis teenust."
+    },
+    "s02": {
+      "title": "Kellele käesolev poliitika kehtib",
+      "p1": "See kehtib kõigi kohta, kes kasutavad rakendust või külastavad seda veebisaiti.Brasiili andmesubjektide puhul toimub töötlemine LGPD ja riikliku andmekaitseasutuse (ANPD) järelevalve all."
+    },
+    "s03": {
+      "title": "Kes on juht?",
+      "p1": "Isikuandmete töötleja  <em>kontrollator</em>, LGPD  terminoloogias on 29.015.357 AMAD ALI HAMMOUD , registreeritud nimekirjas CNPJ 29.015.357/0001-25 , mille aadress on Avenida Ana Costa, 433, Gonzaga, Santos - SP .",
+      "p2": "Isikuandmete töötlemise eest vastutav isik LGPD artikli 41 tähenduses on Amad Ali Hammoud , kellega saab ühendust võtta <email> contato@lymark.app </email>. Arvestades töötlemise suurust ja olemust, mis ei hõlma mõõtmelisi tundlikke andmeid ega süstemaatilist järelevalvet, ei ole kohustus määrata ametnikku.<em>Andmekaitseametnik</em>vastavalt GDPR artiklile 37 ."
+    },
+    "s04": {
+      "title": "Millist teavet rakendus käsitleb",
+      "p1": "Kõik allpool esitatud andmed salvestatakse ainult rakenduse privaatses alas seadme sees ja ükski neist ei saadeta arendajale.",
+      "defs": {
+        "photos": {
+          "term": "Fotod",
+          "def": "Galerii väljastatud või kaameraga tehtud pildist ja vee märgiga eksporditud faili. Fotod võivad sisaldada kolmandate isikute isikuandmeid."
+        },
+        "location": {
+          "term": "Asukoht",
+          "def": "Läbipääsliku laius- ja pikkusõna, mis on saadud üks kord fotograafia kohta, ainult aadressivälja täitmiseks. Koordinate ei salvestata: foton kõrval säilitatakse ainult saadud aadressi tekst."
+        },
+        "datetime": {
+          "term": "Päev, aeg ja tööpäev",
+          "def": "Lugege seadme kellist kinnipidamise hetkel ja saate seda ise kohale viia."
+        },
+        "code": {
+          "term": "Foto kood",
+          "def": "Seekord 14 hexadecimalist tähtest, mis on joonistatud juhuslikult. See ei tulene ega seadme identifitseerimisest ega teie seadmest, ning see ei võimalda rakenduste jälgimist."
+        },
+        "history": {
+          "term": "Ajaloo",
+          "def": "Viimase 200 ekspordi andmed, mis sisaldavad seadme failile suunatud teed ja pildi peale märgistatud andmeid."
+        },
+        "preferences": {
+          "term": "Eelistused",
+          "def": "Näitavad väljad, asukoht, suurus ja muud vee märgivõimalused."
+        }
+      },
+      "p2": "rakendus <strong>ei koguda</strong>: nimi, e-posti, telefon, isikutunnistused, reklaami tunnistus, seadme tunnistus, kontaktandmed, kalendri, brausimise ajalugu, kasutustunnistused, kraasiaruanded või muud Reach-i kohta või seadme kohta."
+    },
+    "s05": {
+      "title": "Ainus teave, mis väljub seadmest",
+      "p1": "Kui sa andsid asukoormuse, palub rakendus operatsioonisüsteemi muuta GPS-koordinadid posti aadressiks.<strong>Google</strong>Android- seadmetel ja <strong>Õun</strong>iOS-seadmete puhul.",
+      "p2": "See side tuleb operatsioonisüsteemi kaudu, mitte Lymark-ist. rakendus ei saa sellest koopiat, ei vahenda seda ning ei saa juurdepääsu ükskõik misle, mis ei ole tagastatud aadressi. Reach-teenuse osutajate poolt läbi viidud töötlemisele reguleerivad nende omased privaatsuspoliitika.",
+      "p3": "<strong>Ükski foto ei lahku seadmest rakenduse toimingute kaudu.</strong>Kui kasutate Share-nähtit, edastatakse kujutis sihtotstarbelise rakenduse poolt, mida olete valinud süsteemi jagamise lehte  messenger, e-posti, pilve ladustamine  all selle rakenduse  privaatsuspoliitika."
+    },
+    "s06": {
+      "title": "Nõutavad loa andmise tingimused ja miks",
+      "defs": {
+        "camera": {
+          "term": "Kaamerat",
+          "def": "Veemärgi saamiseks tehtud foto. Nõutav ainult, kui tapite Tõnda foto."
+        },
+        "photos": {
+          "term": "Fotoid ja meediad",
+          "def": "Valida olemasolevat pilti ja kirjuta eksporditud faili galeriisse."
+        },
+        "location": {
+          "term": "Kasutamisel asukoht",
+          "def": "Täita aadressivälja. Nõutav esialgselt, ainult rakenduse kasutamisel, ja <strong>kunagi taustal</strong>."
+        }
+      },
+      "p1": "Kõik õigused on vabatahtlikud ja võivad seadme seadetes igal ajal tagasi lükata. Piiri lülitamine hoiab rakenduse täielikult toimivaks: aadress kirjutatakse siis sinu poolt. Galerii juurdepääsu lülitamine tak Reached'i automaatse salvestamise ja foto on endiselt jagatav."
+    },
+    "s07": {
+      "title": "Õiguslike alused ja eesmärgid",
+      "p1": "Asukoht käsitlemine toimub teie <strong>nõusolek</strong> LGPD artiklite 7 I ja 6(1) a  GDPR , mis väljendatakse, kui te andsite süsteemile loa, ja mida saab igal ajal tagasi võtta Reach, ilma et see piiraks enne tagasivõtmist tehtud töötlemise seaduslikkust.",
+      "p2": "Ülejäänud andmete töötlemine toimub <strong>Teie taotletud funktsiooni tulemuslikkus</strong> LGPD artiklite 7, V ja 6(1)(b, kuna ilma selleta ei ole rakenduse tootmiseks vee märgi.",
+      "p3": "Kontiandmete töötlemine põhineb lepingu täitmisel (LGPD artiklid 7, V; GDPR artiklid 6(1)(b)). Õigustatud huvide alusel töötlemine (LGPD artiklid 7, IX; GDPR artiklid 6(1)(f)) toimub ainult turvalisuse ja pettuste vältimiseks  näiteks serverile taotluste IP-aadressi salvestamine."
+    },
+    "s08": {
+      "title": "Rahvusvaheline ülekanne",
+      "p1": "Kontoandmeid töötleb autentimisprotsessor (Clerk, Inc., Ameerika Ühendriigid), kes kujutab endast andmete rahvusvahelist edastamist, mis põhineb standardlepingute tingimustel ja LGPD artiklites 33 ja GDPR artiklites 44-49.",
+      "p2": "Seda veebisaiti korraldab Vercel Inc. punkti 14 kohaselt ."
+    },
+    "s09": {
+      "title": "Kolmandate isikutega jagamine",
+      "p1": "Arendaja ei jaga, müüa, renti ega anna isikuandmeid kolmandatele isikutele.<em>töötaja</em>: Clerk, Inc., mis pakub autentimisteenust ja salvestas e-posti, konto identifitseerija ja plaanide andmed, mis on lepinguliselt seotud arendaja juhistega. Kui sa sisse logid Google'iga või Apple'iga, töötavad need pakkuja sisse logimise andmeid oma poliitika alusel; arendaja saab neist ainult e-posti ja identifitseerija, mida on vaja konto loomiseks."
+    },
+    "s10": {
+      "title": "Säilitamine, säilitamine ja turva",
+      "p1": "Andmed asuvad rakenduse privaatses alas, mida kaitseb rakenduste vaheline operatsioonisüsteemi isolatsioon ja seadme ekraanilõike.<strong>puudega</strong>, et kasutaja Google'i kontole ei saadeta ajalugu ja eelistusi.",
+      "p2": "Pange säilitamine täielikult teie poolt kontrollitud: andmed jäävad, kuni need kustutatakse rakenduses ise, ja ajalugu jätab automaatselt vanemad eemaldades kaks sajandit esemeid, kustutades ka vastavaid failid. rakenduse eemaldamine kustutab kõik, mida see salvestas.",
+      "p3": "Ükski süsteem ei ole vigastamatu. Kontoandmed  e-posti, identifitseerimismärk, plaan ja arv  on omal autentimisprotsessoril, vastavalt tema turvameetmetele. Fotod, aadressid ja asukoht ei ole keskse salvestuses ja seetõttu ei saa nad arendaja infrastruktuurist lekke. Kui turvainfarent mõjutab kontoandmeid, teavitab arendaja asutust ja andmesubjekte vastavalt LGPD artiklile 48 ja GDPR artiklile 33."
+    },
+    "s11": {
+      "title": "Kui sa pildistad teisi inimesi",
+      "p1": "Kui fotograafid tunnitavaid inimesi oma kutsealase tegevuse käigus,<strong>- Sa oled...</strong>on saanud andmete töötleja, mis käsitleb kujutatud andmesubjekte, ning on teie ülesanne anda nende õiguste õiguslik alus, teave ja vastus."
+    },
+    "s12": {
+      "title": "Teie õigused",
+      "p1": "LGPD artiklites 18 ja GDPR artiklites 15-22 garanteerid teile õigused kinnitamiseks ja juurdepääsu, parandamiseks, kustutamiseks, anonüümseks muutmiseks, blokeerimiseks, kantudusele, töötlemise piiramiseks, vastuväiteid, nõusoleku tagasivõtmiseks ja jagamise kohta teabe andmiseks.",
+      "p2": "Fotoid, aadressid, ajalugu ja eelistused on ainult teie seadmes ja neid õigusi kasutatakse otse rakenduses: vaadata ja kustutada galeriis, parandada mis tahes valdkondi enne eksportimist, tühistada asukoha luba süsteemi seadetes ja kustutada kõik rakenduse eemaldamisega  arendaja ei saa teie jaoks neid andmeid kasutada, eksportida või kustutada, sest see seda ei hoia.",
+      "p3": "Küsimuste või ametlike taotluste kohta kirjuta <email> contato@lymark.app </email>Teil on ka õigus esitada kaebus <strong> ANPD </strong>, Brasiilia või teie liikmesriigi järelevalveasutusega Euroopa Liidus."
+    },
+    "s13": {
+      "title": "Automaatsed otsused",
+      "p1": "Teid ei puuduta automaatselt tehtud otsused, profiilide koostamine ega töötlemine, mis tooksid teie suhtes õiguslikke mõjusid vastavalt LGPD artiklile 20 ja GDPR artiklile 22."
+    },
+    "s14": {
+      "title": "Selle veebisaidi kohta",
+      "p1": "Sellel veebisaidil ei ole analüüsi, ei ole reklaami ja ei ole sotsiaalvõrgu nuppe.<strong>küpsised, mis on rangelt vajalikud</strong>Teie konto istungil, mida seadib autentimisprotsessor (punkt 09) kirja sisenedes; ei ole jälgimis- ega reklaamikookeid. Fontsid saadetakse veebisaidi oma domeenist. Teie brauseri poolt kolmandatele isikutele esitatud ainukesed taotlused on kirja sisenemise ja konto ekraanid, mis on adresseeritud autentimisprotsessorile  ja kui seda valite, kirja sisenemise teenusepakkujale (Google või Apple).",
+      "p2": "Veebileht on hoitud <strong> Vercel Inc. </strong>, mis töötlejaena registreerib tehnilisi juurdepääsuandmeid  IP-aadress, kuupäev, aeg ja taotletud ressurss  nii kaua kui see on vajalik hoosti turvalisuse ja toimimise jaoks. Õiguslik alus on teenuse turvalisuse säilitamise õiguspärane huvi, LGPD artiklid 7, IX ja GDPR artiklid 6(1)(f)."
+    },
+    "s15": {
+      "title": "Käesolevas poliitika muutused",
+      "p1": "Muudatused avaldatakse sellel lehel, koos uues ajakohastamiskuupäevadega."
+    },
+    "s16": {
+      "title": "Lapsed ja noorukid",
+      "p1": "Lymark on töövahend, mis on mõeldud 18-aastastele inimestele."
+    },
+    "s17": {
+      "title": "Kohaldav õigus",
+      "p1": "Käesolevat poliitikat reguleerib Brasiilia õigus, ilma et see piiraks GDPR kohaldamist selle käsitlevaid andmesubjekte suhtes."
+    },
+    "note": "Vt ka <terms>Kasutamise tingimused</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Kasutamise tingimused",
+      "description": "Lymark rakenduse kasutustingimused: mida see teeb, mida ei tee ja kes on fotosid käsitleva sisu eest vastutav."
+    },
+    "title": "Kasutamise tingimused",
+    "updated": "Viimane värskendamine: 16. august 2026 · Lymark rakendus, versioon 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Mida rakendus teeb",
+      "p1": "Lymark kestab info komplekti fotosse  aeg, kuupäev, tööpäev, aadress ja identifitseerimiskood  ning genereerib uue pildifaili, milles selle teave on sisestatud pikslites."
+    },
+    "s02": {
+      "title": "Mida rakendus ei tee",
+      "p1": "See punkt on kõige olulisem neist ja me palume seda lugeda tähelepanelikult.",
+      "items": {
+        "certify": "<strong>Aplikatsioon ei kinnita ega tõenda midagi.</strong>See ei ole kohtu- ja meditsiiniline uurimine, see ei anna avalikku usaldust ja see ei ole eksperdi tõendusmaterjali.",
+        "editable": "<strong>Iga valdkonna saab kasutaja muuta.</strong>Aega, kuupäeva, aadressi ja koodi võib eksportimisel vabalt muuta, kui on ette nähtud: spetsialistil on vaja olla võimeline parandama GPS-i vale aadressi.",
+        "clock": "<strong>Aeg tuleb seadme kellist.</strong>, mis võib olla vale või on seadistatud käsitsi.",
+        "address": "<strong>Adressi on hinnang.</strong>Selle täpsus sõltub GPS-signaalist ja operatsioonisüsteemi kaartiteenuse andmebaasist.",
+        "code": "<strong>Foto kood ei ole notari kontoris registreeritud.</strong>See on sisekontrolli jaoks juhuslik tunnistus, millel ei ole tõendusväärtus."
+      },
+      "p2": "Kui teie kasutusjuhtum nõuab tõendeid, mis on õiguspäraselt vastu kolmandate isikute, otsige notariaalkirja või digitaalse sertifitseerimisteenuse, millel on tähtaegseistm  Lymark, mis ei asenda mõlema."
+    },
+    "s03": {
+      "title": "Teie kohustused",
+      "items": {
+        "photos": "Te olete ainus, kes vastutab nende pildide, mida te võtate, nende sisu ja kasutamise eest, mida te genereerite.",
+        "thirdParties": "Kui pildistate teisi inimesi, nende vara või nende ruume, siis on teie ülesanne saada vajalikud luba ning järgida kujutatud andmesubjektide suhtes piltide õigusi, ametikohustustust ja üldist isikuandmete kaitse seadust.",
+        "prohibited": "Aplikaadi kasutamine vale andmete koostamiseks, kellegi eksitamiseks, teenuse osutamata osutamise simulatamiseks või ebaseadusliku tegevuse teostamiseks on keelatud.",
+        "backups": "See on sinu ülesanne hoida varundust, mida sa arvad oluliseks."
+      }
+    },
+    "s04": {
+      "title": "Kasutamislitsents",
+      "p1": "Me anname teile isikliku, tagasivõtva, mitteeksklusiivse ja üleandmata litsentsi rakenduse paigaldamiseks ja kasutamiseks, sealhulgas ametlikel eesmärkidel.",
+      "p2": "<strong>Su fotod on sinu omad.</strong>Lymark nimi, kaubamärk ja visuaalne identiteet jäävad arendaja omandiks."
+    },
+    "s05": {
+      "title": "Kasutavus ja uuendused",
+      "p1": "Toimingut ei taga katkestamatus, iga seadmega kokkusobivus ega kohustus parandada või uued versioonid.",
+      "p2": "Ekspordi tehtud pildi kvaliteet sõltub seadmest ja operatsioonisüsteemist ning võib olla originaalfotost väiksem resolutsioon."
+    },
+    "s06": {
+      "title": "Vastutuse piiramine",
+      "p1": "Brasiilia õigusest lubatud maksimaalses ulatuses ei vastuta arendaja kaudsete kahjude, kaotusetulekute, andmete kaotamise või kahjude eest, mis tulenevad märgistatud teabe alusel tehtud otsustest  sealhulgas kohtu või selle väljastpoolt esitatud vaidlustamisest rakenduse poolt loodud fotograafia sisu vastu.",
+      "p2": "See piirang <strong>ei eemalda</strong>tarbijale garanteeritud õigused seaduses nr 8.078/1990 ega vastutus tahtliku kuritegevuse või raske hooletuse eest."
+    },
+    "s07": {
+      "title": "Lõpetamine",
+      "p1": "Sa võid igal ajal lõpetada rakenduse kasutamise: konto kustutamine kustutab selle serveris olevaid andmeid ja rakenduse eemaldamine kustutab seadmes säilitatud andmeid."
+    },
+    "s08": {
+      "title": "Käesolevate tingimuste muutused",
+      "p1": "Muudatused avaldatakse sellel lehel uue värskendamiskuupäevaga."
+    },
+    "s09": {
+      "title": "Kohustuslik õigus ja foorum",
+      "p1": "Brasiilia õigus on kohal.Nadest tingimustest tulenevate vaidluste lahendamiseks valitud foorum on kasutaja elukoha foorum."
+    },
+    "note": "Andmete käitlemise kohta vt <privacy>Isikuvabaduste poliitika</privacy>Küsimused:<email> contato@lymark.app </email>."
+  }
+}

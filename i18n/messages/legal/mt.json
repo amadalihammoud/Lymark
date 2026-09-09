@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Politika ta' Privatezza",
+      "description": "Kif l-app Lymark timmaniġġja l-istampi, il-post, l-istorja u l-kont tiegħek."
+    },
+    "title": "Politika ta' Privatezza",
+    "updated": "L-aħħar aġġornata: 16 ta' Awwissu 2026 · App Lymark, verżjoni 1.3.0",
+    "intro": "Din il-politika tiddeskrivi kif l-app Lymark timmaniġġja informazzjoni personali. Hija konformi mal-Lei Nru 13.709/2018 (Liġi Ġenerali dwar il-Protezzjoni tad-Data Personali  LGPD) u mar-Regolament (UE) 2016/679 (Regolament Ġenerali dwar il-Protezzjoni tad-Data  GDPR ), u tapplika għall-app distribwit taħt l-identifikatur <strong> com.lycosteam.lymark </strong>u għal dan il-websajt.",
+    "s01": {
+      "title": "F'frażi waħda",
+      "p1": " Lymark  <strong>ma jittrażmettix il-ritratti tiegħek jew il-post tiegħek</strong>. Kull ħaġa li l-app tipproduċi  immaġini, indirizzi, storja u preferenzi  tibqa' fuq it-tagħmir tiegħek stess, taħt il-kontroll tiegħek. Hemm kont, meħtieġ biex tuża l-app u għall-abbonament: is-server iżomm l-email tiegħek, l-identifikatur tal-kont, il-pjan u l-għadd ta' ritratti esportati  u xejn ieħor.",
+      "p2": "Hemm eċċezzjoni waħda, deskritta fil-punt 05: biex il-koordinati tal-GPS jiġu kkonvertiti f'indirizz li jista' jaqra, is-sistema operattiva tal-apparat tikkonsulta servizz ta' ġeokodifikazzjoni estern."
+    },
+    "s02": {
+      "title": "Min japplika din il-politika",
+      "p1": "L-applikazzjoni tapplika għal kull min juża l-app jew iżur dan is-sit web. Għall-persuni li huma suġġetti għad-dejta fil-Brażil, il-ipproċessar isir skont LGPD u s-superviżjoni tal-Awtorità Nazzjonali għall-Protezzjoni tad-Data (ANPD)."
+    },
+    "s03": {
+      "title": "Min hu l-kontrollur",
+      "p1": "Il-kontrollur tad-data personali  <em>kontrollur</em>, fit-terminoloġija tal-LGPD  huwa 29.015.357 AMAD ALI HAMMOUD , irreġistrat taħt CNPJ 29.015.357/0001-25 , bl-indirizz Avenida Ana Costa, 433, Gonzaga, Santos - SP .",
+      "p2": "Il-persuna responsabbli mill-ipproċessar tad-data personali, għall-finijiet tal-Artikolu 41 tal-LGPD , hija Amad Ali Hammoud , li tista' tiġi kkontattata fuq <email> contato@lymark.app </email>. Minħabba l-volum u n-natura tal-ipproċessar  li ma jinvolvix data sensittiva fuq skala jew monitoraġġ sistematiku  m' hemm l-ebda obbligu li jinħatar <em>Offiċjal għall-Protezzjoni tad-Data</em>skont l-Artikolu 37 tal-GDPR ."
+    },
+    "s04": {
+      "title": "Liema informazzjoni t- app timmaniġġja",
+      "p1": "L-informazzjoni kollha hawn taħt hija rreġistrata esklużivament fiż-żona privata tal-app ġewwa l-apparat, u l-ebda waħda minnha ma tinħareġ lill-iżviluppatur.",
+      "defs": {
+        "photos": {
+          "term": "Ritratti",
+          "def": "L-immaġni li tagħżel mill-gallerja jew tikkopri bil-kamera, u l-fajl esportat bl-ilma."
+        },
+        "location": {
+          "term": "Il-post",
+          "def": "Il-latitudni u l-longitudni approssimattivi, miksuba darba għal kull cattura, għall-għan uniku li timla l-qasam tal-indirizz. Il-koordinati ma jiġbrux: it-test tal-indirizz li jirriżulta biss huwa miżmum, flimkien mal-istampa."
+        },
+        "datetime": {
+          "term": "Id-data, l-ħin u l-ġurnata tal-ġimgħa",
+          "def": "Aqra mill-għajra tal-apparat fil-mument tal-qabda, u editabbli minnek."
+        },
+        "code": {
+          "term": "Kodu tal-istampa",
+          "def": "Sewwenza ta' 14-il karattru hexadeċimali mġarrab b'mod każwali. Dan ma jġibx minn identifikatur ta' apparat jew minn wieħed tiegħek, u ma jippermetti l-ebda traċċar bejn l-applikazzjonijiet."
+        },
+        "history": {
+          "term": "Storja",
+          "def": "Rekord tal-aħħar 200 esportazzjoni, li fih il-passaġġ tal-fajl fuq il-mezz u d-dejta stampata fuq l-immaġni."
+        },
+        "preferences": {
+          "term": "Preferenzi",
+          "def": "Il-kamps viżibbli, il-pożizzjoni, id-daqs u l-għażliet oħra ta' watermark."
+        }
+      },
+      "p2": "L- app <strong>ma jiġbrux</strong>: isem, email, telefon, dokumenti ta' identità, identifikatur tal-ikbarkar, identifikatur tal-apparat, dejta ta' kuntatt, kalendarju, storiku ta' navigazzjoni, metriċi tal-użu, rapporti ta' crash jew kwalunkwe informazzjoni oħra dwarek jew dwar it-tagħmir tiegħek. M'hemm l-ebda SDK ta' analiżi, reklamar, attribwazzjoni jew traċċar imwaħħal."
+    },
+    "s05": {
+      "title": "L-unika informazzjoni li telaq mill-apparat",
+      "p1": "Meta tagħti l-permess tal-lokalizzazzjoni, l-app titlob lis-sistema operattiva biex tikkonverti l-koordinati GPS f'indirizz postali.<strong>Google</strong>fuq apparat Android u <strong>Applu</strong>fuq apparat iOS.",
+      "p2": "Dan il-komunikazzjoni ġejja mis-sistema operattiva, u mhux minn Lymark. L-app ma tirċievi l-ebda kopja tagħha, ma tirmedjaha u m'għandhiex aċċess għal xejn barra l-indirizz mibgħut.",
+      "p3": "<strong>L- ebda ritratt ma jħallih mill- apparat permezz ta ' xi azzjoni tal- app.</strong>Jekk tuża l-buttuna Ssegwi, l-immaġni tiġi trażmessa mill-app tad-destinazzjoni li tagħżel fis-siġra tas-sistema ta 'ssegwiru messenger, email, ħażna fl-isbaħ  taħt il-politika ta' privacy ta' dik l-app."
+    },
+    "s06": {
+      "title": "Permessi mitluba, u għaliex",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Biex tieħu l-istampa li se tirċievi l-watermark. Mitluba biss meta tikklikkja Tħalla l-istampa. L-app ma titlobx aċċess għall-mikrofonu."
+        },
+        "photos": {
+          "term": "Ritratti u media",
+          "def": "Biex tagħżel immaġni eżistenti u tikteb il-fajl esportat fil-gallerja. L-aċċess huwa ristrett għal ritratti, u l-permess biex tikteb jintuża biss biex tikteb  l-app ma tarfx jew taqra l-gallerja tiegħek."
+        },
+        "location": {
+          "term": "Il-post waqt l-użu",
+          "def": "Biex timtela l-kamp ta' indirizz. Mitluba fil-pront, biss waqt li l-app tkun qed tintuża, u <strong>qatt fil-fond</strong>."
+        }
+      },
+      "p1": "L-permessi kollha huma fakultattivi u jistgħu jiġu revokati fi kwalunkwe ħin fis-settings tad-disposizzjoni. Jekk ma tkunx tista' tikseb l-lokalizzazzjoni, l-app tibqa' funzjonali bis-sħiħ: l-indirizz huwa mbagħad imdaħħal minnek. Jekk ma tkunx tista' tikseb l-aċċess għall-galerija, ma tistax tispeċifika l-informazzjoni awtomatikament, u l-istampa xorta tista' tiġi kondiviża."
+    },
+    "s07": {
+      "title": "Bażijiet u skopijiet legali",
+      "p1": "Il-ipproċessar tal-post isir fuq il-bażi ta' l-informazzjoni tiegħek <strong>il-kunsens</strong> L-Artikolu 7, I tal-LGPD u l-Artikolu 6(1) ) tal-GDPR  espressi meta tagħti l-permess tas-sistema, u jistgħu jiġu revokati fi kwalunkwe ħin, mingħajr preġudizzju għall-legalità tal-ipproċessar li sar qabel ir-revoka.",
+      "p2": "Il-ipproċessar tad-data li tibqa' jsir għall-<strong>l-prestazzjoni tal-karatteristika li talbet</strong> L-Artikolu 7, V tal-LGPD u l-Artikolu 6(1)(b) tal-GDPR  peress li mingħajr dan ma jkun hemm l-ebda marka ta' ilma għall-app li tipproduċi.",
+      "p3": "Il-ipproċessar tad-dejta tal-kont ikun ibbażat fuq l-eżekuzzjoni ta' kuntratt (art. 7, V, LGPD; art. 6(1) 1) b)). Il-ipproċessar ibbażat fuq interess leġittimu (art. 7, IX, LGPD; art. 6(1) 1) f)) jeżisti biss għal sigurtà u prevenzjoni tal-frodi  pereżempju, ir-reġistrazzjoni tal-indirizz IP tat-talbiet lis-server. M'hemm l-ebda proċessar għal reklamar, profiljar, analiżi tal-imġiba jew għal xi skop sekondarju, u l-ebda proċessar ta' kategoriji speċjali ta' data jew data sensittiva mill-iżviluppatur."
+    },
+    "s08": {
+      "title": "Trasferiment internazzjonali",
+      "p1": "Id-data tal-kont tiġi pproċessata mill-proċessur ta' awtentikazzjoni (Clerk, Inc. , l-Istati Uniti), li jikkostitwixxi trasferiment internazzjonali ta' data, abbażi ta' klawżoli kuntrattwali standard u l-mekkaniżmi tal-arti ta' LGPD 33 u l-arti ta' GDPR. 44 sa 49.",
+      "p2": "Dan il-websajt hija ospitata minn Vercel Inc. , skont it-termini tal-punt 14."
+    },
+    "s09": {
+      "title": "Is-sħubija ma' partijiet terzi",
+      "p1": "L-iżviluppatur ma jaqsmux, mibjugħ, jirkirax jew jgħaddi d-data personali lil partijiet terzi.<em>proċessur</em>Clerk, Inc. , li jipprovdi s-servizz ta' awtentikazzjoni u jaħżen l-email, l-identifikat tal-kont u d-dejta tal-pjan, marbuta b'kuntratt għall-istruzzjonijiet tal-iżviluppatur. Jekk inti tidħol mal-Google jew Apple, dawk il-fornituri jipproċessaw id-dejta tal-login skont il-politiki tagħhom stess; l-iżviluppatur jirċievi minnhom biss l-email u l-identifikat meħtieġa biex joħolqu l-kont."
+    },
+    "s10": {
+      "title": "Il-ħażna, il-ħażna u s-sigurtà",
+      "p1": "Id-dejta tinsab fl-ispazju privat tal-app, protetta mill-iżolament tas-sistema operattiva bejn l-applikazzjonijiet u mill-iskrin tal-apparat.<strong>diżabbilanti</strong>, sabiex l-istorja u l-preferenzi ma jintbagħtux lill-kont Google tal-utent.",
+      "p2": "L-istorja awtomatikament tirċievi l-eqdem meta tgħaddi żewġ mitt oġġett, tneħħi wkoll il-fajls korrispondenti. Jekk tinstalla l-app tneħħi dak kollu li jkun maħżun.",
+      "p3": "L-informazzjoni tal-kont  E-mail, l-identifikatur, il-pjan u l-għadd  huma miżmuma mill-proċessur tal-awtentikazzjoni, skont il-miżuri ta' sigurtà tiegħu. Il-photos, l-indirizzi u l-post ma jeżistux f'ebda repożitorju ċentrali, u għalhekk ma jistgħux jinfirex mill-infrastruttura tal-iżviluppatur. Jekk inċident ta' sigurtà jaffettwa d-data tal-kont, l-iżviluppatur għandu jinnotifika lill-awtorità u s-suġġett tad-data skont l-Artikolu 48 LGPD u l-Artikolu 33 GDPR."
+    },
+    "s11": {
+      "title": "Meta tistarraf nies oħra",
+      "p1": "Meta tistampaw nies li jistgħu jiġu identifikati matul l-attività professjonali tiegħek, <strong>inti</strong>Il-proċessur ma jieħux sehem f'dan il-proċess u ma jkollu l-ebda aċċess għall-immaġini."
+    },
+    "s12": {
+      "title": "Id-drittijiet tiegħek",
+      "p1": "L-Artikolu 18 tal-LGPD u l-Artikoli 15 sa 22 tal-GDPR jiggarantixxulek id-drittijiet ta' konferma u aċċess, korrezzjoni, tħassar, anonimizzazzjoni, blokkar, portabilità, restrizzjoni tal-ipproċessar, oġġezzjoni, revoka tal-kunsens u informazzjoni dwar il-kondiviżjoni.",
+      "p2": "L-istampi, l-indirizzi, l-istorja u l-preferenzi jirresjedu biss fuq it-tagħmir tiegħek, u dawk id-drittijiet huma eżerċitati direttament fl-app: tara u tħassar l-entrati fit-tab tal-Gallerja, tikkorrixxi kwalunkwe qasam qabel l-esportazzjoni, tirrevoka l-permess tal-lokalità fis-settings tas-sistema, u tħassar kollox billi tneħħi l-app  l-iżviluppatur ma jistax jaċċessa, jesporta jew iħassar dak id-dejta għalik, għax ma jżommxha. Fir-rigward tad-data tal-kont  email, pjan u kont  tista' taraha fuq il-paġna tal-kont u titlob il-korrezzjoni, esportazzjoni jew tħassar f'email tal-kuntatt ta' din il-Politika ; it-tħassir tal-kont iħassar dik id-dejta fil-proċessur tal-awtentikazzjoni.",
+      "p3": "Għal mistoqsijiet jew talbiet formali, ikteb lil <email> contato@lymark.app </email>Għandek ukoll id-dritt li tressaq ilment lill-<strong> ANPD </strong>, fil-Brażil, jew mal-awtorità superviżorja tal-Istat Membru tiegħek, fl-Unjoni Ewropea."
+    },
+    "s13": {
+      "title": "Deċiżjonijiet awtomatizzati",
+      "p1": "Ma hemm l-ebda deċiżjoni awtomatizzata, profilaġġ jew pproċessar li jipproduċi effetti legali dwarek, skont l-Artikolu 20 tal-LGPD u l-Artikolu 22 tal-GDPR."
+    },
+    "s14": {
+      "title": "Dwar dan is-sit",
+      "p1": "Dan is-sit m'għandux analitika, ma juri l-ebda reklam u ma jdaħħal l-ebda buttuni tan-netwerks soċjali.<strong>cookies strettament meħtieġa</strong>għall- sessjoni tal-kont tiegħek, impostata mill-proċessur ta' awtentikazzjoni (punt 09) meta tidħol; l-ebda cookies ta' traċċar jew reklamar. Il-fonti huma sservi mid-dominju stess tas-sit. L-uniku talbiet li l-browser tiegħek jagħmel lil partijiet terzi huma dawk tal-iskrinjiet tal-awtentikazzjoni u tal-kont, indirizzati lill-proċessur ta' awtentikazzjoni  u, jekk tagħżel, lill-fornitur ta' awtentikazzjoni (Google jew Apple).",
+      "p2": "Is-sit web huwa ospitat minn <strong> Vercel Inc. </strong>, li bħala proċessur jirreġistra d-dejta teknika ta' aċċess  Indirizz IP, data, ħin u r-riżorsi mitluba  sakemm ikun meħtieġ għas-sigurtà u l-operat tal-hosting. Il-bażi legali hija l-interess leġittimu li jinżamm is-sigurtà tas-servizz, l-Artikolu 7, IX tal-LGPD u l-Artikolu 6(1)(f) tal-GDPR."
+    },
+    "s15": {
+      "title": "Bidliet għal din il-politika",
+      "p1": "Il-bidliet se jiġu ppubblikati fuq din il-paġna, b'data aġġornata ġdida."
+    },
+    "s16": {
+      "title": "It-tfal u l- adolexxenti",
+      "p1": "Lymark huwa għodda ta' ħidma, maħsuba għal persuni ta' 18-il sena jew aktar."
+    },
+    "s17": {
+      "title": "Il-liġi applikabbli",
+      "p1": "Din il-politika hija rregolata mil-liġi talBrażil, mingħajr preġudizzju għall-applikazzjoni tal-GDPR għas-suġġetti tad-data li tkopri."
+    },
+    "note": "Ara wkoll il-<terms>Termini ta' Użu</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Termini ta' Użu",
+      "description": "Il-kundizzjonijiet ta' użu tal-app Lymark: x'tagħmel, x'ma tagħmilx, u min hu responsabbli għall-kontenut tal-istampi."
+    },
+    "title": "Termini ta' Użu",
+    "updated": "L-aħħar aġġornata: 16 ta' Awwissu 2026 · App Lymark, verżjoni 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "X' tagħmel l- app",
+      "p1": "Lymark jġib set ta' informazzjoni fuq ritratt  ħin, data, jum tax-xogħol, indirizz u kodiċi ta' identifikazzjoni  u jiġġenera fajl ta' stampa ġdid b'dik l-informazzjoni mibnija fil-pixels. Huwa għodda għall-organizzazzjoni u r-reġistrazzjoni tax-xogħol fuq il-post."
+    },
+    "s02": {
+      "title": "X' ma jagħmelx l- app",
+      "p1": "Dan l-artikolu huwa l-aktar importanti minn dawn it-termini, u nixtiequ li naqraw b'attenzjoni.",
+      "items": {
+        "certify": "<strong>L- app ma tiċċertifikax jew tiċċertifika xejn.</strong>Dan ma hux eżami forensiku, ma joħroġx dokument ta' fidi pubblika u ma jikkostitwixxix evidenza esperta.",
+        "editable": "<strong>Kull qasam huwa editabbli mill-utent.</strong>Id-data, l-ħin, l-indirizz u l-kodiċi jistgħu jinbidlu liberament qabel l-esportazzjoni, skont id-disinn: il-professjonist jeħtieġ li jkun jista' jikkoreġi indirizz li l-GPS ħalliet ħażin.",
+        "clock": "<strong>Il-ħin ġej mill-għajra tal-apparat</strong>, li jistgħu jkunu żbaljati jew jistgħu jkunu ġew stabbiliti bl-idejn.",
+        "address": "<strong>L-indirizz huwa stima.</strong>L-eżattezza tagħha tiddependi fuq is-sinjal GPS u fuq il-bażi tad-data tas-servizz tal-mappa tas-sistema operattiva.",
+        "code": "<strong>Il-kodiċi tal-istampa mhuwiex reġistrazzjoni f'uffiċċju ta' nota.</strong>Huwa identifikatur każwali għal referenza interna, mingħajr ebda valur ta' evidenza."
+      },
+      "p2": "Jekk il-każ ta' użu tiegħek jeħtieġ evidenza b'forza legali kontra partijiet terzi, tfittex att notarili jew servizz ta' ċertifikazzjoni diġitali b'timbru ta' żmien  Lymark huwa sostitwit għal dawn it-tnejn."
+    },
+    "s03": {
+      "title": "Ir-responsabbiltajiet tiegħek",
+      "items": {
+        "photos": "Int biss responsabbli għall-istampi li tikkapta, għall-kontenut li tinstampa fuqhom u għall-użu li tagħmel tal-fajls ġġenerati.",
+        "thirdParties": "Meta titlef ritratti ta' persuni oħra, proprjetà tagħhom jew il-postijiet tagħhom, huwa fuqek li tikseb l-awtorizzazzjonijiet meħtieġa u li tissodisfa d-drittijiet tal-immaġni, is-segret professjonali u l-Liġi Ġenerali dwar il-Protezzjoni tad-Data Personali fir-rigward tas-suġġetti tad-data rretratti.",
+        "prohibited": "L-użu tal-app biex tinħoloq rekord falz, biex tiddgħajjef lil xi ħadd, biex jimmaġina l-prestazzjoni ta' servizz li ma kienx ipprovdut jew biex twettaq xi att illegali huwa pprojbit.",
+        "backups": "Huwa għalik li żżomm kopji ta' kopja ta' dak li tqis importanti. L-app iżżomm storja lokali limitata, li mhix kopja ta' kopja."
+      }
+    },
+    "s04": {
+      "title": "Permess ta' użu",
+      "p1": "Aħna nagħtuk liċenzja personali, revocable, mhux esklużiva u mhux trasferibbli biex tinstalla u tuża l-app, inkluż għal skopijiet professjonali.",
+      "p2": "<strong>It- ritratti tiegħek huma tiegħek.</strong>Aħna ma nistgħux nitolbu dritt fuq l-immaġini li tikkapta jew tipproduċi."
+    },
+    "s05": {
+      "title": "Disponibbiltà u aġġornamenti",
+      "p1": "L-app hija pprovduta kif hi.M'hemm l-ebda garanzija ta' tħaddim bla waqfien, ta' kompatibbiltà ma' kull apparat, u lanqas xi impenn għal skadenza għal rimedji jew verżjonijiet ġodda.",
+      "p2": "Il-kwalità tal-immaġni esportata tiddependi fuq il-mezz u s-sistema operattiva, u tista' tkun ta' riżoluzzjoni aktar baxxa mill-istampa oriġinali."
+    },
+    "s06": {
+      "title": "Limitazzjoni tar-responsabbiltà",
+      "p1": "Sakemm ikun permess bil-liġi tal-Brażil, l-iżviluppatur ma jkunx responsabbli għal telf indirett, telf ta' profitti, telf ta' data jew danni li jirriżultaw minn deċiżjonijiet meħuda abbażi tal-informazzjoni stampata  inkluż minn kwalunkwe sfida, fil-qorti jew barra minnha, għall-kontenut ta' ritratt ġġenerat mill-app.",
+      "p2": "Din il-limitazzjoni <strong>ma jneħħix</strong>Id-drittijiet garantiti lill-konsumatur mid-Direttiva Nru 8.078/1990, u lanqas ir-responsabbiltà għal mġiba ħażina intenzjonata jew negliġenza kbira."
+    },
+    "s07": {
+      "title": "Tmiem",
+      "p1": "Tista' twaqqaf l-użu tal-app fi kwalunkwe ħin: it-tħassir tal-kont jimmaxxi d-dejta tagħha fis-server, u t-tħassir tal-app jimmaxxi d-dejta miżmuma fuq id-disposizzjoni."
+    },
+    "s08": {
+      "title": "Bidliet f'dawn it-termini",
+      "p1": "L-użu kontinwu wara l-pubblikazzjoni jfisser ftehim mal-verżjoni fis-seħħ."
+    },
+    "s09": {
+      "title": "Il-liġi u l-forum applikabbli",
+      "p1": "Il-forum magħżul biex jispjega t-tilwim li jirriżulta minn dawn it-termini huwa dak tad-domiċilju tal-utent."
+    },
+    "note": "Dwar il- manutenzjoni tad- data, ara l-<privacy>Politika ta' Privatezza</privacy>. Mistoqsijiet: <email> contato@lymark.app </email>."
+  }
+}

@@ -18,7 +18,7 @@ const globals = globalThis as {
 function withDeviceLanguages<T>(
   languages: readonly string[] | undefined,
   run: () => T,
-  intlLocale = 'is-IS',
+  intlLocale = 'cy-GB',
 ): T {
   const originalNavigator = globals.navigator;
   const originalDateTimeFormat = Intl.DateTimeFormat;
@@ -61,13 +61,13 @@ describe('resolveDeviceLocale', () => {
   });
 
   it('respeita a ordem de preferência da pessoa', () => {
-    // Islandês não existe no catálogo; o francês é a segunda escolha dela e
+    // Galês (cy) não existe no catálogo; o francês é a segunda escolha dela e
     // deve vencer o português, que é apenas o padrão do app.
-    expect(withDeviceLanguages(['is-IS', 'fr-CA', 'en'], resolveDeviceLocale)).toBe('fr');
+    expect(withDeviceLanguages(['cy-GB', 'fr-CA', 'en'], resolveDeviceLocale)).toBe('fr');
   });
 
   it('cai no português quando nenhum idioma pedido existe', () => {
-    expect(withDeviceLanguages(['is-IS', 'xx-XX'], resolveDeviceLocale)).toBe('pt');
+    expect(withDeviceLanguages(['cy-GB', 'xx-XX'], resolveDeviceLocale)).toBe('pt');
   });
 
   it('usa o Intl quando o navegador não expõe a lista', () => {
@@ -75,6 +75,6 @@ describe('resolveDeviceLocale', () => {
   });
 
   it('cai no português quando nenhuma das duas fontes serve', () => {
-    expect(withDeviceLanguages(undefined, resolveDeviceLocale, 'is-IS')).toBe('pt');
+    expect(withDeviceLanguages(undefined, resolveDeviceLocale, 'cy-GB')).toBe('pt');
   });
 });

@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Pitserite oma fotodele aega, kuupäeva, tööpäeva, aadressi ja jälgikoodi  väljaregistrit, kohapealse kontrolli ja teeninduse tõendava tõendite jaoks.",
+      "platform": "Platvorm",
+      "privacy": "Isikuvabaduste poliitika",
+      "privacyGeocoding": "Kui kasutatakse GPS-i, saadab operatsioonisüsteem koordinaati Google'i või Apple'i kaardi teenusele, et saada aadress. See on ainus teave, mis siia jääb, ja see on süsteem, mis seda saadab, mitte Lymark.",
+      "privacyLocation": "Koht kasutatakse üks kord pildistamisel, ainult aadressivälja täitmiseks ja seda ei salvestata eraldi fotodest.",
+      "privacyOnDevice": "Pika on olemas teie tellimuse jaoks: server hoiab teie e-posti ja plaani ning ei saa kunagi teie fotosid ega asukohta.",
+      "privacySection": "Isiklus",
+      "sdk": " Expo SDK ",
+      "terms": "Kasutamise tingimused",
+      "title": "Lymark kohta ",
+      "version": "Versioon"
+    },
+    "account": {
+      "browserHint": "Saegumine toimub brauseris. Saegumine seal oma kontoga ja rakendus ühendub ise.",
+      "code": "Kood",
+      "codeSent": "Läksime koodi {email}ile.",
+      "connected": "Sõltuv",
+      "continue": "Jätkake edasi",
+      "deleteAccount": "Pöörake konto kustutama",
+      "email": "E-posti",
+      "failed": "Kontrollige e-kirja või kood ja proovige uuesti.",
+      "notConfigured": "Sellel ehitusel ei ole veel sisse logitud.",
+      "signInBrowser": "Sisene brüuserist",
+      "signOut": "Kirjuta välja.",
+      "signedInAs": "Allakirjutatud {email} ",
+      "title": "Kasutamine",
+      "verify": "Kontrolli"
+    },
+    "batch": {
+      "addressHint": "Uus, number  Linn",
+      "clearList": "Puhas nimekiri",
+      "codeHint": "Näiteks LYM-001",
+      "done": "{count, plural,  one {Tööd on tehtud: # foto on tehtud.} other {Tööd on tehtud: # fotod tehtud.}}",
+      "doneSection": "Lõpetatud",
+      "dropZone": "Võtke ja vabastage pildid siia või kasutage nuppu Võrdke pildid",
+      "errorsSection": "Vääred",
+      "folder": "Pildir: {name} ",
+      "noPhotos": "Vali vähemalt üks foto.",
+      "outputNote": "Töödeldavaid fotosid salvestatakse valitud kaudisse.",
+      "outputSection": "Tootmine",
+      "photosSection": "Fotoid töödeldamiseks",
+      "processing": "- Töötamine...",
+      "progress": "{current} {total} ({percent} %)",
+      "results": "{success, plural,  one {# edu} other {# edu}}, {failed, plural,  one {# ebaõnnestumine} other {# ebaõnnestumised}}",
+      "selectFolder": "Vali outputistik",
+      "selectPhotos": "Vali fotod",
+      "selected": "{count, plural,  one {# foto valitud} other {# pildid valitud}}",
+      "sharedNote": "Kõiki fotosid loetakse oma EXIF-st.",
+      "sharedSection": "Kaasutatud metadata",
+      "start": "Alustada töötlemist",
+      "unavailableBody": "See funktsioon on ainult töölaua jaoks.",
+      "unavailableTitle": "Pakkumissöötlemine ei ole saadaval"
+    },
+    "capture": {
+      "accuracy": "Pikkus ± {meters} m.",
+      "accuracyImprecise": "Kohe ± {meters} m  kontrollige enne ekspordi tänava number.",
+      "address": "Adressi",
+      "addressFailedTitle": "Aile ei leitud",
+      "addressHint": "Pange paberit asukoht või kirjuta aadress",
+      "camera": "Võta foto.",
+      "code": "Kood",
+      "dateHint": "1. jaanuar 2026",
+      "dateTimeGroup": "Aeg ja kuupäev",
+      "emptyWarning": "Ükski andmet ei märgita.",
+      "gallery": "Vali galerii",
+      "galleryDenied": "Fotole juurdepääsu keelduti, nii et pilt on olemas ainult rakenduses.",
+      "galleryFailed": "Pilt läks ajaloos, kuid seadme keeldus selle galerii kirjutamast.",
+      "generateCode": "Tegevus",
+      "hiddenFields": "{count, plural,  one {Varjatud ala} other {Varjatud väljad}}: {fields}  lülita need sisse seadetes › Väljad ja asukoht.",
+      "keepMyAddress": "Hoia minu oma.",
+      "locate": "Asukoht",
+      "locateByGps": "GPS-i abil aadressi leidmine",
+      "lookup": {
+        "denied": "Lase asukoht sisse seadetes › Lubaid või kirjuta aadress.",
+        "disabled": "Asukoht on seadmes välja lülitatud.",
+        "timeout": "GPS ei vastanud õigeaegselt.",
+        "unavailable": "Adressi ei saa sel asukohas leida."
+      },
+      "newCapture": "Alustage uus püügi",
+      "noFieldsBack": "Mine tagasi.",
+      "noFieldsContinue": "Jätkake seda ikkagi.",
+      "noFieldsMessage": "Pole mingit väljapääsu. Täida väljad või vaadake Seadused › Väljad ja asukoht.",
+      "noFieldsTitle": "Pilt tuleb ilma veejälga.",
+      "noPhotoHint": "Võta foto või vali galerii alguses.",
+      "noPhotoSelected": "Ei valitud fotot",
+      "openFailed": "Pild ei saanud avada.",
+      "permissionMessage": "Lase juurdepääs asetustes › Lõigused jätkata.",
+      "permissionTitle": "Vajaduse loa",
+      "pickPhoto": "Valige foto.",
+      "pickPhotoHint": "Valige foto, et võimaldada tegusid.",
+      "previewLabel": "Veemärgitud foton esivaade",
+      "renderFailedTitle": "Ei saanud kujutist luua",
+      "replaceAddressMessage": "GPS: {address} ",
+      "replaceAddressTitle": "Asendada aadressi, mida kirjutasid?",
+      "resetConfirm": "Võtke ära",
+      "resetMessage": "Valitud foto ja täidetud väljad visatakse minema.",
+      "resetTitle": "Alustada uut kinnipeamist?",
+      "saved": "Foto salvestatud seadme galeriisse ja ajalugu.",
+      "savedAppOnlyTitle": "Säästetud ainult Lymark sisemises ",
+      "shareDialogTitle": "Jaage vee märgitud foto",
+      "shareFailedMessage": "Pilt on loodud ja on Lymark ajaloos.",
+      "shareFailedTitle": "Ei saanud jagada",
+      "shareUnavailableMessage": "Selle seadme puhul pole jaguaruande.",
+      "shareUnavailableTitle": "Osalemine ei ole kättesaadav",
+      "sharedFileTitle": "Veemärgitud fotod",
+      "stampNotReady": "Päris valmistuvad.",
+      "syncNow": "Nüüd.",
+      "timestamp": "Aeg/aeg",
+      "title": "Kapteering",
+      "useGpsAddress": "Kasuta GPS-i.",
+      "weekdayHint": "Ülevähendus",
+      "weekdayShort": "Päev"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "Valige teine värv",
+      "saturationBrightness": "Täitumine ja säravus",
+      "use": "Kasuta seda värvi"
+    },
+    "common": {
+      "back": "Tagasi",
+      "cancel": "Kannaleerimine",
+      "delete": "Võtke välja",
+      "error": "Vastused",
+      "gotIt": "Ma sain selle.",
+      "loading": "Laadimine...",
+      "no": "Ei, ei.",
+      "ok": "Olgu.",
+      "save": "Säästa",
+      "share": "Osalemine",
+      "success": "Edu",
+      "tryAgain": "Proovi uuesti.",
+      "unknownError": "Tundmatu viga",
+      "yes": "Jah, ma olen."
+    },
+    "gallery": {
+      "cancelSelection": "Valimine tühistamine",
+      "clear": "Selge ajalugu",
+      "clearConfirm": "- Jah.",
+      "clearMessage": "Lymark'i salvestused kustutatakse.",
+      "count": "{count, plural,  one {Ekspordi tehtud # foto} other {Ekspordi tehtud # fotod}}",
+      "delete": "Võtke välja",
+      "empty": "Pole veel fotosid.",
+      "emptyAction": "Mine kinni püüda",
+      "emptyDescription": "Fotoid, mida sa eksportid vee märgiga, on siin, kuupäeval, kohtel ja koodil.",
+      "filteredCount": " {shown}{total, plural,  one {# foto} other {# fotod}}",
+      "noResults": " {query}  kohta pole fotosid leitud.",
+      "photoLabel": "Foto {when} ",
+      "removeMessage": "Kirjad lahkuvad Lymark. Kujutised, mis on juba salvestatud seadme galerii, ei mõjuta.",
+      "removeTitle": "{count, plural,  one {Välja arvatud ajaloost} other {#-i kirjad eemaldatakse}}",
+      "removed": "{count, plural,  one {Sissepääs eemaldati.} other {Kirjad eemaldati.}}",
+      "saveDeniedMessage": "Salvestada pilte seadmete galerii seadmete seadmetes.",
+      "saveDeniedTitle": "Foto juurdepääsu keelduti",
+      "savedAll": "{count, plural,  one {Üks foto salvestatud seadme galeriisse.} other {# fotod salvestatud seadme galeriisse.}}",
+      "savedSome": "{saved} {total} salvestatud fotod.",
+      "searchPlaceholder": "Otsing aadressi, kuupäeva või koodi järgi",
+      "selectedCount": "{count, plural,  one {# foto valitud} other {# pildid valitud}}",
+      "share": "Osalemine",
+      "title": "Galerii"
+    },
+    "language": {
+      "automatic": "Kooskõlasõiduk",
+      "automaticNote": "Lymark järgib seadme seadet.",
+      "label": "Keel",
+      "selector": "Valike keel"
+    },
+    "login": {
+      "access": "Sisene juurdepääsuks",
+      "apple": "Sisene Apple'iga",
+      "google": "Saegne sisse Google'iga",
+      "subtitle": "Saada sisse, et jätkata",
+      "title": "Saada sisse Lymark"
+    },
+    "nav": {
+      "batch": "Koos töötlemine",
+      "photoDetail": "Foto üksikasjad",
+      "report": "PDF aruanne",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "See ekraan ei ole osa Lymark-st .",
+      "screenTitle": "Lehekülge ei leitud",
+      "title": "Sellist teed pole."
+    },
+    "permissions": {
+      "allow": "Las ma annan.",
+      "allowed": "Lubatud",
+      "blocked": {
+        "later": "Mitte praegu.",
+        "message": "Kui soovite, avage seadme seadmed.",
+        "openSettings": "Avatud seadmed",
+        "title": "Lubad on blokeeritud"
+      },
+      "camera": "Kaamerat",
+      "cameraRationale": "Peame võtma fotot, mis saab vee märgi.",
+      "denied": "Eetatud",
+      "granted": "Nõutav",
+      "intro": "Lymark küsib ainult, mida ta vajab fotot stampima. Teie pildid ei lahku kunagi seadmest: kui kasutate GPS-i, saadab operatsioonisüsteem kaardi teenusele ainult koordinaadi, nii et see saab aadressi.",
+      "location": "Asukoht",
+      "locationRationale": "Täidetakse aadressivälja automaatselt, kui sa saad.",
+      "mediaLibrary": "Salvestada galeriisse",
+      "mediaLibraryRationale": "Ekspordi tehtud fotod salvestatakse seadmete galeriisse.",
+      "openDeviceSettings": "Seadused",
+      "recheck": "Kontrollige uuesti.",
+      "request": "Nõue loa saamiseks",
+      "section": "Kasutamine",
+      "title": "Lõigused"
+    },
+    "photo": {
+      "backToGallery": "Tagasi galeriisse",
+      "exportedAt": "Ekspordiviis {when} ",
+      "noWatermark": "See foto eksporditi ilma veejälga.",
+      "notFoundBody": "See raamat võib olla ajaloost kustutatud.",
+      "notFoundTitle": "Foto ei leitud",
+      "remove": "Võtke välja",
+      "removeBody": "Pild jääb Lymark.",
+      "removeTitle": "Välja arvatud ajaloost",
+      "share": "Osalemine",
+      "stampedData": "Märgitud andmed"
+    },
+    "plan": {
+      "exhausted": "Kasutatud tasuta pildid",
+      "exhaustedMessage": "12 tasuta foto on kadunud.",
+      "free": "Vabad",
+      "pro": "Pro",
+      "reconnect": "Sisse ühendada oma tellimuse kinnitamiseks",
+      "remaining": "{remaining, plural,  one {# tasuta foto vasakul} other {# tasuta fotod jäid}}",
+      "title": "Plaan",
+      "unlimited": "Piirangut ei ole"
+    },
+    "report": {
+      "allPhotos": "Kõik fotod",
+      "authorField": "Autor / firma",
+      "detailsSection": "Täpsemad andmed",
+      "doc": {
+        "author": "Autorit",
+        "declaration": "Pärisistmed andmed (aadress, kuupäev, aeg ja kood) on fotode emiteerija avaldus.",
+        "exportedAt": "Ekspordi",
+        "generatedAt": "Tegevus",
+        "page": "Lehekülg",
+        "photo": "Foto {index} ",
+        "photosSection": "Fotograafilised andmed",
+        "signature": "Juhtiv isiku allkirja",
+        "summary": "Kokkuvõte",
+        "title": "Fotoaruanne",
+        "totalPhotos": "Kokku pildid:"
+      },
+      "empty": "Pole veel eksporditud fotosid, raport on teie galeriist tehtud.",
+      "failed": "- Ei saanud aruande luua.",
+      "fileStem": "aruande",
+      "format": {
+        "csv": "Arvutise (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Pakend (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Kasuta faili",
+      "generateSection": "Tegevus",
+      "includeLogo": "Logo katusel",
+      "includeLogoDescription": "Teie kaubamärgi logo, sama nagu postimergist.",
+      "norm": {
+        "abnt": "ABNT (Braasiil)",
+        "din5008": "DIN 5008 (Saksamaa)",
+        "ibape": "IBAPE stiil (Braasiil)",
+        "iso": "Rahvusvaheline",
+        "letter": "Kirja (USA)"
+      },
+      "normNote": "Standard määrab paber ja vorming  marginaali, lehekülje ja leh يەنى.",
+      "normSection": "Dokumendi standard",
+      "projectsSection": "Projekti / töö",
+      "saved": "Säästetud {path}-sse ",
+      "savedShort": "Raport salvestatud.",
+      "title": "PDF aruanne",
+      "titleField": "Aruande pealkiri",
+      "unavailableBody": "PDF aruanded on kättesaadavad töölaua rakenduses.",
+      "unavailableTitle": "Ainult töölaua",
+      "uncoded": "Ei mingit koodit",
+      "wordTooBig": "Word dokumend sai fotodega liiga suur.",
+      "zipMissing": "{count, plural,  one {Pakett salviti, kuid #-i foto ei leitud sellel يەنىil.} other {Pakett salviti, kuid #-i fotosid ei leitud sellel seadmel.}}"
+    },
+    "settings": {
+      "about": "Üle",
+      "aboutDescription": "Versioon, privaatsus ja krediidid",
+      "appSection": "App",
+      "deviceSection": "Seadme",
+      "deviceSectionDescription": "Lymark taotlevad juurdepääsu.",
+      "fields": "Mängud ja positsioon",
+      "fieldsDescription": "Valige, millised väljad näitavad, nurg ja suurus",
+      "history": "Ajaloo",
+      "historyDescription": "Tootega säilitatud eksporditud fotod",
+      "language": "Keel",
+      "permissions": "Lõigused",
+      "permissionsDescription": "Kamera, pildid ja asukoht",
+      "save": "Säästa",
+      "title": "Seadused",
+      "watermark": "Veemärk",
+      "watermarkSection": "Veemärk",
+      "watermarkSectionDescription": "Mis fotol märgistatakse ja kus."
+    },
+    "signup": {
+      "subtitle": "Alustamiseks registreeruge",
+      "title": "Loe oma Lymark konto"
+    },
+    "tagline": "Veejälg koos aeg, kuupäev ja koht",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Kasuta seadme seadmete seadetes.",
+      "done": "Video on märgistatud ja salvestatud.",
+      "export": "Ekspordi peiteldatud video",
+      "exportSection": "Eksport",
+      "failed": "Videot ei saanud stampida.",
+      "fieldsSection": "Pärismärgiväljad",
+      "fileSection": "Video",
+      "none": "Ei ole valitud video.",
+      "processing": "Töötamine... {percent} %",
+      "processingMobile": "- Töötamine...",
+      "record": "Salvestame nüüd video.",
+      "saved": "Säästetud {path}-sse ",
+      "savedToGallery": "Säästetud videot teie galeriisse.",
+      "select": "Vali videot",
+      "unavailableBody": "Mobiilvideo stamping vajab Lymark'i installatsiooni EAS'i konstruktsioonist (mõõõne moduliga). See ei ole saadaval Expo Go'is . Installeeri ametlik rakendus poest või EAS'i konstruktsioonist või kasutage töölaua / veebiversiooni.",
+      "unavailableTitle": "Vajaduse paigaldatud rakendus",
+      "unreadable": "Arhiivit ei saanud videot lugeda.",
+      "webNote": "Brauseris töödeldakse video reaalajas  2 minuti video võtab 2 minutit  ja tuleb WebM vormis."
+    },
+    "watermark": {
+      "accentColor": "vertikaalne paber",
+      "backdropBandNote": "Päng kulgeb mööda foto ja puhkab marginaali vastu, kus postimerk on kinnitatud.",
+      "backdropBlockNote": "Taust on teksti suurusega, selle ümber on täidetud.",
+      "backdropColor": "Rööpvärv",
+      "backdropDescription": "Ilma selleta jääb tekst otse pildi peale, varjudes.",
+      "backdropInnerRadius": "Sisemise nurgad",
+      "backdropOpacity": "Läbipaistvus",
+      "backdropOpacityValue": "{percent} % läbipaistvus",
+      "backdropRadius": "Rünnitud nurgad",
+      "backdropRadiusSquare": "Puulik",
+      "backdropStyles": {
+        "band": "Täielik laius",
+        "block": "Teksti taga",
+        "none": "Mitte ühtegi"
+      },
+      "backdropTitle": "Toetusband",
+      "brandDescription": "Üle kell muutub see allkirjaga, logos ja tagline.",
+      "brandFirstColor": "Esimene osa värv",
+      "brandFirstHint": "Rakendjad",
+      "brandFirstPart": "Esimene osa",
+      "brandNote": "Kui teine osa on tühi, siis tuleb teha ühe värvi märk.",
+      "brandPlacements": {
+        "corner": "Ühel nurgal",
+        "header": "Üle kell",
+        "none": "Mitte ühtegi"
+      },
+      "brandSecondColor": "Teise osa värv",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Teine osa",
+      "brandTitle": "Märkitud märk",
+      "codeDescription": "Ülepool ei võistle ta ruumi endaga.",
+      "codePlacements": {
+        "block": "Andmete kõrval",
+        "side": "Paremale küljele"
+      },
+      "codeTitle": "Foto kood",
+      "colors": {
+        "amber": "Amber",
+        "black": "Must",
+        "blue": "Kuldine",
+        "green": "Roheline",
+        "red": "Punane",
+        "white": "Valge"
+      },
+      "colorsDescription": "Valgus on foto värv, mitte rakendus, kuid selle muutmine ei muuda ekraani värvi.",
+      "colorsTitle": "Pärvide värvid",
+      "complement": "Tagline",
+      "complementColor": "Tagline värv",
+      "complementHint": "Inspekteerimised ja tehnilised aruanded",
+      "cornerConflict": "Märk ja andmed on ühes nurgas.",
+      "fields": {
+        "address": "Adressi / asukoht",
+        "code": "Foto kood",
+        "date": "Päev",
+        "time": "Aeg",
+        "weekday": "Tööpäev"
+      },
+      "fieldsDescription": "Ainult need väljad, mis on ja millel on sisu, jõuavad fotoni.",
+      "fieldsTitle": "Näitavad väljad",
+      "includeCountry": "Sisaldada riik",
+      "includeCountryDescription": "Kui sa töötad üle piiri, siis lülita see sisse, muidu võtab see ruumi vaid fotol.",
+      "legibilityTitle": "Lugematavus",
+      "logoAdded": "Logu lisati kaubamärgi pealkirjale.",
+      "logoAlignNote": "Logo kõrgus järgib teksti: selle ülemine on kooskõlas nime ülemisega ja selle allpool tagline algjoonega.",
+      "logoChosen": "Valitud logo",
+      "logoErrorMessage": "Proovige teist pilti. PNG läbipaistv taustaga on parim formaat.",
+      "logoErrorTitle": "Seda faili ei saanud kasutada",
+      "logoFormatNote": "Kasutage läbipaistva taustaga PNG. JPG valge taustaga muutub valge ristküldaks fotol  formaadis ei salvestata läbipaistvust ja rakendusel pole võimalust arvata, mis tausta on.",
+      "logoPermissionMessage": "Lase valida logofaili seadetes › Lubaid.",
+      "logoPermissionTitle": "Foto juurdepääsu keelduti",
+      "logoPick": "Vali logot",
+      "logoPosition": "Logo asukoht",
+      "logoPositionBlock": "- Sellega.",
+      "logoRemove": "Võtke välja",
+      "logoReplace": "Asenduslogo",
+      "logoSize": "Logo suurus",
+      "positionDescription": "Pilt on kinnitatud foto nurgale.",
+      "positionTitle": "Asukoht",
+      "positions": {
+        "bottom-left": "Vasakul all",
+        "bottom-right": "Allpool paremale",
+        "top-left": "Vasakpool",
+        "top-right": "Üle paremal"
+      },
+      "previewCurrent": "Tänapäeva fotot \"Tõmbame\" tabist.",
+      "previewEmpty": "Valgest pimedusele, et kontrollida lugemlikkust mõlemal äärmusel.",
+      "previewNoFields": "Ükski väljend ei ole valitud  foto ilmub ilma vee märgieta.",
+      "previewTitle": "Eelvaate",
+      "reset": "Taastage eeltähtised",
+      "sizeTitle": "Teksti suurus",
+      "sizes": {
+        "large": "Suur",
+        "medium": "Keskmine",
+        "small": "Väike"
+      },
+      "textColor": "Teekond",
+      "timeFormatDescription": "Kuidas aeg on väljadega täis.",
+      "timeFormatTitle": "Ajasvorm",
+      "timeFormats": {
+        "12h": "12 tundi (Öösel/Öösel)",
+        "24h": "24 tundi"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Kõik failid",
+      "images": "Pilted",
+      "pickFolder": "Vali outputistik",
+      "pickPhoto": "Valige foto",
+      "pickPhotos": "Valige partii fotod",
+      "savePhoto": "Salvestada foto",
+      "saveReport": "Salvestusaruanne"
+    },
+    "login": {
+      "cancel": "Kannaleerimine",
+      "confirm": "Jätkake edasi",
+      "message": "Sa oled just brauseri kaudu sisse loginud.",
+      "title": "Saegne sisse Lymark "
+    },
+    "menu": {
+      "copy": "Koopiat",
+      "cut": "Lõik",
+      "edit": "Editeerida",
+      "file": "Pile",
+      "fullscreen": "Täie ekraan",
+      "help": "Ait",
+      "paste": "Pesta",
+      "quit": "Lõpeta.",
+      "redo": "Redo",
+      "reload": "Ületootmine",
+      "selectAll": "Vali kõik",
+      "settings": "Seadused",
+      "undo": "Kinnitamine",
+      "view": "Vaate",
+      "zoomIn": "Suurendage",
+      "zoomOut": "Suurendage välja",
+      "zoomReset": "Täiesti suurus"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "- Tulen koju.",
+      "openApp": "Avage rakendus",
+      "photos": "Fotoid",
+      "photosLeft": "{remaining} {quota} vasakpool",
+      "plan": "Plaan",
+      "planUnavailable": "Praegu ei ole saadaval.",
+      "plans": {
+        "free": "Vabad",
+        "pro": "Pro"
+      },
+      "signInTitle": "Saegne sisse",
+      "signOut": "Kirjuta välja.",
+      "signUpTitle": "Loe konto",
+      "subscribe": "Töötame Lymark Pro",
+      "subscribeSoon": "Kui olete juba abonent, saate siin abonente saada ja kasutada kõiki seadmeid, millel on sama konto.",
+      "title": "Teie konto",
+      "revokeDesktops": "Arvuti ühendust lahutamine",
+      "revokeDesktopsHint": "Lõpetab rakenduse juurdepääsu kõigil arvutitel."
+    },
+    "availability": {
+      "contact": "Kui soovite jälgida alustamist või teatada probleemi kohta, kirjuta <email> contato@lymark.app </email>.",
+      "description": "Lymark on versioon 1.3.0, testitakse Androidis enne avaldamist Google Play.",
+      "title": "Kasutavus"
+    },
+    "data": {
+      "device": {
+        "description": "Konto on olemas teie tellimuse jaoks: server hoiab teie e-posti ja plaani ning ei saa kunagi teie fotosid ega asukoha.",
+        "field": "Seadmel",
+        "heading": "Fotoid, aadressid ja ajalugu"
+      },
+      "external": {
+        "description": "Kui operatsioonisüsteem muudab laius- ja pikkuskoodi lugemaks aadressiks, küsib Google'i või Apple'i geokodierimisteenust. See on ainus teave, mis jääb, ja süsteem saadab selle, mitte rakendus.",
+        "field": "Välja arvatud seadme",
+        "heading": "Ainult koordinate pööramine aadressi"
+      },
+      "note": "See kõik on esitatud  sealhulgas mida see tähendab Brasiilia LGPD   <privacy>Isikuvabaduste poliitika</privacy>. Asukohta lubade välja lülitamine muudab rakenduse täielikult toimivaks; siis tuleb käsikäes kirjutada ainult aadressivälja.",
+      "title": "Kus teie andmed asub"
+    },
+    "deleteAccount": {
+      "back": "Tagasi arvele",
+      "confirm": "kustutada mu konto",
+      "deletesNow": "Teie konto kustutamine kustutseb teie e-posti, ID ja plaani, kvoodi ja fotode arvu.",
+      "irreversible": "Teie seadmes olevated fotod ei ole mõjutatud.",
+      "retained": "Maksetehingute andmed säilitatakse seaduslikult nõutava eelarveaja jooksul, mis ei ole seotud teie profiiliga.",
+      "title": "Pöörake konto kustutama"
+    },
+    "description": "Android-i rakendus, mis märgib aega, kuupäeva, tööpäeva, aadressi ja jälgikoodi veebilehe kontrollimise ja teenust tõendavate fotode peale.",
+    "desktop": {
+      "backAccount": "Tagasi arvele",
+      "explanation": "Teie konto on valmis. Võtke allpool olevat nuppu, et avada Lymark oma arvutis, mis on juba sisse logitud.",
+      "open": "Sähenda rakendust",
+      "title": "Sisene töölaua",
+      "unavailable": "Töökohalise rakenduse ühendus pole veel kättesaadav."
+    },
+    "download": {
+      "appStore": {
+        "description": "Sama kogemus kui Androidis, iOSis.",
+        "field": " App Store ",
+        "heading": "iPhone ja iPad"
+      },
+      "browser": {
+        "action": "Saegne sisse",
+        "description": "Saegege sisse oma kontoga ja rakendus avatakse otseselt brauseri  telefoni või arvutis.",
+        "field": "Brauser",
+        "heading": "Kasuta seda kohe, pole midagi paigaldada"
+      },
+      "desktop": {
+        "description": "Fototeadmed, pikad videod ja PDF raportid  rasketest töödest versioonidest.",
+        "field": "Arvuti",
+        "heading": "Windows ja Linux"
+      },
+      "googlePlay": {
+        "description": "Telefonikaap, kaamera, galeriiga ja stampitud videoga.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Lähen kohe.",
+      "title": "Kus kasutada Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "Kui sa kirjutad enne GPS-i vastamist, võidakse see, mida kirjutad.",
+        "field": "Adressi",
+        "heading": "GPS-ga täidetud, käsitsi parandatav"
+      },
+      "code": {
+        "description": "See on olemas, et saate tsiteerida ühte konkreetset fotot tööjärjekorras või aruandes. See käivitub pöörlemata paremale äärele või asub teie valitud andmeblokiga.",
+        "field": "Foto kood",
+        "heading": "14 tähti, mille on joonistanud kriptograafiline generaator"
+      },
+      "note": "Iga valdkonna käivitakse ja kustutatakse ise, ja blokid kinnitavad ükskõik millise neljast nurga, kolme suurusega.",
+      "time": {
+        "description": "Üks nuppe paneb kõik kolm väljat tagasi praegusele, kui tapanemine kestis kauem kui oodata.",
+        "field": "Aeg ja kuupäev",
+        "heading": "seadme kell, püügi ajal"
+      },
+      "title": "Mis on pildil?"
+    },
+    "footer": {
+      "description": "Lymark  fotodegistreeringud kuupäeva, aja ja aadressiga.",
+      "documentsLabel": "Dokumendid",
+      "privacy": "Isikuvabaduste poliitika",
+      "support": "Toetus:",
+      "terms": "Kasutamise tingimused"
+    },
+    "hero": {
+      "ctaAccount": "Mine minu kontole.",
+      "ctaLogin": "Saegne sisse",
+      "ctaSignup": "Loe tasuta konto",
+      "description": "Lymark täidab aega, kuupäeva, tööpäeva, aadressi ja jälgimiskoodi otse pildi peale.",
+      "eyebrow": "Töötlusfootodokumentatsioon",
+      "heading": "Fotod jätavad su telefoni juba ütlema, millal, kus ja mis.",
+      "meta": {
+        "account": "Üks tap konto",
+        "android": "Android ja brauser",
+        "language": "Brasiilia portugal keel",
+        "onDevice": "Fotoid jäävad seadmesse."
+      },
+      "note": "Pole midagi paigaldada."
+    },
+    "nav": {
+      "account": "Kasutamine",
+      "home": "Kodus",
+      "homeLabel": "Lymark , koduleht",
+      "label": "Põhiline",
+      "privacy": "Isiklus",
+      "signIn": "Saegne sisse",
+      "terms": "Termid",
+      "verify": "Kontrolli"
+    },
+    "process": {
+      "capture": {
+        "description": "Adressi otsimine algab fotodest saabumisest hetkest.",
+        "field": "Kapteering",
+        "heading": "Kaamerad või galeriid"
+      },
+      "note": "Saavamine ja jagamine lahendavad erinevaid probleeme ja nende kokku pakkumine ühe nuppuga tõmbab igaühe, kes lihtsalt tahab pildist saata.",
+      "save": {
+        "description": "See istub ülejäänud telefoni fotodega, mis on kättesaadav igas rakenduses, sealhulgas pärast Lymark eemaldamist.",
+        "field": "Säästa",
+        "heading": "Läheb seadmete galeriisse"
+      },
+      "share": {
+        "description": "WhatsApp , e-posti, Drive: sihtkohta valitseb operatsioonisüsteem ja rakendus ei osale saatmises.",
+        "field": "Osalemine",
+        "heading": "Avatakse süsteemi jagulehekülg"
+      },
+      "title": "Piirumine fotodel"
+    },
+    "skipToContent": "Ülehe sisu",
+    "specimen": {
+      "caption": "Amber-reegel algab ja lõpeb numbri ääres, mitte tekstikasse.",
+      "label": "Lymark stampil on näide: aeg 07:42, kuupäev 12 august 2026, kolmapäev, aadress Guarujas ja foto kood."
+    },
+    "title": "Lymark  kuupäev, aeg ja aadress, veepiirang väljamõelduste jaoks",
+    "verify": {
+      "caveat": "Pitser kinnitab toimiku terviklikkust ja emiteerimise hetke.",
+      "checking": "Kontrolli...",
+      "declarationNote": "Märgi (aadress, kuupäev, aeg) on emitendi deklaratsioon  müra tunnistab terviklikkust ja emiteerimist, mitte sisu.",
+      "intro": "Võtke või valige Lymark eksporditud foto ja vaadake kohe, kas see on täpselt selline, nagu see rakendust jättis  ja kes selle välja andis, millal.",
+      "noSealBody": "See faili ei ole Lymark kindlat. See võib olla eksporditud väljaspool interneti, enne seal eksisteeris, või võib olla mitte pärit Lymark. Seal puudumine ei tõesta valesti toimunud.",
+      "noSealTitle": "Ei ole seal.",
+      "notConfigured": "Tõendamine pole veel saadaval.",
+      "pick": "Valige faili",
+      "previewAlt": "Tõestatud foto, märgi nähtav",
+      "privacyNote": "Verifikatsioon toimub teie brauseris.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Täiesti kahjustamata",
+      "tamperedBody": "Sisaldus ei vasta pitserile: faili on muudetud pärast emiteerimist või pitseri kuulub teisele failile.",
+      "tamperedTitle": "Ebasoodsus",
+      "title": "Tõendust kontrollida",
+      "unsupported": "See brauseri ei toeta allkirja kontrollimist. Proovi praegune brauseri."
+    }
+  }
+}
