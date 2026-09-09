@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Gizlilik polisiýasy",
+      "description": "Lymark ulagynda suratlar, ýer, taryhy we hasabatyňy nädip bejerilýär."
+    },
+    "title": "Gizlilik polisiýasy",
+    "updated": "Soňky güncelleniş: 16 gustu 2026 · Lymark aplikaci, 1.3.0",
+    "intro": "Bu polisiýa Lymark ulagynyň öz maglumatlaryny nädip alyp barýandygyny beýan edýär. Ol Lei n° 13.709/2018 (Jeneral Personal Data Protection Law  LGPD) we (EU) 2016/679 (Jeneral Data Protection Regulation  GDPR ) boýunça ulanylýan ulaglara degişli.<strong> com.lycosteam.lymark </strong>we bu web-sayt.",
+    "s01": {
+      "title": "Bir cümlede",
+      "p1": " Lymark  <strong>fotonyňy ýa-da ýerleşýän ýeriňi ibermeýär</strong>. Ulagda ulanylan ähli zatlar  suratlar, adresler, taryhy we tertibi  öz enjamyňda, seniň kontrolüňde galar. Ulagda ulanmak üçin we abunaşmak üçin bir hasabat gerek: server e-poçtany, hasabyň identifikatoryny, plan we eksport edilen suratlaryň sanyny saklaýar  we başga hiç zat.",
+      "p2": "05-nji esasy aýratynlyk bar: GPS koordinatlaryny okalýan adreske öwrmek üçin, gural n işleýiş sistemasy daşary geokodyka serişdesine sorap biler."
+    },
+    "s02": {
+      "title": "Bu politika kime degişli",
+      "p1": "Bu äpişge ulanýan ýa-da bu web sahypalary barýan her kes üçin ulanylýar. Braziliyada berilýän maglumatlar üçin işlemek LGPD we Milli Maglumatlary goramak häkimiýetiniň (ANPD) gözegçiligi astynda."
+    },
+    "s03": {
+      "title": "Kontroler kim ?",
+      "p1": "Şäherli maglumatlaryň işgäri  <em>kontrolçik</em>, LGPD  terminologiýasynda 29.015.357 AMAD ALI HAMMOUD , CNPJ 29.015.357/0001-25 diýip ýazylan , Avenida Ana Costa, 433, Gonzaga, Santos - SP adresinde .",
+      "p2": "LGPD -yň 41 - nji maddesiniň maksatlary üçin şahsy maglumatlary işlemekde jogapkär adam Amad Ali Hammoud , ol bilen habarlaşyp bilersiňiz<email> contato@lymark.app </email>. Çykyşyň köplügini we tebigatyny göz öňünde tutup  bu işleme çynlakaý maglumatlary ýa-da sistematik goraglary  bir işleme bellenen borç ýok<em>Maglumat goragçy</em>GDPR-yň 37-nji maddesine görä ."
+    },
+    "s04": {
+      "title": "Ulagda nähili maglumatlar ulanylýar",
+      "p1": "Ýalan maglumatlar diňe ýolagçyna iberilmeýär.",
+      "defs": {
+        "photos": {
+          "term": "Fotolar",
+          "def": "Galerýadan saýlan surat ýa-da kameradan alýan surat we suw belgisi bilen ýüklenen faýl. Fotografiýa üçünji taraplaryň  şahsy maglumatlaryny  11 - nji abzasa serediň."
+        },
+        "location": {
+          "term": "Mekan",
+          "def": "Ýokary giňlik we uzynlyk, bir gezek alnyp, adres meýdanyny doldurmak üçin alnyp barylýar. Koordinatlar ýazylmaýar: diňe alamat metni fotonyň ýanynda saklanýar."
+        },
+        "datetime": {
+          "term": "Gün, wagt we hepdäniň güni",
+          "def": "Alyşyş wagtynda esbap sagadyndan okalýar we siz ony özüňiz düzedip bilersiňiz."
+        },
+        "code": {
+          "term": "Foto kody",
+          "def": "Bu 14 heksadeçimal harytdan ybarat serişde. Ol ne gural tanýaryndan, ne-de siziňkiňizden çykmaýar we ulaglaryň arasynda aragatnaşmagy mümkin etmeýär."
+        },
+        "history": {
+          "term": "Tarih",
+          "def": "Soňky iki ýüz sany esbaplaryň esasy haty, esasy esbapda ýazylan faýl ýoly we suratda ýazylan maglumatlar."
+        },
+        "preferences": {
+          "term": "Öňki saýlamalar",
+          "def": "Görnüşli meýdanlar, ýer, ululygy we beýleki suw belgililigi saýlamalary."
+        }
+      },
+      "p2": "Ulyma<strong>ýygnamaýar</strong>: ad, e-poçt, telefon, tanalýan hudaýhonlyk hudaýhonlygy, reklama identifikatori, esbap tanalýanlygy, habar beriş maglumatlary, kalendar, tarama taryhy, ulanma ölçeleri, hasaba alyş hasabatlary ýa-da siz ýa-da esbapyňyz barada başga maglumatlar."
+    },
+    "s05": {
+      "title": "Ýeke maglumat guraldan çykýar",
+      "p1": "Ol ýerleşme rugsatyny bereniňizde, ulag işletim sistemasyndan GPS koordinatlaryny poçta adresine öwrüp bermegi haýyş edýär.  Bu terjime  ters geokodlama  işletim sistemasynyň özi edýär, ol bu maksat bilen koordinatlary öz harita gullugyna iberýär: <strong>Google</strong>Android esbaplary we <strong>Apollon</strong>iOS esbaplary.",
+      "p2": "Bu habarlama işleji sistemasyndan gelýändir, Lymark-den däl. Ulaglama onuň nusgasyny almaýar, ony ortalamalaşdyrmaýar we yzyna berilýän adresden başga hiç zada barmaýar. Bu ugurlularyň edýän işleme öz gizlilik politikasy bilen baglanyşdyrylýar.",
+      "p3": "<strong>Äpişge görä, esasy surat ýola düşmeýär.</strong>Eger siz paýlaşmagyň düýşüni ulansaňyz, surat ýola getirilen endik app tarapyndan sistemanyň paýlaşmak sahypasynda  messenger, e-mail, bulud saklama  şol                                                                                                                                                                                                        "
+    },
+    "s06": {
+      "title": "Ruhat berilmeli we näme üçin",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Suwuzly ýazgy alýan surat almaga. Saryş almaga Tapyk et. Ulagda mikrofon ugruny soramaýar."
+        },
+        "photos": {
+          "term": "Fotolar we media",
+          "def": "Mümkinligiň bardygyny saýlamak we galerýa üçin eksport edilen faýly ýazmak üçin. Fotoşəkillere barmak çäkli, we ýazma rugsaty diňe ýazmak üçin ulanylýar  ulag galerýaňyzy ne barlaýar, ne-de okaýar."
+        },
+        "location": {
+          "term": "Ulyjaşyk döwründe ýer",
+          "def": "Adres meýdanyny doldurmak üçin. öň ýanynda soralýan, diňe <strong>hiç haçan arka planda</strong>."
+        }
+      },
+      "p1": "Ähli ygtyýarlar gural goýberilen ýerlerde her wagt gaýd edilýär. Ýagşy ýerleşdirilmegi aplikaýsy doly işläp goýýar: adres soňra siz ýazýar. Galerýa girişimini boýun egdirmek diňe avtomatik saklanmagy saklaýar, we fotony ýene-de paýlap bolýar."
+    },
+    "s07": {
+      "title": "Kanun esaslary we maksatlary",
+      "p1": "Mekan işlemeýçiligi siziň <strong>razylyk</strong> LGPD 7 - nji maddesiniň I we GDPR 6 - njy maddesiniň 1) 1) a) -ci maddesiniň GDPR  -iň haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky haky hak hak haky hak haky haky hak haky haky haky haky hak haky haky haky hak hak hak haky haky haky haky haky haky hak hak hak haky haky hak hak hak hak haky haky hak haky hak haky hak hak hak hak hak hak hak hak haky hak hak hak hak hak hak haky hak hak hak hak hak haky hak hak hak hak haky hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak hak",
+      "p2": "Galan maglumaty işlemek <strong>talap eden endikiniň ýerine ýetirilmegi</strong> LGPD 7 - nji maddesiniň V -i we GDPR 6 - njy maddesiniň 1) 1) b) -i, çünki ol bolmasa, ulag üçin ýaratmak üçin suw belgisi ýokdur.",
+      "p3": "Hesabyň maglumatyny işlemek bir sözleşme ýerine ýetirmekde esaslanýar (LGPD 7 -i, V -i, GDPR 6 -i) b) (b)). Kanuna laýyk gyzyklanýan işlemek (LGPD 7 -i, IX -i, GDPR 6 -i, 1) f) diňe howpsuzlyk we dolandyryjylykdan goramak üçin bar. Mysal üçin, serwerde soragyň IP-aýdysyny ýazmak. Reklama, profilyş, özüni alyp baryş analizleri ýa-da ikinji maksatlar üçin işlemek ýok, we guramanyň ýörite kategoriýalary ýa-da hüşgär maglumatlary işlemeýär."
+    },
+    "s08": {
+      "title": "Halkara köçürme",
+      "p1": "Hesab maglumatlaryny haklaşdyrma işlemesi (Clerk, Inc. , ABŞ) arkaly işleýär. Bu maglumatlar standart sözleşme şartlaryna we LGPD 33-nji we GDPR-nji mexanizmlerine esaslanyp, halkara tarapyndan öndürilýär. 44-49. 05-nji itemde beýan edilen geokodlama seretmegi işleji sistemasy hala ulanýan tarapyndan öz tarapyndan öndürme mexanizmleri boýunça, ony ulanýan ýurduň daşaryndan işläp biljek sylagçylara berýärler.",
+      "p2": "Bu web-sayt 14 - nji abzasyň şertlerine görä Vercel Inc. tarapyndan guralçylyk edilýär ."
+    },
+    "s09": {
+      "title": "Üçünji taraplar bilen paýlaşmak",
+      "p1": "Täzeden gurluşykçy öz şahsy maglumatlaryny başgalara paýlamady, satmady, kireýine bermedi ýa-da bermedi.<em>işleýji</em>Clerk, Inc. , haklaşdyrma gullugyny berýän we e-poçtany, hasabyň identifikatoryny we plan maglumatyny saklaýan Clerk, Inc.. Eger siz Google ýa-da Apple bilen giriş etseňiz, bu provyderler giriş maglumatyny öz politikasy boýunça işlemäýärler; geliwçi olardan diňe hasabyň döredilmegi üçin gerekli e-poçtany we identifikatory alýar. Fotoşarylar, adresler we ýerleşme hiç hili işlemçden geçmeýär, çünki olar hiç haçan esbapdan çykmaýarlar."
+    },
+    "s10": {
+      "title": "Sanalyş, saklamak we howpsuzlyk",
+      "p1": "Maglumatlar app s özge bölüminde ýerleşýär, işleji sisteminiň aplar arasyndaky aýrylyşygy we sertme s ekranly ýapyşyşy bilen goralýar. Android versiýasynda sistem s avtomatik gaýd et<strong>ýüklü</strong>, bu taryhy we tertiplilikleri ulanýan adamyň Google hesabyna iberilmez.",
+      "p2": "Ýapyklama sizden doly dolandyrylýar: alyşmalar özünde sillenýänçä galýar we taryh iki ýüz esbap geçenden soň, iň köneleri avtomatik ýykýar. Ol bilen deňeşdirilen faýllary hem aýryp taşlaýar. Alyşma salnamasy bilen, ol ýasalan ähli zatlary silýär. Alyşma galerýasynda salnan suratlar galereýäniňki we şol ýerde galerýadan ybarat.",
+      "p3": "Ähli sistemler ýalňyşmaz. Hesab maglumatlary  e-poçt, tanyşma, plan we san  öz howpsuzlyk çäreleri boýunça haklaşdyrma işlemeginiň elinde tutulýar. Fotoşəkiller, adresler we ýerleri merkezi depýotda ýokdur we şol sebäpli geliwçiniň infrastrukturasyndan çykyp bilmez. Eger howpsuzlyk zulumy esbap maglumatlaryny täsir etse, geliwç hak tarapyndan we LGPD maddesiniň 48-i we GDPR maddesiniň 33-i boýunça maglumat alýanlary habar berer."
+    },
+    "s11": {
+      "title": "Başgalary suratlandyranyňyzda",
+      "p1": "Sen öz peşgeşlik işinde tanalýan adamlary suratlandyranyňda,<strong>sen</strong>Bu maglumatlaryň işgärine suratlandyrylýan maglumatlar bilen bagly maglumatlaryň işgärine geçirilýär we siz olara kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýet hökmünde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyýetde kazyetde kazyýetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetde kazyetetetde kazyetde kazyetetde kazyetetde kazyetetetetetetetde kazyetetetetetetetetetetetet"
+    },
+    "s12": {
+      "title": "Haklaryň",
+      "p1": "LGPD 18 - nji maddesinde we GDPR 15 - 22-nji maddesinde size ynamyny tassyklamak we oňa barmak, düzediş, ýitirme, anonimleşdirmek, bloklama, daşyn alnyp barylmak, işleme çäklendirmek, garşylyk, razlygyň çekilmegi we paýlamak baradaky maglumat haklary berlipdir.",
+      "p2": "Fotolar, adresler, taryhy we saýlamalar diňe seneki esbapynda ýerleşýär we bu haklar ýönekeýden wlanýar: Galeri tabynda ýazylyşyny gör we sil, eksport etmänkä, her hili meýdançalary düzet, sistemada ýerleşme rugsatyny gaýdalt we baryny sil wlanjyklar wlanjyklar bu maglumatlara barlap, eksport edip ýa-da sil bilmeýär, çünki bu maglumaty saklamady.",
+      "p3": "Sorular ýa-da resmi haýyşlar üçin,<email> contato@lymark.app </email>Şeýle - de siz Şikayet etmegiň haklydyr<strong> ANPD </strong>, Braziliýada ýa-da Awrobiýadaky siziň welaýatyňyzda gözegçi ygtyýary bilen."
+    },
+    "s13": {
+      "title": "Awtomatlaşdyrylýan kararlar",
+      "p1": "LGPD 20 - nji we GDPR 22 - nji maddelerinde siz barada hukukly netije döredýän avtomatly karar, profilyşma ýa - da işleme ýok."
+    },
+    "s14": {
+      "title": "Bu web-sayt barada",
+      "p1": "Bu saýtda hiç hili analiz ýok, reklama görkezilmeýär we içi tarapa çapyran butonlar ýok.<strong>çägiçler çägiç gerek</strong>Saýyň sessiýasy üçin, saýyňa girende manylylyk äpişgesiniň (No09) goýşy; hiç hili kömegiň ýa-da reklamy cookie-pike ýok. Fontlar saýyň öz domeninden berilýär. Saýyňyňyzdaky üçünji taraplara diňe saýyn we saýyn ekranlary arkaly sorap, saýyn äpişgesine we siz saýlaýarsyňyzsa, saýyn etmeginiň (Google ýa-da Apple) provýudy bilen habarlaşdyrylýar.",
+      "p2": "Web-sayt <strong> Vercel Inc. </strong>, ýagny işlemci hökmünde IP-a, gününe, sagadyna we soragy alan sylagyna laýyklykda, hostaýlyň howpsuzlygy we işleýşi üçin gerek bolan wagtlap, teknik ulanyş maglumatlaryny almaga çalyşýar."
+    },
+    "s15": {
+      "title": "Bu syýasy borjyň üýtgeşdirilmegi",
+      "p1": "Bu sahypadaky üýtgeşikler täze gün tertib bilen çap ediler. Maýdaly maglumatlary işlemeçleşdirýän üýtgeşikler hem güýje girmezden öň, ulagda habar berler."
+    },
+    "s16": {
+      "title": "Çagalar we ýetginjekler",
+      "p1": "Lymark 18 ýaşdan ýokary ýaşly adamlara degişli iş guralydyr. Ol çagalar we ýetginjekler üçin däl-de, bu diňleýjiler barada mahluklar bilen bilelikde maglumat ýygnamady."
+    },
+    "s17": {
+      "title": "Galan kanun",
+      "p1": "Bu politika Braziliya kanunyna laýyklykda, GDPR-iň onuň dagy bolan adamlar üçin ulanylmagyna päsgel berme-de."
+    },
+    "note": "Şeýle - de <terms>Ulyş şertleri</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Ulyş şertleri",
+      "description": "Lymark ulagyny ulanmak şertleri: ol näme edýär, näme etmeýär we fotolaryň içerigi üçin kim jogapkär."
+    },
+    "title": "Ulyş şertleri",
+    "updated": "Soňky güncelleniş: 16 gustu 2026 · Lymark aplikaciýasy, 1.3.0",
+    "intro": "Bu tertipleriň Lymark ulagyny ulanmagyny goldaýar.<strong> com.lycosteam.lymark </strong>29.015.357 AMAD ALI HAMMOUD , CNPJ 29.015.357/0001-25. Uygulamany goýup ýa-da ulanyp, siz bu ýerde ýazylanlara razylaşýarsyňyz.",
+    "s01": {
+      "title": "Ulag näme edýär",
+      "p1": "Lymark bir fotoşaryga bir sany maglumaty  wagt, gün, hepde güni, adres we tanamak kody  üstüne örtýär we pikseliň içine gurulan maglumat bilen täze surat faýly döredýär. Bu meýdan işlerini guramalamak we ýazmak üçin esbap."
+    },
+    "s02": {
+      "title": "Ulyma näme etmeýär",
+      "p1": "Bu aýadyň iň ähmiýetli bölegi we ony ünsli okamagy haýyş edýäris.",
+      "items": {
+        "certify": "<strong>Ulag hiç zady tassyklamaýar ýa-da tassyklamaýar.</strong>Bu kazyýetden bir kazyýet seredilmeýär, ol kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýetden bir kazyýet bheilbatlanmaýar.",
+        "editable": "<strong>Her bir meýdan ulanylýan.</strong>Saaty, güni, adresini we kodyny ýüklemeden öň erkin üýtgetmek gerek: alym GPS-iň ýalňyşan adresini düzetmeli.",
+        "clock": "<strong>Saaty gural sagadyndan alnyp barylýar</strong>, nädogry bolup biler ýa-da el bilen goýulandyr.",
+        "address": "<strong>Adres bir hasaplama.</strong>Onuň dogrylygy GPS synygasyna we işletim sistemasyn mapa gullugynyň maglumat bazasyna bagly.",
+        "code": "<strong>Foto kody notaryň resmileşdirilmegi däl.</strong>Bu içi maglumat üçin tötänden tanalýan, hiç hili subutnamaly gymmaty ýok."
+      },
+      "p2": "Eger siz üçoçja garşy hukukly subutnamalary talap edýän bolsaňyz, notaryýaly hat ýa-da wagt möhürli sanly sertifikatlaşma serişdesine baryň."
+    },
+    "s03": {
+      "title": "Siziň borçlaryňyz",
+      "items": {
+        "photos": "Siz alýan suratlaryňyz, olaryň içine goýlan maglumatlaryňyz we döredilen faýllaryňyz üçin diňe siz jogapkärsiňiz.",
+        "thirdParties": "Başga adamlary, olaryň mülküni ýa-da jaýlaryny suratlandyranda, gerekli rugsatlary almak we suratlandyrylýan maglumaty alýan adamlar bilen bagly surat haklaryny, mesleki syry we Başkan Şäxsi Maglumatlary gorag kanunyny berjaý etmek saňa bagly.",
+        "prohibited": "Ulymaçdan ýalan maglumat ýasamak, her kesni ýalana salmak, berilmedik hyzmatyň ýerine ýetirilmegini suratlandyrmak ýa-da hiç hili kanunsyz hereket etmek üçin ulanmak gadagan edilýär.",
+        "backups": "Bu siziň üçin wajyp hasaplaýan zatlaryňyzyň nusgasyny gaýtargylamak üçin ýolyzdyr."
+      }
+    },
+    "s04": {
+      "title": "Ulyş rugsaty",
+      "p1": "Biz size gulluga degişli maksatlar bilen gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga degişli gulluga rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug rug",
+      "p2": "<strong>Fotolaryň seniňki.</strong>Biz siz çekýän we ýaradýan suratlaryňyza haky ýokdur. Lymark ady, markasy we görgişleýşigi geliwçiniň mülkiýetinde galýar."
+    },
+    "s05": {
+      "title": "Mümkinligi we täzelikleri",
+      "p1": "Ulymaçyň häzirki görnüşinde berilýändigi üçin, onuň kesirsiz işleýşi, her bir esbap bilen deňleşmegi, düzedişler we täze görnüşler üçin wagt tapylmagy üçin hiç hili talap ýok.",
+      "p2": "Çykyşyň hasyllygy gural we işletim sistemasyna bagly we aslynda suratdan kiçijik çözünürligi bolup biler."
+    },
+    "s06": {
+      "title": "Ýükçüligiň çäklänmegi",
+      "p1": "Braziliýanyň kanunyna görä, gurluşykçy netijesiz ýitgi, ýitgi gazanç, maglumat ýitgi ýa-da çäklendirilen maglumat esasynda gelen kararlardan dörän zyýan üçin jogapkär däldir  şol sanda, mäkämlik ýa-da ondan Enne-de, aplikaýsyň döredilen suratyň içeriğine garşy çäklendirilen her hili garşylyklar.",
+      "p2": "Bu çäkliligiň<strong>çäklendirmeýär</strong>Ol şeýle diýýär: \"Hudaýyň halky, bu ýerden gelen ähli zatdan öň, bizden başga hiç bir zat talap edilmeýär."
+    },
+    "s07": {
+      "title": "Garawul diňi",
+      "p1": "Siz her wagt ulanmagyny bes edip bilersiňiz: hasabyň sillenmegi onuň serwerde ýerleşýän maglumatlaryny ýuwýar, hem-de barlamalary ýok etmekde, cihazda saklanýan maglumatlary ýuwýar. Ödülýän abonne ýok bolsa, ony tü Enneşmek üçin hiç hili abonneşlik ýokdur."
+    },
+    "s08": {
+      "title": "Bu şertleriň üýtgemegi",
+      "p1": "Bu sahypadaky üýtgeşikler täze günlendirilýän gün bilen çap ediler."
+    },
+    "s09": {
+      "title": "Galan kanun we forum",
+      "p1": "Braziliya kanunyna görä, bu şertlerden dörän jedelleri çözmek üçin saýlanan forum, ulanyň ýaşaýan ýeri."
+    },
+    "note": ") Garawul diňi (rusça)<privacy>Gizlilik polisiýasy</privacy>. Suallar: <email> contato@lymark.app </email>."
+  }
+}

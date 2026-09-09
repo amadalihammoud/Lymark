@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Upplýsingar um persónuvernd",
+      "description": "Hvernig Lymark app handleiðir myndir, staðsetningu, sögu og reikninginn þinn."
+    },
+    "title": "Upplýsingar um persónuvernd",
+    "updated": "Síðast uppfærð: 16. ágúst 2026 · Lymark app, útgáfa 1.3.0",
+    "intro": "Í þessari stefnu er lýst hvernig Lymark app vinnur með persónuupplýsingar. Hún er í samræmi við Lei nr. 13.709/2018 (Almenna persónuverndarslög  LGPD) og reglugerð (ESB) 2016/679 (Almenna persónuverndarslögreglugerð  GDPR ), og hún á við um app sem dreift er undir auðkenningunni <strong> com.lycosteam.lymark </strong>og á þessari vefsíðu.",
+    "s01": {
+      "title": "Í einu setningu",
+      "p1": " Lymark  <strong>sendir ekki myndir þínar eða staðsetningu þína</strong>. Allt sem forritið framleiðir  myndir, heimildir, sögu og forréttingar  verður haldið á tækinu þínu, undir stjórn þínum. Til þess að nota forritið og til að skrá þig er reikningur: netþjóninn geymir tölvupóstinn þinn, reikningsskjöl, áætlun og tal af útfluttuðum myndum  og ekkert annað.",
+      "p2": "Það er eitt undantekning, sem lýst er í lið 05: Til að breyta GPS-samhæftunum í lesanlega heimilisfang, fer reksturskerfið á tækið að leita að ytri geokódinguþjónustu."
+    },
+    "s02": {
+      "title": "Hverjum gilda stefnunin",
+      "p1": "Það á við alla sem nota forritið eða heimsækja vefsíðuna. Fyrir viðkomandi í Brasilíu er vinnsla LGPD og eftirlit Landsins um persónuvernd (ANPD). Fyrir viðkomandi í Evrópska efnahagssvæðinu og í Bretlandi er hún GDPR og UK GDPR."
+    },
+    "s03": {
+      "title": "Hver er stjórnandi",
+      "p1": "Forráðamaður persónuupplýsinga  <em>stjórnandi</em>, í orðabirgði LGPD  er 29.015.357 AMAD ALI HAMMOUD , skráður undir CNPJ 29.015.357/0001-25 , með heimilisfanginu Avenida Ana Costa, 433, Gonzaga, Santos - SP .",
+      "p2": "Sá sem ber ábyrgð á persónuupplýsingum í skilyrðum 41. gr. LGPD er Amad Ali Hammoud sem er hægt að hafa samband við á<email> contato@lymark.app </email>. Vegna magn og eðli vinnslunnar  sem ekki felur í sér viðkvæma gögn í mæli né kerfisbundna eftirlit  er engin skylda til að skipa<em>Upplýsingarverndarfulltrúi</em>Samkvæmt 37. gr. GDPR ."
+    },
+    "s04": {
+      "title": "Hvaða upplýsingar appinn meðhöndlar",
+      "p1": "Öll upplýsingar hér að neðan eru skráðar eingöngu í persónulegum svæði app innan við tæki, og ekkert af því er sent til verktaka.",
+      "defs": {
+        "photos": {
+          "term": "Myndir",
+          "def": "Myndin sem þú velur úr galleríunni eða tekur með myndavélinni og skráin sem er flutt út með vatnsmerkinu. Myndmynd getur innihaldið þriðja aðila persónuupplýsingar sjá lið 11."
+        },
+        "location": {
+          "term": "Staðsetning",
+          "def": "Talsverð breidd og lengd, sem er fengið einu sinni á hverri mynd, til að fylla inn áfangasvæðið."
+        },
+        "datetime": {
+          "term": "Dagur, tími og virkadagur",
+          "def": "Lestu úr klukkunni á tækiinu þegar það er tekið og breytaðu það."
+        },
+        "code": {
+          "term": "Myndfrásetning",
+          "def": "Hægt er að finna 14 hexadecimalsmerki sem eru teknar tilviljunar."
+        },
+        "history": {
+          "term": "Sagan",
+          "def": "Skráning á síðustu 200 útflutningunum, þar sem skráarstig á tækinu og gögn sem eru stemplar á myndinni."
+        },
+        "preferences": {
+          "term": "Tilgangsmál",
+          "def": "Augnaleg sviði, staða, stærð og önnur vatnsmerki valkostir."
+        }
+      },
+      "p2": "Appinn<strong>ekki innheimta</strong>: nafn, tölvupóst, síma, kennslukerfi, auglýsingaskilríki, tæki, tengslupplýsingar, dagatal, vafra sögu, notkun mælikvarða, hrunsskýrslur eða önnur upplýsingar um þig eða tækið þitt."
+    },
+    "s05": {
+      "title": "Eina upplýsingin sem fer úr tækinu",
+      "p1": "Þegar þú gefur staðsetningarleyfi, þá biður forritunarkerfið að breyta GPS-samhæftunum í póstfang. Þessi þýðing  snúa aftur geokódingu  er gerð af forritunarkerfinu sjálft sem sendir samhæftunum til kortþjónustu þess: <strong>Google</strong>á Android tæki og <strong>Eplur</strong>á iOS tæki.",
+      "p2": "Samskipti koma frá rekstrarkerfinu en ekki frá Lymark. Appurinn fær ekki eintak af honum, miðlar honum ekki og hefur ekki aðgang að neinu utan heimila.",
+      "p3": "<strong>Ekkert ljósmynd fer úr tækinu með neinu aðgerðum app.</strong>Ef þú notar Share hnappinn, myndin er send með áfangastaðappinu sem þú velur í deilupplýsingunni  messenger, tölvupóst, skýja geymslu  í persónuverndarstefnu appins."
+    },
+    "s06": {
+      "title": "Óskað er eftir leyfi og hvers vegna",
+      "defs": {
+        "camera": {
+          "term": "Myndbúnaður",
+          "def": "Til að taka mynd sem fær vatnsmerkið. Beðið aðeins þegar þú ýtir á Takka mynd. App-inn óskar ekki um aðgang að símtölum."
+        },
+        "photos": {
+          "term": "Myndir og fjölmiðlar",
+          "def": "Til að velja núverandi mynd og skrifa útfluttu skrá í galleríuna. Aðgangur er takmarkaður við ljósmyndir og skriftofgun er aðeins notuð til að skrifa  app ekki vafra né lesa galleríuna þína."
+        },
+        "location": {
+          "term": "Staðsetning á meðan notað er",
+          "def": "Til að fylla út heimilisfangsmerkið.<strong>aldrei í bakgrunni</strong>."
+        }
+      },
+      "p1": "Allir leyfi eru valfrjálsir og afturkallað hvenær sem er í stillingum tækisins. Að neita staðsetningu heldur appinu að fullu virkni: Indirisinn er síðan ritaður af þér. Að neita aðgang að galleríu kemur aðeins í veg fyrir sjálfkrafa spara og ljósmyndin er samt hægt að deila."
+    },
+    "s07": {
+      "title": "Löglegar grundvelli og markmið",
+      "p1": "Við vinnslu staðsetningar er gert á grundvelli<strong>samþykki</strong> Í 1. mgr. 7. gr. LGPD og 6. gr. GDPR  1. mgr. a) GDPR  er tjáð þegar þú gefur fyrirkomulagið til að nota kerfið og er hægt að afturkalla það hvenær sem er, án þess að það berur til við lagmæta vinnslu sem fram fór áður en afturkallað var.",
+      "p2": "Meðferð hinna eftirliðu gagna er framkvæmd fyrir <strong>framkvæmd þess sem þú óskar eftir</strong> 7., V. og 6.1) b) GDPR  þar sem án þess er ekki vatnssmerki fyrir app til að framleiða.",
+      "p3": "Meðferð reiknings gagna byggir á framkvæmd samnings (LGPD grein 7, V; GDPR grein 6(1)(b)). Meðferð sem byggir á lögmætu hagsmuni (LGPD grein 7, IX; GDPR grein 6(1)(f)) er eingöngu til öryggis og svikfjarðarbyggingar  til dæmis að skrá IP-fangs beiðna til netþjónar."
+    },
+    "s08": {
+      "title": "Alþjóðleg flutningur",
+      "p1": "Greinarupplýsingar eru unnar af staðfestingarvinnsluaðilinu (Clerk, Inc. , Bandaríkin), sem er alþjóðleg gagnafærsla, sem byggir á staðalögum samningarsamtökunum og aðferðum LGPD, 33. gr. og GDPR, 44. til 49.",
+      "p2": "Þessi vefsíða er veittur Vercel Inc. samkvæmt skilyrðum 14. máls."
+    },
+    "s09": {
+      "title": "Samskipti við þriðja aðila",
+      "p1": "Framkvæmdarstjóri deilir ekki, selur, leigir eða skilar ekki persónuupplýsingum til þriðja aðila.<em>vinnslumaður</em>Clerk, Inc., sem veitir staðfestingarþjónustu og geymir tölvupóstinn, reikningsskilinn og skipulagsupplýsingarnar, bundnar samningi við leiðbeiningar verktaka. Ef þú skráir þig inn hjá Google eða Apple, vinnur þeir útvega innritunarsögnina samkvæmt eigin stefnumótum; verktaki fær aðeins tölvupóstinn og auðkenninginn sem þarf til að búa til reikninginn. Myndir, heimildir og staðsetningar fara alls ekki í gegnum vinnsluaðila, því þeir yfirgefa aldrei tækið."
+    },
+    "s10": {
+      "title": "Geymsla, geymsla og öryggi",
+      "p1": "Upplýsingarnar eru í persónuverði appins, sem eru verndar af aðferðakerfinu að einangrun milli app og skjá lokun á tækinu.<strong>öryrkja</strong>, svo að sögu og forréttindi séu ekki sendir á Google reikning notanda.",
+      "p2": "Geymsla er algerlega stjórnað af þér: skrárnar eru til staðar þar til þær eru eyttar í forritinu sjálfu og sögufræði losnar sjálfkrafa eldstu þegar það fer yfir tvö hundruð atriði og fjarlægir einnig viðeigandi skrár. Þegar þú fjarlægir forritinu eyðir allt sem það hefur verið geymt. Myndir sem þegar eru vistaðar í tæki galleri tilheyra galleríunni og eru þar.",
+      "p3": "Ekkert kerfi er óbrotlaust. Skráningarupplýsingar  tölvupóst, skilríki, áætlun og tal  eru í höndum staðfestingarvinnsluvélans, samkvæmt öryggisráðgjöf hans. Myndir, heimildir og staðsetning eru ekki til staðar í neinu miðstöðugrunni og geta því ekki lekkað úr innviði verktaka. Ef öryggislysi hefur áhrif á gögn reikningsins, tilkynnir verktaka yfirvöldinu og viðkomandi persónuupplýsingar samkvæmt LGPD grein 48 og GDPR grein 33."
+    },
+    "s11": {
+      "title": "Þegar þú myndir aðra fólk",
+      "p1": "Þegar þú myndir þekkja fólk í gegnum faglega starfsemi þína,<strong>Þú</strong>Þeim er ekki heimilt að taka þátt í þeim og hefur ekki aðgang að myndunum."
+    },
+    "s12": {
+      "title": "Réttindi þínir",
+      "p1": "Í 18. gr. LGPD og 15.-22. gr. GDPR er þér tryggð réttindi til staðfestingar og aðgangs, leiðréttingar, eyðingar, nafnleyndar, blokkunar, flutningsleysi, takmarkanir á vinnslu, mótmæli, afturköllun samþykkis og upplýsinga um sameiningu.",
+      "p2": "Myndir, heimildir, sögu og forréttindi eru einungis á tækinu þínu og þessi réttindi eru beitt beint í forritið: sjá og eyða færslum í galleri greinarinnar, leiðrétta hvaða sviði sem er áður en útflutningur er gerður, afturkalla staðsetningarleyfi í kerfis stillingum og eyða öllu með því að afsetja forritið  verktakið getur ekki fengið aðgang, útflutning eða eytt þeim gögnum fyrir þig, vegna þess að það heldur þeim ekki. Hvað er um reikningadata  tölvupóst, áætlun og tal  þú getur séð það á reikningssíðunni og beðið um leiðréttingu, útflutning eða eyðslu á tengslumálum þessa stefnu; að eyða reikninginn eyðir þær gögn í staðfestingarvinnslu.",
+      "p3": "Fyrir spurningar eða formlegar beiðni skaltu skrifa til: <email> contato@lymark.app </email>Þú hefur einnig rétt til að kæra<strong> ANPD </strong>, í Brasilíu eða hjá eftirlitsstofnun í þínu aðildarríki í Evrópusambandinu."
+    },
+    "s13": {
+      "title": "Sjálfvirkar ákvarðanir",
+      "p1": "Það er engin sjálfvirka ákvörðun, prófílgerð eða vinnslu sem hefur réttaráhrif um þig, samkvæmt 20. gr. LGPD og 22. gr. GDPR."
+    },
+    "s14": {
+      "title": "Um þessa vefsíðu",
+      "p1": "Þessi síða hefur enga greiningu, sýnir enga auglýsingu og innborgar enga hnapp á samfélagsmiðlum.<strong>smákökur sem eru algjörlega nauðsynlegar</strong>fyrir reikningssetningu þína, sem staðfestingarefnisinn (punkt 09) setur þegar þú skráir þig inn; engin eftirlits- eða auglýsingarefnisseðlar. Loftsíður eru sendar frá eigin heimild síðunnar. Eina krafnin sem vafra þinn gerir til þriðja aðila eru þær sem eru á innritunar- og reikningskerminum, sem beint eru til staðfestingarefnisins  og ef þú velur það, til innritunarveitanda (Google eða Apple).",
+      "p2": "Vefsíðan er vefþjónustað af <strong> Vercel Inc. </strong>, sem sem vinnur að skrá tæknilegar aðgangsgögn  IP-fang, dagsetning, tími og auðlind sem óskað er eftir  svo lengi sem nauðsynlegt er fyrir öryggi og rekstur hýsingarinnar. Löglegt grundvöllur er lögmætur hagur til að viðhalda öryggi þjónustu, 9. gr. LGPD og 6. gr."
+    },
+    "s15": {
+      "title": "Breytingar á stefnu þessari",
+      "p1": "Breytingar verða auglýstar á þessari síðu með nýju dagsetningu. Breytingar sem breyta verulega vinnslu gagna verða einnig tilkynnt innan app áður en þær taka gildi."
+    },
+    "s16": {
+      "title": "Börn og unglingar",
+      "p1": "Lymark er vinnuaðferð sem er ætlað fólki 18 ára og eldri en hún er ekki beint til barna eða unglinga og safnarцяst ekki tilvitað gögnum um það áhorfendur."
+    },
+    "s17": {
+      "title": "Gildur lög",
+      "p1": "Þessi stefna er regluð af brazílskum lögum án þess að GDPR sé beittur við þeim einstaklingum sem hún tekur til."
+    },
+    "note": "Sjá einnig:<terms>Notkunarskilmála</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Notkunarskilmála",
+      "description": "Greiðsluskilyrði Lymark: hvað það gerir, hvað það gerir ekki og hver er ábyrgur fyrir innihaldi myndanna."
+    },
+    "title": "Notkunarskilmála",
+    "updated": "Síðast uppfærð: 16. ágúst 2026 · Lymark app, útgáfa 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Hvað app gerir",
+      "p1": "Lymark yfirlagir uppsetningu upplýsinga á mynd  tíma, dag, vikudag, heimilisfang og auðkenningцяll  og skilar nýju myndatöku með þeim upplýsingum sem eru innbyggðar í pikslunum."
+    },
+    "s02": {
+      "title": "Hvað app gerir ekki",
+      "p1": "Þetta er mikilvægasta mál og við biðjum um að lesið sé vel.",
+      "items": {
+        "certify": "<strong>Appin staðfestir ekki neitt.</strong>Það er ekki réttarfræðilega rannsókn, það gefur ekki út skjöl með almanna trú og það er ekki sérfræðingavott.",
+        "editable": "<strong>Hvert svið er hægt að breyta af notanda.</strong>Tíma, dagsetning, heimilisfang og kóða er hægt að breyta frjálslega áður en útflutningur er gerður: fagmaður þarf að geta چیزð heimilisfang sem GPS er rangt. Afleiðingin er sú að merkt gildi endurspeglar það sem notandi ákvað að merkja.",
+        "clock": "<strong>Tíman kemur frá klukkuni.</strong>Það er engin samtíma við traust tímaþjón.",
+        "address": "<strong>Indiriđ er áætlun.</strong>Nákvæmleiki þess fer eftir GPS-merkinu og gagnagrunni kortþjónustu rekstrarkerfisins.",
+        "code": "<strong>Myndfrásögn er ekki skráning hjá notara.</strong>Það er tilviljunarvísitæki fyrir innri tilvísun, án sönnunars virði alls."
+      },
+      "p2": "Ef notkunartilfinn þinn krefst sönnunarsekja með löglegum gildi gegn þriðja aðila skaltu leita að notarial ritgerð eða stafrænu vottorðstofu með tímastigli  Lymark er ekki hægt að skipta fyrir hvoru."
+    },
+    "s03": {
+      "title": "Ábyrgð þín",
+      "items": {
+        "photos": "Þú ert einungis ábyrgur fyrir myndunum sem þú tekur, efni sem þú stemplar á þeim og notkun sem þú gerir af þeim skráum sem þú myndar.",
+        "thirdParties": "Þegar þú myndir aðra fólk, eignir þeirra eða húsnæði þeirra, er það upp á þig að fá nauðsynlegar leyfi og fylgjast með myndaréttum, fagleigum og almennri persónuverndarlögum í tengslum viðkomandi persónuupplýsingar.",
+        "prohibited": "Það er bannað að nota forritið til að búa til rangt skrá, til að villleiða einhvern, til að líkja eftir framkvæmd þjónustu sem ekki var veitt eða til að framkvæma ólöglegt verk.",
+        "backups": "Það er upp til þín að halda afrit af öllu sem þú telur mikilvægt."
+      }
+    },
+    "s04": {
+      "title": "Notkunarleyfi",
+      "p1": "Við veitum þér persónulega, afturkaldandi, ekki-úthlutningslega og ekki-færslanlega leyfi til að setja upp og nota appinn, einnig í atvinnulífi.",
+      "p2": "<strong>Myndirnar eru þínar.</strong>Við krefjum enga rétt á myndunum sem þú tekur eða gerir."
+    },
+    "s05": {
+      "title": "Tilgengni og uppfærslur",
+      "p1": "App-inn er útgefinn eins og hann er. Það er engin trygging um óbrotinn rekstur, samhæfni við hvert og eitt tæki, né einhverja skuldbindingu til frestur fyrir leiðréttingar eða nýjar útgáfur.",
+      "p2": "Gæði útflutningsmyndsins fer eftir tækinu og stýrikerfinu og getur verið með lægri upplausn en upprunalegu myndinni."
+    },
+    "s06": {
+      "title": "Takmörkun á ábyrgð",
+      "p1": "Í þeim mælum sem brazilska lögin leyfa, ber verktaki ekki ábyrgð á óbeinum tapum, tapum á hagnaði, tapum á gögnum eða skaðabótum sem leiðir af ákvörðunum sem teknar eru á grundvelli upplýsinga sem eru stimpuð  þar á meðal vegna ákæru, í dómi eða utan þess, um efni ljósmyndar sem appinu er búið til.",
+      "p2": "Þessi takmörkun<strong>ekki fjarlægir</strong>réttindi sem neytandinn er tryggður með lögum nr. 8.078/1990, né ábyrgð vegna viljandi misgerðar eða grófar vanrækslu."
+    },
+    "s07": {
+      "title": "Endurlýsing",
+      "p1": "Þú getur hætt að nota forritið hvenær sem er: að eyða reikningnum eyðir gögnum á netþjóninum og að eyða forritið eyðir gögnum sem eru geymd á tækinu. Þó að ekki sé greitt áskrift er ekki hægt að fella áskriftina af. Þegar það er, birtast aflýsingarskilmálar í þessum skilmálum áður en gjaldt er."
+    },
+    "s08": {
+      "title": "Breytingar á þessum skilmálum",
+      "p1": "Breytingar verða birtar á þessari síðu með nýju dagsetningu."
+    },
+    "s09": {
+      "title": "Gildur lög og málþing",
+      "p1": "Brasilíska lögin gilda.Fóruminn sem valinn er til að leysa ágreiningar sem koma af þessum skilmálum er heimilisheimili notanda."
+    },
+    "note": "Um meðferð gagna, sjá:<privacy>Upplýsingar um persónuvernd</privacy>Spurningar:<email> contato@lymark.app </email>."
+  }
+}

@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Stempelt d'Zäit, Datum, Wochendag, Adress an e Trackingcode op Är Fotoen  fir Feldregister, Siteinspektiounen an Servicebeweis.",
+      "platform": "Plattform",
+      "privacy": "Datenschutzpolitik",
+      "privacyGeocoding": "Wann GPS benotzt gëtt, schéckt de Betribssystem d'Koordinat un Googles oder Apples Map Service fir d'Adress ze kréien. Dat ass déi eenzeg Informatioun déi hei bleift, an et ass de System deen et schéckt, net Lymark.",
+      "privacyLocation": "Lokalisatioun gëtt eemol pro Foto benotzt, nëmmen fir d'Adressfeld ze füllen, an net separat vun de Fotoen gespäichert.",
+      "privacyOnDevice": "D'Fotoen, d'Adressen an d'Geschicht bleiwen nëmmen op dësem Apparat. Den Account existéiert fir Äert Abonnement: de Server hält Är E-Mail an Äre Plan, an kritt ni Är Fotoen oder Är Plaz.",
+      "privacySection": "Privatsphär",
+      "sdk": " Expo SDK ",
+      "terms": "D'Benotzung vun der",
+      "title": "Iwwer Lymark ",
+      "version": "Versioun"
+    },
+    "account": {
+      "browserHint": "D'Aschreiwung geschitt am Browser. Logéiert mat Ärem Kont an d'App verbindet sech selwer.",
+      "code": "Code",
+      "codeSent": "Mir hunn e Code op {email} geschéckt ",
+      "connected": "Verbonne",
+      "continue": "weider",
+      "deleteAccount": "Kont ze läschen",
+      "email": "E-Mail",
+      "failed": "Dat huet net geschafft, kuckt d'E-Mail oder de Code a probéiert nach eng Kéier.",
+      "notConfigured": "D'Login ass nach net verfügbar an dësem Build.",
+      "signInBrowser": "Logéiert duerch de Browser an",
+      "signOut": "Schreift eraus",
+      "signedInAs": "Ënnerschriwwen als {email} ",
+      "title": "Konto",
+      "verify": "Kontrolléieren"
+    },
+    "batch": {
+      "addressHint": "Strooss, Nummer  Stad",
+      "clearList": "Schlëssel Lëscht",
+      "codeHint": "Zum Beispill LYM-001",
+      "done": "{count, plural,  one {Bezuelung fäerdeg: # Foto fäerdeg.} other {Bezuelung fäerdeg: # Fotoen fäerdeg.}}",
+      "doneSection": "D'Aarbecht ass fäerdeg",
+      "dropZone": "D'Fotoen hier ze drécken an ze drécken, oder de Knäppchen Select photos ze benotzen",
+      "errorsSection": "Feeler",
+      "folder": "Ordner: {name} ",
+      "noPhotos": "Wielt op d'mannst ee Foto aus.",
+      "outputNote": "Verarbeitete Fotoen ginn an de gewielte Ordner gespäichert.",
+      "outputSection": "Ausgang",
+      "photosSection": "Fotoen fir ze verarbeiten",
+      "processing": "Verarbeitung...",
+      "progress": "{current} vun {total} ({percent} %)",
+      "results": "{success, plural,  one {Erfolleg vun der #} other {Erfolleg vun der #}}, {failed, plural,  one {# Ausfall} other {# Ausfall}}",
+      "selectFolder": "Auswielen Ausgab Foldar",
+      "selectPhotos": "Fotoen auswielen",
+      "selected": "{count, plural,  one {# Foto gewielt} other {# Fotoen ausgewielt}}",
+      "sharedNote": "Dës Wäerter ginn op ALL Fotoen ugeholl.",
+      "sharedSection": "Deelweis Metadaten",
+      "start": "Start op d'Verarbeitung",
+      "unavailableBody": "Dës Feature ass nëmmen Desktop.",
+      "unavailableTitle": "Batchverarbeitung net verfügbar"
+    },
+    "capture": {
+      "accuracy": "Positioun bannent ± {meters} m.",
+      "accuracyImprecise": "Positioun bannent ± {meters} m  Kontrolléiert d'Stroossnummer virum Export.",
+      "address": "Adress",
+      "addressFailedTitle": "Kee Adress fonnt",
+      "addressHint": "Klickt op Locate oder Tipp d'Adress",
+      "camera": "Fotoen maachen",
+      "code": "Code",
+      "dateHint": "Januar 2026",
+      "dateTimeGroup": "Datum an Zäit",
+      "emptyWarning": "Keen Daten ginn auszegelt  d'Foto kënnt ouni e Waasserzeechen eraus.",
+      "gallery": "Aus der Galerie wielt",
+      "galleryDenied": "Foto Zougang gouf refuséiert, sou datt d'Bild nëmmen an der App existéiert. erlaabt et an der Astellunge › Erlaabnes fir se an d'Galerie ze späicheren.",
+      "galleryFailed": "D'Bild ass an d'Geschicht gaangen, awer d'Gerät huet refuséiert et an d'Galerie ze schreiwen.",
+      "generateCode": "Generéieren",
+      "hiddenFields": "{count, plural,  one {Verstoppt Feld} other {Verstoppt Feld}}: {fields}  Schalt se an der Parameter › Feld a Positioun.",
+      "keepMyAddress": "Halt d'Meen",
+      "locate": "Localiséiert",
+      "locateByGps": "Adress iwwer GPS ze fannen",
+      "lookup": {
+        "denied": "Loosst Plaz an der Settings › Permissions, oder gitt d'Adress an.",
+        "disabled": "De Standort ass am Apparat ausgeschalt.",
+        "timeout": "GPS huet net ze fréi geäntwert. Et ass dacks net an der Innenräum  Tipp d'Adress.",
+        "unavailable": "D'Adress konnt net op dëser Positioun geléist ginn."
+      },
+      "newCapture": "Start eng nei Capture",
+      "noFieldsBack": "Gitt zréck.",
+      "noFieldsContinue": "Gitt weider souguer weider",
+      "noFieldsMessage": "Keen Feld huet eppes ze stampéieren. Fëllt d'Felder aus, oder kuckt d'Astellunge › Fäll a Positioun.",
+      "noFieldsTitle": "D'Foto kënnt ouni Waasserzeechen eraus",
+      "noPhotoHint": "Maacht eng Foto oder wielt eng aus der Galerie fir unzefänken.",
+      "noPhotoSelected": "Kee Foto gewielt",
+      "openFailed": "D'Foto konnt net opgemaach ginn.",
+      "permissionMessage": "Zougang am Setting › Permissions erlaben weider ze goen.",
+      "permissionTitle": "Erlaabnes néideg",
+      "pickPhoto": "Wielt e Foto",
+      "pickPhotoHint": "Wielt e Foto fir d'Aktiounen ze aktivéieren.",
+      "previewLabel": "Virausgeschicht vum Waassermarkenfoto",
+      "renderFailedTitle": "De Bild konnt net generéiert ginn",
+      "replaceAddressMessage": "GPS fonnt: {address} ",
+      "replaceAddressTitle": "Déi Adress, déi Dir getraff hutt, ersetzen?",
+      "resetConfirm": "Verstouss",
+      "resetMessage": "D'gewielt Foto an d'gefëllt Felder ginn ewechgeworf.",
+      "resetTitle": "Eng nei Erfëllung ufänken?",
+      "saved": "Foto gespäichert an d'Gerät Galerie an an d'Geschicht.",
+      "savedAppOnlyTitle": "Nëmmen an der Lymark gespäichert ",
+      "shareDialogTitle": "Share watermarked Foto",
+      "shareFailedMessage": "D'Bild gouf generéiert an ass an der Lymark Geschicht. Dir kënnt et aus der Galerie Tab deelen.",
+      "shareFailedTitle": "Kann net deelen",
+      "shareUnavailableMessage": "D'Bild ass an der Geschicht vum Lymark bliwwen.",
+      "shareUnavailableTitle": "D'Delierung ass net verfügbar",
+      "sharedFileTitle": "Waassermarkéte Foto",
+      "stampNotReady": "D'Stuem gëtt nach ëmmer virbereet.",
+      "syncNow": "Elo",
+      "timestamp": "Datum/Zäit",
+      "title": "Fangen",
+      "useGpsAddress": "Benotzt den GPS een",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Dag"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "eng aner Faarf wielen",
+      "saturationBrightness": "Sättigung a Helligkeet",
+      "use": "Benotzt dës Faarf"
+    },
+    "common": {
+      "back": "Zurück",
+      "cancel": "Annuléieren",
+      "delete": "D'Schléi",
+      "error": "Feeler",
+      "gotIt": "Ech hunn et.",
+      "loading": "Loading...",
+      "no": "Nee, net.",
+      "ok": "OK, dat ass gutt.",
+      "save": "Erléischt",
+      "share": "Deel",
+      "success": "Erfolleg",
+      "tryAgain": "Probéiert nach eng Kéier.",
+      "unknownError": "Onbekannt Feeler",
+      "yes": "Jo, ech hunn"
+    },
+    "gallery": {
+      "cancelSelection": "Annuléiert Auswiel",
+      "clear": "E klenge Geschicht",
+      "clearConfirm": "Gläich",
+      "clearMessage": "D'Aufnahmen vun Lymark ginn geläscht.",
+      "count": "{count, plural,  one {# Foto exportéiert} other {# Fotoen exportéiert}}",
+      "delete": "D'Schléi",
+      "empty": "Kee Fotoen nach",
+      "emptyAction": "Gitt fir ze fangen",
+      "emptyDescription": "Fotoen déi Dir mat engem Waasserzeichen exportéiert, ginn hei gesat, mat Datum, Plaz an Code.",
+      "filteredCount": "{shown} vun {total, plural,  one {Foto vum #} other {# Fotoen}}",
+      "noResults": "Keen Fotoen fir  {query}  fonnt.",
+      "photoLabel": "Foto vum {when} ",
+      "removeMessage": "D'Eintrieden verloossen Lymark. Biller déi schonn an d'Gerät Galerie gespäichert sinn, ginn net beaflosst.",
+      "removeTitle": "{count, plural,  one {Aus der Geschicht geläscht} other {# Entwécklungen entfernen}}",
+      "removed": "{count, plural,  one {Entrée geläscht.} other {Entloossungen geläscht.}}",
+      "saveDeniedMessage": "Gitt et an der Parameter › Erlaabnes fir d'Biller an d'Gerät Galerie ze späicheren.",
+      "saveDeniedTitle": "Foto Zougang verweigert",
+      "savedAll": "{count, plural,  one {Ee Foto gespäichert an d'Gerät Galerie.} other {# Fotoen gespäichert an d'Gerät Galerie.}}",
+      "savedSome": "{saved} vun {total} Fotoen gespäichert.",
+      "searchPlaceholder": "Sich no Adress, Datum oder Code",
+      "selectedCount": "{count, plural,  one {# Foto gewielt} other {# Fotoen ausgewielt}}",
+      "share": "Deel",
+      "title": "Galerie"
+    },
+    "language": {
+      "automatic": "Match Gerät",
+      "automaticNote": "Lymark follegt d'Sprooch op Ärem Apparat.",
+      "label": "Sprooch",
+      "selector": "Wäert eng Sprooch"
+    },
+    "login": {
+      "access": "Logéiert Iech op",
+      "apple": "Logéiert mat Apple an",
+      "google": "Logéiert mat Google an",
+      "subtitle": "Logéiert Iech un fir weiderzemaachen",
+      "title": "Logéiert Iech op fir Zougang zu Lymark "
+    },
+    "nav": {
+      "batch": "Batchverarbeitung",
+      "photoDetail": "Foto Detailer",
+      "report": "PDF Bericht",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Dëse Bildschierm ass net Deel vun Lymark .",
+      "screenTitle": "Säit net fonnt",
+      "title": "Et gëtt kee Wee"
+    },
+    "permissions": {
+      "allow": "Loosst et",
+      "allowed": "Erlaabt",
+      "blocked": {
+        "later": "Net elo",
+        "message": "Fir dat ze erlaben, opmaacht Är Gerätinstellungen.",
+        "openSettings": "Open Settings",
+        "title": "Erlaabnes blockiert"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Fir d'Foto ze maachen, déi d'Waasserzeichen kritt.",
+      "denied": "Verweigert",
+      "granted": "Gëtt et erlaabt",
+      "intro": "Lymark froen nëmmen, wat et brauch fir e Foto ze stampéieren. Är Biller verloossen ni d'Apparat: wann Dir GPS benotzt, schéckt de Betribssystem dem Kaart Service d'Koordinat eleng, sou datt et eng Adress ginn kann.",
+      "location": "Plaz",
+      "locationRationale": "Fëllt automatesch am Adressfeld wann Dir fënnt.",
+      "mediaLibrary": "Späichert an d'Galerie",
+      "mediaLibraryRationale": "Fir exportéiert Fotoen an d'Gerät Galerie ze schreiwen.",
+      "openDeviceSettings": "D'Astellungen",
+      "recheck": "Kuckt nach eng Kéier",
+      "request": "Erlaabnes froen",
+      "section": "Zougang",
+      "title": "Erlaabnes"
+    },
+    "photo": {
+      "backToGallery": "Zurück an d'Galerie",
+      "exportedAt": "Exportéiert op {when} ",
+      "noWatermark": "Dës Foto gouf ouni Waasserzeichen exportéiert.",
+      "notFoundBody": "Dëse Bericht ass vläicht aus der Geschicht geläscht ginn.",
+      "notFoundTitle": "Foto net fonnt",
+      "remove": "Entfernt",
+      "removeBody": "D'Aufgab ass Lymark. D'Bild déi an d'Gerät Galerie gespäichert ass net beaflosst.",
+      "removeTitle": "Aus der Geschicht geläscht",
+      "share": "Deel",
+      "stampedData": "Stempeléiert Daten"
+    },
+    "plan": {
+      "exhausted": "Gratis Fotoen déi benotzt goufen",
+      "exhaustedMessage": "Déi 12 Fotoen vum gratis Plang sinn fort.",
+      "free": "Gratis",
+      "pro": "Pro",
+      "reconnect": "Rekonektéiert fir Äre Abonnement ze bestätegen",
+      "remaining": "{remaining, plural,  one {# gratis Foto links} other {# gratis Fotoen links}}",
+      "title": "Plan",
+      "unlimited": "Kee Limit"
+    },
+    "report": {
+      "allPhotos": "All Fotoen",
+      "authorField": "Autor / Firma",
+      "detailsSection": "Detailer",
+      "doc": {
+        "author": "Autor",
+        "declaration": "D'Stempeldaten (Adresse, Datum, Zäit an Code) sinn eng Erklärung vum Aussteller vun de Fotoen.",
+        "exportedAt": "Exportéiert op",
+        "generatedAt": "Generéiert op",
+        "page": "Säit",
+        "photo": "Foto: {index} ",
+        "photosSection": "Fotoen",
+        "signature": "Signatur vun der verantwortungsbezuelter Persoun",
+        "summary": "Resumé",
+        "title": "Foto Rapport",
+        "totalPhotos": "Gesamtfotoen:"
+      },
+      "empty": "De Bericht ass aus Ärer Galerie gebaut.",
+      "failed": "De Rapport konnt net generéiert ginn.",
+      "fileStem": "Rapport",
+      "format": {
+        "csv": "Schëffer (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Package (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Generéiert Dateie",
+      "generateSection": "Generéieren",
+      "includeLogo": "Logo op der Cover",
+      "includeLogoDescription": "Äre Markenlogo, dee selwechte vum Stempel.",
+      "norm": {
+        "abnt": "ABNT (Brasilien)",
+        "din5008": "DIN 5008 (D'Deutschland)",
+        "ibape": "IBAPE Stil (Brasilien)",
+        "iso": "International",
+        "letter": "Bréif (USA)"
+      },
+      "normNote": "De Standard setzt d'Papier an d'Formatioun  Margen, Schrëft- a Säitnumméierung.",
+      "normSection": "Dokumenterstandard",
+      "projectsSection": "Projet / Aarbecht",
+      "saved": "Gespaart op {path} ",
+      "savedShort": "Rapport gespäichert.",
+      "title": "PDF Bericht",
+      "titleField": "Titel vum Rapport",
+      "unavailableBody": "PDF Rapporten sinn an der Desktop App verfügbar.",
+      "unavailableTitle": "Nëmmen Desktop",
+      "uncoded": "Kee Code",
+      "wordTooBig": "Den Word Dokument ass ze grouss mat de Fotoen, déi an de Fotoen geholl goufen.",
+      "zipMissing": "{count, plural,  one {De Package ass gespäichert, awer # Foto gouf net op dësem Apparat fonnt.} other {De Package ass gespäichert, awer # Fotoen goufen net op dësem Apparat fonnt.}}"
+    },
+    "settings": {
+      "about": "Iwwer",
+      "aboutDescription": "Versioun, Privatsphär an Krediter",
+      "appSection": "App",
+      "deviceSection": "Apparat",
+      "deviceSectionDescription": "Zougang deen Lymark froen.",
+      "fields": "Feld a Positioun",
+      "fieldsDescription": "Wielt, wat Felder ze weisen, d'Eck an d'Gréisst",
+      "history": "Geschicht",
+      "historyDescription": "Exportéiert Fotoen, déi op dem Apparat gehalen ginn",
+      "language": "Sprooch",
+      "permissions": "Erlaabnes",
+      "permissionsDescription": "Kamera, Fotoen an Plaz",
+      "save": "Erléischt",
+      "title": "D'Astellungen",
+      "watermark": "Waasserzeichen",
+      "watermarkSection": "Waasserzeichen",
+      "watermarkSectionDescription": "Wat op der Foto stampt gëtt, a wou."
+    },
+    "signup": {
+      "subtitle": "Schreift Iech un fir ze starten",
+      "title": "Erstellt Äre Lymark Kont"
+    },
+    "tagline": "Waasserzeechen mat Zäit, Datum a Plaz",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Keng Kamera Zougang.",
+      "done": "Videoen sinn gespaart a gespäichert.",
+      "export": "Exportstempelt Video",
+      "exportSection": "Export",
+      "failed": "D'Video konnt net gestempelt ginn.",
+      "fieldsSection": "Stempelfelder",
+      "fileSection": "Video",
+      "none": "Kee Video ausgewielt.",
+      "processing": "Verarbeitung ... {percent} %",
+      "processingMobile": "Verarbeitung...",
+      "record": "Videoen elo opmaachen",
+      "saved": "Gespaart op {path} ",
+      "savedToGallery": "Stempel Video gespäichert an Är Galerie.",
+      "select": "Wielt Videoen",
+      "unavailableBody": "Mobile Video Stempel muss Lymark aus engem EAS Build installéiert ginn (mat dem natierlechen Modul). Et ass net verfügbar an Expo Go . Installéiert d'offiziell App aus dem Geschäft oder e EAS Build, oder benotzt d'Desktop / Webversioun.",
+      "unavailableTitle": "Installéiert App néideg",
+      "unreadable": "D'Datei konnt net als Video gelies ginn.",
+      "webNote": "Am Browser gëtt de Video a Echtzäit verarbeitet  e 2-Minutt Video dauert 2 Minutten  an kënnt am WebM Format eraus. Fir laang Videoen, benotzt d'Desktop App."
+    },
+    "watermark": {
+      "accentColor": "Vertikal Bar",
+      "backdropBandNote": "D'Band leeft ronderëm d'Foto an läit géint de Rand wou de Stempel verankert ass. Iwwer enger beschäfteger Szenie  e Bau Site, e Gaart, eng voller Fassad  liest et als Dokument  Ënnerschrëft anstatt e Sticker op der Uewerfläch.",
+      "backdropBlockNote": "D'Backup ass no der Gréisst vum Text, mat engem Polster ronderëm.",
+      "backdropColor": "Bandfarb",
+      "backdropDescription": "Et hält den Kontrast iwwer liicht Beräicher vun der Foto.",
+      "backdropInnerRadius": "Binnere Ecken",
+      "backdropOpacity": "Transparenz",
+      "backdropOpacityValue": "{percent} % onsichtbar",
+      "backdropRadius": "Ronneg Ecken",
+      "backdropRadiusSquare": "Quadrat",
+      "backdropStyles": {
+        "band": "Vollbreet Band",
+        "block": "D'Text",
+        "none": "Kee"
+      },
+      "backdropTitle": "Ënnerstëtzungsband",
+      "brandDescription": "Op der Uerdnung gëtt et eng Signatur, mat Logo an Slogan.",
+      "brandFirstColor": "Faarf vum éischte Deel",
+      "brandFirstHint": "Baueren",
+      "brandFirstPart": "Éischte Deel",
+      "brandNote": "Den zweete Deel ass looss fir eng eenfarbte Mark.",
+      "brandPlacements": {
+        "corner": "An enger Ecke",
+        "header": "Iwwer d'Uer",
+        "none": "Kee"
+      },
+      "brandSecondColor": "Färwe vum zweete Deel",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Zweet Deel",
+      "brandTitle": "Stempelmarken",
+      "codeDescription": "Op der Säit konkurréiert et net fir Plaz mat dem Bild selwer.",
+      "codePlacements": {
+        "block": "Nieft den Daten",
+        "side": "Recht Säit"
+      },
+      "codeTitle": "Fotocode",
+      "colors": {
+        "amber": "Amber",
+        "black": "Schwaarz",
+        "blue": "Bleu",
+        "green": "Gréng",
+        "red": "Rotsch",
+        "white": "Wäiss"
+      },
+      "colorsDescription": "D'Faarf op der Foto ass d'Firma s Wiel, net d'App s                                                                                                                                                                                                                    ",
+      "colorsTitle": "Stempelfarwen",
+      "complement": "Tagline",
+      "complementColor": "Tagline-Faarf",
+      "complementHint": "Inspektiounen a technesch Berichter",
+      "cornerConflict": "D'Mark an d'Daten sinn an der selwechter Ecke  si op der Foto iwwerlappt.",
+      "fields": {
+        "address": "Adress / Plaz",
+        "code": "Fotocode",
+        "date": "Datum",
+        "time": "Zäit",
+        "weekday": "Wochend"
+      },
+      "fieldsDescription": "Nëmmen déi Felder, déi am Inhalt sinn, kommen op d'Foto.",
+      "fieldsTitle": "Fält gewisen",
+      "includeCountry": "D'Land däerf och geholl ginn",
+      "includeCountryDescription": "Maacht et op, wann Dir iwwer Grenzen schafft, soss ass et nëmmen op der Foto Plaz.",
+      "legibilityTitle": "Liesbarkeet",
+      "logoAdded": "Logo an de Markenheader bäigefüügt.",
+      "logoAlignNote": "D'Logo-Héicht follegt de Text: seng Uewerfläch ass mat der Uewerfläch vum Numm an hiren ënnen mat der Basislinn vum Tagline ausgericht.",
+      "logoChosen": "Gewielt Logo",
+      "logoErrorMessage": "Probéiert en anere Bild. Eng PNG mat transparenter Hintergrund ass de Format deen am beschten funktionnéiert.",
+      "logoErrorTitle": "Dës Datei konnt net benotzt ginn",
+      "logoFormatNote": "Benotzt eng PNG mat engem transparenten Hannergrond. Eng JPG mat engem wäisse Hannergrond gëtt e wäisse Rectangel op der Foto  de Format speichert keng Transparenz, an d'App huet keng Manéier ze gleewen wat den Hannergrond ass.",
+      "logoPermissionMessage": "Gitt et an der Parameter › Erlaabnes fir d'Logo-Datei ze wielen.",
+      "logoPermissionTitle": "Foto Zougang verweigert",
+      "logoPick": "Logo wielt",
+      "logoPosition": "Logo Positioun",
+      "logoPositionBlock": "Mat dem Stempel",
+      "logoRemove": "Entfernt",
+      "logoReplace": "Ersatz Logo",
+      "logoSize": "Logo Gréisst",
+      "positionDescription": "Den Eck vum Foto ass de Block verankert.",
+      "positionTitle": "Positioun",
+      "positions": {
+        "bottom-left": "Links ënnen",
+        "bottom-right": "Ënnert riets",
+        "top-left": "Top links",
+        "top-right": "Top riets"
+      },
+      "previewCurrent": "Iwwer d'aktuell Foto aus der Capture Tab.",
+      "previewEmpty": "Vun Liicht op Däischtert, fir d'Liesbarkeet an deenen zwee Extremen ze kontrolléieren.",
+      "previewNoFields": "Keen Feld ausgewielt  d'Foto kënnt ouni e Waasserzeechen eraus.",
+      "previewTitle": "Virschau",
+      "reset": "De Standardwiederhuelen",
+      "sizeTitle": "Textgréisst",
+      "sizes": {
+        "large": "Grouss",
+        "medium": "Medium",
+        "small": "Kleine"
+      },
+      "textColor": "Text",
+      "timeFormatDescription": "Wéi d'Zäit an d'Felder gefüllt gëtt.",
+      "timeFormatTitle": "Zäitformat",
+      "timeFormats": {
+        "12h": "12 Stonnen (Mëtteg/Mëtteg)",
+        "24h": "24 Stonnen"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "All Dateien",
+      "images": "Biller",
+      "pickFolder": "Auswielen Ausgab Foldar",
+      "pickPhoto": "Foto auswielen",
+      "pickPhotos": "Fotoen fir d'Lëscht auswielen",
+      "savePhoto": "Fotoen späicheren",
+      "saveReport": "Erlaabt Bericht"
+    },
+    "login": {
+      "cancel": "Annuléieren",
+      "confirm": "weider",
+      "message": "Dir hutt just duerch de Browser ugeschriwwen.",
+      "title": "Logéiert op Lymark "
+    },
+    "menu": {
+      "copy": "Kopéiert",
+      "cut": "Schneiden",
+      "edit": "Editéiert",
+      "file": "D ' Dossier",
+      "fullscreen": "Vollbildschirm",
+      "help": "Hëllef",
+      "paste": "Paste",
+      "quit": "Gitt op",
+      "redo": "Redo",
+      "reload": "Reload",
+      "selectAll": "All wielt",
+      "settings": "D'Astellungen",
+      "undo": "Verëffentlecht",
+      "view": "Vue",
+      "zoomIn": "Zoom an",
+      "zoomOut": "Zoom aus",
+      "zoomReset": "Déi tatsächlech Gréisst"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Heem zréck",
+      "openApp": "D'App opmaachen",
+      "photos": "Fotoen",
+      "photosLeft": "{remaining} vun {quota} links",
+      "plan": "Plan",
+      "planUnavailable": "Momentan net verfügbar",
+      "plans": {
+        "free": "Gratis",
+        "pro": "Pro"
+      },
+      "signInTitle": "Logéiert Iech an",
+      "signOut": "Schreift eraus",
+      "signUpTitle": "Konto erstellen",
+      "subscribe": "Abonnéiert op Lymark Pro",
+      "subscribeSoon": "Subscriptiounen sinn nach net verfügbar. Wann se sinn, kënnt Dir hei abonnéieren an all Apparat mat dem selwechten Kont benotzen.",
+      "title": "Äre Kont",
+      "revokeDesktops": "Computeren ofzeschalten",
+      "revokeDesktopsHint": "Et endéiert den Zougang vun der App op all Computer. Dir kënnt Iech erëm anloggen wann Dir wëllt."
+    },
+    "availability": {
+      "contact": "Fir de Start ze verfollegen oder e Problem ze berichten, schreift un <email> contato@lymark.app </email>.",
+      "description": "Lymark ass op der Versioun 1.3.0, an Test op Android virum Verëffentlechung op Google Play. Et gëtt keng iOS Versioun an keng Webversioun, an d'App sammelt keng Bezuelung.",
+      "title": "D'Disponibilitéit"
+    },
+    "data": {
+      "device": {
+        "description": "De Kont existéiert fir Äre Abonnement: de Server hält Är E-Mail an Äre Plan, an kritt ni Är Fotoen oder Äre Standort.",
+        "field": "Op der Apparat",
+        "heading": "Fotoen, Adressen an Geschicht"
+      },
+      "external": {
+        "description": "Fir Breetheets- a Längtheetsadress ze liesen, frot de Betribssystem de Geocoding Service vu Google oder Apple. Dat ass déi eenzeg Informatioun déi verlooss gëtt, an de System schéckt et, net d'App.",
+        "field": "Off vum Gerät",
+        "heading": "Just eng Koordinat an eng Adress ze maachen"
+      },
+      "note": "Et ass alles  inklusiv wat dat heescht ënner Brasiliens LGPD  am <privacy>Datenschutzpolitik</privacy>. Wann d'Location Permission ausgeschalt gëtt, gëtt d'App voll funktionnéiert; nëmmen d'Adressfeld muss dann manuell getippt ginn.",
+      "title": "Wou Är Daten sinn"
+    },
+    "deleteAccount": {
+      "back": "Zurück op d'Rechnung",
+      "confirm": "Schreift mäi Kont",
+      "deletesNow": "Wann Dir Äre Kont läscht, läscht Dir Är E-Mail, Är Identifizéierung, an den Accord vum Plan, der Quotatioun an der Fotoenzuel.",
+      "irreversible": "D'Fotos op Ärem Apparat ginn net beaflosst  si waren ni op eise Server.",
+      "retained": "D'Zäitbestëmmungen vun den Bezueltransaktiounen ginn fir de gesetzlech erfuerderleche Finanzperiod behalen, ouni vun Ärem Profil ze verlinken.",
+      "title": "Kont ze läschen"
+    },
+    "description": "Android App déi d'Zäit, Datum, Wochendag, Adress an e Trackingcode op Site-inspektioun an Service-Prouf Fotoen stampt.",
+    "desktop": {
+      "backAccount": "Zurück op d'Rechnung",
+      "explanation": "Äre Kont ass prett. Klickt op de Knäppchen hei drënner fir Lymark op Ärem Computer ze opmaachen deen schonn an  ënnerschriwwen ass.",
+      "open": "D'App verbannen",
+      "title": "Logéiert op Desktop",
+      "unavailable": "D'Desktop Appverbindung ass nach net verfügbar."
+    },
+    "download": {
+      "appStore": {
+        "description": "Datselwecht Erfahrung wéi Android, op iOS.",
+        "field": " App Store ",
+        "heading": "iPhone an iPad"
+      },
+      "browser": {
+        "action": "Logéiert Iech an",
+        "description": "Logéiert Iech mat Ärem Kont an d'App opmécht direkt am Browser  Telefon oder Computer.",
+        "field": "Browser",
+        "heading": "Benotzt et elo, näischt ze installéieren"
+      },
+      "desktop": {
+        "description": "Fotoen, laang Videoen an PDF - Rapporten  déi schwéier-Duty-Versioun.",
+        "field": "Computer",
+        "heading": "Windows an Linux"
+      },
+      "googlePlay": {
+        "description": "D'Telefonsapp, mat Kamera, Galerie an de Video.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Kommt séier",
+      "title": "Wou soll Lymark benotzt ginn "
+    },
+    "features": {
+      "address": {
+        "description": "D'Gattestyp gëtt abgekürzt an de Zustand gëtt säin Code, sou datt d'Adress an zwou Linnen passt ouni d'Foto ze decken.",
+        "field": "Adress",
+        "heading": "Gefüllt mat GPS, mat der Hand korrigéierbar"
+      },
+      "code": {
+        "description": "Et existéiert sou datt Dir eng spezifesch Foto an enger Aktioun oder engem Bericht kann zitiéieren. Et leeft op der rietser Kante gedreemt, oder ass mat dem Dateblock  Är Wiel.",
+        "field": "Fotocode",
+        "heading": "14 Zeechnunge, gezeichnet vun engem Kryptographiegenerator"
+      },
+      "note": "All Feld schalt a schalt eleng op, an de Block an engem vun de véier Ecken an dräi Gréissten an der Virschau benotzt Är tatsächlech Foto, net eng generesch Probe: wat Dir um Bildschierm gesitt ass wuertwiertlech wat exportéiert gëtt.",
+      "time": {
+        "description": "Ee Knäppchen bréngt all dräi Felder zréck op d'Zäit, wann d'Aufnahme méi laang dauert wéi erwaart.",
+        "field": "Zäit an Datum",
+        "heading": "Vun der Uerdnungskloun, zum Moment vun der Akzeptanz"
+      },
+      "title": "Wat op d'Bild geet"
+    },
+    "footer": {
+      "description": "Lymark  Fotografesch Rekord mat Datum, Zäit an Adress.",
+      "documentsLabel": "Dokumenter",
+      "privacy": "Datenschutzpolitik",
+      "support": "Ënnerstëtzung:",
+      "terms": "D'Benotzung vun der"
+    },
+    "hero": {
+      "ctaAccount": "Gitt op mäi Kont",
+      "ctaLogin": "Logéiert Iech an",
+      "ctaSignup": "Erstellt e gratis Kont",
+      "description": "Lymark stampt d'Zäit, Datum, Wochendag, Adress an e Trackingcode direkt op d'Bild. D'Datei déi aus der App eraus kënnt huet d'Informatioun an der  net als Metadaten, déi zesummen reeden, déi den éischten WhatsApp vir virdrun ewechstreift.",
+      "eyebrow": "Feldfoto Dokumentatioun",
+      "heading": "D'Foto läit op Ärem Telefon, wou, wann a wat.",
+      "meta": {
+        "account": "Een Tastekonto",
+        "android": "Android an Browser",
+        "language": "Brasilesch Portugiesesch",
+        "onDevice": "Fotoen bleiwen op der Apparat"
+      },
+      "note": "Et gëtt näischt installéiert."
+    },
+    "nav": {
+      "account": "Konto",
+      "home": "Heem",
+      "homeLabel": "Lymark , Start Säit",
+      "label": "Haapt",
+      "privacy": "Privatsphär",
+      "signIn": "Logéiert Iech an",
+      "terms": "Konditioune",
+      "verify": "Kontrolléieren"
+    },
+    "process": {
+      "capture": {
+        "description": "D'Adress Sich fänkt un, wann d'Foto kënnt. D'Felder bleiwen op fir ugepasst ze ginn, während et leeft.",
+        "field": "Fangen",
+        "heading": "Kamera oder Galerie"
+      },
+      "note": "D'Zwee Aktiounen ginn opgemaach getrennt ze halen. Spueren a deelen léisen verschidde Probleemer, an se an engem Knäppchen ze klappen géif jiddereen, deen just d'Foto duerch e Send-Screen filéiere wëll, droen.",
+      "save": {
+        "description": "Et ass mat de Rescht vun Äre Fotoen vum Handy, verfügbar fir all App  och nodeems Dir Lymark deinstalléiert hutt.",
+        "field": "Erléischt",
+        "heading": "Gitt an d'Gerät Galerie"
+      },
+      "share": {
+        "description": "WhatsApp , E-Mail, Drive: d'Destinatioun gëtt vum Betribssystem gewielt, an d'App huet keng Participatioun am Versand.",
+        "field": "Deel",
+        "heading": "D'System Aktieplatt opmécht"
+      },
+      "title": "De Wee, deen eng Foto mécht"
+    },
+    "skipToContent": "Schalt op Inhalt",
+    "specimen": {
+      "caption": "D'Bamberregel fänkt an endet op de Rand vun de Zifferen, net vun der Textbox.",
+      "label": "Proben vum Lymark Stempel: Zäit 07:42, Datum 12 August 2026, Mëttwoch, Adress zu Guarujá an e Fotocode."
+    },
+    "title": "Lymark  Datum, Zäit an Adress Waasserzeechen fir Feldfotoen",
+    "verify": {
+      "caveat": "D'Stick ze bescheed fir d'Integritéit vun der Datei an de Moment vun der Ausgabe.",
+      "checking": "Kontrolléieren...",
+      "declarationNote": "D'Stickpräis (Adress, Datum, Zäit) weist d'Deklaration vum Emittent  d'Stickpräis bezeugt d'Integritéit an d'Ausgabe, net den Inhalt.",
+      "intro": "Drop oder wielt e Foto, dat vun Lymark exportéiert gouf an kuckt direkt ob et genau esou ass wéi et d'App  verléisst huet a wien et erausginn huet, wann.",
+      "noSealBody": "Dës Datei huet kee Lymark-Zeechen. Et kann offline exportéiert ginn, ier de Zeechen existéiert huet, oder kann net aus Lymark kommen.",
+      "noSealTitle": "Kee Seal",
+      "notConfigured": "Verifikatioun ass nach net verfügbar.",
+      "pick": "Wielt d'Datei",
+      "previewAlt": "D'verifizéiert Foto, Stempel sichtbar",
+      "privacyNote": "D'Verifikatioun geschitt an Ärem Browser. D'Datei gëtt net op e Server geschéckt.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Intakt",
+      "tamperedBody": "De Inhalt passt net mat dem Dicht: d'Datei gouf nom Ausgabe geännert, oder de Dicht gehéiert zu enger anerer Datei.",
+      "tamperedTitle": "D'Konsistent",
+      "title": "Verifizéieren d'Authentizitéit",
+      "unsupported": "Dësen Browser ënnerstëtzt d'Verifikatioun vun der Signatur net. Probéiert e aktuelle Browser."
+    }
+  }
+}

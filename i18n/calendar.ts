@@ -83,6 +83,19 @@ export const MONTHS: Record<Locale, readonly string[]> = {
   lv: ['janv.', 'febr.', 'marts', 'apr.', 'maijs', 'jūn.', 'jūl.', 'aug.', 'sept.', 'okt.', 'nov.', 'dec.'],
   bs: ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
   rn: ['Mut', 'Gas', 'Wer', 'Mat', 'Gic', 'Kam', 'Nya', 'Kan', 'Nze', 'Ukw', 'Ugu', 'Uku'],
+  et: ['jaan', 'veebr', 'märts', 'apr', 'mai', 'juuni', 'juuli', 'aug', 'sept', 'okt', 'nov', 'dets'],
+  tg: ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'],
+  mk: ['јан', 'фев', 'мар', 'апр', 'мај', 'јун', 'јул', 'авг', 'сеп', 'окт', 'ное', 'дек'],
+  be: ['студз', 'лют', 'сак', 'крас', 'май', 'чэрв', 'ліп', 'жн', 'вер', 'кастр', 'ліст', 'снеж'],
+  tk: ['ýan', 'few', 'mart', 'apr', 'maý', 'iýun', 'iýul', 'awg', 'sen', 'okt', 'noý', 'dek'],
+  ky: ['янв.', 'фев.', 'мар.', 'апр.', 'май', 'июн.', 'июл.', 'авг.', 'сен.', 'окт.', 'ной.', 'дек.'],
+  nn: ['jan.', 'feb.', 'mars', 'apr.', 'mai', 'juni', 'juli', 'aug.', 'sep.', 'okt.', 'nov.', 'des.'],
+  lb: ['Jan.', 'Feb.', 'Mäe.', 'Abr.', 'Mee', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.'],
+  dz: ['ཟླ་༡', 'ཟླ་༢', 'ཟླ་༣', 'ཟླ་༤', 'ཟླ་༥', 'ཟླ་༦', 'ཟླ་༧', 'ཟླ་༨', 'ཟླ་༩', 'ཟླ་༡༠', 'ཟླ་༡༡', 'ཟླ་༡༢'],
+  mt: ['Jan', 'Fra', 'Mar', 'Apr', 'Mej', 'Ġun', 'Lul', 'Aww', 'Set', 'Ott', 'Nov', 'Diċ'],
+  is: ['jan.', 'feb.', 'mar.', 'apr.', 'maí', 'jún.', 'júl.', 'ágú.', 'sep.', 'okt.', 'nóv.', 'des.'],
+  dv: ['ޖަނަވަރީ', 'ފެބްރުއަރީ', 'މާރޗް', 'އޭޕްރީލް', 'މެއި', 'ޖޫން', 'ޖުލައި', 'އޮގަސްޓް', 'ސެޕްޓެމްބަރ', 'އޮކްޓޫބަރ', 'ނޮވެމްބަރ', 'ޑިސެމްބަރ'],
+  ca: ['gen.', 'febr.', 'març', 'abr.', 'maig', 'juny', 'jul.', 'ag.', 'set.', 'oct.', 'nov.', 'des.'],
 };
 
 /**
@@ -172,6 +185,19 @@ export const DATE_PATTERN: Record<Locale, string> = {
   lv: '{d}. {mon} {y}.',
   bs: '{d}. {mon} {y}.',
   rn: '{d} {mon} {y}',
+  et: '{d}. {mon} {y}',
+  tg: '{d} {mon} {y}',
+  mk: '{d}. {mon} {y}',
+  be: '{d} {mon} {y}',
+  tk: '{d} {mon} {y}',
+  ky: '{d} {mon} {y}',
+  nn: '{d}. {mon} {y}',
+  lb: '{d}. {mon} {y}',
+  dz: '{d} {mon} {y}',
+  mt: '{d} {mon} {y}',
+  is: '{d}. {mon} {y}',
+  dv: '{d} {mon} {y}',
+  ca: '{d} {mon} {y}',
 };
 
 /** Abreviação do dia da semana — o que cabe no carimbo, abaixo da data. */
@@ -236,6 +262,19 @@ export const WEEKDAYS_SHORT: Record<Locale, readonly string[]> = {
   lv: ['sv', 'pr', 'ot', 'tr', 'ce', 'pk', 'se'],
   bs: ['ned', 'pon', 'uto', 'sri', 'čet', 'pet', 'sub'],
   rn: ['cu', 'mbe', 'kab', 'gtu', 'kan', 'gnu', 'gnd'],
+  et: ['P', 'E', 'T', 'K', 'N', 'R', 'L'],
+  tg: ['якш', 'душ', 'сеш', 'чор', 'пан', 'ҷум', 'шан'],
+  mk: ['нед', 'пон', 'вто', 'сре', 'чет', 'пет', 'саб'],
+  be: ['нд', 'пн', 'аў', 'ср', 'чц', 'пт', 'сб'],
+  tk: ['Ýek', 'Duş', 'Siş', 'Çar', 'Pen', 'Anna', 'Şen'],
+  ky: ['жек', 'дүй', 'шей', 'шар', 'бей', 'жум', 'ише'],
+  nn: ['sø.', 'må.', 'ty.', 'on.', 'to.', 'fr.', 'la.'],
+  lb: ['So.', 'Mé.', 'Dë.', 'Më.', 'Do.', 'Fr.', 'Sa.'],
+  dz: ['ཉི་', 'ཟླ་', 'མིར་', 'ལྷག་', 'ཕུར་', 'སངས་', 'སྤེན་'],
+  mt: ['Ħad', 'Tne', 'Tli', 'Erb', 'Ħam', 'Ġim', 'Sib'],
+  is: ['sun.', 'mán.', 'þri.', 'mið.', 'fim.', 'fös.', 'lau.'],
+  dv: ['އާދީއްތަ', 'ހޯމަ', 'އަންގާރަ', 'ބުދަ', 'ބުރާސްފަތި', 'ހުކުރު', 'ހޮނިހިރު'],
+  ca: ['dg', 'dl', 'dt', 'dc', 'dj', 'dv', 'ds'],
 };
 
 /** Nome completo — usado onde há espaço, como no detalhe da galeria. */
@@ -300,6 +339,19 @@ export const WEEKDAYS_LONG: Record<Locale, readonly string[]> = {
   lv: ['svētdiena', 'pirmdiena', 'otrdiena', 'trešdiena', 'ceturtdiena', 'piektdiena', 'sestdiena'],
   bs: ['nedjelja', 'ponedjeljak', 'utorak', 'srijeda', 'četvrtak', 'petak', 'subota'],
   rn: ['Ku yumvire', 'Ku wa mbere', 'Ku wa kabiri', 'Ku wa gatatu', 'Ku wa kane', 'Ku wa gatanu', 'Ku wa gatandatu'],
+  et: ['pühapäev', 'esmaspäev', 'teisipäev', 'kolmapäev', 'neljapäev', 'reede', 'laupäev'],
+  tg: ['якшанбе', 'душанбе', 'сешанбе', 'чоршанбе', 'панҷшанбе', 'ҷумъа', 'шанбе'],
+  mk: ['недела', 'понеделник', 'вторник', 'среда', 'четврток', 'петок', 'сабота'],
+  be: ['нядзеля', 'панядзелак', 'аўторак', 'серада', 'чацвер', 'пятніца', 'субота'],
+  tk: ['Ýekşenbe', 'Duşenbe', 'Sişenbe', 'Çarşenbe', 'Penşenbe', 'Anna', 'Şenbe'],
+  ky: ['жекшемби', 'дүйшөмбү', 'шейшемби', 'шаршемби', 'бейшемби', 'жума', 'ишемби'],
+  nn: ['søndag', 'måndag', 'tysdag', 'onsdag', 'torsdag', 'fredag', 'laurdag'],
+  lb: ['Sonndeg', 'Méindeg', 'Dënschdeg', 'Mëttwoch', 'Donneschdeg', 'Freideg', 'Samschdeg'],
+  dz: ['ཉི་མ་', 'ཟླ་བ་', 'མིག་དམར་', 'ལྷག་པ་', 'ཕུར་བུ་', 'པ་སངས་', 'སྤེན་པ་'],
+  mt: ['Il-Ħadd', 'It-Tnejn', 'It-Tlieta', 'L-Erbgħa', 'Il-Ħamis', 'Il-Ġimgħa', 'Is-Sibt'],
+  is: ['sunnudagur', 'mánudagur', 'þriðjudagur', 'miðvikudagur', 'fimmtudagur', 'föstudagur', 'laugardagur'],
+  dv: ['އާދީއްތަ', 'ހޯމަ', 'އަންގާރަ', 'ބުދަ', 'ބުރާސްފަތި', 'ހުކުރު', 'ހޮނިހިރު'],
+  ca: ['diumenge', 'dilluns', 'dimarts', 'dimecres', 'dijous', 'divendres', 'dissabte'],
 };
 
 /**
@@ -408,6 +460,20 @@ export const STAMP_LOCALE: Record<Locale, Locale> = {
   lv: 'lv',
   bs: 'bs',
   rn: 'rn',
+  // Fase 4 — latim / cirílico: desenha; tibetano (dz) e thaana (dv): inglês.
+  et: 'et',
+  tg: 'tg',
+  mk: 'mk',
+  be: 'be',
+  tk: 'tk',
+  ky: 'ky',
+  nn: 'nn',
+  lb: 'lb',
+  dz: 'en',
+  mt: 'mt',
+  is: 'is',
+  dv: 'en',
+  ca: 'ca',
 };
 
 /** `true` quando o carimbo consegue desenhar o idioma da interface. */

@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Stigla tíma, dag, vinnudag, heimilisfang og sporakóða á myndirnar  til að skrá sig á vettvangi, skoða staðinn og sanna þjónustu.",
+      "platform": "Stjórnmáli",
+      "privacy": "Upplýsingar um persónuvernd",
+      "privacyGeocoding": "Þegar GPS er notað sendir stýrikerfið samhæfingu til Googles eða Apples kort þjónustu til að fá heimilisfanginn. Það er eina upplýsing sem eftir er hér, og það er kerfið sem sendir það, ekki Lymark .",
+      "privacyLocation": "Staðsetning er notað einu sinni á hverri mynd, aðeins til að fylla inn heimilisfangsfangsfanginu og er ekki geymd sérstaklega frá myndunum.",
+      "privacyOnDevice": "Myndirnar, heimilisfangarnir og söguþráðurinn eru einungis á þessum tækinu.",
+      "privacySection": "Einkaheimild",
+      "sdk": " Expo SDK ",
+      "terms": "Notkunarskilmála",
+      "title": "Um Lymark ",
+      "version": "Skilningur"
+    },
+    "account": {
+      "browserHint": "Skráning fer fram í vafra. Skráning þar með reikningnum þínum og forritið tengist sjálf.",
+      "code": "Kódinn",
+      "codeSent": "Við sendum kóða til {email}",
+      "connected": "Samtök",
+      "continue": "Foreldra",
+      "deleteAccount": "Skildu reikninginn",
+      "email": "Tölvupóst",
+      "failed": "Skoðaðu tölvupóstinn eða kóđinn og reyndu aftur.",
+      "notConfigured": "Skráning er ekki til í þessu byggingu enn.",
+      "signInBrowser": "Skráðu þig inn í gegnum vafra",
+      "signOut": "Skráðu þig út.",
+      "signedInAs": "Skrifað undir sem {email} ",
+      "title": "Ríkisendingar",
+      "verify": "Sækja um"
+    },
+    "batch": {
+      "addressHint": "Ganga, númer  Borg",
+      "clearList": "Listofgrein",
+      "codeHint": "t.d. LYM-001",
+      "done": "{count, plural,  one {Ferlið er lokið: # mynd er lokið.} other {Ferðsluna lokið: # myndir lokið.}}",
+      "doneSection": "Lögð í gangi",
+      "dropZone": "Drag og drop myndir hér, eða notaðu knappan Select photos",
+      "errorsSection": "Áföll",
+      "folder": "Foldurinn: {name} ",
+      "noPhotos": "Veldu allavega eitt ljósmynd.",
+      "outputNote": "Meðhöndluð mynd er vistað í valda möppuna.",
+      "outputSection": "Útgangur",
+      "photosSection": "Myndir til að vinna",
+      "processing": "Við vinnslu...",
+      "progress": "{current} af {total} ({percent} %)",
+      "results": "{success, plural,  one {# árangur} other {Árangur #}}, {failed, plural,  one {# mislögð} other {Skilyrði #}}",
+      "selectFolder": "Veldu útgáfu möppuna",
+      "selectPhotos": "Veldu myndir",
+      "selected": "{count, plural,  one {Myndmynd # valinn} other {Myndir # valdar}}",
+      "sharedNote": "Þessar gildi eru notuð á ÖLL ljósmyndir.",
+      "sharedSection": "Sameiginleg metadata",
+      "start": "Byrjað með vinnslu",
+      "unavailableBody": "Þessi eiginleiki er aðeins skrifborðs.",
+      "unavailableTitle": "Ekki er hægt að vinna úr hlutum"
+    },
+    "capture": {
+      "accuracy": "Staða innan við ± {meters} m.",
+      "accuracyImprecise": "Staða innan ± {meters} m  athuga götunúmer áður en útflutningur er gerður.",
+      "address": "Indasöfn",
+      "addressFailedTitle": "Ekki fundist heimilisfang.",
+      "addressHint": "Smelltu á staðsetningu eða skrifaðu áfangann",
+      "camera": "Taktu mynd.",
+      "code": "Kódinn",
+      "dateHint": "1. janúar 2026",
+      "dateTimeGroup": "Dagur og tími",
+      "emptyWarning": "Engin gögn verða stemplað  myndin kemur út án vatnsmerki.",
+      "gallery": "Veldu úr myndasafni",
+      "galleryDenied": "Myndatöku var neitað og myndin er aðeins til innan forritinu. Leyfið henni í stillingum › Leyfi til að vista hana í galleríunni.",
+      "galleryFailed": "Myndin fór inn í sögu en tækið neitaði að skrifa hana í galleríuna.",
+      "generateCode": "Framleiða",
+      "hiddenFields": "{count, plural,  one {Haldinn sviður} other {Haldnir sviðir}}: {fields}  kveikja á þeim í Stillingar › Völl og staða.",
+      "keepMyAddress": "Haltu mér.",
+      "locate": "Staðsetning",
+      "locateByGps": "Sækja heimilisfang með GPS",
+      "lookup": {
+        "denied": "Leyfa staðsetningu í Stillingar › Leyfi, eða sláðu inn heimilisfang.",
+        "disabled": "Staðan er slökkin á tækinu.",
+        "timeout": "GPS svaraði ekki á réttum tíma. Það vill oft ekki inni  ritaðu heimilisfang.",
+        "unavailable": "Hægt var ekki að finna heimilisfanginn í þessari stöðu."
+      },
+      "newCapture": "Byrjaðu á nýju veiđinni.",
+      "noFieldsBack": "Farðu aftur.",
+      "noFieldsContinue": "Foreldra áfram.",
+      "noFieldsMessage": "Ekkert svið hefur neitt til að stempla. Fylldu velurnar í eða skoðaðu stillingar › Velur og staða.",
+      "noFieldsTitle": "Myndin kemur út án vatnsmerki.",
+      "noPhotoHint": "Taktu mynd eða veldu einn úr galleri til að byrja með.",
+      "noPhotoSelected": "Engin mynd valin",
+      "openFailed": "Myndin gat ekki opnað.",
+      "permissionMessage": "Leyfa aðgang í Stillingar > Leyfi til að halda áfram.",
+      "permissionTitle": "Leyfi þarf",
+      "pickPhoto": "Veldu mynd",
+      "pickPhotoHint": "Veldu mynd til að leyfa aðgerðum.",
+      "previewLabel": "Fyrirsýning á myndinni með vatnsmerki",
+      "renderFailedTitle": "Ekki hægt að búa til myndina",
+      "replaceAddressMessage": "GPS fannst: {address} ",
+      "replaceAddressTitle": "Skiptaðu út heimilisfanginn sem þú skrifaðir?",
+      "resetConfirm": "Hreymdu",
+      "resetMessage": "Valinn mynd og fylltu feldið verða vísað úr.",
+      "resetTitle": "Byrjaðu á nýju veiđinni?",
+      "saved": "Mynd geymd í gerðasafninu og sögu.",
+      "savedAppOnlyTitle": "Aðeins geymd innan Lymark ",
+      "shareDialogTitle": "Deildu með vatnsmerkt mynd",
+      "shareFailedMessage": "Myndin var gerð og er í sögu Lymark. Þú getur deilt henni úr skránni Galleri.",
+      "shareFailedTitle": "Ég gat ekki deilt",
+      "shareUnavailableMessage": "Þessi tæki hefur enga hlutdeild. Myndin er verđin í sögu Lymark.",
+      "shareUnavailableTitle": "Samskipti ekki til staðar",
+      "sharedFileTitle": "Mynd með vatnsmerki",
+      "stampNotReady": "Merkið er enn í vinnslu.",
+      "syncNow": "Nú er ég kominn.",
+      "timestamp": "Dagsetning/tíma",
+      "title": "Fanga",
+      "useGpsAddress": "Notaðu GPS-tækið.",
+      "weekdayHint": "Þjóð",
+      "weekdayShort": "Dagurinn"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "veldu annað lit",
+      "saturationBrightness": "Sætting og bjartleiki",
+      "use": "Notaðu þessa lit"
+    },
+    "common": {
+      "back": "Til baka",
+      "cancel": "Afsenda",
+      "delete": "Skildu",
+      "error": "Áföllur",
+      "gotIt": "Ég get ūađ.",
+      "loading": "Hringun...",
+      "no": "Nei, ekki.",
+      "ok": "Allt í lagi.",
+      "save": "Sláðu",
+      "share": "Deildu",
+      "success": "Árangur",
+      "tryAgain": "Prófaðu aftur.",
+      "unknownError": "Óþekkt mistök",
+      "yes": "Já, já."
+    },
+    "gallery": {
+      "cancelSelection": "Afsæktu val",
+      "clear": "Skýr saga",
+      "clearConfirm": "Hreint",
+      "clearMessage": "Skrár Lymark verða eytt. Myndir sem eru búin að geymd í tæki galleríu eru ekki áhrif.",
+      "count": "{count, plural,  one {Mynd af # er útflutin} other {Myndir af # eru fluttar út}}",
+      "delete": "Skildu",
+      "empty": "Engar myndir enn.",
+      "emptyAction": "Farðu að fanga",
+      "emptyDescription": "Myndir sem þú flytur út með vatnsmerki birtast hér, með dagsetningu, stað og kóða.",
+      "filteredCount": "{shown} af {total, plural,  one {Myndmynd af #} other {Myndir af #}}",
+      "noResults": "Engar myndir fundnar fyrir  {query} .",
+      "photoLabel": "Mynd frá {when} ",
+      "removeMessage": "Íritin fara frá Lymark. Myndir sem eru þegar vistaðar í tæki galleri eru ekki áhrif.",
+      "removeTitle": "{count, plural,  one {Fjarlægja úr sögunni} other {Fjarlægja færslur #}}",
+      "removed": "{count, plural,  one {Innlegg fjarlægð.} other {Upplýsingar fjarlægðar.}}",
+      "saveDeniedMessage": "Leyfið það í Stillingar › Leyfi til að vista myndirnar í tæki galleríu.",
+      "saveDeniedTitle": "Myndatökutilgang hafnað",
+      "savedAll": "{count, plural,  one {Einn mynd sem var geymd í tæki.} other {Myndir # geymdar í tæki galleri.}}",
+      "savedSome": "{saved} af {total} myndir geymd.",
+      "searchPlaceholder": "Leita eftir heimilisfang, dagsetningu eða kóða",
+      "selectedCount": "{count, plural,  one {Myndmynd # valinn} other {Myndir # valdar}}",
+      "share": "Deildu",
+      "title": "Galleri"
+    },
+    "language": {
+      "automatic": "Samræmislyf",
+      "automaticNote": "Lymark fylgir tungumálinu sem sett er á tækinu.",
+      "label": "Tölur",
+      "selector": "Veldu tungumál"
+    },
+    "login": {
+      "access": "Skráðu þig inn í aðgang",
+      "apple": "Skráðu þig inn með Apple",
+      "google": "Skráðu þig inn með Google",
+      "subtitle": "Skráðu þig inn til að halda áfram",
+      "title": "Skráðu þig inn til að nálgast Lymark "
+    },
+    "nav": {
+      "batch": "Björgunarvinnsla",
+      "photoDetail": "Myndsgögn",
+      "report": "Ráðgjöf frá ESF",
+      "video": "Myndband"
+    },
+    "notFound": {
+      "body": "Þessi skjár er ekki hluti af Lymark .",
+      "screenTitle": "Síða fannst ekki",
+      "title": "Ekki svona leið."
+    },
+    "permissions": {
+      "allow": "Leyfið þér",
+      "allowed": "Leyfilegt",
+      "blocked": {
+        "later": "Ekki núna.",
+        "message": "Til að leyfa það opniðu stillingar á tækinu.",
+        "openSettings": "Opnuð stillingar",
+        "title": "Leyfi lokað"
+      },
+      "camera": "Myndbúnaður",
+      "cameraRationale": "Ūurfađ til ađ taka myndina sem fær vatnsmerkið.",
+      "denied": "Neitað",
+      "granted": "Getuð",
+      "intro": "Lymark spyr aðeins um það sem það þarf til að stempla mynd. Myndir þínar fara aldrei úr tækinu: þegar þú notar GPS, sendir stýrikerfið kortstjóra einungis samræmi, svo að það getur orðið heimilisfang.",
+      "location": "Staðsetning",
+      "locationRationale": "Fyllir inn áfangasvæðið sjálfkrafa þegar þú tekur.",
+      "mediaLibrary": "Geymdu í myndasafn",
+      "mediaLibraryRationale": "Til að skrifa útflutnaðar myndir í tæki galleri.",
+      "openDeviceSettings": "Stillingar",
+      "recheck": "Skoðaðu aftur.",
+      "request": "Óska eftir leyfi",
+      "section": "Aðgangur",
+      "title": "Leyfi"
+    },
+    "photo": {
+      "backToGallery": "Til baka í myndasafninu",
+      "exportedAt": "Exported on {when}",
+      "noWatermark": "Þessi mynd var flutt út án vatnsmerki.",
+      "notFoundBody": "Þessi skrá hefur kannski verið fjarlægð úr sögunni.",
+      "notFoundTitle": "Mynd ekki fundin",
+      "remove": "Fjarlægja",
+      "removeBody": "Skráin er eftir Lymark. Myndin sem geymd er í tæki myndasafninu er ekki áhrifin.",
+      "removeTitle": "Fjarlægja úr sögunni",
+      "share": "Deildu",
+      "stampedData": "Upplýsingar með innsigli"
+    },
+    "plan": {
+      "exhausted": "Ókeypis myndir sem eru úrvinnðar",
+      "exhaustedMessage": "12 myndir af ókeypisáætluninni eru horfin.",
+      "free": "Ókeypis",
+      "pro": "Ávinnandi",
+      "reconnect": "Endurreisla til að staðfesta áskriftina",
+      "remaining": "{remaining, plural,  one {# ókeypis mynd vinstri} other {# ókeypis myndir eftir}}",
+      "title": "Áætlun",
+      "unlimited": "Engin takmörk"
+    },
+    "report": {
+      "allPhotos": "Öll myndirnar",
+      "authorField": "Höfundur / félag",
+      "detailsSection": "Greinar",
+      "doc": {
+        "author": "Höfundur",
+        "declaration": "Stiglaðar gögn (fangsögn, dagsetning, tími og kóða) eru yfirlýsing frá útgefandi myndanna.",
+        "exportedAt": "Útflutningsverð",
+        "generatedAt": "Framleitt á",
+        "page": "Síða",
+        "photo": "Mynd: {index} ",
+        "photosSection": "Myndræna skrá",
+        "signature": "Undirskrift ábyrgðarmannsins",
+        "summary": "Samantekt",
+        "title": "Myndfrétt",
+        "totalPhotos": "Heildarmyndir:"
+      },
+      "empty": "Ekki er komið út mynd enn.",
+      "failed": "Ég gat ekki búið til skýrsluna.",
+      "fileStem": "skýrsla",
+      "format": {
+        "csv": "Rannsýni (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Pakki (ZIP)"
+      },
+      "formatSection": "Skipulag",
+      "generate": "Gerðu skrá",
+      "generateSection": "Framleiða",
+      "includeLogo": "Logo á forsíðunni",
+      "includeLogoDescription": "Ég er ađ segja ađ ūú sért ađ finna merkiđ, ūađ sama sem á merkinu.",
+      "norm": {
+        "abnt": "ABNT (Brasil)",
+        "din5008": "DIN 5008 (Þýska)",
+        "ibape": "IBAPE stíl (Brasil)",
+        "iso": "Alþjóðlegt",
+        "letter": "Bréf (S.A.)"
+      },
+      "normNote": "Í staðalinu er sett pappírinn og sniðsetningin  margina, stafrómsetningu og síðunúmerun.",
+      "normSection": "Skjalastandardi",
+      "projectsSection": "Verkefni / starf",
+      "saved": "Geymd í {path} ",
+      "savedShort": "Fréttin var gefin.",
+      "title": "Ráðgjöf frá ESF",
+      "titleField": "Útgáfa skýrslu",
+      "unavailableBody": "PDF skýrslur eru í boði í skrifborðsforritinu.",
+      "unavailableTitle": "Aðeins á skrifborðinu",
+      "uncoded": "Engin kóða",
+      "wordTooBig": "Word skjalinn var of stórur með myndunum innborð.",
+      "zipMissing": "{count, plural,  one {Pakki var geymt en mynd # fannst ekki á þessu tæki.} other {Pakki var geymt en myndir af # voru ekki fundnar á tækinu.}}"
+    },
+    "settings": {
+      "about": "Um",
+      "aboutDescription": "Útgáfa, persónuvernd og kredit",
+      "appSection": "App",
+      "deviceSection": "Tæki",
+      "deviceSectionDescription": "Aðgangur sem Lymark krefst.",
+      "fields": "Fyllir og staða",
+      "fieldsDescription": "Veldu hvaða feldi sýnir, horn og stærð",
+      "history": "Sagan",
+      "historyDescription": "Útflutningsmyndir sem geymdar eru á tækinu",
+      "language": "Tölur",
+      "permissions": "Leyfi",
+      "permissionsDescription": "Mynd myndavél, myndir og staðsetning",
+      "save": "Sláðu",
+      "title": "Stillingar",
+      "watermark": "Vatnsmerki",
+      "watermarkSection": "Vatnsmerki",
+      "watermarkSectionDescription": "Hvað er á myndinni og hvar."
+    },
+    "signup": {
+      "subtitle": "Skráðu þig til að byrja.",
+      "title": "Búðu til Lymark reikning"
+    },
+    "tagline": "Vatnsmerki með tíma, degi og stað",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Ekki er hægt að nálgast myndavélina.",
+      "done": "Myndbandinn er stemplað og geymdur.",
+      "export": "Útflutningur á myndbandsmynd",
+      "exportSection": "Útflutningur",
+      "failed": "Myndbandinu var ekki hægt að prenta.",
+      "fieldsSection": "Merki á sviði",
+      "fileSection": "Myndband",
+      "none": "Engin myndband valinn.",
+      "processing": "Ferðslur... {percent} %",
+      "processingMobile": "Við vinnslu...",
+      "record": "Skráðu myndbandinu núna.",
+      "saved": "Geymd í {path} ",
+      "savedToGallery": "Skiltiđ myndband geymt í salinn ūinn.",
+      "select": "Veldu myndband",
+      "unavailableBody": "Móbilmyndatöku stemplingur þarf Lymark sett upp úr EAS byggingu (með native module). Það er ekki í boði í Expo Go . Setja upp opinbera forritinu frá búð eða EAS byggingu, eða nota skrifborð / vef útgáfu.",
+      "unavailableTitle": "Uppsett forrit þarf",
+      "unreadable": "Skráin var ekki hægt að lesa sem myndband.",
+      "webNote": "Í vafra er myndbandið vinnslu í rauntíma  2 mínútna myndbandið tekur 2 mínútur  og kemur út í WebM sniði."
+    },
+    "watermark": {
+      "accentColor": "Fjarlægur stígvél",
+      "backdropBandNote": "Bandurinn gengur út í gegnum myndina og hvílir á margina þar sem merkið er fest.",
+      "backdropBlockNote": "Bakhliðið fylgir stærð texta og er með fylgi um það.",
+      "backdropColor": "Föngur",
+      "backdropDescription": "Hann heldur kontrastu yfir ljósum svæðum myndarinnar.",
+      "backdropInnerRadius": "Innri horn",
+      "backdropOpacity": "Ágreiðsla",
+      "backdropOpacityValue": "{percent} % ógjarnt",
+      "backdropRadius": "Rundar horn",
+      "backdropRadiusSquare": "Fjarlægur",
+      "backdropStyles": {
+        "band": "Fylgbreddsband",
+        "block": "Bak við textinn",
+        "none": "Ekkert"
+      },
+      "backdropTitle": "Styrktarband",
+      "brandDescription": "Fyrir ofan klukkuna verður hún undirskrift, með logó og merkingu.",
+      "brandFirstColor": "Litur af fyrri hluta",
+      "brandFirstHint": "Byggðarmenn",
+      "brandFirstPart": "Fyrri hluti",
+      "brandNote": "Ljóst er að stytta langnafn þar til það passar í stað þess að skera það af.",
+      "brandPlacements": {
+        "corner": "Í horninu.",
+        "header": "Á yfir horninu.",
+        "none": "Ekkert"
+      },
+      "brandSecondColor": "Litur annars hluta",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Annað hluti",
+      "brandTitle": "Merkið með merkingu",
+      "codeDescription": "Á hliðinni er ekki samkeppni um pláss við myndina sjálfa.",
+      "codePlacements": {
+        "block": "Við hliðar gögnum",
+        "side": "Hægri hliðin"
+      },
+      "codeTitle": "Myndfrásetning",
+      "colors": {
+        "amber": "Amber",
+        "black": "Svart",
+        "blue": "Blátt",
+        "green": "Grænt",
+        "red": "Rauð",
+        "white": "Hvítur"
+      },
+      "colorsDescription": "Lit á myndinni er val fyrirtækisins, ekki forritin.",
+      "colorsTitle": "Færðir",
+      "complement": "Merkingar",
+      "complementColor": "Ljósmynd",
+      "complementHint": "Eftirlits- og tækniskýrslur",
+      "cornerConflict": "Merkið og gögn eru í sama horni.",
+      "fields": {
+        "address": "Indistofa / staður",
+        "code": "Myndfrásetning",
+        "date": "Dagsetning",
+        "time": "Tíminn",
+        "weekday": "Vikudagur"
+      },
+      "fieldsDescription": "Aðeins þau felti sem eru á og hafa efni ná í myndina.",
+      "fieldsTitle": "Fyllir sýndar",
+      "includeCountry": "Fylgi landinu með",
+      "includeCountryDescription": "Settu hann á ef ūú vinnur um landamærin annars tekur hann pláss bara á myndinni.",
+      "legibilityTitle": "Læsilegleiki",
+      "logoAdded": "Logo bætt í vörumerki höfuðorð.",
+      "logoAlignNote": "Hæð logo fylgir textanum: efst er í samræmi við efst nafninu og neðst við grunnlínuna á merkingarorðinu.",
+      "logoChosen": "Valinn logo",
+      "logoErrorMessage": "Prófaðu aðra mynd. PNG með gagnsænum bakgrunni er sú sniði sem virkar best.",
+      "logoErrorTitle": "Ekki hægt að nota skráina.",
+      "logoFormatNote": "Notaðu PNG með gagnsænum bakgrunni. JPG með hvítum bakgrunni verður hvítur réttahyrningur á myndinni  sniðið geymir ekki gagnsæi, og forritið hefur engin leið til að giska hvað er bakgrunn.",
+      "logoPermissionMessage": "Leyfið það í Stillingar › Leyfi til að velja logo skrá.",
+      "logoPermissionTitle": "Myndatökutilgang hafnað",
+      "logoPick": "Veldu merki",
+      "logoPosition": "Staða merki",
+      "logoPositionBlock": "Með merkinu.",
+      "logoRemove": "Fjarlægja",
+      "logoReplace": "Skiptaðu út logó",
+      "logoSize": "Stærð logo",
+      "positionDescription": "Eyglin á myndinni er blokkurinn festur við.",
+      "positionTitle": "Stöðu",
+      "positions": {
+        "bottom-left": "Neðst til vinstri",
+        "bottom-right": "Neðst til hægri.",
+        "top-left": "Efst til vinstri",
+        "top-right": "Efst til hægri."
+      },
+      "previewCurrent": "Á núverandi mynd úr myndatöku.",
+      "previewEmpty": "Frá ljós til myrkurs til að athuga lesbarð á báðum höndum.",
+      "previewNoFields": "Ekkert svið sem valið er  myndin kemur út án vatnsmerki.",
+      "previewTitle": "Fyrirsýning",
+      "reset": "Endurheimta sjálfgefið",
+      "sizeTitle": "Greinarstærð",
+      "sizes": {
+        "large": "Stór",
+        "medium": "Meðal",
+        "small": "Lítil"
+      },
+      "textColor": "Tekstur",
+      "timeFormatDescription": "Hvernig er tíminn fyltur inn í völlin.",
+      "timeFormatTitle": "Tímaskipulag",
+      "timeFormats": {
+        "12h": "12 klst. (Á morgun/klst.)",
+        "24h": "24 klst."
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Öll skrár",
+      "images": "Myndir",
+      "pickFolder": "Veldu útgáfu möppuna",
+      "pickPhoto": "Veldu mynd",
+      "pickPhotos": "Veldu myndir fyrir flokkinn",
+      "savePhoto": "Sparaðu mynd",
+      "saveReport": "Sláðu skýrsluna"
+    },
+    "login": {
+      "cancel": "Afsenda",
+      "confirm": "Foreldra",
+      "message": "Ūú skráđir ūig inn í gegnum vafra.",
+      "title": "Skráðu þig inn á Lymark "
+    },
+    "menu": {
+      "copy": "Skýring",
+      "cut": "Skeraðu",
+      "edit": "Ritsettu",
+      "file": "Skrár",
+      "fullscreen": "Fullur skjár",
+      "help": "Hjálp",
+      "paste": "Fasta",
+      "quit": "Hættu.",
+      "redo": "Redo",
+      "reload": "Útlagning",
+      "selectAll": "Veldu öll",
+      "settings": "Stillingar",
+      "undo": "Óþykkt",
+      "view": "Útsýni",
+      "zoomIn": "Stækkaðu í",
+      "zoomOut": "Stærðu út",
+      "zoomReset": "Raunlegur stærð"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Til baka heim.",
+      "openApp": "Opnaðu forritið",
+      "photos": "Myndir",
+      "photosLeft": "{remaining} af {quota} vinstri",
+      "plan": "Áætlun",
+      "planUnavailable": "Ekki í boði núna.",
+      "plans": {
+        "free": "Ókeypis",
+        "pro": "Ávinnandi"
+      },
+      "signInTitle": "Skráðu þig inn",
+      "signOut": "Skráðu þig út.",
+      "signUpTitle": "Búðu til reiknings",
+      "subscribe": "Skráðu þig á Lymark Pro",
+      "subscribeSoon": "Áskrift er ekki til staðar enn en þegar hún er til geturðu áskrift hér og notað hvaða tæki sem hefur sama reikning.",
+      "title": "Á reikninginn þinn.",
+      "revokeDesktops": "Afsnúið tölvurnar",
+      "revokeDesktopsHint": "Endar aðgangur til appins á öllum tölvum. Þú getur skrást inn aftur hvenær sem þú vilt."
+    },
+    "availability": {
+      "contact": "Til að fylgjast með upphafinu eða tilkynna vandamál skaltu skrifa til: <email> contato@lymark.app </email>.",
+      "description": "Lymark er í útgáfu 1.3.0, í prófun á Android áður en birting á Google Play. Það er engin iOS útgáfa og engin vef útgáfa, og app innheimtar engin greiðslu.",
+      "title": "Tilgengni"
+    },
+    "data": {
+      "device": {
+        "description": "Skráningurinn er til fyrirskrifendur þín: netþjóninn geymir tölvupóstinn þinn og áætlunina, og fær aldrei myndir þínar eða staðsetningu þína.",
+        "field": "Á tækinu",
+        "heading": "Myndir, heimilisfang og sögu"
+      },
+      "external": {
+        "description": "Til að breyta breidd og lengd til lesbarðs heimilis, spyr stýrikerfið eftir jarðfræðiþjónustu Google eða Apple. Það er eina upplýsingin sem eftir er og kerfið sendir það, ekki forritið.",
+        "field": "Út úr tækinu",
+        "heading": "Aðeins breyting á samræmi í heimilisfang"
+      },
+      "note": "Það er allt sett fram  þar á meðal hvað það þýðir undir LGPD Brasilíu  í <privacy>Upplýsingar um persónuvernd</privacy>. Að slökkva á staðsetningarleyfi gerir forritið að fullu virkjun; aðeins þarf að slá inn heimilisfangsfanginu handan.",
+      "title": "Hvar eru gögn þínar"
+    },
+    "deleteAccount": {
+      "back": "Til baka til reiknings",
+      "confirm": "Skildu reikninginn minn",
+      "deletesNow": "Ef þú eyðir reikninginn þinn eyðirðu strax tölvupósti, kennitöku og skrá um áætlun, kvotu og ljósmyndatöl.",
+      "irreversible": "Skilgun er varanleg og er ekki hægt að taka aftur. Myndirnar á tækinu þínu eru ekki áhrif  þær voru aldrei á netþjónum okkar.",
+      "retained": "Skrár af greiðslumálum eru geymdar í löglega krafist fjárhagsáætlun, ekki tengdir við prófílinn þinn.",
+      "title": "Skildu reikninginn"
+    },
+    "description": "Android app sem stemplar tíma, dag, vikudag, heimilisfang og sporing kóða á staðinn skoðun og próf-of-þjónustu myndir.",
+    "desktop": {
+      "backAccount": "Til baka til reiknings",
+      "explanation": "Skráningurinn er tilbúinn. Smelltu á hnappinn hér að neðan til að opna Lymark á tölvunni sem er þegar skrifað á  vafra mun biðja um leyfi til að opna forritið.",
+      "open": "Tengdu forritið",
+      "title": "Skráðu þig inn á skrifborð",
+      "unavailable": "Staðbúna বৈশিষ্ট্য tenging er ekki til staðar enn."
+    },
+    "download": {
+      "appStore": {
+        "description": "Sama reynsla og Android á iOS.",
+        "field": " App Store ",
+        "heading": "iPhone og iPad"
+      },
+      "browser": {
+        "action": "Skráðu þig বৈশিষ্ট্য",
+        "description": "Skráðu þig inn með reikningnum þínum og forritið opnast beint í vafra  símann eða tölvuna.",
+        "field": "Hægt að skoða বৈশিষ্ট্য",
+        "heading": "Notađu hana núna, ekkert að setja upp."
+      },
+      "desktop": {
+        "description": "Myndaspar বৈশিষ্ট্য, langar myndbönd og PDF skýrslur  þungt starf útgáfa.",
+        "field": "Tölvur",
+        "heading": "Windows og Linux"
+      },
+      "googlePlay": {
+        "description": "Símappið, með myndavél, myndasafn og stemplað myndband.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Ég kom fljót বৈশিষ্ট্য.",
+      "title": "Hvar er hægt að বৈশিষ্ট্য Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "Gatoskiptið er stytt og ríkið verður kóða þess, svo að heimilisfangurinn passar í tvær línur án þess að mynda myndina.",
+        "field": "Indasöfn বৈশিষ্ট্য",
+        "heading": "Fylgt með বৈশিষ্ট্যð, hægt að laga það með hendi"
+      },
+      "code": {
+        "description": "Það er til svo þú getur vitnað á eitt ákveðið ljósmynd í vinnu röð eða skýrslu. Það fer snúið niður hægri kantinn, eða situr með gagna blokkanum  val þitt.",
+        "field": "Myndfrás বৈশিষ্ট্য",
+        "heading": "14 stafir, বৈশিষ্ট্যð af gagnaskoðun"
+      },
+      "note": "Hvert svið k বৈশিষ্ট্য og slökkva sjálf, og blokkurinn er settur á hverja af fjórum hornunum, í þremur stærðum.",
+      "time": {
+        "description": "Með einum hnapp বৈশিষ্ট্য öll þessi þrjú sviði aftur til nútíðar þegar myndin tók lengra tíma en búist var við.",
+        "field": "Tíminn og dagsetning",
+        "heading": "Frá klukkuni বৈশিষ্ট্য, þegar hún er tekin"
+      },
+      "title": "Hvað fer á mynd বৈশিষ্ট্য"
+    },
+    "footer": {
+      "description": "Lymark  ljósmyndatökur með dagsetningu, tíma og heimilisfang.",
+      "documentsLabel": "Skýrslur বৈশিষ্ট্য",
+      "privacy": "Upplýsingar um বৈশিষ্ট্য",
+      "support": "Stuðningur: বৈশিষ্ট্য",
+      "terms": "Notkunarskil বৈশিষ্ট্য"
+    },
+    "hero": {
+      "ctaAccount": "Farðu á reik বৈশিষ্ট্যđ mitt.",
+      "ctaLogin": "Skráðu þig inn",
+      "ctaSignup": "Búðu til ókeypis reikning",
+      "description": "Lymark stemplar tíma, dag, vikudag, heimilisfang og sporingarkóða beint á myndina. Skráin sem kemur út úr forritinu ber upplýsingarnar inni í henni  ekki sem metadata sem ríður við hliðina, sem fyrsta WhatsApp framundan strífur frá.",
+      "eyebrow": "Myndgerð á sviði",
+      "heading": "Myndin er í símanum og segir hvenær, hvar og hvað.",
+      "meta": {
+        "account": "Einn-tökum reikningur",
+        "android": "Android og vafra",
+        "language": "Brasiliæn Portúgalsk",
+        "onDevice": "Myndir eru á tækinu."
+      },
+      "note": "Ekkert til að setja upp."
+    },
+    "nav": {
+      "account": "Ríkisendingar",
+      "home": "Heim",
+      "homeLabel": "Lymark , forsíða",
+      "label": "Aðal",
+      "privacy": "Einkaheimild",
+      "signIn": "Skráðu þig inn",
+      "terms": "Ákvæði",
+      "verify": "Sækja um"
+    },
+    "process": {
+      "capture": {
+        "description": "Indirísleitinn byrjar þegar myndin kemur inn. Völlin eru opin til að laga sig meðan hún er hlaupin.",
+        "field": "Fanga",
+        "heading": "Fylgiskerfi"
+      },
+      "note": "Að spara og deila myndum leysa mismunandi vandamál og að falla þeim saman í eina hnapp myndi draga alla sem vilja skrá myndina í gegnum sendiskjá.",
+      "save": {
+        "description": "Hún er í samræmi við restina af myndum á símanum þínum, sem er í boði fyrir alla forrit  þar á meðal eftir að þú afsetur Lymark.",
+        "field": "Sláðu",
+        "heading": "Fer í tæki myndasafn"
+      },
+      "share": {
+        "description": "WhatsApp , tölvupóst, Stýri: áfangastaður er valið af rekstrarkerfinu og forritinu tekur ekki þátt í sendingu.",
+        "field": "Deildu",
+        "heading": "Opnar er hljómskrá fyrir kerfið"
+      },
+      "title": "Vegurinn sem myndin tekur"
+    },
+    "skipToContent": "Skip til efni",
+    "specimen": {
+      "caption": "Bjarnsreglan byrjar og endar við mörk stafa, ekki textaboxinn.",
+      "label": "Dæmi af merkinu Lymark: kl. 07:42, dagsetning 12. ágúst 2026, miðvikudag, heimilisfang í Guarujá og ljósmyndakóða."
+    },
+    "title": "Lymark  dagsetning, tími og heimilisfang vatnsmerki fyrir sviðsmynd",
+    "verify": {
+      "caveat": "Stigurinn vottar um heilbrið skjala og útgáfu stund.",
+      "checking": "Ég er ađ athuga...",
+      "declarationNote": "Það sem merkið sýnir (fangsögn, dagsetning, tími) er yfirlýsing útgefanda  merkið vitnar um heilbrið og útgáfu en ekki innihald.",
+      "intro": "Læt falla eða veldu ljósmynd sem Lymark hefur flutt út og sjáðu strax hvort hún er nákvæmlega eins og hún fór út úr forritinu  og hver gaf henni út, hvenær.",
+      "noSealBody": "Þessi skrá hefur ekki Lymark-sigil. Hún getur verið útflutin utan netinu, áður en sigilinn var til, eða getur ekki komið frá Lymark.",
+      "noSealTitle": "Engin seglingur",
+      "notConfigured": "Verifiking er ekki til staðar enn.",
+      "pick": "Veldu skrá",
+      "previewAlt": "Skilgreind mynd, merkt merki",
+      "privacyNote": "Verifiking fer fram í vafra þínum. Skráin er ekki send til neins netþjónar.",
+      "sealedBody": "Þessi skrá er nákvæmlega eins og hún var eftir Lymark. Útgefin af reikningnum {account} á {date} .",
+      "sealedTitle": "Óþjáanlegt",
+      "tamperedBody": "Efni er ekki í samræmi við merkið: skráin var breytt eftir útgáfu eða merkið tilheyrir öðrum skrá.",
+      "tamperedTitle": "Ósamræmi",
+      "title": "Staðfesting á réttindum",
+      "unsupported": "Þessi vafra styður ekki undirskriftarvísun. Prófaðu á núverandi vafra."
+    }
+  }
+}

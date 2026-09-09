@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Iffirma l-ħin, id-data, il-ġurnata tax-xogħol, l-indirizz u kodiċi tat-traċċar fuq il-foto tiegħek  għar-rekords tal-post, l-ispezzjonijiet tas-sit u l-prova tas-servizz.",
+      "platform": "Pjattaforma",
+      "privacy": "Politika ta' Privatezza",
+      "privacyGeocoding": "Meta jintuża GPS, is-sistema operattiva tibgħat il-koordinata lil Googles jew is-servizz tal-mappa Apples biex tikseb l-indirizz. Dik hija l-unika informazzjoni li tibqa ' hawn, u huwa s-sistema li tibgħatha, mhux Lymark .",
+      "privacyLocation": "Il-lokalizzazzjoni tintuża darba għal kull cattura, biss biex timla l-qasam tal-indirizz, u ma tinħażenx separatament mill-istampi.",
+      "privacyOnDevice": "Il-kontijiet jeżistu għall-abbonament tiegħek: is-server iżomm l-email u l-pjan tiegħek, u qatt ma jirċievi l-istampi tiegħek jew il-post tiegħek.",
+      "privacySection": "Privatezza",
+      "sdk": " Expo SDK ",
+      "terms": "Termini ta' Użu",
+      "title": "Dwar Lymark ",
+      "version": "Verżjoni"
+    },
+    "account": {
+      "browserHint": "Il-login isir fil-browser. Login hemm bl-kont tiegħek u l-app tikkonnettja minnha nnifisha.",
+      "code": "Kodu",
+      "codeSent": "Aħna bagħtu kodiċi {email} ",
+      "connected": "Konnessjoni",
+      "continue": "Ikompli",
+      "deleteAccount": "Ħassar kont",
+      "email": "E-mail",
+      "failed": "Dan ma ħadmux. Iċċekkja l-email jew il-kodiċi u jerġa' tipprova.",
+      "notConfigured": "Log-in mhuwiex disponibbli f'dan il-bini għadu.",
+      "signInBrowser": "Log in permezz tal- browser",
+      "signOut": "Iffirmax",
+      "signedInAs": "Iffirmat bħala {email} ",
+      "title": "Kontijiet",
+      "verify": "Verifika"
+    },
+    "batch": {
+      "addressHint": "Strada, numru  City",
+      "clearList": "Lista ċara",
+      "codeHint": "eż. LYM-001",
+      "done": "{count, plural,  one {Il-proċess huwa lest: # ritratt lest.} other {Il-proċess huwa lest: # ritratti lesti.}}",
+      "doneSection": "Tlesti",
+      "dropZone": "Iġbed u ħalli l- ritratti hawn, jew uża l- buttuna Select photos",
+      "errorsSection": "Ħejjet",
+      "folder": "Folder: {name} ",
+      "noPhotos": "Agħżel mill-inqas ritratt wieħed.",
+      "outputNote": "Il- ritratti pproċessati huma msejsa fil- folda magħżula.",
+      "outputSection": "L-output",
+      "photosSection": "Ritratti biex jiġu pproċessati",
+      "processing": "Proċessar...",
+      "progress": "{current} ta' {total} ({percent} %)",
+      "results": "{success, plural,  one {# suċċess} other {# suċċess}}, {failed, plural,  one {# falliment} other {# fallimenti}}",
+      "selectFolder": "Agħżel il- folda tal- output",
+      "selectPhotos": "Għażel ritratti",
+      "selected": "{count, plural,  one {# ritratt magħżul} other {# ritratti magħżula}}",
+      "sharedNote": "Dawn il-valuri huma applikati għall-ritratti kollha.",
+      "sharedSection": "Metadata kondiviża",
+      "start": "Ibda l-ipproċessar",
+      "unavailableBody": "Din il- karatteristika hija desktop biss.",
+      "unavailableTitle": "Proċessar tal-lott mhux disponibbli"
+    },
+    "capture": {
+      "accuracy": "Pożizzjoni fi ħdan ± {meters} m.",
+      "accuracyImprecise": "Il-pożizzjoni fi ± {meters} m  tiċċekkja n-numru tat-triq qabel l-esportazzjoni.",
+      "address": "Indirizz",
+      "addressFailedTitle": "L- ebda indirizz ma nstabu",
+      "addressHint": "Iċċekkja l- isuffiċċju jew tikteb l- indirizz",
+      "camera": "Iġib ritratt",
+      "code": "Kodu",
+      "dateHint": "1 ta' Jannar 2026",
+      "dateTimeGroup": "Data u ħin",
+      "emptyWarning": "L-ebda data ma se tiġi stampata  il-ritratt se jiġi mingħajr watermark.",
+      "gallery": "Agħżel mill- gallerja",
+      "galleryDenied": "L-aċċess għall-istampa ġie miċħud, għalhekk l-immaġni teżisti biss ġewwa l-app. Agħmelha f'Impegni › Permessi biex issejvja fil-galerija.",
+      "galleryFailed": "L- immaġni marret fl- istorja, imma l- apparat irrifjuta li jiktebha fil- gallerja. Iċċekkja l- spazju ħieles u tipprova mill- ġdid.",
+      "generateCode": "Jenfasizza",
+      "hiddenFields": "{count, plural,  one {Għalaq moħbi} other {Żerriegħa moħbija}}: {fields}  żommhom f' Settings › Fields u pożizzjoni.",
+      "keepMyAddress": "Żomm il- tiegħi",
+      "locate": "L- isostnu",
+      "locateByGps": "Issib l- indirizz permezz tal- GPS",
+      "lookup": {
+        "denied": "Agħżel il- post fil- Settings > Permissions, jew tikteb l- indirizz.",
+        "disabled": "Il- lokament huwa off fuq il- apparat. Iċċaqlaq fil- settings rapidi u tipprova mill- ġdid.",
+        "timeout": "GPS ma tweġibx fil-ħin. spiss ma jfallix ġewwa  ititlu l-indirizz.",
+        "unavailable": "L-indirizz ma setax jiġi solvut f'din il-pożizzjoni."
+      },
+      "newCapture": "Ibda kaptura ġdida",
+      "noFieldsBack": "Mur lura.",
+      "noFieldsContinue": "Ikompli kif ukoll",
+      "noFieldsMessage": "L- ebda qasam ma għandu xi ħaġa li timmarka. Imla l- oqsma, jew irrevedi Settings › Oqsma u pożizzjoni.",
+      "noFieldsTitle": "Il-ritratt se jiġi barra mingħajr watermark",
+      "noPhotoHint": "Ħu ritratt jew agħżel wieħed mill-gallerja biex tibda.",
+      "noPhotoSelected": "L- ebda ritratt magħżul",
+      "openFailed": "Il- ritratt ma setax jinfetaħ. Ipprova mill-ġdid.",
+      "permissionMessage": "Permett l- aċċess fil- Settings › Permissions biex ikompli.",
+      "permissionTitle": "Permess meħtieġ",
+      "pickPhoto": "Agħżel ritratt",
+      "pickPhotoHint": "Agħżel ritratt biex tinħoloq l- azzjonijiet.",
+      "previewLabel": "Previżjoni tal-istampa bil-marka tal-ilma",
+      "renderFailedTitle": "Ma setgħetx tiġġenera l-immaġni",
+      "replaceAddressMessage": "GPS ritegħat: {address} ",
+      "replaceAddressTitle": "Żid l- indirizz li ttikkettu?",
+      "resetConfirm": "Tirtira",
+      "resetMessage": "Il-foto magħżula u l-oqsma mimlija se jiġu rċettati.",
+      "resetTitle": "Bidu bdiet kaptura ġdida?",
+      "saved": "Ritratt imsalvat fil-gallerja tal-apparat u fl-istorja.",
+      "savedAppOnlyTitle": "Imħażen biss ġewwa Lymark ",
+      "shareDialogTitle": "Isparta ritratt b' watermark",
+      "shareFailedMessage": "L- immaġni ġiet ġġenerata u tinsab fl- istorja Lymark. Tista ' taqsamha mill- tab tal- Gallerja.",
+      "shareFailedTitle": "Ma setgħux jaqsmu",
+      "shareUnavailableMessage": "Dan il-mezz m'għandux ishma ta' sehem.",
+      "shareUnavailableTitle": "Is-sħubija mhux disponibbli",
+      "sharedFileTitle": "Ritratt b'marka tal-ilma",
+      "stampNotReady": "Il- timbru għadu qed jiġi ppreparat.",
+      "syncNow": "Issa",
+      "timestamp": "Id-data/l-ħin",
+      "title": "Il-qbid",
+      "useGpsAddress": "Uża l-GPS wieħed",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Jum"
+    },
+    "colorPicker": {
+      "hue": "L-għamla",
+      "other": "jagħżlu kulur ieħor",
+      "saturationBrightness": "Saturazzjoni u ħxuna",
+      "use": "Uża dan il- kulur"
+    },
+    "common": {
+      "back": "lura",
+      "cancel": "Ikkanċella",
+      "delete": "Ħassar",
+      "error": "Ħaġa ta' żball",
+      "gotIt": "- Iċ-ċaħda.",
+      "loading": "It-tagħbija...",
+      "no": "Le",
+      "ok": "OK",
+      "save": "Żomm",
+      "share": "Is-sehem",
+      "success": "Suċċess",
+      "tryAgain": "Ipprova mill-ġdid.",
+      "unknownError": "Ħsara mhux magħrufa",
+      "yes": "Iva,"
+    },
+    "gallery": {
+      "cancelSelection": "Għażla ta ' kanċellazzjoni",
+      "clear": "Storja ċara",
+      "clearConfirm": "Ħa l- ċar",
+      "clearMessage": "Ir-rekords ta ' Lymark se jitħassru.",
+      "count": "{count, plural,  one {# ritratt esportat} other {# ritratti esportati}}",
+      "delete": "Ħassar",
+      "empty": "Għadha m' hemm l- ebda ritratti",
+      "emptyAction": "Mur biex tikkapta",
+      "emptyDescription": "Il- ritratti li tnexxilhom jesportaw b'watermark jidhru hawn, b'data, post u kodiċi.",
+      "filteredCount": "{shown} ta {total, plural,  one {# ritratt} other {# ritratti}}",
+      "noResults": "Ma nstabu l- ebda ritratti għal  {query} .",
+      "photoLabel": "Ritratt minn {when} ",
+      "removeMessage": "L- entrati jmorru Lymark. L- immaġini diġà msejsa fil- gallerja tal- apparat mhumiex affettwati.",
+      "removeTitle": "{count, plural,  one {Tneħħi mill-istorja} other {Tneħħi l- entrati #}}",
+      "removed": "{count, plural,  one {L-entrata tneħħita.} other {L-entrati tneħħew.}}",
+      "saveDeniedMessage": "Agħmelha f' Settings › Permissions biex issalva l- immaġni fil- gallerja tal- apparat.",
+      "saveDeniedTitle": "L-aċċess għall-istampa miċħud",
+      "savedAll": "{count, plural,  one {Ritratt wieħed imsejsa fil-gallerja tal-apparat.} other {# ritratti msejsa fil-gallerja tal-apparat.}}",
+      "savedSome": "{saved} ta ' {total} ritratti salvati.",
+      "searchPlaceholder": "Tfittxija bl-indirizz, id-data jew il-kodiċi",
+      "selectedCount": "{count, plural,  one {# ritratt magħżul} other {# ritratti magħżula}}",
+      "share": "Is-sehem",
+      "title": "Gallerja"
+    },
+    "language": {
+      "automatic": "Disposizzjoni ta' taqbel",
+      "automaticNote": "Lymark issegwi l- lingwa stabbilita fuq il- apparat tiegħek.",
+      "label": "Lingwa",
+      "selector": "Għażel il- lingwa"
+    },
+    "login": {
+      "access": "Log in għall-aċċess",
+      "apple": "Iddiskjotaw ma ' Apple",
+      "google": "Log in ma ' Google",
+      "subtitle": "Iċċarġja biex tkompli",
+      "title": "Log in biex tikseb Lymark "
+    },
+    "nav": {
+      "batch": "Proċessar tal-lott",
+      "photoDetail": "Detalji tal-istampa",
+      "report": "Rapport PDF",
+      "video": "Vidjo"
+    },
+    "notFound": {
+      "body": "Dan l-iskrin mhuwiex parti minn Lymark .",
+      "screenTitle": "Paġna mhux miġbura",
+      "title": "M' hemmx mod bħal dan"
+    },
+    "permissions": {
+      "allow": "Ħalli",
+      "allowed": "Permessi",
+      "blocked": {
+        "later": "Mhux issa",
+        "message": "Is- sistema mhux se titlob mill-ġdid. Biex tippermetti dan, tiftaħ is- setting tal- apparat tiegħek.",
+        "openSettings": "Setting miftuħ",
+        "title": "Permess imblukkat"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Jeħtieġ li tieħu l-istampa li tirċievi l-marka tal-ilma.",
+      "denied": "Inċaħħad",
+      "granted": "Ikkunkunkun",
+      "intro": "Lymark jitlob biss dak li għandu bżonn biex timbrixxi ritratt. L-immaġini tiegħek qatt ma jitilqu mill-apparat: meta tuża GPS, is-sistema operattiva tibgħat lis-servizz tal-mappa l-koordinata waħedha, sabiex tkun tista' ssir indirizz.",
+      "location": "Il-post",
+      "locationRationale": "Jemmlew fil-qasam ta' indirizzi awtomatikament meta tikkapta.",
+      "mediaLibrary": "Żomm fil-galerija",
+      "mediaLibraryRationale": "Biex tikteb ritratti esportati fil-gallerja tal-apparat.",
+      "openDeviceSettings": "Is-settings",
+      "recheck": "Iċċekkja mill-ġdid",
+      "request": "It-talba għal permess",
+      "section": "Aċċess",
+      "title": "Permessi"
+    },
+    "photo": {
+      "backToGallery": "Terġa ' lura għall- Gallerja",
+      "exportedAt": "Esportat fuq {when} ",
+      "noWatermark": "Din il- ritratt ġie esportat mingħajr marka tal- ilma.",
+      "notFoundBody": "Dan ir- rekord jistaʼ jkun ġie mħassar mill- istorja.",
+      "notFoundTitle": "Ritratt mhux mitlub",
+      "remove": "Tneħħi",
+      "removeBody": "Ir-rekord jibqa ' Lymark. L- immaġni msejsa fil-gallerja tal-apparat ma tkunx affettwata.",
+      "removeTitle": "Tneħħi mill-istorja",
+      "share": "Is-sehem",
+      "stampedData": "Id-dejta stampata"
+    },
+    "plan": {
+      "exhausted": "Ritratti użati b'xejn",
+      "exhaustedMessage": "L- 12-il ritratt tal-pjan b'xejn ma jkunx hemm.",
+      "free": "Ħielsa",
+      "pro": "Pro",
+      "reconnect": "Ikkonnettja mill-ġdid biex tikkonferma l- abbonament tiegħek",
+      "remaining": "{remaining, plural,  one {# ritratt ħielsa ħdejn} other {# ritratti ħielsa ħallew}}",
+      "title": "Pjan",
+      "unlimited": "L-ebda limitu"
+    },
+    "report": {
+      "allPhotos": "It-tnejn",
+      "authorField": "Awtur / kumpanija",
+      "detailsSection": "Detti",
+      "doc": {
+        "author": "Awtur",
+        "declaration": "Id-data stampata (indirizz, data, ħin u kodiċi) hija dikjarazzjoni mill-emittent tal-istampi.",
+        "exportedAt": "L-esportazzjonijiet",
+        "generatedAt": "Ġenerati fuq",
+        "page": "Paġna",
+        "photo": "Ritratt {index} ",
+        "photosSection": "Rekords fotografiċi",
+        "signature": "Ftehim ta' negozju",
+        "summary": "Sottomissjoni",
+        "title": "Rapport bil-foto",
+        "totalPhotos": "Total ta ' ritratti:"
+      },
+      "empty": "Għadha m'hemm l-ebda ritratti esportati.",
+      "failed": "Ma setgħux jiġġeneraw ir-rapport.",
+      "fileStem": "rapport",
+      "format": {
+        "csv": "Tabella ta ' kalkolu (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Pakkett (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Jenfasizza l-",
+      "generateSection": "Jenfasizza",
+      "includeLogo": "Logo fuq il-koperta",
+      "includeLogoDescription": "Il- logo tal-marka tiegħek, l- istess wieħed mill- timbru.",
+      "norm": {
+        "abnt": "ABNT (il-Brażil)",
+        "din5008": "DIN 5008 (Ġermanja)",
+        "ibape": "IBAPE stil (il-Brażil)",
+        "iso": "Din l-informazzjoni",
+        "letter": "Ittra (Istati Uniti)"
+      },
+      "normNote": "L-istandard jistabbilixxi l-karta u l-formatjar  marġini, il-fonta u n-numerazzjoni tal-paġna.",
+      "normSection": "Standard ta' dokument",
+      "projectsSection": "Proġett / impjieg",
+      "saved": "Imħażen għal {path} ",
+      "savedShort": "Ir-rapport imsejsa.",
+      "title": "Rapport PDF",
+      "titleField": "Titolu tar-rapport",
+      "unavailableBody": "Ir-rapporti PDF huma disponibbli fl-app tal-bord.",
+      "unavailableTitle": "Desktop biss",
+      "uncoded": "L-ebda kodiċi",
+      "wordTooBig": "Id-dokument Word sar kbir wisq bil-ritratti imwaħħla. Uża PDF jew il-pakkett ZIP.",
+      "zipMissing": "{count, plural,  one {Il- pakkett imsalvat, imma l- ritratt # ma nstabx fuq dan il- apparat.} other {Il- pakkett imsalvat, iżda l- ritratti # ma nstabux fuq dan il- apparat.}}"
+    },
+    "settings": {
+      "about": "Dwar",
+      "aboutDescription": "Verżjoni, privacy u krediti",
+      "appSection": "App",
+      "deviceSection": "Apparat",
+      "deviceSectionDescription": "Aċċess li Lymark jitlob.",
+      "fields": "Il-kamps u l-pożizzjoni",
+      "fieldsDescription": "Agħżel liema żoni jidhru, l- kunina u d- daqs",
+      "history": "Storja",
+      "historyDescription": "Ritratti esportati miżmuma fuq il-mezz",
+      "language": "Lingwa",
+      "permissions": "Permessi",
+      "permissionsDescription": "Kamera, ritratti u post",
+      "save": "Żomm",
+      "title": "Is-settings",
+      "watermark": "Is-sinjal tal-ilma",
+      "watermarkSection": "Is-sinjal tal-ilma",
+      "watermarkSectionDescription": "X'jista' jiġi stampat fuq il- ritratt, u fejn."
+    },
+    "signup": {
+      "subtitle": "Irreġistra biex tibda",
+      "title": "Agħmel il-kont Lymark tiegħek"
+    },
+    "tagline": "Marka tal-ilma bl-ħin, id-data u l-post",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "L-ebda aċċess għall-kamera. Agħmelha fis-settings tal-apparat.",
+      "done": "Vidjo stampat u salvati.",
+      "export": "Video stampat għall-esportazzjoni",
+      "exportSection": "L-esportazzjonijiet",
+      "failed": "Il- vidjo ma setax jiġi stampat.",
+      "fieldsSection": "Il-kamp tal-istampi",
+      "fileSection": "Vidjo",
+      "none": "L- ebda vidjo magħżula.",
+      "processing": "Proċessar... {percent} %",
+      "processingMobile": "Proċessar...",
+      "record": "Irreġistra l- vidjo issa",
+      "saved": "Imħażen għal {path} ",
+      "savedToGallery": "Vidjo stampat imsejsa fil-gallerja tiegħek.",
+      "select": "Agħżel vidjo",
+      "unavailableBody": "L-istampi tal-vidjo mobbli jeħtieġu Lymark installati minn build EAS (mal-modulu nativ). Mhuwiex disponibbli f'Expo Go . Installa l-app uffiċjali mill-ħanut jew build EAS, jew tuża l-verżjoni desktop / web.",
+      "unavailableTitle": "L- app li tkun installata meħtieġa",
+      "unreadable": "Il-fajl ma setax jinqara bħala vidjo.",
+      "webNote": "Fil-browser, il-vidjo jiġi pproċessat f'ħin reali  vidjo ta' 2 minuti jieħu 2 minuti  u jiġi fl-format WebM. Għal vidjows twal, uża l-app ta' desktop."
+    },
+    "watermark": {
+      "accentColor": "Barra vertikali",
+      "backdropBandNote": "Il-banda timxi minn borda għal borda madwar il-foto u titpoġġi kontra l-marġini fejn il-marka hija ankra. Fuq ċina b'saħħitha  sit tal-bini, ġnien, faċċata mgħobbija  tinqara bħala l-kitba tad-dokument minflok sticker imqiegħed fuqha.",
+      "backdropBlockNote": "Is- sostenn jsegwi d-daqs tat-test, b'padding madwaru.",
+      "backdropColor": "Kulur tal-banda",
+      "backdropDescription": "Jżomm il- kuntrast fuq żoni dawl tal- ritratt. Mingħajrha, it- test joqgħod direttament fuq l- immaġni, b'sombra.",
+      "backdropInnerRadius": "Għawdex ta' ġewwa",
+      "backdropOpacity": "Trasparenza",
+      "backdropOpacityValue": "{percent} % opaċi",
+      "backdropRadius": "Għunjiet rrundati",
+      "backdropRadiusSquare": "Skwadra",
+      "backdropStyles": {
+        "band": "Band tal-wisa' sħiħa",
+        "block": "Wara t-test",
+        "none": "L-ebda wieħed"
+      },
+      "backdropTitle": "Band ta' appoġġ",
+      "brandDescription": "Fuq il- siegħa ssir sinatura, bil- logo u l- tagline.",
+      "brandFirstColor": "Kulur tal-ewwel parti",
+      "brandFirstHint": "Binijiet",
+      "brandFirstPart": "L-ewwel parti",
+      "brandNote": "Ħalli t- tieni parti tkun vojta għal marka taʼ kulur wieħed.",
+      "brandPlacements": {
+        "corner": "F'kantuniera",
+        "header": "Fuq l-arloġġ",
+        "none": "L-ebda wieħed"
+      },
+      "brandSecondColor": "Kulur tat-tieni parti",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "It-tieni parti",
+      "brandTitle": "Signi stampati",
+      "codeDescription": "Min-naħa l-oħra ma jikkompetix għall-post mal-istampa nnifisha.",
+      "codePlacements": {
+        "block": "Next id-data",
+        "side": "Il-ġenb tax-xellug"
+      },
+      "codeTitle": "Kodu tal-istampa",
+      "colors": {
+        "amber": "Amber",
+        "black": "Ħadd",
+        "blue": "Blu",
+        "green": "Ħarż",
+        "red": "Ħmura",
+        "white": "Għawdex"
+      },
+      "colorsDescription": "Il-kulur fuq il-foto huwa l-għażla tal-kumpanija, mhux l-app s  li jbiddelha hawn ma jbiddelx il-kuluri tal-iskrin.",
+      "colorsTitle": "Kuluri tal-istampi",
+      "complement": "Tagline",
+      "complementColor": "Kulur tat-tagline",
+      "complementHint": "Spezzjonijiet u rapporti tekniċi",
+      "cornerConflict": "Il-marka u d-dejta huma fl-istess kunina  dawn se jmorru fuq il-foto.",
+      "fields": {
+        "address": "Indirizz / Post",
+        "code": "Kodu tal-istampa",
+        "date": "Data",
+        "time": "Il-ħin",
+        "weekday": "Ġurnata tal-ġimgħa"
+      },
+      "fieldsDescription": "Il-kamps li huma fuq u li għandhom kontenut biss jilħqu l-istampa.",
+      "fieldsTitle": "Il-kamps muri",
+      "includeCountry": "Ikkunsidra l-pajjiż",
+      "includeCountryDescription": "Agħmelha jekk taħdem barra l-fruntieri. inkella tieħu post biss fuq il-ritratt.",
+      "legibilityTitle": "L-għada",
+      "logoAdded": "Logo miżjud ma ' l- intestazzjoni tal-marka.",
+      "logoAlignNote": "L-għoli tal-logo jsegwi t-test: l-art tiegħu hija allinjata mal-art tal-isem u l-art tagħha mal-linja bażi tat-tlagline.",
+      "logoChosen": "Logo magħżul",
+      "logoErrorMessage": "Ipprova stampa oħra. PNG b'isfond trasparenti huwa l-format li jaħdem aħjar.",
+      "logoErrorTitle": "Dan il- fajl ma setax jintuża",
+      "logoFormatNote": "Uża PNG b'fond trasparenti. JPG b'fond abjad isir rettangolu abjad fuq il-foto  il-format ma jaħżenx trasparenza, u l-app m'għandha l-ebda mod biex taħseb x'inhu l-fond.",
+      "logoPermissionMessage": "Agħmelha f' Settings › Permissions biex tagħżel il-fajl tal-logo.",
+      "logoPermissionTitle": "L-aċċess għall-istampa miċħud",
+      "logoPick": "Agħżel logo",
+      "logoPosition": "Pożizzjoni tal-logo",
+      "logoPositionBlock": "B'dan il-marki",
+      "logoRemove": "Tneħħi",
+      "logoReplace": "Is-sostitwit tal-logo",
+      "logoSize": "Tagħrif tal-logo",
+      "positionDescription": "Il-kantuniera tal-istampa l-blokka hija ankraġġat.",
+      "positionTitle": "Pożizzjoni",
+      "positions": {
+        "bottom-left": "F' isfel is-sħab",
+        "bottom-right": "F'qiegħ il-lemin",
+        "top-left": "Fuq ix-xellug",
+        "top-right": "Fuq id-dritt"
+      },
+      "previewCurrent": "Fuq il-ritratt attwali mill-tab ta ' Capture.",
+      "previewEmpty": "Mill- dawl għall- skur, biex tiċċekkja l- leġibbiltà fiż- żewġ estremi.",
+      "previewNoFields": "L-ebda qasam magħżul  il- ritratt jiġi mingħajr watermark.",
+      "previewTitle": "Previżjoni",
+      "reset": "Iġġedded id- default",
+      "sizeTitle": "Id-daqs tat-test",
+      "sizes": {
+        "large": "Għoli",
+        "medium": "Mediu",
+        "small": "Tnejn"
+      },
+      "textColor": "It-test",
+      "timeFormatDescription": "Kif il-ħin huwa mimli fil-kamps. Il-kamp jibqa' editable.",
+      "timeFormatTitle": "Format tal-ħin",
+      "timeFormats": {
+        "12h": "12-il siegħa (għodu/lejl)",
+        "24h": "24 siegħa"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Il-fajls kollha",
+      "images": "Immaġni",
+      "pickFolder": "Agħżel il- folda tal- output",
+      "pickPhoto": "Għid ritratt",
+      "pickPhotos": "Agħżel ritratti għall-lott",
+      "savePhoto": "Żomm ritratt",
+      "saveReport": "Ħares rapport"
+    },
+    "login": {
+      "cancel": "Ikkanċella",
+      "confirm": "Ikompli",
+      "message": "Għandek bżonn bżonn li tkompli tuża dan il-kont fuq dan il-kompjuter?",
+      "title": "Iċċekkja fuq Lymark "
+    },
+    "menu": {
+      "copy": "Kopja",
+      "cut": "Tagħrif",
+      "edit": "Edit",
+      "file": "Fajl",
+      "fullscreen": "Skrin sħiħ",
+      "help": "Għajnuna",
+      "paste": "L-għamla",
+      "quit": "Tlaq",
+      "redo": "Redo",
+      "reload": "Ħadd mill-ġdid",
+      "selectAll": "Agħżel kollha",
+      "settings": "Is-settings",
+      "undo": "L-ebda",
+      "view": "Ħarsa",
+      "zoomIn": "Żoom fil",
+      "zoomOut": "Żoom out",
+      "zoomReset": "Id-daqs attwali"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Terġa ' lura d-dar",
+      "openApp": "Ftaħ l- app",
+      "photos": "Ritratti",
+      "photosLeft": "{remaining} ta' {quota} mix-xellug",
+      "plan": "Pjan",
+      "planUnavailable": "Mhux disponibbli bħalissa",
+      "plans": {
+        "free": "Ħielsa",
+        "pro": "Pro"
+      },
+      "signInTitle": "Iffirma",
+      "signOut": "Iffirmax",
+      "signUpTitle": "Ippjana kont",
+      "subscribe": "Abbonat għal Lymark Pro",
+      "subscribeSoon": "L-abbonamenti għadhom ma jkunux disponibbli. Meta jkunu disponibbli, inti ser tkun tista' abbonati hawn u tuża kwalunkwe apparat bl-istess kont.",
+      "title": "Il-kont tiegħek",
+      "revokeDesktops": "Tneħħi l-kompjuters",
+      "revokeDesktopsHint": "Jtemm l-aċċess tal-app fuq kull kompjuter. Tista' tidħol lura meta trid."
+    },
+    "availability": {
+      "contact": "Biex issegwi t- tniedi jew tirrapporta problema, ikteb lil <email> contato@lymark.app </email>.",
+      "description": "Lymark huwa fil-verżjoni 1.3.0, fit-testijiet fuq Android qabel il-pubblikazzjoni fuq Google Play. M'hemm l-ebda verżjoni iOS u l-ebda verżjoni web, u l-app ma jiġbor l-ebda ħlas.",
+      "title": "Disponibbiltà"
+    },
+    "data": {
+      "device": {
+        "description": "Il-kont jeżisti għall-abbonament tiegħek: is-server iżomm l-email u l-pjan tiegħek, u qatt ma jirċievi l-istampi tiegħek jew il-post tiegħek.",
+        "field": "Fuq il-mezz",
+        "heading": "Ritratti, indirizzi u storja"
+      },
+      "external": {
+        "description": "Biex il-latitudni u l-longitudni jsiru indirizzi li jistgħu jinqraw, is-sistema operattiva tikkonsulta s-servizz tal-geocoding ta' Google jew Apple. Din hija l-unika informazzjoni li titlaq, u s-sistema tibgħatha, mhux l-app.",
+        "field": "Tneħħi l-apparat",
+        "heading": "Jgħin biss koordinata f'indirizz"
+      },
+      "note": "Dan kollu huwa stabbilit  inkluż dak li jfisser taħt LGPD tal-Brażil  fl <privacy>Politika ta' Privatezza</privacy>. Jekk tinżamm il-permess tal-lokalizzazzjoni, l-app tibqa' funzjonali kompletament; biss il-qasam tal-indirizz għandu jiġi ttikkettat bl-idejn.",
+      "title": "Fejn id-dejta tiegħek tinsab"
+    },
+    "deleteAccount": {
+      "back": "Terġa ' lura għall-kontijiet",
+      "confirm": "Ħassar il-kont tiegħi",
+      "deletesNow": "Jekk tħassar il-kont tiegħek, dan iħassar immedjatament l- email tiegħek, l- identifikat tiegħek, u r- rekord tal- pjan, il- kwota u l- għadd ta ' ritratti.",
+      "irreversible": "L- ħassar huwa permanenti u ma jistax jiġi rrevokat. Il- ritratti fuq it- apparat tiegħek mhumiex affettwati  dawn qatt ma kienu fuq is- servers tagħna.",
+      "retained": "Ir-rekords tat-tranżazzjonijiet ta' pagament jinżammu għall-perjodu fiskali meħtieġ legalment, mhux marbuta mal-profil tiegħek.",
+      "title": "Ħassar kont"
+    },
+    "description": "App Android li timbri l-ħin, id-data, il-ġurnata tax-xogħol, l-indirizz u kodiċi tat-traċċar fuq is-sit-ispezzjoni u l-prova ta 'servizz ritratti.",
+    "desktop": {
+      "backAccount": "Terġa ' lura għall-kontijiet",
+      "explanation": "Il-kont tiegħek huwa lest. Ikklikkja l-buttuna hawn taħt biex tiftaħ Lymark fuq il-kompjuter tiegħek diġà sinsinjat f  il- browser se jitlob permess biex tiftaħ l-app.",
+      "open": "Ikkonnettja l- app",
+      "title": "Log in fuq desktop",
+      "unavailable": "Il- konnessjoni tal- app tal- desktop għadu ma tkunx disponibbli."
+    },
+    "download": {
+      "appStore": {
+        "description": "L- istess esperjenza bħal Android, fuq iOS.",
+        "field": " App Store ",
+        "heading": "iPhone u iPad"
+      },
+      "browser": {
+        "action": "Iffirma",
+        "description": "Log in mal-kont tiegħek u l-app tiftaħ dritt fil-browser  telefon jew kompjuter.",
+        "field": "Browser",
+        "heading": "Użaha issa, xejn biex tinstalla"
+      },
+      "desktop": {
+        "description": "L-aktar importanti huma l-istampi tal-istampi tal-Unjoni Ewropea.",
+        "field": "Kompjuter",
+        "heading": "Windows u Linux"
+      },
+      "googlePlay": {
+        "description": "L-app tat-telefon, b'kamera, galerija u vidjo stampat.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Qatt sejjer",
+      "title": "Fejn tuża Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "It-tip tat-triq huwa mqassma u l-istat isir il-kodiċi tiegħu, u għalhekk l-indirizz jaqsam f'żewġ linji mingħajr ma jkopru l-istampa.",
+        "field": "Indirizz",
+        "heading": "Imjaġġa' bil-GPS, korrettab bl-idejn"
+      },
+      "code": {
+        "description": "Huwa jeżisti sabiex inti tista 'tikkwitja ritratt speċifiku wieħed f'ordni ta' xogħol jew rapport. Huwa jitmexxa rotat 'l isfel il-ġenb tal-lemin, jew joqgħod mal-blokk tad-dejta  għalik.",
+        "field": "Kodu tal-istampa",
+        "heading": "14-il karattru, imfassal minn ġeneratur kriptografiku"
+      },
+      "note": "Kull kamp jitqabad u jitnieda waħdu, u l-blokki jgħaqqdu għal kwalunkwe wieħed mill-erba' kunjieri, f'tliet daqs. Il-previżjoni tuża l-istampa attwali tiegħek, mhux kampjun ġeneriku: dak li tara fuq l-iskrin huwa letteralment dak li jiġi esportat.",
+      "time": {
+        "description": "It-tpinġija waħda tpoġġi t-tliet oqsma lura għall-preżent meta l- cattura ħadet aktar żmien milli mistenni.",
+        "field": "Ħin u data",
+        "heading": "Mill-arloġġ tal-apparat, fil-mument tal-qabda"
+      },
+      "title": "X' jidħlu fuq l-immaġni"
+    },
+    "footer": {
+      "description": "Lymark  Rekords fotografiċi bid-data, l-ħin u l-indirizz.",
+      "documentsLabel": "Id-dokumenti",
+      "privacy": "Politika ta' Privatezza",
+      "support": "Appoġġ:",
+      "terms": "Termini ta' Użu"
+    },
+    "hero": {
+      "ctaAccount": "Mur għall-kont tiegħi",
+      "ctaLogin": "Iffirma",
+      "ctaSignup": "Iġġib kont b'xejn",
+      "description": "Lymark timbri l-ħin, id-data, il-ġurnata tax-xogħol, l-indirizz u kodiċi tat-traċċar direttament fuq l-immaġni. Il-fajl li joħroġ mill-app għandu l-informazzjoni ġewwa tagħha  mhux bħala metadata li jmur flimkien, li l-ewwel WhatsApp quddiem strips 'il bogħod.",
+      "eyebrow": "Dokumentazzjoni bil-foto tal-qasam",
+      "heading": "Il- ritratt jibqa' fuq it- telfown tiegħek li diġà jgħid meta, fejn u x'inhu.",
+      "meta": {
+        "account": "Kont b'tap wieħed",
+        "android": "Android u browser",
+        "language": "Portugiż tal-Brażil",
+        "onDevice": "Il- ritratti jibqgħu fuq il- apparat"
+      },
+      "note": "M'hemm xejn li tinstalla."
+    },
+    "nav": {
+      "account": "Kontijiet",
+      "home": "Id-dar",
+      "homeLabel": "Lymark , paġna ta ' l-isem",
+      "label": "Magħrufa",
+      "privacy": "Privatezza",
+      "signIn": "Iffirma",
+      "terms": "Termini",
+      "verify": "Verifika"
+    },
+    "process": {
+      "capture": {
+        "description": "Il- tfittxija tal- indirizz tibda mill- mument li l- ritratt jidħol. Il- campi jibqgħu miftuħa għall- aġġustament waqt li tkun qed taħdem.",
+        "field": "Il-qbid",
+        "heading": "Kamera jew gallerja"
+      },
+      "note": "Iż- żewġ azzjonijiet huma miżmuma separati apposta. Żomm u l-kondiviżjoni isolvu problemi differenti, u li jgħaqqdu f'buttuna waħda se jġarrab lil kull min biss irid jfilja l-istampa permezz ta 'skrin li jibgħat.",
+      "save": {
+        "description": "Huwa joqgħod mal-bqija tal-ritratti tat-telefon tiegħek, disponibbli għal kull app  inkluż wara li inti deinstalla Lymark .",
+        "field": "Żomm",
+        "heading": "Jmorru għall-galerija tal-apparat"
+      },
+      "share": {
+        "description": "WhatsApp , email, Drive: id-destinazzjoni hija magħżula mis-sistema operattiva, u l-app ma tieħu ebda sehem fit-tbagħ.",
+        "field": "Is-sehem",
+        "heading": "Tiftaħ il-karta ta ' l- ishma tas- sistema"
+      },
+      "title": "Il- mod kif tieħu ritratt"
+    },
+    "skipToContent": "Tbiddel għall-kontenut",
+    "specimen": {
+      "caption": "Ir-regola tal-bramber tibda u tintemm fuq il- bordi taċ-ċifri, mhux tat-test.",
+      "label": "Kampjun tal-istampi Lymark: ħin 07:42, data 12 ta' Awwissu 2026, nhar l-Erbgħa, indirizz f'Guarujá u kodiċi tal-istampi."
+    },
+    "title": "Lymark  data, ħin u indirizz watermark għal ritratti tal-post",
+    "verify": {
+      "caveat": "Il-ħabib iċċerta l-integrità tal-fajl u l-mument tal-ħruġ. Dak li jiddikjara l-ħabib  indirizz, data, ħin  huwa d-dikjarazzjoni tal-emittent.",
+      "checking": "Niċċekkja...",
+      "declarationNote": "Dak li juri l-istampi (indirizz, data, ħin) huwa d-dikjarazzjoni tal-emittent  l-istampi jattestjaw l-integrità u l-ħruġ, mhux il-kontenut.",
+      "intro": "Tfix jew agħżel ritratt esportat minn Lymark u ara minnufih jekk hux eżattament kif ħalla l-app  u min ħareġha, meta.",
+      "noSealBody": "Dan il-fajl m'għandux sigil Lymark. Jista' jkun ġie esportat offline, qabel ma jeżisti s-sigil, jew jista' ma jkunx ġej minn Lymark.",
+      "noSealTitle": "L-ebda siġil",
+      "notConfigured": "Il-verifika għadha mhix disponibbli.",
+      "pick": "Agħżel il- fajl",
+      "previewAlt": "Il-foto vverifikata, stamp viżibbli",
+      "privacyNote": "Il-verifika ssir fil-browser tiegħek. Il-fajl ma jintbagħatx lil ebda server.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Intatt",
+      "tamperedBody": "Il-kontenut ma jaqbilx mas-siġill: il-fajl ġie modifikat wara l-ħruġ, jew is-siġill jappartjeni għal fajl ieħor.",
+      "tamperedTitle": "Id-differenza",
+      "title": "Verifika tal-awtentiċità",
+      "unsupported": "Dan il- browser ma jappoġġjax il- verifika ta ' sinatura. Ipprova browser attwali."
+    }
+  }
+}
