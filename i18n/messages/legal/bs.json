@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Politika privatnosti",
+      "description": "Kako Lymark aplikacija upravlja fotografijama, lokacijom, istorijom i vašim nalogom."
+    },
+    "title": "Politika privatnosti",
+    "updated": "Posljednji put ažuriran: 16. avgusta 2026 · Lymark aplikacija, verzija 1.3.0",
+    "intro": "Ova politika opisuje kako aplikacija Lymark upravlja ličnim podacima.Ona je u skladu sa Lei č. 13.709/2018 (opšti zakon o zaštiti podataka o ličnosti  LGPD) i Uredbom (EU) 2016/679 (opšti uredba o zaštiti podataka  GDPR ), a primjenjuje se na aplikaciju koja se distribuira pod identifikacijom <strong> com.lycosteam.lymark </strong>i na ovu veb stranicu.",
+    "s01": {
+      "title": "U jednoj rečenici",
+      "p1": " Lymark  <strong>ne prenosi vaše fotografije ili lokaciju</strong>Sve što aplikacija proizvodi  slike, adrese, istoriju i preferencije  ostaje na vašem uređaju, pod vašom kontrolom.",
+      "p2": "Postoji samo jedan izuzetak, opisan u točki 05: da bi se GPS koordinate pretvorile u čitljivu adresu, operativni sistem uređaja zahteva vanjsku geokodificirnu uslugu."
+    },
+    "s02": {
+      "title": "Na koga se ova politika odnosi",
+      "p1": "Za subjekte podataka u Brazilu, obradavanje se vrši po LGPD i nadgledu Nacionalnog organa za zaštitu podataka (ANPD). Za subjekte podataka u Evropskom ekonomskom prostoru i Ujedinjenom Kraljevstvu, to se vrši po GDPR i UK GDPR."
+    },
+    "s03": {
+      "title": "Ko je upravljač",
+      "p1": "Provednik ličnih podataka  <em>kontrolor</em>, u terminologiji LGPD  je 29.015.357 AMAD ALI HAMMOUD , registrovan pod imenom CNPJ 29.015.357/0001-25 , sa adresom Avenida Ana Costa, 433, Gonzaga, Santos - SP .",
+      "p2": "Osoba koja je odgovorna za obradu ličnih podataka u smislu člana 41 ZZPH1XZ je Amad Ali Hammoud , a može se kontaktirati na <email> contato@lymark.app </email>. S obzirom na obim i prirodu obrade  koja ne uključuje ni osetljive podatke u skali ni sistematski praćenje  ne postoji obaveza da se imenuje <em>Povjerenik za zaštitu podataka</em>prema članu 37 Zakona o GDPR ."
+    },
+    "s04": {
+      "title": "Koje informacije aplikacija upravlja",
+      "p1": "Sve informacije koje su u nastavku snimljene su isključivo u privatnom prostoru aplikacije unutar uređaja, a ništa od toga se ne šalje programerima.",
+      "defs": {
+        "photos": {
+          "term": "Fotografije",
+          "def": "Slika koju izaberete iz galerije ili snimate kamerom, kao i datoteka izvožena vodenicom."
+        },
+        "location": {
+          "term": "Lokalizacija",
+          "def": "Približna širina i dužina, dobivena jednom po snimku, isključivo u svrhu ispunjenja polja adrese."
+        },
+        "datetime": {
+          "term": "Datum, vreme i dan u nedelju",
+          "def": "Čitajte sa uređaja u trenutku snimanja, i uređavajte ga."
+        },
+        "code": {
+          "term": "Kod fotografije",
+          "def": "Sekuencja od 14 šesedesimskih znakova nasumično je izvučena."
+        },
+        "history": {
+          "term": "Istorija",
+          "def": "Zapisi poslednjih 200 izvoza, sa putom datoteke na uređaju i podacima objelodiranim na sliku."
+        },
+        "preferences": {
+          "term": "Prihvatke",
+          "def": "Vidljivi polji, pozicija, veličina i druge opcije vodena oznaka."
+        }
+      },
+      "p2": "Aplikacija <strong>ne prikuplja</strong>: ime, e-mail, telefon, dokumenti o identitetu, reklamni identifikator, identifikator uređaja, podaci o kontaktu, kalendar, istoriju pretraživanja, metrike upotrebe, izveštaje o kvarovima ili bilo koje druge informacije o vama ili o vašem uređaju."
+    },
+    "s05": {
+      "title": "Jedina informacija koja napusti uređaj",
+      "p1": "Kada dodeljete dozvolu za lokaciju, aplikacija traži od operativnog sistema da pretvori GPS koordinate u poštanski adres.<strong>Google</strong>na Android uređajima i <strong>Jabulj</strong>na iOS uređajima.",
+      "p2": "Ova komunikacija dolazi iz operativnog sistema, a ne iz Lymark. Aplikacija ne prima kopiju, ne posreduje i nema pristup ni čemu osim povratnom adresu.",
+      "p3": "<strong>Nijedna fotografija ne napušta uređaj kroz bilo kakvu akciju aplikacije.</strong>Ako koristite dugme Delite, slika se prenosi od strane destinacije aplikacije koju ste odabrali u sistemu delite lijek  messenger, email, cloud skladištenje  u okviru politike privatnosti aplikacije."
+    },
+    "s06": {
+      "title": "Zahtjevane dozvole i zašto",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Za snimanje slike koja će dobiti vodeni znak. Traženo je samo kada kliknete na Take photo. Aplikacija ne zahteva pristup mikrofonom."
+        },
+        "photos": {
+          "term": "Fotografije i mediji",
+          "def": "Za odabir postojeće slike i za pisanje izvožene datoteke u galeriju.Pristup je ograničen na fotografije, a dozvolu za pisanje se koristi samo za pisanje  aplikacija ne pregleda niti čita galeriju."
+        },
+        "location": {
+          "term": "Lokacija tokom upotrebe",
+          "def": "U prvom planu je traženo samo dok je aplikacija u upotrebi, i <strong>Nikad u pozadini</strong>."
+        }
+      },
+      "p1": "Sve dozvole su opcionalne i mogu se povući u bilo kom trenutku u postavkama uređaja. Odbijanje lokacije održava aplikaciju u punoj funkciji: adresa se zatim napiše odbijanjem pristupa galeriji samo sprečava automatsko čuvanje, a fotografija se još uvijek može dijeliti."
+    },
+    "s07": {
+      "title": "Pravna osnova i svrhe",
+      "p1": "Prerađivanje lokacije se odvija na osnovu vaše <strong>saglasnost</strong> Član 7, I LGPD i Član 6(1)((a) GDPR  izraženi kada postignete dozvolu za sistem i mogu se povući u bilo kom trenutku, bez obzira na zakonitost obrade koja je izvršena prije povlačenja.",
+      "p2": "Prerađivanje preostalih podataka se odvija za <strong>performanse funkcije koju ste zatražili</strong> Član 7, V LGPD i Član 6(1)(b) GDPR  jer bez njega nema ocena za proizvodnju aplikacije.",
+      "p3": "Obrada podataka o računima temelji se na izvršenju ugovora (članak 7. V LGPD; Članak 6. 1) 1) b)). Obrada na osnovu legitimnog interesa (članak 7. IX LGPD; Članak 6. 1) 1) f) postoji samo za sigurnost i sprečavanje prevare  na primer, evidentiranje IP adrese zahtjeva na server."
+    },
+    "s08": {
+      "title": "Međunarodni transfer",
+      "p1": "Podaci o računima obrađuju procesor za autentifikaciju (Clerk, Inc., Sjedinjene Države), koji predstavlja međunarodni prenos podataka, na osnovu standardnih ugovornih klauzula i mehanizama člana 33 i člana 44 do 49.",
+      "p2": "Ovaj sajt je hostiran od strane Vercel Inc. , u skladu sa odredbama stavka 14."
+    },
+    "s09": {
+      "title": "Učešće sa trećim stranama",
+      "p1": "Razvijač ne deli, prodaje, iznajmljuje ili prenosi lične podatke trećim licima.<em>procesor</em>Clerk, Inc. , koji pruža uslugu autentifikacije i čuva e-mail, identifikator računa i podatke o planu, koji su ugovorno vezani za upute programera. Ako se prijavite sa Googleom ili Appleom, ti pružaoci obrađuju podatke o prijavi prema svojim pravilima; programer od njih prima samo e-mail i identifikator koji su potrebni za stvaranje računa."
+    },
+    "s10": {
+      "title": "skladištenje, čuvanje i sigurnost",
+      "p1": "Podaci se nalaze u privatnom prostoru aplikacije, zaštićene izolacijom operativnog sistema između aplikacija i blokiranjem ekrana uređaja.<strong>invalid</strong>, tako da se istorija i preferencije ne šalju na korisnički Google nalog.",
+      "p2": "U aplikaciji se sve može čuvati, dok se ne izbrisu, a u istoriji se automatski uklanjaju najstarije nakon što prođe 200 stavki, uklanjajući i odgovarajuće datoteke.",
+      "p3": "Ne postoji sistem koji je nepogrešan. Podaci o računu  e-pošta, identifikator, plan i broja  čuva procesor za autentifikaciju, u skladu sa svojim sigurnosnim merama. Fotografije, adrese i lokacija ne postoje u centralnom repozitoriju i stoga ne mogu da se presude iz infrastrukture programera. Ako sigurnosni incident utiče na podatke o računu, programer će o tome obavijestiti vlasništvo i subjekte podataka prema članu LGPD 48. i članu GDPR 33."
+    },
+    "s11": {
+      "title": "Kada fotografiraš druge ljude",
+      "p1": "Kada fotografiraš prepoznavne ljude u toku svoje profesionalne aktivnosti,<strong>- Šta je?</strong>U skladu sa člankom 1. stavkom 1. stavkom 1. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2. stavkom 2."
+    },
+    "s12": {
+      "title": "Vaša prava",
+      "p1": "Član 18. LGPD i članovi 15. do 22. GDPR garantuju vam prava na potvrdu i pristup, ispravku, brisanje, anonimizaciju, blokiranje, prenosivost, ograničavanje obrade, prigovor, povlačenje saglasnosti i informacije o dijeljenju.",
+      "p2": "Fotografije, adrese, istorija i preferencije se nalaze samo na vašem uređaju, a ta prava se koriste direktno u aplikaciji: pregled i brisanje ulaganja u tablici Galerija, ispravljanje bilo kog polja pre izvoza, povlačenje dozvole lokacije u sistemskim podešavanjima i brisanje svega deinstalacijom aplikacije  programer ne može pristupiti, izvoziti ili brisati te podatke za vas, jer ih ne drži. Što se tiče podataka o računu  e-pošte, plan i brojanje  možete ih pogledati na stranici računa i zatražiti ispravku, izvoz ili brisanje na ovom e-poštu kontakta politike ; brisanje računa briše te podatke u procesoru autentifikacije.",
+      "p3": "Za pitanja ili formalne zahtjeve, pišite na: <email> contato@lymark.app </email>Takođe imate pravo da podnesete žalbu u<strong> ANPD </strong>, u Brazilu ili sa nadzornim organom vaše države članice u Evropskoj uniji."
+    },
+    "s13": {
+      "title": "Automatska odluka",
+      "p1": "Nema automatizovanog odluka, profila ili obrade koji bi imao pravne efekte u vezi sa vama, u skladu sa članom 20 LGPD i članom 22 GDPR."
+    },
+    "s14": {
+      "title": "O ovom veb sajtu",
+      "p1": "Ova web stranica nema analitiku, ne prikazuje oglašavanje i ne ugrađuje dugme društvenih mreža.<strong>kolačići strogo neophodni</strong>za sesiju računa, koji je postavljen od strane procesora autentifikacije (član 09) kada se prijavite; nema kolačića za praćenje ili oglašavanje. Članci se poslužuju iz domaćina sajta. Jedini zahtjevi koje vaš pretraživač upućuje trećim licima su zahtjevi za prijavljivanje i ekrana računa, upućeni na procesor autentifikacije i, ako ga izaberete, na provajdera za prijavljivanje (Google ili Apple).",
+      "p2": "Web stranicu hostira <strong> Vercel Inc. </strong>, koji kao obrađivač registruje tehničke podatke o pristupu  IP adresu, datum, vreme i zahtevani resurs  sve dok je to neophodno za bezbednost i funkcionisanje hostinga. Pravna osnova je legitimni interes za održavanje bezbednosti usluge, član 7, IX LGPD i član 6(1)(f) GDPR."
+    },
+    "s15": {
+      "title": "Promene ove politike",
+      "p1": "Promene koje značajno menjaju obradu podataka biće i u aplikaciji saopštene pre nego što stupe na snagu."
+    },
+    "s16": {
+      "title": "Deca i adolescenci",
+      "p1": "Lymark je alat za rad namijenjen ljudima starijim od 18 godina."
+    },
+    "s17": {
+      "title": "Provedeno pravo",
+      "p1": "Ova politika se uređuje brazilskim pravom, bez obzira na primenu GDPR na subjekte podataka na koje se odnosi."
+    },
+    "note": "Pogledajte i <terms>Uslovima korišćenja</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Uslovima korišćenja",
+      "description": "Uslovi korišćenja Lymark aplikacije: šta radi, šta ne radi i ko je odgovoran za sadržaj fotografija."
+    },
+    "title": "Uslovima korišćenja",
+    "updated": "Posljednji put ažuriran: 16. avgusta 2026 · Lymark aplikacija, verzija 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Šta aplikacija radi",
+      "p1": "Lymark preklapa skup informacija na fotografiju  vreme, datum, dan rada, adresa i identifikacioni kod  i stvara novu datoteku slike sa tim informacijama ugrađenim u piksele."
+    },
+    "s02": {
+      "title": "Šta aplikacija ne radi",
+      "p1": "Ovaj post je najvažniji u tim terminima i molimo vas da ga pažljivo pročitajte.",
+      "items": {
+        "certify": "<strong>Aplikacija ništa ne potvrđuje ili autentifikuje.</strong>To nije forenzička ispitivanja, ne izda dokument sa javnom vjerom i ne predstavlja stručnu dokazu.",
+        "editable": "<strong>Svaki polj može da uređuje korisnik.</strong>Vreme, datum, adresa i kod se mogu slobodno promeniti pre izvoza, po dizajnu: profesionalci moraju biti u stanju da ispravljaju adresu koja je GPS pogriješio.",
+        "clock": "<strong>Vrijeme dolazi sa uređaja sat</strong>, koji može biti pogrešan ili je podešen ručno.",
+        "address": "<strong>Adresa je procena.</strong>Njegova tačnost zavisi od GPS signala i baze podataka usluge mape operativnog sistema.",
+        "code": "<strong>Kod fotografije nije registracija u notaru.</strong>To je slučajni identifikator za unutrašnju referenciju, bez nikakve dokazne vrijednosti."
+      },
+      "p2": "Ako je slučaj korištenja potreban dokazi sa pravnom snagom protiv trećih lica, tražite notarialnu listinu ili digitalnu uslugu za certifikatiranje sa časom  Lymark je zamjena za nijedno od njih."
+    },
+    "s03": {
+      "title": "Vaši obavezni",
+      "items": {
+        "photos": "Vi ste isključivo odgovorni za fotografije koje snimate, za sadržaj na kojima se štampirate i za upotrebu generiranih datoteka.",
+        "thirdParties": "Kada fotografirate druge ljude, imovinu ili prostorije, na vama je da dobijete neophodne dozvole i da poštujete prava na slike, profesionalnu tajnost i opšti zakon o zaštiti ličnih podataka u vezi sa ispitanima podataka koji su prikazani.",
+        "prohibited": "Zabranjeno je koristiti aplikaciju za izradu lažnog zapisa, za zabranu bilo koga, za simulaciju obavljanja usluge koja nije pružana ili za izvršenje bilo kog nezakonitog djela.",
+        "backups": "Na vama je da zadržite kopije podataka o svemu što smatrate važnim."
+      }
+    },
+    "s04": {
+      "title": "Licenca za upotrebu",
+      "p1": "Mi Vam dodeljavamo ličnu, otkazan, neekskluzivnu i ne prenosivu licencu za instalaciju i upotrebu aplikacije, uključujući i za profesionalne svrhe.",
+      "p2": "<strong>Tvoje slike su tvoje.</strong>Mi ne pretpostavljamo nikakva prava na slike koje snimate ili generirate."
+    },
+    "s05": {
+      "title": "Dostupnost i ažuriranja",
+      "p1": "Aplikacija se pruža u njenom stanju.Ne postoji garancija neprekidnog rada, kompatibilnosti sa svakom uređajem, niti bilo kakvog obaveze o rokom za popravke ili nove verzije.",
+      "p2": "Kvalitet izvožene slike zavisi od uređaja i operativnog sistema i može biti niže rezolucije od originalne fotografije."
+    },
+    "s06": {
+      "title": "Ograničenje odgovornosti",
+      "p1": "U najvećoj meri dozvoljenoj brazilskim pravom, programer nije odgovoran za indirektne gubitke, izgubljene profite, gubitak podataka ili štete koje proizlaze iz odluka donesenih na osnovu oznake  uključujući bilo kakve žalbe, na sudu ili izvan nje, na sadržaj fotografije koju je generisala aplikacija.",
+      "p2": "Ovo ograničenje<strong>ne uklanja</strong>prava koja su potrošaču jamčena Zakonom o pravima 8.078/1990. godine, kao i odgovornost za namerno zlostavljanje ili grubu zanemarivanje."
+    },
+    "s07": {
+      "title": "Srušenje",
+      "p1": "Možete prestati koristiti aplikaciju u bilo kom trenutku: brisanje računa briše podatke na serveru, a deinstalacija aplikacije briše podatke sa uređaja."
+    },
+    "s08": {
+      "title": "Izmene ovih uslova",
+      "p1": "Promene će biti objavljene na ovoj stranici sa novim datumom ažuriranja."
+    },
+    "s09": {
+      "title": "primjenjivo pravo i forum",
+      "p1": "Na osnovu ovog pravila, forum za rješavanje sporova koji proizlaze iz ovih uslova je forum domicina korisnika."
+    },
+    "note": "O obradi podataka, pogledajte <privacy>Politika privatnosti</privacy>- Pitanja:<email> contato@lymark.app </email>."
+  }
+}

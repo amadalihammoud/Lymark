@@ -30,6 +30,11 @@ import {
   viVN,
   zhCN,
   deDE,
+  daDK,
+  fiFI,
+  skSK,
+  hrHR,
+  mnMN,
 } from '@clerk/localizations';
 
 import type { Locale } from '../../i18n/locales';
@@ -51,6 +56,9 @@ import type { Locale } from '../../i18n/locales';
  *
  * Fase 2: `my`, `uz`, `ne`, `ps`, `so`, `az`, `mg`, `si`, `km`, `rw`, `ht`
  * também caem no inglês; `hu`, `kk`, `sv` e `bg` usam o pacote nativo.
+ *
+ * Fase 3: `da`, `fi`, `sk`, `hr` e `mn` usam o pacote nativo; `ka`, `lo`, `hy`,
+ * `lt`, `sq`, `sl`, `ti`, `lv`, `bs` e `rn` caem no inglês.
  */
 export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   pt: ptBR,
@@ -98,6 +106,21 @@ export const CLERK_LOCALIZATIONS: Record<Locale, typeof ptBR> = {
   rw: enUS, // Clerk sem Kinyarwanda — fallback EN
   ht: enUS, // Clerk sem Haitian Creole — fallback EN
   bg: bgBG,
+  da: daDK,
+  fi: fiFI,
+  sk: skSK,
+  hr: hrHR,
+  ka: enUS, // Clerk sem Georgian — fallback EN
+  mn: mnMN,
+  lo: enUS, // Clerk sem Lao — fallback EN
+  hy: enUS, // Clerk sem Armenian — fallback EN
+  lt: enUS, // Clerk sem Lithuanian — fallback EN
+  sq: enUS, // Clerk sem Albanian — fallback EN
+  sl: enUS, // Clerk sem Slovenian — fallback EN
+  ti: enUS, // Clerk sem Tigrinya — fallback EN
+  lv: enUS, // Clerk sem Latvian — fallback EN
+  bs: enUS, // Clerk sem Bosnian — fallback EN
+  rn: enUS, // Clerk sem Kirundi — fallback EN
 };
 
 /**

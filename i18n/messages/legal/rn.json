@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Itegeko rigenga ubuzima bwite",
+      "description": "Ukuntu porogaramu ya Lymark ikora ku mafoto, ahantu, kahise n'ikonte yawe. Amafoto n'aho uherereye ntibimara igihe kinini biva ku gikoresho; umukozi aguma arondera gusa ubutumwa, urutonde n'igitigiri c'amafoto."
+    },
+    "title": "Itegeko rigenga ubuzima bwite",
+    "updated": "Iheruka gusubirwamwo: 16 Myandagaro 2026 · Lymark App, verisiyo 1.3.0",
+    "intro": "Iryo tegeko rirerekana ingene ikoranabuhanga rya Lymark ritunganya amakuru y'umuntu.Rirakurikiza itegeko rya Lei no 13.709/2018 (Itegeko rigenga gukingira amakuru y'umuntu  LGPD) n'ingingo ngenderwako (EU) 2016/679 (Ingingo ngenderwako y'ugukingira amakuru  GDPR ), kandi rirerekeye ikoranabuhanga rikoreshwa mu gukwiragiza amakuru y'abantu.<strong> com.lycosteam.lymark </strong>no kuri uru rubuga.",
+    "s01": {
+      "title": "Mu ciyumviro kimwe",
+      "p1": " Lymark  <strong>ntiyerekana amafoto yawe canke aho uri</strong>.Ibintu vyose iyo porogarama itanga  amafoto, aderese, kahise n'ivyo ukunda  biguma ku gikoresho cawe, mu ntwaro yawe. Hariho akaunti, igomba gukoreshwa muri iyo porogarama no kugira umuntu agire uruhara mu kwiyandikisha: umukozi arazigama ubutumwa bwawe bwa e-mail, umwimerere w'amafoto, urutonde n'igitigiri c'amafoto y'amafoto yatanzwe  n'ibindi n'ibindi.",
+      "p2": "Hariho icokorwa kimwe gusa, gisigurwa mu ngingo ya 05: kugira ngo imirongo ya GPS ihinduke aderese isomeka, iyo porogarama ikoresha uburyo bwo gukoresha ikoresha geocoding yo hanze."
+    },
+    "s02": {
+      "title": "Ni bande iryo tegeko ryerekeye",
+      "p1": "Ku bantu bashikirijwe amakuru muri Brezile, ivyo bikorwa birakurikiza LGPD n'ubuyobozi bw'Inzego z'igihugu zijejwe gukingira amakuru (ANPD). Ku bantu bashikirijwe amakuru mu karere k'ubutunzi bwa Buraya no mu Bwongereza, birakurikiza GDPR na UK GDPR."
+    },
+    "s03": {
+      "title": "Ni nde ari umuyobozi",
+      "p1": "Uwuriko arategura amakuru y'umuntu  <em>controllador</em>, mu mvugo y'ijambo LGPD  ni 29.015.357 AMAD ALI HAMMOUD , yanditswe ku izina rya CNPJ 29.015.357/0001-25 , ifise aderese iri kuri Avenida Ana Costa, 433, Gonzaga, Santos - SP .",
+      "p2": "Umuntu ajejwe gutunganya amakuru ku giti ciwe, mu ntumbero y'ingingo ya 41 y'itegeko LGPD , ni Amad Ali Hammoud , ashobora guhamagarwa kuri <email> contato@lymark.app </email>. Kubera ubunini n'ubwoko bw'ico gikorwa  kitajanye n'amakuru yiyumvamwo ku rugero ruto canke kugenzura ku buryo butagira agahaze  nta burenganzira bwo kugena umuntu <em>Umukozi ajejwe gukingira amakuru</em>Nk'uko bivugwa mu ngingo ya 37 y' Itegeko GDPR ."
+    },
+    "s04": {
+      "title": "Ni amakuru ayahe ayo mahera atunganya",
+      "p1": "Amakuru yose ari hasi aha arabandikwa gusa mu kibanza c'ibanga c'iyo porogarama kiri muri ca gikoresho, kandi nta na kimwe muri co kirungikwa ku muhinga.",
+      "defs": {
+        "photos": {
+          "term": "Amafoto",
+          "def": "Ifoto uhitamwo mu giteramo canke ukayifata ukoresheje kamera, hamwe n'ifoto ujanye n'ico kimenyetso c'amazi."
+        },
+        "location": {
+          "term": "Aho bari",
+          "def": "Uburebure n'uburebure bw'ikirere, biboneka rimwe ku capture, bivuye gusa ku gikorwa co kuzuza umurongo w'indero."
+        },
+        "datetime": {
+          "term": "Umusi, isaha n'umusi w'akazi",
+          "def": "Soma kuri ca gikoresho cafashwe igihe c'ugufata, kandi ni wewe utegerezwa kugikora."
+        },
+        "code": {
+          "term": "Amashusho",
+          "def": "Ni urutonde rw'ibimenyetso cumi na bine vy'amavukiro vyatowe ku buryo bw'agateganyo. Ntibikomoka ku kimenyetso c'igikoresho canke ku kimwe mu vyanyu, kandi ntibishobora gukurikirana mu buryo bw'imfashanyo."
+        },
+        "history": {
+          "term": "Kahise",
+          "def": "Urukurikirane rw'ivyo bintu 200 vyaheruka kugurishwa, rurimwo inzira y'ibitabu biri kuri ca gikoresho be n'amakuru yashizwe ku gishushanyo."
+        },
+        "preferences": {
+          "term": "Ibikoresho vy'ubuhinga",
+          "def": "Ibisata vy'amazi, ikibanza, uburebure n'ibindi bintu vy'ibimenyetso vy'amazi."
+        }
+      },
+      "p2": "Ako gakoryo<strong>ntiyakira</strong>: izina, ubutumwa, telefone, ibitabu vy'ubwisanzure, ikimenyetso c'urupapuro rw'itangazo, ikimenyetso c'ibikoresho, amakuru y'impuzu, ikirangamisi, kahise k'ukwisamaza, ibipimo vy'ukukoresha, raporo z'uguturika canke ibindi bintu vyose vyerekeye wewe canke ivyerekeye igikoresho cawe."
+    },
+    "s05": {
+      "title": "Amakuru yonyene ava muri iyo gikoresho",
+      "p1": "Iyo uhevye uruhusha rwo gushinga ahabera, iyo porogarama isaba ko iyo porogarama ihindura imirongo ya GPS ikaba aderese y'iposita. Iyo mpinduro  geocoding y'inyuma  ikorwa na porogarama nyene, iyo ntumbero ikaba irungika iyo mirongo ku gisata cayo c'akarata: <strong>Google</strong>ku bikoresho vya Android n' <strong>Amavuta</strong>ku bikoresho vya iOS.",
+      "p2": "Iyo nsiguro iva ku giporogarama, atari kuri Lymark. Iyo porogarama ntihabona icandikano cayo, ntiyigera ihagarikira kandi nta kintu na kimwe kirenga kuri aderese yasubijwe.",
+      "p3": "<strong>Nta shusho isohoka mu gikoresho biciye ku gikorwa na kimwe co muri ako gaporogarama.</strong>Ukoresheje akabutoni \"Gusangira\", ishusho irungikwa n'ikigo c'aho ugiye gutangura gukoresha mu kwerekana amakuru yawe mu buhinga bwa none, mu buryo bw'uko ugiye gusangira amakuru n'abandi."
+    },
+    "s06": {
+      "title": "Ivyemezo vyasabwe, kandi kubera iki",
+      "defs": {
+        "camera": {
+          "term": "Ikamera",
+          "def": "Kugira ufate ifoto izoronka amazi. Ukwiye kuyakoresha gusa igihe waguye ku gitwe \"Fata ifoto\"."
+        },
+        "photos": {
+          "term": "Amafoto n'ibinyamakuru",
+          "def": "Kugira uhitemwo ishusho iriho maze ukandike iyo dosiye y'amafoto mu nzu y'ibishushanyo."
+        },
+        "location": {
+          "term": "Aho hantu mu gihe c'ukukoreshwa",
+          "def": "Ni mu gihe gusa iyo porogarama ikoreshwa, kandi <strong>ntaho bihuriye</strong>."
+        }
+      },
+      "p1": "Amabwirizwa yose ni ayahe kandi arashobora guhindurwa igihe cose mu mpinduka z'ibikoresho. Iyo umuntu yanse aho ari, iyo apolisi irakora neza: iyo aderese irandikwa nawe. Iyo yanse kwinjira mu gashusho, bituma ata muntu ashobora kuyigumiza, kandi iyo foto irashobora gusangira."
+    },
+    "s07": {
+      "title": "Imvo n'imvo z'amategeko",
+      "p1": "Gushiraho amakuru y'aho uherereye birakorwa hashingiwe ku makuru yawe <strong>kwemeza</strong> Ingingo ya 7, I y'Itegeko LGPD n'ingingo ya 6(1)(a) y'Itegeko GDPR  vyerekanywe igihe uha uruhusha rwayo, kandi birashobora guhamagarwa igihe cose, hatiriwe harageranywa n'ubutungane bw'ibikorerwa imbere y'uko ihamagarwa riba.",
+      "p2": "Ibisigaye biriko birategurwa ku bw'imfashanyo y'ibanga <strong>gukora neza ico kintu wasavye</strong> Ingingo ya 7, V y'iryo tegeko rya LGPD n'ingingo ya 6(1)(b) y'iryo tegeko rya GDPR  kuko ata mazi yo kwubaka iyo porogarama ibaho.",
+      "p3": "Gucungera amakuru y'ikonte biva ku kurangura amasezerano (LGPD art. 7, V; GDPR art. 6(1)(b)). Gucungera ku nyungu z'ukuri (LGPD art. 7, IX; GDPR art. 6(1)(f)) biva ku gukingira umutekano no gukinga urwitwazo gusa  nk'akarorero, kwandika aderese ya IP y'imfashanyo kuri server. Nta gikorwa co gukwiragiza, gushiraho amasanamu, isuzuma ry'inyifato canke ikindi kintu na kimwe kijanye n'imigambi, kandi nta gikorwa co gukwiragiza amoko adasanzwe y'amakuru canke amakuru yihutirwa n'uwutanguza."
+    },
+    "s08": {
+      "title": "Iterambere ry'igihugu",
+      "p1": "Amakuru y'ikonte ahingurwa n'uwuhingura amakuru (Clerk, Inc. , Leta Zunze Ubumwe za Amerika), akaba ari igikorwa co guhingura amakuru ku rwego mpuzamakungu, gishingiye ku masezerano y'ibanga y'ibanga n'uburyo bwo guhingura amakuru y'ibanga ya LGPD Art. 33 na Art. 44 gushika 49.",
+      "p2": "Uru rubuga rufise umuhora wa Vercel Inc. , ushinzwe ingingo ya 14."
+    },
+    "s09": {
+      "title": "Gushira hamwe n'abantu batatu",
+      "p1": "Uwo muhinga ntasangira, ntadandaza, ntadandaza canke ntatanga amakuru y'umuntu ku bandi.<em>umukozi</em>Clerk, Inc. , ikora igikorwa co kwemeza ko ari uw'ukuri kandi igakora ubutumwa bwa e-mail, ikiranga kuri konte n'amakuru y'igikorwa, gihuza n'amabwiriza y'umushinga. Iyo winjiye muri Google canke Apple, abo bashingantahe barafata amakuru y'ukwinjira mu buryo bw'amategeko yabo bwite; uwushinga amakuru arahabwa gusa ubutumwa bwa e-mail n'ikimenyetso c'ukubona ko ari uw'ukuri kugira ngo akunde iyo konti. Amafoto, aderese n'amazu y'aho aba, nta muhinguriro n'umwe ubikoresha kuko ataho bava mu gikoresho."
+    },
+    "s10": {
+      "title": "Gucungera, kugumana no gukingira",
+      "p1": "Amakuru ari mu kibanza ca bwite c'iyo porogarama, akingiwe n'uruhara rwa porogarama hagati y'iyo porogarama n'urwo ruzitiro rw'ibikoresho.<strong>abafise ubumuga</strong>, kugira ngo kahise n'ivyo ukunda ntibigere birungikwa kuri konte ya Google y'uwo mukoresha.",
+      "p2": "Kubifata ni wewe ubitegeka: amafoto agumaho gushika aciwe muri iyo porogarama nyene, kandi kahise kaca gatakaza ayo maporogarama ya kera cane iyo amaze kurenga ibintu amajana abiri, agaca akuraho n'amafayili avuganiye. Gukuraho porogarama bihanagura ibintu vyose vyabitswe. Amafoto amaze kubikwa mu nzu y'ibikoresho ni aya gashusho kandi aguma muriyo.",
+      "p3": "Nta buryo na bumwe budahemuka. Amakuru y'ikonte  e-mail, umwidondoro, umugambi n'igitigiri  arazigamwa n'umushinga wo kwemeza amakuru, mu buryo bw'umutekano wiwe. Amafoto, aderese n'aho aba biri ntibikiri mu bubiko bw'ibikoresho nyamukuru, akaba ari co gituma bidashobora gutembera mu bubiko bw'ibikorwa vy'umushinga. Mu gihe icago c'umutekano coba cagize ico gikoze ku makuru y'ikonte, umushinga w'ibikorwa vy'umushinga azobimenyesha inzego n'abantu batanga amakuru mu buryo bw'amategeko ya LGPD ingingo ya 48 n'iya GDPR ingingo ya 33. Akaga gakwiye ku mafoto yawe kaguma ari akarusho ko kugendera ku gikoresho kibohowe."
+    },
+    "s11": {
+      "title": "Igihe ufata amafoto y'abandi bantu",
+      "p1": "Igihe ufata amafoto y'abantu bashobora kumenyekana mu gikorwa cawe, <strong>wewe</strong>Niwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ariwe azoba ari azoba ari azoba ari azo azo azoba ari azoba ari azo azoba ari azo azo azoba ari azo azo azo azo azoba azoba azo azo azo azoba azoba azoba azo azoba azoba azoba azoba azoba azoba azoba azo azoba azoba azo azoba azoba azoba azoba azoba azoba azoba azo azo azo azoba azoba azoba azo azo azo azo azo azo azo azoba azo azo azo azoba azoba azo azo azo azo azoba azo azoba azo azo azo azoba azo azo azo azo azo azo azo azo azo azoba azo azo azoba azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azoba azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo azo"
+    },
+    "s12": {
+      "title": "Uburenganzira bwawe",
+      "p1": "Ingingo ya 18 y'itegeko LGPD n'ingingo ya 15 gushika ku ya 22 y'itegeko GDPR zirakugabira uburenganzira bwo kwemeza no gushikira, gukosora, gusiba, kutamenyekana, kubuza, gutwara, guhagarika igikorwa, kwamagana, guhagarika gutanga amakuru, gusubiramwo ivyo wemera no gutanga amakuru ajanye no gusangira.",
+      "p2": "Amafoto, aderese, kahise n'ivyo ukunda biboneka gusa ku gikoresho cawe, kandi ivyo burenganzira burakoreshwa mu buryo butaziguye muri iyo porogarama: kuraba no gusiba ivyo wanditse mu gashusho ka Galerie, gukosora umurima uwo ari wo wose imbere yo kugurisha, guhagarika uruhusha rwo gushinga ahabona mu mpatiro z'uburyo, no gusiba vyose mu gufuta porogarama  uwutunganya iyo porogarama ntashobora kugurisha, gucuruza canke gusiba ayo makuru kubera ko atayo afise. Ku vyerekeye amakuru y'ik konte  ubutumwa ngurukanabumenyi, igenamigani n'ubwibare  urashobora kuyaraba ku rupapuro rw'ik konte maze ugasaba gukosorwa, gucuruza canke gusiba kuri email y'iki gihuza na Politike ; gusiba iyo konti bica ayo makuru mu gisata c'ukwerekana ko ari ukuri.",
+      "p3": "Ku bibazo canke ku vyo usaba, wandike kuri <email> contato@lymark.app </email>Urafise kandi uburenganzira bwo kwitura Umukuru w'Igihugu<strong> ANPD </strong>, mu gihugu ca Brezile, canke ku buyobozi bw'igihugu c'igihugu c'umukuru w'igihugu, mu muryango w'ubumwe bw'ibihugu vy'i Bulaya."
+    },
+    "s13": {
+      "title": "Ingingo z'ubuhinga bwa none",
+      "p1": "Nta ngingo, canke uburyo bwo gushinga amasanamu canke gutunganya amakuru bihanahana amakuru bifise ingaruka z'amategeko ku muntu, nk'uko bivugwa mu ngingo ya 20 y'itegeko LGPD no mu ngingo ya 22 y'itegeko GDPR."
+    },
+    "s14": {
+      "title": "Ku vyerekeye uru rubuga",
+      "p1": "Uru rubuga ntirurimwo amakuru y'ibiharuro, ntirurerekana amatangazo canke ntirurimwo utugorofa two kumbuga ngurukanabumenyi.<strong>agakoko gakenewe rwose</strong>ku muhora wa konti yawe, ugenywe n'umushinga wo kwemeza ko ari uwukuri (ingingo ya 09) igihe winjiye; nta cookies zo gukurikirana canke kwamamaza. Amafonti akoreshwa mu kibanza c'inkuru. Abasaba gusa abaserurarizi bawe ku bantu batatu ni abo mu mashusho yo kwandikisha ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuriye ko ari uwukuri (Google canke Apple).",
+      "p2": "Urubuga rwacu ruhagarariwe na <strong> Vercel Inc. </strong>, aho nk'umushinga wo kuvugurura amakuru y'uruhara rw'abantu (processor)  aderese ya IP, itariki, isaha n'umutungo usabwe  igihe cose bikenewe kugira umutekano n'ukugendeshwa kw'ikibanza c'inkoramutima."
+    },
+    "s15": {
+      "title": "Ihinduka ry'iryo tegeko",
+      "p1": "Ihinduka rihindura mu buryo buhambaye igikorwa co gutunganya amakuru rizomenyeshwa kandi imbere y'uko ritangura gukora."
+    },
+    "s16": {
+      "title": "Abana n'imiyabaga",
+      "p1": "Lymark ni igikoresho co gukora, kigenewe abantu bafise imyaka 18 canke irenga."
+    },
+    "s17": {
+      "title": "Itegeko rikoreshwa",
+      "p1": "Iryo tegeko rigengwa n'amategeko y'igihugu ca Brezile, ata co ritwaye ku bijanye n'ukugirwa k'itegeko GDPR ku bantu rivuga ko aribo ryerekeye."
+    },
+    "note": "Raba kandi <terms>Amabwirizwa y'ukukoresha</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Amabwirizwa y'ukukoresha",
+      "description": "Amategeko y'ukukoresha iyo porogarama: ivyo ikora, ivyo idakora, n'uwujejwe ibirimwo."
+    },
+    "title": "Amabwirizwa y'ukukoresha",
+    "updated": "Iheruka gusubirwamwo: 16 Myandagaro 2026 · Lymark App, verisiyo 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Ico iyo porogarama ikora",
+      "p1": "Lymark irarungika amakuru ku foto  isaha, igenekerezo, umusi w'akazi, aderese n'ikodyo y'ukwidondora  maze igakora dosiye nshasha y'ishusho irimwo ayo makuru yubatswe mu bipikseli."
+    },
+    "s02": {
+      "title": "Ico iyo porogarama idakora",
+      "p1": "Ico ciyumviro ni co gihambaye cane muri ivyo, kandi turagusaba kugisoma witonze.",
+      "items": {
+        "certify": "<strong>Ako gakorwa ntigatuma haba ikintu na kimwe cemeza canke cemeza ko ari ic'ukuri.</strong>Si isuzuma ry'ivy'ubucamanza, si icegeranyo c'ukwizera kw'abanyagihugu kandi si icemeza ko ari ikimenyamenya c'abahinga.",
+        "editable": "<strong>Buri kibanza cose kirashobora guhindurwa n'umukoresha.</strong>Igihe, igenekerezo, aderese n'ikodyo birashobora guhindurwa ata nkomanzi imbere yo gucuruza, bivuye ku mugambi: umwuga ukeneye kuba ashoboye gukosora aderese GPS yabuze.",
+        "clock": "<strong>Igihe kiva ku isaha y'igikoresho</strong>Nta kintu na kimwe kijanye n'igihe gishobora guhindurwa ngo kibe ic'ukuri canke gitegekanijwe n'umuntu.",
+        "address": "<strong>Iyo aderese ni ingero.</strong>Ukuri kwayo guhagaze ku kimenyetso ca GPS no ku nkingo z'amakuru z'umurimo w'akarakarata k'uburyo bwo gukora.",
+        "code": "<strong>Iyo foto si icandikano c'ibiro vy'umunyamategeko.</strong>Ni ikimenyetso c'ukutumvikana ku buryo bw'agateganyo, kandi nta kintu na kimwe gifasha kwerekana ko ari ic'ukuri."
+      },
+      "p2": "Nimba ikibazo cawe c'ukoresha kirasaba ko hagirwa ibimenyamenya vyemeza ko hari uwukiriho, niwironderere icete c'umunyamategeko canke umuduga w'ibimenyamenya vy'igitigiri c'igihe (Lymark) kugira ngo ushobore kubishira mu kibanza cavyo."
+    },
+    "s03": {
+      "title": "Amabanga ufise",
+      "items": {
+        "photos": "Ni wewe wenyene utegerezwa kwifatira amafoto ufashe, ivyo uciye ku mpapuro z'ibitabu be n'ukuntu ukoresha izo filimi.",
+        "thirdParties": "Igihe ufata amafoto y'abandi bantu, amatungo yabo canke ibibanza vyabo, ni wewe uba utegerezwa kuronka uruhusha rukenewe no kwubahiriza uburenganzira bwo gushikiriza amafoto, ibanga ry'akazi be n'itegeko risanzwe rigenga ukwirinda amakuru yerekeye abantu bagenewe gushikirizwa.",
+        "prohibited": "Gukoresha iyo porogarama kugira ngo umuntu atore amakuru atari yo, kugira ngo umuntu atume abandi bahemukira, kugira ngo umuntu agire uruhara mu gikorwa kitatanzwe canke kugira ngo akore ikintu kitabereye, birabujijwe.",
+        "backups": "Ni wewe utegerezwa kwitwararika ivyo ubona ko bihambaye vyose."
+      }
+    },
+    "s04": {
+      "title": "Urudandaza rw'ibitabu",
+      "p1": "Turaguha uruhusha rw'umuntu ku giti ciwe, rushobora guhindurwa, rutagira izina kandi rutagira izina, rwo gushiraho no gukoresha iyo porogarama, harimwo n'ibikorwa vy'umwuga.",
+      "p2": "<strong>Amafoto yawe ni ayawe.</strong>Izina rya Lymark, izina ryayo n'ubumenyi bwayo, biguma ari ivy'uwubishirako."
+    },
+    "s05": {
+      "title": "Kuboneka n'ugusubizwa amakuru",
+      "p1": "Iyo porogarama iratangwa uko iri.Nta cemeza c'uko ikora ata gufyina, c'uko ihura n'ibikoresho vyose, canke c'uko hari igihe cashinzwe c'uko igororwa canke ivyahinduwe bishasha.Ibintu birashobora guhindurwa canke guhagarikwa.",
+      "p2": "Amashusho y'iyo foto yoherejwe hanze, arashobora kuba afise umwidondoro mutoyi kuruta iyo ifoto y'imbere."
+    },
+    "s06": {
+      "title": "Umutwaro w'igihugu",
+      "p1": "Mu rugero rucitse rwemewe n'amategeko y'igihugu ca Brezile, uwutunganya iyo porogarama ntashobora kwishura ku bijanye n'utuntu dutoduto, inyungu zabuze, ku vyerekeye amatati canke ku vyerekeye ibiturire biva ku ngingo zafashwe zishingiye ku makuru yashizwe ku gisanzu  harimwo n'ivyerekeye ugushikana mu butabera canke hanze y'iyo porogarama ku biri mu bibanza vy'ifoto vyashizweho n'iryo koranabuhanga.",
+      "p2": "Ico gihano kirakenewe cane<strong>ntikivana</strong>Uburenganzira bw'umutsimvyi buhabwa n'itegeko n'amategeko n'amategeko n'amategeko n'amategeko n'ibanga ry'ububisha bwakozwe n'ibigirankana canke ubunyamuneza bukomeye."
+    },
+    "s07": {
+      "title": "Gukurikirana",
+      "p1": "Urashobora guhagarika gukoresha iyo porogarama igihe cose: guca akari kuri account bihanagura amakuru ari kuri server, kandi guhagarika gushiraho iyo porogarama bihanagura amakuru ari kuri device."
+    },
+    "s08": {
+      "title": "Ihinduka ry'aya mabwirizwa",
+      "p1": "Ihinduka rizoshirwa ahabona kuri uru rupapuro hamwe n'igenekerezo rishasha ry'ugusubiza ibintu mu buryo."
+    },
+    "s09": {
+      "title": "Itegeko n'ikibanza bikoreshwa",
+      "p1": "Ibwirizwa ry'igihugu ca Brezile rirahari.Ikibanza catoranijwe kugira ngo gitunganye amatati avuyemwo n'aya mabwirizwa ni ic'aho uwo mukoresha aba."
+    },
+    "note": "Ku bijanye n'ingene amakuru atangwa, raba <privacy>Itegeko rigenga ubuzima bwite</privacy>. Ibibazo: <email> contato@lymark.app </email>."
+  }
+}

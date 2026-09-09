@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplikácia",
+      "pitch": "Na fotografiách  zapíšte čas, dátum, deň, adresu a kód sledovania pre záznamyhotel, inšpekcie na mieste a doklad o servisnom servisu.",
+      "platform": "Platforma",
+      "privacy": "Politika ochrany osobných údajov",
+      "privacyGeocoding": "Keď sa používa GPS, operačný systém posiela koordinát do služby mapy Google alebo Apple nahotel adresu. To je jediná informácia, ktorá tu zostáva a je to systém, ktorý ju posiela, nie Lymark .",
+      "privacyLocation": "Lokalizacia sa používa raz na jeden záber, len na vyplnenie adresného poľa a nie jehotel separaticky od fotografií.",
+      "privacyOnDevice": "Fotky, adresy a históriu zostávajú na tomto zariadení iba.",
+      "privacySection": "Súkromnosť",
+      "sdk": " Expo SDK ",
+      "terms": "Podmienky používania",
+      "title": "O Lymark ",
+      "version": "Verzia"
+    },
+    "account": {
+      "browserHint": "Prihlásenie sa uskutočňuje v prehliadači. Prihláste sa tam pomocou svojho účtu a aplikhotel sa pripojí samé.",
+      "code": "Kód",
+      "codeSent": "Poslali sme kód na {email} ",
+      "connected": "Vypriamené",
+      "continue": "Pokračovať",
+      "deleteAccount": "Účet vymazať",
+      "email": "E-mail",
+      "failed": "Nefungovalo to, skontroluj e-mail alebo kód a skúsi znova.",
+      "notConfigured": "V tomto stave ešte nie je prístupný.",
+      "signInBrowser": "Vstupte cez prehliadač",
+      "signOut": "Vyhláste sa .",
+      "signedInAs": "Podpísaný ako {email} ",
+      "title": "Účet",
+      "verify": "Preukázať"
+    },
+    "batch": {
+      "addressHint": "Ulica, číslo  mesto",
+      "clearList": "Čistá zoznam",
+      "codeHint": "Napríklad LYM-001",
+      "done": "{count, plural,  one {Zpracovanie hotové: Foto # hotové.} other {Zpracovanie hotové: # fotografie hotové.}}",
+      "doneSection": "Koniec",
+      "dropZone": "Vytiahnite fotky sem alebo použite tlačidlo Vybrať fotky",
+      "errorsSection": "Vypútania",
+      "folder": "Složka: {name} ",
+      "noPhotos": "Vyber aspoň jednu fotku.",
+      "outputNote": "Zpracované fotografie sa ukladajú do vybraného priečinka.",
+      "outputSection": "Výstup",
+      "photosSection": "Fotografie na spracovanie",
+      "processing": "Zpracovávanie...",
+      "progress": "{current} z {total} ({percent} %)",
+      "results": "{success, plural,  one {Úspech #} other {Úspechy #}}, {failed, plural,  one {Zlyhanie #} other {Zlyhania #}}",
+      "selectFolder": "Vyberte výstupný priebeh",
+      "selectPhotos": "Vyberte fotky",
+      "selected": "{count, plural,  one {Vyberané fotky #} other {Vyberané fotografie #}}",
+      "sharedNote": "Tieto hodnoty sa uplatňujú na všetky fotografie.",
+      "sharedSection": "Spoločné metadata",
+      "start": "Začnite spracovanie",
+      "unavailableBody": "Táto funkcia je iba pre stolovú stanicu.",
+      "unavailableTitle": "Zpracování v dávkach nie je k dispozícii"
+    },
+    "capture": {
+      "accuracy": "Poloha v rámci ± {meters} m.",
+      "accuracyImprecise": "Pozícia v rámci ± {meters} m  pred vývozom skontrolujte číslo ulice.",
+      "address": "Adresa",
+      "addressFailedTitle": "Žiadna adresa",
+      "addressHint": "Kliknite na miesto alebo zadajte adresu",
+      "camera": "Fotografovať",
+      "code": "Kód",
+      "dateHint": "1. januára 2026",
+      "dateTimeGroup": "Dátum a čas",
+      "emptyWarning": "Žiadne údaje nebudú štampované  fotka vyjde bez vodného značky.",
+      "gallery": "Vyberte si z galérie",
+      "galleryDenied": "Foto prístup bol odmietnutý, takže obrázok existuje len v aplikácii.",
+      "galleryFailed": "Obrázok sa dostal do histórie, ale zariadenie odmietlo zapísať do galérie.",
+      "generateCode": "Generovať",
+      "hiddenFields": "{count, plural,  one {Skryté pole} other {Skryté polia}}: {fields}  zapnite ich v nastavení › Polia a poloha.",
+      "keepMyAddress": "Nechaj si moju .",
+      "locate": "Zistiteľnosť",
+      "locateByGps": "Lokalizácia adresy pomocou GPS",
+      "lookup": {
+        "denied": "Povolte umiestnenie v položke Nastavenia › Povolenia alebo zadajte adresu.",
+        "disabled": "Poloha je vypnutá na zariadení. Zapnite ju v rýchlom nastavení a skúste znova.",
+        "timeout": "GPS neodpovedal včas. Často neúspevuje v interiéri  zadajte adresu.",
+        "unavailable": "Adresa sa v tejto polohe nemohla vyriešiť."
+      },
+      "newCapture": "Začnite nový zachytenie",
+      "noFieldsBack": "Vráť sa späť.",
+      "noFieldsContinue": "Aj tak pokračujte.",
+      "noFieldsMessage": "Žiadne pole nemá čo štampovať. Vyplňte pole alebo prečítajte si Nastavenia › Polia a poloha.",
+      "noFieldsTitle": "Fotografia vyjde bez vodného značky",
+      "noPhotoHint": "Začať s fotkou alebo si vybrať jednu z galérie.",
+      "noPhotoSelected": "Žiadna vybraná fotografia",
+      "openFailed": "Fotku sa nedalo otvoriť.",
+      "permissionMessage": "Povolenie prístupu v nastavenia › Povolenia pokračovať.",
+      "permissionTitle": "Povolenie potrebné",
+      "pickPhoto": "Vyberte si fotku",
+      "pickPhotoHint": "Vyberte si fotografiu, aby ste aktivovali akcie.",
+      "previewLabel": "Predbežný prehľad fotografie s vodným označením",
+      "renderFailedTitle": "Nedokázal vytvoriť obrázok",
+      "replaceAddressMessage": "Získané GPS: {address} ",
+      "replaceAddressTitle": "Zmeniť adresu, ktorú si napísal?",
+      "resetConfirm": "Odstráňte",
+      "resetMessage": "Vybraná fotografia a vyplnené polia budú vyhodené.",
+      "resetTitle": "Začínať nový zachytenie?",
+      "saved": "Fotografie uložené do galérie zariadení a do histórie.",
+      "savedAppOnlyTitle": "Uložené len v Lymark ",
+      "shareDialogTitle": "Zdieľajte zdjęcie s vodným označením",
+      "shareFailedMessage": "Obrázok bol vytvorený a je v histórii Lymark. Môžete ho zdieľať z karty Galéria.",
+      "shareFailedTitle": "Nemohol sa podeliť",
+      "shareUnavailableMessage": "Tento zariadenie nemá účty. Obraz zostal v histórii Lymark.",
+      "shareUnavailableTitle": "Nevyhľadáva sa",
+      "sharedFileTitle": "Foto s vodným označením",
+      "stampNotReady": "Pečiatka sa ešte stále pripravuje.",
+      "syncNow": "Teraz.",
+      "timestamp": "Dátum/čas",
+      "title": "Získať",
+      "useGpsAddress": "Použite GPS.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Dňa"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "vyberte inú farbu",
+      "saturationBrightness": "Satyracia a jasnosť",
+      "use": "Použite túto farbu"
+    },
+    "common": {
+      "back": "Vráť sa späť",
+      "cancel": "Zrušiť",
+      "delete": "Zmazanie",
+      "error": "Chyb",
+      "gotIt": "- Dobre.",
+      "loading": "- Nabíranie...",
+      "no": "Nie, nie.",
+      "ok": "Dobre .",
+      "save": "Ušetriť",
+      "share": "Podieľanie",
+      "success": "Úspech",
+      "tryAgain": "Skúste to znova.",
+      "unknownError": "Neznáma chyba",
+      "yes": "Áno, áno."
+    },
+    "gallery": {
+      "cancelSelection": "Zrušenie výberu",
+      "clear": "Čistá história",
+      "clearConfirm": "Čistá",
+      "clearMessage": "Záznamy Lymark budú vymazané.",
+      "count": "{count, plural,  one {Foto # vyvezené} other {Fotošpilky # vyvážané}}",
+      "delete": "Zmazanie",
+      "empty": "Ešte žiadne fotky.",
+      "emptyAction": "Choďte zachytiť",
+      "emptyDescription": "Fotky, ktoré vyvážate s vodným značkom, sa zobrazujú tu, s dátumom, miestom a kódom.",
+      "filteredCount": "{shown} z {total, plural,  one {Foto ZZHASHXZ} other {Fotky #}}",
+      "noResults": "Žiadne fotografie na  {query}  neboli nájdené.",
+      "photoLabel": "Fotografia z {when} ",
+      "removeMessage": "Zobrazy už uložené v galérii zariadenia nie sú ovplyvnené.",
+      "removeTitle": "{count, plural,  one {Vymazať z histórie} other {Odstraňte položky #}}",
+      "removed": "{count, plural,  one {Ústup odstránený.} other {Zápisy odstránené.}}",
+      "saveDeniedMessage": "V položke Nastavenia › Povolenia sa obrázky uložia do galérie zariadenia.",
+      "saveDeniedTitle": "Prístup k fotografii odmietnutý",
+      "savedAll": "{count, plural,  one {Jedna fotografia uložená do galérie zariadení.} other {Fotky # uložené do galérie zariadení.}}",
+      "savedSome": "{saved} of {total} photos saved.",
+      "searchPlaceholder": "Vyhľadávanie podľa adresy, dátumu alebo kódu",
+      "selectedCount": "{count, plural,  one {Vyberané fotky #} other {Vyberané fotografie #}}",
+      "share": "Podieľanie",
+      "title": "Galéria"
+    },
+    "language": {
+      "automatic": "Zdieľajové zariadenia",
+      "automaticNote": "Lymark sleduje nastavený jazyk na vašom zariadení.",
+      "label": "Jazyk",
+      "selector": "Vyberte jazyk"
+    },
+    "login": {
+      "access": "Prihláste sa na prístup",
+      "apple": "Prihláste sa s Apple",
+      "google": "Prihláste sa v službe Google",
+      "subtitle": "Zapíšte sa na pokračovanie",
+      "title": "Prihláste sa na prístup Lymark "
+    },
+    "nav": {
+      "batch": "Zpracování dávok",
+      "photoDetail": "Detaily vo fotografii",
+      "report": "Zpráva PDF",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Táto obrazovka nie je súčasťou Lymark .",
+      "screenTitle": "Stránka nenašla",
+      "title": "Žiadna taká cesta"
+    },
+    "permissions": {
+      "allow": "Nechaj to",
+      "allowed": "Povolené",
+      "blocked": {
+        "later": "Nie teraz.",
+        "message": "Aby sa to umožnilo, otvorte nastavenia zariadenia.",
+        "openSettings": "Otvorené nastavenia",
+        "title": "Závislosť na príkaz"
+      },
+      "camera": "Kamery",
+      "cameraRationale": "Je potrebné urobiť fotku, ktorá dostane vodné značky.",
+      "denied": "Odmietnuté",
+      "granted": "Uznateľné",
+      "intro": "Lymark sa pýta len na to, čo potrebuje na odtlačok fotografie. Vaše obrázky nikdy neopúšťajú zariadenie: keď používate GPS, operačný systém pošle mapovému servisu koordinát sám, takže sa môže stať adresou.",
+      "location": "Poloha",
+      "locationRationale": "Automaticky vyplňuje adresné pole pri zachytaní.",
+      "mediaLibrary": "Uložte do galérie",
+      "mediaLibraryRationale": "Na napísanie vyvezených fotografií do galérie zariadení.",
+      "openDeviceSettings": "Nastavenia",
+      "recheck": "Zase to skontrolujte .",
+      "request": "Žiadajte o povolenie",
+      "section": "Prístup",
+      "title": "Povolenia"
+    },
+    "photo": {
+      "backToGallery": "Vráť sa do galérie",
+      "exportedAt": "Exportované na {when} ",
+      "noWatermark": "Táto fotografia bola vyvážaná bez vodného značky.",
+      "notFoundBody": "Tento záznam bol možno vymazaný z histórie.",
+      "notFoundTitle": "Foto nenašiel",
+      "remove": "Odstrániť",
+      "removeBody": "Zobrazok uložený do galérie zariadenia nie je ovplyvnený.",
+      "removeTitle": "Vymazať z histórie",
+      "share": "Podieľanie",
+      "stampedData": "Označené údaje"
+    },
+    "plan": {
+      "exhausted": "Zobrazené fotky zadarmo",
+      "exhaustedMessage": "12 fotografií z bezplatného plánu je preč.",
+      "free": "Bezplatné",
+      "pro": "Pro",
+      "reconnect": "Pridajte si pre potvrdenie predplatného",
+      "remaining": "{remaining, plural,  one {# voľný obrázok ľavé} other {Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť všetky sekcie Zobraziť}}",
+      "title": "Plán",
+      "unlimited": "Žiadne obmedzenie"
+    },
+    "report": {
+      "allPhotos": "Všetky fotky",
+      "authorField": "Autor / spoločnosť",
+      "detailsSection": "Podrobnosti",
+      "doc": {
+        "author": "Autor",
+        "declaration": "Opatrenia uvedené v článku 2 ods. 1 písm. a) a b) nariadenia (EÚ) č. 1303/2013 sa vzťahujú na všetky druhy výrobkov, ktoré sú určené na výrobu výrobkov, ktoré sú určené na výrobu výrobkov, ktoré sú určené na výrobu výrobkov, ktoré sú určené na výrobu výrobkov a ktoré sú určené na výrobu výrobkov.",
+        "exportedAt": "Vývoz na",
+        "generatedAt": "Generované na",
+        "page": "Stránka",
+        "photo": "Foto: {index} ",
+        "photosSection": "Fotografické záznamy",
+        "signature": "Podpis zodpovedného",
+        "summary": "Zhrnutie",
+        "title": "Fotografická správa",
+        "totalPhotos": "Celkové fotky:"
+      },
+      "empty": "Ešte žiadne vyvezené fotografie.",
+      "failed": "Nedokázal vytvoriť správu.",
+      "fileStem": "správa",
+      "format": {
+        "csv": "Tabulka (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Balenie (ZIP)"
+      },
+      "formatSection": "Formátovanie",
+      "generate": "Generovať súbor",
+      "generateSection": "Generovať",
+      "includeLogo": "Logo na obálke",
+      "includeLogoDescription": "Logo vašej značky, rovnaké ako na známke, vypnite ho, aby ste ho nechali mimo dokumentu.",
+      "norm": {
+        "abnt": "ABNT (Brazilie)",
+        "din5008": "DIN 5008 (Niemsko)",
+        "ibape": "Štily IBAPE (Brazilie)",
+        "iso": "Medzinárodná",
+        "letter": "List (USA)"
+      },
+      "normNote": "Štandard stanovuje papier a formátovanie  obrysov, písma a číslovanie strán. Obsah správy je v nich všetkých rovnaký; štýl IBAPE pridá podpisový blok.",
+      "normSection": "Štandardný dokument",
+      "projectsSection": "Projekt / práca",
+      "saved": "Uložené na {path} ",
+      "savedShort": "Správa uložená.",
+      "title": "Zpráva PDF",
+      "titleField": "Názov správy",
+      "unavailableBody": "Správy PDF sú dostupné v desktopovej aplikácii.",
+      "unavailableTitle": "Len na stolnom počítači",
+      "uncoded": "Žiadny kód",
+      "wordTooBig": "Dokument Word sa stal príliš veľký s vloženými fotografiami.",
+      "zipMissing": "{count, plural,  one {Zbavený balík, ale na tomto zariadení nebola nájdená fotografia #.} other {Zbavený balík, ale na tomto zariadení neboli nájdené fotografie #.}}"
+    },
+    "settings": {
+      "about": "O",
+      "aboutDescription": "Verzia, súkromie a kredity",
+      "appSection": "Aplikácia",
+      "deviceSection": "Zariadenie",
+      "deviceSectionDescription": "Prístup, ktorý Lymark požiada.",
+      "fields": "Poľy a poloha",
+      "fieldsDescription": "Vyberte, ktoré polia sa zobrazia, roh a veľkosť",
+      "history": "História",
+      "historyDescription": "Exportované fotografie uložené na zariadení",
+      "language": "Jazyk",
+      "permissions": "Povolenia",
+      "permissionsDescription": "Kamera, fotografie a umiestnenie",
+      "save": "Ušetriť",
+      "title": "Nastavenia",
+      "watermark": "Vodné značky",
+      "watermarkSection": "Vodné značky",
+      "watermarkSectionDescription": "Čo je na fotografii a kde."
+    },
+    "signup": {
+      "subtitle": "Zapíšte sa na začiatok",
+      "title": "Vytvorte si účet Lymark"
+    },
+    "tagline": "Vodný znak s časom, dátumom a miestom",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Žiaden prístup kamery.",
+      "done": "Video vytlačené a uložené.",
+      "export": "Vývozové pečiatkové video",
+      "exportSection": "Vývoz",
+      "failed": "Video nebolo možné vytlačiť.",
+      "fieldsSection": "Poľy odtlačkov",
+      "fileSection": "Video",
+      "none": "Žiadne vybrané video.",
+      "processing": "Zpracovávanie... {percent} %",
+      "processingMobile": "Zpracovávanie...",
+      "record": "Zaznamenajte video teraz",
+      "saved": "Uložené na {path} ",
+      "savedToGallery": "Zapevnené video uložené do vašej galérie.",
+      "select": "Vyberte video",
+      "unavailableBody": "Mobilné video štampovanie potrebuje Lymark nainštalované z build EAS (s pôvodným modulom). Nie je k dispozícii v Expo Go . nainštalovať oficiálnu aplikáciu z obchodu alebo build EAS, alebo použiť desktop / web verziu.",
+      "unavailableTitle": "Vloženie aplikácie je potrebné",
+      "unreadable": "Súbor sa nemohol prečítať ako video.",
+      "webNote": "V prehliadači sa video spracúva v reálnom čase  2 minútové video trvá 2 minúty  a vychádza vo formáte WebM. Pre dlhé videá použite desktopovú aplikáciu."
+    },
+    "watermark": {
+      "accentColor": "Vertikálny pruh",
+      "backdropBandNote": "Na obrázku sa páska pohybuje po boku po boku a spočíva na okraji, kde je známka zakotvená.",
+      "backdropBlockNote": "Podložka nasleduje podľa veľkosti textu, okolo ktorej je vložená.",
+      "backdropColor": "Farba pásma",
+      "backdropDescription": "Bez neho text sedí priamo na obrázku, s tieňom.",
+      "backdropInnerRadius": "Vnútorné rohy",
+      "backdropOpacity": "Prehľadnosť",
+      "backdropOpacityValue": "{percent} % nepriaznivé",
+      "backdropRadius": "Zrážkové rohy",
+      "backdropRadiusSquare": "Štvorcový",
+      "backdropStyles": {
+        "band": "Pásie na plnú šírku",
+        "block": "Za textom",
+        "none": "Žiadna"
+      },
+      "backdropTitle": "Základná kapelová skupina",
+      "brandDescription": "Nad hodinkou sa stáva podpisom s logom a sloganom.",
+      "brandFirstColor": "Farba prvej časti",
+      "brandFirstHint": "Výstavitelia",
+      "brandFirstPart": "Prvá časť",
+      "brandNote": "Dlhé meno sa zmenšuje, kým sa nezodrží, ale spadne.",
+      "brandPlacements": {
+        "corner": "V rohu",
+        "header": "Nad hodinkou",
+        "none": "Žiadna"
+      },
+      "brandSecondColor": "Farba druhej časti",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Druhá časť",
+      "brandTitle": "Označenie opečetované",
+      "codeDescription": "Na strane sa nesťažuje o miesto s samotným obrázkom.",
+      "codePlacements": {
+        "block": "Vedľa údajov",
+        "side": "Pravá strana"
+      },
+      "codeTitle": "Foto kód",
+      "colors": {
+        "amber": "Amber",
+        "black": "Černá",
+        "blue": "Modrá",
+        "green": "Zelená",
+        "red": "Červená",
+        "white": "Biely"
+      },
+      "colorsDescription": "Farba na fotografii je voľba spoločnosti, nie aplikácia, ktorá ju zmení, nezmení farby obrazovky.",
+      "colorsTitle": "Farby pečiatkov",
+      "complement": "Tagič",
+      "complementColor": "Farba značky",
+      "complementHint": "Inspekcie a technické správy",
+      "cornerConflict": "Značka a údaje sú v rovnakom rohu  na fotografii sa prekrývajú.",
+      "fields": {
+        "address": "Adresa / miesto",
+        "code": "Foto kód",
+        "date": "Dátum",
+        "time": "Čas",
+        "weekday": "Vydňajší deň"
+      },
+      "fieldsDescription": "Fotku dosiahnu len pole, ktoré sú na ňom a obsahujú obsah.",
+      "fieldsTitle": "Vykazované polia",
+      "includeCountry": "Zahŕňa krajinu",
+      "includeCountryDescription": "Ak pracujete cez hranice, zapnite ho, inak bude mať priestor len na fotografii.",
+      "legibilityTitle": "Čítateľnosť",
+      "logoAdded": "Logo sa pridalo do nadpisov značky.",
+      "logoAlignNote": "Výška logoty nasleduje text: horná časť sa zosúhlasí s hornou časťou názvu a dolná časť s základnou čiarou taglíny.",
+      "logoChosen": "Vybraný logo",
+      "logoErrorMessage": "Skúste iný obrázok. PNG s transparentným pozadím je formát, ktorý najlepšie funguje.",
+      "logoErrorTitle": "Tento súbor sa nemohol použiť",
+      "logoFormatNote": "Používajte PNG s transparentným pozadím. JPG s bielom pozadím sa stáva bielom obdĺžnikom na fotografii  formát nezhromažďuje transparentnosť a aplikácia nemá žiadny spôsob, ako hádať, čo je pozadím.",
+      "logoPermissionMessage": "V položke Nastavenia › Povolenia si vyberte súbor logoty.",
+      "logoPermissionTitle": "Prístup k fotografii odmietnutý",
+      "logoPick": "Vyberte logo",
+      "logoPosition": "Poloha logoty",
+      "logoPositionBlock": "S pečiatkou",
+      "logoRemove": "Odstrániť",
+      "logoReplace": "Náhradný logo",
+      "logoSize": "Veľkosť logoty",
+      "positionDescription": "V rohu fotografie je blok zakotvený.",
+      "positionTitle": "Poloha",
+      "positions": {
+        "bottom-left": "Vľavo dole",
+        "bottom-right": "V dolnej pravici",
+        "top-left": "Vľavo hore",
+        "top-right": "Vpravo hore"
+      },
+      "previewCurrent": "Na súčasnej fotografii z karty Zoberať.",
+      "previewEmpty": "Od svetla do tmy, aby sme skontrolovali čitateľnosť v oboch extrémoch.",
+      "previewNoFields": "Žiadne vybrané pole  Foto sa zobrazí bez vodného značky.",
+      "previewTitle": "Predbežný prehľad",
+      "reset": "Vrátiť predvolené",
+      "sizeTitle": "Veľkosť textu",
+      "sizes": {
+        "large": "Veľké",
+        "medium": "stredná",
+        "small": "Malé"
+      },
+      "textColor": "Text",
+      "timeFormatDescription": "Ako sa čas vyplní do polí.",
+      "timeFormatTitle": "Časový formát",
+      "timeFormats": {
+        "12h": "12 hodín (predaj/večer)",
+        "24h": "24 hodín"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Všetky súbory",
+      "images": "Obrázky",
+      "pickFolder": "Vyberte výstupný priebeh",
+      "pickPhoto": "Vyberte fotku",
+      "pickPhotos": "Vyberte fotografie pre dávku",
+      "savePhoto": "Uložte fotku",
+      "saveReport": "Údaje o uchovávaní"
+    },
+    "login": {
+      "cancel": "Zrušiť",
+      "confirm": "Pokračovať",
+      "message": "Práve ste sa prihlásili cez prehliadač.",
+      "title": "Prihláste sa na Lymark "
+    },
+    "menu": {
+      "copy": "Kopírovanie",
+      "cut": "Zrezaný",
+      "edit": "Upravovať",
+      "file": "Súbor",
+      "fullscreen": "Úplný obrazovka",
+      "help": "Pomoc",
+      "paste": "Čistička",
+      "quit": "Zastavte",
+      "redo": "Redo",
+      "reload": "Prelodať",
+      "selectAll": "Vyberte všetky",
+      "settings": "Nastavenia",
+      "undo": "Odstránenie",
+      "view": "Výhľad",
+      "zoomIn": "Zoom v",
+      "zoomOut": "Zoom out",
+      "zoomReset": "Skutečná veľkosť"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Vráť sa domov",
+      "openApp": "Otvorte aplikáciu",
+      "photos": "Fotografie",
+      "photosLeft": "{remaining} z {quota} ľavý",
+      "plan": "Plán",
+      "planUnavailable": "Nie je k dispozícii v súčasnosti",
+      "plans": {
+        "free": "Bezplatné",
+        "pro": "Pro"
+      },
+      "signInTitle": "Zapíšte sa",
+      "signOut": "Vyhláste sa .",
+      "signUpTitle": "Vytvorenie účtu",
+      "subscribe": "Prehláste sa na Lymark Pro",
+      "subscribeSoon": "Predplatné ešte nie sú dostupné. Keď sú, môžete sa tu predplatniť a použiť akékoľvek zariadenie s rovnakým účtom.",
+      "title": "Váš účet",
+      "revokeDesktops": "Odpoj počítače",
+      "revokeDesktopsHint": "Končí prístup aplikácie na každom počítači."
+    },
+    "availability": {
+      "contact": "Ak chcete sledovať spustenie alebo oznámiť problém, napíšte na <email> contato@lymark.app </email>.",
+      "description": "Lymark je vo verzii 1.3.0, testovanie na Androide pred publikáciou na Google Play .",
+      "title": "Dostupnosť"
+    },
+    "data": {
+      "device": {
+        "description": "Účet existuje pre vaše predplatné: server uchováva vaše e-mailové správy a plán, a nikdy nedostane vaše fotografie alebo vašu polohu.",
+        "field": "Na zariadeniu",
+        "heading": "Fotografie, adresy a história"
+      },
+      "external": {
+        "description": "Ak chcete zmeniť šírenie a dĺžku na čitateľnú adresu, operačný systém sa pýta na službu geokódovania spoločnosti Google alebo Apple. To je jediná informácia, ktorá zostaje a systém ju pošle, nie aplikácia.",
+        "field": "Z vypnutého zariadenia",
+        "heading": "Len premieňa koordinát na adresu"
+      },
+      "note": "Všetko je uvedené  vrátane toho, čo to znamená v brazílskom LGPD  v <privacy>Politika ochrany osobných údajov</privacy>. Vymaľovanie povolenia na umiestnenie umožňuje aplikáciu plne fungovať; potom je potrebné ručne zadať iba pole adresy.",
+      "title": "Kde sú vaše údaje"
+    },
+    "deleteAccount": {
+      "back": "Na účet",
+      "confirm": "Vymazať môj účet",
+      "deletesNow": "Zmazanie účtu okamžite vymazá e-mail, identifikátor a záznam plánu, kvóty a počtu fotografií.",
+      "irreversible": "Úplné odstránenie je trvalé a nemožno ho zrušiť. Fotky na vašom zariadení nie sú ovplyvnené  nikdy neboli na našich serveroch.",
+      "retained": "Záznamy o platobných transakciách sa uchovávajú po dobu požadovaného právnym spôsobom, bez prepojenia s vaším profilom.",
+      "title": "Účet vymazať"
+    },
+    "description": "Android aplikácia, ktorá odtlačkuje čas, dátum, deň v týždni, adresu a sledovací kód na prehliadku lokality a na fotografie pre preukázanie služby.",
+    "desktop": {
+      "backAccount": "Na účet",
+      "explanation": "Váš účet je pripravený. Kliknite na tlačidlo nižšie, aby ste otvorili Lymark na vašom počítači už prihlásený  prehliadač požiada o povolenie na otvorenie aplikácie.",
+      "open": "Pridávajte aplikáciu",
+      "title": "Vstupte na stol",
+      "unavailable": "pripojenie desktopovej aplikácie nie je ešte k dispozícii."
+    },
+    "download": {
+      "appStore": {
+        "description": "Rovnaký zážitok ako na Androide, na iOS.",
+        "field": " App Store ",
+        "heading": "iPhone a iPad"
+      },
+      "browser": {
+        "action": "Zapíšte sa",
+        "description": "Prihláste sa pomocou svojho účtu a aplikácia sa otvára priamo v prehliadači  telefón alebo počítač.",
+        "field": "Prehľadávač",
+        "heading": "Použite ho teraz, nič na inštaláciu"
+      },
+      "desktop": {
+        "description": "Fotografické zábery, dlhé videá a PDF hlásia  ťažkú verziu.",
+        "field": "Počítač",
+        "heading": "Windows a Linux"
+      },
+      "googlePlay": {
+        "description": "Telefónna aplikácia, s kamerou, galériou a štampovaným videom.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Čoskoro sa vrátim .",
+      "title": "Kde používať Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "Typ ulice je skrátený a štát sa stane jeho kódom, takže adresa sa zmieša do dvoch riadkov bez toho, aby sa pokryla fotografia.",
+        "field": "Adresa",
+        "heading": "Vplnené GPS, ručne opraviteľné"
+      },
+      "code": {
+        "description": "Existujú, aby ste mohli citovať jednu konkrétnu fotografiu v poradí práce alebo v správe.",
+        "field": "Foto kód",
+        "heading": "14 znakov, nakreslených kryptografickým generátorom"
+      },
+      "note": "Každé pole sa zapne a vypne samo, blok sa zakotví na niektorý z štyroch rohov, v troch veľkostiach. Predbežný prehľad používa vašu skutočnú fotografiu, nie všeobecný vzorok: to, čo vidíte na obrazovke, je doslova to, čo sa vyváža.",
+      "time": {
+        "description": "Jeden tlačidlo odstraňuje všetky tri polia späť do súčasnosti, keď to trvalo dlhšie ako sa očakávalo.",
+        "field": "Čas a dátum",
+        "heading": "Z hodiniek zariadenia, v čase zachytania"
+      },
+      "title": "Čo sa dostane na obrázok"
+    },
+    "footer": {
+      "description": "Lymark  Fotografické záznamy s dátumom, časom a adresou.",
+      "documentsLabel": "Dokumenty",
+      "privacy": "Politika ochrany osobných údajov",
+      "support": "Podpora:",
+      "terms": "Podmienky používania"
+    },
+    "hero": {
+      "ctaAccount": "Choď na môj účet .",
+      "ctaLogin": "Zapíšte sa",
+      "ctaSignup": "Vytvorte bezplatný účet",
+      "description": "Lymark odtlačkuje čas, dátum, deň týždňa, adresu a sledovací kód priamo na obrázok. Súbor, ktorý vychádza z aplikácie, obsahuje informácie v ňom  nie ako metadata jazdujúce vedľa, ktoré prvý WhatsApp dopredu strips preč.",
+      "eyebrow": "Dokumentácia s fotografiami v teréne",
+      "heading": "Fotka už hovorí, kedy, kde a čo.",
+      "meta": {
+        "account": "Účet na jedno stlačenie",
+        "android": "Android a prehliadač",
+        "language": "Brazílsky portugalsky",
+        "onDevice": "Fotky zostávajú na zariadení"
+      },
+      "note": "Nič na inštaláciu."
+    },
+    "nav": {
+      "account": "Účet",
+      "home": "Domov",
+      "homeLabel": "Lymark , domovská stránka",
+      "label": "Hlavné",
+      "privacy": "Súkromnosť",
+      "signIn": "Zapíšte sa",
+      "terms": "Podmienky",
+      "verify": "Preukázať"
+    },
+    "process": {
+      "capture": {
+        "description": "Náhľad adresy sa začína v momente, keď sa obrázok dostane. Polia zostávajú otvorené na úpravu, kým sa bude bežať.",
+        "field": "Získať",
+        "heading": "Kamera alebo galéria"
+      },
+      "note": "Uloženie a zdieľanie riešia rôzne problémy a zloženie ich do jedného tlačidla by vytrhalo každého, kto chce len zdjęcie uložiť cez zasielaciu obrazovku.",
+      "save": {
+        "description": "Ide spolu s ostatnými fotografiami vášho telefónu, dostupnými pre každú aplikáciu  vrátane odinstalácie Lymark .",
+        "field": "Ušetriť",
+        "heading": "Ide do galérie zariadení"
+      },
+      "share": {
+        "description": "WhatsApp , e-mail, Drive: cieľ je vybraný operačným systémom a aplikácia sa nezúčastňuje na odoslaní.",
+        "field": "Podieľanie",
+        "heading": "Otvorí list s účtmi systému"
+      },
+      "title": "Cesta, ktorú fotka vyberá"
+    },
+    "skipToContent": "Preskočiť na obsah",
+    "specimen": {
+      "caption": "Búrové pravidlo začína a končí na okraji číslic, nie v textovej políčke.",
+      "label": "Vzorka pečiatky Lymark: čas 07:42, dátum 12. augusta 2026, streda, adresa v Guarujá a kód fotografie."
+    },
+    "title": "Lymark  dátum, čas a adresa vodné značky pre fotografie poľa",
+    "verify": {
+      "caveat": "Pečať potvrdzuje integrity spisu a čas vydania.",
+      "checking": "- Zkontrolovať...",
+      "declarationNote": "Označuje to, čo značka (adresa, dátum, čas) je vyhlásenie emitenta  značka potvrdzuje integrity a vydanie, nie obsah.",
+      "intro": "Odložte alebo vyberte fotografiu, ktorú Lymark vyvážala a okamžite sa pozrite, či je presne taká, ako opustila aplikáciu  a kto ju vydal, kedy.",
+      "noSealBody": "Tento súbor nemá pečiatku Lymark. Môže byť exportovaný offline, pred tým, ako pečiatka existovala, alebo nemusí pochádzať z Lymark.",
+      "noSealTitle": "Žiadna pečiatka",
+      "notConfigured": "Overenie ešte nie je k dispozícii.",
+      "pick": "Vyberte súbor",
+      "previewAlt": "Overená fotografia, známka viditeľná",
+      "privacyNote": "Verifikácia sa uskutočňuje vo vašom prehliadači. Súbor nie je odoslaný na žiadny server.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Neporušená",
+      "tamperedBody": "Obsah nezodpovedá pečiatke: súbor bol zmenený po vydaní alebo pečiatka patrí k inému súboru.",
+      "tamperedTitle": "Nevyhovujú",
+      "title": "Overenie pravosti",
+      "unsupported": "Tento prehliadač nepodporuje overenie podpisov. Vyskúšajte aktuálny prehliadač."
+    }
+  }
+}

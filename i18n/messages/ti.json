@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "ኣፕ",
+      "pitch": "ሰዓት፡ ዕለት፡ መዓልቲ ስራሕ፡ ኣድራሻን ኮድ መከታተልን ኣብ ስእልታትካ  ንናይ ሜዳ መዝገብ፡ መርመራ ቦታን ናይ ኣገልግሎት መርትዖን ይኣቱ።",
+      "platform": "መድረኽ",
+      "privacy": "ፖሊሲ ግላዊነት",
+      "privacyGeocoding": "GPS ምስ ተተግብረ፡ እቲ ስርዓተ ክወና ነቲ ኣቀማምጣ ናብ Googles ወይ Apples ናይ ካርታ ኣገልግሎት ይልእኽ። እዚ ጥራይ እዩ ኣብዚ ዝተርፍ፡ እቲ ዚልእኮ ድማ እቲ ስርዓት እዩ፡ Lymark ኣይኮነን።",
+      "privacyLocation": "ቦታ ኣብ ነፍሲ ወከፍ ምስሊ ሓደ ግዜ ይጥቀመሉ፣ ነቲ ኣድራሻ ክእለቱ ጥራይ እዩ ዝፍጸም፣ ካብ ስእልታት ድማ ብናጻ ኣይሕከብን እዩ።",
+      "privacyOnDevice": "እቲ ኣድራሻታትን ስእልታትን ታሪኽን ኣብዚ መሳርሒ እዚ ጥራይ እዩ ዝጸንሕ። እቲ መለያ ንተመዝገብነትካ እዩ ዘሎ፡ እቲ ሰርቨር ኢሜልካን መደባኻን ይሕልዎ፡ ስእልታትካን ቦታኻን ድማ ፈጺሙ ኣይረኽቦን።",
+      "privacySection": "ግላዊነት",
+      "sdk": " Expo SDK ",
+      "terms": "ናይ ምጥቃም ውጥናት",
+      "title": "ብዛዕባ Lymark ",
+      "version": "ትርጉም"
+    },
+    "account": {
+      "browserHint": "እቲ ኣፕ ብገዛእ ርእሱ ይትኣሳሰር።",
+      "code": "ኮድ",
+      "codeSent": "ን{email} ኮድ ልኢኽና",
+      "connected": "ዝተኣሳሰር",
+      "continue": "ቀጽል",
+      "deleteAccount": "ሕሳብ ምጥፋእ",
+      "email": "ኢሜይል",
+      "failed": "እዚ ኣይሰራሕን እዩ ኢሜይል ወይ ኮድ መርምር እሞ ደጊምኩም ፈትኑ።",
+      "notConfigured": "ኣብዚ ህንጻ እዚ ገና ምዝገባ ኣይተኻእለን።",
+      "signInBrowser": "ብመርማሪት ምእታው",
+      "signOut": "ኣጽዲቕካ",
+      "signedInAs": "ከም {email} ተፈርሙ ",
+      "title": "ሕሳብ",
+      "verify": "ኣረጋግጽ"
+    },
+    "batch": {
+      "addressHint": "ጎደና ቁጽሪ  ከተማ",
+      "clearList": "ንጹር ዝርዝር",
+      "codeHint": "ንኣብነት LYM-001",
+      "done": "{count, plural,  one {ምስራሕ ዛዚሙ: # ስእሊ ዛዚሙ} other {ምስራሕ ዛዚሙ: # ስእልታት ዛዚሙ}}",
+      "doneSection": "ተዳኺሙ",
+      "dropZone": "ስእልታት ኣብዚ ስሒብካ ስሒብካ ወይ ነቲ Select photos ቁርጢር ተጠቐመ",
+      "errorsSection": "ጌጋታት",
+      "folder": "ኣቃፊ: {name} ",
+      "noPhotos": "እንተ ወሓደ ሓንቲ ስእሊ ሕረጽ።",
+      "outputNote": "ዝተሰርሑ ስእልታት ኣብቲ ዝተመረጸ ኣቃፊዕ ይዕቀቡ።",
+      "outputSection": "ውጽኢት",
+      "photosSection": "ንምፍራይ ስእሊ",
+      "processing": "ኣብ ምምዝጋብ...",
+      "progress": "{current} ናይ {total} ({percent} %)",
+      "results": "{success, plural,  one {ስኬት #} other {ስኬት #}}, {failed, plural,  one {# ዕንወት} other {# ዕንቅፋት}}",
+      "selectFolder": "ናይ ውፅኢት ኣቃፊ",
+      "selectPhotos": "ስእልታት ምረጽ።",
+      "selected": "{count, plural,  one {# ስእሊ ተመሪጹ} other {ዝተመረጹ # ስእልታት}}",
+      "sharedNote": "እዞም እዋናት'ዚኦም ንኩለን ስእልታት ይተግብር። ዕለትን ሰዓትን ነፍሲ ወከፍ ስእሊ ካብ ናይ ባዕሉ EXIF ይንበብ።",
+      "sharedSection": "ዝተሓባበር ሜታዳታ",
+      "start": "ናይ ምስራሕ ስራሕ ምጅማር",
+      "unavailableBody": "እዚ ባህሪ እዚ ኣብ ዴስክቶፕ ጥራይ እዩ።",
+      "unavailableTitle": "ኣብ ባትሪ ዝግበር ዘይምፍራይ"
+    },
+    "capture": {
+      "accuracy": "ቦታ ኣብ ውሽጢ ± {meters} m.",
+      "accuracyImprecise": "ኣብ ውሽጢ ± {meters} m  ዘሎ ቦታ ቅድሚ ምውጻእ፡ ቁጽሪ ጎደና ኣረጋግጽ።",
+      "address": "ኣድራሻ",
+      "addressFailedTitle": "ኣድራሻ ኣይተረኽበን።",
+      "addressHint": "ቦታ ምረጽ ወይ ኣድራሻ ምዝርጋሕ",
+      "camera": "ስእሊ ውሰድ",
+      "code": "ኮድ",
+      "dateHint": "1 ጥሪ 2026",
+      "dateTimeGroup": "ዕለትን ሰዓትን",
+      "emptyWarning": "ዝኾነ ሓበሬታ ኣይክተዓርቕን እዩ  ስእሊ ብዘይ ዋተርማርክ ክወጽእ እዩ።",
+      "gallery": "ካብ ጋለሪ ሕረ",
+      "galleryDenied": "ናይ ስእሊ ኣቀራርባ ተከልኪሉ ስለ ዝነበረ፡ እቲ ስእሊ ኣብ ውሽጢ እቲ መተግበሪ ጥራይ እዩ ዘሎ። ኣብ ኣዳራሻት › ፍቃድ ንምእታው ናብ ጋለሪ ንምእታው ፍቐዶ።",
+      "galleryFailed": "እቲ ምስሊ ናብ ታሪኽ ከይዱ፡ እቲ መሳርሒ ግና ናብ ጋለሪ ክጽሕፎ ኣይደለየን። ነቲ ናጻ ቦታ መርምሮ፡ ደጊምኩም ፈትኑ።",
+      "generateCode": "ኣመንጪ",
+      "hiddenFields": "{count, plural,  one {ዝተሓባበረ ሜዳ} other {ዝተሓብኡ ዓድታት}}: {fields}  ኣብ ኣቀማምጣ › ሜዳታትን ቦታን ኣበራብር።",
+      "keepMyAddress": "ናተይ ሐልዎ",
+      "locate": "ቦታ",
+      "locateByGps": "ኣድራሻ ብጂፒኤስ ርኸብ",
+      "lookup": {
+        "denied": "ኣብ ኣዳለውቲ › ፍቃድ፡ ቦታ ምሃብ፡ ወይ ኣድራሻ ምዝርጋሕ።",
+        "disabled": "እቲ ቦታ ኣብ'ቲ መሳርሒ ተሰዊኡ ኣሎ፡ ኣብ ቅልጡፍ ኣሰራርሓ ኣበራቢሩ ዳግም ፈትኖ።",
+        "timeout": "GPS ኣብ ግዜኡ ኣይምልስን እዩ። መብዛሕትኡ ግዜ ኣብ ውሽጢ ገዛ ይወድቕ።",
+        "unavailable": "እቲ ኣድራሻ ኣብዚ ቦታ ክርከብ ኣይከኣለን። ብኢድ ኣቲፍዎ።"
+      },
+      "newCapture": "ሓድሽ ምርኮት ምጅማር",
+      "noFieldsBack": "ተመለስ",
+      "noFieldsContinue": "ብዝኾነ ይቕጽል",
+      "noFieldsMessage": "ዝኾነ ሜዳ ክተዓርቕዎ ዝኽእል ነገር የለን። ነቲ ሜዳታት ምልእእ ወይ ኣማራጺታት › ሜዳታትን ቦታን ጠውቑ።",
+      "noFieldsTitle": "እቲ ስእሊ ብዘይ ማያዊ ምልክት ክወጽእ ኢዩ",
+      "noPhotoHint": "ስእሊ ክትወስድ ወይ ካብ ጋለሪ ክትመርጽ ክትጅምር።",
+      "noPhotoSelected": "ዝተመረጸ ስእሊ የለን።",
+      "openFailed": "እቲ ስእሊ ክኽፈት ኣይከኣለን። ደጊምኩም ፈትኑ።",
+      "permissionMessage": "ኣብ ኣዳለውቲ › ፍቓድ ክቕጽል ክግበር።",
+      "permissionTitle": "ፍቓድ የድሊ",
+      "pickPhoto": "ስእሊ ምረጽ።",
+      "pickPhotoHint": "ነቲ ስጉምቲ ንምፍጻም ስእሊ ሕረጽ።",
+      "previewLabel": "ቅድመ-ኣስመራ ናይታ ብማይ ዝተዓመረት ስእሊ",
+      "renderFailedTitle": "ስእሊ ክፈጥር ኣይከኣለን።",
+      "replaceAddressMessage": "GPS ተረኽበ: {address} ",
+      "replaceAddressTitle": "እቲ ዝጻሕፍካዮ ኣድራሻ ክትክተሎ ዲኻ?",
+      "resetConfirm": "ኣወጽእ",
+      "resetMessage": "እቲ ዝተመርጸ ስእልን እቲ ዝተመልአ ሜዳታትን ክወጽእ እዩ።",
+      "resetTitle": "ሓድሽ ምርኮት ክትጅምር ዲኻ፧",
+      "saved": "ስእሊ ናብ ጋለሪ መሳርሒን ታሪኽን ዝተሓሓሓበ።",
+      "savedAppOnlyTitle": "ኣብ ውሽጢ Lymark ጥራይ እዩ ዝሕተት።",
+      "shareDialogTitle": "ናይ ማይ ምልክት ዘለዎ ስእሊ ተኻፈል",
+      "shareFailedMessage": "እቲ ምስሊ ዝተፈጥረ ኮይኑ ኣብ ታሪኽ Lymark ኣሎ። ካብ ትሕዝቶ ጋለሪ ክትካፈሎ ትኽእል ኢኻ።",
+      "shareFailedTitle": "ክካፈል ኣይከኣለን",
+      "shareUnavailableMessage": "እዚ መሳርሒ እዚ ናይ ኣክሲዮን ወረቐት የብሉን። እቲ ምስሊ ኣብ ታሪኽ Lymark ተቐሚጡ እዩ።",
+      "shareUnavailableTitle": "ክፍሊት ኣይርከብን",
+      "sharedFileTitle": "ናይ ማይ ምልክት ዘለዎ ስእሊ",
+      "stampNotReady": "እቲ ማህተም ገና ይዳሎ ኣሎ።",
+      "syncNow": "ሕጂ",
+      "timestamp": "ዕለት/ጊዜ",
+      "title": "ምርኮ",
+      "useGpsAddress": "ነቲ GPS ተጠቐም",
+      "weekdayHint": "ሞን",
+      "weekdayShort": "መዓልቲ"
+    },
+    "colorPicker": {
+      "hue": "ሑ",
+      "other": "ካልእ ሕብሪ ሕርዩ",
+      "saturationBrightness": "ምልጋስን ብሩህነትን",
+      "use": "ነዚ ቀለም ተጠቐም"
+    },
+    "common": {
+      "back": "ንድሕሪት ተመለስ",
+      "cancel": "ምቅላስ",
+      "delete": "ክስረዝ",
+      "error": "ጌጋ",
+      "gotIt": "ተረድኣኒ",
+      "loading": "ጭነት...",
+      "no": "ኣይፋል",
+      "ok": "ጽቡቕ",
+      "save": "ኣድሕን",
+      "share": "ምዝርጋሕ",
+      "success": "ዕዉት",
+      "tryAgain": "ደጊም ፈትኖ።",
+      "unknownError": "ዘይተፈልጠ ጌጋ",
+      "yes": "እወ"
+    },
+    "gallery": {
+      "cancelSelection": "ኣማራጺ ምምላእ",
+      "clear": "ንጹር ታሪኽ",
+      "clearConfirm": "ንጹር",
+      "clearMessage": "መዝገብ Lymark ክሰረዝ እዩ። ኣብ ጋለሪ መሳርሒታት ዝተሓድሩ ምስሊታት ኣይትንከፉን።",
+      "count": "{count, plural,  one {# ናይ ምስሊ መግለጺ} other {ኤክስፖርት ዝተገብረ ስእሊ #}}",
+      "delete": "ክስረዝ",
+      "empty": "ዛጊት ስእሊ የለን።",
+      "emptyAction": "ናብ ምርኮት ኪድ",
+      "emptyDescription": "ምስ ናይ ማይ ምልክት እትወጽእ ስእሊታት ኣብዚ ምስ ዕለት፡ ቦታን ኮድን ይርኣያ።",
+      "filteredCount": "{shown} ናይ {total, plural,  one {# ስእሊ} other {# ስእልታት}}",
+      "noResults": "ናይ  {query}  ስእሊ ኣይተረኽበን።",
+      "photoLabel": "ስእሊ {when} ",
+      "removeMessage": "እቲ ኣቃውማታት Lymark ይተውሕ። ኣብ ጋለሪ መሳርሒ ዝተሓድሩ ምስሊታት ኣይትንከፉን።",
+      "removeTitle": "{count, plural,  one {ካብ ታሪኽ ኣወጊድካ} other {# ኣመልካቲታት ኣወጽእ}}",
+      "removed": "{count, plural,  one {መእተዊ ተሰርሐ።} other {ኣመልካቲ ተሰርሑ።}}",
+      "saveDeniedMessage": "ምስሊታት ናብ ጋለሪ መሳርሒ ንምእታው ኣብ ኣዳለውቲ › ፍቃድ ክግበር።",
+      "saveDeniedTitle": "ናይ ስእሊ ኣቀራርባ ተከልኪሉ",
+      "savedAll": "{count, plural,  one {ሓደ ስእሊ ናብ ጋለሪ መሳርሒታት ተዳሒኑ እዩ።} other {# ስእልታት ናብ ጋለሪ መሳርሒታት ተዳሒዙ።}}",
+      "savedSome": "{saved} ናይ {total} ስእልታት ዝተሓድገ።",
+      "searchPlaceholder": "ብድራሻ፡ ዕለት ወይ ኮድ ምርካብ",
+      "selectedCount": "{count, plural,  one {# ስእሊ ተመሪጹ} other {ዝተመረጹ # ስእልታት}}",
+      "share": "ምዝርጋሕ",
+      "title": "ጋለሪ"
+    },
+    "language": {
+      "automatic": "ኣቃውማ መሳርሒ",
+      "automaticNote": "Lymark ነቲ ኣብ መሳርሒኻ ዘሎ ቋንቋ ይከታተል።",
+      "label": "ቋንቋ",
+      "selector": "ቋንቋ ምረጽ።"
+    },
+    "login": {
+      "access": "ናብ ትሕዝቶ",
+      "apple": "ምስ Apple ምእታው",
+      "google": "ምስ Google ምእታው",
+      "subtitle": "ንምቕጻል ኣቲኻ",
+      "title": "Lymark ንምእታው ኣቲኻ።"
+    },
+    "nav": {
+      "batch": "ናይ ባትሪ ምስራሕ",
+      "photoDetail": "ዝርዝር ስእሊ",
+      "report": "ጸብጻብ PDF",
+      "video": "ቪድዮ"
+    },
+    "notFound": {
+      "body": "እዚ ማያ እዚ ኣካል Lymark ኣይኮነን ።",
+      "screenTitle": "ገጽ ኣይተረኽበ",
+      "title": "ከምዚ ዓይነት መገዲ የልቦን።"
+    },
+    "permissions": {
+      "allow": "ፍቐደለይ",
+      "allowed": "ተፈቒዱ",
+      "blocked": {
+        "later": "ሕጂ ኣይኰንኩን",
+        "message": "እቲ ስርዓት ደጊሙ ኣይሓትትን እዩ። ንምፍቃዱ፡ ኣቀማምጣ መሳርሒኻ ክፉት ግበር።",
+        "openSettings": "ክፍትሽ ኣቀማምጣ",
+        "title": "ፍቓድ ተዓጽዩ"
+      },
+      "camera": "ካሜራ",
+      "cameraRationale": "ነቲ ምልክት ማይ ዝቕበል ስእሊ ንምውሳድ ተገድድ።",
+      "denied": "ተከልኪሉ",
+      "granted": "እተዋህበ",
+      "intro": "Lymark ነቲ ስእሊ ንምሕተም ዘድሊ ጥራይ እዩ ዝሓትት። ስእልታትካ ነቲ መሳርሒ ፈጺሙ ኣይወጽእን እዩ: GPS ምስ እትጥቀም እቲ ስርዓተ ክወና ነቲ ካርታ ኣገልግሎት ጥራይ ኮርዲናትን ስለ ዝልእኽ፡ ናብ ኣድራሻ ክቐየር ይኽእል እዩ።",
+      "location": "ቦታ",
+      "locationRationale": "ምስ እትሕዝ፡ ኣብ ናይ ኣድራሻ ሜዳ ብገዛእ ርእሱ ይምላእ።",
+      "mediaLibrary": "ናብ ጋለሪ ኣድሕን",
+      "mediaLibraryRationale": "ናብ ጋለሪ መሳርሒታት ዝተወገዱ ስእልታት ንምጽሓፍ።",
+      "openDeviceSettings": "ኣቀማምጣ",
+      "recheck": "ደጊም ኣረጋግጽ",
+      "request": "ፍቃድ ሕተታ",
+      "section": "ኣቀራርባ",
+      "title": "ፍቃድ"
+    },
+    "photo": {
+      "backToGallery": "ናብ ጋለሪ ተመለስ",
+      "exportedAt": "ኣብ {when} ወፃኢ ",
+      "noWatermark": "እዚ ስእሊ ብዘይ ምልክት ማያት እዩ ወፃኢ ዝተገበረ።",
+      "notFoundBody": "እዚ መዝገብ እዚ ኻብ ታሪኽ ተሰወረ።",
+      "notFoundTitle": "ስእሊ ኣይተረኽበ",
+      "remove": "ኣወጽእ",
+      "removeBody": "እቲ መዝገብ Lymark ይተርፍ። እቲ ኣብ ጋለሪ መሳርሒ ዝተሓለወ ምስሊ ኣይትንከየን።",
+      "removeTitle": "ካብ ታሪኽ ኣወጊድካ",
+      "share": "ምዝርጋሕ",
+      "stampedData": "ዝተቐርጸ ሓበሬታ"
+    },
+    "plan": {
+      "exhausted": "ብነጻ ዝተጠቕሳ ስእልታት",
+      "exhaustedMessage": "እቶም 12 ስእልታት እቲ ነጻ መደብ ጠፊኦም እዮም።",
+      "free": "ነጻ",
+      "pro": "ፕሮ",
+      "reconnect": "ኣባልነትካ ንምእማን ዳግም ምዝርጋሕ",
+      "remaining": "{remaining, plural,  one {# ነጻ ስእሊ ጸጋም} other {# ነጻ ስእልታት ገዲፍካ}}",
+      "title": "መደብ",
+      "unlimited": "ገደብ የብሉን"
+    },
+    "report": {
+      "allPhotos": "ኩሎም ስእልታት",
+      "authorField": "ደራሲ / ኩባንያ",
+      "detailsSection": "ዝርዝር ሓበሬታ",
+      "doc": {
+        "author": "ደራሲ",
+        "declaration": "እቲ ዝተዓርመ ሓበሬታ (ኣድራሻ፡ ዕለት፡ ሰዓትን ኮድን) ናይቶም ስእሊታት ወሃቢ መግለጺ እዩ።",
+        "exportedAt": "ኣብ",
+        "generatedAt": "ብ",
+        "page": "ገጽ",
+        "photo": "ስእሊ {index} ",
+        "photosSection": "ናይ ስእሊ መዛግብቲ",
+        "signature": "ፊርማ ናይቲ ሓላፊ",
+        "summary": "ሓጺር መግለጺ",
+        "title": "ናይ ስእሊ ጸብጻብ",
+        "totalPhotos": "ሓፈሻዊ ስእሊ"
+      },
+      "empty": "ዛጊት ዝተወፃእና ስእሊ የለን። እቲ ጸብጻብ ካብ ጋለሪኹም ዝተሰርሐ እዩ።",
+      "failed": "ነቲ ጸብጻብ ክፈጥር ኣይከኣለን።",
+      "fileStem": "ጸብጻብ",
+      "format": {
+        "csv": "ስፕሪደች (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "ናይ መቐለ (ZIP)"
+      },
+      "formatSection": "ቅርጸት",
+      "generate": "ፋይል ኣማዕብል",
+      "generateSection": "ኣመንጪ",
+      "includeLogo": "ኣብ ሽፋን ዘሎ ሎጎ",
+      "includeLogoDescription": "እቲ ኣብ ማህተም ዘሎ ናይ መርበባት ምልክታ፡ ካብቲ ሰነድ ወጻኢ ምእንቲ ኺተርፍ፡ ጠጠውዎ።",
+      "norm": {
+        "abnt": "ABNT (ብራዚል)",
+        "din5008": "DIN 5008 (ጀርመን)",
+        "ibape": "IBAPE ስታይል (ብራዚል)",
+        "iso": "ኣህጉራዊ",
+        "letter": "ደብዳበ (ኣሜሪካ)"
+      },
+      "normNote": "እቲ መስፈሪ ወረቐትን ቅርጸትን  ጠርዞታትን ፊደላትን ቁጽሪ ገጻትን ይውስን። ትሕዝቶ ጸብጻብ ኣብ ኵለን ሓደ እዩ። እቲ IBAPE ቅጥዒ ናይ ፊርማ ብሎክ ይውስኽ።",
+      "normSection": "መደበኛ ሰነድ",
+      "projectsSection": "ፕሮጀክት / ስራሕ",
+      "saved": "ናብ {path} ተዳሊኡ ",
+      "savedShort": "ጸብጻብ ተድሕን",
+      "title": "ጸብጻብ PDF",
+      "titleField": "ርእሲ ጸብጻብ",
+      "unavailableBody": "PDF ጸብጻባት ኣብ ናይ ደክቶፕ መተግበሪ ክርከብ ይከኣል።",
+      "unavailableTitle": "ኣብ ዴስክቶፕ ጥራይ",
+      "uncoded": "ኮድ የብሉን",
+      "wordTooBig": "እቲ Word ሰነድ ምስ'ቲ ዝተኣሳሰርዎ ስእሊ ኣዝዩ ዓብዩ'ዩ። PDF ወይ ZIP ፓኬጅ ተጠቐሙ።",
+      "zipMissing": "{count, plural,  one {እቲ ፓኬጅ ዝተሓለወ፡ ግን # ስእሊ ኣብዚ መሳርሒ'ዚ ኣይተረኽበን።} other {እቲ ፓኬጅ ዝተሓለወ፡ ግን # ስእልታት ኣብዚ መሳርሒ'ዚ ኣይተረኽበን።}}"
+    },
+    "settings": {
+      "about": "ብዛዕባ",
+      "aboutDescription": "ኣቀራርባ፣ ግላዊነትን ክብረትን",
+      "appSection": "ኣፕ",
+      "deviceSection": "መሳርሒ",
+      "deviceSectionDescription": "እቲ Lymark ዝሓትት መዳረሻ።",
+      "fields": "ሜዳታትን ቦታን",
+      "fieldsDescription": "ኣየኖት ዓውደታት ከም ዚግለጹ፡ እቲ ኩርናዕ፡ እቲ መጠን",
+      "history": "ታሪኽ",
+      "historyDescription": "ኣብ'ቲ መሳርሒ ዝተሓዙ ናይ ወፃኢ ስእልታት",
+      "language": "ቋንቋ",
+      "permissions": "ፍቃድ",
+      "permissionsDescription": "ካሜራ፣ ስእልታትን ቦታን",
+      "save": "ኣድሕን",
+      "title": "ኣቀማምጣ",
+      "watermark": "ምልክት ማያት",
+      "watermarkSection": "ምልክት ማያት",
+      "watermarkSectionDescription": "ኣብ'ቲ ስእሊ እንታይ ይጽዋዕ፡ ኣበይ'ከ?"
+    },
+    "signup": {
+      "subtitle": "ንምጅማር ተመዝገብ",
+      "title": "ናይ Lymark መለያኻ ፍጠር"
+    },
+    "tagline": "ናይ ማይ ምልክት ምስ ግዜን ዕለትን ቦታን",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "ናይ ካሜራ ተኽእሎ የለን። ኣብ ኣቀማምጣ መሳርሒታት ክግበር ይፍቀድ።",
+      "done": "ቪድዮ ተሰርሐን ተዳሒኑን።",
+      "export": "ናይ ኤክስፖርት ማህተም ቪድዮ",
+      "exportSection": "ወፃኢ",
+      "failed": "እቲ ቪድዮ ክሕተም ኣይከኣለን።",
+      "fieldsSection": "ናይ ማህተም ሜዳታት",
+      "fileSection": "ቪድዮ",
+      "none": "ዝተመረጸ ቪድዮ የለን።",
+      "processing": "ምፍራይ... {percent} %",
+      "processingMobile": "ኣብ ምምዝጋብ...",
+      "record": "ሕጂ ቪድዮ ቀሪብካ",
+      "saved": "ናብ {path} ተዳሊኡ ",
+      "savedToGallery": "ኣብ ጋለሪኻ ዝተሓተ ቪድዮ።",
+      "select": "ቪድዮ ምረጽ።",
+      "unavailableBody": "ናይ ሞባይል ቪድዮ ምስትውዓል Lymark ካብ EAS ሕንጸት (ብመደበሪ ሞዱል) ተትኺሉ ክርከብ ኣለዎ። ኣብ Expo Go ኣይተረኽበን። ካብ መደብር ወይ EAS ሕንጸት ወግዓዊ መተግበሪ ተትክሉ ወይ ድማ ናይ ዴስክቶፕ / ዌብ ስሪት ተጠቐሙ።",
+      "unavailableTitle": "ተትኽልተ ኣፕሊኬሽን ኣድላይ",
+      "unreadable": "እቲ ፋይል ከም ቪድዮ ክነበብ ኣይከኣለን።",
+      "webNote": "ኣብ መርበብ ሓበሬታ፡ ቪድዮ ኣብ ናይ ሓቂ ግዜ ይሰርሕ፡ 2 ደቒቕ ዝወስድ ቪድዮ 2 ደቒቕ ዝወስድ፡ WebM ቅርጸት ይርከብ።"
+    },
+    "watermark": {
+      "accentColor": "መርገጺ ባር",
+      "backdropBandNote": "እቲ ባንድ ኣብ ልዕሊ እቲ ማህተም ዝተኣሰርሉ ወሰን ይዕርፍ። ኣብ ልዕሊ ሓደ ህንጸት ቦታ፡ ገቢ፡ ብዙሕ ህዝቢ ዝሕዝሉ ገፅታ፡ ኣብ ልዕሊኡ ዝተቐመጠ ተለጣፊ ዘይኰነስ ከም ጽሑፍ ጽሑፍ ኮይኑ ይንበብ።",
+      "backdropBlockNote": "እቲ ናይ ድሕሪት ክፋል ነቲ ጽሑፍ ብብዝሒ ይስዕቦ፣ ኣብ ዙርያኡ ድማ ይሽፍን።",
+      "backdropColor": "ቀለም ባንድ",
+      "backdropDescription": "ኣብ ልዕሊ ብርሃን እቲ ስእሊ ዘሎ ቦታታት ንጸላለፊነት ይሕልዎ፣ ብዘይኡ ድማ እቲ ጽሑፍ ብቐጥታ ኣብ ልዕሊ እቲ ስእሊ ምስ ጽላል ይቐውም።",
+      "backdropInnerRadius": "ውሽጣዊ ኩርናዕ",
+      "backdropOpacity": "ግልፅነት",
+      "backdropOpacityValue": "{percent} % ዘይንጽህና",
+      "backdropRadius": "ኣከባቢታት",
+      "backdropRadiusSquare": "ካሬ",
+      "backdropStyles": {
+        "band": "ምሉእ ርብሓ ዘለዎ ባንድ",
+        "block": "ኣብ ደገን እቲ ጽሑፍ",
+        "none": "ዋላ ሓደ"
+      },
+      "backdropTitle": "ናይ ደገፍ ባንድ",
+      "brandDescription": "ኣብ ላዕሊ እቲ ሰዓት፡ ምልክት፡ ምስ ሎጎን መትከልን ይርከብ። ኣብ ሓደ ኩርናዕ፡ ሓደ ስሩዕ መስመር እዩ።",
+      "brandFirstColor": "ናይ ቀዳማይ ክፋል ሕብሪ",
+      "brandFirstHint": "ገንጸይቲ",
+      "brandFirstPart": "ቀዳማይ ክፋል",
+      "brandNote": "እቲ ካልኣይ ክፋል ሓደ ሕብሪ ዘለዎ ምልክት ምእንቲ ኺረክብ ባዶ ይሃሉ፣ እቲ ነዊሕ ስም ድማ ኣብ ክንዲ ዚሕረቕ፡ ክሳዕ ዚሕለፎ እዩ ዚሕጸብ።",
+      "brandPlacements": {
+        "corner": "ኣብ ሓደ ኩርናዕ",
+        "header": "ልዕሊ ሰዓት",
+        "none": "ዋላ ሓደ"
+      },
+      "brandSecondColor": "ካልኣይ ክፋል ሕብሪ",
+      "brandSecondHint": "ስሚዝ",
+      "brandSecondPart": "ካልኣይ ክፋል",
+      "brandTitle": "ዝተቐርጸ ምልክት",
+      "codeDescription": "ኣብ ጐድኒ እቲ ስእሊ ምስታ ስእሊ ብርእሱ ቦታ ኣይወዳደርን።",
+      "codePlacements": {
+        "block": "ኣብ ጥቓ እቲ ሓበሬታ",
+        "side": "የማነይቲ ገጹ"
+      },
+      "codeTitle": "ናይ ስእሊ ኮድ",
+      "colors": {
+        "amber": "ኣምበር",
+        "black": "ጸሊም",
+        "blue": "ሰማያዊ",
+        "green": "ጽሬና",
+        "red": "ቀይሕ",
+        "white": "ጻዕዳ"
+      },
+      "colorsDescription": "እቲ ኣብ'ቲ ስእሊ ዘሎ ሕብሪ ናይ'ቲ ኩባንያ ምርጫ እዩ፡ እቲ ኣፕሊኬሽን ኣይኮነን ኣብዚ ምቕያሩ ሕብሪ እቲ ማያ ገጽ ኣይቅይርን እዩ።",
+      "colorsTitle": "ቀለማት ማህተም",
+      "complement": "መትረብ",
+      "complementColor": "ናይ መወከሲ ቀለም",
+      "complementHint": "ናይ መርመራን ቴክኒካዊ ጸብጻባትን",
+      "cornerConflict": "እቲ ምልክትን እቲ ሓበሬታን ኣብ ሓደ ኩርናዕ እዩ",
+      "fields": {
+        "address": "ኣድራሻ / ቦታ",
+        "code": "ናይ ስእሊ ኮድ",
+        "date": "ዕለት",
+        "time": "ግዜ",
+        "weekday": "ናይ ሰሙን መዓልቲ"
+      },
+      "fieldsDescription": "ኣብቲ ስእሊ ዝርከቡን ትሕዝቶ ዘለዎምን ዓውደታት ጥራይ እዮም ዝበጽሑ።",
+      "fieldsTitle": "ዝተራእየ ሜዳታት",
+      "includeCountry": "ሃገር እውን ትካተት",
+      "includeCountryDescription": "ኣብ ልዕሊ ዶባት ክትሰርሕ እንተኾይንካ ኣበራቢርካዮ። እንተ ዘይኮይኑ ኣብ ስእሊ ጥራይ እዩ ቦታ ዚረክብ።",
+      "legibilityTitle": "ንንባብ",
+      "logoAdded": "ኣብ ርእሲ መርበብ ሓበሬታ ናይ መርበብ ሓበሬታ ተወሲኑ ዘሎ አርማ።",
+      "logoAlignNote": "እቲ ላዕሊ ምስ ላዕሊ ስም ከምኡ'ውን ታሕቲ ምስ መሰረታዊ መስመር ናይ'ቲ ትግራዋይ ይትኣሳሰረ እዩ።",
+      "logoChosen": "ዝተመረጸ ሎጎ",
+      "logoErrorMessage": "ካልእ ምስሊ ፈትሽ። ምስሊ ምስ ለባም ዳሕረ-ባይታ ዘለዎ PNG እቲ ዝበለጸ ቅርጸት እዩ።",
+      "logoErrorTitle": "እዚ ፋይል ክጥቀመሉ ኣይከኣለን።",
+      "logoFormatNote": "ብሩህ ዳሕረ-ባይታ ዘለዎ PNG ይጥቀም። ብሩህ ዳሕረ-ባይታ ዘለዎ JPG ኣብ ስእሊ ብሩህ ርትዓንቲ ይኸውን።",
+      "logoPermissionMessage": "ነቲ ናይ ሎጎ ፋይል ንምምራጽ ኣብ ኣዳለውቲ › ፍቃድ ክግበር።",
+      "logoPermissionTitle": "ናይ ስእሊ ኣቀራርባ ተከልኪሉ",
+      "logoPick": "ምልክታ ምረጽ።",
+      "logoPosition": "ቦታ ሎጎ",
+      "logoPositionBlock": "ምስ ማሕተም",
+      "logoRemove": "ኣወጽእ",
+      "logoReplace": "መለክዒ ምትካእ",
+      "logoSize": "መጠን ሎጎ",
+      "positionDescription": "እቲ ባዶ ክፋል ኣብ'ቲ ኩርናዕ ስእሊ'ዩ ተዓጽዩ ዘሎ።",
+      "positionTitle": "ቦታ",
+      "positions": {
+        "bottom-left": "ኣብ ታሕቲ ጸጋም",
+        "bottom-right": "ኣብ ታሕቲ የማን",
+        "top-left": "ኣብ ላዕሊ ጸጋም",
+        "top-right": "ኣብ ላዕሊ ናብ የማን"
+      },
+      "previewCurrent": "ካብቲ ናይ ምስሊ መርበብ ሓበሬታ ዘሎ ናይ ሕጂ ስእሊ።",
+      "previewEmpty": "ካብ ብርሃን ናብ ጸልማት፡ ኣብ ክልቲኡ ጫፍ ንምንባብ ክረጋገጽ እዩ።",
+      "previewNoFields": " እቲ ስእሊ ብዘይ ምልክት ማይ ኣይርአን።",
+      "previewTitle": "ቅድመ-ምርኣይ",
+      "reset": "ነባሪ ኣሃዛዊ ኣሃዛዊ ኣሃዛዊ ኣሃዛዊ ኣሃዛዊ ኣሃዛዊ",
+      "sizeTitle": "መጠነ ጽሑፍ",
+      "sizes": {
+        "large": "ዓቢ",
+        "medium": "ማእከላይ",
+        "small": "ንእሽቶ"
+      },
+      "textColor": "ጽሑፍ",
+      "timeFormatDescription": "እቲ ግዜ ኣብ ሜዳታት ብኸመይ ይምላእ። እቲ ሜዳ ንምንዳፍ ይከኣል እዩ።",
+      "timeFormatTitle": "ናይ ግዜ ቅርጸት",
+      "timeFormats": {
+        "12h": "12 ሰዓታት (መዓልቲ ወጋሕታ/መዓልቲ ወጋሕታ)",
+        "24h": "24 ሰዓታት"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "ኩሎም ፋይላት",
+      "images": "ስእልታት",
+      "pickFolder": "ናይ ውፅኢት ኣቃፊ",
+      "pickPhoto": "ስእሊ ሕረ",
+      "pickPhotos": "ንትራክታት ዝምልከት ስእልታት ምረጽ።",
+      "savePhoto": "ስእሊ ኣድሕን",
+      "saveReport": "ጸብጻብ ኣድሕን"
+    },
+    "login": {
+      "cancel": "ምቅላስ",
+      "confirm": "ቀጽል",
+      "message": "ኣብዚ ብራውዘር ተመዝጊብካ ኢኻ፡ ነዚ መለያ እዚ ኣብዚ ኮምፕዩተር ክትጥቀመሉ ትቕጽል ዲኻ፧",
+      "title": "ናብ Lymark ምእታው "
+    },
+    "menu": {
+      "copy": "ቅዳሕ",
+      "cut": "ተቖሪጹ",
+      "edit": "ኣርትዕ",
+      "file": "ፋይል",
+      "fullscreen": "ምሉእ ማያ",
+      "help": "ሓገዝ",
+      "paste": "ቀበቶ",
+      "quit": "ኣቋርጽ",
+      "redo": "ሬዶ",
+      "reload": "ዳግም ምምላእ",
+      "selectAll": "ኩሎም ሕረ",
+      "settings": "ኣቀማምጣ",
+      "undo": "ዕሽሽ",
+      "view": "ትርኢት",
+      "zoomIn": "ኣጉልበ",
+      "zoomOut": "ዕቤት",
+      "zoomReset": "ሓቀኛ መጠን"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "ናብ ገዛኻ ተመለስ",
+      "openApp": "ነቲ መተግበሪ ክፉት",
+      "photos": "ስእልታት",
+      "photosLeft": "{remaining} ናይ {quota} ጸጋም",
+      "plan": "መደብ",
+      "planUnavailable": "ኣብዚ እዋንዚ ኣይተረኽበን።",
+      "plans": {
+        "free": "ነጻ",
+        "pro": "ፕሮ"
+      },
+      "signInTitle": "ኣቲኻ ግበር",
+      "signOut": "ኣጽዲቕካ",
+      "signUpTitle": "ሕሳብ ፍጠር",
+      "subscribe": "ንLymark Pro ኣባል ኩን",
+      "subscribeSoon": "ኣባልነት ገና ኣይተረኽበን። ምስተረኽበ፡ ኣብዚ ኣባልነት ክትረክብን ነቲ ሓደ መለያ ዘለዎ ዝኾነ መሳርሒ ክትጥቀመሉን ትኽእል።",
+      "title": "እቲ ናይ ገዛእ ርእስኻ ሕሳብ",
+      "revokeDesktops": "ኮምፕዩተራት ምቁራጽ",
+      "revokeDesktopsHint": "ኣብ ኩሉ ኮምፕዩተር ናይ'ቲ መተግበሪ ኣቀራርባ ይዓግት፡ ኣብ ዝደለኻሉ እዋን ዳግም ክትኣቱ ትኽእል ኢኻ።"
+    },
+    "availability": {
+      "contact": "ነቲ ናይ ምፍጣር መስርሕ ክትከታተል ወይ ጸገም ክትገልጽ፡ ናብ <email> contato@lymark.app </email>.",
+      "description": "Lymark ኣብ ስሪት 1.3.0 ኣብ Android ኣብ ምርመራ ቅድሚ ኣብ Google Play ኣብ ምውጻእ ኣሎ። ናይ iOS ስሪት ወይ ናይ ዌብ ስሪት የለን፡ ከምኡ'ውን እቲ መተግበሪ ዝኾነ ክፍሊት ኣይእከብን እዩ።",
+      "title": "ተኽእሎ"
+    },
+    "data": {
+      "device": {
+        "description": "እቲ መለያ ንተመዝገብካ ኣሎ፡ እቲ ሰርቨር ኢሜልካን መደባኻን ይሕልዎ፡ ስእልታትካን ቦታኻን ኣይረኽቦን። እቲ ታሪኽ ናይ መወዳእታ ክልተ ሚእቲ ኤክስፖርት ኣብ ናይ'ቲ መተግበሪ ናይ ባዕሉ ፋይላት ይሕልዎ እዩ።",
+        "field": "ኣብ'ቲ መሳርሒ",
+        "heading": "ስእልታትን ኣድራሻታትን ታሪኽን"
+      },
+      "external": {
+        "description": "ሰፍሕን ርግጽን ናብ ንባብ ዘለዎ ኣድራሻ ንምቕያር፡ እቲ ስርዓተ ክወና ነቲ ናይ Google ወይ ናይ Apple ናይ ጂኦኮዲንግ ኣገልግሎት ይሓትት። እዚ ጥራይ ኢዩ ዝተርፍ፡ እቲ ስርዓት ድማ ይልእኾ፡ እቲ መተግበሪ ኣይኮነን።",
+        "field": "ካብ'ቲ መሳርሒ",
+        "heading": "ሓደ ኣቀማምጣ ጥራይ ናብ ኣድራሻ ምቕያር"
+      },
+      "note": "እዚ ኩሉ ኣብ ትሕቲ ናይ ብራዚል LGPD  ኣብ ትሕቲ ናይ ብራዚል <privacy>ፖሊሲ ግላዊነት</privacy>. ናይ ቦታ ፍቓድ ምቁራጽ ነቲ መተግበሪ ምሉእ ብምሉእ ይሰርሕ እዩ፤ ሽዑ እቲ ኣድራሻ ሜዳ ጥራይ እዩ ብኢድ ክጽሓፍ ዝግብኦ።",
+      "title": "እቲ ሓበሬታታትካ ኣብ ዘሎ ቦታ"
+    },
+    "deleteAccount": {
+      "back": "ናብ ጸብጻብ ተመለስ",
+      "confirm": "ገጻይ ስረዝ",
+      "deletesNow": "ነቲ መለያኻ ምስ እትሰድም፡ ኢመይልካ፡ መንነትካ፡ መዝገብ መደባትን ኩዋታን ስእልታትን ብኡብኡ ይሰረቕ።",
+      "irreversible": "ምጥፋእ ነባሪ እዩ ክዓሽሎ ዘይክእል ድማ እዩ። ኣብ መሳርሒኻ ዘሎ ስእሊታት ኣይትንክፍን እዩ።",
+      "retained": "መዝገብ ትግባረታት ክፍሊት፡ ካብ መገለጫኻ ዘይተኣሳሰር፡ ብሕጊ ዝድለ ናይ ገንዘብ ግዜ ይዕቀብ።",
+      "title": "ሕሳብ ምጥፋእ"
+    },
+    "description": "ኣብ ናይ Android App፡ ሰዓት፡ ዕለት፡ መዓልቲ ስራሕ፡ ኣድራሻን ኮድ መከታተልን ኣብ ናይ መርመራ ቦታን ናይ ኣገልግሎት ምርግጋእን ስእልታት ይርከብ።",
+    "desktop": {
+      "backAccount": "ናብ ጸብጻብ ተመለስ",
+      "explanation": "እቲ መመርመሪ ነቲ መተግበሪ ንምኽፋት ፍቓድ ክሓትት እዩ።",
+      "open": "ነቲ መተግበሪ ኣገናኝ",
+      "title": "ኣብ ዴስክቶፕ ምእታው",
+      "unavailable": "እቲ ናይ ዴስክቶፕ መተግበሪ ርክብ ገና ኣይተረኽበን።"
+    },
+    "download": {
+      "appStore": {
+        "description": "ተመሳሳሊ ተመክሮ ከም Android፡ ኣብ iOS።",
+        "field": " App Store ",
+        "heading": "iPhoneን iPadን"
+      },
+      "browser": {
+        "action": "ኣቲኻ ግበር",
+        "description": "ምስ መለያኻ ተመዝገብ፡ እቲ መተግበሪ ኣብ መርማሪ  ተሌፎን ወይ ኮምፒውተር ይኽፈት።",
+        "field": "መርበብ ሓበሬታ",
+        "heading": "ሕጂ ተጠቐመሉ፡ ክትጭብጥ እትኽእል ነገር የለን።"
+      },
+      "desktop": {
+        "description": "ናይ ስእሊ ጭፍራታት፡ ነዊሕ ቪድዮታትን PDF ጸብጻባት  ናይ ከቢድ ኣገልግሎት ወግዓዊ።",
+        "field": "ኮምፕዩተር",
+        "heading": "Windowsን ሊኑክስ"
+      },
+      "googlePlay": {
+        "description": "እቲ ናይ ስልኪ ኣፕ፡ ካሜራ፡ ጋለሪን ዝተሓተ ቪድዮን ዘለዎ።",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "ኣብ ቀረባ እዋን ክመጽእ",
+      "title": "Lymark ኣበይ ክትጥቀም ትኽእል "
+    },
+    "features": {
+      "address": {
+        "description": "እቲ ናይ ጎደና ዓይነት ሓጺር ኮይኑ፡ እቲ ግዝኣት ድማ ኮድ ይኸውን፡ ስለዚ እቲ ኣድራሻ ኣብ ክልተ መስመራት ይኣቱ፡ ስእሊ ድማ ኣይሽፍን እዩ።",
+        "field": "ኣድራሻ",
+        "heading": "ብጂፒኤስ ዝተመልአ፣ ብኢድ ክእረም ይከኣል"
+      },
+      "code": {
+        "description": "ኣብ ሓደ ናይ ስራሕ ቅደም ተከተል ወይ ጸብጻብ ንሓደ ዝተወሰነ ስእሊ ክትጥቀስሉ ትኽእል። ኣብ የማነይቲ ጠርኒፉ ይሽየጥ ወይ ምስ'ቲ ናይ ሓበሬታ ክፋል  ምርጫኻ ይቐውም።",
+        "field": "ናይ ስእሊ ኮድ",
+        "heading": "14 ጠፈርታት፣ ብዲጂታል ጀነሬተር ዝተሰርሐ"
+      },
+      "note": "ነፍሲ ወከፍ ሜዳ ብገዛእ ርእሱ ይበራበርን ይጠፍእን፣ እቲ ክፋል ድማ ኣብ ዝኾነ ኣርባዕተ ኩርናዕ ኣብ ሰለስተ መጠኑ ይኣክል። ቅድመ ምርኣይ ናይ ብሓቂ ስእልኻ ይጥቀም፣ ሓፈሻዊ ናሙና ኣይኰነን: ኣብ መርኣያ እትርእዮ ቃል ብቓሉ እቲ ዝስደድ እዩ።",
+      "time": {
+        "description": "ሓደ ጠውቑብ ንኹሉ ሰለስተ ዓውዲ ናብ ህልውና ይመልስ፣ እቲ ምስታፍ ካብቲ ትጽቢት ዝተገብረሉ ንላዕሊ ግዜ ወሲዱ፣ ኩሎም ድማ ክቐርጹ ይኽእሉ እዮም።",
+        "field": "ግዜን ዕለትን",
+        "heading": "ካብ ሰዓት እቲ መሳርሒ፡ ኣብ እዋን ምርካብ"
+      },
+      "title": "ኣብ'ቲ ምስሊ እንታይ ይኣቱ"
+    },
+    "footer": {
+      "description": "Lymark  ናይ ስእሊ መዝገብ ምስ ዕለት፣ ሰዓትን ኣድራሻን።",
+      "documentsLabel": "ሰነዳት",
+      "privacy": "ፖሊሲ ግላዊነት",
+      "support": "ደገፍ",
+      "terms": "ናይ ምጥቃም ውጥናት"
+    },
+    "hero": {
+      "ctaAccount": "ናብ ገንዘበይ ግደ",
+      "ctaLogin": "ኣቲኻ ግበር",
+      "ctaSignup": "ብነጻ መለያ ፍጠር",
+      "description": "Lymark ነቲ ግዜ፡ ዕለት፡ መዓልቲ ስራሕ፡ ኣድራሻን ኮድን ብቐጥታ ኣብ ስእሊ ይጽብቕ። እቲ ካብ'ቲ መተግበሪ ዝወጽእ ፋይል፡ እቲ ሓበሬታ ኣብ ውሽጡ  ከም ሜታዳታ ዘይኮነስ ኣብ ጥቓኡ ይጽብቕ። እቲ ቀዳማይ WhatsApp ናብ ቅድም ዚኸይድ፡ ነቲ ሓበሬታ ይርሕቕ።",
+      "eyebrow": "ናይ ሜዳ ስእሊ ሰነድ",
+      "heading": "እቲ ስእሊ፡ እቲ ስልኪ፡ መዓስን ኣበይን እንታይን ከም ዚገልጽ ይገልጽ እዩ።",
+      "meta": {
+        "account": "ሓደ ምኳን",
+        "android": "Androidን መመርመሪን",
+        "language": "ብራዚላዊ ፖርቱጋልኛ",
+        "onDevice": "ስእልታት ኣብቲ መሳርሒ ይጸንሑ"
+      },
+      "note": "ክተካእሎ ዝግብኣካ ነገር የለን።"
+    },
+    "nav": {
+      "account": "ሕሳብ",
+      "home": "ገዛ",
+      "homeLabel": "Lymark , ገጻት መእተዊ",
+      "label": "ቀንዲ",
+      "privacy": "ግላዊነት",
+      "signIn": "ኣቲኻ ግበር",
+      "terms": "ውዕላት",
+      "verify": "ኣረጋግጽ"
+    },
+    "process": {
+      "capture": {
+        "description": "እቲ ኣድራሻ ምርካብ ምስ ስእሊ ምስተኣታተወ እዩ ዝጅምር። እቲ ስእሊ እናተገበረሉ ዘሎ እዋን፡ እቲ ቦታታት ንምንቕቓቕ ክፍትሑ።",
+        "field": "ምርኮ",
+        "heading": "ካሜራ ወይ ጋለሪ"
+      },
+      "note": "እቲ ክልተ ተግባራት ብዕላማ ይፍለዩ እዮም። ምስጋርን ምሕባርን ዝተፈላለዩ ጸገማት ይፈታሕ፣ ኣብ ሓደ መትረብ ድማ ምስጋር ነቲ ስእሊ ብኢክሪን ምስግጋር ጥራይ ዝደሊ ሰብ ይጎትቶ።",
+      "save": {
+        "description": "ምስ ዝተረፈ ናይ ስልኪካ ስእልታት ይትኣሳሰር፡ ንኹሉ መተግበሪ  ተዳልዩ ኣሎ፡ እንተላይ Lymark ምስ ኣውጺእካ።",
+        "field": "ኣድሕን",
+        "heading": "ናብ ናይ መሳርሒ ጋለሪ ይኸይድ"
+      },
+      "share": {
+        "description": "WhatsApp , ኢሜይል, Drive: እቲ መድረኽ ብመስርሕ ኣፕሊኬሽን እዩ ዝምረጽ፡ እቲ መተግበሪ ድማ ኣብ ምምላእ ኣይሳተፍን እዩ።",
+        "field": "ምዝርጋሕ",
+        "heading": "ናይ ስርዓት ኣታዊ ወረቐት ይኽፈት"
+      },
+      "title": "እቲ ሓደ ስእሊ ዝወስድዎ መገዲ"
+    },
+    "skipToContent": "ናብ ትሕዝቶ ስkip",
+    "specimen": {
+      "caption": "እቲ ኣምበር ሕጊ ኣብ ጠርዞታት ኣሃዝ እዩ ዝጅምርን ዝዛዘምን፡ ኣብ ናይ ጽሑፍ ሳጹን ዘይኮነ።",
+      "label": "ናይ Lymark ማህተም ናሙና: ሰዓት 07:42, ዕለት 12 ነሓሰ 2026፣ ረቡዕ፣ ኣድራሻ ኣብ ጓሩጃን ኮድ ስእልን።"
+    },
+    "title": "Lymark  ናይ ሜዳ ስእልታት ናይ ማይ ምልክት ዕለት፣ ሰዓትን ኣድራሻን",
+    "verify": {
+      "caveat": "እቲ ማህተም ነቲ ናይ መዝገብ ቅኑዕነት ከምኡ'ውን ናይ ምውጻእ ግዜ ይምስክር። እቲ ማህተም ዝገልጽዎ  ኣድራሻ፣ ዕለት፣ ሰዓት  ናይ ወሃቢ መግለጺ እዩ።",
+      "checking": "ምርመራ...",
+      "declarationNote": "እቲ ማህተም (ማሕተም፣ ዕለት፣ ሰዓት) ዘርኢ እቲ ወሃቢ መግለጺ እዩ  እቲ ማህተም ንጽህናን ምውጻእን ዘረጋግጽ እምበር ትሕዝቶ ኣይኮነን።",
+      "intro": "Lymark ዝዘርግሖ ስእሊ ኣውጽእ ወይ ሕረዶ እሞ ልክዕ ከምቲ ካብታ መተግበሪ  ዝወጸት፡ መን ዝወጸት፡ መዓስ ከም ዝነበረን ፈነወ ርአ።",
+      "noSealBody": "እዚ ፋይል እዚ Lymark ማህተም የብሉን። እቲ ማህተም ቅድሚ ህላወኡ ካብ ኦፍላይን ዝተወጽእ ክኸውን ይኽእል እዩ፣ ወይ ድማ ካብ Lymark ዝመጽእ ክኸውን ይኽእል እዩ። ናይ ማህተም ዘይምህላዉ ንምንጋር ኣየረጋግጽን እዩ።",
+      "noSealTitle": "ብዘይ ዕንወት",
+      "notConfigured": "ፍተሻ ገና ኣይተኻእለን።",
+      "pick": "ፋይል ምረጽ።",
+      "previewAlt": "እቲ ዝተረጋገጸ ስእሊ፡ መርሕታ ዝረአ",
+      "privacyNote": "እቲ ፋይል ናብ ዝኾነ ኣገልጋሊ ኣይልኣኽን እዩ።",
+      "sealedBody": "እዚ ፋይል እዚ ልክዕ ከምቲ Lymark ዝጸንሐ እዩ ። ብ {account} ኣብ {date} ዝተወሃበ መለያ ።",
+      "sealedTitle": "ዘይተበላሸወ",
+      "tamperedBody": "እቲ ትሕዝቶ ምስ'ቲ ማህተም ኣይሰማማዕን እዩ: እቲ መዝገብ ድሕሪ ምውጻእ ዝተቐየረ ወይ እቲ ማህተም ናይ ካልእ መዝገብ እዩ።",
+      "tamperedTitle": "ዘይምሳሉ",
+      "title": "ናይ ሓቂነት ምርግጋጽ",
+      "unsupported": "እዚ መርመርቲ እዚ ናይ ፊርማ ምርግጋጽ ኣይድግፍን እዩ። ኣብ ናይ ሕጂ መርመርቲ ፈትኖ።"
+    }
+  }
+}

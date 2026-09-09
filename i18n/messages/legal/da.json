@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Privatlivspolitik",
+      "description": "Hvordan Lymark-appen håndterer billeder, placering, historie og din konto."
+    },
+    "title": "Privatlivspolitik",
+    "updated": "Sidst opdateret: 16. august 2026 · Lymark app, version 1.3.0",
+    "intro": "Denne politik beskriver, hvordan Lymark-appen håndterer personoplysninger. Den er i overensstemmelse med Lei nr. 13.709/2018 (Generel lov om beskyttelse af personoplysninger  LGPD) og forordning (EU) 2016/679 (Generel databeskyttelsesforordning  GDPR ), og den gælder for app'en, der distribueres under identifikatoren <strong> com.lycosteam.lymark </strong>og til denne hjemmeside.",
+    "s01": {
+      "title": "I en sætning",
+      "p1": " Lymark  <strong>ikke sender dine billeder eller din placering</strong>. Alt, hvad appen producerer  billeder, adresser, historie og præferencer  forbliver på din egen enhed, under din kontrol. Der er en konto, der er nødvendig for at bruge appen og til abonnementet: serveren gemmer din e-mail, konto-identifikatoren, planen og antallet af eksporterede billeder  og intet andet.",
+      "p2": "Der er en enkelt undtagelse, der er beskrevet i punkt 05: For at omdanne GPS-koordinater til en læsbar adresse, anmoder operativsystemet for en enhed om en ekstern geocoding-tjeneste."
+    },
+    "s02": {
+      "title": "Hvem denne politik gælder for",
+      "p1": "Det gælder for alle, der bruger appen eller besøger denne hjemmeside. For registrerede i Brasilien følger behandlingen LGPD og tilsynet med Den nationale databeskyttelsesmyndighed (ANPD)."
+    },
+    "s03": {
+      "title": "Hvem er kontrolleren?",
+      "p1": "Dataansvarlig for personoplysninger  <em>kontroller</em>, i terminologien for LGPD  er 29.015.357 AMAD ALI HAMMOUD , registreret under CNPJ 29.015.357/0001-25 , med adresse Avenida Ana Costa, 433, Gonzaga, Santos - SP .",
+      "p2": "Den person, der er ansvarlig for behandling af personoplysninger i henhold til artikel 41 i LGPD , er Amad Ali Hammoud , som kan kontaktes på <email> contato@lymark.app </email>. I betragtning af omfanget og arten af behandlingen, som hverken omfatter følsomme data i omfang eller systematisk overvågning, er der ingen forpligtelse til at udpege en<em>Databeskyttelsesansvarlig</em>i henhold til artikel 37 i GDPR ."
+    },
+    "s04": {
+      "title": "Hvilke oplysninger håndterer appen",
+      "p1": "Alle følgende oplysninger optages udelukkende i appens private område inde i enheden, og ingen af dem sendes til udvikleren.",
+      "defs": {
+        "photos": {
+          "term": "Fotografier",
+          "def": "Billedet, du vælger i galleriet eller tager med kameraet, og filen, der eksporteres med vandmærket."
+        },
+        "location": {
+          "term": "Lokation",
+          "def": "Anvendt breddegrænse og længdegrænse, der er opnået én gang pr. optagelse, udelukkende med det formål at udfylde adressen."
+        },
+        "datetime": {
+          "term": "Datum, tid og ugedag",
+          "def": "Læs fra apparatsur på det tidspunkt, hvor det er taget op, og redigeres af dig selv."
+        },
+        "code": {
+          "term": "Foto-koder",
+          "def": "En række af 14 heksadecimale tegn tegnet tilfældigt. Den stammer hverken fra en enhed identifikator eller fra en af dine, og det giver ingen sporing på tværs af apps."
+        },
+        "history": {
+          "term": "Historie",
+          "def": "En optegnelse over de sidste 200 eksport, der indeholder fillederne på enheden og de data, der er stemplet på billedet."
+        },
+        "preferences": {
+          "term": "Fortrinsret",
+          "def": "Visbare felter, position, størrelse og de andre vandmærkeoptioner."
+        }
+      },
+      "p2": "Appen <strong>ikke indsamles</strong>: navn, e-mail, telefon, identitetskriterier, reklamekort, enhedskort, kontaktdata, kalender, browsinghistorie, brugsmåder, crashrapporter eller andre oplysninger om dig eller din enhed. Der er ingen integreret analyse, reklame, tilskønning eller sporing SDK."
+    },
+    "s05": {
+      "title": "Den eneste information, der forlader enheden",
+      "p1": "Når du giver placeringstilladelsen, beder app'en operativsystemet om at omdanne GPS-koordinaterne til en postadresse. Denne oversættelse  omvendt geokodering  udføres af operativsystemet selv, som i dette tilfælde sender koordinaterne til sin korttjeneste: <strong>Google</strong>på Android- enheder og <strong>Æble</strong>på iOS-enheder.",
+      "p2": "Denne kommunikation kommer fra operativsystemet, og ikke fra Lymark. Appen modtager ingen kopi af det, formidler det ikke og har ikke adgang til noget andet end den returnerede adresse.",
+      "p3": "<strong>Ingen fotografier forlader enheden gennem nogen handling af appen.</strong>Hvis du bruger knappen Del, overføres billedet af den destination app, du vælger i systemet dele ark  messenger, e-mail, cloud storage  under app s privatlivspolitik."
+    },
+    "s06": {
+      "title": "Tilladelser anmodes om, og hvorfor",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "For at tage det billede, der vil modtage vandmærket. Anmodes kun, når du trykker på Tag foto. Appen kræver ikke mikrofonadgang."
+        },
+        "photos": {
+          "term": "Bilder og medier",
+          "def": "For at vælge et eksisterende billede og skrive den eksporterede fil til galleriet. Adgang er begrænset til fotografier, og skrivetilladelsen bruges kun til at skrive  appen hverken browser eller læser dit galleri."
+        },
+        "location": {
+          "term": "Lokation under brug",
+          "def": "Udfyld adressefeltet. Anmodet i forgrunden, kun mens appen er i brug, og <strong>aldrig i baggrunden</strong>."
+        }
+      },
+      "p1": "Alle tilladelser er valgfrie og kan tilbagekaldes til enhver tid i enhedens indstillinger. Ved at afvise placering holder appen fuldt funktionel: adressen bliver derefter indtykket af dig. Ved at afvise adgang til galleriet forhindrer kun automatisk opsparing, og fotografiet kan stadig deles."
+    },
+    "s07": {
+      "title": "Retlige grunde og formål",
+      "p1": "Bearbejdningen af placeringen sker på grundlag af din <strong>samtykke</strong> Artikel 7, I i LGPD og artikel 6(1) (a) i GDPR  udtrykt, når du giver systemet tilladelse, og kan tilbagekaldes til enhver tid, uden at det berører lovligheden af den behandling, der er foretaget før tilbagekaldelsen.",
+      "p2": "De resterende data behandles for <strong>udførelse af det funktion, du anmodede om</strong> Artikel 7, V i LGPD og artikel 6(1) (b) i GDPR , da der uden det ikke er noget vandmærke, som appen kan producere.",
+      "p3": "Behandling af kontooplysninger er baseret på opfyldelse af en kontrakt (LGPD art. 7, V; GDPR art. 6(1)(b)). Behandling på grundlag af berettiget interesse (LGPD art. 7, IX; GDPR art. 6(1)(f)) er kun til sikkerhed og forebyggelse af svindel  f.eks. registrering af IP-adressen til anmodninger til serveren. Der er ingen behandling til reklame, profilering, adfærdsanalyse eller andet formål, og ingen behandling af særlige kategorier af data eller følsomme data af udvikleren."
+    },
+    "s08": {
+      "title": "Internationalt overførsel",
+      "p1": "Kontooplysninger behandles af den godkendelsesbehandler (Clerk, Inc., USA), som udgør en international dataoverførsel, baseret på standardkontraktklausuler og mekanismerne i LGPD art. 33 og GDPR art. 44 til 49.",
+      "p2": "Denne hjemmeside er vært for Vercel Inc. , jf. punkt 14."
+    },
+    "s09": {
+      "title": "Deling med tredjeparter",
+      "p1": "Udvikleren deler ikke, sælger, udlejer eller overdrager personoplysninger til tredjepart.<em>processor</em>Clerk, Inc. , som leverer autentiseringstjenesten og gemmer e-mailen, kontoidentifikatoren og plandata, bundet af kontrakt til udviklerens instruktioner. Hvis du logger ind med Google eller Apple, behandler disse leverandører loggindataene i henhold til deres egne politikker; udvikleren modtager kun e-mailen og identifikatoren, der er nødvendige for at oprette kontoen. Billeder, adresser og placering går ikke gennem nogen processor overhovedet, fordi de aldrig forlader enheden."
+    },
+    "s10": {
+      "title": "Lagring, opbevaring og sikkerhed",
+      "p1": "Dataene ligger i appens private område, beskyttet af operativsystemets isolation mellem apps og af enhedens skærmlås.<strong>handicap</strong>, så historie og præferencer ikke sendes til brugerens Google-konto.",
+      "p2": "Opbevaring er helt kontrolleret af dig: optegnelser forbliver, indtil de slettes i selve appen, og historien kaster automatisk de ældste, når den passerer to hundrede elementer, og fjerner også de tilsvarende filer. Hvis du afinstallerer appen, sletter det alt, hvad det lagres. Billeder, der allerede er gemt i enhedsgalleriet, tilhører galleriet og forbliver der.",
+      "p3": "Det er ikke muligt at få adgang til et system, der er ufejlbart. Kontooplysninger  e-mail, identifikator, plan og tælle  opbevares af godkendelsesbehandleren, i henhold til dens sikkerhedsforanstaltninger. Billeder, adresser og placering findes ikke i et centralt arkiv, og kan derfor ikke lække fra udviklerens infrastruktur. Hvis en sikkerheds hændelse påvirker kontooplysninger, vil udvikleren underrette myndighederne og de registrerede i henhold til LGPD art. 48 og GDPR art. 33."
+    },
+    "s11": {
+      "title": "Når du fotograferer andre mennesker",
+      "p1": "Når du fotograferer identificerbare mennesker i løbet af din professionelle aktivitet,<strong>- Det er dig.</strong>Udvikleren deltager ikke i denne behandling og har ikke adgang til billederne."
+    },
+    "s12": {
+      "title": "Dine rettigheder",
+      "p1": "Artikel 18 i LGPD og artikel 15-22 i GDPR garanterer dig rettigheder til bekræftelse og adgang, korrektion, sletning, anonymisering, blokering, overførsel, begrænsning af behandling, indsigelse, tilbagekaldelse af samtykke og oplysninger om deling.",
+      "p2": "Bilder, adresser, historie og præferencer er kun på din enhed, og disse rettigheder udøves direkte i appen: se og slette poster i galleriet, rette ethvert felt før eksport, tilbagekald placeringstilladelsen i systemindstillingerne og slette alt ved at afinstallere appen  udvikleren kan ikke få adgang til, eksportere eller slette disse data for dig, fordi den ikke har dem. Hvad angår kontooplysninger  e-mail, plan og tælle  kan du se dem på konto siden og anmode om korrigering, eksport eller slidning på denne politik s kontakt e-mail; sletter kontoen sletter disse data på autentifikationsbehandleren.",
+      "p3": "For spørgsmål eller formelle anmodninger skriv til <email> contato@lymark.app </email>Du har også ret til at indgive en klage til<strong> ANPD </strong>, i Brasilien eller hos den tilsynsmyndighed i din medlemsstat i Den Europæiske Union."
+    },
+    "s13": {
+      "title": "Automatiserede beslutninger",
+      "p1": "Der er ingen automatiserede afgørelser, profilering eller behandling, der har retlige virkninger for dig, jf. artikel 20 i LGPD og artikel 22 i GDPR."
+    },
+    "s14": {
+      "title": "Om denne hjemmeside",
+      "p1": "Denne hjemmeside har ingen analyser, viser ingen reklame og indlejrer ingen knapper på sociale netværk.<strong>cookies, der er strengt nødvendige</strong>For din konto-session, der er indstillet af den godkendelsesprocessor (punkt 09) ved indloggning; ingen sporing eller reklamekøbiser. Fonts serveres fra hjemmesidens eget domæne. De eneste anmodninger, din browser sender til tredjeparter, er dem fra indloggnings- og konto-skærmene, der er rettet til godkendelsesprocessoren og, hvis du vælger den, til indloggningsudbyderen (Google eller Apple).",
+      "p2": "Webstedet er hostet af <strong> Vercel Inc. </strong>, som som databehandler registrerer tekniske adgangsdata  IP-adresse, dato, tid og den anmodede ressource  så længe det er nødvendigt for sikkerheden og driften af hosting. Retligt grundlag er den berettigede interesse i at opretholde sikkerheden af tjenesten, artikel 7, IX i LGPD og artikel 6(1)(f) i GDPR."
+    },
+    "s15": {
+      "title": "Ændringer i denne politik",
+      "p1": "Ændringer, der ændrer databehandlingen væsentligt, vil også blive meddelt inden for appen, før de træder i kraft."
+    },
+    "s16": {
+      "title": "Børn og unge",
+      "p1": "Lymark er et arbejdsværktøj, der er beregnet til personer i alderen 18 år og derover."
+    },
+    "s17": {
+      "title": "Gældende lovgivning",
+      "p1": "Denne politik er underlagt brasiliansk ret, uden at det berører anvendelsen af GDPR på de registrerede, der er omfattet af denne politik."
+    },
+    "note": "Se også <terms>Anvendelsesbetingelser</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Anvendelsesbetingelser",
+      "description": "Anvendelsesbetingelser for Lymark-appen: hvad den gør, hvad den ikke gør, og hvem der er ansvarlig for indholdet af billederne."
+    },
+    "title": "Anvendelsesbetingelser",
+    "updated": "Sidst opdateret: 16. august 2026 · Lymark app, version 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Hvad app gør",
+      "p1": "Lymark overlapper et sæt oplysninger på et fotografi  tid, dato, ugedag, adresse og en identifikationskode  og genererer en ny billedfil med disse oplysninger indbygget i pixlerne."
+    },
+    "s02": {
+      "title": "Hvad appen ikke gør",
+      "p1": "Det er det vigtigste punkt i disse termer, og vi beder om, at man læser det med omhu.",
+      "items": {
+        "certify": "<strong>Appen certificerer eller bekræfter intet.</strong>Det er ikke en retsmedicinsk undersøgelse, det udsteder ikke et dokument med offentlig tro og det udgør ikke ekspertbevis.",
+        "editable": "<strong>Alle felter kan redigeres af brugeren.</strong>Tid, dato, adresse og kode kan ændres frit før eksport, ved design: professionellen skal kunne rette en adresse, som GPS-en har taget fejl af.",
+        "clock": "<strong>Tiden kommer fra apparatsurret.</strong>, som kan være forkerte eller være blevet sat manuelt.",
+        "address": "<strong>Adressen er et skøn.</strong>Dens nøjagtighed afhænger af GPS-signalet og datadatabasen i operativsystemets korttjeneste.",
+        "code": "<strong>Fotokoden er ikke en registrering på et notar.</strong>Det er en tilfældig identifikator til intern reference, uden nogen bevisværdi."
+      },
+      "p2": "Hvis dit brugstilfælde kræver beviser med retlig kraft mod tredjeparter, skal du søge en notarial handling eller en digital certificeringstjeneste med et tidsstempel  Lymark er en erstatning for begge."
+    },
+    "s03": {
+      "title": "Dine ansvarsområder",
+      "items": {
+        "photos": "Du er alene ansvarlig for de fotografier, du tager, for det indhold, du stempler på dem, og for den brug, du gør af de genererede filer.",
+        "thirdParties": "Når du fotograferer andre personer, deres ejendom eller deres lokaler, er det op til dig at få de nødvendige tilladelser og overholde billedrettigheder, professionel hemmelighed og den generelle lov om beskyttelse af personoplysninger i forhold til de registrerede.",
+        "prohibited": "Det er forbudt at bruge appen til at fremstille en falsk registrering, til at vildlede nogen, til at simulere udførelsen af en tjeneste, der ikke blev leveret, eller til at udføre nogen ulovlig handling.",
+        "backups": "Det er op til dig at lave sikkerhedskopier af alt hvad du mener er vigtigt."
+      }
+    },
+    "s04": {
+      "title": "Brugerlicens",
+      "p1": "Vi giver dig en personlig, tilbagekaldbar, ikke-eksklusiv og ikke-overførbar licens til at installere og bruge appen, herunder til faglige formål.",
+      "p2": "<strong>Dine billeder er dine.</strong>Vi påstår ikke nogen ret til de billeder, du optager eller genererer."
+    },
+    "s05": {
+      "title": "Tilgængelighed og ajourføring",
+      "p1": "Appen leveres som den er, og der er ingen garanti for en kontinuerlig drift, for kompatibilitet med alle enheder, eller for et tidsbegrænset fastsættelse af en løsning eller nye versioner.",
+      "p2": "Kvaliteten af det eksporterede billede afhænger af udstyret og operativsystemet og kan være af lavere opløsning end det oprindelige billede."
+    },
+    "s06": {
+      "title": "Begrænsning af ansvar",
+      "p1": "I det omfang, det er tilladt i brasiliansk lovgivning, er udvikleren ikke ansvarlig for indirekte tab, tabt fortjeneste, tab af data eller skader, der skyldes afgørelser truffet på grundlag af de stemplede oplysninger  herunder fra enhver sag eller uden for den, at der er tale om en retsafgørelse af indholdet af et fotografi, der er genereret af appen.",
+      "p2": "Denne begrænsning <strong>ikke fjerner</strong>De rettigheder, som forbrugeren garanteres ved lov nr. 8.078/1990, og ikke ansvar for forsætlig misligholdelse eller grov uagtsomhed."
+    },
+    "s07": {
+      "title": "Afbrydelse",
+      "p1": "Du kan stoppe med at bruge appen når som helst: ved at slette kontoen sletter den data på serveren, og ved at afinstallere appen sletter de data, der opbevares på enheden."
+    },
+    "s08": {
+      "title": "Ændringer af disse vilkår",
+      "p1": "Ændringer vil blive offentliggjort på denne side med en ny opdatering."
+    },
+    "s09": {
+      "title": "Gældende lovgivning og forum",
+      "p1": "Det forum, der er valgt til at løse tvister, der opstår i forbindelse med disse vilkår, er det forum, hvor brugeren er bosat."
+    },
+    "note": "Om databehandling, se <privacy>Privatlivspolitik</privacy>Spørgsmål:<email> contato@lymark.app </email>."
+  }
+}

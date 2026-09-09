@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplikacioni",
+      "pitch": "Vendi, data, dita e punës, adresa dhe kodi i gjurmimit në fotot tuaja  për regjistrime në fushë, inspektime në vend dhe provë të shërbimit.",
+      "platform": "Plotforma",
+      "privacy": "Politika e privatësisë",
+      "privacyGeocoding": "Kur përdoret GPS, sistemi operativ dërgon koordinatën në shërbimin e Googles ose Apples për të marrë adresën. Kjo është e vetmja informacion që mbetet këtu, dhe është sistemi që e dërgon atë, jo Lymark .",
+      "privacyLocation": "Vendndodhja përdoret një herë për çdo fotografi, vetëm për të mbushur fushën e adresës dhe nuk ruhet veçmas nga fotot.",
+      "privacyOnDevice": "Fotot, adresat dhe historia qëndrojnë vetëm në këtë pajisje. llogaria ekziston për abonimin tuaj: serveri mban postën tuaj elektronike dhe planin tuaj, dhe kurrë nuk merr fotot tuaja ose vendndodhjen tuaj.",
+      "privacySection": "Privatësia",
+      "sdk": " Expo SDK ",
+      "terms": "Kushtet e përdorimit",
+      "title": "Për Lymark ",
+      "version": "Versioni"
+    },
+    "account": {
+      "browserHint": "Lloginimi ndodh në shfletues. Lloginoni atje me llogarinë tuaj dhe aplikacioni lidhet vetë.",
+      "code": "Kod",
+      "codeSent": "Ne dërguam një kod në {email} ",
+      "connected": "I lidhur",
+      "continue": "Vazhdo",
+      "deleteAccount": "Fshihet llogaria",
+      "email": "Email",
+      "failed": "Kontrolloni emailin ose kodin dhe provoni përsëri.",
+      "notConfigured": "Lidhja nuk është e disponueshme në këtë ndërtim ende.",
+      "signInBrowser": "Të hyjnë përmes shfletuesit",
+      "signOut": "Shkarkohu.",
+      "signedInAs": "I nënshkruar si {email} ",
+      "title": "Konta",
+      "verify": "Verifikoni"
+    },
+    "batch": {
+      "addressHint": "Rruga, numër  Qyteti",
+      "clearList": "Lista e qartë",
+      "codeHint": "Për shembull, LYM-001",
+      "done": "{count, plural,  one {Përpunimi i përfunduar: Fotografia # e përfunduar.} other {Përpunimi i përfunduar: Fotot # të përfunduar.}}",
+      "doneSection": "Përfunduar",
+      "dropZone": "Ngjitni dhe hiqni fotot këtu, ose përdorni butonin Select photos",
+      "errorsSection": "Gabimet",
+      "folder": "Dosje: {name} ",
+      "noPhotos": "Zgjidhni të paktën një foto.",
+      "outputNote": "Fotot e përpunuara ruhen në dosjes të zgjedhur.",
+      "outputSection": "Prodhim",
+      "photosSection": "Fotot për të përpunuar",
+      "processing": "Përpunimi...",
+      "progress": "{current} i {total} ({percent} %)",
+      "results": "{success, plural,  one {Suksesi i #} other {Suksese të #}}, {failed, plural,  one {Dështimi i #} other {Shpërthimet e #}}",
+      "selectFolder": "Zgjidhni dosjen e daljes",
+      "selectPhotos": "Zgjidhni fotot",
+      "selected": "{count, plural,  one {Foto # e zgjedhur} other {Foto # të zgjedhur}}",
+      "sharedNote": "Këto vlera aplikohen për TEQ foto.",
+      "sharedSection": "Metadata të përbashkëta",
+      "start": "Fillo procesin",
+      "unavailableBody": "Ky veçori është vetëm desktop.",
+      "unavailableTitle": "Përpunimi i partive nuk është i disponueshëm"
+    },
+    "capture": {
+      "accuracy": "Pozicioni brenda ± {meters} m.",
+      "accuracyImprecise": "Pozicioni brenda ± {meters} m  kontrolloni numrin e rrugës para eksportit.",
+      "address": "Adresa",
+      "addressFailedTitle": "Asnjë adresë nuk gjendet",
+      "addressHint": "Shtypni vendndodhjen ose shkruani adresën",
+      "camera": "Bëj foto",
+      "code": "Kod",
+      "dateHint": "1 janar 2026",
+      "dateTimeGroup": "Data dhe ora",
+      "emptyWarning": "Nuk do të shënohen të dhëna  foto do të dalë pa një shenjë uji.",
+      "gallery": "Zgjidhni nga galeria",
+      "galleryDenied": "Fotografia është refuzuar, kështu që imazhi ekziston vetëm brenda aplikacionit.",
+      "galleryFailed": "Imazhi u regjistrua në histori, por pajisja refuzoi ta shkruante në galeri.",
+      "generateCode": "Të gjenerojë",
+      "hiddenFields": "{count, plural,  one {Fusha e fshehur} other {Fusha të fshehura}}: {fields}  hapni ato në Vendosjet › Fusha dhe pozicioni.",
+      "keepMyAddress": "Mbaje të miat.",
+      "locate": "Vendndodhje",
+      "locateByGps": "Vendndodhje me GPS",
+      "lookup": {
+        "denied": "Lejoni vendndodhjen në Vendndodhje › Lejminë, ose shkruani adresën.",
+        "disabled": "Vendndodhja është e fikur në pajisje.",
+        "timeout": "GPS nuk u përgjigj në kohë. Shpesh dështon brenda  shkruani adresën.",
+        "unavailable": "A është e mundur të zgjidhen në këtë vend."
+      },
+      "newCapture": "Filloni një kapje të re.",
+      "noFieldsBack": "Kthehu.",
+      "noFieldsContinue": "Vazhdo gjithsesi.",
+      "noFieldsMessage": "Asnjë fushë nuk ka asgjë për të stampuar. plotësoni fusha, ose rishikojeni Vendimet › Fusha dhe pozicionin.",
+      "noFieldsTitle": "Fotografia do të dalë pa një shenjë uji",
+      "noPhotoHint": "Bëni një foto ose zgjidhni një nga galeria për të filluar.",
+      "noPhotoSelected": "Nuk ka fotografi të zgjedhur",
+      "openFailed": "Fotografia nuk mund të hapet. Provoni përsëri.",
+      "permissionMessage": "Lejoni qasje në Vendësimet › Permesimet për të vazhduar.",
+      "permissionTitle": "Permesimi i nevojshëm",
+      "pickPhoto": "Zgjidhni një foto",
+      "pickPhotoHint": "Zgjidhni një foto për të mundësuar veprimet.",
+      "previewLabel": "Prononësimi i fotografisë me shënime me ujë",
+      "renderFailedTitle": "Nuk mund të gjenerojë imazhin",
+      "replaceAddressMessage": "GPS gjetur: {address} ",
+      "replaceAddressTitle": "Përmbajtni adresën që keni shkruar?",
+      "resetConfirm": "Shkarko",
+      "resetMessage": "Fotografia e zgjedhur dhe fushat e mbushura do të hedhen poshtë.",
+      "resetTitle": "Të fillojmë një kapje të re?",
+      "saved": "Foto e ruajtur në galerinë e pajisjeve dhe në historinë.",
+      "savedAppOnlyTitle": "Shpejtë vetëm brenda Lymark ",
+      "shareDialogTitle": "Ndarja e fotografive me shënime me ujë",
+      "shareFailedMessage": "Shkrimi është gjeneruar dhe është në historinë Lymark. Mund ta ndani nga shkronja Galeria.",
+      "shareFailedTitle": "Nuk mund të ndahet",
+      "shareUnavailableMessage": "Ky pajisje nuk ka fletë të përbashkët.",
+      "shareUnavailableTitle": "Ndarja e pa disponueshme",
+      "sharedFileTitle": "Foto me shënime me ujë",
+      "stampNotReady": "Fjali është ende duke u përgatitur.",
+      "syncNow": "Tani",
+      "timestamp": "Data/Koha",
+      "title": "Kapturimi",
+      "useGpsAddress": "Përdorni GPS-in.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Ditë"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "zgjidhni një ngjyrë tjetër",
+      "saturationBrightness": "Shpërthimi dhe shkëlqimi",
+      "use": "Përdorni këtë ngjyrë"
+    },
+    "common": {
+      "back": "Kthehu",
+      "cancel": "Kanclojnë",
+      "delete": "Fshihet",
+      "error": "gabim",
+      "gotIt": "E kuptova.",
+      "loading": "Ngarkesa...",
+      "no": "Jo, jo.",
+      "ok": "Mirë.",
+      "save": "Shpëto",
+      "share": "Ndarja",
+      "success": "Suksesi",
+      "tryAgain": "Provoni përsëri.",
+      "unknownError": "gabim i panjohur",
+      "yes": "Po, po."
+    },
+    "gallery": {
+      "cancelSelection": "Zgjedhja e anullimit",
+      "clear": "Historia e qartë",
+      "clearConfirm": "E qartë",
+      "clearMessage": "Fotot tashmë të ruajtura në galerinë e pajisjes nuk janë të prekura.",
+      "count": "{count, plural,  one {Foto # eksportuar} other {Fotot e # eksportuar}}",
+      "delete": "Fshihet",
+      "empty": "Asnjë foto ende.",
+      "emptyAction": "Shko për kapjen",
+      "emptyDescription": "Fotot që eksportoheni me një shenjë uji shfaqen këtu, me datë, vend dhe kod.",
+      "filteredCount": "{shown} e {total, plural,  one {Foto #} other {Fotot #}}",
+      "noResults": "Nuk gjenden fotografi për  {query} .",
+      "photoLabel": "Foto nga {when} ",
+      "removeMessage": "Shkrimet lënë Lymark. Imagjet tashmë të ruajtura në galerinë e pajisjes nuk janë të prekura.",
+      "removeTitle": "{count, plural,  one {Shkarkohet nga historia} other {Hiqni shënimet #}}",
+      "removed": "{count, plural,  one {Hyrja e hyrjes.} other {Të gjitha shënimet janë hequr.}}",
+      "saveDeniedMessage": "Lejoni në Sistemi › Permitime për të ruajtur imazhet në galerinë e pajisjes.",
+      "saveDeniedTitle": "Përfitimi i fotografisë është refuzuar",
+      "savedAll": "{count, plural,  one {Një foto e ruajtur në galerinë e pajisjeve.} other {Fotot # të ruajtur në galerinë e pajisjeve.}}",
+      "savedSome": "{saved} nga fotot {total} të ruajtura.",
+      "searchPlaceholder": "Kërkimi sipas adresës, datës ose kodit",
+      "selectedCount": "{count, plural,  one {Foto # e zgjedhur} other {Foto # të zgjedhur}}",
+      "share": "Ndarja",
+      "title": "Galeri"
+    },
+    "language": {
+      "automatic": "Pajisje e përputhjes",
+      "automaticNote": "Lymark ndjek gjuhën e vendosur në pajisjen tuaj.",
+      "label": "Gjuha",
+      "selector": "Zgjidhni gjuhën"
+    },
+    "login": {
+      "access": "Të regjistroheni për të hyrë",
+      "apple": "Të regjistroheni me Apple",
+      "google": "Të regjistroheni me Google",
+      "subtitle": "Të regjistroheni për të vazhduar",
+      "title": "Të regjistroheni për të hyrë në Lymark "
+    },
+    "nav": {
+      "batch": "Përpunimi i partive",
+      "photoDetail": "Detaje fotoreportazhi",
+      "report": "Raporti PDF",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Ky ekran nuk është pjesë e Lymark .",
+      "screenTitle": "Faqja nuk gjendet",
+      "title": "Nuk ka rrugë të tillë."
+    },
+    "permissions": {
+      "allow": "Le të lejohet",
+      "allowed": "Lejuar",
+      "blocked": {
+        "later": "Jo tani.",
+        "message": "Sistemi nuk do të pyesë përsëri.",
+        "openSettings": "Settinget e hapura",
+        "title": "Permesimi i bllokuar"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Duhet të marrësh fotografinë që do të marrë markën e ujit.",
+      "denied": "Mohuar",
+      "granted": "Të miratuar",
+      "intro": "Lymark kërkon vetëm atë që duhet për të stampuar një foto. Imagjet tuaja kurrë nuk largohen nga pajisja: kur përdorni GPS, sistemi operativ dërgon shërbimin e hartës vetëm koordinatin, kështu që mund të bëhet një adresë.",
+      "location": "Vendndodhje",
+      "locationRationale": "Fillon në fushën e adresës automatikisht kur kapni.",
+      "mediaLibrary": "Shpejtje në galeri",
+      "mediaLibraryRationale": "Për të shkruar fotot e eksportuara në galerinë e pajisjeve.",
+      "openDeviceSettings": "Sistemi",
+      "recheck": "Kontrolloni përsëri",
+      "request": "Kërko leje",
+      "section": "Përfitimi",
+      "title": "Permitime"
+    },
+    "photo": {
+      "backToGallery": "Kthehu në galeri",
+      "exportedAt": "Eksportuar në {when} ",
+      "noWatermark": "Kjo foto u eksportua pa një shenjë uji.",
+      "notFoundBody": "Ky rekord mund të jetë hequr nga historia.",
+      "notFoundTitle": "Fotografia nuk gjendet",
+      "remove": "Të hiqni",
+      "removeBody": "Rekordi lë Lymark.",
+      "removeTitle": "Shkarkohet nga historia",
+      "share": "Ndarja",
+      "stampedData": "Të dhënat e stampiuara"
+    },
+    "plan": {
+      "exhausted": "Fotot falas të përdorura",
+      "exhaustedMessage": "12 fotografi të planit falas janë zhdukur.",
+      "free": "Pa pagesë",
+      "pro": "Përdorës",
+      "reconnect": "Përmbajtuni përsëri për të konfirmuar pajtimin tuaj",
+      "remaining": "{remaining, plural,  one {# foto falas majtë} other {# foto falas i lënë}}",
+      "title": "Plani",
+      "unlimited": "Pa kufij"
+    },
+    "report": {
+      "allPhotos": "Të gjitha fotot",
+      "authorField": "Autor / kompani",
+      "detailsSection": "Detaje",
+      "doc": {
+        "author": "Autor",
+        "declaration": "Të dhënat e poshtemëruar (adresa, data, koha dhe kodi) janë deklarata nga emitenci i fotografisë.",
+        "exportedAt": "Eksportuar në",
+        "generatedAt": "Prodhuar në",
+        "page": "Faqja",
+        "photo": "Foto {index} ",
+        "photosSection": "Rekorde fotografike",
+        "signature": "Firma e personit përgjegjës",
+        "summary": "Përshkrim",
+        "title": "Raporti i fotografisë",
+        "totalPhotos": "Fotot totale:"
+      },
+      "empty": "Raporti është ndërtuar nga galeria juaj.",
+      "failed": "Nuk mund të gjenerojë raportin.",
+      "fileStem": "Raporti",
+      "format": {
+        "csv": "Tabullore (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Paketa (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Të gjeneroni skedar",
+      "generateSection": "Të gjenerojë",
+      "includeLogo": "Logo në mbulesë",
+      "includeLogoDescription": "Logoja e markës tënde, e njëjta nga timpi.",
+      "norm": {
+        "abnt": "ABNT (Brazili)",
+        "din5008": "DIN 5008 (Gjermani)",
+        "ibape": "Stili IBAPE (Brazili)",
+        "iso": "Ndërkombëtar",
+        "letter": "Letra (SHBA)"
+      },
+      "normNote": "Standardi vendos letër dhe formaturën  margjina, font dhe numërimin e faqeve. Përmbajtja e raporti është e njëjtë në të gjitha ato; stili IBAPE shton një blok nënshkrimi.",
+      "normSection": "Standardi i dokumentit",
+      "projectsSection": "Projekti / punë",
+      "saved": "Shpejtësi në {path} ",
+      "savedShort": "Raporti i ruajtur.",
+      "title": "Raporti PDF",
+      "titleField": "Titulli i raportit",
+      "unavailableBody": "Raportet PDF janë të disponueshme në aplikacionin e desktop-it.",
+      "unavailableTitle": "Vetëm desktop",
+      "uncoded": "Pa kod",
+      "wordTooBig": "Dokumenti Word u bë shumë i madh me fotot e mbështjellura.",
+      "zipMissing": "{count, plural,  one {Paketa është ruajtur, por foto # nuk u gjet në këtë pajisje.} other {Paketa është ruajtur, por nuk janë gjetur foto # në këtë pajisje.}}"
+    },
+    "settings": {
+      "about": "Për",
+      "aboutDescription": "Versioni, privatësia dhe kreditet",
+      "appSection": "Aplikacioni",
+      "deviceSection": "Pajisje",
+      "deviceSectionDescription": "Përfitimi që Lymark kërkon.",
+      "fields": "Fusha dhe pozicioni",
+      "fieldsDescription": "Zgjidhni cilat fusha shfaqen, qoshe dhe madhësi",
+      "history": "Historia",
+      "historyDescription": "Fotot e eksportuara të mbajtur në pajisje",
+      "language": "Gjuha",
+      "permissions": "Permitime",
+      "permissionsDescription": "Kamera, fotografi dhe vendndodhje",
+      "save": "Shpëto",
+      "title": "Sistemi",
+      "watermark": "Markë e ujit",
+      "watermarkSection": "Markë e ujit",
+      "watermarkSectionDescription": "Çfarë është shënuar në foto dhe ku."
+    },
+    "signup": {
+      "subtitle": "Për të filluar regjistrohu",
+      "title": "Krijoni llogarinë tuaj Lymark"
+    },
+    "tagline": "Markë uji me kohë, datë dhe vend",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Nuk ka qasje në kamera.",
+      "done": "Video e shënuar dhe e ruajtur.",
+      "export": "Video të stampuar për eksport",
+      "exportSection": "Eksport",
+      "failed": "Videoja nuk mund të shtypet.",
+      "fieldsSection": "Fusha të shenjës",
+      "fileSection": "Video",
+      "none": "Asnjë video nuk është zgjedhur.",
+      "processing": "Përpunimi... {percent} %",
+      "processingMobile": "Përpunimi...",
+      "record": "Shkruaje videon tani",
+      "saved": "Shpejtësi në {path} ",
+      "savedToGallery": "Video e shënuar e ruajtur në galeri.",
+      "select": "Zgjidhni videon",
+      "unavailableBody": "Stampingu i videove në celular ka nevojë për Lymark të instaluar nga një ndërtim EAS (me modullin vendas). Nuk është i disponueshëm në Expo Go . Instalojeni aplikacionin zyrtar nga dyqani ose një ndërtim EAS, ose përdorni versionin desktop / web.",
+      "unavailableTitle": "Kërkohet aplikacioni i instaluar",
+      "unreadable": "Dosja nuk mund të lexohet si video.",
+      "webNote": "Në shfletuesin, video-ja trajtohet në kohë reale  një video 2-minutore merr 2 minuta  dhe vjen në formatin WebM. Për video të gjata, përdorni aplikacionin e desktop."
+    },
+    "watermark": {
+      "accentColor": "Barre vertikale",
+      "backdropBandNote": "Bandet e tyre kalojnë nga krah në krah nëpër foto dhe mbështeten kundër margjineve ku është ankëruar timpi.",
+      "backdropBlockNote": "Në pjesën e pasme të tekstit, rreth tij është mbushur.",
+      "backdropColor": "Ngjyra e bandës",
+      "backdropDescription": "Përmbajt kontrastin mbi zonat e drita të fotografisë. Pa të, teksti qëndron direkt mbi imazhin, me një hije.",
+      "backdropInnerRadius": "Kulla e brendshme",
+      "backdropOpacity": "Transparenca",
+      "backdropOpacityValue": "{percent} % pakërcim",
+      "backdropRadius": "Kuqe të rrumbullakta",
+      "backdropRadiusSquare": "Kuadrate",
+      "backdropStyles": {
+        "band": "Bandë e gjerë",
+        "block": "Pas tekstit",
+        "none": "Asnjë"
+      },
+      "backdropTitle": "Banda mbështetëse",
+      "brandDescription": "Mbi orën bëhet një nënshkrim, me logo dhe slogan.",
+      "brandFirstColor": "Ngjyra e pjesës së parë",
+      "brandFirstHint": "Ndërtuesit",
+      "brandFirstPart": "Pjesa e parë",
+      "brandNote": "Lëvioni pjesën e dytë bosh për një shenjë të vetëm ngjyre.",
+      "brandPlacements": {
+        "corner": "Në një cep",
+        "header": "Mbi orën",
+        "none": "Asnjë"
+      },
+      "brandSecondColor": "Ngjyra e pjesës së dytë",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Pjesa e dytë",
+      "brandTitle": "Markë e shënuar",
+      "codeDescription": "Në anën tjetër nuk konkurron për vend me vetë foton.",
+      "codePlacements": {
+        "block": "Përkrah të dhënave",
+        "side": "Drejta"
+      },
+      "codeTitle": "Kod foto",
+      "colors": {
+        "amber": "Amber",
+        "black": "Qart",
+        "blue": "Blu",
+        "green": "Gjelbër",
+        "red": "Kuqe",
+        "white": "Blatë"
+      },
+      "colorsDescription": "Ngjyra në foto është zgjedhja e kompanisë, jo aplikacioni   ndryshimi i saj këtu nuk ndryshon ngjyra e ekranit.",
+      "colorsTitle": "Ngjyra e shenjës",
+      "complement": "Titulli",
+      "complementColor": "Ngjyra e etiketës",
+      "complementHint": "Inspektimi dhe raportimi teknik",
+      "cornerConflict": "Marku dhe të dhënat janë në të njëjtën cep  ata do të mblidhen në foto.",
+      "fields": {
+        "address": "Adresa / Vendndodhje",
+        "code": "Kod foto",
+        "date": "Data",
+        "time": "Koha",
+        "weekday": "Ditë e javës"
+      },
+      "fieldsDescription": "Vetëm fushat që janë dhe kanë përmbajtje arrijnë në foto.",
+      "fieldsTitle": "Fusha të shfaqur",
+      "includeCountry": "Përfshini vendin",
+      "includeCountryDescription": "Shpesh ta bësh nëse punosh përtej kufijve, përndryshe do të ketë hapësirë vetëm në foto.",
+      "legibilityTitle": "Lejshmëri",
+      "logoAdded": "Logo shtuar në titullin e markës.",
+      "logoAlignNote": "Lartësia e logo-s ndjek tekstin: pjesa e sipërme e tij është në përputhje me pjesën e sipërme të emrit dhe pjesa e poshtme me linja bazë të slog-it.",
+      "logoChosen": "Logo e zgjedhur",
+      "logoErrorMessage": "Provoni një imazh tjetër. Një PNG me një sfond transparent është formacioni që funksionon më mirë.",
+      "logoErrorTitle": "Ky dosje nuk mund të përdoret",
+      "logoFormatNote": "Përdorni një PNG me një sfond transparent. Një JPG me një sfond të bardhë bëhet një tetirëndësh i bardhë në foto  formacioni nuk ruh transparencë, dhe aplikacioni nuk ka asnjë mënyrë për të gjoja se çfarë është sfond.",
+      "logoPermissionMessage": "Lejoni në Vendosjet › Leje të zgjidhni skedarën e logo-së.",
+      "logoPermissionTitle": "Përfitimi i fotografisë është refuzuar",
+      "logoPick": "Zgjidhni logo",
+      "logoPosition": "Pozicioni i logo-së",
+      "logoPositionBlock": "Me timpin",
+      "logoRemove": "Të hiqni",
+      "logoReplace": "Për zëvendësimin e logo-së",
+      "logoSize": "Madhësia e logo-së",
+      "positionDescription": "Kuqja e fotografisë blloku është i lidhur me.",
+      "positionTitle": "Pozicioni",
+      "positions": {
+        "bottom-left": "Më poshtë në të majtë",
+        "bottom-right": "Më poshtë në të djathtë",
+        "top-left": "Më lart në të majtë",
+        "top-right": "Në të djathtë"
+      },
+      "previewCurrent": "Për më tepër, foto aktuale nga shkronja \"Kapturim\".",
+      "previewEmpty": "Nga drita në errësirë, për të kontrolluar leximin në të dyja ekstreme.",
+      "previewNoFields": "Asnjë fushë e zgjedhur  foto vjen pa një shenjë uji.",
+      "previewTitle": "Përshkrimi i parë",
+      "reset": "Rritja e parametrave",
+      "sizeTitle": "Madhësia e tekstit",
+      "sizes": {
+        "large": "Madhësi",
+        "medium": "Mesatare",
+        "small": "Të vogla"
+      },
+      "textColor": "Tekst",
+      "timeFormatDescription": "Si e mbushni kohën në fusha.",
+      "timeFormatTitle": "Format i kohës",
+      "timeFormats": {
+        "12h": "12 orë (Bara/Premë)",
+        "24h": "24 orë"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Të gjitha dosjet",
+      "images": "Fotografi",
+      "pickFolder": "Zgjidhni dosjen e daljes",
+      "pickPhoto": "Vlen foto",
+      "pickPhotos": "Zgjidhni fotot për parti",
+      "savePhoto": "Shpejtje foto",
+      "saveReport": "Raporti i ruajtur"
+    },
+    "login": {
+      "cancel": "Kanclojnë",
+      "confirm": "Vazhdo",
+      "message": "Ju sapo keni regjistruar përmes shfletuesit.",
+      "title": "Të regjistroheni në Lymark "
+    },
+    "menu": {
+      "copy": "Kopje",
+      "cut": "Të shkurtuar",
+      "edit": "Edit",
+      "file": "Dosja",
+      "fullscreen": "Ekran i plotë",
+      "help": "Ndihmë",
+      "paste": "Paste",
+      "quit": "Lëre.",
+      "redo": "Redo",
+      "reload": "Rthërimi",
+      "selectAll": "Zgjidh të gjitha",
+      "settings": "Sistemi",
+      "undo": "Të ndaluar",
+      "view": "Pamje",
+      "zoomIn": "Zhuthje në",
+      "zoomOut": "Zhuthni jashtë",
+      "zoomReset": "Madhësia reale"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Kthehu në shtëpi.",
+      "openApp": "Hapni aplikacionin",
+      "photos": "Fotot",
+      "photosLeft": "{remaining} i {quota} të majtë",
+      "plan": "Plani",
+      "planUnavailable": "Nuk është në dispozicion tani.",
+      "plans": {
+        "free": "Pa pagesë",
+        "pro": "Përdorës"
+      },
+      "signInTitle": "Të regjistroheni",
+      "signOut": "Shkarkohu.",
+      "signUpTitle": "Lidhni llogari",
+      "subscribe": "Abonimi për Lymark Pro",
+      "subscribeSoon": "Abonimet nuk janë ende të disponueshme. Kur të jenë, ju do të jeni në gjendje të abonoheni këtu dhe të përdorni çdo pajisje me të njëjtën llogari.",
+      "title": "Konton tuaj",
+      "revokeDesktops": "Shkarko kompjuterët",
+      "revokeDesktopsHint": "Mund të regjistroheni përsëri kur të doni."
+    },
+    "availability": {
+      "contact": "Për të ndjekur nisjen ose për të raportuar një problem, shkruani në <email> contato@lymark.app </email>.",
+      "description": "Lymark është në version 1.3.0, në testime në Android përpara publikimit në Google Play. Nuk ka version iOS dhe nuk ka version në internet, dhe aplikacioni nuk mbledh pagesë.",
+      "title": "Përdorimi"
+    },
+    "data": {
+      "device": {
+        "description": "Konta ekziston për pajtimin tuaj: serveri mban e-mail-in dhe planin tuaj, dhe kurrë nuk merr fotot tuaja ose vendndodhjen tuaj. Historia mban dyqind eksportet e fundit në skedarin e aplikacionit.",
+        "field": "Në pajisje",
+        "heading": "Fotot, adresat dhe historia"
+      },
+      "external": {
+        "description": "Për të kthyer brezitë dhe gjatësinë në një adresë të lexueshme, sistemi operativ kërkon shërbimin e gjeokodifikimit të Google ose Apple. Kjo është e vetmja informacion që lë, dhe sistemi i dërgon atë, jo aplikacioni.",
+        "field": "Shkruar nga pajisja",
+        "heading": "Vetëm duke kthyer një koordinatë në një adresë"
+      },
+      "note": "Të gjitha janë të përcaktuara  duke përfshirë atë që do të thotë nën LGPD  të Brazilit  në <privacy>Politika e privatësisë</privacy>. Shkukumti i lejes së vendndodhjes e lë aplikacionin në funksion të plotë; vetëm fusha e adresës duhet të shkruhet me dorë.",
+      "title": "Ku janë të dhënat tuaja"
+    },
+    "deleteAccount": {
+      "back": "Kthehu tek llogaria",
+      "confirm": "Fshije llogarinë time",
+      "deletesNow": "Fshirë llogarinë tuaj menjëherë fshihet e-mail, identifikatorin tuaj, dhe regjistrimin e planit, kuotës dhe numrit të fotove.",
+      "irreversible": "Shkatërrimi është i përhershëm dhe nuk mund të rikthehet. Fotot në pajisjen tuaj nuk janë të prekura  ata kurrë nuk ishin në serverët tanë.",
+      "retained": "Regjistrimet e transaksionit të pagesave mbahen për periudhën fiskale të kërkuar ligjorisht, të palidhura me profilin tuaj.",
+      "title": "Fshihet llogaria"
+    },
+    "description": "Aplikacioni për Android që shënon kohën, datën, ditën e javës, adresën dhe kodin e gjurmimit në fotot e inspektimit të faqes dhe provës së shërbimit.",
+    "desktop": {
+      "backAccount": "Kthehu tek llogaria",
+      "explanation": "Kontoni juaj është gati. Klikoni butonin e mëposhtëm për të hapur Lymark në kompjuterin tuaj tashmë të regjistruar në  shfletuesi do të kërkojë leje për të hapur aplikacionin.",
+      "open": "Lidhni aplikacionin",
+      "title": "Të regjistroheni në desktop",
+      "unavailable": "Lidhja e aplikacionit desktop nuk është ende e disponueshme."
+    },
+    "download": {
+      "appStore": {
+        "description": "E njëjta përvojë si Android, në iOS.",
+        "field": " App Store ",
+        "heading": "iPhone dhe iPad"
+      },
+      "browser": {
+        "action": "Të regjistroheni",
+        "description": "Llogjin me llogarinë tuaj dhe aplikacioni hapet drejt në shfletuesin  telefon ose kompjuter.",
+        "field": "Shfletuesi",
+        "heading": "Përdorini tani, asgjë për të instaluar"
+      },
+      "desktop": {
+        "description": "Foto lot, video të gjata dhe PDF raporte  version i rëndë.",
+        "field": "Kompjuter",
+        "heading": "Windows dhe Linux"
+      },
+      "googlePlay": {
+        "description": "Aplikacioni i telefonit, me kamera, galeri dhe video të stampuar.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Po vjen së shpejti.",
+      "title": "Ku duhet të përdoret Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "Tipi i rrugës shkurtohet dhe shteti bëhet kodi i tij, kështu që adresa përshtatet në dy rreshta pa mbuluar foton.",
+        "field": "Adresa",
+        "heading": "Të mbushur me GPS, të korrigjueshme me dorë"
+      },
+      "code": {
+        "description": "Ajo ekziston në mënyrë që ju të mund të citoni një foto të veçantë në një rend pune ose një raport. Ajo drejtohet rrotulluar poshtë në krahun e djathtë, ose qëndron me bllokun e të dhënave  zgjedhjen tuaj.",
+        "field": "Kod foto",
+        "heading": "14 karaktere, të hartuara nga një gjenerator kriptografik"
+      },
+      "note": "Çdo fushë shtrihet dhe shtrihet vetë, dhe blloku mbështetet në ndonjë nga katër qoshat, në tre madhësi. Paraqitja përdor foton tuaj të vërtetë, jo një mostrë gjenerike: ajo që shihni në ekran është fjalëkalimisht ajo që eksportohet.",
+      "time": {
+        "description": "Një buton i shkarkon të gjitha tre fusha në të tashmen kur kapja zgjati më gjatë se sa pritej.",
+        "field": "Koha dhe data",
+        "heading": "Nga orari i pajisjes, në momentin e kapjes"
+      },
+      "title": "Çfarë shkon në imazh"
+    },
+    "footer": {
+      "description": "Lymark  regjistrime fotografike me datë, kohë dhe adresë.",
+      "documentsLabel": "Dokumente",
+      "privacy": "Politika e privatësisë",
+      "support": "Mbështetje:",
+      "terms": "Kushtet e përdorimit"
+    },
+    "hero": {
+      "ctaAccount": "Shko në llogarinë time.",
+      "ctaLogin": "Të regjistroheni",
+      "ctaSignup": "Lidhni një llogari falas",
+      "description": "Lymark posedon kohën, datën, ditën e javës, adresën dhe kodin e ndjekjes drejtpërdrejt në imazh.",
+      "eyebrow": "Dokumentimi i fotografisë së fushës",
+      "heading": "Fotografia po lë telefonin tënd duke thënë kur, ku dhe çfarë.",
+      "meta": {
+        "account": "Një llogari me një prekje",
+        "android": "Android dhe shfletues",
+        "language": "Portugeze brazilian",
+        "onDevice": "Fotot mbeten në pajisje"
+      },
+      "note": "Nuk ka asgjë për të instaluar."
+    },
+    "nav": {
+      "account": "Konta",
+      "home": "Shtëpi",
+      "homeLabel": "Lymark , faqe kryesore",
+      "label": "Prokuror",
+      "privacy": "Privatësia",
+      "signIn": "Të regjistroheni",
+      "terms": "Kushtet",
+      "verify": "Verifikoni"
+    },
+    "process": {
+      "capture": {
+        "description": "Kërkimi i adresës fillon në momentin kur vjen fotografia. Fusha qëndrojnë të hapura për rregullim ndërsa ajo ecë.",
+        "field": "Kapturimi",
+        "heading": "Kamera ose galeri"
+      },
+      "note": "Të ruajturit dhe të ndarë zgjidhin probleme të ndryshme, dhe duke i përkatur ato në një buton do të tërhiqte këdo që thjesht dëshiron të shkarkonte foton përmes një ekran dërgimi.",
+      "save": {
+        "description": "Ajo qëndron me fotot e tjera të telefonit tuaj, të disponueshme për çdo aplikacion  përfshirë pasi të zhbëni instalimin Lymark .",
+        "field": "Shpëto",
+        "heading": "Shko në galeri të pajisjeve"
+      },
+      "share": {
+        "description": "WhatsApp , email, Drive: destinacioni zgjidhet nga sistemi operativ, dhe aplikacioni nuk merr pjesë në dërgimin.",
+        "field": "Ndarja",
+        "heading": "Hapet fletë e ndarjes së sistemit"
+      },
+      "title": "Rruga që merr një foto"
+    },
+    "skipToContent": "Shko në përmbajtje",
+    "specimen": {
+      "caption": "Rregulli i bardhë fillon dhe mbaron në skajet e shifrave, jo të kutisë tekst.",
+      "label": "Shembulli i timbrës Lymark: ora 07:42, data 12 gusht 2026, të mërkurën, një adresë në Guarujá dhe një kod fotografi."
+    },
+    "title": "Lymark  datë, kohë dhe adresë e shënimit të ujit për fotot e fushës",
+    "verify": {
+      "caveat": "Vendi dëshmon integritetin e dosjes dhe kohën e lëshimit.",
+      "checking": "Kontrolloj...",
+      "declarationNote": "Ajo që tregon timbri (adresa, data, orari) është deklarata e emitentit  timbri dëshmon integritetin dhe emetimin, jo përmbajtjen.",
+      "intro": "Lërini ose zgjidhni një foto të eksportuar nga Lymark dhe shikoni menjëherë nëse është saktësisht ashtu siç e ka lënë aplikacionin  dhe kush e lëshoi atë, kur.",
+      "noSealBody": "Ky dosje nuk ka sigull Lymark. Mund të ketë qenë i eksportuar jashtë internetit, para se sigulli të ekzistojë, ose mund të mos vijë nga Lymark. Mungesa e një sigulli nuk dëshmon manipulim.",
+      "noSealTitle": "Pa furxhe",
+      "notConfigured": "Verifikimi nuk është ende i disponueshëm.",
+      "pick": "Zgjidhni skedar",
+      "previewAlt": "Fotografia e verifikuar, timpur i dukshëm",
+      "privacyNote": "Verifikimi ndodh në shfletuesin tuaj. Dosja nuk dërgohet në asnjë server.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Të pa prekur",
+      "tamperedBody": "Përmbajtja nuk përputhet me vulosjen: dosja u modifikuan pas lëshimit, ose vulosja i përket një dosje tjetër.",
+      "tamperedTitle": "Mospërputhje",
+      "title": "Verifikoni vërtetësinë",
+      "unsupported": "Ky shfletues nuk mbështet konfirmimin e nënshkrimit. Provoni një shfletues aktual."
+    }
+  }
+}

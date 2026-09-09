@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Stempler tid, dato, arbejdsdag, adresse og sporingskode på dine billeder  til feltoptegnelser, inspektioner og servicekontroll.",
+      "platform": "Plattform",
+      "privacy": "Privatlivspolitik",
+      "privacyGeocoding": "Når GPS bruges, sender operativsystemet koordinaten til Googles eller Apples korttjeneste for at få adressen. Det er den eneste information, der efterlader her, og det er systemet, der sender det, ikke Lymark.",
+      "privacyLocation": "Lokation bruges én gang pr. optagelse, kun til at udfylde adressen feltet, og er ikke gemt separat fra billederne.",
+      "privacyOnDevice": "Billedet, adresserne og historien forbliver kun på denne enhed. Konten eksisterer for dit abonnement: serveren opbevarer din e-mail og plan, og modtager aldrig dine billeder eller din placering.",
+      "privacySection": "Privatlivets fred",
+      "sdk": " Expo SDK ",
+      "terms": "Anvendelsesbetingelser",
+      "title": "Om Lymark ",
+      "version": "Udgave"
+    },
+    "account": {
+      "browserHint": "Logg in sker i browseren. Logg in der med din konto og appen forbinder sig selv.",
+      "code": "Koder",
+      "codeSent": "Vi har sendt en kode til {email} ",
+      "connected": "Forbindelse",
+      "continue": "Fortsæt",
+      "deleteAccount": "Slette konto",
+      "email": "E-mail",
+      "failed": "Tjek e-mailen eller koden og prøv igen.",
+      "notConfigured": "Login er ikke tilgængelig i denne bygning endnu.",
+      "signInBrowser": "Log ind via browser",
+      "signOut": "Signer ud",
+      "signedInAs": "Undertegnet som {email} ",
+      "title": "Konto",
+      "verify": "Kontroller"
+    },
+    "batch": {
+      "addressHint": "Gården, nummer  By",
+      "clearList": "Klar liste",
+      "codeHint": "f.eks. LYM-001",
+      "done": "{count, plural,  one {Bearbejdning færdig: #-foto færdig.} other {Bearbejdning færdig: #-billeder færdige.}}",
+      "doneSection": "Udført",
+      "dropZone": "Træk og drop billeder her, eller brug knappen Vælg billeder",
+      "errorsSection": "Fejl",
+      "folder": "Mappe: {name} ",
+      "noPhotos": "Vælg mindst et billede.",
+      "outputNote": "De bearbejdede billeder gemmes i den valgte mappe.",
+      "outputSection": "Udgang",
+      "photosSection": "Billeder til behandling",
+      "processing": "- Forarbejdning...",
+      "progress": "{current} af {total} ({percent} %)",
+      "results": "{success, plural,  one {# succes} other {#'s succeser}}, {failed, plural,  one {# fejl} other {# fejl}}",
+      "selectFolder": "Vælg output mappe",
+      "selectPhotos": "Vælg billeder",
+      "selected": "{count, plural,  one {# billede valgt} other {# billeder valgt}}",
+      "sharedNote": "Disse værdier anvendes på ALLE billeder.",
+      "sharedSection": "Delte metadata",
+      "start": "Begynd behandling",
+      "unavailableBody": "Denne funktion er kun desktop.",
+      "unavailableTitle": "Batchbehandling ikke tilgængelig"
+    },
+    "capture": {
+      "accuracy": "Position inden for ± {meters} m.",
+      "accuracyImprecise": "Positionen inden for ± {meters} m  skal kontrolleres på gatenummeret før eksport.",
+      "address": "Adresse",
+      "addressFailedTitle": "Ingen adresse fundet",
+      "addressHint": "Tryk på Locate eller skriv adressen",
+      "camera": "Tag et billede.",
+      "code": "Koder",
+      "dateHint": "1. januar 2026",
+      "dateTimeGroup": "Datum og tid",
+      "emptyWarning": "Der vil ikke være data, der bliver stemplet.",
+      "gallery": "Vælg fra galleriet",
+      "galleryDenied": "Billedet blev nægtet adgang, så det kun findes i appen. Tillad det i Indstillinger › Tilladelser at gemme det i galleriet.",
+      "galleryFailed": "Billedet gik i historien, men apparatet nægtede at skrive det til galleriet.",
+      "generateCode": "Generere",
+      "hiddenFields": "{count, plural,  one {Skjulte felt} other {Skjulte felt}}: {fields}  Tænd dem i Indstillinger › Felter og position.",
+      "keepMyAddress": "Hold min.",
+      "locate": "Lokalisere",
+      "locateByGps": "Adresse via GPS",
+      "lookup": {
+        "denied": "Tillad placering i Indstillinger > Tilladelser eller skriv adressen.",
+        "disabled": "Lokaliseringen er slukket på enheden.",
+        "timeout": "GPS svarede ikke i tide.",
+        "unavailable": "Adressen kan ikke løses på denne position."
+      },
+      "newCapture": "Start en ny fangst",
+      "noFieldsBack": "Gå tilbage.",
+      "noFieldsContinue": "Fortsæt alligevel.",
+      "noFieldsMessage": "Ingen felt har noget at stemple. Udfyld felterne eller se indstillinger › Felter og position.",
+      "noFieldsTitle": "Billedet kommer uden vandmærke.",
+      "noPhotoHint": "Tag et billede eller vælg et i galleriet.",
+      "noPhotoSelected": "Ingen udvalgte billeder",
+      "openFailed": "Billedet kunne ikke åbnes.",
+      "permissionMessage": "Tillad adgang i Indstillinger > Tilladelser til at fortsætte.",
+      "permissionTitle": "Tilladelse kræves",
+      "pickPhoto": "Vælg et billede",
+      "pickPhotoHint": "Vælg et billede for at aktivere aktionen.",
+      "previewLabel": "Forhåndskurs af det vandmærkede billede",
+      "renderFailedTitle": "Kan ikke generere billedet",
+      "replaceAddressMessage": "GPS fundet: {address} ",
+      "replaceAddressTitle": "- Er det din adresse?",
+      "resetConfirm": "Afkast",
+      "resetMessage": "Det valgte billede og de fyldte felter vil blive smidt væk.",
+      "resetTitle": "- At starte en ny fangst?",
+      "saved": "Billedet er gemt i enhedsgalleriet og i historien.",
+      "savedAppOnlyTitle": "Kun gemt i Lymark ",
+      "shareDialogTitle": "Del vandmærket billede",
+      "shareFailedMessage": "Billedet er genereret og er i Lymark-historien. Du kan dele det fra fanen Gallery.",
+      "shareFailedTitle": "Kan ikke dele",
+      "shareUnavailableMessage": "Billedet er blevet brugt i Lymark-historien.",
+      "shareUnavailableTitle": "Deling ikke tilgængelig",
+      "sharedFileTitle": "Foto med vandmærke",
+      "stampNotReady": "Stemplet er stadig under forberedelse.",
+      "syncNow": "Nu er det",
+      "timestamp": "Datum/tid",
+      "title": "Fangelse",
+      "useGpsAddress": "Brug GPS-en.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Dag"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "vælge en anden farve",
+      "saturationBrightness": "Mængde og lysstyrke",
+      "use": "Brug denne farve"
+    },
+    "common": {
+      "back": "Tilbage",
+      "cancel": "Afbestilling",
+      "delete": "Slette",
+      "error": "Fejl",
+      "gotIt": "- Jeg fik det.",
+      "loading": "- Ladning...",
+      "no": "- Nej, det er ikke det.",
+      "ok": "- Det er okay.",
+      "save": "Spare",
+      "share": "Del",
+      "success": "Succes",
+      "tryAgain": "Prøv igen.",
+      "unknownError": "Ukendt fejl",
+      "yes": "- Ja, det er det."
+    },
+    "gallery": {
+      "cancelSelection": "Afbestilling",
+      "clear": "En klar historie",
+      "clearConfirm": "Klar",
+      "clearMessage": "Lymark's poster vil blive slettet. Billeder, der allerede er gemt i enhedsgalleriet, påvirkes ikke.",
+      "count": "{count, plural,  one {#-foto eksporteret} other {Eksporterede billeder af #}}",
+      "delete": "Slette",
+      "empty": "Ingen billeder endnu.",
+      "emptyAction": "Gå til fange",
+      "emptyDescription": "Billeder, du eksporterer med et vandmærke vises her, med dato, sted og kode.",
+      "filteredCount": "{shown} af {total, plural,  one {Foto af #} other {# billeder}}",
+      "noResults": "Ingen billeder fundet for  {query} .",
+      "photoLabel": "Bilde fra {when} ",
+      "removeMessage": "Indsendelserne forlader Lymark. Billeder, der allerede er gemt i enhedsgalleriet, påvirkes ikke.",
+      "removeTitle": "{count, plural,  one {Fjern fra historien} other {Fjern #-indlæg}}",
+      "removed": "{count, plural,  one {Indgang fjernet.} other {Indlæg fjernet.}}",
+      "saveDeniedMessage": "Tillad det i Indstillinger › Tilladelser at gemme billederne til enhedsgalleriet.",
+      "saveDeniedTitle": "Fotoadgang nægtet",
+      "savedAll": "{count, plural,  one {Et billede gemt i enhedsgalleriet.} other {#-billeder gemt i enhedsgalleriet.}}",
+      "savedSome": "{saved} af {total} fotos gemt.",
+      "searchPlaceholder": "Søg efter adresse, dato eller kode",
+      "selectedCount": "{count, plural,  one {# billede valgt} other {# billeder valgt}}",
+      "share": "Del",
+      "title": "Galerie"
+    },
+    "language": {
+      "automatic": "Målværktøj",
+      "automaticNote": "Lymark følger sproget på din enhed.",
+      "label": "Sprog",
+      "selector": "Vælg sprog"
+    },
+    "login": {
+      "access": "Log ind til adgang",
+      "apple": "Logg ind med Apple",
+      "google": "Logg ind med Google",
+      "subtitle": "Log ind for at fortsætte",
+      "title": "Logg ind for at få adgang til Lymark "
+    },
+    "nav": {
+      "batch": "Bartbearbejdning",
+      "photoDetail": "Billeddetaljer",
+      "report": "Rapport PDF",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Denne skærm er ikke en del af Lymark .",
+      "screenTitle": "Sideliste ikke fundet",
+      "title": "Der er ingen sådan vej."
+    },
+    "permissions": {
+      "allow": "Lad mig gøre det.",
+      "allowed": "Tilladt",
+      "blocked": {
+        "later": "Ikke nu.",
+        "message": "Hvis du vil lade det ske, skal du åbne indstillingerne.",
+        "openSettings": "Åbne indstillinger",
+        "title": "Tilladelse blokeret"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Vi skal tage et billede, der får vandmærket.",
+      "denied": "Afvist",
+      "granted": "Det er tilladt",
+      "intro": "Lymark beder kun om, hvad det skal til at stemple et billede. Dine billeder forlader aldrig enheden: når du bruger GPS, sender operativsystemet kortetjenesten koordinaten alene, så den kan blive en adresse.",
+      "location": "Lokation",
+      "locationRationale": "Fyll adressefeltet automatisk, når du tager.",
+      "mediaLibrary": "Gem til galleriet",
+      "mediaLibraryRationale": "For at skrive eksporterede billeder til enhed galleriet.",
+      "openDeviceSettings": "Indstillinger",
+      "recheck": "Tjek igen.",
+      "request": "Anmodning om tilladelse",
+      "section": "Adgang til",
+      "title": "Tilladelser"
+    },
+    "photo": {
+      "backToGallery": "Tilbage til galleriet",
+      "exportedAt": "Eksporteret på {when} ",
+      "noWatermark": "Dette billede blev eksporteret uden vandmærke.",
+      "notFoundBody": "Denne optegnelse kan være blevet fjernet fra historien.",
+      "notFoundTitle": "Foto ikke fundet",
+      "remove": "Fjern",
+      "removeBody": "Billedet, der er gemt i enhedsgalleriet, påvirkes ikke.",
+      "removeTitle": "Fjern fra historien",
+      "share": "Del",
+      "stampedData": "Stemplet data"
+    },
+    "plan": {
+      "exhausted": "Gratis billeder brugt",
+      "exhaustedMessage": "De 12 billeder er væk, så sigt til Lymark.",
+      "free": "Gratis",
+      "pro": "Pro",
+      "reconnect": "Tilbageforbindelse for at bekræfte dit abonnement",
+      "remaining": "{remaining, plural,  one {# gratis billede venstre} other {# gratis billeder venstre}}",
+      "title": "Plan",
+      "unlimited": "Ingen grænse"
+    },
+    "report": {
+      "allPhotos": "Alle billeder",
+      "authorField": "Forfatter / virksomhed",
+      "detailsSection": "Detaljer",
+      "doc": {
+        "author": "Forfatter",
+        "declaration": "De stemplede data (adresse, dato, tid og kode) er en erklæring fra udsteder af billederne.",
+        "exportedAt": "Eksporteret i",
+        "generatedAt": "Genereret på",
+        "page": "Sider",
+        "photo": "Foto: {index} ",
+        "photosSection": "Fotografiske poster",
+        "signature": "Den ansvarlige person underskriver",
+        "summary": "Sammendrag",
+        "title": "Fotoreport",
+        "totalPhotos": "Samlet billede:"
+      },
+      "empty": "Der er ikke blevet eksporteret billeder endnu.",
+      "failed": "Jeg kunne ikke generere rapporten.",
+      "fileStem": "Rapport",
+      "format": {
+        "csv": "Tabel (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Pakke (ZIP)"
+      },
+      "formatSection": "Format",
+      "generate": "Generere fil",
+      "generateSection": "Generere",
+      "includeLogo": "Logo på forsiden",
+      "includeLogoDescription": "- Sluk det, så det ikke er i dokumentet.",
+      "norm": {
+        "abnt": "ABNT (Brasilien)",
+        "din5008": "DIN 5008 (Tyskland)",
+        "ibape": "IBAPE stil (Brasilien)",
+        "iso": "Internationale",
+        "letter": "Brief (USA)"
+      },
+      "normNote": "Standarden fastsætter papiret og formateringen  marginer, skrift og side nummerering. Rapporten indhold er det samme i alle dem; IBAPE stil tilføjer en signatur blok.",
+      "normSection": "Dokumentstandarder",
+      "projectsSection": "Projekt / job",
+      "saved": "Gemt til {path} ",
+      "savedShort": "Rapporten er gemt.",
+      "title": "Rapport PDF",
+      "titleField": "Rapportens titel",
+      "unavailableBody": "PDF-rapporter er tilgængelige i desktop-appen.",
+      "unavailableTitle": "Kun på skrivebordet",
+      "uncoded": "Ingen kode",
+      "wordTooBig": "Dokumentet blev for stort med billederne indlejret.",
+      "zipMissing": "{count, plural,  one {Pakken er gemt, men #-billedet blev ikke fundet på denne enhed.} other {Pakken er gemt, men der er ikke fundet billeder af # på denne enhed.}}"
+    },
+    "settings": {
+      "about": "Om",
+      "aboutDescription": "Udgave, privatliv og kredit",
+      "appSection": "App",
+      "deviceSection": "Anordning",
+      "deviceSectionDescription": "Tilgang til den Lymark anmoder om.",
+      "fields": "Feltet og position",
+      "fieldsDescription": "Vælg hvilke felter der vises, hjørnet og størrelsen",
+      "history": "Historie",
+      "historyDescription": "Eksporterede billeder, der er opbevaret på apparatet",
+      "language": "Sprog",
+      "permissions": "Tilladelser",
+      "permissionsDescription": "Kamera, billeder og placering",
+      "save": "Spare",
+      "title": "Indstillinger",
+      "watermark": "Vandmærke",
+      "watermarkSection": "Vandmærke",
+      "watermarkSectionDescription": "Hvad er stemplet på billedet, og hvor."
+    },
+    "signup": {
+      "subtitle": "Tilmeld dig til at begynde.",
+      "title": "Oprett din Lymark konto"
+    },
+    "tagline": "Vandmærke med tid, dato og sted",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Ingen kamera adgang.",
+      "done": "Video stemplet og gemt.",
+      "export": "Eksport af stemplet video",
+      "exportSection": "Eksport",
+      "failed": "Videoen kunne ikke trykkes.",
+      "fieldsSection": "Stempelfelter",
+      "fileSection": "Video",
+      "none": "Ingen video udvalgt.",
+      "processing": "Forarbejdning... {percent} %",
+      "processingMobile": "- Forarbejdning...",
+      "record": "Optag video nu",
+      "saved": "Gemt til {path} ",
+      "savedToGallery": "Stemplet video gemt til dit værksted.",
+      "select": "Vælg video",
+      "unavailableBody": "Mobile video stempling kræver Lymark installeret fra en EAS build (med den oprindelige modul). Det er ikke tilgængeligt i Expo Go . Installer den officielle app fra butikken eller en EAS build, eller bruge desktop / web-version.",
+      "unavailableTitle": "Installeret app kræves",
+      "unreadable": "- Filen kunne ikke læses som video.",
+      "webNote": "I webbrowseren behandles videoen i realtid  en 2-minutters video tager 2 minutter  og kommer ud i WebM-format."
+    },
+    "watermark": {
+      "accentColor": "Vertikalaflade",
+      "backdropBandNote": "Bandet løber kant til kant på tværs af billedet og hviler sig mod margen, hvor stemplet er forankret.",
+      "backdropBlockNote": "Bygningen følger tekstens størrelse, med fylding omkring den.",
+      "backdropColor": "Bandfarve",
+      "backdropDescription": "Det er en kontrast over lysområder i et billede, uden hvilken teksten sidder direkte på billedet med en skygge.",
+      "backdropInnerRadius": "Indre hjørner",
+      "backdropOpacity": "Ønsker gennemsigtighed",
+      "backdropOpacityValue": "{percent} % uvidtrækkende",
+      "backdropRadius": "Runderede hjørner",
+      "backdropRadiusSquare": "Fjerde",
+      "backdropStyles": {
+        "band": "Fuldbreddebånd",
+        "block": "Bag teksten",
+        "none": "Ingen"
+      },
+      "backdropTitle": "Støtteband",
+      "brandDescription": "Over uret bliver det et signatur med logo og tagline.",
+      "brandFirstColor": "Farve på første del",
+      "brandFirstHint": "Byggere",
+      "brandFirstPart": "Første del",
+      "brandNote": "En lang navne bliver krympet, indtil den passer, snarere end afskåret.",
+      "brandPlacements": {
+        "corner": "I et hjørne",
+        "header": "Over uret",
+        "none": "Ingen"
+      },
+      "brandSecondColor": "Farve på anden del",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Anden del",
+      "brandTitle": "Stemplet mærke",
+      "codeDescription": "På siden af konkurrerer den ikke om plads med selve billedet.",
+      "codePlacements": {
+        "block": "Ved siden af data",
+        "side": "Højre side"
+      },
+      "codeTitle": "Foto-koder",
+      "colors": {
+        "amber": "Amber",
+        "black": "Sort",
+        "blue": "Blå",
+        "green": "Grøn",
+        "red": "Rødt",
+        "white": "Hvid"
+      },
+      "colorsDescription": "Farven på billedet er virksomhedens valg, ikke appens.",
+      "colorsTitle": "Stempelfarver",
+      "complement": "Tagline",
+      "complementColor": "Taglinefarve",
+      "complementHint": "Inspektioner og tekniske rapporter",
+      "cornerConflict": "Markedet og dataene er i samme hjørne.",
+      "fields": {
+        "address": "Adresse / sted",
+        "code": "Foto-koder",
+        "date": "Dato",
+        "time": "Tiden",
+        "weekday": "Dag i ugen"
+      },
+      "fieldsDescription": "Kun de felter, der er på og har indhold, når frem til billedet.",
+      "fieldsTitle": "Feltet vist",
+      "includeCountry": "Indtaste land",
+      "includeCountryDescription": "Hvis du arbejder over grænserne, skal det bare være på billedet.",
+      "legibilityTitle": "Leselighed",
+      "logoAdded": "Logo tilføjet til mærkens overskrift.",
+      "logoAlignNote": "Logoets højde følger teksten: den øverste del af logoen er i overensstemmelse med navnet og den nederste del med tagglinens baseline.",
+      "logoChosen": "Vælget logo",
+      "logoErrorMessage": "Prøv et andet billede. En PNG med en gennemsigtig baggrund er det format, der fungerer bedst.",
+      "logoErrorTitle": "Denne fil kunne ikke bruges",
+      "logoFormatNote": "Brug en PNG med en gennemsigtig baggrund. En JPG med en hvid baggrund bliver en hvid rektangel på billedet  formatet lagrer ikke gennemsigtighed, og appen har ingen måde at gætte hvad der er baggrund.",
+      "logoPermissionMessage": "Tillad det i Indstillinger › Tilladelser at vælge logofilen.",
+      "logoPermissionTitle": "Fotoadgang nægtet",
+      "logoPick": "Vælg logo",
+      "logoPosition": "Logo position",
+      "logoPositionBlock": "Med stemplet.",
+      "logoRemove": "Fjern",
+      "logoReplace": "Udskift logo",
+      "logoSize": "Logo størrelse",
+      "positionDescription": "Det er hjørnet af billedet, blokken er forankret til.",
+      "positionTitle": "Position",
+      "positions": {
+        "bottom-left": "Bottom til venstre",
+        "bottom-right": "Bottom til højre",
+        "top-left": "Ovenpå til venstre",
+        "top-right": "Oven til højre"
+      },
+      "previewCurrent": "Over det aktuelle billede fra tablet Fanger.",
+      "previewEmpty": "Fra lys til mørke, for at kontrollere læsbarhed i begge ekstremer.",
+      "previewNoFields": "Ingen felt er valgt  billedet kommer uden vandmærke.",
+      "previewTitle": "Forhåndsvisning",
+      "reset": "Gennemføre standard",
+      "sizeTitle": "Tekstststørrelse",
+      "sizes": {
+        "large": "Større",
+        "medium": "Midde",
+        "small": "Små"
+      },
+      "textColor": "Tekst",
+      "timeFormatDescription": "Hvordan tiden bliver fyldt ind i feltene.",
+      "timeFormatTitle": "Tidsskifte",
+      "timeFormats": {
+        "12h": "12 timer (morgen/kl.",
+        "24h": "24 timer"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Alle filer",
+      "images": "Bilder",
+      "pickFolder": "Vælg output mappe",
+      "pickPhoto": "Vælg foto",
+      "pickPhotos": "Vælg billeder til partiet",
+      "savePhoto": "Gem foto",
+      "saveReport": "Redegør rapport"
+    },
+    "login": {
+      "cancel": "Afbestilling",
+      "confirm": "Fortsæt",
+      "message": "Du har lige logget ind via din browser.",
+      "title": "Logg ind på Lymark "
+    },
+    "menu": {
+      "copy": "- Det er ikke rigtigt.",
+      "cut": "Slip",
+      "edit": "Redigér",
+      "file": "Fil",
+      "fullscreen": "Fuldskærm",
+      "help": "Hjælp",
+      "paste": "Paste",
+      "quit": "- Hold op.",
+      "redo": "Redo",
+      "reload": "Overlast",
+      "selectAll": "Vælg alle",
+      "settings": "Indstillinger",
+      "undo": "Udenryddet",
+      "view": "Udsigt",
+      "zoomIn": "Zoom ind",
+      "zoomOut": "Zoom ud",
+      "zoomReset": "Virkelig størrelse"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Tilbage til hjem",
+      "openApp": "Åbn appen",
+      "photos": "Billeder",
+      "photosLeft": "{remaining} af {quota} venstre",
+      "plan": "Plan",
+      "planUnavailable": "Ikke tilgængelig lige nu",
+      "plans": {
+        "free": "Gratis",
+        "pro": "Pro"
+      },
+      "signInTitle": "Log ind",
+      "signOut": "Signer ud",
+      "signUpTitle": "Oprette konto",
+      "subscribe": "Abonnér på Lymark Pro",
+      "subscribeSoon": "Når abonnementerne er tilgængelige, kan du abonnere her og bruge enhver enhed med samme konto.",
+      "title": "Din konto",
+      "revokeDesktops": "Afkoble computere",
+      "revokeDesktopsHint": "Du kan logge ind igen, når du vil."
+    },
+    "availability": {
+      "contact": "Hvis du vil følge lanceringen eller rapportere et problem, skal du skrive til <email> contato@lymark.app </email>.",
+      "description": "Lymark er på version 1.3.0, i test på Android før offentliggørelse på Google Play. Der er ingen iOS-version og ingen webversion, og appen indhenter ingen betaling.",
+      "title": "Tilgængelighed"
+    },
+    "data": {
+      "device": {
+        "description": "Kontoet findes for dit abonnement: serveren gemmer din e-mail og din plan, og modtager aldrig dine billeder eller din placering. Historien gemmer de sidste to hundrede eksport i appens egne filer.",
+        "field": "På apparatet",
+        "heading": "Bilder, adresser og historie"
+      },
+      "external": {
+        "description": "For at gøre breddegraden og længden til en læsbar adresse, spørger operativsystemet Googles eller Apples geocoding-tjeneste. Det er den eneste information, der forlader, og systemet sender den, ikke appen.",
+        "field": "Afbrydelse af apparatet",
+        "heading": "Bare at omdanne en koordinat til en adresse"
+      },
+      "note": "Det er alt set  inklusiv, hvad det betyder under Brasiliens LGPD  i <privacy>Privatlivspolitik</privacy>. Hvis du slukker placeringstilladelsen, er appen fuldt funktionsdygtig; kun adressen skal indtaskes manuelt.",
+      "title": "Hvor dine data ligger"
+    },
+    "deleteAccount": {
+      "back": "Tilbage til regnskab",
+      "confirm": "Slet mit konto",
+      "deletesNow": "Hvis du sletter din konto, sletter du straks din e-mail, din identifikator og plan, kontant og fotosal.",
+      "irreversible": "Fjernelse er permanent og kan ikke annulleres. Billedet på din enhed er ikke påvirket  de var aldrig på vores servere.",
+      "retained": "Betalingstransaktionsoptegnelser opbevares i den lovligt krævede regnskabsperiode, uden at være forbundet med din profil.",
+      "title": "Slette konto"
+    },
+    "description": "Android-app, der stempler tid, dato, arbejdsdag, adresse og sporingskode på site-inspektion og proof-of-service-billeder.",
+    "desktop": {
+      "backAccount": "Tilbage til regnskab",
+      "explanation": "Din konto er klar. Klik på knappen nedenfor for at åbne Lymark på din computer allerede logget i  browseren vil bede om tilladelse til at åbne appen.",
+      "open": "Sæt app'en sammen",
+      "title": "Log ind på desktop",
+      "unavailable": "Desktop-apps-forbindelsen er endnu ikke tilgængelig."
+    },
+    "download": {
+      "appStore": {
+        "description": "Det samme som Android på iOS.",
+        "field": " App Store ",
+        "heading": "iPhone og iPad"
+      },
+      "browser": {
+        "action": "Log ind",
+        "description": "Log ind med din konto, og appen åbner lige i browseren  telefon eller computer.",
+        "field": "Browser",
+        "heading": "Brug det nu, intet at installere"
+      },
+      "desktop": {
+        "description": "Billedpartikler, lange videoer og PDF rapporter  den tunge version.",
+        "field": "Computer",
+        "heading": "Windows og Linux"
+      },
+      "googlePlay": {
+        "description": "Telefonappen med kamera, galleri og video.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "- Jeg kommer snart.",
+      "title": "Hvor skal Lymark anvendes "
+    },
+    "features": {
+      "address": {
+        "description": "Gatoret bliver forkortet og staten bliver dens kode, så adressen passer i to linjer uden at dække billedet.",
+        "field": "Adresse",
+        "heading": "Fuldt med GPS, kan korrigeres med hånden"
+      },
+      "code": {
+        "description": "Det findes, så du kan citere et bestemt billede i en arbejdsorden eller en rapport. Det kører roteret nedad på højre kant, eller sidder med datablokken  din valg.",
+        "field": "Foto-koder",
+        "heading": "14 tegn, tegnet af en kryptografisk generator"
+      },
+      "note": "Hver felt tændes og slukkes på egen hånd, og blokken forankres på et af de fire hjørner, i tre størrelser. Forhåndsvisning bruger dit faktiske billede, ikke en generisk prøve: hvad du ser på skærmen er bogstaveligt talt det, der eksporteres.",
+      "time": {
+        "description": "En knap sætter alle tre felt tilbage til nutiden, når det tog længere tid end forventet.",
+        "field": "Tid og dato",
+        "heading": "Fra apparatets ur, i det øjeblik, det blev fanget"
+      },
+      "title": "Hvad går på billedet"
+    },
+    "footer": {
+      "description": "Lymark  fotografiske poster med dato, tid og adresse.",
+      "documentsLabel": "Dokumenter",
+      "privacy": "Privatlivspolitik",
+      "support": "Støtte:",
+      "terms": "Anvendelsesbetingelser"
+    },
+    "hero": {
+      "ctaAccount": "Gå til min konto",
+      "ctaLogin": "Log ind",
+      "ctaSignup": "Oprett en gratis konto",
+      "description": "Lymark stempler tiden, datoen, ugedagen, adressen og en sporingskode direkte på billedet.",
+      "eyebrow": "Feltet foto dokumentation",
+      "heading": "Billedet efterlader din telefon, der allerede siger hvornår, hvor og hvad.",
+      "meta": {
+        "account": "En enkelt-tap konto",
+        "android": "Android og browser",
+        "language": "Brasilianisk portugisisk",
+        "onDevice": "Billedet forbliver på apparatet"
+      },
+      "note": "- Der er ikke noget at installere."
+    },
+    "nav": {
+      "account": "Konto",
+      "home": "Hjem",
+      "homeLabel": "Lymark , startside",
+      "label": "Hoved",
+      "privacy": "Privatlivets fred",
+      "signIn": "Log ind",
+      "terms": "Udgifter",
+      "verify": "Kontroller"
+    },
+    "process": {
+      "capture": {
+        "description": "Adressoptagelsen starter, når billedet kommer ind. Feltet forbliver åbne for justering, mens det kører.",
+        "field": "Fangelse",
+        "heading": "Kamera eller galleri"
+      },
+      "note": "De to handlinger holdes adskilt med vilje. At gemme og dele løser forskellige problemer, og at falde dem i en knap ville trække enhver, der bare vil arkivere billedet gennem en sendskærm.",
+      "save": {
+        "description": "Den sidder sammen med resten af dine telefonbilleder, tilgængelig for enhver app  inklusiv efter du har afinstalleret Lymark .",
+        "field": "Spare",
+        "heading": "Gå til enhed galleriet"
+      },
+      "share": {
+        "description": "WhatsApp , e-mail, Drive: Destinationen vælges af operativsystemet, og appen deltager ikke i afsendelsen.",
+        "field": "Del",
+        "heading": "Åbner systemdeltagssedlen"
+      },
+      "title": "Den vej et billede tager"
+    },
+    "skipToContent": "Overgå til indhold",
+    "specimen": {
+      "caption": "Bjerrreglen begynder og slutter ved kantene af ciffrene, ikke i tekstkisten.",
+      "label": "Prøven af Lymark-stemplet: tid 07:42, dato 12. august 2026, onsdag, adresse i Guarujá og foto-kode."
+    },
+    "title": "Lymark  dato, tid og adresse vandmærke til feltbilleder",
+    "verify": {
+      "caveat": "Stemplet bekræfter filens integritet og udstedelsesdato. Det, som stemplet angiver  adresse, dato, tid  er udsteders erklæring.",
+      "checking": "- Jeg tjekker...",
+      "declarationNote": "Det, der vises på stemplet (adresse, dato, tid) er udsteders erklæring  stemplet bekræfter integriteten og udstedelsen, ikke indholdet.",
+      "intro": "Drop eller vælg et billede, der er eksporteret af Lymark og se øjeblikkeligt, om det er præcis som det forlod appen  og hvem der udgav det, hvornår.",
+      "noSealBody": "Denne fil har ingen Lymark-segl. Den kan være blevet eksporteret offline, før siglen eksisterede, eller kan ikke komme fra Lymark. Fraværet af et sigl beviser ikke manipulering.",
+      "noSealTitle": "Ingen sæle",
+      "notConfigured": "Verifikation er endnu ikke tilgængelig.",
+      "pick": "Vælg fil",
+      "previewAlt": "Det bekræftede billede, stempel synligt",
+      "privacyNote": "Verifikation sker i din browser.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Uberørt",
+      "tamperedBody": "Indholdet af dette dokument svarer ikke til stemplet: filen er blevet ændret efter udstedelsen, eller stemplet tilhører en anden fil.",
+      "tamperedTitle": "Upasning",
+      "title": "Kontrol af autentitet",
+      "unsupported": "Denne browser understøtter ikke signaturverifikation. Prøv en aktuel browser."
+    }
+  }
+}

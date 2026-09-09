@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplikacija",
+      "pitch": "Į savo nuotraukas  užrašykite laiką, datą, darbo dieną, adresą ir sekimo kodą, kad būtų galima atlikti lauko įrašus, patikrinti vietą ir įrodyti, kad jie buvo naudojami.",
+      "platform": "Platforma",
+      "privacy": "Privatumo politika",
+      "privacyGeocoding": "Kai naudojama GPS, operacinė sistema siunčia koordinatą į \"Google\" arba \"Apple\" žemėlapyje, kad gautų adresą. Tai yra vienintelė informacija, kuri čia lieka, ir ji siunčiasi sistema, o ne Lymark.",
+      "privacyLocation": "Lokalizacija naudojama vieną kartą per nuotrauką, tik užpildyti adresų lauką ir nešiojama atskirai nuo nuotraukų.",
+      "privacyOnDevice": "Fotografijos, adresai ir istorija lieka tik šiame įrenginyje. Sąskaita yra jūsų prenumeratui: serverius saugoma jūsų el. pašto pašto pašto pašto ir plano, o niekada negauna jūsų nuotraukų ar jūsų vietos.",
+      "privacySection": "Privatumas",
+      "sdk": " Expo SDK ",
+      "terms": "Naudojimo sąlygos",
+      "title": "Apie Lymark ",
+      "version": "Verzija"
+    },
+    "account": {
+      "browserHint": "Įstojimas vyksta naršyklėje. Įstojimas su savo paskyrą ir programa prisijungia savaime.",
+      "code": "Kodas",
+      "codeSent": "Mes išsiuntėme kodą į {email} ",
+      "connected": "Prijungtas",
+      "continue": "Tęsite",
+      "deleteAccount": "Ištrinti paskyrą",
+      "email": "Pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto",
+      "failed": "- Patikrinkite el. pašto ar kodą ir pabandykite dar kartą.",
+      "notConfigured": "Įrašymas dar nėra prieinamas.",
+      "signInBrowser": "Įsiregistruokite per naršyklą",
+      "signOut": "Pasirašyk.",
+      "signedInAs": "Pasirašyta kaip {email} ",
+      "title": "Sąskaita",
+      "verify": "Įtikrinti"
+    },
+    "batch": {
+      "addressHint": "Gatvė, numeris  Miestas",
+      "clearList": "Atvirai sąrašas",
+      "codeHint": "Pavyzdžiui, LYM-001",
+      "done": "{count, plural,  one {Užbaigtas apdorojimas: # nuotrauka.} other {Užbaigtas apdorojimas: # nuotraukos baigtos.}}",
+      "doneSection": "Baigtas",
+      "dropZone": "Ištraukite ir palikite nuotraukas čia arba naudokite mygtuką Rinkite nuotraukas",
+      "errorsSection": "Klaidų",
+      "folder": "Lėštelis: {name} ",
+      "noPhotos": "Pasirinkite bent vieną nuotrauką.",
+      "outputNote": "Skaitomi nuotraukos išsaugomos pasirinktoje lape.",
+      "outputSection": "Išėjimo",
+      "photosSection": "Fotografijos apdorojimas",
+      "processing": "- Išsirašinėjam...",
+      "progress": "{current} iš {total} ({percent} %)",
+      "results": "{success, plural,  one {# sėkmė} other {\"#\" sėkmės}}, {failed, plural,  one {# nesėkmingas} other {# nesėkmių}}",
+      "selectFolder": "Pasirink išvesties paieška",
+      "selectPhotos": "Pasirink nuotraukas",
+      "selected": "{count, plural,  one {Pasirinktas # nuotrauka} other {Rinkti # nuotraukos}}",
+      "sharedNote": "Šios vertės taikomos VŠIems nuotraukoms.",
+      "sharedSection": "Bendrūs metadanai",
+      "start": "Pradėti apdoroti",
+      "unavailableBody": "Ši funkcija yra tik kompiuterinė.",
+      "unavailableTitle": "Neįmanoma perdirbti serijų"
+    },
+    "capture": {
+      "accuracy": "Pozicija ± {meters} m.",
+      "accuracyImprecise": "Po ± {meters} m  padėtis prieš eksportuojant patikrinkite gatvės numerį.",
+      "address": "Pašto adresas",
+      "addressFailedTitle": "Nėra adreso",
+      "addressHint": "Paspauskite vietą arba užrašykite adresą",
+      "camera": "Fotografuokite.",
+      "code": "Kodas",
+      "dateHint": "2026 m. sausio 1 d.",
+      "dateTimeGroup": "Data ir laikas",
+      "emptyWarning": "Nėra jokių duomenų, kurie bus užrašyti  nuotrauka išnyks be vandens ženklo.",
+      "gallery": "Pasirink iš galerijos",
+      "galleryDenied": "Fotografijos prieiga buvo uždrausta, todėl vaizdas egzistuoja tik programos viduje.",
+      "galleryFailed": "Pavaizda buvo įrašyta į istoriją, bet prietaisas atsisakė ją įrašyti į galeriją.",
+      "generateCode": "Sukurti",
+      "hiddenFields": "{count, plural,  one {Paslėptas laukas} other {Paslėptos laukos}}: {fields}  įjungkite juos į nustatymus › Laukų ir padėties.",
+      "keepMyAddress": "Laikyk mano .",
+      "locate": "Pažymėkite",
+      "locateByGps": "Pažymėkite adresą per GPS",
+      "lookup": {
+        "denied": "Leidinkite vietą į nustatymus > Leidimus arba užrašykite adresą.",
+        "disabled": "Įtaisas išjungtas, įjungkite jį greitųjų nustatymo metu ir bandykite dar kartą.",
+        "timeout": "GPS laiku neatsako.",
+        "unavailable": "Adreso negalima išspręsti šioje padėtyje."
+      },
+      "newCapture": "Pradėk naują užkapinimą.",
+      "noFieldsBack": "Grįžk.",
+      "noFieldsContinue": "Vis tiek tęskite.",
+      "noFieldsMessage": "Nėra jokių laukų, kuriuos galima užšampinti. Užpildykite laukus arba perskaitykite nustatymus › Laukų ir pozicijos.",
+      "noFieldsTitle": "Fotografija išnyks be vandens ženklo.",
+      "noPhotoHint": "Pradėk fotografuoti arba iš galerijos išsirink.",
+      "noPhotoSelected": "Nėra pasirinktos nuotraukos",
+      "openFailed": "Fotografiją negalėjo atidaryti.",
+      "permissionMessage": "Privalokite prieigą į nustatymus > Leidimus tęsti.",
+      "permissionTitle": "Reikia leidimo",
+      "pickPhoto": "Pasirink nuotrauką",
+      "pickPhotoHint": "Pasirinkite nuotrauką, kad įgalintumėte veiksmus.",
+      "previewLabel": "Vanduo pažymėto nuotraukos išankstinis vaizdas",
+      "renderFailedTitle": "Negalima sukurti vaizdo",
+      "replaceAddressMessage": "GPS pavyko rasti: {address} ",
+      "replaceAddressTitle": "Pakeiskite užrašytą adresą?",
+      "resetConfirm": "Išmetti",
+      "resetMessage": "Pasirinkta nuotrauka ir užpildytos laukos bus atmesti.",
+      "resetTitle": "Pradėti naują užėmimą?",
+      "saved": "Fotografija išsaugota į įrenginio galeriją ir į istoriją.",
+      "savedAppOnlyTitle": "Išsaugoti tik Lymark viduje ",
+      "shareDialogTitle": "Pasidalinkite vandens ženklų nuotrauka",
+      "shareFailedMessage": "Pavaizda buvo sukurta ir yra Lymark istorijoje. Galite ją pasidalinti iš galerijos įrankio.",
+      "shareFailedTitle": "Negaliu pasidalinti",
+      "shareUnavailableMessage": "Šis prietaisas neturi dalijimo lapų.",
+      "shareUnavailableTitle": "Pasidalijimas neprieinamas",
+      "sharedFileTitle": "Vanduo pažymėtas nuotrauka",
+      "stampNotReady": "Žyma dar rengiama.",
+      "syncNow": "Dabar",
+      "timestamp": "Data ir laikas",
+      "title": "Užėmimas",
+      "useGpsAddress": "Naudokitės GPS.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Diena"
+    },
+    "colorPicker": {
+      "hue": "Žuvys",
+      "other": "pasirinkite kitą spalvą",
+      "saturationBrightness": "Sėtinimas ir ryškumas",
+      "use": "Naudokite šią spalvą"
+    },
+    "common": {
+      "back": "Atvažiuok",
+      "cancel": "Atšaukti",
+      "delete": "Ištrinti",
+      "error": "Klaida",
+      "gotIt": "- Taip.",
+      "loading": "Laidymas...",
+      "no": "Ne, ne.",
+      "ok": "Gerai.",
+      "save": "Išsaugoti",
+      "share": "Pasidalijimas",
+      "success": "Išvyksta",
+      "tryAgain": "Bandyk dar kartą.",
+      "unknownError": "Nepažįstamas klaida",
+      "yes": "Taip."
+    },
+    "gallery": {
+      "cancelSelection": "Atšaukti pasirinkimą",
+      "clear": "Aiški istorija",
+      "clearConfirm": "Išskirtas",
+      "clearMessage": "Lymark įrašai bus ištrinti.",
+      "count": "{count, plural,  one {Eksportuotas # nuotraukas} other {Eksportuoti # nuotraukos}}",
+      "delete": "Ištrinti",
+      "empty": "Dar nėra nuotraukų.",
+      "emptyAction": "Eik į užkapinimą",
+      "emptyDescription": "Fotografijos, kurias eksportuojate su vanduo ženklu, rodomos čia, su data, vieta ir kodas.",
+      "filteredCount": "{shown} of {total, plural, one {# photo} other {# photos}}",
+      "noResults": "Nėra nuotraukų dėl  {query} .",
+      "photoLabel": "Fotografija iš {when} ",
+      "removeMessage": "Įrašai išlieka Lymark. Jau išsaugotos įrenginio galerijoje nuotraukos nepažeidžia.",
+      "removeTitle": "{count, plural,  one {Išstokite iš istorijos} other {Ištrinkite įrašus #}}",
+      "removed": "{count, plural,  one {Įėjimas pašalintas.} other {Užrašai pašalinti.}}",
+      "saveDeniedMessage": "Įvairų įtaisų › Leidimai įtaisų galerijoje išsaugoti.",
+      "saveDeniedTitle": "Fotografijos prieiga negauta",
+      "savedAll": "{count, plural,  one {Viena nuotrauka išsaugota į įrenginio galeriją.} other {# nuotraukos išsaugotos į įrenginio galeriją.}}",
+      "savedSome": "{saved} iš {total} nuotraukų išsaugota.",
+      "searchPlaceholder": "Paieška pagal adresą, datą ar kodą",
+      "selectedCount": "{count, plural,  one {Pasirinktas # nuotrauka} other {Rinkti # nuotraukos}}",
+      "share": "Pasidalijimas",
+      "title": "Galerija"
+    },
+    "language": {
+      "automatic": "Pasiderinimo įrenginys",
+      "automaticNote": "Lymark sekia jūsų įrenginyje nustatytą kalbą.",
+      "label": "Žodžio kalba",
+      "selector": "Pasirinkta kalba"
+    },
+    "login": {
+      "access": "Įskyrus prieigą",
+      "apple": "Įsiregistruokite su \"Apple\"",
+      "google": "Įskirkite į \"Google\"",
+      "subtitle": "Įskirkite toliau",
+      "title": "Įskokite prieigą prie Lymark "
+    },
+    "nav": {
+      "batch": "Lėktuvų perdirbimas",
+      "photoDetail": "Fotografijos detalės",
+      "report": "PDF ataskaita",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Šis ekranas nėra Lymark dalis .",
+      "screenTitle": "Puslapis nerasotas",
+      "title": "Tokių kelių nėra."
+    },
+    "permissions": {
+      "allow": "Leiskite",
+      "allowed": "Leidžiama",
+      "blocked": {
+        "later": "Dabar ne.",
+        "message": "Sistema daugiau neprašys.",
+        "openSettings": "Atvirais nustatymų",
+        "title": "Leidimas užblokuotas"
+      },
+      "camera": "Kameras",
+      "cameraRationale": "Reikalingas fotografuoti, kuris gaus vandenų ženklą.",
+      "denied": "Atmetimas",
+      "granted": "Įstojimas",
+      "intro": "Lymark prašo tik tai, ko reikia, kad užšamplintų nuotrauką. Jūsų vaizdai niekada neišvyksta iš įrenginio: kai naudojate GPS, operacinė sistema siunčia žemėlapyje paslaugą tik koordinatą, kad jis galėtų tapti adresu.",
+      "location": "Įgyvendinimo vieta",
+      "locationRationale": "Kai užfiksuojate adresą, adresų laukas automatiškai užpildomas.",
+      "mediaLibrary": "Išsaugoti į galeriją",
+      "mediaLibraryRationale": "Užrašyti eksportuotus nuotraukas į įrenginio galeriją.",
+      "openDeviceSettings": "Paskirstys",
+      "recheck": "Dar kartą patikrinkite.",
+      "request": "Prašome leidimo",
+      "section": "Prieiga",
+      "title": "Leidimai"
+    },
+    "photo": {
+      "backToGallery": "Grįžk į galeriją",
+      "exportedAt": "Eksportuota per {when} ",
+      "noWatermark": "Ši nuotrauka buvo eksportuota be vandens ženklo.",
+      "notFoundBody": "Šis įrašas gali būti pašalintas iš istorijos.",
+      "notFoundTitle": "Fotografija nerado",
+      "remove": "Ištrinti",
+      "removeBody": "Įrašo įrašas yra Lymark. Į įrenginio galeriją išsaugotas vaizdas nepažeistas.",
+      "removeTitle": "Išstokite iš istorijos",
+      "share": "Pasidalijimas",
+      "stampedData": "Slapta informacija"
+    },
+    "plan": {
+      "exhausted": "Naudotos nemokamos nuotraukos",
+      "exhaustedMessage": "12 bešvaikos plano nuotraukų išnyko.",
+      "free": "Nemokama",
+      "pro": "Profesionaliai",
+      "reconnect": "Pasidalinkite , kad patvirtintumėte prenumeratą",
+      "remaining": "{remaining, plural,  one {# nemokamas nuotrauka kairėje} other {# nemokami nuotraukos paliko}}",
+      "title": "Planas",
+      "unlimited": "Be apribojimų"
+    },
+    "report": {
+      "allPhotos": "Visi nuotraukos",
+      "authorField": "Autorius / įmonė",
+      "detailsSection": "Išsamesnis",
+      "doc": {
+        "author": "Autorius",
+        "declaration": "Pažymėtus duomenis (adresą, datą, laiką ir kodą) pateikia nuotraukų išdavėjo pareiškimas.",
+        "exportedAt": "Išvežtas iš",
+        "generatedAt": "Gaminti",
+        "page": "Puslapis",
+        "photo": "Fotografija {index} ",
+        "photosSection": "Fotografiniai įrašai",
+        "signature": "Atsakingo asmens paraiška",
+        "summary": "Atkūrimas",
+        "title": "Fotografinė ataskaita",
+        "totalPhotos": "Bendros nuotraukos:"
+      },
+      "empty": "Vis dar nėra eksportuotų nuotraukų.",
+      "failed": "Negaliu pateikti ataskaitos.",
+      "fileStem": "ataskaita",
+      "format": {
+        "csv": "Kalbant apie \"T\" (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Paketas (ZIP)"
+      },
+      "formatSection": "Formuotas",
+      "generate": "Sukurti failą",
+      "generateSection": "Sukurti",
+      "includeLogo": "Logotipas ant puslapinės",
+      "includeLogoDescription": "Jūsų prekės ženklo logotipas, tas pats, kaip ir už ženklą.",
+      "norm": {
+        "abnt": "ABNT (Brazila)",
+        "din5008": "DIN 5008 (Vokietė)",
+        "ibape": "IBAPE stilius (Brazila)",
+        "iso": "Tarptautinė",
+        "letter": "Laiškas (JAV)"
+      },
+      "normNote": "Standardas nustato popieriaus ir formatuojant  žetą, raštuką ir puslapį.",
+      "normSection": "Dokumentų standartas",
+      "projectsSection": "Projektas / darbas",
+      "saved": "Išsaugota į {path} ",
+      "savedShort": "Ataskaita ataskaita.",
+      "title": "PDF ataskaita",
+      "titleField": "Ataskaitos pavadinimas",
+      "unavailableBody": "PDF ataskaitos yra prieinamos darbinėje programinėje programoje.",
+      "unavailableTitle": "Tik stotybe",
+      "uncoded": "Nėra kodų",
+      "wordTooBig": "Word dokumentas per didelis, kai įterpiamos nuotraukos.",
+      "zipMissing": "{count, plural,  one {Paslaugotas pakuotas, bet # nuotrauka nebuvo rastama šiame įrenginyje.} other {Paslaugotas pakuotas, bet # nuotraukos nebuvo rastos šiame įrenginyje.}}"
+    },
+    "settings": {
+      "about": "Apie",
+      "aboutDescription": "Versija, privatumas ir kreditai",
+      "appSection": "Aplikacija",
+      "deviceSection": "Įrankis",
+      "deviceSectionDescription": "Įprastumas, kurį prašo Lymark.",
+      "fields": "Laukai ir padėtis",
+      "fieldsDescription": "Pasirinkite, kurie laukiai rodomi, kampas ir dydis",
+      "history": "Istorija",
+      "historyDescription": "Eksportuotos nuotraukos, laikomos įrenginyje",
+      "language": "Žodžio kalba",
+      "permissions": "Leidimai",
+      "permissionsDescription": "Kamera, nuotraukos ir vieta",
+      "save": "Išsaugoti",
+      "title": "Paskirstys",
+      "watermark": "Vandens ženklas",
+      "watermarkSection": "Vandens ženklas",
+      "watermarkSectionDescription": "Kas yra užrašyta ant nuotraukos ir kur."
+    },
+    "signup": {
+      "subtitle": "Pasirašyk, kad pradėtum",
+      "title": "Įkūrite savo Lymark paskyrą"
+    },
+    "tagline": "Vandens ženklas su laiku, data ir vieta",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Kamera negali naudotis, tik į įrenginio nustatymus.",
+      "done": "Video užrašyta ir išsaugota.",
+      "export": "Eksporto žibinta vaizdo įrašas",
+      "exportSection": "Eksportas",
+      "failed": "Video negalėjo būti užrašytas.",
+      "fieldsSection": "Žibintų laukiai",
+      "fileSection": "Video",
+      "none": "Nėra pasirinkto vaizdo įrašų.",
+      "processing": "Išsiskaldymas... {percent} %",
+      "processingMobile": "- Išsirašinėjam...",
+      "record": "Užregistruokite vaizdo įrašą dabar",
+      "saved": "Išsaugota į {path} ",
+      "savedToGallery": "Slapta vaizdo įrašas, įrašytas į tavo galeriją.",
+      "select": "Pasirinkite vaizdo įrašą",
+      "unavailableBody": "Mobilų vaizdo žampinimo reikia Lymark įdiegti iš EAS statybos (su gimtoji moduliu). Jis nėra prieinamas Expo Go . Įdiegite oficialų programą iš parduotuvės arba EAS statybos, arba naudokite stavimo vietą / interneto versiją.",
+      "unavailableTitle": "Aplikacija turi būti įdiegta",
+      "unreadable": "Duomenys nebuvo galima perskaityti kaip vaizdo įrašas.",
+      "webNote": "Pranešime apie tai rašoma, kad \"Videjo\" skambinimas yra atliekamas tikruoju laiku."
+    },
+    "watermark": {
+      "accentColor": "Vartiškasis juostelis",
+      "backdropBandNote": "Bandas vyksta iš kantų į kantą per nuotrauką ir atsistoja prieš žinia, kurioje yra tvirtintas antspaudas.",
+      "backdropBlockNote": "Šaltinis tekstas turi būti pakrautas pagal tekstą.",
+      "backdropColor": "Rūšis juostos",
+      "backdropDescription": "Be to tekstas sėdi tiesiai ant nuotraukos, su šešėliu.",
+      "backdropInnerRadius": "Vidiniai kampeliai",
+      "backdropOpacity": "Atvirškumas",
+      "backdropOpacityValue": "{percent} % neperskirtas",
+      "backdropRadius": "Apvalkios kampinės",
+      "backdropRadiusSquare": "Šviesoji",
+      "backdropStyles": {
+        "band": "Visos pločio juostos",
+        "block": "Už teksto",
+        "none": "Niekas"
+      },
+      "backdropTitle": "Paslaugos grupė",
+      "brandDescription": "Ant laikrodžio jis tampa parašu, su logotipu ir žurnaliu.",
+      "brandFirstColor": "Pirmoji dalis",
+      "brandFirstHint": "Statybininkai",
+      "brandFirstPart": "Pirmasis dalis",
+      "brandNote": "Antroji dalis palikite tuštai, kad būtų galima pažymėti vienakalbiniu ženklu.",
+      "brandPlacements": {
+        "corner": "Už kauko",
+        "header": "Per laikrodį",
+        "none": "Niekas"
+      },
+      "brandSecondColor": "Antrosios dalies spalva",
+      "brandSecondHint": "Smitas",
+      "brandSecondPart": "Antrasis dalis",
+      "brandTitle": "Slapintas ženklas",
+      "codeDescription": "Šalia jis nesirinkia su pati nuotrauka dėl vietos.",
+      "codePlacements": {
+        "block": "Prie duomenų",
+        "side": "Dešinė pusė"
+      },
+      "codeTitle": "Fotografijos kodas",
+      "colors": {
+        "amber": "Amber",
+        "black": "Juoda",
+        "blue": "Mėlynas",
+        "green": "Žaliai",
+        "red": "Raudonas",
+        "white": "Baltieji"
+      },
+      "colorsDescription": "Šį nuotrauko spalvą pasirinkia įmonė, o ne programa, kuri ją keičia, ne keičiasi ekrano spalvos.",
+      "colorsTitle": "Žibintų spalvos",
+      "complement": "Žodinis pavadinimas",
+      "complementColor": "Žodinio spalva",
+      "complementHint": "Inspekcijos ir techninės ataskaitos",
+      "cornerConflict": "Žyma ir duomenys yra tame pačiame kampe  jie bus supakuoti nuotraukoje.",
+      "fields": {
+        "address": "Adresas / vieta",
+        "code": "Fotografijos kodas",
+        "date": "Datas",
+        "time": "Laikas",
+        "weekday": "Dvijų darbo dienų"
+      },
+      "fieldsDescription": "Fotografijai pasiekia tik laukai, kuriuose yra turinio.",
+      "fieldsTitle": "Parodomi laukai",
+      "includeCountry": "Įtraukti šalį",
+      "includeCountryDescription": "Įjunk jį, jei dirbi per ribas, kitaip jis užima tik nuotrauką.",
+      "legibilityTitle": "Skaityma",
+      "logoAdded": "Logo įrašytas į prekės ženklo antraštę.",
+      "logoAlignNote": "Logotipo aukštis sekasi teksto: jo viršutinė dalis susitaiko su pavadinimo viršūnė ir apačioje - su tagline pagrindine linija.",
+      "logoChosen": "Pasirinktas logotipas",
+      "logoErrorMessage": "Bandykite kitą vaizdą. PNG su skaidra fona yra formatas, kuris veikia geriausiai.",
+      "logoErrorTitle": "Šis failas negali būti naudojamas",
+      "logoFormatNote": "Naudokite PNG su skaidra fona. JPG su baltu fonu tampa baltu regatūniu nuotraukoje  formatas nešioja skaidrumą, o programa neturi galimybės įsivaizduoti, kas yra fona.",
+      "logoPermissionMessage": "Pažadinkite logotipo failą nustatymuose \"Leisvės\".",
+      "logoPermissionTitle": "Fotografijos prieiga negauta",
+      "logoPick": "Pasirinkite logotipą",
+      "logoPosition": "Logo pozicija",
+      "logoPositionBlock": "Su žibru.",
+      "logoRemove": "Ištrinti",
+      "logoReplace": "Įkėlimo logotipas",
+      "logoSize": "Logo dydis",
+      "positionDescription": "Fotografijos kampą, prie kurio užfiksuotas blokas.",
+      "positionTitle": "Pažymėjimas",
+      "positions": {
+        "bottom-left": "Pažolį kairėje",
+        "bottom-right": "Geresnis apačioje",
+        "top-left": "Virš dešinėje",
+        "top-right": "Viršinėje dešinėje"
+      },
+      "previewCurrent": "Per dabartinę nuotrauką iš \"Užtrauk\" skirtukos.",
+      "previewEmpty": "Iš šviesos į tamsus, kad būtų galima skaityti abiejų kraštutinių.",
+      "previewNoFields": "Nėra pasirinkto lauko  nuotrauka išnyksta be vandens ženklo.",
+      "previewTitle": "Išankstinis vaizdas",
+      "reset": "Atkurti numatytus parametrus",
+      "sizeTitle": "Teksto dydis",
+      "sizes": {
+        "large": "Didelis",
+        "medium": "Vidutinis",
+        "small": "Mažos"
+      },
+      "textColor": "Tekstas",
+      "timeFormatDescription": "Kaip laikas užpildomas lauke. Lauke likasi tvarkoma.",
+      "timeFormatTitle": "Laiko formatas",
+      "timeFormats": {
+        "12h": "12 valandų (po pietų)",
+        "24h": "24 valandas"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Visi failai",
+      "images": "Pavaizdai",
+      "pickFolder": "Pasirink išvesties paieška",
+      "pickPhoto": "Pasirink nuotrauką",
+      "pickPhotos": "Pasirinkti nuotraukas",
+      "savePhoto": "Išsaugoti nuotrauką",
+      "saveReport": "Paslaugų išsaugoti"
+    },
+    "login": {
+      "cancel": "Atšaukti",
+      "confirm": "Tęsite",
+      "message": "Tu tik prisijungėte prie naršyklės.",
+      "title": "Įskirkite į Lymark "
+    },
+    "menu": {
+      "copy": "Išskyrus",
+      "cut": "Skirti",
+      "edit": "Paskaityti",
+      "file": "Failas",
+      "fullscreen": "Visiškas ekrano",
+      "help": "Padėk",
+      "paste": "Paste",
+      "quit": "Palikite.",
+      "redo": "Redo",
+      "reload": "Perkraunimas",
+      "selectAll": "Pasirinkite visus",
+      "settings": "Paskirstys",
+      "undo": "Išbraukti",
+      "view": "Žiūrėjimas",
+      "zoomIn": "Įvažiuokite",
+      "zoomOut": "Išstumkite",
+      "zoomReset": "Iš tikrųjų dydis"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Grįžk namo.",
+      "openApp": "Atverti programą",
+      "photos": "Fotografijos",
+      "photosLeft": "{remaining} iš {quota} kairėje",
+      "plan": "Planas",
+      "planUnavailable": "Šiuo metu neegzistuojama.",
+      "plans": {
+        "free": "Nemokama",
+        "pro": "Profesionaliai"
+      },
+      "signInTitle": "Įskirstite",
+      "signOut": "Pasirašyk.",
+      "signUpTitle": "Užskyrus paskyrą",
+      "subscribe": "Pasirašykite \"Lymark Pro\"",
+      "subscribeSoon": "Abonentai dar nėra prieinami. Kai jie bus, galite čia abonentuotis ir naudoti bet kokį įrenginį su ta pačia paskyrą.",
+      "title": "Jūsų sąskaita",
+      "revokeDesktops": "Išjungti kompiuterius",
+      "revokeDesktopsHint": "Galite prisijungti, kai norite."
+    },
+    "availability": {
+      "contact": "Norėdami sekti pradžią arba pranešti apie problemą, rašykite <email> contato@lymark.app </email>.",
+      "description": "Lymark versija 1.3.0, testas \"Android\" prieš skelbimą \"Google Play\".",
+      "title": "Įmanomasis"
+    },
+    "data": {
+      "device": {
+        "description": "Paslauga yra jūsų prenumeratui: serverius saugoma jūsų el. pašto pašto ir plano, o niekada negauna jūsų nuotraukų ar vietos.",
+        "field": "Įtaisyje",
+        "heading": "Fotografijos, adresai ir istorija"
+      },
+      "external": {
+        "description": "Norint paversti žemesį ir ilgetį skaitomoju adresu, operacinė sistema kreipiasi į \"Google\" ar \"Apple\" geokodifikavimo paslaugą. Tai vienintelė informacija, kuri išliko, ir sistema ją siunčia, o ne programa.",
+        "field": "Išjungtas iš įrenginio",
+        "heading": "Tik koordinatą paversti adresą"
+      },
+      "note": "Visas yra išdėstytas  įskaitant tai, ką reiškia Brazilijos LGPD <privacy>Privatumo politika</privacy>. Išjungus vietos leidimą, programa yra visiškai funkcinė; tada reikia įrašyti tik adresą rankiniu būdu.",
+      "title": "Kur jūsų duomenys"
+    },
+    "deleteAccount": {
+      "back": "Grįžkime prie sąskaitos",
+      "confirm": "Ištrinkite mano paskyrą",
+      "deletesNow": "Ištrinti paskyrą ištrina jūsų el. pašto adresą, tapatybę ir planą, kvotą ir nuotraukų skaičių.",
+      "irreversible": "Ištrūkanimas yra nuolatinis ir negali būti atšauktas. Jūsų įrenginyje esančios nuotraukos nėra paveiktos  jie niekada nebuvo mūsų serveriuose.",
+      "retained": "Mokėjimų sandorių įrašai saugomi pagal įstatymą reikalaujamą fiskalinį laikotarpį, nesusiję su jūsų profiliu.",
+      "title": "Ištrinti paskyrą"
+    },
+    "description": "\"Android\" programa, kurioje užfiksuotas laikas, data, darbo diena, adresas ir sekimo kodas į svetainės patikrinimo ir paslaugų įrodymų nuotraukas.",
+    "desktop": {
+      "backAccount": "Grįžkime prie sąskaitos",
+      "explanation": "Jūsų paskyras paruoštas. Paspauskite žemiau esančią mygtuką, kad atidaryte Lymark savo kompiuteryje, kuris jau yra prisijungęs prie  naršyklė paprašys leidimo atidaryti programą.",
+      "open": "Prisijungti programą",
+      "title": "Įskokite į kompiuterį",
+      "unavailable": "Darbušinio kompiuterio programos ryšys dar nėra."
+    },
+    "download": {
+      "appStore": {
+        "description": "Tas pats patyrimas kaip ir \"Android\" ir \"iOS\".",
+        "field": " App Store ",
+        "heading": "iPhone ir iPad"
+      },
+      "browser": {
+        "action": "Įskirstite",
+        "description": "Įskokite savo paskyrą ir programa bus atidaryta tiesiai naršyklėje  telefonas ar kompiuteris.",
+        "field": "Lygiklis",
+        "heading": "Naudok jį dabar, nieko įdiegti."
+      },
+      "desktop": {
+        "description": "Fotografijos serijos, ilgos vaizdo įrašos ir PDF pranešimai  sunkus darbo versija.",
+        "field": "Kompiuteris",
+        "heading": "Windows ir Linux"
+      },
+      "googlePlay": {
+        "description": "Telefoninė programa, su kamera, galerija ir žyma.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "- Nagi.",
+      "title": "Kur naudoti Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "Jei užrašėte, kol GPS atsakys, tai laimės.",
+        "field": "Pašto adresas",
+        "heading": "Įpildytas GPS, rankiniu būdu patikslinamas"
+      },
+      "code": {
+        "description": "Jis egzistuoja, kad galėtumėte cituoti vieną konkretų nuotrauką darbo tvarka ar ataskaitoje. Jis veikia sukeltas į dešinę kraštą arba yra prie duomenų bloko  jūsų pasirinkimo.",
+        "field": "Fotografijos kodas",
+        "heading": "14 simbolių, išrašytų kriptografiniais generatoriais"
+      },
+      "note": "Kiekvienas laukas įjungtas ir išjungtas pats, o blokas tvirtinamas į bet kurį iš keturių kampų, trijų dydžių. Išankstinė matoma naudoja jūsų faktinę nuotrauką, o ne bendrąjį pavyzdį: tai, ką matote ekrane, yra tiesiog kas eksportuojama.",
+      "time": {
+        "description": "Vienas mygtukas visus tris laukus atneš į dabartį, kai užfiksuoti truko ilgiau nei tikėtasi.",
+        "field": "Laikas ir data",
+        "heading": "Iš prietaiso laikrodžio, užėmimo metu"
+      },
+      "title": "Kas į paveikslą?"
+    },
+    "footer": {
+      "description": "Lymark  fotografiniai įrašai su data, laiku ir adresu.",
+      "documentsLabel": "Dokumentai",
+      "privacy": "Privatumo politika",
+      "support": "Pagalba:",
+      "terms": "Naudojimo sąlygos"
+    },
+    "hero": {
+      "ctaAccount": "Eik į mano sąskaitą.",
+      "ctaLogin": "Įskirstite",
+      "ctaSignup": "Užsirašykite nemokamą paskyrą",
+      "description": "Lymark spausdinia laiką, datą, darbo dieną, adresą ir sekimo kodą tiesiai į paveikslą.",
+      "eyebrow": "Lauko nuotraukos dokumentacija",
+      "heading": "Fotografija jau sako, kada, kur ir ką.",
+      "meta": {
+        "account": "Vienas skraidymas",
+        "android": "Android ir naršyklė",
+        "language": "Brazilijos portugalų kalba",
+        "onDevice": "Fotografijos lieka įtaisyje"
+      },
+      "note": "Nieko įdiegti."
+    },
+    "nav": {
+      "account": "Sąskaita",
+      "home": "Šeima",
+      "homeLabel": "Lymark , pagrindinė puslapis",
+      "label": "Pagrindinis",
+      "privacy": "Privatumas",
+      "signIn": "Įskirstite",
+      "terms": "Sąlygos",
+      "verify": "Įtikrinti"
+    },
+    "process": {
+      "capture": {
+        "description": "Adreso paieškos prasideda iš karto, kai nuotrauka atkelia.",
+        "field": "Užėmimas",
+        "heading": "Kamera arba galerija"
+      },
+      "note": "Du veiksmai yra laikomi atskirai. Skaitymas ir dalinimas išsprendžia skirtingas problemas, o juos sudedant į vieną mygtuką, būtų nulieti bet kuris, kuris tik nori įrašyti nuotrauką per siuntimo ekraną.",
+      "save": {
+        "description": "Jis yra su likusiais jūsų telefono nuotraukomis, prieinama bet kuriai aplikacijai  įskaitant po to, kai atsinaujina Lymark .",
+        "field": "Išsaugoti",
+        "heading": "Eik į įrenginių galeriją"
+      },
+      "share": {
+        "description": "WhatsApp , elektroninė pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto",
+        "field": "Pasidalijimas",
+        "heading": "Atveria sistemos skyriaus lentelę"
+      },
+      "title": "Fotografijos kelias"
+    },
+    "skipToContent": "Išjungkite į turinį",
+    "specimen": {
+      "caption": "Barsono taisyklė prasideda ir baigiasi skaitmenų kraštyje, o ne teksto dėžutėje.",
+      "label": "Lymark antspaudo pavyzdys: 07:42 val. 2026 m. rugpjūčio 12 d., trečiadienį, adresas Guarujá ir nuotraukos kodas."
+    },
+    "title": "Lymark  data, laikas ir adresas laukinių nuotraukų vandeninis ženklas",
+    "verify": {
+      "caveat": "Žibrio ženklas patvirtina dokumentų saugumą ir išdavimo akimirką.",
+      "checking": "- Pasvarstoju...",
+      "declarationNote": "Ženklas rodo (adresą, datą, laiką) emitento deklaraciją  ženklas patvirtina, kad jis yra vientisas ir išduotas, o ne turtas.",
+      "intro": "Išsirinkite arba pasirinkite Lymark eksportuotą nuotrauką ir iš karto pamatykite, ar ji yra tokia, kaip ji išliko iš programos  ir kas ją išleido, kada.",
+      "noSealBody": "Šis failas neturi Lymark uždovanojo. Jis gali būti eksportuotas ne internetu, prieš uždovanojimą egzistavo, arba gali būti ne iš Lymark. Uždovanojo nebuvimas ne įrodo, kad buvo pažeistas.",
+      "noSealTitle": "Nėra uždedu",
+      "notConfigured": "Vis dar nėra galima patikrinti.",
+      "pick": "Pasirinkti failą",
+      "previewAlt": "Įtikrinamas nuotraukas, matomas antspaudas",
+      "privacyNote": "Verifikacija vyksta naršyklėje. Failas siunčiamas į bet kurį serverią.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Nepakenkta",
+      "tamperedBody": "Turinys neatitinka užrašo: bylą pakeitė po jo išdavimo arba užrašo priklauso kitam bylui.",
+      "tamperedTitle": "Nesuderinimas",
+      "title": "Įtikrinti autentiškumą",
+      "unsupported": "Šis naršyklė nepalaiko parašo tikrinimo. Pabandykite dabartinį naršyklę."
+    }
+  }
+}

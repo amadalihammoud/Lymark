@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "App",
+      "pitch": "Tähdyttää aika, päivämäärä, työpäivä, osoite ja seurantakoodi valokuvillesi  kenttätiedotteiden, paikan tarkastusten ja palvelun todistuksen vuoksi.",
+      "platform": "Alusto",
+      "privacy": "Yksityisyyttä koskeva toimintaperiaatte",
+      "privacyGeocoding": "Kun GPS-järjestelmä käytetään, se lähettää koordinaatin Googlesille tai Apples karttopalvelulle osoitteen saamiseksi. Tämä on ainoa informaatio, joka jää tänne, ja se on järjestelmä, joka lähettää sen, ei Lymark.",
+      "privacyLocation": "Paikka käytetään kerran kuvauksen kohden, vain osoitteen kenttää täytettäessä, eikä sitä tallenneta erikseen valokuvista.",
+      "privacyOnDevice": "Tilin käyttö on tilauksesi varten: palvelimella on sähköposti ja suunnitelma, eikä se koskaan saa kuvia tai sijaintisi.",
+      "privacySection": "Yksityisyys",
+      "sdk": " Expo SDK ",
+      "terms": "Käyttöehdot",
+      "title": "Ymmärrän .",
+      "version": "Versio"
+    },
+    "account": {
+      "browserHint": "Sisääntyminen tapahtuu selaimessa. Sisääntykää siellä tililläsi ja sovellus yhdistyy itse.",
+      "code": "Koodi",
+      "codeSent": "Lähetimme koodin {email}: lle .",
+      "connected": "Liittynyt",
+      "continue": "Jatkakaa",
+      "deleteAccount": "Poista tili",
+      "email": "Lähetys",
+      "failed": "Tarkista sähköposti tai koodi ja yritä uudelleen.",
+      "notConfigured": "Sisäilytys ei ole vielä saatavilla.",
+      "signInBrowser": "Sisääntykää selaimen kautta",
+      "signOut": "- Kirjoita ulos .",
+      "signedInAs": "Allekirjoitettu nimellä {email} ",
+      "title": "Tilinpito",
+      "verify": "Tarkista"
+    },
+    "batch": {
+      "addressHint": "Kadulla, numero  kaupunki",
+      "clearList": "Selkeä lista",
+      "codeHint": "Esimerkiksi LYM-001",
+      "done": "{count, plural,  one {Hoito valmis: #-kuva valmis.} other {Hoito valmis: #-kuvat valmiina.}}",
+      "doneSection": "Lopetettu",
+      "dropZone": "Vedä ja pudota kuvia tähän tai käytä Valitse kuvia -painiketta",
+      "errorsSection": "Virheet",
+      "folder": "Kaappi: {name} ",
+      "noPhotos": "Valitse ainakin yksi kuva.",
+      "outputNote": "Käsiteltyä valokuvaa tallennetaan valituun kantaan.",
+      "outputSection": "Tuotanto",
+      "photosSection": "Kuvat käsiteltäviksi",
+      "processing": "- Käsitteleminen...",
+      "progress": "{current} {total} ({percent} %)",
+      "results": "{success, plural,  one {# menestys} other {# menestyksekseen}}, {failed, plural,  one {#-virhe} other {#-virhe}}",
+      "selectFolder": "Valitse ulottuvuus kansi",
+      "selectPhotos": "Valmista valokuvat",
+      "selected": "{count, plural,  one {Valitsematon #-kuva} other {Valitset #-kuvat}}",
+      "sharedNote": "Nämä arvot sovelletaan KAIKSAAN valokuvaan.",
+      "sharedSection": "Yhteiset metat tiedot",
+      "start": "Aloita käsittely",
+      "unavailableBody": "Tämä ominaisuus on vain työpöytä.",
+      "unavailableTitle": "Pakollisen valmistus"
+    },
+    "capture": {
+      "accuracy": "Asennus ± {meters} m:n sisällä.",
+      "accuracyImprecise": "Position within ±{meters} m — check the street number before exporting.",
+      "address": "Osoite",
+      "addressFailedTitle": "Ei osoitteita löydetty",
+      "addressHint": "Napsauta paikkaan tai kirjoita osoite",
+      "camera": "Ota kuva .",
+      "code": "Koodi",
+      "dateHint": "1. tammikuuta 2026",
+      "dateTimeGroup": "Päivä ja aika",
+      "emptyWarning": "Ei ole merkkejä  kuva tulee ulos ilman vesimerkkiä.",
+      "gallery": "Valitse galleriasta",
+      "galleryDenied": "Kuva ei ole pääsyä, joten kuva on vain sovelluksen sisällä. Salli se sallitessa.",
+      "galleryFailed": "Kuva meni historian luo, mutta laitelma kieltäytyi kirjoittamasta sen galleriaan.",
+      "generateCode": "Tuotetaan",
+      "hiddenFields": "{count, plural,  one {Piilotettu kenttä} other {Piilotettuja kenttiä}}: {fields}  käynnistä ne asetuksissa › kentät ja asema.",
+      "keepMyAddress": "Pidä minun .",
+      "locate": "Paikka",
+      "locateByGps": "GPS:n avulla osoite",
+      "lookup": {
+        "denied": "Salli sijaintiasetukset > Luvat tai kirjoita osoite.",
+        "disabled": "Asennus on sammutettu laitteella.",
+        "timeout": "GPS ei vastannut ajoissa, se epäonnistuu usein sisätiloissa.",
+        "unavailable": "-Täyttäjä ei löydä osoitteen."
+      },
+      "newCapture": "Aloita uusi vangitseminen .",
+      "noFieldsBack": "Mene takaisin .",
+      "noFieldsContinue": "Jatkakaa silti.",
+      "noFieldsMessage": "Ei kentällä ole mitään, mitä täyttää. Täytä kentät tai tarkista asetukset › kentät ja sijainti.",
+      "noFieldsTitle": "Kuva tulee ilman vesimerkkiä.",
+      "noPhotoHint": "Ota valokuva tai valitse kuva galleriasta.",
+      "noPhotoSelected": "Valinnut kuva",
+      "openFailed": "Kuvaa ei voitu avata.",
+      "permissionMessage": "Salli pääsyn asetuksissa › Luvat jatkua.",
+      "permissionTitle": "Lupa vaaditaan",
+      "pickPhoto": "Valitse kuva",
+      "pickPhotoHint": "Valitse kuva, jolla voit tehdä toimintaa.",
+      "previewLabel": "Vesimerkitty valokuva",
+      "renderFailedTitle": "Kuvaa ei voitu luoda",
+      "replaceAddressMessage": "GPS: n löytyminen: {address} ",
+      "replaceAddressTitle": "Vaihdatko kirjoittamasi osoitteen?",
+      "resetConfirm": "Heitetään pois",
+      "resetMessage": "Valitu valokuva ja täytetyt kentät hylätään.",
+      "resetTitle": "Aloitatko uuden vangitsemisen?",
+      "saved": "Kuva tallennetaan laitteen galleriaan ja historian.",
+      "savedAppOnlyTitle": "Säilytetty vain Lymark: n sisällä",
+      "shareDialogTitle": "Jaa vesimerkitty kuva",
+      "shareFailedMessage": "Kuva on luotu ja se on Lymark-historiassa.",
+      "shareFailedTitle": "En voinut jakaa",
+      "shareUnavailableMessage": "Kuvassa ei ole mitään osakkeet.",
+      "shareUnavailableTitle": "Yhteisön jakaminen ei ole käytettävissä",
+      "sharedFileTitle": "Vesimerkitty kuva",
+      "stampNotReady": "-Sampula on vielä valmistelussa.",
+      "syncNow": "Nyt se on hyvä .",
+      "timestamp": "Päivä/aika",
+      "title": "Saatua kiinni",
+      "useGpsAddress": "Käytä GPS:tä.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Päivä"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "Valitse toinen väri",
+      "saturationBrightness": "Täydennys ja kirkkaus",
+      "use": "Käytä tätä väriä"
+    },
+    "common": {
+      "back": "Takaisin",
+      "cancel": "Perustetaan",
+      "delete": "Poistaa",
+      "error": "Virhe",
+      "gotIt": "- Selvä.",
+      "loading": "Laadun laittaminen...",
+      "no": "- Ei, ei.",
+      "ok": "Hyvä on.",
+      "save": "Säästä",
+      "share": "Osallistu",
+      "success": "Menestys",
+      "tryAgain": "Yritä uudestaan.",
+      "unknownError": "Tiedotonta virhettä",
+      "yes": "- Kyllä , minä olen ."
+    },
+    "gallery": {
+      "cancelSelection": "Valito peruutetaan",
+      "clear": "Selvä historia",
+      "clearConfirm": "Selvä",
+      "clearMessage": "Lymark:n tiedot poistetaan.",
+      "count": "{count, plural,  one {#-kuva vietiin} other {#-kuvat vietiin}}",
+      "delete": "Poistaa",
+      "empty": "Ei vielä kuvia .",
+      "emptyAction": "Mene kiinni .",
+      "emptyDescription": "Valokuvat, jotka viette vesimerkillä, näkyvät tässä, päivämäärällä, paikkakodella ja koodilla.",
+      "filteredCount": "{shown} of {total, plural, one {# photo} other {# photos}}",
+      "noResults": " {query} : n kuvaa ei löytynyt.",
+      "photoLabel": "Kuva {when}: stä ",
+      "removeMessage": "Kuvat, jotka on tallennettu laitteen galleriaan, eivät ole vaikuttanut.",
+      "removeTitle": "{count, plural,  one {Poista historiaa} other {Poista #- kirjaukset}}",
+      "removed": "{count, plural,  one {Pääsy poistettu.} other {- Kirjoitukset poistettu.}}",
+      "saveDeniedMessage": "Salli se asetuksissa › Luvat tallentaa kuvat laitteen galleriaan.",
+      "saveDeniedTitle": "Kuvaan pääsy kielletty",
+      "savedAll": "{count, plural,  one {Yksi kuva tallennettiin laitteen galleriaan.} other {#-kuvat tallennetaan laitteen galleriaan.}}",
+      "savedSome": "{saved} {total}-kuvia tallennettu.",
+      "searchPlaceholder": "Etsi osoitteen, päivämäärän tai koodin mukaan",
+      "selectedCount": "{count, plural,  one {Valitsematon #-kuva} other {Valitset #-kuvat}}",
+      "share": "Osallistu",
+      "title": "Galleria"
+    },
+    "language": {
+      "automatic": "Tästikin",
+      "automaticNote": "Lymark seuraa laitteesi kielettä.",
+      "label": "Kielenkäyttö",
+      "selector": "Valitse kieli"
+    },
+    "login": {
+      "access": "Sisääntykää pääsyyn",
+      "apple": "Sisääntykää Applen kanssa",
+      "google": "Sisääntykää Googlen kanssa",
+      "subtitle": "Sisäänty jatkamaan",
+      "title": "Sisäänty sisään pääsemiseksi Lymark: lle"
+    },
+    "nav": {
+      "batch": "Säästöjen jalostaminen",
+      "photoDetail": "Kuvaus yksityiskohdat",
+      "report": "PDF-raportti",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Tämä näyttö ei kuulu Lymark: hen .",
+      "screenTitle": "Sivusta ei löytynyt",
+      "title": "Ei sellaista tietä."
+    },
+    "permissions": {
+      "allow": "- Antakaa olla .",
+      "allowed": "Sallittu",
+      "blocked": {
+        "later": "- En nyt.",
+        "message": "Järjestelmä ei pyydä enää, mutta avaa laitteen asetukset.",
+        "openSettings": "Avoimet asetukset",
+        "title": "Lupa estettiin"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "-Täytyy ottaa valokuva, joka saa vesimerkkin.",
+      "denied": "Kieltäytetty",
+      "granted": "Hyväksytään",
+      "intro": "Lymark pyytää vain sitä, mitä se tarvitsee kuvaa varten. Kuvat eivät koskaan lähde laitteesta: kun käytät GPS-käyttöä, käyttöjärjestelmä lähettää kartan palvelulle koordinaatin yksin, jotta se voi tulla osoitteeksi.",
+      "location": "Paikka",
+      "locationRationale": "Osoitteen kenttä täyttää automaattisesti, kun se on kuvattu.",
+      "mediaLibrary": "Säilytä galleriassa",
+      "mediaLibraryRationale": "Kirjoittaa vietyjä kuvia laitteen galleriaan.",
+      "openDeviceSettings": "Asetukset",
+      "recheck": "Tarkista uudestaan.",
+      "request": "Pyydä lupaa",
+      "section": "Pääsy",
+      "title": "Luvat"
+    },
+    "photo": {
+      "backToGallery": "Palaa galleriin",
+      "exportedAt": "Vientiä {when}: lla ",
+      "noWatermark": "Tämä kuva vietiin ilman vesimerkkiä.",
+      "notFoundBody": "Tämä kirja on ehkä poistettu historiasta.",
+      "notFoundTitle": "Kuva ei löytynyt",
+      "remove": "Poista",
+      "removeBody": "Laitteen galleriaan tallennettu kuva ei ole vaikuttanut.",
+      "removeTitle": "Poista historiaa",
+      "share": "Osallistu",
+      "stampedData": "Tähtöityjä tietoja"
+    },
+    "plan": {
+      "exhausted": "Käytetty ilmainen kuva",
+      "exhaustedMessage": "12 kuvaa ilmaisesta suunnitelmasta on poissa.",
+      "free": "Vapaa",
+      "pro": "Pro:",
+      "reconnect": "Sähköt on oltava uudelleen .",
+      "remaining": "{remaining, plural,  one {# ilmainen kuva vasemmalle} other {# ilmaiset kuvat}}",
+      "title": "Suunnitelma",
+      "unlimited": "Ei rajoituksia"
+    },
+    "report": {
+      "allPhotos": "Kaikki kuvat",
+      "authorField": "Kirjailija / yritys",
+      "detailsSection": "Yksityiskohdat",
+      "doc": {
+        "author": "Kirjailija",
+        "declaration": "Kuvien lähettäjän ilmoitus on postimerkitty tiedot (osoite, päivämäärä, aika ja koodi).",
+        "exportedAt": "Vientiä",
+        "generatedAt": "Tuotettu",
+        "page": "Sivulla",
+        "photo": "Kuva {index} ",
+        "photosSection": "Valokuvausrekisteri",
+        "signature": "Viranomaisen allekirjoitus",
+        "summary": "Yhteenveto",
+        "title": "Kuvauskertomus",
+        "totalPhotos": "Kokonaiskuja:"
+      },
+      "empty": "Raportti on tehty galleriastanne.",
+      "failed": "Raportti ei voitu luoda.",
+      "fileStem": "Raportti",
+      "format": {
+        "csv": "Esitelmapaikka (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Paketti (ZIP)"
+      },
+      "formatSection": "Muodostus",
+      "generate": "Laitteen luottaminen",
+      "generateSection": "Tuotetaan",
+      "includeLogo": "Logo peitteellä",
+      "includeLogoDescription": "Samalla merkkisi logo, samalla kuin postimerkit.",
+      "norm": {
+        "abnt": "ABNT (Brasilia)",
+        "din5008": "DIN 5008 (Saksa)",
+        "ibape": "IBAPE-tyyli (Brasilia)",
+        "iso": "Kansainvälinen",
+        "letter": "Kirje (Yhdysvallat)"
+      },
+      "normNote": "Standardissa määritetään paperi ja muotoilu  marginaalit, kirjaimella ja sivujen numerointi. Raportin sisältö on kaikissa sama; IBAPE-tyylissä lisätään allekirjoitusblokki.",
+      "normSection": "Dokumenttistandardit",
+      "projectsSection": "Hankkeessa / työssä",
+      "saved": "Säilytetty {path}: lle ",
+      "savedShort": "Raportti on tallennettu.",
+      "title": "PDF-raportti",
+      "titleField": "Raportin otsikko",
+      "unavailableBody": "PDF-raportit ovat saatavilla työpöytäohjelmassa.",
+      "unavailableTitle": "Vain työpöytä",
+      "uncoded": "Ei koodia",
+      "wordTooBig": "Word-dokumentti on liian iso, kun kuvia on mukana.",
+      "zipMissing": "{count, plural,  one {Paketti on tallennettu, mutta #-kuvaa ei löytynyt tässä laitteessa.} other {Paketti on tallennettu, mutta #-kuvia ei löytynyt.}}"
+    },
+    "settings": {
+      "about": "- Näistä",
+      "aboutDescription": "Versio, yksityisyys ja luotto",
+      "appSection": "App",
+      "deviceSection": "Laite",
+      "deviceSectionDescription": "Käyntiä, jota Lymark pyytää.",
+      "fields": "Alueet ja asema",
+      "fieldsDescription": "Valitse, mitkä kentät näkyvät, kulma ja koko",
+      "history": "Historiassa",
+      "historyDescription": "Laitteessa säilytettyjä vientikuvia",
+      "language": "Kielenkäyttö",
+      "permissions": "Luvat",
+      "permissionsDescription": "Kamera, valokuvat ja sijainti",
+      "save": "Säästä",
+      "title": "Asetukset",
+      "watermark": "Vesimerkki",
+      "watermarkSection": "Vesimerkki",
+      "watermarkSectionDescription": "Mitä kuvaa on ja missä."
+    },
+    "signup": {
+      "subtitle": "- Kirjoita aloituksesi .",
+      "title": "Luo Lymark-tilisi"
+    },
+    "tagline": "Vesimerkki, jossa on aika, päivä ja paikka",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "- Ei kameraa, mutta salli sen laitteen asetuksissa.",
+      "done": "Video on tallennettu.",
+      "export": "Vientiä varten postimerkitty video",
+      "exportSection": "Vienti",
+      "failed": "Videon ei voinut tulostaa.",
+      "fieldsSection": "Tammupisteet",
+      "fileSection": "Video",
+      "none": "Ei videota.",
+      "processing": "Processing… {percent}%",
+      "processingMobile": "- Käsitteleminen...",
+      "record": "Nauhoita nyt",
+      "saved": "Säilytetty {path}: lle ",
+      "savedToGallery": "- Se on tallennettu galleriaan.",
+      "select": "Valitse video",
+      "unavailableBody": "Mobiilivideo-stemplaaminen vaatii Lymark-säätöä EAS-rakennuksesta (native moduulilla). Se ei ole saatavilla Expo Go-rakennuksessa . Aseta virallinen sovellus kaupasta tai EAS-rakennuksesta tai käytä työpöytä / verkkoversio.",
+      "unavailableTitle": "Sähköinen sovellus",
+      "unreadable": "Tiedostoa ei voitu lukea videona.",
+      "webNote": "Seuraavaksi video käsitellään reaaliaikaisesti. 2 minuutin video kestää 2 minuuttia ja tulee WebM-muodossa. Pitkien videoiden osalta käytät työpöytäsovellusta."
+    },
+    "watermark": {
+      "accentColor": "Vertaalinen paino",
+      "backdropBandNote": "Bändi kulkee reunaa reunaa läpi valokuvan ja lepää reunaa, jossa postimerkki on ankkuroitu.",
+      "backdropBlockNote": "Tuki seuraa tekstien kokoa ja sitä ympäröivää täyteen.",
+      "backdropColor": "Jännitteiden väri",
+      "backdropDescription": "Jos teksti ei ole valossa, se istuu suoraan kuvan päälle varjoineen.",
+      "backdropInnerRadius": "Sisäkulmat",
+      "backdropOpacity": "Läpinäkyvyys",
+      "backdropOpacityValue": "{percent} % epäselkeys",
+      "backdropRadius": "Pyöreät kulmat",
+      "backdropRadiusSquare": "Ruutu",
+      "backdropStyles": {
+        "band": "Täyslähdevyöhykkeet",
+        "block": "Tekstin takana",
+        "none": "Ei mitään"
+      },
+      "backdropTitle": "Tukijoukko",
+      "brandDescription": "Kelloon yläpuolella se tulee allekirjoitukseksi, logolla ja tunnuslaululla.",
+      "brandFirstColor": "Ensimmäisen osan väri",
+      "brandFirstHint": "Rakentajat",
+      "brandFirstPart": "Ensimmäinen osa",
+      "brandNote": "Jätä toinen osa tyhjäksi, jotta se olisi yksivärinen merkki.",
+      "brandPlacements": {
+        "corner": "- Kylässä .",
+        "header": "Yläpuolella kelloa",
+        "none": "Ei mitään"
+      },
+      "brandSecondColor": "Toinen osa värikäs",
+      "brandSecondHint": "- Smithin kanssa.",
+      "brandSecondPart": "Toinen osa",
+      "brandTitle": "Merkki",
+      "codeDescription": "Se ei kilpaile sivuun itse kuvan kanssa.",
+      "codePlacements": {
+        "block": "Tiedon vieressä",
+        "side": "Oikea puolella"
+      },
+      "codeTitle": "Kuva- koodi",
+      "colors": {
+        "amber": "Amber",
+        "black": "Musta",
+        "blue": "Sininen",
+        "green": "Vihreä",
+        "red": "Punainen",
+        "white": "Valkoinen"
+      },
+      "colorsDescription": "Valokuva on yrityksen valinta, eikä sovellus.",
+      "colorsTitle": "Pöydänvärit",
+      "complement": "Tilanne",
+      "complementColor": "Mainosväri",
+      "complementHint": "Tarkastukset ja tekniset kertomukset",
+      "cornerConflict": "Merkki ja tiedot ovat samassa nurkassa.",
+      "fields": {
+        "address": "Osoite / Paikka",
+        "code": "Kuva- koodi",
+        "date": "Päivämäärä",
+        "time": "Aika",
+        "weekday": "Työpäivä"
+      },
+      "fieldsDescription": "Vain ne kentät, jotka ovat päällä ja joissa on sisältöä, pääsevät valokuvaan.",
+      "fieldsTitle": "Näytettyjä kenttiä",
+      "includeCountry": "Sisältää myös maa",
+      "includeCountryDescription": "Jos työskentelet yli rajojen, laita se päälle.",
+      "legibilityTitle": "Luettavuus",
+      "logoAdded": "Merkin otsikon lisättiin logo.",
+      "logoAlignNote": "Logoon korkeus seuraa tekstiä: sen yläosa on nimen yläosa ja alaosa on tunnuslaulun lähtöviiva.",
+      "logoChosen": "Valitu logo",
+      "logoErrorMessage": "Yritä toinen kuva. PNG, jossa on läpinäkyvä tausta, toimii parhaiten.",
+      "logoErrorTitle": "Tätä tiedostoa ei voitu käyttää",
+      "logoFormatNote": "Käytä läpinäkyvää PNG-taulua. Valkoinen tausta on valkoinen suorakatteinen  muoti ei tallenna läpinäkyvyyttä, eikä sovelluksella ole mitään mahdollisuutta arvata, mikä tausta on.",
+      "logoPermissionMessage": "Salli sen asetuksissa › Luvat valita logotiedosto.",
+      "logoPermissionTitle": "Kuvaan pääsy kielletty",
+      "logoPick": "Valitse logo",
+      "logoPosition": "Logo-asema",
+      "logoPositionBlock": "- Se on merkin kanssa.",
+      "logoRemove": "Poista",
+      "logoReplace": "Vaihdoin logo",
+      "logoSize": "Logojen koko",
+      "positionDescription": "Kuvan kulmassa on blokki.",
+      "positionTitle": "Asenne",
+      "positions": {
+        "bottom-left": "Vasemman alapuolella",
+        "bottom-right": "- Oikealla alapuolella",
+        "top-left": "Yläkerrassa vasemmalle",
+        "top-right": "Yläkerrassa oikealla"
+      },
+      "previewCurrent": "- Se on nykyinen kuva.",
+      "previewEmpty": "Valosta pimeään, jotta molempien äärien lukemistavuus tarkistetaan.",
+      "previewNoFields": "Valittu kenttä ei  kuva tulee ilman vesimerkkiä.",
+      "previewTitle": "Ennakkoratkaisu",
+      "reset": "Vastuttaa oletusarvot",
+      "sizeTitle": "Tekstin koko",
+      "sizes": {
+        "large": "Suuri",
+        "medium": "Keskimääräinen",
+        "small": "Pieniä"
+      },
+      "textColor": "Tekstit",
+      "timeFormatDescription": "Aika on täytettävä kentät.",
+      "timeFormatTitle": "Aika-arviointi",
+      "timeFormats": {
+        "12h": "12 tuntia (AM/PM)",
+        "24h": "24 tuntia"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Kaikki tiedostot",
+      "images": "Kuvat",
+      "pickFolder": "Valitse ulottuvuus kansi",
+      "pickPhoto": "Valmista kuva",
+      "pickPhotos": "Valmista valokuvat partiolle",
+      "savePhoto": "Salva kuva",
+      "saveReport": "Säilytä raportti"
+    },
+    "login": {
+      "cancel": "Perustetaan",
+      "confirm": "Jatkakaa",
+      "message": "- Jatkatkö käyttämään tätä tiliä?",
+      "title": "Liittykää sisään Lymark: lle"
+    },
+    "menu": {
+      "copy": "- Käännetty",
+      "cut": "Leikkaus",
+      "edit": "Muokkaus",
+      "file": "Tiedosto",
+      "fullscreen": "Täysnäyttö",
+      "help": "Apua",
+      "paste": "Liittomäärä",
+      "quit": "Lopeta .",
+      "redo": "- Varoitus",
+      "reload": "Laadun uudelleen",
+      "selectAll": "Valitse kaikki",
+      "settings": "Asetukset",
+      "undo": "- Vihreä",
+      "view": "Näytä",
+      "zoomIn": "Suorita",
+      "zoomOut": "Suorita ulos",
+      "zoomReset": "Tosiasiallinen koko"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Takaisin kotiin.",
+      "openApp": "Avaa sovellus",
+      "photos": "Kuvat",
+      "photosLeft": "{remaining} of {quota} left",
+      "plan": "Suunnitelma",
+      "planUnavailable": "- En ole käytettävissä .",
+      "plans": {
+        "free": "Vapaa",
+        "pro": "Pro:"
+      },
+      "signInTitle": "Sisääntykää",
+      "signOut": "- Kirjoita ulos .",
+      "signUpTitle": "Luoda tili",
+      "subscribe": "Kirjoita Lymark Pro",
+      "subscribeSoon": "Kun tilaukset ovat saatavilla, voit tilauttaa ne täältä ja käyttää mitä tahansa laitteita, joilla on sama tili.",
+      "title": "- Sinun tiliesi .",
+      "revokeDesktops": "Sähkötietokoneet",
+      "revokeDesktopsHint": "Voit kirjautua sisään milloin haluat."
+    },
+    "availability": {
+      "contact": "Jotta saatat seurata käynnistämistä tai ilmoittaa ongelmasta, kirjoita osoitteeseen <email> contato@lymark.app </email>.",
+      "description": "Lymark on versio 1.3.0, testattaessa Androidissa ennen julkaisemista Google Play:ssä.",
+      "title": "Käyttöoikeus"
+    },
+    "data": {
+      "device": {
+        "description": "Tilin on olemassa tilauksellesi: palvelimella säilytetään sähköpostiviesti ja suunnitelma, eikä koskaan saatu kuvia tai sijaintia.",
+        "field": "Laitteessa",
+        "heading": "Kuvat, osoitteet ja historia"
+      },
+      "external": {
+        "description": "Jos operaatiosysteemissä on luettavissa leveys- ja pituusosoitteita, se pyytää Googlen tai Applen geokodituspalvelua. Se on ainoa jäljellä oleva tieto, ja järjestelmä lähettää sen, ei sovellus.",
+        "field": "Laite pois",
+        "heading": "Vain koordinaatin muuttaminen osoitteeksi"
+      },
+      "note": "Kaikki on esitetty  mukaan lukien, mitä se tarkoittaa Brasilian LGPD <privacy>Yksityisyyttä koskeva toimintaperiaatte</privacy>. Paikan käyttöoikeuden sulkeminen jättää sovelluksen täysin toiminnaksi; vain osoitteen kenttä on kirjoitettava käsin.",
+      "title": "Missä tiedot ovat"
+    },
+    "deleteAccount": {
+      "back": "Takaisin tilinpäätökselle",
+      "confirm": "Poista tiliäni",
+      "deletesNow": "Tilisi poistaminen poistaa sähköpostisi, tunnisteesi sekä suunnitelman, kiintiön ja valokuvan luvun.",
+      "irreversible": "Poisto on pysyvää ja ei voi peruuttaa.",
+      "retained": "Maksutoimintojen tiedot säilytetään laillisesti vaaditun verotusajan ajan, eikä niitä ole sidottu profiiliisi.",
+      "title": "Poista tili"
+    },
+    "description": "Android-sovellusta, joka tähdittää aika, päivämäärä, työpäivä, osoite ja jäljityskoodi sivuston tarkastukseen ja palvelun todistukseen liittyviin valokuviin.",
+    "desktop": {
+      "backAccount": "Takaisin tilinpäätökselle",
+      "explanation": "Kirjailijan on valmiina. Valitse alla olevaa nappia avaaksemme Lymark:n tietokoneella, jossa olet jo kirjautunut  selaimen pyytää lupaa avata sovellus.",
+      "open": "Liitä sovellus",
+      "title": "Sisääntykää työpöytä",
+      "unavailable": "Työkohteen sovelluksen yhteys ei ole vielä saatavilla."
+    },
+    "download": {
+      "appStore": {
+        "description": "Sama kokemus kuin Androidilla ja iOSilla.",
+        "field": " App Store ",
+        "heading": "iPhone ja iPad"
+      },
+      "browser": {
+        "action": "Sisääntykää",
+        "description": "Sisääntötilisi ja sovellus avautuu suoraan selaimessa  puhelimessa tai tietokoneessa.",
+        "field": "Selaimessa",
+        "heading": "Käytä sitä nyt, ei mitään asentaa"
+      },
+      "desktop": {
+        "description": "Valokuvat, pidät videot ja PDF raportoi  raskastoiminnan versio.",
+        "field": "Tietokone",
+        "heading": "Windows ja Linux"
+      },
+      "googlePlay": {
+        "description": "Puhelin sovellus, jossa on kamera, galleria ja stemppaattu video.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "-Tulen pian .",
+      "title": "Missä Lymark: tä käytetään "
+    },
+    "features": {
+      "address": {
+        "description": "Jos kirjoitat ennen GPS:n vastausta, se voittaa.",
+        "field": "Osoite",
+        "heading": "Vähennetty GPS:llä, korjattava käsin"
+      },
+      "code": {
+        "description": "Se on olemassa, jotta voit mainita yhden nimenomaisen kuvan työjärjestyksessä tai raportissa. Se pyöritetään oikealle reunalle tai se sijaitsee tietoblokkin kanssa  valitsemasi.",
+        "field": "Kuva- koodi",
+        "heading": "14 merkkiä, jotka on piirretty kryptografisen generaatin avulla"
+      },
+      "note": "Jokainen kenttä kytketään ja sammetaan itsestään, ja blokki kiinnitään johonkin neljästä kulmasta kolmessa kokoisessa.",
+      "time": {
+        "description": "Yksi nappia vie kaikki kentät takaisin nykyiseen, kun kuvattiin pidempään kuin odotettiin.",
+        "field": "Aika ja päivämäärä",
+        "heading": "Laitteen kello, kiinniototuksen hetkellä"
+      },
+      "title": "Mitä kuvaa on"
+    },
+    "footer": {
+      "description": "Lymark  Kuvausrekisteri päivämäärällä, ajassa ja osoitteessa.",
+      "documentsLabel": "Asiakirjat",
+      "privacy": "Yksityisyyttä koskeva toimintaperiaatte",
+      "support": "Tukea",
+      "terms": "Käyttöehdot"
+    },
+    "hero": {
+      "ctaAccount": "Mene tiliini .",
+      "ctaLogin": "Sisääntykää",
+      "ctaSignup": "Luo ilmainen tili",
+      "description": "Lymark tähdittää ajan, päivämäärän, viikonpäivän, osoitteen ja seurantakoodin suoraan kuvaan.",
+      "eyebrow": "Alueen valokuvan asiakirja-aineisto",
+      "heading": "Kuvassa on puhelimesi, jossa sanotaan milloin, missä ja mitä.",
+      "meta": {
+        "account": "Yksinkertaisessa tilille",
+        "android": "Android ja selain",
+        "language": "Brasilian portugalilainen",
+        "onDevice": "Kuvat pysyvät laitteessa"
+      },
+      "note": "Ei mitään asennettavaa."
+    },
+    "nav": {
+      "account": "Tilinpito",
+      "home": "Koti",
+      "homeLabel": "Lymark , kotivuosi",
+      "label": "Pääasiallinen",
+      "privacy": "Yksityisyys",
+      "signIn": "Sisääntykää",
+      "terms": "Säännöt",
+      "verify": "Tarkista"
+    },
+    "process": {
+      "capture": {
+        "description": "Osoitteen hakemus alkaa heti kun kuva tulee.",
+        "field": "Saatua kiinni",
+        "heading": "Kamera tai galleri"
+      },
+      "note": "Säästämällä ja jakamalla ne ratkaistaan eri ongelmat, ja niiden liittäminen yhteen nappiin vetää kaikki, jotka haluavat vain laittaa kuvan lähettävällä näytöllä.",
+      "save": {
+        "description": "Se on mukana muiden puhelimesi kuvien kanssa, joka on käytettävissä kaikissa sovelluksissa, mukaan lukien sen jälkeen kun olet poistanut Lymark:n.",
+        "field": "Säästä",
+        "heading": "Menen laitteiden galleriaan"
+      },
+      "share": {
+        "description": "WhatsApp , sähköposti, Drive: käyttöjärjestelmä valitsee kohteen, eikä sovellus osallistu lähettämiseen.",
+        "field": "Osallistu",
+        "heading": "Avaa järjestelmän jakelulevy"
+      },
+      "title": "Kuva on menossa"
+    },
+    "skipToContent": "Muista sisältöä",
+    "specimen": {
+      "caption": "Pärjääntö alkaa ja päättyy numeroiden reunoilla, ei tekstikassa.",
+      "label": "Lymark-merkin näyte: aika 07:42, päivämäärä 12 elokuuta 2026, keskiviikko, Guarujá-osoite ja valokuvakodit."
+    },
+    "title": "Lymark  kenttäkuvien vesimerkki: päivä, aika ja osoite",
+    "verify": {
+      "caveat": "Seilaus osoittaa asiakirjan eheyden ja sen myöntämisen ajankohdan.",
+      "checking": "Tarkistan...",
+      "declarationNote": "Se, mitä postimerkki osoittaa (osoite, päivämäärä, aika), on liikkeeseenlaskijan ilmoitus  postimerkki todistaa, että se on luotettava ja että se on annettu, eikä sisältö.",
+      "intro": "Laita tai valitse Lymark:n vientiä koskeva kuva ja katso heti, onko se juuri sellainen kuin se jätti sovelluksen ja kuka sen antoi ja milloin.",
+      "noSealBody": "Tämä tiedosto ei ole Lymark-merkkiä. Se voi olla viety offline-tilanteeseen ennen merkin olemassaoloa tai ei voi tulla Lymark:stä. Merkin puuttuminen ei osoita väärinkäyttöä.",
+      "noSealTitle": "Ei sinetistä",
+      "notConfigured": "Tarkastelu ei ole vielä saatavilla.",
+      "pick": "Valitsekaa tiedosto",
+      "previewAlt": "Todistettua valokuvaa, merkin näkyvä",
+      "privacyNote": "Seuraavaa tiedostoa ei lähetetä kenellekään palvelimelle.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Saattamatta",
+      "tamperedBody": "Sisältö ei vastaa sinetää: tiedosto on muutettu sen jälkeen, kun se on annettu, tai sinetö kuuluu toiseen tiedostoon.",
+      "tamperedTitle": "Väärin vastaava",
+      "title": "Todistusta todentumisesta",
+      "unsupported": "Tämä selain ei tue allekirjoitusvalvonta. Kokeile nykyistä selainta."
+    }
+  }
+}
