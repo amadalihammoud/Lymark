@@ -1,10 +1,13 @@
 # Lymark
 
-Aplicativo Expo para carimbar **marca d'água** em fotos: hora, data, dia da semana,
-endereço e um código de rastreio — para registro de campo, vistoria e comprovação
-de serviço.
+Aplicativo Expo (React Native) para carimbar **marca d'água** em fotos e vídeos:
+hora, data, dia da semana, endereço, código de rastreio e marca própria — para
+registro de campo, vistoria e comprovação de serviço.
 
-Tudo acontece no aparelho. Não há servidor, conta ou envio de dados.
+O carimbo é desenhado com **React Native Skia** (mesmo caminho no preview e na
+exportação). Conta e planos usam **Clerk** + entitlements (cota grátis vitalícia
+por conta e assinatura Pro via Stripe / lojas). Fotos e vídeos ficam no aparelho;
+o servidor só autentica, mede cota e emite o selo de autenticidade.
 
 ---
 
@@ -15,47 +18,38 @@ npm install
 npx expo start
 ```
 
-Abra no **Expo Go** lendo o QR code, ou rode `npm run android` / `npm run ios`.
+- **Expo Go**: captura de foto, galeria e localização funcionam; o **módulo nativo
+  de vídeo** não — use um build EAS no celular, ou o desktop / web.
+- **Celular (EAS)**: `eas build` / app da loja — inclui carimbo de vídeo (Android
+  via Media3; ver disponibilidade do módulo no iOS).
+- **Web**: `npx expo start --web` — vídeo em tempo real (WebM).
+  Produção: **https://lymark.app/web** (mesmo domínio da landing; ver
+  `docs/WEB-URL.md`). Desktop usa `npm run web:build` (raiz); o site usa
+  `npm run web:build:hosted` (`LYMARK_WEB_BASE=/web`).
+- **Desktop**: pasta `desktop/` (Electron + ffmpeg) — MP4, vídeo longo.
 
-As funções de câmera, galeria e localização exigem aparelho físico — não funcionam
-no navegador.
-
-## Comandos
-
-| Comando             | O que faz                                |
-| ------------------- | ---------------------------------------- |
-| `npm start`         | Servidor de desenvolvimento              |
-| `npm run android`   | Abre no Android conectado ou no emulador |
-| `npm run ios`       | Abre no iOS (requer macOS)               |
-| `npm run lint`      | ESLint                                   |
-| `npm run typecheck` | TypeScript em modo `strict`, sem emitir  |
+```bash
+npm run android   # aparelho/emulador
+npm run ios       # macOS
+npm run lint
+npm run typecheck
+```
 
 ---
 
 ## Navegação
 
-Três áreas, em abas, com `expo-router`:
+| Aba / rota        | Papel                                              |
+| ----------------- | -------------------------------------------------- |
+| **Capturar** `/`  | Foto, campos e exportação                          |
+| **Galeria**       | Histórico das fotos exportadas                     |
+| **Configurações** | Marca d'água, permissões, conta / plano            |
+| `/video`          | Carimbo de vídeo (EAS / desktop / web)             |
+| `/batch`          | Lote (desktop)                                     |
+| `/photo/[id]`     | Detalhe do histórico                               |
 
-| Aba               | Rota        | Papel                                   |
-| ----------------- | ----------- | --------------------------------------- |
-| **Capturar**      | `/`         | Tela inicial: foto, campos e exportação |
-| **Galeria**       | `/gallery`  | Histórico das fotos já exportadas       |
-| **Configurações** | `/settings` | Marca d'água, permissões e informações  |
-
-Telas empilhadas **acima** das abas — abrem por cima e voltam sem perder nada:
-
-- `/settings/watermark` — quais campos exibir, posição, tamanho, legibilidade
-- `/settings/permissions` — estado real de câmera, fotos e localização
-- `/settings/about` — versão e política de privacidade
-- `/photo/[id]` — detalhe de uma foto do histórico
-
-### Por que o estado sobrevive à navegação
-
-Os providers ficam na raiz (`src/app/_layout.tsx`), **acima** do navegador de abas.
-O rascunho de captura mora fora da árvore de telas, então ir até a Galeria, mudar
-a posição da marca d'água em Configurações e voltar devolve a foto e os campos
-exatamente como estavam. Nenhuma tela precisa salvar ou restaurar nada por conta
-própria.
+Os providers ficam na raiz (`src/app/_layout.tsx`), acima das abas — o rascunho
+de captura e as preferências sobrevivem à navegação.
 
 ---
 
@@ -63,61 +57,53 @@ própria.
 
 ```
 src/
-├── app/                    Rotas (expo-router). Só composição — sem regra de negócio.
-│   ├── _layout.tsx         Providers + Stack raiz
-│   ├── (tabs)/             As três abas
-│   ├── settings/           Telas empilhadas de configuração
-│   └── photo/[id].tsx      Detalhe do histórico
-│
-├── components/
-│   ├── brand/              Identidade visual (Wordmark, AppHeader)
-│   ├── capture/            Peças da tela de captura
-│   ├── gallery/            Peças do histórico
-│   └── ui/                 Blocos reutilizáveis (Button, FieldRow, Section…)
-│
-├── contexts/               Estado compartilhado, um provider por assunto
-│   ├── capture-context     Rascunho: foto + metadados
-│   ├── settings-context    Preferências de marca d'água (persistidas)
-│   └── gallery-context     Índice do histórico (persistido)
-│
-├── features/               Regra de negócio, sem depender de tela
-│   ├── capture/            Origem da foto (câmera / galeria)
-│   └── watermark/          Conteúdo, geometria e exportação do carimbo
-│
-├── hooks/                  Ponte com APIs do aparelho (GPS, permissões)
-├── lib/                    Utilidades puras (data, código, armazenamento)
-├── theme/                  Cores, espaçamento e tipografia
-└── types/                  Vocabulário de domínio compartilhado
+├── app/                 Rotas (expo-router)
+├── components/          UI e peças de tela
+├── contexts/            Estado compartilhado (captura, settings, galeria, entitlement…)
+├── features/
+│   ├── watermark/       Skia: overlay, render, exportação de foto
+│   ├── video/           Carimbo no navegador
+│   ├── entitlements/    Cota, lease, sync com a API
+│   ├── attest/          Selo de autenticidade
+│   └── auth/            Clerk / tokens
+├── hooks/ lib/ theme/ types/
+desktop/                 Electron + ffmpeg
+site/                    Next.js — conta, Stripe, /api/entitlements, /api/attest
+modules/video-stamp/     Módulo nativo de composição de vídeo
+i18n/messages/           Traduções
 ```
 
 ### Convenções
 
-- **TypeScript `strict`** em todo o projeto; `npm run typecheck` precisa passar limpo.
-- **Arquivos em kebab-case**, componentes em `PascalCase`.
-- **Import por alias**: `@/components/...`, nunca `../../..`.
-- **Telas não estilizam do zero** — cor, espaçamento e texto saem de `src/theme`.
-- **Uma fonte de verdade para o carimbo**: preview e imagem exportada passam pelo
-  mesmo `buildWatermarkLines` e pelo mesmo `WatermarkOverlay`, então não podem divergir.
+- TypeScript `strict`; `npm run typecheck` limpo.
+- Arquivos em kebab-case; import por alias `@/…`.
+- Uma fonte de verdade para o carimbo: foto e vídeo usam o mesmo overlay Skia.
 
 ---
 
-## Marca d'água
+## Marca d'água e vídeo
 
-O que vai para a foto é decidido em `src/features/watermark/build-lines.ts`: entra
-o campo que estiver **ligado nas preferências** e **tiver conteúdo**. Campo vazio
-não vira linha em branco sobre a imagem.
+- **Foto**: Skia compõe o carimbo; `export-photo.ts` salva com
+  `MediaLibrary.Asset.create` (SDK 57) e/ou compartilha.
+- **Vídeo (EAS)**: módulo nativo + mesmo overlay PNG; salva na galeria com o
+  mesmo padrão de permissões/`Asset.create`.
+- **Vídeo (desktop)**: ffmpeg no processo principal.
+- **Vídeo (web)**: canvas + MediaRecorder (tempo real, WebM).
 
-A exportação (`export-photo.ts`) captura em JPEG a própria árvore de views do
-preview com `react-native-view-shot` e salva via `expo-media-library`. Não existe
-um segundo caminho de renderização — o que se vê é o que sai.
+Data, hora e dia da semana vêm preenchidos (arquivo / agora) e **continuam
+editáveis** — não há forçar EXIF.
+
+## Conta e plano
+
+- Login com Clerk (quando `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` está definida).
+- Cota grátis vitalícia por conta; Pro via pagamento.
+- API em `https://lymark.app/api/entitlements` e selo em `/api/attest`.
 
 ## Permissões
 
-| Permissão   | Quando é pedida                   | Para quê             |
-| ----------- | --------------------------------- | -------------------- |
-| Câmera      | Ao tocar em "Tirar foto"          | Capturar a imagem    |
-| Fotos       | Ao escolher da galeria / exportar | Ler e salvar imagens |
-| Localização | Ao tocar em "Localizar"           | Preencher o endereço |
-
-Negada em definitivo, a tela de Permissões encaminha para os Ajustes do sistema em
-vez de mostrar um botão que não faz nada.
+| Permissão    | Quando                         | Para quê                |
+| ------------ | ------------------------------ | ----------------------- |
+| Câmera       | Tirar foto / gravar vídeo      | Captura                 |
+| Microfone    | Gravar vídeo                   | Áudio da gravação       |
+| Fotos/vídeos | Galeria / exportar             | Ler e salvar mídia      |
+| Localização  | “Localizar”                    | Preencher endereço      |

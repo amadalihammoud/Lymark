@@ -65,7 +65,8 @@
     "typecheck:desktop": "cd desktop && npx tsc --noEmit",
     "test": "jest",
     "desktop:dev": "cd desktop && npm run start",
-    "desktop:build": "cd desktop && npm run build"
+    "desktop:build": "cd desktop && npm run build",
+    "web:build:hosted": "LYMARK_WEB_BASE=/web expo export --platform web && node scripts/copy-wasm.js && node scripts/publish-web-to-site.js"
   },
   "private": true,
   "overrides": {

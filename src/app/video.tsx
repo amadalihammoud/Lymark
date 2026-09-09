@@ -305,8 +305,9 @@ function MobileVideoScreen() {
 
   const stampTypefaces = useStampTypefaces(scriptForStamp(metadata, preferences));
 
-  // Sem o módulo (iOS por enquanto, ou Expo Go), a tela explica em vez de
-  // quebrar — e aponta os caminhos que já existem.
+  // Sem o módulo nativo (Expo Go, ou build sem o plugin), a tela explica em
+  // vez de quebrar — e aponta o app EAS / desktop / web. Não é “só
+  // computador”: o celular com build EAS carimba normalmente.
   if (!isVideoStampAvailable) {
     return (
       <Screen>
@@ -403,6 +404,8 @@ function MobileVideoScreen() {
     const stampBase = `${FileSystem.cacheDirectory}lymark-stamp-${Date.now()}`;
     const overlayUri = `${stampBase}.png`;
     const outputUri = `${stampBase}.mp4`;
+    // Só apaga o MP4 no finally depois de copiar para a galeria.
+    let savedToGallery = false;
 
     try {
       const images = await loadStampImages(preferences.brandLogoPath);
@@ -427,9 +430,32 @@ function MobileVideoScreen() {
         outputUri.replace('file://', ''),
       );
 
+      // Mesmo padrão de `export-photo.ts` (SDK 57): `saveToLibraryAsync` lança
+      // incondicionalmente; `requestPermissionsAsync` + `Asset.create` é a
+      // API vigente. Inclui `video` nas permissões granulares.
       const MediaLibrary = await import('expo-media-library');
-      await MediaLibrary.saveToLibraryAsync(outputUri);
+      let permission;
+      try {
+        permission = await MediaLibrary.requestPermissionsAsync(true, ['photo', 'video']);
+      } catch {
+        // Módulo ausente (Expo Go) ou falha nativa — não é recusa do usuário.
+        notify(t('failed'), 'warning');
+        return;
+      }
 
+      if (!permission.granted) {
+        notify(t('failed'), 'warning');
+        return;
+      }
+
+      try {
+        await MediaLibrary.Asset.create(outputUri);
+      } catch {
+        notify(t('failed'), 'warning');
+        return;
+      }
+
+      savedToGallery = true;
       setSaved(true);
       recordExport();
       notify(t('done'));
@@ -437,10 +463,12 @@ function MobileVideoScreen() {
       notify(t('failed'), 'warning');
     } finally {
       setBusy(false);
-      // A cópia da galeria é a que fica — os temporários saem sempre, tenha
-      // a exportação dado certo ou não.
+      // Overlay sempre sai. O MP4 só sai se a galeria já tem a cópia — se o
+      // save falhou, manter o arquivo no cache evita perder o único resultado.
       void FileSystem.deleteAsync(overlayUri, { idempotent: true });
-      void FileSystem.deleteAsync(outputUri, { idempotent: true });
+      if (savedToGallery) {
+        void FileSystem.deleteAsync(outputUri, { idempotent: true });
+      }
     }
   };
 

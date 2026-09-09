@@ -155,6 +155,9 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
         Onde o aplicativo mora em cada plataforma. As lojas ainda não têm
         link — cada cartão vira link no dia em que a loja publicar, sem
         mudar a estrutura. `soon` marca o que está a caminho.
+
+        Navegador: CTA vai a `/entrar`; após o login o Clerk manda para
+        `/web` (app Expo no mesmo domínio — ver docs/WEB-URL.md).
       */}
       <section className="band" id="baixar">
         <div className="band-head">

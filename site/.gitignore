@@ -4,3 +4,7 @@ next-env.d.ts
 
 # clerk configuration (can include secrets)
 /.clerk/
+
+# Expo web export (gerado por scripts/publish-web-to-site.js no build)
+/public/web/**
+!/public/web/.gitkeep

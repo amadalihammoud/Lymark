@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server';
 
+import {
+  FREE_LIFETIME_QUOTA,
+  readStored,
+  resolveEntitlement,
+} from '../../../../src/features/entitlements/server';
 import { attestConfig, issueReceipt } from '../../../lib/attest';
 import { clerkStore } from '../../../lib/clerk-store';
 
@@ -8,8 +13,12 @@ import { clerkStore } from '../../../lib/clerk-store';
  *
  * Autentica pelo MESMO `verify` da API de entitlements: token de sessão do
  * Clerk ou token do desktop, indistintamente. O corpo é um hash e nada
- * mais; a resposta é o recibo e nada mais. Sem banco, sem efeito colateral
- * — o servidor assina e esquece (`docs/AUTENTICIDADE.md` §1).
+ * mais; a resposta é o recibo e nada mais. Sem banco — o servidor assina e
+ * esquece (`docs/AUTENTICIDADE.md` §1).
+ *
+ * Só emite recibo para quem ainda tem direito de exportar: plano pago ativo
+ * ou cota grátis com saldo. Sem isso, uma sessão válida mas esgotada pediria
+ * selos Ed25519 indefinidamente.
  */
 
 export const runtime = 'nodejs';
@@ -41,6 +50,16 @@ export async function POST(request: Request) {
   const hash = (body as { hash?: unknown } | null)?.hash;
   if (typeof hash !== 'string' || !HASH_PATTERN.test(hash)) {
     return NextResponse.json({ error: 'hash fora do contrato' }, { status: 400 });
+  }
+
+  const stored = readStored(await store.read(userId));
+  const { entitlement } = resolveEntitlement({ stored, spent: 0, now: new Date() });
+  const canAttest =
+    entitlement.plan === 'pro' ||
+    (entitlement.quota ?? FREE_LIFETIME_QUOTA) - entitlement.used > 0;
+
+  if (!canAttest) {
+    return NextResponse.json({ error: 'sem cota para selo' }, { status: 402 });
   }
 
   const receipt = issueReceipt(config, { hash, userId, now: new Date() });

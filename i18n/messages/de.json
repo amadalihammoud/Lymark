@@ -323,8 +323,8 @@
       "saved": "Gespeichert unter {path}",
       "savedToGallery": "Gestempeltes Video in der Galerie gespeichert.",
       "select": "Video auswählen",
-      "unavailableBody": "Der Videostempel ist in der Desktop-App verfügbar.",
-      "unavailableTitle": "Nur am Computer",
+      "unavailableBody": "Videostempel auf dem Handy braucht Lymark aus einem EAS-Build (natives Modul). In Expo Go nicht verfügbar. Installieren Sie die offizielle App oder einen EAS-Build, oder nutzen Sie Desktop / Web.",
+      "unavailableTitle": "Installierte App erforderlich",
       "unreadable": "Die Datei konnte nicht als Video gelesen werden.",
       "webNote": "Im Browser wird das Video in Echtzeit verarbeitet — ein 2-Minuten-Video dauert 2 Minuten — und kommt im WebM-Format heraus. Für lange Videos nutze die Desktop-App."
     },

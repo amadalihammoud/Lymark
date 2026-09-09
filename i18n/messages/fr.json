@@ -323,8 +323,8 @@
       "saved": "Enregistré dans {path}",
       "savedToGallery": "Vidéo tamponnée enregistrée dans la galerie.",
       "select": "Choisir une vidéo",
-      "unavailableBody": "Le tampon vidéo est disponible dans l'application de bureau.",
-      "unavailableTitle": "Ordinateur uniquement",
+      "unavailableBody": "Le tampon vidéo sur mobile nécessite Lymark installé via un build EAS (module natif). Indisponible dans Expo Go. Installez l’app officielle ou un build EAS, ou utilisez l’ordinateur / le navigateur.",
+      "unavailableTitle": "Application installée requise",
       "unreadable": "Le fichier n'a pas pu être lu comme une vidéo.",
       "webNote": "Dans le navigateur, la vidéo est traitée en temps réel — une vidéo de 2 minutes prend 2 minutes — et sort au format WebM. Pour les vidéos longues, utilisez l'application de bureau."
     },

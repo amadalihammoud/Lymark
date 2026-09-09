@@ -949,7 +949,8 @@ const CONTENT_TYPES: Record<string, string> = {
 /**
  * Política de conteúdo do aplicativo empacotado.
  *
- * Tudo vem do próprio pacote; nada é buscado na rede. `wasm-unsafe-eval` é
+ * Quase tudo vem do próprio pacote. `https://lymark.app` entra em
+ * `connect-src` para entitlements, selo e conta — sem curingas. `wasm-unsafe-eval` é
  * exigido pelo CanvasKit, `unsafe-inline` em estilos pelo react-native-web,
  * que injeta as folhas em tempo de execução, e `blob:`/`data:` pelas imagens
  * que o app gera em memória.
@@ -970,7 +971,7 @@ function contentSecurityPolicy(scriptHashes: readonly string[]): string {
     // `media:` também aqui, e não só em `img-src`: exibir a foto é `<img>`,
     // mas EXPORTAR é `fetch` (Skia.Data.fromURI, em render-photo.ts) — sem
     // isto o preview aparece e a exportação falha, que é meia correção.
-    "connect-src 'self' data: blob: media:",
+    "connect-src 'self' data: blob: media: https://lymark.app",
     "object-src 'none'",
     "frame-ancestors 'none'",
     "base-uri 'self'",

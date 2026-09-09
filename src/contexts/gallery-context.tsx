@@ -187,14 +187,17 @@ export function GalleryProvider({ children }: { children: ReactNode }) {
         stampedFields,
       };
 
-      // O corte pelo teto tem de apagar o arquivo, como faz `removeEntry`:
-      // sair do índice sem sair do disco deixa lixo inalcançável para sempre.
-      entries.slice(MAX_ENTRIES - 1).forEach((old) => deleteExportedPhoto(old.path));
-
-      setEntries((current) => [entry, ...current].slice(0, MAX_ENTRIES));
+      // O corte pelo teto usa só o array do atualizador — nunca o `entries` da
+      // closure, que pode estar velho entre duas exportações rápidas e apagar
+      // o arquivo errado (ou nenhum). `deleteExportedPhoto` é idempotente.
+      setEntries((current) => {
+        const merged = [entry, ...current];
+        merged.slice(MAX_ENTRIES).forEach((old) => deleteExportedPhoto(old.path));
+        return merged.slice(0, MAX_ENTRIES);
+      });
       return entry;
     },
-    [entries],
+    [],
   );
 
   // O arquivo sai antes do `setEntries`, e não dentro do atualizador: o React

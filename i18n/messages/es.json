@@ -323,8 +323,8 @@
       "saved": "Guardado en {path}",
       "savedToGallery": "Vídeo sellado guardado en la galería.",
       "select": "Elegir vídeo",
-      "unavailableBody": "El sellado de vídeo está disponible en la aplicación de escritorio.",
-      "unavailableTitle": "Solo en la computadora",
+      "unavailableBody": "El sellado de vídeo en el móvil requiere Lymark instalado con un build EAS (módulo nativo). No está disponible en Expo Go. Instala la app oficial o un build EAS, o usa el escritorio / la web.",
+      "unavailableTitle": "Se necesita la app instalada",
       "unreadable": "El archivo no se pudo leer como vídeo.",
       "webNote": "En el navegador, el vídeo se procesa en tiempo real — un vídeo de 2 minutos tarda 2 minutos — y sale en formato WebM. Para vídeos largos, usa la aplicación de escritorio."
     },

@@ -123,19 +123,25 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     setPreferences((current) => ({ ...current, ...patch }));
   }, []);
 
-  const setBrandLogo = useCallback((logo: { path: string; aspect: number } | null) => {
-    setPreferences((current) => {
-      if (current.brandLogoPath && current.brandLogoPath !== logo?.path) {
-        deleteLogo(current.brandLogoPath);
+  const setBrandLogo = useCallback(
+    (logo: { path: string; aspect: number } | null) => {
+      // I/O fora do atualizador: o React pode reexecutá-lo, e apagar o
+      // arquivo duas vezes — ou no meio de um cálculo de estado — é efeito
+      // colateral. O caminho anterior vem do estado já conhecido, como em
+      // `removeEntry` da galeria.
+      const previousPath = preferences.brandLogoPath;
+      if (previousPath && previousPath !== logo?.path) {
+        deleteLogo(previousPath);
       }
 
-      return {
+      setPreferences((current) => ({
         ...current,
         brandLogoPath: logo?.path ?? null,
         brandLogoAspect: logo?.aspect ?? DEFAULT_WATERMARK_PREFERENCES.brandLogoAspect,
-      };
-    });
-  }, []);
+      }));
+    },
+    [preferences.brandLogoPath],
+  );
 
   const setBrandPart = useCallback((index: 0 | 1, part: Partial<BrandPart>) => {
     setPreferences((current) => {
@@ -149,13 +155,11 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const resetPreferences = useCallback(() => {
-    setPreferences((current) => {
-      // O logotipo é arquivo, e não ajuste: restaurar o padrão o descarta das
-      // preferências, então ele precisa sair do disco junto.
-      if (current.brandLogoPath) deleteLogo(current.brandLogoPath);
-      return DEFAULT_WATERMARK_PREFERENCES;
-    });
-  }, []);
+    // O logotipo é arquivo, e não ajuste: restaurar o padrão o descarta das
+    // preferências, então ele precisa sair do disco junto — fora do atualizador.
+    if (preferences.brandLogoPath) deleteLogo(preferences.brandLogoPath);
+    setPreferences(DEFAULT_WATERMARK_PREFERENCES);
+  }, [preferences.brandLogoPath]);
 
   const value = useMemo<SettingsContextValue>(
     () => ({

@@ -323,8 +323,8 @@
       "saved": "Salvato in {path}",
       "savedToGallery": "Video timbrato salvato nella galleria.",
       "select": "Scegli video",
-      "unavailableBody": "Il timbro video è disponibile nell'app desktop.",
-      "unavailableTitle": "Solo sul computer",
+      "unavailableBody": "Il timbro video sul telefono richiede Lymark installato con un build EAS (modulo nativo). Non è disponibile in Expo Go. Installa l’app ufficiale o un build EAS, oppure usa computer / web.",
+      "unavailableTitle": "Serve l’app installata",
       "unreadable": "Il file non può essere letto come video.",
       "webNote": "Nel browser il video viene elaborato in tempo reale — un video di 2 minuti richiede 2 minuti — ed esce in formato WebM. Per i video lunghi, usa l'app desktop."
     },
