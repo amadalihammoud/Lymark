@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplikacija",
+      "pitch": "Opečatite vreme, datum, dan radnog dana, adresu i kod za praćenje na fotografijama  za evidenciju na terenu, inspekcije na mjestu i dokaz o usluzi.",
+      "platform": "Platforma",
+      "privacy": "Politika privatnosti",
+      "privacyGeocoding": "Kada se koristi GPS, operativni sistem šalje koordinatu Googles ili Apples servisu za mape da dobije adresu. To je jedina informacija koja ostaje ovdje, a to je sistem koji je šalje, a ne Lymark.",
+      "privacyLocation": "Lokacija se koristi jednom po snimku, samo za ispunjenje polja adrese, i ne se čuva odvojeno od fotografija.",
+      "privacyOnDevice": "Slike, adrese i istorija ostaju samo na ovom uređaju.",
+      "privacySection": "Privatnost",
+      "sdk": " Expo SDK ",
+      "terms": "Uslovima korišćenja",
+      "title": "O Lymark ",
+      "version": "Verzija"
+    },
+    "account": {
+      "browserHint": "Login se odvija u pretraživaču.",
+      "code": "Kod",
+      "codeSent": "Poslali smo kod na {email}.",
+      "connected": "Povezan",
+      "continue": "Nastavi",
+      "deleteAccount": "Izbrišite račun",
+      "email": "E-mail",
+      "failed": "Provjeri e-mail ili kod i pokušaj ponovo.",
+      "notConfigured": "U ovoj zgradi još nije dostupna registracija.",
+      "signInBrowser": "Upis preko pretraživača",
+      "signOut": "Potpiši se.",
+      "signedInAs": "Potpisan kao {email} ",
+      "title": "Račun",
+      "verify": "Provjeravanje"
+    },
+    "batch": {
+      "addressHint": "Ulica, broj  Grad",
+      "clearList": "Čisti spisak",
+      "codeHint": "Npr. LYM-001",
+      "done": "{count, plural,  one {Proces je završen: # fotografija završena.} other {Proces je završen: # fotografije završene.}}",
+      "doneSection": "Završen",
+      "dropZone": "Priključite i odbacite slike ovde ili koristite dugme Obrati fotografije",
+      "errorsSection": "Greške",
+      "folder": "Popis: {name} ",
+      "noPhotos": "Izberite barem jednu fotografiju.",
+      "outputNote": "Prerađene fotografije se čuvaju u odabrani folder.",
+      "outputSection": "Izlaz",
+      "photosSection": "Fotografije za obradu",
+      "processing": "Procesiranje...",
+      "progress": "{current} od {total} ({percent} %)",
+      "results": "{success, plural, one {# uspjeh} other {# uspjeha}}, {failed, plural, one {# neuspjeh} other {# neuspjeha}}",
+      "selectFolder": "Izbor output folder",
+      "selectPhotos": "Izbor fotografija",
+      "selected": "{count, plural,  one {# fotografija izabrana} other {Odabranim fotografijama #}}",
+      "sharedNote": "Ove vrednosti se primjenjuju na SVE fotografije.",
+      "sharedSection": "Zajednički metadati",
+      "start": "Početak obrade",
+      "unavailableBody": "Ova funkcija je samo za desktop.",
+      "unavailableTitle": "Nepostojanje obrade u serijama"
+    },
+    "capture": {
+      "accuracy": "Pozicija unutar ± {meters} m.",
+      "accuracyImprecise": "Pozicija unutar ± {meters} m  provjerava broj ulice pre izvoza.",
+      "address": "Adresa",
+      "addressFailedTitle": "Adresa nije pronađena",
+      "addressHint": "Kliknite na lokaciju ili napišite adresu",
+      "camera": "Fotografija",
+      "code": "Kod",
+      "dateHint": "1. januar 2026",
+      "dateTimeGroup": "Datum i vreme",
+      "emptyWarning": "Nijedan podac neće biti objelodan.",
+      "gallery": "Izbor iz galerije",
+      "galleryDenied": "Fotografija je odbijen, tako da slika postoji samo unutar aplikacije.",
+      "galleryFailed": "Slika je ušla u istoriju, ali uređaj je odbio da je napiše u galeriju.",
+      "generateCode": "Generira",
+      "hiddenFields": "{count, plural,  one {Skriveno polje} other {Skrivena polja}}: {fields}  uključite ih u podešavanju › Polja i pozicija.",
+      "keepMyAddress": "Sačuvaj moje.",
+      "locate": "Lokalizacija",
+      "locateByGps": "Lokalizacija adrese putem GPS-a",
+      "lookup": {
+        "denied": "Dozvolite lokaciju u podešavanjima › Dopuštenjima ili unesite adresu.",
+        "disabled": "Lokacija je isključena na uređaju.",
+        "timeout": "GPS nije odgovorio na vrijeme.",
+        "unavailable": "Adresa nije mogla da se riješi na ovom mestu."
+      },
+      "newCapture": "Počnite novi ulov.",
+      "noFieldsBack": "Vrati se.",
+      "noFieldsContinue": "Nastavi ionako.",
+      "noFieldsMessage": "Nema polja za obmarkanje.",
+      "noFieldsTitle": "Fotografija će izaći bez vodena oznaka.",
+      "noPhotoHint": "Uzmi fotografiju ili izaberi jednu iz galerije.",
+      "noPhotoSelected": "Nema odabrane slike",
+      "openFailed": "Fotografiju se nije moglo otvoriti.",
+      "permissionMessage": "Dozvoli pristup u podešavanjima › Pristup nastavak.",
+      "permissionTitle": "Potrebna dozvola",
+      "pickPhoto": "Izaberite fotografiju",
+      "pickPhotoHint": "Izaberite fotografiju da omogućite akcije.",
+      "previewLabel": "Previdnja slike sa vodom",
+      "renderFailedTitle": "Nije mogao da generira sliku",
+      "replaceAddressMessage": "GPS pronađen: {address} ",
+      "replaceAddressTitle": "-Uzmite adresu koju ste napisali?",
+      "resetConfirm": "Odbacivanje",
+      "resetMessage": "Izbrana fotografija i ispunjeni polji će biti odbačeni.",
+      "resetTitle": "Početi novi uhvat?",
+      "saved": "Fotografija sačuvana u galeriju uređaja i u istoriju.",
+      "savedAppOnlyTitle": "Sačuvano samo u Lymark",
+      "shareDialogTitle": "Delite vodena slika",
+      "shareFailedMessage": "Slika je generisana i nalazi se u istoriji Lymark. Možete je dijeliti iz karte Galerija.",
+      "shareFailedTitle": "Ne mogu da podelimo",
+      "shareUnavailableMessage": "Ova naprava nema listu.",
+      "shareUnavailableTitle": "Nepostojanje dijele",
+      "sharedFileTitle": "Foto sa vodom",
+      "stampNotReady": "Stamp je još uvek priprema.",
+      "syncNow": "- Sada.",
+      "timestamp": "Datum/vreme",
+      "title": "Uhićenje",
+      "useGpsAddress": "Koristi GPS.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Dan"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "odaberite drugu boju",
+      "saturationBrightness": "Saticija i svetlost",
+      "use": "Koristite ovu boju"
+    },
+    "common": {
+      "back": "-Opet.",
+      "cancel": "Otkazivanje",
+      "delete": "Izbrišite",
+      "error": "Greška",
+      "gotIt": "-U redu je.",
+      "loading": "-Naravno.",
+      "no": "- Ne, ne.",
+      "ok": "U redu je.",
+      "save": "Sačuvaj",
+      "share": "Deliti",
+      "success": "Uspjeh",
+      "tryAgain": "Pokušaj ponovo.",
+      "unknownError": "Nepoznata greška",
+      "yes": "Da, da."
+    },
+    "gallery": {
+      "cancelSelection": "Odbijanje",
+      "clear": "Jasna istorija",
+      "clearConfirm": "Jasno",
+      "clearMessage": "ZZPH0XZ će biti izbrisan.",
+      "count": "{count, plural,  one {Eksportirana fotografija #} other {Eksportirane fotografije #}}",
+      "delete": "Izbrišite",
+      "empty": "Još nema fotografija.",
+      "emptyAction": "Idi u hapšenje",
+      "emptyDescription": "Fotografije koje izvozite sa vodenim znakom prikazuju se ovdje, sa datumom, mjestom i kodom.",
+      "filteredCount": "{shown} od {total, plural,  one {# fotografija} other {Fotografije #}}",
+      "noResults": "Nema fotografija za  {query} .",
+      "photoLabel": "Slika iz {when} ",
+      "removeMessage": "Upisovi ostave Lymark . Slike već sačuvane u galeriji uređaja nisu pogođene.",
+      "removeTitle": "{count, plural,  one {Izbaci iz istorije} other {Ukloniti # udaje}}",
+      "removed": "{count, plural,  one {Ulaz je uklonjen.} other {Upis je uklonjen.}}",
+      "saveDeniedMessage": "U nastavcima > dozvole omogućite da se slike sačuvaju u galeriju uređaja.",
+      "saveDeniedTitle": "Prihvat fotografije odbijen",
+      "savedAll": "{count, plural,  one {Jedna slika je sačuvana u galeriju uređaja.} other {# fotografije sačuvane u galeriji uređaja.}}",
+      "savedSome": "{saved} of {total} photos saved.",
+      "searchPlaceholder": "Traženje po adresi, datumu ili kodu",
+      "selectedCount": "{count, plural,  one {# fotografija izabrana} other {Odabranim fotografijama #}}",
+      "share": "Deliti",
+      "title": "Galerija"
+    },
+    "language": {
+      "automatic": "Uređaj za uskladenje",
+      "automaticNote": "Lymark prati jezik koji je postavljen na vašem uređaju.",
+      "label": "Jezik",
+      "selector": "Izbor jezika"
+    },
+    "login": {
+      "access": "Upis na pristup",
+      "apple": "Upiši se sa Appleom",
+      "google": "Upis sa Googleom",
+      "subtitle": "Upiši se da nastavi",
+      "title": "Upis za pristup Lymark "
+    },
+    "nav": {
+      "batch": "Proizvodnja partija",
+      "photoDetail": "Detalji fotografije",
+      "report": "Izveštaj PDF",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Ovaj ekran nije deo Lymark-a .",
+      "screenTitle": "Stranica nije pronađena",
+      "title": "Nema takvog puta."
+    },
+    "permissions": {
+      "allow": "Dajte da",
+      "allowed": "Dozvoljeno",
+      "blocked": {
+        "later": "Ne sad.",
+        "message": "Sistem neće ponovo da pita.",
+        "openSettings": "Otvoreni podešavanja",
+        "title": "Dozvola blokirana"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Potrebno je da se slika koja će dobiti vodeni znak.",
+      "denied": "Odbijen",
+      "granted": "Dozvoljeno",
+      "intro": "Lymark traži samo ono što je potrebno za objelodiranje fotografije. Vaše slike nikada ne napuštaju uređaj: kada koristite GPS, operativni sistem šalje servisu karte samo koordinatu, tako da može postati adresa.",
+      "location": "Lokalizacija",
+      "locationRationale": "Automatski se popuni polje adresa kada snimite.",
+      "mediaLibrary": "Sačuvaj u galeriju",
+      "mediaLibraryRationale": "Da napišem izvozne fotografije u galeriju uređaja.",
+      "openDeviceSettings": "Nastavke",
+      "recheck": "-Pogledajte ponovo.",
+      "request": "Traži dozvolu",
+      "section": "Pristup",
+      "title": "Pristup"
+    },
+    "photo": {
+      "backToGallery": "Vratimo se u galeriju",
+      "exportedAt": "Eksportiran na {when} ",
+      "noWatermark": "Ova slika je izvožena bez vodena oznaka.",
+      "notFoundBody": "Ovaj zapis je možda uklonjen iz istorije.",
+      "notFoundTitle": "Fotografija nije pronađena",
+      "remove": "Ukloniti",
+      "removeBody": "Znak koji je sačuvani u galeriji uređaja nije pogođen.",
+      "removeTitle": "Izbaci iz istorije",
+      "share": "Deliti",
+      "stampedData": "Obezbeđeni podaci"
+    },
+    "plan": {
+      "exhausted": "Slike koje su bezbrojne",
+      "exhaustedMessage": "12 fotografija besplatnog plana je nestala.",
+      "free": "Slobodno",
+      "pro": "Pro",
+      "reconnect": "Ponovno povezivanje da potvrdi pretplatu",
+      "remaining": "{remaining, plural,  one {# besplatna slika lijevo} other {# besplatne fotografije ostave}}",
+      "title": "Plan",
+      "unlimited": "Nema granica"
+    },
+    "report": {
+      "allPhotos": "Sve slike",
+      "authorField": "Autor / kompanija",
+      "detailsSection": "Detalji",
+      "doc": {
+        "author": "Autor",
+        "declaration": "Obezbeđeni podaci (adresa, datum, vreme i kod) su deklaracija izdavatelja fotografija.",
+        "exportedAt": "Izvoz na",
+        "generatedAt": "Proizvodi",
+        "page": "Stranica",
+        "photo": "Foto: {index} ",
+        "photosSection": "Fotografske zapise",
+        "signature": "Potpis nadležne osobe",
+        "summary": "Povzetek",
+        "title": "Fotografski izveštaj",
+        "totalPhotos": "Ukupna slika:"
+      },
+      "empty": "Još nema izvoznih fotografija, izveštaj je izgrađen iz vaše galerije.",
+      "failed": "Nije mogao da generira izveštaj.",
+      "fileStem": "izvještaj",
+      "format": {
+        "csv": "Računovodstveni list (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Paket (ZIP)"
+      },
+      "formatSection": "Formatiranje",
+      "generate": "Generira datoteka",
+      "generateSection": "Generira",
+      "includeLogo": "Logo na naslovnici",
+      "includeLogoDescription": "Logotip marke, isti kao na žig, isključi ga da bi ga ostavio izvan dokumenta.",
+      "norm": {
+        "abnt": "ABNT (Brazil)",
+        "din5008": "DIN 5008 (Njemačka)",
+        "ibape": "IBAPE stil (Brazil)",
+        "iso": "Međunarodna",
+        "letter": "Pismo (SAD)"
+      },
+      "normNote": "Standard određuje papir i formiranje  margina, font i brojanje stranica. sadržaj izveštaja je isti u svim njima; stil IBAPE doda blok potpisa.",
+      "normSection": "Standardni dokument",
+      "projectsSection": "Projekat / posao",
+      "saved": "Sačuvano na {path} ",
+      "savedShort": "Izveštaj je sačuvani.",
+      "title": "Izveštaj PDF",
+      "titleField": "Naziv izveštaja",
+      "unavailableBody": "PDF izveštaji su dostupni u aplikaciji za rad na desktop-u.",
+      "unavailableTitle": "Samo na radnom mestu",
+      "uncoded": "Nema koda",
+      "wordTooBig": "Dokument Word je postao prevelik sa ugrađenim fotografijama.",
+      "zipMissing": "{count, plural,  one {Paket je sačuvana, ali fotografija # nije pronađena na ovom uređaju.} other {Paket je sačuvana, ali fotografije # nisu pronađene na ovom uređaju.}}"
+    },
+    "settings": {
+      "about": "O",
+      "aboutDescription": "Verzija, privatnost i kreditne vrednosti",
+      "appSection": "Aplikacija",
+      "deviceSection": "Uređaj",
+      "deviceSectionDescription": "Dolaz koji zahteva Lymark.",
+      "fields": "Polja i pozicija",
+      "fieldsDescription": "Izberite koja polja prikazuju, ugl i veličinu",
+      "history": "Istorija",
+      "historyDescription": "Izvezene fotografije koje se čuvaju na uređaju",
+      "language": "Jezik",
+      "permissions": "Pristup",
+      "permissionsDescription": "Kamera, fotografije i lokacija",
+      "save": "Sačuvaj",
+      "title": "Nastavke",
+      "watermark": "Vodioc",
+      "watermarkSection": "Vodioc",
+      "watermarkSectionDescription": "Šta je obilježeno na fotografiji i gdje."
+    },
+    "signup": {
+      "subtitle": "Prijavi se da bi počela",
+      "title": "Stvorite svoj Lymark nalog"
+    },
+    "tagline": "Vodni znak sa vremenom, datumom i mjestima",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Nema pristupa kameri.",
+      "done": "Video je objelodan i sačuvano.",
+      "export": "Izvoz stampiranog videa",
+      "exportSection": "Izvoz",
+      "failed": "Video nije mogao biti objelodan.",
+      "fieldsSection": "Polja za žigove",
+      "fileSection": "Video",
+      "none": "Nema video odabranih.",
+      "processing": "Proizvodnja... {percent} %",
+      "processingMobile": "Procesiranje...",
+      "record": "Snimaj video sada",
+      "saved": "Sačuvano na {path} ",
+      "savedToGallery": "Video sa štampiranim štampom sačuvano je u galeriju.",
+      "select": "Izberite video",
+      "unavailableBody": "Za mobilno video štampiranje potreban je Lymark instaliran iz build-a EAS (s izvornim modulom). Nije dostupan u Expo Go . Instalirajte zvaničnu aplikaciju iz prodavnice ili build-u EAS, ili koristite desktop / web verziju.",
+      "unavailableTitle": "Potrebna instaliranja aplikacije",
+      "unreadable": "Datoteka se nije mogla čitati kao video.",
+      "webNote": "U pretraživaču se video obrađuje u realnom vremenu  2 minuta video traje 2 minute  i dolazi u formatu WebM. Za dugogodišnje video snimke, koristite desktop aplikaciju."
+    },
+    "watermark": {
+      "accentColor": "Vertikalni bar",
+      "backdropBandNote": "Na slici sa stipendom, na kojoj je stipend zaokrenut, se piše kao tekst dokumenta, a ne nalepka postavljena na vrhu.",
+      "backdropBlockNote": "Podržava se po veličini teksta, sa opuštanjem oko njega.",
+      "backdropColor": "Boja traka",
+      "backdropDescription": "Drži kontrast iznad svetlih područja fotografije.",
+      "backdropInnerRadius": "U unutrašnjim uglovima",
+      "backdropOpacity": "Transparentnost",
+      "backdropOpacityValue": "{percent} % neprimjerna",
+      "backdropRadius": "Okruženi uglovi",
+      "backdropRadiusSquare": "kvadratni",
+      "backdropStyles": {
+        "band": "Poput:",
+        "block": "Iza teksta",
+        "none": "-Nema."
+      },
+      "backdropTitle": "Spoljazni bend",
+      "brandDescription": "Na vrhu satova postaje potpis, sa logom i sloganom.",
+      "brandFirstColor": "Boja prvog dijela",
+      "brandFirstHint": "Građani",
+      "brandFirstPart": "Prvi deo",
+      "brandNote": "Drugi deo ostavi prazan za jednobarvni znak.",
+      "brandPlacements": {
+        "corner": "U kutku",
+        "header": "iznad satova",
+        "none": "-Nema."
+      },
+      "brandSecondColor": "Boja drugog dela",
+      "brandSecondHint": "Smit",
+      "brandSecondPart": "Drugi deo",
+      "brandTitle": "Oznaka obeležena",
+      "codeDescription": "Sa strane ne konkurira za prostor sa samom slikom.",
+      "codePlacements": {
+        "block": "Pored podataka",
+        "side": "Desna strana"
+      },
+      "codeTitle": "Kod fotografije",
+      "colors": {
+        "amber": "Amber",
+        "black": "Crna",
+        "blue": "Plava",
+        "green": "Zelena",
+        "red": "Crvena",
+        "white": "Bijeli"
+      },
+      "colorsDescription": "Boja na fotografiji je izbor kompanije, ne aplikacija, ali mijenjajući je ovde ne mijenja boje ekrana.",
+      "colorsTitle": "Boje žigova",
+      "complement": "Tagline",
+      "complementColor": "Boja oznaka",
+      "complementHint": "Inspekcije i tehnički izveštaji",
+      "cornerConflict": "Značka i podaci su u istom uglu  oni će se preklopiti na fotografiji.",
+      "fields": {
+        "address": "Adresa / mjesto",
+        "code": "Kod fotografije",
+        "date": "Datum",
+        "time": "Vreme",
+        "weekday": "Dan u nedelju"
+      },
+      "fieldsDescription": "Samo polja koja su na i imaju sadržaj dostižu fotografiju.",
+      "fieldsTitle": "Pojavljena polja",
+      "includeCountry": "Uključite zemlju",
+      "includeCountryDescription": "Upali ga ako radiš preko granica, inače ima mjesta samo na fotografiji.",
+      "legibilityTitle": "Čitavost",
+      "logoAdded": "Logo dodato na naslov marke.",
+      "logoAlignNote": "Visina logotipa slijedi tekst: gornja strana se uskladjuje sa gornjim delom imena, a donja sa osnovnom linijom taglina.",
+      "logoChosen": "Izbrani logotip",
+      "logoErrorMessage": "Probaj drugu sliku. PNG sa transparentnom pozadinom je format koji najbolje funkcioniše.",
+      "logoErrorTitle": "Ova datoteka nije mogla da se koristi.",
+      "logoFormatNote": "Koristite PNG sa transparentnom pozadinom. JPG sa bijelim pozadinom postaje bijeli pravougaon na fotografiji  format ne čuva transparentnost, a aplikacija nema načina da pogodite šta je pozadina.",
+      "logoPermissionMessage": "Olakšajte u podešavanjima › Dopuštenja da biste izabrali datoteku logotip.",
+      "logoPermissionTitle": "Prihvat fotografije odbijen",
+      "logoPick": "Izbor logotip",
+      "logoPosition": "Položaj logotipova",
+      "logoPositionBlock": "Sa pečatom",
+      "logoRemove": "Ukloniti",
+      "logoReplace": "Zamena logotip",
+      "logoSize": "Veličina logotipova",
+      "positionDescription": "Uglu fotografije blok je ugrađen.",
+      "positionTitle": "Pozicija",
+      "positions": {
+        "bottom-left": "Spodno lijevo",
+        "bottom-right": "Spodno desno",
+        "top-left": "Gornji lijevo",
+        "top-right": "Gornje desno"
+      },
+      "previewCurrent": "Na trenutnoj fotografiji iz karte \"Uzori\".",
+      "previewEmpty": "Od svjetlosti do tame, da provjerimo čitljivost na obje krajnosti.",
+      "previewNoFields": "Nijedno polje nije izabrano  slika se pojavljuje bez vodena oznaka.",
+      "previewTitle": "Preview",
+      "reset": "Obnova predrazumevanog",
+      "sizeTitle": "Velikost teksta",
+      "sizes": {
+        "large": "Veliki",
+        "medium": "Medijum",
+        "small": "Mali"
+      },
+      "textColor": "Tekst",
+      "timeFormatDescription": "Kako se vreme puni polja.",
+      "timeFormatTitle": "Vreme",
+      "timeFormats": {
+        "12h": "12 sati (sve ujutro/sve poslijepodne)",
+        "24h": "24 sata"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Sve datoteke",
+      "images": "Slike",
+      "pickFolder": "Izbor output folder",
+      "pickPhoto": "Izbor fotografije",
+      "pickPhotos": "Izbor fotografija za seriju",
+      "savePhoto": "Sačuvanje fotografije",
+      "saveReport": "Sačuvanje izveštaja"
+    },
+    "login": {
+      "cancel": "Otkazivanje",
+      "confirm": "Nastavi",
+      "message": "- Nastavi i koristi ovaj račun na ovom računaru?",
+      "title": "Upiši se na Lymark "
+    },
+    "menu": {
+      "copy": "Kopiranje",
+      "cut": "Prerezan",
+      "edit": "Redakcija",
+      "file": "Dosje",
+      "fullscreen": "Pun ekran",
+      "help": "Pomoć",
+      "paste": "Ulagač",
+      "quit": "Prestani.",
+      "redo": "Redo",
+      "reload": "Prepuna punjenja",
+      "selectAll": "Izberite sve",
+      "settings": "Nastavke",
+      "undo": "Neispravna",
+      "view": "Prikaz",
+      "zoomIn": "Uzvišite",
+      "zoomOut": "Izlazi",
+      "zoomReset": "Velikost"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Vrati se kući.",
+      "openApp": "Otvori aplikaciju",
+      "photos": "Fotografije",
+      "photosLeft": "{remaining} od {quota} lijevo",
+      "plan": "Plan",
+      "planUnavailable": "Trenutno nije dostupan.",
+      "plans": {
+        "free": "Slobodno",
+        "pro": "Pro"
+      },
+      "signInTitle": "Upiši se",
+      "signOut": "Potpiši se.",
+      "signUpTitle": "Kreiraj račun",
+      "subscribe": "Subskripi se na Lymark Pro",
+      "subscribeSoon": "Prepisovi još nisu dostupni, ali kada budu dostupni, moći ćete da se pretplatite ovde i koristite bilo koje uređaje sa istim nalogom.",
+      "title": "Vaš račun",
+      "revokeDesktops": "Odvezi računar",
+      "revokeDesktopsHint": "Završava pristup aplikaciji na svakom računaru."
+    },
+    "availability": {
+      "contact": "Da biste pratili lansiranje ili prijavili problem, pišite na <email> contato@lymark.app </email>.",
+      "description": "Lymark je na verziji 1.3.0, testiranje na Androidu pre objavljivanja na Google Play.",
+      "title": "Dostupnost"
+    },
+    "data": {
+      "device": {
+        "description": "Konti postoje za vašu pretplatu: server čuva vašu e-poštu i plan, a nikada ne prima vaše fotografije ili vašu lokaciju.",
+        "field": "Na uređaju",
+        "heading": "Fotografije, adrese i istorija"
+      },
+      "external": {
+        "description": "Da bi se latitud i dugometra pretvorili u čitljivu adresu, operativni sistem upita Googleovu ili Appleovu geokodificirnu uslugu. To je jedina informacija koja ostaje, a sistem je šalje, a ne aplikacija.",
+        "field": "Izbaci se na uređaj",
+        "heading": "Samo pretvaranje koordinate u adresu"
+      },
+      "note": "Sve je navedeno  uključujući i ono što to znači u Brazilskoj LGPD  u <privacy>Politika privatnosti</privacy>- Isključivanje dozvole lokacije ostavlja aplikaciju u potpunosti funkcionalnom; samo polje adrese mora se tajpirati ručno.",
+      "title": "Gde su vaši podaci"
+    },
+    "deleteAccount": {
+      "back": "-Opet na račun.",
+      "confirm": "Izbrišite moj nalog",
+      "deletesNow": "brisanje računa odmah briše e-mail, identifikaciju, i zapis plana, kvote i broja fotografija.",
+      "irreversible": "Izbrištanje je trajno i ne može se ukinuti.",
+      "retained": "Zapisi transakcija plaćanja se čuvaju za zakonski obavezni fiskalni period, bez povezivanja sa vašim profilom.",
+      "title": "Izbrišite račun"
+    },
+    "description": "Android aplikacija koja obilježava vreme, datum, dan, adresu i kod za praćenje na fotografijama za inspekciju lokacije i proveru usluge.",
+    "desktop": {
+      "backAccount": "-Opet na račun.",
+      "explanation": "Vaš nalog je spreman. Kliknite na gumb ispod da otvorite Lymark na računaru koji je već prijavljen.",
+      "open": "Povezi aplikaciju",
+      "title": "Upis na desktop",
+      "unavailable": "Povezivanje desktop aplikacije još nije dostupno."
+    },
+    "download": {
+      "appStore": {
+        "description": "Isti iskustvo kao Android, na iOS.",
+        "field": " App Store ",
+        "heading": "iPhone i iPad"
+      },
+      "browser": {
+        "action": "Upiši se",
+        "description": "Upisite se svojim nalogom i aplikacija se otvara u pretraživaču  telefon ili računar.",
+        "field": "Pretraživač",
+        "heading": "Koristi ga sada, nema šta da instalirate."
+      },
+      "desktop": {
+        "description": "Fotografske serije, dug video snimak i PDF izveštaji  težak rad verzija.",
+        "field": "Računar",
+        "heading": "Windows i Linux"
+      },
+      "googlePlay": {
+        "description": "Aplikacija za telefon, sa kamerom, galerijom i video štampiranim.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Dolazi uskoro.",
+      "title": "Gde koristiti Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "Ulica se skraća i država postaje njen kod, tako da adresa odgovara u dvije linije bez da pokriva fotografiju.",
+        "field": "Adresa",
+        "heading": "Ugrađeni GPS-om, ručno ispravljivi"
+      },
+      "code": {
+        "description": "Postoji tako da možete citirati jednu specifičnu fotografiju u redoslijedu rada ili izveštaju.",
+        "field": "Kod fotografije",
+        "heading": "Četiri znakova, crta kriptografski generator"
+      },
+      "note": "Svaki polj se uključuje i isključuje sam po sebi, a blok se zaklenjuje na bilo koji od četiri ugla, u tri veličine. Prethodna prikaza koristi vašu stvarnu fotografiju, a ne generički uzorak: ono što vidite na ekranu je doslovno ono što se izvozi.",
+      "time": {
+        "description": "Jedan dugme vraća sva tri polja u sadašnjost kada je snimanje trajalo duže nego što je očekivano.",
+        "field": "Vreme i datum",
+        "heading": "Od uređaja sat, u trenutku hvatanja"
+      },
+      "title": "Šta ide na sliku"
+    },
+    "footer": {
+      "description": "Lymark  Fotografske zapise sa datumom, vremenom i adresom.",
+      "documentsLabel": "Dokumenti",
+      "privacy": "Politika privatnosti",
+      "support": "Podrška:",
+      "terms": "Uslovima korišćenja"
+    },
+    "hero": {
+      "ctaAccount": "Idi na moj račun.",
+      "ctaLogin": "Upiši se",
+      "ctaSignup": "Kreirajte besplatan nalog",
+      "description": "Lymark obilježava vreme, datum, dan nedelje, adresu i kod praćenja direktno na sliku.",
+      "eyebrow": "Fotodokumentiranje na polju",
+      "heading": "Slika ostaje na telefonu i kaže kada, gde i šta.",
+      "meta": {
+        "account": "Ujednačen račun",
+        "android": "Android i preglednik",
+        "language": "Brazilski portugalski",
+        "onDevice": "Fotografije ostaju na uređaju"
+      },
+      "note": "Ništa da instaliram."
+    },
+    "nav": {
+      "account": "Račun",
+      "home": "Dom",
+      "homeLabel": "Lymark , početna stranica",
+      "label": "Glavni",
+      "privacy": "Privatnost",
+      "signIn": "Upiši se",
+      "terms": "Uloga",
+      "verify": "Provjeravanje"
+    },
+    "process": {
+      "capture": {
+        "description": "Traženje adrese počinje čim se slika pojavi. Polja ostaju otvorena za podešavanje dok se radi.",
+        "field": "Uhićenje",
+        "heading": "Kamera ili galerija"
+      },
+      "note": "Sačuvanje i deljenje rešavaju različite probleme, a sklopiti ih u jedan dugme bi povuklo svakoga ko samo želi da podnosi fotografiju kroz ekran za šaljanje.",
+      "save": {
+        "description": "Sjedi sa ostalim fotografijama telefona, dostupnim za bilo koju aplikaciju  uključujući i nakon što deinstališ Lymark.",
+        "field": "Sačuvaj",
+        "heading": "Ide u galeriju uređaja"
+      },
+      "share": {
+        "description": "WhatsApp , e-mail, Drive: destinaciju bira operativni sistem, a aplikacija ne učestvuje u slanju.",
+        "field": "Deliti",
+        "heading": "Otvara se list za sistem"
+      },
+      "title": "Put koju slika vodi"
+    },
+    "skipToContent": "Premeštaj na sadržaj",
+    "specimen": {
+      "caption": "Pravilo jeber počinje i završava na ivicama brojeva, a ne na tekstualnoj polji.",
+      "label": "Primjer žigova Lymark: vrijeme 07:42, datum 12. avgusta 2026., srijedu, adresa u Guarujá i kod fotografije."
+    },
+    "title": "Lymark  datum, vreme i adresa vodena oznaka za fotografije polja",
+    "verify": {
+      "caveat": "Pečat potvrđuje integritet dokumenta i trenutak izdavanja.",
+      "checking": "Proveravam...",
+      "declarationNote": "Oznaka o oznaku (adresa, datum, vreme) je deklaracija izdavatelja  oznaka potvrđuje integritet i izdavanje, a ne sadržaj.",
+      "intro": "Spustite ili izaberite fotografiju koju je Lymark izvozio i odmah pogledajte da li je tačno kao što je napustio aplikaciju  i ko je objavio, kada.",
+      "noSealBody": "Ova datoteka nema pečat Lymark. Mogao je biti izvožen offline, pre nego što je pečat postojao, ili možda nije došao iz Lymark.",
+      "noSealTitle": "Nema pečat",
+      "notConfigured": "Verifikacija još nije dostupna.",
+      "pick": "Izbor datoteke",
+      "previewAlt": "Ovjerena fotografija, značka vidljiva",
+      "privacyNote": "Verifikacija se odvija u vašem pretraživaču.",
+      "sealedBody": "Ova datoteka je tačna kao što je ostavila Lymark. Ispuštena je po računu {account} na {date}.",
+      "sealedTitle": "Nepotrpan",
+      "tamperedBody": "Sadržaj se ne ujema sa pečatom: datoteka je bila izmenjena nakon izdavanja, ili pečat pripada drugom datoteku.",
+      "tamperedTitle": "Ne odgovara",
+      "title": "Provjerava autentičnost",
+      "unsupported": "Ovaj preglednik ne podržava verifikaciju potpisa."
+    }
+  }
+}

@@ -3,24 +3,34 @@ import ar from '@i18n/messages/ar.json';
 import az from '@i18n/messages/az.json';
 import bg from '@i18n/messages/bg.json';
 import bn from '@i18n/messages/bn.json';
+import bs from '@i18n/messages/bs.json';
 import cs from '@i18n/messages/cs.json';
+import da from '@i18n/messages/da.json';
 import de from '@i18n/messages/de.json';
 import el from '@i18n/messages/el.json';
 import en from '@i18n/messages/en.json';
 import es from '@i18n/messages/es.json';
 import fa from '@i18n/messages/fa.json';
+import fi from '@i18n/messages/fi.json';
 import fr from '@i18n/messages/fr.json';
 import he from '@i18n/messages/he.json';
 import hi from '@i18n/messages/hi.json';
+import hr from '@i18n/messages/hr.json';
 import ht from '@i18n/messages/ht.json';
+import hy from '@i18n/messages/hy.json';
 import hu from '@i18n/messages/hu.json';
 import id from '@i18n/messages/id.json';
 import it from '@i18n/messages/it.json';
 import ja from '@i18n/messages/ja.json';
+import ka from '@i18n/messages/ka.json';
 import kk from '@i18n/messages/kk.json';
 import km from '@i18n/messages/km.json';
 import ko from '@i18n/messages/ko.json';
+import lo from '@i18n/messages/lo.json';
+import lt from '@i18n/messages/lt.json';
+import lv from '@i18n/messages/lv.json';
 import mg from '@i18n/messages/mg.json';
+import mn from '@i18n/messages/mn.json';
 import ms from '@i18n/messages/ms.json';
 import my from '@i18n/messages/my.json';
 import ne from '@i18n/messages/ne.json';
@@ -30,13 +40,18 @@ import ps from '@i18n/messages/ps.json';
 import pt from '@i18n/messages/pt.json';
 import ro from '@i18n/messages/ro.json';
 import ru from '@i18n/messages/ru.json';
+import rn from '@i18n/messages/rn.json';
 import rw from '@i18n/messages/rw.json';
 import si from '@i18n/messages/si.json';
+import sk from '@i18n/messages/sk.json';
+import sl from '@i18n/messages/sl.json';
+import sq from '@i18n/messages/sq.json';
 import so from '@i18n/messages/so.json';
 import sr from '@i18n/messages/sr.json';
 import sv from '@i18n/messages/sv.json';
 import sw from '@i18n/messages/sw.json';
 import th from '@i18n/messages/th.json';
+import ti from '@i18n/messages/ti.json';
 import tr from '@i18n/messages/tr.json';
 import uk from '@i18n/messages/uk.json';
 import ur from '@i18n/messages/ur.json';
@@ -104,6 +119,21 @@ export const MESSAGES = {
   rw,
   ht,
   bg,
+  da,
+  fi,
+  sk,
+  hr,
+  ka,
+  mn,
+  lo,
+  hy,
+  lt,
+  sq,
+  sl,
+  ti,
+  lv,
+  bs,
+  rn,
 } as const;
 
 export type Messages = (typeof MESSAGES)[Locale];

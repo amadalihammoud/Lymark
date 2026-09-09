@@ -20,8 +20,8 @@ export const DEFAULT_LOCALE = 'pt' as const;
  * A ordem é a de exibição no seletor de idioma, não alfabética: primeiro o
  * idioma de origem, depois o alcance decrescente.
  *
- * As Fases 1 (hi…he) e 2 (my…bg) ampliam o catálogo sem reordenar os doze
- * originais.
+ * As Fases 1 (hi…he), 2 (my…bg) e 3 (da…rn) ampliam o catálogo sem reordenar
+ * os doze originais.
  */
 export const LOCALES = [
   'pt',
@@ -69,6 +69,21 @@ export const LOCALES = [
   'rw',
   'ht',
   'bg',
+  'da',
+  'fi',
+  'sk',
+  'hr',
+  'ka',
+  'mn',
+  'lo',
+  'hy',
+  'lt',
+  'sq',
+  'sl',
+  'ti',
+  'lv',
+  'bs',
+  'rn',
 ] as const;
 
 export type Locale = (typeof LOCALES)[number];
@@ -123,6 +138,21 @@ export const LOCALE_NAMES: Record<Locale, string> = {
   rw: 'Ikinyarwanda',
   ht: 'Kreyòl ayisyen',
   bg: 'Български',
+  da: 'Dansk',
+  fi: 'Suomi',
+  sk: 'Slovenčina',
+  hr: 'Hrvatski',
+  ka: 'ქართული',
+  mn: 'Монгол',
+  lo: 'ລາວ',
+  hy: 'Հայերեն',
+  lt: 'Lietuvių',
+  sq: 'Shqip',
+  sl: 'Slovenščina',
+  ti: 'ትግርኛ',
+  lv: 'Latviešu',
+  bs: 'Bosanski',
+  rn: 'Ikirundi',
 };
 
 /**
@@ -173,6 +203,7 @@ export const LOCALES_BY_NAME: readonly Locale[] = [...LOCALES].sort((a, b) =>
  *
  * Fase 1 acrescenta hebraico (`he`), urdu (`ur`) e persa (`fa`); a Fase 2
  * acrescenta pashto (`ps`) — a mesma regra de `dir="rtl"` no documento.
+ * A Fase 3 não acrescenta RTL: o tigrínia (`ti`) usa escrita etíope LTR.
  *
  * O que NÃO deve espelhar, e por isso não usa propriedade lógica: a marca
  * desenhada em `wordmark.tsx`. Um logotipo é o mesmo em toda língua.

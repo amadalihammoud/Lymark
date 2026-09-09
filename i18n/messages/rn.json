@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Ikiganiro",
+      "pitch": "Niwandike umwanya, igenekerezo, umusi w'akazi, aderese n'ikodi yo gukurikirana ku mafoto yawe  kugira ngo ushobore kwandikisha ibintu, ugasuzuma aho ubaye no kwerekana ko ubikozwe neza.",
+      "platform": "Ikiringo c'umukuru w'igihugu",
+      "privacy": "Itegeko rigenga ubuzima bwite",
+      "privacyGeocoding": "Iyo GPS ikoreshejwe, iyo porogarama irungika iyo coordinate kuri Googles canke kuri Apples service yo kugura iyo aderese. Iyo ni yo nkuru yonyene isigaye aha, kandi ni iyo porogarama iriko irayihereza, atari Lymark.",
+      "privacyLocation": "Aho hantu hakoreshwa rimwe mu gufata amafoto, kugira gusa wuzuze umurima w'indero, kandi ntiziguma zibikwa ukwa zindi.",
+      "privacyOnDevice": "Amafoto, ama aderese n'inkuru z'ivyabaye biracika kuri uwo mudasobwa gusa. Akabire kaba ari ko kagenewe abakize: umukozi arazigama ubutumwa bwawe bwo kuri internet n'ingingo yawe, kandi ntiyigera aronka amafoto yawe canke aho uri.",
+      "privacySection": "Ukwihishurira",
+      "sdk": " Expo SDK ",
+      "terms": "Amabwirizwa y'ukukoresha",
+      "title": "Ku vyerekeye Lymark ",
+      "version": "Igihimba c'inyongera"
+    },
+    "account": {
+      "browserHint": "Niwimenyeshe muri browser, maze iyo porogarama izokwiyandikisha.",
+      "code": "Ikodero",
+      "codeSent": "Twarungitse icete kuri {email} .",
+      "connected": "Kuvurwa",
+      "continue": "Nubandanye",
+      "deleteAccount": "Gukuramo akajambo",
+      "email": "Ama email",
+      "failed": "Nurabe kuri email canke kuri code maze wongere ugerageze.",
+      "notConfigured": "Nta muntu n'umwe ashobora kwinjira muri iyo nzu.",
+      "signInBrowser": "Niwinjirire mu muhingurano",
+      "signOut": "Niwandikire",
+      "signedInAs": "Yashikirijwe izina rya {email} ",
+      "title": "Akabire",
+      "verify": "Gusuzuma"
+    },
+    "batch": {
+      "addressHint": "Umuduga, nomero  Igisagara",
+      "clearList": "Urutonde rw'ibintu",
+      "codeHint": "nk'urugero rw'urugero rw'umuyagankuba",
+      "done": "{count, plural,  one {Gushiraho amakuru: Ifoto ya # irangiye.} other {Gushiraho amakuru: Amafoto ya # ararangutse.}}",
+      "doneSection": "Kirangiye",
+      "dropZone": "Fyonda amafoto ngaha canke ukoreshe akabutoni Hitamwo amafoto",
+      "errorsSection": "Amakosa",
+      "folder": "Indangamuntu: {name} ",
+      "noPhotos": "Nurabe amafoto atandatu.",
+      "outputNote": "Amafoto y'ico gikorwa arazigamwa mu mupapuro uwahisemwo.",
+      "outputSection": "Umutekano",
+      "photosSection": "Amafoto yo gutunganya",
+      "processing": "Gucungera...",
+      "progress": "{current} ya {total} ({percent} %)",
+      "results": "{success, plural,  one {Urutonde rw'abantu baroraniwe} other {Ivyashitsweko na #}}, {failed, plural,  one {Ikosa rya #} other {Ibitero vy'ikoreshwa ry'ibikoresho vy'ubwubatsi}}",
+      "selectFolder": "Hitamwo ako gakarata",
+      "selectPhotos": "Hitamwo amafoto",
+      "selected": "{count, plural,  one {Ifoto ya # yaratowe} other {Amafoto ya # yatowe}}",
+      "sharedNote": "Ayo mahera arashirwa mu ngiro ku mafoto yose.",
+      "sharedSection": "Imitahe yahuriranye",
+      "start": "Gutangura gutunganya",
+      "unavailableBody": "Ico kintu ni co c'urudonde rw'ibikoresho gusa.",
+      "unavailableTitle": "Gucungura ibitsindo ntibiriko biratangurwa"
+    },
+    "capture": {
+      "accuracy": "Ikibanza kiri mu ± {meters} m.",
+      "accuracyImprecise": "Mu kibanza kiri hagati ya ± {meters} m , imbere yo gutahukana, ni ugende urabe inomero y'ibarabara.",
+      "address": "Indirizzo",
+      "addressFailedTitle": "Nta aderese y'umuntu yabonetse",
+      "addressHint": "Nuce uterera ku gakuru, canke wandikire aderese",
+      "camera": "Fata ifoto",
+      "code": "Ikodero",
+      "dateHint": "Igenekerezo rya 1 Nzero 2026",
+      "dateTimeGroup": "Umusi n'isaha",
+      "emptyWarning": "Nta makuru azoba aherutse gushirwa ku gishushanyo.",
+      "gallery": "Hitamwo mu masanamu",
+      "galleryDenied": "Amafoto yaranse kwinjira, rero iyo shusho iba iri muri iyo porogaramu gusa.",
+      "galleryFailed": "Ico gishushanyo caciye kija mu nkuru, ariko ca gikoresho carabujije kugishira mu nzu y'ishusho.",
+      "generateCode": "Gutanga",
+      "hiddenFields": "{count, plural, one {Umurima uhishijwe} other {Imirima yahishijwe}}: {fields} — bishire mu ngiro mu Ntangamarara › Amasambu n'imero.",
+      "keepMyAddress": "Gumana ivyacu",
+      "locate": "Kurondera",
+      "locateByGps": "Kurondera aderese ukoresheje GPS",
+      "lookup": {
+        "denied": "Nureke aho uherereye mu Ntunganyo › Ivyemezo, canke wandike aderese.",
+        "disabled": "Nuce ugenda uraba aho hantu, uce ugenda urabigerageza.",
+        "timeout": "GPS ntiyaciye irya n'ino ku gihe.",
+        "unavailable": "Iyo aderese ntiyashoboye gutorerwa umuti muri iki kibanza."
+      },
+      "newCapture": "Tugire ikindi gikorwa co gufata",
+      "noFieldsBack": "Subira inyuma",
+      "noFieldsContinue": "Nubandanye n'aho woba uri",
+      "noFieldsMessage": "Nta cibare na kimwe gifise ico gisanzwe. Fungura ibibanza canke usuzume Ingene ibintu vyifashe › Ibibanza n'aho biri.",
+      "noFieldsTitle": "Iyo foto izosohoka ata mazi ikora",
+      "noPhotoHint": "Nufate ifoto canke uhitemwo imwe mu masho y'ibiteramo.",
+      "noPhotoSelected": "Nta foto yahiswe",
+      "openFailed": "Iyo foto ntiyashoboye kwugururwa.",
+      "permissionMessage": "Nureke ko uronka uruhusha rwo kwinjira mu Ntunganyo › Uburenganzira bwo kubandanya.",
+      "permissionTitle": "Bisaba uruhusha",
+      "pickPhoto": "Hitamwo ifoto",
+      "pickPhotoHint": "Nuhitemwo ifoto kugira ngo ibikorwa vy'urwo rugendo bibe vyarangutse.",
+      "previewLabel": "Ibiriko biraba kuri iyo foto y'amabara",
+      "renderFailedTitle": "Ntiyashoboye gushiraho ishusho",
+      "replaceAddressMessage": "GPS: {address} ",
+      "replaceAddressTitle": "Ni ugusubiriza aderese wanditse?",
+      "resetConfirm": "Gutahura",
+      "resetMessage": "Ifoto yafashwe hamwe n'imirima yuzuye bazoca bayirukana.",
+      "resetTitle": "Gutangura ikindi gikorwa?",
+      "saved": "Amafoto y'urwo rugendo yarashizwe mu bubiko bw'ibikoresho be n'ivya kahise.",
+      "savedAppOnlyTitle": "Zizigama gusa mu gice ca Lymark ",
+      "shareDialogTitle": "Gusaba amafoto y'amazi",
+      "shareFailedMessage": "Iyo shusho yarakozwe kandi iri mu kahise ka Lymark. Urashobora kuyishira ku rupapuro rw'amashusho.",
+      "shareFailedTitle": "Ntiyashoboye gusangira",
+      "shareUnavailableMessage": "Ako karirimbo ntikagira ishusho.",
+      "shareUnavailableTitle": "Gucungura ntibikwiye",
+      "sharedFileTitle": "Ifoto y'amabara",
+      "stampNotReady": "Ico kimenyetso kiracari mu gutegurwa.",
+      "syncNow": "Ubu rero",
+      "timestamp": "Umusi/Igihe",
+      "title": "Gufata",
+      "useGpsAddress": "Nukoreshe GPS",
+      "weekdayHint": "Umusi w'Isabato",
+      "weekdayShort": "Umusi"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "hitamwo irindi rangi",
+      "saturationBrightness": "Umwimbu n'ubwiza",
+      "use": "Koresha iribara"
+    },
+    "common": {
+      "back": "Nimuze dusubire inyuma",
+      "cancel": "Guhanagura",
+      "delete": "Gukuramo",
+      "error": "Ikosa",
+      "gotIt": "Ndabibonye",
+      "loading": "Kuja mu vyo kwinjiza...",
+      "no": "Oya",
+      "ok": "Ni vyiza",
+      "save": "Gucungura",
+      "share": "Gutanga",
+      "success": "Kuroranirwa",
+      "tryAgain": "Subira ugerageze.",
+      "unknownError": "Ikosa ritazwi",
+      "yes": "Ego"
+    },
+    "gallery": {
+      "cancelSelection": "Guhindura",
+      "clear": "Kahise karatomoye",
+      "clearConfirm": "Birumvikana",
+      "clearMessage": "Amafoto amaze kubikwa mu gikoresho cacu ntiyari kugira ico akoze.",
+      "count": "{count, plural,  one {Ifoto ya # yarungitswe hanze} other {Amafoto ya # yoherejwe hanze}}",
+      "delete": "Gukuramo",
+      "empty": "Nta mafoto arahari",
+      "emptyAction": "Genda ufashe",
+      "emptyDescription": "Amafoto wohereje mu mahanga ufise amazi, arerekanwa aha, hamwe n'umusi, ikibanza be n'ikodyo.",
+      "filteredCount": "{shown} y' {total, plural,  one {Ifoto ya #} other {Amafoto ya #}}",
+      "noResults": "Nta mafoto ya  {query}  yabonetse.",
+      "photoLabel": "Ifoto yo kuri {when} ",
+      "removeMessage": "Amafoto amaze kubikwa mu gikoresho ntiyahungabanywa.",
+      "removeTitle": "{count, plural,  one {Niwikure mu kahise} other {Kureho inyandiko za #}}",
+      "removed": "{count, plural,  one {Ingendo z'abantu zarahakuwe.} other {Ibitabu vyavuyeho.}}",
+      "saveDeniedMessage": "Nureke ivyo bintu biboneka mu bikoresho vyawe.",
+      "saveDeniedTitle": "Amafoto yanka kwinjira",
+      "savedAll": "{count, plural,  one {Ifoto imwe yarekuwe mu gikoresho c'ubuhinduzi.} other {Amafoto ya # yarashizwe mu bubiko bw'ibikoresho.}}",
+      "savedSome": "Amafoto ya {saved} ya {total} yarakoreshejwe.",
+      "searchPlaceholder": "Kurondera ku aderese, ku musi canke ku cigwa",
+      "selectedCount": "{count, plural,  one {Ifoto ya # yaratowe} other {Amafoto ya # yatowe}}",
+      "share": "Gutanga",
+      "title": "Galerie"
+    },
+    "language": {
+      "automatic": "Urutonde rw'ibikoresho",
+      "automaticNote": "Lymark irakurikira ururimi rwashyizweho ku gikoresho cawe.",
+      "label": "Ururimi",
+      "selector": "Hitamwo ururimi"
+    },
+    "login": {
+      "access": "Niwinjirire mu buryo bw'amabwirizwa",
+      "apple": "Niwinjirire kuri Apple",
+      "google": "Niwinjirire muri Google",
+      "subtitle": "Niwandikire kugira ngo ubandanye",
+      "title": "Niwinjirire kugira uronke amakuru y'urubuga rwa Lymark "
+    },
+    "nav": {
+      "batch": "Gucungura ibitsindo",
+      "photoDetail": "Amashusho",
+      "report": "Raporo ya PDF",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Ako karato si kamwe mu bice vya Lymark .",
+      "screenTitle": "Urupapuro ntiruboneka",
+      "title": "Nta nzira nk'iyo"
+    },
+    "permissions": {
+      "allow": "Reka",
+      "allowed": "Biremewe",
+      "blocked": {
+        "later": "Ubu si ko biri",
+        "message": "Kugira ngo ivyo bishoboke, nugurure uturyo tw'igikoresho cawe.",
+        "openSettings": "Ibikoresho vy'ugupfungura",
+        "title": "Uruhusha rwarambuwe"
+      },
+      "camera": "Ikamera",
+      "cameraRationale": "Ni ngombwa ko bafata ifoto izoronka ikimenyetso c'amazi.",
+      "denied": "Yarahakanye",
+      "granted": "Vyemewe",
+      "intro": "Lymark irasaba gusa ivyo ikeneye kugira ngo ifate ifoto. Amafoto yawe ntiyigera ava mu gikoresho: igihe ukoresha GPS, iyo porogarama iratuma kuri serivisi y'akarata co kimwe gusa, kugira ngo gibe indome.",
+      "location": "Aho bari",
+      "locationRationale": "Igihe ufata ako gapapuro, kariko karerekana ko ako gapapuro kariko karashirwa ahabona.",
+      "mediaLibrary": "Gucungura mu masanamu",
+      "mediaLibraryRationale": "Kugira ngo wandike amafoto y'ivyo bintu mu kibanza c'ibikoresho.",
+      "openDeviceSettings": "Amategeko",
+      "recheck": "Subira urabe",
+      "request": "gusaba uruhusha",
+      "section": "Uburyo bwo gushikira",
+      "title": "Amabwirizwa"
+    },
+    "photo": {
+      "backToGallery": "Dusubire muri iyo shusho",
+      "exportedAt": "Bariko baroherezwa mu gihugu ca {when} ",
+      "noWatermark": "Iyo foto yarungitswe hanze ata mazi.",
+      "notFoundBody": "Ico canditswe gishobora kuba carakuwe mu nkuru z'ivyabaye.",
+      "notFoundTitle": "Ifoto ntiyasanganywe",
+      "remove": "Kureho",
+      "removeBody": "Iyo foto yazigamwe mu kibanza c'ibikoresho ntiyigera ifatwa nabi.",
+      "removeTitle": "Niwikure mu kahise",
+      "share": "Gutanga",
+      "stampedData": "Amakuru y'ibimenyetso"
+    },
+    "plan": {
+      "exhausted": "Amafoto y'ubusa yakoreshejwe",
+      "exhaustedMessage": "Amafoto 12 y'iyo porogarama y'ubusa yarashize.",
+      "free": "Ku buntu",
+      "pro": "Umunyamwuga",
+      "reconnect": "Subira kugira ngo wemeze ko uri umunywanyi",
+      "remaining": "{remaining, plural,  one {# ifoto yo kuri internet} other {Amafoto y'ubusa ya # yasize}}",
+      "title": "Gushiraho",
+      "unlimited": "Nta rubibe"
+    },
+    "report": {
+      "allPhotos": "Amafoto yose",
+      "authorField": "Umwanditsi / ishirahamwe",
+      "detailsSection": "Amakuru",
+      "doc": {
+        "author": "Umwanditsi",
+        "declaration": "Iyo mfashanyo iriko irashirwa ku mugaragaro, iyo mfashanyo irashobora gushirwa ku mugaragaro.",
+        "exportedAt": "Baragurishirijwe hanze",
+        "generatedAt": "Yanditswe ku",
+        "page": "Urupapuro",
+        "photo": "Ifoto: {index} ",
+        "photosSection": "Ibitabu vy'amafoto",
+        "signature": "Isinema y'uwujejwe",
+        "summary": "Incamake",
+        "title": "Raporo y'amafoto",
+        "totalPhotos": "Amafoto yose:"
+      },
+      "empty": "Nta mafoto y'amafoto y'urwo rukurikirane yarungitswe.",
+      "failed": "Ntiyashoboye gushiraho iyo raporo.",
+      "fileStem": "raporo",
+      "format": {
+        "csv": "Ibikoresho vy'ubushakashatsi (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Igihembo (ZIP)"
+      },
+      "formatSection": "Uburyo bwo gushushanya",
+      "generate": "Gutanga dosiye",
+      "generateSection": "Gutanga",
+      "includeLogo": "Ikiringo co ku gipfukisho",
+      "includeLogoDescription": "Urwo rutonde rw'ibimenyetso, nk'urwo wahawe ku kadodo, niwarwuzimye kugira ngo ntuze ururonde mu nyandiko.",
+      "norm": {
+        "abnt": "ABNT (Brasili)",
+        "din5008": "DIN 5008 (Ubudagi)",
+        "ibape": "IBAPE style (Brasili)",
+        "iso": "Ibirori mpuzamakungu",
+        "letter": "Ikete (USA)"
+      },
+      "normNote": "Iryo tegeko rigena impapuro n'ibisobanuro vy'amabara, inyuguti n'ibimenyetso vy'urubuga.",
+      "normSection": "Urutonde rw'ibitabu",
+      "projectsSection": "Igikorwa / akazi",
+      "saved": "Gucungura ku {path} ",
+      "savedShort": "Raporo yarashizwe.",
+      "title": "Raporo ya PDF",
+      "titleField": "Umutwe w'ikiganiro",
+      "unavailableBody": "Raporo za PDF ziraboneka muri porogarama yo ku rubuga.",
+      "unavailableTitle": "Ku biro gusa",
+      "uncoded": "Nta nteguro",
+      "wordTooBig": "Urwo rwandiko rwa Word rwarenze urugero kubera amafoto yari yarashizwe muri urwo rutonde.",
+      "zipMissing": "{count, plural,  one {Urwo rupapuro rwaragumijwe, ariko nta foto ya # yariho kuri uwo mubonano.} other {Urwo rutonde rw'ibitabu rwaragumijwe, ariko amafoto ya # ntiyasanganywe kuri uwo mubonano.}}"
+    },
+    "settings": {
+      "about": "Ku vyerekeye",
+      "aboutDescription": "Igihimba, ubuzima bwite n'amajwi",
+      "appSection": "Ikiganiro",
+      "deviceSection": "Igikoresho",
+      "deviceSectionDescription": "Nurabe ingene uronka ico Lymark isaba.",
+      "fields": "Ibikorwa n'imyanya",
+      "fieldsDescription": "Hitamwo imirima yerekanwa, akaburiro n'ubunini",
+      "history": "Kahise",
+      "historyDescription": "Amafoto y'ibicuruzwa vyahinduwe hanze abitswe ku gikoresho",
+      "language": "Ururimi",
+      "permissions": "Amabwirizwa",
+      "permissionsDescription": "Imashusho, amafoto n'aho bari",
+      "save": "Gucungura",
+      "title": "Amategeko",
+      "watermark": "Ikimenyetso c'amazi",
+      "watermarkSection": "Ikimenyetso c'amazi",
+      "watermarkSectionDescription": "Ico canditswe ku gishushanyo n'aho kiva."
+    },
+    "signup": {
+      "subtitle": "Niwandikire kugira utangure",
+      "title": "Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika Rungika"
+    },
+    "tagline": "Ikimenyetso c'amazi kirimwo umwanya, igenekerezo n'aho",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Nta n'ifoto y'ifoto y'icuma.",
+      "done": "Video y'ico kiganiro yarashizwe ku gisanzu maze irakingwa.",
+      "export": "Video y'urudandaza rw'amashusho",
+      "exportSection": "Ibaruramari",
+      "failed": "Ico gikorane nticashobora gucapurwa.",
+      "fieldsSection": "Ibikorwa vy'amatora",
+      "fileSection": "Video",
+      "none": "Nta videwo yatoranijwe.",
+      "processing": "Gutegura... {percent} %",
+      "processingMobile": "Gucungera...",
+      "record": "Nufate ubu nyene",
+      "saved": "Gucungura ku {path} ",
+      "savedToGallery": "Video y'amabara yashizwe mu kibanza cawe.",
+      "select": "Hitamwo ividewo",
+      "unavailableBody": "Urukurikirane rw'amavidewo rwo mu buryo bw'amajwi rukenera ko Lymark ishirwa mu bubiko bwa EAS (ririmwo imodokari y'ibanze).",
+      "unavailableTitle": "Ukwiye gushiraho porogaramu",
+      "unreadable": "Iyo dosiye ntiyashoboye gusomwa nk'amashusho.",
+      "webNote": "Mu mushakisha, ividewo iriko irategurwa mu gihe nyaco  ividewo y'iminota 2 imara iminota 2  hanyuma igasohoka mu buryo bwa WebM. Ku mavidewo maremare, koresha porogaramu yo ku rubuga."
+    },
+    "watermark": {
+      "accentColor": "Umutwaro wo gutwara abantu",
+      "backdropBandNote": "Iyo foto iriko irashirwa ku mupaka aho icemezo giherereye. Mu kibanza kirimwo abantu benshi, ahantu habonetse inyubakwa, mu kigo, ku ruhome rw'abantu benshi, iyo foto iriko irashirwa ahabona aho gushirwa ku mpapuro z'ibitabu.",
+      "backdropBlockNote": "Iyo mfashanyo irakurikira uburebure bw'ico canditswe, ikagirwa n'amabara.",
+      "backdropColor": "Ibara ry'ibendera",
+      "backdropDescription": "Iyo ifoto itagifise, igisomwa gica gica gihagarara ku gishushanyo, gifise igitutu.",
+      "backdropInnerRadius": "Mu mihingo yo hagati",
+      "backdropOpacity": "Ibiranga umuco",
+      "backdropOpacityValue": "{percent} % ntigihumura",
+      "backdropRadius": "Amabuye y'agaciro",
+      "backdropRadiusSquare": "Igisata",
+      "backdropStyles": {
+        "band": "Urutonde rw'ibisata vy'umuvuduko",
+        "block": "Inyuma y'ico canditswe",
+        "none": "Nta na kimwe"
+      },
+      "backdropTitle": "Urwego rw'ubufasha",
+      "brandDescription": "Hejuru y'isaha, iyo baruwa iba ikimenyetso kiriko ikimenyetso n'amajambo y'indirimbo.",
+      "brandFirstColor": "Ibara ry'igice ca mbere",
+      "brandFirstHint": "Abubatsi",
+      "brandFirstPart": "Igice ca mbere",
+      "brandNote": "Iyo izina rirerire riciye riboneka, rirakurwa gushika rirengeye aho gucibwa.",
+      "brandPlacements": {
+        "corner": "Mu mpome",
+        "header": "Hejuru y'isaha",
+        "none": "Nta na kimwe"
+      },
+      "brandSecondColor": "Ibara ry'igice ca kabiri",
+      "brandSecondHint": "Smith",
+      "brandSecondPart": "Igice ca kabiri",
+      "brandTitle": "Ikimenyetso c'impapuro",
+      "codeDescription": "Ku ruhande, ntiyifatanya n'ico gishushanyo ubwabyo mu guhiganwa ku bijanye n'aho kuba.",
+      "codePlacements": {
+        "block": "Inyuma y'ivyo bintu",
+        "side": "Ku ruhande rw'iburyo"
+      },
+      "codeTitle": "Amashusho",
+      "colors": {
+        "amber": "Ambara",
+        "black": "Umwiza",
+        "blue": "Ubururu",
+        "green": "Umutini",
+        "red": "Umutuku",
+        "white": "Umweru"
+      },
+      "colorsDescription": "Amabara ari kuri iyo foto ni ayo ishirahamwe ryitaho, si ayo porogarama.",
+      "colorsTitle": "Amabara y'ibiti",
+      "complement": "Indirimbo",
+      "complementColor": "Ibara ry'ibikoresho",
+      "complementHint": "Amatohoza n'amakuru y'ubuhinga",
+      "cornerConflict": "Ico kimenyetso n'ivyo bimenyetso biri mu mpatane imwe.",
+      "fields": {
+        "address": "Aderese / Aho",
+        "code": "Amashusho",
+        "date": "Umusi",
+        "time": "Igihe",
+        "weekday": "Umusi w'indwi"
+      },
+      "fieldsDescription": "Ibisata biriho gusa kandi birimwo ibirimwo ni vyo gusa bigera ku gishushanyo.",
+      "fieldsTitle": "Ibikorwa vy'ubuhinga",
+      "includeCountry": "Niwibaze igihugu",
+      "includeCountryDescription": "Nuce uyishira mu ngiro nimba ukora mu mahanga, ahandi ho, iyo foto ni yo yonyene iba ikwiye.",
+      "legibilityTitle": "Gusoma",
+      "logoAdded": "Ibaruramari ryongeweko ku mutwe w'izina ry'ishirahamwe.",
+      "logoAlignNote": "Uburebure bw'ikimenyetso buherekeje icanditswe: hejuru ku mutwe w'izina, hasi ku mutwe w'imvugo.",
+      "logoChosen": "Ibiranga iryo zina",
+      "logoErrorMessage": "Gerageza ikindi gishusho. PNG ifise ishusho y'imbere igaragara ni yo ikora neza kuruta.",
+      "logoErrorTitle": "Ako gashusho ntikashobora gukoreshwa",
+      "logoFormatNote": "Koresha PNG ifise ishusho y'imbere. JPG ifise ishusho y'imbere y'imbere y'imbere y'imbere y'imbere iba nk'umunyurande w'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'imbere y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'inyuma y'iny",
+      "logoPermissionMessage": "Nureke guhitamwo igicapo c'ikimenyetso mu Ntunganyo › Ivyemezo.",
+      "logoPermissionTitle": "Amafoto yanka kwinjira",
+      "logoPick": "Hitamwo logo",
+      "logoPosition": "Ibiranga ikirango",
+      "logoPositionBlock": "Ku gishashara",
+      "logoRemove": "Kureho",
+      "logoReplace": "Gucungura logo",
+      "logoSize": "Ubwinshi bw'ikimenyetso",
+      "positionDescription": "Iyo foto iriko iravuga ko iyo ngorane ifise aho ihengamiye.",
+      "positionTitle": "Imirimo",
+      "positions": {
+        "bottom-left": "Iburyo bwo hasi ibubamfu",
+        "bottom-right": "Iburyo hasi",
+        "top-left": "Hejuru ibubamfu",
+        "top-right": "Hejuru iburyo"
+      },
+      "previewCurrent": "Niwibuke ifoto iriho ubu iri ku rutonde rw'ibikoresho vyo gufata.",
+      "previewEmpty": "Kuva ku muco gushika ku mwijima, kugira ngo dushobore gusoma ibintu vyose uko biri.",
+      "previewNoFields": "Nta kibanza na kimwe cafashwe  ifoto irasohotse ata watermark.",
+      "previewTitle": "Ibirangurwa",
+      "reset": "Gusubiza ibintu mu buryo",
+      "sizeTitle": "Uburebure bw'ibiriho",
+      "sizes": {
+        "large": "Igihimba kinini",
+        "medium": "Ikiringo c'ibice",
+        "small": "Ibitigiri bitobito"
+      },
+      "textColor": "Inyandiko",
+      "timeFormatDescription": "Ingene umwanya wuzura mu mirima.",
+      "timeFormatTitle": "Uburyo bwo guhitamwo umwanya",
+      "timeFormats": {
+        "12h": "amasaha 12 (AM/PM)",
+        "24h": "amasaha 24"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Amashusho yose",
+      "images": "Amafoto",
+      "pickFolder": "Hitamwo ako gakarata",
+      "pickPhoto": "Hitamwo ifoto",
+      "pickPhotos": "Nuhitemwo amafoto y'urwo rukurikirane",
+      "savePhoto": "Gucungura ifoto",
+      "saveReport": "Umushinga wo kubika"
+    },
+    "login": {
+      "cancel": "Guhanagura",
+      "confirm": "Nubandanye",
+      "message": "Uheruka kwinjira mu muhingurano.",
+      "title": "Niwinjirire kuri Lymark "
+    },
+    "menu": {
+      "copy": "Igitabu c'umwimerere",
+      "cut": "Gucura",
+      "edit": "Gutegura",
+      "file": "Amashusho",
+      "fullscreen": "Ikirere cose",
+      "help": "Gufasha",
+      "paste": "Igihimba",
+      "quit": "Niwihebe",
+      "redo": "Redo",
+      "reload": "Kwongera kwinjiza",
+      "selectAll": "Hitamwo vyose",
+      "settings": "Amategeko",
+      "undo": "Gutabarwa",
+      "view": "Raba",
+      "zoomIn": "Niwirinde",
+      "zoomOut": "Niwirondore",
+      "zoomReset": "Ubunini nyabwo"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Tuje i muhira",
+      "openApp": "Fungura iyo porogaramu",
+      "photos": "Amafoto",
+      "photosLeft": "{remaining} ya {quota} ibubamfu",
+      "plan": "Gushiraho",
+      "planUnavailable": "Ntiriboneka ubu",
+      "plans": {
+        "free": "Ku buntu",
+        "pro": "Umunyamwuga"
+      },
+      "signInTitle": "Niwinjiremwo",
+      "signOut": "Niwandikire",
+      "signUpTitle": "Rungika Rungika",
+      "subscribe": "Subscribe to Lymark Pro",
+      "subscribeSoon": "Igihe uzoba uhasanze, uzoshobora kwiyandikisha ngaha ukoresheje igikoresho ico ari co cose co kuri iyo account.",
+      "title": "Akabu kawe",
+      "revokeDesktops": "Niwikureko orodinateri",
+      "revokeDesktopsHint": "Urashobora gusubira kwinjira igihe cose ushaka."
+    },
+    "availability": {
+      "contact": "Kugira ukurikire iyo ntambwe canke uvyumve, andikira <email> contato@lymark.app </email>.",
+      "description": "Lymark iri mu bwoko bwa 1.3.0, mu kugerageza kuri Android imbere y'uko isohoka kuri Google Play. Nta bwoko bwa iOS canke urubuga rubaho, kandi iyo porogaramu ntiyakuraho amahera.",
+      "title": "Kuboneka"
+    },
+    "data": {
+      "device": {
+        "description": "Akabuntu kariko karashirwa ahabona ku bw'inyungu zawe: iyo seriveri irakora ubutumwa bwawe bwo kuri internet n'ingingo yawe, kandi ntiyigera ironka amafoto yawe canke aho uri.",
+        "field": "Ku gikoresho",
+        "heading": "Amafoto, aderese n'inkuru"
+      },
+      "external": {
+        "description": "Kugira ngo ubugari n'uburebure bihinduke aderese zishobora gusomwa, iyo porogarama irasaba Google canke Apple kugira ngo ikore amakuru y'ubumenyi bw'ibidukikije. Iyo ni yo nkuru yonyene isigara, maze iyo porogarama iraheza ikabarungika, atari iyo porogarama.",
+        "field": "Kwirinda gukoresha",
+        "heading": "Guhindura gusa coordinate mu aderese"
+      },
+      "note": "Ivyo vyose birasobanuwe  harimwo n'ivyo bisigura mu mugambi wa Brezile wa LGPD  mu mugambi wa <privacy>Itegeko rigenga ubuzima bwite</privacy>. Igihe umuntu ahevye gukoresha uruhusha rwo kurondera aho ari, iyo porogarama iraba ikora neza; iyo ari ho gusa intumbero y'aho ari ni ugushira mu ngiro ako gatwe.",
+      "title": "Aho amakuru yawe ari"
+    },
+    "deleteAccount": {
+      "back": "Nisubize kuri ico kibazo",
+      "confirm": "Gukuramo akajambo kanje",
+      "deletesNow": "Guhanagura ako kantu kawe birashobora guca bihanagura ako karere, inyishu yawe, n'urukurikirane rw'umushinga, impapuro z'ishure be n'ibitabu vy'amafoto.",
+      "irreversible": "Amafoto ari ku gikoresho cawe ntagira ico akoze  ntiyari ku bikoresho vyacu.",
+      "retained": "Amashirahamwe y'ivy'ubutunzi n'ubuhinga bwa none arafise uburenganzira bwo kwubahiriza amategeko y'igihugu.",
+      "title": "Gukuramo akajambo"
+    },
+    "description": "Ako gakorwa ka Android kariko amasaha, itariki, umusi w'akazi, aderese n'ikodi yo gukurikirana ku mafoto y'aho bagendera no ku vyo baguma bakora.",
+    "desktop": {
+      "backAccount": "Nisubize kuri ico kibazo",
+      "explanation": "Akaunti yawe irateguye. Kanda kuri buto iri hasi kugira uce ufungura Lymark kuri mudasobwa yawe yamaze kwandikisha  browser izoba isaba uruhusha rwo gufungura iyo porogaramu.",
+      "open": "Hunga iyo porogaramu",
+      "title": "Niwinjirire ku rubuga",
+      "unavailable": "Uruhuza rw'ikigo co kuri orodinateri ntiruriko rurakoreshwa."
+    },
+    "download": {
+      "appStore": {
+        "description": "Ni nk'uko Android yabigira kuri iOS.",
+        "field": " App Store ",
+        "heading": "Iphone na iPad"
+      },
+      "browser": {
+        "action": "Niwinjiremwo",
+        "description": "Niwimenyeshe akhawunti yawe, iyo porogarama izofungurwa mu muhumeri  telefone canke orodinateri.",
+        "field": "Ibiriko biraba",
+        "heading": "Nukoreshe ubu, nta kintu na kimwe co kwinjiza"
+      },
+      "desktop": {
+        "description": "Amafoto, amavidewo maremare n'amakuru ya PDF  ya serivisi z'inguvu zikomeye.",
+        "field": "Urudandaza",
+        "heading": "Windows na Linux"
+      },
+      "googlePlay": {
+        "description": "Ako gakoresho ko kuri telefone, karimwo kamera, igishushanyo c'amafoto be n'amafoto y'amafoto.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Ndaza vuba",
+      "title": "Aho ukoresha Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "Urwo rutonde rw'ibarabara rurateguwe mu buryo bugaragara, maze iyo leta iba iri muri urwo rutonde, iyo aderese ica iba mu migambwe ibiri, ariko iyo foto ntiyigera ifatwa.",
+        "field": "Indirizzo",
+        "heading": "Gushirwa mu ngiro n'ibikoresho vya GPS, bigashobora gukosorwa n'ukuboko"
+      },
+      "code": {
+        "description": "Iyo foto iriko iragenda mu rubavu rw'iburyo, canke iraja hamwe n'urupapuro rw'amakuru  wohitamwo.",
+        "field": "Amashusho",
+        "heading": "Imvugo y'ikigereranyo y'ibimenyetso cumi n'ine, iyerekanywe n'umuyagankuba"
+      },
+      "note": "Buri kibanza kirakoreshwa kikongera kikakizimanganywa, kandi ico gihinguriro kirashirwa mu mpatane zine zose, mu mice itatu.",
+      "time": {
+        "description": "Akamaro kamwe karatuma imirima itatu isubira mu gihe ca none igihe iyo mirima yafashe igihe kirekire kuruta uko vyari vyitezwe.",
+        "field": "Isaha n'itariki",
+        "heading": "Ku isaha y'ikibanza, igihe bafashwe"
+      },
+      "title": "Ikija ku gishushanyo"
+    },
+    "footer": {
+      "description": "Lymark  Ibitabu vy'amafoto birimwo itariki, isaha n'aho baba.",
+      "documentsLabel": "Ibitabu",
+      "privacy": "Itegeko rigenga ubuzima bwite",
+      "support": "Gufasha:",
+      "terms": "Amabwirizwa y'ukukoresha"
+    },
+    "hero": {
+      "ctaAccount": "Genda kuri account yanje",
+      "ctaLogin": "Niwinjiremwo",
+      "ctaSignup": "Rungika Rungika Rungika Rungika Rungika",
+      "description": "Lymark iratunganya umwanya, igenekerezo, umusi w'akazi, aderese n'ikodi yo gukurikirana igashirwa ku ishusho.",
+      "eyebrow": "Amashusho y'igikorwa",
+      "heading": "Iyo foto irasiga telefone yawe ivuga igihe, aho, n'ico.",
+      "meta": {
+        "account": "Akabire kamwe",
+        "android": "Android n'urukurikirane",
+        "language": "Igiturugire c'Ububirigi",
+        "onDevice": "Amafoto aguma ku gikoresho"
+      },
+      "note": "Nta kintu na kimwe co kwinjiza."
+    },
+    "nav": {
+      "account": "Akabire",
+      "home": "Iwabo",
+      "homeLabel": "Lymark , urupapuro rw'umutsindo",
+      "label": "Igihimba nyamukuru",
+      "privacy": "Ukwihishurira",
+      "signIn": "Niwinjiremwo",
+      "terms": "Imirongo",
+      "verify": "Gusuzuma"
+    },
+    "process": {
+      "capture": {
+        "description": "Urukurikirane rw'amazina rutangura iyo ifoto itanguye gukoreshwa.",
+        "field": "Gufata",
+        "heading": "Amashusho canke ibishushanyo"
+      },
+      "note": "Gucungura no gusangira ibintu birashobora gutorera umuti ingorane zitandukanye, kandi kuzipfukirana mu gikoresho kimwe vyotuma umuntu wese yipfuza gusa gushira ifoto mu cumba co kurungikamwo.",
+      "save": {
+        "description": "Irashobora gukoreshwa mu mafoto yose yo kuri telefone yawe, harimwo n'iyo umaze gukuraho Lymark.",
+        "field": "Gucungura",
+        "heading": "Gushika ku gikoresho c'ubuhinga"
+      },
+      "share": {
+        "description": "WhatsApp , email, Drive: iyo ngendo iratorwa n'uburyo bwo gukoreramwo, kandi iyo porogarama ntiyigera irungika.",
+        "field": "Gutanga",
+        "heading": "Bugurura urupapuro rw'ibigabane"
+      },
+      "title": "Inzira ifoto ikurikirana"
+    },
+    "skipToContent": "Niwirinde gushira mu mpapuro",
+    "specimen": {
+      "caption": "Ingingo ya Amber itangura kandi irarangira ku mipaka y'ibimenyetso, atari ku rutonde rw'ibisomwa.",
+      "label": "Ikimenyetso c'icampuro Lymark: isaha 07:42, igenekerezo rya 12 Myandagaro 2026, ku wa gatatu, aderese i Guarujá n'ibiranga ifoto."
+    },
+    "title": "Lymark  Ikimenyetso c'amazi, isaha n'indero ku mafoto yo mu kibanza",
+    "verify": {
+      "caveat": "Ico kimenyetso cerekana ko iyo dosiye ari iy'ukuri be n'uko igihe c'ukwo gutanga arico. Ico kimenyetso cerekana ko ari ikete ry'uwatanze iyo dosiye  aderese, igenekerezo, isaha  ni ikete ry'uwatanze iyo dosiye.",
+      "checking": "Ndagerageza...",
+      "declarationNote": "Ico ikimenyetso cerekana (indero, igenekerezo, isaha) ni icemezo c'uwutanga  ico candikano cerekana ko kitari co kandi ko kitari co, ahubwo ko ari ic'ukuri.",
+      "intro": "Niwihebe canke uhitemwo ifoto yoherejwe n'ishirahamwe Lymark maze uce ubona ko ari nk'uko nyene yavuye muri ako gaporogarama, uce uraba n'uwari yarayitanze, n'igihe yayitanze.",
+      "noSealBody": "Iyi filimi ntifise icemeza ca Lymark. Ishobora kuba yarungitswe hanze, imbere y'uko icemeza kibaho, canke ishobora kuba itari iva muri Lymark. Kubura icemeza ntibitanga ikimenyamenya c'uko hari ico vyahinduye.",
+      "noSealTitle": "Nta cobo",
+      "notConfigured": "Nta cemeza kiriko kiraboneka.",
+      "pick": "Hitamwo dosiye",
+      "previewAlt": "Ifoto yemejwe, ikimenyetso kiragaragara",
+      "privacyNote": "Urwo rutonde ntirurungikwa kuri seriveri iyo ari yo yose.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Nta kintu na kimwe kitagira ingaruka",
+      "tamperedBody": "Umutungo ntuhuye n'ico candikano: iyo dosiye yarahinduwe inyuma y'aho icariho catanzwe, canke iyo candikano ni iy'uwundi.",
+      "tamperedTitle": "Ukutumvikana",
+      "title": "Gusuzuma ko ari ukuri",
+      "unsupported": "Iki gisuma ntikifasha guharura ibimenyetso. Gerageza igisuma gifise ubuhinga."
+    }
+  }
+}

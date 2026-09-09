@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Privātuma politika",
+      "description": "Kā Lymark aplikācija rīko fotogrāfijas, atrašanās vietu, vēsturi un jūsu kontu. Fotogrāfijas un atrašanās vieta nekad neizdodas no ierīces; serveris saglabā tikai e-pastu, plānu un fotogrāfijas skaitu."
+    },
+    "title": "Privātuma politika",
+    "updated": "Pēdējais atjauninājums: 20.08.2026 · Lymark aplikācija, 1.3.0 versija",
+    "intro": "Šī politika apraksta, kā Lymark aplikācija apstrādā personas datus. Tā atbilst Lei Nr. 13.709/2018 (Pieplūtais personas datu aizsardzības likums  LGPD) un Regulai (ES) 2016/679 (Pieplūtais datu aizsardzības regula  GDPR ), un tā attiecas uz aplikāciju, kas izplatīta ar identifikatoru <strong> com.lycosteam.lymark </strong>un uz šo tīmekļa vietni.",
+    "s01": {
+      "title": "Vienā teikumā",
+      "p1": " Lymark  <strong>neesauc jūsu fotogrāfijas vai jūsu atrašanās vietu</strong>. Visas lietas, ko lietošana rada  attēli, adreses, vēsturi un preferences  paliek jūsu ierīcē, jūsu kontrolē.",
+      "p2": "Ir viens izņēmums, kas aprakstīts 05. punktā: lai GPS koordināti pārvērstu lasāmajā adresē, ierīce  operētājsistēma pieprasīs ārējo geokódēšanas pakalpojumu."
+    },
+    "s02": {
+      "title": "Kam attiecas šī politika",
+      "p1": "Tas attiecas uz visiem, kas izmanto aplikāciju vai apmeklē šo tīmekļa vietni.Datatu subjektiem Brazīlijā apstrāde notiek saskaņā ar LGPD un valsts datu aizsardzības iestādes (ANPD) uzraudzību."
+    },
+    "s03": {
+      "title": "Kas ir kontrolētājs",
+      "p1": "Personīgo datu apstrādes vadītājs  <em>kontrolētājs</em>, LGPD  terminoloģijā ir 29.015.357 AMAD ALI HAMMOUD , reģistrēts ar nosaukumu CNPJ 29.015.357/0001-25 , ar adresi Avenida Ana Costa, 433, Gonzaga, Santos - SP .",
+      "p2": "Personā, kas ir atbildīga par personas datu apstrādi, LGPD 41. panta vajadzībām , ir Amad Ali Hammoud , ar ko var sazināties ar <email> contato@lymark.app </email>. Ņemot vērā apstrādes apjomu un raksturu, kurā nav iesaistīti ne viegli saprotami dati, ne sistemātiski uzraudzīti,  nav pienākums iecelt<em>Datu aizsardzības amatpersonas</em>saskaņā ar GDPR 37. pantu ."
+    },
+    "s04": {
+      "title": "Kādas ziņas apstrādā aplikācija",
+      "p1": "Visas turpmāk minētās informācijas tiek reģistrētas tikai aplikācijas privātā teritorijā ierīcē un nekas no tās netiek nosūtīts izstrādātam.",
+      "defs": {
+        "photos": {
+          "term": "Fotogrāfijas",
+          "def": "Fotogrāfija, ko izvēlieties galērijā vai kas uzņemta ar fotoaparātu, un dators, kas eksportēts ar ūdens marķējumu."
+        },
+        "location": {
+          "term": "Vieta",
+          "def": "Apmēram lejas un garšjoles, kas iegūtas vienu reizi uz katru attēlu, tikai ar mērķi aizpildīt adreses laukumu."
+        },
+        "datetime": {
+          "term": "Datums, laiks un darba diena",
+          "def": "Atlasiet no ierīces laikraksta, kas ir uzņemta un var tikt izleistas."
+        },
+        "code": {
+          "term": "Foto kods",
+          "def": "Secina no 14 seksoniskā rakstura, kas tika izlemta ne tikpat kā ar ierīču identifikatoru, ne ar kādu no jūsu, un tas neļauj sekcionēt starp lietotājiem."
+        },
+        "history": {
+          "term": "Historija",
+          "def": "Pēdējo 200 eksporta ieraksts, kurā ir datoru ceļš uz ierīci un dati, kas ir iespiesti uz attēlu."
+        },
+        "preferences": {
+          "term": "Tilpums",
+          "def": "Tiltiņi, pozīcija, lielums un citi ūdenszīmju varianti."
+        }
+      },
+      "p2": "Tilte <strong>Tilpums</strong>Tilpums: vārds, e-pasts, telefons, identitātes dokumenti, reklāmas identifikators, ierīču identifikators, kontaktinformācija, kalendārs, brauciena vēsture, lietošanas rādītāji, avārijas ziņojumi vai jebkura cita informācija par jums vai jūsu ierīci."
+    },
+    "s05": {
+      "title": "Tilta ir vienīgā informācija, kas paliek",
+      "p1": "Tilpums, kas ir pieejams, ir arī pieejams, lai nodrošinātu, ka GPS koordināti ir pieejami.<strong>Tilpums</strong>Tilpumu izmantošanai Android ierīcēs un <strong>Tilts</strong>Tilpumu izmantošanai iOS ierīcēs.",
+      "p2": "Tilts ir pieejams tikai pēc tam, kad ir iespējams izmantot šo informāciju, un tas ir iespējams, ja ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, ka ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, ka ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, ka ir iespējams, lai nodrošinātu, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, ka ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir iespējams, vai ir, vai ir iespējams, vai ir, vai ir iespējams, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir, vai ir,",
+      "p3": "<strong>Tilpums nav izkāpjs no ierīces ar jebkuru aplikācijas darbību.</strong>Tilts, ko izmantojiet, izmantojot dalības pulveri, ir nosūtīts ar galamērķa aplikāciju, ko izvēlaties sistēmas dalības lapas  messenger, e-pastu, pilnas uzglabāšanu  apakšpozīcijā par šo aplikāciju  privātuma politiku."
+    },
+    "s06": {
+      "title": "Tiltu pieprasījums un kāpēc",
+      "defs": {
+        "camera": {
+          "term": "Tilts",
+          "def": "Tilpums ir pieejams tikai tad, ja uzlika uz Taking photo."
+        },
+        "photos": {
+          "term": "Tilti un mediji",
+          "def": "Tiltu izvēle un eksportētā faila rakstīšana galērijā. Pievienošanās ir ierobežota fotogrāfijām, un rakstīšanas atļauju izmanto tikai rakstīšanai."
+        },
+        "location": {
+          "term": "Tilte, kurā izmanto",
+          "def": "Tilpums adreses laukā.<strong>Tilpums nekad</strong>."
+        }
+      },
+      "p1": "Tilpumu var atcelt jebkurā laikā ierīce iestatījumos. Atmest vieta ļauj aplikācijai pilnībā funkcionēt: jūs tad tiksiet ievadīt adresi. Atmest galerija piekļuvi tikai novērš automātisko uzglabāšanu, un fotogrāfiju joprojām var nodot."
+    },
+    "s07": {
+      "title": "Tilpums un mērķis",
+      "p1": "Tilpuma apstrāde notiek, pamatojoties uz jūsu <strong>Tilts</strong>Tilpumu apstrādes tiesības un tiesības uz apstrādi",
+      "p2": "Tilpumu apstrāde notiek <strong>Tilta, ko esat pieprasījis, veiktspēja</strong>Tilpums:  LGPD 7. panta V punkts un GDPR 6. panta 1) b punkts, jo bez tā aplikācijai nav ūdens marķējuma.",
+      "p3": "Tilpas datu apstrāde balstās uz līguma izpildi (LGPD 7. pants, V pants, GDPR 6. pants 1) 1) 1) b)). apstrāde, pamatojoties uz likumīgu interesi (LGPD 7. pants, IX pants, GDPR 6. pants 1) 1) 1) f)), ir paredzēta tikai drošības un krāpšanas novēršanai."
+    },
+    "s08": {
+      "title": "Tilts",
+      "p1": "Konta datus apstrādā autentifikācijas processors (Clerk, Inc., ASV), kas ir starptautiska datu nodošana, pamatojoties uz standarta līgumklausām un LGPD 33. un GDPR 33. pantā paredzētajām mehānismiem. 44-49.",
+      "p2": "Šī tīmekļa vietne ir Vercel Inc. , saskaņā ar 14. punkta noteikumiem ."
+    },
+    "s09": {
+      "title": "Kopā ar trešo personu",
+      "p1": "Izstrādātājs neapdaļas, nepārdo, neapdarina vai neattīc personalizēto datu trešo personu.<em>processors</em>Clerk, Inc., kas sniedz autentifikācijas pakalpojumu un glabā e-pastu, konta identifikatoru un plāna datus, kas ir noslēgti ar līgumu ar izstrādātāju norādījumiem. Ja jūs ierakstījat ar Google vai Apple, tie piegādātāji apstrādā ierakstīšanas datus saskaņā ar savām politikām; izstrādātējs no tiem saņem tikai e-pastu un identifikatoru, kas vajadzīgi, lai izveidotu kontu. Fotogrāfijas, adreses un atrašanās vieta nav pārņemas ar procesoru, jo tie nekad neatkāpjas no ierīces."
+    },
+    "s10": {
+      "title": "Uzglabāšana, uzglabāšana un drošība",
+      "p1": "Dati atrodas aplikācijas privātā apgabalā, kuru aizsargā operētājsistēma izolācija starp aplikācijām un ierīču ekrāna slēgšana.<strong>invalids</strong>, lai datu vēsture un izvēles nevadītu lietotāja Google kontu.",
+      "p2": "Atbalstīšana ir pilnībā jūsu kontrolē: ieraksti paliek, līdz tie tiek izdzēvēti patijā aplikācijā, un vēsture automātiski izšķiro vecāko, kad tas ir pārsniegusi divus simtus elementus, atceļot arī attiecīgos datumus.",
+      "p3": "Nē, nav kļūdas. Konta datus  e-pasts, identifikators, plāns un skaitlis  glabā autentifikācijas processors, ievērojot savas drošības pasākumus. Fotogrāfijas, adreses un vieta nav centrālajā reģistrā un tāpēc nevar tikt izsludinātas no attīstības iestādes infrastruktūras. Ja drošības incidents ietekmē konta datus, attīstības iestāde informē iestādi un datu subjektus saskaņā ar LGPD 48. pantu un GDPR 33. pantu."
+    },
+    "s11": {
+      "title": "Kad fotografēsi citus cilvēkus",
+      "p1": "Kad fotografuj identificējamo cilvēku profesionālās darbības laikā,<strong>Jūs</strong>ir veikts, lai nodrošinātu, ka datu apstrāde ir saistīta ar konkrētiem datu subjektiem, un ir jūsu pienākums sniegt tiesisko pamatu, informāciju un atbildi uz to tiesībām."
+    },
+    "s12": {
+      "title": "Jūsu tiesības",
+      "p1": "LGPD 18. pants un GDPR 15.-22. pants garantē Jums tiesības uz apstiprināšanu un piekļuvi, labošanu, izmazināšanu, anonimizāciju, blokēšanu, pārnesību, apstrādes ierobežojumu, iebildumu, piekrišanas atsaukšanu un informāciju par dalību.",
+      "p2": "Fotogrāfijas, adreses, vēsture un preferences atrodas tikai jūsu ierīcē, un šīs tiesības tiek īstenotas tieši aplikācijā: apskatīt un izdzēst ierakstus galerija tabā, labot jebkuru laukumu pirms eksportēšanas, atcelt vietnes atļauju sistēmās iestatījumos un izdzēst visu, atīšot aplikāciju.",
+      "p3": "Ja Jums ir jautājumi vai oficiālie pieprasījumi, rakstīt uz:<email> contato@lymark.app </email>Jums ir tiesības iesniegt sūdzību arī<strong> ANPD </strong>, Brazīlijā vai ar jūsu dalībvalsts uzraudzības iestādi Eiropas Savienībā."
+    },
+    "s13": {
+      "title": "Automatiskie lēmumi",
+      "p1": "Neapstiprina automatizēta lēmuma pieņemšana, profilizēšana vai apstrāde, kas būtu juridiski efektīva attiecībā uz jums saskaņā ar LGPD 20. pantu un GDPR 22. pantu."
+    },
+    "s14": {
+      "title": "Par šo tīmekļa vietni",
+      "p1": "Šajā vietnē nav analīzes, nav reklāmas un nav iekļauti sociālā tīkla pulksteņi.<strong>ar kuru ir nepieciešams</strong>Jūsu konta sesijā, ko iestājies autentifikācijas processors (punkts 09), kad jūs ierakstījat; nav izsekošanas vai reklāmas pienu. Fonts tiek sniegti no tīmekļa vietnes  domēnas. Vienīgie pieprasījumi, ko jūsu brauciens sniedz trešām personām, ir reģistrācijas un konta ekrāni, kas adresēti autentifikācijas processoram  un, ja jūs to izvēlaties, reģistrācijas pakalpojumu sniedzējam (Google vai Apple).",
+      "p2": "Websajtā ir <strong> Vercel Inc. </strong>, kas kā processors reģistrē tehniskos piekļuves datus  IP adresi, datumu, laiku un pieprasīto resursu  cik ilgi tas ir nepieciešams viesnīcas uzturēšanas drošībai un darbībai. Tiesiskais pamats ir likumīgs interess nodrošināt pakalpojuma drošību, LGPD 7. pants IX un GDPR 6. pants 1) f)."
+    },
+    "s15": {
+      "title": "Šī politika mainījumi",
+      "p1": "Izmaiņas tiks publicētas šajā lapā ar jaunu atjaunināšanas datumu."
+    },
+    "s16": {
+      "title": "Bērni un pusaudži",
+      "p1": "Lymark ir darba rīks, kas paredzēts cilvēkiem, kas ir 18 gadi vai vecāki."
+    },
+    "s17": {
+      "title": "Pieprasītā tiesību akti",
+      "p1": "Šī politika reglamentē Brazīlijas tiesību aktus, neskarot GDPR piemērošanu datu subjektiem, kurus tā aptver."
+    },
+    "note": "Skatīt arī <terms>Izmantošanas noteikumi</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Izmantošanas noteikumi",
+      "description": "Lymark aplikācijas lietošanas nosacījumi: ko tā dara, ko tā nedarbojas un kurš ir atbildīgs par fotogrāfijas saturu."
+    },
+    "title": "Izmantošanas noteikumi",
+    "updated": "Pēdējais atjauninājums: 20.08.2026 · Lymark aplikācija, 1.3.0 versija",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Ko dara aplikācija",
+      "p1": "Lymark pārklā informāciju uz fotogrāfiju  laiku, datumu, darba dienu, adresi un identifikācijas kodu  un veido jaunu attēla datumu ar minēto informāciju, kas iekļauta pikseļos."
+    },
+    "s02": {
+      "title": "Ko aplikācija nedarbojas",
+      "p1": "Šis punkts ir pats svarīgākais no šiem vārdiem, un mēs lūdzam, lai tas būtu skaists.",
+      "items": {
+        "certify": "<strong>Aplikacija nenozīmē vai neatbilsto neko.</strong>Tas nav kriminālvajāšanas pārbaude, tas nav publisko ticību dokument, un tas nav ekspertu pierādījums.",
+        "editable": "<strong>Katrs laukums ir kustamais lietotāja.</strong>Izstrādājot, lai noteiktu, vai ir iespējams veikt pārmaiņas, ir nepieciešams veikt pārmaiņas, lai noteiktu, vai ir iespējams veikt pārmaiņas.",
+        "clock": "<strong>Laikā no ierīce kloka</strong>, kas var būt nepareizi vai var būt uzstādīti ar roku.",
+        "address": "<strong>Adrese ir aplēsa.</strong>Tā precizitāte ir atkarīga no GPS signāla un operācijas sistēmas kartes pakalpojuma datubāzes.",
+        "code": "<strong>Fotokodē nav reģistrācija notāra birojā.</strong>Tas ir īstermiņa atsauces numurs, kas nav pierādījumu vērtība."
+      },
+      "p2": "Ja jūsu lietojuma gadījumā ir nepieciešams pierādījums ar juridisku spēku pret trešo personu, ieviestiet notāra dokumentu vai digitālo sertifikācijas pakalpojumu ar laika zīmogu  Lymark nav aizstājējs."
+    },
+    "s03": {
+      "title": "Jūsu pienākumi",
+      "items": {
+        "photos": "Jūs esat vienīgais atbildīgs par fotografētām fotogrāfijām, kuru esat fotografējis, par to saturu, kuru jūs uz tām uzspēlējat, un par to, kā jūs izmantojat radītās datoru.",
+        "thirdParties": "Fotografējot citus cilvēkus, to īpašumu vai telpas, jums ir jāsaņem vajadzīgie atļaujas un jāpiemēro attēla tiesības, profesionālā noslēpuma un vispārējais personas datu aizsardzības likums attiecībā uz attēlotajiem datu subjektiem.",
+        "prohibited": "Aplikāciju izmantošana, lai izgudrotu nepareizu ierakstu, lai maldinātu jebkuru, lai simulētu pakalpojumu sniegšanu, ko nebija sniegta, vai lai veiktu jebkuru nelikumīgu darbību ir aizliegta.",
+        "backups": "Tas ir jūsu pienākums saglabāt kopvirtu no jebkuram, ko jūs uzskatāt par svarīgu."
+      }
+    },
+    "s04": {
+      "title": "Izmantošanas atļauja",
+      "p1": "Mēs Jums piešķiram personas, atceltu, neekskluzīvu un neperdotu atļauju lietot un lietot aplikāciju, tostarp profesionālai vajadzībām.",
+      "p2": "<strong>Jūsu fotogrāfijas ir jūsu.</strong>Mēs neatbalstām tiesības uz jūsu uzņemtajiem vai ražotajiem attēliem."
+    },
+    "s05": {
+      "title": "Pievidība un atjaunināšanās",
+      "p1": "Aplikācija tiek sniegta tā, kā tā ir. Nav garantijas par nepārtrauktu darbību, saderību ar katru ierīci, kā arī nav saistības par termiņu par korekcijām vai jaunām versijām.",
+      "p2": "Eksporta attēla kvalitāte ir atkarīga no ierīce un darbības sistēmai un var būt mazāka atlaiduma nekā oriģināla fotogrāfija."
+    },
+    "s06": {
+      "title": "Jaudas ierobežojums",
+      "p1": "Ja tas ir iespējams, tad, ja ir iespējams, ir nepieciešams, lai veicinātu, lai veicinātu, ka ir iespējams, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, veicinātu, lai veicinātu, veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, lai veicinātu, ka ir veicinātu, veicinātu, veicinātu, lai veicinātu, un veicinātu, lai veicinātu, ka ir veicinātu, veicinātu, veicina, un veicina, un veicina, un veicina, un veicina, un veicina, lai veicina, un veicina, un veicina, un veicina, un veicina, un veicina un veicina, un veicina un veicina, un veicina, un veicina.",
+      "p2": "Šis ierobežojums<strong>neizņem</strong>tiesības, kas patērētājam garantētas ar Lei Nr. 8.078/1990., kā arī atbildība par apzinātu nelikumīgu rīcību vai grūtu negadījumu."
+    },
+    "s07": {
+      "title": "Izšķirošana",
+      "p1": "Jūs varat pārtraukt lietotni jebkurā laikā: aizņemot kontu, izmazgā datus serverā, un atīstatot lietotni, izmazgā datus, kas saglabāti ierīcē."
+    },
+    "s08": {
+      "title": "Šiem noteikumiem izdarīti grozījumi",
+      "p1": "Izmaiņas tiks publicētas šajā lapā ar jaunu atjaunināšanas datumu."
+    },
+    "s09": {
+      "title": "Pieprasamais tiesību akts un forums",
+      "p1": "Brazīlijas tiesību akti ir piemēroti."
+    },
+    "note": "Par datu apstrādi skatīt <privacy>Privātuma politika</privacy>Vairāk informācijas:<email> contato@lymark.app </email>."
+  }
+}

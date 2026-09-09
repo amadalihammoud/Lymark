@@ -1,0 +1,195 @@
+{
+  "privacy": {
+    "meta": {
+      "title": "Politika e privatësisë",
+      "description": "Si aplikacioni Lymark trajton fotot, vendndodhjen, historinë dhe llogarinë tuaj. Fotot dhe vendndodhja kurrë nuk largohen nga pajisja; serverit mbahet vetëm e-mail, plan dhe numër i fotove."
+    },
+    "title": "Politika e privatësisë",
+    "updated": "Aktualisi i fundit: 16 gusht 2026 · Aplikacioni Lymark, version 1.3.0",
+    "intro": "Ky politikë përshkruan mënyrën se si aplikacioni Lymark trajton informacionin personal. Ajo është në përputhje me Lei nr. 13.709/2018 (Ligja e Përgjithshme për Mbrojtjen e të Dhënave Personale  LGPD) dhe me rregulloren (UE) 2016/679 (Rregulli i Përgjithshëm për Mbrojtjen e të Dhënave  GDPR ), dhe zbatohet për aplikacionin e shpërndarë nën identifikatorin <strong> com.lycosteam.lymark </strong>dhe në këtë faqe interneti.",
+    "s01": {
+      "title": "Në një fjali",
+      "p1": " Lymark  <strong>nuk transmeton fotot ose vendndodhjen tuaj</strong>. Çdo gjë që aplikacioni prodhon  imazhe, adresat, histori dhe preferenca  qëndrojnë në pajisjen tuaj, nën kontrollin tuaj. Ka një llogari, e nevojshme për të përdorur aplikacionin dhe për abonimin: serveri mban postën tuaj elektronike, identifikatorin e llogarisë, planin dhe numrin e fotografive të eksportuara  dhe asgjë tjetër.",
+      "p2": "Ekziston një përjashtim i vetëm, i përshkruar në pikën 05: për të kthyer koordinatat GPS në një adresë të lexueshme, sistemi operativ i pajisjes kërkon një shërbim të jashtëm të gjeokodifikimit."
+    },
+    "s02": {
+      "title": "Për kë i aplikohet kjo politikë",
+      "p1": "Për të dhënat e subjekteve në Brazil, përpunimi i tyre ndjek LGPD dhe mbikëqyrjen e Autoritetit Kombëtar të Mbrojtjes së të Dhënave (ANPD)."
+    },
+    "s03": {
+      "title": "Kush është kontrolluesi",
+      "p1": "Administratori i të dhënave personale  <em>kontrollues</em>, në terminologjinë e LGPD  është 29.015.357 AMAD ALI HAMMOUD , i regjistruar me CNPJ 29.015.357/0001-25 , me adresën Avenida Ana Costa, 433, Gonzaga, Santos - SP .",
+      "p2": "Personi përgjegjës për të përpunuar të dhënat personale, për qëllimet e nenit 41 të LGPD , është Amad Ali Hammoud , i cili mund të kontaktohet në <email> contato@lymark.app </email>. Duke pasur parasysh vëllimin dhe natyrën e të përpunimit  i cili nuk përfshin as të dhëna të ndjeshme në shkallë as monitorim sistematik  nuk ka asnjë detyrim për të emëruar një <em>Zyrtar i Mbrojtjes së të Dhënave</em>sipas nenit 37 të GDPR ."
+    },
+    "s04": {
+      "title": "Çfarë informacionit trajton aplikacioni",
+      "p1": "Të gjitha informacionet e mëposhtme regjistrohen ekskluzivisht në zonën private të aplikacionit brenda pajisjes, dhe asnjë nga ato nuk dërgohet tek zhvilluesi.",
+      "defs": {
+        "photos": {
+          "term": "Fotografitë",
+          "def": "Fotografia që zgjidhni nga galeria ose e kapni me kamerën, dhe dosja e eksportuar me shenjë ujore."
+        },
+        "location": {
+          "term": "Vendndodhje",
+          "def": "Latitudh dhe gjatësia e përafërta, e marrë një herë për çdo fotografi, me qëllim të plotëtimit të fushës së adresës. Koordinatat nuk regjistrohen: vetëm teksti i adresës që rezulton ruhet së bashku me foton."
+        },
+        "datetime": {
+          "term": "Data, koha dhe dita e javës",
+          "def": "Lexo nga orari i pajisjes në momentin e kapjes dhe mund të editohet nga ju."
+        },
+        "code": {
+          "term": "Kod foto",
+          "def": "Një sekuencë prej 14 karaktereve heksadecimale të hartuara në rastësi. Nuk rrjedh as nga një identifikator i pajisjes as nga një nga ju, dhe nuk mundëson ndjekjen në aplikacione."
+        },
+        "history": {
+          "term": "Historia",
+          "def": "Një regjistrim i 200 eksporteve të fundit, që përmban rrugën e skedarëve në pajisje dhe të dhënat e shtypur në imazh."
+        },
+        "preferences": {
+          "term": "Preferenca",
+          "def": "Fusha të dukshme, pozicion, madhësi dhe opsionet e tjera të shenjat e ujit."
+        }
+      },
+      "p2": "Aplikacioni <strong>nuk mbledh</strong>: emri, email, telefoni, dokumentet e identitetit, identifikatorit të reklamës, identifikatorit të pajisjes, të dhënat e kontaktit, kalendari, historinë e shfletuesit, metrikat e përdorimit, raportet e përplasjes ose çdo informacion tjetër për ju ose për pajisjen tuaj."
+    },
+    "s05": {
+      "title": "Informacioni i vetëm që largohet nga pajisja",
+      "p1": "Kur ju jepni leje vendndodhjeje, aplikacioni kërkon nga sistemi operativ që të kthejë koordinatat GPS në një adresë pocte.<strong>Google</strong>në pajisjet Android dhe <strong>Peshka</strong>në pajisjet iOS.",
+      "p2": "Ky komunikim vjen nga sistemi operativ dhe jo nga Lymark. Aplikacioni nuk merr asnjë kopje të tij, nuk e ndërmjetëson dhe nuk ka qasje në asgjë përveç adresës së kthyer.",
+      "p3": "<strong>Asnjë fotografi nuk largohet nga pajisja përmes ndonjë veprimi të aplikacionit.</strong>Nëse përdorni butonin \"Share\", imazhi transmetohet nga aplikacioni destinacioni që zgjidhni në fletën e ndarjes së sistemit  messenger, email, cloud storage  nën politikën e privatësisë së asaj aplikacioni."
+    },
+    "s06": {
+      "title": "Kërkohet leje dhe pse",
+      "defs": {
+        "camera": {
+          "term": "Kamera",
+          "def": "Për të marrë foton që do të marrë markën e ujit. Kërkohet vetëm kur prekni Tohni foto. Aplikacioni nuk kërkon qasje në mikrofon."
+        },
+        "photos": {
+          "term": "Fotot dhe media",
+          "def": "Për të zgjedhur një imazh ekzistues dhe për të shkruar skedarin e eksportuar në galeri. Aksesi është i kufizuar në fotografi, dhe leje e shkrimit përdoret vetëm për të shkruar  aplikacioni nuk shfletohet as nuk lexon galeri tuaj."
+        },
+        "location": {
+          "term": "Vendndodhja gjatë përdorimit",
+          "def": "Për të mbushur fushën e adresës. Kërkohet në radhë të parë, vetëm kur aplikacioni është në përdorim, dhe <strong>kurrë në sfond</strong>."
+        }
+      },
+      "p1": "Të gjitha lejet janë opsione dhe mund të tërhiqen në çdo kohë në cilësitë e pajisjes. Vendndodhja e refuzimit mban aplikacionin plotësisht funkcional: adresa pastaj shkruhet nga ju. Fjalja e refuzimit të qasjes në galeri vetëm parandalon ruajtjen automate, dhe fotografia mund të ndahet ende."
+    },
+    "s07": {
+      "title": "Bazat dhe qëllimet ligjore",
+      "p1": "Përpunimi i vendndodhjes bëhet në bazë të kërkesës tuaj <strong>pëlqimi</strong> Artikulli 7, I i LGPD dhe Artikulli 6(1) (a) i GDPR  shprehur kur ju jepni leje të sistemit, dhe mund të tërhiqet në çdo kohë, pa u dëmtuar ligjitë e të përpunimit të kryer para tërheqjes.",
+      "p2": "Përpunimi i të dhënave të mbetura bëhet për <strong>performanca e veçorive që keni kërkuar</strong> Artikulli 7, V i LGPD dhe Artikulli 6(1)(b) i GDPR  pasi pa të nuk ka asnjë shenjë uji për aplikacionin për të prodhuar.",
+      "p3": "Përpunimi i të dhënave të llogarisë mbështetet në kryerjen e një kontrate (LGPD nen 7, V; GDPR nen 6(1)(b)). Përpunimi i bazuar në interes të ligjshëm (LGPD nen 7, IX; GDPR nen 6(1)(f)) ekziston vetëm për qëllim të sigurisë dhe parandalimit të mashtrimeve  për shembull, regjistrimi i adresës IP të kërkesave në server. Nuk ka përpunim për reklamim, profilim, analizë të sjelljes ose ndonjë qëllim të dytë, dhe nuk ka përpunim të kategoriteteve të veçanta të të dhënave ose të të dhënave të ndjeshme nga zhvilluesi."
+    },
+    "s08": {
+      "title": "Transferimi ndërkombëtar",
+      "p1": "Të dhënat e llogarisë përpunohen nga procesori i autentifikimit (Clerk, Inc. , Shtetet e Bashkuara), i cili përbën një transferim ndërkombëtar të të dhënave, bazuar në klauzula standarde kontratuese dhe mekanizmat e artit 33 LGPD dhe artit 44 deri në 49.",
+      "p2": "Ky faqe interneti është i mbajtur nga Vercel Inc. , sipas kushteve të pikës 14."
+    },
+    "s09": {
+      "title": "Ndarja me palët e treta",
+      "p1": "Zhvilluesi nuk ndan, shesin, qiran ose cakton të dhëna personale për të tretët.<em>procesor</em>Clerk, Inc. , i cili ofron shërbimin e autentifikimit dhe ruajt e-mail, identifikatorin e llogarisë dhe të dhënat e planit, të lidhur me kontratë me udhëzimet e zhvilluesit. Nëse regjistroheni me Google ose Apple, këta ofrues përpunojnë të dhënat e regjistrimit sipas politikave të tyre; zhvilluesi merr nga ata vetëm e-mail dhe identifikatorin e nevojshëm për të krijuar llogarinë. Fotot, adresat dhe vendndodhja nuk kalon përmes asnjë procesori, sepse ata kurrë nuk largohen nga pajisja."
+    },
+    "s10": {
+      "title": "ruajtja, ruajtja dhe siguria",
+      "p1": "Të dhënat ndodhen në zonën private të aplikacionit, të mbrojtur nga izolimi i sistemit operativ midis aplikacioneve dhe nga bllokimi i ekranit të pajisjes.<strong>të aftësisë së kufizuar</strong>, në mënyrë që historia dhe preferencat të mos dërgohen në llogarinë e përdoruesit në Google.",
+      "p2": "Mbajtja është plotësisht e kontrolluar nga ju: regjistrimet mbeten derisa të fshihen në vetë aplikacionin, dhe historia automatikisht hedh ato më të vjetra pasi kalojë dyqind elementë, duke hequr edhe skedarët e përkatshëm.",
+      "p3": "Asnjë sistem nuk është i papërshtatshëm. Të dhënat e llogarisë  e-mail, identifikator, plan dhe numër  mbahen nga procesori i autentifikimit, sipas masave të sigurisë së tij. Fotot, adresat dhe vendndodhja nuk ekzistojnë në asnjë depo qendror dhe për këtë arsye nuk mund të rrjedhin nga infrastruktura e zhvilluesit. Nëse një incident i sigurisë prek të dhënat e llogarisë, zhvilluesi do t'i njoftojë autoritetin dhe subjektet e të dhënave sipas nenit 48 LGPD dhe nenit 33 GDPR. Rreziku i rëndësishëm për fotot tuaja mbetet qasja fizike në pajisjen e zhbllokuar."
+    },
+    "s11": {
+      "title": "Kur fotografojmë njerëz të tjerë",
+      "p1": "Kur fotografoj njerëz të identifikueshëm gjatë aktivitetit tënd profesional,<strong>ju</strong>të bëhet administratori i të dhënave në lidhje me subjektet e të dhënave të paraqitur, dhe është në detyrë të ofroni bazën ligjore, informacionin dhe përgjigjen ndaj të drejtave të tyre."
+    },
+    "s12": {
+      "title": "Të drejtat tuaja",
+      "p1": "Artikulli 18 i LGPD dhe artikulli 15 deri në 22 i GDPR ju garantojnë të drejtat e konfirmimit dhe qasjes, korrigjimit, fshirjes, anonimizimit, bllokimit, portabilitetit, kufizimit të përpunimit, kundërshtimit, tërheqjes së pëlqimit dhe informacionit për ndarjen.",
+      "p2": "Fotot, adresat, historia dhe preferencat ndodhin vetëm në pajisjen tuaj, dhe këto të drejta ushtrohen drejtpërdrejt në aplikacion: shikoni dhe fshihni shënimet në gjurmë Galeri, korrigjoni çdo fushë para eksportit, tërheqni leje të vendndodhjes në cilësimet e sistemit, dhe fshihni gjithçka duke zhvendosur aplikacionin  zhvilluesi nuk mund të hyjë, eksportojë ose fshijë ato të dhëna për ju, sepse nuk e mban atë. Sa i përket të dhënave të llogarisë  email, plani dhe numërimi  mund ta shikoni atë në faqen e llogarisë dhe të kërkoni korrigjim, eksport ose fshije në e-mailin e kontaktit të kësaj Politike; fshihja e llogarisë fshihet ato të dhëna në procesorin e autentifikimit.",
+      "p3": "Për pyetje ose kërkesa zyrtare, shkruani në <email> contato@lymark.app </email>Ju gjithashtu keni të drejtë të paraqisni ankesë tek<strong> ANPD </strong>, në Brazil, ose me autoritetin e mbikëqyrjes të shtetit tuaj anëtar, në Bashkimin Evropian."
+    },
+    "s13": {
+      "title": "Vendimet e automatizuara",
+      "p1": "Nuk ka vendime të automatizuara, profilim ose përpunim që të krijojnë efekte ligjore për ju, sipas nenit 20 të LGPD dhe nenit 22 të GDPR."
+    },
+    "s14": {
+      "title": "Për këtë faqe interneti",
+      "p1": "Ky faqe nuk ka analitika, nuk tregon reklamë dhe nuk përfshin djegësime të rrjetit social.<strong>cookies të nevojshme</strong>Për sesionin tuaj të llogarisë, e vendosur nga procesori i autentifikimit (pikë 09) kur regjistroheni; nuk ka cookies gjurmuese ose reklama. Fonts shërbehen nga domeni i vetë faqes. Të vetmet kërkesa që shfletuesi juaj i bën të palëve të treta janë ato të ekranit të regjistrimit dhe llogarisë, të adresuar në procesorin e autentifikimit  dhe, nëse e zgjidhni, në ofruesin e regjistrimit (Google ose Apple).",
+      "p2": "Faqja e internetit është e pritur nga <strong> Vercel Inc. </strong>, i cili si një procesor regjistron të dhënat teknike të qasjes  Adresa IP, data, orën dhe burimin e kërkuar  për aq kohë sa është e nevojshme për sigurinë dhe funksionimin e pritjes. Baza juridike është interesi legjitim në ruajtjen e sigurisë së shërbimit, nen 7, IX i LGPD dhe nen 6(1)(f) i GDPR."
+    },
+    "s15": {
+      "title": "Ndryshimet në këtë politikë",
+      "p1": "Ndryshimet që ndryshojnë në mënyrë të domosdoshme të përpunimit të të dhënave do të komunikohen edhe brenda aplikacionit para se të hyjnë në fuqi."
+    },
+    "s16": {
+      "title": "Fëmijët dhe adoleshentët",
+      "p1": "Lymark është një mjet pune, i destinuar për njerëzit e moshës 18 vjeç ose më lart."
+    },
+    "s17": {
+      "title": "Ligji i zbatueshëm",
+      "p1": "Ky politikë rregullohet nga ligji brazilian, pa ndaluar aplikimin e GDPR ndaj subjektit të të dhënave që i mbulon."
+    },
+    "note": "Shih gjithashtu <terms>Kushtet e përdorimit</terms>."
+  },
+  "terms": {
+    "meta": {
+      "title": "Kushtet e përdorimit",
+      "description": "Kushtet e përdorimit të aplikacionit Lymark: çfarë bën, çfarë nuk bën dhe kush është përgjegjës për përmbajtjen e fotografive."
+    },
+    "title": "Kushtet e përdorimit",
+    "updated": "Aktualisi i fundit: 16 gusht 2026 · Aplikacioni Lymark, version 1.3.0",
+    "intro": "These terms govern the use of the Lymark app, distributed under the identifier <strong>com.lycosteam.lymark</strong> by 29.015.357 AMAD ALI HAMMOUD, CNPJ 29.015.357/0001-25. By installing or using the app, you agree to what is written here.",
+    "s01": {
+      "title": "Çfarë bën aplikacioni",
+      "p1": "Lymark mbulon një grup të informacionit në një fotografi  kohë, datë, ditë të javës, adresë dhe një kod identifikimi  dhe gjeneron një skedar të ri të imazhit me atë informacion të integruar në piksele."
+    },
+    "s02": {
+      "title": "Çfarë nuk bën aplikacioni",
+      "p1": "Ky është pikërisht pikërisht ky pikë i rëndësishëm, dhe ne ju kërkojmë ta lexoni me vëmendje.",
+      "items": {
+        "certify": "<strong>Aplikacioni nuk vërteton as vërteton asgjë.</strong>Nuk është një ekzaminim gjyqësor, nuk lëshohet një dokument me besim publik dhe nuk përbën prova eksperte.",
+        "editable": "<strong>Çdo fushë është e redaktueshme nga përdoruesi.</strong>Koha, data, adresa dhe kodi mund të ndryshohen lirisht para eksportit, sipas dizajnit: profesionisti duhet të jetë në gjendje të korrigjojë një adresë që GPS ka gabim.",
+        "clock": "<strong>Koha vjen nga orari i pajisjes</strong>, që mund të jenë të gabuara ose mund të jenë vendosur me dorë.",
+        "address": "<strong>Adresa është një vlerësim.</strong>Akursi i tij varet nga sinjali GPS dhe nga baza e të dhënave të shërbimit të hartave të sistemit operativ.",
+        "code": "<strong>Kodin e fotografisë nuk është një regjistrim në zyrën e një notari.</strong>Është një identifikator i rastësishëm për referencë të brendshme, pa asnjë vlerë provimi."
+      },
+      "p2": "Nëse rastin tuaj i përdorimit kërkon prova me fuqi ligjore kundër palëve të treta, kërkoni një akt notarial ose një shërbim të certifikimit dixhital me një timbrë kohë  Lymark është një zëvendësim për të dyja."
+    },
+    "s03": {
+      "title": "Përgjegjësitë tuaja",
+      "items": {
+        "photos": "Ju jeni i vetëm përgjegjës për fotografitë që merrni, për përmbajtjen që i shtyponi dhe për përdorimin e fajlëve të gjeneruara.",
+        "thirdParties": "Kur fotografojnë njerëz të tjerë, pronat e tyre ose zonat e tyre, është në detyrë të merrni autorizimet e nevojshme dhe të respektoheni të drejtat e imazhit, sekretin profesional dhe Ligjin e Përgjithshëm për Mbrojtjen e të Dhënave të Personale në lidhje me subjektet e të dhënave të portretizuar.",
+        "prohibited": "Përdorimi i aplikacionit për të krijuar një rekord të rremë, për të mashtruar këdo, për të simuluar kryerjen e një shërbimi që nuk u ofrua ose për të kryer ndonjë veprim të paligjshëm është i ndaluar.",
+        "backups": "Aplikacioni mban një histori të kufizuar lokale, e cila nuk është një kopje rezervë."
+      }
+    },
+    "s04": {
+      "title": "Licenca e përdorimit",
+      "p1": "Ne ju japim një licencë personale, të tërheqshme, jo-ekskluzive dhe jo-transferuese për të instaluar dhe përdorur aplikacionin, përfshirë edhe për qëllime profesionale.",
+      "p2": "<strong>Fotot e tua janë të tua.</strong>Emri, marka dhe identitet vizual Lymark mbeten pronë e zhvilluesit."
+    },
+    "s05": {
+      "title": "Përdorimi dhe përditësimet",
+      "p1": "Aplikacioni është i disponueshëm në mënyrën e tij. Nuk ka garanci të funksionimit të paprerë, për pajtueshmërinë me çdo pajisje, as asnjë angazhim për një afat për rregullimet ose versionet e reja.",
+      "p2": "Cilësia e imazhit të eksportuar varet nga pajisja dhe sistemi operativ dhe mund të jetë me rezolucion më të ulët se fotografia origjinale."
+    },
+    "s06": {
+      "title": "Kufizimi i përgjegjësisë",
+      "p1": "Në masën maksimale të lejuar nga ligji brazilian, zhvilluesi nuk është përgjegjës për humbje tërthoraza, fitime të humbur, humbje të të dhënave ose dëme që rrjedhin nga vendimet e marra në bazë të informacionit të poshtëm  duke përfshirë çdo kundërshtim, në gjykatë ose jashtë tij, me përmbajtjen e një fotografie të gjeneruar nga aplikacioni.",
+      "p2": "Kjo kufizim <strong>nuk heq</strong>të drejtat e garantuara për konsumatorin nga Ligji nr. 8.078/1990, as përgjegjësia për sjellje të gabuar me qëllim ose neglizhencë të rëndë."
+    },
+    "s07": {
+      "title": "Përfundimi",
+      "p1": "Ju mund të ndalojë përdorimin e aplikacionit në çdo kohë: fshirja e llogarisë fshihet të dhënat e saj në server, dhe zhvendosja e aplikacionit fshihet të dhënat e ruajtur në pajisje."
+    },
+    "s08": {
+      "title": "Ndryshimet në këto kushte",
+      "p1": "Ndryshimet do të publikohen në këtë faqe me një datë të re të përditësimit. Përdorimi i vazhdueshëm pas publikimit do të thotë pajtim me versionin në fuqi."
+    },
+    "s09": {
+      "title": "Ligji dhe forumi i zbatueshëm",
+      "p1": "Përdoret ligji brazilian. Forumi i zgjedhur për zgjidhjen e mosmarrëveshjeve që rrjedhin nga këto kushte është forumi i vendbanimit të përdoruesit."
+    },
+    "note": "Për trajtimin e të dhënave, shih <privacy>Politika e privatësisë</privacy>Pyetje:<email> contato@lymark.app </email>."
+  }
+}

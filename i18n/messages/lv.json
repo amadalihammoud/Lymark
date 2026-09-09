@@ -1,0 +1,648 @@
+{
+  "app": {
+    "about": {
+      "appSection": "Aplikacija",
+      "pitch": "Fotoizstāde  uzstājiet laiku, datumu, darba dienu, adresi un izsekošanas kodu, lai iegūtu lauksaimniecības datus, pārbaudītu vietas un pierādītu pakalpojumu sniegšanu.",
+      "platform": "Platforma",
+      "privacy": "Privātuma politika",
+      "privacyGeocoding": "Kad izmanto GPS, operētājsistēma nosūtīs koordinātu Google vai Apple mapā, lai iegūtu adresi.",
+      "privacyLocation": "Uz vietas izmanto vienu reizi uz katru attēlu, tikai lai aizpildītu adreses laukumu un tas netiek uzglabāts atsevišķi no fotogrāfijām.",
+      "privacyOnDevice": "Foto, adrese un vēsture paliek tikai šajā ierīcē.",
+      "privacySection": "Privātība",
+      "sdk": " Expo SDK ",
+      "terms": "Izmantošanas noteikumi",
+      "title": "Par Lymark ",
+      "version": "Verzija"
+    },
+    "account": {
+      "browserHint": "Atsevišķu informāciju par šo informāciju var saņemt no tīmekļa vietnes.",
+      "code": "Kods",
+      "codeSent": "Mēs nosūtām kodu uz {email}.",
+      "connected": "Saistīts",
+      "continue": "Turpiniet",
+      "deleteAccount": "Atmazgāt kontu",
+      "email": "E-pasts",
+      "failed": "Tas neveicās, pārbaudi e-pastu vai kodu un mēģini atkal.",
+      "notConfigured": "Šajā konstrukcijā vēl nav pieejama reģistrācija.",
+      "signInBrowser": "Iegrieziet ar pārlūkojumu",
+      "signOut": "Izskatiet",
+      "signedInAs": "Atpazīts kā {email} ",
+      "title": "Kontas",
+      "verify": "Pārbaudīt"
+    },
+    "batch": {
+      "addressHint": "Sēdis, numurs  pilsēta",
+      "clearList": "Skaista saraksta",
+      "codeHint": "t.i. LYM-001",
+      "done": "{count, plural,  one {Piepildīta apstrāde: # foto pabeigta.} other {Piepildīta apstrāde: # fotogrāfijas pabeigtas.}}",
+      "doneSection": "Beidzis",
+      "dropZone": "Izvēliet fotogrāfijas šeit vai izmantojiet Select photos pulveri",
+      "errorsSection": "Neatkarīgi no tā, kā ir noteikts",
+      "folder": "Galda: {name} ",
+      "noPhotos": "Izvēli vismaz vienu fotogrāfiju.",
+      "outputNote": "Apstrādātu fotogrāfijas tiek saglabātas izvēlētajā mapē.",
+      "outputSection": "Izstrādājumi",
+      "photosSection": "Fotoizskats",
+      "processing": "Apstrādāšana...",
+      "progress": "{current} no {total} ({percent} %)",
+      "results": "{success, plural,  one {# panākums} other {# panākumi}}, {failed, plural,  one {# izmērs} other {# kļūdas}}",
+      "selectFolder": "Izvēli izvadīšanas mapju",
+      "selectPhotos": "Izvēliet fotogrāfijas",
+      "selected": "{count, plural,  one {# foto izvēlēta} other {# fotogrāfijas izvēlēta}}",
+      "sharedNote": "Šie rādītāji attiecas uz visām fotogrāfijām.",
+      "sharedSection": "Kopīgi izmantoti metadati",
+      "start": "Sākot apstrādi",
+      "unavailableBody": "Šī funkcija ir tikai datora.",
+      "unavailableTitle": "Parasti apstrāde neizmantotas"
+    },
+    "capture": {
+      "accuracy": "Uzstāšanās ± {meters} m attālumā.",
+      "accuracyImprecise": "Uzstāšanās ± {meters} m  pirms eksporta pārbaudiet ielas numuru.",
+      "address": "Adrese",
+      "addressFailedTitle": "Neatrodas adrese",
+      "addressHint": "Atgriež uz vietas vai iesakņoj adresi",
+      "camera": "Fotogrāfiju",
+      "code": "Kods",
+      "dateHint": "1. janv. 2026",
+      "dateTimeGroup": "Datums un laiks",
+      "emptyWarning": "Nav datu, kas tiks iespiests  fotogrāfija iznāc bez ūdens marķējuma.",
+      "gallery": "Izvēli galerija",
+      "galleryDenied": "Foto piekļuve tika noraidīta, tāpēc attēls ir tikai aplikācijā.",
+      "galleryFailed": "Izskats bija reģistrēts, bet ierīce atteikusi to rakstīt galērijā.",
+      "generateCode": "Izradīt",
+      "hiddenFields": "{count, plural,  one {Saukts laukums} other {Slēpta laukumi}}: {fields}  ieslēdz to \"Saites\" > Lauki un stāvoklis.",
+      "keepMyAddress": "Manī palikt.",
+      "locate": "Ievietošana",
+      "locateByGps": "GPS adreses meklēšana",
+      "lookup": {
+        "denied": "Pieļauj atrašanās vietu iestatījumos > Pieļaujumi vai ievadīt adresi.",
+        "disabled": "Ja ierīce ir izslēgta, uzgriež to ātrās iestatējumos un mēģiniet atkal.",
+        "timeout": "GPS neatbildēja laiku.",
+        "unavailable": "Adrese šajā vietā nevarēja tikt izdomāta."
+      },
+      "newCapture": "Sākot jaunu aizņemšanu",
+      "noFieldsBack": "Atgriezieties.",
+      "noFieldsContinue": "Lai arī turpiniet.",
+      "noFieldsMessage": "Nē, nav nekādu laukumu, ko var piezīmēt.",
+      "noFieldsTitle": "Fotogrāfija iznāca bez ūdens marķējuma.",
+      "noPhotoHint": "Sākot ar fotogrāfiju vai izvēlieties kādu no galerijas.",
+      "noPhotoSelected": "Neatcerēts foto",
+      "openFailed": "Fotogrāfiju nevarēja atvērt.",
+      "permissionMessage": "Lai turpinātu piekļuvi iestatījumos > Pieļaujumi.",
+      "permissionTitle": "Vajadzīga atļauja",
+      "pickPhoto": "Izvēli fotogrāfiju",
+      "pickPhotoHint": "Izvēlieties fotogrāfiju, lai veiktu darbības.",
+      "previewLabel": "Pieteikuma iesniedzējs",
+      "renderFailedTitle": "Neatrodas attēls",
+      "replaceAddressMessage": "GPS atrisināts: {address} ",
+      "replaceAddressTitle": "Vai aizstāt adresi, ko esat tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko tikko.",
+      "resetConfirm": "Izmet",
+      "resetMessage": "Izvēlēto fotogrāfiju un aizpildīto lauku atmet.",
+      "resetTitle": "Sākot jaunu aizturēšanu?",
+      "saved": "Fotogrāfija, kas saglabāta ierīču galērijā un vēsturē.",
+      "savedAppOnlyTitle": "Jautājums:",
+      "shareDialogTitle": "Paskaties ar ūdens marķēto fotogrāfiju",
+      "shareFailedMessage": "Izskats ir radīts un ir Lymark vēsturē.",
+      "shareFailedTitle": "Nevaru dalīties",
+      "shareUnavailableMessage": "Šajā ierīcē nav kopējās daļas.",
+      "shareUnavailableTitle": "Kopsavilkšana nepastāvēta",
+      "sharedFileTitle": "Foto ar ūdens marķējumu",
+      "stampNotReady": "Piezīmju sagatavo vēl.",
+      "syncNow": "Tagad",
+      "timestamp": "Datums/sēdinātums",
+      "title": "Apņemšana",
+      "useGpsAddress": "Izmanto GPS.",
+      "weekdayHint": "Mon",
+      "weekdayShort": "Diena"
+    },
+    "colorPicker": {
+      "hue": "Hue",
+      "other": "izvēlēt citu krāsu",
+      "saturationBrightness": "Satiņotība un slodziena",
+      "use": "Izmantojiet šo krāsu"
+    },
+    "common": {
+      "back": "Atgriežoties",
+      "cancel": "Atcelt",
+      "delete": "Izmazgā",
+      "error": "Eksplora",
+      "gotIt": "Es to sapratu.",
+      "loading": "Uzkraušana...",
+      "no": "Ne, ne.",
+      "ok": "Labi.",
+      "save": "Saimniekot",
+      "share": "Pievienojiet",
+      "success": "Atbalsts",
+      "tryAgain": "Pajedrīk vēlreiz.",
+      "unknownError": "Neatzīstama kļūda",
+      "yes": "Jā, tā ir."
+    },
+    "gallery": {
+      "cancelSelection": "Atcelt izvēli",
+      "clear": "Skaista vēsture",
+      "clearConfirm": "Skaista",
+      "clearMessage": "Lymark ieraksti tiks izdzēsti.",
+      "count": "{count, plural,  one {Eksporta foto \"#\"} other {Eksporta fotogrāfijas}}",
+      "delete": "Izmazgā",
+      "empty": "Vēl nav fotogrāfiju.",
+      "emptyAction": "Vai jūs esat gatavs?",
+      "emptyDescription": "Fotogrāfijas, ko eksportē ar ūdenszīmju, parādās šeit, ar datumu, vietu un kodu.",
+      "filteredCount": " {shown} no {total, plural,  one {# foto} other {# fotogrāfijas}}",
+      "noResults": "Nav atrastas fotogrāfijas par  {query} .",
+      "photoLabel": "Fotogrāfija no {when} ",
+      "removeMessage": "Uzrakte ir aizņemta no Lymark.",
+      "removeTitle": "{count, plural,  one {Izņem no vēstures} other {Izņem # ierakstu}}",
+      "removed": "{count, plural,  one {Ievešana atņemta.} other {Atkāpjas no ierakstu.}}",
+      "saveDeniedMessage": "Lai saglabātu attēlus ierīce galērijā, ļaujot to iestatīt > Pieļaujumi.",
+      "saveDeniedTitle": "Foto piekļuves atteikums",
+      "savedAll": "{count, plural,  one {Vienā fotogrāfija, kas saglabāta ierīču galerijā.} other {# fotogrāfijas, kas saglabātas ierīču galērijā.}}",
+      "savedSome": "{saved} no {total} fotogrāfijām, kas saglabātas.",
+      "searchPlaceholder": "Izmeklēšana pēc adreses, datuma vai koda",
+      "selectedCount": "{count, plural,  one {# foto izvēlēta} other {# fotogrāfijas izvēlēta}}",
+      "share": "Pievienojiet",
+      "title": "Galerija"
+    },
+    "language": {
+      "automatic": "Apvienošanās ierīce",
+      "automaticNote": "Lymark sekmē jūsu ierīcē noteikto valodu.",
+      "label": "Raksts",
+      "selector": "Izvēli valodu"
+    },
+    "login": {
+      "access": "Atkāpties no piekļuves",
+      "apple": "Atsaucīties ar Apple",
+      "google": "Atkāpties no Google",
+      "subtitle": "Pievienojiet, lai turpinātu",
+      "title": "Paslēdzies , lai piekļūtu Lymark "
+    },
+    "nav": {
+      "batch": "Parasti apstrāde",
+      "photoDetail": "Fotogrāfijas detaļas",
+      "report": "PDF ziņojums",
+      "video": "Video"
+    },
+    "notFound": {
+      "body": "Šis ekrāns nav daļa no Lymark .",
+      "screenTitle": "Pagājušā daļa",
+      "title": "Tas nav ceļš."
+    },
+    "permissions": {
+      "allow": "Lai",
+      "allowed": "Pieļaujama",
+      "blocked": {
+        "later": "Tagad ne.",
+        "message": "Lai to atļautu, atvērt ierīce.",
+        "openSettings": "Atvērtas iestatījumi",
+        "title": "Pieļaujama bloķēšana"
+      },
+      "camera": "Kamera",
+      "cameraRationale": "Vajadzīgi, lai fotografētu, kas saņem ūdens marķējumu.",
+      "denied": "Atkautas",
+      "granted": "Pieļaujama",
+      "intro": "Lymark prasa tikai to, ko nepieciešams, lai zīmogu attēlu. Jūsu attēli nekad neiekļūst no ierīces: kad jūs izmantojat GPS, operētājsistēma sūtīs mapās pakalpojumu koordinātu tikai, lai tas varētu kļūt par adresi.",
+      "location": "Vieta",
+      "locationRationale": "Adrese automātiski aizpildās, kad jūs aizņemat.",
+      "mediaLibrary": "Saimniek galerija",
+      "mediaLibraryRationale": "Lai eksportētu fotogrāfijas uz ierīču galeriju.",
+      "openDeviceSettings": "Jautājumi",
+      "recheck": "Pārbaudiet vēlreiz.",
+      "request": "Pieprasīt atļauju",
+      "section": "Pievienošanās",
+      "title": "Pieļaujumi"
+    },
+    "photo": {
+      "backToGallery": "Atpakaļ galērijā",
+      "exportedAt": "Eksportēts {when} ",
+      "noWatermark": "Šī fotogrāfija tika eksportēta bez ūdens marķējuma.",
+      "notFoundBody": "Šis ieraksts var būt izslēgts no vēstures.",
+      "notFoundTitle": "Fotogrāfija neatrodīta",
+      "remove": "Izņem",
+      "removeBody": "Piekrītnē paliek Lymark.",
+      "removeTitle": "Izņem no vēstures",
+      "share": "Pievienojiet",
+      "stampedData": "Smarķēti dati"
+    },
+    "plan": {
+      "exhausted": "Bezmaksas foto izmantoti",
+      "exhaustedMessage": "12 bezmaksas plānu fotogrāfijas ir aizgājušas.",
+      "free": "Bezmaksas",
+      "pro": "Proti",
+      "reconnect": "Atsavienojiet, lai apstiprinātu abonamentu",
+      "remaining": "{remaining, plural,  one {# bezmaksas foto kreisa} other {# bezmaksas fotogrāfijas}}",
+      "title": "Plānums",
+      "unlimited": "Bez ierobežojuma"
+    },
+    "report": {
+      "allPhotos": "Visi fotogrāfi",
+      "authorField": "Autors / uzņēmums",
+      "detailsSection": "Detalizēti",
+      "doc": {
+        "author": "Autors",
+        "declaration": "Smarķēti dati (at adresi, datumu, laiku un kodu) ir fotogrāfijas emitenta deklarācija.",
+        "exportedAt": "Eksportēts",
+        "generatedAt": "Izveidota",
+        "page": "Pagāja",
+        "photo": "Foto: {index} ",
+        "photosSection": "Fotogrāfijas",
+        "signature": "Uzsvarīgā persona paraksts",
+        "summary": "Kopsavilkums",
+        "title": "Fotoreporta",
+        "totalPhotos": "Kopējais fotogrāfija:"
+      },
+      "empty": "Vēl nav eksportētas fotogrāfijas.",
+      "failed": "Nevaru radīt ziņojumu.",
+      "fileStem": "ziņojums",
+      "format": {
+        "csv": "Šablonstrāvas (CSV)",
+        "pdf": " PDF ",
+        "word": "Word (.doc)",
+        "zip": "Pakete (ZIP)"
+      },
+      "formatSection": "Formatēšana",
+      "generate": "Jautājums",
+      "generateSection": "Izradīt",
+      "includeLogo": "Logo uz pārklājuma",
+      "includeLogoDescription": "Jūsu marķējuma logo, tas pats kā uz zīmogu.",
+      "norm": {
+        "abnt": "ABNT (Brazīlija)",
+        "din5008": "DIN 5008 (Vācija)",
+        "ibape": "IBAPE stila (Brazilija)",
+        "iso": "Starptautiskais",
+        "letter": "Laice (USA)"
+      },
+      "normNote": "Standarta nosaka papīra formātu un  maržu, rakstveida un lapu numuru.",
+      "normSection": "Dokumentu standarts",
+      "projectsSection": "Projekts / darbs",
+      "saved": "Izsludināts uz {path} ",
+      "savedShort": "Ziņojums saglabāts.",
+      "title": "PDF ziņojums",
+      "titleField": "Ziņojuma nosaukums",
+      "unavailableBody": "PDF ziņojumi ir pieejami datora aplikācijā.",
+      "unavailableTitle": "Tikai uz datoru",
+      "uncoded": "Ne kods",
+      "wordTooBig": "Word dokuments tika pārāk liels ar fotogrāfiju iesildīta.",
+      "zipMissing": "{count, plural,  one {Pakete ir saglabāta, bet # foto šajā ierīcē nav atrasta.} other {Pakete ir saglabāta, bet # fotogrāfijas šajā ierīcē nav atrastas.}}"
+    },
+    "settings": {
+      "about": "Par",
+      "aboutDescription": "Versija, privātuma un kredīts",
+      "appSection": "Aplikacija",
+      "deviceSection": "Apstrāde",
+      "deviceSectionDescription": "Uz piekļuvi, ko Lymark pieprasa.",
+      "fields": "Lauki un stāvoklis",
+      "fieldsDescription": "Izvēli, kas laukus parādīt, virsma un lielums",
+      "history": "Historija",
+      "historyDescription": "Eksporta fotogrāfijas, kas glabātas ierīcē",
+      "language": "Raksts",
+      "permissions": "Pieļaujumi",
+      "permissionsDescription": "Kamera, fotogrāfijas un vieta",
+      "save": "Saimniekot",
+      "title": "Jautājumi",
+      "watermark": "ūdens marķējums",
+      "watermarkSection": "ūdens marķējums",
+      "watermarkSectionDescription": "Kas ir iespaids uz fotogrāfiju un kur."
+    },
+    "signup": {
+      "subtitle": "Pieteikties, lai sāktu",
+      "title": "Izveidojiet savu Lymark kontu"
+    },
+    "tagline": "ūdens marķējums ar laiku, datumu un vietu",
+    "title": " Lymark ",
+    "video": {
+      "cameraDenied": "Kamera nav pieejamas.",
+      "done": "Video ir iespiests un saglabāts.",
+      "export": "Eksporta video ar zīmogu",
+      "exportSection": "Eksports",
+      "failed": "Video nevarēja tikt izspēlots.",
+      "fieldsSection": "Smarķēšanas laukumi",
+      "fileSection": "Video",
+      "none": "Neatcerēts video.",
+      "processing": "Pārveidošana... {percent} %",
+      "processingMobile": "Apstrādāšana...",
+      "record": "Video ierakstu tagad",
+      "saved": "Izsludināts uz {path} ",
+      "savedToGallery": "Smarķēts video, kas saglabāts jūsu galerijā.",
+      "select": "Izvēli video",
+      "unavailableBody": "Mobilā video zīmogu uzstādīšanai ir nepieciešams Lymark uzstādīts no EAS uzbūves (ar nativu moduļu). Tas nav pieejams Expo Go.Instālēt oficiālo lietotni no veikalā vai EAS uzbūves vai izmantot stulbju / tīmekļa versiju.",
+      "unavailableTitle": "Vajadzīga instalēta aplikācija",
+      "unreadable": "Datu nevarēja lasīt kā video.",
+      "webNote": "Brauzers video apstrādā real laika  2 minūšu video ilgst 2 minūtes  un izriet WebM formātā."
+    },
+    "watermark": {
+      "accentColor": "vertikālā stūra",
+      "backdropBandNote": "Bands iet uz pusi no pusi uz pusi uz pusi uz fotogrāfiju un uzlabojās pret maržu, kur zīmogs ir piepildīts.",
+      "backdropBlockNote": "Atbalsts ir pēc teksta lieluma, ar apvalku.",
+      "backdropColor": "Plakas krāsa",
+      "backdropDescription": "Tas saglabā kontrastu gaismas apgabalos fotogrāfijā, bez tā teksts atrodas tieši uz attēla, ar saules.",
+      "backdropInnerRadius": "Ievaļas",
+      "backdropOpacity": "Pārredzamība",
+      "backdropOpacityValue": "{percent} % neprecīzi",
+      "backdropRadius": "Apvalkos",
+      "backdropRadiusSquare": "Piekārtošana",
+      "backdropStyles": {
+        "band": "Pilns platums",
+        "block": "Aiz tekstu",
+        "none": "Neviens"
+      },
+      "backdropTitle": "Aizkraukšanas bands",
+      "brandDescription": "Uz zonu virsmas tas kļūst par parakstu, ar logotu un tagline.",
+      "brandFirstColor": "Pirmais daļas krāsa",
+      "brandFirstHint": "Rakstotāji",
+      "brandFirstPart": "Pirmais daļa",
+      "brandNote": "Otrā daļa ir tuva, lai būtu tikai viena krāsa.",
+      "brandPlacements": {
+        "corner": "Izkūlē",
+        "header": "Uz laiku",
+        "none": "Neviens"
+      },
+      "brandSecondColor": "Otrā daļas krāsa",
+      "brandSecondHint": "Smits",
+      "brandSecondPart": "Otrs daļa",
+      "brandTitle": "Smarķēts zīmes",
+      "codeDescription": "Tā nav vienīgā vieta, kas ir vienīgā fotogrāfijā.",
+      "codePlacements": {
+        "block": "Ražošanas dati",
+        "side": "Labās puses"
+      },
+      "codeTitle": "Foto kods",
+      "colors": {
+        "amber": "Amber",
+        "black": "Zemes",
+        "blue": "Mērķis",
+        "green": "Ziels",
+        "red": "Rūzs",
+        "white": "Bija"
+      },
+      "colorsDescription": "Foto krāsa ir uzņēmuma izvēle, ne aplikācija, jo to mainīšana šeit nesamazina ekrāna krāsu.",
+      "colorsTitle": "Smarķēšanas krāsas",
+      "complement": "Slogans",
+      "complementColor": "Slogna krāsa",
+      "complementHint": "Inspekcijas un tehniskās ziņojumus",
+      "cornerConflict": "Zinātne un dati ir vienā un tajā pašā kokienā.",
+      "fields": {
+        "address": "Adrese / vieta",
+        "code": "Foto kods",
+        "date": "Datums",
+        "time": "Laiks",
+        "weekday": "Vai tas ir iespējams?"
+      },
+      "fieldsDescription": "Tikai laukumi, kas ir un ir saturā, sasniedz fotogrāfiju.",
+      "fieldsTitle": "Izskatītās lauku",
+      "includeCountry": "Apvieno valsts",
+      "includeCountryDescription": "Ja strādā pārrobežu, tad ieslēdziet, jo tā var būt tikai fotogrāfijā.",
+      "legibilityTitle": "Skaidrotiesība",
+      "logoAdded": "Markas virsrakstā pievienota logo.",
+      "logoAlignNote": "Logo augstums seko tekstu: to augšējais virsmas izlīdzina ar nosaukumu virsmu un apakšējais virsmas virsmas ar tagline pamatlinēju.",
+      "logoChosen": "Izvēlēts logo",
+      "logoErrorMessage": "Izdzīvojiet citu attēlu. PNG ar caurspīdīgu fonu ir formāts, kas vislabāk darbojas.",
+      "logoErrorTitle": "Šī faila nevar tikt izmantota",
+      "logoFormatNote": "Ja fotogrāfija ir pārredzīga, izmanto PNG ar pārredzamu fonu.",
+      "logoPermissionMessage": "Lai izvēlētos logo datoru, ļaujot to iestatīt > Pieļaujumi.",
+      "logoPermissionTitle": "Foto piekļuves atteikums",
+      "logoPick": "Izvēli logotipu",
+      "logoPosition": "Logo pozīcija",
+      "logoPositionBlock": "Ar zīmogu",
+      "logoRemove": "Izņem",
+      "logoReplace": "Izstāde logotips",
+      "logoSize": "Logo lielums",
+      "positionDescription": "Fotogrāfijas cepums, uz kuru bloks ir stiprināts.",
+      "positionTitle": "Pētījums",
+      "positions": {
+        "bottom-left": "Zemes pa kreisi",
+        "bottom-right": "Zemes pa labi",
+        "top-left": "Augsts kreisā",
+        "top-right": "Augstā kreisajā pusē"
+      },
+      "previewCurrent": "Pārbraukām pašreizējo fotogrāfiju no \"Atņemšanas\" tabā.",
+      "previewEmpty": "No gaismas uz tamsi, lai pārbaudītu lasamību abās ekstremitātēs.",
+      "previewNoFields": "Neatvēlēts laukums  fotogrāfija izriet bez ūdens marķējuma.",
+      "previewTitle": "Preview",
+      "reset": "Atgriež iepriekšējos parametrus",
+      "sizeTitle": "Teksta lielums",
+      "sizes": {
+        "large": "Lieliska",
+        "medium": "Vidējais",
+        "small": "Mazgli"
+      },
+      "textColor": "Teksts",
+      "timeFormatDescription": "Kā laiks tiek aizpildīts lauku.",
+      "timeFormatTitle": "Laikveida formats",
+      "timeFormats": {
+        "12h": "12 stundas (aprīlis/aprīlis)",
+        "24h": "24 stundas"
+      }
+    }
+  },
+  "desktop": {
+    "dialog": {
+      "allFiles": "Visas failās",
+      "images": "Fotogrāfijas",
+      "pickFolder": "Izvēli izvadīšanas mapju",
+      "pickPhoto": "Izvēlieties fotogrāfiju",
+      "pickPhotos": "Izvēlieties fotogrāfijas par partiju",
+      "savePhoto": "Salda fotogrāfiju",
+      "saveReport": "Saimniekošana"
+    },
+    "login": {
+      "cancel": "Atcelt",
+      "confirm": "Turpiniet",
+      "message": "Tu tikko ieradījies ar braucienu.",
+      "title": "Atsauc uz Lymark "
+    },
+    "menu": {
+      "copy": "Kopja",
+      "cut": "Sārkšana",
+      "edit": "Editēt",
+      "file": "Datu",
+      "fullscreen": "Pilns ekrāns",
+      "help": "Atbalsts",
+      "paste": "Paste",
+      "quit": "Atstājiet",
+      "redo": "Redo",
+      "reload": "Pārkraušana",
+      "selectAll": "Izvēli visus",
+      "settings": "Jautājumi",
+      "undo": "Atceltas",
+      "view": "Izskatīt",
+      "zoomIn": "Izkļūt",
+      "zoomOut": "Izkļūt",
+      "zoomReset": "Faktiskais lielums"
+    }
+  },
+  "site": {
+    "account": {
+      "backHome": "Atpakaļ uz mājām",
+      "openApp": "Atver aplikāciju",
+      "photos": "Fotogrāfijas",
+      "photosLeft": "{remaining} no {quota} kreisa",
+      "plan": "Plānums",
+      "planUnavailable": "Tagad nav pieejams",
+      "plans": {
+        "free": "Bezmaksas",
+        "pro": "Proti"
+      },
+      "signInTitle": "Pievienojiet",
+      "signOut": "Izskatiet",
+      "signUpTitle": "Jautājums",
+      "subscribe": "Apskatieties uz Lymark Pro",
+      "subscribeSoon": "Abonamenti vēl nav pieejami. Kad būs pieejami, jūs varat abonēt šeit un izmantot jebkuru ierīci ar vienu un to pašu kontu.",
+      "title": "Jūsu konta",
+      "revokeDesktops": "Informatūras izšķirošana",
+      "revokeDesktopsHint": "Apdrošina piekļuvi ikvienam datoram."
+    },
+    "availability": {
+      "contact": "Lai sekotu uzsākšanu vai ziņotu par problēmu, rakstīt uz <email> contato@lymark.app </email>.",
+      "description": "Lymark ir versijā 1.3.0, testējot Android pirms publicēšanas uz Google Play. Nav iOS versijas un netiks saņemta interneta versija, un aplikācija nav maksājama.",
+      "title": "Pieprasība"
+    },
+    "data": {
+      "device": {
+        "description": "Konts ir pieejams jūsu abonētai: servers glabā jūsu e-pastu un plānu, un nekad neatņem jūsu fotogrāfijas vai jūsu atrašanās vietu.",
+        "field": "Apstrādātā",
+        "heading": "Fotogrāfijas, adrese un vēsture"
+      },
+      "external": {
+        "description": "Lai lai laižotu platumu un garumu lasāmajam adresam, operētājsistēma meklē Google vai Apple geokodēšanas pakalpojumu. Tā ir vienīgā informācija, kas paliek, un to sūtīs sistēma, nevis aplikācija.",
+        "field": "Izņemts no ierīces",
+        "heading": "Tikai koordinātu pārvērst par adresi"
+      },
+      "note": "Tas ir noteikts,  ieskaitot, ko tas nozīmē Brazīlijas LGPD <privacy>Privātuma politika</privacy>. Izvēršot lokalizācijas atļauju, aplikācija ir pilnībā funkcionāla; tad tikai adreses laukumu jāiekļauj ar roku.",
+      "title": "Kur atrodas jūsu dati"
+    },
+    "deleteAccount": {
+      "back": "Atpakaļ uz pārskatu",
+      "confirm": "Izmazgā manu kontu",
+      "deletesNow": "Ja izdzēsiet savu kontu, nekavējoties izdzēsiet savu e-pastu, savu identifikatoru un plānu, kvotu un fotogrāfijas skaitu.",
+      "irreversible": "Izmazšana ir pastāvīga un nevar tikt atcelta. Fotogrāfijas jūsu ierīcē nav ietekmēta  tie nekad nebija mūsu serveros.",
+      "retained": "Maksājumu darījumu reģistri glabā par likumīgi noteikto fiskālo periodu, kas nav saistīti ar jūsu profilu.",
+      "title": "Atmazgāt kontu"
+    },
+    "description": "Android aplikācija, kas piezīmēj laika, datumu, darba dienu, adresi un izsekošanas kodu uz vietas inspekcijas un pakalpojumu apliecinājuma fotogrāfijām.",
+    "desktop": {
+      "backAccount": "Atpakaļ uz pārskatu",
+      "explanation": "Jūsu kontas ir gatavas. Klikāt uz zemāko pulksteņu, lai atvērtu Lymark jūsu dators jau parakstīts  brauciens prasīs atļauju atvērt aplikāciju.",
+      "open": "Apvieno aplikāciju",
+      "title": "Pievienojiet uz datoru",
+      "unavailable": "Desktop aplikācijas savienojums vēl nav pieejams."
+    },
+    "download": {
+      "appStore": {
+        "description": "Tas pats, kas Android, iOS.",
+        "field": " App Store ",
+        "heading": "iPhone un iPad"
+      },
+      "browser": {
+        "action": "Pievienojiet",
+        "description": "Atkāpjoties no interneta, aplikācija atvērsies brauciena  tālruņa vai datora.",
+        "field": "Braukers",
+        "heading": "Izmantojiet to tagad, nekas uzstādīt"
+      },
+      "desktop": {
+        "description": "Foto partijas, garas video un PDF ziņojumi  lielo darba versija.",
+        "field": "Informatūra",
+        "heading": "Windows un Linux"
+      },
+      "googlePlay": {
+        "description": "Telefonu aplikācija, ar fotoaparātu, galeriju un zīmogu video.",
+        "field": " Google Play ",
+        "heading": "Android"
+      },
+      "soon": "Nedaudz nāk.",
+      "title": "Kur lietot Lymark "
+    },
+    "features": {
+      "address": {
+        "description": "Ja jūs tiksiet ierakstījis, pirms GPS atbildēs, tad tas, ko esat ierakstījis, uzvar.",
+        "field": "Adrese",
+        "heading": "GPS ieplānots, ko var labot ar roku"
+      },
+      "code": {
+        "description": "Tas ir, lai jūs varētu citu konkrētu fotogrāfiju darba kārtā vai ziņojumā.",
+        "field": "Foto kods",
+        "heading": "14 rakstus, kas ir pievilcēti ar kriptogrāfiskā generatorā"
+      },
+      "note": "Katrs laukums tiek ieslēgts un izslēgts pats, un bloks tiek aizturēts uz jebkuru no četriem kokiem, trīs izmēros. Previzē izmanto jūsu faktisko fotogrāfiju, nevis vispārēju paraugu: tas, ko redzat ekrāne, ir tieši tas, kas tiek eksportēts.",
+      "time": {
+        "description": "Viens ar vienu pulksteņu viss laukums tiek atcelts atpakaļ līdz šim, kad uzņemšana ilgāk, nekā gaidīts.",
+        "field": "Laikots un datums",
+        "heading": "No ierīces laikraksta, no noņemšanas brīža"
+      },
+      "title": "Kas iet uz attēlu"
+    },
+    "footer": {
+      "description": "Lymark  Fotogrāfijas ierakstu datums, laiks un adrese.",
+      "documentsLabel": "Dokuments",
+      "privacy": "Privātuma politika",
+      "support": "Atbalsts:",
+      "terms": "Izmantošanas noteikumi"
+    },
+    "hero": {
+      "ctaAccount": "Vai tu esi?",
+      "ctaLogin": "Pievienojiet",
+      "ctaSignup": "Izveido bezmaksas kontu",
+      "description": "Lymark piezīmēj laika, datumu, darba dienu, adresi un izsekošanas kodu tieši uz attēlu.",
+      "eyebrow": "Foto dokumentācija",
+      "heading": "Fotogrāfija jau saka, kad, kur un ko.",
+      "meta": {
+        "account": "Vienreizēja konta",
+        "android": "Android un pārlūksni",
+        "language": "Brazīlijas portugāļu valodā",
+        "onDevice": "Fotogrāfijas paliek ierīcē"
+      },
+      "note": "Nav ko uzstādīt."
+    },
+    "nav": {
+      "account": "Kontas",
+      "home": "Kādu",
+      "homeLabel": "Lymark , mājas lapā",
+      "label": "Main",
+      "privacy": "Privātība",
+      "signIn": "Pievienojiet",
+      "terms": "Termini",
+      "verify": "Pārbaudīt"
+    },
+    "process": {
+      "capture": {
+        "description": "Adresa meklēšana sākas, kad ir saņemta fotogrāfija.",
+        "field": "Apņemšana",
+        "heading": "Fotoaparāts vai galerija"
+      },
+      "note": "Šie divi darbi ir apzināti atdalīti. Saimniekošana un dalīšana risina dažādas problēmas, un to uzklājot vienā nogurā, var izkraut visus, kas tikai vēlas pildīt fotogrāfiju caur nosūtīšanas ekrānu.",
+      "save": {
+        "description": "Tas atrodas kopā ar pārējo jūsu telefona fotogrāfiju, pieejama jebkurā aplikācijā, ieskaitot pēc Lymark atīlšanas.",
+        "field": "Saimniekot",
+        "heading": "Pieiet ierīču galērijā"
+      },
+      "share": {
+        "description": "WhatsApp , e-pasts, Drive: galamērķi izvēlas operētājsistēma, un aplikācija neattiecas uz nosūtīšanu.",
+        "field": "Pievienojiet",
+        "heading": "Atver sistēmas daļas lapu"
+      },
+      "title": "Uz ceļa, ko dara fotogrāfija"
+    },
+    "skipToContent": "Izskats uz saturu",
+    "specimen": {
+      "caption": "Bārnu noteikums sākas un beidzas ar ciparu kravu, nevis tekstu.",
+      "label": "Lymark zīmogu paraugs: laiks 07:42, datums 12 augusts 2026. gada trešdiena, adrese Guarujā un fotokode."
+    },
+    "title": "Lymark  datums, laiks un adrese laukuma fotogrāfiju ūdenszīmju",
+    "verify": {
+      "caveat": "Šķīds apliecina akta integritāti un izdošanas brīdi.",
+      "checking": "Pārbaudēju...",
+      "declarationNote": "Tas, ko apliecina zīmogs (at adresi, datums, laiks), ir emitenta deklarācija  zīmogs apliecina integritāti un emisiju, nevis saturu.",
+      "intro": "Izvēliet vai izlēdziet fotogrāfiju, ko eksportē Lymark, un nekavējoties redzēsiet, vai tā ir tieši tā, kā tā izstāda aplikāciju  un kurš to izdoja, kad.",
+      "noSealBody": "Šajā datumā nav Lymark zīmogu. Tas var būt eksportēts ārpus interneta, pirms zīmogs bija pastāvēs, vai var nebūt no Lymark.",
+      "noSealTitle": "Neplānojas",
+      "notConfigured": "Pārbauda vēl nav pieejama.",
+      "pick": "Izvēli datumu",
+      "previewAlt": "Pārbaudēta fotogrāfija, redzams zīmogs",
+      "privacyNote": "Verifikācija notiek jūsu brauciena.",
+      "sealedBody": "This file is exactly as it left Lymark. Issued by account {account} on {date}.",
+      "sealedTitle": "Neatkarīgi",
+      "tamperedBody": "Iekšējais saturs neatbilst piezīmēm: akta ir mainīta pēc izdošanas vai piezīmju pieder cits dators.",
+      "tamperedTitle": "Neatbilstība",
+      "title": "Verificēt autentiskumu",
+      "unsupported": "Šis brauciens nepiemēro parakstu pārbaudi."
+    }
+  }
+}
