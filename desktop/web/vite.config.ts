@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  base: process.env.LYMARK_MESA_BASE || "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

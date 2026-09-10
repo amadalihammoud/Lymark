@@ -544,7 +544,8 @@
       "desktop": {
         "description": "فوٹو بیچ، لمبی ویڈیوز اور PDF رپورٹ  بھاری ڈیوٹی ورژن.",
         "field": "کمپیوٹر",
-        "heading": "ونڈوز اور لینکس"
+        "heading": "ونڈوز اور لینکس",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "فون ایپ، کیمرے، گیلری اور سٹیمپڈ ویڈیو کے ساتھ.",

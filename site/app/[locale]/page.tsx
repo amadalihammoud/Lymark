@@ -197,11 +197,8 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
             <h3>{t('download.desktop.heading')}</h3>
             <p>{t('download.desktop.description')}</p>
             <p className="store-cta">
-              <span className="soon">{t('download.soon')}</span>
+              <a href="/mesa">{t('download.desktop.action')}</a>
             </p>
-          </div>
-        </div>
-      </section>
 
       <section className="band">
         <div className="band-head">

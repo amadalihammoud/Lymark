@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Fotóparcsok, hosszú videók és 0 jelentések  a nehéz feladatú verzió.",
         "field": "Számítógép",
-        "heading": "Windows és Linux"
+        "heading": "Windows és Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "A telefon alkalmazás, kamerával, galériával és bélyegzett videóval.",

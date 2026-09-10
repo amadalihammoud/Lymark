@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Зураг, урт видео, PDF мэдээллийн  хүнд үүрэг гүйцэтгэх хувилбар.",
         "field": "Компьютер",
-        "heading": "Windows болон Linux"
+        "heading": "Windows болон Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Телефон хэрэгсэл, камер, галере, видео бичлэгтэй.",

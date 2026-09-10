@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Fotoparter, lange videoar og PDF rapporterar  den tunge versjonen.",
         "field": "Computer",
-        "heading": "Windows og Linux"
+        "heading": "Windows og Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Telefonappen, med kamera, gallerie og stampt video.",

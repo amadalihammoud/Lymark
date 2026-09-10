@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Lotti di foto, video lunghi e report in PDF: la versione da lavoro pesante.",
         "field": "Computer",
-        "heading": "Windows e Linux"
+        "heading": "Windows e Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "L'app del telefono, con fotocamera, galleria e video timbrato.",

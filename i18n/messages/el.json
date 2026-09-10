@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Φωτογραφικές παρτίδες, μεγάλα βίντεο και PDF αναφέρει  την έκδοση βαρέων βαρών.",
         "field": "Υπολογιστής",
-        "heading": "Windows και Linux"
+        "heading": "Windows και Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Η εφαρμογή για τηλέφωνα, με κάμερα, γκαλερί και τυπογραφισμένο βίντεο.",

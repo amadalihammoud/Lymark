@@ -544,7 +544,8 @@
       "desktop": {
         "description": "फोटो ब्याचहरू, लामो pistolas र 0 रिपोर्टहरू  भारी शुल्क संस्करण।",
         "field": "कम्प्युटर",
-        "heading": "विन्डोज र लिनक्स pisto"
+        "heading": "विन्डोज र लिनक्स pisto",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "फोन अनुप्रयोग, क्यामेरा, pistole र स्ट्याम्प्ड भिडियो संग।",

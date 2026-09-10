@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Sawirada, fiidiyowyada dheer iyo warbixinnada culus.",
         "field": "Kombuyuutarka",
-        "heading": "Windows iyo Linux"
+        "heading": "Windows iyo Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Codsiga taleefanka, oo leh kamarad, gallery iyo fiidiyow la shaabadeeyay.",

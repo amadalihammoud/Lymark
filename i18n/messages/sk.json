@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Fotografické zábery, dlhé videá a PDF hlásia  ťažkú verziu.",
         "field": "Počítač",
-        "heading": "Windows a Linux"
+        "heading": "Windows a Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Telefónna aplikácia, s kamerou, galériou a štampovaným videom.",

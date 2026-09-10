@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Parts de fotos, vídeos llargs i PDF informa  la versió pesada.",
         "field": "Computació",
-        "heading": "Windows i Linux"
+        "heading": "Windows i Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "L'aplicació telefònica, amb càmera, galeria i vídeo estampat.",

@@ -544,7 +544,8 @@
       "desktop": {
         "description": "دفعات الصور والفيديو الطويل وتقارير PDF — نسخة العمل الشاق.",
         "field": "الكمبيوتر",
-        "heading": "Windows وLinux"
+        "heading": "Windows وLinux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "تطبيق الهاتف، بالكاميرا والمعرض والفيديو المختوم.",

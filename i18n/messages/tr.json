@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Fotoğraf seri, uzun videolar ve PDF raporları  ağır görev versiyonu.",
         "field": "Bilgisayar",
-        "heading": "Windows ve Linux"
+        "heading": "Windows ve Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Telefon uygulaması, kamera, galerisi ve video ile.",

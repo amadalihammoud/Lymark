@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Valokuvat, pidät videot ja PDF raportoi  raskastoiminnan versio.",
         "field": "Tietokone",
-        "heading": "Windows ja Linux"
+        "heading": "Windows ja Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Puhelin sovellus, jossa on kamera, galleria ja stemppaattu video.",

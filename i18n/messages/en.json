@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Photo batches, long videos and PDF reports — the heavy-duty version.",
         "field": "Computer",
-        "heading": "Windows and Linux"
+        "heading": "Windows and Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "The phone app, with camera, gallery and stamped video.",

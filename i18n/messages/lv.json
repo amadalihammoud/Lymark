@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Foto partijas, garas video un PDF ziņojumi  lielo darba versija.",
         "field": "Informatūra",
-        "heading": "Windows un Linux"
+        "heading": "Windows un Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Telefonu aplikācija, ar fotoaparātu, galeriju un zīmogu video.",

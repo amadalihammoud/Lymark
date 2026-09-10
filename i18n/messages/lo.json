@@ -544,7 +544,8 @@
       "desktop": {
         "description": "ຮູບພາບ, ວິດີໂອຍາວແລະ PDF ລາຍງານ  ຮູບແບບທີ່ ຫນັກ.",
         "field": "ຄອມພິວເຕີ",
-        "heading": "Windows ແລະ Linux"
+        "heading": "Windows ແລະ Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "ແອັບພລິເຄຊັນໂທລະສັບ, ມີກ້ອງຖ່າຍຮູບ, ກວາງເລີ້ ແລະວິດີໂອທີ່ຖືກບັນທຶກ.",

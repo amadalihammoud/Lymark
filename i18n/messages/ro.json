@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Parțialuri de fotografii, video-uri lungi și PDF raporte  versiunea grea.",
         "field": "Computer",
-        "heading": "Windows și Linux"
+        "heading": "Windows și Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Aplicaţia telefonică, cu cameră, galerie şi video.",
