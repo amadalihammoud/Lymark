@@ -1,0 +1,23 @@
+# Lymark — mesa de notebook e PC
+
+Esta é a mesa que abre no **navegador em computador** e, em seguida, no
+Electron (`desktop/`). Foto no centro, carimbo à direita, uma linha de chrome.
+
+Não substitui o app de celular em `src/` nem o site em `site/`.
+
+```
+cd desktop/web
+npm install
+npm run dev
+```
+
+Abre em `http://localhost:5173`. Arraste uma foto ou use Abrir foto.
+
+```
+npm run build     # dist/ — o Electron pode servir isso no lugar do Expo web
+npm run typecheck
+npm run test
+```
+
+O selo criptográfico e a cota Pro continuam em `lymark.app`. Sem sessão, a
+mesa exporta o JPEG carimbado e a cota local de 12 fotos.

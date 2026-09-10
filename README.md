@@ -27,6 +27,7 @@ npx expo start
   `docs/WEB-URL.md`). Desktop usa `npm run web:build` (raiz); o site usa
   `npm run web:build:hosted` (`LYMARK_WEB_BASE=/web`).
 - **Desktop**: pasta `desktop/` (Electron + ffmpeg) — MP4, vídeo longo.
+  A mesa de notebook/PC (navegador) está em `desktop/web/` — `cd desktop/web && npm run dev`.
 
 ```bash
 npm run android   # aparelho/emulador
@@ -68,6 +69,7 @@ src/
 │   └── auth/            Clerk / tokens
 ├── hooks/ lib/ theme/ types/
 desktop/                 Electron + ffmpeg
+desktop/web/             Mesa notebook/PC (navegador)
 site/                    Next.js — conta, Stripe, /api/entitlements, /api/attest
 modules/video-stamp/     Módulo nativo de composição de vídeo
 i18n/messages/           Traduções
