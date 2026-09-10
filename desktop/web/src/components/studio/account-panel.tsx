@@ -1,3 +1,5 @@
+import { useClerk, useUser } from "@clerk/clerk-react";
+
 import { remainingPhotos } from "@/lib/lymark/types";
 import { useStudio } from "@/store/studio";
 
@@ -7,8 +9,13 @@ export function AccountPanel() {
   const entitlement = useStudio((s) => s.entitlement);
   const lastSeal = useStudio((s) => s.lastSeal);
   const remaining = remainingPhotos(entitlement);
+  const { user } = useUser();
+  const { signOut } = useClerk();
 
   if (!open) return null;
+
+  const email =
+    user?.primaryEmailAddress?.emailAddress ?? user?.username ?? "conta";
 
   return (
     <div className="fixed inset-0 z-20 flex items-start justify-end bg-navy-950/40 p-4 pt-14">
@@ -20,9 +27,10 @@ export function AccountPanel() {
       />
       <aside className="relative w-80 rounded-md border border-hairline bg-navy-800 p-4 shadow-[var(--shadow-panel)]">
         <p className="text-title font-medium text-ink">Direito de acesso</p>
-        <p className="mt-1 text-caption text-slate text-pretty">
-          Identidade, pagamento e cota são camadas separadas. Esta mesa só
-          pergunta a cota. A foto não sai do aparelho — o selo assina um hash.
+        <p className="mt-1 font-mono text-caption text-mist truncate">{email}</p>
+        <p className="mt-2 text-caption text-slate text-pretty">
+          Identidade, pagamento e cota são camadas separadas. A foto não sai
+          do aparelho — o selo assina um hash.
         </p>
         <dl className="mt-4 space-y-2 font-mono text-caption text-mist">
           <div className="flex justify-between">
@@ -56,10 +64,16 @@ export function AccountPanel() {
               ? "exportou sem selo (sem rede ou sem cota)"
               : "nenhuma exportação nesta sessão"}
         </p>
-        <p className="mt-3 text-micro text-slate text-pretty">
-          No Lymark publicado a identidade é Clerk e o pagamento é Stripe.
-          Reexportar a mesma foto não gasta cota de novo.
-        </p>
+        <button
+          type="button"
+          className="mt-5 text-caption font-medium text-mist hover:text-ink"
+          onClick={() => {
+            setAccountOpen(false);
+            void signOut({ redirectUrl: "/entrar?next=/mesa" });
+          }}
+        >
+          Sair
+        </button>
       </aside>
     </div>
   );
