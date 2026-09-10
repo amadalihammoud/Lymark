@@ -14,10 +14,6 @@ function Splash({ line }: { line: string }) {
   );
 }
 
-export function AuthSplash({ line }: { line: string }) {
-  return <Splash line={line} />;
-}
-
 export function AuthMisconfigured() {
   return (
     <div className="flex h-dvh flex-col items-start justify-end bg-navy-900 px-8 pb-10">
@@ -42,17 +38,15 @@ export function AuthMisconfigured() {
 export function AuthGate({ children }: { children: ReactNode }) {
   const { isLoaded, isSignedIn, getToken } = useAuth();
 
-  useEffect(() => {
-    if (!isSignedIn) {
-      setTokenSupplier(null);
-      return;
-    }
-    setTokenSupplier(() => getToken());
-    return () => setTokenSupplier(null);
-  }, [isSignedIn, getToken]);
+  // O token precisa existir ANTES do primeiro GET de cota no DesktopShell.
+  // useEffect corre depois do paint: cota cairia no vazio.
+  if (isSignedIn) setTokenSupplier(() => getToken());
 
   useEffect(() => {
-    if (isLoaded && !isSignedIn) goToSignIn();
+    if (isLoaded && !isSignedIn) {
+      setTokenSupplier(null);
+      goToSignIn();
+    }
   }, [isLoaded, isSignedIn]);
 
   if (!isLoaded) return <Splash line="A conferir a conta…" />;
