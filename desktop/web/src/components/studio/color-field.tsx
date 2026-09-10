@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
+import { useTranslations } from "use-intl";
 
 import { hexToHsv, hsvToHex, isStampSwatch, parseHex, STAMP_SWATCHES, type Hsv } from "@/lib/color";
 import { cn } from "@/lib/utils";
@@ -14,6 +15,9 @@ export function ColorField({
   onChange: (color: string) => void;
   hideLabel?: boolean;
 }) {
+  const t = useTranslations("app.watermark");
+  const tPicker = useTranslations("app.colorPicker");
+  const tMesa = useTranslations("app.mesa");
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const hex = parseHex(value) ?? value.toUpperCase();
@@ -43,11 +47,23 @@ export function ColorField({
       <div className="flex flex-wrap gap-1">
         {STAMP_SWATCHES.map((swatch) => {
           const selected = swatch.hex === hex;
+          const colorName =
+            swatch.hex === "#FFFFFF"
+              ? t("colors.white")
+              : swatch.hex === "#F3C218"
+                ? t("colors.amber")
+                : swatch.hex === "#FF6B57"
+                  ? t("colors.red")
+                  : swatch.hex === "#5BD98A"
+                    ? t("colors.green")
+                    : swatch.hex === "#63B3ED"
+                      ? t("colors.blue")
+                      : t("colors.black");
           return (
             <button
               key={swatch.hex}
               type="button"
-              aria-label={`${label}: ${swatch.name}`}
+              aria-label={`${label}: ${colorName}`}
               aria-pressed={selected}
               onClick={() => {
                 onChange(swatch.hex);
@@ -67,7 +83,7 @@ export function ColorField({
         })}
         <button
           type="button"
-          aria-label={open ? `${label}: fechar seletor` : `${label}: escolher outra cor`}
+          aria-label={open ? `${label}: ${tMesa("close")}` : `${label}: ${tPicker("other")}`}
           aria-pressed={open || !isSwatch}
           onClick={() => setOpen((v) => !v)}
           className={cn(
@@ -100,6 +116,7 @@ function InlinePicker({
   value: string;
   onChange: (color: string) => void;
 }) {
+  const tMesa = useTranslations("app.mesa");
   const seed = hexToHsv(value);
   const [hsv, setHsv] = useState<Hsv>(seed);
   const [hexDraft, setHexDraft] = useState(hsvToHex(seed));
@@ -137,7 +154,7 @@ function InlinePicker({
           onChange={(event) => setFromHex(event.target.value)}
           spellCheck={false}
           className="field min-w-0 flex-1 font-mono tracking-wider"
-          aria-label="Cor em hexadecimal"
+          aria-label={tMesa("hexColor")}
         />
       </div>
     </div>
@@ -151,11 +168,12 @@ function SvSquare({
   hsv: Hsv;
   onChange: (hsv: Hsv) => void;
 }) {
+  const tPicker = useTranslations("app.colorPicker");
   const hueHex = hsvToHex({ h: hsv.h, s: 1, v: 1 });
   return (
     <PointerPad
       className="h-32 overflow-hidden rounded-sm"
-      ariaLabel="Saturação e brilho"
+      ariaLabel={tPicker("saturationBrightness")}
       style={{
         backgroundImage: `linear-gradient(to bottom, rgb(0 0 0 / 0), #000), linear-gradient(to right, #fff, ${hueHex})`,
       }}
@@ -176,10 +194,11 @@ function HueBar({
   hsv: Hsv;
   onChange: (hsv: Hsv) => void;
 }) {
+  const tPicker = useTranslations("app.colorPicker");
   return (
     <PointerPad
       className="h-8 overflow-hidden rounded-sm"
-      ariaLabel="Matiz"
+      ariaLabel={tPicker("hue")}
       style={{
         backgroundImage:
           "linear-gradient(to right, #FF0000, #FFFF00, #00FF00, #00FFFF, #0000FF, #FF00FF, #FF0000)",

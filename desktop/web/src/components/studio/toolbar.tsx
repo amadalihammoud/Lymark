@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "use-intl";
 
 import { Segmented } from "@/components/studio/segmented";
 import { Wordmark } from "@/components/wordmark";
@@ -6,12 +7,6 @@ import { canExportNow } from "@/lib/lymark/types";
 import { cn } from "@/lib/utils";
 import type { StudioMode } from "@/store/studio";
 import { useStudio } from "@/store/studio";
-
-const MODES: { id: StudioMode; label: string }[] = [
-  { id: "photo", label: "Foto" },
-  { id: "video", label: "Vídeo" },
-  { id: "batch", label: "Lote" },
-];
 
 function Sep() {
   return <span className="mx-1 hidden h-5 w-px bg-hairline sm:block" aria-hidden />;
@@ -26,6 +21,7 @@ function MoreMenu({
   onReport: () => void;
   canReport: boolean;
 }) {
+  const t = useTranslations("app.mesa");
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
 
@@ -54,7 +50,7 @@ function MoreMenu({
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label="Mais"
+        aria-label={t("more")}
         onClick={() => setOpen((v) => !v)}
         className={cn(
           "relative flex h-10 w-10 items-center justify-center text-mist hover:text-ink",
@@ -67,30 +63,30 @@ function MoreMenu({
       {open ? (
         <div
           role="menu"
-          className="absolute right-0 top-full z-20 mt-1 min-w-40 border border-hairline bg-navy-800 py-1 shadow-[var(--shadow-panel)]"
+          className="absolute end-0 top-full z-20 mt-1 min-w-40 border border-hairline bg-navy-800 py-1 shadow-[var(--shadow-panel)]"
         >
           <button
             type="button"
             role="menuitem"
-            className="flex h-9 w-full items-center px-3 text-left text-body text-mist hover:bg-lift hover:text-ink"
+            className="flex h-9 w-full items-center px-3 text-start text-body text-mist hover:bg-lift hover:text-ink"
             onClick={() => {
               setOpen(false);
               onVerify();
             }}
           >
-            Verificar
+            {t("verifyMenu")}
           </button>
           <button
             type="button"
             role="menuitem"
             disabled={!canReport}
-            className="flex h-9 w-full items-center px-3 text-left text-body text-mist hover:bg-lift hover:text-ink disabled:opacity-40"
+            className="flex h-9 w-full items-center px-3 text-start text-body text-mist hover:bg-lift hover:text-ink disabled:opacity-40"
             onClick={() => {
               setOpen(false);
               onReport();
             }}
           >
-            Relatório
+            {t("reportMenu")}
           </button>
         </div>
       ) : null}
@@ -109,6 +105,8 @@ export function Chrome({
   onShare: () => void;
   saving: boolean;
 }) {
+  const t = useTranslations("app.mesa");
+  const tCommon = useTranslations("app.common");
   const mode = useStudio((s) => s.mode);
   const setMode = useStudio((s) => s.setMode);
   const inspectorOpen = useStudio((s) => s.inspectorOpen);
@@ -123,43 +121,44 @@ export function Chrome({
   const billed = media ? billedIds.includes(media.id) : false;
   const allowed = canExportNow(entitlement, billed);
   const openLabel =
-    mode === "video" ? "Abrir vídeo…" : mode === "batch" ? "Abrir lote…" : "Abrir foto…";
+    mode === "video" ? t("openVideo") : mode === "batch" ? t("openBatch") : t("openPhoto");
   const saveLabel =
     mode === "batch"
       ? batchBusy
-        ? "Carimbando…"
+        ? t("stamping")
         : batch.length
-          ? `Salvar lote (${batch.length})`
-          : "Salvar lote"
+          ? t("saveBatchCount", { count: batch.length })
+          : t("saveBatch")
       : mode === "video"
         ? saving
-          ? "Salvando…"
-          : "Salvar quadro"
+          ? t("saving")
+          : t("saveFrame")
         : saving
-          ? "Salvando…"
-          : "Salvar";
+          ? t("saving")
+          : tCommon("save");
+
+  const modes: { id: StudioMode; label: string }[] = [
+    { id: "photo", label: t("photo") },
+    { id: "video", label: t("video") },
+    { id: "batch", label: t("batch") },
+  ];
 
   return (
-    <header className="flex h-14 shrink-0 items-center gap-3 overflow-x-auto border-b border-hairline bg-navy-900 px-3 sm:px-4">
+    <header className="flex min-h-14 shrink-0 items-center gap-3 overflow-x-auto border-b border-hairline bg-navy-900 px-3 sm:px-4">
       <Wordmark compact />
 
-      <Segmented
-        variant="pill"
-        value={mode}
-        onChange={setMode}
-        options={MODES}
-      />
+      <Segmented variant="pill" value={mode} onChange={setMode} options={modes} />
 
       <button
         type="button"
         onClick={onOpen}
         title="Ctrl+O"
-        className="inline-flex h-10 shrink-0 items-center whitespace-nowrap rounded-sm border border-hairline px-4 text-body font-semibold text-mist hover:bg-lift hover:text-ink"
+        className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-sm border border-hairline px-4 py-1 text-center text-body font-semibold leading-tight text-mist hover:bg-lift hover:text-ink"
       >
-        {openLabel}
+        <span className="max-w-[7.5rem] text-balance">{openLabel}</span>
       </button>
 
-      <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
+      <div className="ms-auto flex shrink-0 items-center gap-1 sm:gap-2">
         <MoreMenu
           onVerify={() => setVerifyOpen(true)}
           onReport={() => setReportOpen(true)}
@@ -171,7 +170,7 @@ export function Chrome({
           disabled={!media || saving}
           className="hidden h-10 items-center px-3 text-body font-medium text-mist hover:text-ink disabled:opacity-40 sm:inline-flex"
         >
-          Compartilhar
+          {tCommon("share")}
         </button>
         <Sep />
         <button
@@ -179,11 +178,11 @@ export function Chrome({
           onClick={toggleInspector}
           title="I"
           className={cn(
-            "relative h-10 px-3 text-body font-medium",
+            "relative min-h-10 px-3 py-1 text-center text-body font-medium leading-tight",
             inspectorOpen ? "text-ink" : "text-mist hover:text-ink",
           )}
         >
-          Carimbo
+          <span className="max-w-[6.5rem] text-balance">{t("stamp")}</span>
           {inspectorOpen ? (
             <span className="absolute inset-x-3 bottom-1.5 h-px bg-amber" />
           ) : null}
@@ -193,9 +192,9 @@ export function Chrome({
           onClick={onSave}
           disabled={!media || saving || !allowed || batchBusy}
           title="Ctrl+S"
-          className="inline-flex h-10 shrink-0 items-center rounded-sm bg-amber px-5 text-body font-semibold text-on-amber hover:bg-amber-dark disabled:opacity-40"
+          className="inline-flex min-h-10 shrink-0 items-center rounded-sm bg-amber px-5 py-1 text-center text-body font-semibold leading-tight text-on-amber hover:bg-amber-dark disabled:opacity-40"
         >
-          {saveLabel}
+          <span className="max-w-[8rem] text-balance">{saveLabel}</span>
         </button>
       </div>
     </header>
