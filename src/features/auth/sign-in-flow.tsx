@@ -1,4 +1,7 @@
 import { useSignIn, useSignUp } from '@clerk/expo';
+import { useSSO } from '@clerk/expo/experimental';
+import type { OAuthStrategy } from '@clerk/shared/types';
+import type { ComponentProps } from 'react';
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslations } from 'use-intl';
@@ -23,20 +26,39 @@ import { useDesktopAuth } from './desktop-auth';
  * é o que o Clerk oferece que menos pede da pessoa. Entrar e cadastrar são o
  * mesmo caminho: se o e-mail não tem conta, o cadastro acontece por baixo,
  * com as mesmas duas telas.
+ *
+ * No passo do e-mail também há SSO (Google, Facebook, TikTok) via
+ * `useSSO` experimental — o hook já finaliza a sessão quando o OAuth fecha
+ * com sucesso. Cancelar o navegador não conta como falha.
  */
 
 type Step = { name: 'email' } | { name: 'code'; via: 'sign-in' | 'sign-up' };
+
+type IoniconName = NonNullable<ComponentProps<typeof Button>['icon']>;
+
+const SOCIAL_PROVIDERS: {
+  strategy: OAuthStrategy;
+  labelKey: 'continueWithGoogle' | 'continueWithFacebook' | 'continueWithTikTok';
+  icon: IoniconName;
+}[] = [
+  { strategy: 'oauth_google', labelKey: 'continueWithGoogle', icon: 'logo-google' },
+  { strategy: 'oauth_facebook', labelKey: 'continueWithFacebook', icon: 'logo-facebook' },
+  { strategy: 'oauth_tiktok', labelKey: 'continueWithTikTok', icon: 'logo-tiktok' },
+];
 
 export function SignInFlow() {
   const t = useTranslations('app.account');
   const { signIn } = useSignIn();
   const { signUp } = useSignUp();
+  const { startSSOFlow } = useSSO();
 
   const [email, setEmail] = useState('');
   const [code, setCode] = useState('');
   const [step, setStep] = useState<Step>({ name: 'email' });
   const [busy, setBusy] = useState(false);
+  const [pendingSocial, setPendingSocial] = useState<OAuthStrategy | null>(null);
   const [failed, setFailed] = useState(false);
+  const anyBusy = busy || pendingSocial !== null;
 
   /**
    * Pede o código. Tenta entrar; se o e-mail não tem conta, cadastra — a
@@ -44,7 +66,7 @@ export function SignInFlow() {
    * erro em vez de lançar, e é assim que os dois caminhos se encadeiam.
    */
   const requestCode = async () => {
-    if (busy) return;
+    if (anyBusy) return;
     setBusy(true);
     setFailed(false);
     try {
@@ -72,7 +94,7 @@ export function SignInFlow() {
   };
 
   const verify = async () => {
-    if (busy || step.name !== 'code') return;
+    if (anyBusy || step.name !== 'code') return;
     setBusy(true);
     setFailed(false);
     try {
@@ -97,11 +119,44 @@ export function SignInFlow() {
     }
   };
 
+  const startSocial = async (strategy: OAuthStrategy) => {
+    if (anyBusy) return;
+    setPendingSocial(strategy);
+    setFailed(false);
+    try {
+      const { authSessionResult } = await startSSOFlow({ strategy });
+      // Cancelar / fechar o navegador: não é falha — só sai sem marcar erro.
+      if (authSessionResult && authSessionResult.type !== 'success') return;
+    } catch {
+      setFailed(true);
+    } finally {
+      setPendingSocial(null);
+    }
+  };
+
   return (
     <Screen>
       <Section title={t('title')}>
         {step.name === 'email' ? (
           <View style={styles.form}>
+            <View style={styles.social}>
+              {SOCIAL_PROVIDERS.map((provider) => (
+                <Button
+                  key={provider.strategy}
+                  label={t(provider.labelKey)}
+                  icon={provider.icon}
+                  variant="primary"
+                  loading={pendingSocial === provider.strategy}
+                  disabled={anyBusy && pendingSocial !== provider.strategy}
+                  onPress={() => void startSocial(provider.strategy)}
+                />
+              ))}
+            </View>
+            <View style={styles.separator} accessibilityRole="text">
+              <View style={styles.separatorLine} />
+              <Text style={[typography.body, styles.separatorLabel]}>{t('orEmail')}</Text>
+              <View style={styles.separatorLine} />
+            </View>
             <FieldRow
               label={t('email')}
               value={email}
@@ -115,7 +170,7 @@ export function SignInFlow() {
               label={t('continue')}
               variant="accent"
               loading={busy}
-              disabled={email.trim().length === 0}
+              disabled={anyBusy || email.trim().length === 0}
               onPress={() => void requestCode()}
             />
           </View>
@@ -137,7 +192,7 @@ export function SignInFlow() {
               label={t('verify')}
               variant="accent"
               loading={busy}
-              disabled={code.trim().length === 0}
+              disabled={anyBusy || code.trim().length === 0}
               onPress={() => void verify()}
             />
           </View>
@@ -168,6 +223,23 @@ export function DesktopSignIn() {
 const styles = StyleSheet.create({
   form: {
     gap: spacing.md,
+  },
+  social: {
+    gap: spacing.sm,
+  },
+  separator: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    marginVertical: spacing.xs,
+  },
+  separatorLine: {
+    flex: 1,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: colors.border,
+  },
+  separatorLabel: {
+    color: colors.textMuted,
   },
   note: {
     color: colors.textMuted,
