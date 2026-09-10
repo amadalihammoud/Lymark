@@ -21,5 +21,5 @@ npm run typecheck
 npm run test
 ```
 
-O selo criptográfico e a cota Pro continuam em `lymark.app`. Sem sessão, a
-mesa exporta o JPEG carimbado e a cota local de 12 fotos.
+O selo criptográfico e a cota são da conta. Sem sessão a mesa redireciona
+para `/entrar?next=/mesa`. Depois do login volta para cá.

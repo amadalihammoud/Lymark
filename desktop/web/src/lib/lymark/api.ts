@@ -1,13 +1,8 @@
-import {
-  FREE_LIFETIME_QUOTA,
-  LEASE_DAYS,
-  type Entitlement,
-  type Plan,
-} from "@/lib/lymark/types";
+import { goToSignIn } from "@/lib/clerk";
+import type { Entitlement, Plan } from "@/lib/lymark/types";
 
 const ENTITLEMENTS_URL = "https://lymark.app/api/entitlements";
 const ATTEST_URL = "https://lymark.app/api/attest";
-const DAY_MS = 24 * 60 * 60 * 1000;
 
 type TokenSupplier = () => Promise<string | null>;
 
@@ -19,7 +14,10 @@ export function setTokenSupplier(fn: TokenSupplier | null) {
 
 async function bearer(): Promise<string> {
   const token = tokenSupplier ? await tokenSupplier() : null;
-  if (!token) throw new Error("sem sessão");
+  if (!token) {
+    goToSignIn();
+    throw new Error("sem sessão");
+  }
   return token;
 }
 
@@ -54,18 +52,6 @@ function parseEntitlement(body: unknown): Entitlement | null {
   return { plan: raw.plan, quota, used: raw.used, periodEnd, validUntil, issuedAt };
 }
 
-function localFallback(used = 0): Entitlement {
-  const now = new Date();
-  return {
-    plan: "free",
-    quota: FREE_LIFETIME_QUOTA,
-    used,
-    periodEnd: null,
-    validUntil: new Date(now.getTime() + LEASE_DAYS * DAY_MS).toISOString(),
-    issuedAt: now.toISOString(),
-  };
-}
-
 async function requestEntitlement(spent = 0): Promise<Entitlement> {
   const token = await bearer();
   const response = await fetch(ENTITLEMENTS_URL, {
@@ -78,6 +64,7 @@ async function requestEntitlement(spent = 0): Promise<Entitlement> {
     body: spent > 0 ? JSON.stringify({ spent }) : undefined,
   });
   if (response.status === 401 || response.status === 403) {
+    goToSignIn();
     throw new Error("sessão expirada");
   }
   if (!response.ok) throw new Error(`entitlements ${response.status}`);
@@ -87,22 +74,13 @@ async function requestEntitlement(spent = 0): Promise<Entitlement> {
 }
 
 export async function getEntitlements(): Promise<Entitlement> {
-  try {
-    return await requestEntitlement(0);
-  } catch {
-    return localFallback();
-  }
+  return requestEntitlement(0);
 }
 
 export async function syncEntitlements(opts: {
   data: { spent: number };
 }): Promise<Entitlement> {
-  const spent = Math.max(0, Math.floor(opts.data.spent));
-  try {
-    return await requestEntitlement(spent);
-  } catch {
-    return localFallback();
-  }
+  return requestEntitlement(Math.max(0, Math.floor(opts.data.spent)));
 }
 
 export async function issueAttest(opts: {
@@ -118,6 +96,10 @@ export async function issueAttest(opts: {
     },
     body: JSON.stringify({ hash: opts.data.hash }),
   });
+  if (response.status === 401 || response.status === 403) {
+    goToSignIn();
+    throw new Error("sessão expirada");
+  }
   if (!response.ok) throw new Error(`attest ${response.status}`);
   const body: unknown = await response.json();
   const receipt =
