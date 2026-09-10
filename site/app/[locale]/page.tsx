@@ -199,6 +199,9 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
             <p className="store-cta">
               <a href="/mesa">{t('download.desktop.action')}</a>
             </p>
+          </div>
+        </div>
+      </section>
 
       <section className="band">
         <div className="band-head">
