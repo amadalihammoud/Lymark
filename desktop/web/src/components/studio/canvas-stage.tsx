@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useTranslations } from "use-intl";
 
 import { StampOverlay } from "@/components/studio/stamp-overlay";
 import { cn } from "@/lib/utils";
@@ -38,6 +39,7 @@ export function CanvasStage({
 }: {
   onOpenFiles: (files: FileList | File[]) => void;
 }) {
+  const t = useTranslations("app.mesa");
   const media = useStudio((s) => s.media);
   const mode = useStudio((s) => s.mode);
   const setEditing = useStudio((s) => s.setEditing);
@@ -213,16 +215,16 @@ export function CanvasStage({
         >
           <span className="text-title font-medium text-ink">
             {mode === "video"
-              ? "Solte um vídeo"
+              ? t("dropVideo")
               : mode === "batch"
-                ? "Solte as fotos do lote"
-                : "Solte uma foto"}
+                ? t("dropBatch")
+                : t("dropPhoto")}
           </span>
           <span className="text-ui text-slate">
             <kbd>Ctrl</kbd>
             <span className="mx-1 text-steel">+</span>
             <kbd>O</kbd>
-            <span className="ml-2">para abrir</span>
+            <span className="ms-2">{t("toOpen")}</span>
           </span>
         </button>
       )}

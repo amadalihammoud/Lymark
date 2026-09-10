@@ -1,30 +1,50 @@
+import { DEFAULT_LOCALE, type Locale } from "../../../../i18n/locales.ts";
+
 export type GeoPlace = {
   address: string;
   city: string;
 };
 
-function formatPlace(data: {
-  locality?: string;
-  city?: string;
-  principalSubdivisionCode?: string;
-  countryName?: string;
-  localityInfo?: { informative?: Array<{ name: string; description?: string }> };
-}, latitude: number, longitude: number): GeoPlace {
+let geocodeLocale: Locale = DEFAULT_LOCALE;
+
+export function setGeocodeLocale(locale: Locale) {
+  geocodeLocale = locale;
+}
+
+function localityLanguage(locale: Locale): string {
+  return locale.split("-")[0] ?? "pt";
+}
+
+function formatPlace(
+  data: {
+    locality?: string;
+    city?: string;
+    principalSubdivisionCode?: string;
+    countryName?: string;
+    localityInfo?: { informative?: Array<{ name: string; description?: string }> };
+  },
+  latitude: number,
+  longitude: number,
+): GeoPlace {
   const street =
     data.localityInfo?.informative?.find((i) =>
       /route|road|street|rua/i.test(i.description ?? i.name),
     )?.name ?? data.locality;
-  const city = [data.city, data.principalSubdivisionCode?.replace(/^BR-/, "")]
+  const city = [data.city, data.principalSubdivisionCode?.replace(/^[A-Z]{2}-/, "")]
     .filter(Boolean)
     .join(" — ");
   return {
     address: street || `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`,
-    city: city || data.countryName || "Brasil",
+    city: city || data.countryName || "",
   };
 }
 
-export async function reverseGeocode(latitude: number, longitude: number): Promise<GeoPlace> {
-  const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=pt`;
+export async function reverseGeocode(
+  latitude: number,
+  longitude: number,
+): Promise<GeoPlace> {
+  const lang = localityLanguage(geocodeLocale);
+  const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=${encodeURIComponent(lang)}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error("geocode");
   const data = (await res.json()) as Parameters<typeof formatPlace>[0];

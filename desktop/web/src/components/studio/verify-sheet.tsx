@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { useTranslations } from "use-intl";
 
+import { clockFromDate } from "@/lib/datetime";
 import { getAttestPublicKey } from "@/lib/lymark/api";
 import { asArrayBuffer } from "@/lib/lymark/hash";
 import { verifyJpeg, type VerifyVerdict } from "@/lib/lymark/verify-client";
@@ -11,6 +13,8 @@ import {
 import { useStudio } from "@/store/studio";
 
 export function VerifySheet() {
+  const t = useTranslations("app.mesa");
+  const tv = useTranslations("site.verify");
   const open = useStudio((s) => s.verifyOpen);
   const setVerifyOpen = useStudio((s) => s.setVerifyOpen);
   const [verdict, setVerdict] = useState<VerifyVerdict | null>(null);
@@ -67,10 +71,8 @@ export function VerifySheet() {
       <div className="w-full max-w-lg rounded-md border border-hairline bg-navy-800 shadow-[var(--shadow-panel)]">
         <header className="flex items-center justify-between border-b border-hairline px-5 py-3">
           <div>
-            <p className="text-title font-medium text-ink">Verificar selo</p>
-            <p className="text-caption text-slate">
-              O arquivo não sai deste aparelho.
-            </p>
+            <p className="text-title font-medium text-ink">{tv("title")}</p>
+            <p className="text-caption text-slate">{t("fileStays")}</p>
           </div>
           <button
             type="button"
@@ -82,7 +84,7 @@ export function VerifySheet() {
             }}
             className="h-8 rounded-sm border border-hairline px-3 text-caption text-mist hover:bg-lift"
           >
-            Fechar
+            {t("close")}
           </button>
         </header>
         <div className="space-y-4 p-5">
@@ -95,7 +97,7 @@ export function VerifySheet() {
               if (file) void onFile(file);
             }}
           >
-            <span>{busy ? "Lendo…" : "Solte um JPEG carimbado"}</span>
+            <span>{busy ? t("reading") : t("dropJpeg")}</span>
             <input
               type="file"
               accept="image/jpeg"
@@ -110,56 +112,43 @@ export function VerifySheet() {
           {name ? <p className="font-mono text-micro text-slate">{name}</p> : null}
           {verdict?.kind === "intact" ? (
             <div className="space-y-1 text-ui">
-              <p className="font-medium text-ok">Íntegra</p>
+              <p className="font-medium text-ok">{tv("sealedTitle")}</p>
               <p className="text-mist">
-                Este arquivo está exatamente como saiu do Lymark. Emitido pela
-                conta {verdict.sub} em{" "}
-                {new Date(verdict.issuedAt).toLocaleString("pt-BR")}.
+                {tv("sealedBody", {
+                  account: verdict.sub,
+                  date: `${clockFromDate(new Date(verdict.issuedAt)).date} ${clockFromDate(new Date(verdict.issuedAt)).time}`,
+                })}
               </p>
-              <p className="text-caption text-slate">
-                O que o carimbo declara é declaração do emissor — o selo atesta
-                a integridade e a emissão, não o conteúdo.
-              </p>
+              <p className="text-caption text-slate">{tv("declarationNote")}</p>
             </div>
           ) : null}
           {verdict?.kind === "missing" ? (
             <div className="space-y-2 text-ui">
-              <p className="font-medium text-mist">Sem selo</p>
+              <p className="font-medium text-mist">{tv("noSealTitle")}</p>
               {ocrBusy ? (
-                <p className="text-caption text-slate">
-                  Procurando o código no carimbo visível…
-                </p>
+                <p className="text-caption text-slate">{t("lookingCode")}</p>
               ) : ocr ? (
                 <>
                   <p className="font-mono text-body tracking-wider text-amber">
                     {ocr.code}
                   </p>
                   <p className="text-mist">
-                    {ocr.where === "name"
-                      ? "O selo saiu, mas o código ainda está no nome do arquivo. Alguém reexportou — não é mais o original."
-                      : "O carimbo ainda está na foto, mas o arquivo foi reexportado (WhatsApp, print, PDF). Não é mais o original."}
+                    {ocr.where === "name" ? t("codeInName") : t("codeOnStamp")}
                   </p>
                 </>
               ) : (
-                <p className="text-mist">
-                  Sem selo e sem carimbo Lymark visível. Pode não vir daqui, ou o
-                  código está ilegível.
-                </p>
+                <p className="text-mist">{t("noCodeFound")}</p>
               )}
             </div>
           ) : null}
           {verdict?.kind === "tampered" ? (
-            <p className="text-ui text-danger">
-              Adulterada. O conteúdo não corresponde ao selo.
-            </p>
+            <p className="text-ui text-danger">{tv("tamperedBody")}</p>
           ) : null}
           {verdict?.kind === "unconfigured" ? (
-            <p className="text-ui text-slate">Selo ainda não configurado.</p>
+            <p className="text-ui text-slate">{tv("notConfigured")}</p>
           ) : null}
           {verdict?.kind === "unsupported" ? (
-            <p className="text-ui text-slate">
-              Este navegador não confere Ed25519. Abra o arquivo noutro.
-            </p>
+            <p className="text-ui text-slate">{tv("unsupported")}</p>
           ) : null}
         </div>
       </div>

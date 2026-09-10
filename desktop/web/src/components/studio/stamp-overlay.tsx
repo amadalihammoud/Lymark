@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useTranslations } from "use-intl";
 
 import { cn } from "@/lib/utils";
 import type { FieldKey, StampCorner } from "@/store/studio";
@@ -95,6 +96,7 @@ function LogoMark({ height }: { height: number }) {
 }
 
 export function StampOverlay() {
+  const t = useTranslations("app.mesa");
   const fields = useStudio((s) => s.fields);
   const visible = useStudio((s) => s.visible);
   const corner = useStudio((s) => s.corner);
@@ -197,7 +199,7 @@ export function StampOverlay() {
       >
         <button
           type="button"
-          aria-label="Mover carimbo"
+          aria-label={t("moveStamp")}
           className={cn(
             "absolute z-10 flex size-3 items-center justify-center",
             top ? "-top-1.5" : "-bottom-1.5",

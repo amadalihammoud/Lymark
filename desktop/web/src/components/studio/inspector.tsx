@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Upload, X } from "lucide-react";
+import { useTranslations } from "use-intl";
 
 import { ColorField } from "@/components/studio/color-field";
 import { Segmented } from "@/components/studio/segmented";
@@ -14,32 +15,11 @@ import type {
 } from "@/store/studio";
 import { useStudio } from "@/store/studio";
 
-const TABS: { id: InspectorTab; label: string }[] = [
-  { id: "marca", label: "Marca" },
-  { id: "aparencia", label: "Aparência" },
-  { id: "dados", label: "Dados" },
-];
-
-const CORNERS: { id: StampCorner; label: string }[] = [
-  { id: "top-left", label: "Superior esquerdo" },
-  { id: "top-right", label: "Superior direito" },
-  { id: "bottom-left", label: "Inferior esquerdo" },
-  { id: "bottom-right", label: "Inferior direito" },
-];
-
-const SIZES: { id: StampSize; label: string }[] = [
-  { id: "sm", label: "Pequeno" },
-  { id: "md", label: "Médio" },
-  { id: "lg", label: "Grande" },
-];
-
-const FIELDS: { id: FieldKey; label: string }[] = [
-  { id: "time", label: "Hora" },
-  { id: "date", label: "Data" },
-  { id: "weekday", label: "Dia" },
-  { id: "address", label: "Endereço" },
-  { id: "code", label: "Código" },
-  { id: "brand", label: "Marca" },
+const CORNER_IDS: StampCorner[] = [
+  "top-left",
+  "top-right",
+  "bottom-left",
+  "bottom-right",
 ];
 
 function Label({ children }: { children: ReactNode }) {
@@ -77,10 +57,10 @@ function QuadrantMap({
   onSelect: (id: StampCorner) => void;
   extra?: { value: string; label: string; onSelect: () => void; active: boolean };
 }) {
+  const t = useTranslations("app.watermark");
   const media = useStudio((s) => s.media);
-  const active = extra?.active
-    ? extra.label
-    : CORNERS.find((c) => c.id === value)?.label;
+  const cornerLabel = (id: StampCorner) => t(`positions.${id}`);
+  const active = extra?.active ? extra.label : cornerLabel(value as StampCorner);
 
   return (
     <div className="space-y-2">
@@ -95,15 +75,15 @@ function QuadrantMap({
           <div className="absolute inset-0 bg-navy-900" />
         )}
         <div className="relative grid h-full grid-cols-2 grid-rows-2">
-          {CORNERS.map((c) => {
-            const on = value === c.id && !extra?.active;
+          {CORNER_IDS.map((id) => {
+            const on = value === id && !extra?.active;
             return (
               <button
-                key={c.id}
+                key={id}
                 type="button"
-                aria-label={c.label}
+                aria-label={cornerLabel(id)}
                 aria-pressed={on}
-                onClick={() => onSelect(c.id)}
+                onClick={() => onSelect(id)}
                 className={cn(
                   "transition-colors duration-[var(--motion-quick)]",
                   on ? "bg-ink/20 shadow-[inset_0_0_0_1px_var(--color-amber)]" : "hover:bg-lift",
@@ -136,14 +116,24 @@ function QuadrantMap({
 }
 
 function FieldChips() {
+  const t = useTranslations("app.mesa");
+  const tw = useTranslations("app.watermark");
   const visible = useStudio((s) => s.visible);
   const toggleField = useStudio((s) => s.toggleField);
   const band = useStudio((s) => s.band);
   const setBand = useStudio((s) => s.setBand);
+  const fields: { id: FieldKey; label: string }[] = [
+    { id: "time", label: tw("fields.time") },
+    { id: "date", label: tw("fields.date") },
+    { id: "weekday", label: tw("fields.weekday") },
+    { id: "address", label: tw("fields.address") },
+    { id: "code", label: tw("fields.code") },
+    { id: "brand", label: t("tabBrand") },
+  ];
 
   return (
     <div className="flex flex-wrap gap-x-3 gap-y-2">
-      {FIELDS.map((f) => {
+      {fields.map((f) => {
         const on = visible[f.id];
         return (
           <button
@@ -157,7 +147,7 @@ function FieldChips() {
             )}
           >
             {f.label}
-            {on ? <span className="absolute inset-x-0 bottom-0 h-px bg-amber" /> : null}
+            {on ? <span className="absolute inset-x-3 bottom-0 h-px bg-amber" /> : null}
           </button>
         );
       })}
@@ -170,7 +160,7 @@ function FieldChips() {
           band ? "text-ink" : "text-slate hover:text-mist",
         )}
       >
-        Faixa
+        {t("band")}
         {band ? <span className="absolute inset-x-0 bottom-0 h-px bg-amber" /> : null}
       </button>
     </div>
@@ -178,6 +168,8 @@ function FieldChips() {
 }
 
 function MarcaTab() {
+  const t = useTranslations("app.mesa");
+  const tw = useTranslations("app.watermark");
   const fields = useStudio((s) => s.fields);
   const setField = useStudio((s) => s.setField);
   const colorA = useStudio((s) => s.colorA);
@@ -194,13 +186,13 @@ function MarcaTab() {
   return (
     <div className="space-y-8">
       <section className="space-y-4">
-        <Label>Nome na foto</Label>
+        <Label>{t("nameOnPhoto")}</Label>
         <div className="space-y-2">
           <input
             value={fields.brandLy}
             onChange={(e) => setField("brandLy", e.target.value)}
             className="field"
-            aria-label="Primeira parte da marca"
+            aria-label={tw("brandFirstPart")}
           />
           <ColorField label="Ly" value={colorA} onChange={setColorA} hideLabel />
         </div>
@@ -209,36 +201,36 @@ function MarcaTab() {
             value={fields.brandMark}
             onChange={(e) => setField("brandMark", e.target.value)}
             className="field"
-            aria-label="Segunda parte da marca"
+            aria-label={tw("brandSecondPart")}
           />
           <ColorField label="mark" value={colorB} onChange={setColorB} hideLabel />
         </div>
       </section>
 
       <section className="space-y-2">
-        <Label>Complemento</Label>
+        <Label>{tw("complement")}</Label>
         <input
           value={fields.complement}
           onChange={(e) => setField("complement", e.target.value)}
-          placeholder="Vistoria, obra, entrega…"
+          placeholder={t("complementHint")}
           className="field"
         />
       </section>
 
       <section className="space-y-2">
-        <Label>Logotipo</Label>
+        <Label>{tw("logoPick")}</Label>
         {logoUrl ? (
           <div className="flex items-center gap-3 border border-hairline px-3 py-3">
             <img src={logoUrl} alt="" className="h-10 w-auto max-w-24 object-contain" />
             <Button variant="ghost" size="sm" onClick={() => setLogo(null)}>
-              Remover
+              {tw("logoRemove")}
             </Button>
           </div>
         ) : (
           <label className="flex h-24 cursor-pointer flex-col items-center justify-center gap-1 border border-hairline text-caption text-slate hover:border-mist hover:text-ink">
             <Upload className="size-4" />
-            Enviar logotipo
-            <span className="text-micro text-slate">PNG ou SVG · fundo transparente</span>
+            {t("sendLogo")}
+            <span className="text-micro text-slate">{t("logoHint")}</span>
             <input
               type="file"
               accept="image/*"
@@ -256,7 +248,9 @@ function MarcaTab() {
         )}
         {logoUrl ? (
           <>
-            <p className="text-micro text-slate">Tamanho {Math.round(logoScale * 100)}%</p>
+            <p className="text-micro text-slate">
+              {t("logoSize", { percent: Math.round(logoScale * 100) })}
+            </p>
             <input
               type="range"
               min={50}
@@ -266,13 +260,13 @@ function MarcaTab() {
               onChange={(e) => setLogoScale(Number(e.target.value) / 100)}
               className="w-full accent-amber"
             />
-            <Label>Posição do logo</Label>
+            <Label>{tw("logoPosition")}</Label>
             <QuadrantMap
               value={logoAt === "block" ? "" : logoAt}
               onSelect={(id) => setLogoAt(id)}
               extra={{
                 value: "block",
-                label: "Junto ao carimbo",
+                label: tw("logoPositionBlock"),
                 onSelect: () => setLogoAt("block"),
                 active: logoAt === "block",
               }}
@@ -285,6 +279,8 @@ function MarcaTab() {
 }
 
 function AparenciaTab() {
+  const t = useTranslations("app.mesa");
+  const tw = useTranslations("app.watermark");
   const corner = useStudio((s) => s.corner);
   const size = useStudio((s) => s.size);
   const visible = useStudio((s) => s.visible);
@@ -300,34 +296,42 @@ function AparenciaTab() {
   return (
     <div className="space-y-8">
       <section className="space-y-2">
-        <Label>Posição</Label>
+        <Label>{tw("positionTitle")}</Label>
         <QuadrantMap value={corner} onSelect={setCorner} />
       </section>
 
       <section className="space-y-2">
-        <Label>Tamanho</Label>
-        <Segmented value={size} onChange={setSize} options={SIZES} />
+        <Label>{tw("sizeTitle")}</Label>
+        <Segmented
+          value={size}
+          onChange={setSize}
+          options={[
+            { id: "sm" satisfies StampSize, label: tw("sizes.small") },
+            { id: "md", label: tw("sizes.medium") },
+            { id: "lg", label: tw("sizes.large") },
+          ]}
+        />
       </section>
 
       <section className="space-y-3">
-        <ColorField label="Texto" value={ink} onChange={setInk} />
-        <ColorField label="Barra" value={accent} onChange={setAccent} />
+        <ColorField label={tw("textColor")} value={ink} onChange={setInk} />
+        <ColorField label={t("bar")} value={accent} onChange={setAccent} />
       </section>
 
       <section className="space-y-2">
-        <Label>Na foto</Label>
+        <Label>{t("onPhoto")}</Label>
         <FieldChips />
       </section>
 
       {visible.code ? (
         <section className="space-y-2">
-          <Label>Código</Label>
+          <Label>{tw("fields.code")}</Label>
           <Segmented
             value={codePlacement}
             onChange={setCodePlacement}
             options={[
-              { id: "side", label: "Lateral" },
-              { id: "block", label: "Junto aos dados" },
+              { id: "side", label: t("codeSide") },
+              { id: "block", label: tw("codePlacements.block") },
             ]}
           />
         </section>
@@ -337,6 +341,8 @@ function AparenciaTab() {
 }
 
 function DadosTab() {
+  const t = useTranslations("app.mesa");
+  const tw = useTranslations("app.watermark");
   const fields = useStudio((s) => s.fields);
   const setField = useStudio((s) => s.setField);
   const setPlace = useStudio((s) => s.setPlace);
@@ -359,7 +365,7 @@ function DadosTab() {
       }
     } catch {
       setPlace({
-        address: "Localização indisponível — edite o endereço",
+        address: t("locateFailed"),
         city: fields.city,
         source: "manual",
       });
@@ -370,42 +376,42 @@ function DadosTab() {
 
   const sourceHint =
     addressSource === "exif"
-      ? "Lido do GPS desta foto. O endereço é o lugar; o código é que é único."
+      ? t("sourceExif")
       : addressSource === "device"
-        ? "GPS deste aparelho — não o da foto. Use se o arquivo veio sem coordenadas."
+        ? t("sourceDevice")
         : addressSource === "demo"
-          ? "Endereço de demonstração. Foto real usa o GPS dela, não este."
-          : "Editado. Fotos do mesmo canteiro podem repetir o lugar; cada export ganha outro código.";
+          ? t("sourceDemo")
+          : t("sourceManual");
 
   return (
     <div className="space-y-8">
       <section className="space-y-2">
-        <Label>Endereço</Label>
+        <Label>{tw("fields.address")}</Label>
         <textarea
           value={fields.address}
           onChange={(e) => setField("address", e.target.value)}
           rows={2}
-          placeholder="Sem GPS nesta foto — Localizar ou edite"
+          placeholder={t("addressPlaceholder")}
           className="field min-h-16 resize-none"
         />
         <input
           value={fields.city}
           onChange={(e) => setField("city", e.target.value)}
-          placeholder="Cidade"
+          placeholder={t("city")}
           className="field"
         />
         <TextAction onClick={() => void onLocate()}>
           {locating
-            ? "Localizando…"
+            ? t("locating")
             : media?.gps
-              ? "Usar GPS da foto"
-              : "GPS deste aparelho"}
+              ? t("usePhotoGps")
+              : t("useDeviceGps")}
         </TextAction>
         <p className="text-caption text-slate">{sourceHint}</p>
       </section>
 
       <section className="space-y-2">
-        <Label>Relógio e código</Label>
+        <Label>{t("clockAndCode")}</Label>
         <div className="grid grid-cols-2 gap-2">
           <input
             value={fields.time}
@@ -429,13 +435,11 @@ function DadosTab() {
           className="field font-mono tracking-wider"
         />
         <div className="flex flex-wrap gap-x-4 pt-1">
-          <TextAction onClick={syncClock}>Relógio de agora</TextAction>
-          <TextAction onClick={regenCode}>Outro código</TextAction>
+          <TextAction onClick={syncClock}>{t("clockNow")}</TextAction>
+          <TextAction onClick={regenCode}>{t("anotherCode")}</TextAction>
         </div>
         {media?.capturedAt ? (
-          <p className="text-caption text-slate">
-            Relógio inicial veio da data da foto.
-          </p>
+          <p className="text-caption text-slate">{t("clockFromPhoto")}</p>
         ) : null}
       </section>
     </div>
@@ -443,29 +447,35 @@ function DadosTab() {
 }
 
 export function Inspector() {
+  const t = useTranslations("app.mesa");
   const open = useStudio((s) => s.inspectorOpen);
   const tab = useStudio((s) => s.inspectorTab);
   const setInspectorTab = useStudio((s) => s.setInspectorTab);
   const setInspector = useStudio((s) => s.setInspector);
+  const tabs: { id: InspectorTab; label: string }[] = [
+    { id: "marca", label: t("tabBrand") },
+    { id: "aparencia", label: t("tabLook") },
+    { id: "dados", label: t("tabData") },
+  ];
 
   return (
     <aside
       className={cn(
-        "flex h-full shrink-0 flex-col overflow-hidden border-l border-hairline bg-navy-800 transition-[width,opacity] duration-[var(--motion-fast)] ease-[var(--ease-out)] max-sm:absolute max-sm:right-0 max-sm:z-10 max-sm:h-full max-sm:shadow-[var(--shadow-panel)]",
-        open ? "w-inspector opacity-100" : "w-0 opacity-0 border-l-0",
+        "flex h-full shrink-0 flex-col overflow-hidden border-s border-hairline bg-navy-800 transition-[width,opacity] duration-[var(--motion-fast)] ease-[var(--ease-out)] max-sm:absolute max-sm:end-0 max-sm:z-10 max-sm:h-full max-sm:shadow-[var(--shadow-panel)]",
+        open ? "w-inspector opacity-100" : "w-0 opacity-0 border-s-0",
       )}
       aria-hidden={!open}
     >
       <div className="flex h-full w-inspector flex-col">
         <header className="flex items-center gap-2 px-4 pt-3">
           <div className="min-w-0 flex-1">
-            <Segmented value={tab} onChange={setInspectorTab} options={TABS} />
+            <Segmented value={tab} onChange={setInspectorTab} options={tabs} />
           </div>
           <button
             type="button"
             onClick={() => setInspector(false)}
             className="relative flex size-7 shrink-0 items-center justify-center text-slate hover:text-ink after:absolute after:inset-[-6px]"
-            aria-label="Fechar painel"
+            aria-label={t("closePanel")}
           >
             <X className="size-3.5" />
           </button>

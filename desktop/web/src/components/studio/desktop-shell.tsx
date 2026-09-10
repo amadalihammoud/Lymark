@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
+import { useTranslations } from "use-intl";
 
 import { AccountPanel } from "@/components/studio/account-panel";
 import { BatchRail } from "@/components/studio/batch-rail";
@@ -9,6 +10,8 @@ import { ReportSheet } from "@/components/studio/report-sheet";
 import { StatusBar } from "@/components/studio/status-bar";
 import { Chrome } from "@/components/studio/toolbar";
 import { VerifySheet } from "@/components/studio/verify-sheet";
+import { useLocalePreference } from "@/i18n/locale-provider";
+import { clockFromDate } from "@/lib/datetime";
 import {
   downloadBlob,
   exportStampedJpeg,
@@ -30,7 +33,10 @@ function currentLook() {
 }
 
 export function DesktopShell() {
+  const t = useTranslations("app.mesa");
+  const { locale } = useLocalePreference();
   const fileRef = useRef<HTMLInputElement>(null);
+  const localeReady = useRef(false);
   const [saving, setSaving] = useState(false);
   const media = useStudio((s) => s.media);
   const mode = useStudio((s) => s.mode);
@@ -59,6 +65,26 @@ export function DesktopShell() {
       .catch(() => undefined);
   }, [setEntitlement]);
 
+  useEffect(() => {
+    if (!localeReady.current) {
+      localeReady.current = true;
+      return;
+    }
+    const state = useStudio.getState();
+    const captured = state.media?.capturedAt
+      ? new Date(state.media.capturedAt)
+      : null;
+    const clock =
+      captured && !Number.isNaN(captured.getTime())
+        ? clockFromDate(captured, locale)
+        : null;
+    if (clock) {
+      useStudio.setState({ fields: { ...state.fields, ...clock } });
+    } else {
+      state.syncClock();
+    }
+  }, [locale]);
+
   const onOpenFiles = useCallback(
     async (files: FileList | File[]) => {
       const list = Array.from(files);
@@ -67,7 +93,7 @@ export function DesktopShell() {
         const items = await Promise.all(list.map(fileToMedia));
         for (const item of items) {
           if (item.existingCode) {
-            toast.message("Esta foto já tem carimbo", {
+            toast.message(t("alreadyStampedToast"), {
               description: item.existingCode,
             });
           }
@@ -83,10 +109,10 @@ export function DesktopShell() {
           });
         });
       } catch {
-        toast.error("Não foi possível abrir o arquivo.");
+        toast.error(t("openFailed"));
       }
     },
-    [addBatch, mode, patchMedia, setMedia],
+    [addBatch, mode, patchMedia, setMedia, t],
   );
 
   const exportOne = useCallback(
@@ -126,7 +152,7 @@ export function DesktopShell() {
     if (!current) return;
     const billed = state.billedIds.includes(current.id);
     if (!canExportNow(state.entitlement, billed)) {
-      toast.error("Cota esgotada.");
+      toast.error(t("quotaExhausted"));
       return;
     }
     setSaving(true);
@@ -145,12 +171,12 @@ export function DesktopShell() {
         await exportOne(current);
       }
     } catch {
-      toast.error("Falha ao exportar.");
+      toast.error(t("exportFailed"));
       setBatchProgress(0, false);
     } finally {
       setSaving(false);
     }
-  }, [exportOne, selectBatch, setBatchProgress]);
+  }, [exportOne, selectBatch, setBatchProgress, t]);
 
   const onShare = useCallback(async () => {
     if (!media) return;
@@ -158,11 +184,11 @@ export function DesktopShell() {
     try {
       await exportOne(media, true);
     } catch {
-      toast.error("Não foi possível compartilhar.");
+      toast.error(t("shareFailed"));
     } finally {
       setSaving(false);
     }
-  }, [exportOne, media]);
+  }, [exportOne, media, t]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

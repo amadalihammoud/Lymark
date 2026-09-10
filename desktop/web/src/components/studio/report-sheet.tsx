@@ -1,6 +1,10 @@
+import { useTranslations } from "use-intl";
+
 import { useStudio } from "@/store/studio";
 
 export function ReportSheet() {
+  const t = useTranslations("app.mesa");
+  const tw = useTranslations("app.watermark");
   const open = useStudio((s) => s.reportOpen);
   const setReportOpen = useStudio((s) => s.setReportOpen);
   const media = useStudio((s) => s.media);
@@ -19,10 +23,10 @@ export function ReportSheet() {
         <header className="flex items-center justify-between border-b border-hairline px-5 py-3 print:border-zinc-300">
           <div>
             <p className="text-title font-medium text-ink print:text-zinc-900">
-              Relatório de captura
+              {t("reportTitle")}
             </p>
             <p className="text-caption text-slate print:text-zinc-600">
-              ABNT · foto carimbada e dados declarados
+              {t("reportSub")}
             </p>
           </div>
           <div className="flex gap-2 print:hidden">
@@ -31,14 +35,14 @@ export function ReportSheet() {
               onClick={printReport}
               className="h-8 rounded-sm bg-amber px-3 text-caption font-medium text-on-amber"
             >
-              Imprimir / PDF
+              {t("printPdf")}
             </button>
             <button
               type="button"
               onClick={() => setReportOpen(false)}
               className="h-8 rounded-sm border border-hairline px-3 text-caption text-mist hover:bg-lift"
             >
-              Fechar
+              {t("close")}
             </button>
           </div>
         </header>
@@ -46,30 +50,30 @@ export function ReportSheet() {
           {media?.kind === "image" ? (
             <img src={media.url} alt="" className="max-h-72 w-full object-contain" />
           ) : (
-            <p className="text-ui text-slate">Nenhuma foto nesta mesa.</p>
+            <p className="text-ui text-slate">{t("noPhotoHere")}</p>
           )}
           <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-ui">
             {visible.time ? (
               <>
-                <dt className="text-slate">Hora</dt>
+                <dt className="text-slate">{tw("fields.time")}</dt>
                 <dd className="font-medium">{fields.time}</dd>
               </>
             ) : null}
             {visible.date ? (
               <>
-                <dt className="text-slate">Data</dt>
+                <dt className="text-slate">{tw("fields.date")}</dt>
                 <dd className="font-medium">{fields.date}</dd>
               </>
             ) : null}
             {visible.weekday ? (
               <>
-                <dt className="text-slate">Dia</dt>
+                <dt className="text-slate">{tw("fields.weekday")}</dt>
                 <dd className="font-medium">{fields.weekday}</dd>
               </>
             ) : null}
             {visible.address ? (
               <>
-                <dt className="text-slate">Endereço</dt>
+                <dt className="text-slate">{tw("fields.address")}</dt>
                 <dd className="font-medium">
                   {fields.address}
                   <br />
@@ -79,26 +83,21 @@ export function ReportSheet() {
             ) : null}
             {visible.code ? (
               <>
-                <dt className="text-slate">Código</dt>
-                <dd className="font-mono tracking-wider">{fields.code}</dd>
+                <dt className="text-slate">{tw("fields.code")}</dt>
+                <dd className="font-medium font-mono tracking-wider">{fields.code}</dd>
               </>
             ) : null}
             {visible.brand ? (
               <>
-                <dt className="text-slate">Marca</dt>
+                <dt className="text-slate">{t("tabBrand")}</dt>
                 <dd className="font-medium">
                   {fields.brandLy}
                   {fields.brandMark}
-                  {fields.complement ? ` — ${fields.complement}` : ""}
+                  {fields.complement ? ` · ${fields.complement}` : ""}
                 </dd>
               </>
             ) : null}
           </dl>
-          <p className="text-micro leading-relaxed text-slate print:text-zinc-600">
-            O carimbo registra o que o emissor declarou no instante da exportação.
-            Não prova, por si, a veracidade do endereço ou da data. A autenticidade
-            do arquivo (integridade e autoria) é o selo do Lymark no app publicado.
-          </p>
         </div>
       </div>
     </div>
