@@ -28,6 +28,7 @@ const withoutClerk = (request: NextRequest) => {
   const { pathname } = request.nextUrl;
   if (pathname.startsWith('/api')) return;
   if (pathname === '/web' || pathname.startsWith('/web/')) return;
+  if (pathname === '/mesa' || pathname.startsWith('/mesa/')) return;
   return intl(request);
 };
 
@@ -52,5 +53,5 @@ export const config = {
    * só gastaria tempo. `/web` também fica de fora do matcher para não
    * negociar locale no SPA hospedado (reforço além do early-return acima).
    */
-  matcher: ['/((?!_next|_vercel|web(?:/|$)|.*\\..*).*)'],
+  matcher: ['/((?!_next|_vercel|web(?:/|$)|mesa(?:/|$)|.*\\..*).*)'],
 };

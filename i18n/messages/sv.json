@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Bilder, långa videor och 0 rapporter  den tungtvårdsversionen.",
         "field": "Datorer",
-        "heading": "Windows och Linux"
+        "heading": "Windows och Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Telefonappen, med kamera, galleri och stämplat video.",

@@ -16,6 +16,18 @@
     {
       "source": "/web/((?!_expo|assets|canvaskit\\.wasm|.*\\..*).*)",
       "destination": "/web/index.html"
+    },
+    {
+      "source": "/mesa",
+      "destination": "/mesa/index.html"
+    },
+    {
+      "source": "/mesa/",
+      "destination": "/mesa/index.html"
+    },
+    {
+      "source": "/mesa/((?!assets|.*\\..*).*)",
+      "destination": "/mesa/index.html"
     }
   ]
 }

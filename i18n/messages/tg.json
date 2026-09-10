@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Барномаҳои аксҳо, видеоҳои дароз ва PDF гузоришҳо  версияи вазнин.",
         "field": "Компютер",
-        "heading": "Windows ва Linux"
+        "heading": "Windows ва Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Барномаи телефонӣ, бо камера, галерея ва видеои штампшуда.",

@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Сүрөттөр, узун видеолор жана PDF  оор жүк түрүндөгү билдирүүлөр.",
         "field": "Компьютер",
-        "heading": "Windows жана Linux"
+        "heading": "Windows жана Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Телефондук колдонмо, камера, галерея жана видео тасмалары менен.",

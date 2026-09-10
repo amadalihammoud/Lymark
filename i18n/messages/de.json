@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Fotostapel, lange Videos und PDF-Berichte — die Version für schwere Arbeit.",
         "field": "Computer",
-        "heading": "Windows und Linux"
+        "heading": "Windows und Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Die Handy-App mit Kamera, Galerie und gestempeltem Video.",

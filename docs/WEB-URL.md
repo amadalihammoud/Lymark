@@ -7,6 +7,7 @@
 | `https://lymark.app` | Landing Next.js (`site/`) — marketing, termos, conta |
 | `https://lymark.app/entrar` | Login Clerk (site) → após sucesso redireciona para `/web` |
 | `https://lymark.app/web` | App Expo (export estático) no **mesmo** domínio |
+| `https://lymark.app/mesa` | Mesa de notebook/PC (`desktop/web`) no **mesmo** domínio |
 | `https://app.lymark.app` | Legado — redirecionar para `https://lymark.app/web` |
 
 O desktop Electron **não** usa `/web`: o script `web:build` exporta com base na
@@ -15,7 +16,8 @@ raiz. Só o build hospedado define `LYMARK_WEB_BASE=/web` (via
 
 ```
 npm run web:build          # desktop / local — sem LYMARK_WEB_BASE
-npm run web:build:hosted   # Vercel — baseUrl=/web + copia para site/public/web/
+npm run web:build:hosted   # Vercel — baseUrl=/web + copia para site/public/web/ + mesa em /mesa
+npm run mesa:build:hosted  # só a mesa → site/public/mesa/
 ```
 
 O script `scripts/publish-web-to-site.js` substitui `site/public/web/` pelo

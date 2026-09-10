@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Фотогрупи, довгі відео і PDF повідомляє  версію важкої служби.",
         "field": "Комп'ютер",
-        "heading": "Windows і Linux"
+        "heading": "Windows і Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Телефонна програма, з камерою, галереєю і штампованим відео.",

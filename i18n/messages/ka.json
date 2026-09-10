@@ -544,7 +544,8 @@
       "desktop": {
         "description": "ფოტო პარტიები, გრძელი ვიდეოები და PDF  მძიმე მოთხოვნილების ვერსია.",
         "field": "კომპიუტერი",
-        "heading": "Windows და Linux"
+        "heading": "Windows და Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "ტელეფონის აპლიკაცია, კამერა, გალერეა და ვიდეო.",

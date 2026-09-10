@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Lotes de fotos, videos largos e informes en PDF: la versión de trabajo pesado.",
         "field": "Ordenador",
-        "heading": "Windows y Linux"
+        "heading": "Windows y Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "La aplicación del móvil, con cámara, galería y vídeo sellado.",

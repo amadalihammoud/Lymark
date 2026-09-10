@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Foto lot, video të gjata dhe PDF raporte  version i rëndë.",
         "field": "Kompjuter",
-        "heading": "Windows dhe Linux"
+        "heading": "Windows dhe Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Aplikacioni i telefonit, me kamera, galeri dhe video të stampuar.",

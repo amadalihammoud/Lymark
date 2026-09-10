@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Фотографски парчиња, долги видеоклипови и PDF извештаи  тешка верзија.",
         "field": "Компјутер",
-        "heading": "Windows и Linux"
+        "heading": "Windows и Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Телефонската апликација, со камера, галерија и штампован видео.",

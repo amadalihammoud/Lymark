@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Lote de fotos, vídeo longo e relatórios em PDF — a versão de trabalho pesado.",
         "field": "Computador",
-        "heading": "Windows e Linux"
+        "heading": "Windows e Linux",
+        "action": "Abrir no navegador"
       },
       "googlePlay": {
         "description": "O aplicativo do celular, com câmera, galeria e vídeo carimbado.",

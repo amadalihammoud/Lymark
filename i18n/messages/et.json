@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Fototeadmed, pikad videod ja PDF raportid  rasketest töödest versioonidest.",
         "field": "Arvuti",
-        "heading": "Windows ja Linux"
+        "heading": "Windows ja Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Telefonikaap, kaamera, galeriiga ja stampitud videoga.",

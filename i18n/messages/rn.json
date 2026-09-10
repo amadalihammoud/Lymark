@@ -544,7 +544,8 @@
       "desktop": {
         "description": "Amafoto, amavidewo maremare n'amakuru ya PDF  ya serivisi z'inguvu zikomeye.",
         "field": "Urudandaza",
-        "heading": "Windows na Linux"
+        "heading": "Windows na Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "Ako gakoresho ko kuri telefone, karimwo kamera, igishushanyo c'amafoto be n'amafoto y'amafoto.",

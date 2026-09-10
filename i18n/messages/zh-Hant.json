@@ -544,7 +544,8 @@
       "desktop": {
         "description": "批次照片、長影片和 PDF 報告——重度工作版本。",
         "field": "電腦",
-        "heading": "Windows 和 Linux"
+        "heading": "Windows 和 Linux",
+        "action": "Open in the browser"
       },
       "googlePlay": {
         "description": "手機應用:相機、相簿和蓋章影片。",
