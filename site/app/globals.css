@@ -819,12 +819,18 @@ footer.site a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  /* Centraliza entrar/cadastrar na área útil abaixo do header. */
+  min-height: calc(100dvh - 5.5rem);
   padding-block: clamp(2rem, 6vw, 4rem) 3rem;
   gap: 1rem;
+  box-sizing: border-box;
 }
 
 .account-page {
   align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 0;
   max-width: var(--measure);
   margin-inline: auto;
 }

@@ -177,4 +177,35 @@ export const CLERK_APPEARANCE = {
     borderRadius: '0.6rem',
     fontFamily: 'var(--font-body), system-ui, sans-serif',
   },
+  elements: {
+    // Modal da landing: centraliza o card na viewport (não só no topo).
+    modalContent: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100%',
+    },
+    // Botões sociais (ícone em linha ou bloco): fundo branco pra o G/FB/TikTok
+    // não sumirem no navy do card.
+    socialButtonsIconButton: {
+      backgroundColor: '#ffffff',
+      border: '1px solid rgba(255, 255, 255, 0.35)',
+      boxShadow: 'none',
+      '&:hover': {
+        backgroundColor: '#f3f4f6',
+      },
+    },
+    socialButtonsBlockButton: {
+      backgroundColor: '#ffffff',
+      color: '#122b44',
+      border: '1px solid rgba(18, 43, 68, 0.12)',
+      boxShadow: 'none',
+      '&:hover': {
+        backgroundColor: '#f3f4f6',
+      },
+    },
+    socialButtonsBlockButtonText: {
+      color: '#122b44',
+    },
+  },
 } as const;
