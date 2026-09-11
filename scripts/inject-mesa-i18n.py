@@ -4,9 +4,13 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from mesa_i18n_rest import EXTRA  # noqa: E402
+
 MSG = ROOT / "i18n" / "messages"
 
 PT = {
@@ -67,11 +71,11 @@ PT = {
     "sourceManual": "Editado. Fotos do mesmo canteiro podem repetir o lugar; cada export ganha outro código.",
     "accessTitle": "Direito de acesso",
     "accessBody": "Identidade, pagamento e cota são camadas separadas. A foto não sai do aparelho — o selo assina um hash.",
-    "plan": "plano",
-    "quota": "cota",
-    "used": "usadas",
-    "left": "restantes",
-    "validUntil": "valido_ate",
+    "plan": "Plano",
+    "quota": "Cota",
+    "used": "Usadas",
+    "left": "Restantes",
+    "validUntil": "Válido até",
     "lastSeal": "Último selo",
     "lastSealOn": "embutido no JPEG",
     "lastSealOff": "exportou sem selo (sem rede ou sem cota)",
@@ -156,11 +160,11 @@ EN = {
     "sourceManual": "Edited. Photos from the same site may share a place; each export gets a new code.",
     "accessTitle": "Access rights",
     "accessBody": "Identity, payment and quota are separate layers. The photo stays on this device — the seal signs a hash.",
-    "plan": "plan",
-    "quota": "quota",
-    "used": "used",
-    "left": "left",
-    "validUntil": "valid_until",
+    "plan": "Plan",
+    "quota": "Quota",
+    "used": "Used",
+    "left": "Left",
+    "validUntil": "Valid until",
     "lastSeal": "Last seal",
     "lastSealOn": "embedded in the JPEG",
     "lastSealOff": "exported without a seal (offline or no quota)",
@@ -288,11 +292,11 @@ OVERRIDES: dict[str, dict[str, str]] = {
         "sourceManual": "Editado. Fotos de la misma obra pueden repetir el lugar; cada exportación gana otro código.",
         "accessTitle": "Derecho de acceso",
         "accessBody": "Identidad, pago y cuota son capas distintas. La foto no sale del aparato — el sello firma un hash.",
-        "plan": "plan",
-        "quota": "cuota",
-        "used": "usadas",
-        "left": "restantes",
-        "validUntil": "valido_hasta",
+        "plan": "Plan",
+        "quota": "Cuota",
+        "used": "Usadas",
+        "left": "Restantes",
+        "validUntil": "Válido hasta",
         "lastSeal": "Último sello",
         "lastSealOn": "incrustado en el JPEG",
         "lastSealOff": "exportó sin sello (sin red o sin cuota)",
@@ -376,11 +380,11 @@ OVERRIDES: dict[str, dict[str, str]] = {
         "sourceManual": "Bearbeitet. Fotos derselben Baustelle können denselben Ort teilen; jeder Export bekommt einen neuen Code.",
         "accessTitle": "Zugangsrecht",
         "accessBody": "Identität, Zahlung und Kontingent sind getrennte Schichten. Das Foto verlässt das Gerät nicht — das Siegel signiert einen Hash.",
-        "plan": "tarif",
-        "quota": "kontingent",
-        "used": "genutzt",
-        "left": "übrig",
-        "validUntil": "gueltig_bis",
+        "plan": "Tarif",
+        "quota": "Kontingent",
+        "used": "Genutzt",
+        "left": "Übrig",
+        "validUntil": "Gültig bis",
         "lastSeal": "Letztes Siegel",
         "lastSealOn": "im JPEG eingebettet",
         "lastSealOff": "ohne Siegel exportiert (kein Netz oder kein Kontingent)",
@@ -464,11 +468,11 @@ OVERRIDES: dict[str, dict[str, str]] = {
         "sourceManual": "Modifié. Les photos du même chantier peuvent répéter le lieu ; chaque export reçoit un autre code.",
         "accessTitle": "Droit d’accès",
         "accessBody": "Identité, paiement et quota sont des couches distinctes. La photo ne quitte pas l’appareil — le sceau signe un hash.",
-        "plan": "offre",
-        "quota": "quota",
-        "used": "utilisées",
-        "left": "restantes",
-        "validUntil": "valide_jusqua",
+        "plan": "Offre",
+        "quota": "Quota",
+        "used": "Utilisées",
+        "left": "Restantes",
+        "validUntil": "Valide jusqu’au",
         "lastSeal": "Dernier sceau",
         "lastSealOn": "intégré au JPEG",
         "lastSealOff": "exporté sans sceau (hors ligne ou sans quota)",
@@ -732,7 +736,7 @@ OVERRIDES: dict[str, dict[str, str]] = {
         "quota": "الحصة",
         "used": "المستخدم",
         "left": "المتبقي",
-        "validUntil": "صالح_حتى",
+        "validUntil": "صالح حتى",
         "lastSeal": "آخر ختم",
         "lastSealOn": "مضمّن في JPEG",
         "lastSealOff": "صُدّر بلا ختم (بلا شبكة أو بلا حصة)",
@@ -762,6 +766,8 @@ OVERRIDES: dict[str, dict[str, str]] = {
 
 
 def catalog_for(locale: str) -> dict[str, str]:
+    if locale in EXTRA:
+        return dict(EXTRA[locale])
     if locale in OVERRIDES:
         base = EN if locale not in ("pt", "pt-PT") else PT
         merged = dict(base)
@@ -890,11 +896,11 @@ def catalog_for(locale: str) -> dict[str, str]:
             "sourceManual": "Modificato. Foto dello stesso cantiere possono ripetere il luogo; ogni export ottiene un altro codice.",
             "accessTitle": "Diritto di accesso",
             "accessBody": "Identità, pagamento e quota sono strati distinti. La foto non lascia il dispositivo — il sigillo firma un hash.",
-            "plan": "piano",
-            "quota": "quota",
-            "used": "usate",
-            "left": "restanti",
-            "validUntil": "valido_fino",
+            "plan": "Piano",
+            "quota": "Quota",
+            "used": "Usate",
+            "left": "Restanti",
+            "validUntil": "Valido fino",
             "lastSeal": "Ultimo sigillo",
             "lastSealOn": "incorporato nel JPEG",
             "lastSealOff": "esportato senza sigillo (senza rete o senza quota)",
