@@ -13,7 +13,7 @@ import type {
   StampCorner,
   StampSize,
 } from "@/store/studio";
-import { useStudio } from "@/store/studio";
+import { formatPlace, parsePlace, useStudio } from "@/store/studio";
 
 const CORNER_IDS: StampCorner[] = [
   "top-left",
@@ -388,17 +388,14 @@ function DadosTab() {
       <section className="space-y-2">
         <Label>{tw("fields.address")}</Label>
         <textarea
-          value={fields.address}
-          onChange={(e) => setField("address", e.target.value)}
-          rows={2}
+          value={formatPlace(fields.address, fields.city)}
+          onChange={(e) => {
+            const next = parsePlace(e.target.value);
+            setPlace({ ...next, source: "manual" });
+          }}
+          rows={3}
           placeholder={t("addressPlaceholder")}
           className="field min-h-16 resize-none"
-        />
-        <input
-          value={fields.city}
-          onChange={(e) => setField("city", e.target.value)}
-          placeholder={t("city")}
-          className="field"
         />
         <TextAction onClick={() => void onLocate()}>
           {locating
