@@ -30,14 +30,15 @@ passo extra no dashboard).
 
 ### Build Command
 
-O Root Directory continua `site`, mas o studio precisa rodar na raiz do
-monorepo **antes** do `next build`:
+Root Directory = `site`. O `site/vercel.json` manda `npm ci` + `next build`.
+O studio Vite já está em `site/public/web/` (publicado por
+`npm run mesa:build:hosted` / `web:build:hosted` **antes** do commit).
+
+Para regenerar o studio localmente:
 
 ```bash
-cd .. && npm ci && npm run web:build:hosted && cd site && npm ci && next build
+npm run web:build:hosted
 ```
-
-(`web:build:hosted` hoje é alias de `mesa:build:hosted`.)
 
 ### Variáveis de ambiente (Production)
 
