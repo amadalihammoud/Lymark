@@ -204,7 +204,7 @@ OVERRIDES: dict[str, dict[str, str]] = {
     },
     "pt-PT": {
         **PT,
-        "needsAccount": "A versão web só abre com a conta Lymark.",
+        "needsAccount": "A versão web só abre com uma conta Lymark.",
         "saveFrame": "Guardar fotograma",
         "saveBatch": "Guardar lote",
         "saveBatchCount": "Guardar lote ({count})",
