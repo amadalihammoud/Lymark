@@ -10,9 +10,13 @@ export type StampCodeHit = {
 };
 
 export function extractCodeFromName(name: string): string | null {
-  const matches = name.toUpperCase().match(/[0-9A-F]{10,16}/g);
+  const base = name.replace(/\.[^.]+$/, "").toUpperCase();
+  const tagged = base.match(/^LYMARK-\d{8}-([0-9A-F]{10,16})$/);
+  if (tagged?.[1]) return tagged[1];
+  const matches = base.match(/[0-9A-F]{10,16}/g);
   if (!matches?.length) return null;
-  return matches.sort((a, b) => b.length - a.length)[0] ?? null;
+  const codes = matches.filter((token) => /[A-F]/.test(token));
+  return codes.sort((a, b) => b.length - a.length)[0] ?? null;
 }
 
 export function ncc(a: Float32Array, b: Float32Array): number {
