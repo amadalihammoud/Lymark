@@ -6,18 +6,16 @@
 | --- | --- |
 | `https://lymark.app` | Landing Next.js (`site/`) — marketing, termos, conta |
 | `https://lymark.app/entrar` | Login Clerk (site) → após sucesso redireciona para `/web` |
-| `https://lymark.app/web` | **Versão web canônica** — studio Vite (`desktop/web`) no **mesmo** domínio |
-| `https://lymark.app/mesa` | Alias legado — **308** para `/web` |
+| `https://lymark.app/web` | **Versão web** — studio Vite (`desktop/web`) no **mesmo** domínio |
 | `https://app.lymark.app` | Legado — redirecionar para `https://lymark.app/web` |
 
 O desktop Electron **não** usa `/web` hospedado: o script `web:build` ainda
 exporta o Expo com base na raiz para o shell Electron. A versão **no navegador**
-é o studio Vite (`mesa:build:hosted` / `web:build:hosted`).
+é o studio Vite (`web:build:hosted`).
 
 ```
 npm run web:build            # Expo → dist/ (Electron / local)
-npm run web:build:hosted     # alias → mesa:build:hosted (Vercel → site/public/web/)
-npm run mesa:build:hosted    # Vite studio com base /web/ → site/public/web/
+npm run web:build:hosted     # Vite studio com base /web/ → site/public/web/
 npm run expo:web:build:hosted # legado: Expo com LYMARK_WEB_BASE=/web (não usar na Vercel)
 ```
 
@@ -32,7 +30,7 @@ passo extra no dashboard).
 
 Root Directory = `site`. O `site/vercel.json` manda `npm ci` + `next build`.
 O studio Vite já está em `site/public/web/` (publicado por
-`npm run mesa:build:hosted` / `web:build:hosted` **antes** do commit).
+`npm run web:build:hosted` **antes** do commit).
 
 Para regenerar o studio localmente:
 
@@ -55,12 +53,11 @@ O SPA em `/web` lê a chave via `/api/public-config` (ou `VITE_CLERK_PUBLISHABLE
 `/web/index.html`, sem engolir `assets/`. Arquivos estáticos em `public/web/`
 têm precedência no filesystem da Vercel.
 
-### Redirect de `app.lymark.app` e `/mesa`
+### Redirect de `app.lymark.app`
 
 O redirect **308** está em `site/next.config.mjs` (`redirects()`):
 
 - qualquer path em `app.lymark.app` / `www.app.lymark.app` → `https://lymark.app/web`
-- `/mesa` e `/mesa/*` → `/web` e `/web/*`
 
 ## Fluxo do usuário
 
@@ -73,5 +70,5 @@ Conta (`/conta`) → botão “Abrir o aplicativo” aponta para `/web`.
 
 ## Proxy / i18n
 
-`site/proxy.ts` (middleware) ignora caminhos `/web` (e `/mesa` legado) — sem
-prefixo de locale do next-intl no SPA.
+`site/proxy.ts` (middleware) ignora caminhos `/web` — sem prefixo de locale
+do next-intl no SPA.

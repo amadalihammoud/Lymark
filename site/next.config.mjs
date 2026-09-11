@@ -17,23 +17,12 @@ const nextConfig = {
   outputFileTracingRoot: path.join(here, '..'),
 
   /**
-   * - `/mesa` → `/web` (nome antigo da versão web)
-   * - `app.lymark.app` (e www) → `https://lymark.app/web`
+   * `app.lymark.app` (e www) → `https://lymark.app/web`
    * Next 16: `has: [{ type: 'host', value }]` em redirects() é suportado.
    * permanent: true → 308.
    */
   async redirects() {
     return [
-      {
-        source: '/mesa',
-        destination: '/web',
-        permanent: true,
-      },
-      {
-        source: '/mesa/:path*',
-        destination: '/web/:path*',
-        permanent: true,
-      },
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'app.lymark.app' }],

@@ -23,8 +23,8 @@ npx expo start
 - **Celular (EAS)**: `eas build` / app da loja — inclui carimbo de vídeo (Android
   via Media3; ver disponibilidade do módulo no iOS).
 - **Web (navegador)**: studio Vite em `desktop/web/` — produção
-  **https://lymark.app/web** (`/mesa` redireciona; ver `docs/WEB-URL.md`).
-  Build hospedado: `npm run web:build:hosted` (alias de `mesa:build:hosted`).
+  **https://lymark.app/web** (ver `docs/WEB-URL.md`).
+  Build hospedado: `npm run web:build:hosted`.
 - **Desktop**: pasta `desktop/` (Electron + ffmpeg) — MP4, vídeo longo.
   O shell Electron ainda usa o export Expo (`npm run web:build` na raiz).
 
