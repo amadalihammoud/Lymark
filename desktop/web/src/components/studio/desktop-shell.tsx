@@ -33,7 +33,7 @@ function currentLook() {
 }
 
 export function DesktopShell() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const { locale } = useLocalePreference();
   const fileRef = useRef<HTMLInputElement>(null);
   const localeReady = useRef(false);

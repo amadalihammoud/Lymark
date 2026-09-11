@@ -436,7 +436,7 @@
         "24h": "24 uur"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Account controleren…",
       "openingSignIn": "Aanmelden openen…",
       "needsAccount": "Het bureau opent alleen met een Lymark-account.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Inloggen",
         "description": "Log in met je account en de app opent direct in de browser — op telefoon of computer.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Gebruik het nu, zonder installatie"
       },
       "desktop": {

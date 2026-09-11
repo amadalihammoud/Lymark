@@ -436,7 +436,7 @@
         "24h": "24 sagat"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Hasap barlanýar…",
       "openingSignIn": "Giriş açylýar…",
       "needsAccount": "Stol diňe Lymark hasaby bilen açylýar.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Giriş",
         "description": "Saýlan hasabyňyz bilen girüň we ulag  telefon ýa-da kompýuteriň brauzerinde açylýar.",
-        "field": "Brawzer",
+        "field": "Web",
         "heading": "Häzir ulan, goýbermek üçin hiç zat ýok"
       },
       "desktop": {

@@ -436,7 +436,7 @@
         "24h": "24 hodin"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Kontrola účtu…",
       "openingSignIn": "Otevírání přihlášení…",
       "needsAccount": "Stůl se otevře jen s účtem Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Přihlásit se",
         "description": "Přihlaste se svým účtem a aplikace se otevře přímo v prohlížeči  telefon nebo počítač.",
-        "field": "Průzkumník",
+        "field": "Web",
         "heading": "Použij ho teď, nic nainstalovat."
       },
       "desktop": {

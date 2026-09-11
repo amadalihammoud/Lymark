@@ -436,7 +436,7 @@
         "24h": "24 saat"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Hesab yoxlanır…",
       "openingSignIn": "Giriş açılır…",
       "needsAccount": "Masa yalnız Lymark hesabı ilə açılır.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "İmzalayın",
         "description": "Hesabınızla daxil olun və tətbiq brauzerdə açılır  telefon və ya kompüter.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "İndi istifadə edin, quraşdırmaq üçün heç bir şey yoxdur."
       },
       "desktop": {

@@ -124,7 +124,7 @@ function LogoMark({ height }: { height: number }) {
 }
 
 export function StampOverlay() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const fields = useStudio((s) => s.fields);
   const visible = useStudio((s) => s.visible);
   const corner = useStudio((s) => s.corner);

@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.3.0",
   "type": "module",
-  "description": "Mesa Lymark para notebook e PC: carimbo de data, hora e endereço na foto.",
+  "description": "Versão web Lymark para notebook e PC: carimbo de data, hora e endereço na foto.",
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5173",
     "build": "tsc --noEmit && vite build",

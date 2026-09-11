@@ -436,7 +436,7 @@
         "24h": "24 小时"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "正在核对账户…",
       "openingSignIn": "正在打开登录…",
       "needsAccount": "工作台仅在登录 Lymark 账户后打开。",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "登录",
         "description": "用账户登录后,应用直接在浏览器中打开——手机或电脑都可以。",
-        "field": "浏览器",
+        "field": "Web",
         "heading": "立即使用,无需安装"
       },
       "desktop": {

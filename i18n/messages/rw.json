@@ -436,7 +436,7 @@
         "24h": "amasaha 24"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Konti iragenzurwa…",
       "openingSignIn": "Kwinjira birafungurwa…",
       "needsAccount": "Ameza afunguka gusa hamwe na konti ya Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Shyiraho umukono",
         "description": "Ujye winjira kuri konti yawe maze porogaramu izafungura mu mushakisha  telefoni cyangwa orudinateri.",
-        "field": "Urubuga rw'abareba",
+        "field": "Web",
         "heading": "Koresha ubu, nta kintu cyo gushyiraho"
       },
       "desktop": {

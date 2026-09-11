@@ -436,7 +436,7 @@
         "24h": "24 godziny na dobę"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Sprawdzanie konta…",
       "openingSignIn": "Otwieranie logowania…",
       "needsAccount": "Biurko otwiera się tylko z kontem Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "/Paniepisz się",
         "description": "Zapisz się na konto i aplikacja otworzy się w przeglądarce  telefon lub komputer.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Użyj go teraz, nic do zainstalowania"
       },
       "desktop": {

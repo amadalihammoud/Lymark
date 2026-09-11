@@ -436,7 +436,7 @@
         "24h": "Saa 24"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Akaunti inakaguliwa…",
       "openingSignIn": "Kuingia kunafunguliwa…",
       "needsAccount": "Meza hufunguka tu kwa akaunti ya Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Saini katika",
         "description": "Ingia na akaunti yako na programu hufunguka moja kwa moja katika kivinjari  simu au kompyuta.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Tumia sasa, hakuna kitu cha kufunga"
       },
       "desktop": {

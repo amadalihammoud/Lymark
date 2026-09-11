@@ -436,7 +436,7 @@
         "24h": "24 sata"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Provjera računa…",
       "openingSignIn": "Otvaranje prijave…",
       "needsAccount": "Stol se otvara samo s Lymark računom.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Upiši se",
         "description": "Uđi u svoj nalog i aplikacija se otvara u pregledniku  telefon ili računar.",
-        "field": "Pretraživač",
+        "field": "Web",
         "heading": "Koristite ga sada, ništa instalirati"
       },
       "desktop": {

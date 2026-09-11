@@ -3,7 +3,7 @@ import { useTranslations } from "use-intl";
 import { useStudio } from "@/store/studio";
 
 export function ReportSheet() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tw = useTranslations("app.watermark");
   const open = useStudio((s) => s.reportOpen);
   const setReportOpen = useStudio((s) => s.setReportOpen);

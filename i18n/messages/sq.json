@@ -436,7 +436,7 @@
         "24h": "24 orë"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Po kontrollohet llogaria…",
       "openingSignIn": "Po hapet hyrja…",
       "needsAccount": "Tavolina hapet vetëm me një llogari Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Të regjistroheni",
         "description": "Llogjin me llogarinë tuaj dhe aplikacioni hapet drejt në shfletuesin  telefon ose kompjuter.",
-        "field": "Shfletuesi",
+        "field": "Web",
         "heading": "Përdorini tani, asgjë për të instaluar"
       },
       "desktop": {

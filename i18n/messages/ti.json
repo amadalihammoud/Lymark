@@ -436,7 +436,7 @@
         "24h": "24 ሰዓታት"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "ሕሳብ ይረጋገጽ ኣሎ…",
       "openingSignIn": "መእተዊ ይኽፈት ኣሎ…",
       "needsAccount": "እቲ ጠረጴዛ ብ Lymark ሕሳብ ጥራይ እዩ ዝኽፈት።",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "ኣቲኻ ግበር",
         "description": "ምስ መለያኻ ተመዝገብ፡ እቲ መተግበሪ ኣብ መርማሪ  ተሌፎን ወይ ኮምፒውተር ይኽፈት።",
-        "field": "መርበብ ሓበሬታ",
+        "field": "Web",
         "heading": "ሕጂ ተጠቐመሉ፡ ክትጭብጥ እትኽእል ነገር የለን።"
       },
       "desktop": {

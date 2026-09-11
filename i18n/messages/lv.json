@@ -436,7 +436,7 @@
         "24h": "24 stundas"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Konta pārbaude…",
       "openingSignIn": "Pieteikšanās atvēršana…",
       "needsAccount": "Galds atveras tikai ar Lymark kontu.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Pievienojiet",
         "description": "Atkāpjoties no interneta, aplikācija atvērsies brauciena  tālruņa vai datora.",
-        "field": "Braukers",
+        "field": "Web",
         "heading": "Izmantojiet to tagad, nekas uzstādīt"
       },
       "desktop": {

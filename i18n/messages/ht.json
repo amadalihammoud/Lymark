@@ -436,7 +436,7 @@
         "24h": "24 èdtan"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "N ap verifye kont lan…",
       "openingSignIn": "N ap ouvri koneksyon an…",
       "needsAccount": "Biwo a ouvri sèlman ak yon kont Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Enskri",
         "description": "Enskri ak kont ou epi app a louvri dwa nan navigatè a  telefòn oswa òdinatè.",
-        "field": "Navigatè",
+        "field": "Web",
         "heading": "Sèvi ak li kounye a, pa gen anyen enstale"
       },
       "desktop": {

@@ -436,7 +436,7 @@
         "24h": "24 jam"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Memeriksa akun…",
       "openingSignIn": "Membuka masuk…",
       "needsAccount": "Meja hanya terbuka dengan akun Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Takat kring ( (Mommy)",
         "description": "Masakat kring ( (i.e. pengguna Anda) akun anda dan aplikasi ini app ini langsung di browser anda.",
-        "field": "Broakat kringقار ( (e.",
+        "field": "Web",
         "heading": "Gunakanakat kringقار."
       },
       "desktop": {

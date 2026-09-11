@@ -436,7 +436,7 @@
         "24h": "24 heures"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Vérification du compte…",
       "openingSignIn": "Ouverture de la connexion…",
       "needsAccount": "Le bureau s’ouvre seulement avec un compte Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Se connecter",
         "description": "Connectez-vous avec votre compte et l'application s'ouvre dans le navigateur — téléphone ou ordinateur.",
-        "field": "Navigateur",
+        "field": "Web",
         "heading": "Utilisez-le maintenant, sans installation"
       },
       "desktop": {

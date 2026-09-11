@@ -436,10 +436,10 @@
         "24h": "24 horas"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "A conferir a conta…",
       "openingSignIn": "A abrir o login…",
-      "needsAccount": "A mesa só abre com a conta Lymark.",
+      "needsAccount": "A versão web só abre com a conta Lymark.",
       "signIn": "Entrar",
       "photo": "Foto",
       "video": "Vídeo",
@@ -474,7 +474,7 @@
       "dropVideo": "Solte um vídeo",
       "dropBatch": "Solte as fotos do lote",
       "toOpen": "para abrir",
-      "emptyDesk": "Mesa vazia",
+      "emptyDesk": "Web vazia",
       "alreadyStamped": "já carimbada",
       "alreadyStampedToast": "Esta foto já tem carimbo",
       "photoGps": "GPS da foto",
@@ -518,7 +518,7 @@
       "reportTitle": "Relatório de captura",
       "reportSub": "Foto carimbada e dados declarados",
       "printPdf": "Imprimir / PDF",
-      "noPhotoHere": "Nenhuma foto nesta mesa.",
+      "noPhotoHere": "Nenhuma foto nesta web.",
       "followBrowser": "Igual ao navegador",
       "codeInName": "O selo saiu, mas o código ainda está no nome do arquivo. Alguém reexportou — não é mais o original.",
       "codeOnStamp": "O carimbo ainda está na foto, mas o arquivo foi reexportado (WhatsApp, print, PDF). Não é mais o original.",
@@ -584,7 +584,7 @@
     },
     "availability": {
       "contact": "Para acompanhar o lançamento ou relatar um problema, escreva para <email>contato@lymark.app</email>.",
-      "description": "O Lymark está na versão 1.3.0, em testes no Android antes da publicação na Google Play. Não há versão para iOS nem versão web, e o aplicativo não coleta pagamento.",
+      "description": "O Lymark está na versão 1.3.0, em testes no Android antes da publicação na Google Play. A versão web já está no navegador. Não há versão para iOS, e o aplicativo não coleta pagamento.",
       "title": "Disponibilidade"
     },
     "data": {
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Abrir no navegador",
         "description": "A versão web completa no próprio navegador — carimbo, lote e relatórios, sem instalar.",
-        "field": "Navegador",
+        "field": "Web",
         "heading": "Use agora, sem instalar"
       },
       "desktop": {

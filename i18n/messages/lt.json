@@ -436,7 +436,7 @@
         "24h": "24 valandas"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Paskyros tikrinimas…",
       "openingSignIn": "Prisijungimo atidarymas…",
       "needsAccount": "Stalas atsidaro tik su Lymark paskyra.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Įskirstite",
         "description": "Įskokite savo paskyrą ir programa bus atidaryta tiesiai naršyklėje  telefonas ar kompiuteris.",
-        "field": "Lygiklis",
+        "field": "Web",
         "heading": "Naudok jį dabar, nieko įdiegti."
       },
       "desktop": {

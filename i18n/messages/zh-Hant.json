@@ -436,7 +436,7 @@
         "24h": "24 小時"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "正在核對帳戶…",
       "openingSignIn": "正在開啟登入…",
       "needsAccount": "工作台僅在登入 Lymark 帳戶後開啟。",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "登入",
         "description": "用賬戶登入後,應用直接在瀏覽器中開啟——手機或電腦都可以。",
-        "field": "瀏覽器",
+        "field": "Web",
         "heading": "立即使用,無需安裝"
       },
       "desktop": {

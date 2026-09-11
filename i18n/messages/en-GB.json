@@ -436,10 +436,10 @@
         "24h": "24-hour"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Checking your account…",
       "openingSignIn": "Opening sign-in…",
-      "needsAccount": "The desk only opens with a Lymark account.",
+      "needsAccount": "The web app only opens with a Lymark account.",
       "signIn": "Sign in",
       "photo": "Photo",
       "video": "Video",
@@ -474,7 +474,7 @@
       "dropVideo": "Drop a video",
       "dropBatch": "Drop the batch photos",
       "toOpen": "to open",
-      "emptyDesk": "Empty desk",
+      "emptyDesk": "Empty web",
       "alreadyStamped": "already stamped",
       "alreadyStampedToast": "This photo already has a stamp",
       "photoGps": "Photo GPS",
@@ -518,7 +518,7 @@
       "reportTitle": "Capture report",
       "reportSub": "Stamped photo and declared data",
       "printPdf": "Print / PDF",
-      "noPhotoHere": "No photo on this desk.",
+      "noPhotoHere": "No photo in this web app.",
       "followBrowser": "Match the browser",
       "codeInName": "The seal is gone, but the code is still in the file name. Someone re-exported it — this is no longer the original.",
       "codeOnStamp": "The stamp is still on the photo, but the file was re-exported (WhatsApp, print, PDF). This is no longer the original.",
@@ -584,7 +584,7 @@
     },
     "availability": {
       "contact": "To follow the launch or report a problem, write to <email>contato@lymark.app</email>.",
-      "description": "Lymark is at version 1.3.0, in testing on Android ahead of publication on Google Play. There is no iOS version and no web version, and the app collects no payment.",
+      "description": "Lymark is at version 1.3.0, in testing on Android ahead of publication on Google Play. The web app is available in the browser. There is no iOS version, and the app collects no payment.",
       "title": "Availability"
     },
     "data": {
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Sign in",
         "description": "Sign in with your account and the app opens right in the browser — phone or computer.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Use it now, nothing to install"
       },
       "desktop": {

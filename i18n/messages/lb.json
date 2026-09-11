@@ -436,7 +436,7 @@
         "24h": "24 Stonnen"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Kont gëtt iwwerpréift…",
       "openingSignIn": "Umeldung gëtt opgemaach…",
       "needsAccount": "Den Dësch geet nëmme mat engem Lymark-Kont op.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Logéiert Iech an",
         "description": "Logéiert Iech mat Ärem Kont an d'App opmécht direkt am Browser  Telefon oder Computer.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Benotzt et elo, näischt ze installéieren"
       },
       "desktop": {

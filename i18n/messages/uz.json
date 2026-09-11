@@ -436,7 +436,7 @@
         "24h": "24 soat"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Hisob tekshirilmoqda…",
       "openingSignIn": "Kirish ochilmoqda…",
       "needsAccount": "Stol faqat Lymark hisobi bilan ochiladi.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Kiring",
         "description": "Hisobvaraqingiz bilan kiring va dastur brauzerda ochiladi  telefon yoki kompyuter.",
-        "field": "Tarmoq",
+        "field": "Web",
         "heading": "Uni hozir ishlating, o'rnatish uchun hech narsa yo'q"
       },
       "desktop": {

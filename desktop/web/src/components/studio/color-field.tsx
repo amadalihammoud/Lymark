@@ -17,7 +17,7 @@ export function ColorField({
 }) {
   const t = useTranslations("app.watermark");
   const tPicker = useTranslations("app.colorPicker");
-  const tMesa = useTranslations("app.mesa");
+  const tWeb = useTranslations("app.web");
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const hex = parseHex(value) ?? value.toUpperCase();
@@ -83,7 +83,7 @@ export function ColorField({
         })}
         <button
           type="button"
-          aria-label={open ? `${label}: ${tMesa("close")}` : `${label}: ${tPicker("other")}`}
+          aria-label={open ? `${label}: ${tWeb("close")}` : `${label}: ${tPicker("other")}`}
           aria-pressed={open || !isSwatch}
           onClick={() => setOpen((v) => !v)}
           className={cn(
@@ -116,7 +116,7 @@ function InlinePicker({
   value: string;
   onChange: (color: string) => void;
 }) {
-  const tMesa = useTranslations("app.mesa");
+  const tWeb = useTranslations("app.web");
   const seed = hexToHsv(value);
   const [hsv, setHsv] = useState<Hsv>(seed);
   const [hexDraft, setHexDraft] = useState(hsvToHex(seed));
@@ -154,7 +154,7 @@ function InlinePicker({
           onChange={(event) => setFromHex(event.target.value)}
           spellCheck={false}
           className="field min-w-0 flex-1 font-mono tracking-wider"
-          aria-label={tMesa("hexColor")}
+          aria-label={tWeb("hexColor")}
         />
       </div>
     </div>

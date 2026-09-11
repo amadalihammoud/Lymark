@@ -436,7 +436,7 @@
         "24h": "24 órán keresztül"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Fiók ellenőrzése…",
       "openingSignIn": "Bejelentkezés megnyitása…",
       "needsAccount": "Az asztal csak Lymark-fiókkal nyílik.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Jelentkezz be",
         "description": "Jelentkezzen be a fiókjával, és az alkalmazás megnyitódik a böngészőben  telefon vagy számítógép.",
-        "field": "Próbáló",
+        "field": "Web",
         "heading": "Most használd, nincs telepíthető."
       },
       "desktop": {
