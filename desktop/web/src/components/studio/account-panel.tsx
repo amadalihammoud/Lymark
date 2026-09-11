@@ -2,6 +2,7 @@ import { useClerk, useUser } from "@clerk/clerk-react";
 import { useTranslations } from "use-intl";
 
 import { useLocalePreference } from "@/i18n/locale-provider";
+import { signInUrl } from "@/lib/clerk";
 import { remainingPhotos } from "@/lib/lymark/types";
 import { useStudio } from "@/store/studio";
 import { LOCALES_BY_NAME, LOCALE_NAMES } from "@i18n/locales";
@@ -34,9 +35,34 @@ export function AccountPanel() {
       />
       <aside className="relative flex max-h-[calc(100dvh-4.5rem)] w-80 flex-col overflow-hidden rounded-md border border-hairline bg-navy-800 shadow-[var(--shadow-panel)]">
         <div className="overflow-y-auto p-4">
-          <p className="text-title font-medium text-ink">{t("accessTitle")}</p>
+          <p className="text-title font-medium text-ink">{tAccount("title")}</p>
           <p className="mt-1 font-mono text-caption text-mist truncate">{email}</p>
-          <p className="mt-2 text-caption text-slate text-pretty">{t("accessBody")}</p>
+
+          <p className="mt-6 text-title font-medium text-ink">{tLang("label")}</p>
+          <p className="mt-1 text-caption text-slate">{tLang("automaticNote")}</p>
+          <div className="mt-2 max-h-48 overflow-y-auto border border-hairline">
+            <button
+              type="button"
+              className={`flex h-9 w-full items-center px-3 text-start text-caption ${isAutomatic ? "bg-lift text-ink" : "text-mist hover:bg-lift hover:text-ink"}`}
+              onClick={clearLocale}
+            >
+              {t("followBrowser")}
+            </button>
+            {LOCALES_BY_NAME.map((code) => (
+              <button
+                key={code}
+                type="button"
+                dir="auto"
+                className={`flex h-9 w-full items-center px-3 text-start text-caption ${!isAutomatic && locale === code ? "bg-lift text-ink" : "text-mist hover:bg-lift hover:text-ink"}`}
+                onClick={() => setLocale(code)}
+              >
+                {LOCALE_NAMES[code]}
+              </button>
+            ))}
+          </div>
+
+          <p className="mt-6 text-title font-medium text-ink">{t("accessTitle")}</p>
+          <p className="mt-1 text-caption text-slate text-pretty">{t("accessBody")}</p>
           <dl className="mt-4 space-y-2 font-mono text-caption text-mist">
             <div className="flex justify-between">
               <dt>{t("plan")}</dt>
@@ -70,35 +96,12 @@ export function AccountPanel() {
                 : t("lastSealNone")}
           </p>
 
-          <p className="mt-6 text-title font-medium text-ink">{tLang("label")}</p>
-          <p className="mt-1 text-caption text-slate">{tLang("automaticNote")}</p>
-          <div className="mt-2 max-h-48 overflow-y-auto border border-hairline">
-            <button
-              type="button"
-              className={`flex h-9 w-full items-center px-3 text-start text-caption ${isAutomatic ? "bg-lift text-ink" : "text-mist hover:bg-lift hover:text-ink"}`}
-              onClick={clearLocale}
-            >
-              {t("followBrowser")}
-            </button>
-            {LOCALES_BY_NAME.map((code) => (
-              <button
-                key={code}
-                type="button"
-                dir="auto"
-                className={`flex h-9 w-full items-center px-3 text-start text-caption ${!isAutomatic && locale === code ? "bg-lift text-ink" : "text-mist hover:bg-lift hover:text-ink"}`}
-                onClick={() => setLocale(code)}
-              >
-                {LOCALE_NAMES[code]}
-              </button>
-            ))}
-          </div>
-
           <button
             type="button"
             className="mt-5 text-caption font-medium text-mist hover:text-ink"
             onClick={() => {
               setAccountOpen(false);
-              void signOut({ redirectUrl: "/entrar?next=/mesa" });
+              void signOut({ redirectUrl: signInUrl(locale) });
             }}
           >
             {tAccount("signOut")}

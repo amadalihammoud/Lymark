@@ -5,17 +5,18 @@ import { Toaster } from "sonner";
 
 import { AuthGate, AuthMisconfigured } from "@/components/studio/auth-gate";
 import { DesktopShell } from "@/components/studio/desktop-shell";
-import { LocaleProvider } from "@/i18n/locale-provider";
-import { loadPublishableKey } from "@/lib/clerk";
+import { LocaleProvider, useLocalePreference } from "@/i18n/locale-provider";
+import { loadPublishableKey, signInUrl } from "@/lib/clerk";
 import "@/styles.css";
 
 const root = createRoot(document.getElementById("root")!);
 
 function App({ publishableKey }: { publishableKey: string }) {
+  const { locale } = useLocalePreference();
   return (
     <ClerkProvider
       publishableKey={publishableKey}
-      afterSignOutUrl="/entrar?next=/mesa"
+      afterSignOutUrl={signInUrl(locale)}
     >
       <AuthGate>
         <DesktopShell />

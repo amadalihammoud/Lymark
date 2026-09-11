@@ -1,6 +1,11 @@
-const SIGN_IN = "/entrar?next=/mesa";
+import { DEFAULT_LOCALE, type Locale } from "@i18n/locales";
 
-export const MESA_SIGN_IN_URL = SIGN_IN;
+const NEXT = "next=/mesa";
+
+export function signInUrl(locale: Locale = DEFAULT_LOCALE): string {
+  const path = locale === DEFAULT_LOCALE ? "/entrar" : `/${locale}/entrar`;
+  return `${path}?${NEXT}`;
+}
 
 export async function loadPublishableKey(): Promise<string> {
   const fromEnv = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -29,6 +34,6 @@ export async function loadPublishableKey(): Promise<string> {
   return "";
 }
 
-export function goToSignIn() {
-  window.location.replace(SIGN_IN);
+export function goToSignIn(locale?: Locale) {
+  window.location.replace(signInUrl(locale));
 }
