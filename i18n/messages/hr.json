@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Fotopreparati, dugogodišnja videozapisa i PDF izvješća  težka verzija.",
         "field": "Računalo",
-        "heading": "Windows i Linux",
-        "action": "Open in the browser"
+        "heading": "Windows i Linux"
       },
       "googlePlay": {
         "description": "Telefonska aplikacija, s kamerom, galerijom i video štampiranim.",

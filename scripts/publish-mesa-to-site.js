@@ -1,8 +1,8 @@
 /**
- * Publica a mesa de notebook/PC em `site/public/mesa/` para o Next servir
- * em https://lymark.app/mesa (mesmo domínio da landing).
+ * Publica a versão web (studio Vite em desktop/web) em `site/public/web/`
+ * para o Next servir em https://lymark.app/web (mesmo domínio da landing).
  *
- * Pré-requisito: `cd desktop/web && LYMARK_MESA_BASE=/mesa/ npm run build`
+ * Pré-requisito: `cd desktop/web && LYMARK_MESA_BASE=/web/ npm run build`
  *
  * CommonJS de propósito: o package.json da raiz não declara `type: module`.
  */
@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const SRC = path.join(__dirname, '..', 'desktop', 'web', 'dist');
-const DEST = path.join(__dirname, '..', 'site', 'public', 'mesa');
+const DEST = path.join(__dirname, '..', 'site', 'public', 'web');
 
 if (!fs.existsSync(SRC)) {
   console.error(`Pasta ${SRC} não existe. Rode o build da mesa antes.`);
@@ -29,4 +29,4 @@ fs.rmSync(DEST, { recursive: true, force: true });
 fs.cpSync(SRC, DEST, { recursive: true });
 
 const entries = fs.readdirSync(DEST);
-console.log(`Mesa copiada para site/public/mesa/ (${entries.length} itens)`);
+console.log(`Versão web (mesa) copiada para site/public/web/ (${entries.length} itens)`);

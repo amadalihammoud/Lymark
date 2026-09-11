@@ -632,8 +632,7 @@
       "desktop": {
         "description": "የፎቶዎች ጭነቶች, ረዥም ቪዲዮዎች እና PDF ሪፖርቶች  ከባድ-አገልግሎት ስሪት.",
         "field": "ኮምፒውተር",
-        "heading": "ዊንዶውስ እና ሊኑክስ",
-        "action": "Open in the browser"
+        "heading": "ዊንዶውስ እና ሊኑክስ"
       },
       "googlePlay": {
         "description": "የስልክ መተግበሪያ, ካሜራ, ማዕከለ እና የታተመ ቪዲዮ ጋር.",

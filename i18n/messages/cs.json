@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Fotografické zábory, dlouhé videa a PDF zprávy  těžko-duty verze.",
         "field": "Počítač",
-        "heading": "Windows a Linux",
-        "action": "Open in the browser"
+        "heading": "Windows a Linux"
       },
       "googlePlay": {
         "description": "Telefonní aplikace, s kamerou, galerie a odtlačeným videem.",

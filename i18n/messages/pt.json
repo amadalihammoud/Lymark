@@ -624,16 +624,15 @@
         "heading": "iPhone e iPad"
       },
       "browser": {
-        "action": "Entrar na conta",
-        "description": "Entre com a sua conta e o aplicativo abre no próprio navegador — celular ou computador.",
+        "action": "Abrir no navegador",
+        "description": "A versão web completa no próprio navegador — carimbo, lote e relatórios, sem instalar.",
         "field": "Navegador",
         "heading": "Use agora, sem instalar"
       },
       "desktop": {
-        "description": "Lote de fotos, vídeo longo e relatórios em PDF — a versão de trabalho pesado.",
+        "description": "Aplicativo nativo para Windows e Linux — lote pesado e atalhos do sistema. Em breve.",
         "field": "Computador",
-        "heading": "Windows e Linux",
-        "action": "Abrir no navegador"
+        "heading": "Windows e Linux"
       },
       "googlePlay": {
         "description": "O aplicativo do celular, com câmera, galeria e vídeo carimbado.",

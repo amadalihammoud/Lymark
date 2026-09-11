@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Пакеты фото, длинные видео и отчёты в PDF — версия для серьёзной работы.",
         "field": "Компьютер",
-        "heading": "Windows и Linux",
-        "action": "Open in the browser"
+        "heading": "Windows и Linux"
       },
       "googlePlay": {
         "description": "Мобильное приложение: камера, галерея и видео со штампом.",

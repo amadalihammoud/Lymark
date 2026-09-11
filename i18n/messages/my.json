@@ -632,8 +632,7 @@
       "desktop": {
         "description": "ဓာတ်ပုံအစုများ၊ ဗီဒီယိုရှည်များနှင့် 0 အစီရင်ခံစာများ  ဝန်ထမ်းအလေးချိန်ဗားရှင်းများ",
         "field": "ကွန်ပျူတာ",
-        "heading": "Windows နှင့် Linux",
-        "action": "Open in the browser"
+        "heading": "Windows နှင့် Linux"
       },
       "googlePlay": {
         "description": "ကင်မရာ၊ ဓာတ်ပုံခန်းနဲ့ ဗီဒီယို တံဆိပ်တပ်ထားတဲ့ ဖုန်း အက်ပ်ပါ။",

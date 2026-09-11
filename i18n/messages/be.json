@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Фотапаказы, доўгія відэа і PDF паведамляе  цяжкай версіі.",
         "field": "Кампутар",
-        "heading": "Windows і Linux",
-        "action": "Open in the browser"
+        "heading": "Windows і Linux"
       },
       "googlePlay": {
         "description": "Тэлефоннае прыкладанне, з камерай, галерэяй і штампаваным відэа.",

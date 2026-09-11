@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Fotografijos serijos, ilgos vaizdo įrašos ir PDF pranešimai  sunkus darbo versija.",
         "field": "Kompiuteris",
-        "heading": "Windows ir Linux",
-        "action": "Open in the browser"
+        "heading": "Windows ir Linux"
       },
       "googlePlay": {
         "description": "Telefoninė programa, su kamera, galerija ir žyma.",

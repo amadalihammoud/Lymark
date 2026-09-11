@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Vipande vya picha, video ndefu na PDF ripoti  hard-kazi toleo.",
         "field": "Kompyuta",
-        "heading": "Windows na Linux",
-        "action": "Open in the browser"
+        "heading": "Windows na Linux"
       },
       "googlePlay": {
         "description": "Programu ya simu, na kamera, sanaa na video stempu.",

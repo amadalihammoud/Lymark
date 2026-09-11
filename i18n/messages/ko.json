@@ -632,8 +632,7 @@
       "desktop": {
         "description": "사진 일괄 처리, 긴 동영상, PDF 보고서 — 본격 작업용 버전.",
         "field": "컴퓨터",
-        "heading": "Windows 및 Linux",
-        "action": "Open in the browser"
+        "heading": "Windows 및 Linux"
       },
       "googlePlay": {
         "description": "카메라, 갤러리, 스탬프 동영상을 갖춘 휴대폰 앱.",

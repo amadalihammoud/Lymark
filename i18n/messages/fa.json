@@ -632,8 +632,7 @@
       "desktop": {
         "description": "دسته های عکس، فیلم های طولانی و گزارش های PDF  نسخه سنگین.",
         "field": "کامپیوتر",
-        "heading": "ویندوز و لینوکس",
-        "action": "Open in the browser"
+        "heading": "ویندوز و لینوکس"
       },
       "googlePlay": {
         "description": "اپلیکیشن تلفن، با دوربین، گالری و ویدئو پرتاب شده",

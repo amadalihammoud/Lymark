@@ -624,16 +624,15 @@
         "heading": "iPhone and iPad"
       },
       "browser": {
-        "action": "Sign in",
-        "description": "Sign in with your account and the app opens right in the browser — phone or computer.",
+        "action": "Open in the browser",
+        "description": "The full web app in your browser — stamp, batches and reports, nothing to install.",
         "field": "Browser",
         "heading": "Use it now, nothing to install"
       },
       "desktop": {
-        "description": "Photo batches, long videos and PDF reports — the heavy-duty version.",
+        "description": "Native app for Windows and Linux — heavy batches and system shortcuts. Coming soon.",
         "field": "Computer",
-        "heading": "Windows and Linux",
-        "action": "Open in the browser"
+        "heading": "Windows and Linux"
       },
       "googlePlay": {
         "description": "The phone app, with camera, gallery and stamped video.",

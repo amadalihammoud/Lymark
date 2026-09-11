@@ -104,7 +104,7 @@ export default async function AccountPage({ params }: { params: Promise<{ locale
       {/*
         A porta principal depois do login: quem entrou veio usar o aplicativo,
         e sem este botão a pessoa ficava na conta sem saber por onde seguir.
-        Destino: `/web` no mesmo domínio (antes era app.lymark.app).
+        Destino: `/web` (versão web canônica).
       */}
       <p className="cta account-open-app">
         <a href="/web">{t('openApp')}</a>

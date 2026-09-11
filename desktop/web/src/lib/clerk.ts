@@ -1,6 +1,6 @@
 import { DEFAULT_LOCALE, type Locale } from "@i18n/locales";
 
-const NEXT = "next=/mesa";
+const NEXT = "next=/web";
 
 export function signInUrl(locale: Locale = DEFAULT_LOCALE): string {
   const path = locale === DEFAULT_LOCALE ? "/entrar" : `/${locale}/entrar`;

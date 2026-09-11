@@ -6,86 +6,69 @@
 | --- | --- |
 | `https://lymark.app` | Landing Next.js (`site/`) — marketing, termos, conta |
 | `https://lymark.app/entrar` | Login Clerk (site) → após sucesso redireciona para `/web` |
-| `https://lymark.app/web` | App Expo (export estático) no **mesmo** domínio |
-| `https://lymark.app/mesa` | Mesa de notebook/PC (`desktop/web`) no **mesmo** domínio |
+| `https://lymark.app/web` | **Versão web canônica** — studio Vite (`desktop/web`) no **mesmo** domínio |
+| `https://lymark.app/mesa` | Alias legado — **308** para `/web` |
 | `https://app.lymark.app` | Legado — redirecionar para `https://lymark.app/web` |
 
-O desktop Electron **não** usa `/web`: o script `web:build` exporta com base na
-raiz. Só o build hospedado define `LYMARK_WEB_BASE=/web` (via
-`app.config.js` → `expo.experiments.baseUrl`).
+O desktop Electron **não** usa `/web` hospedado: o script `web:build` ainda
+exporta o Expo com base na raiz para o shell Electron. A versão **no navegador**
+é o studio Vite (`mesa:build:hosted` / `web:build:hosted`).
 
 ```
-npm run web:build          # desktop / local — sem LYMARK_WEB_BASE
-npm run web:build:hosted   # Vercel — baseUrl=/web + copia para site/public/web/ + mesa em /mesa
-npm run mesa:build:hosted  # só a mesa → site/public/mesa/
+npm run web:build            # Expo → dist/ (Electron / local)
+npm run web:build:hosted     # alias → mesa:build:hosted (Vercel → site/public/web/)
+npm run mesa:build:hosted    # Vite studio com base /web/ → site/public/web/
+npm run expo:web:build:hosted # legado: Expo com LYMARK_WEB_BASE=/web (não usar na Vercel)
 ```
 
-O script `scripts/publish-web-to-site.js` substitui `site/public/web/` pelo
-conteúdo de `dist/` (inclui **`canvaskit.wasm`** — obrigatório para o Skia).
-Esse conteúdo **não** entra no git (`site/.gitignore`).
+O script `scripts/publish-mesa-to-site.js` substitui `site/public/web/` pelo
+build do Vite. Esse conteúdo **não** entra no git (`site/.gitignore`).
 
 ## Vercel (projeto `lymark`, Root Directory = `site`)
 
 ### Build Command
 
-O Root Directory continua `site`, mas o export do Expo precisa rodar na raiz
-do monorepo **antes** do `next build`:
+O Root Directory continua `site`, mas o studio precisa rodar na raiz do
+monorepo **antes** do `next build`:
 
 ```bash
 cd .. && npm ci && npm run web:build:hosted && cd site && npm ci && next build
 ```
 
-(Install Command do Next pode ficar vazio ou `npm ci` só em `site` se o
-comando de build já instala os dois.)
+(`web:build:hosted` hoje é alias de `mesa:build:hosted`.)
 
 ### Variáveis de ambiente (Production)
 
-No momento do **`expo export`** (`web:build:hosted`), a chave do Clerk precisa
-estar disponível como `EXPO_PUBLIC_*` — o Metro **inlina** no bundle. Defina
-no projeto Vercel:
-
 | Nome | Valor |
 | --- | --- |
-| `EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` | mesma chave publicável do Clerk (obrigatória no export) |
-| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | já usada pelo site Next |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | chave publicável do Clerk (site + `/api/public-config` para o SPA) |
 | `CLERK_SECRET_KEY` | já usada pelo site Next |
 
-Pode copiar o valor de `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` para
-`EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` (são a mesma chave publicável). Sem
-`EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY` no build hospedado, o AuthGate em produção
-**bloqueia** o app (fail-closed).
-
-Opcional: `EXPO_PUBLIC_ENTITLEMENTS_URL` (padrão já aponta para
-`https://lymark.app/api/entitlements`).
+O SPA em `/web` lê a chave via `/api/public-config` (ou `VITE_CLERK_PUBLISHABLE_KEY` no build do Vite, se definida).
 
 ### SPA em `/web`
 
-`site/vercel.json` reescreve rotas do Expo Router (sem extensão de arquivo)
-para `/web/index.html`, sem engolir `_expo/`, `assets/` nem `canvaskit.wasm`.
-Arquivos estáticos em `public/web/` têm precedência no filesystem da Vercel.
+`site/vercel.json` reescreve rotas sem extensão de arquivo para
+`/web/index.html`, sem engolir `assets/`. Arquivos estáticos em `public/web/`
+têm precedência no filesystem da Vercel.
 
-### Redirect de `app.lymark.app`
+### Redirect de `app.lymark.app` e `/mesa`
 
-No painel Vercel → Domains do projeto **`lymark`** (Root Directory = `site`;
-**não** o projeto antigo `lymark-app`):
+O redirect **308** está em `site/next.config.mjs` (`redirects()`):
 
-1. Adicione o domínio `app.lymark.app` (e, se existir, `www.app.lymark.app`)
-   ao projeto **lymark**.
-2. Não configure redirect no painel de Domains — o Next já trata isso.
-
-O redirect **308** está em `site/next.config.mjs` (`redirects()` com
-`has: [{ type: 'host', value }]`): qualquer path em `app.lymark.app` ou
-`www.app.lymark.app` vai para `https://lymark.app/web`.
+- qualquer path em `app.lymark.app` / `www.app.lymark.app` → `https://lymark.app/web`
+- `/mesa` e `/mesa/*` → `/web` e `/web/*`
 
 ## Fluxo do usuário
 
-1. Landing → “Abrir no navegador” → `/entrar`
-2. Clerk autentica → `forceRedirectUrl=/web`
-3. App Expo em `/web` (AuthGate + sessão Clerk no mesmo domínio)
+1. Landing → “Abrir no navegador” → `/web` (ou `/entrar` no hero)
+2. Sem sessão, o SPA manda para `/entrar?next=/web`
+3. Clerk autentica → `forceRedirectUrl=/web`
+4. Studio Vite em `/web`
 
 Conta (`/conta`) → botão “Abrir o aplicativo” aponta para `/web`.
 
 ## Proxy / i18n
 
-`site/proxy.ts` (middleware) ignora caminhos `/web` — sem prefixo de locale
-do next-intl no SPA.
+`site/proxy.ts` (middleware) ignora caminhos `/web` (e `/mesa` legado) — sem
+prefixo de locale do next-intl no SPA.

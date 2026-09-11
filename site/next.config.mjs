@@ -17,12 +17,23 @@ const nextConfig = {
   outputFileTracingRoot: path.join(here, '..'),
 
   /**
-   * Domínio legado `app.lymark.app` (e www) → app hospedado em /web.
+   * - `/mesa` → `/web` (nome antigo da versão web)
+   * - `app.lymark.app` (e www) → `https://lymark.app/web`
    * Next 16: `has: [{ type: 'host', value }]` em redirects() é suportado.
-   * permanent: true → 308. Qualquer path no host antigo cai em /web.
+   * permanent: true → 308.
    */
   async redirects() {
     return [
+      {
+        source: '/mesa',
+        destination: '/web',
+        permanent: true,
+      },
+      {
+        source: '/mesa/:path*',
+        destination: '/web/:path*',
+        permanent: true,
+      },
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'app.lymark.app' }],
@@ -42,18 +53,6 @@ const nextConfig = {
     return [
       {
         source: '/web/:path*',
-        headers: [
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'X-Frame-Options', value: 'DENY' },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(self), microphone=(self), geolocation=(self), interest-cohort=()',
-          },
-        ],
-      },
-      {
-        source: '/mesa/:path*',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },

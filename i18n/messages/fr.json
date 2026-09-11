@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Lots de photos, vidéos longues et rapports PDF — la version de travail intensif.",
         "field": "Ordinateur",
-        "heading": "Windows et Linux",
-        "action": "Open in the browser"
+        "heading": "Windows et Linux"
       },
       "googlePlay": {
         "description": "L'application mobile, avec caméra, galerie et vidéo tamponnée.",

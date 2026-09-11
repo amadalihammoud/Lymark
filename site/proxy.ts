@@ -15,10 +15,10 @@ const intl = createMiddleware(routing);
  * chamada da API quebraria o aplicativo). Por dentro, o next-intl decide o
  * idioma só das páginas.
  *
- * `/web` é o export estático do Expo (SPA). Não passa pelo next-intl: não tem
- * locale de site, e um redirect de prefixo quebraria o `baseUrl` e as rotas
- * do app. Arquivos com extensão já saem pelo `matcher`; aqui pulamos o
- * prefixo `/web` inteiro.
+ * `/web` é a versão web (SPA Vite). Não passa pelo next-intl: não tem locale
+ * de site, e um redirect de prefixo quebraria o `base` e as rotas do app.
+ * `/mesa` ainda é ignorado porque redireciona para `/web`. Arquivos com
+ * extensão já saem pelo `matcher`.
  *
  * Nada aqui exige login. A porta de entrada é decisão de cada tela — a landing
  * e os documentos legais são públicos por definição —, e a API confere o token

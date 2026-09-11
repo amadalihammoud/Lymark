@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Fotografski seriji, dolgi videoposnetki in PDF poročajo o  težki različici.",
         "field": "Računalnik",
-        "heading": "Windows in Linux",
-        "action": "Open in the browser"
+        "heading": "Windows in Linux"
       },
       "googlePlay": {
         "description": "Telefonska aplikacija, s fotoaparatom, galerijo in video.",

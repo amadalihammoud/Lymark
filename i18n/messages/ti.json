@@ -632,8 +632,7 @@
       "desktop": {
         "description": "ናይ ስእሊ ጭፍራታት፡ ነዊሕ ቪድዮታትን PDF ጸብጻባት  ናይ ከቢድ ኣገልግሎት ወግዓዊ።",
         "field": "ኮምፕዩተር",
-        "heading": "Windowsን ሊኑክስ",
-        "action": "Open in the browser"
+        "heading": "Windowsን ሊኑክስ"
       },
       "googlePlay": {
         "description": "እቲ ናይ ስልኪ ኣፕ፡ ካሜራ፡ ጋለሪን ዝተሓተ ቪድዮን ዘለዎ።",

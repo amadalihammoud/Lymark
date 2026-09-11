@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Foto serişdeler, uzyn videolar we PDF habarlar  agyr serişde.",
         "field": "Kompýuter",
-        "heading": "Windows we Linux",
-        "action": "Open in the browser"
+        "heading": "Windows we Linux"
       },
       "googlePlay": {
         "description": "Telefon alyşy, kamera, galereýa we möhürlenen video bilen.",

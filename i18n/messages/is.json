@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Myndaspar বৈশিষ্ট্য, langar myndbönd og PDF skýrslur  þungt starf útgáfa.",
         "field": "Tölvur",
-        "heading": "Windows og Linux",
-        "action": "Open in the browser"
+        "heading": "Windows og Linux"
       },
       "googlePlay": {
         "description": "Símappið, með myndavél, myndasafn og stemplað myndband.",

@@ -13,7 +13,7 @@ npm run dev
 
 Abre em `http://localhost:5173`. Arraste uma foto ou use Abrir foto.
 
-Produção: **https://lymark.app/mesa** (gerado por `npm run mesa:build:hosted`).
+Produção: **https://lymark.app/web** (gerado por `npm run mesa:build:hosted`).
 
 ```
 npm run build     # dist/ — o Electron pode servir isso no lugar do Expo web
@@ -22,4 +22,4 @@ npm run test
 ```
 
 O selo criptográfico e a cota são da conta. Sem sessão a mesa redireciona
-para `/entrar?next=/mesa`. Depois do login volta para cá.
+para `/entrar?next=/web`. Depois do login volta para cá.

@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Fotobatches, lange video’s en PDF-rapporten — de versie voor zwaar werk.",
         "field": "Computer",
-        "heading": "Windows en Linux",
-        "action": "Open in the browser"
+        "heading": "Windows en Linux"
       },
       "googlePlay": {
         "description": "De telefoon-app, met camera, galerij en gestempelde video.",

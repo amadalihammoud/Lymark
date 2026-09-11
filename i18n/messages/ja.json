@@ -632,8 +632,7 @@
       "desktop": {
         "description": "写真の一括処理、長い動画、PDFレポート — 本格作業向けのバージョン。",
         "field": "パソコン",
-        "heading": "Windows・Linux",
-        "action": "Open in the browser"
+        "heading": "Windows・Linux"
       },
       "googlePlay": {
         "description": "カメラ・ギャラリー・スタンプ付き動画に対応したスマホアプリ。",

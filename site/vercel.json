@@ -2,10 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/canvaskit.wasm",
-      "destination": "/web/canvaskit.wasm"
-    },
-    {
       "source": "/web",
       "destination": "/web/index.html"
     },
@@ -14,20 +10,8 @@
       "destination": "/web/index.html"
     },
     {
-      "source": "/web/((?!_expo|assets|canvaskit\\.wasm|.*\\..*).*)",
+      "source": "/web/((?!assets|.*\..*).*)",
       "destination": "/web/index.html"
-    },
-    {
-      "source": "/mesa",
-      "destination": "/mesa/index.html"
-    },
-    {
-      "source": "/mesa/",
-      "destination": "/mesa/index.html"
-    },
-    {
-      "source": "/mesa/((?!assets|.*\\..*).*)",
-      "destination": "/mesa/index.html"
     }
   ]
 }

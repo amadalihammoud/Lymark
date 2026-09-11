@@ -632,8 +632,7 @@
       "desktop": {
         "description": "סוגי תמונות, סרטונים ארוכים ודיווחים של PDF",
         "field": "מחשב",
-        "heading": "וίνדאו ולינוקס",
-        "action": "Open in the browser"
+        "heading": "וίνדאו ולינוקס"
       },
       "googlePlay": {
         "description": "אפליקציית הטלפון, עם מצלמה, גלריה וידאו מודפס.",
