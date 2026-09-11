@@ -152,7 +152,7 @@ const DEMO_FIELDS: StampFields = {
 const DEMO_MEDIA: MediaItem = {
   id: "demo",
   kind: "image",
-  url: "/demo-obra.jpg",
+  url: `${import.meta.env.BASE_URL}demo-obra.jpg`,
   name: "obra-demo.jpg",
   width: 1600,
   height: 1200,
