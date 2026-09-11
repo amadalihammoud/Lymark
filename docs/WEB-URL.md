@@ -22,7 +22,9 @@ npm run expo:web:build:hosted # legado: Expo com LYMARK_WEB_BASE=/web (não usar
 ```
 
 O script `scripts/publish-mesa-to-site.js` substitui `site/public/web/` pelo
-build do Vite. Esse conteúdo **não** entra no git (`site/.gitignore`).
+build do Vite. Esse conteúdo **entra no git** para o `next build` da Vercel
+servir `/web` (o Root Directory é `site`; o studio não pode depender de um
+passo extra no dashboard).
 
 ## Vercel (projeto `lymark`, Root Directory = `site`)
 
