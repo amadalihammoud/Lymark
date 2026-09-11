@@ -1,7 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm ci",
-  "buildCommand": "next build",
   "rewrites": [
     {
       "source": "/web",
@@ -12,7 +10,7 @@
       "destination": "/web/index.html"
     },
     {
-      "source": "/web/((?!assets|.*\..*).*)",
+      "source": "/web/((?!assets|.*\\..*).*)",
       "destination": "/web/index.html"
     }
   ]
