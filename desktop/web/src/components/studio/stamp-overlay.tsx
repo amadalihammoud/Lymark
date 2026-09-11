@@ -3,7 +3,7 @@ import { useTranslations } from "use-intl";
 
 import { cn } from "@/lib/utils";
 import type { FieldKey, StampCorner } from "@/store/studio";
-import { useStudio } from "@/store/studio";
+import { formatPlace, parsePlace, useStudio } from "@/store/studio";
 
 const SIZE = {
   sm: { clock: "text-3xl", body: "text-micro", code: "text-micro", gap: "gap-0.5", logo: 22 },
@@ -25,22 +25,49 @@ function Editable({
   const editing = useStudio((s) => s.editing);
   const setEditing = useStudio((s) => s.setEditing);
   const setField = useStudio((s) => s.setField);
+  const setPlace = useStudio((s) => s.setPlace);
   const fields = useStudio((s) => s.fields);
 
   if (editing === field) {
     const value =
       field === "address"
-        ? fields.address
+        ? formatPlace(fields.address, fields.city)
         : field === "brand"
           ? `${fields.brandLy}${fields.brandMark}`
           : String(fields[field as keyof typeof fields] ?? "");
+    const box = cn(
+      "min-w-16 bg-navy-900/80 text-ink outline-none ring-1 ring-amber/70 rounded-xs px-1 py-0.5",
+      className,
+    );
+    if (field === "address") {
+      const lines = Math.min(4, Math.max(2, value.split("\n").length));
+      return (
+        <textarea
+          autoFocus
+          rows={lines}
+          value={value}
+          onChange={(e) => {
+            const next = parsePlace(e.target.value);
+            setPlace({ ...next, source: "manual" });
+          }}
+          onBlur={() => setEditing(null)}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") setEditing(null);
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              setEditing(null);
+            }
+          }}
+          className={cn(box, "block w-full max-w-72 resize-none leading-snug")}
+        />
+      );
+    }
     return (
       <input
         autoFocus
         value={value}
         onChange={(e) => {
-          if (field === "address") setField("address", e.target.value);
-          else if (field === "time") setField("time", e.target.value);
+          if (field === "time") setField("time", e.target.value);
           else if (field === "date") setField("date", e.target.value);
           else if (field === "weekday") setField("weekday", e.target.value);
           else if (field === "code") setField("code", e.target.value);
@@ -72,6 +99,7 @@ function Editable({
       }}
       className={cn(
         "rounded-xs px-0.5 text-left hover:ring-1 hover:ring-amber/50",
+        field === "address" && "whitespace-pre-wrap",
         className,
       )}
       style={style}
@@ -188,7 +216,7 @@ export function StampOverlay() {
       <div
         data-stamp
         className={cn(
-          "pointer-events-auto absolute flex max-w-sm flex-col stamp-ink",
+          "pointer-events-auto absolute flex max-w-sm flex-col stamp-ink group",
           s.gap,
           band && "rounded-sm bg-navy-900/55 px-3 py-2",
           top ? "top-4" : "bottom-4",
@@ -200,11 +228,12 @@ export function StampOverlay() {
         <button
           type="button"
           aria-label={t("moveStamp")}
+          title={t("moveStamp")}
           className={cn(
-            "absolute z-10 flex size-3 items-center justify-center",
+            "absolute z-10 flex size-3 items-center justify-center opacity-0 transition-opacity group-hover:opacity-100",
             top ? "-top-1.5" : "-bottom-1.5",
             right ? "-right-1.5" : "-left-1.5",
-            dragging ? "cursor-grabbing" : "cursor-grab",
+            dragging ? "cursor-grabbing opacity-100" : "cursor-grab",
           )}
           onPointerDown={onDragPointerDown}
           onPointerMove={onDragPointerMove}
@@ -296,12 +325,12 @@ export function StampOverlay() {
         )}
 
         {visible.address ? (
-          <div className={cn("max-w-72 font-stamp font-medium leading-snug", s.body)}>
-            <Editable field="address" className="block">
-              {fields.address}
-            </Editable>
-            <div className="opacity-90">{fields.city}</div>
-          </div>
+          <Editable
+            field="address"
+            className={cn("block max-w-72 font-stamp font-medium leading-snug", s.body)}
+          >
+            {formatPlace(fields.address, fields.city)}
+          </Editable>
         ) : null}
 
         {visible.code && codePlacement === "block" ? (

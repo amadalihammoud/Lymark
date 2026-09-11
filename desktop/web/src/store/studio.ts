@@ -20,6 +20,17 @@ export type MediaPlace = {
   source: AddressSource;
 };
 
+/** Rua + cidade/estado num texto só, quebra de linha se não couber. */
+export function formatPlace(address: string, city: string): string {
+  return [address, city].filter((part) => part.length > 0).join("\n");
+}
+
+export function parsePlace(value: string): { address: string; city: string } {
+  const nl = value.lastIndexOf("\n");
+  if (nl < 0) return { address: value, city: "" };
+  return { address: value.slice(0, nl), city: value.slice(nl + 1) };
+}
+
 export type MediaItem = {
   id: string;
   kind: "image" | "video";
