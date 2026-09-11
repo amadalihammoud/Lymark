@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Batch foto, videyo long ak 0 rapò  vèsyon an lou-devwa.",
         "field": "òdinatè",
-        "heading": "Windows ak Linux",
-        "action": "Open in the browser"
+        "heading": "Windows ak Linux"
       },
       "googlePlay": {
         "description": "Aplikasyon telefòn lan, ak kamera, galeri ak videyo estamp.",

@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Фотосуреттер, ұзақ бейнелер және 0  ауыр жүк нұсқасы.",
         "field": "Компьютер",
-        "heading": "Windows және Linux",
-        "action": "Open in the browser"
+        "heading": "Windows және Linux"
       },
       "googlePlay": {
         "description": "Телефондық қосымша, камера, галерея және мөрленген бейне.",

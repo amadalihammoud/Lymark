@@ -156,8 +156,8 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
         link — cada cartão vira link no dia em que a loja publicar, sem
         mudar a estrutura. `soon` marca o que está a caminho.
 
-        Navegador: CTA vai a `/entrar`; após o login o Clerk manda para
-        `/web` (app Expo no mesmo domínio — ver docs/WEB-URL.md).
+        Navegador: CTA vai a `/mesa` (versão web canônica — ver docs/WEB-URL.md).
+        Computador: instalador nativo Electron ainda em breve (não confundir com a mesa no browser).
       */}
       <section className="band" id="baixar">
         <div className="band-head">
@@ -173,7 +173,7 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
             <h3>{t('download.browser.heading')}</h3>
             <p>{t('download.browser.description')}</p>
             <p className="store-cta">
-              <Link href="/entrar">{t('download.browser.action')}</Link>
+              <a href="/mesa">{t('download.browser.action')}</a>
             </p>
           </div>
           <div className="cell">
@@ -197,7 +197,7 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
             <h3>{t('download.desktop.heading')}</h3>
             <p>{t('download.desktop.description')}</p>
             <p className="store-cta">
-              <a href="/mesa">{t('download.desktop.action')}</a>
+              <span className="soon">{t('download.soon')}</span>
             </p>
           </div>
         </div>

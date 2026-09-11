@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Fotografske serije, dug video snimak i PDF izveštaji  težak rad verzija.",
         "field": "Računar",
-        "heading": "Windows i Linux",
-        "action": "Open in the browser"
+        "heading": "Windows i Linux"
       },
       "googlePlay": {
         "description": "Aplikacija za telefon, sa kamerom, galerijom i video štampiranim.",

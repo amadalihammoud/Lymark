@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Các lô hình ảnh, video dài và báo cáo PDF  phiên bản hạng nặng.",
         "field": "Máy tính",
-        "heading": "Windows và Linux",
-        "action": "Open in the browser"
+        "heading": "Windows và Linux"
       },
       "googlePlay": {
         "description": "Ứng dụng điện thoại, với máy ảnh, phòng trưng bày và video được đếm dấu.",

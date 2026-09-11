@@ -632,8 +632,7 @@
       "desktop": {
         "description": "པར་ཆས་ཀྱི་ བཀྲམ་སྤེལ་དང་ གློག་བརྙན་ཚེ་རིང་དང་ PDF སྙན་ཞུ་  དཀའ་སྡུག་ཅན་གྱི་ བཀྲམ་སྤེལ་འབད་ཐབས།",
         "field": "གློག་རིག་",
-        "heading": "Windows དང་ Linux",
-        "action": "Open in the browser"
+        "heading": "Windows དང་ Linux"
       },
       "googlePlay": {
         "description": "གློག་འཕྲིན་ལག་ལེན་འདི་ ཀམ་ར་དང་ པར་རིས་དང་ བི་ཌི་ཨེམ་ཚུ་དང་གཅིག་ཁར་ཡོདཔ་ཨིན།",

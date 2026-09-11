@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Fotokassalar, uzun videolar va 0 hisobotlar  og'ir xizmat versiyasi.",
         "field": "Kompyuter",
-        "heading": "Windows va Linux",
-        "action": "Open in the browser"
+        "heading": "Windows va Linux"
       },
       "googlePlay": {
         "description": "Telefon ilovasi, kamera, galereya va video bilan.",

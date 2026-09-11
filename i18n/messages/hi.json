@@ -632,8 +632,7 @@
       "desktop": {
         "description": "तस्वीरों के बैच, लंबे वीडियो और PDF रिपोर्ट  भारी शुल्क संस्करण।",
         "field": "कंप्यूटर",
-        "heading": "विंडोज और लिनक्स",
-        "action": "Open in the browser"
+        "heading": "विंडोज और लिनक्स"
       },
       "googlePlay": {
         "description": "कैमरा, गैलरी और मुहर वीडियो के साथ फोन ऐप।",

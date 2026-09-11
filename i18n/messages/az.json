@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Fotoşəkillər, uzun videolar və 0 hesabatlar  ağır yük versiyası.",
         "field": "Kompüter",
-        "heading": "Windows və Linux",
-        "action": "Open in the browser"
+        "heading": "Windows və Linux"
       },
       "googlePlay": {
         "description": "Telefon tətbiqi, kamera, qalereya və video ilə.",

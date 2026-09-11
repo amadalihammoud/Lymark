@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Фотографски партиди, дълги видеоклипове и 0 доклади  версията за тежка работа.",
         "field": "Компютър",
-        "heading": "Windows и Linux",
-        "action": "Open in the browser"
+        "heading": "Windows и Linux"
       },
       "googlePlay": {
         "description": "Телефонното приложение, с камера, галерия и печатно видео.",

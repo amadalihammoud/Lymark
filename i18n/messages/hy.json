@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Լուսանկարների խմբաքանակներ, երկար տեսանյութեր եւ PDF զեկույցներ  ծանր գործի տարբերակը:",
         "field": "Համակարգիչ",
-        "heading": "Windows եւ Linux",
-        "action": "Open in the browser"
+        "heading": "Windows եւ Linux"
       },
       "googlePlay": {
         "description": "Հեռախոսային հավելվածը, տեսախցիկով, պատկերասրահով եւ փոշակված տեսանյութով:",

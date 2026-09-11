@@ -17,22 +17,22 @@ const nextConfig = {
   outputFileTracingRoot: path.join(here, '..'),
 
   /**
-   * Domínio legado `app.lymark.app` (e www) → app hospedado em /web.
+   * Domínio legado `app.lymark.app` (e www) → versão web canônica em /mesa.
    * Next 16: `has: [{ type: 'host', value }]` em redirects() é suportado.
-   * permanent: true → 308. Qualquer path no host antigo cai em /web.
+   * permanent: true → 308. Qualquer path no host antigo cai em /mesa.
    */
   async redirects() {
     return [
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'app.lymark.app' }],
-        destination: 'https://lymark.app/web',
+        destination: 'https://lymark.app/mesa',
         permanent: true,
       },
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.app.lymark.app' }],
-        destination: 'https://lymark.app/web',
+        destination: 'https://lymark.app/mesa',
         permanent: true,
       },
     ];

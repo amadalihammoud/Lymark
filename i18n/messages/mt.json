@@ -632,8 +632,7 @@
       "desktop": {
         "description": "L-aktar importanti huma l-istampi tal-istampi tal-Unjoni Ewropea.",
         "field": "Kompjuter",
-        "heading": "Windows u Linux",
-        "action": "Open in the browser"
+        "heading": "Windows u Linux"
       },
       "googlePlay": {
         "description": "L-app tat-telefon, b'kamera, galerija u vidjo stampat.",

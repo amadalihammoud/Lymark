@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Kumpulan foto, video panjang dan PDF melaporkan  versi tugas berat.",
         "field": "Komputer",
-        "heading": "Windows dan Linux",
-        "action": "Open in the browser"
+        "heading": "Windows dan Linux"
       },
       "googlePlay": {
         "description": "Aplikasi telefon, dengan kamera, galeri dan video cap.",

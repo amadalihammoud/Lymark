@@ -632,8 +632,7 @@
       "desktop": {
         "description": "รูปแบบรูปแบบ วีดีโอยาว และ PDF รายงาน  หน่วยงานหนัก",
         "field": "คอมพิวเตอร์",
-        "heading": "Windows และ Linux",
-        "action": "Open in the browser"
+        "heading": "Windows และ Linux"
       },
       "googlePlay": {
         "description": "แอพลิเคชั่นโทรศัพท์ พร้อมกล้อง แกลเลอรี่ และวีดีโอที่ฉีด",

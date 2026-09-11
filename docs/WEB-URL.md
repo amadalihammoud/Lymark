@@ -5,10 +5,10 @@
 | URL | O que é |
 | --- | --- |
 | `https://lymark.app` | Landing Next.js (`site/`) — marketing, termos, conta |
-| `https://lymark.app/entrar` | Login Clerk (site) → após sucesso redireciona para `/web` |
-| `https://lymark.app/web` | App Expo (export estático) no **mesmo** domínio |
-| `https://lymark.app/mesa` | Mesa de notebook/PC (`desktop/web`) no **mesmo** domínio |
-| `https://app.lymark.app` | Legado — redirecionar para `https://lymark.app/web` |
+| `https://lymark.app/entrar` | Login Clerk (site) → após sucesso redireciona para `/mesa` (padrão) |
+| `https://lymark.app/mesa` | **Versão web canônica** — studio Vite (`desktop/web`) no **mesmo** domínio |
+| `https://lymark.app/web` | App Expo mobile-in-browser (fallback; não promovido) |
+| `https://app.lymark.app` | Legado — redirecionar para `https://lymark.app/mesa` |
 
 O desktop Electron **não** usa `/web`: o script `web:build` exporta com base na
 raiz. Só o build hospedado define `LYMARK_WEB_BASE=/web` (via
@@ -75,7 +75,7 @@ No painel Vercel → Domains do projeto **`lymark`** (Root Directory = `site`;
 
 O redirect **308** está em `site/next.config.mjs` (`redirects()` com
 `has: [{ type: 'host', value }]`): qualquer path em `app.lymark.app` ou
-`www.app.lymark.app` vai para `https://lymark.app/web`.
+`www.app.lymark.app` vai para `https://lymark.app/mesa`.
 
 ## Fluxo do usuário
 

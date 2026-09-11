@@ -632,8 +632,7 @@
       "desktop": {
         "description": "Fotoen, laang Videoen an PDF - Rapporten  déi schwéier-Duty-Versioun.",
         "field": "Computer",
-        "heading": "Windows an Linux",
-        "action": "Open in the browser"
+        "heading": "Windows an Linux"
       },
       "googlePlay": {
         "description": "D'Telefonsapp, mat Kamera, Galerie an de Video.",
