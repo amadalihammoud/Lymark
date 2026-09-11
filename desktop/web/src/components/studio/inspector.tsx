@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Upload, X } from "lucide-react";
 import { useTranslations } from "use-intl";
 
@@ -61,19 +61,26 @@ function QuadrantMap({
   const media = useStudio((s) => s.media);
   const cornerLabel = (id: StampCorner) => t(`positions.${id}`);
   const active = extra?.active ? extra.label : cornerLabel(value as StampCorner);
+  const url = media?.kind === "image" ? media.url : "";
+  const [failed, setFailed] = useState("");
+  const photo = Boolean(url) && failed !== url;
 
   return (
     <div className="space-y-2">
-      <div className="relative h-40 overflow-hidden rounded-md shadow-[var(--shadow-border)]">
-        {media?.kind === "image" ? (
+      <div className="relative h-40 overflow-hidden rounded-md bg-navy-900 shadow-[var(--shadow-border)]">
+        {photo ? (
           <img
-            src={media.url}
+            key={url}
+            src={url}
             alt=""
+            onError={() => setFailed(url)}
             className="absolute inset-0 h-full w-full object-cover opacity-40"
           />
-        ) : (
-          <div className="absolute inset-0 bg-navy-900" />
-        )}
+        ) : null}
+        <div className="pointer-events-none absolute inset-0">
+          <span className="absolute inset-x-0 top-1/2 h-px bg-hairline/80" />
+          <span className="absolute inset-y-0 left-1/2 w-px bg-hairline/80" />
+        </div>
         <div className="relative grid h-full grid-cols-2 grid-rows-2">
           {CORNER_IDS.map((id) => {
             const on = value === id && !extra?.active;
@@ -85,7 +92,7 @@ function QuadrantMap({
                 aria-pressed={on}
                 onClick={() => onSelect(id)}
                 className={cn(
-                  "transition-colors duration-[var(--motion-quick)]",
+                  "h-full w-full min-h-0 transition-colors duration-[var(--motion-quick)]",
                   on ? "bg-ink/20 shadow-[inset_0_0_0_1px_var(--color-amber)]" : "hover:bg-lift",
                 )}
               />
