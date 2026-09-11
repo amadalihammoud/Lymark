@@ -5,9 +5,5 @@ next-env.d.ts
 # clerk configuration (can include secrets)
 /.clerk/
 
-# Versão web (studio Vite — gerado por scripts/publish-mesa-to-site.js no build)
-/public/web/**
-!/public/web/.gitkeep
-
-# Alias antigo /mesa (não publicar mais)
+# Alias antigo /mesa (não publicar mais — redireciona para /web)
 /public/mesa/**
