@@ -436,7 +436,7 @@
         "24h": "24 ur"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Preverjanje računa…",
       "openingSignIn": "Odpiranje prijave…",
       "needsAccount": "Miza se odpre samo z računom Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Vpis",
         "description": "Vstopite se z računom in aplikacija se odpre prav v brskalniku  telefon ali računalnik.",
-        "field": "Preglednik",
+        "field": "Web",
         "heading": "Uporabite ga zdaj, nič za namestitev"
       },
       "desktop": {

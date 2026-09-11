@@ -436,7 +436,7 @@
         "24h": "24 siegħa"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Qed niċċekkja l-kont…",
       "openingSignIn": "Qed niftħu d-dħul…",
       "needsAccount": "L-iskrivanija tiftaħ biss b’kont Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Iffirma",
         "description": "Log in mal-kont tiegħek u l-app tiftaħ dritt fil-browser  telefon jew kompjuter.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Użaha issa, xejn biex tinstalla"
       },
       "desktop": {

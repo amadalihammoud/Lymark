@@ -2,10 +2,10 @@
 
 Dois pedaços:
 
-- **`web/`** — mesa de notebook e PC (navegador). Foto no centro, carimbo à direita.
+- **`web/`** — versão web de notebook e PC (navegador). Foto no centro, carimbo à direita.
 - **Este diretório** — shell Electron + ffmpeg (MP4, lote pesado, PDF).
 
-A mesa nova está em [`web/`](./web/README.md):
+A versão web está em [`web/`](./web/README.md):
 
 ```bash
 cd desktop/web

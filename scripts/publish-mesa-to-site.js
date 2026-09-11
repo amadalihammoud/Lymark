@@ -14,7 +14,7 @@ const SRC = path.join(__dirname, '..', 'desktop', 'web', 'dist');
 const DEST = path.join(__dirname, '..', 'site', 'public', 'web');
 
 if (!fs.existsSync(SRC)) {
-  console.error(`Pasta ${SRC} não existe. Rode o build da mesa antes.`);
+  console.error(`Pasta ${SRC} não existe. Rode o build da versão web antes.`);
   process.exit(1);
 }
 
@@ -29,4 +29,4 @@ fs.rmSync(DEST, { recursive: true, force: true });
 fs.cpSync(SRC, DEST, { recursive: true });
 
 const entries = fs.readdirSync(DEST);
-console.log(`Versão web (mesa) copiada para site/public/web/ (${entries.length} itens)`);
+console.log(`Versão web copiada para site/public/web/ (${entries.length} itens)`);

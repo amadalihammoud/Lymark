@@ -8,7 +8,7 @@ import { useStudio } from "@/store/studio";
 import { LOCALES_BY_NAME, LOCALE_NAMES } from "@i18n/locales";
 
 export function AccountPanel() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tLang = useTranslations("app.language");
   const tAccount = useTranslations("app.account");
   const tPlan = useTranslations("app.plan");

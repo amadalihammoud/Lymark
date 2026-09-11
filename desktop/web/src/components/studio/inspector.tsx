@@ -123,7 +123,7 @@ function QuadrantMap({
 }
 
 function FieldChips() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tw = useTranslations("app.watermark");
   const visible = useStudio((s) => s.visible);
   const toggleField = useStudio((s) => s.toggleField);
@@ -175,7 +175,7 @@ function FieldChips() {
 }
 
 function MarcaTab() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tw = useTranslations("app.watermark");
   const fields = useStudio((s) => s.fields);
   const setField = useStudio((s) => s.setField);
@@ -286,7 +286,7 @@ function MarcaTab() {
 }
 
 function AparenciaTab() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tw = useTranslations("app.watermark");
   const corner = useStudio((s) => s.corner);
   const size = useStudio((s) => s.size);
@@ -348,7 +348,7 @@ function AparenciaTab() {
 }
 
 function DadosTab() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tw = useTranslations("app.watermark");
   const fields = useStudio((s) => s.fields);
   const setField = useStudio((s) => s.setField);
@@ -451,7 +451,7 @@ function DadosTab() {
 }
 
 export function Inspector() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const open = useStudio((s) => s.inspectorOpen);
   const tab = useStudio((s) => s.inspectorTab);
   const setInspectorTab = useStudio((s) => s.setInspectorTab);

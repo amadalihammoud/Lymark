@@ -436,7 +436,7 @@
         "24h": "24 saacadood"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Koontada ayaa la hubinayaa…",
       "openingSignIn": "Soo galitaanka waa la furayaa…",
       "needsAccount": "Miiska wuxuu ku furmaa oo keliya akoon Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Isku qor",
         "description": "Isku qor xisaabtaada oo app-ka ayaa ka furi doona biraawsarka  telefoonka ama kombiyuutarka.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Isticmaal hadda, waxba ma rakibto"
       },
       "desktop": {

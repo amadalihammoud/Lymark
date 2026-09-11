@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { useStudio } from "@/store/studio";
 
 export function BatchRail() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const mode = useStudio((s) => s.mode);
   const batch = useStudio((s) => s.batch);
   const batchIndex = useStudio((s) => s.batchIndex);

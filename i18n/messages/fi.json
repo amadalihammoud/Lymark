@@ -436,7 +436,7 @@
         "24h": "24 tuntia"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Tarkistetaan tiliä…",
       "openingSignIn": "Avataan kirjautumista…",
       "needsAccount": "Pöytä aukeaa vain Lymark-tilillä.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Sisääntykää",
         "description": "Sisääntötilisi ja sovellus avautuu suoraan selaimessa  puhelimessa tai tietokoneessa.",
-        "field": "Selaimessa",
+        "field": "Web",
         "heading": "Käytä sitä nyt, ei mitään asentaa"
       },
       "desktop": {

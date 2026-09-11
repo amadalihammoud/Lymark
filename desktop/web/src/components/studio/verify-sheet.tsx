@@ -13,7 +13,7 @@ import {
 import { useStudio } from "@/store/studio";
 
 export function VerifySheet() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tv = useTranslations("site.verify");
   const open = useStudio((s) => s.verifyOpen);
   const setVerifyOpen = useStudio((s) => s.setVerifyOpen);

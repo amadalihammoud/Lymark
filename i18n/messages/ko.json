@@ -436,7 +436,7 @@
         "24h": "24시간"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "계정 확인 중…",
       "openingSignIn": "로그인 여는 중…",
       "needsAccount": "책상은 Lymark 계정으로만 열립니다.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "로그인",
         "description": "계정으로 로그인하면 휴대폰이든 컴퓨터든 브라우저에서 바로 앱이 열립니다.",
-        "field": "브라우저",
+        "field": "Web",
         "heading": "설치 없이 바로 사용"
       },
       "desktop": {

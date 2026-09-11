@@ -436,7 +436,7 @@
         "24h": "24 timar"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Kontrollerer kontoen…",
       "openingSignIn": "Opnar innlogging…",
       "needsAccount": "Skrivebordet opnar berre med ein Lymark-konto.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Logg inn",
         "description": "Logg deg inn med kontoen din og appen opna rett i nettlesaren  telefon eller datamaskin.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Bruk det no, ikkje noko å installere"
       },
       "desktop": {

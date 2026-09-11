@@ -436,7 +436,7 @@
         "24h": "24 ore"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Controllo dell’account…",
       "openingSignIn": "Apertura dell’accesso…",
       "needsAccount": "La scrivania si apre solo con un account Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Accedi",
         "description": "Accedi con il tuo account e l'app si apre direttamente nel browser — telefono o computer.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Usalo ora, senza installare"
       },
       "desktop": {

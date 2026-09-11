@@ -1,6 +1,6 @@
-# Lymark — mesa de notebook e PC
+# Lymark — versão web de notebook e PC
 
-Esta é a mesa que abre no **navegador em computador** e, em seguida, no
+Esta é a versão web que abre no **navegador em computador** e, em seguida, no
 Electron (`desktop/`). Foto no centro, carimbo à direita, uma linha de chrome.
 
 Não substitui o app de celular em `src/` nem o site em `site/`.
@@ -21,5 +21,5 @@ npm run typecheck
 npm run test
 ```
 
-O selo criptográfico e a cota são da conta. Sem sessão a mesa redireciona
+O selo criptográfico e a cota são da conta. Sem sessão a versão web redireciona
 para `/entrar?next=/web`. Depois do login volta para cá.

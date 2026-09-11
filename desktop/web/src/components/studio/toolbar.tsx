@@ -24,7 +24,7 @@ function MoreMenu({
   onAccount: () => void;
   canReport: boolean;
 }) {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tAccount = useTranslations("app.account");
   const tLang = useTranslations("app.language");
   const [open, setOpen] = useState(false);
@@ -158,7 +158,7 @@ export function Chrome({
   onShare: () => void;
   saving: boolean;
 }) {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tCommon = useTranslations("app.common");
   const tAccount = useTranslations("app.account");
   const mode = useStudio((s) => s.mode);

@@ -436,7 +436,7 @@
         "24h": "24 jam"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Menyemak akaun…",
       "openingSignIn": "Membuka log masuk…",
       "needsAccount": "Meja hanya dibuka dengan akaun Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Masukkan",
         "description": "Masukkan dengan akaun anda dan aplikasi akan dibuka di dalam pelayar  telefon atau komputer.",
-        "field": "Penyemak imbas",
+        "field": "Web",
         "heading": "Gunakan sekarang, tiada apa untuk dipasang"
       },
       "desktop": {

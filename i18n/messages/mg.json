@@ -436,7 +436,7 @@
         "24h": "24 ora"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Hamarino ny kaonty…",
       "openingSignIn": "Sokafana ny fidirana…",
       "needsAccount": "Ny latabatra dia tsy misokatra raha tsy misy kaonty Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Midira ao",
         "description": "Midira amin'ny kaontinao ary misokatra eo amin'ny navigateur  finday na solosaina ny fampiharana.",
-        "field": "Mpitety tranonkala",
+        "field": "Web",
         "heading": "Ampiasao izao, tsy misy napetraka"
       },
       "desktop": {

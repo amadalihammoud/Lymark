@@ -17,7 +17,7 @@ function Splash({ line }: { line: string }) {
 }
 
 export function AuthMisconfigured() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const { locale } = useLocalePreference();
   return (
     <div className="flex h-dvh flex-col items-start justify-end bg-navy-900 px-8 pb-10">
@@ -41,7 +41,7 @@ export function AuthMisconfigured() {
  */
 export function AuthGate({ children }: { children: ReactNode }) {
   const { isLoaded, isSignedIn, getToken } = useAuth();
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const { locale } = useLocalePreference();
 
   if (isSignedIn) setTokenSupplier(() => getToken());

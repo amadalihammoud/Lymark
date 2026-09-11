@@ -436,7 +436,7 @@
         "24h": "24 tundi"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Konto kontrollimine…",
       "openingSignIn": "Sisselogimise avamine…",
       "needsAccount": "Laud avaneb ainult Lymarki kontoga.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Saegne sisse",
         "description": "Saegege sisse oma kontoga ja rakendus avatakse otseselt brauseri  telefoni või arvutis.",
-        "field": "Brauser",
+        "field": "Web",
         "heading": "Kasuta seda kohe, pole midagi paigaldada"
       },
       "desktop": {

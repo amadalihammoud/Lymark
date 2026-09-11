@@ -436,7 +436,7 @@
         "24h": "24 ሰዓት"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "መለያ እየተረጋገጠ ነው…",
       "openingSignIn": "መግቢያ እየተከፈተ ነው…",
       "needsAccount": "ጠረጴዛው የሚከፈተው በ Lymark መለያ ብቻ ነው።",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "መግቢያ ገዝ",
         "description": "በመለያዎ ውስጥ ይግቡ እና መተግበሪያው በአሳሽ ውስጥ ይከፈታል  ስልክ ወይም ኮምፒውተር.",
-        "field": "አሳሽ",
+        "field": "Web",
         "heading": "አሁን ይጠቀሙት, ለመጫን ምንም"
       },
       "desktop": {

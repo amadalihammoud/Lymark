@@ -436,7 +436,7 @@
         "24h": "24 de ore"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Se verifică contul…",
       "openingSignIn": "Se deschide autentificarea…",
       "needsAccount": "Biroul se deschide doar cu un cont Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Semnaţi-vă .",
         "description": "Inregistrați-vă cu contul dvs. și aplicația se deschide chiar în browserul  telefon sau calculator.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Foloseşte-l acum, nimic de instalat"
       },
       "desktop": {

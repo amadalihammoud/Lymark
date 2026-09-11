@@ -436,7 +436,7 @@
         "24h": "24 Stunden"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Konto wird geprüft…",
       "openingSignIn": "Anmeldung wird geöffnet…",
       "needsAccount": "Der Schreibtisch öffnet nur mit einem Lymark-Konto.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Anmelden",
         "description": "Melden Sie sich mit Ihrem Konto an — die App öffnet sich direkt im Browser, am Handy oder am Computer.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Sofort nutzen, ohne Installation"
       },
       "desktop": {

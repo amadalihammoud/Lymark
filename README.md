@@ -68,7 +68,7 @@ src/
 │   └── auth/            Clerk / tokens
 ├── hooks/ lib/ theme/ types/
 desktop/                 Electron + ffmpeg
-desktop/web/             Mesa notebook/PC (navegador)
+desktop/web/             Versão web notebook/PC (navegador)
 site/                    Next.js — conta, Stripe, /api/entitlements, /api/attest
 modules/video-stamp/     Módulo nativo de composição de vídeo
 i18n/messages/           Traduções

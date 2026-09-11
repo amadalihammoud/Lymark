@@ -436,7 +436,7 @@
         "24h": "24 giờ"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Đang kiểm tra tài khoản…",
       "openingSignIn": "Đang mở đăng nhập…",
       "needsAccount": "Bàn chỉ mở với tài khoản Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Đăng nhập",
         "description": "Nhập vào với tài khoản của bạn và ứng dụng sẽ mở ngay trong trình duyệt  điện thoại hoặc máy tính.",
-        "field": "Browser",
+        "field": "Web",
         "heading": "Sử dụng nó ngay bây giờ, không có gì để cài đặt"
       },
       "desktop": {

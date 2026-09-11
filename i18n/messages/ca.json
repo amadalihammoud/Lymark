@@ -436,7 +436,7 @@
         "24h": "24 hores"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "S’està comprovant el compte…",
       "openingSignIn": "S’està obrint l’inici de sessió…",
       "needsAccount": "L’escriptori només s’obre amb un compte Lymark.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Inscriure-se",
         "description": "S'inscriu amb el seu compte i l'aplicació s'obre directament en el navegador  telèfon o ordinador.",
-        "field": "navegador",
+        "field": "Web",
         "heading": "Utilitza-la ara, no hi ha res per instal·lar-la."
       },
       "desktop": {

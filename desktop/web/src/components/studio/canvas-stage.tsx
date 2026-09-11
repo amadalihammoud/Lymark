@@ -39,7 +39,7 @@ export function CanvasStage({
 }: {
   onOpenFiles: (files: FileList | File[]) => void;
 }) {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const media = useStudio((s) => s.media);
   const mode = useStudio((s) => s.mode);
   const setEditing = useStudio((s) => s.setEditing);

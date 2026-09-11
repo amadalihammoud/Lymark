@@ -4,7 +4,7 @@ import { remainingPhotos } from "@/lib/lymark/types";
 import { useStudio } from "@/store/studio";
 
 export function StatusBar() {
-  const t = useTranslations("app.mesa");
+  const t = useTranslations("app.web");
   const tCommon = useTranslations("app.common");
   const tPlan = useTranslations("app.plan");
   const media = useStudio((s) => s.media);

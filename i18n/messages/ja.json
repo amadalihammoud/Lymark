@@ -436,7 +436,7 @@
         "24h": "24時間"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "アカウントを確認しています…",
       "openingSignIn": "ログインを開いています…",
       "needsAccount": "デスクは Lymark アカウントでのみ開きます。",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "ログイン",
         "description": "アカウントでログインすると、スマホでもパソコンでも、ブラウザ上でアプリが開きます。",
-        "field": "ブラウザ",
+        "field": "Web",
         "heading": "今すぐ使えます、インストール不要"
       },
       "desktop": {

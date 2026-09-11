@@ -436,7 +436,7 @@
         "24h": "24 saatlik"
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Hesap kontrol ediliyor…",
       "openingSignIn": "Giriş açılıyor…",
       "needsAccount": "Masa yalnızca bir Lymark hesabıyla açılır.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Kayıt edin .",
         "description": "Hesabınızla giriş yapın ve uygulama tarayıcıda açılır  Telefon veya bilgisayar.",
-        "field": "Tarayıcı",
+        "field": "Web",
         "heading": "Şimdi kullan, kurmak için bir şey yok."
       },
       "desktop": {

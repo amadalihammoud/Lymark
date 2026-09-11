@@ -436,7 +436,7 @@
         "24h": "24 klst."
       }
     },
-    "mesa": {
+    "web": {
       "checkingAccount": "Athuga reikning…",
       "openingSignIn": "Opna innskráningu…",
       "needsAccount": "Borðið opnast aðeins með Lymark-reikningi.",
@@ -626,7 +626,7 @@
       "browser": {
         "action": "Skráðu þig বৈশিষ্ট্য",
         "description": "Skráðu þig inn með reikningnum þínum og forritið opnast beint í vafra  símann eða tölvuna.",
-        "field": "Hægt að skoða বৈশিষ্ট্য",
+        "field": "Web",
         "heading": "Notađu hana núna, ekkert að setja upp."
       },
       "desktop": {
