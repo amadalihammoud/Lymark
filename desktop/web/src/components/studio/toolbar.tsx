@@ -15,13 +15,17 @@ function Sep() {
 function MoreMenu({
   onVerify,
   onReport,
+  onAccount,
   canReport,
 }: {
   onVerify: () => void;
   onReport: () => void;
+  onAccount: () => void;
   canReport: boolean;
 }) {
   const t = useTranslations("app.mesa");
+  const tAccount = useTranslations("app.account");
+  const tLang = useTranslations("app.language");
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
 
@@ -88,6 +92,18 @@ function MoreMenu({
           >
             {t("reportMenu")}
           </button>
+          <button
+            type="button"
+            role="menuitem"
+            className="flex h-9 w-full items-center px-3 text-start text-body text-mist hover:bg-lift hover:text-ink"
+            onClick={() => {
+              setOpen(false);
+              onAccount();
+            }}
+          >
+            {tAccount("title")}
+            <span className="ms-auto ps-3 text-caption text-slate">{tLang("label")}</span>
+          </button>
         </div>
       ) : null}
     </div>
@@ -107,6 +123,7 @@ export function Chrome({
 }) {
   const t = useTranslations("app.mesa");
   const tCommon = useTranslations("app.common");
+  const tAccount = useTranslations("app.account");
   const mode = useStudio((s) => s.mode);
   const setMode = useStudio((s) => s.setMode);
   const inspectorOpen = useStudio((s) => s.inspectorOpen);
@@ -116,6 +133,7 @@ export function Chrome({
   const billedIds = useStudio((s) => s.billedIds);
   const setReportOpen = useStudio((s) => s.setReportOpen);
   const setVerifyOpen = useStudio((s) => s.setVerifyOpen);
+  const setAccountOpen = useStudio((s) => s.setAccountOpen);
   const batch = useStudio((s) => s.batch);
   const batchBusy = useStudio((s) => s.batchBusy);
   const billed = media ? billedIds.includes(media.id) : false;
@@ -162,8 +180,16 @@ export function Chrome({
         <MoreMenu
           onVerify={() => setVerifyOpen(true)}
           onReport={() => setReportOpen(true)}
+          onAccount={() => setAccountOpen(true)}
           canReport={Boolean(media)}
         />
+        <button
+          type="button"
+          onClick={() => setAccountOpen(true)}
+          className="hidden h-10 items-center px-3 text-body font-medium text-mist hover:text-ink sm:inline-flex"
+        >
+          {tAccount("title")}
+        </button>
         <button
           type="button"
           onClick={onShare}

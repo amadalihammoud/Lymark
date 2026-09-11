@@ -43,7 +43,7 @@ export function StatusBar() {
       <button
         type="button"
         onClick={() => setAccountOpen(true)}
-        className="hidden tabular-nums hover:text-mist md:inline"
+        className="tabular-nums hover:text-mist"
       >
         {remaining === null ? tPlan("pro") : t("leftCount", { count: remaining })}
       </button>
