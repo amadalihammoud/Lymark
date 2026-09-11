@@ -498,7 +498,7 @@
       "quota": "الحصة",
       "used": "المستخدم",
       "left": "المتبقي",
-      "validUntil": "صالح_حتى",
+      "validUntil": "صالح حتى",
       "lastSeal": "آخر ختم",
       "lastSealOn": "مضمّن في JPEG",
       "lastSealOff": "صُدّر بلا ختم (بلا شبكة أو بلا حصة)",

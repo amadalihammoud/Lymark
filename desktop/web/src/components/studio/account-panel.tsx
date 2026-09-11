@@ -11,6 +11,7 @@ export function AccountPanel() {
   const t = useTranslations("app.mesa");
   const tLang = useTranslations("app.language");
   const tAccount = useTranslations("app.account");
+  const tPlan = useTranslations("app.plan");
   const open = useStudio((s) => s.accountOpen);
   const setAccountOpen = useStudio((s) => s.setAccountOpen);
   const entitlement = useStudio((s) => s.entitlement);
@@ -66,7 +67,13 @@ export function AccountPanel() {
           <dl className="mt-4 space-y-2 font-mono text-caption text-mist">
             <div className="flex justify-between">
               <dt>{t("plan")}</dt>
-              <dd className="text-ink">{entitlement?.plan ?? "…"}</dd>
+              <dd className="text-ink">
+                {entitlement
+                  ? entitlement.plan === "pro"
+                    ? tPlan("pro")
+                    : tPlan("free")
+                  : "…"}
+              </dd>
             </div>
             <div className="flex justify-between">
               <dt>{t("quota")}</dt>

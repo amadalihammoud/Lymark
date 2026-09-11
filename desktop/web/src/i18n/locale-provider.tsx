@@ -81,7 +81,15 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
         locale={locale}
         messages={MESSAGES[locale]}
         onError={(error: IntlError) => console.warn("[i18n]", error.message)}
-        getMessageFallback={({ key }: { key: string }) => key}
+        getMessageFallback={({ namespace, key }: { namespace?: string; key: string }) => {
+          const parts = [...(namespace ? namespace.split(".") : []), ...key.split(".")];
+          let node: unknown = MESSAGES[DEFAULT_LOCALE];
+          for (const part of parts) {
+            if (!node || typeof node !== "object") return key;
+            node = (node as Record<string, unknown>)[part];
+          }
+          return typeof node === "string" ? node : key;
+        }}
       >
         {children}
       </IntlProvider>
