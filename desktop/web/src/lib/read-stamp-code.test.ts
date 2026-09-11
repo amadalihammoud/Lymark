@@ -21,6 +21,18 @@ describe("extractCodeFromName", () => {
       "9A26F4C1E08B3D",
     );
   });
+
+  it("não trata id numérico de rede social como carimbo", () => {
+    assert.equal(extractCodeFromName("1341774684993066.jpg"), null);
+    assert.equal(extractCodeFromName("1341774684993066_n.jpg"), null);
+  });
+
+  it("aceita código só numérico no nome lymark-AAAAMMDD", () => {
+    assert.equal(
+      extractCodeFromName("lymark-20260911-13417746849930.jpg"),
+      "13417746849930",
+    );
+  });
 });
 
 describe("pickHex", () => {
