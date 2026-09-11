@@ -1,17 +1,18 @@
 /**
  * Para onde o login manda depois de autenticar.
  *
- * `/mesa` é a versão web canônica (studio no navegador).
- * `/web` é o Expo mobile-in-browser, fallback não promovido.
- * Qualquer outro valor (open redirect) cai em `/mesa`.
+ * `/web` é a versão web canônica (studio Vite em `desktop/web`).
+ * `/mesa` é alias legado — aceito no query e mapeado para `/web`.
+ * Qualquer outro valor (open redirect) cai em `/web`.
  */
-export type AppDest = '/web' | '/mesa';
+export type AppDest = '/web';
 
 export function appDestFromSearch(next: unknown): AppDest {
-  return next === '/web' ? '/web' : '/mesa';
+  void next;
+  return '/web';
 }
 
-export function withNext(path: string, dest: AppDest): string {
-  if (dest === '/mesa') return path;
-  return `${path}?next=${encodeURIComponent(dest)}`;
+export function withNext(path: string, dest: AppDest = '/web'): string {
+  void dest;
+  return path;
 }

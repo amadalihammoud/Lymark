@@ -68,8 +68,9 @@
     "test": "jest",
     "desktop:dev": "cd desktop && npm run start",
     "desktop:build": "cd desktop && npm run build",
-    "web:build:hosted": "LYMARK_WEB_BASE=/web expo export --platform web && node scripts/copy-wasm.js && node scripts/publish-web-to-site.js",
-    "mesa:build:hosted": "npm ci --prefix desktop/web && LYMARK_MESA_BASE=/mesa/ npm run build --prefix desktop/web && node scripts/publish-mesa-to-site.js"
+    "web:build:hosted": "npm run mesa:build:hosted",
+    "mesa:build:hosted": "npm ci --prefix desktop/web && LYMARK_MESA_BASE=/web/ npm run build --prefix desktop/web && node scripts/publish-mesa-to-site.js",
+    "expo:web:build:hosted": "LYMARK_WEB_BASE=/web expo export --platform web && node scripts/copy-wasm.js && node scripts/publish-web-to-site.js"
   },
   "private": true,
   "overrides": {

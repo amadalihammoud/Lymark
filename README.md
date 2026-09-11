@@ -22,12 +22,11 @@ npx expo start
   de vídeo** não — use um build EAS no celular, ou o desktop / web.
 - **Celular (EAS)**: `eas build` / app da loja — inclui carimbo de vídeo (Android
   via Media3; ver disponibilidade do módulo no iOS).
-- **Web**: `npx expo start --web` — vídeo em tempo real (WebM).
-  Produção web: **https://lymark.app/mesa** (canônica); Expo mobile-in-browser em `/web` (mesmo domínio da landing; ver
-  `docs/WEB-URL.md`). Desktop usa `npm run web:build` (raiz); o site usa
-  `npm run web:build:hosted` (`LYMARK_WEB_BASE=/web`).
+- **Web (navegador)**: studio Vite em `desktop/web/` — produção
+  **https://lymark.app/web** (`/mesa` redireciona; ver `docs/WEB-URL.md`).
+  Build hospedado: `npm run web:build:hosted` (alias de `mesa:build:hosted`).
 - **Desktop**: pasta `desktop/` (Electron + ffmpeg) — MP4, vídeo longo.
-  A mesa de notebook/PC (navegador) está em `desktop/web/` — `cd desktop/web && npm run dev`.
+  O shell Electron ainda usa o export Expo (`npm run web:build` na raiz).
 
 ```bash
 npm run android   # aparelho/emulador

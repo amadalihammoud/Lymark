@@ -8,7 +8,7 @@ import { Link } from '../i18n/navigation';
  * Os botões de conta do hero — em MODAL, sem sair da página.
  *
  * O formulário do Clerk abre por cima da landing: quem clica não perde o
- * lugar, e ao concluir vai à versão web em `/mesa` (`forceRedirectUrl`). As
+ * lugar, e ao concluir vai à versão web em `/web` (`forceRedirectUrl`). As
  * páginas `/entrar` e `/cadastrar` continuam existindo — link direto, desktop
  * e quem navega sem JavaScript; o modal é o atalho, não o substituto.
  *
@@ -30,7 +30,7 @@ export default function AuthCta({
   }
 
   // Depois do login no modal, a versão web canônica no mesmo domínio.
-  const appWeb = '/mesa';
+  const appWeb = '/web';
 
   return (
     <>

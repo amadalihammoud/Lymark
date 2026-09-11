@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 /**
- * Chave publicável do Clerk para SPAs no mesmo domínio (`/mesa`).
+ * Chave publicável do Clerk para SPAs no mesmo domínio (`/web`).
  * Não é segredo — o bundle do site já a entrega no HTML.
  */
 export const dynamic = 'force-dynamic';
