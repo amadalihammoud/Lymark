@@ -13,7 +13,7 @@ npm run dev
 
 Abre em `http://localhost:5173`. Arraste uma foto ou use Abrir foto.
 
-Produção: **https://lymark.app/web** (gerado por `npm run mesa:build:hosted`).
+Produção: **https://lymark.app/web** (gerado por `npm run web:build:hosted`).
 
 ```
 npm run build     # dist/ — o Electron pode servir isso no lugar do Expo web

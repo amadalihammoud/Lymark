@@ -68,8 +68,8 @@
     "test": "jest",
     "desktop:dev": "cd desktop && npm run start",
     "desktop:build": "cd desktop && npm run build",
-    "web:build:hosted": "npm run mesa:build:hosted || echo 'studio Vite ja esta em site/public/web'",
-    "mesa:build:hosted": "npm ci --prefix desktop/web && LYMARK_MESA_BASE=/web/ npm run build:vite --prefix desktop/web && node scripts/publish-mesa-to-site.js",
+    "web:build:hosted": "(npm ci --prefix desktop/web && LYMARK_MESA_BASE=/web/ npm run build:vite --prefix desktop/web && node scripts/publish-mesa-to-site.js) || echo 'studio Vite ja esta em site/public/web'",
+    "mesa:build:hosted": "npm run web:build:hosted",
     "expo:web:build:hosted": "LYMARK_WEB_BASE=/web expo export --platform web && node scripts/copy-wasm.js && node scripts/publish-web-to-site.js"
   },
   "private": true,

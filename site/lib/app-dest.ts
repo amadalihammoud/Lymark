@@ -1,8 +1,7 @@
 /**
  * Para onde o login manda depois de autenticar.
  *
- * `/web` é a versão web canônica (studio Vite em `desktop/web`).
- * `/mesa` é alias legado — aceito no query e mapeado para `/web`.
+ * `/web` é a versão web (studio Vite em `desktop/web`).
  * Qualquer outro valor (open redirect) cai em `/web`.
  */
 export type AppDest = '/web';

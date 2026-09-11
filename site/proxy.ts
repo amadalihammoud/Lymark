@@ -17,8 +17,7 @@ const intl = createMiddleware(routing);
  *
  * `/web` é a versão web (SPA Vite). Não passa pelo next-intl: não tem locale
  * de site, e um redirect de prefixo quebraria o `base` e as rotas do app.
- * `/mesa` ainda é ignorado porque redireciona para `/web`. Arquivos com
- * extensão já saem pelo `matcher`.
+ * Arquivos com extensão já saem pelo `matcher`.
  *
  * Nada aqui exige login. A porta de entrada é decisão de cada tela — a landing
  * e os documentos legais são públicos por definição —, e a API confere o token
@@ -28,7 +27,6 @@ const withoutClerk = (request: NextRequest) => {
   const { pathname } = request.nextUrl;
   if (pathname.startsWith('/api')) return;
   if (pathname === '/web' || pathname.startsWith('/web/')) return;
-  if (pathname === '/mesa' || pathname.startsWith('/mesa/')) return;
   return intl(request);
 };
 
@@ -53,5 +51,5 @@ export const config = {
    * só gastaria tempo. `/web` também fica de fora do matcher para não
    * negociar locale no SPA hospedado (reforço além do early-return acima).
    */
-  matcher: ['/((?!_next|_vercel|web(?:/|$)|mesa(?:/|$)|.*\\..*).*)'],
+  matcher: ['/((?!_next|_vercel|web(?:/|$)|.*\\..*).*)'],
 };

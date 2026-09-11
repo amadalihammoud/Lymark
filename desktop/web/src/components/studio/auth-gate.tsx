@@ -36,7 +36,7 @@ export function AuthMisconfigured() {
 }
 
 /**
- * Sem sessão não há mesa. É a mesma regra do aplicativo no celular:
+ * Sem sessão não há versão web. É a mesma regra do aplicativo no celular:
  * a cota é da conta, não do navegador.
  */
 export function AuthGate({ children }: { children: ReactNode }) {

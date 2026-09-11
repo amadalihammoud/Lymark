@@ -16,7 +16,8 @@ import { setClockLocale } from "@/lib/datetime";
 import { setGeocodeLocale } from "@/lib/locate";
 import { DEFAULT_LOCALE, isLocale, type Locale } from "@i18n/locales";
 
-const STORAGE_KEY = "lymark-mesa-locale";
+const STORAGE_KEY = "lymark-web-locale";
+const LEGACY_STORAGE_KEY = "lymark-mesa-locale";
 
 type LocaleContextValue = {
   locale: Locale;
@@ -29,7 +30,8 @@ const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 function readStored(): Locale | null {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw =
+      localStorage.getItem(STORAGE_KEY) ?? localStorage.getItem(LEGACY_STORAGE_KEY);
     if (raw && isLocale(raw)) return raw;
   } catch {
     // storage bloqueado
@@ -39,6 +41,7 @@ function readStored(): Locale | null {
 
 function writeStored(value: string | null) {
   try {
+    localStorage.removeItem(LEGACY_STORAGE_KEY);
     if (value) localStorage.setItem(STORAGE_KEY, value);
     else localStorage.removeItem(STORAGE_KEY);
   } catch {

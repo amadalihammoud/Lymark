@@ -15,7 +15,7 @@ export default defineConfig({
     },
   },
   // i18n/ e src/i18n/ ficam fora desta pasta; o tsconfig da raiz estende o
-  // Expo, que o Vite da mesa não tem. Transforma esses .ts sem consultá-lo.
+  // Expo, que o Vite da versão web não tem. Transforma esses .ts sem consultá-lo.
   esbuild: {
     tsconfigRaw: {
       compilerOptions: {
