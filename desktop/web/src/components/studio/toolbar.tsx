@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useTranslations } from "use-intl";
 
 import { Segmented } from "@/components/studio/segmented";
@@ -28,11 +29,15 @@ function MoreMenu({
   const tLang = useTranslations("app.language");
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
+  const menu = useRef<HTMLDivElement>(null);
+  const [box, setBox] = useState<{ top: number; end: number } | null>(null);
 
   useEffect(() => {
     if (!open) return;
     const onDoc = (event: MouseEvent) => {
-      if (!root.current?.contains(event.target as Node)) setOpen(false);
+      const target = event.target as Node;
+      if (root.current?.contains(target) || menu.current?.contains(target)) return;
+      setOpen(false);
     };
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -47,6 +52,33 @@ function MoreMenu({
       window.removeEventListener("keydown", onKey, true);
     };
   }, [open]);
+
+  useEffect(() => {
+    if (!open) {
+      setBox(null);
+      return;
+    }
+    const place = () => {
+      const el = root.current;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const rtl = document.documentElement.dir === "rtl";
+      setBox({
+        top: r.bottom + 4,
+        end: rtl ? r.left : window.innerWidth - r.right,
+      });
+    };
+    place();
+    window.addEventListener("resize", place);
+    window.addEventListener("scroll", place, true);
+    return () => {
+      window.removeEventListener("resize", place);
+      window.removeEventListener("scroll", place, true);
+    };
+  }, [open]);
+
+  const itemClass =
+    "flex h-9 w-full items-center px-3 text-start text-body text-mist hover:bg-lift hover:text-ink";
 
   return (
     <div ref={root} className="relative">
@@ -64,48 +96,53 @@ function MoreMenu({
         <span className="font-medium tracking-widest">···</span>
         {open ? <span className="absolute inset-x-2 bottom-1.5 h-px bg-amber" /> : null}
       </button>
-      {open ? (
-        <div
-          role="menu"
-          className="absolute end-0 top-full z-20 mt-1 min-w-40 border border-hairline bg-navy-800 py-1 shadow-[var(--shadow-panel)]"
-        >
-          <button
-            type="button"
-            role="menuitem"
-            className="flex h-9 w-full items-center px-3 text-start text-body text-mist hover:bg-lift hover:text-ink"
-            onClick={() => {
-              setOpen(false);
-              onVerify();
-            }}
-          >
-            {t("verifyMenu")}
-          </button>
-          <button
-            type="button"
-            role="menuitem"
-            disabled={!canReport}
-            className="flex h-9 w-full items-center px-3 text-start text-body text-mist hover:bg-lift hover:text-ink disabled:opacity-40"
-            onClick={() => {
-              setOpen(false);
-              onReport();
-            }}
-          >
-            {t("reportMenu")}
-          </button>
-          <button
-            type="button"
-            role="menuitem"
-            className="flex h-9 w-full items-center px-3 text-start text-body text-mist hover:bg-lift hover:text-ink"
-            onClick={() => {
-              setOpen(false);
-              onAccount();
-            }}
-          >
-            {tAccount("title")}
-            <span className="ms-auto ps-3 text-caption text-slate">{tLang("label")}</span>
-          </button>
-        </div>
-      ) : null}
+      {open && box
+        ? createPortal(
+            <div
+              ref={menu}
+              role="menu"
+              style={{ top: box.top, insetInlineEnd: box.end }}
+              className="fixed z-50 min-w-40 border border-hairline bg-navy-800 py-1 shadow-[var(--shadow-panel)]"
+            >
+              <button
+                type="button"
+                role="menuitem"
+                className={itemClass}
+                onClick={() => {
+                  setOpen(false);
+                  onVerify();
+                }}
+              >
+                {t("verifyMenu")}
+              </button>
+              <button
+                type="button"
+                role="menuitem"
+                disabled={!canReport}
+                className={cn(itemClass, "disabled:opacity-40")}
+                onClick={() => {
+                  setOpen(false);
+                  onReport();
+                }}
+              >
+                {t("reportMenu")}
+              </button>
+              <button
+                type="button"
+                role="menuitem"
+                className={itemClass}
+                onClick={() => {
+                  setOpen(false);
+                  onAccount();
+                }}
+              >
+                {tAccount("title")}
+                <span className="ms-auto ps-3 text-caption text-slate">{tLang("label")}</span>
+              </button>
+            </div>,
+            document.body,
+          )
+        : null}
     </div>
   );
 }
@@ -162,21 +199,23 @@ export function Chrome({
   ];
 
   return (
-    <header className="flex min-h-14 shrink-0 items-center gap-3 overflow-x-auto border-b border-hairline bg-navy-900 px-3 sm:px-4">
-      <Wordmark compact />
+    <header className="flex min-h-14 shrink-0 items-center gap-3 border-b border-hairline bg-navy-900 px-3 sm:px-4">
+      <div className="flex min-w-0 flex-1 items-center gap-3 overflow-x-auto">
+        <Wordmark compact />
 
-      <Segmented variant="pill" value={mode} onChange={setMode} options={modes} />
+        <Segmented variant="pill" value={mode} onChange={setMode} options={modes} />
 
-      <button
-        type="button"
-        onClick={onOpen}
-        title="Ctrl+O"
-        className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-sm border border-hairline px-4 py-1 text-center text-body font-semibold leading-tight text-mist hover:bg-lift hover:text-ink"
-      >
-        <span className="max-w-[7.5rem] text-balance">{openLabel}</span>
-      </button>
+        <button
+          type="button"
+          onClick={onOpen}
+          title="Ctrl+O"
+          className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-sm border border-hairline px-4 py-1 text-center text-body font-semibold leading-tight text-mist hover:bg-lift hover:text-ink"
+        >
+          <span className="max-w-[7.5rem] text-balance">{openLabel}</span>
+        </button>
+      </div>
 
-      <div className="ms-auto flex shrink-0 items-center gap-1 sm:gap-2">
+      <div className="flex shrink-0 items-center gap-1 sm:gap-2">
         <MoreMenu
           onVerify={() => setVerifyOpen(true)}
           onReport={() => setReportOpen(true)}
