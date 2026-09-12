@@ -5,6 +5,8 @@ import { useTranslations } from 'use-intl';
 
 import { useSettings } from '@/contexts/settings-context';
 import { StampCanvas } from '@/features/watermark/stamp-canvas';
+
+import { VideoFrame } from './video-frame';
 import { colors, radius, spacing, typography } from '@/theme';
 import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/types';
 
@@ -103,21 +105,34 @@ export function PhotoPreview({
     ? fitInside(reserved, aspectRatio)
     : { width: box.width, height: box.width > 0 ? box.width / aspectRatio : 0 };
 
+  const stamp = (
+    <StampCanvas
+      metadata={metadata}
+      preferences={preferences}
+      width={frame.width}
+      height={frame.height}
+      onLogoChange={updateBrandLogo}
+    />
+  );
+
+  // Vídeo e foto dividem o quadro, a moldura e o carimbo; só o fundo muda.
+  // O vídeo é o que tirou o recurso de uma rota escondida: quem escolhe um
+  // vídeo da galeria vê o carimbo sobre ele aqui, rodando, antes de exportar.
   const stampedPhoto = photo ? (
     <View style={[styles.frame, frame]}>
-      <Image
-        source={{ uri: photo.uri }}
-        style={StyleSheet.absoluteFill}
-        contentFit="cover"
-        accessibilityLabel={t('capture.previewLabel')}
-      />
-      <StampCanvas
-        metadata={metadata}
-        preferences={preferences}
-        width={frame.width}
-        height={frame.height}
-        onLogoChange={updateBrandLogo}
-      />
+      {photo.kind === 'video' ? (
+        <VideoFrame uri={photo.uri}>{stamp}</VideoFrame>
+      ) : (
+        <>
+          <Image
+            source={{ uri: photo.uri }}
+            style={StyleSheet.absoluteFill}
+            contentFit="cover"
+            accessibilityLabel={t('capture.previewLabel')}
+          />
+          {stamp}
+        </>
+      )}
     </View>
   ) : null;
 

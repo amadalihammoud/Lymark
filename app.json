@@ -68,6 +68,7 @@
     "plugins": [
       "@clerk/expo",
       "expo-router",
+      "expo-video",
       [
         "expo-splash-screen",
         {

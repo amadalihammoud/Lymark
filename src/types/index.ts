@@ -114,16 +114,27 @@ export type TimeFormat = (typeof TIME_FORMATS)[number];
 /** Os dados textuais que acompanham uma foto. */
 export type CaptureMetadata = Record<WatermarkFieldKey, string>;
 
+/** O que a captura pode carimbar. */
+export type MediaKind = 'photo' | 'video';
+
 /**
- * A foto escolhida, com as dimensões originais.
+ * A mídia escolhida, com as dimensões originais.
  *
  * As dimensões não são decoração: definem a proporção do preview e a
  * resolução da imagem exportada.
+ *
+ * O nome ficou "foto" porque foi assim que o app nasceu e é assim que o
+ * rascunho, a galeria e o preview a chamam; desde que o vídeo entrou na
+ * mesma tela, `kind` diz qual dos dois é. Ausente significa foto — todo
+ * rascunho gravado antes do vídeo continua válido sem migração.
  */
 export type SelectedPhoto = {
   uri: string;
   width: number;
   height: number;
+  kind?: MediaKind;
+  /** Só no vídeo: vem do seletor, para o preview e o carimbo de duração. */
+  durationMs?: number;
 };
 
 /**

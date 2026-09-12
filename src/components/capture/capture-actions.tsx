@@ -4,24 +4,27 @@ import { useTranslations } from 'use-intl';
 import { Button } from '@/components/ui/button';
 import { spacing } from '@/theme';
 
-/** As origens possíveis para a foto, lado a lado. */
+/**
+ * As portas de entrada da tela de captura.
+ *
+ * Foto e galeria têm rótulo; gravar vídeo é só o ícone. Três rótulos numa
+ * linha de telefone não cabem, e a câmera de vídeo é o ícone mais
+ * reconhecível dos três — o nome acessível continua sendo a frase inteira.
+ * A galeria já aceita vídeo pela mesma porta da foto, então o botão de
+ * gravar é a única porta exclusiva do vídeo.
+ */
 export function CaptureActions({
   onTakePhoto,
   onPickFromLibrary,
+  onRecordVideo,
   busy = false,
   showCamera = true,
 }: {
   onTakePhoto: () => void;
   onPickFromLibrary: () => void;
+  /** Ausente onde o vídeo não passa pela tela inicial (web, desktop). */
+  onRecordVideo?: () => void;
   busy?: boolean;
-  /**
-   * Mostra o botão da câmera.
-   *
-   * Desligado onde não há câmera alcançável — navegador de desktop e Electron.
-   * Ali o botão existia e falhava sempre, com uma mensagem que ainda pedia
-   * para tentar de novo. Um botão que nunca funciona é pior que a ausência
-   * dele: some a origem que não existe, e a galeria ocupa a linha inteira.
-   */
   showCamera?: boolean;
 }) {
   const t = useTranslations('app');
@@ -45,6 +48,16 @@ export function CaptureActions({
         disabled={busy}
         style={styles.action}
       />
+      {showCamera && onRecordVideo ? (
+        <Button
+          label={t('video.record')}
+          icon="videocam"
+          iconOnly
+          variant="primaryAlt"
+          onPress={onRecordVideo}
+          disabled={busy}
+        />
+      ) : null}
     </View>
   );
 }
