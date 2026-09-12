@@ -26,7 +26,10 @@ npx expo start
   **https://lymark.app/web** (ver `docs/WEB-URL.md`).
   Build hospedado: `npm run web:build:hosted`.
 - **Desktop**: pasta `desktop/` (Electron + ffmpeg) — MP4, vídeo longo.
-  O shell Electron ainda usa o export Expo (`npm run web:build` na raiz).
+  É uma casca fina sobre o studio hospedado (https://lymark.app/web): o
+  mesmo visual do navegador, mais a ponte `window.lymark` (ffmpeg, pasta de
+  saída, menu). `LYMARK_STUDIO_URL` aponta para um Vite local em
+  desenvolvimento.
 
 ```bash
 npm run android   # aparelho/emulador

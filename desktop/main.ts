@@ -24,32 +24,35 @@ import { DEFAULT_LOCALE, availableLocales, translate } from './i18n';
 import { buildApplicationMenu } from './menu';
 
 /**
- * Raiz do build web servido pelo protocolo `app://`.
+ * Onde o studio mora.
  *
- * No pacote o build web fica em `resources/dist`, e não dentro do `app.asar`.
- * O motivo é o Expo nomear a saída dos assets espelhando a origem do módulo,
- * produzindo `dist/assets/node_modules/…`. O electron-builder dá tratamento
- * especial a toda pasta chamada `node_modules` e a remove dos filesets do app
- * — nem `files` explícito para essa subpasta a traz de volta. O pacote saía
- * sem os 22 arquivos de asset, entre eles as fontes do carimbo. Como
- * `useStampTypefaces` devolve `null` quando falta qualquer fonte, o app abria
- * normalmente e simplesmente não carimbava.
+ * O desktop é uma casca fina: abre o studio hospedado em lymark.app/web —
+ * o mesmo que o navegador abre — e lhe entrega, pela ponte do preload, o que
+ * só o desktop tem (ffmpeg para o vídeo inteiro, pasta de saída, menu). Até
+ * aqui o Electron embalava o export web do aplicativo de celular, e o
+ * desktop tinha um visual e o studio outro para o mesmo produto em tela
+ * grande. Com a página hospedada, o login funciona como no navegador (a
+ * chave de produção do Clerk só aceita a origem lymark.app) e cada deploy
+ * chega sem reinstalar. O que se perde é o uso sem internet, que no PC pesa
+ * pouco — e a página de "sem conexão" abaixo diz isso em vez de ficar em
+ * branco.
  *
- * `extraResources` usa outro copiador, sem esse tratamento especial.
- *
- * Fora do pacote, `__dirname` é `desktop/dist` (a saída do tsc), então o build
- * web está dois níveis acima. O caminho antigo subia só um nível e apontava
- * para a própria saída do tsc — `npm start` nunca serviu o build web.
+ * `LYMARK_STUDIO_URL` aponta para um Vite local em desenvolvimento.
  */
-const DIST_DIR = app.isPackaged
-  ? path.join(process.resourcesPath, 'dist')
-  : path.join(__dirname, '../../dist');
+const STUDIO_URL = process.env.LYMARK_STUDIO_URL ?? 'https://lymark.app/web';
+/**
+ * A única origem que recebe a ponte. O preload compara com a origem da
+ * página antes de expor `window.lymark`, e cada handler de IPC confere o
+ * remetente — em duas camadas, porque um deles sozinho é um `if` a menos
+ * de uma página qualquer alcançar o disco.
+ */
+const STUDIO_ORIGIN = new URL(STUDIO_URL).origin;
 
 /**
  * Ícone da janela.
  *
- * Mesma diferença de nível do `DIST_DIR`: empacotado, os ícones ficam em
- * `assets/` na raiz do asar, ao lado de `desktop/`; fora do pacote, estão em
+ * Empacotado, os ícones ficam em `assets/` na raiz do asar, ao lado de
+ * `desktop/`; fora do pacote, `__dirname` é `desktop/dist` e eles estão em
  * `assets/images/` na raiz do projeto. O caminho único que havia aqui acertava
  * só no pacote e a janela abria com o ícone padrão do Electron em
  * desenvolvimento.
@@ -201,20 +204,11 @@ function ensureGalleryDir(): string {
   return DEFAULT_GALLERY_PATH;
 }
 
-// Configurar o protocolo app:// antes do app estar pronto
+// Esquemas privilegiados, registrados antes de o app estar pronto.
 protocol.registerSchemesAsPrivileged([
-  {
-    scheme: 'app',
-    privileges: {
-      standard: true,
-      secure: true,
-      supportFetchAPI: true,
-      stream: true,
-    },
-  },
-  // Esquema separado só para as fotos da galeria. A janela roda sobre
-  // `app://`, e com `webSecurity` ligado uma origem dessas não carrega
-  // `file://` — sem isto, a galeria do desktop exibiria imagens quebradas.
+  // Esquema só para mídia local: a janela roda sobre `https://lymark.app`, e
+  // com `webSecurity` ligado uma origem dessas não carrega `file://` — é por
+  // aqui que a prévia do vídeo escolhido chega à página.
   {
     scheme: 'media',
     privileges: { standard: true, secure: true, supportFetchAPI: true, stream: true },
@@ -242,6 +236,8 @@ function createWindow() {
       nodeIntegration: false,
       sandbox: true,
       preload: path.join(__dirname, 'preload.js'),
+      // O preload lê daqui a origem que pode receber a ponte.
+      additionalArguments: [`--lymark-studio-origin=${STUDIO_ORIGIN}`],
       webgl: true,
       allowRunningInsecureContent: false,
     },
@@ -249,27 +245,34 @@ function createWindow() {
     icon: ICON_PATH,
   });
 
-  // O sinalizador de plataforma NÃO é injetado aqui. O preload já expõe
-  // `window.lymark.platform` pelo contextBridge, que cria a propriedade como
-  // somente-leitura — reatribuir por executeJavaScript não teria efeito, ou
-  // sobrescreveria a ponte. Havia ainda uma corrida: `did-finish-load` chega
-  // depois de o módulo do app já ter lido o sinalizador.
+  // O Google recusa login OAuth em navegadores embutidos, e reconhece o
+  // Electron pelo token `Electron/…` do user agent. Sem esta linha, "Continuar
+  // com Google" no studio termina em "disallowed_useragent". O que sobra é o
+  // Chrome que o Electron já é.
+  const userAgent = mainWindow.webContents
+    .getUserAgent()
+    .replace(/ (Electron|lymark-desktop|Lymark)\/\S+/g, '');
+  mainWindow.webContents.setUserAgent(userAgent);
 
-  // Nenhuma navegação para fora do app. Sem isto, uma URL externa carregaria
-  // NESTA janela, com o preload anexado — dando à página remota acesso a
-  // saveFile, deleteFile e aos seletores de arquivo.
+  // A ponte não segue a navegação: o preload só a expõe na origem do studio
+  // (e cada handler confere o remetente). Por isso a janela pode navegar
+  // pelo login — lymark.app, o Clerk e os provedores de OAuth se revezam na
+  // mesma aba — sem nenhuma dessas páginas alcançar o disco. O que não entra
+  // é esquema fora do https: `file:`, `javascript:` e afins.
   //
   // O evento é de `webContents`, não de `BrowserWindow`: a versão anterior
   // registrava em `mainWindow`, que não emite `will-navigate`, então a
   // proteção existia no código e nunca era executada.
   mainWindow.webContents.on('will-navigate', (event, url) => {
-    if (!url.startsWith('app://')) event.preventDefault();
+    if (!/^https?:/.test(url)) event.preventDefault();
   });
 
-  // Janela nova (window.open, target=_blank) é sempre negada. Se um dia for
-  // preciso abrir um link, o certo é entregar ao navegador do sistema com
-  // shell.openExternal, nunca abrir uma BrowserWindow com preload.
-  mainWindow.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+  // Janela nova (window.open, target=_blank) vai para o navegador do
+  // sistema — nunca uma BrowserWindow com preload.
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    if (/^https?:/.test(url)) void shell.openExternal(url);
+    return { action: 'deny' };
+  });
 
   // Token de login que chegou antes de a página carregar: entregue agora,
   // quando o renderer já tem quem escute (`onLoginToken` no preload).
@@ -277,13 +280,17 @@ function createWindow() {
     if (mainWindow) flushPendingLoginToken(mainWindow.webContents);
   });
 
-  // Carregar o app. O protocolo já foi registrado em `whenReady`; registrar
-  // de novo aqui lançava "Attempted to register a second handler for 'app'".
-  if (process.env.WEBPACK_DEV_SERVER_URL) {
-    mainWindow.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
-  } else {
-    mainWindow.loadURL('app://lymark/index.html');
-  }
+  // Sem rede (ou com o site fora do ar), a janela ficaria em branco, que é
+  // indistinguível de um app travado. Uma página mínima diz o que houve e
+  // oferece tentar de novo; `-3` é a navegação abortada pela própria página,
+  // que não é falha.
+  mainWindow.webContents.on('did-fail-load', (_event, code, _description, url, isMainFrame) => {
+    if (!isMainFrame || code === -3 || !mainWindow) return;
+    if (!url.startsWith(STUDIO_ORIGIN)) return;
+    void mainWindow.loadURL(offlinePageUrl());
+  });
+
+  mainWindow.loadURL(STUDIO_URL);
 
   if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools();
@@ -291,6 +298,52 @@ function createWindow() {
 
   mainWindow.on('closed', () => {
     mainWindow = null;
+  });
+}
+
+/**
+ * A página de "sem conexão", inteira numa URL `data:`.
+ *
+ * Origem opaca de propósito: `data:` não é a origem do studio, então o
+ * preload não expõe a ponte a ela. Sem script — o botão é um link para o
+ * próprio studio, e é a navegação que tenta de novo. As duas frases são as
+ * mesmas do aplicativo ("Erro" / "Tente novamente."), que já existem nos 79
+ * idiomas.
+ */
+function offlinePageUrl(): string {
+  const title = translate(currentLocale, 'app.common.error');
+  const retry = translate(currentLocale, 'app.common.tryAgain');
+  const html = `<!doctype html><html lang="${currentLocale}"><head><meta charset="utf-8">
+<title>Lymark</title><style>
+html,body{height:100%;margin:0;background:#15243C;color:#fff;font:16px system-ui,sans-serif}
+main{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+h1{font-size:22px;margin:0}a{color:#fff;text-decoration:none;border:1px solid #4A76A1;border-radius:6px;padding:12px 20px}
+a:hover{background:#294675}
+</style></head><body><main><h1>${escapeHtml(title)}</h1><a href="${STUDIO_URL}">${escapeHtml(retry)}</a></main></body></html>`;
+  return `data:text/html;charset=utf-8,${encodeURIComponent(html)}`;
+}
+
+function escapeHtml(text: string): string {
+  return text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+}
+
+/**
+ * `ipcMain.handle` que só atende a página do studio.
+ *
+ * O preload já não expõe a ponte fora da origem do studio; esta é a segunda
+ * camada, no processo principal, para o caso de a primeira falhar: qualquer
+ * quadro de outra origem que consiga invocar um canal recebe uma rejeição,
+ * e nenhum handler chega a tocar o disco.
+ */
+function handleFromStudio(
+  channel: string,
+  listener: (event: Electron.IpcMainInvokeEvent, ...args: any[]) => unknown,
+): void {
+  ipcMain.handle(channel, (event, ...args) => {
+    if (event.senderFrame?.origin !== STUDIO_ORIGIN) {
+      throw new Error('Origem não autorizada.');
+    }
+    return listener(event, ...args);
   });
 }
 
@@ -312,7 +365,7 @@ function registerIpcHandlers() {
    * lançar links arbitrários no navegador da pessoa. `delete` existe porque
    * as lojas exigem exclusão de conta acionável de dentro do aplicativo.
    */
-  ipcMain.handle('open-account-page', async (_event, args?: { page?: unknown }) => {
+  handleFromStudio('open-account-page', async (_event, args?: { page?: unknown }) => {
     const deleting = args?.page === 'delete';
     const url = deleting ? 'https://lymark.app/conta/excluir' : ACCOUNT_HANDOFF_URL;
     // Abrir o login é o que autoriza a volta pelo deep link (ver
@@ -325,7 +378,7 @@ function registerIpcHandlers() {
   // Seletor de vídeo, com sondagem já embutida: o renderer precisa das
   // dimensões para desenhar o carimbo no tamanho do quadro, e da data de
   // modificação para preencher data e hora como o lote faz com o EXIF.
-  ipcMain.handle('pick-video', async () => {
+  handleFromStudio('pick-video', async () => {
     if (!mainWindow) return { status: 'cancelled' };
     const picked = await dialog.showOpenDialog(mainWindow, {
       properties: ['openFile'],
@@ -344,6 +397,8 @@ function registerIpcHandlers() {
       return {
         status: 'selected',
         path: filePath,
+        // A prévia na página: `media://video/<id>` (ver createMediaProtocol).
+        url: `media://video/${registerPickedVideo(filePath)}`,
         name: path.basename(filePath),
         width: info.width,
         height: info.height,
@@ -366,7 +421,7 @@ function registerIpcHandlers() {
    * O progresso vai por evento: o stderr do ffmpeg publica `time=` conforme
    * avança, e a duração veio da sondagem.
    */
-  ipcMain.handle(
+  handleFromStudio(
     'watermark-video',
     async (
       event,
@@ -495,7 +550,7 @@ function registerIpcHandlers() {
    * stream antes do recibo, o append da caixa `lymk` depois dele. O recibo
    * em si é pedido pelo renderer, que é quem tem o token da sessão.
    */
-  ipcMain.handle('hash-video-file', async (_event, { path: filePath }: { path: string }) => {
+  handleFromStudio('hash-video-file', async (_event, { path: filePath }: { path: string }) => {
     try {
       // Sem a autorização, isto seria um oráculo de hash sobre qualquer
       // arquivo do disco — inclusive chaves e documentos fora do app.
@@ -506,7 +561,7 @@ function registerIpcHandlers() {
     }
   });
 
-  ipcMain.handle(
+  handleFromStudio(
     'seal-video',
     (_event, { path: filePath, receipt }: { path: string; receipt: string }) => {
       try {
@@ -531,7 +586,7 @@ function registerIpcHandlers() {
    * O HTML não carrega bytes de foto — as imagens entram por `media://` na
    * hora da impressão — então o teto aqui é folgado e o custo de IPC, baixo.
    */
-  ipcMain.handle(
+  handleFromStudio(
     'export-report-pdf',
     async (
       _event,
@@ -581,7 +636,7 @@ function registerIpcHandlers() {
    * mesma contenção do protocolo `media://`) e o ZIP é montado em modo
    * store (`zip.ts`). Nenhum byte de foto atravessa o IPC.
    */
-  ipcMain.handle(
+  handleFromStudio(
     'export-project-zip',
     async (
       _event,
@@ -661,7 +716,7 @@ function registerIpcHandlers() {
     },
   );
 
-  ipcMain.handle('set-locale', (_event, { locale }: { locale: unknown }) => {
+  handleFromStudio('set-locale', (_event, { locale }: { locale: unknown }) => {
     if (!isKnownLocale(locale) || locale === currentLocale) return { ok: true };
 
     currentLocale = locale;
@@ -671,7 +726,7 @@ function registerIpcHandlers() {
   });
 
   // Handler para salvar arquivo (diálogo de salvamento)
-  ipcMain.handle('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
+  handleFromStudio('save-file', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
     // Validar tamanho do buffer para evitar DoS
     if (bytes.length > MAX_FILE_SIZE) {
       return { status: 'failed', error: 'Arquivo muito grande (máx. 50MB).' };
@@ -713,7 +768,7 @@ function registerIpcHandlers() {
   });
 
   // Handler para salvar arquivo na pasta de saída (sem diálogo)
-  ipcMain.handle('save-file-to-output', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
+  handleFromStudio('save-file-to-output', async (event, { bytes, filename, mimeType }: { bytes: number[]; filename: string; mimeType: string }) => {
     try {
       // Validar tamanho do buffer para evitar DoS
       if (bytes.length > MAX_FILE_SIZE) {
@@ -748,7 +803,7 @@ function registerIpcHandlers() {
   // O `save-file` abre um seletor a cada chamada, o que serve para "exportar
   // para outro lugar" mas não para "guardar no histórico": a captura avulsa
   // grava sozinha, como no celular.
-  ipcMain.handle('save-to-gallery', async (event, { bytes, filename }: { bytes: number[]; filename: string }) => {
+  handleFromStudio('save-to-gallery', async (event, { bytes, filename }: { bytes: number[]; filename: string }) => {
     try {
       // Validar tamanho do buffer para evitar DoS
       if (bytes.length > MAX_FILE_SIZE) {
@@ -771,7 +826,7 @@ function registerIpcHandlers() {
 
   // Handler para apagar arquivo da galeria
   // SÓ apaga arquivos dentro da pasta da galeria (segurança)
-  ipcMain.handle('delete-file', async (event, { path: relativePath }: { path: string }) => {
+  handleFromStudio('delete-file', async (event, { path: relativePath }: { path: string }) => {
     try {
       // Resolver o caminho absoluto
       const galleryDir = ensureGalleryDir();
@@ -801,7 +856,7 @@ function registerIpcHandlers() {
   });
 
   // Handler para selecionar imagem
-  ipcMain.handle('pick-image', async () => {
+  handleFromStudio('pick-image', async () => {
     const { filePaths } = await dialog.showOpenDialog({
       title: translate(currentLocale, 'desktop.dialog.pickPhoto'),
       properties: ['openFile'],
@@ -831,7 +886,7 @@ function registerIpcHandlers() {
   });
 
   // Handler para selecionar múltiplas imagens (processamento em lote)
-  ipcMain.handle('pick-images', async () => {
+  handleFromStudio('pick-images', async () => {
     const { filePaths } = await dialog.showOpenDialog({
       title: translate(currentLocale, 'desktop.dialog.pickPhotos'),
       properties: ['openFile', 'multiSelections'],
@@ -869,7 +924,7 @@ function registerIpcHandlers() {
   });
 
   // Handler para selecionar pasta de saída
-  ipcMain.handle('select-output-folder', async () => {
+  handleFromStudio('select-output-folder', async () => {
     const { filePaths } = await dialog.showOpenDialog({
       title: translate(currentLocale, 'desktop.dialog.pickFolder'),
       properties: ['openDirectory'],
@@ -885,12 +940,12 @@ function registerIpcHandlers() {
   });
 
   // Handler para obter pasta de saída atual
-  ipcMain.handle('get-output-folder', async () => {
+  handleFromStudio('get-output-folder', async () => {
     return { path: outputFolderPath };
   });
 
   // Handler para adicionar arquivo via drag and drop
-  ipcMain.handle('add-drag-drop-file', async (event, { filePath }: { filePath: string }) => {
+  handleFromStudio('add-drag-drop-file', async (event, { filePath }: { filePath: string }) => {
     // O caminho vem do renderer, não de um diálogo do sistema. Aceitar
     // qualquer um daria ao renderer um primitivo de leitura de arquivo
     // arbitrário. Restringimos ao que o app sabe processar e exigimos
@@ -925,7 +980,7 @@ function registerIpcHandlers() {
   });
 }
 
-// Configurar o protocolo app:// para servir o build estático
+// Tipos de conteúdo das fotos servidas por `media://`.
 const CONTENT_TYPES: Record<string, string> = {
   '.html': 'text/html',
   '.js': 'application/javascript',
@@ -947,126 +1002,6 @@ const CONTENT_TYPES: Record<string, string> = {
 };
 
 /**
- * Política de conteúdo do aplicativo empacotado.
- *
- * Quase tudo vem do próprio pacote. `https://lymark.app` entra em
- * `connect-src` para entitlements, selo e conta — sem curingas. `wasm-unsafe-eval` é
- * exigido pelo CanvasKit, `unsafe-inline` em estilos pelo react-native-web,
- * que injeta as folhas em tempo de execução, e `blob:`/`data:` pelas imagens
- * que o app gera em memória.
- *
- * `scriptHashes` cobre os scripts embutidos no HTML que o Expo gera — veja
- * `inlineScriptHashes`.
- */
-function contentSecurityPolicy(scriptHashes: readonly string[]): string {
-  const scriptSrc = ["'self'", "'wasm-unsafe-eval'", ...scriptHashes.map((h) => `'${h}'`)];
-
-  return [
-    "default-src 'self'",
-    `script-src ${scriptSrc.join(' ')}`,
-    "style-src 'self' 'unsafe-inline'",
-    // `media:` é o esquema das fotos da galeria, servido por createMediaProtocol.
-    "img-src 'self' data: blob: media:",
-    "font-src 'self' data:",
-    // `media:` também aqui, e não só em `img-src`: exibir a foto é `<img>`,
-    // mas EXPORTAR é `fetch` (Skia.Data.fromURI, em render-photo.ts) — sem
-    // isto o preview aparece e a exportação falha, que é meia correção.
-    "connect-src 'self' data: blob: media: https://lymark.app",
-    "object-src 'none'",
-    "frame-ancestors 'none'",
-    "base-uri 'self'",
-    "form-action 'none'",
-  ].join('; ');
-}
-
-const INLINE_SCRIPT = /<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi;
-const EXECUTABLE_TYPE = /^(module|text\/javascript|application\/javascript)$/i;
-
-/**
- * Autoriza, por hash, os scripts embutidos no HTML exportado pelo Expo.
- *
- * O `index.html` do Expo traz um script inline que inicializa o roteador. Sem
- * autorização ele é bloqueado e o aplicativo abre em tela branca — foi o que
- * acontecia no pacote antes desta função.
- *
- * O hash é calculado ao servir, e não fixado no código, porque o conteúdo do
- * script muda a cada build do bundle. Um valor fixo passaria a bloquear o
- * script na primeira recompilação, e o sintoma — tela branca — não aponta para
- * a causa. Calcular aqui mantém `script-src` restrito sem exigir manutenção.
- *
- * Isto não afrouxa a política: o hash cobre exatamente os bytes que acabaram
- * de ser lidos de dentro do pacote, que é somente leitura. Um script injetado
- * depois, em tempo de execução, continua sem hash e continua bloqueado.
- */
-function inlineScriptHashes(html: string): string[] {
-  const hashes: string[] = [];
-
-  for (const [, attrs, body] of html.matchAll(INLINE_SCRIPT)) {
-    // Script externo já é coberto por 'self'; hash nem se aplicaria.
-    if (/\bsrc\s*=/i.test(attrs)) continue;
-
-    // `type="application/json"` e afins carregam dados, não executam. Emitir
-    // hash para eles só aumentaria o cabeçalho.
-    const type = /\btype\s*=\s*["']?([^"'\s>]+)/i.exec(attrs)?.[1];
-    if (type && !EXECUTABLE_TYPE.test(type)) continue;
-
-    hashes.push(`sha256-${crypto.createHash('sha256').update(body, 'utf8').digest('base64')}`);
-  }
-
-  return hashes;
-}
-
-function createProtocol() {
-  protocol.handle('app', (request) => {
-    // `new URL` em vez de manipular a string: a versão anterior fazia
-    // `replace('app:///', '')` enquanto a janela carregava `app://./…` — com
-    // duas barras, não três. O replace não casava, o caminho resultante era
-    // literalmente "app:/…" e nada era encontrado.
-    let pathname: string;
-    try {
-      pathname = decodeURIComponent(new URL(request.url).pathname);
-    } catch {
-      return new Response('Bad Request', { status: 400 });
-    }
-
-    const requested = path.join(DIST_DIR, pathname);
-
-    // O handler nunca deve servir nada fora do build. A normalização de
-    // segmentos que o Chromium faz em esquemas `standard` já barra o caso
-    // óbvio, mas depender disso é apoiar a segurança num detalhe implícito
-    // do navegador em vez de numa verificação nossa.
-    if (requested !== DIST_DIR && !isInside(DIST_DIR, requested)) {
-      return new Response('Forbidden', { status: 403 });
-    }
-
-    try {
-      const target = fs.existsSync(requested) && fs.statSync(requested).isDirectory()
-        ? path.join(requested, 'index.html')
-        : requested;
-
-      if (!fs.existsSync(target)) {
-        return new Response('Not Found', { status: 404 });
-      }
-
-      const contentType = CONTENT_TYPES[path.extname(target).toLowerCase()]
-        ?? 'application/octet-stream';
-
-      const body = fs.readFileSync(target);
-
-      const headers: Record<string, string> = { 'Content-Type': contentType };
-      if (contentType === 'text/html') {
-        headers['Content-Security-Policy'] =
-          contentSecurityPolicy(inlineScriptHashes(body.toString('utf8')));
-      }
-
-      return new Response(body, { headers });
-    } catch {
-      return new Response('Not Found', { status: 404 });
-    }
-  });
-}
-
-/**
  * Serve as fotos da galeria para a janela.
  *
  * Aceita apenas o nome do arquivo, nunca um caminho: o renderer não escolhe
@@ -1080,6 +1015,16 @@ function createMediaProtocol() {
       url = new URL(request.url);
     } catch {
       return new Response('Bad Request', { status: 400 });
+    }
+
+    // `media://video/<id>` — um vídeo escolhido no diálogo, para a prévia.
+    if (url.hostname === 'video') {
+      const id = path.basename(decodeURIComponent(url.pathname));
+      const picked = pickedVideos.get(id);
+      if (!picked || !fs.existsSync(picked)) {
+        return new Response('Not Found', { status: 404 });
+      }
+      return serveVideo(picked, request);
     }
 
     // `media://picked/<id>` — uma foto que o usuário escolheu no diálogo,
@@ -1219,6 +1164,75 @@ function allowVideoPath(filePath: string): void {
 
 function isAuthorizedVideoPath(value: unknown): value is string {
   return typeof value === 'string' && authorizedVideoPaths.has(path.resolve(value));
+}
+
+/**
+ * Os vídeos escolhidos no diálogo, por identificador opaco — o mesmo desenho
+ * de `pickedImages`: a página recebe `media://video/<id>` para a prévia e
+ * nunca escolhe o que é lido. O caminho real segue no resultado de
+ * `pick-video` porque o ffmpeg precisa dele, e os handlers que o recebem
+ * de volta conferem `isAuthorizedVideoPath`.
+ */
+const pickedVideos = new Map<string, string>();
+
+function registerPickedVideo(filePath: string): string {
+  const id = crypto.randomBytes(8).toString('hex');
+  pickedVideos.set(id, filePath);
+  if (pickedVideos.size > 100) {
+    const oldest = pickedVideos.keys().next().value;
+    if (oldest) pickedVideos.delete(oldest);
+  }
+  return id;
+}
+
+const VIDEO_CONTENT_TYPES: Record<string, string> = {
+  '.mp4': 'video/mp4',
+  '.m4v': 'video/mp4',
+  '.mov': 'video/quicktime',
+  '.webm': 'video/webm',
+  '.mkv': 'video/x-matroska',
+  '.avi': 'video/x-msvideo',
+};
+
+/**
+ * Serve um vídeo escolhido à tag `<video>` da página, com suporte a `Range`.
+ *
+ * Sem o `Range`, o Chromium recebe o arquivo inteiro de uma vez e a barra de
+ * tempo não busca: cada arraste recomeça do zero. Com ele, a página pede só o
+ * trecho que vai exibir — é o mesmo contrato de um servidor de vídeo comum.
+ */
+function serveVideo(filePath: string, request: Request): Response {
+  const type = VIDEO_CONTENT_TYPES[path.extname(filePath).toLowerCase()] ?? 'video/mp4';
+  const size = fs.statSync(filePath).size;
+  const headers: Record<string, string> = {
+    'Content-Type': type,
+    'Accept-Ranges': 'bytes',
+    // A página desenha o quadro num canvas (`crossOrigin = "anonymous"`):
+    // sem este cabeçalho, o canvas fica contaminado e `toBlob` falha.
+    'Access-Control-Allow-Origin': STUDIO_ORIGIN,
+  };
+
+  const range = /^bytes=(\d*)-(\d*)$/.exec(request.headers.get('range') ?? '');
+  if (!range) {
+    return new Response(fs.createReadStream(filePath) as unknown as ReadableStream, {
+      headers: { ...headers, 'Content-Length': String(size) },
+    });
+  }
+
+  const start = range[1] ? Number(range[1]) : 0;
+  const end = range[2] ? Math.min(Number(range[2]), size - 1) : size - 1;
+  if (Number.isNaN(start) || Number.isNaN(end) || start > end || start >= size) {
+    return new Response(null, { status: 416, headers: { 'Content-Range': `bytes */${size}` } });
+  }
+
+  return new Response(fs.createReadStream(filePath, { start, end }) as unknown as ReadableStream, {
+    status: 206,
+    headers: {
+      ...headers,
+      'Content-Range': `bytes ${start}-${end}/${size}`,
+      'Content-Length': String(end - start + 1),
+    },
+  });
 }
 
 /**
@@ -1459,8 +1473,7 @@ app.whenReady().then(() => {
   outputFolderPath = config.outputFolderPath;
   currentLocale = config.locale;
 
-  // Configurar o protocolo
-  createProtocol();
+  // Configurar os protocolos de mídia local e do relatório
   createMediaProtocol();
   createReportProtocol();
   

@@ -77,23 +77,10 @@ compression: maximum
 # porque não há nenhuma: `image-size` é JavaScript puro.
 npmRebuild: false
 
-# O build web inteiro — incluindo o `canvaskit.wasm`, que `scripts/copy-wasm.js`
-# copia para a raiz do `dist/` — vai para `resources/dist`, e não para o asar.
-#
-# O Expo nomeia a saída dos assets espelhando a origem do módulo, gerando
-# `dist/assets/node_modules/@expo-google-fonts/…`. O electron-builder trata
-# toda pasta chamada `node_modules` de forma especial e a remove dos filesets
-# de `files` — inclusive com uma entrada explícita apontando só para ela.
-# O pacote saía sem os 22 arquivos de asset, entre eles as três fontes do
-# carimbo; o app abria e não carimbava. `extraResources` usa outro copiador,
-# sem esse tratamento, e `main.ts` aponta o `DIST_DIR` para cá quando
-# empacotado.
+# Nenhum build web vai no pacote: o desktop abre o studio hospedado em
+# https://lymark.app/web (ver `STUDIO_URL` em `main.ts`). O que vai como
+# recurso é só o que a página não tem — o ffmpeg e o catálogo do menu.
 extraResources:
-  - from: ../dist
-    to: dist
-    filter:
-      - "**/*"
-
   # O ffmpeg do vídeo carimbado. Binário nativo não pode viver dentro do
   # asar (não é executável de lá); vai como recurso, e `ffmpegPath()` no
   # main.ts o encontra em `resources/ffmpeg`. O `ffmpeg-static` baixa o

@@ -266,6 +266,31 @@ export async function exportVideoFrame(
   return { blob, filename: fileStampName(look.fields.code).replace(".jpg", "-quadro.jpg") };
 }
 
+/**
+ * Só o carimbo, num PNG transparente do tamanho do quadro.
+ *
+ * É o que o ffmpeg do desktop recebe para compor sobre o vídeo inteiro: o
+ * MESMO desenho do quadro exportado, sem o quadro. Quem compõe é o
+ * `watermark-video` do processo principal (`desktop/main.ts`).
+ */
+export async function renderStampOverlay(
+  width: number,
+  height: number,
+  look: StampLook,
+): Promise<Uint8Array> {
+  const canvas = document.createElement("canvas");
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("canvas");
+  const logos = await loadLogos(look);
+  drawStamp(ctx, width, height, look, logos);
+  const blob = await new Promise<Blob>((resolve, reject) => {
+    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("blob"))), "image/png");
+  });
+  return new Uint8Array(await blob.arrayBuffer());
+}
+
 export function downloadBlob(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
