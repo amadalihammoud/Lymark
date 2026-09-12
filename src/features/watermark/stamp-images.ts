@@ -1,48 +1,61 @@
 import { Skia, type SkImage } from '@shopify/react-native-skia';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+
+import type { BrandLogo } from '@/types';
 
 import { resolveLogoUri } from './logo-file';
 
 /**
- * O logotipo da empresa, decodificado para o desenho.
+ * Os logotipos da empresa, decodificados para o desenho.
  *
  * Vive fora de `skia-stamp.ts` de propósito: o harness de fidelidade compila
  * o desenhista para Node, onde não existe `expo-file-system`. Aqui fica o que
  * depende do sistema de arquivos; lá, só o Skia.
  */
 
+/** Os caminhos dos logotipos, sem repetição — dois logos podem ter o mesmo arquivo. */
+export function logoPathsOf(logos: readonly BrandLogo[]): string[] {
+  return [...new Set(logos.map((logo) => logo.path))];
+}
+
 /**
- * Decodifica o logotipo guardado, para o desenho poder ser síncrono.
+ * Decodifica os logotipos guardados, para o desenho poder ser síncrono.
  *
  * Devolve sempre um mapa — vazio enquanto carrega, ou quando não há logotipo.
  * Nunca `null`, porque o carimbo inteiro não deve esperar por um elemento
  * opcional dele.
  */
-export async function loadStampImages(path: string | null): Promise<Map<string, SkImage>> {
+export async function loadStampImages(paths: readonly string[]): Promise<Map<string, SkImage>> {
   const images = new Map<string, SkImage>();
-  if (!path) return images;
 
-  try {
-    const data = await Skia.Data.fromURI(resolveLogoUri(path));
-    const image = Skia.Image.MakeImageFromEncoded(data);
-    if (image) images.set(path, image);
-  } catch (error) {
-    // O arquivo pode ter sumido numa restauração de backup. A foto sai sem o
-    // logotipo, e não deixa de sair.
-    console.warn('[marca] não foi possível ler o logotipo.', error);
+  for (const path of new Set(paths)) {
+    try {
+      const data = await Skia.Data.fromURI(resolveLogoUri(path));
+      const image = Skia.Image.MakeImageFromEncoded(data);
+      if (image) images.set(path, image);
+    } catch (error) {
+      // O arquivo pode ter sumido numa restauração de backup. A foto sai sem o
+      // logotipo, e não deixa de sair.
+      console.warn('[marca] não foi possível ler o logotipo.', error);
+    }
   }
 
   return images;
 }
 
-/** A versão de tela: recarrega quando o logotipo escolhido muda. */
-export function useStampImages(path: string | null): Map<string, SkImage> {
+/** A versão de tela: recarrega quando os logotipos escolhidos mudam. */
+export function useStampImages(logos: readonly BrandLogo[]): Map<string, SkImage> {
   const [images, setImages] = useState<Map<string, SkImage>>(EMPTY_IMAGES);
+
+  // A chave é a lista de caminhos, e não a lista de logos: arrastar um
+  // logotipo muda o objeto a cada quadro, e não pode redecodificar o arquivo.
+  const key = useMemo(() => logoPathsOf(logos).join('\n'), [logos]);
 
   useEffect(() => {
     let active = true;
+    const paths = key ? key.split('\n') : [];
 
-    void loadStampImages(path).then((loaded) => {
+    void loadStampImages(paths).then((loaded) => {
       if (active) setImages(loaded);
       else for (const image of loaded.values()) image.dispose();
     });
@@ -50,7 +63,7 @@ export function useStampImages(path: string | null): Map<string, SkImage> {
     return () => {
       active = false;
     };
-  }, [path]);
+  }, [key]);
 
   return images;
 }

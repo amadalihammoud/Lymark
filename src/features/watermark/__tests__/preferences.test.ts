@@ -102,25 +102,57 @@ describe('mergeWithDefaults', () => {
     expect(merged.visibleFields).not.toBe(DEFAULT_WATERMARK_PREFERENCES.visibleFields);
   });
 
-  it('escala do logotipo: quem vem de versão antiga fica no automático', () => {
-    // Um registro da versão 7 não conhece o campo — e o automático (1) é
-    // exatamente a geometria de antes, então a foto de ninguém muda sozinha.
-    expect(mergeWithDefaults({}).brandLogoScale).toBe(1);
-    expect(mergeWithDefaults({ brandLogoScale: 2 }).brandLogoScale).toBe(2);
+  it('logotipos: quem vem de versão antiga leva o logotipo único para a lista', () => {
+    // Os quatro campos soltos viram o primeiro item, com os mesmos valores:
+    // a atualização não muda a foto de ninguém.
+    expect(mergeWithDefaults({}).brandLogos).toEqual([]);
+    expect(
+      mergeWithDefaults({
+        brandLogoPath: 'brand/abc.png',
+        brandLogoAspect: 2,
+        brandLogoScale: 2,
+        brandLogoPosition: 'top-right',
+      }).brandLogos,
+    ).toEqual([
+      { path: 'brand/abc.png', aspect: 2, scale: 2, placement: 'top-right', x: 0.5, y: 0.5, width: 0.25 },
+    ]);
   });
 
-  it('escala do logotipo: fora da faixa é contida; lixo cai no padrão', () => {
-    expect(mergeWithDefaults({ brandLogoScale: 9 }).brandLogoScale).toBe(2.5);
-    expect(mergeWithDefaults({ brandLogoScale: 0.01 }).brandLogoScale).toBe(0.5);
-    expect(mergeWithDefaults({ brandLogoScale: Number.NaN }).brandLogoScale).toBe(1);
-    expect(mergeWithDefaults({ brandLogoScale: '2' as never }).brandLogoScale).toBe(1);
+  it('logotipos: a lista nova tem prioridade, mesmo vazia', () => {
+    // Vazia significa que a pessoa removeu o logotipo depois de migrar; os
+    // campos antigos ainda gravados não podem ressuscitá-lo.
+    expect(mergeWithDefaults({ brandLogos: [], brandLogoPath: 'brand/abc.png' }).brandLogos).toEqual([]);
   });
 
-  it('canto do logotipo: quem vem de versão antiga fica junto ao carimbo', () => {
-    // `block` é exatamente o desenho anterior — a foto de ninguém muda sozinha.
-    expect(mergeWithDefaults({}).brandLogoPosition).toBe('block');
-    expect(mergeWithDefaults({ brandLogoPosition: 'top-right' }).brandLogoPosition).toBe('top-right');
-    expect(mergeWithDefaults({ brandLogoPosition: 'meio' as never }).brandLogoPosition).toBe('block');
+  it('logotipos: escala e largura fora da faixa são contidas; lixo cai no padrão', () => {
+    const at = (logo: object) =>
+      mergeWithDefaults({ brandLogos: [{ path: 'brand/abc.png', ...logo }] as never }).brandLogos[0];
+    expect(at({ scale: 9 }).scale).toBe(2.5);
+    expect(at({ scale: 0.01 }).scale).toBe(0.5);
+    expect(at({ scale: Number.NaN }).scale).toBe(1);
+    expect(at({ scale: '2' }).scale).toBe(1);
+    expect(at({ width: 3, x: -1, y: 2 })).toMatchObject({ width: 1, x: 0, y: 1 });
+    expect(at({ placement: 'meio' }).placement).toBe('block');
+    expect(at({ placement: 'free' }).placement).toBe('free');
+  });
+
+  it('logotipos: caminho fora do diretório gerido é descartado; no máximo dois', () => {
+    const merged = mergeWithDefaults({
+      brandLogos: [
+        { path: '/etc/passwd' },
+        { path: 'brand/a.png', placement: 'free' },
+        { path: 'brand/b.png', placement: 'top-left' },
+        { path: 'brand/c.png' },
+      ] as never,
+    });
+    expect(merged.brandLogos.map((logo) => logo.path)).toEqual(['brand/a.png', 'brand/b.png']);
+  });
+
+  it('logotipos: só um cabe junto ao carimbo — o segundo vira livre', () => {
+    const merged = mergeWithDefaults({
+      brandLogos: [{ path: 'brand/a.png' }, { path: 'brand/b.png' }] as never,
+    });
+    expect(merged.brandLogos.map((logo) => logo.placement)).toEqual(['block', 'free']);
   });
 });
 

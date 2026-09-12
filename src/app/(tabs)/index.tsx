@@ -24,7 +24,7 @@ import { buildWatermarkContent } from '@/features/watermark/build-content';
 import { saveToDeviceGallery, shareWatermarkedPhoto } from '@/features/watermark/export-photo';
 import { renderStampedPhoto } from '@/features/watermark/render-photo';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
-import { loadStampImages } from '@/features/watermark/stamp-images';
+import { loadStampImages, logoPathsOf } from '@/features/watermark/stamp-images';
 import { scriptForStamp } from '@/features/watermark/stamp-script';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
 import {
@@ -283,7 +283,7 @@ export default function CaptureScreen() {
       // O logotipo é decodificado aqui, e não dentro do desenho: compor sobre
       // um bitmap de 4000 px já é a parte cara, e o desenho em si precisa ser
       // síncrono.
-      const images = await loadStampImages(preferences.brandLogoPath);
+      const images = await loadStampImages(logoPathsOf(preferences.brandLogos));
 
       const path = await renderStampedPhoto({
         photoUri: photo.uri,

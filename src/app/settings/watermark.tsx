@@ -26,7 +26,7 @@ import { colors, radius, spacing, typography } from '@/theme';
  */
 export default function WatermarkSettingsScreen() {
   const t = useTranslations('app');
-  const { preferences, visibleFieldCount } = useSettings();
+  const { preferences, visibleFieldCount, updateBrandLogo } = useSettings();
   const { draft } = useCapture();
   const [previewFrame, setPreviewFrame] = useState({ width: 0, height: 0 });
 
@@ -59,6 +59,7 @@ export default function WatermarkSettingsScreen() {
             preferences={preferences}
             width={previewFrame.width}
             height={previewFrame.height}
+            onLogoChange={updateBrandLogo}
           />
           {visibleFieldCount === 0 ? (
             <Text style={[typography.caption, styles.previewHint]}>

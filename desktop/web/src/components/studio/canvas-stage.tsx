@@ -43,6 +43,7 @@ export function CanvasStage({
   const media = useStudio((s) => s.media);
   const mode = useStudio((s) => s.mode);
   const setEditing = useStudio((s) => s.setEditing);
+  const setSelectedLogo = useStudio((s) => s.setSelectedLogo);
   const setCanvasZoom = useStudio((s) => s.setCanvasZoom);
   const canvasZoom = useStudio((s) => s.canvasZoom);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -138,12 +139,15 @@ export function CanvasStage({
         e.preventDefault();
         if (e.dataTransfer.files.length) onOpenFiles(e.dataTransfer.files);
       }}
-      onClick={() => setEditing(null)}
+      onClick={() => {
+        setEditing(null);
+        setSelectedLogo(null);
+      }}
       onDoubleClick={() => applyView(1, 0, 0)}
       onPointerDown={(e) => {
         if (e.button !== 0) return;
         if (!space.current && view.current.z <= 1) return;
-        if ((e.target as HTMLElement).closest("[data-stamp]")) return;
+        if ((e.target as HTMLElement).closest("[data-stamp], [data-logo]")) return;
         panning.current = true;
         setGrabbing(true);
         last.current = { x: e.clientX, y: e.clientY };

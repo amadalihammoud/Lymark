@@ -12,8 +12,6 @@ export function lookFrom(s: StampLook): StampLook {
     accent: s.accent,
     colorA: s.colorA,
     colorB: s.colorB,
-    logoUrl: s.logoUrl,
-    logoScale: s.logoScale,
-    logoAt: s.logoAt,
+    logos: s.logos,
   };
 }

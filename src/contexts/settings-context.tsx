@@ -13,11 +13,14 @@ import {
   DEFAULT_WATERMARK_PREFERENCES,
   PREFERENCES_SCHEMA_VERSION,
   mergeWithDefaults,
+  newBrandLogo,
   type StoredPreferences,
 } from '@/features/watermark/preferences';
 import { StorageKeys, readJson, writeJson } from '@/lib/storage';
 import {
+  MAX_BRAND_LOGOS,
   WATERMARK_FIELD_KEYS,
+  type BrandLogo,
   type BrandPart,
   type WatermarkFieldKey,
   type WatermarkPreferences,
@@ -52,12 +55,15 @@ type SettingsContextValue = {
   /** Altera texto ou cor de uma das duas partes da marca própria. */
   setBrandPart: (index: 0 | 1, part: Partial<BrandPart>) => void;
   /**
-   * Troca o logotipo, apagando o arquivo anterior.
+   * Troca ou remove o logotipo de um dos lugares, apagando o arquivo anterior.
    *
    * Sem isso cada troca deixaria um arquivo órfão no aparelho para sempre —
-   * o app pediria espaço e nunca o devolveria.
+   * o app pediria espaço e nunca o devolveria. O lugar é o índice na lista;
+   * `null` remove, e o que vinha depois sobe.
    */
-  setBrandLogo: (logo: { path: string; aspect: number } | null) => void;
+  setBrandLogo: (index: number, logo: { path: string; aspect: number } | null) => void;
+  /** Ajusta posição ou tamanho de um logotipo que já existe. */
+  updateBrandLogo: (index: number, patch: Partial<Omit<BrandLogo, 'path' | 'aspect'>>) => void;
   resetPreferences: () => void;
 };
 
@@ -124,23 +130,57 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const setBrandLogo = useCallback(
-    (logo: { path: string; aspect: number } | null) => {
+    (index: number, logo: { path: string; aspect: number } | null) => {
       // I/O fora do atualizador: o React pode reexecutá-lo, e apagar o
       // arquivo duas vezes — ou no meio de um cálculo de estado — é efeito
       // colateral. O caminho anterior vem do estado já conhecido, como em
-      // `removeEntry` da galeria.
-      const previousPath = preferences.brandLogoPath;
-      if (previousPath && previousPath !== logo?.path) {
-        deleteLogo(previousPath);
+      // `removeEntry` da galeria. Só apaga se nenhum OUTRO logotipo usar o
+      // mesmo arquivo.
+      const previous = preferences.brandLogos[index];
+      const stillUsed = preferences.brandLogos.some(
+        (item, i) => i !== index && item.path === previous?.path,
+      );
+      if (previous && previous.path !== logo?.path && !stillUsed) {
+        deleteLogo(previous.path);
       }
 
-      setPreferences((current) => ({
-        ...current,
-        brandLogoPath: logo?.path ?? null,
-        brandLogoAspect: logo?.aspect ?? DEFAULT_WATERMARK_PREFERENCES.brandLogoAspect,
-      }));
+      setPreferences((current) => {
+        const brandLogos = [...current.brandLogos];
+        if (logo === null) {
+          brandLogos.splice(index, 1);
+        } else if (index < brandLogos.length) {
+          // Trocar o arquivo mantém posição e tamanho: quem só atualizou a
+          // arte não quer reposicionar tudo. A proporção nova entra junto.
+          brandLogos[index] = { ...brandLogos[index], path: logo.path, aspect: logo.aspect };
+        } else if (brandLogos.length < MAX_BRAND_LOGOS) {
+          const fresh = newBrandLogo(logo);
+          // Um segundo logotipo nasce solto: o cabeçalho tem um lugar só, e
+          // ele já está ocupado — ou a pessoa desligou o cabeçalho.
+          if (brandLogos.some((item) => item.placement === 'block')) fresh.placement = 'free';
+          brandLogos.push(fresh);
+        }
+        return { ...current, brandLogos };
+      });
     },
-    [preferences.brandLogoPath],
+    [preferences.brandLogos],
+  );
+
+  const updateBrandLogo = useCallback(
+    (index: number, patch: Partial<Omit<BrandLogo, 'path' | 'aspect'>>) => {
+      setPreferences((current) => {
+        if (!current.brandLogos[index]) return current;
+        const brandLogos = current.brandLogos.map((item, i) => {
+          if (i === index) return { ...item, ...patch };
+          // Só um cabe junto ao carimbo: quem entra lá tira o outro de lá.
+          if (patch.placement === 'block' && item.placement === 'block') {
+            return { ...item, placement: 'free' as const };
+          }
+          return item;
+        });
+        return { ...current, brandLogos };
+      });
+    },
+    [],
   );
 
   const setBrandPart = useCallback((index: 0 | 1, part: Partial<BrandPart>) => {
@@ -157,9 +197,9 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
   const resetPreferences = useCallback(() => {
     // O logotipo é arquivo, e não ajuste: restaurar o padrão o descarta das
     // preferências, então ele precisa sair do disco junto — fora do atualizador.
-    if (preferences.brandLogoPath) deleteLogo(preferences.brandLogoPath);
+    for (const path of new Set(preferences.brandLogos.map((logo) => logo.path))) deleteLogo(path);
     setPreferences(DEFAULT_WATERMARK_PREFERENCES);
-  }, [preferences.brandLogoPath]);
+  }, [preferences.brandLogos]);
 
   const value = useMemo<SettingsContextValue>(
     () => ({
@@ -171,6 +211,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       updatePreferences,
       setBrandPart,
       setBrandLogo,
+      updateBrandLogo,
       resetPreferences,
     }),
     [
@@ -180,6 +221,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       updatePreferences,
       setBrandPart,
       setBrandLogo,
+      updateBrandLogo,
       resetPreferences,
     ],
   );

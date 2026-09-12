@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslations } from 'use-intl';
 
+import { useSettings } from '@/contexts/settings-context';
 import { StampCanvas } from '@/features/watermark/stamp-canvas';
 import { colors, radius, spacing, typography } from '@/theme';
 import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/types';
@@ -55,6 +56,8 @@ export function PhotoStage({
   /** Canto inferior direito do poço — para avisos que seguem a foto. */
   overlay?: ReactNode;
 }) {
+  // O dedo sobre o logotipo grava direto na preferência — o padrão global.
+  const { updateBrandLogo } = useSettings();
   const t = useTranslations('app');
 
   /**
@@ -101,6 +104,7 @@ export function PhotoStage({
               preferences={preferences}
               width={frame.width}
               height={frame.height}
+              onLogoChange={updateBrandLogo}
             />
           ) : null}
 

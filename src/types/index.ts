@@ -37,6 +37,58 @@ export const BRAND_LOGO_POSITIONS = ['block', ...WATERMARK_POSITIONS] as const;
 
 export type BrandLogoPosition = (typeof BRAND_LOGO_POSITIONS)[number];
 
+/**
+ * Onde um logotipo pode estar: junto ao carimbo, num canto, ou **livre** —
+ * em qualquer ponto da foto, posto ali com o dedo ou o mouse.
+ */
+export const BRAND_LOGO_PLACEMENTS = [...BRAND_LOGO_POSITIONS, 'free'] as const;
+
+export type BrandLogoPlacement = (typeof BRAND_LOGO_PLACEMENTS)[number];
+
+/** Quantos logotipos cabem no carimbo. */
+export const MAX_BRAND_LOGOS = 2;
+
+/**
+ * Um logotipo carimbado na foto.
+ *
+ * O arquivo é um caminho **relativo** ao diretório de documentos, pela mesma
+ * razão que os registros da galeria: no iOS o identificador do contêiner muda
+ * a cada atualização e uma URI absoluta gravada hoje apontaria para o nada.
+ */
+export type BrandLogo = {
+  path: string;
+  /**
+   * Proporção largura/altura, lida na hora de escolher o arquivo.
+   *
+   * Guardada junto porque a geometria é síncrona: descobrir a proporção no
+   * momento do desenho exigiria decodificar a imagem dentro do cálculo de
+   * layout, que roda a cada quadro do preview.
+   */
+  aspect: number;
+  /**
+   * Escala manual, de 0,5 a 2,5 (1 é o tamanho automático). Vale junto ao
+   * carimbo e nos cantos; no modo livre quem manda é `width`.
+   *
+   * Multiplica largura e altura JUNTAS: um controle separado por eixo
+   * deformaria o logotipo da empresa na foto que ela entrega ao cliente.
+   */
+  scale: number;
+  /**
+   * `block` mantém o logo dentro do cabeçalho da marca, como sempre foi. Um
+   * canto o solta do bloco, no tamanho da linha da hora vezes a escala. `free`
+   * o põe onde `x`, `y` e `width` mandarem.
+   */
+  placement: BrandLogoPlacement;
+  /**
+   * Só no modo livre. Centro e largura como **frações do quadro** (0 a 1), e
+   * não em pixels: a mesma posição vale no preview de 355 px e no arquivo de
+   * 4000, e o vídeo herda o que foi decidido na foto.
+   */
+  x: number;
+  y: number;
+  width: number;
+};
+
 /** Onde o Código de Foto é carimbado. */
 export const CODE_PLACEMENTS = ['side', 'block'] as const;
 
@@ -196,39 +248,12 @@ export type WatermarkPreferences = {
   /** Cor do complemento, livre. */
   brandComplementColor: string;
   /**
-   * Arquivo do logotipo, copiado para dentro do app. `null` sem logotipo.
-   *
-   * Caminho **relativo** ao diretório de documentos, pela mesma razão que os
-   * registros da galeria: no iOS o identificador do contêiner muda a cada
-   * atualização e uma URI absoluta gravada hoje apontaria para o nada depois.
+   * Até `MAX_BRAND_LOGOS` logotipos, cada um com arquivo, posição e tamanho
+   * próprios. No máximo um deles fica junto ao carimbo (`block`); os outros
+   * ficam num canto ou soltos na foto — e valem para QUALQUER formato de
+   * marca, inclusive quando o cabeçalho está desligado.
    */
-  brandLogoPath: string | null;
-  /**
-   * Canto próprio do logotipo, independente do bloco de dados.
-   *
-   * `block` mantém o logo dentro do cabeçalho da marca, como sempre foi. Um
-   * canto o solta do bloco: ele é desenhado ali sozinho, no tamanho da linha
-   * da hora vezes a escala — e vale para QUALQUER formato de marca, inclusive
-   * quando o cabeçalho está desligado.
-   */
-  brandLogoPosition: BrandLogoPosition;
-  /**
-   * Escala manual do logotipo, de 0,5 a 2,5 (1 é o tamanho automático).
-   *
-   * Multiplica largura e altura JUNTAS: um controle separado por eixo
-   * deformaria o logotipo da empresa na foto que ela entrega ao cliente.
-   * Vale nos dois formatos — ao lado do texto e na faixa da assinatura
-   * horizontal.
-   */
-  brandLogoScale: number;
-  /**
-   * Proporção largura/altura do logotipo, lida na hora de escolher o arquivo.
-   *
-   * Guardada junto porque a geometria é síncrona: descobrir a proporção no
-   * momento do desenho exigiria decodificar a imagem dentro do cálculo de
-   * layout, que roda a cada quadro do preview.
-   */
-  brandLogoAspect: number;
+  brandLogos: BrandLogo[];
 
   /**
    * Cores do carimbo, independentes das cores da interface.

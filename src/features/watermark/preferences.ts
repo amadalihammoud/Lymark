@@ -1,13 +1,17 @@
 import {
   BACKDROP_STYLES,
+  BRAND_LOGO_PLACEMENTS,
   BRAND_LOGO_POSITIONS,
   BRAND_PLACEMENTS,
   CODE_PLACEMENTS,
+  MAX_BRAND_LOGOS,
   STAMP_COLOR_SWATCHES,
   TIME_FORMATS,
   WATERMARK_FIELD_KEYS,
   WATERMARK_POSITIONS,
   WATERMARK_SCALES,
+  type BrandLogo,
+  type BrandLogoPosition,
   type BrandPart,
   type StampColorKey,
   type WatermarkPreferences,
@@ -46,12 +50,43 @@ import { isManagedLogoPath } from './logo-path';
  * 9 — canto próprio do logotipo (`brandLogoPosition`): `block` mantém o logo
  *     dentro do cabeçalho, como sempre; um canto o solta do bloco de dados.
  *     O padrão é `block` — quem atualiza não vê a foto mudar.
+ * 10 — até dois logotipos (`brandLogos`), cada um com posição e tamanho
+ *     próprios, e a posição LIVRE: centro e largura em frações do quadro,
+ *     postos com o dedo ou o mouse sobre a foto. Os quatro campos
+ *     `brandLogo*` viram o primeiro item da lista — a foto não muda.
  */
-export const PREFERENCES_SCHEMA_VERSION = 9;
+export const PREFERENCES_SCHEMA_VERSION = 10;
 
 /** Limites da escala manual do logotipo. Fora deles, volta ao automático. */
 export const BRAND_LOGO_SCALE_MIN = 0.5;
 export const BRAND_LOGO_SCALE_MAX = 2.5;
+
+/**
+ * Limites da largura de um logotipo livre, em frações do quadro.
+ *
+ * O piso impede que uma pinça o reduza a um ponto impossível de pegar de
+ * volta; o teto é a foto inteira — quem quer o logotipo enorme, pode.
+ */
+export const FREE_LOGO_WIDTH_MIN = 0.04;
+export const FREE_LOGO_WIDTH_MAX = 1;
+
+/** Proporções extremas viram um filete ou uma faixa que atravessa a foto. */
+export const BRAND_LOGO_ASPECT_MIN = 0.2;
+export const BRAND_LOGO_ASPECT_MAX = 5;
+
+/** O ponto de partida de um logotipo livre: perto do centro, um quarto do quadro. */
+export const DEFAULT_FREE_LOGO = { x: 0.5, y: 0.5, width: 0.25 } as const;
+
+/** Um logotipo recém-escolhido, antes de qualquer ajuste. */
+export function newBrandLogo(logo: { path: string; aspect: number }): BrandLogo {
+  return {
+    path: logo.path,
+    aspect: logo.aspect,
+    scale: 1,
+    placement: 'block',
+    ...DEFAULT_FREE_LOGO,
+  };
+}
 
 /**
  * O amarelo de antes do Manual de Marca.
@@ -117,10 +152,7 @@ export const DEFAULT_WATERMARK_PREFERENCES: WatermarkPreferences = {
   brandPlacement: 'corner',
   brandComplement: '',
   brandComplementColor: '#FFFFFF',
-  brandLogoPath: null,
-  brandLogoAspect: 1,
-  brandLogoScale: 1,
-  brandLogoPosition: 'block',
+  brandLogos: [],
 
   stampAccent: '#F3C218',
   stampTextColor: '#FFFFFF',
@@ -158,6 +190,71 @@ export const BRAND_COMPLEMENT_MAX_LENGTH = 40;
 /** Só um caminho gerido pelo app é aceito — ver `logo-path.ts`. */
 function readLogoPath(value: unknown): string | null {
   return isManagedLogoPath(value) ? value : null;
+}
+
+/**
+ * Lê um logotipo gravado. `null` quando não há arquivo válido: um caminho
+ * absoluto ou com `..` — gravado por um build antigo, ou por corrupção — faria
+ * o app ler um arquivo qualquer do sistema e carimbá-lo na foto.
+ */
+function readBrandLogo(value: unknown): BrandLogo | null {
+  if (typeof value !== 'object' || value === null) return null;
+  const logo = value as Partial<BrandLogo>;
+  const path = readLogoPath(logo.path);
+  if (path === null) return null;
+
+  return {
+    path,
+    aspect: readNumber(logo.aspect, BRAND_LOGO_ASPECT_MIN, BRAND_LOGO_ASPECT_MAX, 1),
+    scale: readNumber(logo.scale, BRAND_LOGO_SCALE_MIN, BRAND_LOGO_SCALE_MAX, 1),
+    placement: pickAllowed(logo.placement, BRAND_LOGO_PLACEMENTS, 'block'),
+    x: readNumber(logo.x, 0, 1, DEFAULT_FREE_LOGO.x),
+    y: readNumber(logo.y, 0, 1, DEFAULT_FREE_LOGO.y),
+    width: readNumber(logo.width, FREE_LOGO_WIDTH_MIN, FREE_LOGO_WIDTH_MAX, DEFAULT_FREE_LOGO.width),
+  };
+}
+
+/**
+ * A lista de logotipos, com a migração da versão 9.
+ *
+ * Até ela havia um logotipo só, em quatro campos soltos. Ele vira o primeiro
+ * item da lista com os mesmos valores — a atualização não muda a foto de
+ * ninguém. A lista nova tem prioridade quando existe, mesmo vazia: vazia
+ * significa que a pessoa removeu o logotipo depois de migrar, e os campos
+ * antigos ainda gravados não podem ressuscitá-lo.
+ *
+ * Só um logotipo cabe junto ao carimbo — o cabeçalho tem um lugar. Um segundo
+ * `block` vira livre em vez de sumir em silêncio.
+ */
+function readBrandLogos(stored: StoredPreferences): BrandLogo[] {
+  const list = Array.isArray(stored.brandLogos)
+    ? stored.brandLogos
+    : (() => {
+        const path = readLogoPath(stored.brandLogoPath);
+        if (path === null) return [];
+        return [
+          {
+            path,
+            aspect: stored.brandLogoAspect,
+            scale: stored.brandLogoScale,
+            placement: pickAllowed(stored.brandLogoPosition, BRAND_LOGO_POSITIONS, 'block'),
+          },
+        ];
+      })();
+
+  const logos: BrandLogo[] = [];
+  let hasBlock = false;
+  for (const item of list) {
+    if (logos.length >= MAX_BRAND_LOGOS) break;
+    const logo = readBrandLogo(item);
+    if (!logo) continue;
+    if (logo.placement === 'block') {
+      if (hasBlock) logo.placement = 'free';
+      hasBlock = true;
+    }
+    logos.push(logo);
+  }
+  return logos;
 }
 
 /**
@@ -200,6 +297,14 @@ export type StoredPreferences = Partial<WatermarkPreferences> & {
    * uma marca digitada e esquecida.
    */
   brandMode?: 'lymark' | 'custom';
+  /**
+   * O logotipo único, das versões até a 9. Continua declarado porque ainda
+   * está gravado no aparelho de quem atualiza, e é dele que sai a migração.
+   */
+  brandLogoPath?: string | null;
+  brandLogoAspect?: number;
+  brandLogoScale?: number;
+  brandLogoPosition?: BrandLogoPosition;
 };
 
 /**
@@ -304,28 +409,7 @@ export function mergeWithDefaults(stored: StoredPreferences): WatermarkPreferenc
     brandComplementColor: manualAmber(
       readColor(stored.brandComplementColor, DEFAULT_WATERMARK_PREFERENCES.brandComplementColor),
     ),
-    // Só um caminho relativo dentro do diretório gerido é aceito. Um valor
-    // absoluto ou com `..` gravado por um build antigo — ou por corrupção —
-    // faria o app ler um arquivo qualquer do sistema e carimbá-lo na foto.
-    brandLogoPath: readLogoPath(stored.brandLogoPath),
-    // Proporções extremas viram um filete ou uma faixa que atravessa a foto.
-    brandLogoAspect: readNumber(
-      stored.brandLogoAspect,
-      0.2,
-      5,
-      DEFAULT_WATERMARK_PREFERENCES.brandLogoAspect,
-    ),
-    brandLogoScale: readNumber(
-      stored.brandLogoScale,
-      BRAND_LOGO_SCALE_MIN,
-      BRAND_LOGO_SCALE_MAX,
-      DEFAULT_WATERMARK_PREFERENCES.brandLogoScale,
-    ),
-    brandLogoPosition: pickAllowed(
-      stored.brandLogoPosition,
-      BRAND_LOGO_POSITIONS,
-      DEFAULT_WATERMARK_PREFERENCES.brandLogoPosition,
-    ),
+    brandLogos: readBrandLogos(stored),
 
     stampAccent: manualAmber(
       readColor(stored.stampAccent, DEFAULT_WATERMARK_PREFERENCES.stampAccent),

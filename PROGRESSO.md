@@ -171,6 +171,24 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   gravação; sem caminho hoje). Gravar-e-carimbar acima entrega o mesmo
   resultado final.
 
+## Logotipos livres (celular, desktop e web)
+
+- [x] **Até dois logotipos** por carimbo (`brandLogos`, esquema 10), cada um
+  com arquivo, posição e tamanho próprios. O único de antes migra para o
+  primeiro da lista sem mudar a foto de ninguém.
+- [x] **Posição livre** — além de "junto ao carimbo" e dos quatro cantos:
+  centro e largura como **frações do quadro**, então o preview de 355 px, o
+  arquivo de 4000 e o vídeo concordam. Um toque seleciona, o arraste move,
+  a pinça ou a alça do canto redimensionam; no PC, a roda do mouse também.
+  Mexer num logotipo é soltá-lo. O ajuste é global (vale para as próximas
+  fotos e para o vídeo) e só é gravado no fim do gesto.
+- [x] **Studio web** — mesmo modelo; o logotipo passa a ser preparado como no
+  app (aparado, ≤ 1024 px, PNG) e guardado no IndexedDB, não mais como data
+  URL no `localStorage` — era a cota estourada que fazia o logo sumir a cada
+  reabertura.
+- [x] Logotipo livre desenhado **por cima** do texto nas três versões:
+  posto ali de propósito, e embaixo do bloco ninguém o pegaria de volta.
+
 ## Projetos + relatório em PDF (desktop)
 
 - [x] **Projetos** — sem entidade nova: a galeria agrupada pelo Código de

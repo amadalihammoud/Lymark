@@ -1,8 +1,8 @@
-import type { WatermarkPreferences } from '@/types';
+import type { BrandLogo, WatermarkPreferences } from '@/types';
 
 import type { WatermarkContent } from '../build-content';
 import { SCALE_METRICS } from '../layout';
-import { DEFAULT_WATERMARK_PREFERENCES } from '../preferences';
+import { DEFAULT_WATERMARK_PREFERENCES, newBrandLogo } from '../preferences';
 import {
   DIGIT_INK_HEIGHT,
   DIGIT_INK_TOP_FROM_BASELINE,
@@ -52,6 +52,12 @@ function build(overrides: Partial<WatermarkPreferences> = {}, extra = {}): Stamp
     ...extra,
   });
 }
+
+/** Um logotipo de teste; o que não for dito fica no padrão. */
+const aLogo = (overrides: Partial<BrandLogo> = {}): BrandLogo => ({
+  ...newBrandLogo({ path: 'brand/abc.png', aspect: 1 }),
+  ...overrides,
+});
 
 const find = (g: StampGeometry, text: string) => g.texts.find((t) => t.text === text);
 
@@ -642,7 +648,7 @@ describe('cabeçalho da marca', () => {
   });
 
   it('ancora o logotipo do topo da tinta do nome à linha de base do complemento', () => {
-    const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 1 });
+    const g = header({ brandLogos: [aLogo({ aspect: 1 })]});
 
     const logo = g.images[0];
     const nome = find(g, 'AUTO')!;
@@ -661,7 +667,7 @@ describe('cabeçalho da marca', () => {
     // O logotipo para na linha de base; o **espaço** reservado desce até o fim
     // das descendentes. Sem isso a perna de um "g" encostaria no relógio.
     const g = header({
-      brandLogoPath: 'brand/abc.png',
+      brandLogos: [aLogo()],
       brandComplement: 'Vidros e pergolados',
     });
 
@@ -680,12 +686,12 @@ describe('cabeçalho da marca', () => {
     // nome da empresa — o mesmo defeito que a barra âmbar teria se fosse
     // medida em "11:11".
     const reto = header({
-      brandLogoPath: 'brand/abc.png',
+      brandLogos: [aLogo()],
       brandParts: [{ text: 'LIMA', color: palette.white }, { text: '', color: palette.amber }],
       brandComplement: 'Vistorias',
     });
     const redondo = header({
-      brandLogoPath: 'brand/abc.png',
+      brandLogos: [aLogo()],
       brandParts: [{ text: 'LOGOS', color: palette.white }, { text: '', color: palette.amber }],
       brandComplement: 'Vistorias gp',
     });
@@ -698,7 +704,7 @@ describe('cabeçalho da marca', () => {
     // selo minúsculo ao lado do nome. Agora ele adota a largura do bloco de
     // dados, acima do relógio. A proporção do arquivo segue intocável —
     // deformar o logotipo da empresa nunca foi opção.
-    const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 4 });
+    const g = header({ brandLogos: [aLogo({ aspect: 4 })]});
     const logo = g.images[0];
     const hora = find(g, '07:42')!;
 
@@ -723,7 +729,7 @@ describe('cabeçalho da marca', () => {
   });
 
   it('na faixa, o texto da marca desce para baixo da assinatura', () => {
-    const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 4 });
+    const g = header({ brandLogos: [aLogo({ aspect: 4 })]});
     const logo = g.images[0];
     const nome = find(g, 'AUTO')!;
 
@@ -733,12 +739,10 @@ describe('cabeçalho da marca', () => {
   });
 
   it('a escala manual muda o logotipo proporcionalmente, sem deformar', () => {
-    const base = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 1 });
-    const grande = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 1, brandLogoScale: 2 });
+    const base = header({ brandLogos: [aLogo({ aspect: 1 })]});
+    const grande = header({ brandLogos: [aLogo({ aspect: 1, scale: 2 })]});
     const pequeno = header({
-      brandLogoPath: 'brand/abc.png',
-      brandLogoAspect: 1,
-      brandLogoScale: 0.5,
+      brandLogos: [aLogo({ aspect: 1, scale: 0.5 })],
     });
 
     // O 1 px de folga é o arredondar da metade de uma âncora ímpar.
@@ -751,7 +755,7 @@ describe('cabeçalho da marca', () => {
   });
 
   it('escala acima de 1: o conjunto cresce sem o logotipo invadir o relógio', () => {
-    const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: 1, brandLogoScale: 2 });
+    const g = header({ brandLogos: [aLogo({ aspect: 1, scale: 2 })]});
 
     const logo = g.images[0];
     const hora = find(g, '07:42')!;
@@ -763,9 +767,7 @@ describe('cabeçalho da marca', () => {
 
   it('canto próprio: o logo sai do cabeçalho e ancora sozinho no canto', () => {
     const g = header({
-      brandLogoPath: 'brand/abc.png',
-      brandLogoAspect: 1,
-      brandLogoPosition: 'top-right',
+      brandLogos: [aLogo({ aspect: 1, placement: 'top-right' })],
     });
 
     // Um logo só — o do canto; o cabeçalho fica com nome e complemento.
@@ -783,10 +785,7 @@ describe('cabeçalho da marca', () => {
 
   it('canto próprio: a escala manual vale no canto, sem deformar', () => {
     const g = header({
-      brandLogoPath: 'brand/abc.png',
-      brandLogoAspect: 2,
-      brandLogoScale: 0.5,
-      brandLogoPosition: 'bottom-right',
+      brandLogos: [aLogo({ aspect: 2, scale: 0.5, placement: 'bottom-right' })],
     });
     const logo = g.images[0];
 
@@ -801,8 +800,7 @@ describe('cabeçalho da marca', () => {
       preferences: {
         ...DEFAULT_WATERMARK_PREFERENCES,
         brandPlacement: 'none',
-        brandLogoPath: 'brand/abc.png',
-        brandLogoPosition: 'top-left',
+        brandLogos: [aLogo({ placement: 'top-left' })],
       },
       frame,
       measure,
@@ -814,13 +812,90 @@ describe('cabeçalho da marca', () => {
     expect(g.texts).toHaveLength(0);
   });
 
+  it('livre: largura como fração do quadro, centrado onde a pessoa pôs', () => {
+    const g = header({
+      brandPlacement: 'none',
+      brandLogos: [aLogo({ aspect: 2, placement: 'free', x: 0.5, y: 0.25, width: 0.4 })],
+    });
+
+    expect(g.images).toHaveLength(1);
+    const logo = g.images[0];
+    expect(logo.width).toBe(Math.round(frame.width * 0.4));
+    expect(logo.height).toBe(Math.round(logo.width / 2));
+    expect(Math.abs(logo.x + logo.width / 2 - frame.width * 0.5)).toBeLessThanOrEqual(1);
+    expect(Math.abs(logo.y + logo.height / 2 - frame.height * 0.25)).toBeLessThanOrEqual(1);
+    // O índice é o que devolve o retângulo ao logotipo certo no arraste.
+    expect(logo.logo).toBe(0);
+  });
+
+  it('livre: encosta na borda em vez de sair da foto', () => {
+    const g = header({
+      brandLogos: [aLogo({ placement: 'free', x: 1, y: 1, width: 0.3 })],
+    });
+    const logo = g.images.find((image) => image.logo === 0)!;
+    expect(logo.x + logo.width).toBeLessThanOrEqual(frame.width);
+    expect(logo.y + logo.height).toBeLessThanOrEqual(frame.height);
+    expect(logo.x + logo.width).toBeCloseTo(frame.width, 0);
+  });
+
+  it('livre: a mesma fração dá a mesma posição relativa em qualquer resolução', () => {
+    const at = (width: number, height: number) =>
+      buildStampGeometry({
+        content,
+        preferences: {
+          ...DEFAULT_WATERMARK_PREFERENCES,
+          brandLogos: [aLogo({ placement: 'free', x: 0.3, y: 0.7, width: 0.2 })],
+        },
+        frame: { width, height },
+        measure,
+        allowGrowth: true,
+      }).images[0];
+
+    const small = at(400, 300);
+    const large = at(4000, 3000);
+    expect((large.x + large.width / 2) / 4000).toBeCloseTo((small.x + small.width / 2) / 400, 2);
+    expect(large.width / 4000).toBeCloseTo(small.width / 400, 2);
+  });
+
+  it('dois logotipos: um junto ao carimbo e outro solto, cada um com o seu índice', () => {
+    const g = header({
+      brandLogos: [
+        aLogo({ placement: 'block' }),
+        { ...aLogo({ placement: 'top-right' }), path: 'brand/def.png' },
+      ],
+    });
+
+    expect(g.images).toHaveLength(2);
+    const noBloco = g.images.find((image) => image.logo === 0)!;
+    const noCanto = g.images.find((image) => image.logo === 1)!;
+    expect(noCanto.path).toBe('brand/def.png');
+    expect(noCanto.y).toBe(6);
+    // O do bloco fica ao lado do nome; o do canto, no alto à direita.
+    expect(noBloco.x + noBloco.width).toBeLessThanOrEqual(find(g, 'AUTO')!.x);
+    expect(noCanto.x + noCanto.width).toBeCloseTo(frame.width - 6, 0);
+  });
+
+  it('dois logotipos soltos são carimbados mesmo sem marca e sem dado nenhum', () => {
+    const g = buildStampGeometry({
+      content: { time: null, date: null, weekday: null, address: null, code: null, showRule: false, isEmpty: true },
+      preferences: {
+        ...DEFAULT_WATERMARK_PREFERENCES,
+        brandPlacement: 'none',
+        brandLogos: [aLogo({ placement: 'free' }), aLogo({ placement: 'bottom-left' })],
+      },
+      frame,
+      measure,
+    });
+
+    expect(g.images.map((image) => image.logo)).toEqual([0, 1]);
+    expect(g.texts).toHaveLength(0);
+  });
+
   it('a faixa respeita o teto de altura e a largura reservada ao cabeçalho', () => {
     // Escala no máximo, proporção logo acima do limiar: o caso que mais
     // empurra a faixa. O 1,7 de folga é o arredondar de altura e largura.
     const g = header({
-      brandLogoPath: 'brand/abc.png',
-      brandLogoAspect: 2.5,
-      brandLogoScale: 2.5,
+      brandLogos: [aLogo({ aspect: 2.5, scale: 2.5 })],
     });
     const logo = g.images[0];
 
@@ -830,7 +905,7 @@ describe('cabeçalho da marca', () => {
 
   it('não deforma nem com proporção absurda vinda de um registro corrompido', () => {
     for (const aspect of [0.01, 0.2, 5, 100]) {
-      const g = header({ brandLogoPath: 'brand/abc.png', brandLogoAspect: aspect });
+      const g = header({ brandLogos: [aLogo({ aspect: aspect })]});
       const logo = g.images[0];
 
       expect(logo.width).toBeGreaterThan(0);
@@ -842,8 +917,7 @@ describe('cabeçalho da marca', () => {
   it('mantém o logotipo à esquerda do nome mesmo ancorado à direita', () => {
     const g = header({
       position: 'bottom-right',
-      brandLogoPath: 'brand/abc.png',
-      brandLogoAspect: 1,
+      brandLogos: [aLogo({ aspect: 1 })],
     });
 
     const logo = g.images[0];
@@ -909,7 +983,7 @@ describe('cabeçalho da marca', () => {
       preferences: {
         ...DEFAULT_WATERMARK_PREFERENCES,
         brandPlacement: 'header',
-        brandLogoPath: 'brand/abc.png',
+        brandLogos: [aLogo()],
       },
       frame,
       measure,
@@ -1027,7 +1101,7 @@ describe('faixa contínua', () => {
       position: 'bottom-left',
       brandPlacement: 'header',
       brandComplement: 'Laudos técnicos',
-      brandLogoPath: 'brand/abc.png',
+      brandLogos: [aLogo()],
     });
     const faixa = backdropOf(g);
 

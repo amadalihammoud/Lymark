@@ -1,4 +1,4 @@
-import type { BrandPart, WatermarkPosition, WatermarkPreferences } from '@/types';
+import type { BrandLogo, BrandPart, WatermarkPosition, WatermarkPreferences } from '@/types';
 
 import type { WatermarkContent } from './build-content';
 import {
@@ -86,11 +86,32 @@ export type StampRect = {
 export type StampImage = {
   /** Caminho relativo gerido pelo app — ver `logo-file.ts`. */
   path: string;
+  /**
+   * Qual logotipo de `preferences.brandLogos` é este.
+   *
+   * É o que permite ao preview pegar o retângulo desenhado e devolvê-lo ao
+   * logotipo certo quando a pessoa o arrasta — dois logos podem ter o mesmo
+   * arquivo, então o caminho não serve de identidade.
+   */
+  logo: number;
   x: number;
   y: number;
   width: number;
   height: number;
+  /**
+   * Desenhado por cima do texto, e não por baixo como o resto.
+   *
+   * É o logotipo livre: posto ali de propósito, sobre o que estiver — e no
+   * preview, embaixo do bloco ninguém conseguiria pegá-lo de volta.
+   */
+  above?: boolean;
 };
+
+/** O logotipo que mora no cabeçalho da marca, se houver. No máximo um. */
+export function blockLogoOf(preferences: WatermarkPreferences): { logo: BrandLogo; index: number } | null {
+  const index = preferences.brandLogos.findIndex((logo) => logo.placement === 'block');
+  return index === -1 ? null : { logo: preferences.brandLogos[index], index };
+}
 
 export type StampGeometry = {
   texts: StampText[];
@@ -359,10 +380,10 @@ function measureBrandLockup({
   const parts = brandParts(preferences);
   // Mesma normalização das partes: o complemento também é digitado.
   const complement = stampText(preferences.brandComplement).trim();
-  // Com canto próprio escolhido, o logo sai do conjunto: é desenhado solto
-  // por `layoutCornerLogo`, e o cabeçalho fica só com nome e complemento.
-  const hasLogo =
-    preferences.brandLogoPath !== null && preferences.brandLogoPosition === 'block';
+  // Com canto próprio ou posição livre, o logo sai do conjunto: é desenhado
+  // solto por `layoutLooseLogos`, e o cabeçalho fica só com nome e complemento.
+  const blockLogo = blockLogoOf(preferences)?.logo ?? null;
+  const hasLogo = blockLogo !== null;
 
   if (parts.length === 0 && complement.length === 0 && !hasLogo) return null;
 
@@ -370,12 +391,12 @@ function measureBrandLockup({
   // bloco, acima do relógio. O limiar é o mesmo 2,4 de antes — abaixo dele o
   // logo convive bem ao lado do texto; acima, qualquer altura amarrada ao
   // texto o transformava num selo minúsculo.
-  const aspect = Math.max(0.01, preferences.brandLogoAspect);
+  const aspect = Math.max(0.01, blockLogo?.aspect ?? 1);
   const banner = hasLogo && aspect > HEADER_LOGO_MAX_ASPECT;
 
   // Escala manual do logotipo. Multiplica largura e altura JUNTAS — deformar
   // o logotipo da empresa na foto que ela entrega ao cliente não é opção.
-  const logoScale = preferences.brandLogoScale;
+  const logoScale = blockLogo?.scale ?? 1;
 
   const at = (nameSize: number): BrandLockup => {
     const complementSize =
@@ -502,18 +523,21 @@ function emitBrandLockup({
   images: StampImage[];
 }) {
   const isBanner = lockup.bannerAspect !== null && lockup.bannerHeight > 0;
+  const blockLogo = blockLogoOf(preferences);
 
-  if (preferences.brandLogoPath !== null && isBanner) {
+  if (blockLogo && isBanner) {
     images.push({
-      path: preferences.brandLogoPath,
+      path: blockLogo.logo.path,
+      logo: blockLogo.index,
       x: alignRight ? x + lockup.width - lockup.bannerWidth : x,
       y: top,
       width: lockup.bannerWidth,
       height: lockup.bannerHeight,
     });
-  } else if (preferences.brandLogoPath !== null && lockup.logoWidth > 0) {
+  } else if (blockLogo && lockup.logoWidth > 0) {
     images.push({
-      path: preferences.brandLogoPath,
+      path: blockLogo.logo.path,
+      logo: blockLogo.index,
       x,
       y: top + lockup.logoOffsetY,
       width: lockup.logoWidth,
@@ -605,12 +629,11 @@ export function buildStampGeometry({
 
   const { brandPlacement } = preferences;
 
-  // O logo com canto próprio existe por si: mesmo sem dado nenhum e sem
-  // marca, ele ainda é carimbado — é a independência que o canto significa.
-  const hasCornerLogo =
-    preferences.brandLogoPath !== null && preferences.brandLogoPosition !== 'block';
+  // O logo solto — num canto ou livre — existe por si: mesmo sem dado nenhum
+  // e sem marca, ele ainda é carimbado. É a independência que soltá-lo significa.
+  const hasLooseLogo = preferences.brandLogos.some((logo) => logo.placement !== 'block');
 
-  if (content.isEmpty && brandPlacement === 'none' && !hasCornerLogo) return empty;
+  if (content.isEmpty && brandPlacement === 'none' && !hasLooseLogo) return empty;
   if (!(frame.width > 0) || !(frame.height > 0)) return empty;
   if (!Number.isFinite(frame.width) || !Number.isFinite(frame.height)) return empty;
 
@@ -646,23 +669,29 @@ export function buildStampGeometry({
     layoutSideCode({ code: content.code, preferences, frame, measure, metrics, inset, texts });
   }
 
-  if (hasCornerLogo) {
-    layoutCornerLogo({ preferences, frame, metrics, inset, images });
+  if (hasLooseLogo) {
+    layoutLooseLogos({ preferences, frame, metrics, inset, images });
   }
 
   return { ...empty, texts, rects, images };
 }
 
 /**
- * O logotipo solto num canto, independente do bloco de dados.
+ * Os logotipos soltos, independentes do bloco de dados: num canto ou livres.
  *
  * No canto não há texto para dar a régua de altura, então ela vem da linha
  * da hora — o elemento dominante do carimbo — vezes a escala manual. A
  * largura respeita a mesma fração do quadro reservada à marca no canto
  * (`BRAND_MAX_WIDTH_RATIO`): um logo mais largo que isso perde altura, e a
  * proporção do arquivo nunca é tocada.
+ *
+ * O logotipo livre é outra régua: largura como fração do quadro, centro
+ * onde a pessoa o pôs. Fração, e não pixel, é o que faz o preview de 355 px
+ * e o arquivo de 4000 concordarem — e o vídeo herdar a foto. Ele é contido
+ * dentro do quadro pelo próprio retângulo: arrastar até a borda encosta,
+ * não some.
  */
-function layoutCornerLogo({
+function layoutLooseLogos({
   preferences,
   frame,
   metrics,
@@ -675,26 +704,44 @@ function layoutCornerLogo({
   inset: number;
   images: StampImage[];
 }) {
-  const position = preferences.brandLogoPosition;
-  if (position === 'block' || preferences.brandLogoPath === null) return;
+  preferences.brandLogos.forEach((logo, index) => {
+    const position = logo.placement;
+    if (position === 'block') return;
 
-  const aspect = Math.max(0.01, preferences.brandLogoAspect);
-  const maxWidth = frame.width * BRAND_MAX_WIDTH_RATIO;
+    const aspect = Math.max(0.01, logo.aspect);
 
-  const height = Math.max(
-    4,
-    Math.round(Math.min(metrics.time * preferences.brandLogoScale, maxWidth / aspect)),
-  );
-  const width = Math.max(1, Math.round(height * aspect));
+    if (position === 'free') {
+      const width = Math.max(1, Math.round(clamp(logo.width, 0, 1) * frame.width));
+      const height = Math.max(1, Math.round(width / aspect));
+      images.push({
+        path: logo.path,
+        logo: index,
+        above: true,
+        x: clamp(Math.round(logo.x * frame.width - width / 2), 0, Math.max(0, frame.width - width)),
+        y: clamp(Math.round(logo.y * frame.height - height / 2), 0, Math.max(0, frame.height - height)),
+        width,
+        height,
+      });
+      return;
+    }
 
-  // A âncora usa só o recuo, como a marca no canto: somar o respiro interno
-  // do bloco a deslocaria para dentro.
-  images.push({
-    path: preferences.brandLogoPath,
-    x: clamp(isLeft(position) ? inset : frame.width - inset - width, 0, Math.max(0, frame.width - width)),
-    y: clamp(isTop(position) ? inset : frame.height - inset - height, 0, Math.max(0, frame.height - height)),
-    width,
-    height,
+    const maxWidth = frame.width * BRAND_MAX_WIDTH_RATIO;
+    const height = Math.max(
+      4,
+      Math.round(Math.min(metrics.time * logo.scale, maxWidth / aspect)),
+    );
+    const width = Math.max(1, Math.round(height * aspect));
+
+    // A âncora usa só o recuo, como a marca no canto: somar o respiro interno
+    // do bloco a deslocaria para dentro.
+    images.push({
+      path: logo.path,
+      logo: index,
+      x: clamp(isLeft(position) ? inset : frame.width - inset - width, 0, Math.max(0, frame.width - width)),
+      y: clamp(isTop(position) ? inset : frame.height - inset - height, 0, Math.max(0, frame.height - height)),
+      width,
+      height,
+    });
   });
 }
 
@@ -843,7 +890,7 @@ function layoutDataBlock({
     const maxHeight = (frame.width * HEADER_MAX_WIDTH_RATIO) / aspect;
     lockup.bannerHeight = Math.max(
       4,
-      Math.round(Math.min(base * preferences.brandLogoScale, maxHeight)),
+      Math.round(Math.min(base * (blockLogoOf(preferences)?.logo.scale ?? 1), maxHeight)),
     );
     lockup.bannerWidth = Math.max(1, Math.round(lockup.bannerHeight * aspect));
     lockup.bannerGap =

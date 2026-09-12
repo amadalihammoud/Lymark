@@ -22,7 +22,7 @@ import { saveFileToOutput, getOutputFolder } from '@/lib/file-storage';
 import { sealExportedPhoto } from '@/features/attest/seal';
 import { composeStampedPhoto } from '@/features/watermark/render-photo';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
-import { loadStampImages } from '@/features/watermark/stamp-images';
+import { loadStampImages, logoPathsOf } from '@/features/watermark/stamp-images';
 import { scriptForStamp } from '@/features/watermark/stamp-script';
 import { useSettings } from '@/contexts/settings-context';
 import { STAMP_LOCALE } from '@i18n/calendar';
@@ -135,7 +135,7 @@ export function useBatchProcessing() {
 
         // Decodificado por foto, e não uma vez por lote, para não segurar um
         // bitmap vivo entre iterações — o lote pode ter centenas de imagens.
-        const images = await loadStampImages(preferences.brandLogoPath);
+        const images = await loadStampImages(logoPathsOf(preferences.brandLogos));
 
         // LER EXIF DA FOTO INDIVIDUAL (requisito 2.4)
         //

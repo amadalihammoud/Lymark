@@ -4,6 +4,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useTranslations } from 'use-intl';
 
@@ -51,6 +52,9 @@ export default function RootLayout() {
   if (!fontsLoaded && !fontError) return null;
 
   return (
+    // Acima de tudo: sem esta raiz, o arraste do logotipo no preview não
+    // recebe toque nenhum no Android.
+    <GestureHandlerRootView style={styles.root}>
     <SafeAreaProvider>
       {/* Acima de tudo, e acima também da espera pelo Skia: os títulos das
           telas já saem traduzidos, o idioma escolhido vale para qualquer parte
@@ -106,6 +110,7 @@ export default function RootLayout() {
         )}
       </LocaleProvider>
     </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
 
@@ -137,6 +142,9 @@ function SkiaFailure({ onRetry }: { onRetry: () => Promise<void> }) {
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   failure: {
     flex: 1,
     alignItems: 'center',

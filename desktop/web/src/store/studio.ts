@@ -3,14 +3,38 @@ import { create } from "zustand";
 import { clockFromDate, clockNow } from "@/lib/datetime";
 import type { Entitlement } from "@/lib/lymark/types";
 import { makePhotoCode } from "@/lib/photo-code";
-import { readKit, writeKit } from "@/lib/stamp-kit";
+import { deleteLogoBytes, getLogoBytes, putLogoBytes } from "@/lib/logo-file";
+import { MAX_LOGOS, readKit, writeKit } from "@/lib/stamp-kit";
 
 export type StudioMode = "photo" | "video" | "batch";
 export type StampCorner = "top-left" | "top-right" | "bottom-left" | "bottom-right";
 export type StampSize = "sm" | "md" | "lg";
 export type CodePlacement = "side" | "block";
 export type FieldKey = "time" | "date" | "weekday" | "address" | "code" | "brand";
-export type LogoAt = "block" | StampCorner;
+/**
+ * Onde um logotipo está: junto ao carimbo, num canto, ou **livre** — em
+ * qualquer ponto da foto, posto ali com o mouse ou o dedo.
+ */
+export type LogoAt = "block" | "free" | StampCorner;
+
+/**
+ * Um logotipo carimbado. `url` é a data URL do PNG já preparado (ver
+ * `logo-file.ts`); `x`, `y` e `width` são frações do quadro e só valem no
+ * modo livre — fração, e não pixel, é o que faz o preview e o arquivo
+ * exportado concordarem.
+ */
+export type StudioLogo = {
+  id: string;
+  url: string;
+  aspect: number;
+  scale: number;
+  at: LogoAt;
+  x: number;
+  y: number;
+  width: number;
+};
+
+export type FreeLogoPatch = Pick<StudioLogo, "at" | "x" | "y" | "width">;
 export type InspectorTab = "marca" | "aparencia" | "dados";
 export type AddressSource = "exif" | "device" | "manual" | "demo";
 
@@ -75,9 +99,9 @@ type StudioState = {
   accent: string;
   colorA: string;
   colorB: string;
-  logoUrl: string | null;
-  logoScale: number;
-  logoAt: LogoAt;
+  logos: StudioLogo[];
+  /** O logotipo com a alça visível no preview. */
+  selectedLogo: number | null;
   locating: boolean;
   used: number;
   quota: number;
@@ -112,9 +136,11 @@ type StudioState = {
   setAccent: (accent: string) => void;
   setColorA: (color: string) => void;
   setColorB: (color: string) => void;
-  setLogo: (url: string | null) => void;
-  setLogoScale: (scale: number) => void;
-  setLogoAt: (at: LogoAt) => void;
+  /** Põe (ou troca, em `index` existente) um logotipo já preparado. */
+  putLogo: (index: number, logo: { url: string; aspect: number }) => Promise<void>;
+  removeLogo: (index: number) => void;
+  updateLogo: (index: number, patch: Partial<Omit<StudioLogo, "id" | "url">>) => void;
+  setSelectedLogo: (index: number | null) => void;
   setEditing: (key: FieldKey | null) => void;
   setLocating: (locating: boolean) => void;
   setReportOpen: (open: boolean) => void;
@@ -234,9 +260,8 @@ export const useStudio = create<StudioState>()((set, get) => ({
   accent: "#F3C218",
   colorA: "#FFFFFF",
   colorB: "#F3C218",
-  logoUrl: null,
-  logoScale: 1,
-  logoAt: "block",
+  logos: [],
+  selectedLogo: null,
   locating: false,
   used: 0,
   quota: 12,
@@ -347,9 +372,49 @@ export const useStudio = create<StudioState>()((set, get) => ({
   setAccent: (accent) => set({ accent }),
   setColorA: (colorA) => set({ colorA }),
   setColorB: (colorB) => set({ colorB }),
-  setLogo: (logoUrl) => set({ logoUrl }),
-  setLogoScale: (logoScale) => set({ logoScale }),
-  setLogoAt: (logoAt) => set({ logoAt }),
+  putLogo: async (index, prepared) => {
+    const id = crypto.randomUUID();
+    // Os bytes vão para o IndexedDB ANTES de entrar no estado: se a gravação
+    // falhar, o logotipo não aparece só para sumir no próximo boot.
+    await putLogoBytes(id, prepared.url);
+    const logos = [...get().logos];
+    const previous = logos[index];
+    if (previous) {
+      // Trocar o arquivo mantém posição e tamanho: quem só atualizou a arte
+      // não quer reposicionar tudo. A proporção nova entra junto.
+      logos[index] = { ...previous, id, url: prepared.url, aspect: prepared.aspect };
+      void deleteLogoBytes(previous.id);
+    } else if (logos.length < MAX_LOGOS) {
+      logos.push({
+        id,
+        url: prepared.url,
+        aspect: prepared.aspect,
+        scale: 1,
+        // O segundo nasce solto: o cabeçalho tem um lugar só.
+        at: logos.some((logo) => logo.at === "block") ? "free" : "block",
+        x: 0.5,
+        y: 0.5,
+        width: 0.25,
+      });
+    }
+    set({ logos });
+  },
+  removeLogo: (index) => {
+    const logos = [...get().logos];
+    const [gone] = logos.splice(index, 1);
+    if (gone) void deleteLogoBytes(gone.id);
+    set({ logos, selectedLogo: null });
+  },
+  updateLogo: (index, patch) =>
+    set({
+      logos: get().logos.map((logo, i) => {
+        if (i === index) return { ...logo, ...patch };
+        // Só um cabe junto ao carimbo: quem entra lá tira o outro de lá.
+        if (patch.at === "block" && logo.at === "block") return { ...logo, at: "free" };
+        return logo;
+      }),
+    }),
+  setSelectedLogo: (selectedLogo) => set({ selectedLogo }),
   setEditing: (editing) => set({ editing }),
   setLocating: (locating) => set({ locating }),
   setReportOpen: (reportOpen) => set({ reportOpen }),
@@ -395,11 +460,34 @@ export const useStudio = create<StudioState>()((set, get) => ({
       size: kit.size,
       codePlacement: kit.codePlacement,
       band: kit.band,
-      logoAt: kit.logoAt,
-      logoScale: kit.logoScale,
-      logoUrl: kit.logoUrl,
+      // Os bytes chegam depois, do IndexedDB; até lá o logotipo é só
+      // geometria e não é desenhado.
+      logos: kit.logos.map((logo) => ({ ...logo, url: "" })),
       visible: kit.visible,
     });
+    void (async () => {
+      for (const logo of kit.logos) {
+        let url = await getLogoBytes(logo.id);
+        // Migração: o logotipo único das versões anteriores vinha com os
+        // bytes no próprio kit. Vão para o IndexedDB uma vez, e o kit
+        // regravado já sai sem eles.
+        if (!url && kit.legacyLogoUrl && logo.id.startsWith("legacy-")) {
+          url = kit.legacyLogoUrl;
+          try {
+            await putLogoBytes(logo.id, url);
+          } catch {
+            /* fica só nesta sessão */
+          }
+        }
+        if (!url) continue;
+        set({
+          logos: get().logos.map((item) => (item.id === logo.id ? { ...item, url } : item)),
+        });
+      }
+      // Sem bytes em lugar nenhum, o logotipo não existe: sai da lista em
+      // vez de ocupar um lugar vazio para sempre.
+      set({ logos: get().logos.filter((item) => item.url !== "") });
+    })();
   },
   setCanvasZoom: (canvasZoom) => set({ canvasZoom }),
 }));
@@ -421,9 +509,7 @@ if (typeof window !== "undefined") {
         size: s.size,
         codePlacement: s.codePlacement,
         band: s.band,
-        logoAt: s.logoAt,
-        logoScale: s.logoScale,
-        logoUrl: s.logoUrl,
+        logos: s.logos.map(({ url: _url, ...logo }) => logo),
         visible: s.visible,
       });
     }, 200);

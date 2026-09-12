@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { useTranslations } from "use-intl";
 
+import { LogoMark } from "@/components/studio/logo-layer";
 import { cn } from "@/lib/utils";
 import type { FieldKey, StampCorner } from "@/store/studio";
 import { formatPlace, parsePlace, useStudio } from "@/store/studio";
@@ -109,20 +110,6 @@ function Editable({
   );
 }
 
-function LogoMark({ height }: { height: number }) {
-  const logoUrl = useStudio((s) => s.logoUrl);
-  const logoScale = useStudio((s) => s.logoScale);
-  if (!logoUrl) return null;
-  return (
-    <img
-      src={logoUrl}
-      alt=""
-      className="object-contain"
-      style={{ height, width: "auto", maxWidth: height * 2.4 * logoScale }}
-    />
-  );
-}
-
 export function StampOverlay() {
   const t = useTranslations("app.web");
   const fields = useStudio((s) => s.fields);
@@ -135,9 +122,7 @@ export function StampOverlay() {
   const accent = useStudio((s) => s.accent);
   const colorA = useStudio((s) => s.colorA);
   const colorB = useStudio((s) => s.colorB);
-  const logoAt = useStudio((s) => s.logoAt);
-  const logoUrl = useStudio((s) => s.logoUrl);
-  const logoScale = useStudio((s) => s.logoScale);
+  const logos = useStudio((s) => s.logos);
   const editing = useStudio((s) => s.editing);
   const setEditing = useStudio((s) => s.setEditing);
   const setCorner = useStudio((s) => s.setCorner);
@@ -148,11 +133,8 @@ export function StampOverlay() {
 
   const top = corner.startsWith("top");
   const right = corner.endsWith("right");
-  const logoH = Math.round(s.logo * logoScale);
-
-  const logoCorner = logoAt !== "block" && logoUrl;
-  const logoTop = logoAt.startsWith("top");
-  const logoRight = logoAt.endsWith("right");
+  // O do bloco fica na linha da marca; os outros são soltos sobre a foto.
+  const blockIndex = logos.findIndex((logo) => logo.at === "block");
 
   const snapFromPoint = (clientX: number, clientY: number) => {
     const el = layer.current;
@@ -186,17 +168,26 @@ export function StampOverlay() {
 
   return (
     <div ref={layer} className="pointer-events-none absolute inset-0">
-      {logoCorner ? (
-        <div
-          className={cn(
-            "absolute",
-            logoTop ? "top-3" : "bottom-3",
-            logoRight ? "right-4" : "left-4",
-          )}
-        >
-          <LogoMark height={logoH} />
-        </div>
-      ) : null}
+      {logos.map((logo, index) => {
+        if (logo.at === "block" || logo.at === "free") return null;
+        return (
+          <div
+            key={logo.id}
+            className={cn(
+              "absolute",
+              logo.at.startsWith("top") ? "top-3" : "bottom-3",
+              logo.at.endsWith("right") ? "right-4" : "left-4",
+            )}
+          >
+            <LogoMark
+              index={index}
+              logo={logo}
+              height={Math.round(s.logo * logo.scale)}
+              layer={layer}
+            />
+          </div>
+        );
+      })}
 
       {visible.code && codePlacement === "side" ? (
         <div
@@ -244,7 +235,14 @@ export function StampOverlay() {
         </button>
         {visible.brand ? (
           <div className={cn("flex items-center", s.gap, right ? "flex-row-reverse" : "flex-row")}>
-            {logoAt === "block" ? <LogoMark height={logoH} /> : null}
+            {blockIndex >= 0 ? (
+              <LogoMark
+                index={blockIndex}
+                logo={logos[blockIndex]}
+                height={Math.round(s.logo * logos[blockIndex].scale)}
+                layer={layer}
+              />
+            ) : null}
             <div className={cn("flex flex-col", right ? "items-end" : "items-start")}>
               <button
                 type="button"
@@ -342,6 +340,15 @@ export function StampOverlay() {
           </Editable>
         ) : null}
       </div>
+
+      {/* Os livres vêm por cima do carimbo: foram postos ali de propósito, e
+          embaixo do bloco ninguém conseguiria pegá-los de volta. A exportação
+          desenha na mesma ordem. */}
+      {logos.map((logo, index) =>
+        logo.at === "free" ? (
+          <LogoMark key={logo.id} index={index} logo={logo} height={0} layer={layer} />
+        ) : null,
+      )}
     </div>
   );
 }
