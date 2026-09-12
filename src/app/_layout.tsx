@@ -26,6 +26,11 @@ import { colors, typography, watermarkFontAssets } from '@/theme';
 // primeira renderização usaria a fonte do sistema e o carimbo "pularia" de
 // desenho no meio do uso.
 void SplashScreen.preventAutoHideAsync();
+// A splash esvai em vez de cortar: o símbolo some em 400 ms e a abertura da
+// tela de entrar (`sign-in-flow.tsx`) já vem subindo em cascata por baixo.
+// Sem isto, a troca era um corte seco de navy para navy com um pulo de
+// conteúdo — parecia travamento seguido de susto.
+SplashScreen.setOptions({ duration: 400, fade: true });
 
 /**
  * Raiz da navegação.

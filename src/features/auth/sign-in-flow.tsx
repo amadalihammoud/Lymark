@@ -7,6 +7,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import type { ComponentProps } from 'react';
 import { useState } from 'react';
 import { ActivityIndicator, Pressable, StyleSheet, Text, View } from 'react-native';
+import Animated, { Easing, FadeInUp } from 'react-native-reanimated';
 import { useTranslations } from 'use-intl';
 
 import { Wordmark } from '@/components/brand/wordmark';
@@ -51,6 +52,28 @@ import { useDesktopAuth } from './desktop-auth';
  */
 
 type Step = { name: 'email' } | { name: 'code'; via: 'sign-in' | 'sign-up' };
+
+/**
+ * A cascata da abertura: cada bloco sobe 16 px e aparece, um atrás do outro,
+ * com a marca primeiro e o rodapé por último. Tudo termina em menos de um
+ * segundo — é uma respiração, não um show. A splash esvai em 400 ms
+ * (`_layout.tsx`), então a marca já está subindo enquanto o símbolo some.
+ */
+const RISE_MS = 420;
+const RISE = {
+  brand: 0,
+  eyebrow: 90,
+  heading: 160,
+  form: 260,
+  footer: 420,
+} as const;
+
+function rise(delay: number) {
+  return FadeInUp.duration(RISE_MS)
+    .delay(delay)
+    .easing(Easing.out(Easing.cubic))
+    .withInitialValues({ opacity: 0, transform: [{ translateY: 16 }] });
+}
 
 type IoniconName = ComponentProps<typeof Ionicons>['name'];
 
@@ -172,7 +195,7 @@ export function SignInFlow() {
       <Opening />
 
       {step.name === 'email' ? (
-        <View style={styles.form}>
+        <Animated.View key="email" entering={rise(RISE.form)} style={styles.form}>
           <FieldRow
             label={t('email')}
             value={email}
@@ -209,9 +232,11 @@ export function SignInFlow() {
               />
             ))}
           </View>
-        </View>
+        </Animated.View>
       ) : (
-        <View style={styles.form}>
+        /* Passo novo, entrada nova — sem atraso: quem acabou de tocar em
+           "Continuar" quer ver o campo do código, não esperar por ele. */
+        <Animated.View key="code" entering={rise(0)} style={styles.form}>
           <Text style={[typography.body, styles.note]}>
             {t('codeSent', { email: email.trim() })}
           </Text>
@@ -237,7 +262,7 @@ export function SignInFlow() {
             disabled={anyBusy}
             onPress={backToEmail}
           />
-        </View>
+        </Animated.View>
       )}
 
       {failed ? (
@@ -259,10 +284,10 @@ export function DesktopSignIn() {
   return (
     <Screen contentStyle={styles.content}>
       <Opening />
-      <View style={styles.form}>
+      <Animated.View entering={rise(RISE.form)} style={styles.form}>
         <Text style={[typography.body, styles.note]}>{t('browserHint')}</Text>
         <Button label={t('signInBrowser')} variant="accent" onPress={signIn} />
-      </View>
+      </Animated.View>
       <Reassurance />
     </Screen>
   );
@@ -277,9 +302,17 @@ function Opening() {
 
   return (
     <View style={styles.opening}>
-      <Wordmark />
-      <Text style={[typography.sectionTitle, styles.eyebrow]}>{t('eyebrow')}</Text>
-      <Text style={styles.heading}>{t('heading')}</Text>
+      <Animated.View entering={rise(RISE.brand)}>
+        <Wordmark />
+      </Animated.View>
+      <Animated.Text
+        entering={rise(RISE.eyebrow)}
+        style={[typography.sectionTitle, styles.eyebrow]}>
+        {t('eyebrow')}
+      </Animated.Text>
+      <Animated.Text entering={rise(RISE.heading)} style={styles.heading}>
+        {t('heading')}
+      </Animated.Text>
     </View>
   );
 }
@@ -293,11 +326,11 @@ function Reassurance() {
   const t = useTranslations('site.hero.meta');
 
   return (
-    <Text style={[typography.caption, styles.reassurance]}>
+    <Animated.Text entering={rise(RISE.footer)} style={[typography.caption, styles.reassurance]}>
       {t('onDevice')}
       {'  ·  '}
       {t('account')}
-    </Text>
+    </Animated.Text>
   );
 }
 
