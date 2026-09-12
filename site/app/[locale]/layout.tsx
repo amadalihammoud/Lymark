@@ -2,7 +2,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
 import { LOCALES, isRtl, type Locale } from '../../../i18n/locales';
@@ -47,9 +47,21 @@ const pathway = localFont({
   variable: '--font-clock',
 });
 
-/** Gera as doze versões estáticas no build, em vez de sob demanda. */
+/**
+ * Idiomas gerados no build. Os demais (`dynamicParams`) são renderizados na
+ * primeira visita e ficam em cache como estáticos — o resultado é o mesmo.
+ *
+ * Gerar os 79 no build custa caro no lugar errado: cada idioma rende ~1,7 MB
+ * de HTML + RSC (cada página gravada quatro vezes, com o catálogo dentro),
+ * ~200 MB por deploy, e a Vercel guarda todos os deploys. Foi isso que
+ * estourou a cota de armazenamento.
+ */
+const PRERENDERED_LOCALES: readonly Locale[] = ['pt', 'pt-PT', 'en', 'es'];
+
+export const dynamicParams = true;
+
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return PRERENDERED_LOCALES.map((locale) => ({ locale }));
 }
 
 export async function generateMetadata({
@@ -113,11 +125,24 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
 
-  // Sem isto, cada página do idioma vira renderização dinâmica e o build
-  // estático das doze versões não acontece.
+  // Sem isto, cada página do idioma vira renderização dinâmica e a versão
+  // estática (no build ou na primeira visita) não acontece.
   setRequestLocale(locale);
 
   const t = await getTranslations('site');
+
+  /*
+   * O que o provider recebe vai serializado no HTML de toda página. O catálogo
+   * inteiro tem três namespaces e o navegador só precisa de dois pedaços: o
+   * do site e o seletor de idioma (`app.language`, compartilhado com o app).
+   * `app` e `desktop` completos são 2/3 do catálogo, e ninguém os lê aqui —
+   * os componentes de servidor continuam lendo tudo pelo `getTranslations`.
+   */
+  const messages = await getMessages();
+  const clientMessages = {
+    site: messages.site,
+    app: { language: (messages.app as { language: unknown }).language },
+  };
 
   /*
    * As rotas da conta levam o prefixo do idioma como qualquer outra — o Clerk
@@ -143,7 +168,7 @@ export default async function LocaleLayout({
       className={`${barlow.variable} ${pathway.variable}`}
     >
       <body style={{ ['--font-mark' as string]: 'var(--font-body)' }}>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={clientMessages}>
           <a className="skip" href="#conteudo">
             {t('skipToContent')}
           </a>

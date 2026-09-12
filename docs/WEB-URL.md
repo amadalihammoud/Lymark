@@ -28,9 +28,11 @@ passo extra no dashboard).
 
 ### Build Command
 
-Root Directory = `site`. O `site/vercel.json` manda `npm ci` + `next build`.
-O studio Vite já está em `site/public/web/` (publicado por
-`npm run web:build:hosted` **antes** do commit).
+Root Directory = `site`, framework Next.js — o build é o padrão da Vercel
+(`npm install` + `next build`), sem comando customizado no dashboard nem em
+`site/vercel.json` (que só tem os rewrites do SPA). O studio Vite já está em
+`site/public/web/` (publicado por `npm run web:build:hosted` **antes** do
+commit).
 
 Para regenerar o studio localmente:
 
