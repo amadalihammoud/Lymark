@@ -34,6 +34,15 @@ type ButtonProps = {
    * "Localizar endereço", e não "botão".
    */
   iconOnly?: boolean;
+  /**
+   * Ícone em cima, rótulo embaixo, em até duas linhas.
+   *
+   * É o que deixa três ações do mesmo peso caberem lado a lado numa linha
+   * de telefone — "Tirar foto", "Escolher da galeria", "Gravar vídeo" — sem
+   * que uma delas vire só um ícone e as outras fiquem largas. Simetria é
+   * o que se lê como "três caminhos iguais".
+   */
+  stacked?: boolean;
   disabled?: boolean;
   loading?: boolean;
   style?: StyleProp<ViewStyle>;
@@ -74,6 +83,7 @@ export function Button({
   variant = 'primary',
   icon,
   iconOnly = false,
+  stacked = false,
   disabled = false,
   loading = false,
   style,
@@ -95,6 +105,7 @@ export function Button({
       style={({ pressed }) => [
         styles.base,
         iconOnly && styles.square,
+        stacked && styles.stacked,
         variant !== 'accent' ? styles.bordered : null,
         { backgroundColor: pressed ? PRESSED_BACKGROUNDS[variant] : BACKGROUNDS[variant] },
         disabled && styles.disabled,
@@ -108,10 +119,12 @@ export function Button({
       {loading ? (
         <ActivityIndicator color={foreground} size="small" />
       ) : icon ? (
-        <Ionicons name={icon} size={iconOnly ? 22 : 18} color={foreground} />
+        <Ionicons name={icon} size={iconOnly || stacked ? 22 : 18} color={foreground} />
       ) : null}
       {iconOnly || (loading && !icon && !label) ? null : (
-        <Text style={[typography.button, { color: foreground }]} numberOfLines={1}>
+        <Text
+          style={[typography.button, stacked && styles.stackedLabel, { color: foreground }]}
+          numberOfLines={stacked ? 2 : 1}>
           {label}
         </Text>
       )}
@@ -141,6 +154,22 @@ const styles = StyleSheet.create({
     height: HIT_TARGET + 8,
     paddingHorizontal: 0,
     paddingVertical: 0,
+  },
+  /**
+   * Coluna: ícone, depois rótulo. O piso de altura comporta duas linhas de
+   * rótulo em qualquer dos três botões, para a linha não ficar dentada
+   * quando um idioma precisa de mais palavras que outro.
+   */
+  stacked: {
+    flexDirection: 'column',
+    gap: spacing.xs,
+    minHeight: 76,
+    paddingHorizontal: spacing.sm,
+  },
+  stackedLabel: {
+    fontSize: 13,
+    lineHeight: 16,
+    textAlign: 'center',
   },
   bordered: {
     borderWidth: 1,
