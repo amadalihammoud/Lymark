@@ -1,8 +1,8 @@
-import { SignIn } from '@clerk/nextjs';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import type { Locale } from '../../../../../i18n/locales';
+import { SignInForm } from '../../../../components/AuthForms';
 import { appDestFromSearch, withNext } from '../../../../lib/app-dest';
 import { getPathname } from '../../../../i18n/navigation';
 
@@ -39,7 +39,7 @@ export default async function SignInPage({
 
   return (
     <section className="account-shell">
-      <SignIn
+      <SignInForm
         path={getPathname({ href: '/entrar', locale: locale as Locale })}
         signUpUrl={withNext(
           getPathname({ href: '/cadastrar', locale: locale as Locale }),
