@@ -19,14 +19,16 @@ import { colors, radius } from '@/theme';
  * Sem controles nativos de propósito: barra de progresso e tela cheia
  * cobririam o carimbo, que é justamente o que a pessoa quer conferir. Um
  * botão só, tocar alterna; em loop, para o carimbo poder ser ajustado com o
- * vídeo rodando. Mudo enquanto é prévia — quem está numa vistoria não quer
- * o áudio da obra tocando ao abrir o app.
+ * vídeo rodando.
+ *
+ * Nada toca sozinho: o vídeo abre parado, e só o toque em "reproduzir" o
+ * põe para rodar — com som. É a pessoa quem pediu para ouvir; o arquivo
+ * exportado leva o áudio, e a prévia deve mostrar o que vai sair.
  */
 export function VideoFrame({ uri, children }: { uri: string; children: ReactNode }) {
   const t = useTranslations('app.capture');
   const player = useVideoPlayer(uri, (instance) => {
     instance.loop = true;
-    instance.muted = true;
   });
   const { isPlaying } = useEvent(player, 'playingChange', { isPlaying: player.playing });
 
