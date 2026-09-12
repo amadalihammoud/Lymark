@@ -59,6 +59,13 @@ export type MediaItem = {
   id: string;
   kind: "image" | "video";
   url: string;
+  /**
+   * Só no desktop: o caminho real do vídeo no disco, que o ffmpeg precisa.
+   * A `url` acima continua sendo o que a prévia carrega (`media://video/…`).
+   */
+  path?: string;
+  /** Só no desktop: a duração sondada pelo ffmpeg, para o progresso. */
+  durationMs?: number;
   name: string;
   width: number;
   height: number;

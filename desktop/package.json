@@ -12,7 +12,6 @@
     "build:windows": "npm run compile && electron-builder build --win",
     "build:linux": "npm run compile && electron-builder build --linux",
     "build:dir": "npm run compile && electron-builder build --dir",
-    "verify:package": "node scripts/verify-package.js dist-electron/win-unpacked ../dist",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

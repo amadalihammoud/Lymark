@@ -59,6 +59,8 @@ export interface LymarkApi {
   pickVideo: () => Promise<{
     status: 'selected' | 'cancelled' | 'failed';
     path?: string;
+    /** `media://video/<id>`, para a prévia na página. */
+    url?: string;
     name?: string;
     width?: number;
     height?: number;
@@ -263,5 +265,19 @@ export const lymarkApi: LymarkApi = {
   },
 };
 
-// Expor para o window via contextBridge
-contextBridge.exposeInMainWorld('lymark', lymarkApi);
+/**
+ * A ponte só existe na origem do studio.
+ *
+ * O preload roda em TODA página que a janela carregar — e a janela navega
+ * pelo login (lymark.app, Clerk, Google). A origem autorizada vem do processo
+ * principal por `additionalArguments`; fora dela, `window.lymark` não é
+ * criado, e a página é um navegador comum. O `main.ts` confere o remetente
+ * de novo em cada canal — duas camadas, por desenho.
+ */
+const STUDIO_ORIGIN = process.argv
+  .find((argument) => argument.startsWith('--lymark-studio-origin='))
+  ?.slice('--lymark-studio-origin='.length);
+
+if (STUDIO_ORIGIN && window.location.origin === STUDIO_ORIGIN) {
+  contextBridge.exposeInMainWorld('lymark', lymarkApi);
+}

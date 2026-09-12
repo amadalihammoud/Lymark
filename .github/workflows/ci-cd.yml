@@ -162,22 +162,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y fakeroot
 
-      - name: Build desktop web app
-        run: npm run web:build
-        env:
-          NODE_OPTIONS: --max_old_space_size=4096
-
       - name: Build Electron app for Linux
         run: npm run build:linux
         working-directory: desktop
         env:
           NODE_OPTIONS: --max_old_space_size=4096
-
-      # Uma fonte ausente não gera erro: o app abre e não carimba. Só uma
-      # verificação explícita pega isso.
-      - name: Verify package contents
-        run: node scripts/verify-package.js dist-electron/linux-unpacked ../dist
-        working-directory: desktop
 
       # `dist/` é a saída do tsc; os instaladores vão para `dist-electron/`.
       - name: Upload Linux build artifact
@@ -212,20 +201,11 @@ jobs:
         run: npm ci
         working-directory: desktop
 
-      - name: Build desktop web app
-        run: npm run web:build
-        env:
-          NODE_OPTIONS: --max_old_space_size=4096
-
       - name: Build Electron app for Windows
         run: npm run build:windows
         working-directory: desktop
         env:
           NODE_OPTIONS: --max_old_space_size=4096
-
-      - name: Verify package contents
-        run: node scripts/verify-package.js dist-electron/win-unpacked ../dist
-        working-directory: desktop
 
       # O executável não é assinado: o Windows mostrará aviso do SmartScreen ao
       # instalar. Distribuir sem aviso exige certificado de assinatura de código.

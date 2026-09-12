@@ -12,6 +12,8 @@ import { Chrome } from "@/components/studio/toolbar";
 import { VerifySheet } from "@/components/studio/verify-sheet";
 import { useLocalePreference } from "@/i18n/locale-provider";
 import { clockFromDate } from "@/lib/datetime";
+import { desktop } from "@/lib/desktop";
+import { sealVideoOnDesktop, stampVideoOnDesktop } from "@/lib/desktop-video";
 import {
   downloadBlob,
   exportStampedJpeg,
@@ -25,7 +27,7 @@ import { asArrayBuffer, blobToBytes } from "@/lib/lymark/hash";
 import { sealExportedPhoto } from "@/lib/lymark/seal-export";
 import { canExportNow } from "@/lib/lymark/types";
 import { lookFrom } from "@/lib/stamp-look";
-import { useStudio } from "@/store/studio";
+import { useStudio, type MediaItem } from "@/store/studio";
 
 function currentLook() {
   const s = useStudio.getState();
@@ -34,6 +36,9 @@ function currentLook() {
 
 export function DesktopShell() {
   const t = useTranslations("app.web");
+  // "Processando… {percent}%" e "Salvo em {path}" já existem para o vídeo do
+  // aplicativo; no desktop servem aos dois, foto e vídeo.
+  const tVideo = useTranslations("app.video");
   const { locale } = useLocalePreference();
   const fileRef = useRef<HTMLInputElement>(null);
   const localeReady = useRef(false);
@@ -54,10 +59,34 @@ export function DesktopShell() {
   const patchMedia = useStudio((s) => s.patchMedia);
   const setInspector = useStudio((s) => s.setInspector);
   const hydrateKit = useStudio((s) => s.hydrateKit);
+  const setMode = useStudio((s) => s.setMode);
+  const setReportOpen = useStudio((s) => s.setReportOpen);
+  const setAccountOpen = useStudio((s) => s.setAccountOpen);
 
   useEffect(() => {
     hydrateKit();
   }, [hydrateKit]);
+
+  /**
+   * Dentro do desktop: o menu do sistema pede telas por rota (o contrato
+   * herdado do aplicativo), e o idioma escolhido aqui traduz esse menu e os
+   * diálogos de arquivo. Fora do desktop os dois efeitos não fazem nada.
+   */
+  useEffect(() => {
+    void desktop?.setLocale(locale);
+  }, [locale]);
+
+  useEffect(() => {
+    if (!desktop) return;
+    desktop.onNavigate((route) => {
+      // Idioma e "sobre" moram no painel da conta.
+      if (route.startsWith("/settings")) setAccountOpen(true);
+      else if (route === "/batch") setMode("batch");
+      else if (route === "/video") setMode("video");
+      else if (route === "/report") setReportOpen(true);
+      else setMode("photo");
+    });
+  }, [setAccountOpen, setMode, setReportOpen]);
 
   useEffect(() => {
     void getEntitlements()
@@ -115,9 +144,91 @@ export function DesktopShell() {
     [addBatch, mode, patchMedia, setMedia, t],
   );
 
+  /**
+   * No desktop, abrir vídeo é o diálogo do sistema: o ffmpeg precisa do
+   * caminho real, que um `<input type="file">` não entrega. A prévia carrega
+   * pela URL `media://` que o processo principal cunhou para esse arquivo.
+   */
+  const openDesktopVideo = useCallback(async () => {
+    if (!desktop) return;
+    const picked = await desktop.pickVideo();
+    if (picked.status === "cancelled") return;
+    if (
+      picked.status !== "selected" ||
+      !picked.url ||
+      !picked.path ||
+      !picked.width ||
+      !picked.height
+    ) {
+      toast.error(t("openFailed"));
+      return;
+    }
+    setMedia({
+      id: `desktop-${Date.now().toString(36)}`,
+      kind: "video",
+      url: picked.url,
+      path: picked.path,
+      durationMs: picked.durationMs,
+      name: picked.name ?? "video",
+      width: picked.width,
+      height: picked.height,
+      gps: null,
+      // A data do arquivo é o análogo do EXIF: preenche o relógio, editável.
+      capturedAt: picked.modifiedMs ? new Date(picked.modifiedMs).toISOString() : null,
+      existingCode: null,
+      place: null,
+    });
+  }, [setMedia, t]);
+
+  const openFiles = useCallback(() => {
+    if (desktop && mode === "video") void openDesktopVideo();
+    else fileRef.current?.click();
+  }, [mode, openDesktopVideo]);
+
+  const chargeQuota = useCallback(async () => {
+    try {
+      const next = await syncEntitlements({ data: { spent: 1 } });
+      setEntitlement(next);
+    } catch {
+      /* offline */
+    }
+  }, [setEntitlement]);
+
   const exportOne = useCallback(
-    async (item: { id: string; kind: "image" | "video"; url: string }, share = false) => {
+    async (item: MediaItem, share = false) => {
       const look = currentLook();
+
+      // O vídeo inteiro, pelo ffmpeg do desktop. No navegador o que sai é um
+      // quadro carimbado (abaixo) — é o que ele alcança sem reencodar.
+      if (item.kind === "video" && desktop && item.path && !share) {
+        const progress = toast.loading(tVideo("processing", { percent: 0 }));
+        let result: Awaited<ReturnType<typeof stampVideoOnDesktop>>;
+        try {
+          result = await stampVideoOnDesktop({
+            path: item.path,
+            width: item.width,
+            height: item.height,
+            durationMs: item.durationMs ?? 0,
+            look,
+            onProgress: (percent) =>
+              toast.loading(tVideo("processing", { percent }), { id: progress }),
+          });
+        } finally {
+          toast.dismiss(progress);
+        }
+        if (result.status === "cancelled") return;
+        if (result.status !== "saved" || !result.path) {
+          throw new Error(result.error ?? "ffmpeg");
+        }
+        setLastSeal((await sealVideoOnDesktop(result.path)) ? "on" : "off");
+        markBilled(item.id);
+        markSaved(result.path.split(/[\\/]/).pop() ?? result.path);
+        regenCode();
+        toast.success(tVideo("saved", { path: result.path }));
+        await chargeQuota();
+        return;
+      }
+
       const stamped =
         item.kind === "video"
           ? await exportVideoFrame(item.url, look)
@@ -131,19 +242,23 @@ export function DesktopShell() {
       } else {
         setLastSeal(null);
       }
-      if (share) await shareBlob(blob, filename);
-      else downloadBlob(blob, filename);
+      if (share) {
+        await shareBlob(blob, filename);
+      } else if (desktop) {
+        // Direto na pasta de saída, sem diálogo — é o que faz o lote render
+        // no desktop: uma foto atrás da outra, sem uma janela por foto.
+        const saved = await desktop.saveFileToOutput(await blobToBytes(blob), filename, blob.type);
+        if (saved.status !== "saved") throw new Error(saved.error ?? "save");
+        toast.success(tVideo("saved", { path: saved.path ?? filename }));
+      } else {
+        downloadBlob(blob, filename);
+      }
       markBilled(item.id);
       markSaved(filename);
       regenCode();
-      try {
-        const next = await syncEntitlements({ data: { spent: 1 } });
-        setEntitlement(next);
-      } catch {
-        /* offline */
-      }
+      await chargeQuota();
     },
-    [markBilled, markSaved, regenCode, setEntitlement, setLastSeal],
+    [chargeQuota, markBilled, markSaved, regenCode, setLastSeal, tVideo],
   );
 
   const onSave = useCallback(async () => {
@@ -199,7 +314,7 @@ export function DesktopShell() {
       }
       if (meta && e.key.toLowerCase() === "o") {
         e.preventDefault();
-        fileRef.current?.click();
+        openFiles();
       }
       if (!meta && e.key.toLowerCase() === "i" && e.target === document.body) {
         toggleInspector();
@@ -211,12 +326,12 @@ export function DesktopShell() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onSave, setInspector, toggleInspector]);
+  }, [onSave, openFiles, setInspector, toggleInspector]);
 
   return (
     <div className="flex h-dvh flex-col bg-navy-900 text-ink">
       <Chrome
-        onOpen={() => fileRef.current?.click()}
+        onOpen={openFiles}
         onSave={() => void onSave()}
         onShare={() => void onShare()}
         saving={saving}

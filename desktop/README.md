@@ -13,5 +13,16 @@ npm install
 npm run dev
 ```
 
-O Electron ainda serve o build Expo web. Próximo passo: apontar o `BrowserWindow`
-para `desktop/web/dist` depois de `npm run build` em `web/`.
+O Electron é uma casca fina sobre o studio hospedado: o `BrowserWindow` abre
+https://lymark.app/web e o preload expõe `window.lymark` só nessa origem — é
+por essa ponte que o studio recebe o ffmpeg (vídeo inteiro), a pasta de saída
+e o menu (`web/src/lib/desktop.ts`). Nenhum build web vai no pacote.
+
+Para desenvolver os dois juntos:
+
+```bash
+cd desktop/web && npm run dev            # Vite em http://localhost:5173
+cd desktop && LYMARK_STUDIO_URL=http://localhost:5173 npm run start
+```
+
+Sem rede, a janela mostra uma página de "sem conexão" com tentar de novo.
