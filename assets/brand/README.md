@@ -54,3 +54,31 @@ Nenhuma. Ativo estático. Em HTML, usar `<img>` ou SVG inline com `role="img"` e
 
 ## Files
 - `LY Logo Vetorizado.dc.html` — página de referência (hero, variantes, testes de escala, ícone, cores, histórico das rodadas 2a/2b/2c, código SVG).
+
+---
+
+## No Lymark: como os PNGs de `assets/images/` são gerados
+
+Os ícones do app (`icon.png`, `android-icon-foreground.png`,
+`android-icon-background.png`, `android-icon-monochrome.png`,
+`splash-icon.png`, `favicon.png`) são rasterizados **destes SVGs** — nunca
+desenhados à mão. O antigo `scripts/render-app-icon.js`, que desenhava o selo
+"L com barra" em código, foi aposentado por isso: rodá-lo regeneraria a marca
+antiga.
+
+Receita (12/09/2026): servir esta pasta num servidor local, carregar o SVG num
+`<img>` e desenhar num `<canvas>` com `drawImage`, centrando a bbox do desenho
+(x 48→291,75 · y 31,5→206,5 no viewBox `10 -6.5 319.75 251`):
+
+| Arquivo | Fonte | Tamanho | Largura da marca | Fundo |
+|---|---|---|---|---|
+| `icon.png` | `ly-logo-transparente.svg` | 1024 | 62 % | `#13356A` |
+| `android-icon-foreground.png` | `ly-logo-transparente.svg` | 1024 | 54 % (zona segura de 66 %) | transparente |
+| `android-icon-background.png` | — | 1024 | — | `#13356A` |
+| `android-icon-monochrome.png` | `ly-logo-transparente.svg` | 1024 | 54 % | transparente, marca branca |
+| `splash-icon.png` | `ly-logo-transparente.svg` | 512 | 78 % | transparente (o app.json põe o marinho) |
+| `favicon.png` | `ly-logo-compacto-transparente.svg` | 64 | 76 % | `#13356A` |
+
+`canvas.toBlob('image/png')` sem compressão extra. Quando houver uma
+ferramenta de linha de comando no projeto (`resvg`, `sharp`), esta receita
+vira script.
