@@ -378,7 +378,15 @@ const styles = StyleSheet.create({
     // num tablet, deixa de parecer um título e vira uma legenda.
     maxWidth: 360,
   },
+  /**
+   * Largura de formulário, não de janela: num tablet ou no navegador, um
+   * campo de e-mail de borda a borda vira uma faixa, e o botão embaixo dele
+   * outra. A medida é a de um telefone largo — onde a tela foi desenhada.
+   */
   form: {
+    width: '100%',
+    maxWidth: 420,
+    alignSelf: 'center',
     gap: spacing.md,
   },
   separator: {
