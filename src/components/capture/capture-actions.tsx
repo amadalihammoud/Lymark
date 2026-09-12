@@ -7,11 +7,14 @@ import { spacing } from '@/theme';
 /**
  * As portas de entrada da tela de captura.
  *
- * Foto e galeria têm rótulo; gravar vídeo é só o ícone. Três rótulos numa
- * linha de telefone não cabem, e a câmera de vídeo é o ícone mais
- * reconhecível dos três — o nome acessível continua sendo a frase inteira.
- * A galeria já aceita vídeo pela mesma porta da foto, então o botão de
- * gravar é a única porta exclusiva do vídeo.
+ * No celular são três — tirar foto, escolher da galeria, gravar vídeo — e
+ * as três têm o mesmo peso: blocos iguais, ícone em cima, rótulo embaixo.
+ * A versão anterior deixava o vídeo como um quadrado só de ícone ao lado de
+ * dois botões largos, e a linha lia como "duas ações e um detalhe". Não é:
+ * são três caminhos para a mesma mesa.
+ *
+ * Fora do celular (sem câmera, ou sem o vídeo na tela inicial) sobram um
+ * ou dois botões, e aí a linha volta ao formato de sempre.
  */
 export function CaptureActions({
   onTakePhoto,
@@ -28,6 +31,8 @@ export function CaptureActions({
   showCamera?: boolean;
 }) {
   const t = useTranslations('app');
+  const stacked = showCamera && Boolean(onRecordVideo);
+
   return (
     <View style={styles.row}>
       {showCamera ? (
@@ -35,6 +40,7 @@ export function CaptureActions({
           label={t('capture.camera')}
           icon="camera"
           variant="primary"
+          stacked={stacked}
           onPress={onTakePhoto}
           disabled={busy}
           style={styles.action}
@@ -44,18 +50,20 @@ export function CaptureActions({
         label={showCamera ? t('capture.gallery') : t('capture.pickPhoto')}
         icon="images"
         variant="primaryAlt"
+        stacked={stacked}
         onPress={onPickFromLibrary}
         disabled={busy}
         style={styles.action}
       />
-      {showCamera && onRecordVideo ? (
+      {stacked && onRecordVideo ? (
         <Button
           label={t('video.record')}
           icon="videocam"
-          iconOnly
           variant="primaryAlt"
+          stacked
           onPress={onRecordVideo}
           disabled={busy}
+          style={styles.action}
         />
       ) : null}
     </View>
