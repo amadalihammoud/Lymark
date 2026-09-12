@@ -2,7 +2,7 @@
  * Ponto de entrada do Electron para o Lymark Desktop.
  */
 
-import { app, BrowserWindow, protocol, ipcMain, dialog, shell } from 'electron';
+import { app, BrowserWindow, protocol, ipcMain, dialog, session, shell } from 'electron';
 import { spawn } from 'child_process';
 import path from 'path';
 import fs from 'fs';
@@ -244,15 +244,6 @@ function createWindow() {
     title: 'Lymark',
     icon: ICON_PATH,
   });
-
-  // O Google recusa login OAuth em navegadores embutidos, e reconhece o
-  // Electron pelo token `Electron/…` do user agent. Sem esta linha, "Continuar
-  // com Google" no studio termina em "disallowed_useragent". O que sobra é o
-  // Chrome que o Electron já é.
-  const userAgent = mainWindow.webContents
-    .getUserAgent()
-    .replace(/ (Electron|lymark-desktop|Lymark)\/\S+/g, '');
-  mainWindow.webContents.setUserAgent(userAgent);
 
   // A ponte não segue a navegação: o preload só a expõe na origem do studio
   // (e cada handler confere o remetente). Por isso a janela pode navegar
@@ -1445,7 +1436,44 @@ app.on('open-url', (event, url) => {
 });
 
 // App pronto
+/**
+ * A janela se apresenta como o Chrome que o Electron já é.
+ *
+ * O Google recusa login OAuth em navegador embutido ("Esse navegador ou app
+ * pode não ser seguro") e reconhece o Electron por dois sinais: o token
+ * `Electron/…` do user agent e os Client Hints, que aqui saem só com a marca
+ * "Chromium" — o Chrome de verdade manda "Google Chrome" junto. Limpar só o
+ * user agent não bastou: foi reproduzido, o Google seguiu recusando.
+ *
+ * `userAgentFallback` vale para TODA requisição da sessão (a versão anterior,
+ * por janela, deixava o token passar em `fetch` e em navegações que o
+ * Chromium dispara antes de o `setUserAgent` ser aplicado).
+ */
+function presentAsChrome(): void {
+  app.userAgentFallback = app.userAgentFallback.replace(
+    /\s(Electron|lymark-desktop|Lymark)\/\S+/g,
+    '',
+  );
+
+  const major = process.versions.chrome.split('.')[0];
+  const full = process.versions.chrome;
+  const brands = `"Google Chrome";v="${major}", "Chromium";v="${major}", "Not?A_Brand";v="8"`;
+  const fullList = `"Google Chrome";v="${full}", "Chromium";v="${full}", "Not?A_Brand";v="8.0.0.0"`;
+
+  session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+    const headers = details.requestHeaders;
+    for (const name of Object.keys(headers)) {
+      const lower = name.toLowerCase();
+      if (lower === 'sec-ch-ua') headers[name] = brands;
+      else if (lower === 'sec-ch-ua-full-version-list') headers[name] = fullList;
+    }
+    callback({ requestHeaders: headers });
+  });
+}
+
 app.whenReady().then(() => {
+  presentAsChrome();
+
   // Registrar o esquema junto ao sistema. Fora do pacote (desenvolvimento),
   // o registro precisa apontar o executável do Electron para este projeto —
   // sem os argumentos, o clique no link abriria um Electron vazio.
