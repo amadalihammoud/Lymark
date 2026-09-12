@@ -3,12 +3,13 @@ import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useTranslations } from 'use-intl';
 
 import { useSkiaStatus } from '@/components/skia';
+import { LoadFailure } from '@/components/ui/load-failure';
 import { AuthProvider } from '@/features/auth/provider';
 import { AuthGate } from '@/features/auth/gate';
 import { DesktopAuthProvider } from '@/features/auth/desktop-auth';
@@ -76,9 +77,11 @@ export default function RootLayout() {
          * 404 do `canvaskit.wasm` chegou ao usuário — sem mensagem, sem pista.
          * A mesma razão que fez a falha de fonte não prender ninguém na splash
          * vale aqui: falha visível e recuperável é melhor que falha invisível.
+         * (A mesma tela serve ao Clerk, que tem o seu próprio prazo — ver
+         * `features/auth/load-watchdog.tsx`.)
          */}
         {skiaStatus === 'failed' ? (
-          <SkiaFailure onRetry={retrySkia} />
+          <LoadFailure onRetry={retrySkia} />
         ) : skiaStatus !== 'ready' ? null : (
           /* Acima das telas e fora da árvore de captura: o direito de acesso
              não pode ser remontado ao navegar entre abas. */
@@ -114,55 +117,9 @@ export default function RootLayout() {
   );
 }
 
-/**
- * O que aparece quando o Skia não carrega.
- *
- * Deliberadamente reaproveita `app.common.error` e `app.common.tryAgain`, que
- * já existem nos doze idiomas, em vez de acrescentar chave nova: uma mensagem
- * mais específica seria melhor texto, mas nasceria em português e mentiria nos
- * outros onze até alguém traduzi-la. Tela de falha traduzida pela metade é o
- * defeito que ela mesma deveria denunciar.
- */
-function SkiaFailure({ onRetry }: { onRetry: () => Promise<void> }) {
-  const t = useTranslations('app.common');
-
-  return (
-    <View style={styles.failure}>
-      <StatusBar style="light" />
-      <Text style={typography.screenTitle}>{t('error')}</Text>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel={t('tryAgain')}
-        onPress={() => void onRetry()}
-        style={({ pressed }) => [styles.retry, pressed && styles.retryPressed]}>
-        <Text style={typography.value}>{t('tryAgain')}</Text>
-      </Pressable>
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-  },
-  failure: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 16,
-    padding: 24,
-    backgroundColor: colors.background,
-  },
-  retry: {
-    minHeight: 44,
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.border,
-    borderRadius: 6,
-  },
-  retryPressed: {
-    backgroundColor: colors.surfaceRaised,
   },
 });
 
