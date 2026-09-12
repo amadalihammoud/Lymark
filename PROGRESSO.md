@@ -154,6 +154,14 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
   desenvolvimento (EAS) para validar em aparelho** — o módulo não existe no
   Expo Go, e a tela explica a ausência. iOS (AVFoundation) fica para a
   etapa seguinte.
+  - **Na tela inicial** (12/09/2026): no celular com o módulo, o vídeo
+    deixou de ser uma rota escondida. "Escolher da galeria" aceita foto ou
+    vídeo; um botão de câmera de vídeo grava na hora; a prévia mostra o
+    vídeo rodando com o carimbo por cima (`expo-video`, sem controles
+    nativos, botão de play próprio) e Salvar/Compartilhar são os mesmos da
+    foto (`features/video/export-video.ts`). O histórico do app ainda não
+    recebe vídeo — guarda JPEGs como miniatura. `/video` segue para web e
+    desktop.
 - [~] **Celular (iOS)** — o mesmo módulo em Swift/AVFoundation
   (`modules/video-stamp/ios`): `AVVideoCompositionCoreAnimationTool` põe o
   MESMO PNG do quadro inteiro numa `CALayer` sobre o vídeo e o

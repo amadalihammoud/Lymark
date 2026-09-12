@@ -6,11 +6,15 @@ import { extractDateFromExif, extractTimeFromExif } from '@/lib/exif';
 import type { SelectedPhoto, TimeFormat } from '@/types';
 
 /**
- * As duas portas de entrada de uma foto: a câmera e a galeria.
+ * As portas de entrada da captura: câmera e galeria.
  *
- * Ambas devolvem o mesmo resultado discriminado, para que a tela trate
- * "cancelou" e "negou permissão" sem precisar saber de qual origem veio —
- * e sem `try/catch` espalhado pela camada de UI.
+ * No celular a galeria entrega foto **ou** vídeo pela mesma porta — é a
+ * decisão que tirou o vídeo de uma rota escondida e o pôs na tela inicial.
+ * A câmera continua com uma porta por tipo (foto, vídeo), porque o sistema
+ * abre modos diferentes para cada um.
+ *
+ * Na web e no desktop a galeria segue só de fotos: lá o vídeo tem caminho
+ * próprio (ffmpeg no desktop, navegador na web — ver `app/video.tsx`).
  */
 
 export type PhotoPickResult =
@@ -19,31 +23,62 @@ export type PhotoPickResult =
   | { status: 'denied' }
   | { status: 'failed'; error: unknown };
 
-const PICKER_OPTIONS: ImagePicker.ImagePickerOptions = {
+const PHOTO_OPTIONS: ImagePicker.ImagePickerOptions = {
   mediaTypes: ['images'],
   quality: 1,
-  // Sem edição: recortar antes de carimbar deslocaria a marca d’água em
-  // relação ao que o usuário viu no preview.
   allowsEditing: false,
 };
+
+const LIBRARY_OPTIONS: ImagePicker.ImagePickerOptions = {
+  mediaTypes: ['images', 'videos'],
+  quality: 1,
+  allowsEditing: false,
+};
+
+const VIDEO_OPTIONS: ImagePicker.ImagePickerOptions = {
+  mediaTypes: ['videos'],
+  allowsEditing: false,
+};
+
+/**
+ * O item do seletor como mídia escolhida.
+ *
+ * `kind` sai só para vídeo: foto é o padrão do tipo, e o rascunho gravado
+ * antes do vídeo existir não tem o campo. `duration` vem em milissegundos
+ * do seletor; quando falta, fica ausente em vez de virar zero — zero seria
+ * um vídeo de duração nula, e ausente é "não sei".
+ */
+export function describeAsset(asset: {
+  uri: string;
+  width: number;
+  height: number;
+  type?: string | null;
+  duration?: number | null;
+}): SelectedPhoto {
+  const photo: SelectedPhoto = { uri: asset.uri, width: asset.width, height: asset.height };
+  if (asset.type !== 'video') return photo;
+
+  photo.kind = 'video';
+  if (typeof asset.duration === 'number' && asset.duration > 0) {
+    photo.durationMs = asset.duration;
+  }
+  return photo;
+}
 
 function toResult(response: ImagePicker.ImagePickerResult): PhotoPickResult {
   if (response.canceled) return { status: 'cancelled' };
 
   const asset = response.assets?.[0];
   if (!asset) return { status: 'cancelled' };
+  // O seletor devolve dimensões zeradas para alguns vídeos que não consegue
+  // sondar; sem elas não há proporção de preview nem quadro de carimbo.
+  if (!asset.width || !asset.height) {
+    return { status: 'failed', error: new Error('Mídia sem dimensões') };
+  }
 
-  // As dimensões seguem junto porque são elas que definem a resolução da
-  // imagem exportada — sem isso, a exportação sai no tamanho da tela.
-  return {
-    status: 'selected',
-    photo: { uri: asset.uri, width: asset.width, height: asset.height },
-  };
+  return { status: 'selected', photo: describeAsset(asset) };
 }
 
-/**
- * Converte o resultado do picker abstrato para PhotoPickResult.
- */
 function fromPickResult(result: Awaited<ReturnType<typeof pickImage>>): PhotoPickResult {
   switch (result.status) {
     case 'selected':
@@ -64,88 +99,78 @@ function fromPickResult(result: Awaited<ReturnType<typeof pickImage>>): PhotoPic
   }
 }
 
-export async function takePhotoWithCamera(): Promise<PhotoPickResult> {
-  // No navegador, quem abre a câmera é o atributo `capture` do input de
-  // arquivo. Antes esta função caía direto no erro do final — e a tela
-  // traduzia isso em "Não foi possível abrir a foto. Tente novamente",
-  // convidando a repetir algo que nunca funcionaria. Num telefone acessando
-  // pela web, que é um uso central deste produto, tirar foto era impossível.
-  if (isWeb()) {
-    return fromPickResult(await pickImage('camera'));
-  }
-
-  // Câmera só funciona no mobile
-  if (isMobile()) {
-    try {
-      const permission = await ImagePicker.requestCameraPermissionsAsync();
-      if (!permission.granted) return { status: 'denied' };
-
-      return toResult(await ImagePicker.launchCameraAsync(PICKER_OPTIONS));
-    } catch (error) {
-      return { status: 'failed', error };
-    }
-  }
-
-  // No desktop e web, câmera não é implementada ainda
-  return { status: 'failed', error: new Error('Câmera não implementada para esta plataforma') };
-}
-
-export async function pickPhotoFromLibrary(): Promise<PhotoPickResult> {
-  // Usar a abstração de plataforma
-  if (isWeb() || isDesktop()) {
-    // Para web e desktop, usar o picker abstrato
-    const result = await pickImage();
-    return fromPickResult(result);
-  }
-
-  // Mobile: usar o expo-image-picker original
+async function openCamera(options: ImagePicker.ImagePickerOptions): Promise<PhotoPickResult> {
   try {
-    // No iOS o seletor é o `PHPickerViewController`, que por desenho **não**
-    // exige autorização da fototeca — ele roda fora do processo do app e
-    // devolve só o que o usuário escolheu. Pedir permissão ali abriria um
-    // diálogo desnecessário que, se recusado, bloquearia para sempre um
-    // caminho que funcionaria sem permissão alguma (o iOS só pergunta uma vez).
-    if (Platform.OS === 'android') {
-      const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (!permission.granted) return { status: 'denied' };
-    }
+    const permission = await ImagePicker.requestCameraPermissionsAsync();
+    if (!permission.granted) return { status: 'denied' };
 
-    return toResult(await ImagePicker.launchImageLibraryAsync(PICKER_OPTIONS));
+    return toResult(await ImagePicker.launchCameraAsync(options));
   } catch (error) {
     return { status: 'failed', error };
   }
 }
 
+export async function takePhotoWithCamera(): Promise<PhotoPickResult> {
+  if (isWeb()) {
+    return fromPickResult(await pickImage('camera'));
+  }
+
+  if (isMobile()) return openCamera(PHOTO_OPTIONS);
+
+  return { status: 'failed', error: new Error('Câmera não implementada para esta plataforma') };
+}
+
 /**
- * Extrai metadados EXIF de uma foto selecionada.
+ * Gravar um vídeo agora, pela câmera do sistema — só no celular.
  *
- * Na web, a URI é um blob: ou object URL, precisamos ler o EXIF.
- * No mobile, o expo-image-picker já devolve exif no asset, mas não temos acesso aqui.
- *
- * @param photo - A foto selecionada
- * @returns Promessa com data e hora, ou vazio se não encontrado
+ * O vídeo cai na mesma esteira da foto: campos preenchidos do relógio de
+ * agora (o momento da gravação, desta vez de verdade) e editáveis antes de
+ * exportar. Desenhar o carimbo AO VIVO sobre a gravação continua sem caminho
+ * na geração atual da câmera; gravar-e-carimbar entrega o mesmo resultado.
  */
+export async function recordVideoWithCamera(): Promise<PhotoPickResult> {
+  if (!isMobile()) {
+    return { status: 'failed', error: new Error('Gravação de vídeo só no celular') };
+  }
+  return openCamera(VIDEO_OPTIONS);
+}
+
+export async function pickPhotoFromLibrary(): Promise<PhotoPickResult> {
+  if (isWeb() || isDesktop()) {
+    const result = await pickImage();
+    return fromPickResult(result);
+  }
+
+  try {
+    if (Platform.OS === 'android') {
+      const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (!permission.granted) return { status: 'denied' };
+    }
+
+    return toResult(await ImagePicker.launchImageLibraryAsync(LIBRARY_OPTIONS));
+  } catch (error) {
+    return { status: 'failed', error };
+  }
+}
+
 export async function extractMetadataFromPhoto(
   photo: SelectedPhoto,
   timeFormat: TimeFormat = '24h',
 ): Promise<{ date?: string; time?: string }> {
-  // Na web, a URI é um blob: ou object URL
   if (isWeb() && photo.uri.startsWith('blob:')) {
     try {
       const response = await fetch(photo.uri);
       const blob = await response.blob();
       const file = new File([blob], 'photo.jpg', { type: 'image/jpeg' });
-      
+
       const date = await extractDateFromExif(file);
       const time = await extractTimeFromExif(file, timeFormat);
-      
+
       return { date, time };
     } catch {
       return {};
     }
   }
 
-  // Para mobile e desktop, retornamos vazio por enquanto
-  // A data será preenchida manualmente ou via outros meios
   return {};
 }

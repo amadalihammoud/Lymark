@@ -17,13 +17,25 @@ import { useGallery } from '@/contexts/gallery-context';
 import { useSettings } from '@/contexts/settings-context';
 import {
   pickPhotoFromLibrary,
+  recordVideoWithCamera,
   takePhotoWithCamera,
   type PhotoPickResult,
 } from '@/features/capture/photo-source';
+import {
+  canStampVideoHere,
+  discardStampedVideo,
+  renderStampedVideo,
+  saveVideoToGallery,
+  shareStampedVideo,
+} from '@/features/video/export-video';
 import { buildWatermarkContent } from '@/features/watermark/build-content';
 import { saveToDeviceGallery, shareWatermarkedPhoto } from '@/features/watermark/export-photo';
 import { renderStampedPhoto } from '@/features/watermark/render-photo';
-import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
+import {
+  createStampRenderer,
+  useStampTypefaces,
+  type StampRenderer,
+} from '@/features/watermark/skia-stamp';
 import { loadStampImages, logoPathsOf } from '@/features/watermark/stamp-images';
 import { scriptForStamp } from '@/features/watermark/stamp-script';
 import { useAddressLookup, type AddressLookupStatus } from '@/hooks/use-address-lookup';
@@ -80,6 +92,7 @@ export default function CaptureScreen() {
   const tCommon = useTranslations('app.common');
   const tPlan = useTranslations('app.plan');
   const tApp = useTranslations('app');
+  const tVideo = useTranslations('app.video');
   const router = useRouter();
   const { draft, hasPhoto, setPhoto, setField, regenerateCode, syncDateTime, resetDraft } =
     useCapture();
@@ -121,6 +134,13 @@ export default function CaptureScreen() {
 
   const content = buildWatermarkContent(draft.metadata, preferences);
   const stampedFields = WATERMARK_FIELD_KEYS.filter((key) => content[key] !== null);
+
+  /**
+   * O vídeo na tela inicial é do celular com o módulo nativo. Na web e no
+   * desktop ele continua na rota `/video`, porque lá quem compõe é outro
+   * (navegador, ffmpeg) e o fluxo tem limites próprios para dizer.
+   */
+  const videoOnHome = isMobile() && canStampVideoHere;
 
   const applyPickResult = (result: PhotoPickResult) => {
     switch (result.status) {
@@ -284,12 +304,18 @@ export default function CaptureScreen() {
       // um bitmap de 4000 px já é a parte cara, e o desenho em si precisa ser
       // síncrono.
       const images = await loadStampImages(logoPathsOf(preferences.brandLogos));
+      const renderer = createStampRenderer(stampTypefaces, images);
+
+      if (photo.kind === 'video') {
+        await runVideoAction(action, renderer);
+        return;
+      }
 
       const path = await renderStampedPhoto({
         photoUri: photo.uri,
         metadata: draft.metadata,
         preferences,
-        renderer: createStampRenderer(stampTypefaces, images),
+        renderer,
       });
       addEntry({ path, metadata: draft.metadata, stampedFields });
 
@@ -356,6 +382,72 @@ export default function CaptureScreen() {
     }
   };
 
+  /**
+   * O vídeo pelos mesmos dois botões da foto.
+   *
+   * Sai do `runAction` para não dobrar o `try`: a cota, o `pending` e a
+   * caixa de erro de renderização são os mesmos. O que difere é quem compõe
+   * (o módulo nativo, num MP4 no cache) e o destino: a galeria do aparelho
+   * ou a folha de compartilhar. O histórico do app fica de fora por ora — ele
+   * guarda JPEGs e mostra cada um como miniatura, e um MP4 ali seria um
+   * cartão quebrado; entra quando a galeria souber mostrar vídeo.
+   */
+  const runVideoAction = async (action: PendingAction, renderer: StampRenderer) => {
+    const video = draft.photo;
+    if (!video) return;
+
+    const uri = await renderStampedVideo({
+      video,
+      metadata: draft.metadata,
+      preferences,
+      renderer,
+    });
+
+    if (countedPhoto.current !== video.uri) {
+      countedPhoto.current = video.uri;
+      recordExport();
+    }
+
+    if (action === 'save') {
+      const outcome = await saveVideoToGallery(uri);
+      if (outcome.status === 'saved') {
+        discardStampedVideo(uri);
+        notify(tVideo('savedToGallery'));
+      } else if (outcome.status === 'denied') {
+        ask({
+          title: t('savedAppOnlyTitle'),
+          message: t('galleryDenied'),
+          actions: [{ label: tCommon('gotIt') }],
+        });
+      } else {
+        ask({
+          title: t('savedAppOnlyTitle'),
+          message: t('galleryFailed'),
+          actions: [{ label: tCommon('gotIt') }],
+        });
+      }
+      return;
+    }
+
+    const outcome = await shareStampedVideo(uri, {
+      title: tApp('nav.video'),
+      dialogTitle: tApp('nav.video'),
+    });
+    if (outcome.status === 'unavailable') {
+      ask({
+        title: t('shareUnavailableTitle'),
+        message: t('shareUnavailableMessage'),
+        actions: [{ label: tCommon('gotIt') }],
+      });
+    } else if (outcome.status === 'failed') {
+      ask({
+        title: t('shareFailedTitle'),
+        message: tVideo('failed'),
+        actions: [{ label: tCommon('gotIt') }],
+      });
+    }
+  };
+
   const requestAction = (action: PendingAction) => {
     if (!hasPhoto || busy) return;
 
@@ -392,6 +484,9 @@ export default function CaptureScreen() {
       showCamera={canUseDeviceCamera()}
       onTakePhoto={() => void runPick(takePhotoWithCamera)}
       onPickFromLibrary={() => void runPick(pickPhotoFromLibrary)}
+      // Só onde o vídeo passa pela tela inicial: o celular com o módulo
+      // nativo. Web e desktop seguem pela rota `/video`.
+      onRecordVideo={videoOnHome ? () => void runPick(recordVideoWithCamera) : undefined}
     />
   );
 
@@ -469,9 +564,10 @@ export default function CaptureScreen() {
               />
             </>
           )}
-          {/* Fora do desktop o vídeo também existe — navegador na web, módulo
-              nativo no celular; cada tela diz seus limites. */}
-          {!isDesktop() && (
+          {/* Na web o vídeo é outra tela (o navegador compõe em tempo real e
+              precisa dizer isso). No celular ele já entrou pela galeria ou
+              pela câmera, aqui mesmo — a porta separada sumiu. */}
+          {!isDesktop() && !videoOnHome && (
             <Button
               label={tApp('nav.video')}
               icon="film-outline"
@@ -484,15 +580,18 @@ export default function CaptureScreen() {
       ) : (
         <>
           <Text style={styles.hint}>{t('pickPhotoHint')}</Text>
-          {/* O vídeo não depende de foto escolhida: a porta fica visível
-              também com a tela vazia, senão o recurso não se descobre. */}
-          <Button
-            label={tApp('nav.video')}
-            icon="film-outline"
-            variant="primaryAlt"
-            onPress={() => router.push('/video')}
-            style={styles.batchButton}
-          />
+          {/* O vídeo não depende de foto escolhida: fora do celular a porta
+              fica visível também com a tela vazia, senão o recurso não se
+              descobre. */}
+          {!videoOnHome && (
+            <Button
+              label={tApp('nav.video')}
+              icon="film-outline"
+              variant="primaryAlt"
+              onPress={() => router.push('/video')}
+              style={styles.batchButton}
+            />
+          )}
         </>
       )}
     </>
