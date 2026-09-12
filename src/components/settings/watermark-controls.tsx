@@ -23,14 +23,15 @@ import {
 import { colors, radius, spacing, typography } from '@/theme';
 import {
   BACKDROP_STYLES,
-  BRAND_LOGO_POSITIONS,
+  BRAND_LOGO_PLACEMENTS,
   BRAND_PLACEMENTS,
   CODE_PLACEMENTS,
+  MAX_BRAND_LOGOS,
   TIME_FORMATS,
   WATERMARK_FIELD_KEYS,
   WATERMARK_POSITIONS,
   WATERMARK_SCALES,
-  type BrandLogoPosition,
+  type BrandLogoPlacement,
 } from '@/types';
 
 /**
@@ -106,6 +107,164 @@ export function CodePlacementControl() {
   );
 }
 
+/**
+ * Os logotipos do carimbo — até dois, cada um com arquivo, posição e tamanho.
+ *
+ * Seção própria, e não parte do cabeçalho da marca: um logotipo num canto ou
+ * solto na foto vale para QUALQUER formato de marca, inclusive com o
+ * cabeçalho desligado. A posição livre nasce do dedo, no preview — aqui ela
+ * só é nomeada e pode ser desfeita; não há campo numérico para digitar.
+ */
+export function BrandLogoControls({ positionAsMap = false }: { positionAsMap?: boolean }) {
+  const t = useTranslations('app.watermark');
+  const tCommon = useTranslations('app.common');
+  const { preferences, setBrandLogo, updateBrandLogo } = useSettings();
+  const { ask, notify } = useFeedback();
+
+  const pickLogo = async (index: number) => {
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permission.granted) {
+      ask({
+        title: t('logoPermissionTitle'),
+        message: t('logoPermissionMessage'),
+        actions: [{ label: tCommon('gotIt') }],
+      });
+      return;
+    }
+
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      quality: 1,
+    });
+    if (result.canceled) return;
+
+    const asset = result.assets[0];
+    if (!asset?.uri) return;
+
+    try {
+      // A proporção vem do arquivo **já recortado**, e não do que o seletor
+      // informou: aparar a margem transparente muda a proporção, e é a do
+      // recorte que a geometria precisa conhecer. Ela é lida aqui, e não na
+      // hora do desenho, porque o cálculo do layout roda a cada quadro do
+      // preview e não pode decodificar imagem.
+      const logo = await persistLogo(asset.uri);
+
+      setBrandLogo(index, logo);
+      notify(t('logoAdded'));
+    } catch (error) {
+      console.warn('[marca] falha ao guardar o logotipo.', error);
+      ask({
+        title: t('logoErrorTitle'),
+        message: t('logoErrorMessage'),
+        actions: [{ label: tCommon('gotIt') }],
+      });
+    }
+  };
+
+  const { brandLogos } = preferences;
+  const placementLabel = (placement: BrandLogoPlacement) =>
+    placement === 'block'
+      ? t('logoPositionBlock')
+      : placement === 'free'
+        ? t('logoPositionFree')
+        : t(`positions.${placement}`);
+
+  return (
+    <Section title={t('logosTitle')} description={t('logosDescription')}>
+      {brandLogos.map((logo, index) => (
+        <View key={index} style={styles.brandBody}>
+          <Text style={styles.slotTitle}>{t('logoSlot', { n: index + 1 })}</Text>
+
+          <View style={styles.logoRow}>
+            <Image
+              source={{ uri: resolveLogoUri(logo.path) }}
+              style={styles.logoPreview}
+              contentFit="contain"
+              accessibilityLabel={t('logoChosen')}
+            />
+            <View style={styles.logoActions}>
+              <Button
+                label={t('logoReplace')}
+                icon="image-outline"
+                variant="ghost"
+                onPress={() => void pickLogo(index)}
+              />
+              <Button
+                label={t('logoRemove')}
+                icon="close"
+                variant="ghost"
+                onPress={() => setBrandLogo(index, null)}
+              />
+            </View>
+          </View>
+
+          {/* Livre é o dedo que decide: o tamanho vem da pinça ou da alça, e
+              um slider aqui disputaria com ele. Nos outros modos a escala
+              manual continua, proporcional — largura e altura juntas. */}
+          {logo.placement !== 'free' ? (
+            <SliderRow
+              label={t('logoSize')}
+              value={logo.scale}
+              min={BRAND_LOGO_SCALE_MIN}
+              max={BRAND_LOGO_SCALE_MAX}
+              step={0.05}
+              format={(value) => `${Math.round(value * 100)}%`}
+              onChange={(scale) => updateBrandLogo(index, { scale })}
+            />
+          ) : null}
+
+          <Text style={styles.hint}>{t('logoPosition')}</Text>
+          {positionAsMap ? (
+            /*
+              "Junto ao carimbo" e "Livre" vão em células à parte, de largura
+              inteira — e não espremidos num dos quatro quadrantes. O livre
+              só entra aqui quando já é o modo do logotipo: escolhê-lo sem
+              coordenadas não faria sentido, é o dedo que o cria.
+            */
+            <QuadrantPicker
+              cells={WATERMARK_POSITIONS.map((position) => ({
+                value: position as BrandLogoPlacement,
+                label: t(`positions.${position}`),
+              }))}
+              extra={
+                logo.placement === 'free'
+                  ? { value: 'free', label: t('logoPositionFree') }
+                  : { value: 'block', label: t('logoPositionBlock') }
+              }
+              value={logo.placement}
+              onSelect={(placement) => updateBrandLogo(index, { placement })}
+            />
+          ) : (
+            <ChoiceGrid
+              columns={2}
+              selected={logo.placement}
+              onSelect={(placement) => updateBrandLogo(index, { placement })}
+              options={BRAND_LOGO_PLACEMENTS.filter(
+                (placement) => placement !== 'free' || logo.placement === 'free',
+              ).map((placement) => ({ value: placement, label: placementLabel(placement) }))}
+            />
+          )}
+
+          {logo.placement === 'block' ? (
+            <Text style={styles.hint}>{t('logoAlignNote')}</Text>
+          ) : null}
+        </View>
+      ))}
+
+      {brandLogos.length < MAX_BRAND_LOGOS ? (
+        <Button
+          label={brandLogos.length === 0 ? t('logoPick') : t('logoAddSecond')}
+          icon="image-outline"
+          variant="ghost"
+          onPress={() => void pickLogo(brandLogos.length)}
+        />
+      ) : null}
+
+      <Text style={styles.hint}>{t('logoFormatNote')}</Text>
+    </Section>
+  );
+}
+
 export function WatermarkControls({
   includeFields = true,
   includeReset = true,
@@ -134,50 +293,7 @@ export function WatermarkControls({
   positionAsMap?: boolean;
 } = {}) {
   const t = useTranslations('app.watermark');
-  const tCommon = useTranslations('app.common');
-  const { preferences, updatePreferences, setBrandPart, setBrandLogo, resetPreferences } =
-    useSettings();
-  const { ask, notify } = useFeedback();
-
-  const pickLogo = async () => {
-    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (!permission.granted) {
-      ask({
-        title: t('logoPermissionTitle'),
-        message: t('logoPermissionMessage'),
-        actions: [{ label: tCommon('gotIt') }],
-      });
-      return;
-    }
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['images'],
-      quality: 1,
-    });
-    if (result.canceled) return;
-
-    const asset = result.assets[0];
-    if (!asset?.uri) return;
-
-    try {
-      // A proporção vem do arquivo **já recortado**, e não do que o seletor
-      // informou: aparar a margem transparente muda a proporção, e é a do
-      // recorte que a geometria precisa conhecer. Ela é lida aqui, e não na
-      // hora do desenho, porque o cálculo do layout roda a cada quadro do
-      // preview e não pode decodificar imagem.
-      const logo = await persistLogo(asset.uri);
-
-      setBrandLogo(logo);
-      notify(t('logoAdded'));
-    } catch (error) {
-      console.warn('[marca] falha ao guardar o logotipo.', error);
-      ask({
-        title: t('logoErrorTitle'),
-        message: t('logoErrorMessage'),
-        actions: [{ label: tCommon('gotIt') }],
-      });
-    }
-  };
+  const { preferences, updatePreferences, setBrandPart, resetPreferences } = useSettings();
 
   const { brandPlacement } = preferences;
 
@@ -312,89 +428,6 @@ export function WatermarkControls({
                   onChange={(brandComplementColor) => updatePreferences({ brandComplementColor })}
                 />
 
-                <View style={styles.logoRow}>
-                  {preferences.brandLogoPath ? (
-                    <Image
-                      source={{ uri: resolveLogoUri(preferences.brandLogoPath) }}
-                      style={styles.logoPreview}
-                      contentFit="contain"
-                      accessibilityLabel={t('logoChosen')}
-                    />
-                  ) : null}
-
-                  <View style={styles.logoActions}>
-                    <Button
-                      label={preferences.brandLogoPath ? t('logoReplace') : t('logoPick')}
-                      icon="image-outline"
-                      variant="ghost"
-                      onPress={() => void pickLogo()}
-                    />
-                    {preferences.brandLogoPath ? (
-                      <Button
-                        label={t('logoRemove')}
-                        icon="close"
-                        variant="ghost"
-                        onPress={() => setBrandLogo(null)}
-                      />
-                    ) : null}
-                  </View>
-                </View>
-
-                <Text style={styles.hint}>{t('logoFormatNote')}</Text>
-                <Text style={styles.hint}>{t('logoAlignNote')}</Text>
-
-                {preferences.brandLogoPath ? (
-                  <>
-                    <SliderRow
-                      // Escala proporcional — largura e altura juntas. Um eixo
-                      // por vez deformaria o logotipo, e isso não é opção.
-                      label={t('logoSize')}
-                      value={preferences.brandLogoScale}
-                      min={BRAND_LOGO_SCALE_MIN}
-                      max={BRAND_LOGO_SCALE_MAX}
-                      step={0.05}
-                      format={(value) => `${Math.round(value * 100)}%`}
-                      onChange={(brandLogoScale) => updatePreferences({ brandLogoScale })}
-                    />
-
-                    {/* Canto próprio: um logo grande pode ir para o alto
-                        enquanto os dados ficam embaixo. "Junto ao carimbo" é
-                        o desenho de sempre, dentro do cabeçalho. */}
-                    <Text style={styles.hint}>{t('logoPosition')}</Text>
-                    {positionAsMap ? (
-                      /*
-                        "Junto ao carimbo" vai numa célula à parte, de largura
-                        inteira — e não espremido num dos quatro quadrantes.
-                        São CINCO valores, e ele é o padrão salvo: usar um
-                        quadrante para ele apagaria um canto de quem já o
-                        tivesse escolhido, sem que houvesse estado "nada
-                        selecionado" para onde essa pessoa pudesse cair.
-                      */
-                      <QuadrantPicker
-                        cells={WATERMARK_POSITIONS.map((position) => ({
-                          value: position as BrandLogoPosition,
-                          label: t(`positions.${position}`),
-                        }))}
-                        extra={{ value: 'block', label: t('logoPositionBlock') }}
-                        value={preferences.brandLogoPosition}
-                        onSelect={(brandLogoPosition) => updatePreferences({ brandLogoPosition })}
-                      />
-                    ) : (
-                      <ChoiceGrid
-                        columns={2}
-                        selected={preferences.brandLogoPosition}
-                        onSelect={(brandLogoPosition) => updatePreferences({ brandLogoPosition })}
-                        options={BRAND_LOGO_POSITIONS.map((position) => ({
-                          value: position,
-                          label:
-                            position === 'block'
-                              ? t('logoPositionBlock')
-                              : t(`positions.${position}`),
-                        }))}
-                      />
-                    )}
-                  </>
-                ) : null}
               </View>
             ) : (
               <ChoiceGrid
@@ -414,6 +447,8 @@ export function WatermarkControls({
       {brandPlacement === 'corner' && preferences.brandPosition === preferences.position ? (
         <Text style={styles.conflict}>{t('cornerConflict')}</Text>
       ) : null}
+
+      <BrandLogoControls positionAsMap={positionAsMap} />
 
       <Section title={t('backdropTitle')} description={t('backdropDescription')}>
         <ChoiceGrid
@@ -493,6 +528,10 @@ const styles = StyleSheet.create({
   },
   hint: {
     ...typography.caption,
+    paddingHorizontal: spacing.md,
+  },
+  slotTitle: {
+    ...typography.body,
     paddingHorizontal: spacing.md,
   },
   logoRow: {

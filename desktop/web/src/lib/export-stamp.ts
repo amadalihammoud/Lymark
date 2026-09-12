@@ -1,10 +1,10 @@
 import { fileStampName } from "@/lib/datetime";
 import type {
   FieldKey,
-  LogoAt,
   StampCorner,
   StampFields,
   StampSize,
+  StudioLogo,
 } from "@/store/studio";
 
 const SIZE: Record<StampSize, { clock: number; body: number; code: number; pad: number }> = {
@@ -40,10 +40,21 @@ export type StampLook = {
   accent: string;
   colorA: string;
   colorB: string;
-  logoUrl: string | null;
-  logoScale: number;
-  logoAt: LogoAt;
+  /** Só o que o desenho precisa de cada logotipo — os bytes vêm à parte. */
+  logos: readonly Pick<StudioLogo, "url" | "aspect" | "scale" | "at" | "x" | "y" | "width">[];
 };
+
+/** Um logotipo já decodificado, pronto para o canvas. */
+type LoadedLogo = { logo: StampLook["logos"][number]; image: HTMLImageElement };
+
+async function loadLogos(look: StampLook): Promise<LoadedLogo[]> {
+  const loaded = await Promise.all(
+    look.logos.map(async (logo) =>
+      logo.url ? loadImage(logo.url).then((image) => ({ logo, image })).catch(() => null) : null,
+    ),
+  );
+  return loaded.filter((item): item is LoadedLogo => item !== null);
+}
 
 async function loadImage(src: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
@@ -60,7 +71,7 @@ function drawStamp(
   w: number,
   h: number,
   look: StampLook,
-  logo: HTMLImageElement | null,
+  logos: LoadedLogo[],
 ) {
   const m = SIZE[look.size];
   const scale = Math.min(w, h) / 1200;
@@ -82,15 +93,19 @@ function drawStamp(
   const align: CanvasTextAlign = right ? "right" : "left";
   ctx.textAlign = align;
 
-  if (logo && look.logoAt !== "block") {
-    const lh = Math.round(body * 2.2 * look.logoScale);
-    const lw = Math.round(lh * Math.min(2.4, logo.width / Math.max(1, logo.height)));
-    const lx = look.logoAt.endsWith("right") ? w - pad - lw : pad;
-    const ly = look.logoAt.startsWith("top") ? pad : h - pad - lh;
+  // Os dos cantos vêm antes do texto, como sempre.
+  for (const { logo, image } of logos) {
+    if (logo.at === "block" || logo.at === "free") continue;
+    const ratio = image.width / Math.max(1, image.height);
+    const lh = Math.round(body * 2.2 * logo.scale);
+    const lw = Math.round(lh * Math.min(2.4, ratio));
+    const lx = logo.at.endsWith("right") ? w - pad - lw : pad;
+    const ly = logo.at.startsWith("top") ? pad : h - pad - lh;
     ctx.shadowBlur = 0;
-    ctx.drawImage(logo, lx, ly, lw, lh);
+    ctx.drawImage(image, lx, ly, lw, lh);
     ctx.shadowBlur = 6;
   }
+  const inBlock = logos.find(({ logo }) => logo.at === "block") ?? null;
 
   ctx.font = "500 " + body + "px Barlow, sans-serif";
   const addr = look.visible.address
@@ -120,12 +135,13 @@ function drawStamp(
   if (look.visible.brand) {
     ctx.font = "500 " + body + "px Barlow, sans-serif";
     const brandY = cursor - clock + body;
-    if (logo && look.logoAt === "block") {
-      const lh = Math.round(body * 1.8 * look.logoScale);
-      const lw = Math.round(lh * Math.min(2.4, logo.width / Math.max(1, logo.height)));
+    if (inBlock) {
+      const { logo, image } = inBlock;
+      const lh = Math.round(body * 1.8 * logo.scale);
+      const lw = Math.round(lh * Math.min(2.4, image.width / Math.max(1, image.height)));
       const lx = right ? x0 - lw : x0;
       ctx.shadowBlur = 0;
-      ctx.drawImage(logo, lx, brandY - lh + 4, lw, lh);
+      ctx.drawImage(image, lx, brandY - lh + 4, lw, lh);
       ctx.shadowBlur = 6;
     }
     ctx.fillStyle = look.colorA;
@@ -189,6 +205,20 @@ function drawStamp(
     ctx.fillText(look.fields.code, 0, 0);
     ctx.restore();
   }
+
+  // Os livres por ÚLTIMO, por cima do carimbo — a mesma ordem do preview.
+  // A fração do quadro é a mesma conta do preview: o que se vê é o que sai.
+  for (const { logo, image } of logos) {
+    if (logo.at !== "free") continue;
+    const ratio = image.width / Math.max(1, image.height);
+    const lw = Math.max(1, Math.round(logo.width * w));
+    const lh = Math.max(1, Math.round(lw / ratio));
+    const lx = Math.min(Math.max(0, Math.round(logo.x * w - lw / 2)), Math.max(0, w - lw));
+    const ly = Math.min(Math.max(0, Math.round(logo.y * h - lh / 2)), Math.max(0, h - lh));
+    ctx.shadowBlur = 0;
+    ctx.drawImage(image, lx, ly, lw, lh);
+    ctx.shadowBlur = 6;
+  }
 }
 
 export async function exportStampedJpeg(
@@ -196,14 +226,14 @@ export async function exportStampedJpeg(
   look: StampLook,
 ): Promise<{ blob: Blob; filename: string }> {
   const img = await loadImage(src);
-  const logo = look.logoUrl ? await loadImage(look.logoUrl).catch(() => null) : null;
+  const logos = await loadLogos(look);
   const canvas = document.createElement("canvas");
   canvas.width = img.naturalWidth;
   canvas.height = img.naturalHeight;
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("canvas");
   ctx.drawImage(img, 0, 0);
-  drawStamp(ctx, canvas.width, canvas.height, look, logo);
+  drawStamp(ctx, canvas.width, canvas.height, look, logos);
   const blob = await new Promise<Blob>((resolve, reject) => {
     canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("blob"))), "image/jpeg", 0.92);
   });
@@ -228,8 +258,8 @@ export async function exportVideoFrame(
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("canvas");
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-  const logo = look.logoUrl ? await loadImage(look.logoUrl).catch(() => null) : null;
-  drawStamp(ctx, canvas.width, canvas.height, look, logo);
+  const logos = await loadLogos(look);
+  drawStamp(ctx, canvas.width, canvas.height, look, logos);
   const blob = await new Promise<Blob>((resolve, reject) => {
     canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("blob"))), "image/jpeg", 0.92);
   });

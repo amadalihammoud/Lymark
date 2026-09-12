@@ -26,7 +26,7 @@ import { useSettings } from '@/contexts/settings-context';
 import { probeVideoFile, stampVideoInBrowser } from '@/features/video/stamp-video';
 import { composeStampOverlay } from '@/features/watermark/render-overlay';
 import { createStampRenderer, useStampTypefaces } from '@/features/watermark/skia-stamp';
-import { loadStampImages } from '@/features/watermark/stamp-images';
+import { loadStampImages, logoPathsOf } from '@/features/watermark/stamp-images';
 import { scriptForStamp } from '@/features/watermark/stamp-script';
 import { bytesToBase64 } from '@/lib/base64';
 import { formatDate, formatTime, formatWeekday } from '@/lib/datetime';
@@ -192,7 +192,7 @@ function DesktopVideoScreen() {
     setProgress(0);
     setSavedPath(null);
     try {
-      const images = await loadStampImages(preferences.brandLogoPath);
+      const images = await loadStampImages(logoPathsOf(preferences.brandLogos));
       const overlay = await composeStampOverlay({
         width: video.width,
         height: video.height,
@@ -408,7 +408,7 @@ function MobileVideoScreen() {
     let savedToGallery = false;
 
     try {
-      const images = await loadStampImages(preferences.brandLogoPath);
+      const images = await loadStampImages(logoPathsOf(preferences.brandLogos));
       const overlay = await composeStampOverlay({
         width: selected.width,
         height: selected.height,
@@ -588,7 +588,7 @@ function WebVideoScreen() {
     setProgress(0);
     setSavedName(null);
     try {
-      const images = await loadStampImages(preferences.brandLogoPath);
+      const images = await loadStampImages(logoPathsOf(preferences.brandLogos));
       const overlay = await composeStampOverlay({
         width: selected.width,
         height: selected.height,

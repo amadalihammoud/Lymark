@@ -86,7 +86,10 @@ function DesktopReportScreen() {
    * aparece para quem tem logo configurado, e desligado o documento sai
    * sem ele — decisão de quem emite, como tudo no relatório.
    */
-  const logoUri = preferences.brandLogoPath ? resolveLogoUri(preferences.brandLogoPath) : '';
+  // Com dois logotipos, a capa leva o primeiro: é o principal, o que a
+  // pessoa escolheu antes.
+  const coverLogo = preferences.brandLogos[0];
+  const logoUri = coverLogo ? resolveLogoUri(coverLogo.path) : '';
   const [includeLogo, setIncludeLogo] = useState(true);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState(

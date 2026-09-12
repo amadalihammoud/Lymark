@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslations } from 'use-intl';
 
+import { useSettings } from '@/contexts/settings-context';
 import { StampCanvas } from '@/features/watermark/stamp-canvas';
 import { colors, radius, spacing, typography } from '@/theme';
 import type { CaptureMetadata, SelectedPhoto, WatermarkPreferences } from '@/types';
@@ -61,6 +62,9 @@ export function PhotoPreview({
   bounded?: boolean;
 }) {
   const t = useTranslations('app');
+  // O dedo sobre o logotipo grava direto na preferência: é o padrão global,
+  // o mesmo que vale para a próxima foto e para o vídeo.
+  const { updateBrandLogo } = useSettings();
   /**
    * O espaço disponível para o quadro. É a ÚNICA medição do componente.
    *
@@ -112,6 +116,7 @@ export function PhotoPreview({
         preferences={preferences}
         width={frame.width}
         height={frame.height}
+        onLogoChange={updateBrandLogo}
       />
     </View>
   ) : null;
@@ -131,6 +136,7 @@ export function PhotoPreview({
           preferences={preferences}
           width={size.width}
           height={size.height}
+          onLogoChange={updateBrandLogo}
         />
       ) : null}
       <View style={styles.emptyState} pointerEvents="none">

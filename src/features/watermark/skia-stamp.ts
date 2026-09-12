@@ -153,20 +153,25 @@ export function createStampRenderer(
 
     paint.setAlphaf(1);
 
-    for (const item of geometry.images) {
-      const image = images?.get(item.path);
-      // Sem os bytes carregados o logotipo simplesmente não é desenhado. É o
-      // comportamento certo: um retângulo de espera carimbado numa foto
-      // exportada seria pior do que a ausência dele.
-      if (!image) continue;
+    const drawImages = (above: boolean) => {
+      for (const item of geometry.images) {
+        if (Boolean(item.above) !== above) continue;
+        const image = images?.get(item.path);
+        // Sem os bytes carregados o logotipo simplesmente não é desenhado. É o
+        // comportamento certo: um retângulo de espera carimbado numa foto
+        // exportada seria pior do que a ausência dele.
+        if (!image) continue;
 
-      canvas.drawImageRect(
-        image,
-        Skia.XYWHRect(0, 0, image.width(), image.height()),
-        Skia.XYWHRect(item.x, item.y, item.width, item.height),
-        paint,
-      );
-    }
+        canvas.drawImageRect(
+          image,
+          Skia.XYWHRect(0, 0, image.width(), image.height()),
+          Skia.XYWHRect(item.x, item.y, item.width, item.height),
+          paint,
+        );
+      }
+    };
+
+    drawImages(false);
 
     // Sem a faixa de fundo — que vem desligada por padrão — é esta sombra que
     // mantém o texto branco legível sobre céu, areia ou parede clara.
@@ -194,6 +199,9 @@ export function createStampRenderer(
       }
       canvas.restore();
     }
+
+    // Os livres por último, sobre o texto — ver `StampImage.above`.
+    drawImages(true);
   };
 
   return { measure, draw };

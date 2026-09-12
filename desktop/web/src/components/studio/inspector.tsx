@@ -1,11 +1,14 @@
 import { useState, type ReactNode } from "react";
 import { Upload, X } from "lucide-react";
+import { toast } from "sonner";
 import { useTranslations } from "use-intl";
 
 import { ColorField } from "@/components/studio/color-field";
 import { Segmented } from "@/components/studio/segmented";
 import { Button } from "@/components/ui/button";
 import { locateAddress, reverseGeocode } from "@/lib/locate";
+import { prepareLogo } from "@/lib/logo-file";
+import { MAX_LOGOS } from "@/lib/stamp-kit";
 import { cn } from "@/lib/utils";
 import type {
   FieldKey,
@@ -183,12 +186,6 @@ function MarcaTab() {
   const colorB = useStudio((s) => s.colorB);
   const setColorA = useStudio((s) => s.setColorA);
   const setColorB = useStudio((s) => s.setColorB);
-  const logoUrl = useStudio((s) => s.logoUrl);
-  const setLogo = useStudio((s) => s.setLogo);
-  const logoScale = useStudio((s) => s.logoScale);
-  const setLogoScale = useStudio((s) => s.setLogoScale);
-  const logoAt = useStudio((s) => s.logoAt);
-  const setLogoAt = useStudio((s) => s.setLogoAt);
 
   return (
     <div className="space-y-8">
@@ -224,64 +221,130 @@ function MarcaTab() {
         />
       </section>
 
-      <section className="space-y-2">
-        <Label>{tw("logoPick")}</Label>
-        {logoUrl ? (
-          <div className="flex items-center gap-3 border border-hairline px-3 py-3">
-            <img src={logoUrl} alt="" className="h-10 w-auto max-w-24 object-contain" />
-            <Button variant="ghost" size="sm" onClick={() => setLogo(null)}>
+      <LogoSlots />
+    </div>
+  );
+}
+
+/**
+ * Os logotipos — até dois, cada um com arquivo, posição e tamanho.
+ *
+ * O arquivo é preparado antes de entrar (aparado, limitado a 1024 px, PNG) e
+ * guardado no IndexedDB, não no kit: é o que o faz sobreviver ao fechar do
+ * navegador. A posição livre nasce do mouse, sobre a foto; aqui ela só é
+ * nomeada e pode ser desfeita.
+ */
+function LogoSlots() {
+  const t = useTranslations("app.web");
+  const tw = useTranslations("app.watermark");
+  const logos = useStudio((s) => s.logos);
+  const putLogo = useStudio((s) => s.putLogo);
+  const removeLogo = useStudio((s) => s.removeLogo);
+  const updateLogo = useStudio((s) => s.updateLogo);
+  const [busy, setBusy] = useState(false);
+
+  const pick = async (index: number, file: File | undefined) => {
+    if (!file) return;
+    setBusy(true);
+    try {
+      await putLogo(index, await prepareLogo(file));
+    } catch {
+      toast.error(tw("logoErrorTitle"), { description: tw("logoErrorMessage") });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const picker = (index: number, label: ReactNode, className: string) => (
+    <label className={className}>
+      {label}
+      <input
+        type="file"
+        accept="image/*"
+        className="hidden"
+        disabled={busy}
+        onChange={(e) => {
+          void pick(index, e.target.files?.[0]);
+          e.target.value = "";
+        }}
+      />
+    </label>
+  );
+
+  return (
+    <section className="space-y-3">
+      <Label>{tw("logosTitle")}</Label>
+      <p className="text-micro text-slate">{tw("logosDescription")}</p>
+
+      {logos.map((logo, index) => (
+        <div key={logo.id} className="space-y-2 border border-hairline p-3">
+          <p className="text-caption text-ink">{tw("logoSlot", { n: index + 1 })}</p>
+          <div className="flex items-center gap-3">
+            {logo.url ? (
+              <img src={logo.url} alt="" className="h-10 w-auto max-w-24 object-contain" />
+            ) : null}
+            {picker(
+              index,
+              tw("logoReplace"),
+              "cursor-pointer text-caption text-slate hover:text-ink",
+            )}
+            <Button variant="ghost" size="sm" onClick={() => removeLogo(index)}>
               {tw("logoRemove")}
             </Button>
           </div>
-        ) : (
-          <label className="flex h-24 cursor-pointer flex-col items-center justify-center gap-1 border border-hairline text-caption text-slate hover:border-mist hover:text-ink">
-            <Upload className="size-4" />
-            {t("sendLogo")}
-            <span className="text-micro text-slate">{t("logoHint")}</span>
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={(e) => {
-                const file = e.target.files?.[0];
-                if (!file) return;
-                const reader = new FileReader();
-                reader.onload = () => setLogo(String(reader.result));
-                reader.readAsDataURL(file);
-                e.target.value = "";
-              }}
-            />
-          </label>
-        )}
-        {logoUrl ? (
-          <>
-            <p className="text-micro text-slate">
-              {t("logoSize", { percent: Math.round(logoScale * 100) })}
-            </p>
-            <input
-              type="range"
-              min={50}
-              max={250}
-              step={10}
-              value={Math.round(logoScale * 100)}
-              onChange={(e) => setLogoScale(Number(e.target.value) / 100)}
-              className="w-full accent-amber"
-            />
-            <Label>{tw("logoPosition")}</Label>
-            <QuadrantMap
-              value={logoAt === "block" ? "" : logoAt}
-              onSelect={(id) => setLogoAt(id)}
-              extra={{
-                value: "block",
-                label: tw("logoPositionBlock"),
-                onSelect: () => setLogoAt("block"),
-                active: logoAt === "block",
-              }}
-            />
-          </>
-        ) : null}
-      </section>
-    </div>
+
+          {logo.at !== "free" ? (
+            <>
+              <p className="text-micro text-slate">
+                {t("logoSize", { percent: Math.round(logo.scale * 100) })}
+              </p>
+              <input
+                type="range"
+                min={50}
+                max={250}
+                step={10}
+                value={Math.round(logo.scale * 100)}
+                onChange={(e) => updateLogo(index, { scale: Number(e.target.value) / 100 })}
+                className="w-full accent-amber"
+              />
+            </>
+          ) : null}
+
+          <Label>{tw("logoPosition")}</Label>
+          <QuadrantMap
+            value={logo.at === "block" || logo.at === "free" ? "" : logo.at}
+            onSelect={(id) => updateLogo(index, { at: id })}
+            extra={
+              logo.at === "free"
+                ? {
+                    value: "free",
+                    label: tw("logoPositionFree"),
+                    onSelect: () => updateLogo(index, { at: "free" }),
+                    active: true,
+                  }
+                : {
+                    value: "block",
+                    label: tw("logoPositionBlock"),
+                    onSelect: () => updateLogo(index, { at: "block" }),
+                    active: logo.at === "block",
+                  }
+            }
+          />
+        </div>
+      ))}
+
+      {logos.length < MAX_LOGOS
+        ? picker(
+            logos.length,
+            <>
+              <Upload className="size-4" />
+              {logos.length === 0 ? t("sendLogo") : tw("logoAddSecond")}
+              <span className="text-micro text-slate">{t("logoHint")}</span>
+            </>,
+            "flex h-24 cursor-pointer flex-col items-center justify-center gap-1 border border-hairline text-caption text-slate hover:border-mist hover:text-ink",
+          )
+        : null}
+    </section>
   );
 }
 
