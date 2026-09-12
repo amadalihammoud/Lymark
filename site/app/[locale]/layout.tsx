@@ -8,6 +8,7 @@ import { notFound } from 'next/navigation';
 import { LOCALES, isRtl, type Locale } from '../../../i18n/locales';
 import AccountNav from '../../components/AccountNav';
 import LanguageSelector from '../../components/LanguageSelector';
+import { Monogram } from '../../components/Monogram';
 import { CLERK_APPEARANCE, CLERK_LOCALIZATIONS } from '../../i18n/clerk';
 import { Link, getPathname } from '../../i18n/navigation';
 import { routing } from '../../i18n/routing';
@@ -176,6 +177,7 @@ export default async function LocaleLayout({
           <header className="site">
             <div className="shell">
               <Link href="/" className="wordmark" aria-label={t('nav.homeLabel')}>
+                <Monogram />
                 Ly<em>mark</em>
               </Link>
               <nav className="site" aria-label={t('nav.label')}>

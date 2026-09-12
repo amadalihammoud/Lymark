@@ -234,6 +234,22 @@ Especificação em `docs/ASSINATURA.md`. Ordem de implementação na seção 7.
 - [x] **Compartilhar no celular** — botão na tela da foto: folha nativa
   do sistema (e-mail, WhatsApp, o que houver), via expo-sharing.
 
+## Marca — monograma "LY" (12/09/2026)
+
+- [x] Identidade nova: monograma "LY" (L branco, Y âmbar com a cauda curva)
+  no lugar do selo "L com barra". Fonte da verdade em `assets/brand/`
+  (7 SVGs do Claude Design + README com geometria, tokens e regras). Tokens
+  da marca: marinho #13356A, âmbar #E09A04 (escuro #B07600 sobre claro).
+  A interface continua na paleta do manual (#15243C / #F3C218); só a marca
+  usa os seus tokens.
+- [x] Onde aparece: ícones do app (`assets/images/*.png`, gerados do SVG:
+  ícone 1024, adaptativo com fundo #13356A, monocromático, splash,
+  favicon), `Wordmark` do app (`expo-image` desenhando o SVG),
+  `Mark` do studio (SVG embutido), favicon do studio, cabeçalho e favicon
+  do site (`site/components/Monogram.tsx`, `site/app/icon.svg`).
+- [ ] Ícone do desktop (electron-builder usa `assets/images/icon.png`,
+  já novo — sai no próximo pacote) e loja (Play/App Store) quando chegar lá.
+
 ## Próximo passo de código
 
 Passo 4 em diante: faixa de teste fechada nas lojas, RevenueCat + Play e

@@ -1,6 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <circle cx="16" cy="16" r="16" fill="#15243C"/>
-  <rect x="10" y="9" width="4" height="14" fill="#FFFFFF"/>
-  <rect x="10" y="19" width="9" height="4" fill="#FFFFFF"/>
-  <rect x="22" y="9" width="3" height="14" fill="#F3C218"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-label="Lymark">
+  <!-- Favicon: a versão compacta do monograma (canal mais largo, para
+       tamanhos pequenos), centrada num quadrado sobre o marinho da marca.
+       Caminhos de assets/brand/ (fonte da verdade). -->
+  <rect width="320" height="320" fill="#13356A"/>
+  <g transform="translate(-9.875 41)">
+    <path d="M48 31.5H86V174.5H168.5V206.5H48Z" fill="#FFFFFF"/>
+    <path d="M121.25 31.5H163.25L187.8 70.78Q195.3 82.78 187.8 94.78L182.09 103.92C178.65 109.43 176.61 113.85 175.85 115.71L173.98 115.87Z" fill="#E09A04"/>
+    <path d="M249.75 31.5H291.75L233.94 124Q225.5 137.5 225.5 152V206.5H187.5V152Q187.5 131.1 198.2 114Z" fill="#E09A04"/>
+  </g>
 </svg>
