@@ -26,6 +26,7 @@
       "deleteAccount": "Skildu reikninginn",
       "email": "Tölvupóst",
       "failed": "Skoðaðu tölvupóstinn eða kóđinn og reyndu aftur.",
+      "loadFailed": "Ekki tókst að tengjast reikningnum. Athugaðu nettenginguna, lokaðu forritinu og opnaðu það aftur.",
       "notConfigured": "Skráning er ekki til í þessu byggingu enn.",
       "orEmail": "or",
       "signInBrowser": "Skráðu þig inn í gegnum vafra",

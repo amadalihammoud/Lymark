@@ -26,6 +26,7 @@
       "deleteAccount": "Eliminar conta",
       "email": "E-mail",
       "failed": "Algo correu mal. Verifique o e-mail ou o código e tente de novo.",
+      "loadFailed": "Não foi possível ligar à conta. Verifique a internet, feche a aplicação e volte a abri-la.",
       "notConfigured": "O login ainda não está disponível nesta versão da aplicação.",
       "orEmail": "ou",
       "signInBrowser": "Entrar pelo navegador",

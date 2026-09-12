@@ -26,6 +26,7 @@
       "deleteAccount": "Hapus akun",
       "email": "Email",
       "failed": "Periksa email atau kode dan coba lagi.",
+      "loadFailed": "Tidak dapat terhubung ke akun. Periksa koneksi internet, tutup aplikasi, lalu buka kembali.",
       "notConfigured": "Login belum tersedia di build ini.",
       "orEmail": "atau",
       "signInBrowser": "Login melalui browser",

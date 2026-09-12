@@ -26,6 +26,7 @@
       "deleteAccount": "Ta bort konto",
       "email": "E-post",
       "failed": "Kolla e-post eller koden och försök igen.",
+      "loadFailed": "Det gick inte att ansluta till kontot. Kontrollera internetanslutningen, stäng appen och öppna den igen.",
       "notConfigured": "Login är inte tillgänglig i den här byggnaden än.",
       "orEmail": "eller",
       "signInBrowser": "Logga in via webbläsaren",

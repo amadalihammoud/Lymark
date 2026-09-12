@@ -26,6 +26,7 @@
       "deleteAccount": "Slette konto",
       "email": "E-mail",
       "failed": "Tjek e-mailen eller koden og prøv igen.",
+      "loadFailed": "Kunne ikke oprette forbindelse til kontoen. Tjek internetforbindelsen, luk appen og åbn den igen.",
       "notConfigured": "Login er ikke tilgængelig i denne bygning endnu.",
       "orEmail": "eller",
       "signInBrowser": "Log ind via browser",

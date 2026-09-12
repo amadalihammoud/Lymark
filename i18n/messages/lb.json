@@ -26,6 +26,7 @@
       "deleteAccount": "Kont ze läschen",
       "email": "E-Mail",
       "failed": "Dat huet net geschafft, kuckt d'E-Mail oder de Code a probéiert nach eng Kéier.",
+      "loadFailed": "Konnt sech net mam Kont verbannen. Kontrolléiert d’Internetverbindung, maacht d’App zou an op en Neits op.",
       "notConfigured": "D'Login ass nach net verfügbar an dësem Build.",
       "orEmail": "or",
       "signInBrowser": "Logéiert duerch de Browser an",

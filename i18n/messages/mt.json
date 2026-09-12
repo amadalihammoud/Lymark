@@ -26,6 +26,7 @@
       "deleteAccount": "Ħassar kont",
       "email": "E-mail",
       "failed": "Dan ma ħadmux. Iċċekkja l-email jew il-kodiċi u jerġa' tipprova.",
+      "loadFailed": "Ma setax jaqbad mal-kont. Iċċekkja l-konnessjoni tal-internet, agħlaq l-app u erġa’ iftaħha.",
       "notConfigured": "Log-in mhuwiex disponibbli f'dan il-bini għadu.",
       "orEmail": "or",
       "signInBrowser": "Log in permezz tal- browser",

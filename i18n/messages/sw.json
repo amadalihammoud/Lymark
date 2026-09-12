@@ -26,6 +26,7 @@
       "deleteAccount": "Futa akaunti",
       "email": "Barua pepe",
       "failed": "Haikufanya kazi, angalia barua pepe au nambari na ujaribu tena.",
+      "loadFailed": "Imeshindwa kuunganisha na akaunti. Angalia muunganisho wa intaneti, funga programu na uifungue tena.",
       "notConfigured": "Kuingia si inapatikana katika jengo hili bado.",
       "orEmail": "au",
       "signInBrowser": "Ingia kupitia kivinjari",

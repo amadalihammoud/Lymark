@@ -26,6 +26,7 @@
       "deleteAccount": "Konto löschen",
       "email": "E-Mail",
       "failed": "Das hat nicht geklappt. Prüfe E-Mail oder Code und versuche es erneut.",
+      "loadFailed": "Verbindung zum Konto nicht möglich. Prüfen Sie die Internetverbindung, schließen Sie die App und öffnen Sie sie erneut.",
       "notConfigured": "Die Anmeldung ist in dieser Version noch nicht verfügbar.",
       "orEmail": "oder",
       "signInBrowser": "Über den Browser anmelden",

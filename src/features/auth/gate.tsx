@@ -1,5 +1,5 @@
 import { useAuth } from '@clerk/expo';
-import type { ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslations } from 'use-intl';
 
@@ -51,14 +51,48 @@ function AuthMisconfigured() {
   );
 }
 
+/**
+ * Quanto o Clerk tem para carregar antes de o portão parar de ficar mudo.
+ *
+ * Numa rede normal ele responde em menos de um segundo; o limite alto é
+ * folga para 3G ruim, não expectativa.
+ */
+const CLERK_LOAD_TIMEOUT_MS = 8000;
+
 function ClerkGate({ children }: { children: ReactNode }) {
   const { isLoaded, isSignedIn } = useAuth();
+  const [timedOut, setTimedOut] = useState(false);
+
+  useEffect(() => {
+    if (isLoaded) return;
+    const timer = setTimeout(() => setTimedOut(true), CLERK_LOAD_TIMEOUT_MS);
+    return () => clearTimeout(timer);
+  }, [isLoaded]);
 
   // Nada de app por baixo enquanto o Clerk decide: mostrar as telas e
   // arrancá-las meio segundo depois pareceria o app quebrando.
-  if (!isLoaded) return null;
+  //
+  // Mas "nada" tem prazo. O Clerk não avisa quando falha ao iniciar — sem
+  // rede, ou com a API nativa desligada no painel da instância, `isLoaded`
+  // fica `false` para sempre e a pessoa fica olhando o fundo da tela. Passado
+  // o prazo, o portão diz o que está acontecendo.
+  if (!isLoaded) return timedOut ? <AuthUnavailable /> : null;
 
   return isSignedIn ? <>{children}</> : <SignInFlow />;
+}
+
+function AuthUnavailable() {
+  const t = useTranslations('app.account');
+
+  return (
+    <Screen>
+      <Section title={t('title')}>
+        <View style={styles.block}>
+          <Text style={[typography.body, styles.note]}>{t('loadFailed')}</Text>
+        </View>
+      </Section>
+    </Screen>
+  );
 }
 
 function DesktopGate({ children }: { children: ReactNode }) {

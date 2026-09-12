@@ -26,6 +26,7 @@
       "deleteAccount": "Ištrinti paskyrą",
       "email": "Pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto pašto",
       "failed": "- Patikrinkite el. pašto ar kodą ir pabandykite dar kartą.",
+      "loadFailed": "Nepavyko prisijungti prie paskyros. Patikrinkite interneto ryšį, uždarykite programą ir atidarykite ją iš naujo.",
       "notConfigured": "Įrašymas dar nėra prieinamas.",
       "orEmail": "arba",
       "signInBrowser": "Įsiregistruokite per naršyklą",

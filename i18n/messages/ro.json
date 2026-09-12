@@ -26,6 +26,7 @@
       "deleteAccount": "Ștergeți contul",
       "email": "E-mail",
       "failed": "Verifică e-mailul sau codul şi încearcă din nou.",
+      "loadFailed": "Nu s-a putut realiza conexiunea la cont. Verificați conexiunea la internet, închideți aplicația și redeschideți-o.",
       "notConfigured": "Log-in-ul nu este disponibil în această construcţie încă.",
       "orEmail": "sau",
       "signInBrowser": "Log in prin browser",

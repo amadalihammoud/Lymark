@@ -26,6 +26,7 @@
       "deleteAccount": "Poista tili",
       "email": "Lähetys",
       "failed": "Tarkista sähköposti tai koodi ja yritä uudelleen.",
+      "loadFailed": "Tiliin ei saatu yhteyttä. Tarkista internetyhteys, sulje sovellus ja avaa se uudelleen.",
       "notConfigured": "Sisäilytys ei ole vielä saatavilla.",
       "orEmail": "tai",
       "signInBrowser": "Sisääntykää selaimen kautta",

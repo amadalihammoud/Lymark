@@ -26,6 +26,7 @@
       "deleteAccount": "Fshihet llogaria",
       "email": "Email",
       "failed": "Kontrolloni emailin ose kodin dhe provoni përsëri.",
+      "loadFailed": "Nuk u lidh dot me llogarinë. Kontrolloni lidhjen me internetin, mbyllni aplikacionin dhe hapeni përsëri.",
       "notConfigured": "Lidhja nuk është e disponueshme në këtë ndërtim ende.",
       "orEmail": "or",
       "signInBrowser": "Të hyjnë përmes shfletuesit",

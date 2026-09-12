@@ -26,6 +26,7 @@
       "deleteAccount": "Delete account",
       "email": "Email",
       "failed": "That didn't work. Check the email or code and try again.",
+      "loadFailed": "Couldn’t connect to your account. Check your internet connection, close the app and open it again.",
       "notConfigured": "Sign-in is not available in this build yet.",
       "orEmail": "or",
       "signInBrowser": "Sign in via browser",

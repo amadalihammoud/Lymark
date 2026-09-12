@@ -26,6 +26,7 @@
       "deleteAccount": "Account verwijderen",
       "email": "E-mail",
       "failed": "Dat is niet gelukt. Controleer het e-mailadres of de code en probeer het opnieuw.",
+      "loadFailed": "Kan geen verbinding maken met het account. Controleer de internetverbinding, sluit de app en open hem opnieuw.",
       "notConfigured": "Inloggen is in deze versie nog niet beschikbaar.",
       "orEmail": "of",
       "signInBrowser": "Inloggen via de browser",

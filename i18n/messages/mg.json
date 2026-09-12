@@ -26,6 +26,7 @@
       "deleteAccount": "Fandikana kaonty",
       "email": "Hafatra mailaka",
       "failed": "Tsy nahomby izany. Jereo ny mailaka na ny kaody ary andramo indray.",
+      "loadFailed": "Tsy afaka nifandray tamin’ny kaonty. Jereo ny fifandraisana internet, akatony ny rindranasa ary sokafy indray.",
       "notConfigured": "Mbola tsy misy ny fidirana amin'ity fananganana ity.",
       "orEmail": "or",
       "signInBrowser": "Midira amin'ny alalan'ny navigateur",

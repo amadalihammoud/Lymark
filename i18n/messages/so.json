@@ -26,6 +26,7 @@
       "deleteAccount": "Ka saar xisaabta",
       "email": "Emailka",
       "failed": "Ma shaqeyn, hubi emailka ama koodhka oo isku day mar kale.",
+      "loadFailed": "Lama xiriirin karin akoonka. Hubi xiriirka internetka, xir abka oo dib u fur.",
       "notConfigured": "Xiriirka ma heli karo dhismaha.",
       "orEmail": "or",
       "signInBrowser": "Isku soo biir adoo isticmaalaya browser",

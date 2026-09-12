@@ -26,6 +26,7 @@
       "deleteAccount": "Pöörake konto kustutama",
       "email": "E-posti",
       "failed": "Kontrollige e-kirja või kood ja proovige uuesti.",
+      "loadFailed": "Kontoga ei õnnestunud ühendust luua. Kontrolli internetiühendust, sulge rakendus ja ava see uuesti.",
       "notConfigured": "Sellel ehitusel ei ole veel sisse logitud.",
       "orEmail": "või",
       "signInBrowser": "Sisene brüuserist",

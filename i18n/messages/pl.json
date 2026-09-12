@@ -26,6 +26,7 @@
       "deleteAccount": "Usunięcie konta",
       "email": "/Mailing",
       "failed": "Sprawdź e-mail lub kod i spróbuj jeszcze raz.",
+      "loadFailed": "Nie udało się połączyć z kontem. Sprawdź połączenie z internetem, zamknij aplikację i otwórz ją ponownie.",
       "notConfigured": "W tej budowie nie ma jeszcze dostępnych danych.",
       "orEmail": "lub",
       "signInBrowser": "Wpis w przeglądarkę",

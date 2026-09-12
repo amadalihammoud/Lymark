@@ -26,6 +26,7 @@
       "deleteAccount": "删除账户",
       "email": "电子邮箱",
       "failed": "未成功。请检查邮箱或验证码后重试。",
+      "loadFailed": "无法连接到账户。请检查网络连接，关闭应用后重新打开。",
       "notConfigured": "此版本暂不支持登录。",
       "orEmail": "或",
       "signInBrowser": "通过浏览器登录",

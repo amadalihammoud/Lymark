@@ -26,6 +26,7 @@
       "deleteAccount": "Atmazgāt kontu",
       "email": "E-pasts",
       "failed": "Tas neveicās, pārbaudi e-pastu vai kodu un mēģini atkal.",
+      "loadFailed": "Neizdevās izveidot savienojumu ar kontu. Pārbaudiet interneta savienojumu, aizveriet lietotni un atveriet to vēlreiz.",
       "notConfigured": "Šajā konstrukcijā vēl nav pieejama reģistrācija.",
       "orEmail": "vai",
       "signInBrowser": "Iegrieziet ar pārlūkojumu",

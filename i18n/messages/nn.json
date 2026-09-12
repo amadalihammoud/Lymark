@@ -26,6 +26,7 @@
       "deleteAccount": "Ta bort kontoen",
       "email": "E-post",
       "failed": "Det funkte ikkje, sjekk e-posten eller koden og prøv igjen.",
+      "loadFailed": "Klarte ikkje å kople til kontoen. Sjekk internettsambandet, lukk appen og opne han på nytt.",
       "notConfigured": "Logg-in er ikkje tilgjengeleg i denne bygda ennå.",
       "orEmail": "eller",
       "signInBrowser": "Logg inn via nettlesar",

@@ -26,6 +26,7 @@
       "deleteAccount": "Účet vymazať",
       "email": "E-mail",
       "failed": "Nefungovalo to, skontroluj e-mail alebo kód a skúsi znova.",
+      "loadFailed": "Nepodarilo sa pripojiť k účtu. Skontrolujte pripojenie na internet, zatvorte aplikáciu a znova ju otvorte.",
       "notConfigured": "V tomto stave ešte nie je prístupný.",
       "orEmail": "alebo",
       "signInBrowser": "Vstupte cez prehliadač",

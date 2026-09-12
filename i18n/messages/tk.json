@@ -26,6 +26,7 @@
       "deleteAccount": "Hesaby ýitirip",
       "email": "E-poçt",
       "failed": "Bu işe yaramady. E-poçtuny ýa-da kody barla we ýene synla.",
+      "loadFailed": "Hasaba birikmek başartmady. Internet baglanyşygyny barlaň, programmany ýapyň we täzeden açyň.",
       "notConfigured": "Bu gurluşykda entek girmek ýok.",
       "orEmail": "or",
       "signInBrowser": "Brawser arkaly gir",

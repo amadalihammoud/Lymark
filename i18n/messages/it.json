@@ -26,6 +26,7 @@
       "deleteAccount": "Elimina account",
       "email": "E-mail",
       "failed": "Non ha funzionato. Controlla l'e-mail o il codice e riprova.",
+      "loadFailed": "Impossibile connettersi all’account. Controlla la connessione internet, chiudi l’app e riaprila.",
       "notConfigured": "L'accesso non è ancora disponibile in questa versione.",
       "orEmail": "oppure",
       "signInBrowser": "Accedi dal browser",

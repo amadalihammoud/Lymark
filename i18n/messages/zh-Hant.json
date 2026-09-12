@@ -26,6 +26,7 @@
       "deleteAccount": "刪除賬戶",
       "email": "電子郵箱",
       "failed": "未成功。請檢查郵箱或驗證碼後重試。",
+      "loadFailed": "無法連線到帳戶。請檢查網路連線，關閉應用程式後重新開啟。",
       "notConfigured": "此版本暫不支援登入。",
       "orEmail": "或",
       "signInBrowser": "透過瀏覽器登入",

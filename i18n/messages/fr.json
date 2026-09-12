@@ -26,6 +26,7 @@
       "deleteAccount": "Supprimer le compte",
       "email": "E-mail",
       "failed": "Échec. Vérifiez l'e-mail ou le code et réessayez.",
+      "loadFailed": "Impossible de se connecter au compte. Vérifiez la connexion internet, fermez l’application et rouvrez-la.",
       "notConfigured": "La connexion n'est pas encore disponible dans cette version.",
       "orEmail": "ou",
       "signInBrowser": "Se connecter via le navigateur",

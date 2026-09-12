@@ -26,6 +26,7 @@
       "deleteAccount": "Gukuraho konti",
       "email": "Yohereze ubutumwa kuri interineti",
       "failed": "Ibyo ntibyashobotse, reba kuri email cyangwa kuri code maze wongere ugerageze.",
+      "loadFailed": "Ntibyashobotse guhuza na konti. Reba niba ufite interineti, funga porogaramu hanyuma uyifungure nanone.",
       "notConfigured": "Kugeza ubu, iyi nzu ntiyari ikiriho.",
       "orEmail": "or",
       "signInBrowser": "Kwinjira ukoresheje porogaramu",

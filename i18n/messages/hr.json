@@ -26,6 +26,7 @@
       "deleteAccount": "Izbrišite račun",
       "email": "E-mail",
       "failed": "Provjeri e-mail ili kod i pokušaj ponovo.",
+      "loadFailed": "Povezivanje s računom nije uspjelo. Provjerite internetsku vezu, zatvorite aplikaciju i ponovno je otvorite.",
       "notConfigured": "U ovoj zgradi još nije dostupna registracija.",
       "orEmail": "ili",
       "signInBrowser": "Upis preko pretraživača",

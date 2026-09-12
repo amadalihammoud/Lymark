@@ -26,6 +26,7 @@
       "deleteAccount": "Hesap sil",
       "email": "E-posta",
       "failed": "E-posta veya kodu kontrol et ve tekrar dene.",
+      "loadFailed": "Hesaba bağlanılamadı. İnternet bağlantısını kontrol edin, uygulamayı kapatıp yeniden açın.",
       "notConfigured": "Bu binada henüz giriş yok.",
       "orEmail": "veya",
       "signInBrowser": "Tarayıcı üzerinden giriş yap",

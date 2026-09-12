@@ -26,6 +26,7 @@
       "deleteAccount": "A számla törlés",
       "email": "E-mail",
       "failed": "Ellenőrizd az e-mail-t vagy a kódot, és próbáld meg újra.",
+      "loadFailed": "Nem sikerült csatlakozni a fiókhoz. Ellenőrizze az internetkapcsolatot, zárja be az alkalmazást, majd nyissa meg újra.",
       "notConfigured": "A bejelentkezés még nem áll rendelkezésre ebben a rendszerben.",
       "orEmail": "vagy",
       "signInBrowser": "Bíróhelyen belép",

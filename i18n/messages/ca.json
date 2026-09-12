@@ -26,6 +26,7 @@
       "deleteAccount": "Eliminar compte",
       "email": "E-mail",
       "failed": "No va funcionar, comprova l'e-mail o el codi i torna a intentar-ho.",
+      "loadFailed": "No s’ha pogut connectar amb el compte. Comprova la connexió a internet, tanca l’aplicació i torna-la a obrir.",
       "notConfigured": "La connexió no està disponible en aquesta edificació encara.",
       "orEmail": "o",
       "signInBrowser": "Inscriure-se a través del navegador",

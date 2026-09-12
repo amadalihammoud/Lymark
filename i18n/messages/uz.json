@@ -26,6 +26,7 @@
       "deleteAccount": "Hisobni oʻchirish",
       "email": "Elektron pochta",
       "failed": "Bu ishlamadi. Email yoki kodni tekshiring va yana urinib ko'ring.",
+      "loadFailed": "Hisobga ulanib bo‘lmadi. Internet aloqasini tekshiring, ilovani yopib, qayta oching.",
       "notConfigured": "Bu tizimda hali ro'yxatdan o'tish imkoniyati mavjud emas.",
       "orEmail": "or",
       "signInBrowser": "Brauzer orqali kirish",

@@ -26,6 +26,7 @@
       "deleteAccount": "Efase kont",
       "email": "Imèl",
       "failed": "Sa pa t travay. Tcheke imel la oswa kòd la epi eseye ankò.",
+      "loadFailed": "Pa t kapab konekte ak kont lan. Tcheke koneksyon entènèt la, fèmen aplikasyon an epi louvri l ankò.",
       "notConfigured": "Enskripsyon an pa disponib nan konstriksyon sa a ankò.",
       "orEmail": "or",
       "signInBrowser": "Enskri nan navigatè",

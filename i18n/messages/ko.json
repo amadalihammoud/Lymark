@@ -26,6 +26,7 @@
       "deleteAccount": "계정 삭제",
       "email": "이메일",
       "failed": "실패했습니다. 이메일 또는 코드를 확인하고 다시 시도하세요.",
+      "loadFailed": "계정에 연결할 수 없습니다. 인터넷 연결을 확인하고 앱을 닫았다가 다시 여세요.",
       "notConfigured": "이 버전에서는 아직 로그인할 수 없습니다.",
       "orEmail": "또는",
       "signInBrowser": "브라우저로 로그인",

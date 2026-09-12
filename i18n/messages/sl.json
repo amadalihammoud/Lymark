@@ -26,6 +26,7 @@
       "deleteAccount": "Izbrišite račun",
       "email": "E-poštna sporočila",
       "failed": "Preveri e-pošto ali šifro in poskusite znova.",
+      "loadFailed": "Povezava z računom ni uspela. Preverite internetno povezavo, zaprite aplikacijo in jo znova odprite.",
       "notConfigured": "Vgradnja še ni na voljo.",
       "orEmail": "ali",
       "signInBrowser": "Vstopite v brskalnik",

@@ -26,6 +26,7 @@
       "deleteAccount": "Hesabı silmək",
       "email": "E-poçt",
       "failed": "E-poçt və ya kodu yoxlayın və yenidən cəhd edin.",
+      "loadFailed": "Hesaba qoşulmaq mümkün olmadı. İnternet bağlantısını yoxlayın, tətbiqi bağlayıb yenidən açın.",
       "notConfigured": "Bu quruluşda hələ ki, giriş yoxdur.",
       "orEmail": "or",
       "signInBrowser": "Brauzer vasitəsilə daxil olun",

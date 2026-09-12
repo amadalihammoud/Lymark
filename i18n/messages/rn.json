@@ -26,6 +26,7 @@
       "deleteAccount": "Gukuramo akajambo",
       "email": "Ama email",
       "failed": "Nurabe kuri email canke kuri code maze wongere ugerageze.",
+      "loadFailed": "Ntivyashobotse guhuza na konti. Raba ko ufise interineti, ugara porogarama hanyuma uyugurure kandi.",
       "notConfigured": "Nta muntu n'umwe ashobora kwinjira muri iyo nzu.",
       "orEmail": "or",
       "signInBrowser": "Niwinjirire mu muhingurano",

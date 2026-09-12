@@ -26,6 +26,7 @@
       "deleteAccount": "xóa tài khoản",
       "email": "Email",
       "failed": "Không có hiệu quả, kiểm tra email hay mã và thử lại.",
+      "loadFailed": "Không thể kết nối với tài khoản. Hãy kiểm tra kết nối internet, đóng ứng dụng và mở lại.",
       "notConfigured": "Đăng nhập chưa sẵn sàng trong bộ này.",
       "orEmail": "hoặc",
       "signInBrowser": "Nhập vào thông qua trình duyệt",
